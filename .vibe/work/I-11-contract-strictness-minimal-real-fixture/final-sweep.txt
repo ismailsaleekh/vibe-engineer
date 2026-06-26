@@ -1,0 +1,43 @@
+## status
+?? .gitignore
+?? .npmrc
+?? .pi/
+?? .vibe/
+?? CHANGELOG.md
+?? CODE_OF_CONDUCT.md
+?? CONTRIBUTING.md
+?? LICENSE
+?? README.md
+?? SECURITY.md
+?? docs/
+?? eslint.config.mjs
+?? examples/
+?? package.json
+?? packages/
+?? pnpm-lock.yaml
+?? pnpm-workspace.yaml
+?? prettier.config.mjs
+?? tsconfig.base.json
+?? turbo.json
+## protected hashes
+d71428e1b35540d330890b4e286a7dae6b54fef16eb3757dd268e56c7471b6e2  package.json
+7e97bffa29ba0aa4c4e2657cf5fd30ccfe3e61a8ce243e2b3e7a44147cb9d981  pnpm-lock.yaml
+aee47e9964f53e767a6d6a86a27c86b218a76cd59453c3401defad6907be5f21  pnpm-workspace.yaml
+16e6293cf07e9befc3463ef1c2fea50302a04ada97f0ac18cca5400a9079e9a5  turbo.json
+b87923b67a5cf139ae67f6062c71d23393b307af153d1b874ccaf3e639e2f221  packages/mechanical-gates/package.json
+## aggregate refs
+## p0 refs
+## production workspace package @vibe-engineer/testing dependencies
+## core path
+## forbidden domain terms in I11 owned source
+packages/mechanical-gates/fixtures/p1/schema-contract-strictness/witness.mjs:181:  assert(positiveResult.ok === true && positiveResult.findings.length === 0, "valid product contract should pass P1 strictness", positiveResult);
+## source safety grep
+packages/mechanical-gates/fixtures/p1/schema-contract-strictness/witness.mjs:135:  const manifest = JSON.parse(readFileSync(manifestPath, "utf8"));
+packages/mechanical-gates/fixtures/p1/schema-contract-strictness/witness.mjs:191:    mutateFile(root, manifest.consumerFile, (text) => `${text}\ntype BroadDomainModel = Record<string, unknown>;\n`);
+packages/mechanical-gates/fixtures/p1/schema-contract-strictness/witness.mjs:194:    mutateFile(root, manifest.providerFile, (text) => `${text}\nexport function unsafeBoundary(raw: string): unknown { return JSON.parse(raw); }\n`);
+packages/mechanical-gates/fixtures/p1/schema-contract-strictness/witness.mjs:214:    const manifest = JSON.parse(readFileSync(manifestPath, "utf8"));
+packages/mechanical-gates/fixtures/p1/schema-contract-strictness/witness.mjs:220:    const manifest = JSON.parse(readFileSync(manifestPath, "utf8"));
+packages/mechanical-gates/fixtures/p1/schema-contract-strictness/witness.mjs:233:    generatedClientInitial: JSON.parse(readFileSync(join(workRoot, "generated-client-initial.json"), "utf8")),
+packages/mechanical-gates/src/p1/schema-contract-strictness/validate-schema-contract-strictness.ts:110:    const parsed: unknown = JSON.parse(text);
+packages/mechanical-gates/src/p1/schema-contract-strictness/validate-schema-contract-strictness.ts:290:          findings.push(finding("named-runtime-schema-boundary.broad-record-domain-model", unit.filePath, "Broad Record<string, unknown> domain models are forbidden at contract boundaries."));
+packages/mechanical-gates/src/p1/schema-contract-strictness/validate-schema-contract-strictness.ts:304:        findings.push(finding("named-runtime-schema-boundary.unvalidated-json-parse", unit.filePath, "Boundary JSON.parse is forbidden; boundary values must enter as unknown and be narrowed by named schemas."));

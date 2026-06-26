@@ -1,0 +1,172 @@
+{
+  "ok": true,
+  "realBoundaryResult": {
+    "providerAccepted": true,
+    "consumerAccepted": true,
+    "invalidRequestRejectedBeforeLogic": true,
+    "invalidResponseRejected": true,
+    "clientInvalidResponseRejected": true
+  },
+  "directProviderValid": {
+    "status": 200,
+    "applicationLogicRan": true
+  },
+  "directProviderInvalid": {
+    "status": 400,
+    "applicationLogicRan": false
+  },
+  "forcedInvalidResponseRejected": true,
+  "consumerImportedGeneratedClientAndReturned": {
+    "referenceId": "ref_abc123",
+    "accepted": true,
+    "normalizedLabel": "consumer-fixture:alpha",
+    "sequenceEcho": 7,
+    "absence": {
+      "kind": "not-provided",
+      "reason": "domain-neutral absence model"
+    }
+  },
+  "positiveP1": {
+    "ok": true,
+    "family": "p1.schema-contract-strictness",
+    "findingCount": 0,
+    "evidence": {
+      "manifestPath": "packages/contracts/schema-contract-strictness.manifest.json",
+      "parser": "typescript",
+      "proofMode": "typescript-ast",
+      "family": "p1.schema-contract-strictness",
+      "sourceFileCount": 5,
+      "boundaryFileCount": 2,
+      "requiredNamedSchemas": [
+        "ReferenceIdentifierSchema",
+        "ReferencePathParamsSchema",
+        "ReferenceHeadersSchema",
+        "ReferenceRequestBodySchema",
+        "ReferenceSuccessResponseSchema",
+        "ReferenceErrorResponseSchema",
+        "ReferenceBoundaryRequestSchema"
+      ],
+      "generatedClientFile": "packages/contracts/src/generated/reference-flow-client.ts",
+      "canonicalContractFile": "packages/contracts/src/contracts/reference-flow.contract.ts"
+    }
+  },
+  "negativeRuleIds": [
+    {
+      "label": "duplicate DTO/schema",
+      "expectedRuleId": "named-runtime-schema-boundary.duplicate-dto-schema-source",
+      "findingRuleIds": [
+        "named-runtime-schema-boundary.duplicate-dto-schema-source"
+      ]
+    },
+    {
+      "label": "bare contract shape",
+      "expectedRuleId": "named-runtime-schema-boundary.bare-contract-shape",
+      "findingRuleIds": [
+        "named-runtime-schema-boundary.bare-contract-shape",
+        "named-runtime-schema-boundary.generated-client-stale"
+      ]
+    },
+    {
+      "label": "broad record",
+      "expectedRuleId": "named-runtime-schema-boundary.broad-record-domain-model",
+      "findingRuleIds": [
+        "named-runtime-schema-boundary.broad-record-domain-model"
+      ]
+    },
+    {
+      "label": "unvalidated JSON.parse",
+      "expectedRuleId": "named-runtime-schema-boundary.unvalidated-json-parse",
+      "findingRuleIds": [
+        "named-runtime-schema-boundary.unvalidated-json-parse"
+      ]
+    },
+    {
+      "label": "provider request validation bypass",
+      "expectedRuleId": "named-runtime-schema-boundary.unvalidated-boundary-payload",
+      "findingRuleIds": [
+        "named-runtime-schema-boundary.unvalidated-boundary-payload"
+      ]
+    },
+    {
+      "label": "provider response validation bypass",
+      "expectedRuleId": "named-runtime-schema-boundary.unvalidated-boundary-payload",
+      "findingRuleIds": [
+        "named-runtime-schema-boundary.unvalidated-boundary-payload"
+      ]
+    },
+    {
+      "label": "stale generated-client provenance",
+      "expectedRuleId": "named-runtime-schema-boundary.generated-client-stale",
+      "findingRuleIds": [
+        "named-runtime-schema-boundary.generated-client-stale"
+      ]
+    },
+    {
+      "label": "missing generated-client provenance",
+      "expectedRuleId": "named-runtime-schema-boundary.generated-client-provenance-missing",
+      "findingRuleIds": [
+        "named-runtime-schema-boundary.generated-client-provenance-missing"
+      ]
+    },
+    {
+      "label": "parser-self-agreement-only",
+      "expectedRuleId": "named-runtime-schema-boundary.parser-self-agreement-only-test",
+      "findingRuleIds": [
+        "named-runtime-schema-boundary.parser-self-agreement-only-test"
+      ]
+    },
+    {
+      "label": "malformed manifest",
+      "expectedRuleId": "named-runtime-schema-boundary.manifest-unreadable",
+      "findingRuleIds": [
+        "named-runtime-schema-boundary.manifest-unreadable"
+      ]
+    },
+    {
+      "label": "missing manifest",
+      "expectedRuleId": "named-runtime-schema-boundary.manifest-unreadable",
+      "findingRuleIds": [
+        "named-runtime-schema-boundary.manifest-unreadable"
+      ]
+    },
+    {
+      "label": "regex-only proof",
+      "expectedRuleId": "named-runtime-schema-boundary.regex-only-proof-rejected",
+      "findingRuleIds": [
+        "named-runtime-schema-boundary.regex-only-proof-rejected"
+      ]
+    },
+    {
+      "label": "path traversal",
+      "expectedRuleId": "named-runtime-schema-boundary.path-traversal",
+      "findingRuleIds": [
+        "named-runtime-schema-boundary.path-traversal"
+      ]
+    },
+    {
+      "label": "unknown option",
+      "expectedRuleId": "named-runtime-schema-boundary.unknown-validator-option",
+      "findingRuleIds": [
+        "named-runtime-schema-boundary.unknown-validator-option"
+      ]
+    },
+    {
+      "label": "missing required fixture",
+      "expectedRuleId": "named-runtime-schema-boundary.required-file-missing",
+      "findingRuleIds": [
+        "named-runtime-schema-boundary.required-file-missing"
+      ]
+    }
+  ],
+  "generatedClientProvenance": {
+    "sourceSha256": "effd2821d303d2e0650cabf82018df89d35040484c07c38db2629d44173cf352",
+    "actualContractSha256": "effd2821d303d2e0650cabf82018df89d35040484c07c38db2629d44173cf352",
+    "canonicalContractPath": "packages/contracts/src/contracts/reference-flow.contract.ts",
+    "generatedClientPath": "packages/contracts/src/generated/reference-flow-client.ts",
+    "importsCanonicalContract": true,
+    "importsProviderApi": true,
+    "usesTsRestClientValidation": true
+  },
+  "compiledRoot": ".vibe/work/I-11-contract-strictness-minimal-real-fixture/validation-fix-evidence/compiled-validation-fix-probe",
+  "negativeRoot": ".vibe/work/I-11-contract-strictness-minimal-real-fixture/validation-fix-evidence/negative-cases"
+}

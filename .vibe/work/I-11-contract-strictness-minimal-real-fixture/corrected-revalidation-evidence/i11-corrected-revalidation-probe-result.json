@@ -1,0 +1,476 @@
+{
+  "ok": true,
+  "compiledRoot": ".vibe/work/I-11-contract-strictness-minimal-real-fixture/corrected-revalidation-evidence/compiled-corrected-revalidation-probe",
+  "realBoundary": {
+    "witnessBooleans": {
+      "providerAccepted": true,
+      "consumerAccepted": true,
+      "invalidRequestRejectedBeforeLogic": true,
+      "invalidResponseRejected": true,
+      "clientInvalidResponseRejected": true
+    },
+    "directProvider": {
+      "request": {
+        "method": "POST",
+        "path": "/reference/ref_abc123/submit",
+        "headers": {
+          "x-reference-client": "corrected-revalidation-provider"
+        },
+        "body": {
+          "label": "Alpha",
+          "sequence": 7,
+          "absence": {
+            "kind": "not-provided",
+            "reason": "corrected revalidation valid provider"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": {
+          "referenceId": "ref_abc123",
+          "accepted": true,
+          "normalizedLabel": "corrected-revalidation-provider:alpha",
+          "sequenceEcho": 7,
+          "absence": {
+            "kind": "not-provided",
+            "reason": "corrected revalidation valid provider"
+          }
+        }
+      },
+      "applicationLogicRan": true
+    },
+    "invalidRequest": {
+      "request": {
+        "method": "POST",
+        "path": "/reference/ref_abc123/submit",
+        "headers": {
+          "x-reference-client": "corrected-revalidation-provider"
+        },
+        "body": {
+          "label": "",
+          "sequence": 7,
+          "absence": {
+            "kind": "not-provided",
+            "reason": "invalid request"
+          }
+        }
+      },
+      "response": {
+        "status": 400,
+        "body": {
+          "code": "invalid_request",
+          "message": "Request failed named runtime schema validation."
+        }
+      },
+      "applicationLogicRan": false
+    },
+    "forcedInvalidProviderResponse": {
+      "request": {
+        "method": "POST",
+        "path": "/reference/ref_abc123/submit",
+        "headers": {
+          "x-reference-client": "corrected-revalidation-provider"
+        },
+        "body": {
+          "label": "Alpha",
+          "sequence": 7,
+          "absence": {
+            "kind": "not-provided",
+            "reason": "forced invalid provider"
+          }
+        },
+        "forceInvalidProviderResponse": true
+      },
+      "rejected": true,
+      "errorName": "ReferenceContractBoundaryError",
+      "errorMessage": "Provider attempted to expose a payload that violates ReferenceSuccessResponseSchema."
+    },
+    "clientInvalidResponse": {
+      "rejected": true,
+      "errorName": "Error",
+      "errorMessage": "[ts-rest] Response validation failed for POST /reference/:referenceId/submit: [\n  {\n    \"validation\": \"regex\",\n    \"code\": \"invalid_string\",\n    \"message\": \"Reference identifiers use the ref_ prefix and six lowercase base36 characters.\",\n    \"path\": [\n      \"referenceId\"\n    ]\n  }\n]"
+    },
+    "consumer": {
+      "response": {
+        "referenceId": "ref_abc123",
+        "accepted": true,
+        "normalizedLabel": "consumer-fixture:alpha",
+        "sequenceEcho": 7,
+        "absence": {
+          "kind": "not-provided",
+          "reason": "domain-neutral absence model"
+        }
+      },
+      "schemaValid": true
+    }
+  },
+  "p1Strictness": {
+    "positive": {
+      "family": "p1.schema-contract-strictness",
+      "ok": true,
+      "findings": [],
+      "evidence": {
+        "manifestPath": "packages/contracts/schema-contract-strictness.manifest.json",
+        "parser": "typescript",
+        "proofMode": "typescript-ast",
+        "family": "p1.schema-contract-strictness",
+        "sourceFileCount": 5,
+        "boundaryFileCount": 2,
+        "requiredNamedSchemas": [
+          "ReferenceIdentifierSchema",
+          "ReferencePathParamsSchema",
+          "ReferenceHeadersSchema",
+          "ReferenceRequestBodySchema",
+          "ReferenceSuccessResponseSchema",
+          "ReferenceErrorResponseSchema",
+          "ReferenceBoundaryRequestSchema"
+        ],
+        "generatedClientFile": "packages/contracts/src/generated/reference-flow-client.ts",
+        "canonicalContractFile": "packages/contracts/src/contracts/reference-flow.contract.ts"
+      }
+    },
+    "negativeResults": [
+      {
+        "caseName": "duplicate-provider-client-consumer-dto-schema-source",
+        "expectedRuleId": "named-runtime-schema-boundary.duplicate-dto-schema-source",
+        "ok": false,
+        "findingCount": 2,
+        "findings": [
+          {
+            "family": "p1.schema-contract-strictness",
+            "ruleId": "named-runtime-schema-boundary.duplicate-dto-schema-source",
+            "severity": "error",
+            "blocking": true,
+            "path": "packages/contracts/src/consumer/reference-flow.consumer.ts",
+            "message": "Only the canonical contract source may define payload Zod object schemas for this seam.",
+            "evidence": {}
+          },
+          {
+            "family": "p1.schema-contract-strictness",
+            "ruleId": "named-runtime-schema-boundary.duplicate-dto-schema-source",
+            "severity": "error",
+            "blocking": true,
+            "path": "packages/contracts/src/consumer/reference-flow.consumer.ts",
+            "message": "Provider/client/consumer DTO or payload types must be contract-derived, not duplicated.",
+            "evidence": {}
+          }
+        ]
+      },
+      {
+        "caseName": "bare-inline-object-contract-shape",
+        "expectedRuleId": "named-runtime-schema-boundary.bare-contract-shape",
+        "ok": false,
+        "findingCount": 2,
+        "findings": [
+          {
+            "family": "p1.schema-contract-strictness",
+            "ruleId": "named-runtime-schema-boundary.bare-contract-shape",
+            "severity": "error",
+            "blocking": true,
+            "path": "packages/contracts/src/contracts/reference-flow.contract.ts",
+            "message": "Important contract shapes must reference named runtime schemas, not inline/bare object/list/map shapes.",
+            "evidence": {
+              "property": "body"
+            }
+          },
+          {
+            "family": "p1.schema-contract-strictness",
+            "ruleId": "named-runtime-schema-boundary.generated-client-stale",
+            "severity": "error",
+            "blocking": true,
+            "path": "packages/contracts/src/generated/reference-flow-client.ts",
+            "message": "Generated/shared client provenance does not match the current canonical contract source.",
+            "evidence": {
+              "canonicalContractPath": "packages/contracts/src/contracts/reference-flow.contract.ts",
+              "generatedClientPath": "packages/contracts/src/generated/reference-flow-client.ts",
+              "sourceSha256": "effd2821d303d2e0650cabf82018df89d35040484c07c38db2629d44173cf352",
+              "actualHash": "6598d5cc89b33e33f5ecc05a858985230f0cc97d9d1b2914d82c9e1275b49675"
+            }
+          }
+        ]
+      },
+      {
+        "caseName": "broad-record-domain-model",
+        "expectedRuleId": "named-runtime-schema-boundary.broad-record-domain-model",
+        "ok": false,
+        "findingCount": 1,
+        "findings": [
+          {
+            "family": "p1.schema-contract-strictness",
+            "ruleId": "named-runtime-schema-boundary.broad-record-domain-model",
+            "severity": "error",
+            "blocking": true,
+            "path": "packages/contracts/src/consumer/reference-flow.consumer.ts",
+            "message": "Broad Record<string, unknown> domain models are forbidden at contract boundaries.",
+            "evidence": {}
+          }
+        ]
+      },
+      {
+        "caseName": "unvalidated-boundary-json-parse",
+        "expectedRuleId": "named-runtime-schema-boundary.unvalidated-json-parse",
+        "ok": false,
+        "findingCount": 1,
+        "findings": [
+          {
+            "family": "p1.schema-contract-strictness",
+            "ruleId": "named-runtime-schema-boundary.unvalidated-json-parse",
+            "severity": "error",
+            "blocking": true,
+            "path": "packages/contracts/src/provider/reference-flow.provider.ts",
+            "message": "Boundary JSON.parse is forbidden; boundary values must enter as unknown and be narrowed by named schemas.",
+            "evidence": {}
+          }
+        ]
+      },
+      {
+        "caseName": "provider-request-schema-call-bypassed",
+        "expectedRuleId": "named-runtime-schema-boundary.unvalidated-boundary-payload",
+        "ok": false,
+        "findingCount": 1,
+        "findings": [
+          {
+            "family": "p1.schema-contract-strictness",
+            "ruleId": "named-runtime-schema-boundary.unvalidated-boundary-payload",
+            "severity": "error",
+            "blocking": true,
+            "path": "packages/contracts/src/provider/reference-flow.provider.ts",
+            "message": "Provider/API boundary must validate request and response data with named schemas before use/exposure.",
+            "evidence": {
+              "schemaName": "ReferenceRequestBodySchema"
+            }
+          }
+        ]
+      },
+      {
+        "caseName": "provider-response-schema-call-bypassed",
+        "expectedRuleId": "named-runtime-schema-boundary.unvalidated-boundary-payload",
+        "ok": false,
+        "findingCount": 1,
+        "findings": [
+          {
+            "family": "p1.schema-contract-strictness",
+            "ruleId": "named-runtime-schema-boundary.unvalidated-boundary-payload",
+            "severity": "error",
+            "blocking": true,
+            "path": "packages/contracts/src/provider/reference-flow.provider.ts",
+            "message": "Provider/API boundary must validate request and response data with named schemas before use/exposure.",
+            "evidence": {
+              "schemaName": "ReferenceSuccessResponseSchema"
+            }
+          }
+        ]
+      },
+      {
+        "caseName": "generated-client-stale-provenance",
+        "expectedRuleId": "named-runtime-schema-boundary.generated-client-stale",
+        "ok": false,
+        "findingCount": 1,
+        "findings": [
+          {
+            "family": "p1.schema-contract-strictness",
+            "ruleId": "named-runtime-schema-boundary.generated-client-stale",
+            "severity": "error",
+            "blocking": true,
+            "path": "packages/contracts/src/generated/reference-flow-client.ts",
+            "message": "Generated/shared client provenance does not match the current canonical contract source.",
+            "evidence": {
+              "canonicalContractPath": "packages/contracts/src/contracts/reference-flow.contract.ts",
+              "generatedClientPath": "packages/contracts/src/generated/reference-flow-client.ts",
+              "sourceSha256": "0000000000000000000000000000000000000000000000000000000000000000",
+              "actualHash": "effd2821d303d2e0650cabf82018df89d35040484c07c38db2629d44173cf352"
+            }
+          }
+        ]
+      },
+      {
+        "caseName": "generated-client-missing-provenance",
+        "expectedRuleId": "named-runtime-schema-boundary.generated-client-provenance-missing",
+        "ok": false,
+        "findingCount": 1,
+        "findings": [
+          {
+            "family": "p1.schema-contract-strictness",
+            "ruleId": "named-runtime-schema-boundary.generated-client-provenance-missing",
+            "severity": "error",
+            "blocking": true,
+            "path": "packages/contracts/src/generated/reference-flow-client.ts",
+            "message": "Generated/shared client must expose a verifiable provenance marker.",
+            "evidence": {}
+          }
+        ]
+      },
+      {
+        "caseName": "generated-client-mismatched-provenance-paths",
+        "expectedRuleId": "named-runtime-schema-boundary.generated-client-stale",
+        "ok": false,
+        "findingCount": 1,
+        "findings": [
+          {
+            "family": "p1.schema-contract-strictness",
+            "ruleId": "named-runtime-schema-boundary.generated-client-stale",
+            "severity": "error",
+            "blocking": true,
+            "path": "packages/contracts/src/generated/reference-flow-client.ts",
+            "message": "Generated/shared client provenance does not match the current canonical contract source.",
+            "evidence": {
+              "canonicalContractPath": "packages/contracts/src/contracts/other.contract.ts",
+              "generatedClientPath": "packages/contracts/src/generated/reference-flow-client.ts",
+              "sourceSha256": "effd2821d303d2e0650cabf82018df89d35040484c07c38db2629d44173cf352",
+              "actualHash": "effd2821d303d2e0650cabf82018df89d35040484c07c38db2629d44173cf352"
+            }
+          }
+        ]
+      },
+      {
+        "caseName": "parser-self-agreement-only-contract-test",
+        "expectedRuleId": "named-runtime-schema-boundary.parser-self-agreement-only-test",
+        "ok": false,
+        "findingCount": 1,
+        "findings": [
+          {
+            "family": "p1.schema-contract-strictness",
+            "ruleId": "named-runtime-schema-boundary.parser-self-agreement-only-test",
+            "severity": "error",
+            "blocking": true,
+            "path": "packages/contracts/src/witness/parser-only.contract-test.ts",
+            "message": "Contract tests must exercise actual provider/client/consumer behavior, not parser self-agreement only.",
+            "evidence": {
+              "importsProvider": false,
+              "importsGeneratedClient": false,
+              "parseCalls": 1,
+              "clientCalls": 0
+            }
+          }
+        ]
+      },
+      {
+        "caseName": "malformed-manifest",
+        "expectedRuleId": "named-runtime-schema-boundary.manifest-unreadable",
+        "ok": false,
+        "findingCount": 1,
+        "findings": [
+          {
+            "family": "p1.schema-contract-strictness",
+            "ruleId": "named-runtime-schema-boundary.manifest-unreadable",
+            "severity": "error",
+            "blocking": true,
+            "path": "schema-contract-strictness.manifest.json",
+            "message": "Strictness manifest is missing, unreadable, malformed, or outside the validation root.",
+            "evidence": {
+              "errorMessage": "Invalid JSON in schema-contract-strictness.manifest.json: Expected property name or '}' in JSON at position 2 (line 1 column 3)"
+            }
+          }
+        ]
+      },
+      {
+        "caseName": "missing-manifest",
+        "expectedRuleId": "named-runtime-schema-boundary.manifest-unreadable",
+        "ok": false,
+        "findingCount": 1,
+        "findings": [
+          {
+            "family": "p1.schema-contract-strictness",
+            "ruleId": "named-runtime-schema-boundary.manifest-unreadable",
+            "severity": "error",
+            "blocking": true,
+            "path": "schema-contract-strictness.manifest.json",
+            "message": "Strictness manifest is missing, unreadable, malformed, or outside the validation root.",
+            "evidence": {
+              "errorMessage": "ENOENT: no such file or directory, stat '/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-11-contract-strictness-minimal-real-fixture/corrected-revalidation-evidence/negative-cases/missing-manifest/schema-contract-strictness.manifest.json'"
+            }
+          }
+        ]
+      },
+      {
+        "caseName": "regex-narrative-proof-mode",
+        "expectedRuleId": "named-runtime-schema-boundary.regex-only-proof-rejected",
+        "ok": false,
+        "findingCount": 1,
+        "findings": [
+          {
+            "family": "p1.schema-contract-strictness",
+            "ruleId": "named-runtime-schema-boundary.regex-only-proof-rejected",
+            "severity": "error",
+            "blocking": true,
+            "path": "schema-contract-strictness.manifest.json#/proofMode",
+            "message": "Schema-contract proof must use TypeScript AST, not regex or narrative proof.",
+            "evidence": {
+              "actual": "regex-narrative"
+            }
+          }
+        ]
+      },
+      {
+        "caseName": "path-traversal-out-of-root",
+        "expectedRuleId": "named-runtime-schema-boundary.path-traversal",
+        "ok": false,
+        "findingCount": 1,
+        "findings": [
+          {
+            "family": "p1.schema-contract-strictness",
+            "ruleId": "named-runtime-schema-boundary.path-traversal",
+            "severity": "error",
+            "blocking": true,
+            "path": "../outside.ts",
+            "message": "Strictness manifest path escapes the project root.",
+            "evidence": {
+              "errorMessage": "Path escapes validation root: ../outside.ts"
+            }
+          }
+        ]
+      },
+      {
+        "caseName": "unknown-validator-option",
+        "expectedRuleId": "named-runtime-schema-boundary.unknown-validator-option",
+        "ok": false,
+        "findingCount": 1,
+        "findings": [
+          {
+            "family": "p1.schema-contract-strictness",
+            "ruleId": "named-runtime-schema-boundary.unknown-validator-option",
+            "severity": "error",
+            "blocking": true,
+            "path": ".",
+            "message": "Unknown validator options fail closed.",
+            "evidence": {
+              "option": "unexpectedOption"
+            }
+          }
+        ]
+      },
+      {
+        "caseName": "missing-required-fixture-file",
+        "expectedRuleId": "named-runtime-schema-boundary.required-file-missing",
+        "ok": false,
+        "findingCount": 1,
+        "findings": [
+          {
+            "family": "p1.schema-contract-strictness",
+            "ruleId": "named-runtime-schema-boundary.required-file-missing",
+            "severity": "error",
+            "blocking": true,
+            "path": "packages/contracts/src/consumer/reference-flow.consumer.ts",
+            "message": "Required strictness fixture file is missing.",
+            "evidence": {}
+          }
+        ]
+      }
+    ]
+  },
+  "provenance": {
+    "sourceSha256": "effd2821d303d2e0650cabf82018df89d35040484c07c38db2629d44173cf352",
+    "generatedClientSha256": "18c581d0ffc365c14eaf12e5223989309a25ada075ff09e738888b71da66e234",
+    "generatorSha256": "9670ed3523abc3b5914dc7a701b899eff3b646d382eae50e6112dbc63640a129",
+    "autoGeneratedDeclaration": true,
+    "canonicalContractPath": "packages/contracts/src/contracts/reference-flow.contract.ts",
+    "generatorPath": "packages/contracts/src/generation/generate-reference-flow-client.ts",
+    "generatedClientPath": "packages/contracts/src/generated/reference-flow-client.ts",
+    "importsCanonicalContract": true,
+    "importsProviderApi": true,
+    "usesInitClientAndValidateResponse": true,
+    "generatorReproducedExactProductFileFromValidationCopy": true,
+    "validationCopyRoot": ".vibe/work/I-11-contract-strictness-minimal-real-fixture/corrected-revalidation-evidence/generated-client-provenance-copy"
+  }
+}

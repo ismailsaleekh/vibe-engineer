@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "i11.schema-contract-strictness/1",
+  "proofMode": "typescript-ast",
+  "canonicalContractFile": "packages/contracts/src/contracts/reference-flow.contract.ts",
+  "generatedClientFile": "packages/contracts/src/generated/reference-flow-client.ts",
+  "providerFile": "packages/contracts/src/provider/reference-flow.provider.ts",
+  "consumerFile": "packages/contracts/src/consumer/reference-flow.consumer.ts",
+  "realBoundaryTestFile": "packages/contracts/src/witness/parser-only.contract-test.ts",
+  "sourceFiles": [
+    "packages/contracts/src/contracts/reference-flow.contract.ts",
+    "packages/contracts/src/generated/reference-flow-client.ts",
+    "packages/contracts/src/provider/reference-flow.provider.ts",
+    "packages/contracts/src/consumer/reference-flow.consumer.ts",
+    "packages/contracts/src/witness/parser-only.contract-test.ts"
+  ],
+  "boundaryFiles": [
+    "packages/contracts/src/provider/reference-flow.provider.ts",
+    "packages/contracts/src/generated/reference-flow-client.ts"
+  ],
+  "domainModelFiles": [
+    "packages/contracts/src/contracts/reference-flow.contract.ts",
+    "packages/contracts/src/provider/reference-flow.provider.ts",
+    "packages/contracts/src/consumer/reference-flow.consumer.ts",
+    "packages/contracts/src/witness/reference-flow.real-boundary.ts"
+  ],
+  "requiredNamedSchemas": [
+    "ReferenceIdentifierSchema",
+    "ReferencePathParamsSchema",
+    "ReferenceHeadersSchema",
+    "ReferenceRequestBodySchema",
+    "ReferenceSuccessResponseSchema",
+    "ReferenceErrorResponseSchema",
+    "ReferenceBoundaryRequestSchema"
+  ],
+  "requiredProviderSchemaCalls": [
+    "ReferenceBoundaryRequestSchema",
+    "ReferencePathParamsSchema",
+    "ReferenceHeadersSchema",
+    "ReferenceRequestBodySchema",
+    "ReferenceSuccessResponseSchema",
+    "ReferenceErrorResponseSchema"
+  ],
+  "requiredConsumerImports": [
+    "../generated/reference-flow-client.js"
+  ]
+}

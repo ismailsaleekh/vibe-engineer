@@ -1,0 +1,9 @@
+packages/mechanical-gates/fixtures/p1/schema-contract-strictness/witness.mjs:135:  const manifest = JSON.parse(readFileSync(manifestPath, "utf8"));
+packages/mechanical-gates/fixtures/p1/schema-contract-strictness/witness.mjs:191:    mutateFile(root, manifest.consumerFile, (text) => `${text}\ntype BroadDomainModel = Record<string, unknown>;\n`);
+packages/mechanical-gates/fixtures/p1/schema-contract-strictness/witness.mjs:194:    mutateFile(root, manifest.providerFile, (text) => `${text}\nexport function unsafeBoundary(raw: string): unknown { return JSON.parse(raw); }\n`);
+packages/mechanical-gates/fixtures/p1/schema-contract-strictness/witness.mjs:214:    const manifest = JSON.parse(readFileSync(manifestPath, "utf8"));
+packages/mechanical-gates/fixtures/p1/schema-contract-strictness/witness.mjs:220:    const manifest = JSON.parse(readFileSync(manifestPath, "utf8"));
+packages/mechanical-gates/fixtures/p1/schema-contract-strictness/witness.mjs:233:    generatedClientInitial: JSON.parse(readFileSync(join(workRoot, "generated-client-initial.json"), "utf8")),
+packages/mechanical-gates/src/p1/schema-contract-strictness/validate-schema-contract-strictness.ts:110:    const parsed: unknown = JSON.parse(text);
+packages/mechanical-gates/src/p1/schema-contract-strictness/validate-schema-contract-strictness.ts:290:          findings.push(finding("named-runtime-schema-boundary.broad-record-domain-model", unit.filePath, "Broad Record<string, unknown> domain models are forbidden at contract boundaries."));
+packages/mechanical-gates/src/p1/schema-contract-strictness/validate-schema-contract-strictness.ts:304:        findings.push(finding("named-runtime-schema-boundary.unvalidated-json-parse", unit.filePath, "Boundary JSON.parse is forbidden; boundary values must enter as unknown and be narrowed by named schemas."));

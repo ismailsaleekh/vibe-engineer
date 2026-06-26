@@ -1,0 +1,55 @@
+{
+  "ok": true,
+  "family": "p1.schema-contract-strictness",
+  "realBoundaryResult": {
+    "providerAccepted": true,
+    "consumerAccepted": true,
+    "invalidRequestRejectedBeforeLogic": true,
+    "invalidResponseRejected": true,
+    "clientInvalidResponseRejected": true
+  },
+  "positive": {
+    "ok": true,
+    "evidence": {
+      "manifestPath": "packages/contracts/schema-contract-strictness.manifest.json",
+      "parser": "typescript",
+      "proofMode": "typescript-ast",
+      "family": "p1.schema-contract-strictness",
+      "sourceFileCount": 5,
+      "boundaryFileCount": 2,
+      "requiredNamedSchemas": [
+        "ReferenceIdentifierSchema",
+        "ReferencePathParamsSchema",
+        "ReferenceHeadersSchema",
+        "ReferenceRequestBodySchema",
+        "ReferenceSuccessResponseSchema",
+        "ReferenceErrorResponseSchema",
+        "ReferenceBoundaryRequestSchema"
+      ],
+      "generatedClientFile": "packages/contracts/src/generated/reference-flow-client.ts",
+      "canonicalContractFile": "packages/contracts/src/contracts/reference-flow.contract.ts"
+    }
+  },
+  "negativeRuleIds": [
+    "named-runtime-schema-boundary.duplicate-dto-schema-source",
+    "named-runtime-schema-boundary.bare-contract-shape",
+    "named-runtime-schema-boundary.generated-client-stale",
+    "named-runtime-schema-boundary.broad-record-domain-model",
+    "named-runtime-schema-boundary.unvalidated-json-parse",
+    "named-runtime-schema-boundary.unvalidated-boundary-payload",
+    "named-runtime-schema-boundary.generated-client-stale",
+    "named-runtime-schema-boundary.parser-self-agreement-only-test",
+    "named-runtime-schema-boundary.manifest-unreadable",
+    "named-runtime-schema-boundary.regex-only-proof-rejected",
+    "named-runtime-schema-boundary.path-traversal",
+    "named-runtime-schema-boundary.manifest-unreadable",
+    "named-runtime-schema-boundary.unknown-validator-option"
+  ],
+  "generatedClientInitial": {
+    "generatedClientPath": "packages/contracts/src/generated/reference-flow-client.ts",
+    "canonicalContractPath": "packages/contracts/src/contracts/reference-flow.contract.ts",
+    "sourceSha256": "effd2821d303d2e0650cabf82018df89d35040484c07c38db2629d44173cf352"
+  },
+  "compiledRoot": ".vibe/work/I-11-contract-strictness-minimal-real-fixture/compiled-witness",
+  "negativeCaseRoot": ".vibe/work/I-11-contract-strictness-minimal-real-fixture/witness-evidence/negative-cases"
+}
