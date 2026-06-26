@@ -1,0 +1,10 @@
+{
+  "name": "argv adjacent api key value",
+  "command": {
+    "command": "node",
+    "argv": ["--api-key", "abc123"],
+    "classification": "read_only"
+  },
+  "expectedStatus": "blocked",
+  "expectedClassification": "secret_like_value"
+}

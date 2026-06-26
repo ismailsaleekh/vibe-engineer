@@ -1,0 +1,10 @@
+{
+  "name": "embedded api key flag without value",
+  "command": {
+    "command": "node --api-key",
+    "argv": [],
+    "classification": "read_only"
+  },
+  "expectedStatus": "blocked",
+  "expectedClassification": "secret_like_value"
+}

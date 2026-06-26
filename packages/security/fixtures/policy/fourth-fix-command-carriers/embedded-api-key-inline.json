@@ -1,0 +1,10 @@
+{
+  "name": "embedded api key inline value",
+  "command": {
+    "command": "node --api-key=FAKE_SECRET_VALUE_FOR_NEGATIVE_WITNESS_INLINE_1234567890",
+    "argv": [],
+    "classification": "read_only"
+  },
+  "expectedStatus": "blocked",
+  "expectedClassification": "secret_like_value"
+}

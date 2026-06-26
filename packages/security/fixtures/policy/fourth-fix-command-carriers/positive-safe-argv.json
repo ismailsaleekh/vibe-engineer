@@ -1,0 +1,11 @@
+{
+  "name": "positive safe argv command",
+  "command": {
+    "command": "node",
+    "argv": ["packages/security/fixtures/policy/fourth-fix-command-carriers/positive-safe-argv.json"],
+    "classification": "read_only",
+    "targetPaths": ["packages/security/fixtures/policy/fourth-fix-command-carriers/positive-safe-argv.json"]
+  },
+  "expectedStatus": "passed",
+  "expectedClassification": null
+}

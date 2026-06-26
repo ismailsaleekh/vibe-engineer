@@ -1,0 +1,10 @@
+{
+  "name": "split api key value across command and argv",
+  "command": {
+    "command": "node --api-key",
+    "argv": ["abc123"],
+    "classification": "read_only"
+  },
+  "expectedStatus": "blocked",
+  "expectedClassification": "secret_like_value"
+}

@@ -1,0 +1,28 @@
+{
+  "negative": [
+    { "name": "double-quoted embedded api-key flag without value", "command": { "command": "node \"--api-key\"", "argv": [], "classification": "read_only" }, "expectedClassification": "secret_like_value" },
+    { "name": "single-quoted embedded api-key flag without value", "command": { "command": "node '--api-key'", "argv": [], "classification": "read_only" }, "expectedClassification": "secret_like_value" },
+    { "name": "double-quoted embedded api-key flag split value", "command": { "command": "node \"--api-key\"", "argv": ["abc123"], "classification": "read_only" }, "expectedClassification": "secret_like_value" },
+    { "name": "single-quoted embedded client-secret flag split value", "command": { "command": "node '--client-secret'", "argv": ["abc123"], "classification": "read_only" }, "expectedClassification": "secret_like_value" },
+    { "name": "quoted token flag without value", "command": { "command": "node \"--token\"", "argv": [], "classification": "read_only" }, "expectedClassification": "secret_like_value" },
+    { "name": "quoted inline fake sentinel", "command": { "command": "node \"--api-key=FAKE_SECRET_VALUE_FOR_FIFTH_FIX_INLINE_1234567890\"", "argv": [], "classification": "read_only" }, "expectedClassification": "secret_like_value" },
+    { "name": "quoted colon fake sentinel", "command": { "command": "node '--client-secret:FAKE_SECRET_VALUE_FOR_FIFTH_FIX_COLON_1234567890'", "argv": [], "classification": "read_only" }, "expectedClassification": "secret_like_value" },
+    { "name": "escaped quote api-key flag", "command": { "command": "node \\\"--api-key\\\"", "argv": [], "classification": "read_only" }, "expectedClassification": "secret_like_value" },
+    { "name": "escaped backslash before token flag", "command": { "command": "node \\--token", "argv": [], "classification": "read_only" }, "expectedClassification": "secret_like_value" },
+    { "name": "unterminated double quote around api-key", "command": { "command": "node \"--api-key", "argv": [], "classification": "read_only" }, "expectedClassification": "secret_like_value" },
+    { "name": "unterminated single quote around client-secret", "command": { "command": "node '--client-secret", "argv": [], "classification": "read_only" }, "expectedClassification": "secret_like_value" },
+    { "name": "empty quoted token adjacent to secret-like flag", "command": { "command": "node \"--api-key\" \"\"", "argv": [], "classification": "read_only" }, "expectedClassification": "secret_like_value" },
+    { "name": "over cap command token count", "generate": { "type": "over_cap_tokens", "token": "safe-token", "count": 513, "classification": "read_only" }, "expectedClassification": "unknown_request_field" },
+    { "name": "unquoted embedded api-key regression", "command": { "command": "node --api-key", "argv": [], "classification": "read_only" }, "expectedClassification": "secret_like_value" },
+    { "name": "unquoted split api-key regression", "command": { "command": "node --api-key", "argv": ["abc123"], "classification": "read_only" }, "expectedClassification": "secret_like_value" },
+    { "name": "unquoted split client-secret regression", "command": { "command": "node --client-secret", "argv": ["abc123"], "classification": "read_only" }, "expectedClassification": "secret_like_value" },
+    { "name": "argv-only flag regression", "command": { "command": "node", "argv": ["--api-key"], "classification": "read_only" }, "expectedClassification": "secret_like_value" },
+    { "name": "argv adjacent key value regression", "command": { "command": "node", "argv": ["--api-key", "abc123"], "classification": "read_only" }, "expectedClassification": "secret_like_value" },
+    { "name": "unquoted inline equals regression", "command": { "command": "node --api-key=FAKE_SECRET_VALUE_FOR_FIFTH_FIX_INLINE_1234567890", "argv": [], "classification": "read_only" }, "expectedClassification": "secret_like_value" },
+    { "name": "unquoted inline colon regression", "command": { "command": "node --client-secret:FAKE_SECRET_VALUE_FOR_FIFTH_FIX_COLON_1234567890", "argv": [], "classification": "read_only" }, "expectedClassification": "secret_like_value" }
+  ],
+  "positive": [
+    { "name": "safe read-only local deterministic carrier", "command": { "command": "node", "argv": ["packages/security/fixtures/policy/fifth-fix-command-carriers/safe-label.txt"], "classification": "read_only", "targetPaths": ["packages/security/fixtures/policy/fifth-fix-command-carriers/safe-label.txt"] } },
+    { "name": "safe quoted non-secret command argument", "command": { "command": "node \"packages/security/fixtures/policy/fifth-fix-command-carriers/safe-label.txt\"", "argv": [], "classification": "read_only", "targetPaths": ["packages/security/fixtures/policy/fifth-fix-command-carriers/safe-label.txt"] } }
+  ]
+}

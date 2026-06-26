@@ -1,0 +1,10 @@
+import assert from 'node:assert/strict';
+import { mkdir, writeFile } from 'node:fs/promises';
+const security = await import('@vibe-engineer/security');
+const evidenceDir = new URL('../../../../../.vibe/work/I-18-security-safety-hooks-policy/I-18A-security-policy-package/evidence/real-boundary/cli-package-context-import/', import.meta.url);
+await mkdir(evidenceDir, { recursive: true });
+const smoke = security.__i18aCliBoundarySmoke();
+assert.equal(smoke.ok, true);
+const summary = { ok: true, cwd: process.cwd(), smoke, exports: Object.keys(security).sort() };
+await writeFile(new URL('cli-package-context-summary.json', evidenceDir), `${JSON.stringify(summary, null, 2)}\n`);
+console.log(JSON.stringify(summary));
