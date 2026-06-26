@@ -1,0 +1,13 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "allowJs": false,
+    "checkJs": false,
+    "noEmit": true,
+    "rootDir": "."
+  },
+  "include": [
+    "src/generated/types.d.ts",
+    "tests/public-api-consumer.ts"
+  ]
+}
