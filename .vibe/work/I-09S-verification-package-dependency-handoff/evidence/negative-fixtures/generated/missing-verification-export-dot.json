@@ -1,0 +1,158 @@
+{
+  "verificationManifest": {
+    "name": "@vibe-engineer/verification",
+    "version": "0.0.0",
+    "license": "MIT",
+    "type": "module",
+    "description": "Skeleton manifest for @vibe-engineer/verification; implementation is owned by a later validated lane.",
+    "exports": {},
+    "dependencies": {
+      "@vibe-engineer/artifacts": "workspace:*",
+      "@vibe-engineer/orchestration": "workspace:*"
+    },
+    "vibeEngineer": {
+      "implementationUnit": "I-00A-workspace-package-skeleton",
+      "implementationStatus": "skeleton-only",
+      "packageRole": "internal-workspace-package",
+      "sourceStatus": "not-created-in-I-00A"
+    },
+    "private": true
+  },
+  "cliManifest": {
+    "name": "vibe-engineer",
+    "version": "0.0.0",
+    "license": "MIT",
+    "type": "module",
+    "description": "Foundation CLI loader and machine-envelope entrypoint for vibe-engineer.",
+    "bin": {
+      "vibe-engineer": "./src/entry/vibe-engineer.js"
+    },
+    "exports": {
+      ".": "./src/entry/vibe-engineer.js",
+      "./envelope": "./src/envelope/result-envelope.js",
+      "./command-loader": "./src/command-loader/loader.js"
+    },
+    "scripts": {
+      "test": "node src/testing/run-witnesses.mjs"
+    },
+    "vibeEngineer": {
+      "implementationUnit": "I-02A-cli-loader-envelope",
+      "implementationStatus": "foundation-implemented",
+      "packageRole": "public-cli-package",
+      "sourceStatus": "i-02a-foundation-created",
+      "binStatus": "vibe-engineer-bin-entry-owned-by-I-02A"
+    },
+    "private": false,
+    "dependencies": {
+      "@vibe-engineer/artifacts": "workspace:*",
+      "@vibe-engineer/config": "workspace:*",
+      "@vibe-engineer/verification": "workspace:*"
+    }
+  },
+  "importers": {
+    ".": {
+      "dependencies": {}
+    },
+    "packages/adapters/pi": {
+      "dependencies": {}
+    },
+    "packages/artifacts": {
+      "dependencies": {
+        "ajv": {
+          "specifier": "8.17.1",
+          "version": "8.17.1"
+        }
+      }
+    },
+    "packages/cli": {
+      "dependencies": {
+        "@vibe-engineer/artifacts": {
+          "specifier": "workspace:*",
+          "version": "link:../artifacts"
+        },
+        "@vibe-engineer/config": {
+          "specifier": "workspace:*",
+          "version": "link:../config"
+        },
+        "@vibe-engineer/verification": {
+          "specifier": "workspace:*",
+          "version": "link:../verification"
+        }
+      }
+    },
+    "packages/config": {
+      "dependencies": {}
+    },
+    "packages/context": {
+      "dependencies": {
+        "@vibe-engineer/artifacts": {
+          "specifier": "workspace:*",
+          "version": "link:../artifacts"
+        },
+        "@vibe-engineer/config": {
+          "specifier": "workspace:*",
+          "version": "link:../config"
+        }
+      }
+    },
+    "packages/contracts": {
+      "dependencies": {}
+    },
+    "packages/mechanical-gates": {
+      "dependencies": {}
+    },
+    "packages/observability": {
+      "dependencies": {}
+    },
+    "packages/orchestration": {
+      "dependencies": {
+        "@vibe-engineer/artifacts": {
+          "specifier": "workspace:*",
+          "version": "link:../artifacts"
+        }
+      }
+    },
+    "packages/presets/nest-react-rn": {
+      "dependencies": {}
+    },
+    "packages/presets/typescript": {
+      "dependencies": {}
+    },
+    "packages/registry": {
+      "dependencies": {}
+    },
+    "packages/schematics": {
+      "dependencies": {}
+    },
+    "packages/security": {
+      "dependencies": {}
+    },
+    "packages/skills": {
+      "dependencies": {}
+    },
+    "packages/standards": {
+      "dependencies": {}
+    },
+    "packages/testing": {
+      "dependencies": {}
+    },
+    "packages/verification": {
+      "dependencies": {
+        "@vibe-engineer/artifacts": {
+          "specifier": "workspace:*",
+          "version": "link:../artifacts"
+        },
+        "@vibe-engineer/orchestration": {
+          "specifier": "workspace:*",
+          "version": "link:../orchestration"
+        }
+      }
+    }
+  },
+  "importProof": {
+    "kind": "package-name-resolution",
+    "specifier": "@vibe-engineer/verification",
+    "viaDeclaredDependency": true,
+    "viaPublicExport": true
+  }
+}

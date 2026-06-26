@@ -1,0 +1,73 @@
+{
+  "verificationManifestAdded": {
+    "exports": {
+      ".": "./src/index.js"
+    },
+    "dependencies": {
+      "@vibe-engineer/artifacts": "workspace:*",
+      "@vibe-engineer/orchestration": "workspace:*"
+    }
+  },
+  "cliManifestAdded": {
+    "dependency": {
+      "@vibe-engineer/verification": "workspace:*"
+    }
+  },
+  "preservedCliFields": {
+    "bin": true,
+    "exports": true,
+    "scripts": true,
+    "vibeEngineer": true
+  },
+  "hashChanges": {
+    "packages/verification/package.json": {
+      "before": "4e8b9d917e0cdd9e0ef80e5c427ccb17d4d3e3dae7fbe1a72efcbfa9a582a691",
+      "after": "88c0b9cab2d039634626d57ff554f12a74bbe370f79f813241c9ffe2bc38571d"
+    },
+    "packages/cli/package.json": {
+      "before": "51ac1ec1417137a3644403ba94482797398ab06dfcc7d76420505cfb74d3a637",
+      "after": "3d50ae0f3fbe0528fc2869e5d8337490fc34f9d15df50703981ebbd4f55b4ac4"
+    },
+    "pnpm-lock.yaml": {
+      "before": "0259217fb38660de9e7298c4d6e363c7810a436479c189ce7ca088dd06576fff",
+      "after": "77ba5c0b16ada6a2479572b427e62d24d76f0cbd538fe49ba430262e2cc4861b"
+    }
+  },
+  "commands": {
+    "pnpm-install-lockfile-only": {
+      "exitCode": "0",
+      "stdout": ".vibe/work/I-09S-verification-package-dependency-handoff/evidence/command-log/pnpm-install-lockfile-only.stdout",
+      "stderr": ".vibe/work/I-09S-verification-package-dependency-handoff/evidence/command-log/pnpm-install-lockfile-only.stderr"
+    },
+    "pnpm-install-offline": {
+      "exitCode": "0",
+      "stdout": ".vibe/work/I-09S-verification-package-dependency-handoff/evidence/command-log/pnpm-install-offline.stdout",
+      "stderr": ".vibe/work/I-09S-verification-package-dependency-handoff/evidence/command-log/pnpm-install-offline.stderr"
+    },
+    "assert-i09s-manifest-lockfile": {
+      "exitCode": "0",
+      "stdout": ".vibe/work/I-09S-verification-package-dependency-handoff/evidence/command-log/assert-i09s-manifest-lockfile.stdout",
+      "stderr": ".vibe/work/I-09S-verification-package-dependency-handoff/evidence/command-log/assert-i09s-manifest-lockfile.stderr"
+    },
+    "verification-package-import-witness": {
+      "exitCode": "0",
+      "stdout": ".vibe/work/I-09S-verification-package-dependency-handoff/evidence/command-log/verification-package-import-witness.stdout",
+      "stderr": ".vibe/work/I-09S-verification-package-dependency-handoff/evidence/command-log/verification-package-import-witness.stderr"
+    },
+    "cli-verification-resolve-witness": {
+      "exitCode": "0",
+      "stdout": ".vibe/work/I-09S-verification-package-dependency-handoff/evidence/command-log/cli-verification-resolve-witness.stdout",
+      "stderr": ".vibe/work/I-09S-verification-package-dependency-handoff/evidence/command-log/cli-verification-resolve-witness.stderr"
+    },
+    "negative-fixture-checks": {
+      "exitCode": "0",
+      "stdout": ".vibe/work/I-09S-verification-package-dependency-handoff/evidence/command-log/negative-fixture-checks.stdout",
+      "stderr": ".vibe/work/I-09S-verification-package-dependency-handoff/evidence/command-log/negative-fixture-checks.stderr"
+    },
+    "scoped-regression-checks": {
+      "exitCode": "0",
+      "stdout": ".vibe/work/I-09S-verification-package-dependency-handoff/evidence/command-log/scoped-regression-checks.stdout",
+      "stderr": ".vibe/work/I-09S-verification-package-dependency-handoff/evidence/command-log/scoped-regression-checks.stderr"
+    }
+  }
+}

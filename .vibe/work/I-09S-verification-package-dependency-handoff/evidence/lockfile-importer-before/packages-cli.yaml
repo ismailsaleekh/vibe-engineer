@@ -1,0 +1,11 @@
+  packages/cli:
+    dependencies:
+      '@vibe-engineer/artifacts':
+        specifier: workspace:*
+        version: link:../artifacts
+      '@vibe-engineer/config':
+        specifier: workspace:*
+        version: link:../config
+
+  packages/config: {}
+

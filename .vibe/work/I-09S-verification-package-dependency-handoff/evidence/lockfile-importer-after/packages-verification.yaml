@@ -1,0 +1,11 @@
+  packages/verification:
+    dependencies:
+      '@vibe-engineer/artifacts':
+        specifier: workspace:*
+        version: link:../artifacts
+      '@vibe-engineer/orchestration':
+        specifier: workspace:*
+        version: link:../orchestration
+
+packages:
+

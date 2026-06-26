@@ -1,0 +1,30 @@
+{
+  "cliSourceGuard": "loader/entry hashes unchanged and packages/cli/src/commands/verify absent; unrelated sibling command dirty-tree mtimes are not treated as I-09S edits",
+  "shippedVerifyRegistration": {
+    "exitCode": 2,
+    "remainsOutOfScope": true,
+    "status": "blocked"
+  },
+  "sourceMtimeSweeps": [
+    "packages/artifacts",
+    "packages/orchestration",
+    "packages/verification/src",
+    ".github/scripts/infra when present"
+  ],
+  "status": "pass",
+  "unchanged": [
+    "root package.json",
+    "pnpm-workspace.yaml",
+    ".npmrc",
+    "turbo.json",
+    "artifacts manifest",
+    "orchestration manifest",
+    "CLI loader",
+    "CLI entry",
+    "CLI existing dependencies"
+  ],
+  "verificationPackage": {
+    "domainNeutral": true,
+    "private": true
+  }
+}
