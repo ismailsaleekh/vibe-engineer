@@ -1,0 +1,9 @@
+{
+  "typecheckCommand": "tsc --noEmit -p packages/example/tsconfig.json",
+  "unitTestCommand": "node --test packages/example/test/**/*.test.js",
+  "quickGateCommand": "pnpm run quality:quick",
+  "defaultFullE2E": false,
+  "defaultFullMobileE2E": false,
+  "defaultFullVisualVerification": false,
+  "defaultAutoDeploy": false
+}
