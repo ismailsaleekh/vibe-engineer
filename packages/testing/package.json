@@ -1,0 +1,26 @@
+{
+  "name": "@vibe-engineer/testing",
+  "version": "0.0.0",
+  "license": "MIT",
+  "type": "module",
+  "description": "Private test-only helper package for vibe-engineer harness fixtures and tests.",
+  "private": true,
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "import": "./src/index.js"
+    }
+  },
+  "scripts": {
+    "test": "node fixtures/helper-consumer.mjs",
+    "typecheck": "node --check src/index.js && node --check fixtures/helper-consumer.mjs"
+  },
+  "vibeEngineer": {
+    "implementationUnit": "I-10C-testing-helper-boundary-package",
+    "implementationStatus": "implemented",
+    "packageRole": "test-only-workspace-package",
+    "sourceStatus": "package-owned-source-created",
+    "testOnly": true,
+    "productionDependencyAllowed": false
+  }
+}
