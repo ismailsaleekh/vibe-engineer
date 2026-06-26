@@ -1,0 +1,84 @@
+{
+  "checks": {
+    "contracts_dependencies_exact": true,
+    "contracts_devDependencies_exact": true,
+    "contracts_has_no_testing_dependency": true,
+    "contracts_no_exports_scripts_source_claim": true,
+    "importer_has_@nestjs/common_specifier": true,
+    "importer_has_@nestjs/core_specifier": true,
+    "importer_has_@nestjs/platform-express_specifier": true,
+    "importer_has_@ts-rest/core_specifier": true,
+    "importer_has_@ts-rest/nest_specifier": true,
+    "importer_has_@types/node_specifier": true,
+    "importer_has_@vitest/coverage-v8_specifier": true,
+    "importer_has_reflect-metadata_specifier": true,
+    "importer_has_rxjs_specifier": true,
+    "importer_has_vitest_specifier": true,
+    "importer_has_zod_specifier": true,
+    "no_relevant_deps_outside_contracts_manifest": true,
+    "no_ts_rest_client_in_lockfile": true,
+    "no_ts_rest_client_in_workspace_manifests": true,
+    "no_workspace_manifest_dep_on_testing": true,
+    "no_zod4_lock_package": true,
+    "no_zod4_manifest_spec": true,
+    "root_has_no_i11s_deps": true
+  },
+  "contracts_dependencies": {
+    "@nestjs/common": "11.1.27",
+    "@nestjs/core": "11.1.27",
+    "@nestjs/platform-express": "11.1.27",
+    "@ts-rest/core": "3.52.1",
+    "@ts-rest/nest": "3.52.1",
+    "reflect-metadata": "0.2.2",
+    "rxjs": "7.8.2",
+    "zod": "3.25.76"
+  },
+  "contracts_devDependencies": {
+    "@types/node": "24.13.2",
+    "@vitest/coverage-v8": "4.1.9",
+    "vitest": "4.1.9"
+  },
+  "contracts_importer": "  packages/contracts:\n    dependencies:\n      '@nestjs/common':\n        specifier: 11.1.27\n        version: 11.1.27(reflect-metadata@0.2.2)(rxjs@7.8.2)\n      '@nestjs/core':\n        specifier: 11.1.27\n        version: 11.1.27(@nestjs/common@11.1.27(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/platform-express@11.1.27)(reflect-metadata@0.2.2)(rxjs@7.8.2)\n      '@nestjs/platform-express':\n        specifier: 11.1.27\n        version: 11.1.27(@nestjs/common@11.1.27(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.27)\n      '@ts-rest/core':\n        specifier: 3.52.1\n        version: 3.52.1(@types/node@24.13.2)(zod@3.25.76)\n      '@ts-rest/nest':\n        specifier: 3.52.1\n        version: 3.52.1(@nestjs/common@11.1.27(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.27)(@ts-rest/core@3.52.1(@types/node@24.13.2)(zod@3.25.76))(rxjs@7.8.2)(zod@3.25.76)\n      reflect-metadata:\n        specifier: 0.2.2\n        version: 0.2.2\n      rxjs:\n        specifier: 7.8.2\n        version: 7.8.2\n      zod:\n        specifier: 3.25.76\n        version: 3.25.76\n    devDependencies:\n      '@types/node':\n        specifier: 24.13.2\n        version: 24.13.2\n      '@vitest/coverage-v8':\n        specifier: 4.1.9\n        version: 4.1.9(vitest@4.1.9)\n      vitest:\n        specifier: 4.1.9\n        version: 4.1.9(@types/node@24.13.2)(@vitest/coverage-v8@4.1.9)\n",
+  "notes": {
+    "@vibe-engineer/testing_dependency_status": "not declared as dependency/devDependency by contracts or other workspace manifest",
+    "@vibe-engineer/testing_package_name": "@vibe-engineer/testing",
+    "malformed_fixture_manifests": "intentionally malformed fixture package.json files excluded from workspace-manifest dependency mutation checks",
+    "package_export_build_source_status": "packages/contracts remains dependency metadata only; exports/scripts/source deferred to I-11"
+  },
+  "outside_relevant_dependency_refs": {},
+  "root_dependency_sections": {
+    "dependencies": {},
+    "devDependencies": {
+      "@eslint/js": "9.39.1",
+      "eslint": "9.39.1",
+      "prettier": "3.8.4",
+      "turbo": "2.9.18",
+      "typescript": "5.9.3",
+      "typescript-eslint": "8.62.0"
+    },
+    "optionalDependencies": {},
+    "peerDependencies": {}
+  },
+  "status": "PASS",
+  "workspace_manifest_paths": [
+    "package.json",
+    "packages/artifacts/package.json",
+    "packages/cli/package.json",
+    "packages/config/package.json",
+    "packages/context/package.json",
+    "packages/contracts/package.json",
+    "packages/mechanical-gates/package.json",
+    "packages/observability/package.json",
+    "packages/orchestration/package.json",
+    "packages/registry/package.json",
+    "packages/schematics/package.json",
+    "packages/security/package.json",
+    "packages/skills/package.json",
+    "packages/standards/package.json",
+    "packages/testing/package.json",
+    "packages/verification/package.json",
+    "packages/presets/nest-react-rn/package.json",
+    "packages/presets/typescript/package.json",
+    "packages/adapters/pi/package.json"
+  ]
+}

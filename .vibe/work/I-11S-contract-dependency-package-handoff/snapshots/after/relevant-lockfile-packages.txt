@@ -1,0 +1,133 @@
+63:      '@nestjs/common':
+65:        version: 11.1.27(reflect-metadata@0.2.2)(rxjs@7.8.2)
+66:      '@nestjs/core':
+68:        version: 11.1.27(@nestjs/common@11.1.27(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/platform-express@11.1.27)(reflect-metadata@0.2.2)(rxjs@7.8.2)
+69:      '@nestjs/platform-express':
+71:        version: 11.1.27(@nestjs/common@11.1.27(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.27)
+72:      '@ts-rest/core':
+74:        version: 3.52.1(@types/node@24.13.2)(zod@3.25.76)
+75:      '@ts-rest/nest':
+77:        version: 3.52.1(@nestjs/common@11.1.27(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.27)(@ts-rest/core@3.52.1(@types/node@24.13.2)(zod@3.25.76))(rxjs@7.8.2)(zod@3.25.76)
+78:      reflect-metadata:
+81:      rxjs:
+84:      zod:
+88:      '@types/node':
+91:      '@vitest/coverage-v8':
+93:        version: 4.1.9(vitest@4.1.9)
+94:      vitest:
+96:        version: 4.1.9(@types/node@24.13.2)(@vitest/coverage-v8@4.1.9)
+254:  '@nestjs/common@11.1.27':
+259:      reflect-metadata: ^0.1.12 || ^0.2.0
+260:      rxjs: ^7.1.0
+267:  '@nestjs/core@11.1.27':
+271:      '@nestjs/common': ^11.0.0
+272:      '@nestjs/microservices': ^11.0.0
+273:      '@nestjs/platform-express': ^11.0.0
+274:      '@nestjs/websockets': ^11.0.0
+275:      reflect-metadata: ^0.1.12 || ^0.2.0
+276:      rxjs: ^7.1.0
+278:      '@nestjs/microservices':
+280:      '@nestjs/platform-express':
+282:      '@nestjs/websockets':
+285:  '@nestjs/platform-express@11.1.27':
+288:      '@nestjs/common': ^11.0.0
+289:      '@nestjs/core': ^11.0.0
+402:  '@ts-rest/core@3.52.1':
+405:      '@types/node': ^18.18.7 || >=20.8.4
+406:      zod: ^3.22.3
+408:      '@types/node':
+410:      zod:
+413:  '@ts-rest/nest@3.52.1':
+416:      '@nestjs/common': ^9.0.0 || ^10.0.0 || ^11.0.0
+417:      '@nestjs/core': ^9.0.0 || ^10.0.0 || ^11.0.0
+418:      '@ts-rest/core': ~3.52.0
+419:      rxjs: ^7.1.0
+420:      zod: ^3.22.3
+422:      zod:
+470:  '@types/node@24.13.2':
+532:  '@vitest/coverage-v8@4.1.9':
+535:      '@vitest/browser': 4.1.9
+536:      vitest: 4.1.9
+538:      '@vitest/browser':
+541:  '@vitest/expect@4.1.9':
+544:  '@vitest/mocker@4.1.9':
+555:  '@vitest/pretty-format@4.1.9':
+558:  '@vitest/runner@4.1.9':
+561:  '@vitest/snapshot@4.1.9':
+564:  '@vitest/spy@4.1.9':
+567:  '@vitest/utils@4.1.9':
+1253:  reflect-metadata@0.2.2:
+1273:  rxjs@7.8.2:
+1451:      '@types/node': ^20.19.0 || >=22.12.0
+1464:      '@types/node':
+1489:  vitest@4.1.9:
+1496:      '@types/node': ^20.0.0 || ^22.0.0 || >=24.0.0
+1497:      '@vitest/browser-playwright': 4.1.9
+1498:      '@vitest/browser-preview': 4.1.9
+1499:      '@vitest/browser-webdriverio': 4.1.9
+1500:      '@vitest/coverage-istanbul': 4.1.9
+1501:      '@vitest/coverage-v8': 4.1.9
+1502:      '@vitest/ui': 4.1.9
+1510:      '@types/node':
+1512:      '@vitest/browser-playwright':
+1514:      '@vitest/browser-preview':
+1516:      '@vitest/browser-webdriverio':
+1518:      '@vitest/coverage-istanbul':
+1520:      '@vitest/coverage-v8':
+1522:      '@vitest/ui':
+1550:  zod@3.25.76:
+1668:  '@nestjs/common@11.1.27(reflect-metadata@0.2.2)(rxjs@7.8.2)':
+1673:      reflect-metadata: 0.2.2
+1674:      rxjs: 7.8.2
+1680:  '@nestjs/core@11.1.27(@nestjs/common@11.1.27(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/platform-express@11.1.27)(reflect-metadata@0.2.2)(rxjs@7.8.2)':
+1682:      '@nestjs/common': 11.1.27(reflect-metadata@0.2.2)(rxjs@7.8.2)
+1686:      reflect-metadata: 0.2.2
+1687:      rxjs: 7.8.2
+1691:      '@nestjs/platform-express': 11.1.27(@nestjs/common@11.1.27(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.27)
+1693:  '@nestjs/platform-express@11.1.27(@nestjs/common@11.1.27(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.27)':
+1695:      '@nestjs/common': 11.1.27(reflect-metadata@0.2.2)(rxjs@7.8.2)
+1696:      '@nestjs/core': 11.1.27(@nestjs/common@11.1.27(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/platform-express@11.1.27)(reflect-metadata@0.2.2)(rxjs@7.8.2)
+1769:  '@ts-rest/core@3.52.1(@types/node@24.13.2)(zod@3.25.76)':
+1771:      '@types/node': 24.13.2
+1772:      zod: 3.25.76
+1774:  '@ts-rest/nest@3.52.1(@nestjs/common@11.1.27(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.27)(@ts-rest/core@3.52.1(@types/node@24.13.2)(zod@3.25.76))(rxjs@7.8.2)(zod@3.25.76)':
+1776:      '@nestjs/common': 11.1.27(reflect-metadata@0.2.2)(rxjs@7.8.2)
+1777:      '@nestjs/core': 11.1.27(@nestjs/common@11.1.27(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/platform-express@11.1.27)(reflect-metadata@0.2.2)(rxjs@7.8.2)
+1778:      '@ts-rest/core': 3.52.1(@types/node@24.13.2)(zod@3.25.76)
+1779:      rxjs: 7.8.2
+1781:      zod: 3.25.76
+1817:  '@types/node@24.13.2':
+1912:  '@vitest/coverage-v8@4.1.9(vitest@4.1.9)':
+1915:      '@vitest/utils': 4.1.9
+1924:      vitest: 4.1.9(@types/node@24.13.2)(@vitest/coverage-v8@4.1.9)
+1926:  '@vitest/expect@4.1.9':
+1930:      '@vitest/spy': 4.1.9
+1931:      '@vitest/utils': 4.1.9
+1935:  '@vitest/mocker@4.1.9(vite@8.1.0(@types/node@24.13.2))':
+1937:      '@vitest/spy': 4.1.9
+1941:      vite: 8.1.0(@types/node@24.13.2)
+1943:  '@vitest/pretty-format@4.1.9':
+1947:  '@vitest/runner@4.1.9':
+1949:      '@vitest/utils': 4.1.9
+1952:  '@vitest/snapshot@4.1.9':
+1954:      '@vitest/pretty-format': 4.1.9
+1955:      '@vitest/utils': 4.1.9
+1959:  '@vitest/spy@4.1.9': {}
+1961:  '@vitest/utils@4.1.9':
+1963:      '@vitest/pretty-format': 4.1.9
+2615:  reflect-metadata@0.2.2: {}
+2652:  rxjs@7.8.2:
+2831:  vite@8.1.0(@types/node@24.13.2):
+2839:      '@types/node': 24.13.2
+2842:  vitest@4.1.9(@types/node@24.13.2)(@vitest/coverage-v8@4.1.9):
+2844:      '@vitest/expect': 4.1.9
+2845:      '@vitest/mocker': 4.1.9(vite@8.1.0(@types/node@24.13.2))
+2846:      '@vitest/pretty-format': 4.1.9
+2847:      '@vitest/runner': 4.1.9
+2848:      '@vitest/snapshot': 4.1.9
+2849:      '@vitest/spy': 4.1.9
+2850:      '@vitest/utils': 4.1.9
+2862:      vite: 8.1.0(@types/node@24.13.2)
+2865:      '@types/node': 24.13.2
+2866:      '@vitest/coverage-v8': 4.1.9(vitest@4.1.9)
+2896:  zod@3.25.76: {}

@@ -1,0 +1,24 @@
+--- .vibe/work/I-11S-contract-dependency-package-handoff/snapshots/before/packages-contracts-package.json	2026-06-25 13:39:14
++++ packages/contracts/package.json	2026-06-25 13:41:57
+@@ -10,5 +10,20 @@
+     "packageRole": "internal-workspace-package",
+     "sourceStatus": "not-created-in-I-00A"
+   },
+-  "private": true
++  "private": true,
++  "dependencies": {
++    "@nestjs/common": "11.1.27",
++    "@nestjs/core": "11.1.27",
++    "@nestjs/platform-express": "11.1.27",
++    "@ts-rest/core": "3.52.1",
++    "@ts-rest/nest": "3.52.1",
++    "reflect-metadata": "0.2.2",
++    "rxjs": "7.8.2",
++    "zod": "3.25.76"
++  },
++  "devDependencies": {
++    "@types/node": "24.13.2",
++    "@vitest/coverage-v8": "4.1.9",
++    "vitest": "4.1.9"
++  }
+ }

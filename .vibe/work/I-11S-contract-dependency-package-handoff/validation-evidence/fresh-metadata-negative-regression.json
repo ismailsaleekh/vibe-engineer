@@ -1,0 +1,201 @@
+{
+  "checks": {
+    "contracts_dependencies_exact": true,
+    "contracts_devDependencies_exact": true,
+    "contracts_exact_pin_format": true,
+    "contracts_has_no_testing_dependency": true,
+    "contracts_manifest_has_no_domain_specific_business_vocabulary": true,
+    "contracts_no_exports_scripts_build_source_claim": true,
+    "current_hashes_match_implementation_after_shared_surfaces": true,
+    "implementation_report_records_allowed_dev_command": true,
+    "implementation_report_records_allowed_runtime_command": true,
+    "implementation_report_records_no_testing_add_command": true,
+    "implementation_shared_surface_diff_limited_to_contracts_package_and_lockfile": true,
+    "lock_importer_dependency_@nestjs/common_specifier_exact": true,
+    "lock_importer_dependency_@nestjs/common_version_resolves_expected": true,
+    "lock_importer_dependency_@nestjs/core_specifier_exact": true,
+    "lock_importer_dependency_@nestjs/core_version_resolves_expected": true,
+    "lock_importer_dependency_@nestjs/platform-express_specifier_exact": true,
+    "lock_importer_dependency_@nestjs/platform-express_version_resolves_expected": true,
+    "lock_importer_dependency_@ts-rest/core_specifier_exact": true,
+    "lock_importer_dependency_@ts-rest/core_version_resolves_expected": true,
+    "lock_importer_dependency_@ts-rest/nest_specifier_exact": true,
+    "lock_importer_dependency_@ts-rest/nest_version_resolves_expected": true,
+    "lock_importer_dependency_reflect-metadata_specifier_exact": true,
+    "lock_importer_dependency_reflect-metadata_version_resolves_expected": true,
+    "lock_importer_dependency_rxjs_specifier_exact": true,
+    "lock_importer_dependency_rxjs_version_resolves_expected": true,
+    "lock_importer_dependency_zod_specifier_exact": true,
+    "lock_importer_dependency_zod_version_resolves_expected": true,
+    "lock_importer_devDependency_@types/node_specifier_exact": true,
+    "lock_importer_devDependency_@types/node_version_resolves_expected": true,
+    "lock_importer_devDependency_@vitest/coverage-v8_specifier_exact": true,
+    "lock_importer_devDependency_@vitest/coverage-v8_version_resolves_expected": true,
+    "lock_importer_devDependency_vitest_specifier_exact": true,
+    "lock_importer_devDependency_vitest_version_resolves_expected": true,
+    "lock_package_entry_@nestjs/common@11.1.27_present": true,
+    "lock_package_entry_@nestjs/core@11.1.27_present": true,
+    "lock_package_entry_@nestjs/platform-express@11.1.27_present": true,
+    "lock_package_entry_@ts-rest/core@3.52.1_present": true,
+    "lock_package_entry_@ts-rest/nest@3.52.1_present": true,
+    "lock_package_entry_@types/node@24.13.2_present": true,
+    "lock_package_entry_@vitest/coverage-v8@4.1.9_present": true,
+    "lock_package_entry_reflect-metadata@0.2.2_present": true,
+    "lock_package_entry_rxjs@7.8.2_present": true,
+    "lock_package_entry_vitest@4.1.9_present": true,
+    "lock_package_entry_zod@3.25.76_present": true,
+    "lock_snapshot_entry_@nestjs/common@11.1.27_present_or_peer_snapshot_present": true,
+    "lock_snapshot_entry_@nestjs/core@11.1.27_present_or_peer_snapshot_present": true,
+    "lock_snapshot_entry_@nestjs/platform-express@11.1.27_present_or_peer_snapshot_present": true,
+    "lock_snapshot_entry_@ts-rest/core@3.52.1_present_or_peer_snapshot_present": true,
+    "lock_snapshot_entry_@ts-rest/nest@3.52.1_present_or_peer_snapshot_present": true,
+    "lock_snapshot_entry_@types/node@24.13.2_present_or_peer_snapshot_present": true,
+    "lock_snapshot_entry_@vitest/coverage-v8@4.1.9_present_or_peer_snapshot_present": true,
+    "lock_snapshot_entry_reflect-metadata@0.2.2_present_or_peer_snapshot_present": true,
+    "lock_snapshot_entry_rxjs@7.8.2_present_or_peer_snapshot_present": true,
+    "lock_snapshot_entry_vitest@4.1.9_present_or_peer_snapshot_present": true,
+    "lock_snapshot_entry_zod@3.25.76_present_or_peer_snapshot_present": true,
+    "no_fast_check_in_lockfile": true,
+    "no_fast_check_in_workspace_manifests": true,
+    "no_optional_testing_pnpm_log_present": true,
+    "no_relevant_dependency_refs_outside_contracts_manifest": true,
+    "no_ts_rest_client_in_lockfile": true,
+    "no_ts_rest_client_in_workspace_manifests": true,
+    "no_zod4_lock_package_or_snapshot": true,
+    "no_zod4_manifest_spec": true,
+    "no_zod_at_4_text_token": true,
+    "packages_core_absent": true,
+    "root_lock_importer_has_no_i11s_dependency_additions": true,
+    "root_manifest_has_no_i11s_dependency_additions": true
+  },
+  "details": {
+    "changed_between_implementation_before_after_shared_surfaces": [
+      "packages/contracts/package.json",
+      "pnpm-lock.yaml"
+    ],
+    "contracts_dependencies": {
+      "@nestjs/common": "11.1.27",
+      "@nestjs/core": "11.1.27",
+      "@nestjs/platform-express": "11.1.27",
+      "@ts-rest/core": "3.52.1",
+      "@ts-rest/nest": "3.52.1",
+      "reflect-metadata": "0.2.2",
+      "rxjs": "7.8.2",
+      "zod": "3.25.76"
+    },
+    "contracts_devDependencies": {
+      "@types/node": "24.13.2",
+      "@vitest/coverage-v8": "4.1.9",
+      "vitest": "4.1.9"
+    },
+    "current_shared_surface_hashes": {
+      ".npmrc": "ab4883ce6941ba9f73ba9869f83aedfd12698ff79b34c9c99bd7ffcc982dc204",
+      "package.json": "b3d1455aade0eb27f0775c3dbe2abefd89dada97caac9b10f041061abcb30306",
+      "packages/artifacts/package.json": "1ace06c206300412035f1954b08d6ed97a2e244265ef70a7789f4488cede7498",
+      "packages/cli/package.json": "3d50ae0f3fbe0528fc2869e5d8337490fc34f9d15df50703981ebbd4f55b4ac4",
+      "packages/contracts/package.json": "60f896f5bc48c4468ea8e4ee84035ee64f13af96238591de54493f5902c89f65",
+      "packages/mechanical-gates/package.json": "b87923b67a5cf139ae67f6062c71d23393b307af153d1b874ccaf3e639e2f221",
+      "packages/skills/package.json": "38c554f205350d944b8c4239ba95d9fe79624dd48a68a3e4fffb69e80eb5be77",
+      "packages/testing/package.json": "75e5b7a37bfd7385d9fddd4f8594bb8e558512144040022cd42cd2daa1abadf8",
+      "packages/verification/package.json": "88c0b9cab2d039634626d57ff554f12a74bbe370f79f813241c9ffe2bc38571d",
+      "pnpm-lock.yaml": "7e97bffa29ba0aa4c4e2657cf5fd30ccfe3e61a8ce243e2b3e7a44147cb9d981",
+      "pnpm-workspace.yaml": "aee47e9964f53e767a6d6a86a27c86b218a76cd59453c3401defad6907be5f21",
+      "tsconfig.base.json": "2d343641168235bfa33dcb973b1dc4802b732be7bbca9bcd9ec391a2c9efe667",
+      "turbo.json": "918ad4e48eb39826c9a034611fd765c3c418c7ccfb890bc9c469ba33d2261d7b"
+    },
+    "implementation_report_pnpm_add_lines": [
+      "- Package-manager state produced by the exact allowed `pnpm --filter @vibe-engineer/contracts add ...` commands.",
+      "pnpm --filter @vibe-engineer/contracts add zod@3.25.76 @ts-rest/core@3.52.1 @ts-rest/nest@3.52.1 @nestjs/common@11.1.27 @nestjs/core@11.1.27 @nestjs/platform-express@11.1.27 reflect-metadata@0.2.2 rxjs@7.8.2",
+      "pnpm --filter @vibe-engineer/contracts add --save-dev @types/node@24.13.2 vitest@4.1.9 @vitest/coverage-v8@4.1.9"
+    ],
+    "shared_surface_hash_mismatches_vs_after": {},
+    "sibling_tree_summaries": {
+      "packages/artifacts": {
+        "aggregateSha256": "105dcc62760b82a71a8738bd41c2d2891ef6cf53b5984a7ecdc6fc0118198c6d",
+        "exists": true,
+        "fileCount": 86
+      },
+      "packages/cli": {
+        "aggregateSha256": "7f84ffd701ba636192e60d8aaeb987cc6b09f2a7fa72be9ba8e027ea53c6911b",
+        "exists": true,
+        "fileCount": 12
+      },
+      "packages/mechanical-gates": {
+        "aggregateSha256": "3e5484ad9798a6ec3bbbb23e80a2c8a0cb68f590d18d37b18b03b834731ca8a3",
+        "exists": true,
+        "fileCount": 1261
+      },
+      "packages/presets": {
+        "aggregateSha256": "a7f20a3e948277a6ae49bbc7360cc5287e6b200e7b8656f103d4950fbd1a7e15",
+        "exists": true,
+        "fileCount": 26
+      },
+      "packages/registry": {
+        "aggregateSha256": "6ca2040660cbd51c8ac73837ca9787bd74ff690cccb782d0840310d84c425e72",
+        "exists": true,
+        "fileCount": 76
+      },
+      "packages/skills": {
+        "aggregateSha256": "bc65a62b262cffce9eae41aec11ae7bfda23de777c25f04ef509fda25ef284b2",
+        "exists": true,
+        "fileCount": 38
+      },
+      "packages/testing": {
+        "aggregateSha256": "2eab94754467663c18af1c70b955b4335d20b1cdd30ecaeb52ccaa7edd4283fa",
+        "exists": true,
+        "fileCount": 6
+      },
+      "packages/verification": {
+        "aggregateSha256": "be90b84bd007850461e52fb2e43fdc6c6c8ab81dc4dce58224dc4df69d8228bd",
+        "exists": true,
+        "fileCount": 14
+      }
+    },
+    "workspace_manifest_paths": [
+      "package.json",
+      "packages/adapters/pi/package.json",
+      "packages/artifacts/package.json",
+      "packages/cli/package.json",
+      "packages/config/package.json",
+      "packages/context/package.json",
+      "packages/contracts/package.json",
+      "packages/mechanical-gates/package.json",
+      "packages/observability/package.json",
+      "packages/orchestration/package.json",
+      "packages/presets/nest-react-rn/package.json",
+      "packages/presets/typescript/package.json",
+      "packages/registry/package.json",
+      "packages/schematics/package.json",
+      "packages/security/package.json",
+      "packages/skills/package.json",
+      "packages/standards/package.json",
+      "packages/testing/package.json",
+      "packages/verification/package.json"
+    ],
+    "workspace_relevant_dependency_refs": {
+      "packages/contracts/package.json": {
+        "dependencies": {
+          "@nestjs/common": "11.1.27",
+          "@nestjs/core": "11.1.27",
+          "@nestjs/platform-express": "11.1.27",
+          "@ts-rest/core": "3.52.1",
+          "@ts-rest/nest": "3.52.1",
+          "reflect-metadata": "0.2.2",
+          "rxjs": "7.8.2",
+          "zod": "3.25.76"
+        },
+        "devDependencies": {
+          "@types/node": "24.13.2",
+          "@vitest/coverage-v8": "4.1.9",
+          "vitest": "4.1.9"
+        }
+      }
+    }
+  },
+  "evidence": {
+    "json": ".vibe/work/I-11S-contract-dependency-package-handoff/validation-evidence/fresh-metadata-negative-regression.json",
+    "siblingTreeHashes": ".vibe/work/I-11S-contract-dependency-package-handoff/validation-evidence/fresh-sibling-tree-hashes.txt"
+  },
+  "failures": [],
+  "status": "PASS"
+}

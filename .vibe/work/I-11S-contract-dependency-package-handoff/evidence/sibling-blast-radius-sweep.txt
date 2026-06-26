@@ -1,0 +1,469 @@
+## workspace manifest dependency search
+packages/testing/package.json:2:  "name": "@vibe-engineer/testing",
+packages/contracts/package.json:15:    "@nestjs/common": "11.1.27",
+packages/contracts/package.json:16:    "@nestjs/core": "11.1.27",
+packages/contracts/package.json:17:    "@nestjs/platform-express": "11.1.27",
+packages/contracts/package.json:18:    "@ts-rest/core": "3.52.1",
+packages/contracts/package.json:19:    "@ts-rest/nest": "3.52.1",
+packages/contracts/package.json:20:    "reflect-metadata": "0.2.2",
+packages/contracts/package.json:21:    "rxjs": "7.8.2",
+packages/contracts/package.json:22:    "zod": "3.25.76"
+packages/contracts/package.json:25:    "@types/node": "24.13.2",
+packages/contracts/package.json:26:    "@vitest/coverage-v8": "4.1.9",
+packages/contracts/package.json:27:    "vitest": "4.1.9"
+pnpm-lock.yaml:63:      '@nestjs/common':
+pnpm-lock.yaml:65:        version: 11.1.27(reflect-metadata@0.2.2)(rxjs@7.8.2)
+pnpm-lock.yaml:66:      '@nestjs/core':
+pnpm-lock.yaml:68:        version: 11.1.27(@nestjs/common@11.1.27(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/platform-express@11.1.27)(reflect-metadata@0.2.2)(rxjs@7.8.2)
+pnpm-lock.yaml:69:      '@nestjs/platform-express':
+pnpm-lock.yaml:71:        version: 11.1.27(@nestjs/common@11.1.27(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.27)
+pnpm-lock.yaml:72:      '@ts-rest/core':
+pnpm-lock.yaml:74:        version: 3.52.1(@types/node@24.13.2)(zod@3.25.76)
+pnpm-lock.yaml:75:      '@ts-rest/nest':
+pnpm-lock.yaml:77:        version: 3.52.1(@nestjs/common@11.1.27(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.27)(@ts-rest/core@3.52.1(@types/node@24.13.2)(zod@3.25.76))(rxjs@7.8.2)(zod@3.25.76)
+pnpm-lock.yaml:78:      reflect-metadata:
+pnpm-lock.yaml:81:      rxjs:
+pnpm-lock.yaml:84:      zod:
+pnpm-lock.yaml:88:      '@types/node':
+pnpm-lock.yaml:91:      '@vitest/coverage-v8':
+pnpm-lock.yaml:93:        version: 4.1.9(vitest@4.1.9)
+pnpm-lock.yaml:94:      vitest:
+pnpm-lock.yaml:96:        version: 4.1.9(@types/node@24.13.2)(@vitest/coverage-v8@4.1.9)
+pnpm-lock.yaml:254:  '@nestjs/common@11.1.27':
+pnpm-lock.yaml:259:      reflect-metadata: ^0.1.12 || ^0.2.0
+pnpm-lock.yaml:260:      rxjs: ^7.1.0
+pnpm-lock.yaml:267:  '@nestjs/core@11.1.27':
+pnpm-lock.yaml:271:      '@nestjs/common': ^11.0.0
+pnpm-lock.yaml:272:      '@nestjs/microservices': ^11.0.0
+pnpm-lock.yaml:273:      '@nestjs/platform-express': ^11.0.0
+pnpm-lock.yaml:274:      '@nestjs/websockets': ^11.0.0
+pnpm-lock.yaml:275:      reflect-metadata: ^0.1.12 || ^0.2.0
+pnpm-lock.yaml:276:      rxjs: ^7.1.0
+pnpm-lock.yaml:278:      '@nestjs/microservices':
+pnpm-lock.yaml:280:      '@nestjs/platform-express':
+pnpm-lock.yaml:282:      '@nestjs/websockets':
+pnpm-lock.yaml:285:  '@nestjs/platform-express@11.1.27':
+pnpm-lock.yaml:288:      '@nestjs/common': ^11.0.0
+pnpm-lock.yaml:289:      '@nestjs/core': ^11.0.0
+pnpm-lock.yaml:402:  '@ts-rest/core@3.52.1':
+pnpm-lock.yaml:405:      '@types/node': ^18.18.7 || >=20.8.4
+pnpm-lock.yaml:406:      zod: ^3.22.3
+pnpm-lock.yaml:408:      '@types/node':
+pnpm-lock.yaml:410:      zod:
+pnpm-lock.yaml:413:  '@ts-rest/nest@3.52.1':
+pnpm-lock.yaml:416:      '@nestjs/common': ^9.0.0 || ^10.0.0 || ^11.0.0
+pnpm-lock.yaml:417:      '@nestjs/core': ^9.0.0 || ^10.0.0 || ^11.0.0
+pnpm-lock.yaml:418:      '@ts-rest/core': ~3.52.0
+pnpm-lock.yaml:419:      rxjs: ^7.1.0
+pnpm-lock.yaml:420:      zod: ^3.22.3
+pnpm-lock.yaml:422:      zod:
+pnpm-lock.yaml:470:  '@types/node@24.13.2':
+pnpm-lock.yaml:532:  '@vitest/coverage-v8@4.1.9':
+pnpm-lock.yaml:535:      '@vitest/browser': 4.1.9
+pnpm-lock.yaml:536:      vitest: 4.1.9
+pnpm-lock.yaml:538:      '@vitest/browser':
+pnpm-lock.yaml:541:  '@vitest/expect@4.1.9':
+pnpm-lock.yaml:544:  '@vitest/mocker@4.1.9':
+pnpm-lock.yaml:555:  '@vitest/pretty-format@4.1.9':
+pnpm-lock.yaml:558:  '@vitest/runner@4.1.9':
+pnpm-lock.yaml:561:  '@vitest/snapshot@4.1.9':
+pnpm-lock.yaml:564:  '@vitest/spy@4.1.9':
+pnpm-lock.yaml:567:  '@vitest/utils@4.1.9':
+pnpm-lock.yaml:1253:  reflect-metadata@0.2.2:
+pnpm-lock.yaml:1273:  rxjs@7.8.2:
+pnpm-lock.yaml:1451:      '@types/node': ^20.19.0 || >=22.12.0
+pnpm-lock.yaml:1464:      '@types/node':
+pnpm-lock.yaml:1489:  vitest@4.1.9:
+pnpm-lock.yaml:1496:      '@types/node': ^20.0.0 || ^22.0.0 || >=24.0.0
+pnpm-lock.yaml:1497:      '@vitest/browser-playwright': 4.1.9
+pnpm-lock.yaml:1498:      '@vitest/browser-preview': 4.1.9
+pnpm-lock.yaml:1499:      '@vitest/browser-webdriverio': 4.1.9
+pnpm-lock.yaml:1500:      '@vitest/coverage-istanbul': 4.1.9
+pnpm-lock.yaml:1501:      '@vitest/coverage-v8': 4.1.9
+pnpm-lock.yaml:1502:      '@vitest/ui': 4.1.9
+pnpm-lock.yaml:1510:      '@types/node':
+pnpm-lock.yaml:1512:      '@vitest/browser-playwright':
+pnpm-lock.yaml:1514:      '@vitest/browser-preview':
+pnpm-lock.yaml:1516:      '@vitest/browser-webdriverio':
+pnpm-lock.yaml:1518:      '@vitest/coverage-istanbul':
+pnpm-lock.yaml:1520:      '@vitest/coverage-v8':
+pnpm-lock.yaml:1522:      '@vitest/ui':
+pnpm-lock.yaml:1550:  zod@3.25.76:
+pnpm-lock.yaml:1668:  '@nestjs/common@11.1.27(reflect-metadata@0.2.2)(rxjs@7.8.2)':
+pnpm-lock.yaml:1673:      reflect-metadata: 0.2.2
+pnpm-lock.yaml:1674:      rxjs: 7.8.2
+pnpm-lock.yaml:1680:  '@nestjs/core@11.1.27(@nestjs/common@11.1.27(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/platform-express@11.1.27)(reflect-metadata@0.2.2)(rxjs@7.8.2)':
+pnpm-lock.yaml:1682:      '@nestjs/common': 11.1.27(reflect-metadata@0.2.2)(rxjs@7.8.2)
+pnpm-lock.yaml:1686:      reflect-metadata: 0.2.2
+pnpm-lock.yaml:1687:      rxjs: 7.8.2
+pnpm-lock.yaml:1691:      '@nestjs/platform-express': 11.1.27(@nestjs/common@11.1.27(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.27)
+pnpm-lock.yaml:1693:  '@nestjs/platform-express@11.1.27(@nestjs/common@11.1.27(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.27)':
+pnpm-lock.yaml:1695:      '@nestjs/common': 11.1.27(reflect-metadata@0.2.2)(rxjs@7.8.2)
+pnpm-lock.yaml:1696:      '@nestjs/core': 11.1.27(@nestjs/common@11.1.27(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/platform-express@11.1.27)(reflect-metadata@0.2.2)(rxjs@7.8.2)
+pnpm-lock.yaml:1769:  '@ts-rest/core@3.52.1(@types/node@24.13.2)(zod@3.25.76)':
+pnpm-lock.yaml:1771:      '@types/node': 24.13.2
+pnpm-lock.yaml:1772:      zod: 3.25.76
+pnpm-lock.yaml:1774:  '@ts-rest/nest@3.52.1(@nestjs/common@11.1.27(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.27)(@ts-rest/core@3.52.1(@types/node@24.13.2)(zod@3.25.76))(rxjs@7.8.2)(zod@3.25.76)':
+pnpm-lock.yaml:1776:      '@nestjs/common': 11.1.27(reflect-metadata@0.2.2)(rxjs@7.8.2)
+pnpm-lock.yaml:1777:      '@nestjs/core': 11.1.27(@nestjs/common@11.1.27(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/platform-express@11.1.27)(reflect-metadata@0.2.2)(rxjs@7.8.2)
+pnpm-lock.yaml:1778:      '@ts-rest/core': 3.52.1(@types/node@24.13.2)(zod@3.25.76)
+pnpm-lock.yaml:1779:      rxjs: 7.8.2
+pnpm-lock.yaml:1781:      zod: 3.25.76
+pnpm-lock.yaml:1817:  '@types/node@24.13.2':
+pnpm-lock.yaml:1912:  '@vitest/coverage-v8@4.1.9(vitest@4.1.9)':
+pnpm-lock.yaml:1915:      '@vitest/utils': 4.1.9
+pnpm-lock.yaml:1924:      vitest: 4.1.9(@types/node@24.13.2)(@vitest/coverage-v8@4.1.9)
+pnpm-lock.yaml:1926:  '@vitest/expect@4.1.9':
+pnpm-lock.yaml:1930:      '@vitest/spy': 4.1.9
+pnpm-lock.yaml:1931:      '@vitest/utils': 4.1.9
+pnpm-lock.yaml:1935:  '@vitest/mocker@4.1.9(vite@8.1.0(@types/node@24.13.2))':
+pnpm-lock.yaml:1937:      '@vitest/spy': 4.1.9
+pnpm-lock.yaml:1941:      vite: 8.1.0(@types/node@24.13.2)
+pnpm-lock.yaml:1943:  '@vitest/pretty-format@4.1.9':
+pnpm-lock.yaml:1947:  '@vitest/runner@4.1.9':
+pnpm-lock.yaml:1949:      '@vitest/utils': 4.1.9
+pnpm-lock.yaml:1952:  '@vitest/snapshot@4.1.9':
+pnpm-lock.yaml:1954:      '@vitest/pretty-format': 4.1.9
+pnpm-lock.yaml:1955:      '@vitest/utils': 4.1.9
+pnpm-lock.yaml:1959:  '@vitest/spy@4.1.9': {}
+pnpm-lock.yaml:1961:  '@vitest/utils@4.1.9':
+pnpm-lock.yaml:1963:      '@vitest/pretty-format': 4.1.9
+pnpm-lock.yaml:2615:  reflect-metadata@0.2.2: {}
+pnpm-lock.yaml:2652:  rxjs@7.8.2:
+pnpm-lock.yaml:2831:  vite@8.1.0(@types/node@24.13.2):
+pnpm-lock.yaml:2839:      '@types/node': 24.13.2
+pnpm-lock.yaml:2842:  vitest@4.1.9(@types/node@24.13.2)(@vitest/coverage-v8@4.1.9):
+pnpm-lock.yaml:2844:      '@vitest/expect': 4.1.9
+pnpm-lock.yaml:2845:      '@vitest/mocker': 4.1.9(vite@8.1.0(@types/node@24.13.2))
+pnpm-lock.yaml:2846:      '@vitest/pretty-format': 4.1.9
+pnpm-lock.yaml:2847:      '@vitest/runner': 4.1.9
+pnpm-lock.yaml:2848:      '@vitest/snapshot': 4.1.9
+pnpm-lock.yaml:2849:      '@vitest/spy': 4.1.9
+pnpm-lock.yaml:2850:      '@vitest/utils': 4.1.9
+pnpm-lock.yaml:2862:      vite: 8.1.0(@types/node@24.13.2)
+pnpm-lock.yaml:2865:      '@types/node': 24.13.2
+pnpm-lock.yaml:2866:      '@vitest/coverage-v8': 4.1.9(vitest@4.1.9)
+pnpm-lock.yaml:2896:  zod@3.25.76: {}
+
+## package manifest status
+?? package.json
+?? packages/adapters/pi/package.json
+?? packages/artifacts/package.json
+?? packages/cli/package.json
+?? packages/config/package.json
+?? packages/context/package.json
+?? packages/contracts/package.json
+?? packages/mechanical-gates/package.json
+?? packages/observability/package.json
+?? packages/orchestration/package.json
+?? packages/presets/nest-react-rn/package.json
+?? packages/presets/typescript/package.json
+?? packages/registry/package.json
+?? packages/schematics/package.json
+?? packages/security/package.json
+?? packages/skills/package.json
+?? packages/standards/package.json
+?? packages/testing/package.json
+?? packages/verification/package.json
+?? pnpm-lock.yaml
+
+## selected before/after hash diff
+--- .vibe/work/I-11S-contract-dependency-package-handoff/snapshots/before/shared-surface-sha256.txt	2026-06-25 13:39:14
++++ .vibe/work/I-11S-contract-dependency-package-handoff/snapshots/after/shared-surface-sha256.txt	2026-06-25 13:42:49
+@@ -3,8 +3,8 @@
+ 918ad4e48eb39826c9a034611fd765c3c418c7ccfb890bc9c469ba33d2261d7b  turbo.json
+ 2d343641168235bfa33dcb973b1dc4802b732be7bbca9bcd9ec391a2c9efe667  tsconfig.base.json
+ ab4883ce6941ba9f73ba9869f83aedfd12698ff79b34c9c99bd7ffcc982dc204  .npmrc
+-e38b71fa9587331de18a017d7d7013849ee740c74a7c0049b1a6400c96b15760  packages/contracts/package.json
+-ca6981925d84052ef3588dca048716d7ab89efea9763e5a00f255bd21b99a0ae  pnpm-lock.yaml
++60f896f5bc48c4468ea8e4ee84035ee64f13af96238591de54493f5902c89f65  packages/contracts/package.json
++7e97bffa29ba0aa4c4e2657cf5fd30ccfe3e61a8ce243e2b3e7a44147cb9d981  pnpm-lock.yaml
+ b87923b67a5cf139ae67f6062c71d23393b307af153d1b874ccaf3e639e2f221  packages/mechanical-gates/package.json
+ 75e5b7a37bfd7385d9fddd4f8594bb8e558512144040022cd42cd2daa1abadf8  packages/testing/package.json
+ 1ace06c206300412035f1954b08d6ed97a2e244265ef70a7789f4488cede7498  packages/artifacts/package.json
+
+## mechanical gates aggregate/p0/p1/p2 inventory
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-schema-narrowed/eslint.config.mjs
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-schema-narrowed/generated/ignored.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-schema-narrowed/mechanical-boundaries.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-schema-narrowed/mechanical-domain-purity.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-schema-narrowed/mechanical-escape-allowlist.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-schema-narrowed/mechanical-surface.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-schema-narrowed/package.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-schema-narrowed/packages/app/src/as-unknown-schema.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-schema-narrowed/packages/app/src/index.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-schema-narrowed/packages/app/src/reviewed-escapes.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-schema-narrowed/packages/app/src/sample-demo/story.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-schema-narrowed/packages/domain/src/index.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-schema-narrowed/packages/domain/src/internal/secret.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-schema-narrowed/packages/shared/src/index.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-schema-narrowed/prettier.config.mjs
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-schema-narrowed/README.md
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-schema-narrowed/test.mjs
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-schema-narrowed/tsconfig.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-unrelated-validate/eslint.config.mjs
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-unrelated-validate/generated/ignored.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-unrelated-validate/mechanical-boundaries.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-unrelated-validate/mechanical-domain-purity.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-unrelated-validate/mechanical-escape-allowlist.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-unrelated-validate/mechanical-surface.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-unrelated-validate/package.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-unrelated-validate/packages/app/src/as-unknown.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-unrelated-validate/packages/app/src/index.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-unrelated-validate/packages/app/src/reviewed-escapes.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-unrelated-validate/packages/app/src/sample-demo/story.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-unrelated-validate/packages/domain/src/index.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-unrelated-validate/packages/domain/src/internal/secret.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-unrelated-validate/packages/shared/src/index.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-unrelated-validate/prettier.config.mjs
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-unrelated-validate/README.md
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-unrelated-validate/test.mjs
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-unrelated-validate/tsconfig.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/broad-model-types/eslint.config.mjs
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/broad-model-types/generated/ignored.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/broad-model-types/mechanical-boundaries.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/broad-model-types/mechanical-domain-purity.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/broad-model-types/mechanical-escape-allowlist.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/broad-model-types/mechanical-surface.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/broad-model-types/package.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/broad-model-types/packages/app/src/broad-model-types.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/broad-model-types/packages/app/src/index.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/broad-model-types/packages/app/src/reviewed-escapes.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/broad-model-types/packages/app/src/sample-demo/story.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/broad-model-types/packages/domain/src/index.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/broad-model-types/packages/domain/src/internal/secret.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/broad-model-types/packages/shared/src/index.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/broad-model-types/prettier.config.mjs
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/broad-model-types/README.md
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/broad-model-types/test.mjs
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/broad-model-types/tsconfig.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-empty-forbidden-terms/eslint.config.mjs
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-empty-forbidden-terms/generated/ignored.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-empty-forbidden-terms/mechanical-boundaries.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-empty-forbidden-terms/mechanical-domain-purity.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-empty-forbidden-terms/mechanical-escape-allowlist.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-empty-forbidden-terms/mechanical-surface.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-empty-forbidden-terms/package.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-empty-forbidden-terms/packages/app/src/domain-leak.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-empty-forbidden-terms/packages/app/src/index.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-empty-forbidden-terms/packages/app/src/reviewed-escapes.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-empty-forbidden-terms/packages/app/src/sample-demo/story.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-empty-forbidden-terms/packages/domain/src/index.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-empty-forbidden-terms/packages/domain/src/internal/secret.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-empty-forbidden-terms/packages/shared/src/index.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-empty-forbidden-terms/prettier.config.mjs
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-empty-forbidden-terms/README.md
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-empty-forbidden-terms/test.mjs
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-empty-forbidden-terms/tsconfig.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-leakage-core/eslint.config.mjs
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-leakage-core/generated/ignored.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-leakage-core/mechanical-boundaries.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-leakage-core/mechanical-domain-purity.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-leakage-core/mechanical-escape-allowlist.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-leakage-core/mechanical-surface.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-leakage-core/package.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-leakage-core/packages/app/src/domain-leak.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-leakage-core/packages/app/src/index.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-leakage-core/packages/app/src/reviewed-escapes.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-leakage-core/packages/app/src/sample-demo/story.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-leakage-core/packages/domain/src/index.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-leakage-core/packages/domain/src/internal/secret.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-leakage-core/packages/shared/src/index.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-leakage-core/prettier.config.mjs
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-leakage-core/README.md
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-leakage-core/test.mjs
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-leakage-core/tsconfig.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-locked-terms-core-extension/eslint.config.mjs
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-locked-terms-core-extension/generated/ignored.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-locked-terms-core-extension/mechanical-boundaries.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-locked-terms-core-extension/mechanical-domain-purity.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-locked-terms-core-extension/mechanical-escape-allowlist.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-locked-terms-core-extension/mechanical-surface.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-locked-terms-core-extension/package.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-locked-terms-core-extension/packages/app/src/domain-core-leak.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-locked-terms-core-extension/packages/app/src/extension/domain-extension-leak.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-locked-terms-core-extension/packages/app/src/index.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-locked-terms-core-extension/packages/app/src/reviewed-escapes.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-locked-terms-core-extension/packages/app/src/sample-demo/story.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-locked-terms-core-extension/packages/domain/src/index.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-locked-terms-core-extension/packages/domain/src/internal/secret.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-locked-terms-core-extension/packages/shared/src/index.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-locked-terms-core-extension/prettier.config.mjs
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-locked-terms-core-extension/README.md
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-locked-terms-core-extension/test.mjs
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-locked-terms-core-extension/tsconfig.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-malformed-forbidden-number/eslint.config.mjs
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-malformed-forbidden-number/generated/ignored.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-malformed-forbidden-number/mechanical-boundaries.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-malformed-forbidden-number/mechanical-domain-purity.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-malformed-forbidden-number/mechanical-escape-allowlist.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-malformed-forbidden-number/mechanical-surface.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-malformed-forbidden-number/package.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-malformed-forbidden-number/packages/app/src/domain-leak.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-malformed-forbidden-number/packages/app/src/index.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-malformed-forbidden-number/packages/app/src/reviewed-escapes.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-malformed-forbidden-number/packages/app/src/sample-demo/story.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-malformed-forbidden-number/packages/domain/src/index.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-malformed-forbidden-number/packages/domain/src/internal/secret.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-malformed-forbidden-number/packages/shared/src/index.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-malformed-forbidden-number/prettier.config.mjs
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-malformed-forbidden-number/README.md
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-malformed-forbidden-number/test.mjs
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-malformed-forbidden-number/tsconfig.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-partial-malformed-forbidden-terms/eslint.config.mjs
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-partial-malformed-forbidden-terms/generated/ignored.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-partial-malformed-forbidden-terms/mechanical-boundaries.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-partial-malformed-forbidden-terms/mechanical-domain-purity.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-partial-malformed-forbidden-terms/mechanical-escape-allowlist.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-partial-malformed-forbidden-terms/mechanical-surface.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-partial-malformed-forbidden-terms/package.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-partial-malformed-forbidden-terms/packages/app/src/domain-leak.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-partial-malformed-forbidden-terms/packages/app/src/index.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-partial-malformed-forbidden-terms/packages/app/src/reviewed-escapes.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-partial-malformed-forbidden-terms/packages/app/src/sample-demo/story.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-partial-malformed-forbidden-terms/packages/domain/src/index.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-partial-malformed-forbidden-terms/packages/domain/src/internal/secret.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-partial-malformed-forbidden-terms/packages/shared/src/index.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-partial-malformed-forbidden-terms/prettier.config.mjs
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-partial-malformed-forbidden-terms/README.md
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-partial-malformed-forbidden-terms/test.mjs
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-partial-malformed-forbidden-terms/tsconfig.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-valid-policy-cannot-remove-locked-terms/eslint.config.mjs
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-valid-policy-cannot-remove-locked-terms/generated/ignored.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-valid-policy-cannot-remove-locked-terms/mechanical-boundaries.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-valid-policy-cannot-remove-locked-terms/mechanical-domain-purity.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-valid-policy-cannot-remove-locked-terms/mechanical-escape-allowlist.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-valid-policy-cannot-remove-locked-terms/mechanical-surface.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-valid-policy-cannot-remove-locked-terms/package.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-valid-policy-cannot-remove-locked-terms/packages/app/src/domain-leak.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-valid-policy-cannot-remove-locked-terms/packages/app/src/index.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-valid-policy-cannot-remove-locked-terms/packages/app/src/reviewed-escapes.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-valid-policy-cannot-remove-locked-terms/packages/app/src/sample-demo/story.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-valid-policy-cannot-remove-locked-terms/packages/domain/src/index.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-valid-policy-cannot-remove-locked-terms/packages/domain/src/internal/secret.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-valid-policy-cannot-remove-locked-terms/packages/shared/src/index.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-valid-policy-cannot-remove-locked-terms/prettier.config.mjs
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-valid-policy-cannot-remove-locked-terms/README.md
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-valid-policy-cannot-remove-locked-terms/test.mjs
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/domain-valid-policy-cannot-remove-locked-terms/tsconfig.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/duplicate-allowlist/eslint.config.mjs
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/duplicate-allowlist/generated/ignored.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/duplicate-allowlist/mechanical-boundaries.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/duplicate-allowlist/mechanical-domain-purity.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/duplicate-allowlist/mechanical-escape-allowlist.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/duplicate-allowlist/mechanical-surface.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/duplicate-allowlist/package.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/duplicate-allowlist/packages/app/src/index.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/duplicate-allowlist/packages/app/src/reviewed-escapes.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/duplicate-allowlist/packages/app/src/sample-demo/story.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/duplicate-allowlist/packages/domain/src/index.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/duplicate-allowlist/packages/domain/src/internal/secret.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/duplicate-allowlist/packages/shared/src/index.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/duplicate-allowlist/prettier.config.mjs
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/duplicate-allowlist/README.md
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/duplicate-allowlist/test.mjs
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/duplicate-allowlist/tsconfig.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/hard-ban-weakening-as-any/eslint.config.mjs
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/hard-ban-weakening-as-any/generated/ignored.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/hard-ban-weakening-as-any/mechanical-boundaries.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/hard-ban-weakening-as-any/mechanical-domain-purity.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/hard-ban-weakening-as-any/mechanical-escape-allowlist.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/hard-ban-weakening-as-any/mechanical-surface.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/hard-ban-weakening-as-any/package.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/hard-ban-weakening-as-any/packages/app/src/hard-ban-weakening.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/hard-ban-weakening-as-any/packages/app/src/index.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/hard-ban-weakening-as-any/packages/app/src/reviewed-escapes.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/hard-ban-weakening-as-any/packages/app/src/sample-demo/story.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/hard-ban-weakening-as-any/packages/domain/src/index.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/hard-ban-weakening-as-any/packages/domain/src/internal/secret.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/hard-ban-weakening-as-any/packages/shared/src/index.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/hard-ban-weakening-as-any/prettier.config.mjs
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/hard-ban-weakening-as-any/README.md
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/hard-ban-weakening-as-any/test.mjs
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/hard-ban-weakening-as-any/tsconfig.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/hard-banned-as-any/eslint.config.mjs
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/hard-banned-as-any/generated/ignored.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/hard-banned-as-any/mechanical-boundaries.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/hard-banned-as-any/mechanical-domain-purity.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/hard-banned-as-any/mechanical-escape-allowlist.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/hard-banned-as-any/mechanical-surface.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/hard-banned-as-any/package.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/hard-banned-as-any/packages/app/src/hard-banned.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/hard-banned-as-any/packages/app/src/index.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/hard-banned-as-any/packages/app/src/reviewed-escapes.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/hard-banned-as-any/packages/app/src/sample-demo/story.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/hard-banned-as-any/packages/domain/src/index.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/hard-banned-as-any/packages/domain/src/internal/secret.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/hard-banned-as-any/packages/shared/src/index.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/hard-banned-as-any/prettier.config.mjs
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/hard-banned-as-any/README.md
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/hard-banned-as-any/test.mjs
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/hard-banned-as-any/tsconfig.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/malformed-allowlist-policy/eslint.config.mjs
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/malformed-allowlist-policy/generated/ignored.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/malformed-allowlist-policy/mechanical-boundaries.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/malformed-allowlist-policy/mechanical-domain-purity.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/malformed-allowlist-policy/mechanical-escape-allowlist.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/malformed-allowlist-policy/mechanical-surface.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/malformed-allowlist-policy/package.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/malformed-allowlist-policy/packages/app/src/index.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/malformed-allowlist-policy/packages/app/src/reviewed-escapes.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/malformed-allowlist-policy/packages/app/src/sample-demo/story.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/malformed-allowlist-policy/packages/domain/src/index.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/malformed-allowlist-policy/packages/domain/src/internal/secret.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/malformed-allowlist-policy/packages/shared/src/index.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/malformed-allowlist-policy/prettier.config.mjs
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/malformed-allowlist-policy/README.md
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/malformed-allowlist-policy/test.mjs
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/malformed-allowlist-policy/tsconfig.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/malformed-domain-policy/eslint.config.mjs
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/malformed-domain-policy/generated/ignored.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/malformed-domain-policy/mechanical-boundaries.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/malformed-domain-policy/mechanical-domain-purity.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/malformed-domain-policy/mechanical-escape-allowlist.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/malformed-domain-policy/mechanical-surface.json
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/malformed-domain-policy/package.json
+
+## testing package inventory
+packages/testing/fixtures/helper-consumer.mjs
+packages/testing/fixtures/mechanical-testing-boundary.json
+packages/testing/fixtures/type-consumer.ts
+packages/testing/package.json
+packages/testing/src/index.d.ts
+packages/testing/src/index.js
+
+## artifacts/verification/cli/skills package manifests hashes after
+1ace06c206300412035f1954b08d6ed97a2e244265ef70a7789f4488cede7498  packages/artifacts/package.json
+88c0b9cab2d039634626d57ff554f12a74bbe370f79f813241c9ffe2bc38571d  packages/verification/package.json
+3d50ae0f3fbe0528fc2869e5d8337490fc34f9d15df50703981ebbd4f55b4ac4  packages/cli/package.json
+38c554f205350d944b8c4239ba95d9fe79624dd48a68a3e4fffb69e80eb5be77  packages/skills/package.json
+75e5b7a37bfd7385d9fddd4f8594bb8e558512144040022cd42cd2daa1abadf8  packages/testing/package.json
+b87923b67a5cf139ae67f6062c71d23393b307af153d1b874ccaf3e639e2f221  packages/mechanical-gates/package.json
+
+## root/ci/pulumi/scripts surfaces
+
+## packages/core check
+packages/core ABSENT
+
+## contracts manifest business vocabulary check
+
+## whole target status
+?? .gitignore
+?? .npmrc
+?? .pi/
+?? .vibe/
+?? CHANGELOG.md
+?? CODE_OF_CONDUCT.md
+?? CONTRIBUTING.md
+?? LICENSE
+?? README.md
+?? SECURITY.md
+?? docs/
+?? eslint.config.mjs
+?? package.json
+?? packages/
+?? pnpm-lock.yaml
+?? pnpm-workspace.yaml
+?? prettier.config.mjs
+?? tsconfig.base.json
+?? turbo.json
