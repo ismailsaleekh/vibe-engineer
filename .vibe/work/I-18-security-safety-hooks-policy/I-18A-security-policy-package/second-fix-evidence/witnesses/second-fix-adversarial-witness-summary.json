@@ -1,0 +1,128 @@
+{
+  "ok": true,
+  "total": 12,
+  "failureCount": 0,
+  "failures": [],
+  "results": [
+    {
+      "name": "real-boundary: CLI package resolver resolves public API",
+      "ok": true,
+      "resolvedFromCli": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js"
+    },
+    {
+      "name": "positive: safe read-only command remains allowed",
+      "ok": true,
+      "status": "passed",
+      "decision": "allow",
+      "classifications": []
+    },
+    {
+      "name": "PF1: network external mutation policy relaxation rejected",
+      "ok": true,
+      "parsedOk": false,
+      "status": "blocked",
+      "expectedClassification": "malformed_policy",
+      "classifications": [
+        "malformed_policy"
+      ]
+    },
+    {
+      "name": "PF1: credential operation policy relaxation rejected",
+      "ok": true,
+      "parsedOk": false,
+      "status": "blocked",
+      "expectedClassification": "malformed_policy",
+      "classifications": [
+        "malformed_policy"
+      ]
+    },
+    {
+      "name": "PF1: unknown command policy relaxation rejected",
+      "ok": true,
+      "parsedOk": false,
+      "status": "blocked",
+      "expectedClassification": "malformed_policy",
+      "classifications": [
+        "malformed_policy"
+      ]
+    },
+    {
+      "name": "PF1: direct unsafe command policy object still blocks external mutation",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "destructive_command",
+      "classifications": [
+        "destructive_command"
+      ]
+    },
+    {
+      "name": "PF2: protected path mandatory floor cannot be removed",
+      "ok": true,
+      "parsedOk": false,
+      "status": "blocked",
+      "expectedClassification": "malformed_policy",
+      "classifications": [
+        "malformed_policy"
+      ]
+    },
+    {
+      "name": "PF2: direct unsafe path policy object still blocks package manifest target",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "unsafe_command_target",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "PF3: malformed external boolean strings fail closed",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "unknown_request_field",
+      "classifications": [
+        "unknown_request_field",
+        "unknown_request_field",
+        "unknown_request_field",
+        "unknown_request_field",
+        "unknown_request_field",
+        "unknown_request_field"
+      ]
+    },
+    {
+      "name": "PF3: malformed external id/mode types fail closed",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "unknown_request_field",
+      "classifications": [
+        "unknown_request_field",
+        "unknown_request_field"
+      ]
+    },
+    {
+      "name": "PF4: malformed sandbox provider/claim types fail closed",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "unknown_request_field",
+      "classifications": [
+        "unknown_request_field",
+        "unknown_request_field"
+      ]
+    },
+    {
+      "name": "PF4: empty sandbox status fails closed",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "unknown_request_field",
+      "classifications": [
+        "unknown_request_field",
+        "unsupported_sandbox_claim"
+      ]
+    }
+  ]
+}

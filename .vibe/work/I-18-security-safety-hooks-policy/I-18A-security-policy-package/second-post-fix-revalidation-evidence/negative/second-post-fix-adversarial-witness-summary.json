@@ -1,0 +1,1415 @@
+{
+  "ok": false,
+  "total": 87,
+  "passCount": 78,
+  "failureCount": 9,
+  "failures": [
+    {
+      "name": "secret-like CLI token embedded in command string blocks and redacts",
+      "ok": false,
+      "expected": {
+        "status": "blocked",
+        "classification": "secret_like_value"
+      },
+      "actual": {
+        "status": "passed",
+        "decision": "allow",
+        "blocking": false,
+        "classifications": []
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "Windows drive-relative path blocks",
+      "ok": false,
+      "expected": {
+        "status": "blocked",
+        "classification": "unsafe_command_target"
+      },
+      "actual": {
+        "status": "passed",
+        "decision": "allow",
+        "blocking": false,
+        "classifications": []
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "tilde user home path blocks",
+      "ok": false,
+      "expected": {
+        "status": "blocked",
+        "classification": "unsafe_command_target"
+      },
+      "actual": {
+        "status": "passed",
+        "decision": "allow",
+        "blocking": false,
+        "classifications": []
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "dot-slash root package manifest target blocks",
+      "ok": false,
+      "expected": {
+        "status": "blocked",
+        "classification": "unsafe_command_target"
+      },
+      "actual": {
+        "status": "passed",
+        "decision": "allow",
+        "blocking": false,
+        "classifications": []
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "dot-slash git path blocks",
+      "ok": false,
+      "expected": {
+        "status": "blocked",
+        "classification": "unsafe_command_target"
+      },
+      "actual": {
+        "status": "passed",
+        "decision": "allow",
+        "blocking": false,
+        "classifications": []
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "workspace file target blocks",
+      "ok": false,
+      "expected": {
+        "status": "blocked",
+        "classification": "unsafe_command_target"
+      },
+      "actual": {
+        "status": "passed",
+        "decision": "allow",
+        "blocking": false,
+        "classifications": []
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "turbo config target blocks",
+      "ok": false,
+      "expected": {
+        "status": "blocked",
+        "classification": "unsafe_command_target"
+      },
+      "actual": {
+        "status": "passed",
+        "decision": "allow",
+        "blocking": false,
+        "classifications": []
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "CLI package manifest target blocks",
+      "ok": false,
+      "expected": {
+        "status": "blocked",
+        "classification": "unsafe_command_target"
+      },
+      "actual": {
+        "status": "passed",
+        "decision": "allow",
+        "blocking": false,
+        "classifications": []
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "security package manifest target blocks unless manifest-owned handoff",
+      "ok": false,
+      "expected": {
+        "status": "blocked",
+        "classification": "unsafe_command_target"
+      },
+      "actual": {
+        "status": "passed",
+        "decision": "allow",
+        "blocking": false,
+        "classifications": []
+      },
+      "redactionOk": true
+    }
+  ],
+  "passes": [
+    {
+      "name": "positive safe read-only local command/env/config/default external disabled/sandbox unknown",
+      "ok": true,
+      "expected": {
+        "status": "passed"
+      },
+      "actual": {
+        "status": "passed",
+        "decision": "allow",
+        "blocking": false,
+        "classifications": []
+      }
+    },
+    {
+      "name": "positive local deterministic write in owned security fixture path",
+      "ok": true,
+      "expected": {
+        "status": "passed"
+      },
+      "actual": {
+        "status": "passed",
+        "decision": "allow",
+        "blocking": false,
+        "classifications": []
+      }
+    },
+    {
+      "name": "positive external dry-run",
+      "ok": true,
+      "expected": {
+        "status": "passed"
+      },
+      "actual": {
+        "status": "passed",
+        "decision": "allow",
+        "blocking": false,
+        "classifications": []
+      }
+    },
+    {
+      "name": "positive external read-only network without credentials or mutation",
+      "ok": true,
+      "expected": {
+        "status": "passed"
+      },
+      "actual": {
+        "status": "passed",
+        "decision": "allow",
+        "blocking": false,
+        "classifications": []
+      }
+    },
+    {
+      "name": "positive advisory note stays non-blocking advisory",
+      "ok": true,
+      "expected": {
+        "status": "advisory"
+      },
+      "actual": {
+        "status": "advisory",
+        "decision": "allow_with_advisory",
+        "blocking": false,
+        "classifications": [
+          "advisory_notice"
+        ]
+      }
+    },
+    {
+      "name": "PF1 policy rejects network_external_mutation classification",
+      "ok": true,
+      "expected": {
+        "ok": false,
+        "classification": "malformed_policy"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "malformed_policy"
+        ]
+      }
+    },
+    {
+      "name": "PF1 policy rejects credential_operation classification",
+      "ok": true,
+      "expected": {
+        "ok": false,
+        "classification": "malformed_policy"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "malformed_policy"
+        ]
+      }
+    },
+    {
+      "name": "PF1 policy rejects unknown command classification",
+      "ok": true,
+      "expected": {
+        "ok": false,
+        "classification": "malformed_policy"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "malformed_policy"
+        ]
+      }
+    },
+    {
+      "name": "PF1 direct unsafe policy cannot allow curl POST external mutation classification",
+      "ok": true,
+      "expected": {
+        "status": "blocked",
+        "classification": "destructive_command"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "destructive_command"
+        ]
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "PF2 policy rejects removing mandatory protected path floor",
+      "ok": true,
+      "expected": {
+        "ok": false,
+        "classification": "malformed_policy"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "malformed_policy"
+        ]
+      }
+    },
+    {
+      "name": "PF2 direct unsafe policy cannot allow root package manifest target",
+      "ok": true,
+      "expected": {
+        "status": "blocked",
+        "classification": "unsafe_command_target"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "unsafe_command_target"
+        ]
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "original F1 terminal traversal segment safe/.. blocks",
+      "ok": true,
+      "expected": {
+        "status": "blocked",
+        "classification": "unsafe_command_target"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "unsafe_command_target"
+        ]
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "original F1 Windows drive absolute C:/ blocks",
+      "ok": true,
+      "expected": {
+        "status": "blocked",
+        "classification": "unsafe_command_target"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "unsafe_command_target"
+        ]
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "original F2 missing command blocks",
+      "ok": true,
+      "expected": {
+        "status": "blocked",
+        "classification": "unknown_request_field"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "unknown_request_field"
+        ]
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "original F2 argv string blocks",
+      "ok": true,
+      "expected": {
+        "status": "blocked",
+        "classification": "unknown_request_field"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "unknown_request_field"
+        ]
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "original F2 targetPaths string blocks",
+      "ok": true,
+      "expected": {
+        "status": "blocked",
+        "classification": "unknown_request_field"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "unknown_request_field"
+        ]
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "original F3 policy rejects invented command classification",
+      "ok": true,
+      "expected": {
+        "status": "blocked",
+        "classification": "malformed_policy"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "malformed_policy"
+        ]
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "original F3 policy rejects fake sandbox status",
+      "ok": true,
+      "expected": {
+        "ok": false,
+        "classification": "malformed_policy"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "malformed_policy"
+        ]
+      }
+    },
+    {
+      "name": "original F4 blocked/pending-live sandbox blocks",
+      "ok": true,
+      "expected": {
+        "status": "blocked",
+        "classification": "unsupported_sandbox_claim"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "unsupported_sandbox_claim"
+        ]
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "original F5 secret inside config array blocks",
+      "ok": true,
+      "expected": {
+        "status": "blocked",
+        "classification": "secret_like_value"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "secret_like_value"
+        ]
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "original F6 circular evidence blocks without throw",
+      "ok": true,
+      "expected": {
+        "status": "blocked",
+        "classification": "evidence_secret_leak"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "evidence_secret_leak"
+        ]
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "original F6 BigInt evidence blocks without throw",
+      "ok": true,
+      "expected": {
+        "status": "blocked",
+        "classification": "evidence_secret_leak"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "evidence_secret_leak"
+        ]
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "malformed policy non-object blocks",
+      "ok": true,
+      "expected": {
+        "ok": false,
+        "classification": "malformed_policy"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "malformed_policy"
+        ]
+      }
+    },
+    {
+      "name": "absent schema policy object blocks",
+      "ok": true,
+      "expected": {
+        "ok": false,
+        "classification": "malformed_policy"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "malformed_policy"
+        ]
+      }
+    },
+    {
+      "name": "unknown policy version blocks",
+      "ok": true,
+      "expected": {
+        "ok": false,
+        "classification": "unsupported_policy_version"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "unsupported_policy_version"
+        ]
+      }
+    },
+    {
+      "name": "unknown policy field blocks",
+      "ok": true,
+      "expected": {
+        "ok": false,
+        "classification": "unknown_policy_field"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "unknown_policy_field"
+        ]
+      }
+    },
+    {
+      "name": "unsafe defaultDecision allow blocks",
+      "ok": true,
+      "expected": {
+        "ok": false,
+        "classification": "malformed_policy"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "malformed_policy"
+        ]
+      }
+    },
+    {
+      "name": "unsafe allowProductionCredentials true blocks",
+      "ok": true,
+      "expected": {
+        "ok": false,
+        "classification": "production_credential_or_default"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "production_credential_or_default"
+        ]
+      }
+    },
+    {
+      "name": "unsafe external enabled mode policy blocks",
+      "ok": true,
+      "expected": {
+        "ok": false,
+        "classification": "malformed_policy"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "malformed_policy"
+        ]
+      }
+    },
+    {
+      "name": "unsafe advisory classification policy blocks",
+      "ok": true,
+      "expected": {
+        "ok": false,
+        "classification": "malformed_policy"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "malformed_policy"
+        ]
+      }
+    },
+    {
+      "name": "unknown top-level request field blocks",
+      "ok": true,
+      "expected": {
+        "status": "blocked",
+        "classification": "unknown_request_field"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "unknown_request_field"
+        ]
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "unknown command request field blocks",
+      "ok": true,
+      "expected": {
+        "status": "blocked",
+        "classification": "unknown_request_field"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "unknown_request_field"
+        ]
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "secret-like CLI argv value blocks and redacts",
+      "ok": true,
+      "expected": {
+        "status": "blocked",
+        "classification": "secret_like_value"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "secret_like_value",
+          "secret_like_value"
+        ]
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "rm -rf destructive command blocks",
+      "ok": true,
+      "expected": {
+        "status": "blocked",
+        "classification": "destructive_command"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "destructive_command",
+          "destructive_command",
+          "unsafe_command_target"
+        ]
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "force push repository-state operation blocks",
+      "ok": true,
+      "expected": {
+        "status": "blocked",
+        "classification": "destructive_command"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "destructive_command",
+          "destructive_command"
+        ]
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "deploy/apply primitive blocks",
+      "ok": true,
+      "expected": {
+        "status": "blocked",
+        "classification": "destructive_command"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "destructive_command",
+          "destructive_command"
+        ]
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "publish primitive blocks",
+      "ok": true,
+      "expected": {
+        "status": "blocked",
+        "classification": "destructive_command"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "destructive_command",
+          "destructive_command"
+        ]
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "DB destructive operation blocks",
+      "ok": true,
+      "expected": {
+        "status": "blocked",
+        "classification": "destructive_command"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "destructive_command",
+          "destructive_command"
+        ]
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "network external mutation classification blocks without unsafe policy",
+      "ok": true,
+      "expected": {
+        "status": "blocked",
+        "classification": "destructive_command"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "destructive_command"
+        ]
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "credential operation classification blocks",
+      "ok": true,
+      "expected": {
+        "status": "blocked",
+        "classification": "destructive_command"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "destructive_command"
+        ]
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "unknown command classification blocks",
+      "ok": true,
+      "expected": {
+        "status": "blocked",
+        "classification": "destructive_command"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "destructive_command"
+        ]
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "malformed command classification blocks",
+      "ok": true,
+      "expected": {
+        "status": "blocked",
+        "classification": "unknown_request_field"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "destructive_command",
+          "unknown_request_field"
+        ]
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "path escape ../outside blocks",
+      "ok": true,
+      "expected": {
+        "status": "blocked",
+        "classification": "unsafe_command_target"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "unsafe_command_target"
+        ]
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "POSIX absolute path blocks",
+      "ok": true,
+      "expected": {
+        "status": "blocked",
+        "classification": "unsafe_command_target"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "unsafe_command_target"
+        ]
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "UNC path blocks",
+      "ok": true,
+      "expected": {
+        "status": "blocked",
+        "classification": "unsafe_command_target"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "unsafe_command_target"
+        ]
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "tilde home path blocks",
+      "ok": true,
+      "expected": {
+        "status": "blocked",
+        "classification": "unsafe_command_target"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "unsafe_command_target"
+        ]
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "root package manifest target blocks",
+      "ok": true,
+      "expected": {
+        "status": "blocked",
+        "classification": "unsafe_command_target"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "unsafe_command_target"
+        ]
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "root lockfile target blocks",
+      "ok": true,
+      "expected": {
+        "status": "blocked",
+        "classification": "unsafe_command_target"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "unsafe_command_target"
+        ]
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "CLI entry protected path target blocks",
+      "ok": true,
+      "expected": {
+        "status": "blocked",
+        "classification": "unsafe_command_target"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "unsafe_command_target"
+        ]
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "secret-like env var blocks",
+      "ok": true,
+      "expected": {
+        "status": "blocked",
+        "classification": "secret_like_value"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "secret_like_value"
+        ]
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "secret-like config value blocks",
+      "ok": true,
+      "expected": {
+        "status": "blocked",
+        "classification": "secret_like_value"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "secret_like_value"
+        ]
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "production env default blocks",
+      "ok": true,
+      "expected": {
+        "status": "blocked",
+        "classification": "production_credential_or_default"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "production_credential_or_default"
+        ]
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "production-like endpoint blocks",
+      "ok": true,
+      "expected": {
+        "status": "blocked",
+        "classification": "production_credential_or_default"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "production_credential_or_default"
+        ]
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "unsafe external integration enabled config default blocks",
+      "ok": true,
+      "expected": {
+        "status": "blocked",
+        "classification": "unsafe_env_default"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "unsafe_env_default"
+        ]
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "circular env/config blocks without throw",
+      "ok": true,
+      "expected": {
+        "status": "blocked",
+        "classification": "unsafe_config_default"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "unsafe_config_default"
+        ]
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "BigInt env/config blocks without throw",
+      "ok": true,
+      "expected": {
+        "status": "blocked",
+        "classification": "unsafe_config_default"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "unsafe_config_default"
+        ]
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "large env/config array blocks at item cap",
+      "ok": true,
+      "expected": {
+        "status": "blocked",
+        "classification": "unsafe_config_default"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "unsafe_config_default"
+        ]
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "external integrations non-array blocks",
+      "ok": true,
+      "expected": {
+        "status": "blocked",
+        "classification": "unsafe_external_integration"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "unsafe_external_integration"
+        ]
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "external integration non-object entry blocks",
+      "ok": true,
+      "expected": {
+        "status": "blocked",
+        "classification": "unsafe_external_integration"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "unsafe_external_integration"
+        ]
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "PF3 external string booleans block",
+      "ok": true,
+      "expected": {
+        "status": "blocked",
+        "classification": "unknown_request_field"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "unknown_request_field",
+          "unknown_request_field",
+          "unknown_request_field",
+          "unknown_request_field",
+          "unknown_request_field",
+          "unknown_request_field"
+        ]
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "external malformed id type blocks",
+      "ok": true,
+      "expected": {
+        "status": "blocked",
+        "classification": "unknown_request_field"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "unknown_request_field"
+        ]
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "external malformed mode type blocks",
+      "ok": true,
+      "expected": {
+        "status": "blocked",
+        "classification": "unknown_request_field"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "unknown_request_field"
+        ]
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "external unknown field blocks",
+      "ok": true,
+      "expected": {
+        "status": "blocked",
+        "classification": "unknown_request_field"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "unknown_request_field"
+        ]
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "external enabled live credential/budget/network blocks",
+      "ok": true,
+      "expected": {
+        "status": "blocked",
+        "classification": "unsafe_external_integration"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "unsafe_external_integration",
+          "unsafe_external_integration"
+        ]
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "external mutation with explicitApproval still blocks in I-18A default",
+      "ok": true,
+      "expected": {
+        "status": "blocked",
+        "classification": "unsafe_external_integration"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "unsafe_external_integration"
+        ]
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "sandbox proven well-formed passes",
+      "ok": true,
+      "expected": {
+        "status": "passed"
+      },
+      "actual": {
+        "status": "passed",
+        "decision": "allow",
+        "blocking": false,
+        "classifications": []
+      }
+    },
+    {
+      "name": "sandbox not_provided well-formed passes as honest non-claim",
+      "ok": true,
+      "expected": {
+        "status": "passed"
+      },
+      "actual": {
+        "status": "passed",
+        "decision": "allow",
+        "blocking": false,
+        "classifications": []
+      }
+    },
+    {
+      "name": "PF4 malformed sandbox provider/claim types block even with unknown status",
+      "ok": true,
+      "expected": {
+        "status": "blocked",
+        "classification": "unknown_request_field"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "unknown_request_field",
+          "unknown_request_field"
+        ]
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "sandbox malformed status type blocks",
+      "ok": true,
+      "expected": {
+        "status": "blocked",
+        "classification": "unknown_request_field"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "unknown_request_field",
+          "unsupported_sandbox_claim"
+        ]
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "sandbox unknown field blocks",
+      "ok": true,
+      "expected": {
+        "status": "blocked",
+        "classification": "unknown_request_field"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "unknown_request_field"
+        ]
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "sandbox fake status blocks",
+      "ok": true,
+      "expected": {
+        "status": "blocked",
+        "classification": "unsupported_sandbox_claim"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "unsupported_sandbox_claim"
+        ]
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "redaction/audit surfaces with secret payload block and redact",
+      "ok": true,
+      "expected": {
+        "status": "blocked",
+        "classification": "evidence_secret_leak"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "evidence_secret_leak"
+        ]
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "redactSecurityValue circular audit/details does not throw and redacts",
+      "ok": true,
+      "actual": {
+        "self": "<redacted:circular-reference>",
+        "token": "<redacted>"
+      }
+    },
+    {
+      "name": "createSecurityAuditEvent circular details does not throw and redacts",
+      "ok": true,
+      "actual": "<schema-object>"
+    },
+    {
+      "name": "large evidence string blocks and truncates",
+      "ok": true,
+      "expected": {
+        "status": "blocked",
+        "classification": "evidence_secret_leak"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "evidence_secret_leak"
+        ]
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "large evidence array blocks and truncates",
+      "ok": true,
+      "expected": {
+        "status": "blocked",
+        "classification": "evidence_secret_leak"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "evidence_secret_leak"
+        ]
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "large evidence object blocks and truncates",
+      "ok": true,
+      "expected": {
+        "status": "blocked",
+        "classification": "evidence_secret_leak"
+      },
+      "actual": {
+        "status": "blocked",
+        "decision": "block",
+        "blocking": true,
+        "classifications": [
+          "evidence_secret_leak"
+        ]
+      },
+      "redactionOk": true
+    },
+    {
+      "name": "redactSecurityText removes fake secret sentinel",
+      "ok": true,
+      "actual": "token=<redacted> Bearer <redacted>"
+    }
+  ]
+}

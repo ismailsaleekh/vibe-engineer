@@ -1,0 +1,14 @@
+140:const COMMAND_CARRIER_MAX_TOKENS = 512;
+141:const COMMAND_CARRIER_MAX_TOKEN_LENGTH = 16_384;
+293:function parseCommandCarrierFlag(value) {
+306:function createCommandCarrierTokenStream(command, argv) {
+311:    if (tokens.length >= COMMAND_CARRIER_MAX_TOKENS) {
+315:    if (value.length > COMMAND_CARRIER_MAX_TOKEN_LENGTH) {
+317:      tokens.push({ location, value: value.slice(0, COMMAND_CARRIER_MAX_TOKEN_LENGTH), carrier });
+330:function scanCommandCarrierSecretFindings(tokens) {
+335:    const flag = parseCommandCarrierFlag(token.value);
+339:      const nextFlag = nextToken ? parseCommandCarrierFlag(nextToken.value) : null;
+567:  const commandCarrier = createCommandCarrierTokenStream(command, argv);
+568:  if (commandCarrier.truncated) {
+569:    findings.push(createMalformedRequestFinding('Command carrier exceeds supported token or token-length bounds.', 'command', { maxTokens: COMMAND_CARRIER_MAX_TOKENS, maxTokenLength: COMMAND_CARRIER_MAX_TOKEN_LENGTH }));
+571:  findings.push(...scanCommandCarrierSecretFindings(commandCarrier.tokens));

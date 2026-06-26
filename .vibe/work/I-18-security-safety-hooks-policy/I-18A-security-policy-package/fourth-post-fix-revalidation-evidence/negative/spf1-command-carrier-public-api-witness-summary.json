@@ -1,0 +1,367 @@
+{
+  "ok": true,
+  "contexts": [
+    {
+      "contextName": "packages/security",
+      "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+      "checks": [
+        {
+          "label": "packages/security: embedded api-key flag without argv",
+          "status": "blocked",
+          "decision": "block",
+          "classifications": [
+            "secret_like_value"
+          ],
+          "findingCount": 1
+        },
+        {
+          "label": "packages/security: embedded api-key flag split value",
+          "status": "blocked",
+          "decision": "block",
+          "classifications": [
+            "secret_like_value"
+          ],
+          "findingCount": 1
+        },
+        {
+          "label": "packages/security: embedded client-secret flag split value",
+          "status": "blocked",
+          "decision": "block",
+          "classifications": [
+            "secret_like_value"
+          ],
+          "findingCount": 1
+        },
+        {
+          "label": "packages/security: embedded token flag without argv",
+          "status": "blocked",
+          "decision": "block",
+          "classifications": [
+            "secret_like_value"
+          ],
+          "findingCount": 1
+        },
+        {
+          "label": "packages/security: embedded token flag split value",
+          "status": "blocked",
+          "decision": "block",
+          "classifications": [
+            "secret_like_value"
+          ],
+          "findingCount": 1
+        },
+        {
+          "label": "packages/security: embedded api-key inline equals",
+          "status": "blocked",
+          "decision": "block",
+          "classifications": [
+            "secret_like_value"
+          ],
+          "findingCount": 1
+        },
+        {
+          "label": "packages/security: embedded client-secret inline equals",
+          "status": "blocked",
+          "decision": "block",
+          "classifications": [
+            "secret_like_value"
+          ],
+          "findingCount": 1
+        },
+        {
+          "label": "packages/security: argv api-key flag without value",
+          "status": "blocked",
+          "decision": "block",
+          "classifications": [
+            "secret_like_value"
+          ],
+          "findingCount": 1
+        },
+        {
+          "label": "packages/security: argv api-key adjacent value",
+          "status": "blocked",
+          "decision": "block",
+          "classifications": [
+            "secret_like_value"
+          ],
+          "findingCount": 1
+        },
+        {
+          "label": "packages/security: argv client-secret adjacent value",
+          "status": "blocked",
+          "decision": "block",
+          "classifications": [
+            "secret_like_value"
+          ],
+          "findingCount": 1
+        },
+        {
+          "label": "packages/security: embedded api-key inline colon",
+          "status": "blocked",
+          "decision": "block",
+          "classifications": [
+            "secret_like_value"
+          ],
+          "findingCount": 1
+        },
+        {
+          "label": "packages/security: argv token inline colon",
+          "status": "blocked",
+          "decision": "block",
+          "classifications": [
+            "secret_like_value"
+          ],
+          "findingCount": 1
+        },
+        {
+          "label": "packages/security: positive safe read-only carrier",
+          "status": "passed",
+          "decision": "allow",
+          "classifications": [],
+          "findingCount": 0
+        }
+      ],
+      "fixtureChecks": [
+        {
+          "file": "argv-adjacent-api-key.json",
+          "label": "packages/security: fixture argv-adjacent-api-key.json",
+          "status": "blocked",
+          "decision": "block",
+          "classifications": [
+            "secret_like_value"
+          ],
+          "findingCount": 1
+        },
+        {
+          "file": "embedded-api-key-flag.json",
+          "label": "packages/security: fixture embedded-api-key-flag.json",
+          "status": "blocked",
+          "decision": "block",
+          "classifications": [
+            "secret_like_value"
+          ],
+          "findingCount": 1
+        },
+        {
+          "file": "embedded-api-key-inline.json",
+          "label": "packages/security: fixture embedded-api-key-inline.json",
+          "status": "blocked",
+          "decision": "block",
+          "classifications": [
+            "secret_like_value"
+          ],
+          "findingCount": 1
+        },
+        {
+          "file": "positive-safe-argv.json",
+          "label": "packages/security: fixture positive-safe-argv.json",
+          "status": "passed",
+          "decision": "allow",
+          "classifications": [],
+          "findingCount": 0
+        },
+        {
+          "file": "split-api-key-value.json",
+          "label": "packages/security: fixture split-api-key-value.json",
+          "status": "blocked",
+          "decision": "block",
+          "classifications": [
+            "secret_like_value"
+          ],
+          "findingCount": 1
+        },
+        {
+          "file": "split-client-secret-value.json",
+          "label": "packages/security: fixture split-client-secret-value.json",
+          "status": "blocked",
+          "decision": "block",
+          "classifications": [
+            "secret_like_value"
+          ],
+          "findingCount": 1
+        }
+      ]
+    },
+    {
+      "contextName": "packages/cli",
+      "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+      "checks": [
+        {
+          "label": "packages/cli: embedded api-key flag without argv",
+          "status": "blocked",
+          "decision": "block",
+          "classifications": [
+            "secret_like_value"
+          ],
+          "findingCount": 1
+        },
+        {
+          "label": "packages/cli: embedded api-key flag split value",
+          "status": "blocked",
+          "decision": "block",
+          "classifications": [
+            "secret_like_value"
+          ],
+          "findingCount": 1
+        },
+        {
+          "label": "packages/cli: embedded client-secret flag split value",
+          "status": "blocked",
+          "decision": "block",
+          "classifications": [
+            "secret_like_value"
+          ],
+          "findingCount": 1
+        },
+        {
+          "label": "packages/cli: embedded token flag without argv",
+          "status": "blocked",
+          "decision": "block",
+          "classifications": [
+            "secret_like_value"
+          ],
+          "findingCount": 1
+        },
+        {
+          "label": "packages/cli: embedded token flag split value",
+          "status": "blocked",
+          "decision": "block",
+          "classifications": [
+            "secret_like_value"
+          ],
+          "findingCount": 1
+        },
+        {
+          "label": "packages/cli: embedded api-key inline equals",
+          "status": "blocked",
+          "decision": "block",
+          "classifications": [
+            "secret_like_value"
+          ],
+          "findingCount": 1
+        },
+        {
+          "label": "packages/cli: embedded client-secret inline equals",
+          "status": "blocked",
+          "decision": "block",
+          "classifications": [
+            "secret_like_value"
+          ],
+          "findingCount": 1
+        },
+        {
+          "label": "packages/cli: argv api-key flag without value",
+          "status": "blocked",
+          "decision": "block",
+          "classifications": [
+            "secret_like_value"
+          ],
+          "findingCount": 1
+        },
+        {
+          "label": "packages/cli: argv api-key adjacent value",
+          "status": "blocked",
+          "decision": "block",
+          "classifications": [
+            "secret_like_value"
+          ],
+          "findingCount": 1
+        },
+        {
+          "label": "packages/cli: argv client-secret adjacent value",
+          "status": "blocked",
+          "decision": "block",
+          "classifications": [
+            "secret_like_value"
+          ],
+          "findingCount": 1
+        },
+        {
+          "label": "packages/cli: embedded api-key inline colon",
+          "status": "blocked",
+          "decision": "block",
+          "classifications": [
+            "secret_like_value"
+          ],
+          "findingCount": 1
+        },
+        {
+          "label": "packages/cli: argv token inline colon",
+          "status": "blocked",
+          "decision": "block",
+          "classifications": [
+            "secret_like_value"
+          ],
+          "findingCount": 1
+        },
+        {
+          "label": "packages/cli: positive safe read-only carrier",
+          "status": "passed",
+          "decision": "allow",
+          "classifications": [],
+          "findingCount": 0
+        }
+      ],
+      "fixtureChecks": [
+        {
+          "file": "argv-adjacent-api-key.json",
+          "label": "packages/cli: fixture argv-adjacent-api-key.json",
+          "status": "blocked",
+          "decision": "block",
+          "classifications": [
+            "secret_like_value"
+          ],
+          "findingCount": 1
+        },
+        {
+          "file": "embedded-api-key-flag.json",
+          "label": "packages/cli: fixture embedded-api-key-flag.json",
+          "status": "blocked",
+          "decision": "block",
+          "classifications": [
+            "secret_like_value"
+          ],
+          "findingCount": 1
+        },
+        {
+          "file": "embedded-api-key-inline.json",
+          "label": "packages/cli: fixture embedded-api-key-inline.json",
+          "status": "blocked",
+          "decision": "block",
+          "classifications": [
+            "secret_like_value"
+          ],
+          "findingCount": 1
+        },
+        {
+          "file": "positive-safe-argv.json",
+          "label": "packages/cli: fixture positive-safe-argv.json",
+          "status": "passed",
+          "decision": "allow",
+          "classifications": [],
+          "findingCount": 0
+        },
+        {
+          "file": "split-api-key-value.json",
+          "label": "packages/cli: fixture split-api-key-value.json",
+          "status": "blocked",
+          "decision": "block",
+          "classifications": [
+            "secret_like_value"
+          ],
+          "findingCount": 1
+        },
+        {
+          "file": "split-client-secret-value.json",
+          "label": "packages/cli: fixture split-client-secret-value.json",
+          "status": "blocked",
+          "decision": "block",
+          "classifications": [
+            "secret_like_value"
+          ],
+          "findingCount": 1
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "ok": false,
+  "total": 74,
+  "failureCount": 8,
+  "failures": [
+    "negative: unsafe command mutation classification policy rejects",
+    "negative: unsafe command credential classification policy rejects",
+    "negative: unsafe command unknown classification policy rejects",
+    "negative: unsafe policy may not remove required protected paths",
+    "negative: external mutating command remains blocked even under unsafe custom command policy",
+    "negative: protected package manifest target remains blocked even under unsafe path policy",
+    "negative: malformed external boolean strings fail closed",
+    "negative: malformed sandbox provider/claim types fail closed"
+  ]
+}

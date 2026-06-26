@@ -1,0 +1,14 @@
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
++ actual - expected
+
++ 'failure'
+- 'success'
+
+    at main (file:///Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/commands/security/run-verify-security-hook-witness.mjs:162:10) {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: 'failure',
+  expected: 'success',
+  operator: 'strictEqual',
+  diff: 'simple'
+}

@@ -1,0 +1,12 @@
+## load-bearing source function/constant lines
+108:const MANDATORY_PROTECTED_PATH_PREFIXES = Object.freeze(['/', '~', '.git', '../', '..', 'packages/cli/src/entry', 'packages/cli/src/command-loader', 'pnpm-lock.yaml', 'package.json']);
+134:  protectedPathPrefixes: MANDATORY_PROTECTED_PATH_PREFIXES,
+177:export function redactSecurityText(text) {
+319:export function parseSecurityPolicy(input = DEFAULT_SECURITY_POLICY) {
+351:  for (const requiredPrefix of MANDATORY_PROTECTED_PATH_PREFIXES) {
+437:export function evaluateCommandSafety(commandInput, policy = DEFAULT_SECURITY_POLICY) {
+505:function isUnsafePathTarget(targetPath, policy) {
+515:  const protectedPrefixes = [...new Set([...MANDATORY_PROTECTED_PATH_PREFIXES, ...policyPrefixes])];
+593:export function evaluateExternalIntegrationSafety(integrationsInput, policy = DEFAULT_SECURITY_POLICY) {
+634:export function evaluateSandboxCapability(sandboxInput, policy = DEFAULT_SECURITY_POLICY) {
+664:export function evaluateEvidenceSafety(evidenceInput) {

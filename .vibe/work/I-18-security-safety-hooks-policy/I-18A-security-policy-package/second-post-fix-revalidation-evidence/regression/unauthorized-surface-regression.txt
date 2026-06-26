@@ -1,0 +1,18 @@
+## manifests and lockfile carrier
+{
+  "ok": true,
+  "checks": {
+    "cliSecurityDependency": true,
+    "securityExport": true,
+    "lockImporterLink": true,
+    "symlink": true,
+    "symlinkRealpath": true
+  },
+  "linkRealpath": "/Users/lizavasilyeva/work/vibe-engineer/packages/security"
+}
+## unauthorized path existence checks
+absent packages/cli/src/commands/security
+absent examples/starter-reference/generated-fixtures/security
+absent .github
+absent scripts
+absent infra

@@ -1,0 +1,435 @@
+[
+  {
+    "name": "secret-like CLI argument",
+    "status": "blocked",
+    "decision": "block",
+    "classifications": [
+      "secret_like_value",
+      "secret_like_value"
+    ]
+  },
+  {
+    "name": "secret-like CLI data embedded in command string",
+    "status": "blocked",
+    "decision": "block",
+    "classifications": [
+      "secret_like_value",
+      "secret_like_value"
+    ]
+  },
+  {
+    "name": "embedded secret flag in command string without value",
+    "status": "blocked",
+    "decision": "block",
+    "classifications": [
+      "secret_like_value"
+    ]
+  },
+  {
+    "name": "split secret flag value across command and argv",
+    "status": "blocked",
+    "decision": "block",
+    "classifications": [
+      "secret_like_value"
+    ]
+  },
+  {
+    "name": "split client secret flag value across command and argv",
+    "status": "blocked",
+    "decision": "block",
+    "classifications": [
+      "secret_like_value"
+    ]
+  },
+  {
+    "name": "quoted embedded secret flag in command string without value",
+    "status": "blocked",
+    "decision": "block",
+    "classifications": [
+      "secret_like_value"
+    ]
+  },
+  {
+    "name": "quoted split secret flag value across command and argv",
+    "status": "blocked",
+    "decision": "block",
+    "classifications": [
+      "secret_like_value"
+    ]
+  },
+  {
+    "name": "malformed unterminated quoted secret flag in command string",
+    "status": "blocked",
+    "decision": "block",
+    "classifications": [
+      "secret_like_value",
+      "unknown_request_field"
+    ]
+  },
+  {
+    "name": "secret-like env var",
+    "status": "blocked",
+    "decision": "block",
+    "classifications": [
+      "secret_like_value"
+    ]
+  },
+  {
+    "name": "secret-like config value",
+    "status": "blocked",
+    "decision": "block",
+    "classifications": [
+      "secret_like_value"
+    ]
+  },
+  {
+    "name": "secret-like evidence field",
+    "status": "blocked",
+    "decision": "block",
+    "classifications": [
+      "evidence_secret_leak"
+    ]
+  },
+  {
+    "name": "secret-like diagnostic detail",
+    "status": "blocked",
+    "decision": "block",
+    "classifications": [
+      "evidence_secret_leak"
+    ]
+  },
+  {
+    "name": "production credential/default",
+    "status": "blocked",
+    "decision": "block",
+    "classifications": [
+      "production_credential_or_default",
+      "secret_like_value"
+    ]
+  },
+  {
+    "name": "rm rf destructive",
+    "status": "blocked",
+    "decision": "block",
+    "classifications": [
+      "destructive_command",
+      "destructive_command",
+      "unsafe_command_target"
+    ]
+  },
+  {
+    "name": "force push destructive",
+    "status": "blocked",
+    "decision": "block",
+    "classifications": [
+      "destructive_command",
+      "destructive_command"
+    ]
+  },
+  {
+    "name": "deploy primitive destructive",
+    "status": "blocked",
+    "decision": "block",
+    "classifications": [
+      "destructive_command",
+      "destructive_command"
+    ]
+  },
+  {
+    "name": "publish primitive destructive",
+    "status": "blocked",
+    "decision": "block",
+    "classifications": [
+      "destructive_command",
+      "destructive_command"
+    ]
+  },
+  {
+    "name": "db destructive operation",
+    "status": "blocked",
+    "decision": "block",
+    "classifications": [
+      "destructive_command",
+      "destructive_command"
+    ]
+  },
+  {
+    "name": "protected root target",
+    "status": "blocked",
+    "decision": "block",
+    "classifications": [
+      "unsafe_command_target"
+    ]
+  },
+  {
+    "name": "path escape target",
+    "status": "blocked",
+    "decision": "block",
+    "classifications": [
+      "unsafe_command_target"
+    ]
+  },
+  {
+    "name": "terminal traversal segment target",
+    "status": "blocked",
+    "decision": "block",
+    "classifications": [
+      "unsafe_command_target"
+    ]
+  },
+  {
+    "name": "windows drive absolute target",
+    "status": "blocked",
+    "decision": "block",
+    "classifications": [
+      "unsafe_command_target"
+    ]
+  },
+  {
+    "name": "windows drive relative target",
+    "status": "blocked",
+    "decision": "block",
+    "classifications": [
+      "unsafe_command_target"
+    ]
+  },
+  {
+    "name": "windows drive traversal target",
+    "status": "blocked",
+    "decision": "block",
+    "classifications": [
+      "unsafe_command_target"
+    ]
+  },
+  {
+    "name": "windows drive slash absolute target",
+    "status": "blocked",
+    "decision": "block",
+    "classifications": [
+      "unsafe_command_target"
+    ]
+  },
+  {
+    "name": "UNC network slash target",
+    "status": "blocked",
+    "decision": "block",
+    "classifications": [
+      "unsafe_command_target"
+    ]
+  },
+  {
+    "name": "UNC network backslash target",
+    "status": "blocked",
+    "decision": "block",
+    "classifications": [
+      "unsafe_command_target"
+    ]
+  },
+  {
+    "name": "tilde home target",
+    "status": "blocked",
+    "decision": "block",
+    "classifications": [
+      "unsafe_command_target"
+    ]
+  },
+  {
+    "name": "tilde user target",
+    "status": "blocked",
+    "decision": "block",
+    "classifications": [
+      "unsafe_command_target"
+    ]
+  },
+  {
+    "name": "dot-slash package manifest alias target",
+    "status": "blocked",
+    "decision": "block",
+    "classifications": [
+      "unsafe_command_target"
+    ]
+  },
+  {
+    "name": "dot-slash git alias target",
+    "status": "blocked",
+    "decision": "block",
+    "classifications": [
+      "unsafe_command_target"
+    ]
+  },
+  {
+    "name": "protected package manifest target",
+    "status": "blocked",
+    "decision": "block",
+    "classifications": [
+      "unsafe_command_target"
+    ]
+  },
+  {
+    "name": "protected workspace manifest target",
+    "status": "blocked",
+    "decision": "block",
+    "classifications": [
+      "unsafe_command_target"
+    ]
+  },
+  {
+    "name": "protected turbo config target",
+    "status": "blocked",
+    "decision": "block",
+    "classifications": [
+      "unsafe_command_target"
+    ]
+  },
+  {
+    "name": "protected root npm config target",
+    "status": "blocked",
+    "decision": "block",
+    "classifications": [
+      "unsafe_command_target"
+    ]
+  },
+  {
+    "name": "protected root tsconfig target",
+    "status": "blocked",
+    "decision": "block",
+    "classifications": [
+      "unsafe_command_target"
+    ]
+  },
+  {
+    "name": "protected CLI package manifest target",
+    "status": "blocked",
+    "decision": "block",
+    "classifications": [
+      "unsafe_command_target"
+    ]
+  },
+  {
+    "name": "protected security package manifest target",
+    "status": "blocked",
+    "decision": "block",
+    "classifications": [
+      "unsafe_command_target"
+    ]
+  },
+  {
+    "name": "protected CLI loader target",
+    "status": "blocked",
+    "decision": "block",
+    "classifications": [
+      "unsafe_command_target"
+    ]
+  },
+  {
+    "name": "protected package manifest target under unsafe direct policy object",
+    "status": "blocked",
+    "decision": "block",
+    "classifications": [
+      "unsafe_command_target"
+    ]
+  },
+  {
+    "name": "external mutation classification under unsafe direct policy object",
+    "status": "blocked",
+    "decision": "block",
+    "classifications": [
+      "destructive_command"
+    ]
+  },
+  {
+    "name": "malformed command missing command",
+    "status": "blocked",
+    "decision": "block",
+    "classifications": [
+      "unknown_request_field"
+    ]
+  },
+  {
+    "name": "malformed argv string",
+    "status": "blocked",
+    "decision": "block",
+    "classifications": [
+      "unknown_request_field"
+    ]
+  },
+  {
+    "name": "malformed targetPaths string",
+    "status": "blocked",
+    "decision": "block",
+    "classifications": [
+      "unknown_request_field"
+    ]
+  },
+  {
+    "name": "unsafe env default production",
+    "status": "blocked",
+    "decision": "block",
+    "classifications": [
+      "production_credential_or_default"
+    ]
+  },
+  {
+    "name": "missing confirmation external enabled default",
+    "status": "blocked",
+    "decision": "block",
+    "classifications": [
+      "unsafe_env_default"
+    ]
+  },
+  {
+    "name": "secret inside config array",
+    "status": "blocked",
+    "decision": "block",
+    "classifications": [
+      "secret_like_value"
+    ]
+  },
+  {
+    "name": "live credential/budget/network external",
+    "status": "blocked",
+    "decision": "block",
+    "classifications": [
+      "unsafe_external_integration",
+      "unsafe_external_integration"
+    ]
+  },
+  {
+    "name": "malformed external boolean strings",
+    "status": "blocked",
+    "decision": "block",
+    "classifications": [
+      "unknown_request_field",
+      "unknown_request_field",
+      "unknown_request_field",
+      "unknown_request_field",
+      "unknown_request_field",
+      "unknown_request_field"
+    ]
+  },
+  {
+    "name": "unsupported fake sandbox claim",
+    "status": "blocked",
+    "decision": "block",
+    "classifications": [
+      "unsupported_sandbox_claim"
+    ]
+  },
+  {
+    "name": "malformed sandbox provider and claim types",
+    "status": "blocked",
+    "decision": "block",
+    "classifications": [
+      "unknown_request_field",
+      "unknown_request_field"
+    ]
+  },
+  {
+    "name": "blocked pending-live sandbox claim",
+    "status": "blocked",
+    "decision": "block",
+    "classifications": [
+      "unsupported_sandbox_claim"
+    ]
+  }
+]

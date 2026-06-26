@@ -1,0 +1,181 @@
+{
+  "ok": true,
+  "total": 22,
+  "rows": [
+    {
+      "name": "double-quoted embedded api-key flag without value",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "name": "single-quoted embedded api-key flag without value",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "name": "double-quoted embedded api-key flag split value",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "name": "single-quoted embedded client-secret flag split value",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "name": "quoted token flag without value",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "name": "quoted inline fake sentinel",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "name": "quoted colon fake sentinel",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "name": "escaped quote api-key flag",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "name": "escaped backslash before token flag",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value",
+        "unknown_request_field"
+      ]
+    },
+    {
+      "name": "unterminated double quote around api-key",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value",
+        "unknown_request_field"
+      ]
+    },
+    {
+      "name": "unterminated single quote around client-secret",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value",
+        "unknown_request_field"
+      ]
+    },
+    {
+      "name": "empty quoted token adjacent to secret-like flag",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "name": "over cap command token count",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unknown_request_field"
+      ]
+    },
+    {
+      "name": "unquoted embedded api-key regression",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "name": "unquoted split api-key regression",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "name": "unquoted split client-secret regression",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "name": "argv-only flag regression",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "name": "argv adjacent key value regression",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "name": "unquoted inline equals regression",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "name": "unquoted inline colon regression",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "name": "safe read-only local deterministic carrier",
+      "status": "passed",
+      "decision": "allow",
+      "classifications": []
+    },
+    {
+      "name": "safe quoted non-secret command argument",
+      "status": "passed",
+      "decision": "allow",
+      "classifications": []
+    }
+  ]
+}

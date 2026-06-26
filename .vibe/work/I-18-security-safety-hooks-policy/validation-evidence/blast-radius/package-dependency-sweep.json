@@ -1,0 +1,28 @@
+{
+  "ok": true,
+  "securityRefs": [
+    {
+      "file": "packages/cli/package.json",
+      "name": "vibe-engineer",
+      "dependencies": "workspace:*",
+      "devDependencies": null,
+      "peerDependencies": null
+    }
+  ],
+  "unexpectedSecurityRef": [],
+  "testingProdRefs": [
+    {
+      "file": "packages/mechanical-gates/fixtures/p0/testing-boundary/production-dependency/packages/consumer/package.json",
+      "name": "@fixture/consumer",
+      "dependency": "workspace:*"
+    }
+  ],
+  "unexpectedTestingProdRef": [],
+  "invalidJson": [
+    {
+      "file": "packages/mechanical-gates/fixtures/p0/testing-boundary/malformed-manifest/packages/consumer/package.json",
+      "code": "SyntaxError",
+      "message": "Unexpected end of JSON input"
+    }
+  ]
+}

@@ -1,0 +1,812 @@
+{
+  "ok": true,
+  "resolvedFromCli": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+  "resolvedFromSecurity": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+  "total": 74,
+  "failureCount": 0,
+  "failures": [],
+  "results": [
+    {
+      "name": "real-boundary: CLI package resolver resolves @vibe-engineer/security public API",
+      "ok": true,
+      "resolvedFromCli": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js"
+    },
+    {
+      "name": "real-boundary: security package self resolver resolves @vibe-engineer/security public API",
+      "ok": true,
+      "resolvedFromSecurity": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js"
+    },
+    {
+      "name": "public exports: required API names are exported",
+      "ok": true,
+      "exports": [
+        "CommandSafetyClassification",
+        "DEFAULT_SECURITY_POLICY",
+        "ExternalIntegrationMode",
+        "SECURITY_PACKAGE_VERSION",
+        "SECURITY_POLICY_VERSION",
+        "SandboxCapabilityStatus",
+        "SecurityCategory",
+        "SecurityClassification",
+        "SecurityDecision",
+        "SecurityGateStatus",
+        "SecuritySeverity",
+        "__i18aCliBoundarySmoke",
+        "createSecurityAuditEvent",
+        "createSecurityFinding",
+        "createSecurityGateResult",
+        "evaluateCommandSafety",
+        "evaluateEnvConfigSafety",
+        "evaluateEvidenceSafety",
+        "evaluateExternalIntegrationSafety",
+        "evaluateSandboxCapability",
+        "isSecretLikeValue",
+        "parseSecurityPolicy",
+        "redactSecurityText",
+        "redactSecurityValue",
+        "runSecurityGate"
+      ]
+    },
+    {
+      "name": "positive: local read-only command/env/config/external disabled/sandbox unknown passes with default policy",
+      "ok": true,
+      "status": "passed",
+      "decision": "allow",
+      "classifications": [],
+      "leakedSentinel": false
+    },
+    {
+      "name": "positive: dry-run external integration default passes without live credentials",
+      "ok": true,
+      "status": "passed",
+      "decision": "allow",
+      "classifications": [],
+      "leakedSentinel": false
+    },
+    {
+      "name": "positive: read-only external integration with network read passes without credentials or mutation",
+      "ok": true,
+      "status": "passed",
+      "decision": "allow",
+      "classifications": [],
+      "leakedSentinel": false
+    },
+    {
+      "name": "positive: advisory note is non-blocking advisory, not green pass",
+      "ok": true,
+      "status": "advisory",
+      "decision": "allow_with_advisory",
+      "classifications": [
+        "advisory_notice"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "negative: POSIX absolute path escape blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "unsafe_command_target",
+      "classifications": [
+        "unsafe_command_target"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "negative: protected root target blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "unsafe_command_target",
+      "classifications": [
+        "unsafe_command_target"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "negative: parent traversal target blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "unsafe_command_target",
+      "classifications": [
+        "unsafe_command_target"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "negative: terminal traversal safe/.. blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "unsafe_command_target",
+      "classifications": [
+        "unsafe_command_target"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "negative: nested traversal segment blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "unsafe_command_target",
+      "classifications": [
+        "unsafe_command_target"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "negative: Windows drive absolute path blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "unsafe_command_target",
+      "classifications": [
+        "unsafe_command_target"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "negative: UNC absolute path blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "unsafe_command_target",
+      "classifications": [
+        "unsafe_command_target"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "negative: tilde home target blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "unsafe_command_target",
+      "classifications": [
+        "unsafe_command_target"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "negative: protected .git target blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "unsafe_command_target",
+      "classifications": [
+        "unsafe_command_target"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "negative: protected package manifest target blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "unsafe_command_target",
+      "classifications": [
+        "unsafe_command_target"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "negative: protected CLI entry target blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "unsafe_command_target",
+      "classifications": [
+        "unsafe_command_target"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "negative: secret-like CLI argument blocks and redacts",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "secret_like_value",
+      "classifications": [
+        "secret_like_value",
+        "secret_like_value"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "negative: rm -rf destructive blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "destructive_command",
+      "classifications": [
+        "destructive_command",
+        "destructive_command"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "negative: force push destructive blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "destructive_command",
+      "classifications": [
+        "destructive_command",
+        "destructive_command"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "negative: deploy/apply destructive blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "destructive_command",
+      "classifications": [
+        "destructive_command",
+        "destructive_command"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "negative: publish destructive blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "destructive_command",
+      "classifications": [
+        "destructive_command",
+        "destructive_command"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "negative: DB destructive blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "destructive_command",
+      "classifications": [
+        "destructive_command",
+        "destructive_command"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "negative: malformed command missing command blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "unknown_request_field",
+      "classifications": [
+        "unknown_request_field"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "negative: malformed empty command blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "unknown_request_field",
+      "classifications": [
+        "unknown_request_field"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "negative: malformed argv string blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "unknown_request_field",
+      "classifications": [
+        "unknown_request_field"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "negative: malformed argv non-string array blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "unknown_request_field",
+      "classifications": [
+        "unknown_request_field"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "negative: malformed targetPaths string blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "unknown_request_field",
+      "classifications": [
+        "unknown_request_field"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "negative: malformed declaredWritePaths string blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "unknown_request_field",
+      "classifications": [
+        "unknown_request_field"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "negative: malformed workingDirectory type blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "unknown_request_field",
+      "classifications": [
+        "unknown_request_field"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "negative: unknown command field blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "unknown_request_field",
+      "classifications": [
+        "unknown_request_field"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "negative: unknown command classification blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "unknown_request_field",
+      "classifications": [
+        "destructive_command",
+        "unknown_request_field"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "negative: secret-like env var blocks and redacts",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "secret_like_value",
+      "classifications": [
+        "secret_like_value"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "negative: secret-like nested config value blocks and redacts",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "secret_like_value",
+      "classifications": [
+        "secret_like_value"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "negative: secret inside config array blocks and redacts",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "secret_like_value",
+      "classifications": [
+        "secret_like_value"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "negative: production env default blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "production_credential_or_default",
+      "classifications": [
+        "production_credential_or_default"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "negative: production credential URL blocks and redacts",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "secret_like_value",
+      "classifications": [
+        "production_credential_or_default",
+        "secret_like_value"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "negative: external integration enabled by config default blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "unsafe_env_default",
+      "classifications": [
+        "unsafe_env_default"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "negative: circular env/config blocks without throwing",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "unsafe_config_default",
+      "classifications": [
+        "unsafe_config_default"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "negative: BigInt env/config blocks without throwing",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "unsafe_config_default",
+      "classifications": [
+        "unsafe_config_default"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "negative: large env/config array blocks with cap",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "unsafe_config_default",
+      "classifications": [
+        "unsafe_config_default"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "negative: circular evidence fails closed without throwing",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "evidence_secret_leak",
+      "classifications": [
+        "evidence_secret_leak"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "negative: BigInt evidence fails closed without throwing",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "evidence_secret_leak",
+      "classifications": [
+        "evidence_secret_leak"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "negative: symbol/function/undefined evidence fails closed without throwing",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "evidence_secret_leak",
+      "classifications": [
+        "evidence_secret_leak"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "negative: large evidence array fails closed with cap",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "evidence_secret_leak",
+      "classifications": [
+        "evidence_secret_leak"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "negative: large evidence string fails closed with cap",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "evidence_secret_leak",
+      "classifications": [
+        "evidence_secret_leak"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "negative: malformed policy non-object rejects",
+      "ok": true,
+      "parsedOk": false,
+      "status": "blocked",
+      "expectedClassification": "malformed_policy",
+      "classifications": [
+        "malformed_policy"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "negative: invalid policy missing schemaVersion rejects",
+      "ok": true,
+      "parsedOk": false,
+      "status": "blocked",
+      "expectedClassification": "malformed_policy",
+      "classifications": [
+        "malformed_policy"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "negative: unknown policy version rejects",
+      "ok": true,
+      "parsedOk": false,
+      "status": "blocked",
+      "expectedClassification": "unsupported_policy_version",
+      "classifications": [
+        "unsupported_policy_version"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "negative: unknown policy field rejects",
+      "ok": true,
+      "parsedOk": false,
+      "status": "blocked",
+      "expectedClassification": "unknown_policy_field",
+      "classifications": [
+        "unknown_policy_field"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "negative: unsafe policy default allow rejects",
+      "ok": true,
+      "parsedOk": false,
+      "status": "blocked",
+      "expectedClassification": "malformed_policy",
+      "classifications": [
+        "malformed_policy"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "negative: policy allowProductionCredentials true rejects",
+      "ok": true,
+      "parsedOk": false,
+      "status": "blocked",
+      "expectedClassification": "production_credential_or_default",
+      "classifications": [
+        "production_credential_or_default"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "negative: unknown command classification in policy rejects",
+      "ok": true,
+      "parsedOk": false,
+      "status": "blocked",
+      "expectedClassification": "malformed_policy",
+      "classifications": [
+        "malformed_policy"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "negative: fake sandbox status in policy rejects",
+      "ok": true,
+      "parsedOk": false,
+      "status": "blocked",
+      "expectedClassification": "malformed_policy",
+      "classifications": [
+        "malformed_policy"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "negative: pending-live sandbox status cannot be policy-green",
+      "ok": true,
+      "parsedOk": false,
+      "status": "blocked",
+      "expectedClassification": "malformed_policy",
+      "classifications": [
+        "malformed_policy"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "negative: unsafe external enabled mode in policy rejects",
+      "ok": true,
+      "parsedOk": false,
+      "status": "blocked",
+      "expectedClassification": "malformed_policy",
+      "classifications": [
+        "malformed_policy"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "negative: unsafe command mutation classification policy rejects",
+      "ok": true,
+      "parsedOk": false,
+      "status": "blocked",
+      "expectedClassification": "malformed_policy",
+      "classifications": [
+        "malformed_policy"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "negative: unsafe command credential classification policy rejects",
+      "ok": true,
+      "parsedOk": false,
+      "status": "blocked",
+      "expectedClassification": "malformed_policy",
+      "classifications": [
+        "malformed_policy"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "negative: unsafe command unknown classification policy rejects",
+      "ok": true,
+      "parsedOk": false,
+      "status": "blocked",
+      "expectedClassification": "malformed_policy",
+      "classifications": [
+        "malformed_policy"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "negative: unsafe policy may not remove required protected paths",
+      "ok": true,
+      "parsedOk": false,
+      "status": "blocked",
+      "expectedClassification": "malformed_policy",
+      "classifications": [
+        "malformed_policy"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "negative: external mutating command remains blocked even under unsafe custom command policy",
+      "ok": true,
+      "skippedBecausePolicyRejected": true
+    },
+    {
+      "name": "negative: protected package manifest target remains blocked even under unsafe path policy",
+      "ok": true,
+      "skippedBecausePolicyRejected": true
+    },
+    {
+      "name": "negative: live external credential/budget/network without approval blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "unsafe_external_integration",
+      "classifications": [
+        "unsafe_external_integration",
+        "unsafe_external_integration"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "negative: external integration input must be array",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "unsafe_external_integration",
+      "classifications": [
+        "unsafe_external_integration"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "negative: external integration entry must be object",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "unsafe_external_integration",
+      "classifications": [
+        "unsafe_external_integration"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "negative: malformed external boolean strings fail closed",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "unknown_request_field",
+      "classifications": [
+        "unknown_request_field",
+        "unknown_request_field",
+        "unknown_request_field",
+        "unknown_request_field",
+        "unknown_request_field",
+        "unknown_request_field"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "negative: external integration unknown field blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "unknown_request_field",
+      "classifications": [
+        "unknown_request_field"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "positive: sandbox unknown/no-claim passes honestly without overclaiming isolation",
+      "ok": true,
+      "status": "passed",
+      "decision": "allow",
+      "classifications": [],
+      "leakedSentinel": false
+    },
+    {
+      "name": "negative: fake sandbox claim blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "unsupported_sandbox_claim",
+      "classifications": [
+        "unsupported_sandbox_claim"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "negative: blocked/pending-live sandbox status blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "unsupported_sandbox_claim",
+      "classifications": [
+        "unsupported_sandbox_claim"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "negative: malformed sandbox provider/claim types fail closed",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "unknown_request_field",
+      "classifications": [
+        "unknown_request_field",
+        "unknown_request_field"
+      ],
+      "leakedSentinel": false
+    },
+    {
+      "name": "redaction: stdout/result/evidence/diagnostics/errors/logs sentinels removed",
+      "ok": true,
+      "redactedText": "token=<redacted> Bearer <redacted> <redacted:token>",
+      "evidenceStatus": "blocked",
+      "auditEventId": "security:post-fix-validator:ae59c1d3",
+      "leakedSentinel": false
+    },
+    {
+      "name": "audit: circular and BigInt audit payload redacts without throwing",
+      "ok": true
+    }
+  ]
+}

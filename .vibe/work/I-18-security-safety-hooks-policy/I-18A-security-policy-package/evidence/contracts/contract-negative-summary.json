@@ -1,0 +1,114 @@
+[
+  {
+    "name": "malformed policy non-object",
+    "status": "blocked",
+    "classifications": [
+      "malformed_policy"
+    ]
+  },
+  {
+    "name": "unknown policy version",
+    "status": "blocked",
+    "classifications": [
+      "unsupported_policy_version"
+    ]
+  },
+  {
+    "name": "unknown policy field",
+    "status": "blocked",
+    "classifications": [
+      "unknown_policy_field"
+    ]
+  },
+  {
+    "name": "unsafe policy default allow",
+    "status": "blocked",
+    "classifications": [
+      "malformed_policy"
+    ]
+  },
+  {
+    "name": "unknown command classification in policy",
+    "status": "blocked",
+    "classifications": [
+      "malformed_policy"
+    ]
+  },
+  {
+    "name": "unsafe command mutation classification in policy",
+    "status": "blocked",
+    "classifications": [
+      "malformed_policy"
+    ]
+  },
+  {
+    "name": "unsafe command credential classification in policy",
+    "status": "blocked",
+    "classifications": [
+      "malformed_policy"
+    ]
+  },
+  {
+    "name": "unsafe command unknown classification in policy",
+    "status": "blocked",
+    "classifications": [
+      "malformed_policy"
+    ]
+  },
+  {
+    "name": "mandatory protected path policy floor cannot be removed",
+    "status": "blocked",
+    "classifications": [
+      "malformed_policy"
+    ]
+  },
+  {
+    "name": "mandatory workspace/turbo/package manifest floor cannot be partially removed",
+    "status": "blocked",
+    "classifications": [
+      "malformed_policy"
+    ]
+  },
+  {
+    "name": "fake sandbox status in policy",
+    "status": "blocked",
+    "classifications": [
+      "malformed_policy"
+    ]
+  },
+  {
+    "name": "pending-live sandbox status is not policy-green",
+    "status": "blocked",
+    "classifications": [
+      "malformed_policy"
+    ]
+  },
+  {
+    "name": "unsafe external mode in policy",
+    "status": "blocked",
+    "classifications": [
+      "malformed_policy"
+    ]
+  },
+  {
+    "name": "unknown gate request field",
+    "status": "blocked",
+    "classifications": [
+      "unknown_request_field"
+    ]
+  },
+  {
+    "name": "unknown command field",
+    "status": "blocked",
+    "classifications": [
+      "unknown_request_field"
+    ]
+  },
+  {
+    "name": "fake sandbox claim",
+    "status": "blocked",
+    "classifications": [
+      "unsupported_sandbox_claim"
+    ]
+  }
+]

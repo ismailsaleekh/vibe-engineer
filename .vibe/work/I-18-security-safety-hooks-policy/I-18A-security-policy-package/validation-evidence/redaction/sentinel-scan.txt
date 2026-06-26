@@ -1,0 +1,16 @@
+## I-18A implementation evidence sentinel scan (outputs only)
+
+## I-18A package source/fixtures sentinel scan (fake sentinels allowed only in fixtures, not source index)
+packages/security/src/index.js:169:  output = output.replace(/\b(?:sk|ghp|gho|github_pat|xox[baprs])-?[A-Za-z0-9_=-]{10,}\b/gi, '<redacted:token>');
+packages/security/src/index.js:170:  output = output.replace(/\bAKIA[0-9A-Z]{16}\b/g, '<redacted:access-key>');
+packages/security/src/index.js:196:  if (/^(?:sk|ghp|gho|github_pat|xox[baprs])-?[A-Za-z0-9_=-]{10,}$/i.test(trimmed)) return true;
+packages/security/src/index.js:197:  if (/^AKIA[0-9A-Z]{16}$/.test(trimmed)) return true;
+packages/security/fixtures/policy/witness.mjs:34:  assert.ok(!serialized.includes('FAKE_SECRET_VALUE_FOR_NEGATIVE_WITNESS'), `${name} leaked sentinel token`);
+packages/security/fixtures/policy/witness.mjs:35:  assert.ok(!serialized.includes('FAKE_SECRET_VALUE_FOR_NEGATIVE_WITNESS'), `${name} leaked sentinel secret`);
+packages/security/fixtures/policy/witness.mjs:58:  ['secret-like CLI argument', runSecurityGate({ command: { command: 'node', argv: ['--api-key', 'FAKE_SECRET_VALUE_FOR_NEGATIVE_WITNESS_CLI_1234567890'], classification: CommandSafetyClassification.ReadOnly } }), SecurityClassification.SecretLikeValue],
+packages/security/fixtures/policy/witness.mjs:59:  ['secret-like env var', runSecurityGate({ env: { API_TOKEN: 'FAKE_SECRET_VALUE_FOR_NEGATIVE_WITNESS_12345' } }), SecurityClassification.SecretLikeValue],
+packages/security/fixtures/policy/witness.mjs:60:  ['secret-like config value', runSecurityGate({ config: { service: { clientSecret: 'FAKE_SECRET_VALUE_FOR_NEGATIVE_WITNESS_ABCDE' } } }), SecurityClassification.SecretLikeValue],
+packages/security/fixtures/policy/witness.mjs:61:  ['secret-like evidence field', runSecurityGate({ evidence: { evidenceRefs: [{ token: 'FAKE_SECRET_VALUE_FOR_NEGATIVE_WITNESS_EVIDENCE_abcdef123456' }] } }), SecurityClassification.EvidenceSecretLeak],
+packages/security/fixtures/policy/witness.mjs:62:  ['secret-like diagnostic detail', runSecurityGate({ evidence: { diagnostics: [{ message: 'token=FAKE_SECRET_VALUE_FOR_NEGATIVE_WITNESS_DIAG_123456' }] } }), SecurityClassification.EvidenceSecretLeak],
+packages/security/fixtures/policy/witness.mjs:63:  ['production credential/default', runSecurityGate({ config: { DATABASE_URL: 'postgres://user:FAKE_SECRET_VALUE_FOR_NEGATIVE_WITNESS@prod.invalid.example/app' } }), SecurityClassification.SecretLikeValue],
+packages/security/fixtures/redaction/witness.mjs:8:const sentinels = ['FAKE_SECRET_VALUE_FOR_NEGATIVE_WITNESS_REDACT_TOKEN_123456', 'FAKE_SECRET_VALUE_FOR_NEGATIVE_WITNESS_REDACT'];

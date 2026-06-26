@@ -1,0 +1,35 @@
+# I-18A regression immutability checks
+## compare packages/cli/package.json to I-18S post-validation snapshot
+cli_package_cmp_exit=0
+3b383db09cf89142fc36a61436ce62f415d804f8454232786a6fe4b57bd430c6  packages/cli/package.json
+3b383db09cf89142fc36a61436ce62f415d804f8454232786a6fe4b57bd430c6  .vibe/work/I-18S-security-cli-dependency-handoff/inventory/manifest-lock-after/packages-cli-package.json
+## compare pnpm-lock.yaml to I-18S post-validation snapshot
+pnpm_lock_cmp_exit=0
+dcf57145fdbc465b5af1a845167298a348daba9934d2801e740b36b97bdfe5b2  pnpm-lock.yaml
+dcf57145fdbc465b5af1a845167298a348daba9934d2801e740b36b97bdfe5b2  .vibe/work/I-18S-security-cli-dependency-handoff/inventory/manifest-lock-after/pnpm-lock.yaml
+## compare packages/security/package.json to I-18S post-validation snapshot
+security_package_cmp_exit=0
+42c2caa25a68ec9296a73bad37c4dc9a3bfed3e6a222a57c4a8f739f33de7b2c  packages/security/package.json
+42c2caa25a68ec9296a73bad37c4dc9a3bfed3e6a222a57c4a8f739f33de7b2c  .vibe/work/I-18S-security-cli-dependency-handoff/inventory/manifest-lock-after/packages-security-package.json
+## CLI security command absence
+find_cli_security_exit=0
+## starter security fixture absence
+find_starter_security_exit=0
+## testing prod dependency sweep
+packages/mechanical-gates/fixtures/p0/testing-boundary/valid-test-only/packages/testing/package.json:2:  "name": "@vibe-engineer/testing",
+packages/mechanical-gates/fixtures/p0/testing-boundary/valid-test-only/packages/consumer/package.json:7:    "@vibe-engineer/testing": "workspace:*"
+packages/mechanical-gates/fixtures/p0/testing-boundary/production-dependency/packages/testing/package.json:2:  "name": "@vibe-engineer/testing",
+packages/mechanical-gates/fixtures/p0/testing-boundary/production-dependency/packages/consumer/package.json:7:    "@vibe-engineer/testing": "workspace:*"
+packages/mechanical-gates/fixtures/p0/testing-boundary/malformed-policy/packages/testing/package.json:2:  "name": "@vibe-engineer/testing",
+packages/mechanical-gates/fixtures/p0/testing-boundary/malformed-policy/packages/consumer/package.json:7:    "@vibe-engineer/testing": "workspace:*"
+packages/mechanical-gates/fixtures/p0/testing-boundary/malformed-manifest/packages/testing/package.json:2:  "name": "@vibe-engineer/testing",
+packages/mechanical-gates/fixtures/p0/testing-boundary/missing-policy/packages/testing/package.json:2:  "name": "@vibe-engineer/testing",
+packages/mechanical-gates/fixtures/p0/testing-boundary/missing-policy/packages/consumer/package.json:7:    "@vibe-engineer/testing": "workspace:*"
+packages/mechanical-gates/fixtures/p0/testing-boundary/regex-only-proof/packages/testing/package.json:2:  "name": "@vibe-engineer/testing",
+packages/mechanical-gates/fixtures/p0/testing-boundary/regex-only-proof/packages/consumer/package.json:7:    "@vibe-engineer/testing": "workspace:*"
+packages/mechanical-gates/fixtures/p0/testing-boundary/missing-manifest/packages/testing/package.json:2:  "name": "@vibe-engineer/testing",
+packages/mechanical-gates/fixtures/p0/testing-boundary/production-import/packages/testing/package.json:2:  "name": "@vibe-engineer/testing",
+packages/mechanical-gates/fixtures/p0/testing-boundary/production-import/packages/consumer/package.json:7:    "@vibe-engineer/testing": "workspace:*"
+packages/mechanical-gates/fixtures/p0/testing-boundary/publishable-testing/packages/testing/package.json:2:  "name": "@vibe-engineer/testing",
+packages/mechanical-gates/fixtures/p0/testing-boundary/publishable-testing/packages/consumer/package.json:7:    "@vibe-engineer/testing": "workspace:*"
+packages/testing/package.json:2:  "name": "@vibe-engineer/testing",

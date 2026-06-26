@@ -1,0 +1,128 @@
+{
+  "ok": true,
+  "total": 15,
+  "checks": [
+    {
+      "name": "embedded api key flag without value",
+      "file": "embedded-api-key-flag.json",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "name": "split api key value across command and argv",
+      "file": "split-api-key-value.json",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "name": "split client secret value across command and argv",
+      "file": "split-client-secret-value.json",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "name": "embedded api key inline value",
+      "file": "embedded-api-key-inline.json",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "name": "argv adjacent api key value",
+      "file": "argv-adjacent-api-key.json",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "name": "positive safe argv command",
+      "file": "positive-safe-argv.json",
+      "status": "passed",
+      "decision": "allow",
+      "classifications": []
+    },
+    {
+      "name": "third revalidation exact false green: command embedded api-key flag only",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "name": "third revalidation exact false green: command embedded api-key flag split value",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "name": "third revalidation exact false green: command embedded client-secret flag split value",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "name": "embedded token flag without value",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "name": "embedded token flag split non-secret-looking value",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "name": "argv-only api-key flag remains blocked",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "name": "argv adjacent api-key value remains blocked",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "name": "command-embedded api-key inline fake sentinel blocks and redacts",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "name": "positive safe command carrier direct API case",
+      "status": "passed",
+      "decision": "allow",
+      "classifications": []
+    }
+  ]
+}

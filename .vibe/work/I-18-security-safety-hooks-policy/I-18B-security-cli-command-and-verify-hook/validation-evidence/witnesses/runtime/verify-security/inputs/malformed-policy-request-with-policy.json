@@ -1,0 +1,62 @@
+{
+  "command": {
+    "command": "node examples/starter-reference/generated-fixtures/security/runner/security-hook-runner.mjs",
+    "argv": [
+      "examples/starter-reference/generated-fixtures/security/requests/safe-local-read-only-command.json"
+    ],
+    "classification": "read_only",
+    "workingDirectory": "examples/starter-reference/generated-fixtures/security",
+    "targetPaths": [
+      "examples/starter-reference/generated-fixtures/security/requests/safe-local-read-only-command.json"
+    ]
+  },
+  "env": {
+    "NODE_ENV": "test",
+    "VIBE_ENGINEER_MODE": "local"
+  },
+  "config": {
+    "externalIntegrationEnabled": false,
+    "localFixtureMode": true
+  },
+  "externalIntegrations": [
+    {
+      "id": "local-fixture-only",
+      "mode": "local_fixture",
+      "enabled": false,
+      "requiresCredential": false,
+      "requiresBudget": false,
+      "requiresNetwork": false,
+      "networkMutation": false,
+      "explicitApproval": false
+    }
+  ],
+  "sandboxClaims": [
+    {
+      "provider": "local-harness",
+      "status": "unknown",
+      "claim": "No live isolation claim is made by this fixture."
+    }
+  ],
+  "policy": {
+    "schemaVersion": "security-policy.v1",
+    "defaultDecision": "allow",
+    "allowedCommandClassifications": [
+      "read_only",
+      "destructive_local_operation"
+    ],
+    "protectedPathPrefixes": [
+      ".git"
+    ],
+    "allowProductionCredentials": true,
+    "allowedExternalIntegrationModes": [
+      "enabled"
+    ],
+    "allowedSandboxCapabilityStatuses": [
+      "blocked/pending-live"
+    ],
+    "advisoryClassifications": [
+      "advisory_notice"
+    ],
+    "unexpectedPolicyField": "blocked"
+  }
+}

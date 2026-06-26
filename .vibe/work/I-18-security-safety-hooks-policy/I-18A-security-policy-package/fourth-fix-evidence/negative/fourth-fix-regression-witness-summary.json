@@ -1,0 +1,458 @@
+{
+  "ok": true,
+  "total": 56,
+  "checks": [
+    {
+      "name": "positive safe argv command carrier remains allowed",
+      "status": "passed",
+      "decision": "allow",
+      "classifications": []
+    },
+    {
+      "name": "SPF2 path canonicalization blocks C:outside",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF2 path canonicalization blocks C:../outside",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF2 path canonicalization blocks C:/Users/outside",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF2 path canonicalization blocks C:\\Users\\outside",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF2 path canonicalization blocks //server/share",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF2 path canonicalization blocks \\\\server\\share",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF2 path canonicalization blocks ~",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF2 path canonicalization blocks ~/secret",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF2 path canonicalization blocks ~user/.ssh/config",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF2 path canonicalization blocks ./package.json",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF2 path canonicalization blocks ./pnpm-lock.yaml",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF2 path canonicalization blocks ./pnpm-workspace.yaml",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF2 path canonicalization blocks ./turbo.json",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF2 path canonicalization blocks ./.git/config",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF2 path canonicalization blocks packages/cli/../cli/package.json",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF2 path canonicalization blocks safe/..",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF2 path canonicalization blocks ../outside",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF2 path canonicalization blocks /Users/lizavasilyeva/work/vibe-engineer/package.json",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF2 path canonicalization blocks /",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF2 path canonicalization blocks <empty>",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF2 path canonicalization blocks safe//file",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF3 mandatory protected floor blocks package.json",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF3 unsafe direct policy cannot remove floor for package.json",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF3 mandatory protected floor blocks pnpm-lock.yaml",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF3 unsafe direct policy cannot remove floor for pnpm-lock.yaml",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF3 mandatory protected floor blocks pnpm-workspace.yaml",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF3 unsafe direct policy cannot remove floor for pnpm-workspace.yaml",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF3 mandatory protected floor blocks turbo.json",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF3 unsafe direct policy cannot remove floor for turbo.json",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF3 mandatory protected floor blocks .git/config",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF3 unsafe direct policy cannot remove floor for .git/config",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF3 mandatory protected floor blocks packages/cli/package.json",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF3 unsafe direct policy cannot remove floor for packages/cli/package.json",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF3 mandatory protected floor blocks packages/security/package.json",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF3 unsafe direct policy cannot remove floor for packages/security/package.json",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF3 mandatory protected floor blocks packages/cli/src/command-loader/loader.js",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF3 unsafe direct policy cannot remove floor for packages/cli/src/command-loader/loader.js",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF3 mandatory protected floor blocks packages/cli/src/entry/vibe-engineer.js",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF3 unsafe direct policy cannot remove floor for packages/cli/src/entry/vibe-engineer.js",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF3 mandatory protected floor blocks packages/cli/src/envelope/index.js",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF3 unsafe direct policy cannot remove floor for packages/cli/src/envelope/index.js",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF3 mandatory protected floor blocks packages/cli/src/errors/index.js",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF3 unsafe direct policy cannot remove floor for packages/cli/src/errors/index.js",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF3 mandatory protected floor blocks packages/cli/src/testing/harness.js",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF3 unsafe direct policy cannot remove floor for packages/cli/src/testing/harness.js",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "PF1 unsafe command policy relaxation remains blocked",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "destructive_command"
+      ]
+    },
+    {
+      "name": "PF3 malformed external boolean strings remain blocked",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unknown_request_field",
+        "unknown_request_field",
+        "unknown_request_field",
+        "unknown_request_field",
+        "unknown_request_field",
+        "unknown_request_field"
+      ]
+    },
+    {
+      "name": "PF4 malformed sandbox provider/claim remains blocked",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unknown_request_field",
+        "unknown_request_field"
+      ]
+    },
+    {
+      "name": "F4 pending-live sandbox remains blocked",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsupported_sandbox_claim"
+      ]
+    },
+    {
+      "name": "F2 malformed command missing command remains blocked",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unknown_request_field"
+      ]
+    },
+    {
+      "name": "F2 malformed argv string remains blocked",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unknown_request_field"
+      ]
+    },
+    {
+      "name": "F2 malformed targetPaths string remains blocked",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unknown_request_field"
+      ]
+    },
+    {
+      "name": "F5 secret array remains blocked",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "name": "F6 circular evidence remains typed blocked",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "evidence_secret_leak"
+      ]
+    },
+    {
+      "name": "F6 BigInt evidence remains typed blocked",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "evidence_secret_leak"
+      ]
+    }
+  ]
+}

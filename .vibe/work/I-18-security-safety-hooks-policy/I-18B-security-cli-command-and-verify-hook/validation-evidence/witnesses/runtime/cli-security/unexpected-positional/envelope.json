@@ -1,0 +1,48 @@
+{
+  "artifacts": [],
+  "diagnostics": [
+    {
+      "classification": "invalid_invocation",
+      "code": "VE_INVALID_INVOCATION",
+      "hint": null,
+      "message": "Unexpected positional arguments for security.",
+      "path": null,
+      "severity": "error",
+      "span": null
+    }
+  ],
+  "errors": [
+    {
+      "blocking": true,
+      "classification": "invalid_invocation",
+      "code": "VE_INVALID_INVOCATION",
+      "details": {
+        "positionalCount": 1
+      },
+      "message": "Unexpected positional arguments for security.",
+      "retryable": false
+    }
+  ],
+  "exitCode": 2,
+  "invocation": {
+    "argv": [
+      "security",
+      "<value>"
+    ],
+    "command": "security",
+    "configPath": null,
+    "endedAt": "2026-06-26T00:00:01.000Z",
+    "id": "validator-security-unexpected-positional",
+    "projectRoot": null,
+    "startedAt": "2026-06-26T00:00:00.000Z"
+  },
+  "payload": {
+    "data": {
+      "accepted": false
+    },
+    "kind": "cli_invocation_error",
+    "schemaVersion": "vibe-engineer.cli.payload.v1"
+  },
+  "schemaVersion": "vibe-engineer.cli.result.v1",
+  "status": "blocked"
+}

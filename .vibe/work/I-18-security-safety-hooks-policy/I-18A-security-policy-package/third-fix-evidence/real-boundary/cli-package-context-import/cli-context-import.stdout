@@ -1,0 +1,4 @@
+$ cd /Users/lizavasilyeva/work/vibe-engineer/packages/cli && node --input-type=module -e "const security = await import('@vibe-engineer/security'); const result = security.__i18aCliBoundarySmoke ? security.__i18aCliBoundarySmoke() : {ok: true, exports: Object.keys(security).sort()}; console.log(JSON.stringify(result));"
+{"ok":true,"status":"passed","decision":"allow","exportsExercised":["runSecurityGate","parseSecurityPolicy","redactSecurityText"]}
+
+__EXIT__:0

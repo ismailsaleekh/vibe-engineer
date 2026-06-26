@@ -1,0 +1,12 @@
+COMMAND: node --check packages/security/src/index.js
+EXIT:0
+COMMAND: node --check packages/security/fixtures/policy/witness.mjs
+EXIT:0
+COMMAND: node --check packages/security/fixtures/redaction/witness.mjs
+EXIT:0
+COMMAND: node --check packages/security/fixtures/contracts/witness.mjs
+EXIT:0
+COMMAND: node --check packages/security/fixtures/real-boundary/package-api/witness.mjs
+EXIT:0
+COMMAND: node --check packages/security/fixtures/real-boundary/cli-package-context-import/witness.mjs
+EXIT:0

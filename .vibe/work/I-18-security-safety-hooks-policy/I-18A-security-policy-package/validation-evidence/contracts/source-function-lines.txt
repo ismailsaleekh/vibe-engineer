@@ -1,0 +1,7 @@
+177:export function redactSecurityValue(value) {
+242:export function parseSecurityPolicy(input = DEFAULT_SECURITY_POLICY) {
+342:export function evaluateCommandSafety(commandInput, policy = DEFAULT_SECURITY_POLICY) {
+389:function isUnsafePathTarget(targetPath, policy) {
+410:function scanKeyValueRecord(value, location, findings, policy) {
+460:export function evaluateSandboxCapability(sandboxInput, policy = DEFAULT_SECURITY_POLICY) {
+481:export function evaluateEvidenceSafety(evidenceInput) {

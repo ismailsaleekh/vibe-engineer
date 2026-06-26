@@ -1,0 +1,17 @@
+## I-18A changed files (from implementation report) forbidden-surface string scan
+.vibe/work/I-18-security-safety-hooks-policy/I-18A-security-policy-package/I-18A-implementation-report.md:25:- `package.json`, `pnpm-workspace.yaml`, `pnpm-lock.yaml`.
+.vibe/work/I-18-security-safety-hooks-policy/I-18A-security-policy-package/I-18A-implementation-report.md:26:- `packages/security/package.json`, `packages/cli/package.json`.
+.vibe/work/I-18-security-safety-hooks-policy/I-18A-security-policy-package/I-18A-implementation-report.md:27:- `packages/artifacts/**`, `packages/verification/**`, `packages/mechanical-gates/**`, `packages/testing/**` as patterns/contracts.
+.vibe/work/I-18-security-safety-hooks-policy/I-18A-security-policy-package/I-18A-implementation-report.md:43:- Read-only paths were inspected only; no edits to CLI loader/entry/envelope/errors/testing/default registration, `packages/verification/**`, `packages/mechanical-gates/**`, `packages/testing/**`, `packages/artifacts/**`, docs/decisions, root manifests/config, `packages/cli/package.json`, or `pnpm-lock.yaml`.
+.vibe/work/I-18-security-safety-hooks-policy/I-18A-security-policy-package/I-18A-implementation-report.md:44:- Untouchable paths preserved: `.git/**`, root package/workspace/lock/turbo/config, CI/scripts/infra/Pulumi, I-18B paths, I-12/I-13/I-20 surfaces, unrelated dirty work.
+.vibe/work/I-18-security-safety-hooks-policy/I-18A-security-policy-package/I-18A-implementation-report.md:127:- Regression immutability cmp/sha sweep → cmp exits `0` for `packages/cli/package.json`, `pnpm-lock.yaml`, and `packages/security/package.json`; `evidence/regression/manifest-lock-cli-immutability.txt`.
+packages/security/fixtures/policy/witness.mjs:66:  ['deploy primitive destructive', runSecurityGate({ command: { command: 'pulumi', argv: ['apply'], classification: CommandSafetyClassification.ProductionImpactingOperation } }), SecurityClassification.DestructiveCommand],
+packages/security/src/index.js:120:  protectedPathPrefixes: ['/', '~', '.git', '../', '..', 'packages/cli/src/entry', 'packages/cli/src/command-loader', 'pnpm-lock.yaml', 'package.json'],
+packages/security/src/index.js:380:    || /\b(?:pulumi|terraform)\s+(?:destroy|apply)\b/.test(text)
+\n## current I-12/I-13/I-20 owned path existence summary (read-only, may reflect concurrent I-12 work not I-18A)
+PRESENT packages/mechanical-gates/src/p1/quality-ratchet
+PRESENT packages/mechanical-gates/src/p1/test-anti-pattern
+ABSENT packages/mechanical-gates/src/p2/code-smell
+ABSENT .github
+ABSENT scripts
+ABSENT infra

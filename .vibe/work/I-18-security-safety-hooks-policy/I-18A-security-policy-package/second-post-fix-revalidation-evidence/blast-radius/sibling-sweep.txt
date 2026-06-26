@@ -1,0 +1,149 @@
+## CLI command dirs
+packages/cli/src/commands/config/index.js
+packages/cli/src/commands/doctor/index.js
+packages/cli/src/commands/schematic/artifacts-adapter.js
+packages/cli/src/commands/schematic/index.js
+packages/cli/src/commands/schematic/run-cli-witnesses.mjs
+packages/cli/src/commands/verify/index.ts
+## verification public files
+packages/verification/fixtures/plans/approved-plan.json
+packages/verification/fixtures/plans/draft-plan.json
+packages/verification/fixtures/plans/missing-category-plan.json
+packages/verification/fixtures/runners/fail-runner.mjs
+packages/verification/fixtures/runners/large-artifact-runner.mjs
+packages/verification/fixtures/runners/large-output-runner.mjs
+packages/verification/fixtures/runners/no-artifact-runner.mjs
+packages/verification/fixtures/runners/pass-runner.mjs
+packages/verification/fixtures/runners/secret-output-runner.mjs
+packages/verification/fixtures/runners/sleep-runner.mjs
+packages/verification/package.json
+packages/verification/src/index.js
+packages/verification/src/node-ambient.d.ts
+packages/verification/tests/run-witnesses.mjs
+## mechanical gates files
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/type-consumer.ts
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/witness.mjs
+packages/mechanical-gates/fixtures/p0/surface-config-boundaries/public-api-consumer.ts
+packages/mechanical-gates/fixtures/p0/surface-config-boundaries/witness.mjs
+packages/mechanical-gates/fixtures/p0/testing-boundary/type-consumer.ts
+packages/mechanical-gates/fixtures/p0/testing-boundary/witness.mjs
+packages/mechanical-gates/fixtures/p1/quality-ratchet/type-consumer-negative-extra-evidence.ts
+packages/mechanical-gates/fixtures/p1/quality-ratchet/witness.mjs
+packages/mechanical-gates/fixtures/p1/schema-contract-strictness/witness.mjs
+packages/mechanical-gates/fixtures/p1/test-anti-pattern/typecheck-consumer.ts
+packages/mechanical-gates/fixtures/p1/test-anti-pattern/witness.mjs
+packages/mechanical-gates/package.json
+packages/mechanical-gates/src/aggregate/index.d.ts
+packages/mechanical-gates/src/aggregate/index.js
+packages/mechanical-gates/src/aggregate/run-p0-aggregate.js
+packages/mechanical-gates/src/p0/allowlist/index.d.ts
+packages/mechanical-gates/src/p0/allowlist/index.js
+packages/mechanical-gates/src/p0/allowlist/validate-escape-allowlist.js
+packages/mechanical-gates/src/p0/boundaries/contracts.js
+packages/mechanical-gates/src/p0/boundaries/index.d.ts
+packages/mechanical-gates/src/p0/boundaries/index.js
+packages/mechanical-gates/src/p0/boundaries/validate-package-boundaries.js
+packages/mechanical-gates/src/p0/build-export-contract/build-export-contract.json
+packages/mechanical-gates/src/p0/build-export-contract/build-export-contract.schema.json
+packages/mechanical-gates/src/p0/config-guards/index.d.ts
+packages/mechanical-gates/src/p0/config-guards/index.js
+packages/mechanical-gates/src/p0/config-guards/validate-strict-config.js
+packages/mechanical-gates/src/p0/domain-purity/index.d.ts
+packages/mechanical-gates/src/p0/domain-purity/index.js
+packages/mechanical-gates/src/p0/domain-purity/validate-domain-purity.js
+packages/mechanical-gates/src/p0/governed-surface/index.d.ts
+packages/mechanical-gates/src/p0/governed-surface/index.js
+packages/mechanical-gates/src/p0/governed-surface/validate-governed-surface.js
+packages/mechanical-gates/src/p0/testing-boundary/index.d.ts
+packages/mechanical-gates/src/p0/testing-boundary/index.js
+packages/mechanical-gates/src/p0/testing-boundary/validate-testing-boundary.js
+packages/mechanical-gates/src/p1/quality-ratchet/index.d.ts
+packages/mechanical-gates/src/p1/quality-ratchet/index.js
+packages/mechanical-gates/src/p1/schema-contract-strictness/index.ts
+packages/mechanical-gates/src/p1/schema-contract-strictness/validate-schema-contract-strictness.ts
+packages/mechanical-gates/src/p1/test-anti-pattern/index.d.ts
+packages/mechanical-gates/src/p1/test-anti-pattern/index.js
+## testing package files
+packages/testing/fixtures/helper-consumer.mjs
+packages/testing/fixtures/mechanical-testing-boundary.json
+packages/testing/fixtures/type-consumer.ts
+packages/testing/package.json
+packages/testing/src/index.d.ts
+packages/testing/src/index.js
+## security references outside packages/security and allowed evidence
+packages/security/package.json:2:  "name": "@vibe-engineer/security",
+packages/security/fixtures/real-boundary/cli-package-context-import/witness.mjs:3:const security = await import('@vibe-engineer/security');
+packages/security/fixtures/real-boundary/package-api/witness.mjs:3:const security = await import('@vibe-engineer/security');
+packages/security/fixtures/contracts/witness.mjs:3:import { CommandSafetyClassification, DEFAULT_SECURITY_POLICY, parseSecurityPolicy, runSecurityGate, SecurityClassification, SecurityGateStatus } from '@vibe-engineer/security';
+packages/security/fixtures/redaction/witness.mjs:3:import { evaluateEvidenceSafety, redactSecurityText, redactSecurityValue, SecurityClassification, SecurityGateStatus } from '@vibe-engineer/security';
+packages/security/fixtures/policy/witness.mjs:14:} from '@vibe-engineer/security';
+packages/cli/package.json:29:    "@vibe-engineer/security": "workspace:*",
+.vibe/work/I-18-security-safety-hooks-policy/I-18A-security-policy-package/I-18A-implementation-report.md:56:Implemented dependency-neutral ESM public API exported through the existing I-18S package export `@vibe-engineer/security` → `./src/index.js`.
+.vibe/work/I-18-security-safety-hooks-policy/I-18A-security-policy-package/I-18A-implementation-report.md:96:node --input-type=module -e "const security = await import('@vibe-engineer/security'); console.log(JSON.stringify({ok: true, exports: Object.keys(security).sort()}));"
+.vibe/work/I-18-security-safety-hooks-policy/I-18A-security-policy-package/I-18A-implementation-report.md:104:node --input-type=module -e "const security = await import('@vibe-engineer/security'); const result = security.__i18aCliBoundarySmoke ? security.__i18aCliBoundarySmoke() : {ok: true, exports: Object.keys(security).sort()}; console.log(JSON.stringify(result));"
+.vibe/work/I-18-security-safety-hooks-policy/I-18A-security-policy-package/I-18A-implementation-report.md:130:No package-local scripts were added, so the optional `pnpm --filter @vibe-engineer/security typecheck/test` commands were not applicable and were not substituted with weaker package-manager mutations.
+.vibe/work/I-18-security-safety-hooks-policy/I-18A-security-policy-package/I-18A-implementation-report.md:136:I-18A implemented the typed fail-closed `@vibe-engineer/security` policy/gate/redaction package and lane-owned witnesses. Independent validation should inspect `packages/security/src/index.js`, all `packages/security/fixtures/**`, and this evidence root; rerun positive/negative/regression/real-boundary witnesses; confirm I-18S seam still holds; and keep I-18B/I-20 blocked until validation is clean.
+.vibe/work/I-18-security-safety-hooks-policy/I-18A-security-policy-package/I-18A-validation-artifact.md:47:- I-18A must implement fail-closed typed `@vibe-engineer/security` policy/gate/redaction APIs only under owned paths.
+.vibe/work/I-18-security-safety-hooks-policy/I-18A-security-policy-package/I-18A-validation-artifact.md:80:- Package context import: `cd packages/security && node --input-type=module -e "import('@vibe-engineer/security')..."` → exit `0`; evidence `validation-evidence/real-boundary/package-context-import.txt`.
+.vibe/work/I-18-security-safety-hooks-policy/I-18A-security-policy-package/I-18A-validation-artifact.md:81:- CLI package context import through I-18S seam: `cd packages/cli && node --input-type=module -e "import('@vibe-engineer/security')..."` → exit `0`; evidence `validation-evidence/real-boundary/cli-context-import.txt`.
+.vibe/work/I-18-security-safety-hooks-policy/I-18A-security-policy-package/I-18A-validation-artifact.md:116:- I-18B/CI/Pulumi/script absence: `validation-evidence/regression/unauthorized-surface-regression.txt`; `packages/cli/src/commands/security`, `examples/starter-reference/generated-fixtures/security`, `.github`, `scripts`, and `infra` absent.
+.vibe/work/I-18-security-safety-hooks-policy/I-18A-security-policy-package/second-post-fix-revalidation-evidence/negative/second-post-fix-adversarial-witness.stderr:5:Error [ERR_MODULE_NOT_FOUND]: Cannot find package '@vibe-engineer/security' imported from /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-18-security-safety-hooks-policy/I-18A-security-policy-package/second-post-fix-revalidation-evidence/negative/second-post-fix-adversarial-witness.mjs
+.vibe/work/I-18-security-safety-hooks-policy/I-18A-security-policy-package/second-post-fix-revalidation-evidence/negative/second-post-fix-adversarial-witness.mjs:18:} from '@vibe-engineer/security';
+.vibe/work/I-18-security-safety-hooks-policy/I-18A-security-policy-package/second-post-fix-revalidation-evidence/regression/unauthorized-surface-regression.txt:14:absent packages/cli/src/commands/security
+.vibe/work/I-18-security-safety-hooks-policy/I-18A-security-policy-package/second-post-fix-revalidation-evidence/regression/unauthorized-surface-regression.txt:15:absent examples/starter-reference/generated-fixtures/security
+.vibe/work/I-18-security-safety-hooks-policy/I-18A-security-policy-package/second-post-fix-revalidation-evidence/package-checks/pnpm-list-security-depth0.json:3:    "name": "@vibe-engineer/security",
+.vibe/work/I-18-security-safety-hooks-policy/I-18A-security-policy-package/second-fix-evidence/witnesses/second-fix-adversarial-witness.mjs:6:const resolvedFromCli = requireFromCli.resolve('@vibe-engineer/security');
+.vibe/work/I-18-security-safety-hooks-policy/I-18A-security-policy-package/second-fix-evidence/negative/post-fix-adversarial-witness-rerun.mjs:7:const resolvedFromCli = requireFromCli.resolve('@vibe-engineer/security');
+.vibe/work/I-18-security-safety-hooks-policy/I-18A-security-policy-package/second-fix-evidence/negative/post-fix-adversarial-witness-rerun.mjs:8:const resolvedFromSecurity = requireFromSecurity.resolve('@vibe-engineer/security');
+.vibe/work/I-18-security-safety-hooks-policy/I-18A-security-policy-package/second-fix-evidence/negative/post-fix-adversarial-witness-rerun.mjs:154:record('real-boundary: CLI package resolver resolves @vibe-engineer/security public API', resolvedFromCli.endsWith('/packages/security/src/index.js'), { resolvedFromCli });
+.vibe/work/I-18-security-safety-hooks-policy/I-18A-security-policy-package/second-fix-evidence/negative/post-fix-adversarial-witness-rerun.mjs:155:record('real-boundary: security package self resolver resolves @vibe-engineer/security public API', resolvedFromSecurity.endsWith('/packages/security/src/index.js'), { resolvedFromSecurity });
+.vibe/work/I-18-security-safety-hooks-policy/I-18A-security-policy-package/second-fix-evidence/negative/post-fix-adversarial-witness-summary.json:10:      "name": "real-boundary: CLI package resolver resolves @vibe-engineer/security public API",
+.vibe/work/I-18-security-safety-hooks-policy/I-18A-security-policy-package/second-fix-evidence/negative/post-fix-adversarial-witness-summary.json:15:      "name": "real-boundary: security package self resolver resolves @vibe-engineer/security public API",
+.vibe/work/I-18-security-safety-hooks-policy/I-18A-security-policy-package/second-fix-evidence/regression/unauthorized-surface-regression.txt:4:packages/cli/src/commands/security absent exit=0
+.vibe/work/I-18-security-safety-hooks-policy/I-18A-security-policy-package/second-fix-evidence/regression/unauthorized-surface-regression.txt:5:examples/starter-reference/generated-fixtures/security absent exit=0
+.vibe/work/I-18-security-safety-hooks-policy/I-18A-security-policy-package/I-18A-post-fix-revalidation-artifact.md:51:- `post-fix-revalidation-evidence/real-boundary/package-context-import.*` — actual package-context import of `@vibe-engineer/security` exited `0` and exercised `__i18aCliBoundarySmoke`.
+.vibe/work/I-18-security-safety-hooks-policy/I-18A-security-policy-package/validation-evidence/negative/adversarial-security-witness.mjs:7:const resolvedFromCli = requireFromCli.resolve('@vibe-engineer/security');
+.vibe/work/I-18-security-safety-hooks-policy/I-18A-security-policy-package/validation-evidence/regression/unauthorized-surface-regression.txt:6:ABSENT packages/cli/src/commands/security
+.vibe/work/I-18-security-safety-hooks-policy/I-18A-security-policy-package/validation-evidence/regression/unauthorized-surface-regression.txt:7:ABSENT examples/starter-reference/generated-fixtures/security
+.vibe/work/I-18-security-safety-hooks-policy/I-18A-security-policy-package/post-fix-revalidation-evidence/blast-radius/security-reference-sweep.txt:1:$ rg -n "@vibe-engineer/security|packages/cli/src/commands/security|generated-fixtures/security|@vibe-engineer/testing" package.json packages pnpm-lock.yaml examples .github scripts infra
+.vibe/work/I-18-security-safety-hooks-policy/I-18A-security-policy-package/post-fix-revalidation-evidence/blast-radius/security-reference-sweep.txt:5:pnpm-lock.yaml:46:      '@vibe-engineer/security':
+.vibe/work/I-18-security-safety-hooks-policy/I-18A-security-policy-package/post-fix-revalidation-evidence/blast-radius/security-reference-sweep.txt:11:packages/cli/package.json:29:    "@vibe-engineer/security": "workspace:*",
+.vibe/work/I-18-security-safety-hooks-policy/I-18A-security-policy-package/post-fix-revalidation-evidence/blast-radius/security-reference-sweep.txt:15:packages/security/fixtures/policy/witness.mjs:12:} from '@vibe-engineer/security';
+.vibe/work/I-18-security-safety-hooks-policy/I-18A-security-policy-package/post-fix-revalidation-evidence/blast-radius/security-reference-sweep.txt:19:packages/security/fixtures/redaction/witness.mjs:3:import { evaluateEvidenceSafety, redactSecurityText, redactSecurityValue, SecurityClassification, SecurityGateStatus } from '@vibe-engineer/security';
+.vibe/work/I-18-security-safety-hooks-policy/I-18A-security-policy-package/post-fix-revalidation-evidence/blast-radius/security-reference-sweep.txt:21:packages/security/fixtures/contracts/witness.mjs:3:import { DEFAULT_SECURITY_POLICY, parseSecurityPolicy, runSecurityGate, SecurityClassification, SecurityGateStatus } from '@vibe-engineer/security';
+.vibe/work/I-18-security-safety-hooks-policy/I-18A-security-policy-package/post-fix-revalidation-evidence/blast-radius/security-reference-sweep.txt:22:packages/security/fixtures/real-boundary/package-api/witness.mjs:3:const security = await import('@vibe-engineer/security');
+.vibe/work/I-18-security-safety-hooks-policy/I-18A-security-policy-package/post-fix-revalidation-evidence/blast-radius/security-reference-sweep.txt:24:packages/security/fixtures/real-boundary/cli-package-context-import/witness.mjs:3:const security = await import('@vibe-engineer/security');
+.vibe/work/I-18-security-safety-hooks-policy/I-18A-security-policy-package/post-fix-revalidation-evidence/blast-radius/security-reference-sweep.txt:25:packages/security/package.json:2:  "name": "@vibe-engineer/security",
+.vibe/work/I-18-security-safety-hooks-policy/I-18A-security-policy-package/post-fix-revalidation-evidence/negative/post-fix-adversarial-witness.mjs:7:const resolvedFromCli = requireFromCli.resolve('@vibe-engineer/security');
+.vibe/work/I-18-security-safety-hooks-policy/I-18A-security-policy-package/post-fix-revalidation-evidence/negative/post-fix-adversarial-witness.mjs:8:const resolvedFromSecurity = requireFromSecurity.resolve('@vibe-engineer/security');
+.vibe/work/I-18-security-safety-hooks-policy/I-18A-security-policy-package/post-fix-revalidation-evidence/negative/post-fix-adversarial-witness.mjs:154:record('real-boundary: CLI package resolver resolves @vibe-engineer/security public API', resolvedFromCli.endsWith('/packages/security/src/index.js'), { resolvedFromCli });
+.vibe/work/I-18-security-safety-hooks-policy/I-18A-security-policy-package/post-fix-revalidation-evidence/negative/post-fix-adversarial-witness.mjs:155:record('real-boundary: security package self resolver resolves @vibe-engineer/security public API', resolvedFromSecurity.endsWith('/packages/security/src/index.js'), { resolvedFromSecurity });
+.vibe/work/I-18-security-safety-hooks-policy/I-18A-security-policy-package/post-fix-revalidation-evidence/negative/post-fix-adversarial-witness-summary.json:83:      "name": "real-boundary: CLI package resolver resolves @vibe-engineer/security public API",
+.vibe/work/I-18-security-safety-hooks-policy/I-18A-security-policy-package/post-fix-revalidation-evidence/negative/post-fix-adversarial-witness-summary.json:88:      "name": "real-boundary: security package self resolver resolves @vibe-engineer/security public API",
+.vibe/work/I-18-security-safety-hooks-policy/I-18A-security-policy-package/post-fix-revalidation-evidence/regression/unauthorized-surface-regression.txt:2:ABSENT packages/cli/src/commands/security
+.vibe/work/I-18-security-safety-hooks-policy/I-18A-security-policy-package/post-fix-revalidation-evidence/regression/unauthorized-surface-regression.txt:3:ABSENT examples/starter-reference/generated-fixtures/security
+.vibe/work/I-18-security-safety-hooks-policy/I-18A-security-policy-package/post-fix-revalidation-evidence/package-checks/pnpm-list-security-depth0.json:3:    "name": "@vibe-engineer/security",
+.vibe/work/I-18-security-safety-hooks-policy/validation-evidence/positive/cli-security-resolver-witness.json:12:  "resolved": "file:///Users/lizavasilyeva/work/vibe-engineer/packages/cli/node_modules/@vibe-engineer/security/src/index.js",
+.vibe/work/I-18-security-safety-hooks-policy/validation-evidence/positive/cli-security-resolver-witness.json:18:    "message": "Cannot find module '/Users/lizavasilyeva/work/vibe-engineer/packages/cli/node_modules/@vibe-engineer/security/src/index.js' imported from /Users/lizavasilyeva/work/vibe-engineer/packages/cli/[eval1]"
+.vibe/work/I-18-security-safety-hooks-policy/validation-evidence/manifest/pnpm-list-cli-depth0.json:18:      "@vibe-engineer/security": {
+.vibe/work/I-18-security-safety-hooks-policy/validation-evidence/manifest/pnpm-list-cli-depth0.json:19:        "from": "@vibe-engineer/security",
+.vibe/work/I-18-security-safety-hooks-policy/validation-evidence/negative/current-api-import-pending-i18a.json:4:  "message": "Cannot find module '/Users/lizavasilyeva/work/vibe-engineer/packages/cli/node_modules/@vibe-engineer/security/src/index.js' imported from /Users/lizavasilyeva/work/vibe-engineer/packages/cli/[eval1]",
+.vibe/work/I-18-security-safety-hooks-policy/validation-evidence/negative/missing-export-fixture/fixture-cli/node_modules/@vibe-engineer/security/package.json:1:{"name":"@vibe-engineer/security","version":"0.0.0","type":"module","exports":{"./explicit":"./explicit.js"}}
+.vibe/work/I-18-security-safety-hooks-policy/validation-evidence/negative/missing-dependency-fails-closed.json:4:  "message": "Cannot find package '@vibe-engineer/security' imported from /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-18-security-safety-hooks-policy/validation-evidence/negative/missing-dependency-fixture/fixture-cli/[eval1]"
+.vibe/work/I-18-security-safety-hooks-policy/validation-evidence/negative/missing-export-fails-closed.json:4:  "message": "No \"exports\" main defined in /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-18-security-safety-hooks-policy/validation-evidence/negative/missing-export-fixture/fixture-cli/node_modules/@vibe-engineer/security/package.json imported from /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-18-security-safety-hooks-policy/validation-evidence/negative/missing-export-fixture/fixture-cli/[eval1]"
+.vibe/work/I-18-security-safety-hooks-policy/validation-evidence/status/i18-owned-surface-inventory.txt:3:--- packages/cli/src/commands/security ---
+.vibe/work/I-18-security-safety-hooks-policy/validation-evidence/status/i18-owned-surface-inventory.txt:4:--- examples/starter-reference/generated-fixtures/security ---
+.vibe/work/I-18-security-safety-hooks-policy/I-18S-validation-artifact.md:51:  - `packages/cli/package.json`: `dependencies["@vibe-engineer/security"] = "workspace:*"`.
+.vibe/work/I-18-security-safety-hooks-policy/I-18S-validation-artifact.md:52:  - `pnpm-lock.yaml`: `packages/cli` importer link `@vibe-engineer/security` → `link:../security`.
+.vibe/work/I-18-security-safety-hooks-policy/I-18S-validation-artifact.md:68:- `packages/cli/package.json` has exactly the expected `@vibe-engineer/security: workspace:*` dependency edge.
+.vibe/work/I-18-security-safety-hooks-policy/I-18S-validation-artifact.md:70:- Actual package-manager graph resolves `@vibe-engineer/security` from CLI to `/Users/lizavasilyeva/work/vibe-engineer/packages/security`.
+.vibe/work/I-18-security-safety-hooks-policy/I-18S-validation-artifact.md:80:- CLI manifest declares `@vibe-engineer/security: workspace:*`.
+.vibe/work/I-18-security-safety-hooks-policy/I-18S-validation-artifact.md:81:- `packages/cli/node_modules/@vibe-engineer/security` is an actual symlink to `../../../security`.
+.vibe/work/I-18-security-safety-hooks-policy/I-18S-validation-artifact.md:83:- `import.meta.resolve('@vibe-engineer/security')` resolves to `file:///Users/lizavasilyeva/work/vibe-engineer/packages/cli/node_modules/@vibe-engineer/security/src/index.js`.
+.vibe/work/I-18-security-safety-hooks-policy/I-18S-validation-artifact.md:96:- Missing `@vibe-engineer/security` dependency fails closed with `ERR_MODULE_NOT_FOUND`.
+.vibe/work/I-18-security-safety-hooks-policy/I-18S-validation-artifact.md:118:- Only `packages/cli/package.json` references `@vibe-engineer/security`.
+.vibe/work/I-18-security-safety-hooks-policy/I-18S-validation-artifact.md:120:- `packages/cli/src/commands/security/**` absent; I-18B not implemented.
+.vibe/work/I-18-security-safety-hooks-policy/I-18S-validation-artifact.md:121:- `examples/starter-reference/generated-fixtures/security/**` absent; I-18B fixture work not implemented.
+.vibe/work/I-18-security-safety-hooks-policy/I-18S-implementation-report.md:19:  - `packages/cli/package.json`: added `@vibe-engineer/security: workspace:*` dependency only.
+.vibe/work/I-18-security-safety-hooks-policy/I-18S-implementation-report.md:20:  - `pnpm-lock.yaml`: after reconciliation, added CLI importer link for `@vibe-engineer/security`.
+.vibe/work/I-18-security-safety-hooks-policy/I-18S-implementation-report.md:33:- Real resolver witness: `.vibe/work/I-18S-security-cli-dependency-handoff/evidence/resolver/cli-context-security-resolution.txt` exit `0`; `packages/cli` resolves `@vibe-engineer/security` via declared symlink/export carrier.

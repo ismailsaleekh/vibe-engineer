@@ -1,0 +1,1 @@
+cd /Users/lizavasilyeva/work/vibe-engineer/packages/security && node --input-type=module -e "const security = await import(\x27@vibe-engineer/security\x27); console.log(JSON.stringify({ok: true, exports: Object.keys(security).sort(), smoke: security.__i18aCliBoundarySmoke ? security.__i18aCliBoundarySmoke() : null}));"

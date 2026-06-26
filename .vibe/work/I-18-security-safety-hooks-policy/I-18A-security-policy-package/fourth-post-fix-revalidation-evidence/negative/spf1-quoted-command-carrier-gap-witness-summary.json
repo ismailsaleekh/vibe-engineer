@@ -1,0 +1,200 @@
+{
+  "ok": false,
+  "total": 8,
+  "failures": [
+    {
+      "contextName": "packages/security",
+      "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+      "label": "double-quoted embedded api-key flag without value",
+      "status": "passed",
+      "decision": "allow",
+      "classifications": [],
+      "expectedStatus": "blocked",
+      "expectedDecision": "block",
+      "expectedClassification": "secret_like_value",
+      "ok": false
+    },
+    {
+      "contextName": "packages/security",
+      "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+      "label": "single-quoted embedded api-key flag without value",
+      "status": "passed",
+      "decision": "allow",
+      "classifications": [],
+      "expectedStatus": "blocked",
+      "expectedDecision": "block",
+      "expectedClassification": "secret_like_value",
+      "ok": false
+    },
+    {
+      "contextName": "packages/security",
+      "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+      "label": "double-quoted embedded api-key flag split value",
+      "status": "passed",
+      "decision": "allow",
+      "classifications": [],
+      "expectedStatus": "blocked",
+      "expectedDecision": "block",
+      "expectedClassification": "secret_like_value",
+      "ok": false
+    },
+    {
+      "contextName": "packages/security",
+      "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+      "label": "single-quoted embedded client-secret flag split value",
+      "status": "passed",
+      "decision": "allow",
+      "classifications": [],
+      "expectedStatus": "blocked",
+      "expectedDecision": "block",
+      "expectedClassification": "secret_like_value",
+      "ok": false
+    },
+    {
+      "contextName": "packages/cli",
+      "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+      "label": "double-quoted embedded api-key flag without value",
+      "status": "passed",
+      "decision": "allow",
+      "classifications": [],
+      "expectedStatus": "blocked",
+      "expectedDecision": "block",
+      "expectedClassification": "secret_like_value",
+      "ok": false
+    },
+    {
+      "contextName": "packages/cli",
+      "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+      "label": "single-quoted embedded api-key flag without value",
+      "status": "passed",
+      "decision": "allow",
+      "classifications": [],
+      "expectedStatus": "blocked",
+      "expectedDecision": "block",
+      "expectedClassification": "secret_like_value",
+      "ok": false
+    },
+    {
+      "contextName": "packages/cli",
+      "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+      "label": "double-quoted embedded api-key flag split value",
+      "status": "passed",
+      "decision": "allow",
+      "classifications": [],
+      "expectedStatus": "blocked",
+      "expectedDecision": "block",
+      "expectedClassification": "secret_like_value",
+      "ok": false
+    },
+    {
+      "contextName": "packages/cli",
+      "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+      "label": "single-quoted embedded client-secret flag split value",
+      "status": "passed",
+      "decision": "allow",
+      "classifications": [],
+      "expectedStatus": "blocked",
+      "expectedDecision": "block",
+      "expectedClassification": "secret_like_value",
+      "ok": false
+    }
+  ],
+  "rows": [
+    {
+      "contextName": "packages/security",
+      "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+      "label": "double-quoted embedded api-key flag without value",
+      "status": "passed",
+      "decision": "allow",
+      "classifications": [],
+      "expectedStatus": "blocked",
+      "expectedDecision": "block",
+      "expectedClassification": "secret_like_value",
+      "ok": false
+    },
+    {
+      "contextName": "packages/security",
+      "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+      "label": "single-quoted embedded api-key flag without value",
+      "status": "passed",
+      "decision": "allow",
+      "classifications": [],
+      "expectedStatus": "blocked",
+      "expectedDecision": "block",
+      "expectedClassification": "secret_like_value",
+      "ok": false
+    },
+    {
+      "contextName": "packages/security",
+      "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+      "label": "double-quoted embedded api-key flag split value",
+      "status": "passed",
+      "decision": "allow",
+      "classifications": [],
+      "expectedStatus": "blocked",
+      "expectedDecision": "block",
+      "expectedClassification": "secret_like_value",
+      "ok": false
+    },
+    {
+      "contextName": "packages/security",
+      "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+      "label": "single-quoted embedded client-secret flag split value",
+      "status": "passed",
+      "decision": "allow",
+      "classifications": [],
+      "expectedStatus": "blocked",
+      "expectedDecision": "block",
+      "expectedClassification": "secret_like_value",
+      "ok": false
+    },
+    {
+      "contextName": "packages/cli",
+      "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+      "label": "double-quoted embedded api-key flag without value",
+      "status": "passed",
+      "decision": "allow",
+      "classifications": [],
+      "expectedStatus": "blocked",
+      "expectedDecision": "block",
+      "expectedClassification": "secret_like_value",
+      "ok": false
+    },
+    {
+      "contextName": "packages/cli",
+      "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+      "label": "single-quoted embedded api-key flag without value",
+      "status": "passed",
+      "decision": "allow",
+      "classifications": [],
+      "expectedStatus": "blocked",
+      "expectedDecision": "block",
+      "expectedClassification": "secret_like_value",
+      "ok": false
+    },
+    {
+      "contextName": "packages/cli",
+      "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+      "label": "double-quoted embedded api-key flag split value",
+      "status": "passed",
+      "decision": "allow",
+      "classifications": [],
+      "expectedStatus": "blocked",
+      "expectedDecision": "block",
+      "expectedClassification": "secret_like_value",
+      "ok": false
+    },
+    {
+      "contextName": "packages/cli",
+      "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+      "label": "single-quoted embedded client-secret flag split value",
+      "status": "passed",
+      "decision": "allow",
+      "classifications": [],
+      "expectedStatus": "blocked",
+      "expectedDecision": "block",
+      "expectedClassification": "secret_like_value",
+      "ok": false
+    }
+  ]
+}

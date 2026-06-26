@@ -1,0 +1,387 @@
+{
+  "ok": true,
+  "resolvedFromCli": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+  "total": 28,
+  "failures": [],
+  "results": [
+    {
+      "name": "positive: local read-only command/env/external dry-run passes",
+      "ok": true,
+      "status": "passed",
+      "decision": "allow",
+      "classifications": []
+    },
+    {
+      "name": "positive: read-only external integration without live credential passes",
+      "ok": true,
+      "status": "passed",
+      "decision": "allow",
+      "classifications": []
+    },
+    {
+      "name": "negative: POSIX absolute path escape blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "unsafe_command_target",
+      "classifications": [
+        "unsafe_command_target"
+      ],
+      "serialized": "{\"schemaVersion\":\"vibe-engineer.security.gate-result.v1\",\"subject\":\"security_gate\",\"status\":\"blocked\",\"decision\":\"block\",\"blocking\":true,\"findings\":[{\"schemaVersion\":\"vibe-engineer.security.finding.v1\",\"category\":\"path_safety\",\"classification\":\"unsafe_command_target\",\"severity\":\"critical\",\"blocking\":true,\"message\":\"Command target path escapes or targets a protected path.\",\"location\":\"/tmp/outside\",\"details\":{\"targetPath\":\"/tmp/outside\"}}],\"redactions\":[],\"auditEvents\":[{\"details\":{\"findingCount\":1},\"eventId\":\"security:security_gate:b45a6e42\",\"recordedAt\":\"deterministic-clock-not-used\",\"schemaVersion\":\"vibe-engineer.security.audit-event.v1\",\"subject\":\"security_gate\"}]}"
+    },
+    {
+      "name": "negative: parent traversal target blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "unsafe_command_target",
+      "classifications": [
+        "unsafe_command_target"
+      ],
+      "serialized": "{\"schemaVersion\":\"vibe-engineer.security.gate-result.v1\",\"subject\":\"security_gate\",\"status\":\"blocked\",\"decision\":\"block\",\"blocking\":true,\"findings\":[{\"schemaVersion\":\"vibe-engineer.security.finding.v1\",\"category\":\"path_safety\",\"classification\":\"unsafe_command_target\",\"severity\":\"critical\",\"blocking\":true,\"message\":\"Command target path escapes or targets a protected path.\",\"location\":\"../outside\",\"details\":{\"targetPath\":\"../outside\"}}],\"redactions\":[],\"auditEvents\":[{\"details\":{\"findingCount\":1},\"eventId\":\"security:security_gate:b45a6e42\",\"recordedAt\":\"deterministic-clock-not-used\",\"schemaVersion\":\"vibe-engineer.security.audit-event.v1\",\"subject\":\"security_gate\"}]}"
+    },
+    {
+      "name": "negative: terminal traversal segment safe/.. blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "unsafe_command_target",
+      "classifications": [
+        "unsafe_command_target"
+      ],
+      "serialized": "{\"schemaVersion\":\"vibe-engineer.security.gate-result.v1\",\"subject\":\"security_gate\",\"status\":\"blocked\",\"decision\":\"block\",\"blocking\":true,\"findings\":[{\"schemaVersion\":\"vibe-engineer.security.finding.v1\",\"category\":\"path_safety\",\"classification\":\"unsafe_command_target\",\"severity\":\"critical\",\"blocking\":true,\"message\":\"Command target path escapes or targets a protected path.\",\"location\":\"safe/..\",\"details\":{\"targetPath\":\"safe/..\"}}],\"redactions\":[],\"auditEvents\":[{\"details\":{\"findingCount\":1},\"eventId\":\"security:security_gate:b45a6e42\",\"recordedAt\":\"deterministic-clock-not-used\",\"schemaVersion\":\"vibe-engineer.security.audit-event.v1\",\"subject\":\"security_gate\"}]}"
+    },
+    {
+      "name": "negative: Windows drive absolute path blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "unsafe_command_target",
+      "classifications": [
+        "unsafe_command_target"
+      ],
+      "serialized": "{\"schemaVersion\":\"vibe-engineer.security.gate-result.v1\",\"subject\":\"security_gate\",\"status\":\"blocked\",\"decision\":\"block\",\"blocking\":true,\"findings\":[{\"schemaVersion\":\"vibe-engineer.security.finding.v1\",\"category\":\"path_safety\",\"classification\":\"unsafe_command_target\",\"severity\":\"critical\",\"blocking\":true,\"message\":\"Command target path escapes or targets a protected path.\",\"location\":\"C:\\\\Users\\\\outside\",\"details\":{\"targetPath\":\"C:\\\\Users\\\\outside\"}}],\"redactions\":[],\"auditEvents\":[{\"details\":{\"findingCount\":1},\"eventId\":\"security:security_gate:b45a6e42\",\"recordedAt\":\"deterministic-clock-not-used\",\"schemaVersion\":\"vibe-engineer.security.audit-event.v1\",\"subject\":\"security_gate\"}]}"
+    },
+    {
+      "name": "negative: secret-like CLI argument blocks and redacts",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "secret_like_value",
+      "classifications": [
+        "secret_like_value",
+        "secret_like_value"
+      ],
+      "serialized": "{\"schemaVersion\":\"vibe-engineer.security.gate-result.v1\",\"subject\":\"security_gate\",\"status\":\"blocked\",\"decision\":\"block\",\"blocking\":true,\"findings\":[{\"schemaVersion\":\"vibe-engineer.security.finding.v1\",\"category\":\"secret\",\"classification\":\"secret_like_value\",\"severity\":\"critical\",\"blocking\":true,\"message\":\"Secret-like CLI argument is denied.\",\"location\":\"argv[0]\",\"details\":{\"arg\":\"--api-key\"}},{\"schemaVersion\":\"vibe-engineer.security.finding.v1\",\"category\":\"secret\",\"classification\":\"secret_like_value\",\"severity\":\"critical\",\"blocking\":true,\"message\":\"Secret-like CLI argument is denied.\",\"location\":\"argv[1]\",\"details\":{\"arg\":\"<redacted>\"}}],\"redactions\":[],\"auditEvents\":[{\"details\":{\"findingCount\":2},\"eventId\":\"security:security_gate:b45cacd9\",\"recordedAt\":\"deterministic-clock-not-used\",\"schemaVersion\":\"vibe-engineer.security.audit-event.v1\",\"subject\":\"security_gate\"}]}"
+    },
+    {
+      "name": "negative: production credential/default classified",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "production_credential_or_default",
+      "classifications": [
+        "production_credential_or_default",
+        "secret_like_value"
+      ],
+      "serialized": "{\"schemaVersion\":\"vibe-engineer.security.gate-result.v1\",\"subject\":\"security_gate\",\"status\":\"blocked\",\"decision\":\"block\",\"blocking\":true,\"findings\":[{\"schemaVersion\":\"vibe-engineer.security.finding.v1\",\"category\":\"production_credential\",\"classification\":\"production_credential_or_default\",\"severity\":\"critical\",\"blocking\":true,\"message\":\"Production-like env/config default is denied.\",\"location\":\"config.DATABASE_URL\",\"details\":{\"key\":\"DATABASE_URL\",\"value\":\"postgres://user:<redacted>@prod.invalid.example/app\"}},{\"schemaVersion\":\"vibe-engineer.security.finding.v1\",\"category\":\"secret\",\"classification\":\"secret_like_value\",\"severity\":\"critical\",\"blocking\":true,\"message\":\"Secret-like env/config value is denied.\",\"location\":\"config.DATABASE_URL\",\"details\":{\"key\":\"DATABASE_URL\",\"value\":\"postgres://user:<redacted>@prod.invalid.example/app\"}}],\"redactions\":[],\"auditEvents\":[{\"details\":{\"findingCount\":2},\"eventId\":\"security:security_gate:b45cacd9\",\"recordedAt\":\"deterministic-clock-not-used\",\"schema"
+    },
+    {
+      "name": "negative: rm -rf destructive blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "destructive_command",
+      "classifications": [
+        "destructive_command",
+        "destructive_command"
+      ],
+      "serialized": "{\"schemaVersion\":\"vibe-engineer.security.gate-result.v1\",\"subject\":\"security_gate\",\"status\":\"blocked\",\"decision\":\"block\",\"blocking\":true,\"findings\":[{\"schemaVersion\":\"vibe-engineer.security.finding.v1\",\"category\":\"command_policy\",\"classification\":\"destructive_command\",\"severity\":\"critical\",\"blocking\":true,\"message\":\"Command classification is not allowed by policy.\",\"location\":null,\"details\":{\"classification\":\"destructive_local_operation\"}},{\"schemaVersion\":\"vibe-engineer.security.finding.v1\",\"category\":\"destructive_operation\",\"classification\":\"destructive_command\",\"severity\":\"critical\",\"blocking\":true,\"message\":\"Destructive or unsafe command primitive is denied.\",\"location\":null,\"details\":{\"command\":\"rm -rf /\"}}],\"redactions\":[],\"auditEvents\":[{\"details\":{\"findingCount\":2},\"eventId\":\"security:security_gate:b45cacd9\",\"recordedAt\":\"deterministic-clock-not-used\",\"schemaVersion\":\"vibe-engineer.security.audit-event.v1\",\"subject\":\"security_gate\"}]}"
+    },
+    {
+      "name": "negative: force push destructive blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "destructive_command",
+      "classifications": [
+        "destructive_command",
+        "destructive_command"
+      ],
+      "serialized": "{\"schemaVersion\":\"vibe-engineer.security.gate-result.v1\",\"subject\":\"security_gate\",\"status\":\"blocked\",\"decision\":\"block\",\"blocking\":true,\"findings\":[{\"schemaVersion\":\"vibe-engineer.security.finding.v1\",\"category\":\"command_policy\",\"classification\":\"destructive_command\",\"severity\":\"critical\",\"blocking\":true,\"message\":\"Command classification is not allowed by policy.\",\"location\":null,\"details\":{\"classification\":\"repository_state_operation\"}},{\"schemaVersion\":\"vibe-engineer.security.finding.v1\",\"category\":\"destructive_operation\",\"classification\":\"destructive_command\",\"severity\":\"critical\",\"blocking\":true,\"message\":\"Destructive or unsafe command primitive is denied.\",\"location\":null,\"details\":{\"command\":\"git push --force origin main\"}}],\"redactions\":[],\"auditEvents\":[{\"details\":{\"findingCount\":2},\"eventId\":\"security:security_gate:b45cacd9\",\"recordedAt\":\"deterministic-clock-not-used\",\"schemaVersion\":\"vibe-engineer.security.audit-event.v1\",\"subject\":\"security_gate\"}]}"
+    },
+    {
+      "name": "negative: deploy/apply destructive blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "destructive_command",
+      "classifications": [
+        "destructive_command",
+        "destructive_command"
+      ],
+      "serialized": "{\"schemaVersion\":\"vibe-engineer.security.gate-result.v1\",\"subject\":\"security_gate\",\"status\":\"blocked\",\"decision\":\"block\",\"blocking\":true,\"findings\":[{\"schemaVersion\":\"vibe-engineer.security.finding.v1\",\"category\":\"command_policy\",\"classification\":\"destructive_command\",\"severity\":\"critical\",\"blocking\":true,\"message\":\"Command classification is not allowed by policy.\",\"location\":null,\"details\":{\"classification\":\"production_impacting_operation\"}},{\"schemaVersion\":\"vibe-engineer.security.finding.v1\",\"category\":\"destructive_operation\",\"classification\":\"destructive_command\",\"severity\":\"critical\",\"blocking\":true,\"message\":\"Destructive or unsafe command primitive is denied.\",\"location\":null,\"details\":{\"command\":\"pulumi apply\"}}],\"redactions\":[],\"auditEvents\":[{\"details\":{\"findingCount\":2},\"eventId\":\"security:security_gate:b45cacd9\",\"recordedAt\":\"deterministic-clock-not-used\",\"schemaVersion\":\"vibe-engineer.security.audit-event.v1\",\"subject\":\"security_gate\"}]}"
+    },
+    {
+      "name": "negative: publish destructive blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "destructive_command",
+      "classifications": [
+        "destructive_command",
+        "destructive_command"
+      ],
+      "serialized": "{\"schemaVersion\":\"vibe-engineer.security.gate-result.v1\",\"subject\":\"security_gate\",\"status\":\"blocked\",\"decision\":\"block\",\"blocking\":true,\"findings\":[{\"schemaVersion\":\"vibe-engineer.security.finding.v1\",\"category\":\"command_policy\",\"classification\":\"destructive_command\",\"severity\":\"critical\",\"blocking\":true,\"message\":\"Command classification is not allowed by policy.\",\"location\":null,\"details\":{\"classification\":\"production_impacting_operation\"}},{\"schemaVersion\":\"vibe-engineer.security.finding.v1\",\"category\":\"destructive_operation\",\"classification\":\"destructive_command\",\"severity\":\"critical\",\"blocking\":true,\"message\":\"Destructive or unsafe command primitive is denied.\",\"location\":null,\"details\":{\"command\":\"pnpm publish\"}}],\"redactions\":[],\"auditEvents\":[{\"details\":{\"findingCount\":2},\"eventId\":\"security:security_gate:b45cacd9\",\"recordedAt\":\"deterministic-clock-not-used\",\"schemaVersion\":\"vibe-engineer.security.audit-event.v1\",\"subject\":\"security_gate\"}]}"
+    },
+    {
+      "name": "negative: DB destructive blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "destructive_command",
+      "classifications": [
+        "destructive_command",
+        "destructive_command"
+      ],
+      "serialized": "{\"schemaVersion\":\"vibe-engineer.security.gate-result.v1\",\"subject\":\"security_gate\",\"status\":\"blocked\",\"decision\":\"block\",\"blocking\":true,\"findings\":[{\"schemaVersion\":\"vibe-engineer.security.finding.v1\",\"category\":\"command_policy\",\"classification\":\"destructive_command\",\"severity\":\"critical\",\"blocking\":true,\"message\":\"Command classification is not allowed by policy.\",\"location\":null,\"details\":{\"classification\":\"production_impacting_operation\"}},{\"schemaVersion\":\"vibe-engineer.security.finding.v1\",\"category\":\"destructive_operation\",\"classification\":\"destructive_command\",\"severity\":\"critical\",\"blocking\":true,\"message\":\"Destructive or unsafe command primitive is denied.\",\"location\":null,\"details\":{\"command\":\"psql -c DROP DATABASE app\"}}],\"redactions\":[],\"auditEvents\":[{\"details\":{\"findingCount\":2},\"eventId\":\"security:security_gate:b45cacd9\",\"recordedAt\":\"deterministic-clock-not-used\",\"schemaVersion\":\"vibe-engineer.security.audit-event.v1\",\"subject\":\"security_gate\"}]}"
+    },
+    {
+      "name": "negative: live external credential/budget/network without approval blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "unsafe_external_integration",
+      "classifications": [
+        "unsafe_external_integration",
+        "unsafe_external_integration"
+      ],
+      "serialized": "{\"schemaVersion\":\"vibe-engineer.security.gate-result.v1\",\"subject\":\"security_gate\",\"status\":\"blocked\",\"decision\":\"block\",\"blocking\":true,\"findings\":[{\"schemaVersion\":\"vibe-engineer.security.finding.v1\",\"category\":\"external_integration\",\"classification\":\"unsafe_external_integration\",\"severity\":\"critical\",\"blocking\":true,\"message\":\"External integration is not disabled, dry-run, read-only, or local-fixture safe by default.\",\"location\":\"externalIntegrations[0]\",\"details\":{\"enabled\":true,\"explicitApproval\":false,\"id\":\"live-provider\",\"mode\":\"enabled\",\"networkMutation\":true,\"requiresBudget\":true,\"requiresCredential\":\"<redacted>\",\"requiresNetwork\":true}},{\"schemaVersion\":\"vibe-engineer.security.finding.v1\",\"category\":\"external_integration\",\"classification\":\"unsafe_external_integration\",\"severity\":\"critical\",\"blocking\":true,\"message\":\"External integration requires live credential, budget, network mutation, or approval and is blocked.\",\"location\":\"externalIntegrations[0]\",\"details\":{\"enabled\":tr"
+    },
+    {
+      "name": "negative: unknown policy version rejects",
+      "ok": true,
+      "parsedOk": false,
+      "status": "blocked",
+      "expectedClassification": "unsupported_policy_version",
+      "classifications": [
+        "unsupported_policy_version"
+      ],
+      "policy": {
+        "schemaVersion": "security-policy.v999",
+        "defaultDecision": "block"
+      }
+    },
+    {
+      "name": "negative: unknown top-level policy field rejects",
+      "ok": true,
+      "parsedOk": false,
+      "status": "blocked",
+      "expectedClassification": "unknown_policy_field",
+      "classifications": [
+        "unknown_policy_field"
+      ],
+      "policy": {
+        "schemaVersion": "security-policy.v1",
+        "defaultDecision": "block",
+        "unsupported": true
+      }
+    },
+    {
+      "name": "negative: unknown command classification value in policy rejects typed contract",
+      "ok": true,
+      "parsedOk": false,
+      "status": "blocked",
+      "expectedClassification": "malformed_policy",
+      "classifications": [
+        "malformed_policy"
+      ],
+      "policy": {
+        "schemaVersion": "security-policy.v1",
+        "defaultDecision": "block",
+        "allowedCommandClassifications": [
+          "read_only",
+          "invented_super_safe"
+        ],
+        "protectedPathPrefixes": [
+          "/",
+          "~",
+          ".git",
+          "../",
+          "..",
+          "packages/cli/src/entry",
+          "packages/cli/src/command-loader",
+          "pnpm-lock.yaml",
+          "package.json"
+        ],
+        "allowProductionCredentials": false,
+        "allowedExternalIntegrationModes": [
+          "disabled",
+          "dry_run",
+          "read_only",
+          "local_fixture"
+        ],
+        "allowedSandboxCapabilityStatuses": [
+          "proven",
+          "not_provided",
+          "unknown"
+        ],
+        "advisoryClassifications": [
+          "advisory_notice"
+        ]
+      }
+    },
+    {
+      "name": "negative: fake sandbox status in policy rejects typed contract",
+      "ok": true,
+      "parsedOk": false,
+      "status": "blocked",
+      "expectedClassification": "malformed_policy",
+      "classifications": [
+        "malformed_policy"
+      ],
+      "policy": {
+        "schemaVersion": "security-policy.v1",
+        "defaultDecision": "block",
+        "allowedCommandClassifications": [
+          "read_only",
+          "local_deterministic_write"
+        ],
+        "protectedPathPrefixes": [
+          "/",
+          "~",
+          ".git",
+          "../",
+          "..",
+          "packages/cli/src/entry",
+          "packages/cli/src/command-loader",
+          "pnpm-lock.yaml",
+          "package.json"
+        ],
+        "allowProductionCredentials": false,
+        "allowedExternalIntegrationModes": [
+          "disabled",
+          "dry_run",
+          "read_only",
+          "local_fixture"
+        ],
+        "allowedSandboxCapabilityStatuses": [
+          "unknown",
+          "docker_isolated"
+        ],
+        "advisoryClassifications": [
+          "advisory_notice"
+        ]
+      }
+    },
+    {
+      "name": "negative: fake sandbox claim blocks with default policy",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "unsupported_sandbox_claim",
+      "classifications": [
+        "unsupported_sandbox_claim"
+      ],
+      "serialized": "{\"schemaVersion\":\"vibe-engineer.security.gate-result.v1\",\"subject\":\"security_gate\",\"status\":\"blocked\",\"decision\":\"block\",\"blocking\":true,\"findings\":[{\"schemaVersion\":\"vibe-engineer.security.finding.v1\",\"category\":\"sandbox_capability\",\"classification\":\"unsupported_sandbox_claim\",\"severity\":\"critical\",\"blocking\":true,\"message\":\"Unsupported, fake, or pending-live sandbox claim is blocked.\",\"location\":\"sandboxClaims[0]\",\"details\":{\"claim\":\"full filesystem and network isolation\",\"provider\":\"fake\",\"status\":\"docker_isolated\"}}],\"redactions\":[],\"auditEvents\":[{\"details\":{\"findingCount\":1},\"eventId\":\"security:security_gate:b45a6e42\",\"recordedAt\":\"deterministic-clock-not-used\",\"schemaVersion\":\"vibe-engineer.security.audit-event.v1\",\"subject\":\"security_gate\"}]}"
+    },
+    {
+      "name": "negative: blocked/pending-live sandbox status is not green",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "unsupported_sandbox_claim",
+      "classifications": [
+        "unsupported_sandbox_claim"
+      ],
+      "serialized": "{\"schemaVersion\":\"vibe-engineer.security.gate-result.v1\",\"subject\":\"security_gate\",\"status\":\"blocked\",\"decision\":\"block\",\"blocking\":true,\"findings\":[{\"schemaVersion\":\"vibe-engineer.security.finding.v1\",\"category\":\"sandbox_capability\",\"classification\":\"unsupported_sandbox_claim\",\"severity\":\"critical\",\"blocking\":true,\"message\":\"Unsupported, fake, or pending-live sandbox claim is blocked.\",\"location\":\"sandboxClaims[0]\",\"details\":{\"claim\":\"Live sandbox proof unavailable.\",\"provider\":\"pi\",\"status\":\"blocked/pending-live\"}}],\"redactions\":[],\"auditEvents\":[{\"details\":{\"findingCount\":1},\"eventId\":\"security:security_gate:b45a6e42\",\"recordedAt\":\"deterministic-clock-not-used\",\"schemaVersion\":\"vibe-engineer.security.audit-event.v1\",\"subject\":\"security_gate\"}]}"
+    },
+    {
+      "name": "negative: malformed command missing command field blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "unknown_request_field",
+      "classifications": [
+        "unknown_request_field"
+      ],
+      "serialized": "{\"schemaVersion\":\"vibe-engineer.security.gate-result.v1\",\"subject\":\"security_gate\",\"status\":\"blocked\",\"decision\":\"block\",\"blocking\":true,\"findings\":[{\"schemaVersion\":\"vibe-engineer.security.finding.v1\",\"category\":\"policy_contract\",\"classification\":\"unknown_request_field\",\"severity\":\"critical\",\"blocking\":true,\"message\":\"Command request must include a non-empty command string.\",\"location\":\"command\",\"details\":{\"receivedType\":\"undefined\"}}],\"redactions\":[],\"auditEvents\":[{\"details\":{\"findingCount\":1},\"eventId\":\"security:security_gate:b45a6e42\",\"recordedAt\":\"deterministic-clock-not-used\",\"schemaVersion\":\"vibe-engineer.security.audit-event.v1\",\"subject\":\"security_gate\"}]}"
+    },
+    {
+      "name": "negative: malformed argv string blocks instead of being ignored",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "unknown_request_field",
+      "classifications": [
+        "unknown_request_field"
+      ],
+      "serialized": "{\"schemaVersion\":\"vibe-engineer.security.gate-result.v1\",\"subject\":\"security_gate\",\"status\":\"blocked\",\"decision\":\"block\",\"blocking\":true,\"findings\":[{\"schemaVersion\":\"vibe-engineer.security.finding.v1\",\"category\":\"policy_contract\",\"classification\":\"unknown_request_field\",\"severity\":\"critical\",\"blocking\":true,\"message\":\"Command argv must be an array of strings when provided.\",\"location\":\"argv\",\"details\":{\"receivedType\":\"string\"}}],\"redactions\":[],\"auditEvents\":[{\"details\":{\"findingCount\":1},\"eventId\":\"security:security_gate:b45a6e42\",\"recordedAt\":\"deterministic-clock-not-used\",\"schemaVersion\":\"vibe-engineer.security.audit-event.v1\",\"subject\":\"security_gate\"}]}"
+    },
+    {
+      "name": "negative: malformed targetPaths string blocks instead of being ignored",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "unknown_request_field",
+      "classifications": [
+        "unknown_request_field"
+      ],
+      "serialized": "{\"schemaVersion\":\"vibe-engineer.security.gate-result.v1\",\"subject\":\"security_gate\",\"status\":\"blocked\",\"decision\":\"block\",\"blocking\":true,\"findings\":[{\"schemaVersion\":\"vibe-engineer.security.finding.v1\",\"category\":\"policy_contract\",\"classification\":\"unknown_request_field\",\"severity\":\"critical\",\"blocking\":true,\"message\":\"Command targetPaths must be an array of strings when provided.\",\"location\":\"targetPaths\",\"details\":{\"receivedType\":\"string\"}}],\"redactions\":[],\"auditEvents\":[{\"details\":{\"findingCount\":1},\"eventId\":\"security:security_gate:b45a6e42\",\"recordedAt\":\"deterministic-clock-not-used\",\"schemaVersion\":\"vibe-engineer.security.audit-event.v1\",\"subject\":\"security_gate\"}]}"
+    },
+    {
+      "name": "negative: config array secret is scanned and blocked",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "secret_like_value",
+      "classifications": [
+        "secret_like_value"
+      ],
+      "serialized": "{\"schemaVersion\":\"vibe-engineer.security.gate-result.v1\",\"subject\":\"security_gate\",\"status\":\"blocked\",\"decision\":\"block\",\"blocking\":true,\"findings\":[{\"schemaVersion\":\"vibe-engineer.security.finding.v1\",\"category\":\"secret\",\"classification\":\"secret_like_value\",\"severity\":\"critical\",\"blocking\":true,\"message\":\"Secret-like env/config value is denied.\",\"location\":\"config.nested[0]\",\"details\":{\"key\":\"nested\",\"value\":\"<redacted>\"}}],\"redactions\":[],\"auditEvents\":[{\"details\":{\"findingCount\":1},\"eventId\":\"security:security_gate:b45a6e42\",\"recordedAt\":\"deterministic-clock-not-used\",\"schemaVersion\":\"vibe-engineer.security.audit-event.v1\",\"subject\":\"security_gate\"}]}"
+    },
+    {
+      "name": "negative: circular evidence fails closed without throwing",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "evidence_secret_leak",
+      "classifications": [
+        "evidence_secret_leak"
+      ]
+    },
+    {
+      "name": "negative: BigInt evidence fails closed without throwing",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "expectedClassification": "evidence_secret_leak",
+      "classifications": [
+        "evidence_secret_leak"
+      ]
+    },
+    {
+      "name": "redaction: sentinel removed from structured value",
+      "ok": true,
+      "redacted": {
+        "nested": {
+          "apiKey": "<redacted>"
+        },
+        "stdout": "token=<redacted>"
+      }
+    },
+    {
+      "name": "audit: event details redacted and deterministic carrier present",
+      "ok": true,
+      "audit": {
+        "schemaVersion": "vibe-engineer.security.audit-event.v1",
+        "eventId": "security:validator:5f9360b4",
+        "subject": "validator",
+        "recordedAt": "deterministic-clock-not-used",
+        "details": {
+          "apiKey": "<redacted>"
+        }
+      }
+    }
+  ]
+}

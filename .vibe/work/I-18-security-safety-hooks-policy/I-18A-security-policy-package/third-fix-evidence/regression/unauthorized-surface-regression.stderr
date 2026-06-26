@@ -1,0 +1,3 @@
+$ set -u; test ! -e packages/cli/src/commands/security; test ! -e examples/starter-reference/generated-fixtures/security; git diff --quiet -- packages/security/package.json packages/cli/package.json package.json pnpm-workspace.yaml pnpm-lock.yaml turbo.json packages/cli/src/command-loader packages/cli/src/entry packages/cli/src/envelope packages/cli/src/errors packages/cli/src/testing packages/verification packages/mechanical-gates packages/testing packages/artifacts docs .github scripts infra; echo unauthorized_surface_regression_ok
+
+__EXIT__:0

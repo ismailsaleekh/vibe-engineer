@@ -1,0 +1,122 @@
+packages/cli/src/commands/security/index.js relevant lines:
+     1	import fs from "node:fs";
+     2	import { mkdir, readFile } from "node:fs/promises";
+     3	import { dirname, isAbsolute, relative, resolve } from "node:path";
+     4	import {
+     5	  DEFAULT_SECURITY_POLICY,
+     6	  SecurityDecision,
+     7	  SecurityGateStatus,
+     8	  isSecretLikeValue,
+     9	  parseSecurityPolicy,
+    10	  redactSecurityText,
+    11	  redactSecurityValue,
+    12	  runSecurityGate
+    13	} from "@vibe-engineer/security";
+    14	import {
+    15	  artifactDescriptor,
+    16	  createEnvelope,
+    17	  invalidInvocationEnvelope,
+    18	  payload,
+    19	  validateCliResultEnvelope,
+    20	  writeResultFileAtomic
+    21	} from "../../envelope/result-envelope.js";
+    22	import { CliClassification, CliErrorCode, cliError, diagnostic } from "../../errors/codes.js";
+    23	import { isSecretFlag, parseFlagToken, sanitizeFlagForDisplay } from "../../errors/sanitization.js";
+    24	
+    25	const VALUE_FLAGS = new Set(["--request-file", "--policy-file", "--project-root", "--result-file"]);
+    26	const REQUIRED_FLAGS = new Set(["--request-file"]);
+    27	const REDACTED = "<redacted>";
+    28	const PROTECTED_PROJECT_PREFIXES = Object.freeze([
+    29	  ".git",
+    30	  ".github",
+    31	  "scripts",
+    32	  "infra",
+    33	  "docs",
+    34	  "packages/cli/src/entry",
+    35	  "packages/cli/src/command-loader",
+    36	  "packages/cli/src/envelope",
+    37	  "packages/cli/src/errors",
+    38	  "packages/cli/src/testing",
+    39	  "packages/cli/src/commands/verify",
+    40	  "packages/security",
+   320	    request = { ...request, policy: policyParse.policy };
+   321	  } else if (request.policy === undefined) {
+   322	    request = { ...request, policy: DEFAULT_SECURITY_POLICY };
+   323	  }
+   324	
+   325	  const gateResult = runSecurityGate(request);
+   326	  const envelope = securityEnvelope(invocation, parsed.options, gateResult);
+   327	  return commandResult(await finalizeEnvelope(envelope, parsed.options.resultFile));
+   328	}
+   329	
+   330	export const securityCommand = Object.freeze({
+   331	  id: "security",
+   332	  visibility: "implementation",
+   333	  description: "Run fail-closed security and safety policy gates through @vibe-engineer/security.",
+   334	  run
+   335	});
+   336	
+   337	export { SecurityDecision, SecurityGateStatus };
+   338	export default securityCommand;
+
+I-18B implementation prompt production/source expectations lines (excerpt already captured separately):
+    39	Implement the I-18B security CLI command family and verify-hook integration using the real declared `@vibe-engineer/security` package API and existing CLI/verification contracts.
+    40	
+    41	Required outcomes:
+    42	
+    43	1. A `securityCommand` compatible with the existing `createCommandLoader([securityCommand])` composition pattern.
+    44	2. Machine-envelope-compatible CLI command behavior using existing envelope/error contracts without editing those contracts.
+    45	3. Real consumption of `@vibe-engineer/security` through the `I-18S` dependency/export state and `I-18A` public API.
+    46	4. Starter/reference security fixtures under `examples/starter-reference/generated-fixtures/security/**`.
+    47	5. A real verify security-hook witness using actual `verifyCommand`, actual `@vibe-engineer/verification` runner logic, actual Evidence Packet/result-file carriers, and actual `@vibe-engineer/security` gate behavior.
+    48	6. A build-facing security API consumer fixture only; actual build command integration remains a future `I-21` join and must not be claimed green.
+   156	### Security command
+   157	
+   158	Create a command module under `packages/cli/src/commands/security/**` that exports at least:
+   159	
+   160	```js
+   161	export const securityCommand = Object.freeze({ id: "security", ... });
+   162	export default securityCommand;
+   163	```
+   164	
+   165	The command must:
+   166	
+   167	- be dispatchable by `createCommandLoader([securityCommand])` without modifying the default loader;
+   168	- reject unknown flags and unexpected positionals fail-closed with stable CLI envelope/error classification;
+   169	- reject secret-like command inputs before leaking raw values;
+   170	- parse only typed, explicit inputs (for example request/policy/result paths) with project-root containment and no protected path writes;
+   171	- invoke real `@vibe-engineer/security` APIs such as `runSecurityGate`, `redactSecurityValue`/`redactSecurityText`, stable enums, and policy parser; do not copy security logic into CLI;
+   172	- emit valid machine envelopes through existing envelope contracts;
+   173	- support result-file evidence only through existing atomic result writer patterns if implemented;
+   174	- redact stdout, result files, diagnostics, errors, evidence refs, and logs.
+   223	You must run targeted positive/negative/regression witnesses and record stdout/stderr/exit under the I-18B evidence root.
+   224	
+   225	At minimum, run or create equivalent stronger direct witnesses:
+   226	
+   227	```bash
+   228	cd /Users/lizavasilyeva/work/vibe-engineer
+   229	node --check packages/cli/src/commands/security/index.js
+   230	node --check packages/cli/src/commands/security/run-cli-witnesses.mjs
+   231	node --check packages/cli/src/commands/security/run-verify-security-hook-witness.mjs
+   232	node packages/cli/src/commands/security/run-cli-witnesses.mjs
+   233	node packages/cli/src/commands/security/run-verify-security-hook-witness.mjs
+   234	node packages/cli/src/entry/vibe-engineer.js security --api-key I18B_SHOULD_BE_REDACTED
+   235	```
+   236	
+   237	The default entry command above must remain unsupported and redacted. If your filenames differ, explain the equivalent stronger witness in the report and keep it under owned paths.
+
+validation prompt production JS gate lines:
+   118	4. Domain-neutral starter/reference security fixtures.
+   119	5. Real verify security-hook witness using actual `verifyCommand`, actual `@vibe-engineer/verification` runner logic, actual Evidence Packet/result-file carriers, and actual security gate behavior.
+   120	6. Build-facing security API consumer fixture invocation only; actual build command integration remains future `I-21` and must not be claimed green.
+   121	
+   122	## Mandatory file/diff inspection
+   123	
+   124	You must independently inspect actual changed/owned files and path-scoped diffs. Record exact outputs/evidence paths for:
+   125	
+   126	```bash
+   127	cd /Users/lizavasilyeva/work/vibe-engineer
+   128	git status --short
+   129	find packages/cli/src/commands/security examples/starter-reference/generated-fixtures/security .vibe/work/I-18-security-safety-hooks-policy/I-18B-security-cli-command-and-verify-hook -maxdepth 8 -type f | sort
+   130	git diff -- packages/cli/src/commands/security examples/starter-reference/generated-fixtures/security .vibe/work/I-18-security-safety-hooks-policy/I-18B-security-cli-command-and-verify-hook
+   131	git status --short -- package.json pnpm-lock.yaml pnpm-workspace.yaml turbo.json packages/cli/package.json packages/security/package.json packages/security packages/cli/src/command-loader packages/cli/src/entry packages/cli/src/envelope packages/cli/src/errors packages/cli/src/testing packages/cli/src/commands/verify packages/verification packages/mechanical-gates packages/testing packages/artifacts .github scripts infra docs

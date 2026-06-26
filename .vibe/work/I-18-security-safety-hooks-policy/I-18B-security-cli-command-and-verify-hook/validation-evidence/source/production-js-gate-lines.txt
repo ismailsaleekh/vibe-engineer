@@ -1,0 +1,16 @@
+   134	
+   135	The repo may be no-HEAD/dirty/untracked. Dirty tree is not a blocker. Only concrete ownership conflict, unauthorized I-18B edits, or witness invalidation is a blocker/defect.
+   136	
+   137	## Production JavaScript / TypeScript source gate
+   138	
+   139	This project previously enforced TypeScript production source unless a file is explicitly witness-only. You must inventory all I-18B-added or I-18B-owned production `.js`/`.mjs` files.
+   140	
+   141	Classify any production `.js` or `.mjs` source addition as `critical` unless all are true:
+   142	
+   143	- it is witness-only or fixture-only, not shipped/production command source;
+   144	- it is justified by the implementation prompt and actual package runtime constraints;
+   145	- it is not part of the shipped production source surface;
+   146	- it does not weaken typed contracts or evade the TypeScript production-source invariant.
+   147	
+   148	Do not wave this through because syntax checks pass. If `packages/cli/src/commands/security/index.js` or any other command implementation is production JavaScript, scrutinize it under this gate and record the severity explicitly.
+   149	

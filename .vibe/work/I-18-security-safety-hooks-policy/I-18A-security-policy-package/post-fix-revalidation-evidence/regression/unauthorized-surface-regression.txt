@@ -1,0 +1,17 @@
+$ test absence of I-18B and excluded surfaces
+ABSENT packages/cli/src/commands/security
+ABSENT examples/starter-reference/generated-fixtures/security
+ABSENT .github
+ABSENT scripts
+ABSENT infra
+$ sha256sum root/package/lock surfaces
+d71428e1b35540d330890b4e286a7dae6b54fef16eb3757dd268e56c7471b6e2  package.json
+aee47e9964f53e767a6d6a86a27c86b218a76cd59453c3401defad6907be5f21  pnpm-workspace.yaml
+16e6293cf07e9befc3463ef1c2fea50302a04ada97f0ac18cca5400a9079e9a5  turbo.json
+dcf57145fdbc465b5af1a845167298a348daba9934d2801e740b36b97bdfe5b2  pnpm-lock.yaml
+3b383db09cf89142fc36a61436ce62f415d804f8454232786a6fe4b57bd430c6  packages/cli/package.json
+42c2caa25a68ec9296a73bad37c4dc9a3bfed3e6a222a57c4a8f739f33de7b2c  packages/security/package.json
+$ cmp I-18S post-snapshot manifests/lock
+cli manifest matches I-18S snapshot
+security manifest matches I-18S snapshot
+lockfile matches I-18S snapshot

@@ -1,0 +1,116 @@
+{
+  "cliSecurity": {
+    "destructiveCommand": {
+      "classification": "safety_policy_block",
+      "findingClassifications": [
+        "destructive_command",
+        "destructive_command",
+        "unsafe_command_target"
+      ],
+      "status": "blocked"
+    },
+    "malformedConfig": {
+      "classification": "safety_policy_block",
+      "status": "blocked"
+    },
+    "malformedPolicy": {
+      "classification": "safety_policy_block",
+      "status": "blocked"
+    },
+    "malformedRequestJson": {
+      "classification": "invalid_input",
+      "status": "blocked"
+    },
+    "pathEscape": {
+      "classification": "invalid_input",
+      "status": "blocked"
+    },
+    "positiveSafe": {
+      "resultFile": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-18-security-safety-hooks-policy/I-18B-security-cli-command-and-verify-hook/validation-evidence/witnesses/runtime/cli-security/positive-safe/safe-result.json",
+      "securityStatus": "passed",
+      "status": "success"
+    },
+    "productionCredentialOrLiveSecret": "<redacted>",
+    "protectedResultFile": {
+      "classification": "invalid_input",
+      "status": "blocked"
+    },
+    "secretLikeCliInput": "<redacted>",
+    "unexpectedPositional": {
+      "classification": "invalid_invocation",
+      "status": "blocked"
+    },
+    "unknownFlag": {
+      "classification": "invalid_invocation",
+      "status": "blocked"
+    },
+    "unsafeExternalIntegration": {
+      "classification": "safety_policy_block",
+      "findingClassifications": [
+        "unsafe_env_default",
+        "unsafe_external_integration",
+        "unsafe_external_integration"
+      ],
+      "status": "blocked"
+    }
+  },
+  "ok": true,
+  "redaction": {
+    "forbiddenProbeHits": 0,
+    "scannedRoot": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-18-security-safety-hooks-policy/I-18B-security-cli-command-and-verify-hook/validation-evidence/witnesses/runtime"
+  },
+  "regression": {
+    "buildFacingApiConsumer": {
+      "exit": 0,
+      "futureJoin": "I-21",
+      "status": "passed"
+    },
+    "defaultEntryUnsupported": {
+      "argv": [
+        "security",
+        "--api-key",
+        "<redacted>"
+      ],
+      "classification": "unsupported_operation",
+      "exit": 2
+    },
+    "defaultLoaderSecurityRegistered": false,
+    "foundationEnvelope": {
+      "exit": 0,
+      "status": "success"
+    }
+  },
+  "verifySecurity": {
+    "approvedSafe": {
+      "outputPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-18-security-safety-hooks-policy/I-18B-security-cli-command-and-verify-hook/validation-evidence/witnesses/runtime/verify-security/approved-safe/packets/security-hook-result.json",
+      "packetCount": 16,
+      "status": "success"
+    },
+    "blockedSecurity": {
+      "cliClassification": "safety_policy_block",
+      "runnerFailure": "safety_or_security_policy_failure",
+      "status": "failure"
+    },
+    "draftPlanBlocked": {
+      "classification": "invalid_input",
+      "status": "blocked"
+    },
+    "malformedEvidence": {
+      "classification": "invalid_input",
+      "status": "blocked"
+    },
+    "malformedPolicy": {
+      "classification": "safety_policy_block",
+      "status": "failure"
+    },
+    "missingRequiredEvidence": {
+      "classification": "missing_prerequisite",
+      "status": "blocked"
+    },
+    "protectedEvidenceRoot": {
+      "classification": "invalid_input",
+      "status": "blocked"
+    }
+  },
+  "witnessRoot": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-18-security-safety-hooks-policy/I-18B-security-cli-command-and-verify-hook/validation-evidence/witnesses/runtime"
+}

@@ -1,0 +1,24 @@
+{
+  "ok": true,
+  "checks": {
+    "exitCodeIs2": true,
+    "statusBlocked": true,
+    "unsupportedClassification": true,
+    "unsupportedCode": true,
+    "commandSecurity": true
+  },
+  "observedExit": 2,
+  "resultStatus": "blocked",
+  "errors": [
+    {
+      "code": "VE_UNSUPPORTED_OPERATION",
+      "classification": "unsupported_operation",
+      "retryable": false,
+      "blocking": true,
+      "message": "Command family is not implemented in I-02A.",
+      "details": {
+        "commandId": "security"
+      }
+    }
+  ]
+}

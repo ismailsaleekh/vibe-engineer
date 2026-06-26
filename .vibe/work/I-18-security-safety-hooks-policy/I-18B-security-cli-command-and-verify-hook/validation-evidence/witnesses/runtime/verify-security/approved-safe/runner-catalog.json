@@ -1,0 +1,54 @@
+[
+  {
+    "id": "safety-hooks",
+    "requiredItemIds": [
+      "safety-hooks"
+    ],
+    "layer": "safety_hooks",
+    "evidenceClass": "deterministic",
+    "blocking": true,
+    "kind": "command",
+    "command": "/usr/local/bin/node",
+    "args": [
+      "/Users/lizavasilyeva/work/vibe-engineer/examples/starter-reference/generated-fixtures/security/runner/security-hook-runner.mjs",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-18-security-safety-hooks-policy/I-18B-security-cli-command-and-verify-hook/validation-evidence/witnesses/runtime/verify-security/inputs/approved-safe-request-with-policy.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-18-security-safety-hooks-policy/I-18B-security-cli-command-and-verify-hook/validation-evidence/witnesses/runtime/verify-security/approved-safe/packets/security-hook-result.json"
+    ],
+    "cwd": ".",
+    "expectedArtifacts": [
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-18-security-safety-hooks-policy/I-18B-security-cli-command-and-verify-hook/validation-evidence/witnesses/runtime/verify-security/approved-safe/packets/security-hook-result.json"
+    ],
+    "argPaths": [
+      {
+        "index": 0,
+        "root": "projectRoot"
+      },
+      {
+        "index": 1,
+        "root": "projectRoot"
+      },
+      {
+        "index": 2,
+        "root": "evidenceRoot"
+      }
+    ],
+    "safety": {
+      "classification": "local_deterministic_write",
+      "timeoutMs": 5000,
+      "maxStdoutBytes": 65536,
+      "maxStderrBytes": 65536,
+      "maxOutputBytes": 262144,
+      "allowedReadRoots": [
+        "/Users/lizavasilyeva/work/vibe-engineer"
+      ],
+      "allowedWriteRoots": [
+        "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-18-security-safety-hooks-policy/I-18B-security-cli-command-and-verify-hook/validation-evidence/witnesses/runtime/verify-security/approved-safe/packets"
+      ],
+      "envAllowlist": [],
+      "passThroughEnv": false,
+      "cwdContainedInProjectRoot": true,
+      "expectedArtifactsContained": true
+    },
+    "failureClassification": "safety_or_security_policy_failure"
+  }
+]

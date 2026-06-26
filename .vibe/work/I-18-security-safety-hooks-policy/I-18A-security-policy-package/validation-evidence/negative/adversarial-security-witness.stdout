@@ -1,0 +1,19 @@
+{
+  "ok": false,
+  "resolvedFromCli": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+  "total": 28,
+  "failureCount": 11,
+  "failures": [
+    "negative: terminal traversal segment safe/.. blocks",
+    "negative: Windows drive absolute path blocks",
+    "negative: unknown command classification value in policy rejects typed contract",
+    "negative: fake sandbox status in policy rejects typed contract",
+    "negative: blocked/pending-live sandbox status is not green",
+    "negative: malformed command missing command field blocks",
+    "negative: malformed argv string blocks instead of being ignored",
+    "negative: malformed targetPaths string blocks instead of being ignored",
+    "negative: config array secret is scanned and blocked",
+    "negative: circular evidence fails closed without throwing",
+    "negative: BigInt evidence fails closed without throwing"
+  ]
+}

@@ -1,0 +1,396 @@
+{
+  "ok": true,
+  "total": 44,
+  "checks": [
+    {
+      "name": "positive safe read-only command against lane fixture",
+      "ok": true,
+      "status": "passed",
+      "decision": "allow",
+      "classifications": []
+    },
+    {
+      "name": "positive local deterministic write against non-protected security fixture path",
+      "ok": true,
+      "status": "passed",
+      "decision": "allow",
+      "classifications": []
+    },
+    {
+      "name": "positive dry-run external integration",
+      "ok": true,
+      "status": "passed",
+      "decision": "allow",
+      "classifications": []
+    },
+    {
+      "name": "SPF1 command-string secret blocks and redacts",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "name": "SPF2 Windows drive-relative path C:outside blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF2 Windows drive traversal path C:../outside blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF2 Windows drive absolute slash path blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF2 Windows drive absolute backslash path blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF2 UNC slash path blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF2 UNC backslash path blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF2 bare tilde path blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF2 tilde home path blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF2 tilde user path blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF2 dot-slash package manifest alias blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF2 dot-slash git alias blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF2 dot-slash lockfile alias blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF2 package manifest traversal alias blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "prior path terminal traversal blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "prior path traversal outside blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "prior POSIX absolute path blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "prior root path blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "prior empty path blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "prior malformed empty segment path blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF3 root package manifest blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF3 root lockfile blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF3 workspace manifest blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF3 turbo config blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF3 git config blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF3 CLI package manifest blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF3 security package manifest blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF3 CLI loader blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF3 CLI entry blocks",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "unsafe custom policy cannot remove mandatory floor",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "unsafe command policy rejects external mutation classification",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "malformed_policy"
+      ]
+    },
+    {
+      "name": "direct unsafe command classification remains blocked",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "destructive_command"
+      ]
+    },
+    {
+      "name": "malformed external boolean strings remain blocked",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unknown_request_field"
+      ]
+    },
+    {
+      "name": "malformed sandbox provider and claim remain blocked",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unknown_request_field"
+      ]
+    },
+    {
+      "name": "pending-live sandbox remains blocked",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsupported_sandbox_claim"
+      ]
+    },
+    {
+      "name": "malformed command missing command remains blocked",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unknown_request_field"
+      ]
+    },
+    {
+      "name": "malformed argv string remains blocked",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unknown_request_field"
+      ]
+    },
+    {
+      "name": "malformed targetPaths string remains blocked",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unknown_request_field"
+      ]
+    },
+    {
+      "name": "secret in config array remains blocked and redacted",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "name": "circular evidence remains typed blocked",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "evidence_secret_leak"
+      ]
+    },
+    {
+      "name": "BigInt evidence remains typed blocked",
+      "ok": true,
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "evidence_secret_leak"
+      ]
+    }
+  ]
+}

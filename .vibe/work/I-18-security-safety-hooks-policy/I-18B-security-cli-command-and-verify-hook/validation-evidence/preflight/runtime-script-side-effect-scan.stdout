@@ -1,0 +1,93 @@
+=== run-cli-witnesses side-effect scan ===
+12:const repoRoot = path.resolve('/Users/lizavasilyeva/work/vibe-engineer');
+13:const workRoot = path.join(repoRoot, '.vibe/work/I-18-security-safety-hooks-policy/I-18B-security-cli-command-and-verify-hook');
+14:const evidenceRoot = path.join(workRoot, 'evidence');
+15:const fixturesRoot = path.join(repoRoot, 'examples/starter-reference/generated-fixtures/security');
+25:  await fsp.mkdir(path.dirname(file), { recursive: true });
+26:  await fsp.writeFile(file, `${JSON.stringify(redactSecurityValue(data), null, 2)}\n`, 'utf8');
+39:  const caseRoot = path.join(evidenceRoot, caseName);
+40:  await fsp.rm(caseRoot, { recursive: true, force: true });
+41:  await fsp.mkdir(caseRoot, { recursive: true });
+52:  const result = await loader.dispatch('security', args, { invocation, packageJsonPath: path.join(repoRoot, 'packages/cli/package.json'), config: null });
+58:function spawnNode(args, cwd = repoRoot) {
+88:  await fsp.mkdir(evidenceRoot, { recursive: true });
+91:  const positiveResultFile = path.join(evidenceRoot, 'positive', 'safe-cli-result.json');
+92:  const positive = await dispatchSecurity('positive/safe-cli', ['--request-file', safeRequest, '--policy-file', policyFile, '--project-root', repoRoot, '--result-file', positiveResultFile]);
+95:  assert.equal(readJson(positiveResultFile).status, 'success');
+96:  summary.positive = { status: positive.envelope.status, resultFile: positiveResultFile, securityStatus: positive.envelope.payload.data.securityStatus };
+114:  const malformedRequestPath = path.join(evidenceRoot, 'negative/malformed-request-source.json');
+115:  await fsp.mkdir(path.dirname(malformedRequestPath), { recursive: true });
+116:  await fsp.writeFile(malformedRequestPath, '{ "command": ', 'utf8');
+117:  const malformedRequest = await dispatchSecurity('negative/malformed-request', ['--request-file', malformedRequestPath, '--project-root', repoRoot]);
+122:  const malformedPolicy = await dispatchSecurity('negative/malformed-policy', ['--request-file', safeRequest, '--policy-file', malformedPolicyFile, '--project-root', repoRoot]);
+132:    const result = await dispatchSecurity(`negative/${caseName}`, ['--request-file', file, '--project-root', repoRoot]);
+139:  const protectedWrite = await dispatchSecurity('negative/protected-result-file', ['--request-file', safeRequest, '--project-root', repoRoot, '--result-file', path.join(repoRoot, 'package.json')]);
+144:  const pathEscape = await dispatchSecurity('negative/path-escape-request', ['--request-file', '../outside.json', '--project-root', repoRoot]);
+149:  const defaultEntry = await spawnNode(['packages/cli/src/entry/vibe-engineer.js', 'security', '--api-key', forbiddenProbe]);
+150:  await writeJson(path.join(evidenceRoot, 'regression/default-entry-security-unsupported.json'), defaultEntry);
+157:  const foundation = await spawnNode(['packages/cli/src/entry/vibe-engineer.js', '--json', '--non-interactive', 'foundation', '--status', 'success']);
+158:  await writeJson(path.join(evidenceRoot, 'regression/foundation-envelope.json'), foundation);
+163:  const buildConsumer = await spawnNode(['examples/starter-reference/generated-fixtures/security/build-facing/build-security-api-consumer.mjs']);
+164:  await writeJson(path.join(evidenceRoot, 'real-boundary/build-facing-api-fixture/consumer-spawn.json'), buildConsumer);
+169:  const hits = scanForProbe(evidenceRoot, forbiddenProbe);
+173:  await writeJson(path.join(evidenceRoot, 'real-boundary/cli-security-command/witness-summary.json'), summary);
+174:  console.log(JSON.stringify(redactSecurityValue({ ok: true, summaryPath: path.join(evidenceRoot, 'real-boundary/cli-security-command/witness-summary.json'), cases: Object.keys(summary) })));
+178:  await writeJson(path.join(evidenceRoot, 'real-boundary/cli-security-command/witness-failure.json'), { name: error?.name, message: error?.message, stack: error?.stack });
+=== run-verify-security-hook-witness side-effect scan ===
+13:const repoRoot = path.resolve('/Users/lizavasilyeva/work/vibe-engineer');
+14:const workRoot = path.join(repoRoot, '.vibe/work/I-18-security-safety-hooks-policy/I-18B-security-cli-command-and-verify-hook');
+15:const evidenceRoot = path.join(workRoot, 'evidence/real-boundary/verify-security-hook');
+16:const fixturesRoot = path.join(repoRoot, 'examples/starter-reference/generated-fixtures/security');
+27:  await fsp.mkdir(path.dirname(file), { recursive: true });
+28:  await fsp.writeFile(file, `${JSON.stringify(redactSecurityValue(data), null, 2)}\n`, 'utf8');
+51:function securityCommandSpec({ requestPath, outputPath, id = 'safety-hooks' }) {
+60:    args: [runnerScript, requestPath, outputPath],
+62:    expectedArtifacts: [outputPath],
+66:      { index: 2, root: 'evidenceRoot' }
+74:      allowedReadRoots: [repoRoot],
+75:      allowedWriteRoots: [path.dirname(outputPath)],
+97:async function requestWithPolicy(caseName, baseRequest, policyPath) {
+100:  const out = path.join(evidenceRoot, 'inputs', `${caseName}-request-with-policy.json`);
+101:  await fsp.mkdir(path.dirname(out), { recursive: true });
+102:  await fsp.writeFile(out, `${JSON.stringify(request, null, 2)}\n`, 'utf8');
+107:  const caseRoot = path.join(evidenceRoot, caseName);
+108:  await fsp.rm(caseRoot, { recursive: true, force: true });
+109:  await fsp.mkdir(caseRoot, { recursive: true });
+110:  const packetsRoot = path.join(caseRoot, 'packets');
+111:  const catalogPath = path.join(caseRoot, 'runner-catalog.json');
+112:  await writeJson(catalogPath, catalog);
+113:  const resultFile = path.join(caseRoot, 'cli-result.json');
+116:    '--evidence-root', packetsRoot,
+117:    '--project-root', repoRoot,
+119:    '--runner-catalog', catalogPath,
+120:    '--result-file', resultFile
+132:  const result = await loader.dispatch('verify', args, { invocation, packageJsonPath: path.join(repoRoot, 'packages/cli/package.json'), config: null });
+134:  assert.deepEqual(readJson(resultFile), result.envelope);
+136:  return { caseRoot, packetsRoot, resultFile, envelope: result.envelope };
+157:  await fsp.mkdir(evidenceRoot, { recursive: true });
+160:  const safeRequestWithPolicy = await requestWithPolicy('approved-safe', safeRequest, safePolicy);
+161:  let outputPath = path.join(evidenceRoot, 'approved-safe', 'packets/security-hook-result.json');
+162:  const approvedSafe = await dispatchVerify('approved-safe', { catalog: [securityCommandSpec({ requestPath: safeRequestWithPolicy, outputPath })], runId: 'i18b-approved-safe' });
+166:  assert.equal(readJson(outputPath).status, 'passed');
+167:  summary.approvedSafe = { status: approvedSafe.envelope.status, packetCount: packetPaths(approvedSafe.envelope).length, outputPath };
+169:  outputPath = path.join(evidenceRoot, 'blocked-security', 'packets/security-hook-result.json');
+170:  const blocked = await dispatchVerify('blocked-security', { catalog: [securityCommandSpec({ requestPath: blockedRequest, outputPath })], runId: 'i18b-blocked-security' });
+183:  const malformedRequestWithPolicy = await requestWithPolicy('malformed-policy', safeRequest, malformedPolicy);
+184:  outputPath = path.join(evidenceRoot, 'malformed-policy', 'packets/security-hook-result.json');
+185:  const malformedPolicyRun = await dispatchVerify('malformed-policy', { catalog: [securityCommandSpec({ requestPath: malformedRequestWithPolicy, outputPath })], runId: 'i18b-malformed-policy' });
+203:  const hits = scanForProbe(evidenceRoot, redactionProbe);
+207:  await writeJson(path.join(evidenceRoot, 'witness-summary.json'), summary);
+208:  console.log(JSON.stringify(redactSecurityValue({ ok: true, summaryPath: path.join(evidenceRoot, 'witness-summary.json'), cases: Object.keys(summary) })));
+212:  await writeJson(path.join(evidenceRoot, 'witness-failure.json'), { name: error?.name, message: error?.message, stack: error?.stack });
+=== build-facing consumer side-effect scan ===
+6:const { CommandSafetyClassification, SecurityDecision, SecurityGateStatus, redactSecurityValue, runSecurityGate } = securityModule;
+8:const result = runSecurityGate({
+22:console.log(JSON.stringify(redactSecurityValue({ ok: true, status: result.status, futureJoin: 'I-21' })));
+=== runner side-effect scan ===
+7:const { SecurityGateStatus, redactSecurityText, redactSecurityValue, runSecurityGate } = securityModule;
+14:  await fs.mkdir(path.dirname(filePath), { recursive: true });
+15:  await fs.writeFile(filePath, `${JSON.stringify(redactSecurityValue(data), null, 2)}\n`, 'utf8');
+19:  const [requestPath, outputPath] = process.argv.slice(2);
+20:  if (typeof requestPath !== 'string' || typeof outputPath !== 'string') {
+26:  const result = runSecurityGate(request);
+35:  await writeJson(outputPath, summary);

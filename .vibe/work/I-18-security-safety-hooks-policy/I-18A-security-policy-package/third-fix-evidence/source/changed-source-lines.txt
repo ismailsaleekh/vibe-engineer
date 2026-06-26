@@ -1,0 +1,32 @@
+$ rg -n "MANDATORY_PROTECTED_PATH_PREFIXES|commandCarrierTokens|function isUnsafePathTarget|canonicalSegments" packages/security/src/index.js
+108:const MANDATORY_PROTECTED_PATH_PREFIXES = Object.freeze([
+159:  protectedPathPrefixes: MANDATORY_PROTECTED_PATH_PREFIXES,
+376:  for (const requiredPrefix of MANDATORY_PROTECTED_PATH_PREFIXES) {
+498:  const commandCarrierTokens = [{ location: 'command', value: command }, ...argv.map((value, index) => ({ location: `argv[${index}]`, value }))];
+499:  for (const token of commandCarrierTokens) {
+531:function isUnsafePathTarget(targetPath, policy) {
+540:  const canonicalSegments = rawSegments.filter((segment) => segment !== '.');
+541:  if (canonicalSegments.length === 0) return true;
+542:  const canonical = canonicalSegments.join('/');
+544:  const protectedPrefixes = [...new Set([...MANDATORY_PROTECTED_PATH_PREFIXES, ...policyPrefixes])];
+550:    if (canonicalPrefix === '..') return canonical === '..' || canonical.startsWith('../') || canonicalSegments.includes('..');
+$ rg -n "command string|drive relative|pnpm-workspace|turbo|package manifest|mandatory workspace" packages/security/fixtures/policy/witness.mjs packages/security/fixtures/contracts/witness.mjs third-fix witness | redact sentinels
+packages/security/fixtures/policy/witness.mjs:61:  ['secret-like CLI data embedded in command string', runSecurityGate({ command: { command: 'node --api-key <redacted-fake-secret-sentinel>', argv: [], classification: CommandSafetyClassification.ReadOnly } }), SecurityClassification.SecretLikeValue],
+packages/security/fixtures/policy/witness.mjs:76:  ['windows drive relative target', runSecurityGate({ command: { command: 'node', argv: ['safe.mjs'], classification: CommandSafetyClassification.ReadOnly, targetPaths: ['C:outside'] } }), SecurityClassification.UnsafeCommandTarget],
+packages/security/fixtures/policy/witness.mjs:83:  ['dot-slash package manifest alias target', runSecurityGate({ command: { command: 'node', argv: ['safe.mjs'], classification: CommandSafetyClassification.ReadOnly, targetPaths: ['./package.json'] } }), SecurityClassification.UnsafeCommandTarget],
+packages/security/fixtures/policy/witness.mjs:85:  ['protected package manifest target', runSecurityGate({ command: { command: 'node', argv: ['safe.mjs'], classification: CommandSafetyClassification.ReadOnly, targetPaths: ['package.json'] } }), SecurityClassification.UnsafeCommandTarget],
+packages/security/fixtures/policy/witness.mjs:86:  ['protected workspace manifest target', runSecurityGate({ command: { command: 'node', argv: ['safe.mjs'], classification: CommandSafetyClassification.ReadOnly, targetPaths: ['pnpm-workspace.yaml'] } }), SecurityClassification.UnsafeCommandTarget],
+packages/security/fixtures/policy/witness.mjs:87:  ['protected turbo config target', runSecurityGate({ command: { command: 'node', argv: ['safe.mjs'], classification: CommandSafetyClassification.ReadOnly, targetPaths: ['turbo.json'] } }), SecurityClassification.UnsafeCommandTarget],
+packages/security/fixtures/policy/witness.mjs:90:  ['protected CLI package manifest target', runSecurityGate({ command: { command: 'node', argv: ['safe.mjs'], classification: CommandSafetyClassification.ReadOnly, targetPaths: ['packages/cli/package.json'] } }), SecurityClassification.UnsafeCommandTarget],
+packages/security/fixtures/policy/witness.mjs:91:  ['protected security package manifest target', runSecurityGate({ command: { command: 'node', argv: ['safe.mjs'], classification: CommandSafetyClassification.ReadOnly, targetPaths: ['packages/security/package.json'] } }), SecurityClassification.UnsafeCommandTarget],
+packages/security/fixtures/policy/witness.mjs:93:  ['protected package manifest target under unsafe direct policy object', evaluateCommandSafety({ command: 'node', argv: ['safe.mjs'], classification: CommandSafetyClassification.ReadOnly, targetPaths: ['package.json'] }, { ...DEFAULT_SECURITY_POLICY, protectedPathPrefixes: [] }), SecurityClassification.UnsafeCommandTarget],
+.vibe/work/I-18-security-safety-hooks-policy/I-18A-security-policy-package/third-fix-evidence/negative/third-fix-adversarial-witness.mjs:89:  ['SPF2 dot-slash package manifest alias blocks', './package.json'],
+.vibe/work/I-18-security-safety-hooks-policy/I-18A-security-policy-package/third-fix-evidence/negative/third-fix-adversarial-witness.mjs:92:  ['SPF2 package manifest traversal alias blocks', 'packages/cli/../cli/package.json'],
+.vibe/work/I-18-security-safety-hooks-policy/I-18A-security-policy-package/third-fix-evidence/negative/third-fix-adversarial-witness.mjs:99:  ['SPF3 root package manifest blocks', 'package.json'],
+.vibe/work/I-18-security-safety-hooks-policy/I-18A-security-policy-package/third-fix-evidence/negative/third-fix-adversarial-witness.mjs:101:  ['SPF3 workspace manifest blocks', 'pnpm-workspace.yaml'],
+.vibe/work/I-18-security-safety-hooks-policy/I-18A-security-policy-package/third-fix-evidence/negative/third-fix-adversarial-witness.mjs:102:  ['SPF3 turbo config blocks', 'turbo.json'],
+.vibe/work/I-18-security-safety-hooks-policy/I-18A-security-policy-package/third-fix-evidence/negative/third-fix-adversarial-witness.mjs:104:  ['SPF3 CLI package manifest blocks', 'packages/cli/package.json'],
+.vibe/work/I-18-security-safety-hooks-policy/I-18A-security-policy-package/third-fix-evidence/negative/third-fix-adversarial-witness.mjs:105:  ['SPF3 security package manifest blocks', 'packages/security/package.json'],
+.vibe/work/I-18-security-safety-hooks-policy/I-18A-security-policy-package/third-fix-evidence/negative/third-fix-adversarial-witness.mjs:112:checks.push(assertBlocked('unsafe custom policy cannot remove mandatory floor', evaluateCommandSafety({ command: 'node', argv: ['safe.mjs'], classification: CommandSafetyClassification.ReadOnly, targetPaths: ['pnpm-workspace.yaml'] }, { ...DEFAULT_SECURITY_POLICY, protectedPathPrefixes: [] }), SecurityClassification.UnsafeCommandTarget));
+packages/security/fixtures/contracts/witness.mjs:25:  assertContractBlock('mandatory workspace/turbo/package manifest floor cannot be partially removed', parseSecurityPolicy({ ...DEFAULT_SECURITY_POLICY, protectedPathPrefixes: DEFAULT_SECURITY_POLICY.protectedPathPrefixes.filter((prefix) => prefix !== 'turbo.json') }), SecurityClassification.MalformedPolicy),
+__EXIT__:0

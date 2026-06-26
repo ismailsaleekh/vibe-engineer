@@ -1,0 +1,75 @@
+## product/sibling security reference sweep (product paths only)
+pnpm-lock.yaml:46:      '@vibe-engineer/security':
+packages/security/package.json:2:  "name": "@vibe-engineer/security",
+packages/security/fixtures/real-boundary/cli-package-context-import/witness.mjs:3:const security = await import('@vibe-engineer/security');
+packages/security/fixtures/real-boundary/package-api/witness.mjs:3:const security = await import('@vibe-engineer/security');
+packages/security/fixtures/contracts/witness.mjs:3:import { CommandSafetyClassification, DEFAULT_SECURITY_POLICY, parseSecurityPolicy, runSecurityGate, SecurityClassification, SecurityGateStatus } from '@vibe-engineer/security';
+packages/security/fixtures/redaction/witness.mjs:3:import { evaluateEvidenceSafety, redactSecurityText, redactSecurityValue, SecurityClassification, SecurityGateStatus } from '@vibe-engineer/security';
+packages/security/fixtures/policy/witness.mjs:14:} from '@vibe-engineer/security';
+packages/mechanical-gates/fixtures/p0/testing-boundary/valid-test-only/mechanical-testing-boundary.json:3:  "testOnlyPackageName": "@vibe-engineer/testing",
+packages/mechanical-gates/fixtures/p0/testing-boundary/valid-test-only/packages/testing/package.json:2:  "name": "@vibe-engineer/testing",
+packages/mechanical-gates/fixtures/p0/testing-boundary/valid-test-only/packages/consumer/package.json:7:    "@vibe-engineer/testing": "workspace:*"
+packages/mechanical-gates/fixtures/p0/testing-boundary/valid-test-only/packages/consumer/fixtures/helper.ts:1:import '@vibe-engineer/testing';
+packages/mechanical-gates/fixtures/p0/testing-boundary/valid-test-only/packages/consumer/src/consumer.test.ts:1:import { assertOkResult } from '@vibe-engineer/testing';
+packages/mechanical-gates/fixtures/p0/testing-boundary/production-dependency/mechanical-testing-boundary.json:3:  "testOnlyPackageName": "@vibe-engineer/testing",
+packages/mechanical-gates/fixtures/p0/testing-boundary/production-dependency/packages/testing/package.json:2:  "name": "@vibe-engineer/testing",
+packages/mechanical-gates/fixtures/p0/testing-boundary/production-dependency/packages/consumer/package.json:7:    "@vibe-engineer/testing": "workspace:*"
+packages/mechanical-gates/fixtures/p0/testing-boundary/production-dependency/packages/consumer/fixtures/helper.ts:1:import '@vibe-engineer/testing';
+packages/mechanical-gates/fixtures/p0/testing-boundary/production-dependency/packages/consumer/src/consumer.test.ts:1:import { assertOkResult } from '@vibe-engineer/testing';
+packages/mechanical-gates/fixtures/p0/testing-boundary/malformed-policy/packages/testing/package.json:2:  "name": "@vibe-engineer/testing",
+packages/mechanical-gates/fixtures/p0/testing-boundary/malformed-policy/packages/consumer/package.json:7:    "@vibe-engineer/testing": "workspace:*"
+packages/mechanical-gates/fixtures/p0/testing-boundary/malformed-manifest/mechanical-testing-boundary.json:3:  "testOnlyPackageName": "@vibe-engineer/testing",
+packages/mechanical-gates/fixtures/p0/testing-boundary/malformed-manifest/packages/testing/package.json:2:  "name": "@vibe-engineer/testing",
+packages/mechanical-gates/fixtures/p0/testing-boundary/missing-policy/packages/testing/package.json:2:  "name": "@vibe-engineer/testing",
+packages/mechanical-gates/fixtures/p0/testing-boundary/missing-policy/packages/consumer/package.json:7:    "@vibe-engineer/testing": "workspace:*"
+packages/mechanical-gates/fixtures/p0/testing-boundary/missing-policy/packages/consumer/src/consumer.test.ts:1:import '@vibe-engineer/testing';
+packages/mechanical-gates/fixtures/p0/testing-boundary/regex-only-proof/mechanical-testing-boundary.json:3:  "testOnlyPackageName": "@vibe-engineer/testing",
+packages/mechanical-gates/fixtures/p0/testing-boundary/regex-only-proof/packages/testing/package.json:2:  "name": "@vibe-engineer/testing",
+packages/mechanical-gates/fixtures/p0/testing-boundary/regex-only-proof/packages/consumer/package.json:7:    "@vibe-engineer/testing": "workspace:*"
+packages/mechanical-gates/fixtures/p0/testing-boundary/regex-only-proof/packages/consumer/src/consumer.test.ts:1:import '@vibe-engineer/testing';
+packages/mechanical-gates/fixtures/p0/testing-boundary/missing-manifest/mechanical-testing-boundary.json:3:  "testOnlyPackageName": "@vibe-engineer/testing",
+packages/mechanical-gates/fixtures/p0/testing-boundary/missing-manifest/packages/testing/package.json:2:  "name": "@vibe-engineer/testing",
+packages/mechanical-gates/fixtures/p0/testing-boundary/missing-manifest/packages/consumer/fixtures/helper.ts:1:import '@vibe-engineer/testing';
+packages/mechanical-gates/fixtures/p0/testing-boundary/missing-manifest/packages/consumer/src/consumer.test.ts:1:import { assertOkResult } from '@vibe-engineer/testing';
+packages/mechanical-gates/fixtures/p0/testing-boundary/production-import/mechanical-testing-boundary.json:3:  "testOnlyPackageName": "@vibe-engineer/testing",
+packages/mechanical-gates/fixtures/p0/testing-boundary/production-import/packages/testing/package.json:2:  "name": "@vibe-engineer/testing",
+packages/mechanical-gates/fixtures/p0/testing-boundary/production-import/packages/consumer/package.json:7:    "@vibe-engineer/testing": "workspace:*"
+packages/mechanical-gates/fixtures/p0/testing-boundary/production-import/packages/consumer/fixtures/helper.ts:1:import '@vibe-engineer/testing';
+packages/mechanical-gates/fixtures/p0/testing-boundary/production-import/packages/consumer/src/consumer.test.ts:1:import { assertOkResult } from '@vibe-engineer/testing';
+packages/mechanical-gates/fixtures/p0/testing-boundary/production-import/packages/consumer/src/index.ts:1:import { assertOkResult } from '@vibe-engineer/testing';
+packages/mechanical-gates/fixtures/p0/testing-boundary/publishable-testing/mechanical-testing-boundary.json:3:  "testOnlyPackageName": "@vibe-engineer/testing",
+packages/mechanical-gates/fixtures/p0/testing-boundary/publishable-testing/packages/testing/package.json:2:  "name": "@vibe-engineer/testing",
+packages/mechanical-gates/fixtures/p0/testing-boundary/publishable-testing/packages/consumer/package.json:7:    "@vibe-engineer/testing": "workspace:*"
+packages/mechanical-gates/fixtures/p0/testing-boundary/publishable-testing/packages/consumer/fixtures/helper.ts:1:import '@vibe-engineer/testing';
+packages/mechanical-gates/fixtures/p0/testing-boundary/publishable-testing/packages/consumer/src/consumer.test.ts:1:import { assertOkResult } from '@vibe-engineer/testing';
+packages/mechanical-gates/fixtures/p0/testing-boundary/witness.mjs:158:  const helperConsumption = runCommand("@vibe-engineer/testing helper consumer", process.execPath, ["fixtures/helper-consumer.mjs"], { cwd: testingPackageRoot });
+packages/mechanical-gates/fixtures/p0/testing-boundary/witness.mjs:160:  assert(helperOutput.ok === true && helperOutput.helperPackage === "@vibe-engineer/testing", "helper consumer did not exercise package self-reference", helperOutput);
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/witness.mjs:167:    noTestingProductionDependency: !JSON.stringify({ aggregateEvidence: aggregate.evidence }).includes("@vibe-engineer/testing"),
+packages/cli/package.json:29:    "@vibe-engineer/security": "workspace:*",
+packages/testing/package.json:2:  "name": "@vibe-engineer/testing",
+packages/testing/fixtures/helper-consumer.mjs:9:} from "@vibe-engineer/testing";
+packages/testing/fixtures/helper-consumer.mjs:29:  console.log(JSON.stringify({ ok: true, helperPackage: "@vibe-engineer/testing", workspaceRoot: workspace.root }));
+packages/testing/fixtures/mechanical-testing-boundary.json:3:  "testOnlyPackageName": "@vibe-engineer/testing",
+packages/testing/fixtures/type-consumer.ts:8:} from "@vibe-engineer/testing";
+packages/registry/tests/run-tests.mjs:326:assert.equal(JSON.stringify(registryPackage).includes('@vibe-engineer/testing'), false);
+packages/presets/typescript/fixtures/witnesses/run-typescript-preset-witness.mjs:227:  negativeResults.push(expectRejected("testing production dependency", mutateContent(files, "package.json", (content) => content.replace('"devDependencies": {', '"dependencies": { "@vibe-engineer/testing": "workspace:*" },\n    "devDependencies": {')), api.validateTypeScriptPresetFiles, "PRESET_FORBIDDEN_TESTING_PRODUCTION_DEPENDENCY"));
+packages/presets/typescript/fixtures/witnesses/run-typescript-preset-witness.mjs:236:    ["testing production package name", { packageName: "@vibe-engineer/testing" }],
+packages/presets/typescript/src/index.ts:587:  if (input === "@vibe-engineer/testing") {
+packages/presets/typescript/src/index.ts:1070:    if (getObjectProperty(dependencies, "@vibe-engineer/testing") !== undefined && dependencyField === "dependencies") {
+packages/presets/typescript/src/index.ts:1071:      findings.push(makeFinding("PRESET_FORBIDDEN_TESTING_PRODUCTION_DEPENDENCY", path, "Generated production dependencies must not include @vibe-engineer/testing.", [dependencyField]));
+packages/standards/fixtures/run-witnesses.mjs:147:  assert(!packageJson.dependencies || !Object.hasOwn(packageJson.dependencies, '@vibe-engineer/testing'), 'no production dependency on @vibe-engineer/testing.');
+packages/standards/fixtures/run-witnesses.mjs:148:  assert(!packageJson.devDependencies || !Object.hasOwn(packageJson.devDependencies, '@vibe-engineer/testing'), 'no dependency on @vibe-engineer/testing.');
+## adjacent CLI command dirs
+packages/cli/src/commands/config/index.js
+packages/cli/src/commands/doctor/index.js
+packages/cli/src/commands/schematic/artifacts-adapter.js
+packages/cli/src/commands/schematic/index.js
+packages/cli/src/commands/schematic/run-cli-witnesses.mjs
+packages/cli/src/commands/verify/index.ts
+## I-18B surfaces
+ABSENT packages/cli/src/commands/security
+ABSENT examples/starter-reference/generated-fixtures/security
+## I-20/CI/Pulumi/script surfaces
+ABSENT .github
+ABSENT scripts
+ABSENT infra

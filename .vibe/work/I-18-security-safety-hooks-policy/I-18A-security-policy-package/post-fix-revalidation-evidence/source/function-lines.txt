@@ -1,0 +1,27 @@
+$ rg -n "export function|function (isUnsafePathTarget|scanConfigValue|sanitizeSecurityValue|parseSecurityPolicy|evaluateCommandSafety|evaluateSandboxCapability|evaluateEvidenceSafety)|const (POLICY_KEYS|COMMAND_KEYS|EXTERNAL_KEYS|SANDBOX_KEYS|GATE_REQUEST_KEYS|REDACTION_MAX)" packages/security/src/index.js
+86:const POLICY_KEYS = new Set([
+96:const GATE_REQUEST_KEYS = new Set(['policy', 'command', 'env', 'config', 'externalIntegrations', 'sandboxClaims', 'evidence', 'notes']);
+97:const COMMAND_KEYS = new Set(['command', 'argv', 'classification', 'workingDirectory', 'targetPaths', 'declaredWritePaths']);
+98:const EXTERNAL_KEYS = new Set(['id', 'mode', 'enabled', 'requiresCredential', 'requiresBudget', 'requiresNetwork', 'networkMutation', 'explicitApproval']);
+99:const SANDBOX_KEYS = new Set(['provider', 'status', 'claim']);
+109:const REDACTION_MAX_DEPTH = 16;
+110:const REDACTION_MAX_ARRAY_ITEMS = 200;
+111:const REDACTION_MAX_OBJECT_KEYS = 200;
+112:const REDACTION_MAX_STRING_LENGTH = 16_384;
+175:export function redactSecurityText(text) {
+189:export function redactSecurityValue(value) {
+199:function sanitizeSecurityValue(value, context) {
+254:export function isSecretLikeValue(value) {
+303:export function createSecurityFinding(input) {
+317:export function parseSecurityPolicy(input = DEFAULT_SECURITY_POLICY) {
+364:export function createSecurityAuditEvent(subject, details) {
+385:export function createSecurityGateResult(input) {
+406:export function runSecurityGate(request) {
+430:export function evaluateCommandSafety(commandInput, policy = DEFAULT_SECURITY_POLICY) {
+496:function isUnsafePathTarget(targetPath, policy) {
+516:export function evaluateEnvConfigSafety(input, policy = DEFAULT_SECURITY_POLICY) {
+534:function scanConfigValue(value, location, key, findings, policy, context) {
+583:export function evaluateExternalIntegrationSafety(integrationsInput, policy = DEFAULT_SECURITY_POLICY) {
+613:export function evaluateSandboxCapability(sandboxInput, policy = DEFAULT_SECURITY_POLICY) {
+634:export function evaluateEvidenceSafety(evidenceInput) {
+672:export function __i18aCliBoundarySmoke() {

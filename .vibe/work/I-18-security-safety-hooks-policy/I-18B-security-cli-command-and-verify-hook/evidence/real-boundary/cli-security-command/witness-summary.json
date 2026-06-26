@@ -1,0 +1,62 @@
+{
+  "buildFacingApiFixture": {
+    "exit": 0,
+    "futureJoin": "I-21"
+  },
+  "defaultEntryUnsupported": {
+    "classification": "unsupported_operation",
+    "exit": 2
+  },
+  "foundationEnvelopeRegression": {
+    "exit": 0,
+    "status": "success"
+  },
+  "malformedPolicy": {
+    "classification": "safety_policy_block",
+    "status": "blocked"
+  },
+  "malformedRequest": {
+    "classification": "invalid_input",
+    "status": "blocked"
+  },
+  "pathEscape": {
+    "classification": "invalid_input",
+    "status": "blocked"
+  },
+  "positive": {
+    "resultFile": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-18-security-safety-hooks-policy/I-18B-security-cli-command-and-verify-hook/evidence/positive/safe-cli-result.json",
+    "securityStatus": "passed",
+    "status": "success"
+  },
+  "protectedWrite": {
+    "classification": "invalid_input",
+    "status": "blocked"
+  },
+  "redaction": {
+    "forbiddenProbeHits": 0
+  },
+  "sensitiveInputCase": {
+    "classification": "invalid_input",
+    "status": "blocked"
+  },
+  "unexpectedPositional": {
+    "classification": "invalid_invocation",
+    "status": "blocked"
+  },
+  "unknownFlag": {
+    "classification": "invalid_invocation",
+    "status": "blocked"
+  },
+  "unsafe-destructive-command": {
+    "classification": "safety_policy_block",
+    "status": "blocked"
+  },
+  "unsafe-env-config-defaults": {
+    "classification": "safety_policy_block",
+    "status": "blocked"
+  },
+  "unsafe-external-integration": {
+    "classification": "safety_policy_block",
+    "status": "blocked"
+  }
+}

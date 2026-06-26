@@ -1,0 +1,444 @@
+{
+  "ok": true,
+  "total": 44,
+  "rows": [
+    {
+      "contextName": "packages/security",
+      "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+      "name": "double-quoted embedded api-key flag without value",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "contextName": "packages/security",
+      "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+      "name": "single-quoted embedded api-key flag without value",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "contextName": "packages/security",
+      "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+      "name": "double-quoted embedded api-key flag split value",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "contextName": "packages/security",
+      "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+      "name": "single-quoted embedded client-secret flag split value",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "contextName": "packages/security",
+      "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+      "name": "quoted token flag without value",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "contextName": "packages/security",
+      "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+      "name": "quoted inline fake sentinel",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "contextName": "packages/security",
+      "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+      "name": "quoted colon fake sentinel",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "contextName": "packages/security",
+      "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+      "name": "escaped quote api-key flag",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "contextName": "packages/security",
+      "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+      "name": "escaped backslash before token flag",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value",
+        "unknown_request_field"
+      ]
+    },
+    {
+      "contextName": "packages/security",
+      "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+      "name": "unterminated double quote around api-key",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value",
+        "unknown_request_field"
+      ]
+    },
+    {
+      "contextName": "packages/security",
+      "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+      "name": "unterminated single quote around client-secret",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value",
+        "unknown_request_field"
+      ]
+    },
+    {
+      "contextName": "packages/security",
+      "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+      "name": "empty quoted token adjacent to secret-like flag",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "contextName": "packages/security",
+      "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+      "name": "over cap command token count",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unknown_request_field"
+      ]
+    },
+    {
+      "contextName": "packages/security",
+      "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+      "name": "unquoted embedded api-key regression",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "contextName": "packages/security",
+      "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+      "name": "unquoted split api-key regression",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "contextName": "packages/security",
+      "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+      "name": "unquoted split client-secret regression",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "contextName": "packages/security",
+      "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+      "name": "argv-only flag regression",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "contextName": "packages/security",
+      "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+      "name": "argv adjacent key value regression",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "contextName": "packages/security",
+      "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+      "name": "unquoted inline equals regression",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "contextName": "packages/security",
+      "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+      "name": "unquoted inline colon regression",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "contextName": "packages/security",
+      "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+      "name": "safe read-only local deterministic carrier",
+      "status": "passed",
+      "decision": "allow",
+      "classifications": []
+    },
+    {
+      "contextName": "packages/security",
+      "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+      "name": "safe quoted non-secret command argument",
+      "status": "passed",
+      "decision": "allow",
+      "classifications": []
+    },
+    {
+      "contextName": "packages/cli",
+      "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+      "name": "double-quoted embedded api-key flag without value",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "contextName": "packages/cli",
+      "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+      "name": "single-quoted embedded api-key flag without value",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "contextName": "packages/cli",
+      "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+      "name": "double-quoted embedded api-key flag split value",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "contextName": "packages/cli",
+      "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+      "name": "single-quoted embedded client-secret flag split value",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "contextName": "packages/cli",
+      "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+      "name": "quoted token flag without value",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "contextName": "packages/cli",
+      "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+      "name": "quoted inline fake sentinel",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "contextName": "packages/cli",
+      "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+      "name": "quoted colon fake sentinel",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "contextName": "packages/cli",
+      "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+      "name": "escaped quote api-key flag",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "contextName": "packages/cli",
+      "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+      "name": "escaped backslash before token flag",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value",
+        "unknown_request_field"
+      ]
+    },
+    {
+      "contextName": "packages/cli",
+      "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+      "name": "unterminated double quote around api-key",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value",
+        "unknown_request_field"
+      ]
+    },
+    {
+      "contextName": "packages/cli",
+      "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+      "name": "unterminated single quote around client-secret",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value",
+        "unknown_request_field"
+      ]
+    },
+    {
+      "contextName": "packages/cli",
+      "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+      "name": "empty quoted token adjacent to secret-like flag",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "contextName": "packages/cli",
+      "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+      "name": "over cap command token count",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unknown_request_field"
+      ]
+    },
+    {
+      "contextName": "packages/cli",
+      "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+      "name": "unquoted embedded api-key regression",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "contextName": "packages/cli",
+      "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+      "name": "unquoted split api-key regression",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "contextName": "packages/cli",
+      "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+      "name": "unquoted split client-secret regression",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "contextName": "packages/cli",
+      "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+      "name": "argv-only flag regression",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "contextName": "packages/cli",
+      "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+      "name": "argv adjacent key value regression",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "contextName": "packages/cli",
+      "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+      "name": "unquoted inline equals regression",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "contextName": "packages/cli",
+      "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+      "name": "unquoted inline colon regression",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "contextName": "packages/cli",
+      "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+      "name": "safe read-only local deterministic carrier",
+      "status": "passed",
+      "decision": "allow",
+      "classifications": []
+    },
+    {
+      "contextName": "packages/cli",
+      "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+      "name": "safe quoted non-secret command argument",
+      "status": "passed",
+      "decision": "allow",
+      "classifications": []
+    }
+  ]
+}

@@ -1,0 +1,173 @@
+{
+  "redactedText": "token=<redacted>",
+  "redactedValue": {
+    "diagnostics": [
+      {
+        "message": "client_secret=<redacted>"
+      }
+    ],
+    "errors": [
+      {
+        "details": {
+          "apiKey": "<redacted>"
+        }
+      }
+    ],
+    "evidenceRefs": [
+      {
+        "authorization": "Bearer <redacted>"
+      }
+    ],
+    "logs": [
+      "credential=<redacted>"
+    ],
+    "resultFiles": [
+      {
+        "content": "password=<redacted>",
+        "path": "result.json"
+      }
+    ],
+    "stdout": "starting token=<redacted> done"
+  },
+  "redactedCircular": {
+    "self": "<redacted:circular-reference>",
+    "token": "<redacted>"
+  },
+  "evidenceResult": {
+    "schemaVersion": "vibe-engineer.security.gate-result.v1",
+    "subject": "evidence_integrity",
+    "status": "blocked",
+    "decision": "block",
+    "blocking": true,
+    "findings": [
+      {
+        "schemaVersion": "vibe-engineer.security.finding.v1",
+        "category": "evidence_integrity",
+        "classification": "evidence_secret_leak",
+        "severity": "critical",
+        "blocking": true,
+        "message": "Evidence, diagnostic, result, or log payload contained secret-like, non-JSON-safe, cyclic, or over-cap data and was redacted.",
+        "location": null,
+        "details": {
+          "diagnostics": [
+            {
+              "message": "client_secret=<redacted>"
+            }
+          ],
+          "errors": [
+            {
+              "details": {
+                "apiKey": "<redacted>"
+              }
+            }
+          ],
+          "evidenceRefs": [
+            {
+              "authorization": "Bearer <redacted>"
+            }
+          ],
+          "logs": [
+            "credential=<redacted>"
+          ],
+          "resultFiles": [
+            {
+              "content": "password=<redacted>",
+              "path": "result.json"
+            }
+          ],
+          "stdout": "starting token=<redacted> done"
+        }
+      }
+    ],
+    "redactions": [
+      {
+        "diagnostics": [
+          {
+            "message": "client_secret=<redacted>"
+          }
+        ],
+        "errors": [
+          {
+            "details": {
+              "apiKey": "<redacted>"
+            }
+          }
+        ],
+        "evidenceRefs": [
+          {
+            "authorization": "Bearer <redacted>"
+          }
+        ],
+        "logs": [
+          "credential=<redacted>"
+        ],
+        "resultFiles": [
+          {
+            "content": "password=<redacted>",
+            "path": "result.json"
+          }
+        ],
+        "stdout": "starting token=<redacted> done"
+      }
+    ],
+    "auditEvents": []
+  },
+  "circularEvidenceResult": {
+    "schemaVersion": "vibe-engineer.security.gate-result.v1",
+    "subject": "evidence_integrity",
+    "status": "blocked",
+    "decision": "block",
+    "blocking": true,
+    "findings": [
+      {
+        "schemaVersion": "vibe-engineer.security.finding.v1",
+        "category": "evidence_integrity",
+        "classification": "evidence_secret_leak",
+        "severity": "critical",
+        "blocking": true,
+        "message": "Evidence, diagnostic, result, or log payload contained secret-like, non-JSON-safe, cyclic, or over-cap data and was redacted.",
+        "location": null,
+        "details": {
+          "self": "<redacted:circular-reference>",
+          "token": "<redacted>"
+        }
+      }
+    ],
+    "redactions": [
+      {
+        "self": "<redacted:circular-reference>",
+        "token": "<redacted>"
+      }
+    ],
+    "auditEvents": []
+  },
+  "bigintEvidenceResult": {
+    "schemaVersion": "vibe-engineer.security.gate-result.v1",
+    "subject": "evidence_integrity",
+    "status": "blocked",
+    "decision": "block",
+    "blocking": true,
+    "findings": [
+      {
+        "schemaVersion": "vibe-engineer.security.finding.v1",
+        "category": "evidence_integrity",
+        "classification": "evidence_secret_leak",
+        "severity": "critical",
+        "blocking": true,
+        "message": "Evidence, diagnostic, result, or log payload contained secret-like, non-JSON-safe, cyclic, or over-cap data and was redacted.",
+        "location": null,
+        "details": {
+          "counter": "<redacted:non-json-bigint>",
+          "token": "<redacted>"
+        }
+      }
+    ],
+    "redactions": [
+      {
+        "counter": "<redacted:non-json-bigint>",
+        "token": "<redacted>"
+      }
+    ],
+    "auditEvents": []
+  }
+}

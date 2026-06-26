@@ -1,0 +1,27 @@
+## I-18A regression: package/lock/CLI manifests compared to I-18S after snapshots
+CMP packages/cli/package.json .vibe/work/I-18S-security-cli-dependency-handoff/inventory/manifest-lock-after/packages-cli-package.json: OK
+CMP packages/security/package.json .vibe/work/I-18S-security-cli-dependency-handoff/inventory/manifest-lock-after/packages-security-package.json: OK
+CMP pnpm-lock.yaml .vibe/work/I-18S-security-cli-dependency-handoff/inventory/manifest-lock-after/pnpm-lock.yaml: OK
+\n## absent I-18B/CI/Pulumi surfaces
+ABSENT packages/cli/src/commands/security
+ABSENT examples/starter-reference/generated-fixtures/security
+ABSENT .github
+ABSENT scripts
+ABSENT infra
+\n## top-level production dependencies on @vibe-engineer/testing
+<anonymous_script>:1
+{ "name": "@fixture/consumer", "version": 
+
+SyntaxError: Unexpected end of JSON input
+    at JSON.parse (<anonymous>)
+    at walk (file:///Users/lizavasilyeva/work/vibe-engineer/[eval1]:11:29)
+    at walk (file:///Users/lizavasilyeva/work/vibe-engineer/[eval1]:9:29)
+    at walk (file:///Users/lizavasilyeva/work/vibe-engineer/[eval1]:9:29)
+    at walk (file:///Users/lizavasilyeva/work/vibe-engineer/[eval1]:9:29)
+    at walk (file:///Users/lizavasilyeva/work/vibe-engineer/[eval1]:9:29)
+    at walk (file:///Users/lizavasilyeva/work/vibe-engineer/[eval1]:9:29)
+    at walk (file:///Users/lizavasilyeva/work/vibe-engineer/[eval1]:9:29)
+    at walk (file:///Users/lizavasilyeva/work/vibe-engineer/[eval1]:9:29)
+    at file:///Users/lizavasilyeva/work/vibe-engineer/[eval1]:17:49
+
+Node.js v24.16.0

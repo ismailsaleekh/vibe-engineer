@@ -1,0 +1,15 @@
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
++ actual - expected
+
++ 'failure'
+- 'success'
+
+    at runVerifyMatrix (file:///Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-18-security-safety-hooks-policy/I-18B-security-cli-command-and-verify-hook/validation-evidence/harness/i18b-validator-runtime-witness.mjs:289:10)
+    at async main (file:///Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-18-security-safety-hooks-policy/I-18B-security-cli-command-and-verify-hook/validation-evidence/harness/i18b-validator-runtime-witness.mjs:409:3) {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: 'failure',
+  expected: 'success',
+  operator: 'strictEqual',
+  diff: 'simple'
+}

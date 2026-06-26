@@ -1,0 +1,100 @@
+{
+  "ok": true,
+  "packageCount": 11,
+  "rows": [
+    {
+      "path": "package.json",
+      "name": "@vibe-engineer/workspace",
+      "dependencies": [],
+      "devDependencies": [
+        "@eslint/js",
+        "eslint",
+        "prettier",
+        "turbo",
+        "typescript",
+        "typescript-eslint"
+      ],
+      "testingProdDependency": null
+    },
+    {
+      "path": "packages/security/package.json",
+      "name": "@vibe-engineer/security",
+      "dependencies": [],
+      "devDependencies": [],
+      "testingProdDependency": null
+    },
+    {
+      "path": "packages/cli/package.json",
+      "name": "vibe-engineer",
+      "dependencies": [
+        "@vibe-engineer/artifacts",
+        "@vibe-engineer/config",
+        "@vibe-engineer/security",
+        "@vibe-engineer/verification"
+      ],
+      "devDependencies": [],
+      "testingProdDependency": null
+    },
+    {
+      "path": "packages/artifacts/package.json",
+      "name": "@vibe-engineer/artifacts",
+      "dependencies": [
+        "ajv"
+      ],
+      "devDependencies": [],
+      "testingProdDependency": null
+    },
+    {
+      "path": "packages/verification/package.json",
+      "name": "@vibe-engineer/verification",
+      "dependencies": [
+        "@vibe-engineer/artifacts",
+        "@vibe-engineer/orchestration"
+      ],
+      "devDependencies": [],
+      "testingProdDependency": null
+    },
+    {
+      "path": "packages/mechanical-gates/package.json",
+      "name": "@vibe-engineer/mechanical-gates",
+      "dependencies": [],
+      "devDependencies": [],
+      "testingProdDependency": null
+    },
+    {
+      "path": "packages/testing/package.json",
+      "name": "@vibe-engineer/testing",
+      "dependencies": [],
+      "devDependencies": [],
+      "testingProdDependency": null
+    },
+    {
+      "path": "packages/config/package.json",
+      "name": "@vibe-engineer/config",
+      "dependencies": [],
+      "devDependencies": [],
+      "testingProdDependency": null
+    },
+    {
+      "path": "packages/adapters/pi/package.json",
+      "name": "@vibe-engineer/adapter-pi",
+      "dependencies": [],
+      "devDependencies": [],
+      "testingProdDependency": null
+    },
+    {
+      "path": "packages/presets/typescript/package.json",
+      "name": "@vibe-engineer/preset-typescript",
+      "dependencies": [],
+      "devDependencies": [],
+      "testingProdDependency": null
+    },
+    {
+      "path": "packages/standards/package.json",
+      "name": "@vibe-engineer/standards",
+      "dependencies": [],
+      "devDependencies": [],
+      "testingProdDependency": null
+    }
+  ]
+}

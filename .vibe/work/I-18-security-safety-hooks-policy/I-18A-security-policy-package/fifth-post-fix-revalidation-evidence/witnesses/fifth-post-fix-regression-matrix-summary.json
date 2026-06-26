@@ -1,0 +1,687 @@
+{
+  "ok": true,
+  "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/security/src/index.js",
+  "total": 75,
+  "rows": [
+    {
+      "name": "positive safe read-only local deterministic command against lane fixture",
+      "kind": "positive",
+      "status": "passed",
+      "decision": "allow",
+      "classifications": []
+    },
+    {
+      "name": "positive safe quoted non-secret command argument",
+      "kind": "positive",
+      "status": "passed",
+      "decision": "allow",
+      "classifications": []
+    },
+    {
+      "name": "positive disabled external dry-run/local defaults",
+      "kind": "positive",
+      "status": "passed",
+      "decision": "allow",
+      "classifications": []
+    },
+    {
+      "name": "SPF2 path canonicalization blocks C:outside",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF2 path canonicalization blocks C:../outside",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF2 path canonicalization blocks C:/Users/outside",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF2 path canonicalization blocks C:\\Users\\outside",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF2 path canonicalization blocks //server/share",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF2 path canonicalization blocks \\\\server\\share",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF2 path canonicalization blocks ~",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF2 path canonicalization blocks ~/secret",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF2 path canonicalization blocks ~user/.ssh/config",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF2 path canonicalization blocks ./package.json",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF2 path canonicalization blocks ./pnpm-lock.yaml",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF2 path canonicalization blocks ./pnpm-workspace.yaml",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF2 path canonicalization blocks ./turbo.json",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF2 path canonicalization blocks ./.git/config",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF2 path canonicalization blocks packages/cli/../cli/package.json",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF2 path canonicalization blocks safe/..",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF2 path canonicalization blocks ../outside",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF2 path canonicalization blocks /Users/lizavasilyeva/work/vibe-engineer/package.json",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF2 path canonicalization blocks /",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF2 path canonicalization blocks <empty>",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF2 path canonicalization blocks safe//file",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF3 mandatory protected floor blocks package.json",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF3 direct policy floor removal still blocks package.json",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF3 mandatory protected floor blocks pnpm-lock.yaml",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF3 direct policy floor removal still blocks pnpm-lock.yaml",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF3 mandatory protected floor blocks pnpm-workspace.yaml",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF3 direct policy floor removal still blocks pnpm-workspace.yaml",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF3 mandatory protected floor blocks turbo.json",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF3 direct policy floor removal still blocks turbo.json",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF3 mandatory protected floor blocks .git/config",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF3 direct policy floor removal still blocks .git/config",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF3 mandatory protected floor blocks packages/cli/package.json",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF3 direct policy floor removal still blocks packages/cli/package.json",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF3 mandatory protected floor blocks packages/security/package.json",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF3 direct policy floor removal still blocks packages/security/package.json",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF3 mandatory protected floor blocks packages/cli/src/command-loader/loader.js",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF3 direct policy floor removal still blocks packages/cli/src/command-loader/loader.js",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF3 mandatory protected floor blocks packages/cli/src/entry/vibe-engineer.js",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF3 direct policy floor removal still blocks packages/cli/src/entry/vibe-engineer.js",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF3 mandatory protected floor blocks packages/cli/src/envelope/index.js",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF3 direct policy floor removal still blocks packages/cli/src/envelope/index.js",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF3 mandatory protected floor blocks packages/cli/src/errors/index.js",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF3 direct policy floor removal still blocks packages/cli/src/errors/index.js",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF3 mandatory protected floor blocks packages/cli/src/testing/harness.js",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF3 direct policy floor removal still blocks packages/cli/src/testing/harness.js",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "SPF3 parse policy cannot omit mandatory floor",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "malformed_policy"
+      ]
+    },
+    {
+      "name": "original F1 terminal traversal path remains blocked",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "original F1 Windows drive absolute remains blocked",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "original F2 missing command remains blocked",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unknown_request_field"
+      ]
+    },
+    {
+      "name": "original F2 malformed argv string remains blocked",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unknown_request_field"
+      ]
+    },
+    {
+      "name": "original F2 malformed target array remains blocked",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unknown_request_field"
+      ]
+    },
+    {
+      "name": "malformed declaredWritePaths string remains blocked",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unknown_request_field"
+      ]
+    },
+    {
+      "name": "original F3 invented command classification policy remains blocked",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "malformed_policy"
+      ]
+    },
+    {
+      "name": "original F3 fake sandbox status policy remains blocked",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "malformed_policy"
+      ]
+    },
+    {
+      "name": "original F4 pending-live sandbox remains blocked",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsupported_sandbox_claim"
+      ]
+    },
+    {
+      "name": "original F5 secret arrays remain blocked",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "secret_like_value"
+      ]
+    },
+    {
+      "name": "original F6 circular evidence remains typed blocked",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "evidence_secret_leak"
+      ]
+    },
+    {
+      "name": "original F6 BigInt evidence remains typed blocked",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "evidence_secret_leak"
+      ]
+    },
+    {
+      "name": "PF1 unsafe command policy relaxation remains blocked",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "destructive_command"
+      ]
+    },
+    {
+      "name": "PF3 malformed external booleans remain blocked",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unknown_request_field",
+        "unknown_request_field",
+        "unknown_request_field",
+        "unknown_request_field",
+        "unknown_request_field",
+        "unknown_request_field"
+      ]
+    },
+    {
+      "name": "PF4 malformed sandbox provider and claim remain blocked",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unknown_request_field",
+        "unknown_request_field"
+      ]
+    },
+    {
+      "name": "malformed policy non-object remains blocked",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "malformed_policy"
+      ]
+    },
+    {
+      "name": "unknown policy version remains blocked",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsupported_policy_version"
+      ]
+    },
+    {
+      "name": "unknown policy field remains blocked",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unknown_policy_field"
+      ]
+    },
+    {
+      "name": "unknown gate request field remains blocked",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unknown_request_field"
+      ]
+    },
+    {
+      "name": "unsafe env production default remains blocked",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "production_credential_or_default"
+      ]
+    },
+    {
+      "name": "unsafe config external enabled default remains blocked",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_env_default"
+      ]
+    },
+    {
+      "name": "unsafe live external integration remains blocked",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "unsafe_external_integration",
+        "unsafe_external_integration"
+      ]
+    },
+    {
+      "name": "destructive rm remains blocked",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "destructive_command",
+        "destructive_command",
+        "unsafe_command_target"
+      ]
+    },
+    {
+      "name": "force push remains blocked",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "destructive_command",
+        "destructive_command"
+      ]
+    },
+    {
+      "name": "publish primitive remains blocked",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "destructive_command",
+        "destructive_command"
+      ]
+    },
+    {
+      "name": "redaction/evidence payload remains blocked and redacted",
+      "kind": "negative",
+      "status": "blocked",
+      "decision": "block",
+      "classifications": [
+        "evidence_secret_leak"
+      ]
+    }
+  ]
+}

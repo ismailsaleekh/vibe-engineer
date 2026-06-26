@@ -1,0 +1,15 @@
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
++ actual - expected
+
++ 'I-21-build-<redacted:token>'
+- 'I-21-build-skill-orchestration'
+              ^
+
+    at main (file:///Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/commands/security/run-cli-witnesses.mjs:165:10) {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: 'I-21-build-<redacted:token>',
+  expected: 'I-21-build-skill-orchestration',
+  operator: 'strictEqual',
+  diff: 'simple'
+}

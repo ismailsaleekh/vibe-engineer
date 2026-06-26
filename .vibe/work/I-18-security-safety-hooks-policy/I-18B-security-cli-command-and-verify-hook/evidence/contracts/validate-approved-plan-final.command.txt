@@ -1,0 +1,1 @@
+node --input-type=module -e import { validateArtifactFile } from './packages/artifacts/src/index.js'; const v=validateArtifactFile('examples/starter-reference/generated-fixtures/security/verify-hook/approved-security-plan.json',{kind:'implementation_plan'}); console.log(JSON.stringify(v.ok?{ok:true}:{ok:false,errors:v.errors},null,2)); process.exitCode=v.ok?0:1;

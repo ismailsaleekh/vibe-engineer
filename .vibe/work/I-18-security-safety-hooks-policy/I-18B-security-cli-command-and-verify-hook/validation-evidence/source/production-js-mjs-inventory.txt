@@ -1,0 +1,20 @@
+I-18B-owned .js/.mjs files:
+examples/starter-reference/generated-fixtures/security/build-facing/build-security-api-consumer.mjs
+examples/starter-reference/generated-fixtures/security/runner/security-hook-runner.mjs
+packages/cli/src/commands/security/index.js
+packages/cli/src/commands/security/run-cli-witnesses.mjs
+packages/cli/src/commands/security/run-verify-security-hook-witness.mjs
+
+Security command production references:
+examples/starter-reference/generated-fixtures/security/requests/safe-local-read-only-command.json:3:    "command": "node examples/starter-reference/generated-fixtures/security/runner/security-hook-runner.mjs",
+packages/cli/src/commands/security/run-verify-security-hook-witness.mjs:19:const runnerScript = path.join(fixturesRoot, 'runner/security-hook-runner.mjs');
+packages/cli/src/commands/security/run-verify-security-hook-witness.mjs:51:function securityCommandSpec({ requestPath, outputPath, id = 'safety-hooks' }) {
+packages/cli/src/commands/security/run-verify-security-hook-witness.mjs:162:  const approvedSafe = await dispatchVerify('approved-safe', { catalog: [securityCommandSpec({ requestPath: safeRequestWithPolicy, outputPath })], runId: 'i18b-approved-safe' });
+packages/cli/src/commands/security/run-verify-security-hook-witness.mjs:170:  const blocked = await dispatchVerify('blocked-security', { catalog: [securityCommandSpec({ requestPath: blockedRequest, outputPath })], runId: 'i18b-blocked-security' });
+packages/cli/src/commands/security/run-verify-security-hook-witness.mjs:185:  const malformedPolicyRun = await dispatchVerify('malformed-policy', { catalog: [securityCommandSpec({ requestPath: malformedRequestWithPolicy, outputPath })], runId: 'i18b-malformed-policy' });
+examples/starter-reference/generated-fixtures/security/build-facing/build-security-api-consumer.mjs:10:    command: 'node examples/starter-reference/generated-fixtures/security/runner/security-hook-runner.mjs',
+packages/cli/src/commands/security/index.js:330:export const securityCommand = Object.freeze({
+packages/cli/src/commands/security/index.js:338:export default securityCommand;
+packages/cli/src/commands/security/run-cli-witnesses.mjs:10:import securityCommand from './index.js';
+packages/cli/src/commands/security/run-cli-witnesses.mjs:51:  const loader = createCommandLoader([securityCommand]);
+packages/cli/src/commands/security/run-cli-witnesses.mjs:163:  const buildConsumer = await spawnNode(['examples/starter-reference/generated-fixtures/security/build-facing/build-security-api-consumer.mjs']);
