@@ -1,0 +1,15 @@
+export interface {{pascalName}}ModuleDescriptor {
+  readonly moduleId: "{{kebabName}}";
+  readonly title: "{{humanTitle}}";
+  readonly standardId: "{{standardId}}";
+  readonly presetId: "{{presetId}}";
+  readonly quickGate: "{{quickGateLabel}}";
+}
+
+export const {{camelName}}Module: {{pascalName}}ModuleDescriptor = Object.freeze({
+  moduleId: "{{kebabName}}",
+  title: "{{humanTitle}}",
+  standardId: "{{standardId}}",
+  presetId: "{{presetId}}",
+  quickGate: "{{quickGateLabel}}",
+});

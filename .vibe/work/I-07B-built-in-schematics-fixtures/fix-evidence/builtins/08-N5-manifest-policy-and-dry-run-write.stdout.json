@@ -1,0 +1,19 @@
+{
+  "witness": "N5",
+  "mergeDiagnostics": [
+    {
+      "code": "manifest_conflict_policy",
+      "message": "Core v1 engine only accepts conflictBehavior fail.",
+      "details": {
+        "conflictBehavior": "merge_with_typed_strategy"
+      }
+    }
+  ],
+  "dryRunWriteDiagnostics": [
+    {
+      "code": "dry_run_write_attempt",
+      "message": "Dry-run write attempt was blocked before filesystem mutation.",
+      "details": {}
+    }
+  ]
+}

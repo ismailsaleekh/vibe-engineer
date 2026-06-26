@@ -1,0 +1,107 @@
+{
+  "witness": "N4",
+  "results": [
+    {
+      "slug": "module",
+      "unmarked": [
+        {
+          "path": "src/modules/example-module/index.ts",
+          "reason": "generated_marker_mismatch",
+          "severity": "hard_fail"
+        }
+      ],
+      "edited": [
+        {
+          "path": "src/modules/example-module/index.ts",
+          "reason": "generated_body_mismatch",
+          "severity": "hard_fail"
+        }
+      ]
+    },
+    {
+      "slug": "contract",
+      "unmarked": [
+        {
+          "path": "contracts/example-contract.contract.ts",
+          "reason": "generated_marker_mismatch",
+          "severity": "hard_fail"
+        }
+      ],
+      "edited": [
+        {
+          "path": "contracts/example-contract.contract.ts",
+          "reason": "generated_body_mismatch",
+          "severity": "hard_fail"
+        }
+      ]
+    },
+    {
+      "slug": "adapter",
+      "unmarked": [
+        {
+          "path": "src/adapters/example-adapter/adapter.ts",
+          "reason": "generated_marker_mismatch",
+          "severity": "hard_fail"
+        }
+      ],
+      "edited": [
+        {
+          "path": "src/adapters/example-adapter/adapter.ts",
+          "reason": "generated_body_mismatch",
+          "severity": "hard_fail"
+        }
+      ]
+    },
+    {
+      "slug": "test-fixture",
+      "unmarked": [
+        {
+          "path": "tests/fixtures/example-fixture/fixture.ts",
+          "reason": "generated_marker_mismatch",
+          "severity": "hard_fail"
+        }
+      ],
+      "edited": [
+        {
+          "path": "tests/fixtures/example-fixture/fixture.ts",
+          "reason": "generated_body_mismatch",
+          "severity": "hard_fail"
+        }
+      ]
+    },
+    {
+      "slug": "context-file",
+      "unmarked": [
+        {
+          "path": ".vibe/context/example-context.md",
+          "reason": "generated_marker_mismatch",
+          "severity": "hard_fail"
+        }
+      ],
+      "edited": [
+        {
+          "path": ".vibe/context/example-context.md",
+          "reason": "generated_body_mismatch",
+          "severity": "hard_fail"
+        }
+      ]
+    },
+    {
+      "slug": "standard-doc",
+      "unmarked": [
+        {
+          "path": "docs/standards/example-standard.md",
+          "reason": "generated_marker_missing",
+          "severity": "hard_fail"
+        }
+      ],
+      "edited": [
+        {
+          "path": "docs/standards/example-standard.md",
+          "reason": "generated_body_mismatch",
+          "severity": "hard_fail"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "witness": "N1",
+  "results": [
+    {
+      "slug": "module",
+      "file": "module-unknown-field.json",
+      "status": "invalid_input",
+      "diagnostics": [
+        {
+          "code": "invalid_input",
+          "message": "Unknown input field extra.",
+          "details": {
+            "field": "extra"
+          }
+        }
+      ]
+    },
+    {
+      "slug": "contract",
+      "file": "contract-missing-required.json",
+      "status": "invalid_input",
+      "diagnostics": [
+        {
+          "code": "invalid_input",
+          "message": "Missing required input field name.",
+          "details": {
+            "field": "name"
+          }
+        }
+      ]
+    },
+    {
+      "slug": "adapter",
+      "file": "adapter-wrong-type.json",
+      "status": "invalid_input",
+      "diagnostics": [
+        {
+          "code": "invalid_input",
+          "message": "Input standardId must be a string.",
+          "details": {
+            "field": "standardId"
+          }
+        }
+      ]
+    },
+    {
+      "slug": "test-fixture",
+      "file": "test-fixture-malformed-name.json",
+      "status": "invalid_input",
+      "diagnostics": [
+        {
+          "code": "invalid_input",
+          "message": "Input name does not match its declared pattern.",
+          "details": {
+            "field": "name"
+          }
+        }
+      ]
+    },
+    {
+      "slug": "standard-doc",
+      "file": "standard-doc-unsupported-standard.json",
+      "status": "invalid_input",
+      "diagnostics": [
+        {
+          "code": "invalid_input",
+          "message": "Input standardId does not match its declared pattern.",
+          "details": {
+            "field": "standardId"
+          }
+        }
+      ]
+    },
+    {
+      "slug": "context-file",
+      "file": "context-file-unsafe-name.json",
+      "status": "invalid_input",
+      "diagnostics": [
+        {
+          "code": "invalid_input",
+          "message": "Input name does not match its declared pattern.",
+          "details": {
+            "field": "name"
+          }
+        }
+      ]
+    }
+  ]
+}

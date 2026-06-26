@@ -1,0 +1,80 @@
+{
+  "ownedFileCount": 40,
+  "jsMjsFiles": [
+    "packages/schematics/fixtures/builtins/run-builtins-witnesses.mjs"
+  ],
+  "productionJsMjs": [],
+  "manifestRows": [
+    {
+      "slug": "adapter",
+      "schematicId": "builtin.adapter",
+      "standardIds": [
+        "real-boundary-witnesses",
+        "deterministic-schematics"
+      ],
+      "duplicateStandardIds": [],
+      "standardIdPattern": "^real-boundary-witnesses$",
+      "standardTitlePattern": "^Real boundary witnesses$",
+      "standardSummaryPattern": "^A seam is green only after the actual producer, carrier, and consumer run together\\.$"
+    },
+    {
+      "slug": "context-file",
+      "schematicId": "builtin.context-file",
+      "standardIds": [
+        "dirty-tree-ownership",
+        "deterministic-schematics"
+      ],
+      "duplicateStandardIds": [],
+      "standardIdPattern": "^dirty-tree-ownership$",
+      "standardTitlePattern": "^Dirty-tree ownership discipline$",
+      "standardSummaryPattern": "^Agents edit only owned paths, preserve unrelated work, and stop on concrete ownership conflict\\.$"
+    },
+    {
+      "slug": "contract",
+      "schematicId": "builtin.contract",
+      "standardIds": [
+        "typed-boundary-contracts",
+        "deterministic-schematics"
+      ],
+      "duplicateStandardIds": [],
+      "standardIdPattern": "^typed-boundary-contracts$",
+      "standardTitlePattern": "^Typed boundary contracts$",
+      "standardSummaryPattern": "^External and generated carriers enter through named runtime contracts before any package consumes them\\.$"
+    },
+    {
+      "slug": "module",
+      "schematicId": "builtin.module",
+      "standardIds": [
+        "deterministic-schematics"
+      ],
+      "duplicateStandardIds": [],
+      "standardIdPattern": "^deterministic-schematics$",
+      "standardTitlePattern": "^Deterministic schematic behavior$",
+      "standardSummaryPattern": "^Schematics use typed manifests, deterministic path planning, dry-run safety, and fail-closed conflict handling\\.$"
+    },
+    {
+      "slug": "standard-doc",
+      "schematicId": "builtin.standard-doc",
+      "standardIds": [
+        "domain-neutral-core",
+        "deterministic-schematics"
+      ],
+      "duplicateStandardIds": [],
+      "standardIdPattern": "^domain-neutral-core$",
+      "standardTitlePattern": "^Domain-neutral core surfaces$",
+      "standardSummaryPattern": "^Core harness packages use generic engineering vocabulary and isolate extension or sample content from core defaults\\.$"
+    },
+    {
+      "slug": "test-fixture",
+      "schematicId": "builtin.test-fixture",
+      "standardIds": [
+        "report-first-evidence",
+        "deterministic-schematics"
+      ],
+      "duplicateStandardIds": [],
+      "standardIdPattern": "^report-first-evidence$",
+      "standardTitlePattern": "^Report-first evidence$",
+      "standardSummaryPattern": "^Every implementation or validation lane creates its report before inspection or edits and updates it after each stage\\.$"
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "witness": "P1",
+  "results": [
+    {
+      "slug": "module",
+      "plan": "sha256:594d163a22c65851101a5056fd40c41ffdd28be5e26a5a78816037a0d378019b",
+      "written": [
+        "src/modules/example-module",
+        "src/modules/example-module/index.ts"
+      ],
+      "rerunActions": [
+        "noop",
+        "noop"
+      ]
+    },
+    {
+      "slug": "contract",
+      "plan": "sha256:2413e59c8a33a184cd5e991b65da0b9d5df66dc1ea4f87c7a56624179614dd66",
+      "written": [
+        "contracts",
+        "contracts/example-contract.contract.ts"
+      ],
+      "rerunActions": [
+        "noop",
+        "noop"
+      ]
+    },
+    {
+      "slug": "adapter",
+      "plan": "sha256:d132b456f30ed136a73c5f7a551e9a1ff2373fc12a546416335b32f2527b9504",
+      "written": [
+        "src/adapters/example-adapter",
+        "src/adapters/example-adapter/adapter.ts"
+      ],
+      "rerunActions": [
+        "noop",
+        "noop"
+      ]
+    },
+    {
+      "slug": "test-fixture",
+      "plan": "sha256:fd7f19d0f0c52a90fa4fa27ea9370cbfc37afe14654550869feb185ac2758d62",
+      "written": [
+        "tests/fixtures/example-fixture",
+        "tests/fixtures/example-fixture/fixture.ts"
+      ],
+      "rerunActions": [
+        "noop",
+        "noop"
+      ]
+    },
+    {
+      "slug": "context-file",
+      "plan": "sha256:53b515d7a75683d11a9d9ca5c398923e1086c2f60f05c89fe23fdc1d39276c40",
+      "written": [
+        ".vibe/context",
+        ".vibe/context/example-context.md"
+      ],
+      "rerunActions": [
+        "noop",
+        "noop"
+      ]
+    },
+    {
+      "slug": "standard-doc",
+      "plan": "sha256:85c23c5d6745ffa2dec67afb99987afceeaa2911db5c4da5ba83a43c87bb2642",
+      "written": [
+        "docs/standards",
+        "docs/standards/example-standard.md"
+      ],
+      "rerunActions": [
+        "noop",
+        "noop"
+      ]
+    }
+  ]
+}

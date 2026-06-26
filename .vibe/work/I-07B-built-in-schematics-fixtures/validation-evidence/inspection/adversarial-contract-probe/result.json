@@ -1,0 +1,23 @@
+{
+  "expectation": "A built-in that consumes I-07C content contracts should reject or override standardTitle/standardSummary values that do not match standardsApi.loadStandard(standardId).",
+  "actualStatus": "ok",
+  "diagnostics": [],
+  "actualStandard": {
+    "standardId": "domain-neutral-core",
+    "title": "Domain-neutral core surfaces",
+    "summary": "Core harness packages use generic engineering vocabulary and isolate extension or sample content from core defaults."
+  },
+  "forgedInput": {
+    "name": "Forged Standard",
+    "standardId": "domain-neutral-core",
+    "standardTitle": "Forged title not returned by I-07C",
+    "standardSummary": "Forged summary not returned by I-07C",
+    "presetId": "vibe-engineer.typescript.strict",
+    "quickGateLabel": "quality:quick",
+    "packageManager": "pnpm@10.33.0",
+    "typecheckCommand": "tsc --noEmit -p packages/example/tsconfig.json"
+  },
+  "generatedBody": "# Forged Standard Standard Note\n\nStandard: `domain-neutral-core`\nTitle: Forged title not returned by I-07C\nSummary: Forged summary not returned by I-07C\n\nTypeScript preset: `vibe-engineer.typescript.strict`\nPackage manager: `pnpm@10.33.0`\nTypecheck command: `tsc --noEmit -p packages/example/tsconfig.json`\n\nThis generated note references actual standards and preset contracts supplied through typed fixture input.\n",
+  "generatedContainsForgedTitle": true,
+  "generatedContainsForgedSummary": true
+}

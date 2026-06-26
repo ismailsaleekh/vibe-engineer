@@ -1,0 +1,8 @@
+python3 - <<'PY'
+import pathlib, subprocess
+roots = [pathlib.Path('packages/schematics/src/builtins'), pathlib.Path('packages/schematics/fixtures/builtins')]
+files = [str(p) for r in roots if r.exists() for p in r.rglob('*') if p.suffix in {'.js', '.mjs'}]
+for file in files:
+    subprocess.run(['node', '--check', file], check=True)
+print({'checked': files})
+PY

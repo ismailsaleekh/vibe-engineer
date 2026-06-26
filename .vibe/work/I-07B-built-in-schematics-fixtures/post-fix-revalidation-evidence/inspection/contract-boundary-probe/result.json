@@ -1,0 +1,217 @@
+{
+  "ok": true,
+  "contractPositive": {
+    "ok": true,
+    "count": 6,
+    "schematicIds": [
+      "builtin.adapter",
+      "builtin.context-file",
+      "builtin.contract",
+      "builtin.module",
+      "builtin.standard-doc",
+      "builtin.test-fixture"
+    ]
+  },
+  "actualPatterns": [
+    {
+      "slug": "module",
+      "standardId": "deterministic-schematics",
+      "standardIdPattern": "^deterministic-schematics$",
+      "expectedStandardIdPattern": "^deterministic-schematics$",
+      "standardTitlePattern": "^Deterministic schematic behavior$",
+      "expectedStandardTitlePattern": "^Deterministic schematic behavior$",
+      "standardSummaryPattern": "^Schematics use typed manifests, deterministic path planning, dry-run safety, and fail-closed conflict handling\\.$",
+      "expectedStandardSummaryPattern": "^Schematics use typed manifests, deterministic path planning, dry-run safety, and fail-closed conflict handling\\.$",
+      "presetIdPattern": "^vibe-engineer\\.typescript\\.strict$",
+      "expectedPresetIdPattern": "^vibe-engineer\\.typescript\\.strict$",
+      "quickGatePattern": "^quality:quick$",
+      "expectedQuickGatePattern": "^quality:quick$",
+      "packageManagerPattern": "^pnpm@10\\.33\\.0$",
+      "expectedPackageManagerPattern": "^pnpm@10\\.33\\.0$",
+      "typecheckCommandPattern": "^tsc --noEmit -p packages/example/tsconfig\\.json$",
+      "expectedTypecheckCommandPattern": "^tsc --noEmit -p packages/example/tsconfig\\.json$"
+    },
+    {
+      "slug": "contract",
+      "standardId": "typed-boundary-contracts",
+      "standardIdPattern": "^typed-boundary-contracts$",
+      "expectedStandardIdPattern": "^typed-boundary-contracts$",
+      "standardTitlePattern": "^Typed boundary contracts$",
+      "expectedStandardTitlePattern": "^Typed boundary contracts$",
+      "standardSummaryPattern": "^External and generated carriers enter through named runtime contracts before any package consumes them\\.$",
+      "expectedStandardSummaryPattern": "^External and generated carriers enter through named runtime contracts before any package consumes them\\.$",
+      "presetIdPattern": "^vibe-engineer\\.typescript\\.strict$",
+      "expectedPresetIdPattern": "^vibe-engineer\\.typescript\\.strict$",
+      "quickGatePattern": "^quality:quick$",
+      "expectedQuickGatePattern": "^quality:quick$",
+      "packageManagerPattern": "^pnpm@10\\.33\\.0$",
+      "expectedPackageManagerPattern": "^pnpm@10\\.33\\.0$",
+      "typecheckCommandPattern": "^tsc --noEmit -p packages/example/tsconfig\\.json$",
+      "expectedTypecheckCommandPattern": "^tsc --noEmit -p packages/example/tsconfig\\.json$"
+    },
+    {
+      "slug": "adapter",
+      "standardId": "real-boundary-witnesses",
+      "standardIdPattern": "^real-boundary-witnesses$",
+      "expectedStandardIdPattern": "^real-boundary-witnesses$",
+      "standardTitlePattern": "^Real boundary witnesses$",
+      "expectedStandardTitlePattern": "^Real boundary witnesses$",
+      "standardSummaryPattern": "^A seam is green only after the actual producer, carrier, and consumer run together\\.$",
+      "expectedStandardSummaryPattern": "^A seam is green only after the actual producer, carrier, and consumer run together\\.$",
+      "presetIdPattern": "^vibe-engineer\\.typescript\\.strict$",
+      "expectedPresetIdPattern": "^vibe-engineer\\.typescript\\.strict$",
+      "quickGatePattern": "^quality:quick$",
+      "expectedQuickGatePattern": "^quality:quick$",
+      "packageManagerPattern": "^pnpm@10\\.33\\.0$",
+      "expectedPackageManagerPattern": "^pnpm@10\\.33\\.0$",
+      "typecheckCommandPattern": "^tsc --noEmit -p packages/example/tsconfig\\.json$",
+      "expectedTypecheckCommandPattern": "^tsc --noEmit -p packages/example/tsconfig\\.json$"
+    },
+    {
+      "slug": "test-fixture",
+      "standardId": "report-first-evidence",
+      "standardIdPattern": "^report-first-evidence$",
+      "expectedStandardIdPattern": "^report-first-evidence$",
+      "standardTitlePattern": "^Report-first evidence$",
+      "expectedStandardTitlePattern": "^Report-first evidence$",
+      "standardSummaryPattern": "^Every implementation or validation lane creates its report before inspection or edits and updates it after each stage\\.$",
+      "expectedStandardSummaryPattern": "^Every implementation or validation lane creates its report before inspection or edits and updates it after each stage\\.$",
+      "presetIdPattern": "^vibe-engineer\\.typescript\\.strict$",
+      "expectedPresetIdPattern": "^vibe-engineer\\.typescript\\.strict$",
+      "quickGatePattern": "^quality:quick$",
+      "expectedQuickGatePattern": "^quality:quick$",
+      "packageManagerPattern": "^pnpm@10\\.33\\.0$",
+      "expectedPackageManagerPattern": "^pnpm@10\\.33\\.0$",
+      "typecheckCommandPattern": "^tsc --noEmit -p packages/example/tsconfig\\.json$",
+      "expectedTypecheckCommandPattern": "^tsc --noEmit -p packages/example/tsconfig\\.json$"
+    },
+    {
+      "slug": "context-file",
+      "standardId": "dirty-tree-ownership",
+      "standardIdPattern": "^dirty-tree-ownership$",
+      "expectedStandardIdPattern": "^dirty-tree-ownership$",
+      "standardTitlePattern": "^Dirty-tree ownership discipline$",
+      "expectedStandardTitlePattern": "^Dirty-tree ownership discipline$",
+      "standardSummaryPattern": "^Agents edit only owned paths, preserve unrelated work, and stop on concrete ownership conflict\\.$",
+      "expectedStandardSummaryPattern": "^Agents edit only owned paths, preserve unrelated work, and stop on concrete ownership conflict\\.$",
+      "presetIdPattern": "^vibe-engineer\\.typescript\\.strict$",
+      "expectedPresetIdPattern": "^vibe-engineer\\.typescript\\.strict$",
+      "quickGatePattern": "^quality:quick$",
+      "expectedQuickGatePattern": "^quality:quick$",
+      "packageManagerPattern": "^pnpm@10\\.33\\.0$",
+      "expectedPackageManagerPattern": "^pnpm@10\\.33\\.0$",
+      "typecheckCommandPattern": "^tsc --noEmit -p packages/example/tsconfig\\.json$",
+      "expectedTypecheckCommandPattern": "^tsc --noEmit -p packages/example/tsconfig\\.json$"
+    },
+    {
+      "slug": "standard-doc",
+      "standardId": "domain-neutral-core",
+      "standardIdPattern": "^domain-neutral-core$",
+      "expectedStandardIdPattern": "^domain-neutral-core$",
+      "standardTitlePattern": "^Domain-neutral core surfaces$",
+      "expectedStandardTitlePattern": "^Domain-neutral core surfaces$",
+      "standardSummaryPattern": "^Core harness packages use generic engineering vocabulary and isolate extension or sample content from core defaults\\.$",
+      "expectedStandardSummaryPattern": "^Core harness packages use generic engineering vocabulary and isolate extension or sample content from core defaults\\.$",
+      "presetIdPattern": "^vibe-engineer\\.typescript\\.strict$",
+      "expectedPresetIdPattern": "^vibe-engineer\\.typescript\\.strict$",
+      "quickGatePattern": "^quality:quick$",
+      "expectedQuickGatePattern": "^quality:quick$",
+      "packageManagerPattern": "^pnpm@10\\.33\\.0$",
+      "expectedPackageManagerPattern": "^pnpm@10\\.33\\.0$",
+      "typecheckCommandPattern": "^tsc --noEmit -p packages/example/tsconfig\\.json$",
+      "expectedTypecheckCommandPattern": "^tsc --noEmit -p packages/example/tsconfig\\.json$"
+    }
+  ],
+  "presetValidation": {
+    "ok": true,
+    "findings": [],
+    "fileCount": 12
+  },
+  "positiveGeneration": {
+    "status": "ok",
+    "output": ".vibe/work/I-07B-built-in-schematics-fixtures/post-fix-revalidation-evidence/inspection/contract-boundary-probe/positive-standard-doc-target/docs/standards/example-standard.md",
+    "containsActualStandardTitle": true,
+    "containsActualStandardSummary": true
+  },
+  "forgedStandard": {
+    "helperRejected": {
+      "threw": true,
+      "message": "Input standardTitle does not match the actual upstream contract value.",
+      "code": "builtins_contract"
+    },
+    "rawEngineStatus": "invalid_input",
+    "rawEngineDiagnostics": [
+      {
+        "code": "invalid_input",
+        "message": "Input standardTitle does not match its declared pattern.",
+        "details": {
+          "field": "standardTitle"
+        }
+      }
+    ],
+    "targetSnapshot": []
+  },
+  "unknownStandard": {
+    "helperRejected": {
+      "threw": true,
+      "message": "Unknown standardId unsupported-standard.",
+      "code": "STANDARDS_UNKNOWN_STANDARD_ID"
+    },
+    "rawEngineStatus": "invalid_input",
+    "rawEngineDiagnostics": [
+      {
+        "code": "invalid_input",
+        "message": "Input standardId does not match its declared pattern.",
+        "details": {
+          "field": "standardId"
+        }
+      }
+    ],
+    "targetSnapshot": []
+  },
+  "forgedPreset": {
+    "helperRejected": {
+      "threw": true,
+      "message": "Input packageManager does not match the actual upstream contract value.",
+      "code": "builtins_contract"
+    },
+    "rawEngineStatus": "invalid_input",
+    "rawEngineDiagnostics": [
+      {
+        "code": "invalid_input",
+        "message": "Input packageManager does not match its declared pattern.",
+        "details": {
+          "field": "packageManager"
+        }
+      }
+    ],
+    "targetSnapshot": []
+  },
+  "malformedCarrierFindings": {
+    "renamedStandardTitleCarrier": {
+      "threw": true,
+      "message": "Input standardTitle must be constrained to the actual upstream contract value.",
+      "code": "builtins_contract"
+    },
+    "unknownStandardCarrier": {
+      "threw": true,
+      "message": "Unknown standardId renamed-standard-id.",
+      "code": "STANDARDS_UNKNOWN_STANDARD_ID"
+    },
+    "duplicateStandardIdCarrier": {
+      "threw": true,
+      "message": "standardIds for module must be unique.",
+      "code": "builtins_contract"
+    },
+    "unknownPresetKindCarrier": {
+      "threw": true,
+      "message": "Built-in references a TypeScript preset file kind not present in actual preset manifest.",
+      "code": "builtins_contract"
+    },
+    "renamedPresetIdCarrier": {
+      "threw": true,
+      "message": "Built-in TypeScript preset id must match actual preset metadata.",
+      "code": "builtins_contract"
+    }
+  }
+}

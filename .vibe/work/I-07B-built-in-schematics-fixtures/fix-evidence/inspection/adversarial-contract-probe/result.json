@@ -1,0 +1,18 @@
+{
+  "expectation": "Forged standards content is rejected at the TypeScript built-in contract helper and at the raw I-07A engine/input-schema boundary.",
+  "helperRejected": true,
+  "helperMessage": "Input standardTitle does not match the actual upstream contract value.",
+  "actualStatus": "invalid_input",
+  "diagnostics": [
+    {
+      "code": "invalid_input",
+      "message": "Input standardTitle does not match its declared pattern.",
+      "details": {
+        "field": "standardTitle"
+      }
+    }
+  ],
+  "generatedBody": null,
+  "generatedContainsForgedTitle": false,
+  "generatedContainsForgedSummary": false
+}

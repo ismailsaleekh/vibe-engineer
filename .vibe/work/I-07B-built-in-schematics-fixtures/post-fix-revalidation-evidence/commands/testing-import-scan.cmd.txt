@@ -1,0 +1,16 @@
+python3 - <<'PY'
+import pathlib, json
+roots = [pathlib.Path('packages/schematics/src/builtins'), pathlib.Path('packages/schematics/templates'), pathlib.Path('packages/schematics/fixtures/builtins')]
+hits = []
+for root in roots:
+    if root.exists():
+        for path in root.rglob('*'):
+            if path.is_file():
+                text = path.read_text(errors='ignore')
+                if '@vibe-engineer/testing' in text:
+                    hits.append(str(path))
+out = pathlib.Path('.vibe/work/I-07B-built-in-schematics-fixtures/post-fix-revalidation-evidence/inspection/testing-import-scan.json')
+out.write_text(json.dumps({'hits': hits}, indent=2) + '\n')
+print({'hits': hits})
+raise SystemExit(1 if hits else 0)
+PY

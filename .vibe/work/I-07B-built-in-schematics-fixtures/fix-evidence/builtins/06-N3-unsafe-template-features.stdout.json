@@ -1,0 +1,68 @@
+{
+  "witness": "N3",
+  "results": [
+    {
+      "template": "triple.mustache",
+      "diagnostics": [
+        {
+          "code": "unsafe_template",
+          "message": "Forbidden template feature: triple_mustache_raw.",
+          "details": {
+            "feature": "triple_mustache_raw"
+          }
+        }
+      ]
+    },
+    {
+      "template": "raw-ampersand.mustache",
+      "diagnostics": [
+        {
+          "code": "unsafe_template",
+          "message": "Forbidden template feature: raw_ampersand.",
+          "details": {
+            "feature": "raw_ampersand"
+          }
+        }
+      ]
+    },
+    {
+      "template": "undeclared-partial.mustache",
+      "diagnostics": [
+        {
+          "code": "unsafe_template",
+          "message": "Partial must be declared by manifest.",
+          "details": {
+            "partial": "missingPartial"
+          }
+        }
+      ]
+    },
+    {
+      "template": "capability-token.mustache",
+      "diagnostics": [
+        {
+          "code": "unsafe_template",
+          "message": "Forbidden template text capability: fetch(.",
+          "details": {
+            "token": "fetch("
+          }
+        }
+      ]
+    },
+    {
+      "template": "domain.mustache",
+      "diagnostics": [
+        {
+          "code": "domain_neutrality",
+          "message": "Core fixture output contains forbidden business-domain term.",
+          "details": {
+            "findings": [
+              "ecommerce",
+              "ProductCatalog"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

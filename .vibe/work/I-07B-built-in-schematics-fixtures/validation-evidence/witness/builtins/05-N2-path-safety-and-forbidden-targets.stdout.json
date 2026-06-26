@@ -1,0 +1,53 @@
+{
+  "witness": "N2",
+  "results": [
+    {
+      "manifest": "manifest-variants/outside-target/manifest.json",
+      "diagnostics": [
+        {
+          "code": "unsafe_path",
+          "message": "Generated path must stay inside target root.",
+          "details": {
+            "path": "../escape.ts"
+          }
+        }
+      ]
+    },
+    {
+      "manifest": "manifest-variants/undeclared-target/manifest.json",
+      "diagnostics": [
+        {
+          "code": "unsafe_path",
+          "message": "Generated path is not declared by manifest touchedPathPatterns.",
+          "details": {
+            "path": "other/example.ts"
+          }
+        }
+      ]
+    },
+    {
+      "manifest": "manifest-variants/root-package-manifest/manifest.json",
+      "diagnostics": [
+        {
+          "code": "unsafe_path",
+          "message": "Generated path is not declared by manifest touchedPathPatterns.",
+          "details": {
+            "path": "package.json"
+          }
+        }
+      ]
+    },
+    {
+      "manifest": "manifest-variants/cli-loader-target/manifest.json",
+      "diagnostics": [
+        {
+          "code": "unsafe_path",
+          "message": "Generated path is not declared by manifest touchedPathPatterns.",
+          "details": {
+            "path": "packages/cli/src/entry/vibe-engineer.js"
+          }
+        }
+      ]
+    }
+  ]
+}

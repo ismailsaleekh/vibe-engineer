@@ -1,0 +1,491 @@
+{
+  "ownedFileCount": 40,
+  "ownedFiles": [
+    "packages/schematics/fixtures/builtins/expected/adapter/src/adapters/example-adapter/adapter.ts.body",
+    "packages/schematics/fixtures/builtins/expected/context-file/.vibe/context/example-context.md.body",
+    "packages/schematics/fixtures/builtins/expected/contract/contracts/example-contract.contract.ts.body",
+    "packages/schematics/fixtures/builtins/expected/module/src/modules/example-module/index.ts.body",
+    "packages/schematics/fixtures/builtins/expected/standard-doc/docs/standards/example-standard.md.body",
+    "packages/schematics/fixtures/builtins/expected/test-fixture/tests/fixtures/example-fixture/fixture.ts.body",
+    "packages/schematics/fixtures/builtins/inputs/invalid/adapter-wrong-type.json",
+    "packages/schematics/fixtures/builtins/inputs/invalid/context-file-unsafe-name.json",
+    "packages/schematics/fixtures/builtins/inputs/invalid/contract-missing-required.json",
+    "packages/schematics/fixtures/builtins/inputs/invalid/module-forged-preset-contract.json",
+    "packages/schematics/fixtures/builtins/inputs/invalid/module-unknown-field.json",
+    "packages/schematics/fixtures/builtins/inputs/invalid/standard-doc-forged-standard-content.json",
+    "packages/schematics/fixtures/builtins/inputs/invalid/standard-doc-unsupported-standard.json",
+    "packages/schematics/fixtures/builtins/inputs/invalid/test-fixture-malformed-name.json",
+    "packages/schematics/fixtures/builtins/inputs/valid/adapter.json",
+    "packages/schematics/fixtures/builtins/inputs/valid/context-file.json",
+    "packages/schematics/fixtures/builtins/inputs/valid/contract.json",
+    "packages/schematics/fixtures/builtins/inputs/valid/module.json",
+    "packages/schematics/fixtures/builtins/inputs/valid/standard-doc.json",
+    "packages/schematics/fixtures/builtins/inputs/valid/test-fixture.json",
+    "packages/schematics/fixtures/builtins/invalid-manifests/unknown-field.json",
+    "packages/schematics/fixtures/builtins/invalid-templates/capability-token.mustache",
+    "packages/schematics/fixtures/builtins/invalid-templates/domain.mustache",
+    "packages/schematics/fixtures/builtins/invalid-templates/raw-ampersand.mustache",
+    "packages/schematics/fixtures/builtins/invalid-templates/triple.mustache",
+    "packages/schematics/fixtures/builtins/invalid-templates/undeclared-partial.mustache",
+    "packages/schematics/fixtures/builtins/run-builtins-witnesses.mjs",
+    "packages/schematics/src/builtins/index.ts",
+    "packages/schematics/templates/adapter/files/adapter.ts.mustache",
+    "packages/schematics/templates/adapter/manifest.json",
+    "packages/schematics/templates/context-file/files/context-file.md.mustache",
+    "packages/schematics/templates/context-file/manifest.json",
+    "packages/schematics/templates/contract/files/contract.ts.mustache",
+    "packages/schematics/templates/contract/manifest.json",
+    "packages/schematics/templates/module/files/module.ts.mustache",
+    "packages/schematics/templates/module/manifest.json",
+    "packages/schematics/templates/standard-doc/files/standard-doc.md.mustache",
+    "packages/schematics/templates/standard-doc/manifest.json",
+    "packages/schematics/templates/test-fixture/files/test-fixture.ts.mustache",
+    "packages/schematics/templates/test-fixture/manifest.json"
+  ],
+  "jsMjsFiles": [
+    "packages/schematics/fixtures/builtins/run-builtins-witnesses.mjs"
+  ],
+  "productionJsMjs": [],
+  "expectedSlugs": [
+    "module",
+    "contract",
+    "adapter",
+    "test-fixture",
+    "context-file",
+    "standard-doc"
+  ],
+  "manifestRows": [
+    {
+      "slug": "module",
+      "schematicId": "builtin.module",
+      "builtInId": "builtin.module",
+      "templateRoot": "files",
+      "inputAdditionalProperties": false,
+      "requiredContractFieldsPresent": true,
+      "standardIds": [
+        "deterministic-schematics"
+      ],
+      "duplicateStandardIds": [],
+      "standardPatterns": {
+        "standardId": "^deterministic-schematics$",
+        "standardTitle": "^Deterministic schematic behavior$",
+        "standardSummary": "^Schematics use typed manifests, deterministic path planning, dry-run safety, and fail-closed conflict handling\\.$"
+      },
+      "presetPatterns": {
+        "presetId": "^vibe-engineer\\.typescript\\.strict$",
+        "quickGateLabel": "^quality:quick$",
+        "packageManager": "^pnpm@10\\.33\\.0$",
+        "typecheckCommand": "^tsc --noEmit -p packages/example/tsconfig\\.json$"
+      },
+      "conflictBehavior": "fail",
+      "generatedPathPolicies": [
+        "fail"
+      ],
+      "dryRunWritesFiles": false,
+      "securitySafety": {
+        "noNetwork": true,
+        "noShell": true,
+        "deterministicOnly": true
+      },
+      "requiredPresetKinds": [
+        "typescript-config",
+        "eslint-policy",
+        "prettier-policy",
+        "workspace-config",
+        "turbo-config",
+        "package-manifest"
+      ],
+      "sourceRefs": [
+        "I-07B-built-in-schematics-fixtures",
+        "deterministic-schematics",
+        "vibe-engineer.typescript.strict"
+      ],
+      "operationTemplates": [
+        "module.ts.mustache"
+      ],
+      "operationPathTemplates": [
+        "src/modules/{{pathSegment}}",
+        "src/modules/{{pathSegment}}/index.ts"
+      ],
+      "forbiddenPathPatterns": [
+        ".git/**",
+        "node_modules/**",
+        "package.json",
+        "pnpm-lock.yaml",
+        "pnpm-workspace.yaml",
+        "turbo.json",
+        "tsconfig.base.json",
+        "packages/**/package.json",
+        ".github/**",
+        "scripts/**",
+        "infra/**",
+        "docs/decisions/**"
+      ],
+      "touchedPathPatterns": [
+        "src/modules/**"
+      ]
+    },
+    {
+      "slug": "contract",
+      "schematicId": "builtin.contract",
+      "builtInId": "builtin.contract",
+      "templateRoot": "files",
+      "inputAdditionalProperties": false,
+      "requiredContractFieldsPresent": true,
+      "standardIds": [
+        "typed-boundary-contracts",
+        "deterministic-schematics"
+      ],
+      "duplicateStandardIds": [],
+      "standardPatterns": {
+        "standardId": "^typed-boundary-contracts$",
+        "standardTitle": "^Typed boundary contracts$",
+        "standardSummary": "^External and generated carriers enter through named runtime contracts before any package consumes them\\.$"
+      },
+      "presetPatterns": {
+        "presetId": "^vibe-engineer\\.typescript\\.strict$",
+        "quickGateLabel": "^quality:quick$",
+        "packageManager": "^pnpm@10\\.33\\.0$",
+        "typecheckCommand": "^tsc --noEmit -p packages/example/tsconfig\\.json$"
+      },
+      "conflictBehavior": "fail",
+      "generatedPathPolicies": [
+        "fail"
+      ],
+      "dryRunWritesFiles": false,
+      "securitySafety": {
+        "noNetwork": true,
+        "noShell": true,
+        "deterministicOnly": true
+      },
+      "requiredPresetKinds": [
+        "typescript-config",
+        "eslint-policy",
+        "prettier-policy",
+        "workspace-config",
+        "turbo-config",
+        "package-manifest"
+      ],
+      "sourceRefs": [
+        "I-07B-built-in-schematics-fixtures",
+        "typed-boundary-contracts",
+        "vibe-engineer.typescript.strict"
+      ],
+      "operationTemplates": [
+        "contract.ts.mustache"
+      ],
+      "operationPathTemplates": [
+        "contracts",
+        "contracts/{{pathSegment}}.contract.ts"
+      ],
+      "forbiddenPathPatterns": [
+        ".git/**",
+        "node_modules/**",
+        "package.json",
+        "pnpm-lock.yaml",
+        "pnpm-workspace.yaml",
+        "turbo.json",
+        "tsconfig.base.json",
+        "packages/**/package.json",
+        ".github/**",
+        "scripts/**",
+        "infra/**",
+        "docs/decisions/**"
+      ],
+      "touchedPathPatterns": [
+        "contracts/**"
+      ]
+    },
+    {
+      "slug": "adapter",
+      "schematicId": "builtin.adapter",
+      "builtInId": "builtin.adapter",
+      "templateRoot": "files",
+      "inputAdditionalProperties": false,
+      "requiredContractFieldsPresent": true,
+      "standardIds": [
+        "real-boundary-witnesses",
+        "deterministic-schematics"
+      ],
+      "duplicateStandardIds": [],
+      "standardPatterns": {
+        "standardId": "^real-boundary-witnesses$",
+        "standardTitle": "^Real boundary witnesses$",
+        "standardSummary": "^A seam is green only after the actual producer, carrier, and consumer run together\\.$"
+      },
+      "presetPatterns": {
+        "presetId": "^vibe-engineer\\.typescript\\.strict$",
+        "quickGateLabel": "^quality:quick$",
+        "packageManager": "^pnpm@10\\.33\\.0$",
+        "typecheckCommand": "^tsc --noEmit -p packages/example/tsconfig\\.json$"
+      },
+      "conflictBehavior": "fail",
+      "generatedPathPolicies": [
+        "fail"
+      ],
+      "dryRunWritesFiles": false,
+      "securitySafety": {
+        "noNetwork": true,
+        "noShell": true,
+        "deterministicOnly": true
+      },
+      "requiredPresetKinds": [
+        "typescript-config",
+        "eslint-policy",
+        "prettier-policy",
+        "workspace-config",
+        "turbo-config",
+        "package-manifest"
+      ],
+      "sourceRefs": [
+        "I-07B-built-in-schematics-fixtures",
+        "real-boundary-witnesses",
+        "vibe-engineer.typescript.strict"
+      ],
+      "operationTemplates": [
+        "adapter.ts.mustache"
+      ],
+      "operationPathTemplates": [
+        "src/adapters/{{pathSegment}}",
+        "src/adapters/{{pathSegment}}/adapter.ts"
+      ],
+      "forbiddenPathPatterns": [
+        ".git/**",
+        "node_modules/**",
+        "package.json",
+        "pnpm-lock.yaml",
+        "pnpm-workspace.yaml",
+        "turbo.json",
+        "tsconfig.base.json",
+        "packages/**/package.json",
+        ".github/**",
+        "scripts/**",
+        "infra/**",
+        "docs/decisions/**"
+      ],
+      "touchedPathPatterns": [
+        "src/adapters/**"
+      ]
+    },
+    {
+      "slug": "test-fixture",
+      "schematicId": "builtin.test-fixture",
+      "builtInId": "builtin.test-fixture",
+      "templateRoot": "files",
+      "inputAdditionalProperties": false,
+      "requiredContractFieldsPresent": true,
+      "standardIds": [
+        "report-first-evidence",
+        "deterministic-schematics"
+      ],
+      "duplicateStandardIds": [],
+      "standardPatterns": {
+        "standardId": "^report-first-evidence$",
+        "standardTitle": "^Report-first evidence$",
+        "standardSummary": "^Every implementation or validation lane creates its report before inspection or edits and updates it after each stage\\.$"
+      },
+      "presetPatterns": {
+        "presetId": "^vibe-engineer\\.typescript\\.strict$",
+        "quickGateLabel": "^quality:quick$",
+        "packageManager": "^pnpm@10\\.33\\.0$",
+        "typecheckCommand": "^tsc --noEmit -p packages/example/tsconfig\\.json$"
+      },
+      "conflictBehavior": "fail",
+      "generatedPathPolicies": [
+        "fail"
+      ],
+      "dryRunWritesFiles": false,
+      "securitySafety": {
+        "noNetwork": true,
+        "noShell": true,
+        "deterministicOnly": true
+      },
+      "requiredPresetKinds": [
+        "typescript-config",
+        "eslint-policy",
+        "prettier-policy",
+        "workspace-config",
+        "turbo-config",
+        "package-manifest"
+      ],
+      "sourceRefs": [
+        "I-07B-built-in-schematics-fixtures",
+        "report-first-evidence",
+        "vibe-engineer.typescript.strict"
+      ],
+      "operationTemplates": [
+        "test-fixture.ts.mustache"
+      ],
+      "operationPathTemplates": [
+        "tests/fixtures/{{pathSegment}}",
+        "tests/fixtures/{{pathSegment}}/fixture.ts"
+      ],
+      "forbiddenPathPatterns": [
+        ".git/**",
+        "node_modules/**",
+        "package.json",
+        "pnpm-lock.yaml",
+        "pnpm-workspace.yaml",
+        "turbo.json",
+        "tsconfig.base.json",
+        "packages/**/package.json",
+        ".github/**",
+        "scripts/**",
+        "infra/**",
+        "docs/decisions/**"
+      ],
+      "touchedPathPatterns": [
+        "tests/fixtures/**"
+      ]
+    },
+    {
+      "slug": "context-file",
+      "schematicId": "builtin.context-file",
+      "builtInId": "builtin.context-file",
+      "templateRoot": "files",
+      "inputAdditionalProperties": false,
+      "requiredContractFieldsPresent": true,
+      "standardIds": [
+        "dirty-tree-ownership",
+        "deterministic-schematics"
+      ],
+      "duplicateStandardIds": [],
+      "standardPatterns": {
+        "standardId": "^dirty-tree-ownership$",
+        "standardTitle": "^Dirty-tree ownership discipline$",
+        "standardSummary": "^Agents edit only owned paths, preserve unrelated work, and stop on concrete ownership conflict\\.$"
+      },
+      "presetPatterns": {
+        "presetId": "^vibe-engineer\\.typescript\\.strict$",
+        "quickGateLabel": "^quality:quick$",
+        "packageManager": "^pnpm@10\\.33\\.0$",
+        "typecheckCommand": "^tsc --noEmit -p packages/example/tsconfig\\.json$"
+      },
+      "conflictBehavior": "fail",
+      "generatedPathPolicies": [
+        "fail"
+      ],
+      "dryRunWritesFiles": false,
+      "securitySafety": {
+        "noNetwork": true,
+        "noShell": true,
+        "deterministicOnly": true
+      },
+      "requiredPresetKinds": [
+        "typescript-config",
+        "eslint-policy",
+        "prettier-policy",
+        "workspace-config",
+        "turbo-config",
+        "package-manifest"
+      ],
+      "sourceRefs": [
+        "I-07B-built-in-schematics-fixtures",
+        "dirty-tree-ownership",
+        "vibe-engineer.typescript.strict"
+      ],
+      "operationTemplates": [
+        "context-file.md.mustache"
+      ],
+      "operationPathTemplates": [
+        ".vibe/context",
+        ".vibe/context/{{pathSegment}}.md"
+      ],
+      "forbiddenPathPatterns": [
+        ".git/**",
+        "node_modules/**",
+        "package.json",
+        "pnpm-lock.yaml",
+        "pnpm-workspace.yaml",
+        "turbo.json",
+        "tsconfig.base.json",
+        "packages/**/package.json",
+        ".github/**",
+        "scripts/**",
+        "infra/**",
+        "docs/decisions/**"
+      ],
+      "touchedPathPatterns": [
+        ".vibe/context/**"
+      ]
+    },
+    {
+      "slug": "standard-doc",
+      "schematicId": "builtin.standard-doc",
+      "builtInId": "builtin.standard-doc",
+      "templateRoot": "files",
+      "inputAdditionalProperties": false,
+      "requiredContractFieldsPresent": true,
+      "standardIds": [
+        "domain-neutral-core",
+        "deterministic-schematics"
+      ],
+      "duplicateStandardIds": [],
+      "standardPatterns": {
+        "standardId": "^domain-neutral-core$",
+        "standardTitle": "^Domain-neutral core surfaces$",
+        "standardSummary": "^Core harness packages use generic engineering vocabulary and isolate extension or sample content from core defaults\\.$"
+      },
+      "presetPatterns": {
+        "presetId": "^vibe-engineer\\.typescript\\.strict$",
+        "quickGateLabel": "^quality:quick$",
+        "packageManager": "^pnpm@10\\.33\\.0$",
+        "typecheckCommand": "^tsc --noEmit -p packages/example/tsconfig\\.json$"
+      },
+      "conflictBehavior": "fail",
+      "generatedPathPolicies": [
+        "fail"
+      ],
+      "dryRunWritesFiles": false,
+      "securitySafety": {
+        "noNetwork": true,
+        "noShell": true,
+        "deterministicOnly": true
+      },
+      "requiredPresetKinds": [
+        "typescript-config",
+        "eslint-policy",
+        "prettier-policy",
+        "workspace-config",
+        "turbo-config",
+        "package-manifest"
+      ],
+      "sourceRefs": [
+        "I-07B-built-in-schematics-fixtures",
+        "domain-neutral-core",
+        "vibe-engineer.typescript.strict"
+      ],
+      "operationTemplates": [
+        "standard-doc.md.mustache"
+      ],
+      "operationPathTemplates": [
+        "docs/standards",
+        "docs/standards/{{pathSegment}}.md"
+      ],
+      "forbiddenPathPatterns": [
+        ".git/**",
+        "node_modules/**",
+        "package.json",
+        "pnpm-lock.yaml",
+        "pnpm-workspace.yaml",
+        "turbo.json",
+        "tsconfig.base.json",
+        "packages/**/package.json",
+        ".github/**",
+        "scripts/**",
+        "infra/**",
+        "docs/decisions/**"
+      ],
+      "touchedPathPatterns": [
+        "docs/standards/**"
+      ]
+    }
+  ],
+  "manifestFailures": [],
+  "catalogIdsUnique": true,
+  "secretPatternHits": [],
+  "unsafeTemplateHits": [],
+  "domainHitsOutsideNegativeFixtures": [],
+  "unsafeCommandHitsOutsideNegativeFixtures": [],
+  "sourceDuplicationHits": []
+}

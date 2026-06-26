@@ -1,0 +1,72 @@
+python3 - <<'PY'
+import json, pathlib, re
+root = pathlib.Path('.')
+owned_roots = [
+  pathlib.Path('packages/schematics/src/builtins'),
+  pathlib.Path('packages/schematics/templates'),
+  pathlib.Path('packages/schematics/fixtures/builtins'),
+]
+files = sorted(p for r in owned_roots if r.exists() for p in r.rglob('*') if p.is_file())
+expected = ['module','contract','adapter','test-fixture','context-file','standard-doc']
+manifest_rows = []
+all_ids = []
+for slug in expected:
+    p = pathlib.Path('packages/schematics/templates') / slug / 'manifest.json'
+    data = json.loads(p.read_text())
+    dl08 = data['extensions']['dev.vibe-engineer.schematics.dl08']
+    std = dl08.get('standardIds', [])
+    manifest_rows.append({
+        'slug': slug,
+        'path': str(p),
+        'schematicId': data.get('schematicId'),
+        'builtInId': dl08.get('builtInId'),
+        'templateRoot': dl08.get('templateRoot'),
+        'conflictBehavior': data.get('conflictBehavior'),
+        'generatedPathPolicies': [gp.get('conflictPolicy') for gp in data.get('generatedPaths', [])],
+        'dryRunWritesFiles': data.get('dryRunBehavior', {}).get('writesFiles'),
+        'securitySafety': dl08.get('securitySafety'),
+        'standardIds': std,
+        'duplicateStandardIds': sorted({x for x in std if std.count(x) > 1}),
+        'typescriptPreset': dl08.get('typescriptPreset'),
+        'generatedPaths': data.get('generatedPaths'),
+        'touchedPathPatterns': dl08.get('touchedPathPatterns'),
+        'forbiddenPathPatterns': dl08.get('forbiddenPathPatterns'),
+    })
+    all_ids.append(data.get('schematicId'))
+text_files = {str(p): p.read_text(errors='replace') for p in files if p.suffix in {'.js','.mjs','.json','.mustache','.body','.md','.ts'}}
+forbidden_domain = ['ecommerce','inventory','fashion','Billz','Telegram','Instagram','ProductCatalog','ShoppingCart','CustomerOrder','CheckoutFlow','WarehouseStock','FashionDrop','BillzInvoice','TelegramBotBusinessRule','InstagramEngagementModel']
+forbidden_capability = ['child_process','exec(','spawn(','fetch(','http://','https://','Date.now','new Date','Math.random','process.env','require(','eval(','Function(']
+leaks = []
+for path, text in text_files.items():
+    negative_allowed = '/invalid-templates/' in path or '/invalid/' in path or 'run-builtins-witnesses.mjs' in path
+    for term in forbidden_domain:
+        if term in text and not negative_allowed:
+            leaks.append({'path': path, 'term': term, 'kind': 'domain'})
+    for term in forbidden_capability:
+        if term in text and not negative_allowed:
+            leaks.append({'path': path, 'term': term, 'kind': 'capability'})
+secret_patterns = [r'AKIA[0-9A-Z]{16}', r'-----BEGIN [A-Z ]*PRIVATE KEY-----', r'(?i)(password|secret|token)\s*[=:]\s*[^\s,{]+']
+secret_hits = []
+for path, text in text_files.items():
+    for pat in secret_patterns:
+        if re.search(pat, text):
+            # invalid template capability-token is a negative fixture, but record for classification
+            secret_hits.append({'path': path, 'pattern': pat})
+js_mjs = [str(p) for p in files if p.suffix in {'.js','.mjs'}]
+result = {
+  'ownedFileCount': len(files),
+  'ownedFiles': [str(p) for p in files],
+  'jsMjsFiles': js_mjs,
+  'productionJsMjs': [str(p) for p in files if str(p).startswith('packages/schematics/src/') and p.suffix in {'.js','.mjs'}],
+  'manifestRows': manifest_rows,
+  'schematicIdsSorted': sorted(all_ids),
+  'schematicIdsUnique': len(set(all_ids)) == len(all_ids),
+  'expectedIdsPresent': sorted(all_ids) == sorted([f'builtin.{s}' for s in expected]),
+  'domainOrCapabilityLeaksOutsideNegativeFixtures': leaks,
+  'secretPatternHits': secret_hits,
+  'testingPackageImportHits': [path for path, text in text_files.items() if '@vibe-engineer/testing' in text],
+}
+out = pathlib.Path('.vibe/work/I-07B-built-in-schematics-fixtures/validation-evidence/inspection/static-sweep.json')
+out.write_text(json.dumps(result, indent=2) + '\n')
+print(json.dumps(result, indent=2))
+PY
