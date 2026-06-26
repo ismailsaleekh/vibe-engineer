@@ -1,0 +1,143 @@
+{
+  "schemaVersion": "1.0.0",
+  "artifactKind": "agent_registry_entry",
+  "artifactId": "fixture-sample-demo",
+  "title": "Fixture Sample Demo",
+  "createdAt": "2026-06-23T00:00:00Z",
+  "updatedAt": "2026-06-23T00:00:00Z",
+  "producer": {
+    "kind": "system",
+    "id": "i-04-agent-registry-validation",
+    "name": "I-04 agent registry validation",
+    "version": "1.0.0"
+  },
+  "status": "active",
+  "ownership": {
+    "ownerLane": "I-04-agent-registry-validation",
+    "ownedWritePaths": [
+      "packages/registry/fixtures/**"
+    ],
+    "readOnlyPaths": [
+      "packages/artifacts/**"
+    ],
+    "untouchablePaths": [
+      ".git/**",
+      "docs/decisions/**"
+    ],
+    "concurrencyNotes": "Fixture-owned registry entries are isolated to the registry package.",
+    "handoffPolicy": "Fixtures are evidence only and do not register production runtime behavior."
+  },
+  "links": [
+    {
+      "rel": "registry_entry_for",
+      "artifactKind": "agent_registry_entry",
+      "artifactId": "fixture-sample-demo",
+      "path": "packages/registry/fixtures/valid/scoped/sample-demo.json",
+      "required": true,
+      "statusAtLinkTime": "active"
+    }
+  ],
+  "extensions": {
+    "dev.vibe.registry": {
+      "schemaVersion": "1.0.0",
+      "classification": "sample_demo",
+      "registryScope": "sample_demo",
+      "smokeRefs": [
+        "smoke:sample-demo"
+      ],
+      "normalRoute": [
+        "planning",
+        "build",
+        "verification"
+      ],
+      "outputAuthority": "bounded_execution",
+      "nonPiHarnessSupport": "deferred_blocked",
+      "adapterRuntimeImplemented": false,
+      "adapterManifestWrites": false,
+      "sampleLabel": "sample_demo",
+      "isolated": true
+    }
+  },
+  "description": "Fixture Sample Demo fixture registry entry.",
+  "tags": [
+    "fixture",
+    "specialist",
+    "domain-neutral"
+  ],
+  "sourceRefs": [
+    {
+      "kind": "artifact",
+      "ref": "packages/registry/fixtures"
+    }
+  ],
+  "agentId": "fixture-sample-demo",
+  "displayName": "Fixture Sample Demo",
+  "agentType": "specialist",
+  "purpose": "Isolated sample demo fixture accepted only when samples are enabled.",
+  "triggers": [
+    {
+      "event": "fixture.specialist",
+      "description": "Fixture trigger for registry validator coverage."
+    }
+  ],
+  "inputSchemas": [
+    {
+      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/work-brief.schema.json",
+      "schemaVersion": "1.0.0",
+      "artifactKind": "work_brief"
+    }
+  ],
+  "outputSchemas": [
+    {
+      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/build-result.schema.json",
+      "schemaVersion": "1.0.0",
+      "artifactKind": "build_result"
+    }
+  ],
+  "allowedTools": [
+    "read",
+    "analysis",
+    "structured-report"
+  ],
+  "forbiddenActions": [
+    "git_stash",
+    "git_reset",
+    "git_clean",
+    "out_of_owned_path_write",
+    "push",
+    "pr_without_approval",
+    "verification_bypass"
+  ],
+  "contextRequirements": [
+    "fixture-context"
+  ],
+  "expectedArtifactPaths": [
+    "packages/registry/fixtures/valid/scoped/sample-demo.json"
+  ],
+  "safety": {
+    "parallelSafe": true,
+    "writesAllowed": true,
+    "requiresApprovalFor": [
+      "root_or_lockfile_mutation",
+      "push",
+      "pull_request"
+    ],
+    "maxIterations": 2
+  },
+  "validatorRefs": [],
+  "fixerRefs": [],
+  "maturity": "experimental",
+  "owner": "vibe-engineer",
+  "agentVersion": "1.0.0",
+  "evals": [],
+  "deprecation": null,
+  "runtimeCostClass": "bounded",
+  "examples": [
+    "fixture-sample-demo fixture demonstrates registry validation."
+  ],
+  "changelog": [],
+  "selectedHarnessAdapters": [
+    "pi"
+  ],
+  "domainNeutralityReview": "PASS DL-20A: sample fixture isolated."
+}
