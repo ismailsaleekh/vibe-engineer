@@ -1,0 +1,922 @@
+{
+  "schemaVersion": "i-14a-post-fix-revalidation-real-boundary-witness/v1",
+  "generatedAt": "2026-06-25",
+  "packageJsonPath": "/Users/lizavasilyeva/work/vibe-engineer/packages/adapters/pi/package.json",
+  "resolvedExports": {
+    "./capabilities": "/Users/lizavasilyeva/work/vibe-engineer/packages/adapters/pi/src/capabilities/index.ts",
+    "./generated-file-manifest": "/Users/lizavasilyeva/work/vibe-engineer/packages/adapters/pi/src/generated-file-manifest/index.ts",
+    "./schema": "/Users/lizavasilyeva/work/vibe-engineer/packages/adapters/pi/src/schema/index.ts"
+  },
+  "carriers": {
+    "packageCapability": "/Users/lizavasilyeva/work/vibe-engineer/packages/adapters/pi/fixtures/manifest/canonical-capability-matrix.json",
+    "packageManifest": "/Users/lizavasilyeva/work/vibe-engineer/packages/adapters/pi/fixtures/manifest/canonical-generated-file-manifest.json",
+    "exampleCapability": "/Users/lizavasilyeva/work/vibe-engineer/examples/harness-integrations/pi/manifest-fixtures/canonical-capability-matrix.json",
+    "exampleManifest": "/Users/lizavasilyeva/work/vibe-engineer/examples/harness-integrations/pi/manifest-fixtures/canonical-generated-file-manifest.json",
+    "exampleSummary": "/Users/lizavasilyeva/work/vibe-engineer/examples/harness-integrations/pi/manifest-fixtures/downstream-manifest-summary.json"
+  },
+  "positiveChecks": [
+    {
+      "name": "actual API capability matrix validates",
+      "pass": true,
+      "codes": []
+    },
+    {
+      "name": "actual API generated-file manifest validates",
+      "pass": true,
+      "codes": []
+    },
+    {
+      "name": "package capability carrier validates",
+      "pass": true,
+      "codes": []
+    },
+    {
+      "name": "package generated-file carrier validates",
+      "pass": true,
+      "codes": []
+    },
+    {
+      "name": "example capability carrier validates",
+      "pass": true,
+      "codes": []
+    },
+    {
+      "name": "example generated-file carrier validates",
+      "pass": true,
+      "codes": []
+    },
+    {
+      "name": "package capability carrier equals actual API output",
+      "pass": true
+    },
+    {
+      "name": "package generated-file carrier equals actual API output",
+      "pass": true
+    },
+    {
+      "name": "example capability carrier equals actual API output",
+      "pass": true
+    },
+    {
+      "name": "example generated-file carrier equals actual API output",
+      "pass": true
+    },
+    {
+      "name": "example downstream summary equals actual API summary",
+      "pass": true
+    },
+    {
+      "name": "summary has exact six skills",
+      "pass": true,
+      "actual": [
+        "brainstorm",
+        "grill-me",
+        "task",
+        "plan",
+        "build",
+        "ship"
+      ]
+    },
+    {
+      "name": "summary has exact generated families",
+      "pass": true,
+      "actual": [
+        "pi-skill-files",
+        "pi-prompt-templates",
+        "pi-extensions",
+        "pi-package-manifest",
+        "context-files",
+        "harness-config"
+      ]
+    },
+    {
+      "name": "summary manifestReady true",
+      "pass": true,
+      "actual": true
+    },
+    {
+      "name": "summary createImportReady false",
+      "pass": true,
+      "actual": false
+    },
+    {
+      "name": "summary runtime execution not proven",
+      "pass": true,
+      "actual": "not-claimed"
+    },
+    {
+      "name": "summary non-pi adapters blocked/deferred/unknown",
+      "pass": true,
+      "actual": [
+        "claude-code",
+        "codex",
+        "opencode",
+        "later-integrations"
+      ]
+    }
+  ],
+  "negativeResults": [
+    {
+      "name": "missing-capability-block.json",
+      "target": "capability",
+      "valid": false,
+      "codes": [
+        "expected_object",
+        "missing_required",
+        "missing_skill_mapping"
+      ],
+      "expectedCodes": [
+        "missing_required"
+      ],
+      "expectedCodesPresent": true,
+      "pass": true
+    },
+    {
+      "name": "missing-generated-file-consumers.json",
+      "target": "manifest",
+      "valid": false,
+      "codes": [
+        "empty_array",
+        "missing_fail_closed_metadata",
+        "unsupported_value"
+      ],
+      "expectedCodes": [
+        "empty_array",
+        "missing_fail_closed_metadata"
+      ],
+      "expectedCodesPresent": true,
+      "pass": true
+    },
+    {
+      "name": "missing-generated-file-owner.json",
+      "target": "manifest",
+      "valid": false,
+      "codes": [
+        "expected_object",
+        "missing_fail_closed_metadata",
+        "missing_required"
+      ],
+      "expectedCodes": [
+        "missing_required",
+        "missing_fail_closed_metadata"
+      ],
+      "expectedCodesPresent": true,
+      "pass": true
+    },
+    {
+      "name": "missing-generated-file-pi-skill-path-pattern.json",
+      "target": "manifest",
+      "valid": false,
+      "codes": [
+        "missing_required_path_pattern"
+      ],
+      "expectedCodes": [
+        "missing_required_path_pattern"
+      ],
+      "expectedCodesPresent": true,
+      "pass": true
+    },
+    {
+      "name": "missing-generated-file-security-trust.json",
+      "target": "manifest",
+      "valid": false,
+      "codes": [
+        "expected_object",
+        "missing_fail_closed_metadata",
+        "missing_required"
+      ],
+      "expectedCodes": [
+        "missing_required",
+        "missing_fail_closed_metadata"
+      ],
+      "expectedCodesPresent": true,
+      "pass": true
+    },
+    {
+      "name": "missing-generated-file-version.json",
+      "target": "manifest",
+      "valid": false,
+      "codes": [
+        "expected_object",
+        "missing_fail_closed_metadata",
+        "missing_required"
+      ],
+      "expectedCodes": [
+        "missing_required",
+        "missing_fail_closed_metadata"
+      ],
+      "expectedCodesPresent": true,
+      "pass": true
+    },
+    {
+      "name": "missing-six-skill-mapping.json",
+      "target": "capability",
+      "valid": false,
+      "codes": [
+        "missing_skill_mapping"
+      ],
+      "expectedCodes": [
+        "missing_skill_mapping"
+      ],
+      "expectedCodesPresent": true,
+      "pass": true
+    },
+    {
+      "name": "runtime-proven-claim.json",
+      "target": "capability",
+      "valid": false,
+      "codes": [
+        "i14a_runtime_claim_out_of_scope"
+      ],
+      "expectedCodes": [
+        "i14a_runtime_claim_out_of_scope"
+      ],
+      "expectedCodesPresent": true,
+      "pass": true
+    },
+    {
+      "name": "silent-noop-unsupported-feature-attempt.json",
+      "target": "capability",
+      "valid": false,
+      "codes": [
+        "flag_without_known_evidence",
+        "non_pi_enabled_flag",
+        "unsupported_feature_policy_not_blocking"
+      ],
+      "expectedCodes": [
+        "unsupported_feature_policy_not_blocking",
+        "non_pi_enabled_flag"
+      ],
+      "expectedCodesPresent": true,
+      "pass": true
+    },
+    {
+      "name": "unsupported-generated-file-owner-lane.json",
+      "target": "manifest",
+      "valid": false,
+      "codes": [
+        "unsupported_value"
+      ],
+      "expectedCodes": [
+        "unsupported_value"
+      ],
+      "expectedCodesPresent": true,
+      "pass": true
+    },
+    {
+      "name": "unsupported-generated-file-produced-by-lane.json",
+      "target": "manifest",
+      "valid": false,
+      "codes": [
+        "unsupported_value"
+      ],
+      "expectedCodes": [
+        "unsupported_value"
+      ],
+      "expectedCodesPresent": true,
+      "pass": true
+    },
+    {
+      "name": "unsupported-selectable-non-pi-harness.json",
+      "target": "capability",
+      "valid": false,
+      "codes": [
+        "non_pi_selectable"
+      ],
+      "expectedCodes": [
+        "non_pi_selectable"
+      ],
+      "expectedCodesPresent": true,
+      "pass": true
+    }
+  ],
+  "mutationChecks": [
+    {
+      "name": "capability matrix unknown top-level field rejected",
+      "target": "capability",
+      "valid": false,
+      "codes": [
+        "unknown_field"
+      ],
+      "expectedCodes": [
+        "unknown_field"
+      ],
+      "expectedCodesPresent": true,
+      "severityIfPass": "critical",
+      "pass": true
+    },
+    {
+      "name": "unsupported evidence enum state rejected",
+      "target": "capability",
+      "valid": false,
+      "codes": [
+        "pi_evidence_not_known",
+        "unsupported_value"
+      ],
+      "expectedCodes": [
+        "unsupported_value"
+      ],
+      "expectedCodesPresent": true,
+      "severityIfPass": "critical",
+      "pass": true
+    },
+    {
+      "name": "duplicate adapter id rejected",
+      "target": "capability",
+      "valid": false,
+      "codes": [
+        "duplicate_adapter_id"
+      ],
+      "expectedCodes": [
+        "duplicate_adapter_id"
+      ],
+      "expectedCodesPresent": true,
+      "severityIfPass": "critical",
+      "pass": true
+    },
+    {
+      "name": "missing pi adapter row rejected",
+      "target": "capability",
+      "valid": false,
+      "codes": [
+        "missing_pi_adapter"
+      ],
+      "expectedCodes": [
+        "missing_pi_adapter"
+      ],
+      "expectedCodesPresent": true,
+      "severityIfPass": "critical",
+      "pass": true
+    },
+    {
+      "name": "missing six-skill mapping rejected",
+      "target": "capability",
+      "valid": false,
+      "codes": [
+        "missing_skill_mapping"
+      ],
+      "expectedCodes": [
+        "missing_skill_mapping"
+      ],
+      "expectedCodesPresent": true,
+      "severityIfPass": "critical",
+      "pass": true
+    },
+    {
+      "name": "unsupported selectable non-pi harness rejected",
+      "target": "capability",
+      "valid": false,
+      "codes": [
+        "non_pi_selectable"
+      ],
+      "expectedCodes": [
+        "non_pi_selectable"
+      ],
+      "expectedCodesPresent": true,
+      "severityIfPass": "critical",
+      "pass": true
+    },
+    {
+      "name": "silent/no-op unsupported feature attempt rejected",
+      "target": "capability",
+      "valid": false,
+      "codes": [
+        "flag_without_known_evidence",
+        "non_pi_enabled_flag"
+      ],
+      "expectedCodes": [
+        "non_pi_enabled_flag",
+        "flag_without_known_evidence"
+      ],
+      "expectedCodesPresent": true,
+      "severityIfPass": "critical",
+      "pass": true
+    },
+    {
+      "name": "create/import selected-harness claim rejected",
+      "target": "capability",
+      "valid": false,
+      "codes": [
+        "create_import_claim_out_of_scope"
+      ],
+      "expectedCodes": [
+        "create_import_claim_out_of_scope"
+      ],
+      "expectedCodesPresent": true,
+      "severityIfPass": "critical",
+      "pass": true
+    },
+    {
+      "name": "live runtime green claim 'proven' rejected",
+      "target": "capability",
+      "valid": false,
+      "codes": [
+        "i14a_runtime_claim_out_of_scope"
+      ],
+      "expectedCodes": [
+        "i14a_runtime_claim_out_of_scope"
+      ],
+      "expectedCodesPresent": true,
+      "severityIfPass": "critical",
+      "pass": true
+    },
+    {
+      "name": "downstream summary rejects live runtime green claim 'proven'",
+      "target": "summary",
+      "threw": true,
+      "message": "Capability matrix failed validation: i14a_runtime_claim_out_of_scope",
+      "codes": [
+        "i14a_runtime_claim_out_of_scope"
+      ],
+      "expectedCodes": [
+        "i14a_runtime_claim_out_of_scope"
+      ],
+      "expectedCodesPresent": true,
+      "severityIfPass": "critical",
+      "pass": true
+    },
+    {
+      "name": "live runtime green claim 'live-proven' rejected",
+      "target": "capability",
+      "valid": false,
+      "codes": [
+        "i14a_runtime_claim_out_of_scope"
+      ],
+      "expectedCodes": [
+        "i14a_runtime_claim_out_of_scope"
+      ],
+      "expectedCodesPresent": true,
+      "severityIfPass": "critical",
+      "pass": true
+    },
+    {
+      "name": "downstream summary rejects live runtime green claim 'live-proven'",
+      "target": "summary",
+      "threw": true,
+      "message": "Capability matrix failed validation: i14a_runtime_claim_out_of_scope",
+      "codes": [
+        "i14a_runtime_claim_out_of_scope"
+      ],
+      "expectedCodes": [
+        "i14a_runtime_claim_out_of_scope"
+      ],
+      "expectedCodesPresent": true,
+      "severityIfPass": "critical",
+      "pass": true
+    },
+    {
+      "name": "live runtime green claim 'runtime-proven' rejected",
+      "target": "capability",
+      "valid": false,
+      "codes": [
+        "i14a_runtime_claim_out_of_scope"
+      ],
+      "expectedCodes": [
+        "i14a_runtime_claim_out_of_scope"
+      ],
+      "expectedCodesPresent": true,
+      "severityIfPass": "critical",
+      "pass": true
+    },
+    {
+      "name": "downstream summary rejects live runtime green claim 'runtime-proven'",
+      "target": "summary",
+      "threw": true,
+      "message": "Capability matrix failed validation: i14a_runtime_claim_out_of_scope",
+      "codes": [
+        "i14a_runtime_claim_out_of_scope"
+      ],
+      "expectedCodes": [
+        "i14a_runtime_claim_out_of_scope"
+      ],
+      "expectedCodesPresent": true,
+      "severityIfPass": "critical",
+      "pass": true
+    },
+    {
+      "name": "live runtime green claim 'loaded' rejected",
+      "target": "capability",
+      "valid": false,
+      "codes": [
+        "i14a_runtime_claim_out_of_scope"
+      ],
+      "expectedCodes": [
+        "i14a_runtime_claim_out_of_scope"
+      ],
+      "expectedCodesPresent": true,
+      "severityIfPass": "critical",
+      "pass": true
+    },
+    {
+      "name": "downstream summary rejects live runtime green claim 'loaded'",
+      "target": "summary",
+      "threw": true,
+      "message": "Capability matrix failed validation: i14a_runtime_claim_out_of_scope",
+      "codes": [
+        "i14a_runtime_claim_out_of_scope"
+      ],
+      "expectedCodes": [
+        "i14a_runtime_claim_out_of_scope"
+      ],
+      "expectedCodesPresent": true,
+      "severityIfPass": "critical",
+      "pass": true
+    },
+    {
+      "name": "live runtime green claim 'executed' rejected",
+      "target": "capability",
+      "valid": false,
+      "codes": [
+        "i14a_runtime_claim_out_of_scope"
+      ],
+      "expectedCodes": [
+        "i14a_runtime_claim_out_of_scope"
+      ],
+      "expectedCodesPresent": true,
+      "severityIfPass": "critical",
+      "pass": true
+    },
+    {
+      "name": "downstream summary rejects live runtime green claim 'executed'",
+      "target": "summary",
+      "threw": true,
+      "message": "Capability matrix failed validation: i14a_runtime_claim_out_of_scope",
+      "codes": [
+        "i14a_runtime_claim_out_of_scope"
+      ],
+      "expectedCodes": [
+        "i14a_runtime_claim_out_of_scope"
+      ],
+      "expectedCodesPresent": true,
+      "severityIfPass": "critical",
+      "pass": true
+    },
+    {
+      "name": "generated-file manifest unknown top-level field rejected",
+      "target": "manifest",
+      "valid": false,
+      "codes": [
+        "unknown_field"
+      ],
+      "expectedCodes": [
+        "unknown_field"
+      ],
+      "expectedCodesPresent": true,
+      "severityIfPass": "critical",
+      "pass": true
+    },
+    {
+      "name": "missing generated-file family rejected",
+      "target": "manifest",
+      "valid": false,
+      "codes": [
+        "missing_generated_file_family"
+      ],
+      "expectedCodes": [
+        "missing_generated_file_family"
+      ],
+      "expectedCodesPresent": true,
+      "severityIfPass": "critical",
+      "pass": true
+    },
+    {
+      "name": "duplicate generated-file family rejected",
+      "target": "manifest",
+      "valid": false,
+      "codes": [
+        "duplicate_generated_file_family"
+      ],
+      "expectedCodes": [
+        "duplicate_generated_file_family"
+      ],
+      "expectedCodesPresent": true,
+      "severityIfPass": "critical",
+      "pass": true
+    },
+    {
+      "name": "unsupported generated-file readiness state rejected",
+      "target": "manifest",
+      "valid": false,
+      "codes": [
+        "unsupported_value"
+      ],
+      "expectedCodes": [
+        "unsupported_value"
+      ],
+      "expectedCodesPresent": true,
+      "severityIfPass": "critical",
+      "pass": true
+    },
+    {
+      "name": "missing generated-file owner rejected",
+      "target": "manifest",
+      "valid": false,
+      "codes": [
+        "expected_object",
+        "missing_fail_closed_metadata",
+        "missing_required"
+      ],
+      "expectedCodes": [
+        "missing_required",
+        "missing_fail_closed_metadata"
+      ],
+      "expectedCodesPresent": true,
+      "severityIfPass": "critical",
+      "pass": true
+    },
+    {
+      "name": "missing generated-file security/trust rejected",
+      "target": "manifest",
+      "valid": false,
+      "codes": [
+        "expected_object",
+        "missing_fail_closed_metadata",
+        "missing_required"
+      ],
+      "expectedCodes": [
+        "missing_required",
+        "missing_fail_closed_metadata"
+      ],
+      "expectedCodesPresent": true,
+      "severityIfPass": "critical",
+      "pass": true
+    },
+    {
+      "name": "missing generated-file version rejected",
+      "target": "manifest",
+      "valid": false,
+      "codes": [
+        "expected_object",
+        "missing_fail_closed_metadata",
+        "missing_required"
+      ],
+      "expectedCodes": [
+        "missing_required",
+        "missing_fail_closed_metadata"
+      ],
+      "expectedCodesPresent": true,
+      "severityIfPass": "critical",
+      "pass": true
+    },
+    {
+      "name": "missing generated-file consumers rejected",
+      "target": "manifest",
+      "valid": false,
+      "codes": [
+        "empty_array",
+        "missing_fail_closed_metadata",
+        "unsupported_value"
+      ],
+      "expectedCodes": [
+        "empty_array",
+        "missing_fail_closed_metadata"
+      ],
+      "expectedCodesPresent": true,
+      "severityIfPass": "critical",
+      "pass": true
+    },
+    {
+      "name": "pi skill path requires both pi and agents SKILL paths",
+      "target": "manifest",
+      "valid": false,
+      "codes": [
+        "missing_required_path_pattern"
+      ],
+      "expectedCodes": [
+        "missing_required_path_pattern"
+      ],
+      "expectedCodesPresent": true,
+      "severityIfPass": "critical",
+      "pass": true
+    },
+    {
+      "name": "pi prompt template path contract exact",
+      "target": "manifest",
+      "valid": false,
+      "codes": [
+        "missing_required_path_pattern"
+      ],
+      "expectedCodes": [
+        "missing_required_path_pattern"
+      ],
+      "expectedCodesPresent": true,
+      "severityIfPass": "critical",
+      "pass": true
+    },
+    {
+      "name": "pi extension path contract requires file and index forms",
+      "target": "manifest",
+      "valid": false,
+      "codes": [
+        "missing_required_path_pattern"
+      ],
+      "expectedCodes": [
+        "missing_required_path_pattern"
+      ],
+      "expectedCodesPresent": true,
+      "severityIfPass": "critical",
+      "pass": true
+    },
+    {
+      "name": "pi package manifest requires package.json#pi",
+      "target": "manifest",
+      "valid": false,
+      "codes": [
+        "missing_required_path_pattern"
+      ],
+      "expectedCodes": [
+        "missing_required_path_pattern"
+      ],
+      "expectedCodesPresent": true,
+      "severityIfPass": "critical",
+      "pass": true
+    },
+    {
+      "name": "context files require explicit AGENTS and CLAUDE modeling",
+      "target": "manifest",
+      "valid": false,
+      "codes": [
+        "missing_required_path_pattern"
+      ],
+      "expectedCodes": [
+        "missing_required_path_pattern"
+      ],
+      "expectedCodesPresent": true,
+      "severityIfPass": "critical",
+      "pass": true
+    },
+    {
+      "name": "harness config requires generated config fields",
+      "target": "manifest",
+      "valid": false,
+      "codes": [
+        "missing_required_path_pattern"
+      ],
+      "expectedCodes": [
+        "missing_required_path_pattern"
+      ],
+      "expectedCodesPresent": true,
+      "severityIfPass": "critical",
+      "pass": true
+    },
+    {
+      "name": "arbitrary generated-file producedByLane rejected",
+      "target": "manifest",
+      "valid": false,
+      "codes": [
+        "unsupported_value"
+      ],
+      "expectedCodes": [
+        "unsupported_value"
+      ],
+      "expectedCodesPresent": true,
+      "severityIfPass": "critical",
+      "pass": true
+    },
+    {
+      "name": "arbitrary generated-file owner lane rejected",
+      "target": "manifest",
+      "valid": false,
+      "codes": [
+        "unsupported_value"
+      ],
+      "expectedCodes": [
+        "unsupported_value"
+      ],
+      "expectedCodesPresent": true,
+      "severityIfPass": "critical",
+      "pass": true
+    },
+    {
+      "name": "owner write scope must match path contract",
+      "target": "manifest",
+      "valid": false,
+      "codes": [
+        "missing_required_path_pattern"
+      ],
+      "expectedCodes": [
+        "missing_required_path_pattern"
+      ],
+      "expectedCodesPresent": true,
+      "severityIfPass": "critical",
+      "pass": true
+    },
+    {
+      "name": "owner allowed operations typed exact",
+      "target": "manifest",
+      "valid": false,
+      "codes": [
+        "unsupported_value"
+      ],
+      "expectedCodes": [
+        "unsupported_value"
+      ],
+      "expectedCodesPresent": true,
+      "severityIfPass": "critical",
+      "pass": true
+    },
+    {
+      "name": "unsupported generated-file consumer lane rejected",
+      "target": "manifest",
+      "valid": false,
+      "codes": [
+        "unsupported_value"
+      ],
+      "expectedCodes": [
+        "unsupported_value"
+      ],
+      "expectedCodesPresent": true,
+      "severityIfPass": "critical",
+      "pass": true
+    },
+    {
+      "name": "unsupported generated-file project-trust metadata rejected",
+      "target": "manifest",
+      "valid": false,
+      "codes": [
+        "unsupported_value"
+      ],
+      "expectedCodes": [
+        "unsupported_value"
+      ],
+      "expectedCodesPresent": true,
+      "severityIfPass": "critical",
+      "pass": true
+    },
+    {
+      "name": "unsafe sandbox proven claim rejected for I-14A families",
+      "target": "manifest",
+      "valid": false,
+      "codes": [
+        "unsupported_value"
+      ],
+      "expectedCodes": [
+        "unsupported_value"
+      ],
+      "expectedCodesPresent": true,
+      "severityIfPass": "critical",
+      "pass": true
+    },
+    {
+      "name": "extension executable behavior must be declared",
+      "target": "manifest",
+      "valid": false,
+      "codes": [
+        "extension_execution_not_declared",
+        "unsupported_value"
+      ],
+      "expectedCodes": [
+        "unsupported_value",
+        "extension_execution_not_declared"
+      ],
+      "expectedCodesPresent": true,
+      "severityIfPass": "critical",
+      "pass": true
+    },
+    {
+      "name": "generated-file version format name exact",
+      "target": "manifest",
+      "valid": false,
+      "codes": [
+        "unsupported_value"
+      ],
+      "expectedCodes": [
+        "unsupported_value"
+      ],
+      "expectedCodesPresent": true,
+      "severityIfPass": "critical",
+      "pass": true
+    }
+  ],
+  "regression": {
+    "exactSixSkills": true,
+    "generatedFamilies": [
+      "pi-skill-files",
+      "pi-prompt-templates",
+      "pi-extensions",
+      "pi-package-manifest",
+      "context-files",
+      "harness-config"
+    ],
+    "generatedFamiliesExact": true,
+    "manifestReady": true,
+    "createImportReady": false,
+    "runtimeExecutionClaim": "not-claimed",
+    "runtimeNotProven": true,
+    "blockedNonPiAdapters": [
+      "claude-code",
+      "codex",
+      "opencode",
+      "later-integrations"
+    ],
+    "nonPiNeverSelectableReady": true,
+    "liveRuntimeClaimedGreenInCanonical": false
+  },
+  "downstreamSummaryPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-14A-pi-adapter-capability-generated-file-manifest/post-fix-revalidation-evidence/i14a-post-fix-downstream-summary.json",
+  "outcome": {
+    "positiveOk": true,
+    "negativeOk": true,
+    "mutationOk": true,
+    "regressionOk": true
+  }
+}

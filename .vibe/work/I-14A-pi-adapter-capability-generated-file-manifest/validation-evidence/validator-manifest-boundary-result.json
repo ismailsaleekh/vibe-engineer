@@ -1,0 +1,421 @@
+{
+  "schemaVersion": "i-14a-validator-owned-manifest-boundary/v1",
+  "packageManifestPath": "/Users/lizavasilyeva/work/vibe-engineer/packages/adapters/pi/package.json",
+  "exportTargets": {
+    "./capabilities": "/Users/lizavasilyeva/work/vibe-engineer/packages/adapters/pi/src/capabilities/index.ts",
+    "./generated-file-manifest": "/Users/lizavasilyeva/work/vibe-engineer/packages/adapters/pi/src/generated-file-manifest/index.ts",
+    "./schema": "/Users/lizavasilyeva/work/vibe-engineer/packages/adapters/pi/src/schema/index.ts"
+  },
+  "positiveChecks": [
+    {
+      "name": "api capability matrix validates",
+      "pass": true,
+      "codes": []
+    },
+    {
+      "name": "api generated-file manifest validates",
+      "pass": true,
+      "codes": []
+    },
+    {
+      "name": "package capability fixture validates",
+      "pass": true,
+      "codes": []
+    },
+    {
+      "name": "package generated-file fixture validates",
+      "pass": true,
+      "codes": []
+    },
+    {
+      "name": "example capability fixture validates",
+      "pass": true,
+      "codes": []
+    },
+    {
+      "name": "example generated-file fixture validates",
+      "pass": true,
+      "codes": []
+    },
+    {
+      "name": "package capability fixture equals API output",
+      "pass": true
+    },
+    {
+      "name": "package generated-file fixture equals API output",
+      "pass": true
+    },
+    {
+      "name": "example capability fixture equals API output",
+      "pass": true
+    },
+    {
+      "name": "example generated-file fixture equals API output",
+      "pass": true
+    },
+    {
+      "name": "example downstream summary equals API summary",
+      "pass": true
+    },
+    {
+      "name": "downstream summary six skills exact",
+      "pass": true,
+      "actual": [
+        "brainstorm",
+        "grill-me",
+        "task",
+        "plan",
+        "build",
+        "ship"
+      ]
+    },
+    {
+      "name": "downstream summary generated families exact",
+      "pass": true,
+      "actual": [
+        "pi-skill-files",
+        "pi-prompt-templates",
+        "pi-extensions",
+        "pi-package-manifest",
+        "context-files",
+        "harness-config"
+      ]
+    },
+    {
+      "name": "downstream summary manifestReady true",
+      "pass": true
+    },
+    {
+      "name": "downstream summary createImportReady false",
+      "pass": true
+    },
+    {
+      "name": "downstream summary runtime not claimed/proven",
+      "pass": true
+    },
+    {
+      "name": "pi adapter exists",
+      "pass": true
+    },
+    {
+      "name": "pi adapter manifest selectable only",
+      "pass": true
+    },
+    {
+      "name": "non-pi adapters are never selectable/ready",
+      "pass": true
+    },
+    {
+      "name": "all required family ids present",
+      "pass": true
+    },
+    {
+      "name": "required family path patterns present exactly",
+      "pass": true
+    },
+    {
+      "name": "each family carries owner/security/version/consumer/readiness metadata",
+      "pass": true
+    },
+    {
+      "name": "DL-22 family metadata declares no sandbox guarantee and safe defaults",
+      "pass": true
+    }
+  ],
+  "negativeResults": [
+    {
+      "name": "missing-capability-block.json",
+      "expected": true,
+      "valid": false,
+      "codes": [
+        "expected_object",
+        "missing_required",
+        "missing_skill_mapping"
+      ],
+      "requiredCodes": [
+        "missing_required"
+      ],
+      "requiredCodesPresent": true
+    },
+    {
+      "name": "missing-generated-file-consumers.json",
+      "expected": true,
+      "valid": false,
+      "codes": [
+        "empty_array",
+        "missing_fail_closed_metadata"
+      ],
+      "requiredCodes": [
+        "empty_array",
+        "missing_fail_closed_metadata"
+      ],
+      "requiredCodesPresent": true
+    },
+    {
+      "name": "missing-generated-file-owner.json",
+      "expected": true,
+      "valid": false,
+      "codes": [
+        "expected_object",
+        "missing_fail_closed_metadata",
+        "missing_required"
+      ],
+      "requiredCodes": [
+        "missing_required",
+        "missing_fail_closed_metadata"
+      ],
+      "requiredCodesPresent": true
+    },
+    {
+      "name": "missing-generated-file-security-trust.json",
+      "expected": true,
+      "valid": false,
+      "codes": [
+        "expected_object",
+        "missing_fail_closed_metadata",
+        "missing_required"
+      ],
+      "requiredCodes": [
+        "missing_required",
+        "missing_fail_closed_metadata"
+      ],
+      "requiredCodesPresent": true
+    },
+    {
+      "name": "missing-generated-file-version.json",
+      "expected": true,
+      "valid": false,
+      "codes": [
+        "expected_object",
+        "missing_fail_closed_metadata",
+        "missing_required"
+      ],
+      "requiredCodes": [
+        "missing_required",
+        "missing_fail_closed_metadata"
+      ],
+      "requiredCodesPresent": true
+    },
+    {
+      "name": "missing-six-skill-mapping.json",
+      "expected": true,
+      "valid": false,
+      "codes": [
+        "missing_skill_mapping"
+      ],
+      "requiredCodes": [
+        "missing_skill_mapping"
+      ],
+      "requiredCodesPresent": true
+    },
+    {
+      "name": "silent-noop-unsupported-feature-attempt.json",
+      "expected": true,
+      "valid": false,
+      "codes": [
+        "flag_without_known_evidence",
+        "non_pi_enabled_flag",
+        "unsupported_feature_policy_not_blocking"
+      ],
+      "requiredCodes": [
+        "unsupported_feature_policy_not_blocking",
+        "non_pi_enabled_flag"
+      ],
+      "requiredCodesPresent": true
+    },
+    {
+      "name": "unsupported-selectable-non-pi-harness.json",
+      "expected": true,
+      "valid": false,
+      "codes": [
+        "non_pi_selectable"
+      ],
+      "requiredCodes": [
+        "non_pi_selectable"
+      ],
+      "requiredCodesPresent": true
+    }
+  ],
+  "mutationResults": [
+    {
+      "name": "capability matrix unknown top-level field",
+      "target": "capability",
+      "valid": false,
+      "codes": [
+        "unknown_field"
+      ],
+      "requiredCodes": [
+        "unknown_field"
+      ],
+      "requiredCodesPresent": true,
+      "severityIfPass": "critical"
+    },
+    {
+      "name": "unsupported evidence state",
+      "target": "capability",
+      "valid": false,
+      "codes": [
+        "pi_evidence_not_known",
+        "unsupported_value"
+      ],
+      "requiredCodes": [
+        "unsupported_value"
+      ],
+      "requiredCodesPresent": true,
+      "severityIfPass": "critical"
+    },
+    {
+      "name": "duplicate adapter id",
+      "target": "capability",
+      "valid": false,
+      "codes": [
+        "duplicate_adapter_id"
+      ],
+      "requiredCodes": [
+        "duplicate_adapter_id"
+      ],
+      "requiredCodesPresent": true,
+      "severityIfPass": "critical"
+    },
+    {
+      "name": "missing pi adapter row",
+      "target": "capability",
+      "valid": false,
+      "codes": [
+        "missing_pi_adapter"
+      ],
+      "requiredCodes": [
+        "missing_pi_adapter"
+      ],
+      "requiredCodesPresent": true,
+      "severityIfPass": "critical"
+    },
+    {
+      "name": "pi create/import selectable claim",
+      "target": "capability",
+      "valid": false,
+      "codes": [
+        "create_import_claim_out_of_scope"
+      ],
+      "requiredCodes": [
+        "create_import_claim_out_of_scope"
+      ],
+      "requiredCodesPresent": true,
+      "severityIfPass": "critical"
+    },
+    {
+      "name": "i14a live runtime proven claim",
+      "target": "capability",
+      "valid": true,
+      "codes": [],
+      "requiredCodes": [
+        "i14a_runtime_claim_out_of_scope"
+      ],
+      "requiredCodesPresent": false,
+      "severityIfPass": "critical"
+    },
+    {
+      "name": "missing generated-file family",
+      "target": "manifest",
+      "valid": false,
+      "codes": [
+        "missing_generated_file_family"
+      ],
+      "requiredCodes": [
+        "missing_generated_file_family"
+      ],
+      "requiredCodesPresent": true,
+      "severityIfPass": "critical"
+    },
+    {
+      "name": "duplicate generated-file family",
+      "target": "manifest",
+      "valid": false,
+      "codes": [
+        "duplicate_generated_file_family"
+      ],
+      "requiredCodes": [
+        "duplicate_generated_file_family"
+      ],
+      "requiredCodesPresent": true,
+      "severityIfPass": "critical"
+    },
+    {
+      "name": "unsupported generated-file readiness state",
+      "target": "manifest",
+      "valid": false,
+      "codes": [
+        "unsupported_value"
+      ],
+      "requiredCodes": [
+        "unsupported_value"
+      ],
+      "requiredCodesPresent": true,
+      "severityIfPass": "critical"
+    },
+    {
+      "name": "extension executable behavior not declared",
+      "target": "manifest",
+      "valid": false,
+      "codes": [
+        "extension_execution_not_declared"
+      ],
+      "requiredCodes": [
+        "extension_execution_not_declared"
+      ],
+      "requiredCodesPresent": true,
+      "severityIfPass": "critical"
+    },
+    {
+      "name": "required pi skill path patterns missing",
+      "target": "manifest",
+      "valid": true,
+      "codes": [],
+      "requiredCodes": [
+        "missing_required_path_pattern"
+      ],
+      "requiredCodesPresent": false,
+      "severityIfPass": "major-local"
+    },
+    {
+      "name": "generated-file produced-by lane untyped",
+      "target": "manifest",
+      "valid": true,
+      "codes": [],
+      "requiredCodes": [
+        "unsupported_value"
+      ],
+      "requiredCodesPresent": false,
+      "severityIfPass": "major-local"
+    }
+  ],
+  "downstreamSummary": {
+    "schemaVersion": "pi-adapter-downstream-summary/v1",
+    "adapterId": "pi",
+    "sixSkills": [
+      "brainstorm",
+      "grill-me",
+      "task",
+      "plan",
+      "build",
+      "ship"
+    ],
+    "generatedFamilies": [
+      "pi-skill-files",
+      "pi-prompt-templates",
+      "pi-extensions",
+      "pi-package-manifest",
+      "context-files",
+      "harness-config"
+    ],
+    "manifestReady": true,
+    "createImportReady": false,
+    "runtimeExecutionClaim": "not-claimed",
+    "blockedNonPiAdapters": [
+      "claude-code",
+      "codex",
+      "opencode",
+      "later-integrations"
+    ]
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "schemaVersion": "i-14a-manifest-api-consumer-witness/v1",
+  "packageJsonPath": "/Users/lizavasilyeva/work/vibe-engineer/packages/adapters/pi/package.json",
+  "resolvedExports": {
+    "capabilities": "/Users/lizavasilyeva/work/vibe-engineer/packages/adapters/pi/src/capabilities/index.ts",
+    "generatedFileManifest": "/Users/lizavasilyeva/work/vibe-engineer/packages/adapters/pi/src/generated-file-manifest/index.ts",
+    "schema": "/Users/lizavasilyeva/work/vibe-engineer/packages/adapters/pi/src/schema/index.ts"
+  },
+  "positiveResults": [
+    {
+      "name": "canonical-capability-matrix",
+      "valid": true
+    },
+    {
+      "name": "canonical-generated-file-manifest",
+      "valid": true
+    }
+  ],
+  "negativeResults": [
+    {
+      "name": "missing-capability-block.json",
+      "valid": false,
+      "codes": [
+        "expected_object",
+        "missing_required",
+        "missing_skill_mapping"
+      ]
+    },
+    {
+      "name": "missing-generated-file-consumers.json",
+      "valid": false,
+      "codes": [
+        "empty_array",
+        "missing_fail_closed_metadata",
+        "unsupported_value"
+      ]
+    },
+    {
+      "name": "missing-generated-file-owner.json",
+      "valid": false,
+      "codes": [
+        "expected_object",
+        "missing_fail_closed_metadata",
+        "missing_required"
+      ]
+    },
+    {
+      "name": "missing-generated-file-pi-skill-path-pattern.json",
+      "valid": false,
+      "codes": [
+        "missing_required_path_pattern"
+      ]
+    },
+    {
+      "name": "missing-generated-file-security-trust.json",
+      "valid": false,
+      "codes": [
+        "expected_object",
+        "missing_fail_closed_metadata",
+        "missing_required"
+      ]
+    },
+    {
+      "name": "missing-generated-file-version.json",
+      "valid": false,
+      "codes": [
+        "expected_object",
+        "missing_fail_closed_metadata",
+        "missing_required"
+      ]
+    },
+    {
+      "name": "missing-six-skill-mapping.json",
+      "valid": false,
+      "codes": [
+        "missing_skill_mapping"
+      ]
+    },
+    {
+      "name": "runtime-proven-claim.json",
+      "valid": false,
+      "codes": [
+        "i14a_runtime_claim_out_of_scope"
+      ]
+    },
+    {
+      "name": "silent-noop-unsupported-feature-attempt.json",
+      "valid": false,
+      "codes": [
+        "flag_without_known_evidence",
+        "non_pi_enabled_flag",
+        "unsupported_feature_policy_not_blocking"
+      ]
+    },
+    {
+      "name": "unsupported-generated-file-owner-lane.json",
+      "valid": false,
+      "codes": [
+        "unsupported_value"
+      ]
+    },
+    {
+      "name": "unsupported-generated-file-produced-by-lane.json",
+      "valid": false,
+      "codes": [
+        "unsupported_value"
+      ]
+    },
+    {
+      "name": "unsupported-selectable-non-pi-harness.json",
+      "valid": false,
+      "codes": [
+        "non_pi_selectable"
+      ]
+    }
+  ],
+  "downstreamSummaryPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-14A-pi-adapter-capability-generated-file-manifest/downstream-summary.json",
+  "regression": {
+    "exactSixSkills": true,
+    "nonPiNeverReady": true,
+    "createImportReadyClaimed": false,
+    "runtimeExecutionClaim": "not-claimed"
+  }
+}
