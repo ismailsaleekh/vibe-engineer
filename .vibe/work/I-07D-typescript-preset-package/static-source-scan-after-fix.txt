@@ -1,0 +1,28 @@
+## explicit any / suppressions / non-null assertion scan
+236:] as const);
+238:const REQUIRED_STRICT_FALSE_FLAGS = Object.freeze(["allowUnreachableCode", "allowUnusedLabels"] as const);
+241:  "@typescript-eslint/no-explicit-any",
+259:] as const);
+272:] as const);
+296:] as const);
+310:] as const);
+457:  new Map(TYPESCRIPT_PRESET_FILE_MANIFEST.map((entry) => [entry.outputPath, entry] as const)),
+465:  return `import js from "@eslint/js";\nimport tseslint from "typescript-eslint";\n\nexport default tseslint.config(\n  js.configs.recommended,\n  ...tseslint.configs.strictTypeChecked,\n  ...tseslint.configs.stylisticTypeChecked,\n  {\n    files: ["**/*.ts", "**/*.tsx"],\n    languageOptions: {\n      parserOptions: {\n        projectService: true,\n      },\n    },\n    rules: {\n      "@typescript-eslint/no-explicit-any": "error",\n      "@typescript-eslint/no-non-null-assertion": "error",\n      "@typescript-eslint/ban-ts-comment": ["error", { "ts-ignore": true, "ts-nocheck": true, "ts-expect-error": "allow-with-description", minimumDescriptionLength: 20 }],\n      "@typescript-eslint/no-unnecessary-type-assertion": "error",\n      "@typescript-eslint/consistent-type-imports": "error",\n      "@typescript-eslint/no-confusing-void-expression": "error",\n      "@typescript-eslint/no-unsafe-assignment": "error",\n      "@typescript-eslint/no-unsafe-argument": "error",\n      "@typescript-eslint/no-unsafe-call": "error",\n      "@typescript-eslint/no-unsafe-member-access": "error",\n      "@typescript-eslint/no-unsafe-return": "error",\n      "@typescript-eslint/restrict-template-expressions": "error",\n      "@typescript-eslint/switch-exhaustiveness-check": "error",\n      "no-empty": ["error", { allowEmptyCatch: false }],\n      "no-fallthrough": "error",\n      "no-implicit-coercion": "error",\n      "no-restricted-syntax": ["error", { selector: "CallExpression[callee.object.name='JSON'][callee.property.name='parse']", message: "Parse untrusted JSON only behind a named runtime boundary validator." }],\n      "vibe-engineer/no-broad-domain-map-model": "error",\n    },\n  },\n);\n`;
+708:    parsed = JSON.parse(content);
+709:  } catch (error) {
+825:    findings.push(makeFinding("PRESET_ESLINT_RULE_MISSING", path, "ESLint boundary rules for JSON.parse and broad domain map models are required.", []));
+899:  for (const phrase of ["pulumi up", "pulumi deploy", "pulumi destroy"] as const) {
+## package tsconfig
+{
+  "extends": "../../../tsconfig.base.json",
+  "compilerOptions": {
+    "allowJs": false,
+    "checkJs": false,
+    "noEmit": true,
+    "rootDir": "."
+  },
+  "include": [
+    "src/**/*.ts",
+    "fixtures/consumer/**/*.ts"
+  ]
+}

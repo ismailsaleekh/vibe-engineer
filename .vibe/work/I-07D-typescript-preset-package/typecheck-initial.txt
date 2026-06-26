@@ -1,0 +1,18 @@
+packages/presets/typescript/src/index.ts(294,14): error TS2322: Type 'Readonly<{ target: "ES2022"; lib: readonly string[]; module: "NodeNext"; moduleResolution: "NodeNext"; strict: true; noImplicitAny: true; strictNullChecks: true; strictFunctionTypes: true; strictBindCallApply: true; ... 19 more ...; skipLibCheck: false; }>' is not assignable to type 'TypeScriptCompilerStrictOptions'.
+  Types of property 'lib' are incompatible.
+    Type 'readonly string[]' is not assignable to type 'readonly ["ES2022"]'.
+      Target requires 1 element(s) but source may have fewer.
+packages/presets/typescript/src/index.ts(326,14): error TS2322: Type 'Readonly<{ extends: "../../tsconfig.base.json"; compilerOptions: Readonly<{ rootDir: "src"; outDir: "dist"; declaration: true; declarationMap: true; sourceMap: true; noEmit: false; }>; include: readonly string[]; }>' is not assignable to type 'PackageTsConfigModel'.
+  Types of property 'include' are incompatible.
+    Type 'readonly string[]' is not assignable to type 'readonly ["src/**/*.ts"]'.
+      Target requires 1 element(s) but source may have fewer.
+packages/presets/typescript/src/index.ts(362,14): error TS2322: Type 'Readonly<{ workspaceGlobs: readonly string[]; packageManager: "pnpm@10.33.0"; }>' is not assignable to type 'PnpmDefaults'.
+  Types of property 'workspaceGlobs' are incompatible.
+    Type 'readonly string[]' is not assignable to type 'readonly ["packages/*", "apps/*"]'.
+      Target requires 2 element(s) but source may have fewer.
+packages/presets/typescript/src/index.ts(367,14): error TS2322: Type 'Readonly<{ quickGateLabel: "quality:quick"; tasks: Readonly<{ typecheck: Readonly<{ dependsOn: readonly string[]; outputs: readonly never[]; }>; lint: Readonly<{ dependsOn: readonly string[]; outputs: readonly never[]; }>; "format:check": Readonly<...>; "test:unit": Readonly<...>; build: Readonly<...>; "quality:quic...' is not assignable to type 'TurboTaskDefaults'.
+  The types of 'tasks.typecheck.dependsOn' are incompatible between these types.
+    Type 'readonly string[]' is not assignable to type 'readonly ["^typecheck"]'.
+      Target requires 1 element(s) but source may have fewer.
+packages/presets/typescript/src/index.ts(824,73): error TS2352: Conversion of type 'UnknownObject' to type 'GeneratedFileManifestEntry' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Type 'UnknownObject' is missing the following properties from type 'GeneratedFileManifestEntry': outputPath, kind, ownership, requiredStandardIds, consumerNotes

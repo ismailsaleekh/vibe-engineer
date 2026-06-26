@@ -1,0 +1,860 @@
+     1	export const TYPE_SCRIPT_PRESET_ID = "vibe-engineer.typescript.strict";
+     2	export const TYPE_SCRIPT_PRESET_NAME = "Vibe Engineer TypeScript Strict Preset";
+     3	export const TYPE_SCRIPT_PRESET_VERSION = "1.0.0";
+     4	
+     5	export type PresetFileKind =
+     6	  | "typescript-config"
+     7	  | "eslint-config"
+     8	  | "eslint-policy"
+     9	  | "prettier-config"
+    10	  | "prettier-policy"
+    11	  | "package-manifest"
+    12	  | "workspace-config"
+    13	  | "turbo-config"
+    14	  | "preset-metadata"
+    15	  | "source-fixture";
+    16	
+    17	export type PresetFileOwnership = "generated-owned";
+    18	export type StandardId =
+    19	  | "typed-boundary-contracts"
+    20	  | "real-boundary-witnesses"
+    21	  | "domain-neutral-core"
+    22	  | "dirty-tree-ownership"
+    23	  | "report-first-evidence"
+    24	  | "dependency-hygiene"
+    25	  | "deterministic-schematics";
+    26	
+    27	export interface TypeScriptPresetMetadata {
+    28	  readonly presetId: typeof TYPE_SCRIPT_PRESET_ID;
+    29	  readonly name: typeof TYPE_SCRIPT_PRESET_NAME;
+    30	  readonly version: typeof TYPE_SCRIPT_PRESET_VERSION;
+    31	  readonly packageName: "@vibe-engineer/preset-typescript";
+    32	  readonly private: true;
+    33	  readonly domainNeutral: true;
+    34	  readonly quickGateLabel: "quality:quick";
+    35	}
+    36	
+    37	export interface TypeScriptCompilerStrictOptions {
+    38	  readonly target: "ES2022";
+    39	  readonly lib: readonly string[];
+    40	  readonly module: "NodeNext";
+    41	  readonly moduleResolution: "NodeNext";
+    42	  readonly strict: true;
+    43	  readonly noImplicitAny: true;
+    44	  readonly strictNullChecks: true;
+    45	  readonly strictFunctionTypes: true;
+    46	  readonly strictBindCallApply: true;
+    47	  readonly strictPropertyInitialization: true;
+    48	  readonly noImplicitThis: true;
+    49	  readonly alwaysStrict: true;
+    50	  readonly exactOptionalPropertyTypes: true;
+    51	  readonly noUncheckedIndexedAccess: true;
+    52	  readonly noImplicitOverride: true;
+    53	  readonly noImplicitReturns: true;
+    54	  readonly noPropertyAccessFromIndexSignature: true;
+    55	  readonly useUnknownInCatchVariables: true;
+    56	  readonly noFallthroughCasesInSwitch: true;
+    57	  readonly noUnusedLocals: true;
+    58	  readonly noUnusedParameters: true;
+    59	  readonly allowUnreachableCode: false;
+    60	  readonly allowUnusedLabels: false;
+    61	  readonly isolatedModules: true;
+    62	  readonly verbatimModuleSyntax: true;
+    63	  readonly forceConsistentCasingInFileNames: true;
+    64	  readonly resolveJsonModule: true;
+    65	  readonly noEmitOnError: true;
+    66	  readonly skipLibCheck: false;
+    67	}
+    68	
+    69	export interface PackageTsConfigModel {
+    70	  readonly extends: "../../tsconfig.base.json";
+    71	  readonly compilerOptions: {
+    72	    readonly rootDir: "src";
+    73	    readonly outDir: "dist";
+    74	    readonly declaration: true;
+    75	    readonly declarationMap: true;
+    76	    readonly sourceMap: true;
+    77	    readonly noEmit: false;
+    78	  };
+    79	  readonly include: readonly string[];
+    80	}
+    81	
+    82	export type EslintSeverity = "error";
+    83	export interface EslintRuleSetting {
+    84	  readonly name: string;
+    85	  readonly severity: EslintSeverity;
+    86	  readonly purpose: string;
+    87	}
+    88	
+    89	export interface EslintPolicyDefaults {
+    90	  readonly configFile: "eslint.config.mjs";
+    91	  readonly rules: readonly EslintRuleSetting[];
+    92	  readonly boundaryRules: {
+    93	    readonly rawJsonParseRequiresNamedBoundary: true;
+    94	    readonly broadDomainMapModelsForbidden: true;
+    95	  };
+    96	}
+    97	
+    98	export interface PrettierDefaults {
+    99	  readonly printWidth: 100;
+   100	  readonly semi: true;
+   101	  readonly singleQuote: false;
+   102	  readonly trailingComma: "all";
+   103	  readonly arrowParens: "always";
+   104	  readonly bracketSpacing: true;
+   105	  readonly endOfLine: "lf";
+   106	}
+   107	
+   108	export interface PnpmDefaults {
+   109	  readonly workspaceGlobs: readonly string[];
+   110	  readonly packageManager: "pnpm@10.33.0";
+   111	}
+   112	
+   113	export interface TurboTaskDefaults {
+   114	  readonly quickGateLabel: "quality:quick";
+   115	  readonly tasks: {
+   116	    readonly typecheck: { readonly dependsOn: readonly string[]; readonly outputs: readonly string[] };
+   117	    readonly lint: { readonly dependsOn: readonly string[]; readonly outputs: readonly string[] };
+   118	    readonly "format:check": { readonly outputs: readonly string[] };
+   119	    readonly "test:unit": { readonly dependsOn: readonly string[]; readonly outputs: readonly string[] };
+   120	    readonly build: { readonly dependsOn: readonly string[]; readonly outputs: readonly string[] };
+   121	    readonly "quality:quick": {
+   122	      readonly dependsOn: readonly string[];
+   123	      readonly outputs: readonly string[];
+   124	    };
+   125	  };
+   126	}
+   127	
+   128	export interface PackageScriptDefaults {
+   129	  readonly typecheck: "tsc --noEmit -p tsconfig.json";
+   130	  readonly lint: "eslint .";
+   131	  readonly "format:check": "prettier --check .";
+   132	  readonly "test:unit": "node --test";
+   133	  readonly build: "tsc -p tsconfig.json";
+   134	  readonly "quality:quick": "pnpm run typecheck && pnpm run lint && pnpm run format:check && pnpm run test:unit && pnpm run build";
+   135	}
+   136	
+   137	export interface TestAndTypecheckDefaults {
+   138	  readonly typecheckCommand: "tsc --noEmit -p packages/example/tsconfig.json";
+   139	  readonly unitTestCommand: "node --test packages/example/test/**/*.test.js";
+   140	  readonly quickGateCommand: "pnpm run quality:quick";
+   141	  readonly defaultFullE2E: false;
+   142	  readonly defaultFullMobileE2E: false;
+   143	  readonly defaultFullVisualVerification: false;
+   144	  readonly defaultAutoDeploy: false;
+   145	}
+   146	
+   147	export interface GeneratedFileManifestEntry {
+   148	  readonly outputPath: string;
+   149	  readonly kind: PresetFileKind;
+   150	  readonly ownership: PresetFileOwnership;
+   151	  readonly requiredStandardIds: readonly StandardId[];
+   152	  readonly consumerNotes: string;
+   153	}
+   154	
+   155	export interface GeneratedPresetFile {
+   156	  readonly path: string;
+   157	  readonly kind: PresetFileKind;
+   158	  readonly content: string;
+   159	  readonly manifest: GeneratedFileManifestEntry;
+   160	}
+   161	
+   162	export interface RenderTypeScriptPresetOptions {
+   163	  readonly packageName?: string;
+   164	  readonly packageDirectory?: string;
+   165	  readonly includeSampleSource?: boolean;
+   166	}
+   167	
+   168	export type TypeScriptPresetFindingCode =
+   169	  | "PRESET_MALFORMED_RENDER_OPTIONS"
+   170	  | "PRESET_UNSAFE_GENERATED_PATH"
+   171	  | "PRESET_DUPLICATE_GENERATED_PATH"
+   172	  | "PRESET_MISSING_REQUIRED_FILE"
+   173	  | "PRESET_MALFORMED_JSON"
+   174	  | "PRESET_STRICT_FLAG_WEAKENED"
+   175	  | "PRESET_PACKAGE_TSCONFIG_WEAKENED"
+   176	  | "PRESET_ESLINT_RULE_MISSING"
+   177	  | "PRESET_PRETTIER_DEFAULT_MISSING"
+   178	  | "PRESET_QUICK_GATE_LABEL_MISSING"
+   179	  | "PRESET_FORBIDDEN_DEFAULT_COMMAND"
+   180	  | "PRESET_DOMAIN_SPECIFIC_CORE_TEXT"
+   181	  | "PRESET_MANIFEST_CONTENT_MISMATCH"
+   182	  | "PRESET_FORBIDDEN_TESTING_PRODUCTION_DEPENDENCY";
+   183	
+   184	export interface TypeScriptPresetFinding {
+   185	  readonly code: TypeScriptPresetFindingCode;
+   186	  readonly path: string;
+   187	  readonly message: string;
+   188	  readonly blocking: true;
+   189	  readonly evidence: readonly string[];
+   190	}
+   191	
+   192	export type TypeScriptPresetValidationResult =
+   193	  | { readonly ok: true; readonly findings: readonly []; readonly fileCount: number }
+   194	  | { readonly ok: false; readonly findings: readonly TypeScriptPresetFinding[]; readonly fileCount: number };
+   195	
+   196	type UnknownObject = { readonly [key: string]: unknown };
+   197	type ValidatorFile = { readonly path: string; readonly content: string };
+   198	
+   199	const REQUIRED_STRICT_TRUE_FLAGS = Object.freeze([
+   200	  "strict",
+   201	  "noImplicitAny",
+   202	  "strictNullChecks",
+   203	  "strictFunctionTypes",
+   204	  "strictBindCallApply",
+   205	  "strictPropertyInitialization",
+   206	  "noImplicitThis",
+   207	  "alwaysStrict",
+   208	  "exactOptionalPropertyTypes",
+   209	  "noUncheckedIndexedAccess",
+   210	  "noImplicitOverride",
+   211	  "noImplicitReturns",
+   212	  "noPropertyAccessFromIndexSignature",
+   213	  "useUnknownInCatchVariables",
+   214	  "noFallthroughCasesInSwitch",
+   215	  "noUnusedLocals",
+   216	  "noUnusedParameters",
+   217	  "isolatedModules",
+   218	  "verbatimModuleSyntax",
+   219	  "forceConsistentCasingInFileNames",
+   220	] as const);
+   221	
+   222	const REQUIRED_STRICT_FALSE_FLAGS = Object.freeze(["allowUnreachableCode", "allowUnusedLabels"] as const);
+   223	
+   224	const REQUIRED_ESLINT_RULES = Object.freeze([
+   225	  "@typescript-eslint/no-explicit-any",
+   226	  "@typescript-eslint/no-non-null-assertion",
+   227	  "@typescript-eslint/ban-ts-comment",
+   228	  "@typescript-eslint/no-unnecessary-type-assertion",
+   229	  "@typescript-eslint/consistent-type-imports",
+   230	  "@typescript-eslint/no-confusing-void-expression",
+   231	  "@typescript-eslint/no-unsafe-assignment",
+   232	  "@typescript-eslint/no-unsafe-argument",
+   233	  "@typescript-eslint/no-unsafe-call",
+   234	  "@typescript-eslint/no-unsafe-member-access",
+   235	  "@typescript-eslint/no-unsafe-return",
+   236	  "@typescript-eslint/restrict-template-expressions",
+   237	  "@typescript-eslint/switch-exhaustiveness-check",
+   238	  "no-empty",
+   239	  "no-fallthrough",
+   240	  "no-implicit-coercion",
+   241	  "no-restricted-syntax",
+   242	  "vibe-engineer/no-broad-domain-map-model",
+   243	] as const);
+   244	
+   245	const FORBIDDEN_DOMAIN_TERMS = Object.freeze([
+   246	  "ecommerce",
+   247	  "inventory",
+   248	  "fashion",
+   249	  "Billz",
+   250	  "Telegram",
+   251	  "Instagram",
+   252	  "checkout",
+   253	  "product",
+   254	  "customer",
+   255	  "order",
+   256	] as const);
+   257	
+   258	const FORBIDDEN_QUICK_COMMAND_TERMS = Object.freeze([
+   259	  "full:e2e",
+   260	  "e2e:full",
+   261	  "mobile:e2e:full",
+   262	  "full:mobile",
+   263	  "visual:full",
+   264	  "ui:visual:full",
+   265	  "auto-deploy",
+   266	  "deploy:prod",
+   267	  "pulumi up",
+   268	  "pulumi destroy",
+   269	  "publish",
+   270	] as const);
+   271	
+   272	const REQUIRED_FILE_PATHS = Object.freeze([
+   273	  "tsconfig.base.json",
+   274	  "packages/example/tsconfig.json",
+   275	  "eslint.config.mjs",
+   276	  ".vibe/generated/typescript-preset/eslint-policy.json",
+   277	  "prettier.config.mjs",
+   278	  ".vibe/generated/typescript-preset/prettier-policy.json",
+   279	  "pnpm-workspace.yaml",
+   280	  "turbo.json",
+   281	  "package.json",
+   282	  "packages/example/package.json",
+   283	  ".vibe/generated/typescript-preset/manifest.json",
+   284	] as const);
+   285	
+   286	export const TYPESCRIPT_PRESET_METADATA: TypeScriptPresetMetadata = Object.freeze({
+   287	  presetId: TYPE_SCRIPT_PRESET_ID,
+   288	  name: TYPE_SCRIPT_PRESET_NAME,
+   289	  version: TYPE_SCRIPT_PRESET_VERSION,
+   290	  packageName: "@vibe-engineer/preset-typescript",
+   291	  private: true,
+   292	  domainNeutral: true,
+   293	  quickGateLabel: "quality:quick",
+   294	});
+   295	
+   296	export const TYPESCRIPT_COMPILER_STRICT_OPTIONS: TypeScriptCompilerStrictOptions = Object.freeze({
+   297	  target: "ES2022",
+   298	  lib: Object.freeze(["ES2022"]),
+   299	  module: "NodeNext",
+   300	  moduleResolution: "NodeNext",
+   301	  strict: true,
+   302	  noImplicitAny: true,
+   303	  strictNullChecks: true,
+   304	  strictFunctionTypes: true,
+   305	  strictBindCallApply: true,
+   306	  strictPropertyInitialization: true,
+   307	  noImplicitThis: true,
+   308	  alwaysStrict: true,
+   309	  exactOptionalPropertyTypes: true,
+   310	  noUncheckedIndexedAccess: true,
+   311	  noImplicitOverride: true,
+   312	  noImplicitReturns: true,
+   313	  noPropertyAccessFromIndexSignature: true,
+   314	  useUnknownInCatchVariables: true,
+   315	  noFallthroughCasesInSwitch: true,
+   316	  noUnusedLocals: true,
+   317	  noUnusedParameters: true,
+   318	  allowUnreachableCode: false,
+   319	  allowUnusedLabels: false,
+   320	  isolatedModules: true,
+   321	  verbatimModuleSyntax: true,
+   322	  forceConsistentCasingInFileNames: true,
+   323	  resolveJsonModule: true,
+   324	  noEmitOnError: true,
+   325	  skipLibCheck: false,
+   326	});
+   327	
+   328	export const PACKAGE_TSCONFIG_DEFAULTS: PackageTsConfigModel = Object.freeze({
+   329	  extends: "../../tsconfig.base.json",
+   330	  compilerOptions: Object.freeze({
+   331	    rootDir: "src",
+   332	    outDir: "dist",
+   333	    declaration: true,
+   334	    declarationMap: true,
+   335	    sourceMap: true,
+   336	    noEmit: false,
+   337	  }),
+   338	  include: Object.freeze(["src/**/*.ts"]),
+   339	});
+   340	
+   341	export const ESLINT_POLICY_DEFAULTS: EslintPolicyDefaults = Object.freeze({
+   342	  configFile: "eslint.config.mjs",
+   343	  rules: Object.freeze(
+   344	    REQUIRED_ESLINT_RULES.map((name) =>
+   345	      Object.freeze({ name, severity: "error", purpose: `Strict TypeScript preset enforcement for ${name}.` }),
+   346	    ),
+   347	  ),
+   348	  boundaryRules: Object.freeze({
+   349	    rawJsonParseRequiresNamedBoundary: true,
+   350	    broadDomainMapModelsForbidden: true,
+   351	  }),
+   352	});
+   353	
+   354	export const PRETTIER_DEFAULTS: PrettierDefaults = Object.freeze({
+   355	  printWidth: 100,
+   356	  semi: true,
+   357	  singleQuote: false,
+   358	  trailingComma: "all",
+   359	  arrowParens: "always",
+   360	  bracketSpacing: true,
+   361	  endOfLine: "lf",
+   362	});
+   363	
+   364	export const PNPM_DEFAULTS: PnpmDefaults = Object.freeze({
+   365	  workspaceGlobs: Object.freeze(["packages/*", "apps/*"]),
+   366	  packageManager: "pnpm@10.33.0",
+   367	});
+   368	
+   369	export const TURBO_TASK_DEFAULTS: TurboTaskDefaults = Object.freeze({
+   370	  quickGateLabel: "quality:quick",
+   371	  tasks: Object.freeze({
+   372	    typecheck: Object.freeze({ dependsOn: Object.freeze(["^typecheck"]), outputs: Object.freeze([]) }),
+   373	    lint: Object.freeze({ dependsOn: Object.freeze(["^lint"]), outputs: Object.freeze([]) }),
+   374	    "format:check": Object.freeze({ outputs: Object.freeze([]) }),
+   375	    "test:unit": Object.freeze({ dependsOn: Object.freeze(["^test:unit"]), outputs: Object.freeze(["coverage/**"]), }),
+   376	    build: Object.freeze({ dependsOn: Object.freeze(["^build", "typecheck"]), outputs: Object.freeze(["dist/**"]), }),
+   377	    "quality:quick": Object.freeze({ dependsOn: Object.freeze(["typecheck", "lint", "format:check", "test:unit", "build"]), outputs: Object.freeze([]), }),
+   378	  }),
+   379	});
+   380	
+   381	export const PACKAGE_SCRIPT_DEFAULTS: PackageScriptDefaults = Object.freeze({
+   382	  typecheck: "tsc --noEmit -p tsconfig.json",
+   383	  lint: "eslint .",
+   384	  "format:check": "prettier --check .",
+   385	  "test:unit": "node --test",
+   386	  build: "tsc -p tsconfig.json",
+   387	  "quality:quick": "pnpm run typecheck && pnpm run lint && pnpm run format:check && pnpm run test:unit && pnpm run build",
+   388	});
+   389	
+   390	export const TEST_AND_TYPECHECK_DEFAULTS: TestAndTypecheckDefaults = Object.freeze({
+   391	  typecheckCommand: "tsc --noEmit -p packages/example/tsconfig.json",
+   392	  unitTestCommand: "node --test packages/example/test/**/*.test.js",
+   393	  quickGateCommand: "pnpm run quality:quick",
+   394	  defaultFullE2E: false,
+   395	  defaultFullMobileE2E: false,
+   396	  defaultFullVisualVerification: false,
+   397	  defaultAutoDeploy: false,
+   398	});
+   399	
+   400	function manifestEntry(
+   401	  outputPath: string,
+   402	  kind: PresetFileKind,
+   403	  requiredStandardIds: readonly StandardId[],
+   404	  consumerNotes: string,
+   405	): GeneratedFileManifestEntry {
+   406	  return Object.freeze({
+   407	    outputPath,
+   408	    kind,
+   409	    ownership: "generated-owned",
+   410	    requiredStandardIds: Object.freeze([...requiredStandardIds]),
+   411	    consumerNotes,
+   412	  });
+   413	}
+   414	
+   415	export const TYPESCRIPT_PRESET_FILE_MANIFEST: readonly GeneratedFileManifestEntry[] = Object.freeze([
+   416	  manifestEntry("tsconfig.base.json", "typescript-config", ["typed-boundary-contracts", "dependency-hygiene"], "Root strict NodeNext TypeScript baseline."),
+   417	  manifestEntry("packages/example/tsconfig.json", "typescript-config", ["typed-boundary-contracts"], "Package tsconfig extends the strict root base without weakening it."),
+   418	  manifestEntry("eslint.config.mjs", "eslint-config", ["typed-boundary-contracts", "domain-neutral-core"], "Strict ESLint flat-config generated from typed policy defaults."),
+   419	  manifestEntry(".vibe/generated/typescript-preset/eslint-policy.json", "eslint-policy", ["typed-boundary-contracts", "domain-neutral-core"], "Machine-readable ESLint policy contract for validators and future schematics."),
+   420	  manifestEntry("prettier.config.mjs", "prettier-config", ["deterministic-schematics"], "Deterministic Prettier config generated from typed formatting defaults."),
+   421	  manifestEntry(".vibe/generated/typescript-preset/prettier-policy.json", "prettier-policy", ["deterministic-schematics"], "Machine-readable formatting defaults for fail-closed validation."),
+   422	  manifestEntry("pnpm-workspace.yaml", "workspace-config", ["dependency-hygiene"], "Workspace globs for generated apps and packages."),
+   423	  manifestEntry("turbo.json", "turbo-config", ["real-boundary-witnesses", "dependency-hygiene"], "Quick/local Turborepo tasks excluding full E2E, full mobile, full visual, and deploy defaults."),
+   424	  manifestEntry("package.json", "package-manifest", ["dependency-hygiene"], "Root generated package scripts and package-manager metadata."),
+   425	  manifestEntry("packages/example/package.json", "package-manifest", ["dependency-hygiene"], "Package-local strict scripts for future generated packages."),
+   426	  manifestEntry(".vibe/generated/typescript-preset/manifest.json", "preset-metadata", ["report-first-evidence", "dirty-tree-ownership"], "Generated manifest tying files to standards and mechanical-gate families."),
+   427	  manifestEntry("packages/example/src/sample.ts", "source-fixture", ["typed-boundary-contracts"], "Small strict TypeScript source consumed by compiler witness."),
+   428	]);
+   429	
+   430	function stableStringify(value: unknown): string {
+   431	  return `${JSON.stringify(value, null, 2)}\n`;
+   432	}
+   433	
+   434	function renderEslintConfig(): string {
+   435	  return `import js from "@eslint/js";\nimport tseslint from "typescript-eslint";\n\nexport default tseslint.config(\n  js.configs.recommended,\n  ...tseslint.configs.strictTypeChecked,\n  ...tseslint.configs.stylisticTypeChecked,\n  {\n    files: ["**/*.ts", "**/*.tsx"],\n    languageOptions: {\n      parserOptions: {\n        projectService: true,\n      },\n    },\n    rules: {\n      "@typescript-eslint/no-explicit-any": "error",\n      "@typescript-eslint/no-non-null-assertion": "error",\n      "@typescript-eslint/ban-ts-comment": ["error", { "ts-ignore": true, "ts-nocheck": true, "ts-expect-error": "allow-with-description", minimumDescriptionLength: 20 }],\n      "@typescript-eslint/no-unnecessary-type-assertion": "error",\n      "@typescript-eslint/consistent-type-imports": "error",\n      "@typescript-eslint/no-confusing-void-expression": "error",\n      "@typescript-eslint/no-unsafe-assignment": "error",\n      "@typescript-eslint/no-unsafe-argument": "error",\n      "@typescript-eslint/no-unsafe-call": "error",\n      "@typescript-eslint/no-unsafe-member-access": "error",\n      "@typescript-eslint/no-unsafe-return": "error",\n      "@typescript-eslint/restrict-template-expressions": "error",\n      "@typescript-eslint/switch-exhaustiveness-check": "error",\n      "no-empty": ["error", { allowEmptyCatch: false }],\n      "no-fallthrough": "error",\n      "no-implicit-coercion": "error",\n      "no-restricted-syntax": ["error", { selector: "CallExpression[callee.object.name='JSON'][callee.property.name='parse']", message: "Parse untrusted JSON only behind a named runtime boundary validator." }],\n      "vibe-engineer/no-broad-domain-map-model": "error",\n    },\n  },\n);\n`;
+   436	}
+   437	
+   438	function renderPrettierConfig(): string {
+   439	  return `export default ${JSON.stringify(PRETTIER_DEFAULTS, null, 2)};\n`;
+   440	}
+   441	
+   442	function rootTsconfigContent(): string {
+   443	  return stableStringify({
+   444	    $schema: "https://json.schemastore.org/tsconfig",
+   445	    compilerOptions: TYPESCRIPT_COMPILER_STRICT_OPTIONS,
+   446	  });
+   447	}
+   448	
+   449	function packageTsconfigContent(): string {
+   450	  return stableStringify(PACKAGE_TSCONFIG_DEFAULTS);
+   451	}
+   452	
+   453	function packageJsonContent(): string {
+   454	  return stableStringify({
+   455	    name: "generated-typescript-workspace",
+   456	    private: true,
+   457	    type: "module",
+   458	    packageManager: PNPM_DEFAULTS.packageManager,
+   459	    scripts: {
+   460	      typecheck: "pnpm --recursive run typecheck",
+   461	      lint: "pnpm --recursive run lint",
+   462	      "format:check": "prettier --check .",
+   463	      "test:unit": "pnpm --recursive run test:unit",
+   464	      build: "pnpm --recursive run build",
+   465	      "quality:quick": "pnpm run typecheck && pnpm run lint && pnpm run format:check && pnpm run test:unit && pnpm run build",
+   466	    },
+   467	    devDependencies: {
+   468	      "@eslint/js": "9.39.1",
+   469	      eslint: "9.39.1",
+   470	      prettier: "3.8.4",
+   471	      turbo: "2.9.18",
+   472	      typescript: "5.9.3",
+   473	      "typescript-eslint": "8.62.0",
+   474	    },
+   475	  });
+   476	}
+   477	
+   478	function packageManifestContent(packageName: string): string {
+   479	  return stableStringify({
+   480	    name: packageName,
+   481	    private: true,
+   482	    type: "module",
+   483	    scripts: PACKAGE_SCRIPT_DEFAULTS,
+   484	  });
+   485	}
+   486	
+   487	function pnpmWorkspaceContent(): string {
+   488	  return `packages:\n  - "${PNPM_DEFAULTS.workspaceGlobs[0]}"\n  - "${PNPM_DEFAULTS.workspaceGlobs[1]}"\n`;
+   489	}
+   490	
+   491	function turboContent(): string {
+   492	  return stableStringify({
+   493	    $schema: "https://turbo.build/schema.json",
+   494	    tasks: TURBO_TASK_DEFAULTS.tasks,
+   495	    vibeEngineer: {
+   496	      quickGateLabel: TURBO_TASK_DEFAULTS.quickGateLabel,
+   497	      defaults: TEST_AND_TYPECHECK_DEFAULTS,
+   498	    },
+   499	  });
+   500	}
+   501	
+   502	function generatedManifestContent(): string {
+   503	  return stableStringify({
+   504	    metadata: TYPESCRIPT_PRESET_METADATA,
+   505	    files: TYPESCRIPT_PRESET_FILE_MANIFEST,
+   506	    compilerOptions: TYPESCRIPT_COMPILER_STRICT_OPTIONS,
+   507	    eslintPolicy: ESLINT_POLICY_DEFAULTS,
+   508	    prettierDefaults: PRETTIER_DEFAULTS,
+   509	    pnpmDefaults: PNPM_DEFAULTS,
+   510	    turboDefaults: TURBO_TASK_DEFAULTS,
+   511	    packageScripts: PACKAGE_SCRIPT_DEFAULTS,
+   512	    testAndTypecheckDefaults: TEST_AND_TYPECHECK_DEFAULTS,
+   513	  });
+   514	}
+   515	
+   516	function sampleSourceContent(): string {
+   517	  return `export interface ExampleInput {\n  readonly value: string;\n}\n\nexport function formatExampleInput(input: ExampleInput): string {\n  return input.value.toUpperCase();\n}\n`;
+   518	}
+   519	
+   520	function normalizePackageDirectory(input: string | undefined): string {
+   521	  if (input === undefined || input.length === 0) {
+   522	    return "packages/example";
+   523	  }
+   524	  if (!isSafeRelativePath(input) || input !== "packages/example") {
+   525	    throw new Error("packageDirectory must be the preset-owned packages/example fixture path in this lane.");
+   526	  }
+   527	  return input;
+   528	}
+   529	
+   530	function normalizePackageName(input: string | undefined): string {
+   531	  if (input === undefined || input.length === 0) {
+   532	    return "@generated/example";
+   533	  }
+   534	  if (input.includes("@vibe-engineer/testing") || input.includes(" ")) {
+   535	    throw new Error("packageName is malformed or forbidden for this preset.");
+   536	  }
+   537	  return input;
+   538	}
+   539	
+   540	function renderedFile(path: string, kind: PresetFileKind, content: string): GeneratedPresetFile {
+   541	  const manifest = TYPESCRIPT_PRESET_FILE_MANIFEST.find((entry) => entry.outputPath === path);
+   542	  if (manifest === undefined) {
+   543	    throw new Error(`Missing manifest entry for generated file ${path}.`);
+   544	  }
+   545	  return Object.freeze({ path, kind, content, manifest });
+   546	}
+   547	
+   548	export function renderTypeScriptPresetFiles(options: RenderTypeScriptPresetOptions = {}): readonly GeneratedPresetFile[] {
+   549	  const packageDirectory = normalizePackageDirectory(options.packageDirectory);
+   550	  const packageName = normalizePackageName(options.packageName);
+   551	  const includeSampleSource = options.includeSampleSource ?? true;
+   552	  const files = [
+   553	    renderedFile("tsconfig.base.json", "typescript-config", rootTsconfigContent()),
+   554	    renderedFile(`${packageDirectory}/tsconfig.json`, "typescript-config", packageTsconfigContent()),
+   555	    renderedFile("eslint.config.mjs", "eslint-config", renderEslintConfig()),
+   556	    renderedFile(".vibe/generated/typescript-preset/eslint-policy.json", "eslint-policy", stableStringify(ESLINT_POLICY_DEFAULTS)),
+   557	    renderedFile("prettier.config.mjs", "prettier-config", renderPrettierConfig()),
+   558	    renderedFile(".vibe/generated/typescript-preset/prettier-policy.json", "prettier-policy", stableStringify(PRETTIER_DEFAULTS)),
+   559	    renderedFile("pnpm-workspace.yaml", "workspace-config", pnpmWorkspaceContent()),
+   560	    renderedFile("turbo.json", "turbo-config", turboContent()),
+   561	    renderedFile("package.json", "package-manifest", packageJsonContent()),
+   562	    renderedFile(`${packageDirectory}/package.json`, "package-manifest", packageManifestContent(packageName)),
+   563	    renderedFile(".vibe/generated/typescript-preset/manifest.json", "preset-metadata", generatedManifestContent()),
+   564	  ];
+   565	  if (!includeSampleSource) {
+   566	    return Object.freeze(files);
+   567	  }
+   568	  return Object.freeze([...files, renderedFile(`${packageDirectory}/src/sample.ts`, "source-fixture", sampleSourceContent())]);
+   569	}
+   570	
+   571	export function getTypeScriptPresetMetadata(): TypeScriptPresetMetadata {
+   572	  return Object.freeze({ ...TYPESCRIPT_PRESET_METADATA });
+   573	}
+   574	
+   575	export function getTypeScriptPresetFileManifest(): readonly GeneratedFileManifestEntry[] {
+   576	  return Object.freeze(TYPESCRIPT_PRESET_FILE_MANIFEST.map((entry) => Object.freeze({
+   577	    ...entry,
+   578	    requiredStandardIds: Object.freeze([...entry.requiredStandardIds]),
+   579	  })));
+   580	}
+   581	
+   582	function isObject(value: unknown): value is UnknownObject {
+   583	  return value !== null && typeof value === "object" && !Array.isArray(value);
+   584	}
+   585	
+   586	function getObjectProperty(source: UnknownObject, key: string): unknown {
+   587	  return source[key];
+   588	}
+   589	
+   590	function parseJsonObject(content: string, path: string, findings: TypeScriptPresetFinding[]): UnknownObject | undefined {
+   591	  let parsed: unknown;
+   592	  try {
+   593	    parsed = JSON.parse(content);
+   594	  } catch (error) {
+   595	    findings.push(makeFinding("PRESET_MALFORMED_JSON", path, "Generated JSON content is malformed.", [error instanceof Error ? error.message : "unknown parse error"]));
+   596	    return undefined;
+   597	  }
+   598	  if (!isObject(parsed)) {
+   599	    findings.push(makeFinding("PRESET_MALFORMED_JSON", path, "Generated JSON content must be an object.", []));
+   600	    return undefined;
+   601	  }
+   602	  return parsed;
+   603	}
+   604	
+   605	function makeFinding(
+   606	  code: TypeScriptPresetFindingCode,
+   607	  path: string,
+   608	  message: string,
+   609	  evidence: readonly string[],
+   610	): TypeScriptPresetFinding {
+   611	  return Object.freeze({ code, path, message, blocking: true, evidence: Object.freeze([...evidence]) });
+   612	}
+   613	
+   614	function isSafeRelativePath(path: string): boolean {
+   615	  if (path.length === 0 || path.startsWith("/") || path.startsWith("\\") || path.includes("\\")) {
+   616	    return false;
+   617	  }
+   618	  const segments = path.split("/");
+   619	  return segments.every((segment) => segment.length > 0 && segment !== "." && segment !== "..");
+   620	}
+   621	
+   622	function validatePath(path: string, seen: Set<string>, findings: TypeScriptPresetFinding[]): void {
+   623	  if (!isSafeRelativePath(path)) {
+   624	    findings.push(makeFinding("PRESET_UNSAFE_GENERATED_PATH", path, "Generated file path must be normalized, relative, and contained inside the target root.", [path]));
+   625	  }
+   626	  if (seen.has(path)) {
+   627	    findings.push(makeFinding("PRESET_DUPLICATE_GENERATED_PATH", path, "Generated file path appears more than once.", [path]));
+   628	  }
+   629	  seen.add(path);
+   630	}
+   631	
+   632	function validateStrictTsconfig(content: string | undefined, path: string, findings: TypeScriptPresetFinding[]): void {
+   633	  if (content === undefined) {
+   634	    findings.push(makeFinding("PRESET_MISSING_REQUIRED_FILE", path, "Required strict tsconfig file is missing.", []));
+   635	    return;
+   636	  }
+   637	  const root = parseJsonObject(content, path, findings);
+   638	  if (root === undefined) return;
+   639	  const compilerOptions = getObjectProperty(root, "compilerOptions");
+   640	  if (!isObject(compilerOptions)) {
+   641	    findings.push(makeFinding("PRESET_STRICT_FLAG_WEAKENED", path, "tsconfig compilerOptions object is missing.", []));
+   642	    return;
+   643	  }
+   644	  for (const flag of REQUIRED_STRICT_TRUE_FLAGS) {
+   645	    if (getObjectProperty(compilerOptions, flag) !== true) {
+   646	      findings.push(makeFinding("PRESET_STRICT_FLAG_WEAKENED", path, `Required TypeScript flag must be true: ${flag}.`, [flag]));
+   647	    }
+   648	  }
+   649	  for (const flag of REQUIRED_STRICT_FALSE_FLAGS) {
+   650	    if (getObjectProperty(compilerOptions, flag) !== false) {
+   651	      findings.push(makeFinding("PRESET_STRICT_FLAG_WEAKENED", path, `Required TypeScript flag must be false: ${flag}.`, [flag]));
+   652	    }
+   653	  }
+   654	  if (getObjectProperty(compilerOptions, "module") !== "NodeNext" || getObjectProperty(compilerOptions, "moduleResolution") !== "NodeNext") {
+   655	    findings.push(makeFinding("PRESET_STRICT_FLAG_WEAKENED", path, "TypeScript module and moduleResolution must both be NodeNext.", []));
+   656	  }
+   657	}
+   658	
+   659	function validatePackageTsconfig(content: string | undefined, path: string, findings: TypeScriptPresetFinding[]): void {
+   660	  if (content === undefined) {
+   661	    findings.push(makeFinding("PRESET_MISSING_REQUIRED_FILE", path, "Required package tsconfig is missing.", []));
+   662	    return;
+   663	  }
+   664	  const root = parseJsonObject(content, path, findings);
+   665	  if (root === undefined) return;
+   666	  if (getObjectProperty(root, "extends") !== "../../tsconfig.base.json") {
+   667	    findings.push(makeFinding("PRESET_PACKAGE_TSCONFIG_WEAKENED", path, "Package tsconfig must extend ../../tsconfig.base.json.", []));
+   668	  }
+   669	  const compilerOptions = getObjectProperty(root, "compilerOptions");
+   670	  if (isObject(compilerOptions)) {
+   671	    for (const flag of [...REQUIRED_STRICT_TRUE_FLAGS, ...REQUIRED_STRICT_FALSE_FLAGS]) {
+   672	      if (Object.hasOwn(compilerOptions, flag)) {
+   673	        findings.push(makeFinding("PRESET_PACKAGE_TSCONFIG_WEAKENED", path, `Package tsconfig must not override strict base flag: ${flag}.`, [flag]));
+   674	      }
+   675	    }
+   676	  }
+   677	}
+   678	
+   679	function validateEslintPolicy(content: string | undefined, path: string, findings: TypeScriptPresetFinding[]): void {
+   680	  if (content === undefined) {
+   681	    findings.push(makeFinding("PRESET_MISSING_REQUIRED_FILE", path, "Required ESLint policy file is missing.", []));
+   682	    return;
+   683	  }
+   684	  const policy = parseJsonObject(content, path, findings);
+   685	  if (policy === undefined) return;
+   686	  const rules = getObjectProperty(policy, "rules");
+   687	  if (!Array.isArray(rules)) {
+   688	    findings.push(makeFinding("PRESET_ESLINT_RULE_MISSING", path, "ESLint policy rules array is missing.", []));
+   689	    return;
+   690	  }
+   691	  const ruleNames = new Set<string>();
+   692	  for (const rule of rules) {
+   693	    if (isObject(rule)) {
+   694	      const name = getObjectProperty(rule, "name");
+   695	      const severity = getObjectProperty(rule, "severity");
+   696	      if (typeof name === "string" && severity === "error") {
+   697	        ruleNames.add(name);
+   698	      }
+   699	    }
+   700	  }
+   701	  for (const requiredRule of REQUIRED_ESLINT_RULES) {
+   702	    if (!ruleNames.has(requiredRule)) {
+   703	      findings.push(makeFinding("PRESET_ESLINT_RULE_MISSING", path, `Required ESLint policy rule is missing: ${requiredRule}.`, [requiredRule]));
+   704	    }
+   705	  }
+   706	  const boundaryRules = getObjectProperty(policy, "boundaryRules");
+   707	  if (!isObject(boundaryRules)
+   708	    || getObjectProperty(boundaryRules, "rawJsonParseRequiresNamedBoundary") !== true
+   709	    || getObjectProperty(boundaryRules, "broadDomainMapModelsForbidden") !== true) {
+   710	    findings.push(makeFinding("PRESET_ESLINT_RULE_MISSING", path, "ESLint boundary rules for JSON.parse and broad domain map models are required.", []));
+   711	  }
+   712	}
+   713	
+   714	function validatePrettierPolicy(content: string | undefined, path: string, findings: TypeScriptPresetFinding[]): void {
+   715	  if (content === undefined) {
+   716	    findings.push(makeFinding("PRESET_MISSING_REQUIRED_FILE", path, "Required Prettier policy file is missing.", []));
+   717	    return;
+   718	  }
+   719	  const policy = parseJsonObject(content, path, findings);
+   720	  if (policy === undefined) return;
+   721	  const expectedEntries = Object.entries(PRETTIER_DEFAULTS);
+   722	  for (const [key, expected] of expectedEntries) {
+   723	    if (getObjectProperty(policy, key) !== expected) {
+   724	      findings.push(makeFinding("PRESET_PRETTIER_DEFAULT_MISSING", path, `Required Prettier default is missing or weakened: ${key}.`, [key]));
+   725	    }
+   726	  }
+   727	}
+   728	
+   729	function validateQuickGate(content: string | undefined, path: string, findings: TypeScriptPresetFinding[]): void {
+   730	  if (content === undefined) {
+   731	    findings.push(makeFinding("PRESET_MISSING_REQUIRED_FILE", path, "Required quick-gate carrier is missing.", []));
+   732	    return;
+   733	  }
+   734	  if (!content.includes("quality:quick")) {
+   735	    findings.push(makeFinding("PRESET_QUICK_GATE_LABEL_MISSING", path, "Generated scripts/tasks must include the quality:quick quick-gate label.", []));
+   736	  }
+   737	  for (const term of FORBIDDEN_QUICK_COMMAND_TERMS) {
+   738	    if (content.toLowerCase().includes(term.toLowerCase())) {
+   739	      findings.push(makeFinding("PRESET_FORBIDDEN_DEFAULT_COMMAND", path, "Default quick/local commands must not run full E2E, mobile, visual, deploy, publish, or Pulumi mutation.", [term]));
+   740	    }
+   741	  }
+   742	}
+   743	
+   744	function validateDomainNeutralText(files: readonly ValidatorFile[], findings: TypeScriptPresetFinding[]): void {
+   745	  for (const file of files) {
+   746	    const negativeFixture = file.path.includes("negative") || file.path.includes("forbidden-domain");
+   747	    if (negativeFixture) continue;
+   748	    for (const term of FORBIDDEN_DOMAIN_TERMS) {
+   749	      if (file.content.includes(term)) {
+   750	        findings.push(makeFinding("PRESET_DOMAIN_SPECIFIC_CORE_TEXT", file.path, "Core TypeScript preset output must remain domain-neutral.", [term]));
+   751	      }
+   752	    }
+   753	  }
+   754	}
+   755	
+   756	function validateManifestContent(content: string | undefined, path: string, findings: TypeScriptPresetFinding[]): void {
+   757	  if (content === undefined) {
+   758	    findings.push(makeFinding("PRESET_MISSING_REQUIRED_FILE", path, "Required generated preset manifest is missing.", []));
+   759	    return;
+   760	  }
+   761	  const manifest = parseJsonObject(content, path, findings);
+   762	  if (manifest === undefined) return;
+   763	  const metadata = getObjectProperty(manifest, "metadata");
+   764	  const files = getObjectProperty(manifest, "files");
+   765	  if (!isObject(metadata) || getObjectProperty(metadata, "presetId") !== TYPE_SCRIPT_PRESET_ID || !Array.isArray(files)) {
+   766	    findings.push(makeFinding("PRESET_MANIFEST_CONTENT_MISMATCH", path, "Generated manifest metadata/files contract does not match the preset API.", []));
+   767	    return;
+   768	  }
+   769	  const manifestPaths = new Set<string>();
+   770	  for (const entry of files) {
+   771	    if (isObject(entry)) {
+   772	      const outputPath = getObjectProperty(entry, "outputPath");
+   773	      if (typeof outputPath === "string") {
+   774	        manifestPaths.add(outputPath);
+   775	      }
+   776	    }
+   777	  }
+   778	  for (const required of TYPESCRIPT_PRESET_FILE_MANIFEST) {
+   779	    if (!manifestPaths.has(required.outputPath)) {
+   780	      findings.push(makeFinding("PRESET_MANIFEST_CONTENT_MISMATCH", path, `Generated manifest omits required output path: ${required.outputPath}.`, [required.outputPath]));
+   781	    }
+   782	  }
+   783	}
+   784	
+   785	function validatePackageManifest(content: string | undefined, path: string, findings: TypeScriptPresetFinding[]): void {
+   786	  if (content === undefined) {
+   787	    findings.push(makeFinding("PRESET_MISSING_REQUIRED_FILE", path, "Required package manifest is missing.", []));
+   788	    return;
+   789	  }
+   790	  const manifest = parseJsonObject(content, path, findings);
+   791	  if (manifest === undefined) return;
+   792	  for (const dependencyField of ["dependencies", "devDependencies", "peerDependencies", "optionalDependencies"]) {
+   793	    const dependencies = getObjectProperty(manifest, dependencyField);
+   794	    if (!isObject(dependencies)) continue;
+   795	    if (getObjectProperty(dependencies, "@vibe-engineer/testing") !== undefined && dependencyField === "dependencies") {
+   796	      findings.push(makeFinding("PRESET_FORBIDDEN_TESTING_PRODUCTION_DEPENDENCY", path, "Generated production dependencies must not include @vibe-engineer/testing.", [dependencyField]));
+   797	    }
+   798	  }
+   799	}
+   800	
+   801	export function validateTypeScriptPresetFiles(filesInput: unknown): TypeScriptPresetValidationResult {
+   802	  const findings: TypeScriptPresetFinding[] = [];
+   803	  if (!Array.isArray(filesInput)) {
+   804	    findings.push(makeFinding("PRESET_MALFORMED_RENDER_OPTIONS", "", "Validator input must be an array of generated preset files.", []));
+   805	    return { ok: false, findings: Object.freeze(findings), fileCount: 0 };
+   806	  }
+   807	
+   808	  const files: ValidatorFile[] = [];
+   809	  for (const item of filesInput) {
+   810	    if (!isObject(item)) {
+   811	      findings.push(makeFinding("PRESET_MALFORMED_RENDER_OPTIONS", "", "Generated preset file entry must be an object.", []));
+   812	      continue;
+   813	    }
+   814	    const path = getObjectProperty(item, "path");
+   815	    const kind = getObjectProperty(item, "kind");
+   816	    const content = getObjectProperty(item, "content");
+   817	    const manifest = getObjectProperty(item, "manifest");
+   818	    if (typeof path !== "string" || typeof kind !== "string" || typeof content !== "string" || !isObject(manifest)) {
+   819	      findings.push(makeFinding("PRESET_MALFORMED_RENDER_OPTIONS", "", "Generated preset file entry has malformed path, kind, content, or manifest.", []));
+   820	      continue;
+   821	    }
+   822	    const manifestOutputPath = getObjectProperty(manifest, "outputPath");
+   823	    if (manifestOutputPath !== path) {
+   824	      findings.push(makeFinding("PRESET_MANIFEST_CONTENT_MISMATCH", path, "Generated file manifest outputPath must match file path.", []));
+   825	    }
+   826	    if (!TYPESCRIPT_PRESET_FILE_MANIFEST.some((entry) => entry.kind === kind)) {
+   827	      findings.push(makeFinding("PRESET_MALFORMED_RENDER_OPTIONS", path, "Generated preset file entry has an unknown kind.", [kind]));
+   828	    }
+   829	    files.push({ path, content });
+   830	  }
+   831	
+   832	  const seen = new Set<string>();
+   833	  const byPath = new Map<string, string>();
+   834	  for (const file of files) {
+   835	    validatePath(file.path, seen, findings);
+   836	    byPath.set(file.path, file.content);
+   837	  }
+   838	
+   839	  for (const requiredPath of REQUIRED_FILE_PATHS) {
+   840	    if (!byPath.has(requiredPath)) {
+   841	      findings.push(makeFinding("PRESET_MISSING_REQUIRED_FILE", requiredPath, "Required generated file is missing.", [requiredPath]));
+   842	    }
+   843	  }
+   844	
+   845	  validateStrictTsconfig(byPath.get("tsconfig.base.json"), "tsconfig.base.json", findings);
+   846	  validatePackageTsconfig(byPath.get("packages/example/tsconfig.json"), "packages/example/tsconfig.json", findings);
+   847	  validateEslintPolicy(byPath.get(".vibe/generated/typescript-preset/eslint-policy.json"), ".vibe/generated/typescript-preset/eslint-policy.json", findings);
+   848	  validatePrettierPolicy(byPath.get(".vibe/generated/typescript-preset/prettier-policy.json"), ".vibe/generated/typescript-preset/prettier-policy.json", findings);
+   849	  validateQuickGate(byPath.get("package.json"), "package.json", findings);
+   850	  validateQuickGate(byPath.get("turbo.json"), "turbo.json", findings);
+   851	  validatePackageManifest(byPath.get("package.json"), "package.json", findings);
+   852	  validatePackageManifest(byPath.get("packages/example/package.json"), "packages/example/package.json", findings);
+   853	  validateManifestContent(byPath.get(".vibe/generated/typescript-preset/manifest.json"), ".vibe/generated/typescript-preset/manifest.json", findings);
+   854	  validateDomainNeutralText(files, findings);
+   855	
+   856	  if (findings.length > 0) {
+   857	    return { ok: false, findings: Object.freeze(findings), fileCount: files.length };
+   858	  }
+   859	  return { ok: true, findings: Object.freeze([]), fileCount: files.length };
+   860	}

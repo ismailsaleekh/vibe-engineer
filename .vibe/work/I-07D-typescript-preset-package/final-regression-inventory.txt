@@ -1,0 +1,60 @@
+--- owned changed/status inventory ---
+?? .vibe/work/I-07D-typescript-preset-package/
+?? packages/presets/typescript/
+--- owned files ---
+packages/presets/typescript/fixtures/consumer/public-api-consumer.ts
+packages/presets/typescript/fixtures/generated/strict-project/.vibe/generated/typescript-preset/eslint-policy.json
+packages/presets/typescript/fixtures/generated/strict-project/.vibe/generated/typescript-preset/manifest.json
+packages/presets/typescript/fixtures/generated/strict-project/.vibe/generated/typescript-preset/prettier-policy.json
+packages/presets/typescript/fixtures/generated/strict-project/eslint.config.mjs
+packages/presets/typescript/fixtures/generated/strict-project/package.json
+packages/presets/typescript/fixtures/generated/strict-project/packages/example/package.json
+packages/presets/typescript/fixtures/generated/strict-project/packages/example/src/sample.ts
+packages/presets/typescript/fixtures/generated/strict-project/packages/example/tsconfig.json
+packages/presets/typescript/fixtures/generated/strict-project/pnpm-workspace.yaml
+packages/presets/typescript/fixtures/generated/strict-project/prettier.config.mjs
+packages/presets/typescript/fixtures/generated/strict-project/tsconfig.base.json
+packages/presets/typescript/fixtures/generated/strict-project/turbo.json
+packages/presets/typescript/fixtures/witnesses/run-typescript-preset-witness.mjs
+packages/presets/typescript/package.json
+packages/presets/typescript/src/index.ts
+packages/presets/typescript/templates/eslint-policy.json
+packages/presets/typescript/templates/package-script-defaults.json
+packages/presets/typescript/templates/package-tsconfig.json
+packages/presets/typescript/templates/pnpm-workspace-defaults.json
+packages/presets/typescript/templates/prettier-defaults.json
+packages/presets/typescript/templates/strict-tsconfig-base.json
+packages/presets/typescript/templates/test-typecheck-defaults.json
+packages/presets/typescript/templates/turbo-task-defaults.json
+packages/presets/typescript/tsconfig.json
+--- no product js in src ---
+--- package manifest/dependency regression ---
+{
+  "private": true,
+  "dependencyNames": [],
+  "exportTargets": [
+    "./src/index.ts",
+    "./src/index.ts"
+  ],
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "witness": "node fixtures/witnesses/run-typescript-preset-witness.mjs"
+  }
+}
+--- forbidden production imports scan ---
+no forbidden production import statements
+--- domain term context review ---
+packages/presets/typescript/src/index.ts:246:  "ecommerce",
+packages/presets/typescript/src/index.ts:247:  "inventory",
+packages/presets/typescript/src/index.ts:248:  "fashion",
+packages/presets/typescript/src/index.ts:249:  "Billz",
+packages/presets/typescript/src/index.ts:250:  "Telegram",
+packages/presets/typescript/src/index.ts:251:  "Instagram",
+packages/presets/typescript/src/index.ts:252:  "checkout",
+packages/presets/typescript/src/index.ts:253:  "product",
+packages/presets/typescript/src/index.ts:254:  "customer",
+packages/presets/typescript/src/index.ts:255:  "order",
+packages/presets/typescript/src/index.ts:796:      findings.push(makeFinding("PRESET_FORBIDDEN_TESTING_PRODUCTION_DEPENDENCY", path, "Generated production dependencies must not include @vibe-engineer/testing.", [dependencyField]));
+packages/presets/typescript/fixtures/witnesses/run-typescript-preset-witness.mjs:188:  negativeResults.push(expectRejected("domain term", mutateContent(files, ".vibe/generated/typescript-preset/manifest.json", (content) => content.replace("TypeScript Strict Preset", "TypeScript checkout Preset")), api.validateTypeScriptPresetFiles, "PRESET_DOMAIN_SPECIFIC_CORE_TEXT"));
+packages/presets/typescript/fixtures/witnesses/run-typescript-preset-witness.mjs:193:  negativeResults.push(expectRejected("testing production dependency", mutateContent(files, "package.json", (content) => content.replace('"devDependencies": {', '"dependencies": { "@vibe-engineer/testing": "workspace:*" },\n    "devDependencies": {')), api.validateTypeScriptPresetFiles, "PRESET_FORBIDDEN_TESTING_PRODUCTION_DEPENDENCY"));
+--- root/shared tracked diff safety ---

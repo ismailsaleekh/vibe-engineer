@@ -1,0 +1,1653 @@
+{
+  "ok": true,
+  "repositoryRoot": "/Users/lizavasilyeva/work/vibe-engineer",
+  "packageRoot": "/Users/lizavasilyeva/work/vibe-engineer/packages/presets/typescript",
+  "evidenceRoot": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-07D-typescript-preset-package/post-fix-validator-evidence",
+  "fixturesRoot": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-07D-typescript-preset-package/post-fix-validator-fixtures",
+  "compiledRoot": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-07D-typescript-preset-package/post-fix-validator-compiled",
+  "generatedFixtureRoot": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-07D-typescript-preset-package/post-fix-validator-fixtures/strict-generated-project",
+  "consumerFixtureRoot": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-07D-typescript-preset-package/post-fix-validator-fixtures/package-consumer",
+  "productFiles": {
+    "packageManifestPrivate": true,
+    "packageManifestHasDependencies": false,
+    "exports": {
+      ".": {
+        "types": "./src/index.ts",
+        "import": "./src/index.ts"
+      }
+    },
+    "scripts": {
+      "typecheck": "tsc --noEmit -p tsconfig.json",
+      "witness": "node fixtures/witnesses/run-typescript-preset-witness.mjs"
+    }
+  },
+  "commands": {
+    "packageTypecheck": {
+      "command": "/Users/lizavasilyeva/work/vibe-engineer/node_modules/.bin/tsc --noEmit -p packages/presets/typescript/tsconfig.json --pretty false",
+      "cwd": "/Users/lizavasilyeva/work/vibe-engineer",
+      "status": 0,
+      "signal": null,
+      "stdout": "",
+      "stderr": ""
+    },
+    "consumerTypecheck": {
+      "command": "/Users/lizavasilyeva/work/vibe-engineer/node_modules/.bin/tsc --noEmit -p tsconfig.json --pretty false",
+      "cwd": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-07D-typescript-preset-package/post-fix-validator-fixtures/package-consumer",
+      "status": 0,
+      "signal": null,
+      "stdout": "",
+      "stderr": ""
+    },
+    "packageNameRuntimeImport": {
+      "command": "node -e import('@vibe-engineer/preset-typescript').then((module) => { const files = module.renderTypeScriptPresetFiles(); const result = module.validateTypeScriptPresetFiles(files); console.log(JSON.stringify({ ok: result.ok, keyCount: Object.keys(module).length, fileCount: files.length })); process.exit(result.ok ? 0 : 2); }).catch((error) => { console.error(error instanceof Error ? error.message : String(error)); process.exit(1); })",
+      "cwd": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-07D-typescript-preset-package/post-fix-validator-fixtures/package-consumer",
+      "status": 0,
+      "signal": null,
+      "stdout": "{\"ok\":true,\"keyCount\":19,\"fileCount\":12}\n",
+      "stderr": ""
+    },
+    "rootBareRuntimeImport": {
+      "command": "node -e import('@vibe-engineer/preset-typescript').then(() => { console.log('root-bare-import-ok'); }).catch((error) => { console.error(error instanceof Error ? error.message : String(error)); process.exit(1); })",
+      "cwd": "/Users/lizavasilyeva/work/vibe-engineer",
+      "status": 1,
+      "signal": null,
+      "stdout": "",
+      "stderr": "Cannot find package '@vibe-engineer/preset-typescript' imported from /Users/lizavasilyeva/work/vibe-engineer/[eval]\n"
+    },
+    "compileCommand": {
+      "command": "/Users/lizavasilyeva/work/vibe-engineer/node_modules/.bin/tsc -p packages/presets/typescript/tsconfig.json --noEmit false --outDir .vibe/work/I-07D-typescript-preset-package/post-fix-validator-compiled --rootDir packages/presets/typescript --declaration true --declarationMap true --sourceMap true --pretty false",
+      "cwd": "/Users/lizavasilyeva/work/vibe-engineer",
+      "status": 0,
+      "signal": null,
+      "stdout": "",
+      "stderr": ""
+    },
+    "generatedFixtureTsc": {
+      "command": "/Users/lizavasilyeva/work/vibe-engineer/node_modules/.bin/tsc --noEmit -p packages/example/tsconfig.json --pretty false",
+      "cwd": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-07D-typescript-preset-package/post-fix-validator-fixtures/strict-generated-project",
+      "status": 0,
+      "signal": null,
+      "stdout": "",
+      "stderr": ""
+    },
+    "standardsRegression": {
+      "command": "node packages/standards/fixtures/run-witnesses.mjs",
+      "cwd": "/Users/lizavasilyeva/work/vibe-engineer",
+      "status": 0,
+      "signal": null,
+      "stdout": "{\n  \"ok\": true,\n  \"evidencePath\": \"/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-07D-typescript-preset-package/post-fix-validator-evidence/standards-regression/standards-witness-result.json\",\n  \"standardCount\": 7\n}\n",
+      "stderr": ""
+    }
+  },
+  "positives": {
+    "generatedFileCount": 12,
+    "goodValidationFileCount": 12,
+    "writtenFiles": [
+      {
+        "path": "tsconfig.base.json",
+        "destination": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-07D-typescript-preset-package/post-fix-validator-fixtures/strict-generated-project/tsconfig.base.json"
+      },
+      {
+        "path": "packages/example/tsconfig.json",
+        "destination": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-07D-typescript-preset-package/post-fix-validator-fixtures/strict-generated-project/packages/example/tsconfig.json"
+      },
+      {
+        "path": "eslint.config.mjs",
+        "destination": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-07D-typescript-preset-package/post-fix-validator-fixtures/strict-generated-project/eslint.config.mjs"
+      },
+      {
+        "path": ".vibe/generated/typescript-preset/eslint-policy.json",
+        "destination": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-07D-typescript-preset-package/post-fix-validator-fixtures/strict-generated-project/.vibe/generated/typescript-preset/eslint-policy.json"
+      },
+      {
+        "path": "prettier.config.mjs",
+        "destination": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-07D-typescript-preset-package/post-fix-validator-fixtures/strict-generated-project/prettier.config.mjs"
+      },
+      {
+        "path": ".vibe/generated/typescript-preset/prettier-policy.json",
+        "destination": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-07D-typescript-preset-package/post-fix-validator-fixtures/strict-generated-project/.vibe/generated/typescript-preset/prettier-policy.json"
+      },
+      {
+        "path": "pnpm-workspace.yaml",
+        "destination": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-07D-typescript-preset-package/post-fix-validator-fixtures/strict-generated-project/pnpm-workspace.yaml"
+      },
+      {
+        "path": "turbo.json",
+        "destination": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-07D-typescript-preset-package/post-fix-validator-fixtures/strict-generated-project/turbo.json"
+      },
+      {
+        "path": "package.json",
+        "destination": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-07D-typescript-preset-package/post-fix-validator-fixtures/strict-generated-project/package.json"
+      },
+      {
+        "path": "packages/example/package.json",
+        "destination": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-07D-typescript-preset-package/post-fix-validator-fixtures/strict-generated-project/packages/example/package.json"
+      },
+      {
+        "path": ".vibe/generated/typescript-preset/manifest.json",
+        "destination": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-07D-typescript-preset-package/post-fix-validator-fixtures/strict-generated-project/.vibe/generated/typescript-preset/manifest.json"
+      },
+      {
+        "path": "packages/example/src/sample.ts",
+        "destination": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-07D-typescript-preset-package/post-fix-validator-fixtures/strict-generated-project/packages/example/src/sample.ts"
+      }
+    ],
+    "readBackFiles": [
+      {
+        "path": "tsconfig.base.json",
+        "bytes": 1034
+      },
+      {
+        "path": "packages/example/tsconfig.json",
+        "bytes": 250
+      },
+      {
+        "path": "eslint.config.mjs",
+        "bytes": 1664
+      },
+      {
+        "path": ".vibe/generated/typescript-preset/eslint-policy.json",
+        "bytes": 3582
+      },
+      {
+        "path": "prettier.config.mjs",
+        "bytes": 180
+      },
+      {
+        "path": ".vibe/generated/typescript-preset/prettier-policy.json",
+        "bytes": 164
+      },
+      {
+        "path": "pnpm-workspace.yaml",
+        "bytes": 40
+      },
+      {
+        "path": "turbo.json",
+        "bytes": 1178
+      },
+      {
+        "path": "package.json",
+        "bytes": 683
+      },
+      {
+        "path": "packages/example/package.json",
+        "bytes": 403
+      },
+      {
+        "path": ".vibe/generated/typescript-preset/manifest.json",
+        "bytes": 10719
+      },
+      {
+        "path": "packages/example/src/sample.ts",
+        "bytes": 165
+      }
+    ],
+    "strictFlags": {
+      "true": [
+        "strict",
+        "noImplicitAny",
+        "strictNullChecks",
+        "strictFunctionTypes",
+        "strictBindCallApply",
+        "strictPropertyInitialization",
+        "noImplicitThis",
+        "alwaysStrict",
+        "exactOptionalPropertyTypes",
+        "noUncheckedIndexedAccess",
+        "noImplicitOverride",
+        "noImplicitReturns",
+        "noPropertyAccessFromIndexSignature",
+        "useUnknownInCatchVariables",
+        "noFallthroughCasesInSwitch",
+        "noUnusedLocals",
+        "noUnusedParameters",
+        "isolatedModules",
+        "verbatimModuleSyntax",
+        "forceConsistentCasingInFileNames"
+      ],
+      "false": [
+        "allowUnreachableCode",
+        "allowUnusedLabels"
+      ]
+    },
+    "packageTsconfigExtends": "../../tsconfig.base.json",
+    "quickDefaultEvidence": [
+      {
+        "path": "package.json",
+        "strings": [
+          "generated-typescript-workspace",
+          "module",
+          "pnpm@10.33.0",
+          "pnpm --recursive run typecheck",
+          "pnpm --recursive run lint",
+          "prettier --check .",
+          "pnpm --recursive run test:unit",
+          "pnpm --recursive run build",
+          "pnpm run typecheck && pnpm run lint && pnpm run format:check && pnpm run test:unit && pnpm run build",
+          "9.39.1",
+          "9.39.1",
+          "3.8.4",
+          "2.9.18",
+          "5.9.3",
+          "8.62.0"
+        ]
+      },
+      {
+        "path": "turbo.json",
+        "strings": [
+          "https://turbo.build/schema.json",
+          "^typecheck",
+          "^lint",
+          "^test:unit",
+          "coverage/**",
+          "^build",
+          "typecheck",
+          "dist/**",
+          "typecheck",
+          "lint",
+          "format:check",
+          "test:unit",
+          "build",
+          "quality:quick",
+          "tsc --noEmit -p packages/example/tsconfig.json",
+          "node --test packages/example/test/**/*.test.js",
+          "pnpm run quality:quick"
+        ]
+      },
+      {
+        "path": "packages/example/package.json",
+        "strings": [
+          "@generated/example",
+          "module",
+          "tsc --noEmit -p tsconfig.json",
+          "eslint .",
+          "prettier --check .",
+          "node --test",
+          "tsc -p tsconfig.json",
+          "pnpm run typecheck && pnpm run lint && pnpm run format:check && pnpm run test:unit && pnpm run build"
+        ]
+      }
+    ],
+    "templatesManifestEvidence": {
+      "templateEvidence": {
+        "strictTsconfigFlagCount": 29,
+        "packageTsconfigExtends": "../../tsconfig.base.json",
+        "eslintRuleCount": 18,
+        "prettierDefaults": {
+          "printWidth": 100,
+          "semi": true,
+          "singleQuote": false,
+          "trailingComma": "all",
+          "arrowParens": "always",
+          "bracketSpacing": true,
+          "endOfLine": "lf"
+        }
+      },
+      "manifestPathCount": 12,
+      "generatedManifestPathCount": 12
+    },
+    "manifestStandardIds": [
+      "dependency-hygiene",
+      "deterministic-schematics",
+      "dirty-tree-ownership",
+      "domain-neutral-core",
+      "real-boundary-witnesses",
+      "report-first-evidence",
+      "typed-boundary-contracts"
+    ],
+    "standardsValidation": [
+      {
+        "standardId": "dependency-hygiene",
+        "ok": true
+      },
+      {
+        "standardId": "deterministic-schematics",
+        "ok": true
+      },
+      {
+        "standardId": "dirty-tree-ownership",
+        "ok": true
+      },
+      {
+        "standardId": "domain-neutral-core",
+        "ok": true
+      },
+      {
+        "standardId": "real-boundary-witnesses",
+        "ok": true
+      },
+      {
+        "standardId": "report-first-evidence",
+        "ok": true
+      },
+      {
+        "standardId": "typed-boundary-contracts",
+        "ok": true
+      }
+    ],
+    "defensiveCopies": {
+      "manifestFrozenMutationThrew": true,
+      "renderedManifestFrozenMutationThrew": true,
+      "exportedManifestStable": true
+    },
+    "safeMetadataAccepted": {
+      "name": "safe defaultAutoDeploy false metadata",
+      "ok": true,
+      "fileCount": 12
+    },
+    "optionsValidationFunction": {
+      "ok": false,
+      "finding": {
+        "code": "PRESET_MALFORMED_RENDER_OPTIONS",
+        "path": "<renderer-options>",
+        "message": "Unknown renderer option: unexpectedOption.",
+        "blocking": true,
+        "evidence": [
+          "unexpectedOption"
+        ]
+      }
+    }
+  },
+  "negatives": {
+    "count": 38,
+    "results": [
+      {
+        "name": "generic deploy command default",
+        "expectedCodes": [
+          "PRESET_FORBIDDEN_DEFAULT_COMMAND"
+        ],
+        "observedCodes": [
+          "PRESET_FORBIDDEN_DEFAULT_COMMAND"
+        ],
+        "findings": [
+          {
+            "code": "PRESET_FORBIDDEN_DEFAULT_COMMAND",
+            "path": "package.json",
+            "evidence": [
+              "deploy",
+              "pnpm run typecheck && pnpm run lint && pnpm run format:check && pnpm run test:unit && pnpm run build && pnpm run deploy"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "deploy prefix alias default",
+        "expectedCodes": [
+          "PRESET_FORBIDDEN_DEFAULT_COMMAND"
+        ],
+        "observedCodes": [
+          "PRESET_FORBIDDEN_DEFAULT_COMMAND"
+        ],
+        "findings": [
+          {
+            "code": "PRESET_FORBIDDEN_DEFAULT_COMMAND",
+            "path": "package.json",
+            "evidence": [
+              "deploy:staging",
+              "pnpm run typecheck && pnpm run lint && pnpm run format:check && pnpm run test:unit && pnpm run build && pnpm run deploy:staging"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "deploy suffix alias default",
+        "expectedCodes": [
+          "PRESET_FORBIDDEN_DEFAULT_COMMAND"
+        ],
+        "observedCodes": [
+          "PRESET_FORBIDDEN_DEFAULT_COMMAND"
+        ],
+        "findings": [
+          {
+            "code": "PRESET_FORBIDDEN_DEFAULT_COMMAND",
+            "path": "package.json",
+            "evidence": [
+              "staging:deploy",
+              "pnpm run typecheck && pnpm run lint && pnpm run format:check && pnpm run test:unit && pnpm run build && pnpm run staging:deploy"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "pulumi deploy alias default",
+        "expectedCodes": [
+          "PRESET_FORBIDDEN_DEFAULT_COMMAND"
+        ],
+        "observedCodes": [
+          "PRESET_FORBIDDEN_DEFAULT_COMMAND"
+        ],
+        "findings": [
+          {
+            "code": "PRESET_FORBIDDEN_DEFAULT_COMMAND",
+            "path": "package.json",
+            "evidence": [
+              "pulumi:deploy",
+              "pnpm run typecheck && pnpm run lint && pnpm run format:check && pnpm run test:unit && pnpm run build && pnpm run pulumi:deploy"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "pulumi up default",
+        "expectedCodes": [
+          "PRESET_FORBIDDEN_DEFAULT_COMMAND"
+        ],
+        "observedCodes": [
+          "PRESET_FORBIDDEN_DEFAULT_COMMAND"
+        ],
+        "findings": [
+          {
+            "code": "PRESET_FORBIDDEN_DEFAULT_COMMAND",
+            "path": "package.json",
+            "evidence": [
+              "pulumi up",
+              "pnpm run typecheck && pnpm run lint && pnpm run format:check && pnpm run test:unit && pnpm run build && pulumi up"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "auto deploy default",
+        "expectedCodes": [
+          "PRESET_FORBIDDEN_DEFAULT_COMMAND"
+        ],
+        "observedCodes": [
+          "PRESET_FORBIDDEN_DEFAULT_COMMAND"
+        ],
+        "findings": [
+          {
+            "code": "PRESET_FORBIDDEN_DEFAULT_COMMAND",
+            "path": "package.json",
+            "evidence": [
+              "auto-deploy",
+              "pnpm run typecheck && pnpm run lint && pnpm run format:check && pnpm run test:unit && pnpm run build && pnpm run auto-deploy"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "production deploy default",
+        "expectedCodes": [
+          "PRESET_FORBIDDEN_DEFAULT_COMMAND"
+        ],
+        "observedCodes": [
+          "PRESET_FORBIDDEN_DEFAULT_COMMAND",
+          "PRESET_DOMAIN_SPECIFIC_CORE_TEXT"
+        ],
+        "findings": [
+          {
+            "code": "PRESET_FORBIDDEN_DEFAULT_COMMAND",
+            "path": "package.json",
+            "evidence": [
+              "production:deploy",
+              "pnpm run typecheck && pnpm run lint && pnpm run format:check && pnpm run test:unit && pnpm run build && pnpm run production:deploy"
+            ]
+          },
+          {
+            "code": "PRESET_DOMAIN_SPECIFIC_CORE_TEXT",
+            "path": "package.json",
+            "evidence": [
+              "product"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "production publish default",
+        "expectedCodes": [
+          "PRESET_FORBIDDEN_DEFAULT_COMMAND"
+        ],
+        "observedCodes": [
+          "PRESET_FORBIDDEN_DEFAULT_COMMAND"
+        ],
+        "findings": [
+          {
+            "code": "PRESET_FORBIDDEN_DEFAULT_COMMAND",
+            "path": "package.json",
+            "evidence": [
+              "release:publish",
+              "pnpm run typecheck && pnpm run lint && pnpm run format:check && pnpm run test:unit && pnpm run build && pnpm run release:publish"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "full E2E default",
+        "expectedCodes": [
+          "PRESET_FORBIDDEN_DEFAULT_COMMAND"
+        ],
+        "observedCodes": [
+          "PRESET_FORBIDDEN_DEFAULT_COMMAND"
+        ],
+        "findings": [
+          {
+            "code": "PRESET_FORBIDDEN_DEFAULT_COMMAND",
+            "path": "package.json",
+            "evidence": [
+              "full:e2e",
+              "pnpm run typecheck && pnpm run lint && pnpm run format:check && pnpm run test:unit && pnpm run build && pnpm run full:e2e"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "full mobile E2E default",
+        "expectedCodes": [
+          "PRESET_FORBIDDEN_DEFAULT_COMMAND"
+        ],
+        "observedCodes": [
+          "PRESET_FORBIDDEN_DEFAULT_COMMAND"
+        ],
+        "findings": [
+          {
+            "code": "PRESET_FORBIDDEN_DEFAULT_COMMAND",
+            "path": "package.json",
+            "evidence": [
+              "e2e:full",
+              "pnpm run typecheck && pnpm run lint && pnpm run format:check && pnpm run test:unit && pnpm run build && pnpm run mobile:e2e:full"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "full visual UI verification default",
+        "expectedCodes": [
+          "PRESET_FORBIDDEN_DEFAULT_COMMAND"
+        ],
+        "observedCodes": [
+          "PRESET_FORBIDDEN_DEFAULT_COMMAND"
+        ],
+        "findings": [
+          {
+            "code": "PRESET_FORBIDDEN_DEFAULT_COMMAND",
+            "path": "package.json",
+            "evidence": [
+              "visual:full",
+              "pnpm run typecheck && pnpm run lint && pnpm run format:check && pnpm run test:unit && pnpm run build && pnpm run ui:visual:full"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "actual ESLint config missing no-explicit-any while policy stale",
+        "expectedCodes": [
+          "PRESET_ESLINT_RULE_MISSING"
+        ],
+        "observedCodes": [
+          "PRESET_ESLINT_RULE_MISSING"
+        ],
+        "findings": [
+          {
+            "code": "PRESET_ESLINT_RULE_MISSING",
+            "path": "eslint.config.mjs",
+            "evidence": [
+              "@typescript-eslint/no-explicit-any"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "actual ESLint config missing no-unsafe-return while policy stale",
+        "expectedCodes": [
+          "PRESET_ESLINT_RULE_MISSING"
+        ],
+        "observedCodes": [
+          "PRESET_ESLINT_RULE_MISSING"
+        ],
+        "findings": [
+          {
+            "code": "PRESET_ESLINT_RULE_MISSING",
+            "path": "eslint.config.mjs",
+            "evidence": [
+              "@typescript-eslint/no-unsafe-return"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "actual ESLint config missing ban-ts-comment escape guard while policy stale",
+        "expectedCodes": [
+          "PRESET_ESLINT_RULE_MISSING"
+        ],
+        "observedCodes": [
+          "PRESET_ESLINT_RULE_MISSING"
+        ],
+        "findings": [
+          {
+            "code": "PRESET_ESLINT_RULE_MISSING",
+            "path": "eslint.config.mjs",
+            "evidence": [
+              "@typescript-eslint/ban-ts-comment"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "actual Prettier config export default empty while policy stale",
+        "expectedCodes": [
+          "PRESET_PRETTIER_DEFAULT_MISSING"
+        ],
+        "observedCodes": [
+          "PRESET_PRETTIER_DEFAULT_MISSING"
+        ],
+        "findings": [
+          {
+            "code": "PRESET_PRETTIER_DEFAULT_MISSING",
+            "path": "prettier.config.mjs",
+            "evidence": [
+              "content-mismatch"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "generated file object wrong kind for known path",
+        "expectedCodes": [
+          "PRESET_MANIFEST_CONTENT_MISMATCH"
+        ],
+        "observedCodes": [
+          "PRESET_MANIFEST_CONTENT_MISMATCH"
+        ],
+        "findings": [
+          {
+            "code": "PRESET_MANIFEST_CONTENT_MISMATCH",
+            "path": "tsconfig.base.json",
+            "evidence": [
+              "eslint-config",
+              "typescript-config"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "generated manifest JSON missing kind",
+        "expectedCodes": [
+          "PRESET_MANIFEST_CONTENT_MISMATCH"
+        ],
+        "observedCodes": [
+          "PRESET_MANIFEST_CONTENT_MISMATCH"
+        ],
+        "findings": [
+          {
+            "code": "PRESET_MANIFEST_CONTENT_MISMATCH",
+            "path": ".vibe/generated/typescript-preset/manifest.json",
+            "evidence": [
+              "tsconfig.base.json"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "file manifest required standards empty",
+        "expectedCodes": [
+          "PRESET_MANIFEST_CONTENT_MISMATCH"
+        ],
+        "observedCodes": [
+          "PRESET_MANIFEST_CONTENT_MISMATCH"
+        ],
+        "findings": [
+          {
+            "code": "PRESET_MANIFEST_CONTENT_MISMATCH",
+            "path": "tsconfig.base.json",
+            "evidence": [
+              "tsconfig.base.json"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "generated manifest required standards missing",
+        "expectedCodes": [
+          "PRESET_MANIFEST_CONTENT_MISMATCH"
+        ],
+        "observedCodes": [
+          "PRESET_MANIFEST_CONTENT_MISMATCH"
+        ],
+        "findings": [
+          {
+            "code": "PRESET_MANIFEST_CONTENT_MISMATCH",
+            "path": ".vibe/generated/typescript-preset/manifest.json",
+            "evidence": [
+              "tsconfig.base.json"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "stale generated manifest/content kind mismatch",
+        "expectedCodes": [
+          "PRESET_MANIFEST_CONTENT_MISMATCH"
+        ],
+        "observedCodes": [
+          "PRESET_MANIFEST_CONTENT_MISMATCH"
+        ],
+        "findings": [
+          {
+            "code": "PRESET_MANIFEST_CONTENT_MISMATCH",
+            "path": ".vibe/generated/typescript-preset/manifest.json",
+            "evidence": [
+              "tsconfig.base.json"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "unknown manifest path",
+        "expectedCodes": [
+          "PRESET_MANIFEST_CONTENT_MISMATCH"
+        ],
+        "observedCodes": [
+          "PRESET_MANIFEST_CONTENT_MISMATCH"
+        ],
+        "findings": [
+          {
+            "code": "PRESET_MANIFEST_CONTENT_MISMATCH",
+            "path": ".vibe/generated/typescript-preset/manifest.json",
+            "evidence": [
+              "unknown/generated.json"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "unknown generated file path",
+        "expectedCodes": [
+          "PRESET_MANIFEST_CONTENT_MISMATCH"
+        ],
+        "observedCodes": [
+          "PRESET_MANIFEST_CONTENT_MISMATCH",
+          "PRESET_MISSING_REQUIRED_FILE",
+          "PRESET_MISSING_REQUIRED_FILE"
+        ],
+        "findings": [
+          {
+            "code": "PRESET_MANIFEST_CONTENT_MISMATCH",
+            "path": "unknown/generated.json",
+            "evidence": [
+              "unknown/generated.json"
+            ]
+          },
+          {
+            "code": "PRESET_MISSING_REQUIRED_FILE",
+            "path": "tsconfig.base.json",
+            "evidence": [
+              "tsconfig.base.json"
+            ]
+          },
+          {
+            "code": "PRESET_MISSING_REQUIRED_FILE",
+            "path": "tsconfig.base.json",
+            "evidence": []
+          }
+        ]
+      },
+      {
+        "name": "duplicate normalized output path",
+        "expectedCodes": [
+          "PRESET_DUPLICATE_GENERATED_PATH"
+        ],
+        "observedCodes": [
+          "PRESET_MANIFEST_CONTENT_MISMATCH",
+          "PRESET_DUPLICATE_GENERATED_PATH",
+          "PRESET_MISSING_REQUIRED_FILE",
+          "PRESET_STRICT_FLAG_WEAKENED",
+          "PRESET_STRICT_FLAG_WEAKENED",
+          "PRESET_STRICT_FLAG_WEAKENED",
+          "PRESET_STRICT_FLAG_WEAKENED",
+          "PRESET_STRICT_FLAG_WEAKENED",
+          "PRESET_STRICT_FLAG_WEAKENED",
+          "PRESET_STRICT_FLAG_WEAKENED",
+          "PRESET_STRICT_FLAG_WEAKENED",
+          "PRESET_STRICT_FLAG_WEAKENED",
+          "PRESET_STRICT_FLAG_WEAKENED",
+          "PRESET_STRICT_FLAG_WEAKENED",
+          "PRESET_STRICT_FLAG_WEAKENED",
+          "PRESET_STRICT_FLAG_WEAKENED",
+          "PRESET_STRICT_FLAG_WEAKENED",
+          "PRESET_STRICT_FLAG_WEAKENED",
+          "PRESET_STRICT_FLAG_WEAKENED",
+          "PRESET_STRICT_FLAG_WEAKENED",
+          "PRESET_STRICT_FLAG_WEAKENED",
+          "PRESET_STRICT_FLAG_WEAKENED",
+          "PRESET_STRICT_FLAG_WEAKENED",
+          "PRESET_STRICT_FLAG_WEAKENED",
+          "PRESET_STRICT_FLAG_WEAKENED",
+          "PRESET_STRICT_FLAG_WEAKENED",
+          "PRESET_MISSING_REQUIRED_FILE"
+        ],
+        "findings": [
+          {
+            "code": "PRESET_MANIFEST_CONTENT_MISMATCH",
+            "path": "tsconfig.base.json",
+            "evidence": [
+              "tsconfig.base.json"
+            ]
+          },
+          {
+            "code": "PRESET_DUPLICATE_GENERATED_PATH",
+            "path": "tsconfig.base.json",
+            "evidence": [
+              "tsconfig.base.json"
+            ]
+          },
+          {
+            "code": "PRESET_MISSING_REQUIRED_FILE",
+            "path": "packages/example/tsconfig.json",
+            "evidence": [
+              "packages/example/tsconfig.json"
+            ]
+          },
+          {
+            "code": "PRESET_STRICT_FLAG_WEAKENED",
+            "path": "tsconfig.base.json",
+            "evidence": [
+              "strict"
+            ]
+          },
+          {
+            "code": "PRESET_STRICT_FLAG_WEAKENED",
+            "path": "tsconfig.base.json",
+            "evidence": [
+              "noImplicitAny"
+            ]
+          },
+          {
+            "code": "PRESET_STRICT_FLAG_WEAKENED",
+            "path": "tsconfig.base.json",
+            "evidence": [
+              "strictNullChecks"
+            ]
+          },
+          {
+            "code": "PRESET_STRICT_FLAG_WEAKENED",
+            "path": "tsconfig.base.json",
+            "evidence": [
+              "strictFunctionTypes"
+            ]
+          },
+          {
+            "code": "PRESET_STRICT_FLAG_WEAKENED",
+            "path": "tsconfig.base.json",
+            "evidence": [
+              "strictBindCallApply"
+            ]
+          },
+          {
+            "code": "PRESET_STRICT_FLAG_WEAKENED",
+            "path": "tsconfig.base.json",
+            "evidence": [
+              "strictPropertyInitialization"
+            ]
+          },
+          {
+            "code": "PRESET_STRICT_FLAG_WEAKENED",
+            "path": "tsconfig.base.json",
+            "evidence": [
+              "noImplicitThis"
+            ]
+          },
+          {
+            "code": "PRESET_STRICT_FLAG_WEAKENED",
+            "path": "tsconfig.base.json",
+            "evidence": [
+              "alwaysStrict"
+            ]
+          },
+          {
+            "code": "PRESET_STRICT_FLAG_WEAKENED",
+            "path": "tsconfig.base.json",
+            "evidence": [
+              "exactOptionalPropertyTypes"
+            ]
+          },
+          {
+            "code": "PRESET_STRICT_FLAG_WEAKENED",
+            "path": "tsconfig.base.json",
+            "evidence": [
+              "noUncheckedIndexedAccess"
+            ]
+          },
+          {
+            "code": "PRESET_STRICT_FLAG_WEAKENED",
+            "path": "tsconfig.base.json",
+            "evidence": [
+              "noImplicitOverride"
+            ]
+          },
+          {
+            "code": "PRESET_STRICT_FLAG_WEAKENED",
+            "path": "tsconfig.base.json",
+            "evidence": [
+              "noImplicitReturns"
+            ]
+          },
+          {
+            "code": "PRESET_STRICT_FLAG_WEAKENED",
+            "path": "tsconfig.base.json",
+            "evidence": [
+              "noPropertyAccessFromIndexSignature"
+            ]
+          },
+          {
+            "code": "PRESET_STRICT_FLAG_WEAKENED",
+            "path": "tsconfig.base.json",
+            "evidence": [
+              "useUnknownInCatchVariables"
+            ]
+          },
+          {
+            "code": "PRESET_STRICT_FLAG_WEAKENED",
+            "path": "tsconfig.base.json",
+            "evidence": [
+              "noFallthroughCasesInSwitch"
+            ]
+          },
+          {
+            "code": "PRESET_STRICT_FLAG_WEAKENED",
+            "path": "tsconfig.base.json",
+            "evidence": [
+              "noUnusedLocals"
+            ]
+          },
+          {
+            "code": "PRESET_STRICT_FLAG_WEAKENED",
+            "path": "tsconfig.base.json",
+            "evidence": [
+              "noUnusedParameters"
+            ]
+          },
+          {
+            "code": "PRESET_STRICT_FLAG_WEAKENED",
+            "path": "tsconfig.base.json",
+            "evidence": [
+              "isolatedModules"
+            ]
+          },
+          {
+            "code": "PRESET_STRICT_FLAG_WEAKENED",
+            "path": "tsconfig.base.json",
+            "evidence": [
+              "verbatimModuleSyntax"
+            ]
+          },
+          {
+            "code": "PRESET_STRICT_FLAG_WEAKENED",
+            "path": "tsconfig.base.json",
+            "evidence": [
+              "forceConsistentCasingInFileNames"
+            ]
+          },
+          {
+            "code": "PRESET_STRICT_FLAG_WEAKENED",
+            "path": "tsconfig.base.json",
+            "evidence": [
+              "allowUnreachableCode"
+            ]
+          },
+          {
+            "code": "PRESET_STRICT_FLAG_WEAKENED",
+            "path": "tsconfig.base.json",
+            "evidence": [
+              "allowUnusedLabels"
+            ]
+          },
+          {
+            "code": "PRESET_STRICT_FLAG_WEAKENED",
+            "path": "tsconfig.base.json",
+            "evidence": []
+          },
+          {
+            "code": "PRESET_MISSING_REQUIRED_FILE",
+            "path": "packages/example/tsconfig.json",
+            "evidence": []
+          }
+        ]
+      },
+      {
+        "name": "missing required generated file",
+        "expectedCodes": [
+          "PRESET_MISSING_REQUIRED_FILE"
+        ],
+        "observedCodes": [
+          "PRESET_MISSING_REQUIRED_FILE",
+          "PRESET_MISSING_REQUIRED_FILE"
+        ],
+        "findings": [
+          {
+            "code": "PRESET_MISSING_REQUIRED_FILE",
+            "path": "turbo.json",
+            "evidence": [
+              "turbo.json"
+            ]
+          },
+          {
+            "code": "PRESET_MISSING_REQUIRED_FILE",
+            "path": "turbo.json",
+            "evidence": []
+          }
+        ]
+      },
+      {
+        "name": "generated manifest missing ownership",
+        "expectedCodes": [
+          "PRESET_MANIFEST_CONTENT_MISMATCH"
+        ],
+        "observedCodes": [
+          "PRESET_MANIFEST_CONTENT_MISMATCH"
+        ],
+        "findings": [
+          {
+            "code": "PRESET_MANIFEST_CONTENT_MISMATCH",
+            "path": ".vibe/generated/typescript-preset/manifest.json",
+            "evidence": [
+              "tsconfig.base.json"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "generated manifest missing consumer notes",
+        "expectedCodes": [
+          "PRESET_MANIFEST_CONTENT_MISMATCH"
+        ],
+        "observedCodes": [
+          "PRESET_MANIFEST_CONTENT_MISMATCH"
+        ],
+        "findings": [
+          {
+            "code": "PRESET_MANIFEST_CONTENT_MISMATCH",
+            "path": ".vibe/generated/typescript-preset/manifest.json",
+            "evidence": [
+              "tsconfig.base.json"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "strict false",
+        "expectedCodes": [
+          "PRESET_STRICT_FLAG_WEAKENED"
+        ],
+        "observedCodes": [
+          "PRESET_STRICT_FLAG_WEAKENED"
+        ],
+        "findings": [
+          {
+            "code": "PRESET_STRICT_FLAG_WEAKENED",
+            "path": "tsconfig.base.json",
+            "evidence": [
+              "strict"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "missing noUncheckedIndexedAccess",
+        "expectedCodes": [
+          "PRESET_STRICT_FLAG_WEAKENED"
+        ],
+        "observedCodes": [
+          "PRESET_STRICT_FLAG_WEAKENED"
+        ],
+        "findings": [
+          {
+            "code": "PRESET_STRICT_FLAG_WEAKENED",
+            "path": "tsconfig.base.json",
+            "evidence": [
+              "noUncheckedIndexedAccess"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "missing exactOptionalPropertyTypes",
+        "expectedCodes": [
+          "PRESET_STRICT_FLAG_WEAKENED"
+        ],
+        "observedCodes": [
+          "PRESET_STRICT_FLAG_WEAKENED"
+        ],
+        "findings": [
+          {
+            "code": "PRESET_STRICT_FLAG_WEAKENED",
+            "path": "tsconfig.base.json",
+            "evidence": [
+              "exactOptionalPropertyTypes"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "missing noImplicitOverride",
+        "expectedCodes": [
+          "PRESET_STRICT_FLAG_WEAKENED"
+        ],
+        "observedCodes": [
+          "PRESET_STRICT_FLAG_WEAKENED"
+        ],
+        "findings": [
+          {
+            "code": "PRESET_STRICT_FLAG_WEAKENED",
+            "path": "tsconfig.base.json",
+            "evidence": [
+              "noImplicitOverride"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "package tsconfig not extending strict base",
+        "expectedCodes": [
+          "PRESET_PACKAGE_TSCONFIG_WEAKENED"
+        ],
+        "observedCodes": [
+          "PRESET_PACKAGE_TSCONFIG_WEAKENED"
+        ],
+        "findings": [
+          {
+            "code": "PRESET_PACKAGE_TSCONFIG_WEAKENED",
+            "path": "packages/example/tsconfig.json",
+            "evidence": []
+          }
+        ]
+      },
+      {
+        "name": "malformed generated JSON",
+        "expectedCodes": [
+          "PRESET_MALFORMED_JSON"
+        ],
+        "observedCodes": [
+          "PRESET_MALFORMED_JSON"
+        ],
+        "findings": [
+          {
+            "code": "PRESET_MALFORMED_JSON",
+            "path": "tsconfig.base.json",
+            "evidence": [
+              "Expected property name or '}' in JSON at position 2 (line 1 column 3)"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "domain/business vocabulary in core output",
+        "expectedCodes": [
+          "PRESET_DOMAIN_SPECIFIC_CORE_TEXT"
+        ],
+        "observedCodes": [
+          "PRESET_DOMAIN_SPECIFIC_CORE_TEXT"
+        ],
+        "findings": [
+          {
+            "code": "PRESET_DOMAIN_SPECIFIC_CORE_TEXT",
+            "path": ".vibe/generated/typescript-preset/manifest.json",
+            "evidence": [
+              "checkout"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "path traversal generated file path",
+        "expectedCodes": [
+          "PRESET_UNSAFE_GENERATED_PATH"
+        ],
+        "observedCodes": [
+          "PRESET_MANIFEST_CONTENT_MISMATCH",
+          "PRESET_UNSAFE_GENERATED_PATH",
+          "PRESET_MISSING_REQUIRED_FILE",
+          "PRESET_MISSING_REQUIRED_FILE"
+        ],
+        "findings": [
+          {
+            "code": "PRESET_MANIFEST_CONTENT_MISMATCH",
+            "path": "../escape.json",
+            "evidence": [
+              "../escape.json"
+            ]
+          },
+          {
+            "code": "PRESET_UNSAFE_GENERATED_PATH",
+            "path": "../escape.json",
+            "evidence": [
+              "../escape.json"
+            ]
+          },
+          {
+            "code": "PRESET_MISSING_REQUIRED_FILE",
+            "path": "tsconfig.base.json",
+            "evidence": [
+              "tsconfig.base.json"
+            ]
+          },
+          {
+            "code": "PRESET_MISSING_REQUIRED_FILE",
+            "path": "tsconfig.base.json",
+            "evidence": []
+          }
+        ]
+      },
+      {
+        "name": "absolute generated file path",
+        "expectedCodes": [
+          "PRESET_UNSAFE_GENERATED_PATH"
+        ],
+        "observedCodes": [
+          "PRESET_MANIFEST_CONTENT_MISMATCH",
+          "PRESET_UNSAFE_GENERATED_PATH",
+          "PRESET_MISSING_REQUIRED_FILE",
+          "PRESET_MISSING_REQUIRED_FILE"
+        ],
+        "findings": [
+          {
+            "code": "PRESET_MANIFEST_CONTENT_MISMATCH",
+            "path": "/tmp/escape.json",
+            "evidence": [
+              "/tmp/escape.json"
+            ]
+          },
+          {
+            "code": "PRESET_UNSAFE_GENERATED_PATH",
+            "path": "/tmp/escape.json",
+            "evidence": [
+              "/tmp/escape.json"
+            ]
+          },
+          {
+            "code": "PRESET_MISSING_REQUIRED_FILE",
+            "path": "tsconfig.base.json",
+            "evidence": [
+              "tsconfig.base.json"
+            ]
+          },
+          {
+            "code": "PRESET_MISSING_REQUIRED_FILE",
+            "path": "tsconfig.base.json",
+            "evidence": []
+          }
+        ]
+      },
+      {
+        "name": "production dependency on @vibe-engineer/testing",
+        "expectedCodes": [
+          "PRESET_FORBIDDEN_TESTING_PRODUCTION_DEPENDENCY"
+        ],
+        "observedCodes": [
+          "PRESET_FORBIDDEN_TESTING_PRODUCTION_DEPENDENCY"
+        ],
+        "findings": [
+          {
+            "code": "PRESET_FORBIDDEN_TESTING_PRODUCTION_DEPENDENCY",
+            "path": "package.json",
+            "evidence": [
+              "dependencies"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "validator input null fails closed",
+        "expectedCodes": [
+          "PRESET_MALFORMED_RENDER_OPTIONS"
+        ],
+        "observedCodes": [
+          "PRESET_MALFORMED_RENDER_OPTIONS"
+        ],
+        "findings": [
+          {
+            "code": "PRESET_MALFORMED_RENDER_OPTIONS",
+            "path": "",
+            "evidence": []
+          }
+        ]
+      },
+      {
+        "name": "validator input malformed entry fails closed",
+        "expectedCodes": [
+          "PRESET_MALFORMED_RENDER_OPTIONS"
+        ],
+        "observedCodes": [
+          "PRESET_MALFORMED_RENDER_OPTIONS",
+          "PRESET_MISSING_REQUIRED_FILE",
+          "PRESET_MISSING_REQUIRED_FILE",
+          "PRESET_MISSING_REQUIRED_FILE",
+          "PRESET_MISSING_REQUIRED_FILE",
+          "PRESET_MISSING_REQUIRED_FILE",
+          "PRESET_MISSING_REQUIRED_FILE",
+          "PRESET_MISSING_REQUIRED_FILE",
+          "PRESET_MISSING_REQUIRED_FILE",
+          "PRESET_MISSING_REQUIRED_FILE",
+          "PRESET_MISSING_REQUIRED_FILE",
+          "PRESET_MISSING_REQUIRED_FILE",
+          "PRESET_MISSING_REQUIRED_FILE",
+          "PRESET_MISSING_REQUIRED_FILE",
+          "PRESET_MISSING_REQUIRED_FILE",
+          "PRESET_MISSING_REQUIRED_FILE",
+          "PRESET_MISSING_REQUIRED_FILE",
+          "PRESET_MISSING_REQUIRED_FILE",
+          "PRESET_MISSING_REQUIRED_FILE",
+          "PRESET_MISSING_REQUIRED_FILE",
+          "PRESET_MISSING_REQUIRED_FILE",
+          "PRESET_MISSING_REQUIRED_FILE",
+          "PRESET_MISSING_REQUIRED_FILE"
+        ],
+        "findings": [
+          {
+            "code": "PRESET_MALFORMED_RENDER_OPTIONS",
+            "path": "",
+            "evidence": []
+          },
+          {
+            "code": "PRESET_MISSING_REQUIRED_FILE",
+            "path": "tsconfig.base.json",
+            "evidence": [
+              "tsconfig.base.json"
+            ]
+          },
+          {
+            "code": "PRESET_MISSING_REQUIRED_FILE",
+            "path": "packages/example/tsconfig.json",
+            "evidence": [
+              "packages/example/tsconfig.json"
+            ]
+          },
+          {
+            "code": "PRESET_MISSING_REQUIRED_FILE",
+            "path": "eslint.config.mjs",
+            "evidence": [
+              "eslint.config.mjs"
+            ]
+          },
+          {
+            "code": "PRESET_MISSING_REQUIRED_FILE",
+            "path": ".vibe/generated/typescript-preset/eslint-policy.json",
+            "evidence": [
+              ".vibe/generated/typescript-preset/eslint-policy.json"
+            ]
+          },
+          {
+            "code": "PRESET_MISSING_REQUIRED_FILE",
+            "path": "prettier.config.mjs",
+            "evidence": [
+              "prettier.config.mjs"
+            ]
+          },
+          {
+            "code": "PRESET_MISSING_REQUIRED_FILE",
+            "path": ".vibe/generated/typescript-preset/prettier-policy.json",
+            "evidence": [
+              ".vibe/generated/typescript-preset/prettier-policy.json"
+            ]
+          },
+          {
+            "code": "PRESET_MISSING_REQUIRED_FILE",
+            "path": "pnpm-workspace.yaml",
+            "evidence": [
+              "pnpm-workspace.yaml"
+            ]
+          },
+          {
+            "code": "PRESET_MISSING_REQUIRED_FILE",
+            "path": "turbo.json",
+            "evidence": [
+              "turbo.json"
+            ]
+          },
+          {
+            "code": "PRESET_MISSING_REQUIRED_FILE",
+            "path": "package.json",
+            "evidence": [
+              "package.json"
+            ]
+          },
+          {
+            "code": "PRESET_MISSING_REQUIRED_FILE",
+            "path": "packages/example/package.json",
+            "evidence": [
+              "packages/example/package.json"
+            ]
+          },
+          {
+            "code": "PRESET_MISSING_REQUIRED_FILE",
+            "path": ".vibe/generated/typescript-preset/manifest.json",
+            "evidence": [
+              ".vibe/generated/typescript-preset/manifest.json"
+            ]
+          },
+          {
+            "code": "PRESET_MISSING_REQUIRED_FILE",
+            "path": "tsconfig.base.json",
+            "evidence": []
+          },
+          {
+            "code": "PRESET_MISSING_REQUIRED_FILE",
+            "path": "packages/example/tsconfig.json",
+            "evidence": []
+          },
+          {
+            "code": "PRESET_MISSING_REQUIRED_FILE",
+            "path": "eslint.config.mjs",
+            "evidence": []
+          },
+          {
+            "code": "PRESET_MISSING_REQUIRED_FILE",
+            "path": ".vibe/generated/typescript-preset/eslint-policy.json",
+            "evidence": []
+          },
+          {
+            "code": "PRESET_MISSING_REQUIRED_FILE",
+            "path": "prettier.config.mjs",
+            "evidence": []
+          },
+          {
+            "code": "PRESET_MISSING_REQUIRED_FILE",
+            "path": ".vibe/generated/typescript-preset/prettier-policy.json",
+            "evidence": []
+          },
+          {
+            "code": "PRESET_MISSING_REQUIRED_FILE",
+            "path": "package.json",
+            "evidence": []
+          },
+          {
+            "code": "PRESET_MISSING_REQUIRED_FILE",
+            "path": "turbo.json",
+            "evidence": []
+          },
+          {
+            "code": "PRESET_MISSING_REQUIRED_FILE",
+            "path": "package.json",
+            "evidence": []
+          },
+          {
+            "code": "PRESET_MISSING_REQUIRED_FILE",
+            "path": "packages/example/package.json",
+            "evidence": []
+          },
+          {
+            "code": "PRESET_MISSING_REQUIRED_FILE",
+            "path": ".vibe/generated/typescript-preset/manifest.json",
+            "evidence": []
+          }
+        ]
+      }
+    ],
+    "rendererOptionResults": [
+      {
+        "name": "unknown option/property",
+        "code": "PRESET_MALFORMED_RENDER_OPTIONS",
+        "message": "Unknown renderer option: unknownProperty.",
+        "finding": {
+          "code": "PRESET_MALFORMED_RENDER_OPTIONS",
+          "path": "<renderer-options>",
+          "message": "Unknown renderer option: unknownProperty.",
+          "blocking": true,
+          "evidence": [
+            "unknownProperty"
+          ]
+        }
+      },
+      {
+        "name": "wrong includeSampleSource type",
+        "code": "PRESET_MALFORMED_RENDER_OPTIONS",
+        "message": "includeSampleSource must be a boolean when provided.",
+        "finding": {
+          "code": "PRESET_MALFORMED_RENDER_OPTIONS",
+          "path": "<renderer-options>",
+          "message": "includeSampleSource must be a boolean when provided.",
+          "blocking": true,
+          "evidence": [
+            "string"
+          ]
+        }
+      },
+      {
+        "name": "null options",
+        "code": "PRESET_MALFORMED_RENDER_OPTIONS",
+        "message": "Renderer options must be an object when provided.",
+        "finding": {
+          "code": "PRESET_MALFORMED_RENDER_OPTIONS",
+          "path": "<renderer-options>",
+          "message": "Renderer options must be an object when provided.",
+          "blocking": true,
+          "evidence": [
+            "null"
+          ]
+        }
+      },
+      {
+        "name": "non-object options",
+        "code": "PRESET_MALFORMED_RENDER_OPTIONS",
+        "message": "Renderer options must be an object when provided.",
+        "finding": {
+          "code": "PRESET_MALFORMED_RENDER_OPTIONS",
+          "path": "<renderer-options>",
+          "message": "Renderer options must be an object when provided.",
+          "blocking": true,
+          "evidence": [
+            "not-an-object"
+          ]
+        }
+      },
+      {
+        "name": "path traversal packageDirectory",
+        "code": "PRESET_MALFORMED_RENDER_OPTIONS",
+        "message": "packageDirectory must be the normalized preset-owned packages/example path.",
+        "finding": {
+          "code": "PRESET_MALFORMED_RENDER_OPTIONS",
+          "path": "<renderer-options>",
+          "message": "packageDirectory must be the normalized preset-owned packages/example path.",
+          "blocking": true,
+          "evidence": [
+            "../escape"
+          ]
+        }
+      },
+      {
+        "name": "absolute packageDirectory",
+        "code": "PRESET_MALFORMED_RENDER_OPTIONS",
+        "message": "packageDirectory must be the normalized preset-owned packages/example path.",
+        "finding": {
+          "code": "PRESET_MALFORMED_RENDER_OPTIONS",
+          "path": "<renderer-options>",
+          "message": "packageDirectory must be the normalized preset-owned packages/example path.",
+          "blocking": true,
+          "evidence": [
+            "/tmp/example"
+          ]
+        }
+      },
+      {
+        "name": "unsafe package/root name",
+        "code": "PRESET_MALFORMED_RENDER_OPTIONS",
+        "message": "packageName is malformed or forbidden for generated production dependencies.",
+        "finding": {
+          "code": "PRESET_MALFORMED_RENDER_OPTIONS",
+          "path": "<renderer-options>",
+          "message": "packageName is malformed or forbidden for generated production dependencies.",
+          "blocking": true,
+          "evidence": [
+            "Unsafe Name"
+          ]
+        }
+      },
+      {
+        "name": "testing package name",
+        "code": "PRESET_MALFORMED_RENDER_OPTIONS",
+        "message": "packageName is malformed or forbidden for generated production dependencies.",
+        "finding": {
+          "code": "PRESET_MALFORMED_RENDER_OPTIONS",
+          "path": "<renderer-options>",
+          "message": "packageName is malformed or forbidden for generated production dependencies.",
+          "blocking": true,
+          "evidence": [
+            "@vibe-engineer/testing"
+          ]
+        }
+      }
+    ]
+  },
+  "i07cEvidence": {
+    "before": {
+      "report": {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-07C-standards-package/I-07C-post-fix-revalidation-report.md",
+        "exists": true,
+        "size": 17607,
+        "mtimeMs": 1782342706097.7373,
+        "sha256": "2970da568817d1fe010b29487b6e1db79281fcbdc8b261549e6e77efdb137ec6"
+      },
+      "artifact": {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-07C-standards-package/I-07C-post-fix-revalidation-artifact.md",
+        "exists": true,
+        "size": 2198,
+        "mtimeMs": 1782342676997.408,
+        "sha256": "39350c86784a3f946b6fdfeb7f287bf310e885f68f87e06ee9ae3948b15487b7"
+      },
+      "fixEvidence": {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-07C-standards-package/fix-evidence/implementation-witness-rerun/standards-witness-result.json",
+        "exists": true,
+        "size": 14583,
+        "mtimeMs": 1782342029309.0005,
+        "sha256": "58cf0cca7bc93871a98360d620c7b30a389b5ffb877bc9a4c541160b879db262"
+      },
+      "validationEvidence": {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-07C-standards-package/validation-evidence/implementation-witness-rerun/standards-witness-result.json",
+        "exists": true,
+        "size": 8989,
+        "mtimeMs": 1782340397236.7231,
+        "sha256": "492f5f077359b4599127c016b932e7ab97e8cf9b2d0882338f5fcbf64f4e29c2"
+      }
+    },
+    "after": {
+      "report": {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-07C-standards-package/I-07C-post-fix-revalidation-report.md",
+        "exists": true,
+        "size": 17607,
+        "mtimeMs": 1782342706097.7373,
+        "sha256": "2970da568817d1fe010b29487b6e1db79281fcbdc8b261549e6e77efdb137ec6"
+      },
+      "artifact": {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-07C-standards-package/I-07C-post-fix-revalidation-artifact.md",
+        "exists": true,
+        "size": 2198,
+        "mtimeMs": 1782342676997.408,
+        "sha256": "39350c86784a3f946b6fdfeb7f287bf310e885f68f87e06ee9ae3948b15487b7"
+      },
+      "fixEvidence": {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-07C-standards-package/fix-evidence/implementation-witness-rerun/standards-witness-result.json",
+        "exists": true,
+        "size": 14583,
+        "mtimeMs": 1782342029309.0005,
+        "sha256": "58cf0cca7bc93871a98360d620c7b30a389b5ffb877bc9a4c541160b879db262"
+      },
+      "validationEvidence": {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-07C-standards-package/validation-evidence/implementation-witness-rerun/standards-witness-result.json",
+        "exists": true,
+        "size": 8989,
+        "mtimeMs": 1782340397236.7231,
+        "sha256": "492f5f077359b4599127c016b932e7ab97e8cf9b2d0882338f5fcbf64f4e29c2"
+      }
+    },
+    "unchanged": true
+  }
+}

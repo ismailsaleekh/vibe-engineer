@@ -1,0 +1,806 @@
+{
+  "ok": false,
+  "repoRoot": "/Users/lizavasilyeva/work/vibe-engineer",
+  "workRoot": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-07D-typescript-preset-package",
+  "fixtureRoot": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-07D-typescript-preset-package/validator-fixtures/strict-project",
+  "compiledRoot": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-07D-typescript-preset-package/validator-compiled",
+  "consumerRoot": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-07D-typescript-preset-package/validator-fixtures/package-consumer",
+  "commands": {
+    "packageTypecheck": {
+      "command": "/Users/lizavasilyeva/work/vibe-engineer/node_modules/.bin/tsc --noEmit -p packages/presets/typescript/tsconfig.json --pretty false",
+      "cwd": "/Users/lizavasilyeva/work/vibe-engineer",
+      "status": 0,
+      "signal": null,
+      "stdout": "",
+      "stderr": ""
+    },
+    "validatorConsumerTypecheck": {
+      "command": "/Users/lizavasilyeva/work/vibe-engineer/node_modules/.bin/tsc --noEmit -p tsconfig.json --pretty false",
+      "cwd": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-07D-typescript-preset-package/validator-fixtures/package-consumer",
+      "status": 0,
+      "signal": null,
+      "stdout": "",
+      "stderr": ""
+    },
+    "packageCompile": {
+      "command": "/Users/lizavasilyeva/work/vibe-engineer/node_modules/.bin/tsc -p packages/presets/typescript/tsconfig.json --noEmit false --outDir .vibe/work/I-07D-typescript-preset-package/validator-compiled --rootDir packages/presets/typescript --declaration true --declarationMap true --sourceMap true --pretty false",
+      "cwd": "/Users/lizavasilyeva/work/vibe-engineer",
+      "status": 0,
+      "signal": null,
+      "stdout": "",
+      "stderr": ""
+    },
+    "rootBarePackageImport": {
+      "command": "node -e import('@vibe-engineer/preset-typescript').then((m)=>console.log(JSON.stringify({ok:true,keys:Object.keys(m).length}))).catch((error)=>{console.error(error instanceof Error ? error.message : String(error)); process.exit(1);})",
+      "cwd": "/Users/lizavasilyeva/work/vibe-engineer",
+      "status": 1,
+      "signal": null,
+      "stdout": "",
+      "stderr": "Cannot find package '@vibe-engineer/preset-typescript' imported from /Users/lizavasilyeva/work/vibe-engineer/[eval]\n"
+    },
+    "consumerSymlinkPackageImport": {
+      "command": "node -e import('@vibe-engineer/preset-typescript').then((m)=>{const files=m.renderTypeScriptPresetFiles(); const result=m.validateTypeScriptPresetFiles(files); console.log(JSON.stringify({ok:result.ok,fileCount:files.length,keys:Object.keys(m).length})); if(!result.ok) process.exit(2);}).catch((error)=>{console.error(error instanceof Error ? error.message : String(error)); process.exit(1);})",
+      "cwd": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-07D-typescript-preset-package/validator-fixtures/package-consumer",
+      "status": 0,
+      "signal": null,
+      "stdout": "{\"ok\":true,\"fileCount\":12,\"keys\":17}\n",
+      "stderr": ""
+    },
+    "generatedFixtureTsc": {
+      "command": "/Users/lizavasilyeva/work/vibe-engineer/node_modules/.bin/tsc -p packages/example/tsconfig.json --noEmit --pretty false",
+      "cwd": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-07D-typescript-preset-package/validator-fixtures/strict-project",
+      "status": 0,
+      "signal": null,
+      "stdout": "",
+      "stderr": ""
+    },
+    "standardsRegression": {
+      "command": "node packages/standards/fixtures/run-witnesses.mjs",
+      "cwd": "/Users/lizavasilyeva/work/vibe-engineer",
+      "status": 0,
+      "signal": null,
+      "stdout": "{\n  \"ok\": true,\n  \"evidencePath\": \"/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-07D-typescript-preset-package/validator-evidence/standards-regression/standards-witness-result.json\",\n  \"standardCount\": 7\n}\n",
+      "stderr": ""
+    },
+    "sourceJsScan": {
+      "command": "find packages/presets/typescript/src -type f ( -name *.js -o -name *.mjs -o -name *.cjs ) -print",
+      "cwd": "/Users/lizavasilyeva/work/vibe-engineer",
+      "status": 0,
+      "signal": null,
+      "stdout": "",
+      "stderr": ""
+    },
+    "noProductBuildOutput": {
+      "command": "find packages/presets/typescript ( -path packages/presets/typescript/dist -o -path packages/presets/typescript/dist/* -o -path packages/presets/typescript/build -o -path packages/presets/typescript/build/* ) -print",
+      "cwd": "/Users/lizavasilyeva/work/vibe-engineer",
+      "status": 0,
+      "signal": null,
+      "stdout": "",
+      "stderr": ""
+    }
+  },
+  "exportsEvidence": {
+    "private": true,
+    "dependencies": null,
+    "devDependencies": null,
+    "exportsImport": "./src/index.ts",
+    "exportsTypes": "./src/index.ts",
+    "exportImportExists": true,
+    "exportTypesExists": true
+  },
+  "renderedFileCount": 12,
+  "diskFileCount": 12,
+  "validation": {
+    "ok": true,
+    "fileCount": 12
+  },
+  "strictFlagEvidence": [
+    {
+      "flag": "strict",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "flag": "noImplicitAny",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "flag": "strictNullChecks",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "flag": "strictFunctionTypes",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "flag": "strictBindCallApply",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "flag": "strictPropertyInitialization",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "flag": "noImplicitThis",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "flag": "alwaysStrict",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "flag": "exactOptionalPropertyTypes",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "flag": "noUncheckedIndexedAccess",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "flag": "noImplicitOverride",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "flag": "noImplicitReturns",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "flag": "noPropertyAccessFromIndexSignature",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "flag": "useUnknownInCatchVariables",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "flag": "noFallthroughCasesInSwitch",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "flag": "noUnusedLocals",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "flag": "noUnusedParameters",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "flag": "isolatedModules",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "flag": "verbatimModuleSyntax",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "flag": "forceConsistentCasingInFileNames",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "flag": "allowUnreachableCode",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "flag": "allowUnusedLabels",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    }
+  ],
+  "packageTsconfigEvidence": {
+    "extends": "../../tsconfig.base.json",
+    "pass": true
+  },
+  "standardsCompatibility": [
+    {
+      "standardId": "dependency-hygiene",
+      "exists": true,
+      "validates": true,
+      "pass": true
+    },
+    {
+      "standardId": "deterministic-schematics",
+      "exists": true,
+      "validates": true,
+      "pass": true
+    },
+    {
+      "standardId": "dirty-tree-ownership",
+      "exists": true,
+      "validates": true,
+      "pass": true
+    },
+    {
+      "standardId": "domain-neutral-core",
+      "exists": true,
+      "validates": true,
+      "pass": true
+    },
+    {
+      "standardId": "real-boundary-witnesses",
+      "exists": true,
+      "validates": true,
+      "pass": true
+    },
+    {
+      "standardId": "report-first-evidence",
+      "exists": true,
+      "validates": true,
+      "pass": true
+    },
+    {
+      "standardId": "typed-boundary-contracts",
+      "exists": true,
+      "validates": true,
+      "pass": true
+    }
+  ],
+  "manifestStandardIds": [
+    "dependency-hygiene",
+    "deterministic-schematics",
+    "dirty-tree-ownership",
+    "domain-neutral-core",
+    "real-boundary-witnesses",
+    "report-first-evidence",
+    "typed-boundary-contracts"
+  ],
+  "negativeResults": [
+    {
+      "name": "strict:false",
+      "expectedCode": "PRESET_STRICT_FLAG_WEAKENED",
+      "accepted": false,
+      "observedCodes": [
+        "PRESET_STRICT_FLAG_WEAKENED"
+      ],
+      "pass": true
+    },
+    {
+      "name": "missing noUncheckedIndexedAccess",
+      "expectedCode": "PRESET_STRICT_FLAG_WEAKENED",
+      "accepted": false,
+      "observedCodes": [
+        "PRESET_STRICT_FLAG_WEAKENED"
+      ],
+      "pass": true
+    },
+    {
+      "name": "missing exactOptionalPropertyTypes",
+      "expectedCode": "PRESET_STRICT_FLAG_WEAKENED",
+      "accepted": false,
+      "observedCodes": [
+        "PRESET_STRICT_FLAG_WEAKENED"
+      ],
+      "pass": true
+    },
+    {
+      "name": "missing noImplicitOverride",
+      "expectedCode": "PRESET_STRICT_FLAG_WEAKENED",
+      "accepted": false,
+      "observedCodes": [
+        "PRESET_STRICT_FLAG_WEAKENED"
+      ],
+      "pass": true
+    },
+    {
+      "name": "package tsconfig does not extend base",
+      "expectedCode": "PRESET_PACKAGE_TSCONFIG_WEAKENED",
+      "accepted": false,
+      "observedCodes": [
+        "PRESET_PACKAGE_TSCONFIG_WEAKENED"
+      ],
+      "pass": true
+    },
+    {
+      "name": "eslint policy missing no-explicit-any",
+      "expectedCode": "PRESET_ESLINT_RULE_MISSING",
+      "accepted": false,
+      "observedCodes": [
+        "PRESET_ESLINT_RULE_MISSING"
+      ],
+      "pass": true
+    },
+    {
+      "name": "eslint config missing no-explicit-any while policy stale",
+      "expectedCode": "PRESET_ESLINT_RULE_MISSING",
+      "accepted": true,
+      "observedCodes": [],
+      "pass": false
+    },
+    {
+      "name": "prettier policy missing printWidth",
+      "expectedCode": "PRESET_PRETTIER_DEFAULT_MISSING",
+      "accepted": false,
+      "observedCodes": [
+        "PRESET_PRETTIER_DEFAULT_MISSING"
+      ],
+      "pass": true
+    },
+    {
+      "name": "prettier config missing deterministic settings while policy stale",
+      "expectedCode": "PRESET_PRETTIER_DEFAULT_MISSING",
+      "accepted": true,
+      "observedCodes": [],
+      "pass": false
+    },
+    {
+      "name": "path traversal",
+      "expectedCode": "PRESET_UNSAFE_GENERATED_PATH",
+      "accepted": false,
+      "observedCodes": [
+        "PRESET_UNSAFE_GENERATED_PATH",
+        "PRESET_MISSING_REQUIRED_FILE",
+        "PRESET_MISSING_REQUIRED_FILE"
+      ],
+      "pass": true
+    },
+    {
+      "name": "absolute path",
+      "expectedCode": "PRESET_UNSAFE_GENERATED_PATH",
+      "accepted": false,
+      "observedCodes": [
+        "PRESET_UNSAFE_GENERATED_PATH",
+        "PRESET_MISSING_REQUIRED_FILE",
+        "PRESET_MISSING_REQUIRED_FILE"
+      ],
+      "pass": true
+    },
+    {
+      "name": "duplicate output path",
+      "expectedCode": "PRESET_DUPLICATE_GENERATED_PATH",
+      "accepted": false,
+      "observedCodes": [
+        "PRESET_DUPLICATE_GENERATED_PATH",
+        "PRESET_MISSING_REQUIRED_FILE",
+        "PRESET_STRICT_FLAG_WEAKENED",
+        "PRESET_STRICT_FLAG_WEAKENED",
+        "PRESET_STRICT_FLAG_WEAKENED",
+        "PRESET_STRICT_FLAG_WEAKENED",
+        "PRESET_STRICT_FLAG_WEAKENED",
+        "PRESET_STRICT_FLAG_WEAKENED",
+        "PRESET_STRICT_FLAG_WEAKENED",
+        "PRESET_STRICT_FLAG_WEAKENED",
+        "PRESET_STRICT_FLAG_WEAKENED",
+        "PRESET_STRICT_FLAG_WEAKENED",
+        "PRESET_STRICT_FLAG_WEAKENED",
+        "PRESET_STRICT_FLAG_WEAKENED",
+        "PRESET_STRICT_FLAG_WEAKENED",
+        "PRESET_STRICT_FLAG_WEAKENED",
+        "PRESET_STRICT_FLAG_WEAKENED",
+        "PRESET_STRICT_FLAG_WEAKENED",
+        "PRESET_STRICT_FLAG_WEAKENED",
+        "PRESET_STRICT_FLAG_WEAKENED",
+        "PRESET_STRICT_FLAG_WEAKENED",
+        "PRESET_STRICT_FLAG_WEAKENED",
+        "PRESET_STRICT_FLAG_WEAKENED",
+        "PRESET_STRICT_FLAG_WEAKENED",
+        "PRESET_STRICT_FLAG_WEAKENED",
+        "PRESET_MISSING_REQUIRED_FILE"
+      ],
+      "pass": true
+    },
+    {
+      "name": "missing required generated file",
+      "expectedCode": "PRESET_MISSING_REQUIRED_FILE",
+      "accepted": false,
+      "observedCodes": [
+        "PRESET_MISSING_REQUIRED_FILE",
+        "PRESET_MISSING_REQUIRED_FILE"
+      ],
+      "pass": true
+    },
+    {
+      "name": "malformed generated JSON",
+      "expectedCode": "PRESET_MALFORMED_JSON",
+      "accepted": false,
+      "observedCodes": [
+        "PRESET_MALFORMED_JSON"
+      ],
+      "pass": true
+    },
+    {
+      "name": "file manifest outputPath mismatch",
+      "expectedCode": "PRESET_MANIFEST_CONTENT_MISMATCH",
+      "accepted": false,
+      "observedCodes": [
+        "PRESET_MANIFEST_CONTENT_MISMATCH"
+      ],
+      "pass": true
+    },
+    {
+      "name": "file manifest kind mismatch",
+      "expectedCode": "PRESET_MANIFEST_CONTENT_MISMATCH",
+      "accepted": true,
+      "observedCodes": [],
+      "pass": false
+    },
+    {
+      "name": "file manifest standardIds emptied",
+      "expectedCode": "PRESET_MANIFEST_CONTENT_MISMATCH",
+      "accepted": true,
+      "observedCodes": [],
+      "pass": false
+    },
+    {
+      "name": "generated manifest omits kind field",
+      "expectedCode": "PRESET_MANIFEST_CONTENT_MISMATCH",
+      "accepted": true,
+      "observedCodes": [],
+      "pass": false
+    },
+    {
+      "name": "domain-specific vocabulary in core output",
+      "expectedCode": "PRESET_DOMAIN_SPECIFIC_CORE_TEXT",
+      "accepted": false,
+      "observedCodes": [
+        "PRESET_DOMAIN_SPECIFIC_CORE_TEXT"
+      ],
+      "pass": true
+    },
+    {
+      "name": "quick gate full e2e default",
+      "expectedCode": "PRESET_FORBIDDEN_DEFAULT_COMMAND",
+      "accepted": false,
+      "observedCodes": [
+        "PRESET_FORBIDDEN_DEFAULT_COMMAND"
+      ],
+      "pass": true
+    },
+    {
+      "name": "quick gate full mobile e2e default",
+      "expectedCode": "PRESET_FORBIDDEN_DEFAULT_COMMAND",
+      "accepted": false,
+      "observedCodes": [
+        "PRESET_FORBIDDEN_DEFAULT_COMMAND",
+        "PRESET_FORBIDDEN_DEFAULT_COMMAND"
+      ],
+      "pass": true
+    },
+    {
+      "name": "quick gate full visual default",
+      "expectedCode": "PRESET_FORBIDDEN_DEFAULT_COMMAND",
+      "accepted": false,
+      "observedCodes": [
+        "PRESET_FORBIDDEN_DEFAULT_COMMAND"
+      ],
+      "pass": true
+    },
+    {
+      "name": "quick gate generic deploy default",
+      "expectedCode": "PRESET_FORBIDDEN_DEFAULT_COMMAND",
+      "accepted": true,
+      "observedCodes": [],
+      "pass": false
+    },
+    {
+      "name": "quick gate pulumi deploy alias default",
+      "expectedCode": "PRESET_FORBIDDEN_DEFAULT_COMMAND",
+      "accepted": true,
+      "observedCodes": [],
+      "pass": false
+    },
+    {
+      "name": "quick gate pulumi up default",
+      "expectedCode": "PRESET_FORBIDDEN_DEFAULT_COMMAND",
+      "accepted": false,
+      "observedCodes": [
+        "PRESET_FORBIDDEN_DEFAULT_COMMAND"
+      ],
+      "pass": true
+    },
+    {
+      "name": "testing production dependency",
+      "expectedCode": "PRESET_FORBIDDEN_TESTING_PRODUCTION_DEPENDENCY",
+      "accepted": false,
+      "observedCodes": [
+        "PRESET_FORBIDDEN_TESTING_PRODUCTION_DEPENDENCY"
+      ],
+      "pass": true
+    },
+    {
+      "name": "validator malformed non-array input",
+      "expectedCode": "PRESET_MALFORMED_RENDER_OPTIONS",
+      "accepted": false,
+      "observedCodes": [
+        "PRESET_MALFORMED_RENDER_OPTIONS"
+      ],
+      "pass": true
+    },
+    {
+      "name": "validator malformed file object",
+      "expectedCode": "PRESET_MALFORMED_RENDER_OPTIONS",
+      "accepted": false,
+      "observedCodes": [
+        "PRESET_MALFORMED_RENDER_OPTIONS",
+        "PRESET_MISSING_REQUIRED_FILE",
+        "PRESET_MISSING_REQUIRED_FILE",
+        "PRESET_MISSING_REQUIRED_FILE",
+        "PRESET_MISSING_REQUIRED_FILE",
+        "PRESET_MISSING_REQUIRED_FILE",
+        "PRESET_MISSING_REQUIRED_FILE",
+        "PRESET_MISSING_REQUIRED_FILE",
+        "PRESET_MISSING_REQUIRED_FILE",
+        "PRESET_MISSING_REQUIRED_FILE",
+        "PRESET_MISSING_REQUIRED_FILE",
+        "PRESET_MISSING_REQUIRED_FILE",
+        "PRESET_MISSING_REQUIRED_FILE",
+        "PRESET_MISSING_REQUIRED_FILE",
+        "PRESET_MISSING_REQUIRED_FILE",
+        "PRESET_MISSING_REQUIRED_FILE",
+        "PRESET_MISSING_REQUIRED_FILE",
+        "PRESET_MISSING_REQUIRED_FILE",
+        "PRESET_MISSING_REQUIRED_FILE",
+        "PRESET_MISSING_REQUIRED_FILE",
+        "PRESET_MISSING_REQUIRED_FILE"
+      ],
+      "pass": true
+    }
+  ],
+  "unexpectedNegativePasses": [
+    {
+      "name": "eslint config missing no-explicit-any while policy stale",
+      "expectedCode": "PRESET_ESLINT_RULE_MISSING",
+      "accepted": true,
+      "observedCodes": [],
+      "pass": false
+    },
+    {
+      "name": "prettier config missing deterministic settings while policy stale",
+      "expectedCode": "PRESET_PRETTIER_DEFAULT_MISSING",
+      "accepted": true,
+      "observedCodes": [],
+      "pass": false
+    },
+    {
+      "name": "file manifest kind mismatch",
+      "expectedCode": "PRESET_MANIFEST_CONTENT_MISMATCH",
+      "accepted": true,
+      "observedCodes": [],
+      "pass": false
+    },
+    {
+      "name": "file manifest standardIds emptied",
+      "expectedCode": "PRESET_MANIFEST_CONTENT_MISMATCH",
+      "accepted": true,
+      "observedCodes": [],
+      "pass": false
+    },
+    {
+      "name": "generated manifest omits kind field",
+      "expectedCode": "PRESET_MANIFEST_CONTENT_MISMATCH",
+      "accepted": true,
+      "observedCodes": [],
+      "pass": false
+    },
+    {
+      "name": "quick gate generic deploy default",
+      "expectedCode": "PRESET_FORBIDDEN_DEFAULT_COMMAND",
+      "accepted": true,
+      "observedCodes": [],
+      "pass": false
+    },
+    {
+      "name": "quick gate pulumi deploy alias default",
+      "expectedCode": "PRESET_FORBIDDEN_DEFAULT_COMMAND",
+      "accepted": true,
+      "observedCodes": [],
+      "pass": false
+    }
+  ],
+  "rendererOptions": [
+    {
+      "name": "unknown option silently ignored",
+      "accepted": true,
+      "returnedFileCount": 12,
+      "typedCode": null,
+      "pass": false
+    },
+    {
+      "name": "wrong includeSampleSource type",
+      "accepted": true,
+      "returnedFileCount": 12,
+      "typedCode": null,
+      "pass": false
+    },
+    {
+      "name": "null options",
+      "accepted": false,
+      "errorName": "TypeError",
+      "message": "Cannot read properties of null (reading 'packageDirectory')",
+      "typedCode": null,
+      "pass": false
+    },
+    {
+      "name": "path traversal packageDirectory",
+      "accepted": false,
+      "errorName": "Error",
+      "message": "packageDirectory must be the preset-owned packages/example fixture path in this lane.",
+      "typedCode": null,
+      "pass": false
+    },
+    {
+      "name": "forbidden testing packageName",
+      "accepted": false,
+      "errorName": "Error",
+      "message": "packageName is malformed or forbidden for this preset.",
+      "typedCode": null,
+      "pass": false
+    }
+  ],
+  "rendererOptionFailures": [
+    {
+      "name": "unknown option silently ignored",
+      "accepted": true,
+      "returnedFileCount": 12,
+      "typedCode": null,
+      "pass": false
+    },
+    {
+      "name": "wrong includeSampleSource type",
+      "accepted": true,
+      "returnedFileCount": 12,
+      "typedCode": null,
+      "pass": false
+    },
+    {
+      "name": "null options",
+      "accepted": false,
+      "errorName": "TypeError",
+      "message": "Cannot read properties of null (reading 'packageDirectory')",
+      "typedCode": null,
+      "pass": false
+    },
+    {
+      "name": "path traversal packageDirectory",
+      "accepted": false,
+      "errorName": "Error",
+      "message": "packageDirectory must be the preset-owned packages/example fixture path in this lane.",
+      "typedCode": null,
+      "pass": false
+    },
+    {
+      "name": "forbidden testing packageName",
+      "accepted": false,
+      "errorName": "Error",
+      "message": "packageName is malformed or forbidden for this preset.",
+      "typedCode": null,
+      "pass": false
+    }
+  ],
+  "defensiveCopy": {
+    "mutationThrew": true,
+    "originalLength": 2,
+    "afterLength": 2,
+    "pass": true
+  },
+  "templates": {
+    "strict-tsconfig-base.json": {
+      "parsed": true,
+      "keys": [
+        "$schema",
+        "compilerOptions"
+      ]
+    },
+    "package-tsconfig.json": {
+      "parsed": true,
+      "keys": [
+        "compilerOptions",
+        "extends",
+        "include"
+      ]
+    },
+    "eslint-policy.json": {
+      "parsed": true,
+      "keys": [
+        "boundaryRules",
+        "configFile",
+        "rules"
+      ]
+    },
+    "prettier-defaults.json": {
+      "parsed": true,
+      "keys": [
+        "arrowParens",
+        "bracketSpacing",
+        "endOfLine",
+        "printWidth",
+        "semi",
+        "singleQuote",
+        "trailingComma"
+      ]
+    },
+    "pnpm-workspace-defaults.json": {
+      "parsed": true,
+      "keys": [
+        "packageManager",
+        "workspaceGlobs"
+      ]
+    },
+    "turbo-task-defaults.json": {
+      "parsed": true,
+      "keys": [
+        "excludedFromDefaultQuickGate",
+        "quickGateLabel",
+        "tasks"
+      ]
+    },
+    "package-script-defaults.json": {
+      "parsed": true,
+      "keys": [
+        "build",
+        "format:check",
+        "lint",
+        "quality:quick",
+        "test:unit",
+        "typecheck"
+      ]
+    },
+    "test-typecheck-defaults.json": {
+      "parsed": true,
+      "keys": [
+        "defaultAutoDeploy",
+        "defaultFullE2E",
+        "defaultFullMobileE2E",
+        "defaultFullVisualVerification",
+        "quickGateCommand",
+        "typecheckCommand",
+        "unitTestCommand"
+      ]
+    }
+  },
+  "positiveChecks": {
+    "packageTypecheck": true,
+    "validatorConsumerTypecheck": true,
+    "packageCompile": true,
+    "consumerSymlinkPackageImport": true,
+    "generatedValidation": true,
+    "strictFlags": true,
+    "packageTsconfigExtends": true,
+    "generatedFixtureTsc": true,
+    "standardsIds": true,
+    "standardsRegression": true,
+    "defensiveCopy": true,
+    "sourceTsOnly": true,
+    "noProductBuildOutput": true
+  }
+}

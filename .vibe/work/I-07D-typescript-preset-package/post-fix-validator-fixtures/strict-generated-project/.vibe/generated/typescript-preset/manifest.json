@@ -1,0 +1,338 @@
+{
+  "metadata": {
+    "presetId": "vibe-engineer.typescript.strict",
+    "name": "Vibe Engineer TypeScript Strict Preset",
+    "version": "1.0.0",
+    "packageName": "@vibe-engineer/preset-typescript",
+    "private": true,
+    "domainNeutral": true,
+    "quickGateLabel": "quality:quick"
+  },
+  "files": [
+    {
+      "outputPath": "tsconfig.base.json",
+      "kind": "typescript-config",
+      "ownership": "generated-owned",
+      "requiredStandardIds": [
+        "typed-boundary-contracts",
+        "dependency-hygiene"
+      ],
+      "consumerNotes": "Root strict NodeNext TypeScript baseline."
+    },
+    {
+      "outputPath": "packages/example/tsconfig.json",
+      "kind": "typescript-config",
+      "ownership": "generated-owned",
+      "requiredStandardIds": [
+        "typed-boundary-contracts"
+      ],
+      "consumerNotes": "Package tsconfig extends the strict root base without weakening it."
+    },
+    {
+      "outputPath": "eslint.config.mjs",
+      "kind": "eslint-config",
+      "ownership": "generated-owned",
+      "requiredStandardIds": [
+        "typed-boundary-contracts",
+        "domain-neutral-core"
+      ],
+      "consumerNotes": "Strict ESLint flat-config generated from typed policy defaults."
+    },
+    {
+      "outputPath": ".vibe/generated/typescript-preset/eslint-policy.json",
+      "kind": "eslint-policy",
+      "ownership": "generated-owned",
+      "requiredStandardIds": [
+        "typed-boundary-contracts",
+        "domain-neutral-core"
+      ],
+      "consumerNotes": "Machine-readable ESLint policy contract for validators and future schematics."
+    },
+    {
+      "outputPath": "prettier.config.mjs",
+      "kind": "prettier-config",
+      "ownership": "generated-owned",
+      "requiredStandardIds": [
+        "deterministic-schematics"
+      ],
+      "consumerNotes": "Deterministic Prettier config generated from typed formatting defaults."
+    },
+    {
+      "outputPath": ".vibe/generated/typescript-preset/prettier-policy.json",
+      "kind": "prettier-policy",
+      "ownership": "generated-owned",
+      "requiredStandardIds": [
+        "deterministic-schematics"
+      ],
+      "consumerNotes": "Machine-readable formatting defaults for fail-closed validation."
+    },
+    {
+      "outputPath": "pnpm-workspace.yaml",
+      "kind": "workspace-config",
+      "ownership": "generated-owned",
+      "requiredStandardIds": [
+        "dependency-hygiene"
+      ],
+      "consumerNotes": "Workspace globs for generated apps and packages."
+    },
+    {
+      "outputPath": "turbo.json",
+      "kind": "turbo-config",
+      "ownership": "generated-owned",
+      "requiredStandardIds": [
+        "real-boundary-witnesses",
+        "dependency-hygiene"
+      ],
+      "consumerNotes": "Quick/local Turborepo tasks excluding full E2E, full mobile, full visual, and deploy defaults."
+    },
+    {
+      "outputPath": "package.json",
+      "kind": "package-manifest",
+      "ownership": "generated-owned",
+      "requiredStandardIds": [
+        "dependency-hygiene"
+      ],
+      "consumerNotes": "Root generated package scripts and package-manager metadata."
+    },
+    {
+      "outputPath": "packages/example/package.json",
+      "kind": "package-manifest",
+      "ownership": "generated-owned",
+      "requiredStandardIds": [
+        "dependency-hygiene"
+      ],
+      "consumerNotes": "Package-local strict scripts for future generated packages."
+    },
+    {
+      "outputPath": ".vibe/generated/typescript-preset/manifest.json",
+      "kind": "preset-metadata",
+      "ownership": "generated-owned",
+      "requiredStandardIds": [
+        "report-first-evidence",
+        "dirty-tree-ownership"
+      ],
+      "consumerNotes": "Generated manifest tying files to standards and mechanical-gate families."
+    },
+    {
+      "outputPath": "packages/example/src/sample.ts",
+      "kind": "source-fixture",
+      "ownership": "generated-owned",
+      "requiredStandardIds": [
+        "typed-boundary-contracts"
+      ],
+      "consumerNotes": "Small strict TypeScript source consumed by compiler witness."
+    }
+  ],
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": [
+      "ES2022"
+    ],
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "exactOptionalPropertyTypes": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "useUnknownInCatchVariables": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "noEmitOnError": true,
+    "skipLibCheck": false
+  },
+  "eslintPolicy": {
+    "configFile": "eslint.config.mjs",
+    "rules": [
+      {
+        "name": "@typescript-eslint/no-explicit-any",
+        "severity": "error",
+        "purpose": "Strict TypeScript preset enforcement for @typescript-eslint/no-explicit-any."
+      },
+      {
+        "name": "@typescript-eslint/no-non-null-assertion",
+        "severity": "error",
+        "purpose": "Strict TypeScript preset enforcement for @typescript-eslint/no-non-null-assertion."
+      },
+      {
+        "name": "@typescript-eslint/ban-ts-comment",
+        "severity": "error",
+        "purpose": "Strict TypeScript preset enforcement for @typescript-eslint/ban-ts-comment."
+      },
+      {
+        "name": "@typescript-eslint/no-unnecessary-type-assertion",
+        "severity": "error",
+        "purpose": "Strict TypeScript preset enforcement for @typescript-eslint/no-unnecessary-type-assertion."
+      },
+      {
+        "name": "@typescript-eslint/consistent-type-imports",
+        "severity": "error",
+        "purpose": "Strict TypeScript preset enforcement for @typescript-eslint/consistent-type-imports."
+      },
+      {
+        "name": "@typescript-eslint/no-confusing-void-expression",
+        "severity": "error",
+        "purpose": "Strict TypeScript preset enforcement for @typescript-eslint/no-confusing-void-expression."
+      },
+      {
+        "name": "@typescript-eslint/no-unsafe-assignment",
+        "severity": "error",
+        "purpose": "Strict TypeScript preset enforcement for @typescript-eslint/no-unsafe-assignment."
+      },
+      {
+        "name": "@typescript-eslint/no-unsafe-argument",
+        "severity": "error",
+        "purpose": "Strict TypeScript preset enforcement for @typescript-eslint/no-unsafe-argument."
+      },
+      {
+        "name": "@typescript-eslint/no-unsafe-call",
+        "severity": "error",
+        "purpose": "Strict TypeScript preset enforcement for @typescript-eslint/no-unsafe-call."
+      },
+      {
+        "name": "@typescript-eslint/no-unsafe-member-access",
+        "severity": "error",
+        "purpose": "Strict TypeScript preset enforcement for @typescript-eslint/no-unsafe-member-access."
+      },
+      {
+        "name": "@typescript-eslint/no-unsafe-return",
+        "severity": "error",
+        "purpose": "Strict TypeScript preset enforcement for @typescript-eslint/no-unsafe-return."
+      },
+      {
+        "name": "@typescript-eslint/restrict-template-expressions",
+        "severity": "error",
+        "purpose": "Strict TypeScript preset enforcement for @typescript-eslint/restrict-template-expressions."
+      },
+      {
+        "name": "@typescript-eslint/switch-exhaustiveness-check",
+        "severity": "error",
+        "purpose": "Strict TypeScript preset enforcement for @typescript-eslint/switch-exhaustiveness-check."
+      },
+      {
+        "name": "no-empty",
+        "severity": "error",
+        "purpose": "Strict TypeScript preset enforcement for no-empty."
+      },
+      {
+        "name": "no-fallthrough",
+        "severity": "error",
+        "purpose": "Strict TypeScript preset enforcement for no-fallthrough."
+      },
+      {
+        "name": "no-implicit-coercion",
+        "severity": "error",
+        "purpose": "Strict TypeScript preset enforcement for no-implicit-coercion."
+      },
+      {
+        "name": "no-restricted-syntax",
+        "severity": "error",
+        "purpose": "Strict TypeScript preset enforcement for no-restricted-syntax."
+      },
+      {
+        "name": "vibe-engineer/no-broad-domain-map-model",
+        "severity": "error",
+        "purpose": "Strict TypeScript preset enforcement for vibe-engineer/no-broad-domain-map-model."
+      }
+    ],
+    "boundaryRules": {
+      "rawJsonParseRequiresNamedBoundary": true,
+      "broadDomainMapModelsForbidden": true
+    }
+  },
+  "prettierDefaults": {
+    "printWidth": 100,
+    "semi": true,
+    "singleQuote": false,
+    "trailingComma": "all",
+    "arrowParens": "always",
+    "bracketSpacing": true,
+    "endOfLine": "lf"
+  },
+  "pnpmDefaults": {
+    "workspaceGlobs": [
+      "packages/*",
+      "apps/*"
+    ],
+    "packageManager": "pnpm@10.33.0"
+  },
+  "turboDefaults": {
+    "quickGateLabel": "quality:quick",
+    "tasks": {
+      "typecheck": {
+        "dependsOn": [
+          "^typecheck"
+        ],
+        "outputs": []
+      },
+      "lint": {
+        "dependsOn": [
+          "^lint"
+        ],
+        "outputs": []
+      },
+      "format:check": {
+        "outputs": []
+      },
+      "test:unit": {
+        "dependsOn": [
+          "^test:unit"
+        ],
+        "outputs": [
+          "coverage/**"
+        ]
+      },
+      "build": {
+        "dependsOn": [
+          "^build",
+          "typecheck"
+        ],
+        "outputs": [
+          "dist/**"
+        ]
+      },
+      "quality:quick": {
+        "dependsOn": [
+          "typecheck",
+          "lint",
+          "format:check",
+          "test:unit",
+          "build"
+        ],
+        "outputs": []
+      }
+    }
+  },
+  "packageScripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "lint": "eslint .",
+    "format:check": "prettier --check .",
+    "test:unit": "node --test",
+    "build": "tsc -p tsconfig.json",
+    "quality:quick": "pnpm run typecheck && pnpm run lint && pnpm run format:check && pnpm run test:unit && pnpm run build"
+  },
+  "testAndTypecheckDefaults": {
+    "typecheckCommand": "tsc --noEmit -p packages/example/tsconfig.json",
+    "unitTestCommand": "node --test packages/example/test/**/*.test.js",
+    "quickGateCommand": "pnpm run quality:quick",
+    "defaultFullE2E": false,
+    "defaultFullMobileE2E": false,
+    "defaultFullVisualVerification": false,
+    "defaultAutoDeploy": false
+  }
+}

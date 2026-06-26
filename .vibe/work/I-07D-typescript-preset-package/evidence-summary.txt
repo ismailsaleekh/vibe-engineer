@@ -1,0 +1,29 @@
+{
+  "ok": true,
+  "fileCount": 12,
+  "negativeCount": 14,
+  "packageSelfImport": {
+    "command": "node -e import('@vibe-engineer/preset-typescript').then((module) => { const files = module.renderTypeScriptPresetFiles(); const result = module.validateTypeScriptPresetFiles(files); if (!result.ok) process.exit(2); console.log(JSON.stringify({ ok: true, exportedKeys: Object.keys(module).length, fileCount: files.length })); }).catch((error) => { console.error(error instanceof Error ? error.message : String(error)); process.exit(1); })",
+    "cwd": "/Users/lizavasilyeva/work/vibe-engineer/packages/presets/typescript",
+    "status": 0,
+    "stdout": "{\"ok\":true,\"exportedKeys\":17,\"fileCount\":12}\n",
+    "stderr": ""
+  },
+  "generatedTsc": {
+    "command": "/Users/lizavasilyeva/work/vibe-engineer/node_modules/.bin/tsc -p packages/example/tsconfig.json --noEmit --pretty false",
+    "cwd": "/Users/lizavasilyeva/work/vibe-engineer/packages/presets/typescript/fixtures/generated/strict-project",
+    "status": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "standards": 0,
+  "standardIds": [
+    "dependency-hygiene",
+    "deterministic-schematics",
+    "dirty-tree-ownership",
+    "domain-neutral-core",
+    "real-boundary-witnesses",
+    "report-first-evidence",
+    "typed-boundary-contracts"
+  ]
+}

@@ -1,0 +1,16 @@
+--- owned changed/status inventory ---
+?? .vibe/work/I-07D-typescript-preset-package/
+?? packages/presets/typescript/
+--- no product js in src ---
+--- package manifest dependency/export regression ---
+{
+  "private": true,
+  "dependencyNames": [],
+  "exportTargets": [
+    "./src/index.ts",
+    "./src/index.ts"
+  ]
+}
+--- forbidden production imports scan ---
+no forbidden production import statements
+--- root/shared tracked diff safety ---

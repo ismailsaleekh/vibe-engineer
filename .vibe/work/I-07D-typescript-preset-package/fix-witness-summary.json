@@ -1,0 +1,124 @@
+{
+  "ok": true,
+  "generatedFileCount": 12,
+  "negativeCount": 33,
+  "rendererOptionCount": 7,
+  "negativeNames": [
+    "strict false",
+    "missing noUncheckedIndexedAccess",
+    "missing exactOptionalPropertyTypes",
+    "missing noImplicitOverride",
+    "package tsconfig weakened",
+    "eslint policy rule missing",
+    "actual eslint config rule missing while policy stale",
+    "prettier policy missing",
+    "actual prettier config missing deterministic settings while policy stale",
+    "path traversal",
+    "absolute path",
+    "duplicate path",
+    "domain term",
+    "forbidden quick full e2e command",
+    "forbidden quick full mobile command",
+    "forbidden quick full visual command",
+    "forbidden quick full ui visual command",
+    "forbidden generic deploy command",
+    "forbidden deploy prefix command",
+    "forbidden deploy suffix command",
+    "forbidden pulumi deploy alias",
+    "forbidden pulumi up command",
+    "forbidden auto deploy command",
+    "missing file",
+    "malformed json",
+    "manifest output path mismatch",
+    "manifest exact kind mismatch",
+    "manifest standard ids emptied",
+    "generated manifest omits kind",
+    "generated manifest unknown path",
+    "generated manifest duplicate path",
+    "unknown generated file path",
+    "testing production dependency"
+  ],
+  "rendererOptionResults": [
+    {
+      "name": "unknown renderer option",
+      "ok": true,
+      "code": "PRESET_MALFORMED_RENDER_OPTIONS",
+      "message": "Unknown renderer option: unexpectedOption."
+    },
+    {
+      "name": "wrong includeSampleSource type",
+      "ok": true,
+      "code": "PRESET_MALFORMED_RENDER_OPTIONS",
+      "message": "includeSampleSource must be a boolean when provided."
+    },
+    {
+      "name": "null renderer options",
+      "ok": true,
+      "code": "PRESET_MALFORMED_RENDER_OPTIONS",
+      "message": "Renderer options must be an object when provided."
+    },
+    {
+      "name": "path traversal packageDirectory",
+      "ok": true,
+      "code": "PRESET_MALFORMED_RENDER_OPTIONS",
+      "message": "packageDirectory must be the normalized preset-owned packages/example path."
+    },
+    {
+      "name": "absolute packageDirectory",
+      "ok": true,
+      "code": "PRESET_MALFORMED_RENDER_OPTIONS",
+      "message": "packageDirectory must be the normalized preset-owned packages/example path."
+    },
+    {
+      "name": "unsafe package name",
+      "ok": true,
+      "code": "PRESET_MALFORMED_RENDER_OPTIONS",
+      "message": "packageName is malformed or forbidden for generated production dependencies."
+    },
+    {
+      "name": "testing production package name",
+      "ok": true,
+      "code": "PRESET_MALFORMED_RENDER_OPTIONS",
+      "message": "packageName is malformed or forbidden for generated production dependencies."
+    }
+  ],
+  "manifestStandardIds": [
+    "dependency-hygiene",
+    "deterministic-schematics",
+    "dirty-tree-ownership",
+    "domain-neutral-core",
+    "real-boundary-witnesses",
+    "report-first-evidence",
+    "typed-boundary-contracts"
+  ],
+  "commands": {
+    "compileCommand": {
+      "command": "/Users/lizavasilyeva/work/vibe-engineer/node_modules/.bin/tsc -p packages/presets/typescript/tsconfig.json --noEmit false --outDir .vibe/work/I-07D-typescript-preset-package/compiled --rootDir packages/presets/typescript --declaration true --declarationMap true --sourceMap true",
+      "cwd": "/Users/lizavasilyeva/work/vibe-engineer",
+      "status": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    "packageSelfImportCommand": {
+      "command": "node -e import('@vibe-engineer/preset-typescript').then((module) => { const files = module.renderTypeScriptPresetFiles(); const result = module.validateTypeScriptPresetFiles(files); if (!result.ok) process.exit(2); console.log(JSON.stringify({ ok: true, exportedKeys: Object.keys(module).length, fileCount: files.length })); }).catch((error) => { console.error(error instanceof Error ? error.message : String(error)); process.exit(1); })",
+      "cwd": "/Users/lizavasilyeva/work/vibe-engineer/packages/presets/typescript",
+      "status": 0,
+      "stdout": "{\"ok\":true,\"exportedKeys\":19,\"fileCount\":12}\n",
+      "stderr": ""
+    },
+    "generatedTscCommand": {
+      "command": "/Users/lizavasilyeva/work/vibe-engineer/node_modules/.bin/tsc -p packages/example/tsconfig.json --noEmit --pretty false",
+      "cwd": "/Users/lizavasilyeva/work/vibe-engineer/packages/presets/typescript/fixtures/generated/strict-project",
+      "status": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    "standardsRegression": {
+      "command": "node packages/standards/fixtures/run-witnesses.mjs",
+      "cwd": "/Users/lizavasilyeva/work/vibe-engineer",
+      "status": 0,
+      "stdout": "{\n  \"ok\": true,\n  \"evidencePath\": \"/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-07C-standards-package/evidence/standards-witness-result.json\",\n  \"standardCount\": 7\n}\n",
+      "stderr": ""
+    }
+  }
+}

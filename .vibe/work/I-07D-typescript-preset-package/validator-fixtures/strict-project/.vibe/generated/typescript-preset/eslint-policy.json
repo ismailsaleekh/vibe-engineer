@@ -1,0 +1,99 @@
+{
+  "configFile": "eslint.config.mjs",
+  "rules": [
+    {
+      "name": "@typescript-eslint/no-explicit-any",
+      "severity": "error",
+      "purpose": "Strict TypeScript preset enforcement for @typescript-eslint/no-explicit-any."
+    },
+    {
+      "name": "@typescript-eslint/no-non-null-assertion",
+      "severity": "error",
+      "purpose": "Strict TypeScript preset enforcement for @typescript-eslint/no-non-null-assertion."
+    },
+    {
+      "name": "@typescript-eslint/ban-ts-comment",
+      "severity": "error",
+      "purpose": "Strict TypeScript preset enforcement for @typescript-eslint/ban-ts-comment."
+    },
+    {
+      "name": "@typescript-eslint/no-unnecessary-type-assertion",
+      "severity": "error",
+      "purpose": "Strict TypeScript preset enforcement for @typescript-eslint/no-unnecessary-type-assertion."
+    },
+    {
+      "name": "@typescript-eslint/consistent-type-imports",
+      "severity": "error",
+      "purpose": "Strict TypeScript preset enforcement for @typescript-eslint/consistent-type-imports."
+    },
+    {
+      "name": "@typescript-eslint/no-confusing-void-expression",
+      "severity": "error",
+      "purpose": "Strict TypeScript preset enforcement for @typescript-eslint/no-confusing-void-expression."
+    },
+    {
+      "name": "@typescript-eslint/no-unsafe-assignment",
+      "severity": "error",
+      "purpose": "Strict TypeScript preset enforcement for @typescript-eslint/no-unsafe-assignment."
+    },
+    {
+      "name": "@typescript-eslint/no-unsafe-argument",
+      "severity": "error",
+      "purpose": "Strict TypeScript preset enforcement for @typescript-eslint/no-unsafe-argument."
+    },
+    {
+      "name": "@typescript-eslint/no-unsafe-call",
+      "severity": "error",
+      "purpose": "Strict TypeScript preset enforcement for @typescript-eslint/no-unsafe-call."
+    },
+    {
+      "name": "@typescript-eslint/no-unsafe-member-access",
+      "severity": "error",
+      "purpose": "Strict TypeScript preset enforcement for @typescript-eslint/no-unsafe-member-access."
+    },
+    {
+      "name": "@typescript-eslint/no-unsafe-return",
+      "severity": "error",
+      "purpose": "Strict TypeScript preset enforcement for @typescript-eslint/no-unsafe-return."
+    },
+    {
+      "name": "@typescript-eslint/restrict-template-expressions",
+      "severity": "error",
+      "purpose": "Strict TypeScript preset enforcement for @typescript-eslint/restrict-template-expressions."
+    },
+    {
+      "name": "@typescript-eslint/switch-exhaustiveness-check",
+      "severity": "error",
+      "purpose": "Strict TypeScript preset enforcement for @typescript-eslint/switch-exhaustiveness-check."
+    },
+    {
+      "name": "no-empty",
+      "severity": "error",
+      "purpose": "Strict TypeScript preset enforcement for no-empty."
+    },
+    {
+      "name": "no-fallthrough",
+      "severity": "error",
+      "purpose": "Strict TypeScript preset enforcement for no-fallthrough."
+    },
+    {
+      "name": "no-implicit-coercion",
+      "severity": "error",
+      "purpose": "Strict TypeScript preset enforcement for no-implicit-coercion."
+    },
+    {
+      "name": "no-restricted-syntax",
+      "severity": "error",
+      "purpose": "Strict TypeScript preset enforcement for no-restricted-syntax."
+    },
+    {
+      "name": "vibe-engineer/no-broad-domain-map-model",
+      "severity": "error",
+      "purpose": "Strict TypeScript preset enforcement for vibe-engineer/no-broad-domain-map-model."
+    }
+  ],
+  "boundaryRules": {
+    "rawJsonParseRequiresNamedBoundary": true,
+    "broadDomainMapModelsForbidden": true
+  }
+}

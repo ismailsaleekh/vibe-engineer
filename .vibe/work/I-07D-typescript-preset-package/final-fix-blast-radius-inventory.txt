@@ -1,0 +1,85 @@
+## scoped git status
+?? .vibe/work/I-07D-typescript-preset-package/
+?? eslint.config.mjs
+?? package.json
+?? packages/cli/
+?? packages/config/
+?? packages/mechanical-gates/
+?? packages/presets/nest-react-rn/
+?? packages/presets/typescript/
+?? packages/schematics/
+?? packages/standards/
+?? pnpm-lock.yaml
+?? pnpm-workspace.yaml
+?? prettier.config.mjs
+?? tsconfig.base.json
+?? turbo.json
+## product source suffix scan
+## product build output scan
+## product files
+packages/presets/typescript/fixtures/consumer/public-api-consumer.ts
+packages/presets/typescript/fixtures/generated/strict-project/.vibe/generated/typescript-preset/eslint-policy.json
+packages/presets/typescript/fixtures/generated/strict-project/.vibe/generated/typescript-preset/manifest.json
+packages/presets/typescript/fixtures/generated/strict-project/.vibe/generated/typescript-preset/prettier-policy.json
+packages/presets/typescript/fixtures/generated/strict-project/eslint.config.mjs
+packages/presets/typescript/fixtures/generated/strict-project/package.json
+packages/presets/typescript/fixtures/generated/strict-project/packages/example/package.json
+packages/presets/typescript/fixtures/generated/strict-project/packages/example/src/sample.ts
+packages/presets/typescript/fixtures/generated/strict-project/packages/example/tsconfig.json
+packages/presets/typescript/fixtures/generated/strict-project/pnpm-workspace.yaml
+packages/presets/typescript/fixtures/generated/strict-project/prettier.config.mjs
+packages/presets/typescript/fixtures/generated/strict-project/tsconfig.base.json
+packages/presets/typescript/fixtures/generated/strict-project/turbo.json
+packages/presets/typescript/fixtures/witnesses/run-typescript-preset-witness.mjs
+packages/presets/typescript/package.json
+packages/presets/typescript/src/index.ts
+packages/presets/typescript/templates/eslint-policy.json
+packages/presets/typescript/templates/package-script-defaults.json
+packages/presets/typescript/templates/package-tsconfig.json
+packages/presets/typescript/templates/pnpm-workspace-defaults.json
+packages/presets/typescript/templates/prettier-defaults.json
+packages/presets/typescript/templates/strict-tsconfig-base.json
+packages/presets/typescript/templates/test-typecheck-defaults.json
+packages/presets/typescript/templates/turbo-task-defaults.json
+packages/presets/typescript/tsconfig.json
+## package privacy/deps
+{
+  "private": true,
+  "dependencies": null,
+  "devDependencies": null,
+  "peerDependencies": null,
+  "optionalDependencies": null,
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "import": "./src/index.ts"
+    }
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "witness": "node fixtures/witnesses/run-typescript-preset-witness.mjs"
+  }
+}
+## forbidden production imports
+packages/presets/typescript/src/index.ts:587:  if (input === "@vibe-engineer/testing") {
+packages/presets/typescript/src/index.ts:1070:    if (getObjectProperty(dependencies, "@vibe-engineer/testing") !== undefined && dependencyField === "dependencies") {
+packages/presets/typescript/src/index.ts:1071:      findings.push(makeFinding("PRESET_FORBIDDEN_TESTING_PRODUCTION_DEPENDENCY", path, "Generated production dependencies must not include @vibe-engineer/testing.", [dependencyField]));
+## domain terms in generated defaults/source (allowed validator terms may appear in source rejection set)
+packages/presets/typescript/src/index.ts:262:  "ecommerce",
+packages/presets/typescript/src/index.ts:263:  "inventory",
+packages/presets/typescript/src/index.ts:264:  "fashion",
+packages/presets/typescript/src/index.ts:265:  "Billz",
+packages/presets/typescript/src/index.ts:266:  "Telegram",
+packages/presets/typescript/src/index.ts:267:  "Instagram",
+packages/presets/typescript/src/index.ts:268:  "checkout",
+packages/presets/typescript/src/index.ts:269:  "product",
+packages/presets/typescript/src/index.ts:270:  "customer",
+packages/presets/typescript/src/index.ts:271:  "order",
+packages/presets/typescript/src/index.ts:289:  "deploy:production",
+packages/presets/typescript/src/index.ts:290:  "production:deploy",
+packages/presets/typescript/src/index.ts:624:    return { ok: false, finding: makeRenderOptionsFinding("packageName is malformed or forbidden for generated production dependencies.", [packageName]) };
+packages/presets/typescript/src/index.ts:1071:      findings.push(makeFinding("PRESET_FORBIDDEN_TESTING_PRODUCTION_DEPENDENCY", path, "Generated production dependencies must not include @vibe-engineer/testing.", [dependencyField]));
+packages/presets/typescript/fixtures/witnesses/run-typescript-preset-witness.mjs:192:  negativeResults.push(expectRejected("domain term", mutateContent(files, ".vibe/generated/typescript-preset/manifest.json", (content) => content.replace("TypeScript Strict Preset", "TypeScript checkout Preset")), api.validateTypeScriptPresetFiles, "PRESET_DOMAIN_SPECIFIC_CORE_TEXT"));
+packages/presets/typescript/fixtures/witnesses/run-typescript-preset-witness.mjs:199:  negativeResults.push(expectRejected("forbidden deploy suffix command", mutateContent(files, "package.json", (content) => content.replace("pnpm run build", "pnpm run build && pnpm run production:deploy")), api.validateTypeScriptPresetFiles, "PRESET_FORBIDDEN_DEFAULT_COMMAND"));
+packages/presets/typescript/fixtures/witnesses/run-typescript-preset-witness.mjs:224:  negativeResults.push(expectRejected("testing production dependency", mutateContent(files, "package.json", (content) => content.replace('"devDependencies": {', '"dependencies": { "@vibe-engineer/testing": "workspace:*" },\n    "devDependencies": {')), api.validateTypeScriptPresetFiles, "PRESET_FORBIDDEN_TESTING_PRODUCTION_DEPENDENCY"));
+packages/presets/typescript/fixtures/witnesses/run-typescript-preset-witness.mjs:233:    ["testing production package name", { packageName: "@vibe-engineer/testing" }],
