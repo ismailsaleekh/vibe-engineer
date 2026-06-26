@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "proofMode": "typescript-ast-string-comment-path-carriers",
+  "scan": {
+    "include": [
+      ".vibe/work/I-07C-standards-package/validation-evidence/domain-core-leak.js",
+      ".vibe/work/I-07C-standards-package/validation-evidence/domain-sample-demo.js"
+    ],
+    "maxFileBytes": 262144
+  },
+  "forbiddenTerms": ["ecommerce", "inventory", "Billz", "Telegram"],
+  "surfaces": [
+    { "kind": "core", "path": ".vibe/work/I-07C-standards-package/validation-evidence/domain-core-leak.js", "match": "exact" },
+    { "kind": "sample-demo", "path": ".vibe/work/I-07C-standards-package/validation-evidence/domain-sample-demo.js", "match": "exact" }
+  ]
+}

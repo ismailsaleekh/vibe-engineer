@@ -1,0 +1,82 @@
+{
+  "ok": true,
+  "schemaLoader": {
+    "allDefinitionId": "https://schemas.vibe-engineer.dev/standards/v1/standard-definition.schema.json",
+    "singularDefinitionId": "https://schemas.vibe-engineer.dev/standards/v1/standard-definition.schema.json",
+    "allCatalogId": "https://schemas.vibe-engineer.dev/standards/v1/standards-catalog.schema.json",
+    "singularCatalogId": "https://schemas.vibe-engineer.dev/standards/v1/standards-catalog.schema.json"
+  },
+  "schemaConstraints": {
+    "referencesMinItems": 1,
+    "tagsMinItems": 1,
+    "tagsUniqueItems": true,
+    "tagsPattern": "^[a-z0-9][a-z0-9-]*$",
+    "appliesToMinItems": 1,
+    "appliesToUniqueItems": true,
+    "standardIdsMinItems": 1,
+    "standardIdsUniqueItems": true,
+    "standardIdsPattern": "^[a-z0-9][a-z0-9-]*$"
+  },
+  "runtimeNegatives": {
+    "referencesEmpty": [
+      {
+        "code": "STANDARDS_MALFORMED_LIST",
+        "pointer": "/references",
+        "message": "references must be a non-empty array.",
+        "standardId": null
+      }
+    ],
+    "tagsEmpty": [
+      {
+        "code": "STANDARDS_MALFORMED_LIST",
+        "pointer": "/tags",
+        "message": "tags must be a non-empty array.",
+        "standardId": null
+      }
+    ],
+    "tagsNonSlug": [
+      {
+        "code": "STANDARDS_INVALID_VALUE",
+        "pointer": "/tags/0",
+        "message": "tags must contain lower-case kebab identifiers.",
+        "standardId": null
+      }
+    ],
+    "tagsDuplicate": [
+      {
+        "code": "STANDARDS_MALFORMED_LIST",
+        "pointer": "/tags/1",
+        "message": "tags contains duplicate value duplicate-tag.",
+        "standardId": null
+      }
+    ],
+    "appliesToDuplicate": [
+      {
+        "code": "STANDARDS_MALFORMED_LIST",
+        "pointer": "/appliesTo/1",
+        "message": "appliesTo contains duplicate value artifacts.",
+        "standardId": null
+      }
+    ],
+    "standardIdsDuplicate": [
+      {
+        "code": "STANDARDS_DUPLICATE_STANDARD_ID",
+        "pointer": "/standardIds/1",
+        "message": "Duplicate standard id typed-boundary-contracts.",
+        "standardId": "typed-boundary-contracts"
+      },
+      {
+        "code": "STANDARDS_CATALOG_MALFORMED",
+        "pointer": "/standardIds",
+        "message": "Catalog definition real-boundary-witnesses is missing from standardIds.",
+        "standardId": "real-boundary-witnesses"
+      },
+      {
+        "code": "STANDARDS_CATALOG_MALFORMED",
+        "pointer": "/standardIds",
+        "message": "Catalog must include every supported core standard id exactly once.",
+        "standardId": null
+      }
+    ]
+  }
+}

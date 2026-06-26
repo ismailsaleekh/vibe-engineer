@@ -1,0 +1,555 @@
+{
+  "ok": false,
+  "generatedAt": "2026-06-24T22:33:06.475Z",
+  "repoRoot": "/Users/lizavasilyeva/work/vibe-engineer",
+  "packageRoot": "/Users/lizavasilyeva/work/vibe-engineer/packages/standards",
+  "checks": [
+    {
+      "name": "manifest and source dependency hygiene",
+      "ok": true,
+      "evidence": {
+        "private": true,
+        "declared": [],
+        "srcFiles": [
+          "src/catalog-data.js",
+          "src/errors.js",
+          "src/index.js",
+          "src/schema-registry.js",
+          "src/validation.js"
+        ],
+        "imports": [
+          {
+            "file": "src/catalog-data.js",
+            "specifier": "./schema-registry.js"
+          },
+          {
+            "file": "src/index.js",
+            "specifier": "./catalog-data.js"
+          },
+          {
+            "file": "src/index.js",
+            "specifier": "./errors.js"
+          },
+          {
+            "file": "src/index.js",
+            "specifier": "./validation.js"
+          },
+          {
+            "file": "src/schema-registry.js",
+            "specifier": "node:fs"
+          },
+          {
+            "file": "src/schema-registry.js",
+            "specifier": "node:path"
+          },
+          {
+            "file": "src/schema-registry.js",
+            "specifier": "node:url"
+          },
+          {
+            "file": "src/schema-registry.js",
+            "specifier": "./errors.js"
+          },
+          {
+            "file": "src/validation.js",
+            "specifier": "./catalog-data.js"
+          },
+          {
+            "file": "src/validation.js",
+            "specifier": "./errors.js"
+          },
+          {
+            "file": "src/validation.js",
+            "specifier": "./schema-registry.js"
+          }
+        ],
+        "externalImports": []
+      }
+    },
+    {
+      "name": "runtime exports and declaration value surface match",
+      "ok": true,
+      "evidence": {
+        "runtimeExports": [
+          "STANDARDS_CATALOG",
+          "STANDARD_ERROR_CODES",
+          "STANDARD_IDS",
+          "STANDARD_SCHEMA_FILES",
+          "STANDARD_SCHEMA_IDS",
+          "STANDARD_SCHEMA_KINDS",
+          "SUPPORTED_SCHEMA_VERSION",
+          "StandardsError",
+          "getStandardsCatalog",
+          "listStandards",
+          "loadAllStandardsSchemas",
+          "loadStandard",
+          "loadStandardsSchema",
+          "schemaPathForKind",
+          "validateStandardDefinition",
+          "validateStandardsCatalog"
+        ],
+        "declarationValueExports": [
+          "STANDARDS_CATALOG",
+          "STANDARD_ERROR_CODES",
+          "STANDARD_IDS",
+          "STANDARD_SCHEMA_FILES",
+          "STANDARD_SCHEMA_IDS",
+          "STANDARD_SCHEMA_KINDS",
+          "SUPPORTED_SCHEMA_VERSION",
+          "StandardsError",
+          "getStandardsCatalog",
+          "listStandards",
+          "loadAllStandardsSchemas",
+          "loadStandard",
+          "loadStandardsSchema",
+          "schemaPathForKind",
+          "validateStandardDefinition",
+          "validateStandardsCatalog"
+        ]
+      }
+    },
+    {
+      "name": "positive real public API consumer",
+      "ok": true,
+      "evidence": {
+        "ids": [
+          "typed-boundary-contracts",
+          "real-boundary-witnesses",
+          "domain-neutral-core",
+          "dirty-tree-ownership",
+          "report-first-evidence",
+          "dependency-hygiene",
+          "deterministic-schematics"
+        ],
+        "loaded": [
+          {
+            "id": "typed-boundary-contracts",
+            "category": "contracts",
+            "level": "required",
+            "neutrality": "core",
+            "requirementCount": 2
+          },
+          {
+            "id": "real-boundary-witnesses",
+            "category": "verification",
+            "level": "required",
+            "neutrality": "core",
+            "requirementCount": 2
+          },
+          {
+            "id": "domain-neutral-core",
+            "category": "domain-neutrality",
+            "level": "required",
+            "neutrality": "core",
+            "requirementCount": 2
+          },
+          {
+            "id": "dirty-tree-ownership",
+            "category": "orchestration",
+            "level": "required",
+            "neutrality": "core",
+            "requirementCount": 2
+          },
+          {
+            "id": "report-first-evidence",
+            "category": "evidence",
+            "level": "required",
+            "neutrality": "core",
+            "requirementCount": 2
+          },
+          {
+            "id": "dependency-hygiene",
+            "category": "package-boundaries",
+            "level": "required",
+            "neutrality": "core",
+            "requirementCount": 2
+          },
+          {
+            "id": "deterministic-schematics",
+            "category": "schematics",
+            "level": "recommended",
+            "neutrality": "core",
+            "requirementCount": 2
+          }
+        ],
+        "catalogId": "vibe-engineer-core-standards"
+      }
+    },
+    {
+      "name": "negative fail-closed typed validator cases",
+      "ok": true,
+      "evidence": {
+        "loadUnknown": {
+          "code": "STANDARDS_UNKNOWN_STANDARD_ID",
+          "pointer": "/standardId",
+          "standardId": "does-not-exist",
+          "message": "Unknown standardId does-not-exist."
+        },
+        "loadMissing": {
+          "code": "STANDARDS_INVALID_STANDARD_ID",
+          "pointer": "/standardId",
+          "standardId": null,
+          "message": "standardId must be a non-empty string."
+        },
+        "missingStandardId": [
+          {
+            "code": "STANDARDS_REQUIRED_FIELD",
+            "pointer": "/standardId",
+            "message": "Required field standardId is missing.",
+            "standardId": null
+          }
+        ],
+        "missingRequiredField": [
+          {
+            "code": "STANDARDS_REQUIRED_FIELD",
+            "pointer": "/title",
+            "message": "Required field title is missing.",
+            "standardId": null
+          }
+        ],
+        "unknownStandardId": [
+          {
+            "code": "STANDARDS_UNKNOWN_STANDARD_ID",
+            "pointer": "/standardId",
+            "message": "Unknown standardId unknown-standard.",
+            "standardId": "unknown-standard"
+          }
+        ],
+        "unknownField": [
+          {
+            "code": "STANDARDS_UNKNOWN_FIELD",
+            "pointer": "/extraField",
+            "message": "Unknown field extraField is not allowed.",
+            "standardId": null
+          }
+        ],
+        "unsupportedVersion": [
+          {
+            "code": "STANDARDS_UNSUPPORTED_SCHEMA_VERSION",
+            "pointer": "/schemaVersion",
+            "message": "Unsupported schemaVersion 9.0.0.",
+            "standardId": null
+          }
+        ],
+        "malformedAppliesTo": [
+          {
+            "code": "STANDARDS_MALFORMED_LIST",
+            "pointer": "/appliesTo",
+            "message": "appliesTo must be a non-empty array.",
+            "standardId": null
+          }
+        ],
+        "malformedRequirements": [
+          {
+            "code": "STANDARDS_MALFORMED_LIST",
+            "pointer": "/requirements",
+            "message": "requirements must be a non-empty array.",
+            "standardId": null
+          }
+        ],
+        "malformedReferences": [
+          {
+            "code": "STANDARDS_MALFORMED_LIST",
+            "pointer": "/references",
+            "message": "references must be a non-empty array.",
+            "standardId": null
+          }
+        ],
+        "malformedCatalog": [
+          {
+            "code": "STANDARDS_MALFORMED_LIST",
+            "pointer": "/standardIds",
+            "message": "standardIds must be a non-empty array.",
+            "standardId": null
+          },
+          {
+            "code": "STANDARDS_CATALOG_MALFORMED",
+            "pointer": "/standardIds",
+            "message": "Catalog definition typed-boundary-contracts is missing from standardIds.",
+            "standardId": "typed-boundary-contracts"
+          },
+          {
+            "code": "STANDARDS_CATALOG_MALFORMED",
+            "pointer": "/standardIds",
+            "message": "Catalog definition real-boundary-witnesses is missing from standardIds.",
+            "standardId": "real-boundary-witnesses"
+          },
+          {
+            "code": "STANDARDS_CATALOG_MALFORMED",
+            "pointer": "/standardIds",
+            "message": "Catalog definition domain-neutral-core is missing from standardIds.",
+            "standardId": "domain-neutral-core"
+          },
+          {
+            "code": "STANDARDS_CATALOG_MALFORMED",
+            "pointer": "/standardIds",
+            "message": "Catalog definition dirty-tree-ownership is missing from standardIds.",
+            "standardId": "dirty-tree-ownership"
+          },
+          {
+            "code": "STANDARDS_CATALOG_MALFORMED",
+            "pointer": "/standardIds",
+            "message": "Catalog definition report-first-evidence is missing from standardIds.",
+            "standardId": "report-first-evidence"
+          },
+          {
+            "code": "STANDARDS_CATALOG_MALFORMED",
+            "pointer": "/standardIds",
+            "message": "Catalog definition dependency-hygiene is missing from standardIds.",
+            "standardId": "dependency-hygiene"
+          },
+          {
+            "code": "STANDARDS_CATALOG_MALFORMED",
+            "pointer": "/standardIds",
+            "message": "Catalog definition deterministic-schematics is missing from standardIds.",
+            "standardId": "deterministic-schematics"
+          },
+          {
+            "code": "STANDARDS_CATALOG_MALFORMED",
+            "pointer": "/standardIds",
+            "message": "Catalog must include every supported core standard id exactly once.",
+            "standardId": null
+          }
+        ],
+        "duplicateCatalogId": [
+          {
+            "code": "STANDARDS_DUPLICATE_STANDARD_ID",
+            "pointer": "/standardIds/1",
+            "message": "Duplicate standard id typed-boundary-contracts.",
+            "standardId": "typed-boundary-contracts"
+          },
+          {
+            "code": "STANDARDS_CATALOG_MALFORMED",
+            "pointer": "/standardIds",
+            "message": "Catalog definition real-boundary-witnesses is missing from standardIds.",
+            "standardId": "real-boundary-witnesses"
+          },
+          {
+            "code": "STANDARDS_CATALOG_MALFORMED",
+            "pointer": "/standardIds",
+            "message": "Catalog must include every supported core standard id exactly once.",
+            "standardId": null
+          }
+        ],
+        "catalogUnknownField": [
+          {
+            "code": "STANDARDS_UNKNOWN_FIELD",
+            "pointer": "/extraField",
+            "message": "Unknown field extraField is not allowed.",
+            "standardId": null
+          }
+        ]
+      }
+    },
+    {
+      "name": "JSON Schema 2020-12 and runtime/schema contract consistency",
+      "ok": false,
+      "error": {
+        "name": "Error",
+        "message": "JSON Schema and runtime validator disagree on standard/catalog contract cases.",
+        "detail": {
+          "divergences": [
+            {
+              "label": "definition.references empty array",
+              "schemaConstraint": {
+                "minItems": null,
+                "schemaAllowsEmptyArray": true
+              },
+              "runtime": {
+                "ok": false,
+                "errors": [
+                  {
+                    "code": "STANDARDS_MALFORMED_LIST",
+                    "pointer": "/references",
+                    "message": "references must be a non-empty array.",
+                    "standardId": null
+                  }
+                ]
+              }
+            },
+            {
+              "label": "definition.tags empty array",
+              "schemaConstraint": {
+                "minItems": null,
+                "schemaAllowsEmptyArray": true
+              },
+              "runtime": {
+                "ok": false,
+                "errors": [
+                  {
+                    "code": "STANDARDS_MALFORMED_LIST",
+                    "pointer": "/tags",
+                    "message": "tags must be a non-empty array.",
+                    "standardId": null
+                  }
+                ]
+              }
+            },
+            {
+              "label": "definition.tags non-slug value",
+              "schemaConstraint": {
+                "pattern": "^[a-z0-9][a-z0-9-]*$",
+                "schemaRejectsNonSlugTag": true
+              },
+              "runtime": {
+                "ok": true,
+                "errors": []
+              }
+            },
+            {
+              "label": "catalog duplicate standardIds",
+              "schemaConstraint": {
+                "uniqueItems": null,
+                "schemaAllowsDuplicates": true
+              },
+              "runtime": {
+                "ok": false,
+                "errors": [
+                  {
+                    "code": "STANDARDS_DUPLICATE_STANDARD_ID",
+                    "pointer": "/standardIds/1",
+                    "message": "Duplicate standard id typed-boundary-contracts.",
+                    "standardId": "typed-boundary-contracts"
+                  },
+                  {
+                    "code": "STANDARDS_CATALOG_MALFORMED",
+                    "pointer": "/standardIds",
+                    "message": "Catalog definition real-boundary-witnesses is missing from standardIds.",
+                    "standardId": "real-boundary-witnesses"
+                  },
+                  {
+                    "code": "STANDARDS_CATALOG_MALFORMED",
+                    "pointer": "/standardIds",
+                    "message": "Catalog must include every supported core standard id exactly once.",
+                    "standardId": null
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "stack": "Error: JSON Schema and runtime validator disagree on standard/catalog contract cases.\n    at assert (file:///Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-07C-standards-package/validation-evidence/i07c-independent-witness.mjs:19:19)\n    at file:///Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-07C-standards-package/validation-evidence/i07c-independent-witness.mjs:277:3\n    at async record (file:///Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-07C-standards-package/validation-evidence/i07c-independent-witness.mjs:31:22)\n    at async file:///Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-07C-standards-package/validation-evidence/i07c-independent-witness.mjs:201:1"
+      }
+    },
+    {
+      "name": "real I-10B domain-purity boundary",
+      "ok": true,
+      "evidence": {
+        "core": {
+          "ok": true,
+          "findings": [],
+          "evidence": {
+            "policyPath": ".vibe/work/I-07C-standards-package/validation-evidence/core-domain-policy.json",
+            "scannedFileCount": 9,
+            "surfaceCount": 3,
+            "forbiddenTerms": [
+              "ecommerce",
+              "inventory",
+              "Billz",
+              "Telegram",
+              "fashion",
+              "Instagram",
+              "ProductCatalog",
+              "ShoppingCart",
+              "CustomerOrder",
+              "CheckoutFlow",
+              "WarehouseStock",
+              "FashionDrop",
+              "BillzInvoice",
+              "TelegramBotBusinessRule",
+              "InstagramEngagementModel"
+            ],
+            "parser": "typescript",
+            "proofMode": "typescript-ast-string-comment-path-carriers"
+          }
+        },
+        "boundary": {
+          "ok": false,
+          "findings": [
+            {
+              "family": "p0.domain-purity",
+              "ruleId": "domain-purity.core-domain-leak",
+              "severity": "error",
+              "blocking": true,
+              "path": ".vibe/work/I-07C-standards-package/validation-evidence/domain-core-leak.js",
+              "message": "Forbidden project/business-domain token leaked into core or extension surface.",
+              "evidence": {
+                "term": "ecommerce",
+                "surfaceKind": "core",
+                "carrierKind": "string-literal",
+                "line": 1,
+                "column": 25,
+                "token": "ecommerce",
+                "excerpt": "ecommerce inventory Billz Telegram must fail when this validation fixture is classified as core"
+              }
+            },
+            {
+              "family": "p0.domain-purity",
+              "ruleId": "domain-purity.core-domain-leak",
+              "severity": "error",
+              "blocking": true,
+              "path": ".vibe/work/I-07C-standards-package/validation-evidence/domain-core-leak.js",
+              "message": "Forbidden project/business-domain token leaked into core or extension surface.",
+              "evidence": {
+                "term": "inventory",
+                "surfaceKind": "core",
+                "carrierKind": "string-literal",
+                "line": 1,
+                "column": 25,
+                "token": "inventory",
+                "excerpt": "ecommerce inventory Billz Telegram must fail when this validation fixture is classified as core"
+              }
+            },
+            {
+              "family": "p0.domain-purity",
+              "ruleId": "domain-purity.core-domain-leak",
+              "severity": "error",
+              "blocking": true,
+              "path": ".vibe/work/I-07C-standards-package/validation-evidence/domain-core-leak.js",
+              "message": "Forbidden project/business-domain token leaked into core or extension surface.",
+              "evidence": {
+                "term": "Billz",
+                "surfaceKind": "core",
+                "carrierKind": "string-literal",
+                "line": 1,
+                "column": 25,
+                "token": "Billz",
+                "excerpt": "ecommerce inventory Billz Telegram must fail when this validation fixture is classified as core"
+              }
+            },
+            {
+              "family": "p0.domain-purity",
+              "ruleId": "domain-purity.core-domain-leak",
+              "severity": "error",
+              "blocking": true,
+              "path": ".vibe/work/I-07C-standards-package/validation-evidence/domain-core-leak.js",
+              "message": "Forbidden project/business-domain token leaked into core or extension surface.",
+              "evidence": {
+                "term": "Telegram",
+                "surfaceKind": "core",
+                "carrierKind": "string-literal",
+                "line": 1,
+                "column": 25,
+                "token": "Telegram",
+                "excerpt": "ecommerce inventory Billz Telegram must fail when this validation fixture is classified as core"
+              }
+            }
+          ],
+          "evidence": {
+            "policyPath": ".vibe/work/I-07C-standards-package/validation-evidence/boundary-domain-policy.json",
+            "scannedFileCount": 2,
+            "surfaceCount": 2,
+            "forbiddenTerms": [
+              "ecommerce",
+              "inventory",
+              "Billz",
+              "Telegram"
+            ],
+            "parser": "typescript",
+            "proofMode": "typescript-ast-string-comment-path-carriers"
+          }
+        }
+      }
+    }
+  ]
+}
