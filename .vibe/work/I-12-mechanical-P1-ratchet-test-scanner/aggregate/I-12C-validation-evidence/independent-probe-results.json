@@ -1,0 +1,262 @@
+{
+  "imports": {
+    "direct": [
+      "P1AggregateFamily",
+      "runP0Aggregate",
+      "runP1Aggregate"
+    ],
+    "packageSelfReference": [
+      "P1AggregateFamily",
+      "runP0Aggregate",
+      "runP1Aggregate"
+    ],
+    "runtimeFamilies": [
+      "p1.schema-contract-strictness",
+      "p1.quality-ratchet",
+      "p1.test-anti-pattern"
+    ]
+  },
+  "positive": {
+    "ok": true,
+    "family": "p1.aggregate",
+    "subresultFamilies": [
+      "p1.schema-contract-strictness",
+      "p1.quality-ratchet",
+      "p1.test-anti-pattern"
+    ],
+    "i11Bridge": {
+      "sourceTsFilesUsed": [
+        "packages/mechanical-gates/src/p1/schema-contract-strictness/index.ts",
+        "packages/mechanical-gates/src/p1/schema-contract-strictness/validate-schema-contract-strictness.ts"
+      ],
+      "outputArtifactDirectory": ".vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-92524-1782470799159-506b8f2d0fa6f",
+      "outputArtifactFile": ".vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-92524-1782470799159-506b8f2d0fa6f/index.js",
+      "status": 0,
+      "moduleUrl": "file:///Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-92524-1782470799159-506b8f2d0fa6f/index.js",
+      "exportedValidatorName": "validateSchemaContractStrictness",
+      "validatorFamilyObserved": "p1.schema-contract-strictness",
+      "typedSubresultValidation": {
+        "ok": true,
+        "diagnostics": []
+      }
+    },
+    "sourceApiIdentities": {
+      "schemaContractStrictness": [
+        "packages/mechanical-gates/src/p1/schema-contract-strictness/index.ts",
+        "packages/mechanical-gates/src/p1/schema-contract-strictness/validate-schema-contract-strictness.ts"
+      ],
+      "qualityRatchet": "packages/mechanical-gates/src/p1/quality-ratchet/index.js#validateQualityRatchet",
+      "testAntiPattern": "packages/mechanical-gates/src/p1/test-anti-pattern/index.js#validateTestAntiPatterns"
+    },
+    "inputPaths": {
+      "schemaContractStrictness": "packages/contracts/schema-contract-strictness.manifest.json",
+      "qualityRatchet": "packages/mechanical-gates/fixtures/p1/quality-ratchet/cases/unchanged-baseline",
+      "testAntiPattern": "packages/mechanical-gates/fixtures/p1/test-anti-pattern/workspaces/positive"
+    },
+    "summary": {
+      "p1.schema-contract-strictness": {
+        "ok": true,
+        "findingCount": 0
+      },
+      "p1.quality-ratchet": {
+        "ok": true,
+        "findingCount": 0
+      },
+      "p1.test-anti-pattern": {
+        "ok": true,
+        "findingCount": 0
+      }
+    }
+  },
+  "negatives": [
+    {
+      "label": "I-11 compile failure",
+      "ok": false,
+      "ruleIds": [
+        "aggregate.i11-bridge.compile-failed",
+        "aggregate.missing-subresult"
+      ],
+      "families": [
+        "p1.quality-ratchet",
+        "p1.test-anti-pattern"
+      ]
+    },
+    {
+      "label": "I-11 missing compiled artifact",
+      "ok": false,
+      "ruleIds": [
+        "aggregate.i11-bridge.missing-artifact",
+        "aggregate.missing-subresult"
+      ],
+      "families": [
+        "p1.quality-ratchet",
+        "p1.test-anti-pattern"
+      ]
+    },
+    {
+      "label": "I-11 wrong export",
+      "ok": false,
+      "ruleIds": [
+        "aggregate.i11-bridge.wrong-export",
+        "aggregate.missing-subresult"
+      ],
+      "families": [
+        "p1.quality-ratchet",
+        "p1.test-anti-pattern"
+      ]
+    },
+    {
+      "label": "I-11 wrong family",
+      "ok": false,
+      "ruleIds": [
+        "aggregate.i11-bridge.wrong-family",
+        "aggregate.missing-subresult"
+      ],
+      "families": [
+        "p1.quality-ratchet",
+        "p1.test-anti-pattern"
+      ]
+    },
+    {
+      "label": "I-11 malformed subresult",
+      "ok": false,
+      "ruleIds": [
+        "aggregate.malformed-subresult",
+        "aggregate.missing-subresult"
+      ],
+      "families": [
+        "p1.quality-ratchet",
+        "p1.test-anti-pattern"
+      ]
+    },
+    {
+      "label": "I-11 validator exception",
+      "ok": false,
+      "ruleIds": [
+        "aggregate.validator-exception",
+        "aggregate.missing-subresult"
+      ],
+      "families": [
+        "p1.quality-ratchet",
+        "p1.test-anti-pattern"
+      ]
+    },
+    {
+      "label": "omitted p1.schema-contract-strictness",
+      "ok": false,
+      "ruleIds": [
+        "aggregate.omitted-family"
+      ],
+      "families": [
+        "p1.quality-ratchet",
+        "p1.test-anti-pattern"
+      ]
+    },
+    {
+      "label": "omitted p1.quality-ratchet",
+      "ok": false,
+      "ruleIds": [
+        "aggregate.omitted-family"
+      ],
+      "families": [
+        "p1.schema-contract-strictness",
+        "p1.test-anti-pattern"
+      ]
+    },
+    {
+      "label": "omitted p1.test-anti-pattern",
+      "ok": false,
+      "ruleIds": [
+        "aggregate.omitted-family"
+      ],
+      "families": [
+        "p1.schema-contract-strictness",
+        "p1.quality-ratchet"
+      ]
+    },
+    {
+      "label": "unknown family",
+      "ok": false,
+      "ruleIds": [
+        "aggregate.unknown-family"
+      ],
+      "families": [
+        "p1.schema-contract-strictness",
+        "p1.quality-ratchet",
+        "p1.test-anti-pattern"
+      ]
+    },
+    {
+      "label": "missing quality baseline",
+      "ok": false,
+      "ruleIds": [
+        "baseline.schema-invalid"
+      ],
+      "families": [
+        "p1.schema-contract-strictness",
+        "p1.quality-ratchet",
+        "p1.test-anti-pattern"
+      ]
+    },
+    {
+      "label": "missing test scanner policy",
+      "ok": false,
+      "ruleIds": [
+        "policy.unreadable"
+      ],
+      "families": [
+        "p1.schema-contract-strictness",
+        "p1.quality-ratchet",
+        "p1.test-anti-pattern"
+      ]
+    },
+    {
+      "label": "bridge output traversal",
+      "ok": false,
+      "ruleIds": [
+        "aggregate.i11-bridge.path-invalid",
+        "aggregate.missing-subresult"
+      ],
+      "families": [
+        "p1.quality-ratchet",
+        "p1.test-anti-pattern"
+      ]
+    },
+    {
+      "label": "bridge input traversal",
+      "ok": false,
+      "ruleIds": [
+        "aggregate.i11-bridge.path-invalid",
+        "aggregate.missing-subresult"
+      ],
+      "families": [
+        "p1.quality-ratchet",
+        "p1.test-anti-pattern"
+      ]
+    },
+    {
+      "label": "synthetic subresults option",
+      "ok": false,
+      "ruleIds": [
+        "aggregate.unknown-option"
+      ],
+      "families": [
+        "p1.schema-contract-strictness",
+        "p1.quality-ratchet",
+        "p1.test-anti-pattern"
+      ]
+    },
+    {
+      "label": "validation-owned fake bridge source rejected",
+      "ok": false,
+      "ruleIds": [
+        "aggregate.i11-bridge.path-invalid",
+        "aggregate.missing-subresult"
+      ],
+      "families": [
+        "p1.quality-ratchet",
+        "p1.test-anti-pattern"
+      ]
+    }
+  ]
+}

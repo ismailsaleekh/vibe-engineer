@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "quality-ratchet.findings/1",
+  "family": "p1.quality-ratchet",
+  "surfaceFingerprint": "21dec3af45cf1567282e4a57a660885b45fb959a53d5425750c32ecc2f582aae",
+  "sourceFingerprintPath": "surface-fingerprint.json",
+  "runnerEvidencePath": "runner-evidence.json",
+  "findings": [
+    {
+      "tool": "example-mechanical-tool",
+      "ruleId": "example.rule",
+      "severity": "error",
+      "path": "src/sample.ts",
+      "message": "Example quality-ratchet debt.",
+      "identity": {
+        "tool": "example-mechanical-tool",
+        "ruleId": "example.rule",
+        "path": "src/sample.ts",
+        "symbol": "sampleFunction",
+        "structuralSignature": "function:sampleFunction:quality-ratchet",
+        "contentHash": "9743acd245a1b3586841ec54389409fd0de687abc987d2fc9a63ded3fe9e7521",
+        "line": 3
+      },
+      "evidence": {
+        "sourcePath": "src/sample.ts",
+        "sourceExcerpt": "export function sampleFunction(value) {\n  return value + 1;\n}"
+      }
+    }
+  ]
+}

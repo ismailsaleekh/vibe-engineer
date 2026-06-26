@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "quality-ratchet.findings/1",
+  "family": "p1.quality-ratchet",
+  "surfaceFingerprint": "18b8b356295b67b3275e63b17aef858e6fcc5a0b5d8095b2cc969289f3263551",
+  "sourceFingerprintPath": "surface-fingerprint.json",
+  "runnerEvidencePath": "runner-evidence.json",
+  "findings": [
+    {
+      "tool": "example-tool",
+      "ruleId": "example.rule",
+      "severity": "error",
+      "path": "src/sample.ts",
+      "message": "debt",
+      "identity": {
+        "tool": "example-tool",
+        "ruleId": "example.rule",
+        "path": "src/sample.ts",
+        "symbol": "sample",
+        "contentHash": "5ada051af1a1167dbe35d4abdb213bb4c6b4e988fa669a5b7c3f08840007fadd",
+        "line": 3
+      },
+      "evidence": {
+        "sourcePath": "src/sample.ts",
+        "sourceExcerpt": "export function sample(value) {\n  return value + 1;\n}"
+      }
+    }
+  ]
+}

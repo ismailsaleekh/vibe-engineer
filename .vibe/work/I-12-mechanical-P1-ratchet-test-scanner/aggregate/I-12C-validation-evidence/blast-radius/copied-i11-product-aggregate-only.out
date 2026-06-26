@@ -1,0 +1,8 @@
+COMMAND: rg inspectNamedSchemas\|inspectContractShapes\|generated-client-provenance\|named-runtime-schema-boundary\|ts\\.is\|z\\.object\|validateSchemaContractStrictness packages/mechanical-gates/src/aggregate
+CWD:/Users/lizavasilyeva/work/vibe-engineer
+--- stdout ---
+packages/mechanical-gates/src/aggregate/index.d.ts:  exportedValidatorName: "validateSchemaContractStrictness";
+packages/mechanical-gates/src/aggregate/p1/run-p1-aggregate.js:const VALIDATOR_EXPORT_NAME = "validateSchemaContractStrictness";
+packages/mechanical-gates/src/aggregate/p1/run-p1-aggregate.js:    return { finding: bridgeFinding("aggregate.i11-bridge.wrong-export", "I-11 bridge module does not export validateSchemaContractStrictness; aggregate fails closed.", evidence, { exportedKeys: Object.keys(moduleNamespace).sort() }) };
+
+RG_EXIT:0

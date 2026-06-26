@@ -1,0 +1,364 @@
+{
+  "ok": true,
+  "validator": "validateQualityRatchet",
+  "validatorPath": "packages/mechanical-gates/src/p1/quality-ratchet/index.js",
+  "productFixtureRoot": "packages/mechanical-gates/fixtures/p1/quality-ratchet/cases",
+  "positives": [
+    {
+      "name": "zero-debt-new-repo",
+      "ok": true,
+      "removedDebt": 0,
+      "baselineGrowth": []
+    },
+    {
+      "name": "unchanged-baseline",
+      "ok": true,
+      "removedDebt": 0,
+      "baselineGrowth": []
+    },
+    {
+      "name": "approved-shrink",
+      "ok": true,
+      "removedDebt": 1,
+      "baselineGrowth": []
+    },
+    {
+      "name": "line-movement",
+      "ok": true,
+      "removedDebt": 0,
+      "baselineGrowth": []
+    },
+    {
+      "name": "approved-baseline-growth",
+      "ok": true,
+      "removedDebt": 0,
+      "baselineGrowth": [
+        {
+          "identityId": "4d7bee41e451bf12e2d0f4c6b55cf6b082ab4e13d41358edeae1afdb639903fd",
+          "path": "src/sample.ts",
+          "approved": true,
+          "evidencePath": "approvals/growth.json"
+        }
+      ]
+    }
+  ],
+  "negatives": [
+    {
+      "name": "new-finding-not-in-baseline",
+      "ok": false,
+      "rules": [
+        "debt.new-finding"
+      ]
+    },
+    {
+      "name": "stale-baseline-row",
+      "ok": false,
+      "rules": [
+        "debt.stale-baseline-row"
+      ]
+    },
+    {
+      "name": "baseline-growth-without-approval",
+      "ok": false,
+      "rules": [
+        "debt.baseline-growth-unapproved"
+      ]
+    },
+    {
+      "name": "invalid-baseline-schema",
+      "ok": false,
+      "rules": [
+        "baseline.schema-invalid",
+        "baseline.schema-invalid"
+      ]
+    },
+    {
+      "name": "surface-fingerprint-mismatch",
+      "ok": false,
+      "rules": [
+        "surface.fingerprint-mismatch"
+      ]
+    },
+    {
+      "name": "duplicate-finding-identity",
+      "ok": false,
+      "rules": [
+        "identity.duplicate"
+      ]
+    },
+    {
+      "name": "unstable-line-only-identity",
+      "ok": false,
+      "rules": [
+        "identity.unstable",
+        "identity.unstable"
+      ]
+    },
+    {
+      "name": "missing-runner-evidence",
+      "ok": false,
+      "rules": [
+        "evidence.missing-runner"
+      ]
+    },
+    {
+      "name": "runner-sourcefile-missing",
+      "ok": false,
+      "rules": [
+        "evidence.missing-runner",
+        "evidence.missing-runner",
+        "evidence.missing-runner",
+        "evidence.missing-runner"
+      ]
+    },
+    {
+      "name": "runner-sourcefile-omits-surface",
+      "ok": false,
+      "rules": [
+        "evidence.missing-runner",
+        "evidence.missing-runner"
+      ]
+    },
+    {
+      "name": "runner-sourcefile-duplicate",
+      "ok": false,
+      "rules": [
+        "evidence.missing-runner"
+      ]
+    },
+    {
+      "name": "baseline-row-source-missing",
+      "ok": false,
+      "rules": [
+        "evidence.missing-source"
+      ]
+    },
+    {
+      "name": "baseline-row-evidence-extra-field",
+      "ok": false,
+      "rules": [
+        "baseline.schema-invalid"
+      ]
+    },
+    {
+      "name": "finding-evidence-extra-field",
+      "ok": false,
+      "rules": [
+        "finding-carrier.schema-invalid"
+      ]
+    },
+    {
+      "name": "missing-source-evidence",
+      "ok": false,
+      "rules": [
+        "evidence.missing-source",
+        "evidence.missing-runner"
+      ]
+    },
+    {
+      "name": "relative-traversal-option",
+      "ok": false,
+      "rules": [
+        "input.path-traversal"
+      ]
+    },
+    {
+      "name": "absolute-outside-option",
+      "ok": false,
+      "rules": [
+        "input.absolute-path"
+      ]
+    }
+  ],
+  "adversarial": [
+    {
+      "name": "runner-evidence-extra-field",
+      "ok": false,
+      "rules": [
+        "evidence.missing-runner"
+      ]
+    },
+    {
+      "name": "runner-wrong-carrier-path",
+      "ok": false,
+      "rules": [
+        "evidence.missing-runner"
+      ]
+    },
+    {
+      "name": "runner-wrong-surface-path",
+      "ok": false,
+      "rules": [
+        "evidence.missing-runner"
+      ]
+    },
+    {
+      "name": "runner-noncompleted-status",
+      "ok": false,
+      "rules": [
+        "evidence.missing-runner"
+      ]
+    },
+    {
+      "name": "runner-sourcefile-traversal",
+      "ok": false,
+      "rules": [
+        "input.path-traversal"
+      ]
+    },
+    {
+      "name": "baseline-evidence-path-mismatch",
+      "ok": false,
+      "rules": [
+        "evidence.missing-source"
+      ]
+    },
+    {
+      "name": "approval-extra-field",
+      "ok": false,
+      "rules": [
+        "approval.schema-invalid"
+      ]
+    },
+    {
+      "name": "approval-missing-evidence",
+      "ok": false,
+      "rules": [
+        "approval.missing-evidence"
+      ]
+    },
+    {
+      "name": "approval-evidence-traversal",
+      "ok": false,
+      "rules": [
+        "input.path-traversal"
+      ]
+    },
+    {
+      "name": "surface-source-hash-mismatch",
+      "ok": false,
+      "rules": [
+        "surface.source-hash-mismatch",
+        "surface.fingerprint-mismatch",
+        "evidence.missing-source"
+      ]
+    },
+    {
+      "name": "unknown-validator-option",
+      "ok": false,
+      "rules": [
+        "input.unknown-option"
+      ]
+    },
+    {
+      "name": "invalid-max-file-bytes",
+      "ok": false,
+      "rules": [
+        "input.invalid-option"
+      ]
+    }
+  ],
+  "closure": {
+    "originalF1_runnerSourcefileMissing": {
+      "name": "runner-sourcefile-missing",
+      "ok": false,
+      "rules": [
+        "evidence.missing-runner",
+        "evidence.missing-runner",
+        "evidence.missing-runner",
+        "evidence.missing-runner"
+      ],
+      "evidence": {
+        "schemaVersion": "quality-ratchet.result/1",
+        "family": "p1.quality-ratchet",
+        "artifactPaths": {
+          "baselinePath": "baseline.json",
+          "findingCarrierPath": "findings.json",
+          "approvalPath": "approvals.json",
+          "surfaceFingerprintPath": "surface-fingerprint.json",
+          "runnerEvidencePath": "runner-evidence.json"
+        },
+        "surfaceFingerprint": {
+          "baseline": "9f0284bdb28774cdc24746e8eaf1aff4563eabc087d6cad1c5d87f7f788061e9",
+          "carrier": "9f0284bdb28774cdc24746e8eaf1aff4563eabc087d6cad1c5d87f7f788061e9",
+          "declared": "9f0284bdb28774cdc24746e8eaf1aff4563eabc087d6cad1c5d87f7f788061e9",
+          "computed": "9f0284bdb28774cdc24746e8eaf1aff4563eabc087d6cad1c5d87f7f788061e9"
+        },
+        "runnerEvidence": {
+          "runnerId": "example-quality-tool",
+          "command": "example-quality-tool --json quality-ratchet.findings.json",
+          "sourceFiles": [
+            "src/missing.ts"
+          ]
+        },
+        "counts": {
+          "baselineDebt": 1,
+          "currentFindings": 1,
+          "approvals": 0,
+          "previousBaselineDebt": null
+        },
+        "unchangedDebt": [
+          {
+            "identityId": "4d7bee41e451bf12e2d0f4c6b55cf6b082ab4e13d41358edeae1afdb639903fd",
+            "path": "src/sample.ts",
+            "ruleId": "example.rule"
+          }
+        ],
+        "newDebt": [],
+        "staleDebt": [],
+        "removedDebt": [],
+        "baselineGrowth": [],
+        "stableIdentityAlgorithm": "sha256(tool,ruleId,path,symbol-or-structuralSignature,contentHash); line excluded"
+      }
+    },
+    "originalF2_baselineRowSourceMissing": {
+      "name": "baseline-row-source-missing",
+      "ok": false,
+      "rules": [
+        "evidence.missing-source"
+      ],
+      "evidence": {
+        "schemaVersion": "quality-ratchet.result/1",
+        "family": "p1.quality-ratchet",
+        "artifactPaths": {
+          "baselinePath": "baseline.json",
+          "findingCarrierPath": "findings.json",
+          "approvalPath": "approvals.json",
+          "surfaceFingerprintPath": "surface-fingerprint.json",
+          "runnerEvidencePath": "runner-evidence.json"
+        },
+        "surfaceFingerprint": {
+          "baseline": "9f0284bdb28774cdc24746e8eaf1aff4563eabc087d6cad1c5d87f7f788061e9",
+          "carrier": "9f0284bdb28774cdc24746e8eaf1aff4563eabc087d6cad1c5d87f7f788061e9",
+          "declared": "9f0284bdb28774cdc24746e8eaf1aff4563eabc087d6cad1c5d87f7f788061e9",
+          "computed": "9f0284bdb28774cdc24746e8eaf1aff4563eabc087d6cad1c5d87f7f788061e9"
+        },
+        "runnerEvidence": {
+          "runnerId": "example-quality-tool",
+          "command": "example-quality-tool --json quality-ratchet.findings.json",
+          "sourceFiles": [
+            "src/sample.ts"
+          ]
+        },
+        "counts": {
+          "baselineDebt": 1,
+          "currentFindings": 1,
+          "approvals": 0,
+          "previousBaselineDebt": null
+        },
+        "unchangedDebt": [
+          {
+            "identityId": "4d7bee41e451bf12e2d0f4c6b55cf6b082ab4e13d41358edeae1afdb639903fd",
+            "path": "src/sample.ts",
+            "ruleId": "example.rule"
+          }
+        ],
+        "newDebt": [],
+        "staleDebt": [],
+        "removedDebt": [],
+        "baselineGrowth": [],
+        "stableIdentityAlgorithm": "sha256(tool,ruleId,path,symbol-or-structuralSignature,contentHash); line excluded"
+      }
+    }
+  }
+}

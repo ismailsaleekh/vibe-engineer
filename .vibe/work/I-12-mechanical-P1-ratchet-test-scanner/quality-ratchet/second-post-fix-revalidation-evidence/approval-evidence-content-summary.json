@@ -1,0 +1,57 @@
+{
+  "ok": false,
+  "ruleIds": [
+    "approval.evidence-invalid",
+    "debt.baseline-growth-unapproved"
+  ],
+  "evidence": {
+    "schemaVersion": "quality-ratchet.result/1",
+    "family": "p1.quality-ratchet",
+    "artifactPaths": {
+      "baselinePath": "baseline.json",
+      "previousBaselinePath": "previous-baseline.json",
+      "findingCarrierPath": "findings.json",
+      "approvalPath": "approvals.json",
+      "surfaceFingerprintPath": "surface-fingerprint.json",
+      "runnerEvidencePath": "runner-evidence.json"
+    },
+    "surfaceFingerprint": {
+      "baseline": "18b8b356295b67b3275e63b17aef858e6fcc5a0b5d8095b2cc969289f3263551",
+      "carrier": "18b8b356295b67b3275e63b17aef858e6fcc5a0b5d8095b2cc969289f3263551",
+      "declared": "18b8b356295b67b3275e63b17aef858e6fcc5a0b5d8095b2cc969289f3263551",
+      "computed": "18b8b356295b67b3275e63b17aef858e6fcc5a0b5d8095b2cc969289f3263551"
+    },
+    "runnerEvidence": {
+      "runnerId": "runner",
+      "command": "runner",
+      "sourceFiles": [
+        "src/sample.ts"
+      ]
+    },
+    "counts": {
+      "baselineDebt": 1,
+      "currentFindings": 1,
+      "approvals": 1,
+      "previousBaselineDebt": 0
+    },
+    "unchangedDebt": [
+      {
+        "identityId": "32619f44d57ba5989aa757537a1d9ed296db2023768b7919f310ece8196b7836",
+        "path": "src/sample.ts",
+        "ruleId": "example.rule"
+      }
+    ],
+    "newDebt": [],
+    "staleDebt": [],
+    "removedDebt": [],
+    "baselineGrowth": [
+      {
+        "identityId": "32619f44d57ba5989aa757537a1d9ed296db2023768b7919f310ece8196b7836",
+        "path": "src/sample.ts",
+        "approved": false
+      }
+    ],
+    "stableIdentityAlgorithm": "sha256(tool,ruleId,path,symbol-or-structuralSignature,contentHash); line excluded"
+  },
+  "note": "Malformed approval evidence file content probe: evidencePath points at non-JSON text."
+}

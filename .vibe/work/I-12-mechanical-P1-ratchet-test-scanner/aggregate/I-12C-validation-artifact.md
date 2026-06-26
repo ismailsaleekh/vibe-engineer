@@ -1,0 +1,201 @@
+# I-12C Validation Artifact
+
+## Stage 0 — report initialized
+- Status: complete
+- Timestamp: 2026-06-26
+- Validator role: independent adversarial implementation validator for I-12C aggregate-owned typed P1 runner bridge.
+- Files inspected so far: none (report created before product/source inspection per report-first requirement).
+- Files changed by validator: this artifact only.
+- Commands run so far: none.
+- Evidence: report-first requirement satisfied at required path `/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/I-12C-validation-artifact.md`.
+- Findings/blockers: none.
+- Severity classification: pending.
+- Next step: read required source-truth artifacts before product inspection or witnesses.
+
+## Stage 1 — source-truth artifacts read
+- Status: complete
+- Files changed by validator: this artifact only.
+- Files inspected/read:
+  - `/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/prompts/quality-bar.md`
+  - `/Users/lizavasilyeva/work/harness-starter/README.md`
+  - `/Users/lizavasilyeva/work/harness-starter/docs/locked-decisions.md`
+  - `/Users/lizavasilyeva/work/harness-starter/docs/verification-layer.md`
+  - `/Users/lizavasilyeva/work/harness-starter/docs/mechanical-verification-gates.md`
+  - `/Users/lizavasilyeva/work/harness-starter/docs/planning-research-backlog.md`
+  - `/Users/lizavasilyeva/work/harness-starter/guides/high-level-orchestrator-playbook.md`
+  - `/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/ledger-compact.md`
+  - `/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/status.md`
+  - `/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/handoff.md`
+  - `/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/implementation-strategy/post-d1-strategy-final.md`
+  - `/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/implementation-briefs/I-12-mechanical-P1-ratchet-test-scanner-brief-generated.md`
+  - `/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/reports/I-12-fork-b-brief-revalidation-artifact.md`
+  - `/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/reports/I-12C-prompt-validation-artifact.md`
+  - `/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/prompts/I-12C-implementation.md`
+  - `/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-12-mechanical-P1-ratchet-test-scanner/quality-ratchet/I-12A-third-post-fix-revalidation-artifact.md`
+  - `/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-12-mechanical-P1-ratchet-test-scanner/test-anti-pattern/I-12B-fourth-post-fix-revalidation-artifact.md`
+  - `/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/I-12C-implementation-report.md`
+- Commands run: none.
+- Evidence:
+  - Source artifacts establish this same validation artifact path; no conflicting I-12C validation path observed.
+  - I-12 Fork-B brief revalidation verdict is `PASS`/clean and selects `FORK-B-RUNNER-BRIDGE` with narrow aggregate-owned paths only.
+  - I-12C prompt validation verdict is `PASS`/clean for the implementation prompt.
+  - I-12A dependency artifact verdict is `PASS`/clean for quality-ratchet.
+  - I-12B dependency artifact verdict is `PASS`/clean for test-anti-pattern scanner.
+  - I-12C implementation report claims `DONE`, targeted witnesses passing, and no parent I-12 truth-green claim.
+  - Ledger/status/handoff confirm I-13 and I-20 remain blocked until I-12C validation is clean and downstream scheduler gates authorize later work.
+- Findings/blockers: none at source-truth stage.
+- Dependency confirmation: I-12A and I-12B PASS/clean artifacts remain valid dependencies for I-12C unless product inspection finds aggregate consumption of private/invalid APIs or current I-12C changes undermine them.
+- Severity classification: pending.
+- Next step: run path-scoped preflight dirty-tree/diff evidence, then inspect product files read-only.
+
+## Stage 2 — preflight dirty-tree and path-scoped diff evidence
+- Status: complete
+- Files changed by validator: this artifact plus validation evidence files under `I-12C-validation-evidence/`.
+- Commands run from `/Users/lizavasilyeva/work/vibe-engineer`:
+  - `git rev-parse --is-inside-work-tree` and `git rev-parse --verify HEAD 2>&1 || true` captured to `preflight-git-head.txt`.
+  - `git status --short -- <I-12C owned paths + root/package/manifest/lockfile/P0/I-11/I-12A/I-12B/contracts/testing/CI/scripts/infra/docs/I-13/I-18/I-20 sentinels>` captured to `preflight-scoped-git-status.txt`.
+  - `git diff --name-only -- <same scoped paths>` captured to `preflight-scoped-git-diff-name-only.txt`.
+- Evidence files:
+  - `/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/I-12C-validation-evidence/preflight-git-head.txt`
+  - `/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/I-12C-validation-evidence/preflight-scoped-git-status.txt`
+  - `/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/I-12C-validation-evidence/preflight-scoped-git-diff-name-only.txt`
+- Exact evidence:
+  - Repo is a git worktree but has `NO_HEAD` (`fatal: Needed a single revision`).
+  - Scoped status output has 27 untracked lines, including I-12C aggregate owned paths and existing untracked root/sibling sentinels; dirty/untracked greenfield baseline is not itself a defect.
+  - Scoped `git diff --name-only` over the sentinel list emitted 0 lines.
+- Findings/blockers: no concrete ownership conflict identified at preflight; no tracked diff names observed.
+- Severity classification: pending.
+- Next step: inspect actual product files/declarations/fixtures and public contracts read-only.
+
+## Stage 3 — product file/declaration inspection and implementation-provided witnesses
+- Status: complete
+- Files changed by validator: this artifact; validation evidence under `I-12C-validation-evidence/suggested-witnesses/**`; implementation witness necessarily refreshed aggregate-owned evidence under `aggregate/typecheck-evidence/**`, `aggregate/witness-evidence/**`, and I-11 bridge artifact output under the aggregate workdir.
+- Product/source files inspected read-only:
+  - `packages/mechanical-gates/src/aggregate/index.js`
+  - `packages/mechanical-gates/src/aggregate/index.d.ts`
+  - `packages/mechanical-gates/src/aggregate/p1/run-p1-aggregate.js`
+  - `packages/mechanical-gates/fixtures/p1/aggregate/witness.mjs`
+  - `packages/mechanical-gates/fixtures/p1/aggregate/typecheck-consumer.ts`
+  - `packages/mechanical-gates/fixtures/p1/aggregate/bridge-modules/{compile-failure,wrong-export,wrong-family,malformed-result,validator-exception}/index.ts`
+  - `packages/mechanical-gates/src/aggregate/run-p0-aggregate.js`
+  - `packages/mechanical-gates/src/p0/boundaries/contracts.js`
+  - `packages/mechanical-gates/package.json`
+  - `package.json`
+  - `packages/mechanical-gates/src/p1/quality-ratchet/index.js` and `index.d.ts`
+  - `packages/mechanical-gates/src/p1/test-anti-pattern/index.js` and `index.d.ts`
+  - `packages/mechanical-gates/src/p1/schema-contract-strictness/index.ts` and `validate-schema-contract-strictness.ts`
+- Inventory evidence:
+  - Aggregate source files are `index.js`, `index.d.ts`, `run-p0-aggregate.js`, and `p1/run-p1-aggregate.js`.
+  - Aggregate fixture files are witness/typecheck consumer plus negative bridge modules only.
+  - `packages/mechanical-gates/package.json` still exports `./aggregate` only through `src/aggregate/index.{js,d.ts}` and has no I-12C manifest/export edit.
+- Static contract evidence:
+  - `src/aggregate/index.js` preserves `runP0Aggregate` export and exports `runP1Aggregate` plus runtime `P1AggregateFamily` carrier from `p1/run-p1-aggregate.js`.
+  - `src/aggregate/index.d.ts` preserves P0 declarations and declares `P1AggregateFamily`, `P1AggregateOptions`, `P1AggregateResult`, bridge evidence types, and `runP1Aggregate`.
+  - `run-p0-aggregate.js` content remains P0-only; no P1 edits observed there.
+  - `run-p1-aggregate.js` imports actual `validateQualityRatchet` and `validateTestAntiPatterns` public JS APIs and compiles/imports actual I-11 TS files inside the aggregate helper via `pnpm --filter @vibe-engineer/contracts exec tsc` into aggregate-owned workdir.
+  - I-11 TS source exports `validateSchemaContractStrictness`; I-12A/B sources expose the expected public validator APIs and families.
+- Commands run from `/Users/lizavasilyeva/work/vibe-engineer` unless noted; all exited 0:
+  - `node --check packages/mechanical-gates/src/aggregate/index.js`
+  - `node --check packages/mechanical-gates/src/aggregate/p1/run-p1-aggregate.js`
+  - `node --check packages/mechanical-gates/fixtures/p1/aggregate/witness.mjs`
+  - `node packages/mechanical-gates/fixtures/p1/aggregate/witness.mjs --typecheck`
+  - `node packages/mechanical-gates/fixtures/p1/aggregate/witness.mjs`
+  - from `packages/mechanical-gates`: `node fixtures/p0/allowlist-domain-aggregate/witness.mjs`
+  - from `packages/mechanical-gates`: `node fixtures/p0/surface-config-boundaries/witness.mjs`
+  - from `packages/mechanical-gates`: `node fixtures/p0/testing-boundary/witness.mjs`
+- Evidence files:
+  - Validation command outputs: `/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/I-12C-validation-evidence/suggested-witnesses/**`
+  - Aggregate witness output: `/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/witness-evidence/aggregate-witness.json`
+  - Typecheck output: `/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/typecheck-evidence/aggregate-typecheck.json`
+- Implementation-provided witness evidence:
+  - Positive aggregate run imported actual `packages/mechanical-gates/src/aggregate/index.js`, returned `family: p1.aggregate`, `ok: true`, and subresult summaries for exactly `p1.schema-contract-strictness`, `p1.quality-ratchet`, and `p1.test-anti-pattern` with zero findings.
+  - I-11 bridge evidence records actual TS source files, output artifact directory/file under `.vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-*`, `pnpm ... tsc` status 0, module URL, export checked `validateSchemaContractStrictness`, observed family `p1.schema-contract-strictness`, and typed subresult validation `ok: true`.
+  - I-12A positive subresult consumed real on-disk quality-ratchet fixture artifacts (`baseline.json`, `findings.json`, `approvals.json`, `surface-fingerprint.json`, `runner-evidence.json`).
+  - I-12B positive subresult consumed real on-disk test anti-pattern workspace file `tests/meaningful.test.ts`.
+  - Negative witness covered compile failure, missing artifact, wrong export, wrong family, malformed result, validator exception, omitting each family, unknown family, missing quality baseline, bridge output traversal, bridge input traversal, and synthetic `subresults` option rejection.
+  - P0 regression witnesses passed.
+- Findings/blockers: no finding from implementation-provided witnesses; independent adversarial probes still required for edge cases not covered by the provided witness.
+- Severity classification: pending.
+- Next step: run independent boundary probes for public contract, fail-closed behavior, missing scanner input, package subpath import, fake-source injection risk, production import/copy searches, and blast-radius sweep.
+
+## Stage 4 — independent public-boundary and fail-closed probes
+- Status: complete
+- Files changed by validator: this artifact; validation-owned probe/evidence files under `I-12C-validation-evidence/**`; aggregate runner also generated bridge output artifacts under aggregate workdir during probe execution.
+- Probe files created:
+  - `/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/I-12C-validation-evidence/independent-probe.mjs`
+  - `/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/I-12C-validation-evidence/fake-bridge/index.ts`
+- Commands run:
+  - initial `node .../independent-probe.mjs` exited 1 because package self-reference import from the validation-evidence script location could not resolve `@vibe-engineer/mechanical-gates`; this was a probe-location issue, not accepted as product evidence.
+  - corrected probe used a child Node process from `packages/mechanical-gates` to test package self-reference import; final `node .../independent-probe.mjs` exited 0.
+- Evidence files:
+  - `/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/I-12C-validation-evidence/independent-probe.stdout`
+  - `/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/I-12C-validation-evidence/independent-probe.stderr`
+  - `/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/I-12C-validation-evidence/independent-probe.status`
+  - `/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/I-12C-validation-evidence/package-aggregate-import-probe.json`
+  - `/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/I-12C-validation-evidence/independent-probe-results.json`
+- Positive evidence:
+  - Direct import from `packages/mechanical-gates/src/aggregate/index.js` and package self-reference import `@vibe-engineer/mechanical-gates/aggregate` both expose `P1AggregateFamily`, `runP0Aggregate`, and `runP1Aggregate`.
+  - Runtime `P1AggregateFamily` is exactly `["p1.schema-contract-strictness","p1.quality-ratchet","p1.test-anti-pattern"]`.
+  - `runP1Aggregate(repoRoot)` returned `family: p1.aggregate`, `ok: true`, subresult families exactly the three required P1 families, summary all ok, I-11 bridge status 0, export `validateSchemaContractStrictness`, observed family `p1.schema-contract-strictness`, typed subresult validation ok, and A/B source identities naming `validateQualityRatchet`/`validateTestAntiPatterns`.
+- Negative/fail-closed evidence from actual `runP1Aggregate` public boundary; all returned `ok:false` with expected blocking rule IDs:
+  - I-11 compile failure → `aggregate.i11-bridge.compile-failed`, `aggregate.missing-subresult`.
+  - missing compiled artifact/module → `aggregate.i11-bridge.missing-artifact`, `aggregate.missing-subresult`.
+  - wrong export → `aggregate.i11-bridge.wrong-export`, `aggregate.missing-subresult`.
+  - wrong I-11 family → `aggregate.i11-bridge.wrong-family`, `aggregate.missing-subresult`.
+  - malformed/untyped I-11 subresult → `aggregate.malformed-subresult`, `aggregate.missing-subresult`.
+  - validator exception → `aggregate.validator-exception`, `aggregate.missing-subresult`.
+  - omitting each implemented family → `aggregate.omitted-family` for each omission.
+  - unknown requested family → `aggregate.unknown-family`.
+  - missing quality-ratchet baseline → `baseline.schema-invalid`.
+  - missing test anti-pattern scanner policy/input → `policy.unreadable`.
+  - bridge output traversal → `aggregate.i11-bridge.path-invalid`, `aggregate.missing-subresult`.
+  - bridge input traversal → `aggregate.i11-bridge.path-invalid`, `aggregate.missing-subresult`.
+  - synthetic `subresults` injection option → `aggregate.unknown-option`.
+  - validation-owned fake bridge source with correct-family fake validator → rejected before compile with `aggregate.i11-bridge.path-invalid`, `aggregate.missing-subresult`.
+- Findings/blockers: no functional fail-closed gap found by independent probes.
+- Severity classification: pending.
+- Next step: perform sibling/blast-radius sweeps, production import/copy/regex searches, docs/contract consistency checks, and final path-scoped dirty-tree evidence.
+
+## Stage 5 — sibling/blast-radius sweeps and final dirty-tree evidence
+- Status: complete
+- Files changed by validator: this artifact and validation evidence files under `I-12C-validation-evidence/**`; no product source edits by validator.
+- Commands run from `/Users/lizavasilyeva/work/vibe-engineer`:
+  - `rg "@vibe-engineer/testing" packages --glob '!**/fixtures/**'` (broad search) found package/self-test/preset guard references only, not production imports.
+  - `rg "from ['\"]@vibe-engineer/testing|import\\(['\"]@vibe-engineer/testing|require\\(['\"]@vibe-engineer/testing" packages --glob '!**/fixtures/**'` exited 1 with no matches.
+  - `rg "inspectNamedSchemas|inspectContractShapes|generated-client-provenance|named-runtime-schema-boundary|ts\\.is|z\\.object|validateSchemaContractStrictness" packages/mechanical-gates/src/aggregate` found only the expected exported-validator-name string/check, not copied I-11 AST logic.
+  - `rg "RegExp|\\.match\\(|\\.test\\(|new RegExp|regex|text scraping|parser self-agreement|hardcoded pass" packages/mechanical-gates/src/aggregate packages/mechanical-gates/fixtures/p1/aggregate` exited 1 with no matches.
+  - `rg "fake|mock|synthetic|subresults" packages/mechanical-gates/src/aggregate packages/mechanical-gates/fixtures/p1/aggregate` found only normal subresult handling and the negative synthetic-injection witness.
+  - `rg "I-12C|runP1Aggregate|P1Aggregate|p1\\.aggregate" . --glob '!packages/mechanical-gates/src/aggregate/**' --glob '!packages/mechanical-gates/fixtures/p1/aggregate/**' --glob '!.vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/**' --glob '!.git/**'` exited 1 with no matches outside owned aggregate/product/evidence paths.
+  - `rg "p1|runP1|P1Aggregate" packages/mechanical-gates/src/aggregate/run-p0-aggregate.js` exited 1 with no matches.
+  - `find packages/mechanical-gates -maxdepth 1 -name 'tsconfig*.json' -type f -print` exited 0 with no output.
+  - `rg "I-12C|runP1Aggregate|P1Aggregate|p1\\.aggregate" docs package.json pnpm-lock.yaml pnpm-workspace.yaml turbo.json tsconfig.base.json eslint.config.mjs prettier.config.mjs packages/mechanical-gates/package.json` exited 1 with no matches.
+  - Final `git status --short -- <I-12C owned paths + root/package/manifest/lockfile/P0/I-11/I-12A/I-12B/contracts/testing/CI/scripts/infra/docs/I-13/I-18/I-20 sentinels>` captured 27 untracked baseline lines.
+  - Final `git diff --name-only -- <same scoped paths>` captured 0 lines.
+  - `bg_status` reported no background tasks in this Pi extension runtime.
+- Evidence files:
+  - `/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/I-12C-validation-evidence/blast-radius/**`
+- Blast-radius findings:
+  - No production import statement for `@vibe-engineer/testing` found.
+  - No copied I-11 implementation logic found in aggregate source; aggregate contains only export-name checks and typed bridge invocation.
+  - No load-bearing regex/text-scraping pattern found in aggregate implementation or fixtures.
+  - No fake/mock/synthetic green path found; synthetic subresult appears only as a negative fail-closed witness and independent probe also rejected a validation-owned fake bridge source.
+  - No I-12C/P1 aggregate references found outside owned aggregate paths/evidence/docs scope checked; docs/root/manifests/package manifest have no I-12C text changes.
+  - `run-p0-aggregate.js` has no P1 symbols and P0 witnesses passed in Stage 3.
+  - `packages/mechanical-gates/package.json`, root manifests/lockfile/workspace/Turbo/shared config, package tsconfig*, CI/scripts/infra/docs, contracts/testing, P0 source/fixtures, I-11 source/fixtures, I-12A/I-12B internals, and I-13/I-18/I-20 sentinels show no tracked diff names; untracked greenfield status is baseline/no-HEAD and not itself a defect.
+- Findings/blockers: none.
+- Severity classification: clean pending final synthesis.
+- Next step: final synthesis and verdict.
+
+## Final synthesis
+- Status: complete
+- Verdict: PASS
+- Severity classification: clean
+- Files changed by validator: validation report/evidence only under the I-12C aggregate work area; no product source edits by validator.
+- Required public contract: PASS. `runP1Aggregate`, runtime `P1AggregateFamily`, `P1AggregateOptions`, and `P1AggregateResult` are declared/exported consistently; `runP0Aggregate` export and P0 behavior are preserved.
+- Real-boundary aggregate proof: PASS. Actual aggregate entrypoint/package aggregate import invokes actual I-11 through an in-run aggregate-owned TS compile/import bridge and actual I-12A/I-12B public validators over real on-disk fixtures; returned aggregate family is `p1.aggregate` and subresult families are exactly `p1.schema-contract-strictness`, `p1.quality-ratchet`, and `p1.test-anti-pattern`.
+- I-11 runner/build-artifact carrier evidence: PASS. Evidence includes TS source files, output artifact dir/file under aggregate workdir, `pnpm ... tsc` command/args/cwd/status/stdout/stderr fields, module URL, export checked, observed family, typed validation, and fail-closed diagnostics.
+- Malformed/fail-closed cases: PASS. Independent public-boundary probes covered compile failure, missing module, wrong export, wrong family, malformed subresult, exception, family omission, unknown family, missing quality baseline, missing scanner policy/input, path traversal, synthetic subresult injection, and validation-owned fake bridge source rejection.
+- Regression/sibling sweeps: PASS. P0 witnesses passed; `run-p0-aggregate.js` was not edited; root/package/manifest/lockfile/CI/scripts/infra/docs/contracts/testing/P0/I-11/I-12A/I-12B/I-13/I-18/I-20 sentinels showed no tracked diff names and no concrete ownership conflict.
+- Dependency confirmation: I-12A and I-12B PASS/clean artifacts remain valid dependencies; I-12C did not consume their private APIs or undermine their contracts.
+- Downstream routing: parent I-12 may be treated clean for this I-12C validation evidence only; I-13 and I-20 remain blocked until a later scheduler gate authorizes downstream work.
+- Findings/blockers: none.

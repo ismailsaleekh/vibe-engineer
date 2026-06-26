@@ -1,0 +1,10 @@
+COMMAND: rg @vibe-engineer/testing packages --glob \!\*\*/fixtures/\*\*
+CWD:/Users/lizavasilyeva/work/vibe-engineer
+--- stdout ---
+packages/testing/package.json:  "name": "@vibe-engineer/testing",
+packages/registry/tests/run-tests.mjs:assert.equal(JSON.stringify(registryPackage).includes('@vibe-engineer/testing'), false);
+packages/presets/typescript/src/index.ts:  if (input === "@vibe-engineer/testing") {
+packages/presets/typescript/src/index.ts:    if (getObjectProperty(dependencies, "@vibe-engineer/testing") !== undefined && dependencyField === "dependencies") {
+packages/presets/typescript/src/index.ts:      findings.push(makeFinding("PRESET_FORBIDDEN_TESTING_PRODUCTION_DEPENDENCY", path, "Generated production dependencies must not include @vibe-engineer/testing.", [dependencyField]));
+
+RG_EXIT:0

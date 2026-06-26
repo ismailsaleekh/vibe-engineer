@@ -1,0 +1,209 @@
+{
+  "ok": false,
+  "scannerModule": "packages/mechanical-gates/src/p1/test-anti-pattern/index.js",
+  "fixtureRoot": "packages/mechanical-gates/fixtures/p1/test-anti-pattern/workspaces",
+  "requiredFixtures": [
+    {
+      "name": "positive",
+      "ok": true,
+      "findings": [],
+      "evidence": {
+        "policyPath": "test-anti-pattern.policy.json",
+        "parser": "typescript",
+        "proofMode": "typescript-ast",
+        "family": "p1.test-anti-pattern",
+        "discoveredTestFiles": [
+          "tests/meaningful.test.ts"
+        ],
+        "testCaseCount": 5,
+        "requiredSetupFiles": [
+          "resources/required-resource.txt"
+        ],
+        "requiredSetupAssertionCalls": [
+          "assertRequiredFixtureResource"
+        ],
+        "publicClaimCount": 1,
+        "riskyBehaviorCount": 1
+      }
+    },
+    {
+      "name": "exit-code-only",
+      "ok": false,
+      "expectedRuleId": "test.exit-code-only",
+      "findings": [
+        "test.exit-code-only"
+      ]
+    },
+    {
+      "name": "no-assertions",
+      "ok": false,
+      "expectedRuleId": "test.no-meaningful-assertions",
+      "findings": [
+        "test.no-meaningful-assertions",
+        "test.no-meaningful-assertions"
+      ]
+    },
+    {
+      "name": "smoke-only",
+      "ok": false,
+      "expectedRuleId": "test.smoke-only",
+      "findings": [
+        "test.smoke-only"
+      ]
+    },
+    {
+      "name": "happy-path-only",
+      "ok": false,
+      "expectedRuleId": "risky-behavior.happy-path-only",
+      "findings": [
+        "risky-behavior.happy-path-only"
+      ]
+    },
+    {
+      "name": "weak-count",
+      "ok": false,
+      "expectedRuleId": "test.weak-count-assertion",
+      "findings": [
+        "test.weak-count-assertion"
+      ]
+    },
+    {
+      "name": "silent-fallback",
+      "ok": false,
+      "expectedRuleId": "test.silent-fallback",
+      "findings": [
+        "test.silent-fallback"
+      ]
+    },
+    {
+      "name": "skipped-metadata",
+      "ok": false,
+      "expectedRuleId": "skipped-test.missing-metadata",
+      "findings": [
+        "skipped-test.missing-metadata"
+      ]
+    },
+    {
+      "name": "volatile-snapshot",
+      "ok": false,
+      "expectedRuleId": "snapshot.volatile-without-normalization",
+      "findings": [
+        "test.no-meaningful-assertions",
+        "snapshot.volatile-without-normalization"
+      ]
+    },
+    {
+      "name": "setup-silent-pass",
+      "ok": false,
+      "expectedRuleId": "setup-resource.missing-assertion",
+      "findings": [
+        "setup-resource.missing-assertion",
+        "test.silent-fallback"
+      ]
+    },
+    {
+      "name": "missing-resource",
+      "ok": false,
+      "expectedRuleId": "setup-resource.missing",
+      "findings": [
+        "setup-resource.missing"
+      ]
+    },
+    {
+      "name": "parser-self-agreement",
+      "ok": false,
+      "expectedRuleId": "parser-self-agreement-fixture",
+      "findings": [
+        "parser-self-agreement-fixture"
+      ]
+    },
+    {
+      "name": "public-claim-gap",
+      "ok": false,
+      "expectedRuleId": "public-claim.coverage-gap",
+      "findings": [
+        "public-claim.coverage-gap"
+      ]
+    },
+    {
+      "name": "regression-missing-shape",
+      "ok": false,
+      "expectedRuleId": "regression.missing-failure-shape",
+      "findings": [
+        "regression.missing-failure-shape",
+        "risky-behavior.happy-path-only"
+      ]
+    },
+    {
+      "name": "malformed-policy",
+      "ok": false,
+      "expectedRuleId": "policy.unreadable",
+      "findings": [
+        "policy.unreadable"
+      ]
+    },
+    {
+      "name": "missing-policy",
+      "ok": false,
+      "expectedRuleId": "policy.unreadable",
+      "findings": [
+        "policy.unreadable"
+      ]
+    },
+    {
+      "name": "path-traversal-policy",
+      "ok": false,
+      "expectedRuleId": "discovery.test-root-invalid",
+      "findings": [
+        "setup-resource.missing",
+        "setup-resource.sentinel-failure",
+        "discovery.test-root-invalid",
+        "discovery.no-test-files",
+        "public-claim.coverage-gap",
+        "risky-behavior.happy-path-only"
+      ]
+    },
+    {
+      "name": "parser-failure",
+      "ok": false,
+      "expectedRuleId": "parser.failure",
+      "findings": [
+        "parser.failure",
+        "public-claim.coverage-gap",
+        "risky-behavior.happy-path-only"
+      ]
+    },
+    {
+      "name": "unknown-option",
+      "ok": false,
+      "findings": [
+        "policy.unknown-validator-option"
+      ]
+    },
+    {
+      "name": "untyped-finding-assertion",
+      "rejected": true
+    }
+  ],
+  "adversarial": [
+    {
+      "name": "smoke-tautology-evades",
+      "expected": "fail: smoke-only/no-meaningful-assertions should catch tautological smoke QA",
+      "actualOk": true,
+      "findings": []
+    },
+    {
+      "name": "missing-readme-evades",
+      "expected": "fail: public claim policy points at missing README.md",
+      "actualOk": true,
+      "findings": []
+    },
+    {
+      "name": "malformed-maxFileBytes-option",
+      "expected": "fail: malformed runtime option must not disable bounded-read cap",
+      "actualOk": true,
+      "findings": []
+    }
+  ],
+  "error": null
+}

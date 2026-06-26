@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "quality-ratchet.approvals/1",
+  "family": "p1.quality-ratchet",
+  "approvals": [
+    {
+      "kind": "shrink",
+      "identity": {
+        "tool": "example-mechanical-tool",
+        "ruleId": "example.rule",
+        "path": "src/sample.ts",
+        "symbol": "sampleFunction",
+        "structuralSignature": "function:sampleFunction:quality-ratchet",
+        "contentHash": "9743acd245a1b3586841ec54389409fd0de687abc987d2fc9a63ded3fe9e7521",
+        "line": 3
+      },
+      "approvedBy": "operator",
+      "reason": "traversal",
+      "evidencePath": "../approval.json"
+    }
+  ]
+}

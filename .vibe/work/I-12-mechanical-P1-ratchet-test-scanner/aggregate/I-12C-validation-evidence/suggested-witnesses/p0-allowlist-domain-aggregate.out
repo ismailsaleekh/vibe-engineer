@@ -1,0 +1,6 @@
+COMMAND: node fixtures/p0/allowlist-domain-aggregate/witness.mjs
+CWD:/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates
+--- stdout ---
+{"ok":true,"mode":"p0-allowlist-domain-aggregate","fixtureRoot":"fixtures/p0/allowlist-domain-aggregate","positive":{"allowlistEvidence":{"policyPath":"mechanical-escape-allowlist.json","scannedFileCount":6,"detectedEscapeCount":1,"allowlistEntryCount":1,"hardBannedEscapes":["as-any"],"parser":"typescript","proofMode":"typescript-ast-and-comment-scanner"},"domainEvidence":{"policyPath":"mechanical-domain-purity.json","scannedFileCount":6,"surfaceCount":4,"forbiddenTerms":["ecommerce","inventory","Billz","Telegram"],"parser":"typescript","proofMode":"typescript-ast-string-comment-path-carriers"},"aggregateSummary":{"p0.governed-surface":{"ok":true,"findingCount":0},"p0.config-guards":{"ok":true,"findingCount":0},"p0.boundaries":{"ok":true,"findingCount":0},"p0.allowlist":{"ok":true,"findingCount":0},"p0.domain-purity":{"ok":true,"findingCount":0}}},"negativeWitnesses":34,"regressionEvidence":{"noPackagesCoreAssumption":true,"noTestingProductionDependency":true,"noP1P2TestingBoundaryCreated":true}}
+
+EXIT_STATUS:0

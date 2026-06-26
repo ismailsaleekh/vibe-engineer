@@ -1,0 +1,284 @@
+{
+  "ok": true,
+  "family": "p1.test-anti-pattern",
+  "positive": {
+    "ok": true,
+    "discoveredTestFiles": [
+      "tests/meaningful.test.ts"
+    ],
+    "testCaseCount": 5
+  },
+  "nestedSuitePositive": {
+    "ok": true,
+    "discoveredTestFiles": [
+      "tests/case.test.ts"
+    ],
+    "testCaseCount": 4
+  },
+  "negativeRuleIds": [
+    "test.no-meaningful-assertions",
+    "test.exit-code-only",
+    "public-claim.coverage-gap",
+    "risky-behavior.happy-path-only",
+    "test.no-meaningful-assertions",
+    "test.no-meaningful-assertions",
+    "public-claim.coverage-gap",
+    "risky-behavior.happy-path-only",
+    "test.no-meaningful-assertions",
+    "test.smoke-only",
+    "test.no-meaningful-assertions",
+    "public-claim.coverage-gap",
+    "risky-behavior.happy-path-only",
+    "test.no-meaningful-assertions",
+    "test.smoke-only",
+    "test.no-meaningful-assertions",
+    "public-claim.coverage-gap",
+    "risky-behavior.happy-path-only",
+    "test.no-meaningful-assertions",
+    "test.no-meaningful-assertions",
+    "public-claim.coverage-gap",
+    "risky-behavior.happy-path-only",
+    "test.no-meaningful-assertions",
+    "test.no-meaningful-assertions",
+    "public-claim.coverage-gap",
+    "risky-behavior.happy-path-only",
+    "public-claim.coverage-gap",
+    "risky-behavior.happy-path-only",
+    "public-claim.coverage-gap",
+    "risky-behavior.happy-path-only",
+    "public-claim.coverage-gap",
+    "risky-behavior.happy-path-only",
+    "public-claim.coverage-gap",
+    "risky-behavior.happy-path-only",
+    "public-claim.coverage-gap",
+    "test.no-meaningful-assertions",
+    "test.no-meaningful-assertions",
+    "public-claim.coverage-gap",
+    "risky-behavior.happy-path-only",
+    "test.weak-count-assertion",
+    "test.no-meaningful-assertions",
+    "risky-behavior.happy-path-only",
+    "test.silent-fallback",
+    "test.no-meaningful-assertions",
+    "risky-behavior.happy-path-only",
+    "skipped-test.missing-metadata",
+    "test.no-meaningful-assertions",
+    "public-claim.coverage-gap",
+    "risky-behavior.happy-path-only",
+    "test.no-meaningful-assertions",
+    "snapshot.volatile-without-normalization",
+    "test.no-meaningful-assertions",
+    "public-claim.coverage-gap",
+    "risky-behavior.happy-path-only",
+    "setup-resource.missing-assertion",
+    "test.silent-fallback",
+    "test.no-meaningful-assertions",
+    "risky-behavior.happy-path-only",
+    "setup-resource.missing",
+    "test.no-meaningful-assertions",
+    "test.no-meaningful-assertions",
+    "public-claim.coverage-gap",
+    "risky-behavior.happy-path-only",
+    "parser-self-agreement-fixture",
+    "test.no-meaningful-assertions",
+    "risky-behavior.happy-path-only",
+    "test.no-meaningful-assertions",
+    "test.no-meaningful-assertions",
+    "public-claim.coverage-gap",
+    "risky-behavior.happy-path-only",
+    "test.no-meaningful-assertions",
+    "public-claim.source-unreadable",
+    "risky-behavior.happy-path-only",
+    "test.no-meaningful-assertions",
+    "public-claim.source-missing-text",
+    "risky-behavior.happy-path-only",
+    "test.no-meaningful-assertions",
+    "test.no-meaningful-assertions",
+    "regression.missing-failure-shape",
+    "public-claim.coverage-gap",
+    "risky-behavior.happy-path-only",
+    "policy.unreadable",
+    "policy.unreadable",
+    "setup-resource.missing",
+    "setup-resource.sentinel-failure",
+    "discovery.test-root-invalid",
+    "discovery.no-test-files",
+    "public-claim.source-unreadable",
+    "risky-behavior.happy-path-only",
+    "parser.failure",
+    "public-claim.coverage-gap",
+    "risky-behavior.happy-path-only"
+  ],
+  "negativeCases": [
+    {
+      "name": "exit-code-only",
+      "expectedRuleId": "test.exit-code-only",
+      "findingCount": 4
+    },
+    {
+      "name": "no-assertions",
+      "expectedRuleId": "test.no-meaningful-assertions",
+      "findingCount": 4
+    },
+    {
+      "name": "smoke-only",
+      "expectedRuleId": "test.smoke-only",
+      "findingCount": 5
+    },
+    {
+      "name": "smoke-tautology",
+      "expectedRuleId": "test.no-meaningful-assertions",
+      "findingCount": 5
+    },
+    {
+      "name": "literal-alias-public-claim-tautology",
+      "expectedRuleId": "test.no-meaningful-assertions",
+      "findingCount": 4
+    },
+    {
+      "name": "typescript-wrapper-literal-alias-tautology",
+      "expectedRuleId": "test.no-meaningful-assertions",
+      "findingCount": 4
+    },
+    {
+      "name": "skipped-public-claim-only",
+      "expectedRuleId": "public-claim.coverage-gap",
+      "findingCount": 1
+    },
+    {
+      "name": "skipped-risky-negative-only",
+      "expectedRuleId": "risky-behavior.happy-path-only",
+      "findingCount": 1
+    },
+    {
+      "name": "describe-skip-public-claim-only",
+      "expectedRuleId": "public-claim.coverage-gap",
+      "findingCount": 1
+    },
+    {
+      "name": "describe-skip-risky-negative-only",
+      "expectedRuleId": "risky-behavior.happy-path-only",
+      "findingCount": 1
+    },
+    {
+      "name": "nested-describe-skip-public-claim",
+      "expectedRuleId": "public-claim.coverage-gap",
+      "findingCount": 1
+    },
+    {
+      "name": "nested-describe-skip-risky-negative",
+      "expectedRuleId": "risky-behavior.happy-path-only",
+      "findingCount": 1
+    },
+    {
+      "name": "inherited-describe-skip-public-claim",
+      "expectedRuleId": "public-claim.coverage-gap",
+      "findingCount": 1
+    },
+    {
+      "name": "inherited-describe-skip-risky-negative",
+      "expectedRuleId": "risky-behavior.happy-path-only",
+      "findingCount": 1
+    },
+    {
+      "name": "deep-describe-skip-public-claim",
+      "expectedRuleId": "public-claim.coverage-gap",
+      "findingCount": 1
+    },
+    {
+      "name": "happy-path-only",
+      "expectedRuleId": "risky-behavior.happy-path-only",
+      "findingCount": 4
+    },
+    {
+      "name": "weak-count",
+      "expectedRuleId": "test.weak-count-assertion",
+      "findingCount": 3
+    },
+    {
+      "name": "silent-fallback",
+      "expectedRuleId": "test.silent-fallback",
+      "findingCount": 3
+    },
+    {
+      "name": "skipped-metadata",
+      "expectedRuleId": "skipped-test.missing-metadata",
+      "findingCount": 4
+    },
+    {
+      "name": "volatile-snapshot",
+      "expectedRuleId": "snapshot.volatile-without-normalization",
+      "findingCount": 5
+    },
+    {
+      "name": "setup-silent-pass",
+      "expectedRuleId": "setup-resource.missing-assertion",
+      "findingCount": 4
+    },
+    {
+      "name": "missing-resource",
+      "expectedRuleId": "setup-resource.missing",
+      "findingCount": 5
+    },
+    {
+      "name": "parser-self-agreement",
+      "expectedRuleId": "parser-self-agreement-fixture",
+      "findingCount": 3
+    },
+    {
+      "name": "public-claim-gap",
+      "expectedRuleId": "public-claim.coverage-gap",
+      "findingCount": 4
+    },
+    {
+      "name": "missing-public-claim-source",
+      "expectedRuleId": "public-claim.source-unreadable",
+      "findingCount": 3
+    },
+    {
+      "name": "public-claim-source-mismatch",
+      "expectedRuleId": "public-claim.source-missing-text",
+      "findingCount": 3
+    },
+    {
+      "name": "regression-missing-shape",
+      "expectedRuleId": "regression.missing-failure-shape",
+      "findingCount": 5
+    },
+    {
+      "name": "malformed-policy",
+      "expectedRuleId": "policy.unreadable",
+      "findingCount": 1
+    },
+    {
+      "name": "missing-policy",
+      "expectedRuleId": "policy.unreadable",
+      "findingCount": 1
+    },
+    {
+      "name": "path-traversal-policy",
+      "expectedRuleId": "discovery.test-root-invalid",
+      "findingCount": 6
+    },
+    {
+      "name": "parser-failure",
+      "expectedRuleId": "parser.failure",
+      "findingCount": 3
+    }
+  ],
+  "failClosed": {
+    "unknownOption": [
+      "policy.unknown-validator-option"
+    ],
+    "malformedMaxFileBytes": [
+      "policy.invalid-validator-option"
+    ],
+    "untypedRejected": true
+  },
+  "realBoundary": {
+    "scannerModule": "packages/mechanical-gates/src/p1/test-anti-pattern/index.js",
+    "fixtureRoot": "packages/mechanical-gates/fixtures/p1/test-anti-pattern/workspaces",
+    "parser": "typescript",
+    "proofMode": "typescript-ast"
+  }
+}

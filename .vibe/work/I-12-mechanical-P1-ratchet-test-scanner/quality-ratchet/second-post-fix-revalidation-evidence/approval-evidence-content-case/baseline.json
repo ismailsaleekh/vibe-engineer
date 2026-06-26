@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "quality-ratchet.baseline/1",
+  "family": "p1.quality-ratchet",
+  "surfaceFingerprint": "18b8b356295b67b3275e63b17aef858e6fcc5a0b5d8095b2cc969289f3263551",
+  "debt": [
+    {
+      "identity": {
+        "tool": "example-tool",
+        "ruleId": "example.rule",
+        "path": "src/sample.ts",
+        "symbol": "sample",
+        "contentHash": "5ada051af1a1167dbe35d4abdb213bb4c6b4e988fa669a5b7c3f08840007fadd",
+        "line": 3
+      },
+      "message": "debt",
+      "firstSeen": "2026-06-26T00:00:00.000Z",
+      "evidence": {
+        "sourcePath": "src/sample.ts"
+      }
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "quality-ratchet.approvals/1",
+  "family": "p1.quality-ratchet",
+  "approvals": [
+    {
+      "kind": "growth",
+      "identity": {
+        "tool": "example-tool",
+        "ruleId": "example.rule",
+        "path": "src/sample.ts",
+        "symbol": "sample",
+        "contentHash": "5ada051af1a1167dbe35d4abdb213bb4c6b4e988fa669a5b7c3f08840007fadd",
+        "line": 3
+      },
+      "approvedBy": "operator",
+      "reason": "approval evidence content should be typed",
+      "evidencePath": "approvals/growth.json"
+    }
+  ]
+}

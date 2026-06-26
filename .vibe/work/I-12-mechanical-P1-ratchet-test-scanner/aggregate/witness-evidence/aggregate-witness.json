@@ -1,0 +1,123 @@
+{
+  "ok": true,
+  "family": "p1.aggregate",
+  "aggregateExport": "packages/mechanical-gates/src/aggregate/index.js",
+  "declaration": "packages/mechanical-gates/src/aggregate/index.d.ts",
+  "positive": {
+    "summary": {
+      "p1.schema-contract-strictness": {
+        "ok": true,
+        "findingCount": 0
+      },
+      "p1.quality-ratchet": {
+        "ok": true,
+        "findingCount": 0
+      },
+      "p1.test-anti-pattern": {
+        "ok": true,
+        "findingCount": 0
+      }
+    },
+    "i11Bridge": {
+      "sourceTsFilesUsed": [
+        "packages/mechanical-gates/src/p1/schema-contract-strictness/index.ts",
+        "packages/mechanical-gates/src/p1/schema-contract-strictness/validate-schema-contract-strictness.ts"
+      ],
+      "outputArtifactDirectory": ".vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-4060-1782473034100-efc85a8e3fd7a8",
+      "outputArtifactFile": ".vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-4060-1782473034100-efc85a8e3fd7a8/index.js",
+      "status": 0,
+      "moduleUrl": "file:///Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-4060-1782473034100-efc85a8e3fd7a8/index.js",
+      "exportedValidatorName": "validateSchemaContractStrictness",
+      "validatorFamilyObserved": "p1.schema-contract-strictness",
+      "typedSubresultValidation": {
+        "ok": true,
+        "diagnostics": []
+      }
+    },
+    "qualityArtifactPaths": {
+      "baselinePath": "baseline.json",
+      "findingCarrierPath": "findings.json",
+      "approvalPath": "approvals.json",
+      "surfaceFingerprintPath": "surface-fingerprint.json",
+      "runnerEvidencePath": "runner-evidence.json"
+    },
+    "testAntiPatternFiles": [
+      "tests/meaningful.test.ts"
+    ],
+    "p0RegressionSummary": {
+      "p0.governed-surface": {
+        "ok": true,
+        "findingCount": 0
+      },
+      "p0.config-guards": {
+        "ok": true,
+        "findingCount": 0
+      },
+      "p0.boundaries": {
+        "ok": true,
+        "findingCount": 0
+      },
+      "p0.allowlist": {
+        "ok": true,
+        "findingCount": 0
+      },
+      "p0.domain-purity": {
+        "ok": true,
+        "findingCount": 0
+      }
+    }
+  },
+  "negativeRuleIds": [
+    [
+      "aggregate.i11-bridge.compile-failed",
+      "aggregate.missing-subresult"
+    ],
+    [
+      "aggregate.i11-bridge.missing-artifact",
+      "aggregate.missing-subresult"
+    ],
+    [
+      "aggregate.i11-bridge.wrong-export",
+      "aggregate.missing-subresult"
+    ],
+    [
+      "aggregate.i11-bridge.wrong-family",
+      "aggregate.missing-subresult"
+    ],
+    [
+      "aggregate.malformed-subresult",
+      "aggregate.missing-subresult"
+    ],
+    [
+      "aggregate.validator-exception",
+      "aggregate.missing-subresult"
+    ],
+    [
+      "aggregate.omitted-family"
+    ],
+    [
+      "aggregate.omitted-family"
+    ],
+    [
+      "aggregate.omitted-family"
+    ],
+    [
+      "aggregate.unknown-family"
+    ],
+    [
+      "baseline.schema-invalid"
+    ],
+    [
+      "aggregate.i11-bridge.path-invalid",
+      "aggregate.missing-subresult"
+    ],
+    [
+      "aggregate.i11-bridge.path-invalid",
+      "aggregate.missing-subresult"
+    ],
+    [
+      "aggregate.unknown-option"
+    ]
+  ],
+  "realBoundary": "actual aggregate export invoked actual I-11 compiled bridge plus actual I-12A/I-12B public validators over on-disk inputs"
+}

@@ -1,0 +1,386 @@
+{
+  "ok": true,
+  "productEntrypoint": "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/src/p1/quality-ratchet/index.js",
+  "productFixtureCaseRoot": "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/fixtures/p1/quality-ratchet/cases",
+  "note": "Read-only direct entrypoint probe over product fixture carriers; product witness script was not executed because it regenerates product fixtures.",
+  "results": [
+    {
+      "caseName": "zero-debt-new-repo",
+      "ok": true,
+      "ruleIds": [],
+      "artifactPaths": {
+        "baselinePath": "baseline.json",
+        "findingCarrierPath": "findings.json",
+        "approvalPath": "approvals.json",
+        "surfaceFingerprintPath": "surface-fingerprint.json",
+        "runnerEvidencePath": "runner-evidence.json"
+      },
+      "runnerEvidence": {
+        "runnerId": "example-quality-tool",
+        "command": "example-quality-tool --json quality-ratchet.findings.json",
+        "sourceFiles": [
+          "src/sample.ts"
+        ]
+      },
+      "counts": {
+        "baselineDebt": 0,
+        "currentFindings": 0,
+        "approvals": 0,
+        "previousBaselineDebt": null
+      }
+    },
+    {
+      "caseName": "unchanged-baseline",
+      "ok": true,
+      "ruleIds": [],
+      "artifactPaths": {
+        "baselinePath": "baseline.json",
+        "findingCarrierPath": "findings.json",
+        "approvalPath": "approvals.json",
+        "surfaceFingerprintPath": "surface-fingerprint.json",
+        "runnerEvidencePath": "runner-evidence.json"
+      },
+      "runnerEvidence": {
+        "runnerId": "example-quality-tool",
+        "command": "example-quality-tool --json quality-ratchet.findings.json",
+        "sourceFiles": [
+          "src/sample.ts"
+        ]
+      },
+      "counts": {
+        "baselineDebt": 1,
+        "currentFindings": 1,
+        "approvals": 0,
+        "previousBaselineDebt": null
+      }
+    },
+    {
+      "caseName": "approved-shrink",
+      "ok": true,
+      "ruleIds": [],
+      "artifactPaths": {
+        "baselinePath": "baseline.json",
+        "findingCarrierPath": "findings.json",
+        "approvalPath": "approvals.json",
+        "surfaceFingerprintPath": "surface-fingerprint.json",
+        "runnerEvidencePath": "runner-evidence.json"
+      },
+      "runnerEvidence": {
+        "runnerId": "example-quality-tool",
+        "command": "example-quality-tool --json quality-ratchet.findings.json",
+        "sourceFiles": [
+          "src/sample.ts"
+        ]
+      },
+      "counts": {
+        "baselineDebt": 1,
+        "currentFindings": 0,
+        "approvals": 1,
+        "previousBaselineDebt": null
+      }
+    },
+    {
+      "caseName": "line-movement",
+      "ok": true,
+      "ruleIds": [],
+      "artifactPaths": {
+        "baselinePath": "baseline.json",
+        "findingCarrierPath": "findings.json",
+        "approvalPath": "approvals.json",
+        "surfaceFingerprintPath": "surface-fingerprint.json",
+        "runnerEvidencePath": "runner-evidence.json"
+      },
+      "runnerEvidence": {
+        "runnerId": "example-quality-tool",
+        "command": "example-quality-tool --json quality-ratchet.findings.json",
+        "sourceFiles": [
+          "src/sample.ts"
+        ]
+      },
+      "counts": {
+        "baselineDebt": 1,
+        "currentFindings": 1,
+        "approvals": 0,
+        "previousBaselineDebt": null
+      }
+    },
+    {
+      "caseName": "approved-baseline-growth",
+      "ok": true,
+      "ruleIds": [],
+      "artifactPaths": {
+        "baselinePath": "baseline.json",
+        "previousBaselinePath": "previous-baseline.json",
+        "findingCarrierPath": "findings.json",
+        "approvalPath": "approvals.json",
+        "surfaceFingerprintPath": "surface-fingerprint.json",
+        "runnerEvidencePath": "runner-evidence.json"
+      },
+      "runnerEvidence": {
+        "runnerId": "example-quality-tool",
+        "command": "example-quality-tool --json quality-ratchet.findings.json",
+        "sourceFiles": [
+          "src/sample.ts"
+        ]
+      },
+      "counts": {
+        "baselineDebt": 1,
+        "currentFindings": 1,
+        "approvals": 1,
+        "previousBaselineDebt": 0
+      }
+    },
+    {
+      "caseName": "new-finding-not-in-baseline",
+      "ok": false,
+      "ruleIds": [
+        "debt.new-finding"
+      ],
+      "artifactPaths": {
+        "baselinePath": "baseline.json",
+        "findingCarrierPath": "findings.json",
+        "approvalPath": "approvals.json",
+        "surfaceFingerprintPath": "surface-fingerprint.json",
+        "runnerEvidencePath": "runner-evidence.json"
+      },
+      "runnerEvidence": {
+        "runnerId": "example-quality-tool",
+        "command": "example-quality-tool --json quality-ratchet.findings.json",
+        "sourceFiles": [
+          "src/sample.ts"
+        ]
+      },
+      "counts": {
+        "baselineDebt": 0,
+        "currentFindings": 1,
+        "approvals": 0,
+        "previousBaselineDebt": null
+      }
+    },
+    {
+      "caseName": "stale-baseline-row",
+      "ok": false,
+      "ruleIds": [
+        "debt.stale-baseline-row"
+      ],
+      "artifactPaths": {
+        "baselinePath": "baseline.json",
+        "findingCarrierPath": "findings.json",
+        "approvalPath": "approvals.json",
+        "surfaceFingerprintPath": "surface-fingerprint.json",
+        "runnerEvidencePath": "runner-evidence.json"
+      },
+      "runnerEvidence": {
+        "runnerId": "example-quality-tool",
+        "command": "example-quality-tool --json quality-ratchet.findings.json",
+        "sourceFiles": [
+          "src/sample.ts"
+        ]
+      },
+      "counts": {
+        "baselineDebt": 1,
+        "currentFindings": 0,
+        "approvals": 0,
+        "previousBaselineDebt": null
+      }
+    },
+    {
+      "caseName": "baseline-growth-without-approval",
+      "ok": false,
+      "ruleIds": [
+        "debt.baseline-growth-unapproved"
+      ],
+      "artifactPaths": {
+        "baselinePath": "baseline.json",
+        "previousBaselinePath": "previous-baseline.json",
+        "findingCarrierPath": "findings.json",
+        "approvalPath": "approvals.json",
+        "surfaceFingerprintPath": "surface-fingerprint.json",
+        "runnerEvidencePath": "runner-evidence.json"
+      },
+      "runnerEvidence": {
+        "runnerId": "example-quality-tool",
+        "command": "example-quality-tool --json quality-ratchet.findings.json",
+        "sourceFiles": [
+          "src/sample.ts"
+        ]
+      },
+      "counts": {
+        "baselineDebt": 1,
+        "currentFindings": 1,
+        "approvals": 0,
+        "previousBaselineDebt": 0
+      }
+    },
+    {
+      "caseName": "invalid-baseline-schema",
+      "ok": false,
+      "ruleIds": [
+        "baseline.schema-invalid",
+        "baseline.schema-invalid"
+      ],
+      "artifactPaths": {
+        "baselinePath": "baseline.json",
+        "findingCarrierPath": "findings.json",
+        "approvalPath": "approvals.json",
+        "surfaceFingerprintPath": "surface-fingerprint.json",
+        "runnerEvidencePath": "runner-evidence.json"
+      }
+    },
+    {
+      "caseName": "surface-fingerprint-mismatch",
+      "ok": false,
+      "ruleIds": [
+        "surface.fingerprint-mismatch"
+      ],
+      "artifactPaths": {
+        "baselinePath": "baseline.json",
+        "findingCarrierPath": "findings.json",
+        "approvalPath": "approvals.json",
+        "surfaceFingerprintPath": "surface-fingerprint.json",
+        "runnerEvidencePath": "runner-evidence.json"
+      },
+      "runnerEvidence": {
+        "runnerId": "example-quality-tool",
+        "command": "example-quality-tool --json quality-ratchet.findings.json",
+        "sourceFiles": [
+          "src/sample.ts"
+        ]
+      },
+      "counts": {
+        "baselineDebt": 1,
+        "currentFindings": 1,
+        "approvals": 0,
+        "previousBaselineDebt": null
+      }
+    },
+    {
+      "caseName": "runner-sourcefile-missing",
+      "ok": false,
+      "ruleIds": [
+        "evidence.missing-runner",
+        "evidence.missing-runner",
+        "evidence.missing-runner",
+        "evidence.missing-runner"
+      ],
+      "artifactPaths": {
+        "baselinePath": "baseline.json",
+        "findingCarrierPath": "findings.json",
+        "approvalPath": "approvals.json",
+        "surfaceFingerprintPath": "surface-fingerprint.json",
+        "runnerEvidencePath": "runner-evidence.json"
+      },
+      "runnerEvidence": {
+        "runnerId": "example-quality-tool",
+        "command": "example-quality-tool --json quality-ratchet.findings.json",
+        "sourceFiles": [
+          "src/missing.ts"
+        ]
+      },
+      "counts": {
+        "baselineDebt": 1,
+        "currentFindings": 1,
+        "approvals": 0,
+        "previousBaselineDebt": null
+      }
+    },
+    {
+      "caseName": "runner-sourcefile-absolute",
+      "ok": false,
+      "ruleIds": [
+        "input.absolute-path"
+      ],
+      "artifactPaths": {
+        "baselinePath": "baseline.json",
+        "findingCarrierPath": "findings.json",
+        "approvalPath": "approvals.json",
+        "surfaceFingerprintPath": "surface-fingerprint.json",
+        "runnerEvidencePath": "runner-evidence.json"
+      }
+    },
+    {
+      "caseName": "baseline-row-source-missing",
+      "ok": false,
+      "ruleIds": [
+        "evidence.missing-source"
+      ],
+      "artifactPaths": {
+        "baselinePath": "baseline.json",
+        "findingCarrierPath": "findings.json",
+        "approvalPath": "approvals.json",
+        "surfaceFingerprintPath": "surface-fingerprint.json",
+        "runnerEvidencePath": "runner-evidence.json"
+      },
+      "runnerEvidence": {
+        "runnerId": "example-quality-tool",
+        "command": "example-quality-tool --json quality-ratchet.findings.json",
+        "sourceFiles": [
+          "src/sample.ts"
+        ]
+      },
+      "counts": {
+        "baselineDebt": 1,
+        "currentFindings": 1,
+        "approvals": 0,
+        "previousBaselineDebt": null
+      }
+    },
+    {
+      "caseName": "baseline-row-source-absolute",
+      "ok": false,
+      "ruleIds": [
+        "input.absolute-path"
+      ],
+      "artifactPaths": {
+        "baselinePath": "baseline.json",
+        "findingCarrierPath": "findings.json",
+        "approvalPath": "approvals.json",
+        "surfaceFingerprintPath": "surface-fingerprint.json",
+        "runnerEvidencePath": "runner-evidence.json"
+      }
+    },
+    {
+      "caseName": "finding-evidence-extra-field",
+      "ok": false,
+      "ruleIds": [
+        "finding-carrier.schema-invalid"
+      ],
+      "artifactPaths": {
+        "baselinePath": "baseline.json",
+        "findingCarrierPath": "findings.json",
+        "approvalPath": "approvals.json",
+        "surfaceFingerprintPath": "surface-fingerprint.json",
+        "runnerEvidencePath": "runner-evidence.json"
+      }
+    },
+    {
+      "caseName": "finding-source-and-path-absolute",
+      "ok": false,
+      "ruleIds": [
+        "input.absolute-path",
+        "input.absolute-path"
+      ],
+      "artifactPaths": {
+        "baselinePath": "baseline.json",
+        "findingCarrierPath": "findings.json",
+        "approvalPath": "approvals.json",
+        "surfaceFingerprintPath": "surface-fingerprint.json",
+        "runnerEvidencePath": "runner-evidence.json"
+      }
+    },
+    {
+      "caseName": "approval-evidence-absolute",
+      "ok": false,
+      "ruleIds": [
+        "input.absolute-path"
+      ],
+      "artifactPaths": {
+        "baselinePath": "baseline.json",
+        "findingCarrierPath": "findings.json",
+        "approvalPath": "approvals.json",
+        "surfaceFingerprintPath": "surface-fingerprint.json",
+        "runnerEvidencePath": "runner-evidence.json"
+      }
+    }
+  ]
+}

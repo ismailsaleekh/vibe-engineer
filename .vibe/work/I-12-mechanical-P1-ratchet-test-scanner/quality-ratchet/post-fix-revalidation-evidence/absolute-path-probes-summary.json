@@ -1,0 +1,71 @@
+{
+  "expectedPolicy": "absolute carrier/option paths should fail closed if project-relative input is mandatory",
+  "acceptedAbsolutePathCases": [],
+  "cases": [
+    {
+      "name": "absolute-option-baseline",
+      "ok": false,
+      "rules": [
+        "input.absolute-path"
+      ]
+    },
+    {
+      "name": "absolute-runner-source-file",
+      "ok": false,
+      "rules": [
+        "input.absolute-path"
+      ],
+      "artifactPaths": {
+        "baselinePath": "baseline.json",
+        "findingCarrierPath": "findings.json",
+        "approvalPath": "approvals.json",
+        "surfaceFingerprintPath": "surface-fingerprint.json",
+        "runnerEvidencePath": "runner-evidence.json"
+      }
+    },
+    {
+      "name": "absolute-baseline-row-source",
+      "ok": false,
+      "rules": [
+        "input.absolute-path"
+      ],
+      "artifactPaths": {
+        "baselinePath": "baseline.json",
+        "findingCarrierPath": "findings.json",
+        "approvalPath": "approvals.json",
+        "surfaceFingerprintPath": "surface-fingerprint.json",
+        "runnerEvidencePath": "runner-evidence.json"
+      }
+    },
+    {
+      "name": "absolute-finding-source-and-path",
+      "ok": false,
+      "rules": [
+        "input.absolute-path",
+        "input.absolute-path",
+        "input.absolute-path"
+      ],
+      "artifactPaths": {
+        "baselinePath": "baseline.json",
+        "findingCarrierPath": "findings.json",
+        "approvalPath": "approvals.json",
+        "surfaceFingerprintPath": "surface-fingerprint.json",
+        "runnerEvidencePath": "runner-evidence.json"
+      }
+    },
+    {
+      "name": "absolute-approval-evidence",
+      "ok": false,
+      "rules": [
+        "input.absolute-path"
+      ],
+      "artifactPaths": {
+        "baselinePath": "baseline.json",
+        "findingCarrierPath": "findings.json",
+        "approvalPath": "approvals.json",
+        "surfaceFingerprintPath": "surface-fingerprint.json",
+        "runnerEvidencePath": "runner-evidence.json"
+      }
+    }
+  ]
+}

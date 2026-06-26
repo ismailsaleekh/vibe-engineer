@@ -1,0 +1,1037 @@
+{
+  "ok": false,
+  "scannerModule": "packages/mechanical-gates/src/p1/test-anti-pattern/index.js",
+  "productFixtureRoot": "packages/mechanical-gates/fixtures/p1/test-anti-pattern/workspaces",
+  "adversarialRoot": ".vibe/work/I-12-mechanical-P1-ratchet-test-scanner/test-anti-pattern/post-fix-revalidation-evidence/adversarial-workspaces",
+  "recordCount": 34,
+  "failures": [
+    {
+      "name": "adversarial-F1:literal-alias-public-claim-tautology",
+      "actualOk": true,
+      "ruleIds": [],
+      "expected": {
+        "ok": false,
+        "expectedRuleId": "test.no-meaningful-assertions"
+      },
+      "typed": true,
+      "threw": false
+    }
+  ],
+  "records": [
+    {
+      "name": "positive-product-fixture",
+      "root": "packages/mechanical-gates/fixtures/p1/test-anti-pattern/workspaces/positive",
+      "options": {},
+      "expected": {
+        "ok": true
+      },
+      "threw": false,
+      "actualOk": true,
+      "typed": true,
+      "ruleIds": [],
+      "evidence": {
+        "policyPath": "test-anti-pattern.policy.json",
+        "parser": "typescript",
+        "proofMode": "typescript-ast",
+        "family": "p1.test-anti-pattern",
+        "discoveredTestFiles": [
+          "tests/meaningful.test.ts"
+        ],
+        "testCaseCount": 5,
+        "requiredSetupFiles": [
+          "resources/required-resource.txt"
+        ],
+        "requiredSetupAssertionCalls": [
+          "assertRequiredFixtureResource"
+        ],
+        "publicClaimCount": 1,
+        "riskyBehaviorCount": 1
+      },
+      "passed": true
+    },
+    {
+      "name": "negative-product-fixture:exit-code-only",
+      "root": "packages/mechanical-gates/fixtures/p1/test-anti-pattern/workspaces/exit-code-only",
+      "options": {},
+      "expected": {
+        "ok": false,
+        "expectedRuleId": "test.exit-code-only"
+      },
+      "threw": false,
+      "actualOk": false,
+      "typed": true,
+      "ruleIds": [
+        "test.exit-code-only",
+        "test.no-meaningful-assertions"
+      ],
+      "evidence": {
+        "policyPath": "test-anti-pattern.policy.json",
+        "parser": "typescript",
+        "proofMode": "typescript-ast",
+        "family": "p1.test-anti-pattern",
+        "discoveredTestFiles": [
+          "tests/case.test.ts"
+        ],
+        "testCaseCount": 2,
+        "requiredSetupFiles": [
+          "resources/required-resource.txt"
+        ],
+        "requiredSetupAssertionCalls": [
+          "assertRequiredFixtureResource"
+        ],
+        "publicClaimCount": 1,
+        "riskyBehaviorCount": 1
+      },
+      "passed": true
+    },
+    {
+      "name": "negative-product-fixture:no-assertions",
+      "root": "packages/mechanical-gates/fixtures/p1/test-anti-pattern/workspaces/no-assertions",
+      "options": {},
+      "expected": {
+        "ok": false,
+        "expectedRuleId": "test.no-meaningful-assertions"
+      },
+      "threw": false,
+      "actualOk": false,
+      "typed": true,
+      "ruleIds": [
+        "test.no-meaningful-assertions",
+        "test.no-meaningful-assertions"
+      ],
+      "evidence": {
+        "policyPath": "test-anti-pattern.policy.json",
+        "parser": "typescript",
+        "proofMode": "typescript-ast",
+        "family": "p1.test-anti-pattern",
+        "discoveredTestFiles": [
+          "tests/case.test.ts"
+        ],
+        "testCaseCount": 2,
+        "requiredSetupFiles": [
+          "resources/required-resource.txt"
+        ],
+        "requiredSetupAssertionCalls": [
+          "assertRequiredFixtureResource"
+        ],
+        "publicClaimCount": 1,
+        "riskyBehaviorCount": 1
+      },
+      "passed": true
+    },
+    {
+      "name": "negative-product-fixture:smoke-only",
+      "root": "packages/mechanical-gates/fixtures/p1/test-anti-pattern/workspaces/smoke-only",
+      "options": {},
+      "expected": {
+        "ok": false,
+        "expectedRuleId": "test.smoke-only"
+      },
+      "threw": false,
+      "actualOk": false,
+      "typed": true,
+      "ruleIds": [
+        "test.no-meaningful-assertions",
+        "test.no-meaningful-assertions",
+        "test.smoke-only"
+      ],
+      "evidence": {
+        "policyPath": "test-anti-pattern.policy.json",
+        "parser": "typescript",
+        "proofMode": "typescript-ast",
+        "family": "p1.test-anti-pattern",
+        "discoveredTestFiles": [
+          "tests/case.test.ts"
+        ],
+        "testCaseCount": 2,
+        "requiredSetupFiles": [
+          "resources/required-resource.txt"
+        ],
+        "requiredSetupAssertionCalls": [
+          "assertRequiredFixtureResource"
+        ],
+        "publicClaimCount": 1,
+        "riskyBehaviorCount": 1
+      },
+      "passed": true
+    },
+    {
+      "name": "negative-product-fixture:smoke-tautology",
+      "root": "packages/mechanical-gates/fixtures/p1/test-anti-pattern/workspaces/smoke-tautology",
+      "options": {},
+      "expected": {
+        "ok": false,
+        "expectedRuleId": "test.no-meaningful-assertions"
+      },
+      "threw": false,
+      "actualOk": false,
+      "typed": true,
+      "ruleIds": [
+        "test.no-meaningful-assertions",
+        "test.no-meaningful-assertions",
+        "test.smoke-only"
+      ],
+      "evidence": {
+        "policyPath": "test-anti-pattern.policy.json",
+        "parser": "typescript",
+        "proofMode": "typescript-ast",
+        "family": "p1.test-anti-pattern",
+        "discoveredTestFiles": [
+          "tests/case.test.ts"
+        ],
+        "testCaseCount": 2,
+        "requiredSetupFiles": [
+          "resources/required-resource.txt"
+        ],
+        "requiredSetupAssertionCalls": [
+          "assertRequiredFixtureResource"
+        ],
+        "publicClaimCount": 1,
+        "riskyBehaviorCount": 1
+      },
+      "passed": true
+    },
+    {
+      "name": "negative-product-fixture:happy-path-only",
+      "root": "packages/mechanical-gates/fixtures/p1/test-anti-pattern/workspaces/happy-path-only",
+      "options": {},
+      "expected": {
+        "ok": false,
+        "expectedRuleId": "risky-behavior.happy-path-only"
+      },
+      "threw": false,
+      "actualOk": false,
+      "typed": true,
+      "ruleIds": [
+        "risky-behavior.happy-path-only",
+        "test.no-meaningful-assertions",
+        "test.no-meaningful-assertions"
+      ],
+      "evidence": {
+        "policyPath": "test-anti-pattern.policy.json",
+        "parser": "typescript",
+        "proofMode": "typescript-ast",
+        "family": "p1.test-anti-pattern",
+        "discoveredTestFiles": [
+          "tests/case.test.ts"
+        ],
+        "testCaseCount": 2,
+        "requiredSetupFiles": [
+          "resources/required-resource.txt"
+        ],
+        "requiredSetupAssertionCalls": [
+          "assertRequiredFixtureResource"
+        ],
+        "publicClaimCount": 1,
+        "riskyBehaviorCount": 1
+      },
+      "passed": true
+    },
+    {
+      "name": "negative-product-fixture:weak-count",
+      "root": "packages/mechanical-gates/fixtures/p1/test-anti-pattern/workspaces/weak-count",
+      "options": {},
+      "expected": {
+        "ok": false,
+        "expectedRuleId": "test.weak-count-assertion"
+      },
+      "threw": false,
+      "actualOk": false,
+      "typed": true,
+      "ruleIds": [
+        "test.no-meaningful-assertions",
+        "test.weak-count-assertion"
+      ],
+      "evidence": {
+        "policyPath": "test-anti-pattern.policy.json",
+        "parser": "typescript",
+        "proofMode": "typescript-ast",
+        "family": "p1.test-anti-pattern",
+        "discoveredTestFiles": [
+          "tests/case.test.ts"
+        ],
+        "testCaseCount": 2,
+        "requiredSetupFiles": [
+          "resources/required-resource.txt"
+        ],
+        "requiredSetupAssertionCalls": [
+          "assertRequiredFixtureResource"
+        ],
+        "publicClaimCount": 1,
+        "riskyBehaviorCount": 1
+      },
+      "passed": true
+    },
+    {
+      "name": "negative-product-fixture:silent-fallback",
+      "root": "packages/mechanical-gates/fixtures/p1/test-anti-pattern/workspaces/silent-fallback",
+      "options": {},
+      "expected": {
+        "ok": false,
+        "expectedRuleId": "test.silent-fallback"
+      },
+      "threw": false,
+      "actualOk": false,
+      "typed": true,
+      "ruleIds": [
+        "test.no-meaningful-assertions",
+        "test.silent-fallback"
+      ],
+      "evidence": {
+        "policyPath": "test-anti-pattern.policy.json",
+        "parser": "typescript",
+        "proofMode": "typescript-ast",
+        "family": "p1.test-anti-pattern",
+        "discoveredTestFiles": [
+          "tests/case.test.ts"
+        ],
+        "testCaseCount": 2,
+        "requiredSetupFiles": [
+          "resources/required-resource.txt"
+        ],
+        "requiredSetupAssertionCalls": [
+          "assertRequiredFixtureResource"
+        ],
+        "publicClaimCount": 1,
+        "riskyBehaviorCount": 1
+      },
+      "passed": true
+    },
+    {
+      "name": "negative-product-fixture:skipped-metadata",
+      "root": "packages/mechanical-gates/fixtures/p1/test-anti-pattern/workspaces/skipped-metadata",
+      "options": {},
+      "expected": {
+        "ok": false,
+        "expectedRuleId": "skipped-test.missing-metadata"
+      },
+      "threw": false,
+      "actualOk": false,
+      "typed": true,
+      "ruleIds": [
+        "skipped-test.missing-metadata",
+        "test.no-meaningful-assertions"
+      ],
+      "evidence": {
+        "policyPath": "test-anti-pattern.policy.json",
+        "parser": "typescript",
+        "proofMode": "typescript-ast",
+        "family": "p1.test-anti-pattern",
+        "discoveredTestFiles": [
+          "tests/case.test.ts"
+        ],
+        "testCaseCount": 2,
+        "requiredSetupFiles": [
+          "resources/required-resource.txt"
+        ],
+        "requiredSetupAssertionCalls": [
+          "assertRequiredFixtureResource"
+        ],
+        "publicClaimCount": 1,
+        "riskyBehaviorCount": 1
+      },
+      "passed": true
+    },
+    {
+      "name": "negative-product-fixture:volatile-snapshot",
+      "root": "packages/mechanical-gates/fixtures/p1/test-anti-pattern/workspaces/volatile-snapshot",
+      "options": {},
+      "expected": {
+        "ok": false,
+        "expectedRuleId": "snapshot.volatile-without-normalization"
+      },
+      "threw": false,
+      "actualOk": false,
+      "typed": true,
+      "ruleIds": [
+        "snapshot.volatile-without-normalization",
+        "test.no-meaningful-assertions",
+        "test.no-meaningful-assertions"
+      ],
+      "evidence": {
+        "policyPath": "test-anti-pattern.policy.json",
+        "parser": "typescript",
+        "proofMode": "typescript-ast",
+        "family": "p1.test-anti-pattern",
+        "discoveredTestFiles": [
+          "tests/case.test.ts"
+        ],
+        "testCaseCount": 2,
+        "requiredSetupFiles": [
+          "resources/required-resource.txt"
+        ],
+        "requiredSetupAssertionCalls": [
+          "assertRequiredFixtureResource"
+        ],
+        "publicClaimCount": 1,
+        "riskyBehaviorCount": 1
+      },
+      "passed": true
+    },
+    {
+      "name": "negative-product-fixture:setup-silent-pass",
+      "root": "packages/mechanical-gates/fixtures/p1/test-anti-pattern/workspaces/setup-silent-pass",
+      "options": {},
+      "expected": {
+        "ok": false,
+        "expectedRuleId": "setup-resource.missing-assertion"
+      },
+      "threw": false,
+      "actualOk": false,
+      "typed": true,
+      "ruleIds": [
+        "setup-resource.missing-assertion",
+        "test.no-meaningful-assertions",
+        "test.silent-fallback"
+      ],
+      "evidence": {
+        "policyPath": "test-anti-pattern.policy.json",
+        "parser": "typescript",
+        "proofMode": "typescript-ast",
+        "family": "p1.test-anti-pattern",
+        "discoveredTestFiles": [
+          "tests/case.test.ts"
+        ],
+        "testCaseCount": 2,
+        "requiredSetupFiles": [
+          "resources/required-resource.txt"
+        ],
+        "requiredSetupAssertionCalls": [
+          "assertRequiredFixtureResource"
+        ],
+        "publicClaimCount": 1,
+        "riskyBehaviorCount": 1
+      },
+      "passed": true
+    },
+    {
+      "name": "negative-product-fixture:missing-resource",
+      "root": "packages/mechanical-gates/fixtures/p1/test-anti-pattern/workspaces/missing-resource",
+      "options": {},
+      "expected": {
+        "ok": false,
+        "expectedRuleId": "setup-resource.missing"
+      },
+      "threw": false,
+      "actualOk": false,
+      "typed": true,
+      "ruleIds": [
+        "setup-resource.missing",
+        "test.no-meaningful-assertions",
+        "test.no-meaningful-assertions"
+      ],
+      "evidence": {
+        "policyPath": "test-anti-pattern.policy.json",
+        "parser": "typescript",
+        "proofMode": "typescript-ast",
+        "family": "p1.test-anti-pattern",
+        "discoveredTestFiles": [
+          "tests/case.test.ts"
+        ],
+        "testCaseCount": 2,
+        "requiredSetupFiles": [
+          "resources/required-resource.txt"
+        ],
+        "requiredSetupAssertionCalls": [
+          "assertRequiredFixtureResource"
+        ],
+        "publicClaimCount": 1,
+        "riskyBehaviorCount": 1
+      },
+      "passed": true
+    },
+    {
+      "name": "negative-product-fixture:parser-self-agreement",
+      "root": "packages/mechanical-gates/fixtures/p1/test-anti-pattern/workspaces/parser-self-agreement",
+      "options": {},
+      "expected": {
+        "ok": false,
+        "expectedRuleId": "parser-self-agreement-fixture"
+      },
+      "threw": false,
+      "actualOk": false,
+      "typed": true,
+      "ruleIds": [
+        "parser-self-agreement-fixture",
+        "test.no-meaningful-assertions"
+      ],
+      "evidence": {
+        "policyPath": "test-anti-pattern.policy.json",
+        "parser": "typescript",
+        "proofMode": "typescript-ast",
+        "family": "p1.test-anti-pattern",
+        "discoveredTestFiles": [
+          "tests/case.test.ts"
+        ],
+        "testCaseCount": 2,
+        "requiredSetupFiles": [
+          "resources/required-resource.txt"
+        ],
+        "requiredSetupAssertionCalls": [
+          "assertRequiredFixtureResource"
+        ],
+        "publicClaimCount": 1,
+        "riskyBehaviorCount": 1
+      },
+      "passed": true
+    },
+    {
+      "name": "negative-product-fixture:public-claim-gap",
+      "root": "packages/mechanical-gates/fixtures/p1/test-anti-pattern/workspaces/public-claim-gap",
+      "options": {},
+      "expected": {
+        "ok": false,
+        "expectedRuleId": "public-claim.coverage-gap"
+      },
+      "threw": false,
+      "actualOk": false,
+      "typed": true,
+      "ruleIds": [
+        "public-claim.coverage-gap",
+        "test.no-meaningful-assertions",
+        "test.no-meaningful-assertions"
+      ],
+      "evidence": {
+        "policyPath": "test-anti-pattern.policy.json",
+        "parser": "typescript",
+        "proofMode": "typescript-ast",
+        "family": "p1.test-anti-pattern",
+        "discoveredTestFiles": [
+          "tests/case.test.ts"
+        ],
+        "testCaseCount": 2,
+        "requiredSetupFiles": [
+          "resources/required-resource.txt"
+        ],
+        "requiredSetupAssertionCalls": [
+          "assertRequiredFixtureResource"
+        ],
+        "publicClaimCount": 1,
+        "riskyBehaviorCount": 1
+      },
+      "passed": true
+    },
+    {
+      "name": "negative-product-fixture:missing-public-claim-source",
+      "root": "packages/mechanical-gates/fixtures/p1/test-anti-pattern/workspaces/missing-public-claim-source",
+      "options": {},
+      "expected": {
+        "ok": false,
+        "expectedRuleId": "public-claim.source-unreadable"
+      },
+      "threw": false,
+      "actualOk": false,
+      "typed": true,
+      "ruleIds": [
+        "public-claim.source-unreadable",
+        "test.no-meaningful-assertions"
+      ],
+      "evidence": {
+        "policyPath": "test-anti-pattern.policy.json",
+        "parser": "typescript",
+        "proofMode": "typescript-ast",
+        "family": "p1.test-anti-pattern",
+        "discoveredTestFiles": [
+          "tests/case.test.ts"
+        ],
+        "testCaseCount": 2,
+        "requiredSetupFiles": [
+          "resources/required-resource.txt"
+        ],
+        "requiredSetupAssertionCalls": [
+          "assertRequiredFixtureResource"
+        ],
+        "publicClaimCount": 1,
+        "riskyBehaviorCount": 1
+      },
+      "passed": true
+    },
+    {
+      "name": "negative-product-fixture:public-claim-source-mismatch",
+      "root": "packages/mechanical-gates/fixtures/p1/test-anti-pattern/workspaces/public-claim-source-mismatch",
+      "options": {},
+      "expected": {
+        "ok": false,
+        "expectedRuleId": "public-claim.source-missing-text"
+      },
+      "threw": false,
+      "actualOk": false,
+      "typed": true,
+      "ruleIds": [
+        "public-claim.source-missing-text",
+        "test.no-meaningful-assertions"
+      ],
+      "evidence": {
+        "policyPath": "test-anti-pattern.policy.json",
+        "parser": "typescript",
+        "proofMode": "typescript-ast",
+        "family": "p1.test-anti-pattern",
+        "discoveredTestFiles": [
+          "tests/case.test.ts"
+        ],
+        "testCaseCount": 2,
+        "requiredSetupFiles": [
+          "resources/required-resource.txt"
+        ],
+        "requiredSetupAssertionCalls": [
+          "assertRequiredFixtureResource"
+        ],
+        "publicClaimCount": 1,
+        "riskyBehaviorCount": 1
+      },
+      "passed": true
+    },
+    {
+      "name": "negative-product-fixture:regression-missing-shape",
+      "root": "packages/mechanical-gates/fixtures/p1/test-anti-pattern/workspaces/regression-missing-shape",
+      "options": {},
+      "expected": {
+        "ok": false,
+        "expectedRuleId": "regression.missing-failure-shape"
+      },
+      "threw": false,
+      "actualOk": false,
+      "typed": true,
+      "ruleIds": [
+        "regression.missing-failure-shape",
+        "risky-behavior.happy-path-only",
+        "test.no-meaningful-assertions",
+        "test.no-meaningful-assertions"
+      ],
+      "evidence": {
+        "policyPath": "test-anti-pattern.policy.json",
+        "parser": "typescript",
+        "proofMode": "typescript-ast",
+        "family": "p1.test-anti-pattern",
+        "discoveredTestFiles": [
+          "tests/case.test.ts"
+        ],
+        "testCaseCount": 2,
+        "requiredSetupFiles": [
+          "resources/required-resource.txt"
+        ],
+        "requiredSetupAssertionCalls": [
+          "assertRequiredFixtureResource"
+        ],
+        "publicClaimCount": 1,
+        "riskyBehaviorCount": 1
+      },
+      "passed": true
+    },
+    {
+      "name": "negative-product-fixture:malformed-policy",
+      "root": "packages/mechanical-gates/fixtures/p1/test-anti-pattern/workspaces/malformed-policy",
+      "options": {},
+      "expected": {
+        "ok": false,
+        "expectedRuleId": "policy.unreadable"
+      },
+      "threw": false,
+      "actualOk": false,
+      "typed": true,
+      "ruleIds": [
+        "policy.unreadable"
+      ],
+      "evidence": {
+        "policyPath": "test-anti-pattern.policy.json",
+        "failClosed": true
+      },
+      "passed": true
+    },
+    {
+      "name": "negative-product-fixture:missing-policy",
+      "root": "packages/mechanical-gates/fixtures/p1/test-anti-pattern/workspaces/missing-policy",
+      "options": {},
+      "expected": {
+        "ok": false,
+        "expectedRuleId": "policy.unreadable"
+      },
+      "threw": false,
+      "actualOk": false,
+      "typed": true,
+      "ruleIds": [
+        "policy.unreadable"
+      ],
+      "evidence": {
+        "policyPath": "test-anti-pattern.policy.json",
+        "failClosed": true
+      },
+      "passed": true
+    },
+    {
+      "name": "negative-product-fixture:path-traversal-policy",
+      "root": "packages/mechanical-gates/fixtures/p1/test-anti-pattern/workspaces/path-traversal-policy",
+      "options": {},
+      "expected": {
+        "ok": false,
+        "expectedRuleId": "discovery.test-root-invalid"
+      },
+      "threw": false,
+      "actualOk": false,
+      "typed": true,
+      "ruleIds": [
+        "discovery.no-test-files",
+        "discovery.test-root-invalid",
+        "public-claim.source-unreadable",
+        "risky-behavior.happy-path-only",
+        "setup-resource.missing",
+        "setup-resource.sentinel-failure"
+      ],
+      "evidence": {
+        "policyPath": "test-anti-pattern.policy.json",
+        "parser": "typescript",
+        "proofMode": "typescript-ast",
+        "family": "p1.test-anti-pattern",
+        "discoveredTestFiles": [],
+        "testCaseCount": 0,
+        "requiredSetupFiles": [
+          "resources/required-resource.txt"
+        ],
+        "requiredSetupAssertionCalls": [
+          "assertRequiredFixtureResource"
+        ],
+        "publicClaimCount": 1,
+        "riskyBehaviorCount": 1
+      },
+      "passed": true
+    },
+    {
+      "name": "negative-product-fixture:parser-failure",
+      "root": "packages/mechanical-gates/fixtures/p1/test-anti-pattern/workspaces/parser-failure",
+      "options": {},
+      "expected": {
+        "ok": false,
+        "expectedRuleId": "parser.failure"
+      },
+      "threw": false,
+      "actualOk": false,
+      "typed": true,
+      "ruleIds": [
+        "parser.failure",
+        "public-claim.coverage-gap",
+        "risky-behavior.happy-path-only"
+      ],
+      "evidence": {
+        "policyPath": "test-anti-pattern.policy.json",
+        "parser": "typescript",
+        "proofMode": "typescript-ast",
+        "family": "p1.test-anti-pattern",
+        "discoveredTestFiles": [
+          "tests/broken.test.ts"
+        ],
+        "testCaseCount": 0,
+        "requiredSetupFiles": [
+          "resources/required-resource.txt"
+        ],
+        "requiredSetupAssertionCalls": [
+          "assertRequiredFixtureResource"
+        ],
+        "publicClaimCount": 1,
+        "riskyBehaviorCount": 1
+      },
+      "passed": true
+    },
+    {
+      "name": "fail-closed-option:unknown",
+      "root": "packages/mechanical-gates/fixtures/p1/test-anti-pattern/workspaces/positive",
+      "options": {
+        "unexpectedOption": true
+      },
+      "expected": {
+        "ok": false,
+        "expectedRuleId": "policy.unknown-validator-option"
+      },
+      "threw": false,
+      "actualOk": false,
+      "typed": true,
+      "ruleIds": [
+        "policy.unknown-validator-option"
+      ],
+      "evidence": {
+        "failClosed": true
+      },
+      "passed": true
+    },
+    {
+      "name": "fail-closed-option:malformed-maxFileBytes-string",
+      "root": "packages/mechanical-gates/fixtures/p1/test-anti-pattern/workspaces/positive",
+      "options": {
+        "maxFileBytes": "not-a-number"
+      },
+      "expected": {
+        "ok": false,
+        "expectedRuleId": "policy.invalid-validator-option"
+      },
+      "threw": false,
+      "actualOk": false,
+      "typed": true,
+      "ruleIds": [
+        "policy.invalid-validator-option"
+      ],
+      "evidence": {
+        "failClosed": true
+      },
+      "passed": true
+    },
+    {
+      "name": "fail-closed-option:maxFileBytes-zero",
+      "root": "packages/mechanical-gates/fixtures/p1/test-anti-pattern/workspaces/positive",
+      "options": {
+        "maxFileBytes": 0
+      },
+      "expected": {
+        "ok": false,
+        "expectedRuleId": "policy.invalid-validator-option"
+      },
+      "threw": false,
+      "actualOk": false,
+      "typed": true,
+      "ruleIds": [
+        "policy.invalid-validator-option"
+      ],
+      "evidence": {
+        "failClosed": true
+      },
+      "passed": true
+    },
+    {
+      "name": "fail-closed-option:maxFileBytes-over-cap",
+      "root": "packages/mechanical-gates/fixtures/p1/test-anti-pattern/workspaces/positive",
+      "options": {
+        "maxFileBytes": 1048577
+      },
+      "expected": {
+        "ok": false,
+        "expectedRuleId": "policy.invalid-validator-option"
+      },
+      "threw": false,
+      "actualOk": false,
+      "typed": true,
+      "ruleIds": [
+        "policy.invalid-validator-option"
+      ],
+      "evidence": {
+        "failClosed": true
+      },
+      "passed": true
+    },
+    {
+      "name": "fail-closed-option:policyPath-number",
+      "root": "packages/mechanical-gates/fixtures/p1/test-anti-pattern/workspaces/positive",
+      "options": {
+        "policyPath": 123
+      },
+      "expected": {
+        "ok": false,
+        "expectedRuleId": "policy.invalid-validator-option"
+      },
+      "threw": false,
+      "actualOk": false,
+      "typed": true,
+      "ruleIds": [
+        "policy.invalid-validator-option"
+      ],
+      "evidence": {
+        "failClosed": true
+      },
+      "passed": true
+    },
+    {
+      "name": "fail-closed-option:policyPath-traversal",
+      "root": "packages/mechanical-gates/fixtures/p1/test-anti-pattern/workspaces/positive",
+      "options": {
+        "policyPath": "../test-anti-pattern.policy.json"
+      },
+      "expected": {
+        "ok": false,
+        "expectedRuleId": "policy.invalid-validator-option"
+      },
+      "threw": false,
+      "actualOk": false,
+      "typed": true,
+      "ruleIds": [
+        "policy.invalid-validator-option"
+      ],
+      "evidence": {
+        "failClosed": true
+      },
+      "passed": true
+    },
+    {
+      "name": "fail-closed-option:null-options",
+      "root": "packages/mechanical-gates/fixtures/p1/test-anti-pattern/workspaces/positive",
+      "options": null,
+      "expected": {
+        "ok": false,
+        "expectedRuleId": "policy.invalid-validator-option"
+      },
+      "threw": false,
+      "actualOk": false,
+      "typed": true,
+      "ruleIds": [
+        "policy.invalid-validator-option"
+      ],
+      "evidence": {
+        "failClosed": true
+      },
+      "passed": true
+    },
+    {
+      "name": "fail-closed-public-claim:claimPath-traversal",
+      "root": ".vibe/work/I-12-mechanical-P1-ratchet-test-scanner/test-anti-pattern/post-fix-revalidation-evidence/adversarial-workspaces/claim-path-traversal",
+      "options": {},
+      "expected": {
+        "ok": false,
+        "expectedRuleId": "public-claim.source-unreadable"
+      },
+      "threw": false,
+      "actualOk": false,
+      "typed": true,
+      "ruleIds": [
+        "public-claim.source-unreadable"
+      ],
+      "evidence": {
+        "policyPath": "test-anti-pattern.policy.json",
+        "parser": "typescript",
+        "proofMode": "typescript-ast",
+        "family": "p1.test-anti-pattern",
+        "discoveredTestFiles": [
+          "tests/case.test.ts"
+        ],
+        "testCaseCount": 2,
+        "requiredSetupFiles": [
+          "resources/required-resource.txt"
+        ],
+        "requiredSetupAssertionCalls": [
+          "assertRequiredFixtureResource"
+        ],
+        "publicClaimCount": 1,
+        "riskyBehaviorCount": 1
+      },
+      "passed": true
+    },
+    {
+      "name": "fail-closed-public-claim:malformed-policy-entry",
+      "root": ".vibe/work/I-12-mechanical-P1-ratchet-test-scanner/test-anti-pattern/post-fix-revalidation-evidence/adversarial-workspaces/malformed-public-claim-policy",
+      "options": {},
+      "expected": {
+        "ok": false,
+        "expectedRuleId": "policy.malformed"
+      },
+      "threw": false,
+      "actualOk": false,
+      "typed": true,
+      "ruleIds": [
+        "policy.malformed"
+      ],
+      "evidence": {
+        "policyPath": "test-anti-pattern.policy.json",
+        "failClosed": true
+      },
+      "passed": true
+    },
+    {
+      "name": "adversarial-F1:self-comparison-smoke-tautology",
+      "root": ".vibe/work/I-12-mechanical-P1-ratchet-test-scanner/test-anti-pattern/post-fix-revalidation-evidence/adversarial-workspaces/self-comparison-smoke",
+      "options": {},
+      "expected": {
+        "ok": false
+      },
+      "threw": false,
+      "actualOk": false,
+      "typed": true,
+      "ruleIds": [
+        "test.smoke-only"
+      ],
+      "evidence": {
+        "policyPath": "test-anti-pattern.policy.json",
+        "parser": "typescript",
+        "proofMode": "typescript-ast",
+        "family": "p1.test-anti-pattern",
+        "discoveredTestFiles": [
+          "tests/case.test.ts"
+        ],
+        "testCaseCount": 2,
+        "requiredSetupFiles": [
+          "resources/required-resource.txt"
+        ],
+        "requiredSetupAssertionCalls": [
+          "assertRequiredFixtureResource"
+        ],
+        "publicClaimCount": 1,
+        "riskyBehaviorCount": 1
+      },
+      "passed": true
+    },
+    {
+      "name": "adversarial-F1:literal-alias-smoke-tautology",
+      "root": ".vibe/work/I-12-mechanical-P1-ratchet-test-scanner/test-anti-pattern/post-fix-revalidation-evidence/adversarial-workspaces/literal-alias-smoke",
+      "options": {},
+      "expected": {
+        "ok": false
+      },
+      "threw": false,
+      "actualOk": false,
+      "typed": true,
+      "ruleIds": [
+        "test.smoke-only"
+      ],
+      "evidence": {
+        "policyPath": "test-anti-pattern.policy.json",
+        "parser": "typescript",
+        "proofMode": "typescript-ast",
+        "family": "p1.test-anti-pattern",
+        "discoveredTestFiles": [
+          "tests/case.test.ts"
+        ],
+        "testCaseCount": 2,
+        "requiredSetupFiles": [
+          "resources/required-resource.txt"
+        ],
+        "requiredSetupAssertionCalls": [
+          "assertRequiredFixtureResource"
+        ],
+        "publicClaimCount": 1,
+        "riskyBehaviorCount": 1
+      },
+      "passed": true
+    },
+    {
+      "name": "adversarial-F1:literal-alias-public-claim-tautology",
+      "root": ".vibe/work/I-12-mechanical-P1-ratchet-test-scanner/test-anti-pattern/post-fix-revalidation-evidence/adversarial-workspaces/literal-alias-public-claim",
+      "options": {},
+      "expected": {
+        "ok": false,
+        "expectedRuleId": "test.no-meaningful-assertions"
+      },
+      "threw": false,
+      "actualOk": true,
+      "typed": true,
+      "ruleIds": [],
+      "evidence": {
+        "policyPath": "test-anti-pattern.policy.json",
+        "parser": "typescript",
+        "proofMode": "typescript-ast",
+        "family": "p1.test-anti-pattern",
+        "discoveredTestFiles": [
+          "tests/case.test.ts"
+        ],
+        "testCaseCount": 2,
+        "requiredSetupFiles": [
+          "resources/required-resource.txt"
+        ],
+        "requiredSetupAssertionCalls": [
+          "assertRequiredFixtureResource"
+        ],
+        "publicClaimCount": 1,
+        "riskyBehaviorCount": 1
+      },
+      "passed": false
+    },
+    {
+      "name": "fail-closed-untyped-finding",
+      "passed": true,
+      "untypedRejected": true
+    }
+  ]
+}

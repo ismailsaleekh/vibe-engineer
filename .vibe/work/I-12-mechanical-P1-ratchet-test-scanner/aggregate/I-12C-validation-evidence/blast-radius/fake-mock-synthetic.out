@@ -1,0 +1,23 @@
+COMMAND: rg fake\|mock\|synthetic\|subresults packages/mechanical-gates/src/aggregate packages/mechanical-gates/fixtures/p1/aggregate
+CWD:/Users/lizavasilyeva/work/vibe-engineer
+--- stdout ---
+packages/mechanical-gates/src/aggregate/index.d.ts:    subresults: P0ValidatorResult[];
+packages/mechanical-gates/src/aggregate/index.d.ts:  subresults: P1AggregateSubresult[];
+packages/mechanical-gates/fixtures/p1/aggregate/witness.mjs:  assert.ok(Array.isArray(result.evidence.subresults), "subresults array");
+packages/mechanical-gates/fixtures/p1/aggregate/witness.mjs:  assert.deepEqual(positive.evidence.subresults.map((entry) => entry.family).sort(), [...implementedFamilies].sort(), "all P1 subresults present");
+packages/mechanical-gates/fixtures/p1/aggregate/witness.mjs:  const quality = positive.evidence.subresults.find((entry) => entry.family === "p1.quality-ratchet");
+packages/mechanical-gates/fixtures/p1/aggregate/witness.mjs:  const antiPattern = positive.evidence.subresults.find((entry) => entry.family === "p1.test-anti-pattern");
+packages/mechanical-gates/fixtures/p1/aggregate/witness.mjs:  assert.ok(p0Regression.evidence.subresults.some((entry) => entry.family === "p0.allowlist"), "P0 aggregate subresults retained");
+packages/mechanical-gates/fixtures/p1/aggregate/witness.mjs:  negativeResults.push(await expectAggregateFail("synthetic subresult injection option rejected", { subresults: [{ family: "p1.schema-contract-strictness", ok: true, findings: [], evidence: {} }] }, ["aggregate.unknown-option"]));
+packages/mechanical-gates/src/aggregate/run-p0-aggregate.js:  const subresults = [];
+packages/mechanical-gates/src/aggregate/run-p0-aggregate.js:      subresults.push(result);
+packages/mechanical-gates/src/aggregate/run-p0-aggregate.js:    const result = subresults.find((candidate) => candidate.family === family);
+packages/mechanical-gates/src/aggregate/run-p0-aggregate.js:      subresults,
+packages/mechanical-gates/fixtures/p1/aggregate/typecheck-consumer.ts:  const subresultFamily: P1AggregateFamily | undefined = result.evidence.subresults[0]?.family;
+packages/mechanical-gates/src/aggregate/p1/run-p1-aggregate.js:  const subresults = [];
+packages/mechanical-gates/src/aggregate/p1/run-p1-aggregate.js:      subresults.push(familyRun.result);
+packages/mechanical-gates/src/aggregate/p1/run-p1-aggregate.js:  const subresultFamilies = new Set(subresults.map((entry) => entry.family));
+packages/mechanical-gates/src/aggregate/p1/run-p1-aggregate.js:    const result = subresults.find((entry) => entry.family === family);
+packages/mechanical-gates/src/aggregate/p1/run-p1-aggregate.js:      subresults,
+
+RG_EXIT:0

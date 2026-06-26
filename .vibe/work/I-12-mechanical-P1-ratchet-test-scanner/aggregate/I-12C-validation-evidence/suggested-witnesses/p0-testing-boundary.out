@@ -1,0 +1,6 @@
+COMMAND: node fixtures/p0/testing-boundary/witness.mjs
+CWD:/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates
+--- stdout ---
+{"ok":true,"mode":"p0-testing-boundary","fixtureRoot":"fixtures/p0/testing-boundary","positive":{"dependencyEdges":[{"packageName":"@fixture/consumer","section":"devDependencies","dependencyName":"@vibe-engineer/testing","productionReachable":false,"manifestPath":"packages/consumer/package.json"}],"sourceImports":[{"sourceFile":"packages/consumer/fixtures/helper.ts","testSurface":true,"specifier":"@vibe-engineer/testing","line":1,"column":1},{"sourceFile":"packages/consumer/src/consumer.test.ts","testSurface":true,"specifier":"@vibe-engineer/testing","line":1,"column":1}],"testOnlyManifests":[{"manifestPath":"packages/testing/package.json","private":true,"testOnly":true,"productionDependencyAllowed":false}],"realTestingPackage":[{"manifestPath":"packages/testing/package.json","private":true,"testOnly":true,"productionDependencyAllowed":false}],"helperConsumption":{"ok":true,"helperPackage":"@vibe-engineer/testing","workspaceRoot":"/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/vibe-helper-consumer-aeYWgu"}},"negativeWitnesses":9,"regressionEvidence":{"noPackagesCoreAssumption":true,"aggregateUnchangedByWitness":true,"mechanicalPackageNoTestingExport":true,"noP1P2TestingBoundaryCreated":true}}
+
+EXIT_STATUS:0

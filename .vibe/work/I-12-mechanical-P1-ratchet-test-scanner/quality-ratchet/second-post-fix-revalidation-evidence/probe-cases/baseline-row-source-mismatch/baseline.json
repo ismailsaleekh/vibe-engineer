@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "quality-ratchet.baseline/1",
+  "family": "p1.quality-ratchet",
+  "surfaceFingerprint": "41f19cedc051c4ec6706b70501c0398762995208382097648f351da6912c8ff5",
+  "debt": [
+    {
+      "identity": {
+        "tool": "example-mechanical-tool",
+        "ruleId": "example.rule",
+        "path": "src/sample.ts",
+        "symbol": "sampleFunction",
+        "structuralSignature": "function:sampleFunction:quality-ratchet",
+        "contentHash": "9743acd245a1b3586841ec54389409fd0de687abc987d2fc9a63ded3fe9e7521",
+        "line": 3
+      },
+      "message": "Existing baseline debt.",
+      "firstSeen": "2026-06-26T00:00:00.000Z",
+      "evidence": {
+        "sourcePath": "src/other.ts"
+      }
+    }
+  ]
+}
