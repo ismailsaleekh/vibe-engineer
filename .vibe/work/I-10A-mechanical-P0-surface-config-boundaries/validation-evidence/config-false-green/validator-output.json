@@ -1,0 +1,35 @@
+{
+  "ok": true,
+  "findingRuleIds": [],
+  "evidence": {
+    "tsconfigPath": "tsconfig.json",
+    "packageJsonPath": "package.json",
+    "requiredTrueFlags": [
+      "strict",
+      "noImplicitAny",
+      "strictNullChecks",
+      "strictFunctionTypes",
+      "strictBindCallApply",
+      "strictPropertyInitialization",
+      "noImplicitThis",
+      "alwaysStrict",
+      "exactOptionalPropertyTypes",
+      "noUncheckedIndexedAccess",
+      "noImplicitOverride",
+      "noImplicitReturns",
+      "noPropertyAccessFromIndexSignature",
+      "useUnknownInCatchVariables",
+      "noFallthroughCasesInSwitch",
+      "isolatedModules",
+      "verbatimModuleSyntax",
+      "forceConsistentCasingInFileNames",
+      "noEmitOnError"
+    ],
+    "requiredFalseFlags": [
+      "allowUnreachableCode",
+      "allowUnusedLabels"
+    ],
+    "eslintConfig": "eslint.config.mjs",
+    "prettierConfig": "prettier.config.mjs"
+  }
+}

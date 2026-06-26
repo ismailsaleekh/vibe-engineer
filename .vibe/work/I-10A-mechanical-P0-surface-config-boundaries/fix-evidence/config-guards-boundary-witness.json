@@ -1,0 +1,54 @@
+{
+  "ok": true,
+  "provider": "@vibe-engineer/mechanical-gates/p0/config-guards",
+  "cases": [
+    {
+      "name": "valid-workspace",
+      "ok": true,
+      "ruleIds": []
+    },
+    {
+      "name": "invalid-config-false-green-regression",
+      "ok": false,
+      "ruleIds": [
+        "config-guards.invalid-eslint-config",
+        "config-guards.invalid-required-script",
+        "config-guards.partial-script-surface",
+        "config-guards.prettier-default-weakened"
+      ]
+    },
+    {
+      "name": "validation-evidence/config-false-green",
+      "ok": false,
+      "ruleIds": [
+        "config-guards.invalid-eslint-config",
+        "config-guards.invalid-required-script",
+        "config-guards.missing-required-script",
+        "config-guards.partial-script-surface",
+        "config-guards.prettier-default-weakened"
+      ]
+    },
+    {
+      "name": "invalid-config-eslint-empty",
+      "ok": false,
+      "ruleIds": [
+        "config-guards.invalid-eslint-config"
+      ]
+    },
+    {
+      "name": "invalid-config-prettier-trailing-comma",
+      "ok": false,
+      "ruleIds": [
+        "config-guards.prettier-default-weakened"
+      ]
+    },
+    {
+      "name": "invalid-config-script-echo-placeholders",
+      "ok": false,
+      "ruleIds": [
+        "config-guards.invalid-required-script",
+        "config-guards.partial-script-surface"
+      ]
+    }
+  ]
+}

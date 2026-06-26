@@ -1,0 +1,3325 @@
+{
+  "ok": false,
+  "providerResolution": {
+    "governedSurface": "file:///Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/src/p0/governed-surface/index.js",
+    "configGuards": "file:///Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/src/p0/config-guards/index.js",
+    "boundaries": "file:///Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/src/p0/boundaries/index.js",
+    "packageExports": {
+      "./p0/governed-surface": {
+        "types": "./src/p0/governed-surface/index.d.ts",
+        "import": "./src/p0/governed-surface/index.js"
+      },
+      "./p0/config-guards": {
+        "types": "./src/p0/config-guards/index.d.ts",
+        "import": "./src/p0/config-guards/index.js"
+      },
+      "./p0/boundaries": {
+        "types": "./src/p0/boundaries/index.d.ts",
+        "import": "./src/p0/boundaries/index.js"
+      }
+    }
+  },
+  "runnerMode": "node --input-type=module from packages/mechanical-gates cwd",
+  "producerCarrier": {
+    "productFixtureRoot": "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/fixtures/p0/surface-config-boundaries",
+    "validationEvidenceFalseGreen": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-10A-mechanical-P0-surface-config-boundaries/validation-evidence/config-false-green",
+    "adversarialNoUnusedFixture": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-10A-mechanical-P0-surface-config-boundaries/revalidation-evidence/adversarial/no-unused-flags-weakened"
+  },
+  "requiredTsFlagsFromLockedSpec": [
+    "strict",
+    "noImplicitAny",
+    "strictNullChecks",
+    "strictFunctionTypes",
+    "strictBindCallApply",
+    "strictPropertyInitialization",
+    "noImplicitThis",
+    "alwaysStrict",
+    "exactOptionalPropertyTypes",
+    "noUncheckedIndexedAccess",
+    "noImplicitOverride",
+    "noImplicitReturns",
+    "noPropertyAccessFromIndexSignature",
+    "useUnknownInCatchVariables",
+    "noFallthroughCasesInSwitch",
+    "noUnusedLocals",
+    "noUnusedParameters",
+    "isolatedModules",
+    "verbatimModuleSyntax",
+    "forceConsistentCasingInFileNames",
+    "allowUnreachableCode",
+    "allowUnusedLabels"
+  ],
+  "validConfigEvidenceRequiredFlags": [
+    "strict",
+    "noImplicitAny",
+    "strictNullChecks",
+    "strictFunctionTypes",
+    "strictBindCallApply",
+    "strictPropertyInitialization",
+    "noImplicitThis",
+    "alwaysStrict",
+    "exactOptionalPropertyTypes",
+    "noUncheckedIndexedAccess",
+    "noImplicitOverride",
+    "noImplicitReturns",
+    "noPropertyAccessFromIndexSignature",
+    "useUnknownInCatchVariables",
+    "noFallthroughCasesInSwitch",
+    "isolatedModules",
+    "verbatimModuleSyntax",
+    "forceConsistentCasingInFileNames",
+    "noEmitOnError"
+  ],
+  "cases": [
+    {
+      "name": "strict-config.valid-workspace",
+      "root": "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/fixtures/p0/surface-config-boundaries/valid-workspace",
+      "ok": true,
+      "expectedOk": true,
+      "ruleIds": [],
+      "expectedRuleIds": [],
+      "typed": true,
+      "matchedExpectation": true,
+      "evidence": {
+        "tsconfigPath": "tsconfig.json",
+        "packageJsonPath": "package.json",
+        "mechanicalSurfacePath": "mechanical-surface.json",
+        "requiredTrueFlags": [
+          "strict",
+          "noImplicitAny",
+          "strictNullChecks",
+          "strictFunctionTypes",
+          "strictBindCallApply",
+          "strictPropertyInitialization",
+          "noImplicitThis",
+          "alwaysStrict",
+          "exactOptionalPropertyTypes",
+          "noUncheckedIndexedAccess",
+          "noImplicitOverride",
+          "noImplicitReturns",
+          "noPropertyAccessFromIndexSignature",
+          "useUnknownInCatchVariables",
+          "noFallthroughCasesInSwitch",
+          "isolatedModules",
+          "verbatimModuleSyntax",
+          "forceConsistentCasingInFileNames",
+          "noEmitOnError"
+        ],
+        "requiredFalseFlags": [
+          "allowUnreachableCode",
+          "allowUnusedLabels"
+        ],
+        "requiredPrettierDefaults": {
+          "printWidth": 100,
+          "semi": true,
+          "singleQuote": false,
+          "trailingComma": "all",
+          "arrowParens": "always",
+          "bracketSpacing": true,
+          "endOfLine": "lf"
+        },
+        "requiredEslintRules": [
+          "@typescript-eslint/no-explicit-any",
+          "@typescript-eslint/no-non-null-assertion",
+          "@typescript-eslint/no-unnecessary-type-assertion",
+          "@typescript-eslint/consistent-type-imports",
+          "@typescript-eslint/no-confusing-void-expression",
+          "@typescript-eslint/no-unsafe-assignment",
+          "@typescript-eslint/no-unsafe-argument",
+          "@typescript-eslint/no-unsafe-call",
+          "@typescript-eslint/no-unsafe-member-access",
+          "@typescript-eslint/no-unsafe-return",
+          "@typescript-eslint/restrict-template-expressions",
+          "@typescript-eslint/switch-exhaustiveness-check",
+          "no-empty",
+          "no-fallthrough",
+          "no-implicit-coercion"
+        ],
+        "eslintConfig": "eslint.config.mjs",
+        "prettierConfig": "prettier.config.mjs"
+      },
+      "sampleFindings": []
+    },
+    {
+      "name": "strict-config.empty-eslint",
+      "root": "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/fixtures/p0/surface-config-boundaries/invalid-config-eslint-empty",
+      "ok": false,
+      "expectedOk": false,
+      "ruleIds": [
+        "config-guards.invalid-eslint-config"
+      ],
+      "expectedRuleIds": [
+        "config-guards.invalid-eslint-config"
+      ],
+      "typed": true,
+      "matchedExpectation": true,
+      "evidence": {
+        "tsconfigPath": "tsconfig.json",
+        "packageJsonPath": "package.json",
+        "mechanicalSurfacePath": "mechanical-surface.json",
+        "requiredTrueFlags": [
+          "strict",
+          "noImplicitAny",
+          "strictNullChecks",
+          "strictFunctionTypes",
+          "strictBindCallApply",
+          "strictPropertyInitialization",
+          "noImplicitThis",
+          "alwaysStrict",
+          "exactOptionalPropertyTypes",
+          "noUncheckedIndexedAccess",
+          "noImplicitOverride",
+          "noImplicitReturns",
+          "noPropertyAccessFromIndexSignature",
+          "useUnknownInCatchVariables",
+          "noFallthroughCasesInSwitch",
+          "isolatedModules",
+          "verbatimModuleSyntax",
+          "forceConsistentCasingInFileNames",
+          "noEmitOnError"
+        ],
+        "requiredFalseFlags": [
+          "allowUnreachableCode",
+          "allowUnusedLabels"
+        ],
+        "requiredPrettierDefaults": {
+          "printWidth": 100,
+          "semi": true,
+          "singleQuote": false,
+          "trailingComma": "all",
+          "arrowParens": "always",
+          "bracketSpacing": true,
+          "endOfLine": "lf"
+        },
+        "requiredEslintRules": [
+          "@typescript-eslint/no-explicit-any",
+          "@typescript-eslint/no-non-null-assertion",
+          "@typescript-eslint/no-unnecessary-type-assertion",
+          "@typescript-eslint/consistent-type-imports",
+          "@typescript-eslint/no-confusing-void-expression",
+          "@typescript-eslint/no-unsafe-assignment",
+          "@typescript-eslint/no-unsafe-argument",
+          "@typescript-eslint/no-unsafe-call",
+          "@typescript-eslint/no-unsafe-member-access",
+          "@typescript-eslint/no-unsafe-return",
+          "@typescript-eslint/restrict-template-expressions",
+          "@typescript-eslint/switch-exhaustiveness-check",
+          "no-empty",
+          "no-fallthrough",
+          "no-implicit-coercion"
+        ],
+        "eslintConfig": "eslint.config.mjs",
+        "prettierConfig": "prettier.config.mjs"
+      },
+      "sampleFindings": [
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.invalid-eslint-config",
+          "severity": "error",
+          "blocking": true,
+          "path": "eslint.config.mjs",
+          "message": "ESLint config must be a non-empty flat config object/array of objects.",
+          "evidence": {}
+        }
+      ]
+    },
+    {
+      "name": "strict-config.missing-eslint-rule",
+      "root": "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/fixtures/p0/surface-config-boundaries/invalid-config-eslint-missing-ts-no-explicit-any",
+      "ok": false,
+      "expectedOk": false,
+      "ruleIds": [
+        "config-guards.missing-eslint-rule"
+      ],
+      "expectedRuleIds": [
+        "config-guards.missing-eslint-rule"
+      ],
+      "typed": true,
+      "matchedExpectation": true,
+      "evidence": {
+        "tsconfigPath": "tsconfig.json",
+        "packageJsonPath": "package.json",
+        "mechanicalSurfacePath": "mechanical-surface.json",
+        "requiredTrueFlags": [
+          "strict",
+          "noImplicitAny",
+          "strictNullChecks",
+          "strictFunctionTypes",
+          "strictBindCallApply",
+          "strictPropertyInitialization",
+          "noImplicitThis",
+          "alwaysStrict",
+          "exactOptionalPropertyTypes",
+          "noUncheckedIndexedAccess",
+          "noImplicitOverride",
+          "noImplicitReturns",
+          "noPropertyAccessFromIndexSignature",
+          "useUnknownInCatchVariables",
+          "noFallthroughCasesInSwitch",
+          "isolatedModules",
+          "verbatimModuleSyntax",
+          "forceConsistentCasingInFileNames",
+          "noEmitOnError"
+        ],
+        "requiredFalseFlags": [
+          "allowUnreachableCode",
+          "allowUnusedLabels"
+        ],
+        "requiredPrettierDefaults": {
+          "printWidth": 100,
+          "semi": true,
+          "singleQuote": false,
+          "trailingComma": "all",
+          "arrowParens": "always",
+          "bracketSpacing": true,
+          "endOfLine": "lf"
+        },
+        "requiredEslintRules": [
+          "@typescript-eslint/no-explicit-any",
+          "@typescript-eslint/no-non-null-assertion",
+          "@typescript-eslint/no-unnecessary-type-assertion",
+          "@typescript-eslint/consistent-type-imports",
+          "@typescript-eslint/no-confusing-void-expression",
+          "@typescript-eslint/no-unsafe-assignment",
+          "@typescript-eslint/no-unsafe-argument",
+          "@typescript-eslint/no-unsafe-call",
+          "@typescript-eslint/no-unsafe-member-access",
+          "@typescript-eslint/no-unsafe-return",
+          "@typescript-eslint/restrict-template-expressions",
+          "@typescript-eslint/switch-exhaustiveness-check",
+          "no-empty",
+          "no-fallthrough",
+          "no-implicit-coercion"
+        ],
+        "eslintConfig": "eslint.config.mjs",
+        "prettierConfig": "prettier.config.mjs"
+      },
+      "sampleFindings": [
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.missing-eslint-rule",
+          "severity": "error",
+          "blocking": true,
+          "path": "eslint.config.mjs#/rules/@typescript-eslint/no-explicit-any",
+          "message": "Required ESLint blocking rule is missing: @typescript-eslint/no-explicit-any.",
+          "evidence": {
+            "ruleName": "@typescript-eslint/no-explicit-any"
+          }
+        }
+      ]
+    },
+    {
+      "name": "strict-config.downgraded-eslint-severity",
+      "root": "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/fixtures/p0/surface-config-boundaries/invalid-config-eslint-downgraded-severity",
+      "ok": false,
+      "expectedOk": false,
+      "ruleIds": [
+        "config-guards.eslint-rule-weakened"
+      ],
+      "expectedRuleIds": [
+        "config-guards.eslint-rule-weakened"
+      ],
+      "typed": true,
+      "matchedExpectation": true,
+      "evidence": {
+        "tsconfigPath": "tsconfig.json",
+        "packageJsonPath": "package.json",
+        "mechanicalSurfacePath": "mechanical-surface.json",
+        "requiredTrueFlags": [
+          "strict",
+          "noImplicitAny",
+          "strictNullChecks",
+          "strictFunctionTypes",
+          "strictBindCallApply",
+          "strictPropertyInitialization",
+          "noImplicitThis",
+          "alwaysStrict",
+          "exactOptionalPropertyTypes",
+          "noUncheckedIndexedAccess",
+          "noImplicitOverride",
+          "noImplicitReturns",
+          "noPropertyAccessFromIndexSignature",
+          "useUnknownInCatchVariables",
+          "noFallthroughCasesInSwitch",
+          "isolatedModules",
+          "verbatimModuleSyntax",
+          "forceConsistentCasingInFileNames",
+          "noEmitOnError"
+        ],
+        "requiredFalseFlags": [
+          "allowUnreachableCode",
+          "allowUnusedLabels"
+        ],
+        "requiredPrettierDefaults": {
+          "printWidth": 100,
+          "semi": true,
+          "singleQuote": false,
+          "trailingComma": "all",
+          "arrowParens": "always",
+          "bracketSpacing": true,
+          "endOfLine": "lf"
+        },
+        "requiredEslintRules": [
+          "@typescript-eslint/no-explicit-any",
+          "@typescript-eslint/no-non-null-assertion",
+          "@typescript-eslint/no-unnecessary-type-assertion",
+          "@typescript-eslint/consistent-type-imports",
+          "@typescript-eslint/no-confusing-void-expression",
+          "@typescript-eslint/no-unsafe-assignment",
+          "@typescript-eslint/no-unsafe-argument",
+          "@typescript-eslint/no-unsafe-call",
+          "@typescript-eslint/no-unsafe-member-access",
+          "@typescript-eslint/no-unsafe-return",
+          "@typescript-eslint/restrict-template-expressions",
+          "@typescript-eslint/switch-exhaustiveness-check",
+          "no-empty",
+          "no-fallthrough",
+          "no-implicit-coercion"
+        ],
+        "eslintConfig": "eslint.config.mjs",
+        "prettierConfig": "prettier.config.mjs"
+      },
+      "sampleFindings": [
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.eslint-rule-weakened",
+          "severity": "error",
+          "blocking": true,
+          "path": "eslint.config.mjs#/rules/@typescript-eslint/no-explicit-any",
+          "message": "Required ESLint rule must have blocking severity: @typescript-eslint/no-explicit-any.",
+          "evidence": {
+            "ruleName": "@typescript-eslint/no-explicit-any",
+            "actual": "warn"
+          }
+        }
+      ]
+    },
+    {
+      "name": "strict-config.invalid-ban-ts-comment",
+      "root": "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/fixtures/p0/surface-config-boundaries/invalid-config-eslint-ban-ts-comment-options",
+      "ok": false,
+      "expectedOk": false,
+      "ruleIds": [
+        "config-guards.invalid-eslint-rule-options"
+      ],
+      "expectedRuleIds": [
+        "config-guards.invalid-eslint-rule-options"
+      ],
+      "typed": true,
+      "matchedExpectation": true,
+      "evidence": {
+        "tsconfigPath": "tsconfig.json",
+        "packageJsonPath": "package.json",
+        "mechanicalSurfacePath": "mechanical-surface.json",
+        "requiredTrueFlags": [
+          "strict",
+          "noImplicitAny",
+          "strictNullChecks",
+          "strictFunctionTypes",
+          "strictBindCallApply",
+          "strictPropertyInitialization",
+          "noImplicitThis",
+          "alwaysStrict",
+          "exactOptionalPropertyTypes",
+          "noUncheckedIndexedAccess",
+          "noImplicitOverride",
+          "noImplicitReturns",
+          "noPropertyAccessFromIndexSignature",
+          "useUnknownInCatchVariables",
+          "noFallthroughCasesInSwitch",
+          "isolatedModules",
+          "verbatimModuleSyntax",
+          "forceConsistentCasingInFileNames",
+          "noEmitOnError"
+        ],
+        "requiredFalseFlags": [
+          "allowUnreachableCode",
+          "allowUnusedLabels"
+        ],
+        "requiredPrettierDefaults": {
+          "printWidth": 100,
+          "semi": true,
+          "singleQuote": false,
+          "trailingComma": "all",
+          "arrowParens": "always",
+          "bracketSpacing": true,
+          "endOfLine": "lf"
+        },
+        "requiredEslintRules": [
+          "@typescript-eslint/no-explicit-any",
+          "@typescript-eslint/no-non-null-assertion",
+          "@typescript-eslint/no-unnecessary-type-assertion",
+          "@typescript-eslint/consistent-type-imports",
+          "@typescript-eslint/no-confusing-void-expression",
+          "@typescript-eslint/no-unsafe-assignment",
+          "@typescript-eslint/no-unsafe-argument",
+          "@typescript-eslint/no-unsafe-call",
+          "@typescript-eslint/no-unsafe-member-access",
+          "@typescript-eslint/no-unsafe-return",
+          "@typescript-eslint/restrict-template-expressions",
+          "@typescript-eslint/switch-exhaustiveness-check",
+          "no-empty",
+          "no-fallthrough",
+          "no-implicit-coercion"
+        ],
+        "eslintConfig": "eslint.config.mjs",
+        "prettierConfig": "prettier.config.mjs"
+      },
+      "sampleFindings": [
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.invalid-eslint-rule-options",
+          "severity": "error",
+          "blocking": true,
+          "path": "eslint.config.mjs#/rules/@typescript-eslint/ban-ts-comment",
+          "message": "ban-ts-comment must block ts-ignore/ts-nocheck and require descriptions for ts-expect-error.",
+          "evidence": {
+            "ruleName": "@typescript-eslint/ban-ts-comment"
+          }
+        }
+      ]
+    },
+    {
+      "name": "strict-config.missing-json-parse-boundary",
+      "root": "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/fixtures/p0/surface-config-boundaries/invalid-config-eslint-missing-json-parse-boundary",
+      "ok": false,
+      "expectedOk": false,
+      "ruleIds": [
+        "config-guards.missing-eslint-json-parse-boundary"
+      ],
+      "expectedRuleIds": [
+        "config-guards.missing-eslint-json-parse-boundary"
+      ],
+      "typed": true,
+      "matchedExpectation": true,
+      "evidence": {
+        "tsconfigPath": "tsconfig.json",
+        "packageJsonPath": "package.json",
+        "mechanicalSurfacePath": "mechanical-surface.json",
+        "requiredTrueFlags": [
+          "strict",
+          "noImplicitAny",
+          "strictNullChecks",
+          "strictFunctionTypes",
+          "strictBindCallApply",
+          "strictPropertyInitialization",
+          "noImplicitThis",
+          "alwaysStrict",
+          "exactOptionalPropertyTypes",
+          "noUncheckedIndexedAccess",
+          "noImplicitOverride",
+          "noImplicitReturns",
+          "noPropertyAccessFromIndexSignature",
+          "useUnknownInCatchVariables",
+          "noFallthroughCasesInSwitch",
+          "isolatedModules",
+          "verbatimModuleSyntax",
+          "forceConsistentCasingInFileNames",
+          "noEmitOnError"
+        ],
+        "requiredFalseFlags": [
+          "allowUnreachableCode",
+          "allowUnusedLabels"
+        ],
+        "requiredPrettierDefaults": {
+          "printWidth": 100,
+          "semi": true,
+          "singleQuote": false,
+          "trailingComma": "all",
+          "arrowParens": "always",
+          "bracketSpacing": true,
+          "endOfLine": "lf"
+        },
+        "requiredEslintRules": [
+          "@typescript-eslint/no-explicit-any",
+          "@typescript-eslint/no-non-null-assertion",
+          "@typescript-eslint/no-unnecessary-type-assertion",
+          "@typescript-eslint/consistent-type-imports",
+          "@typescript-eslint/no-confusing-void-expression",
+          "@typescript-eslint/no-unsafe-assignment",
+          "@typescript-eslint/no-unsafe-argument",
+          "@typescript-eslint/no-unsafe-call",
+          "@typescript-eslint/no-unsafe-member-access",
+          "@typescript-eslint/no-unsafe-return",
+          "@typescript-eslint/restrict-template-expressions",
+          "@typescript-eslint/switch-exhaustiveness-check",
+          "no-empty",
+          "no-fallthrough",
+          "no-implicit-coercion"
+        ],
+        "eslintConfig": "eslint.config.mjs",
+        "prettierConfig": "prettier.config.mjs"
+      },
+      "sampleFindings": [
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.missing-eslint-json-parse-boundary",
+          "severity": "error",
+          "blocking": true,
+          "path": "eslint.config.mjs#/rules/no-restricted-syntax",
+          "message": "ESLint must block raw JSON.parse outside named runtime boundary validators.",
+          "evidence": {
+            "ruleName": "no-restricted-syntax"
+          }
+        }
+      ]
+    },
+    {
+      "name": "strict-config.missing-prettier",
+      "root": "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/fixtures/p0/surface-config-boundaries/invalid-config-prettier-missing",
+      "ok": false,
+      "expectedOk": false,
+      "ruleIds": [
+        "config-guards.missing-prettier-config"
+      ],
+      "expectedRuleIds": [
+        "config-guards.missing-prettier-config"
+      ],
+      "typed": true,
+      "matchedExpectation": true,
+      "evidence": {
+        "tsconfigPath": "tsconfig.json",
+        "packageJsonPath": "package.json",
+        "mechanicalSurfacePath": "mechanical-surface.json",
+        "requiredTrueFlags": [
+          "strict",
+          "noImplicitAny",
+          "strictNullChecks",
+          "strictFunctionTypes",
+          "strictBindCallApply",
+          "strictPropertyInitialization",
+          "noImplicitThis",
+          "alwaysStrict",
+          "exactOptionalPropertyTypes",
+          "noUncheckedIndexedAccess",
+          "noImplicitOverride",
+          "noImplicitReturns",
+          "noPropertyAccessFromIndexSignature",
+          "useUnknownInCatchVariables",
+          "noFallthroughCasesInSwitch",
+          "isolatedModules",
+          "verbatimModuleSyntax",
+          "forceConsistentCasingInFileNames",
+          "noEmitOnError"
+        ],
+        "requiredFalseFlags": [
+          "allowUnreachableCode",
+          "allowUnusedLabels"
+        ],
+        "requiredPrettierDefaults": {
+          "printWidth": 100,
+          "semi": true,
+          "singleQuote": false,
+          "trailingComma": "all",
+          "arrowParens": "always",
+          "bracketSpacing": true,
+          "endOfLine": "lf"
+        },
+        "requiredEslintRules": [
+          "@typescript-eslint/no-explicit-any",
+          "@typescript-eslint/no-non-null-assertion",
+          "@typescript-eslint/no-unnecessary-type-assertion",
+          "@typescript-eslint/consistent-type-imports",
+          "@typescript-eslint/no-confusing-void-expression",
+          "@typescript-eslint/no-unsafe-assignment",
+          "@typescript-eslint/no-unsafe-argument",
+          "@typescript-eslint/no-unsafe-call",
+          "@typescript-eslint/no-unsafe-member-access",
+          "@typescript-eslint/no-unsafe-return",
+          "@typescript-eslint/restrict-template-expressions",
+          "@typescript-eslint/switch-exhaustiveness-check",
+          "no-empty",
+          "no-fallthrough",
+          "no-implicit-coercion"
+        ],
+        "eslintConfig": "eslint.config.mjs",
+        "prettierConfig": null
+      },
+      "sampleFindings": [
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.missing-prettier-config",
+          "severity": "error",
+          "blocking": true,
+          "path": "prettier.config.mjs",
+          "message": "Required Prettier config surface is missing.",
+          "evidence": {
+            "candidates": [
+              "prettier.config.mjs",
+              "prettier.config.js",
+              ".prettierrc",
+              ".prettierrc.json"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "strict-config.trailing-comma-none",
+      "root": "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/fixtures/p0/surface-config-boundaries/invalid-config-prettier-trailing-comma",
+      "ok": false,
+      "expectedOk": false,
+      "ruleIds": [
+        "config-guards.prettier-default-weakened"
+      ],
+      "expectedRuleIds": [
+        "config-guards.prettier-default-weakened"
+      ],
+      "typed": true,
+      "matchedExpectation": true,
+      "evidence": {
+        "tsconfigPath": "tsconfig.json",
+        "packageJsonPath": "package.json",
+        "mechanicalSurfacePath": "mechanical-surface.json",
+        "requiredTrueFlags": [
+          "strict",
+          "noImplicitAny",
+          "strictNullChecks",
+          "strictFunctionTypes",
+          "strictBindCallApply",
+          "strictPropertyInitialization",
+          "noImplicitThis",
+          "alwaysStrict",
+          "exactOptionalPropertyTypes",
+          "noUncheckedIndexedAccess",
+          "noImplicitOverride",
+          "noImplicitReturns",
+          "noPropertyAccessFromIndexSignature",
+          "useUnknownInCatchVariables",
+          "noFallthroughCasesInSwitch",
+          "isolatedModules",
+          "verbatimModuleSyntax",
+          "forceConsistentCasingInFileNames",
+          "noEmitOnError"
+        ],
+        "requiredFalseFlags": [
+          "allowUnreachableCode",
+          "allowUnusedLabels"
+        ],
+        "requiredPrettierDefaults": {
+          "printWidth": 100,
+          "semi": true,
+          "singleQuote": false,
+          "trailingComma": "all",
+          "arrowParens": "always",
+          "bracketSpacing": true,
+          "endOfLine": "lf"
+        },
+        "requiredEslintRules": [
+          "@typescript-eslint/no-explicit-any",
+          "@typescript-eslint/no-non-null-assertion",
+          "@typescript-eslint/no-unnecessary-type-assertion",
+          "@typescript-eslint/consistent-type-imports",
+          "@typescript-eslint/no-confusing-void-expression",
+          "@typescript-eslint/no-unsafe-assignment",
+          "@typescript-eslint/no-unsafe-argument",
+          "@typescript-eslint/no-unsafe-call",
+          "@typescript-eslint/no-unsafe-member-access",
+          "@typescript-eslint/no-unsafe-return",
+          "@typescript-eslint/restrict-template-expressions",
+          "@typescript-eslint/switch-exhaustiveness-check",
+          "no-empty",
+          "no-fallthrough",
+          "no-implicit-coercion"
+        ],
+        "eslintConfig": "eslint.config.mjs",
+        "prettierConfig": "prettier.config.mjs"
+      },
+      "sampleFindings": [
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.prettier-default-weakened",
+          "severity": "error",
+          "blocking": true,
+          "path": "prettier.config.mjs#/trailingComma",
+          "message": "Required Prettier default is missing or weakened: trailingComma.",
+          "evidence": {
+            "option": "trailingComma",
+            "expected": "all",
+            "actual": "none"
+          }
+        }
+      ]
+    },
+    {
+      "name": "strict-config.omitted-print-width",
+      "root": "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/fixtures/p0/surface-config-boundaries/invalid-config-prettier-omitted-print-width",
+      "ok": false,
+      "expectedOk": false,
+      "ruleIds": [
+        "config-guards.prettier-default-weakened"
+      ],
+      "expectedRuleIds": [
+        "config-guards.prettier-default-weakened"
+      ],
+      "typed": true,
+      "matchedExpectation": true,
+      "evidence": {
+        "tsconfigPath": "tsconfig.json",
+        "packageJsonPath": "package.json",
+        "mechanicalSurfacePath": "mechanical-surface.json",
+        "requiredTrueFlags": [
+          "strict",
+          "noImplicitAny",
+          "strictNullChecks",
+          "strictFunctionTypes",
+          "strictBindCallApply",
+          "strictPropertyInitialization",
+          "noImplicitThis",
+          "alwaysStrict",
+          "exactOptionalPropertyTypes",
+          "noUncheckedIndexedAccess",
+          "noImplicitOverride",
+          "noImplicitReturns",
+          "noPropertyAccessFromIndexSignature",
+          "useUnknownInCatchVariables",
+          "noFallthroughCasesInSwitch",
+          "isolatedModules",
+          "verbatimModuleSyntax",
+          "forceConsistentCasingInFileNames",
+          "noEmitOnError"
+        ],
+        "requiredFalseFlags": [
+          "allowUnreachableCode",
+          "allowUnusedLabels"
+        ],
+        "requiredPrettierDefaults": {
+          "printWidth": 100,
+          "semi": true,
+          "singleQuote": false,
+          "trailingComma": "all",
+          "arrowParens": "always",
+          "bracketSpacing": true,
+          "endOfLine": "lf"
+        },
+        "requiredEslintRules": [
+          "@typescript-eslint/no-explicit-any",
+          "@typescript-eslint/no-non-null-assertion",
+          "@typescript-eslint/no-unnecessary-type-assertion",
+          "@typescript-eslint/consistent-type-imports",
+          "@typescript-eslint/no-confusing-void-expression",
+          "@typescript-eslint/no-unsafe-assignment",
+          "@typescript-eslint/no-unsafe-argument",
+          "@typescript-eslint/no-unsafe-call",
+          "@typescript-eslint/no-unsafe-member-access",
+          "@typescript-eslint/no-unsafe-return",
+          "@typescript-eslint/restrict-template-expressions",
+          "@typescript-eslint/switch-exhaustiveness-check",
+          "no-empty",
+          "no-fallthrough",
+          "no-implicit-coercion"
+        ],
+        "eslintConfig": "eslint.config.mjs",
+        "prettierConfig": "prettier.config.mjs"
+      },
+      "sampleFindings": [
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.prettier-default-weakened",
+          "severity": "error",
+          "blocking": true,
+          "path": "prettier.config.mjs#/printWidth",
+          "message": "Required Prettier default is missing or weakened: printWidth.",
+          "evidence": {
+            "option": "printWidth",
+            "expected": 100,
+            "actual": null
+          }
+        }
+      ]
+    },
+    {
+      "name": "strict-config.wrong-semi",
+      "root": "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/fixtures/p0/surface-config-boundaries/invalid-config-prettier-wrong-semi",
+      "ok": false,
+      "expectedOk": false,
+      "ruleIds": [
+        "config-guards.prettier-default-weakened"
+      ],
+      "expectedRuleIds": [
+        "config-guards.prettier-default-weakened"
+      ],
+      "typed": true,
+      "matchedExpectation": true,
+      "evidence": {
+        "tsconfigPath": "tsconfig.json",
+        "packageJsonPath": "package.json",
+        "mechanicalSurfacePath": "mechanical-surface.json",
+        "requiredTrueFlags": [
+          "strict",
+          "noImplicitAny",
+          "strictNullChecks",
+          "strictFunctionTypes",
+          "strictBindCallApply",
+          "strictPropertyInitialization",
+          "noImplicitThis",
+          "alwaysStrict",
+          "exactOptionalPropertyTypes",
+          "noUncheckedIndexedAccess",
+          "noImplicitOverride",
+          "noImplicitReturns",
+          "noPropertyAccessFromIndexSignature",
+          "useUnknownInCatchVariables",
+          "noFallthroughCasesInSwitch",
+          "isolatedModules",
+          "verbatimModuleSyntax",
+          "forceConsistentCasingInFileNames",
+          "noEmitOnError"
+        ],
+        "requiredFalseFlags": [
+          "allowUnreachableCode",
+          "allowUnusedLabels"
+        ],
+        "requiredPrettierDefaults": {
+          "printWidth": 100,
+          "semi": true,
+          "singleQuote": false,
+          "trailingComma": "all",
+          "arrowParens": "always",
+          "bracketSpacing": true,
+          "endOfLine": "lf"
+        },
+        "requiredEslintRules": [
+          "@typescript-eslint/no-explicit-any",
+          "@typescript-eslint/no-non-null-assertion",
+          "@typescript-eslint/no-unnecessary-type-assertion",
+          "@typescript-eslint/consistent-type-imports",
+          "@typescript-eslint/no-confusing-void-expression",
+          "@typescript-eslint/no-unsafe-assignment",
+          "@typescript-eslint/no-unsafe-argument",
+          "@typescript-eslint/no-unsafe-call",
+          "@typescript-eslint/no-unsafe-member-access",
+          "@typescript-eslint/no-unsafe-return",
+          "@typescript-eslint/restrict-template-expressions",
+          "@typescript-eslint/switch-exhaustiveness-check",
+          "no-empty",
+          "no-fallthrough",
+          "no-implicit-coercion"
+        ],
+        "eslintConfig": "eslint.config.mjs",
+        "prettierConfig": "prettier.config.mjs"
+      },
+      "sampleFindings": [
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.prettier-default-weakened",
+          "severity": "error",
+          "blocking": true,
+          "path": "prettier.config.mjs#/semi",
+          "message": "Required Prettier default is missing or weakened: semi.",
+          "evidence": {
+            "option": "semi",
+            "expected": true,
+            "actual": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "strict-config.wrong-single-quote",
+      "root": "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/fixtures/p0/surface-config-boundaries/invalid-config-prettier-wrong-single-quote",
+      "ok": false,
+      "expectedOk": false,
+      "ruleIds": [
+        "config-guards.prettier-default-weakened"
+      ],
+      "expectedRuleIds": [
+        "config-guards.prettier-default-weakened"
+      ],
+      "typed": true,
+      "matchedExpectation": true,
+      "evidence": {
+        "tsconfigPath": "tsconfig.json",
+        "packageJsonPath": "package.json",
+        "mechanicalSurfacePath": "mechanical-surface.json",
+        "requiredTrueFlags": [
+          "strict",
+          "noImplicitAny",
+          "strictNullChecks",
+          "strictFunctionTypes",
+          "strictBindCallApply",
+          "strictPropertyInitialization",
+          "noImplicitThis",
+          "alwaysStrict",
+          "exactOptionalPropertyTypes",
+          "noUncheckedIndexedAccess",
+          "noImplicitOverride",
+          "noImplicitReturns",
+          "noPropertyAccessFromIndexSignature",
+          "useUnknownInCatchVariables",
+          "noFallthroughCasesInSwitch",
+          "isolatedModules",
+          "verbatimModuleSyntax",
+          "forceConsistentCasingInFileNames",
+          "noEmitOnError"
+        ],
+        "requiredFalseFlags": [
+          "allowUnreachableCode",
+          "allowUnusedLabels"
+        ],
+        "requiredPrettierDefaults": {
+          "printWidth": 100,
+          "semi": true,
+          "singleQuote": false,
+          "trailingComma": "all",
+          "arrowParens": "always",
+          "bracketSpacing": true,
+          "endOfLine": "lf"
+        },
+        "requiredEslintRules": [
+          "@typescript-eslint/no-explicit-any",
+          "@typescript-eslint/no-non-null-assertion",
+          "@typescript-eslint/no-unnecessary-type-assertion",
+          "@typescript-eslint/consistent-type-imports",
+          "@typescript-eslint/no-confusing-void-expression",
+          "@typescript-eslint/no-unsafe-assignment",
+          "@typescript-eslint/no-unsafe-argument",
+          "@typescript-eslint/no-unsafe-call",
+          "@typescript-eslint/no-unsafe-member-access",
+          "@typescript-eslint/no-unsafe-return",
+          "@typescript-eslint/restrict-template-expressions",
+          "@typescript-eslint/switch-exhaustiveness-check",
+          "no-empty",
+          "no-fallthrough",
+          "no-implicit-coercion"
+        ],
+        "eslintConfig": "eslint.config.mjs",
+        "prettierConfig": "prettier.config.mjs"
+      },
+      "sampleFindings": [
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.prettier-default-weakened",
+          "severity": "error",
+          "blocking": true,
+          "path": "prettier.config.mjs#/singleQuote",
+          "message": "Required Prettier default is missing or weakened: singleQuote.",
+          "evidence": {
+            "option": "singleQuote",
+            "expected": false,
+            "actual": true
+          }
+        }
+      ]
+    },
+    {
+      "name": "strict-config.wrong-arrow-parens",
+      "root": "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/fixtures/p0/surface-config-boundaries/invalid-config-prettier-wrong-arrow-parens",
+      "ok": false,
+      "expectedOk": false,
+      "ruleIds": [
+        "config-guards.prettier-default-weakened"
+      ],
+      "expectedRuleIds": [
+        "config-guards.prettier-default-weakened"
+      ],
+      "typed": true,
+      "matchedExpectation": true,
+      "evidence": {
+        "tsconfigPath": "tsconfig.json",
+        "packageJsonPath": "package.json",
+        "mechanicalSurfacePath": "mechanical-surface.json",
+        "requiredTrueFlags": [
+          "strict",
+          "noImplicitAny",
+          "strictNullChecks",
+          "strictFunctionTypes",
+          "strictBindCallApply",
+          "strictPropertyInitialization",
+          "noImplicitThis",
+          "alwaysStrict",
+          "exactOptionalPropertyTypes",
+          "noUncheckedIndexedAccess",
+          "noImplicitOverride",
+          "noImplicitReturns",
+          "noPropertyAccessFromIndexSignature",
+          "useUnknownInCatchVariables",
+          "noFallthroughCasesInSwitch",
+          "isolatedModules",
+          "verbatimModuleSyntax",
+          "forceConsistentCasingInFileNames",
+          "noEmitOnError"
+        ],
+        "requiredFalseFlags": [
+          "allowUnreachableCode",
+          "allowUnusedLabels"
+        ],
+        "requiredPrettierDefaults": {
+          "printWidth": 100,
+          "semi": true,
+          "singleQuote": false,
+          "trailingComma": "all",
+          "arrowParens": "always",
+          "bracketSpacing": true,
+          "endOfLine": "lf"
+        },
+        "requiredEslintRules": [
+          "@typescript-eslint/no-explicit-any",
+          "@typescript-eslint/no-non-null-assertion",
+          "@typescript-eslint/no-unnecessary-type-assertion",
+          "@typescript-eslint/consistent-type-imports",
+          "@typescript-eslint/no-confusing-void-expression",
+          "@typescript-eslint/no-unsafe-assignment",
+          "@typescript-eslint/no-unsafe-argument",
+          "@typescript-eslint/no-unsafe-call",
+          "@typescript-eslint/no-unsafe-member-access",
+          "@typescript-eslint/no-unsafe-return",
+          "@typescript-eslint/restrict-template-expressions",
+          "@typescript-eslint/switch-exhaustiveness-check",
+          "no-empty",
+          "no-fallthrough",
+          "no-implicit-coercion"
+        ],
+        "eslintConfig": "eslint.config.mjs",
+        "prettierConfig": "prettier.config.mjs"
+      },
+      "sampleFindings": [
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.prettier-default-weakened",
+          "severity": "error",
+          "blocking": true,
+          "path": "prettier.config.mjs#/arrowParens",
+          "message": "Required Prettier default is missing or weakened: arrowParens.",
+          "evidence": {
+            "option": "arrowParens",
+            "expected": "always",
+            "actual": "avoid"
+          }
+        }
+      ]
+    },
+    {
+      "name": "strict-config.wrong-bracket-spacing",
+      "root": "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/fixtures/p0/surface-config-boundaries/invalid-config-prettier-wrong-bracket-spacing",
+      "ok": false,
+      "expectedOk": false,
+      "ruleIds": [
+        "config-guards.prettier-default-weakened"
+      ],
+      "expectedRuleIds": [
+        "config-guards.prettier-default-weakened"
+      ],
+      "typed": true,
+      "matchedExpectation": true,
+      "evidence": {
+        "tsconfigPath": "tsconfig.json",
+        "packageJsonPath": "package.json",
+        "mechanicalSurfacePath": "mechanical-surface.json",
+        "requiredTrueFlags": [
+          "strict",
+          "noImplicitAny",
+          "strictNullChecks",
+          "strictFunctionTypes",
+          "strictBindCallApply",
+          "strictPropertyInitialization",
+          "noImplicitThis",
+          "alwaysStrict",
+          "exactOptionalPropertyTypes",
+          "noUncheckedIndexedAccess",
+          "noImplicitOverride",
+          "noImplicitReturns",
+          "noPropertyAccessFromIndexSignature",
+          "useUnknownInCatchVariables",
+          "noFallthroughCasesInSwitch",
+          "isolatedModules",
+          "verbatimModuleSyntax",
+          "forceConsistentCasingInFileNames",
+          "noEmitOnError"
+        ],
+        "requiredFalseFlags": [
+          "allowUnreachableCode",
+          "allowUnusedLabels"
+        ],
+        "requiredPrettierDefaults": {
+          "printWidth": 100,
+          "semi": true,
+          "singleQuote": false,
+          "trailingComma": "all",
+          "arrowParens": "always",
+          "bracketSpacing": true,
+          "endOfLine": "lf"
+        },
+        "requiredEslintRules": [
+          "@typescript-eslint/no-explicit-any",
+          "@typescript-eslint/no-non-null-assertion",
+          "@typescript-eslint/no-unnecessary-type-assertion",
+          "@typescript-eslint/consistent-type-imports",
+          "@typescript-eslint/no-confusing-void-expression",
+          "@typescript-eslint/no-unsafe-assignment",
+          "@typescript-eslint/no-unsafe-argument",
+          "@typescript-eslint/no-unsafe-call",
+          "@typescript-eslint/no-unsafe-member-access",
+          "@typescript-eslint/no-unsafe-return",
+          "@typescript-eslint/restrict-template-expressions",
+          "@typescript-eslint/switch-exhaustiveness-check",
+          "no-empty",
+          "no-fallthrough",
+          "no-implicit-coercion"
+        ],
+        "eslintConfig": "eslint.config.mjs",
+        "prettierConfig": "prettier.config.mjs"
+      },
+      "sampleFindings": [
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.prettier-default-weakened",
+          "severity": "error",
+          "blocking": true,
+          "path": "prettier.config.mjs#/bracketSpacing",
+          "message": "Required Prettier default is missing or weakened: bracketSpacing.",
+          "evidence": {
+            "option": "bracketSpacing",
+            "expected": true,
+            "actual": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "strict-config.wrong-end-of-line",
+      "root": "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/fixtures/p0/surface-config-boundaries/invalid-config-prettier-wrong-end-of-line",
+      "ok": false,
+      "expectedOk": false,
+      "ruleIds": [
+        "config-guards.prettier-default-weakened"
+      ],
+      "expectedRuleIds": [
+        "config-guards.prettier-default-weakened"
+      ],
+      "typed": true,
+      "matchedExpectation": true,
+      "evidence": {
+        "tsconfigPath": "tsconfig.json",
+        "packageJsonPath": "package.json",
+        "mechanicalSurfacePath": "mechanical-surface.json",
+        "requiredTrueFlags": [
+          "strict",
+          "noImplicitAny",
+          "strictNullChecks",
+          "strictFunctionTypes",
+          "strictBindCallApply",
+          "strictPropertyInitialization",
+          "noImplicitThis",
+          "alwaysStrict",
+          "exactOptionalPropertyTypes",
+          "noUncheckedIndexedAccess",
+          "noImplicitOverride",
+          "noImplicitReturns",
+          "noPropertyAccessFromIndexSignature",
+          "useUnknownInCatchVariables",
+          "noFallthroughCasesInSwitch",
+          "isolatedModules",
+          "verbatimModuleSyntax",
+          "forceConsistentCasingInFileNames",
+          "noEmitOnError"
+        ],
+        "requiredFalseFlags": [
+          "allowUnreachableCode",
+          "allowUnusedLabels"
+        ],
+        "requiredPrettierDefaults": {
+          "printWidth": 100,
+          "semi": true,
+          "singleQuote": false,
+          "trailingComma": "all",
+          "arrowParens": "always",
+          "bracketSpacing": true,
+          "endOfLine": "lf"
+        },
+        "requiredEslintRules": [
+          "@typescript-eslint/no-explicit-any",
+          "@typescript-eslint/no-non-null-assertion",
+          "@typescript-eslint/no-unnecessary-type-assertion",
+          "@typescript-eslint/consistent-type-imports",
+          "@typescript-eslint/no-confusing-void-expression",
+          "@typescript-eslint/no-unsafe-assignment",
+          "@typescript-eslint/no-unsafe-argument",
+          "@typescript-eslint/no-unsafe-call",
+          "@typescript-eslint/no-unsafe-member-access",
+          "@typescript-eslint/no-unsafe-return",
+          "@typescript-eslint/restrict-template-expressions",
+          "@typescript-eslint/switch-exhaustiveness-check",
+          "no-empty",
+          "no-fallthrough",
+          "no-implicit-coercion"
+        ],
+        "eslintConfig": "eslint.config.mjs",
+        "prettierConfig": "prettier.config.mjs"
+      },
+      "sampleFindings": [
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.prettier-default-weakened",
+          "severity": "error",
+          "blocking": true,
+          "path": "prettier.config.mjs#/endOfLine",
+          "message": "Required Prettier default is missing or weakened: endOfLine.",
+          "evidence": {
+            "option": "endOfLine",
+            "expected": "lf",
+            "actual": "auto"
+          }
+        }
+      ]
+    },
+    {
+      "name": "strict-config.missing-lint-script",
+      "root": "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/fixtures/p0/surface-config-boundaries/invalid-config-script-missing-lint",
+      "ok": false,
+      "expectedOk": false,
+      "ruleIds": [
+        "config-guards.missing-required-script"
+      ],
+      "expectedRuleIds": [
+        "config-guards.missing-required-script"
+      ],
+      "typed": true,
+      "matchedExpectation": true,
+      "evidence": {
+        "tsconfigPath": "tsconfig.json",
+        "packageJsonPath": "package.json",
+        "mechanicalSurfacePath": "mechanical-surface.json",
+        "requiredTrueFlags": [
+          "strict",
+          "noImplicitAny",
+          "strictNullChecks",
+          "strictFunctionTypes",
+          "strictBindCallApply",
+          "strictPropertyInitialization",
+          "noImplicitThis",
+          "alwaysStrict",
+          "exactOptionalPropertyTypes",
+          "noUncheckedIndexedAccess",
+          "noImplicitOverride",
+          "noImplicitReturns",
+          "noPropertyAccessFromIndexSignature",
+          "useUnknownInCatchVariables",
+          "noFallthroughCasesInSwitch",
+          "isolatedModules",
+          "verbatimModuleSyntax",
+          "forceConsistentCasingInFileNames",
+          "noEmitOnError"
+        ],
+        "requiredFalseFlags": [
+          "allowUnreachableCode",
+          "allowUnusedLabels"
+        ],
+        "requiredPrettierDefaults": {
+          "printWidth": 100,
+          "semi": true,
+          "singleQuote": false,
+          "trailingComma": "all",
+          "arrowParens": "always",
+          "bracketSpacing": true,
+          "endOfLine": "lf"
+        },
+        "requiredEslintRules": [
+          "@typescript-eslint/no-explicit-any",
+          "@typescript-eslint/no-non-null-assertion",
+          "@typescript-eslint/no-unnecessary-type-assertion",
+          "@typescript-eslint/consistent-type-imports",
+          "@typescript-eslint/no-confusing-void-expression",
+          "@typescript-eslint/no-unsafe-assignment",
+          "@typescript-eslint/no-unsafe-argument",
+          "@typescript-eslint/no-unsafe-call",
+          "@typescript-eslint/no-unsafe-member-access",
+          "@typescript-eslint/no-unsafe-return",
+          "@typescript-eslint/restrict-template-expressions",
+          "@typescript-eslint/switch-exhaustiveness-check",
+          "no-empty",
+          "no-fallthrough",
+          "no-implicit-coercion"
+        ],
+        "eslintConfig": "eslint.config.mjs",
+        "prettierConfig": "prettier.config.mjs"
+      },
+      "sampleFindings": [
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.missing-required-script",
+          "severity": "error",
+          "blocking": true,
+          "path": "package.json#/scripts/lint",
+          "message": "Required package script is missing: lint.",
+          "evidence": {
+            "scriptName": "lint"
+          }
+        }
+      ]
+    },
+    {
+      "name": "strict-config.missing-format-check",
+      "root": "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/fixtures/p0/surface-config-boundaries/invalid-config-script-missing-format-check",
+      "ok": false,
+      "expectedOk": false,
+      "ruleIds": [
+        "config-guards.missing-required-script"
+      ],
+      "expectedRuleIds": [
+        "config-guards.missing-required-script"
+      ],
+      "typed": true,
+      "matchedExpectation": true,
+      "evidence": {
+        "tsconfigPath": "tsconfig.json",
+        "packageJsonPath": "package.json",
+        "mechanicalSurfacePath": "mechanical-surface.json",
+        "requiredTrueFlags": [
+          "strict",
+          "noImplicitAny",
+          "strictNullChecks",
+          "strictFunctionTypes",
+          "strictBindCallApply",
+          "strictPropertyInitialization",
+          "noImplicitThis",
+          "alwaysStrict",
+          "exactOptionalPropertyTypes",
+          "noUncheckedIndexedAccess",
+          "noImplicitOverride",
+          "noImplicitReturns",
+          "noPropertyAccessFromIndexSignature",
+          "useUnknownInCatchVariables",
+          "noFallthroughCasesInSwitch",
+          "isolatedModules",
+          "verbatimModuleSyntax",
+          "forceConsistentCasingInFileNames",
+          "noEmitOnError"
+        ],
+        "requiredFalseFlags": [
+          "allowUnreachableCode",
+          "allowUnusedLabels"
+        ],
+        "requiredPrettierDefaults": {
+          "printWidth": 100,
+          "semi": true,
+          "singleQuote": false,
+          "trailingComma": "all",
+          "arrowParens": "always",
+          "bracketSpacing": true,
+          "endOfLine": "lf"
+        },
+        "requiredEslintRules": [
+          "@typescript-eslint/no-explicit-any",
+          "@typescript-eslint/no-non-null-assertion",
+          "@typescript-eslint/no-unnecessary-type-assertion",
+          "@typescript-eslint/consistent-type-imports",
+          "@typescript-eslint/no-confusing-void-expression",
+          "@typescript-eslint/no-unsafe-assignment",
+          "@typescript-eslint/no-unsafe-argument",
+          "@typescript-eslint/no-unsafe-call",
+          "@typescript-eslint/no-unsafe-member-access",
+          "@typescript-eslint/no-unsafe-return",
+          "@typescript-eslint/restrict-template-expressions",
+          "@typescript-eslint/switch-exhaustiveness-check",
+          "no-empty",
+          "no-fallthrough",
+          "no-implicit-coercion"
+        ],
+        "eslintConfig": "eslint.config.mjs",
+        "prettierConfig": "prettier.config.mjs"
+      },
+      "sampleFindings": [
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.missing-required-script",
+          "severity": "error",
+          "blocking": true,
+          "path": "package.json#/scripts/format:check",
+          "message": "Required package script is missing: format:check.",
+          "evidence": {
+            "scriptName": "format:check"
+          }
+        }
+      ]
+    },
+    {
+      "name": "strict-config.echo-placeholders",
+      "root": "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/fixtures/p0/surface-config-boundaries/invalid-config-script-echo-placeholders",
+      "ok": false,
+      "expectedOk": false,
+      "ruleIds": [
+        "config-guards.invalid-required-script",
+        "config-guards.partial-script-surface"
+      ],
+      "expectedRuleIds": [
+        "config-guards.invalid-required-script"
+      ],
+      "typed": true,
+      "matchedExpectation": true,
+      "evidence": {
+        "tsconfigPath": "tsconfig.json",
+        "packageJsonPath": "package.json",
+        "mechanicalSurfacePath": "mechanical-surface.json",
+        "requiredTrueFlags": [
+          "strict",
+          "noImplicitAny",
+          "strictNullChecks",
+          "strictFunctionTypes",
+          "strictBindCallApply",
+          "strictPropertyInitialization",
+          "noImplicitThis",
+          "alwaysStrict",
+          "exactOptionalPropertyTypes",
+          "noUncheckedIndexedAccess",
+          "noImplicitOverride",
+          "noImplicitReturns",
+          "noPropertyAccessFromIndexSignature",
+          "useUnknownInCatchVariables",
+          "noFallthroughCasesInSwitch",
+          "isolatedModules",
+          "verbatimModuleSyntax",
+          "forceConsistentCasingInFileNames",
+          "noEmitOnError"
+        ],
+        "requiredFalseFlags": [
+          "allowUnreachableCode",
+          "allowUnusedLabels"
+        ],
+        "requiredPrettierDefaults": {
+          "printWidth": 100,
+          "semi": true,
+          "singleQuote": false,
+          "trailingComma": "all",
+          "arrowParens": "always",
+          "bracketSpacing": true,
+          "endOfLine": "lf"
+        },
+        "requiredEslintRules": [
+          "@typescript-eslint/no-explicit-any",
+          "@typescript-eslint/no-non-null-assertion",
+          "@typescript-eslint/no-unnecessary-type-assertion",
+          "@typescript-eslint/consistent-type-imports",
+          "@typescript-eslint/no-confusing-void-expression",
+          "@typescript-eslint/no-unsafe-assignment",
+          "@typescript-eslint/no-unsafe-argument",
+          "@typescript-eslint/no-unsafe-call",
+          "@typescript-eslint/no-unsafe-member-access",
+          "@typescript-eslint/no-unsafe-return",
+          "@typescript-eslint/restrict-template-expressions",
+          "@typescript-eslint/switch-exhaustiveness-check",
+          "no-empty",
+          "no-fallthrough",
+          "no-implicit-coercion"
+        ],
+        "eslintConfig": "eslint.config.mjs",
+        "prettierConfig": "prettier.config.mjs"
+      },
+      "sampleFindings": [
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.invalid-required-script",
+          "severity": "error",
+          "blocking": true,
+          "path": "package.json#/scripts/typecheck",
+          "message": "Required package script is a placeholder/no-op: typecheck.",
+          "evidence": {
+            "scriptName": "typecheck",
+            "command": "echo typecheck"
+          }
+        },
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.invalid-required-script",
+          "severity": "error",
+          "blocking": true,
+          "path": "package.json#/scripts/test",
+          "message": "Required package script is a placeholder/no-op: test.",
+          "evidence": {
+            "scriptName": "test",
+            "command": "echo test"
+          }
+        },
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.invalid-required-script",
+          "severity": "error",
+          "blocking": true,
+          "path": "package.json#/scripts/lint",
+          "message": "Required package script is a placeholder/no-op: lint.",
+          "evidence": {
+            "scriptName": "lint",
+            "command": "echo lint"
+          }
+        },
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.invalid-required-script",
+          "severity": "error",
+          "blocking": true,
+          "path": "package.json#/scripts/format:check",
+          "message": "Required package script is a placeholder/no-op: format:check.",
+          "evidence": {
+            "scriptName": "format:check",
+            "command": "echo format"
+          }
+        },
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.invalid-required-script",
+          "severity": "error",
+          "blocking": true,
+          "path": "package.json#/scripts/typecheck",
+          "message": "typecheck must invoke a real TypeScript no-emit check.",
+          "evidence": {
+            "scriptName": "typecheck",
+            "command": "echo typecheck"
+          }
+        },
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.invalid-required-script",
+          "severity": "error",
+          "blocking": true,
+          "path": "package.json#/scripts/lint",
+          "message": "lint must invoke ESLint.",
+          "evidence": {
+            "scriptName": "lint",
+            "command": "echo lint"
+          }
+        },
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.partial-script-surface",
+          "severity": "error",
+          "blocking": true,
+          "path": "package.json#/scripts/lint",
+          "message": "Required script omits governed surface: lint.",
+          "evidence": {
+            "scriptName": "lint",
+            "requiredPath": "packages/shared/src",
+            "targets": []
+          }
+        },
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.partial-script-surface",
+          "severity": "error",
+          "blocking": true,
+          "path": "package.json#/scripts/lint",
+          "message": "Required script omits governed surface: lint.",
+          "evidence": {
+            "scriptName": "lint",
+            "requiredPath": "packages/domain/src",
+            "targets": []
+          }
+        }
+      ]
+    },
+    {
+      "name": "strict-config.noop-placeholders",
+      "root": "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/fixtures/p0/surface-config-boundaries/invalid-config-script-noop-commands",
+      "ok": false,
+      "expectedOk": false,
+      "ruleIds": [
+        "config-guards.invalid-required-script",
+        "config-guards.partial-script-surface"
+      ],
+      "expectedRuleIds": [
+        "config-guards.invalid-required-script"
+      ],
+      "typed": true,
+      "matchedExpectation": true,
+      "evidence": {
+        "tsconfigPath": "tsconfig.json",
+        "packageJsonPath": "package.json",
+        "mechanicalSurfacePath": "mechanical-surface.json",
+        "requiredTrueFlags": [
+          "strict",
+          "noImplicitAny",
+          "strictNullChecks",
+          "strictFunctionTypes",
+          "strictBindCallApply",
+          "strictPropertyInitialization",
+          "noImplicitThis",
+          "alwaysStrict",
+          "exactOptionalPropertyTypes",
+          "noUncheckedIndexedAccess",
+          "noImplicitOverride",
+          "noImplicitReturns",
+          "noPropertyAccessFromIndexSignature",
+          "useUnknownInCatchVariables",
+          "noFallthroughCasesInSwitch",
+          "isolatedModules",
+          "verbatimModuleSyntax",
+          "forceConsistentCasingInFileNames",
+          "noEmitOnError"
+        ],
+        "requiredFalseFlags": [
+          "allowUnreachableCode",
+          "allowUnusedLabels"
+        ],
+        "requiredPrettierDefaults": {
+          "printWidth": 100,
+          "semi": true,
+          "singleQuote": false,
+          "trailingComma": "all",
+          "arrowParens": "always",
+          "bracketSpacing": true,
+          "endOfLine": "lf"
+        },
+        "requiredEslintRules": [
+          "@typescript-eslint/no-explicit-any",
+          "@typescript-eslint/no-non-null-assertion",
+          "@typescript-eslint/no-unnecessary-type-assertion",
+          "@typescript-eslint/consistent-type-imports",
+          "@typescript-eslint/no-confusing-void-expression",
+          "@typescript-eslint/no-unsafe-assignment",
+          "@typescript-eslint/no-unsafe-argument",
+          "@typescript-eslint/no-unsafe-call",
+          "@typescript-eslint/no-unsafe-member-access",
+          "@typescript-eslint/no-unsafe-return",
+          "@typescript-eslint/restrict-template-expressions",
+          "@typescript-eslint/switch-exhaustiveness-check",
+          "no-empty",
+          "no-fallthrough",
+          "no-implicit-coercion"
+        ],
+        "eslintConfig": "eslint.config.mjs",
+        "prettierConfig": "prettier.config.mjs"
+      },
+      "sampleFindings": [
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.invalid-required-script",
+          "severity": "error",
+          "blocking": true,
+          "path": "package.json#/scripts/typecheck",
+          "message": "Required package script is a placeholder/no-op: typecheck.",
+          "evidence": {
+            "scriptName": "typecheck",
+            "command": "true"
+          }
+        },
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.invalid-required-script",
+          "severity": "error",
+          "blocking": true,
+          "path": "package.json#/scripts/test",
+          "message": "Required package script is a placeholder/no-op: test.",
+          "evidence": {
+            "scriptName": "test",
+            "command": ":"
+          }
+        },
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.invalid-required-script",
+          "severity": "error",
+          "blocking": true,
+          "path": "package.json#/scripts/lint",
+          "message": "Required package script is a placeholder/no-op: lint.",
+          "evidence": {
+            "scriptName": "lint",
+            "command": "echo lint"
+          }
+        },
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.invalid-required-script",
+          "severity": "error",
+          "blocking": true,
+          "path": "package.json#/scripts/format:check",
+          "message": "Required package script is a placeholder/no-op: format:check.",
+          "evidence": {
+            "scriptName": "format:check",
+            "command": "true"
+          }
+        },
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.invalid-required-script",
+          "severity": "error",
+          "blocking": true,
+          "path": "package.json#/scripts/typecheck",
+          "message": "typecheck must invoke a real TypeScript no-emit check.",
+          "evidence": {
+            "scriptName": "typecheck",
+            "command": "true"
+          }
+        },
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.invalid-required-script",
+          "severity": "error",
+          "blocking": true,
+          "path": "package.json#/scripts/lint",
+          "message": "lint must invoke ESLint.",
+          "evidence": {
+            "scriptName": "lint",
+            "command": "echo lint"
+          }
+        },
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.partial-script-surface",
+          "severity": "error",
+          "blocking": true,
+          "path": "package.json#/scripts/lint",
+          "message": "Required script omits governed surface: lint.",
+          "evidence": {
+            "scriptName": "lint",
+            "requiredPath": "packages/shared/src",
+            "targets": []
+          }
+        },
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.partial-script-surface",
+          "severity": "error",
+          "blocking": true,
+          "path": "package.json#/scripts/lint",
+          "message": "Required script omits governed surface: lint.",
+          "evidence": {
+            "scriptName": "lint",
+            "requiredPath": "packages/domain/src",
+            "targets": []
+          }
+        }
+      ]
+    },
+    {
+      "name": "strict-config.omits-governed-surfaces",
+      "root": "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/fixtures/p0/surface-config-boundaries/invalid-config-script-omits-governed-surfaces",
+      "ok": false,
+      "expectedOk": false,
+      "ruleIds": [
+        "config-guards.partial-script-surface"
+      ],
+      "expectedRuleIds": [
+        "config-guards.partial-script-surface"
+      ],
+      "typed": true,
+      "matchedExpectation": true,
+      "evidence": {
+        "tsconfigPath": "tsconfig.json",
+        "packageJsonPath": "package.json",
+        "mechanicalSurfacePath": "mechanical-surface.json",
+        "requiredTrueFlags": [
+          "strict",
+          "noImplicitAny",
+          "strictNullChecks",
+          "strictFunctionTypes",
+          "strictBindCallApply",
+          "strictPropertyInitialization",
+          "noImplicitThis",
+          "alwaysStrict",
+          "exactOptionalPropertyTypes",
+          "noUncheckedIndexedAccess",
+          "noImplicitOverride",
+          "noImplicitReturns",
+          "noPropertyAccessFromIndexSignature",
+          "useUnknownInCatchVariables",
+          "noFallthroughCasesInSwitch",
+          "isolatedModules",
+          "verbatimModuleSyntax",
+          "forceConsistentCasingInFileNames",
+          "noEmitOnError"
+        ],
+        "requiredFalseFlags": [
+          "allowUnreachableCode",
+          "allowUnusedLabels"
+        ],
+        "requiredPrettierDefaults": {
+          "printWidth": 100,
+          "semi": true,
+          "singleQuote": false,
+          "trailingComma": "all",
+          "arrowParens": "always",
+          "bracketSpacing": true,
+          "endOfLine": "lf"
+        },
+        "requiredEslintRules": [
+          "@typescript-eslint/no-explicit-any",
+          "@typescript-eslint/no-non-null-assertion",
+          "@typescript-eslint/no-unnecessary-type-assertion",
+          "@typescript-eslint/consistent-type-imports",
+          "@typescript-eslint/no-confusing-void-expression",
+          "@typescript-eslint/no-unsafe-assignment",
+          "@typescript-eslint/no-unsafe-argument",
+          "@typescript-eslint/no-unsafe-call",
+          "@typescript-eslint/no-unsafe-member-access",
+          "@typescript-eslint/no-unsafe-return",
+          "@typescript-eslint/restrict-template-expressions",
+          "@typescript-eslint/switch-exhaustiveness-check",
+          "no-empty",
+          "no-fallthrough",
+          "no-implicit-coercion"
+        ],
+        "eslintConfig": "eslint.config.mjs",
+        "prettierConfig": "prettier.config.mjs"
+      },
+      "sampleFindings": [
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.partial-script-surface",
+          "severity": "error",
+          "blocking": true,
+          "path": "package.json#/scripts/lint",
+          "message": "Required script omits governed surface: lint.",
+          "evidence": {
+            "scriptName": "lint",
+            "requiredPath": "packages/domain/src",
+            "targets": [
+              "packages/shared/src"
+            ]
+          }
+        },
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.partial-script-surface",
+          "severity": "error",
+          "blocking": true,
+          "path": "package.json#/scripts/lint",
+          "message": "Required script omits governed surface: lint.",
+          "evidence": {
+            "scriptName": "lint",
+            "requiredPath": "packages/app/src",
+            "targets": [
+              "packages/shared/src"
+            ]
+          }
+        },
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.partial-script-surface",
+          "severity": "error",
+          "blocking": true,
+          "path": "package.json#/scripts/lint",
+          "message": "Required script omits governed surface: lint.",
+          "evidence": {
+            "scriptName": "lint",
+            "requiredPath": "eslint.config.mjs",
+            "targets": [
+              "packages/shared/src"
+            ]
+          }
+        },
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.partial-script-surface",
+          "severity": "error",
+          "blocking": true,
+          "path": "package.json#/scripts/format:check",
+          "message": "Required script omits governed surface: format:check.",
+          "evidence": {
+            "scriptName": "format:check",
+            "requiredPath": "packages/shared/src",
+            "targets": [
+              "package.json"
+            ]
+          }
+        },
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.partial-script-surface",
+          "severity": "error",
+          "blocking": true,
+          "path": "package.json#/scripts/format:check",
+          "message": "Required script omits governed surface: format:check.",
+          "evidence": {
+            "scriptName": "format:check",
+            "requiredPath": "packages/domain/src",
+            "targets": [
+              "package.json"
+            ]
+          }
+        },
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.partial-script-surface",
+          "severity": "error",
+          "blocking": true,
+          "path": "package.json#/scripts/format:check",
+          "message": "Required script omits governed surface: format:check.",
+          "evidence": {
+            "scriptName": "format:check",
+            "requiredPath": "packages/app/src",
+            "targets": [
+              "package.json"
+            ]
+          }
+        },
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.partial-script-surface",
+          "severity": "error",
+          "blocking": true,
+          "path": "package.json#/scripts/format:check",
+          "message": "Required script omits governed surface: format:check.",
+          "evidence": {
+            "scriptName": "format:check",
+            "requiredPath": "tsconfig.json",
+            "targets": [
+              "package.json"
+            ]
+          }
+        },
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.partial-script-surface",
+          "severity": "error",
+          "blocking": true,
+          "path": "package.json#/scripts/format:check",
+          "message": "Required script omits governed surface: format:check.",
+          "evidence": {
+            "scriptName": "format:check",
+            "requiredPath": "eslint.config.mjs",
+            "targets": [
+              "package.json"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "strict-config.unrelated-script-surface",
+      "root": "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/fixtures/p0/surface-config-boundaries/invalid-config-script-unrelated-surface",
+      "ok": false,
+      "expectedOk": false,
+      "ruleIds": [
+        "config-guards.partial-script-surface"
+      ],
+      "expectedRuleIds": [
+        "config-guards.partial-script-surface"
+      ],
+      "typed": true,
+      "matchedExpectation": true,
+      "evidence": {
+        "tsconfigPath": "tsconfig.json",
+        "packageJsonPath": "package.json",
+        "mechanicalSurfacePath": "mechanical-surface.json",
+        "requiredTrueFlags": [
+          "strict",
+          "noImplicitAny",
+          "strictNullChecks",
+          "strictFunctionTypes",
+          "strictBindCallApply",
+          "strictPropertyInitialization",
+          "noImplicitThis",
+          "alwaysStrict",
+          "exactOptionalPropertyTypes",
+          "noUncheckedIndexedAccess",
+          "noImplicitOverride",
+          "noImplicitReturns",
+          "noPropertyAccessFromIndexSignature",
+          "useUnknownInCatchVariables",
+          "noFallthroughCasesInSwitch",
+          "isolatedModules",
+          "verbatimModuleSyntax",
+          "forceConsistentCasingInFileNames",
+          "noEmitOnError"
+        ],
+        "requiredFalseFlags": [
+          "allowUnreachableCode",
+          "allowUnusedLabels"
+        ],
+        "requiredPrettierDefaults": {
+          "printWidth": 100,
+          "semi": true,
+          "singleQuote": false,
+          "trailingComma": "all",
+          "arrowParens": "always",
+          "bracketSpacing": true,
+          "endOfLine": "lf"
+        },
+        "requiredEslintRules": [
+          "@typescript-eslint/no-explicit-any",
+          "@typescript-eslint/no-non-null-assertion",
+          "@typescript-eslint/no-unnecessary-type-assertion",
+          "@typescript-eslint/consistent-type-imports",
+          "@typescript-eslint/no-confusing-void-expression",
+          "@typescript-eslint/no-unsafe-assignment",
+          "@typescript-eslint/no-unsafe-argument",
+          "@typescript-eslint/no-unsafe-call",
+          "@typescript-eslint/no-unsafe-member-access",
+          "@typescript-eslint/no-unsafe-return",
+          "@typescript-eslint/restrict-template-expressions",
+          "@typescript-eslint/switch-exhaustiveness-check",
+          "no-empty",
+          "no-fallthrough",
+          "no-implicit-coercion"
+        ],
+        "eslintConfig": "eslint.config.mjs",
+        "prettierConfig": "prettier.config.mjs"
+      },
+      "sampleFindings": [
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.partial-script-surface",
+          "severity": "error",
+          "blocking": true,
+          "path": "package.json#/scripts/lint",
+          "message": "Required script omits governed surface: lint.",
+          "evidence": {
+            "scriptName": "lint",
+            "requiredPath": "packages/shared/src",
+            "targets": [
+              "unrelated/file.ts"
+            ]
+          }
+        },
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.partial-script-surface",
+          "severity": "error",
+          "blocking": true,
+          "path": "package.json#/scripts/lint",
+          "message": "Required script omits governed surface: lint.",
+          "evidence": {
+            "scriptName": "lint",
+            "requiredPath": "packages/domain/src",
+            "targets": [
+              "unrelated/file.ts"
+            ]
+          }
+        },
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.partial-script-surface",
+          "severity": "error",
+          "blocking": true,
+          "path": "package.json#/scripts/lint",
+          "message": "Required script omits governed surface: lint.",
+          "evidence": {
+            "scriptName": "lint",
+            "requiredPath": "packages/app/src",
+            "targets": [
+              "unrelated/file.ts"
+            ]
+          }
+        },
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.partial-script-surface",
+          "severity": "error",
+          "blocking": true,
+          "path": "package.json#/scripts/lint",
+          "message": "Required script omits governed surface: lint.",
+          "evidence": {
+            "scriptName": "lint",
+            "requiredPath": "eslint.config.mjs",
+            "targets": [
+              "unrelated/file.ts"
+            ]
+          }
+        },
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.partial-script-surface",
+          "severity": "error",
+          "blocking": true,
+          "path": "package.json#/scripts/format:check",
+          "message": "Required script omits governed surface: format:check.",
+          "evidence": {
+            "scriptName": "format:check",
+            "requiredPath": "packages/shared/src",
+            "targets": [
+              "unrelated/file.ts"
+            ]
+          }
+        },
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.partial-script-surface",
+          "severity": "error",
+          "blocking": true,
+          "path": "package.json#/scripts/format:check",
+          "message": "Required script omits governed surface: format:check.",
+          "evidence": {
+            "scriptName": "format:check",
+            "requiredPath": "packages/domain/src",
+            "targets": [
+              "unrelated/file.ts"
+            ]
+          }
+        },
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.partial-script-surface",
+          "severity": "error",
+          "blocking": true,
+          "path": "package.json#/scripts/format:check",
+          "message": "Required script omits governed surface: format:check.",
+          "evidence": {
+            "scriptName": "format:check",
+            "requiredPath": "packages/app/src",
+            "targets": [
+              "unrelated/file.ts"
+            ]
+          }
+        },
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.partial-script-surface",
+          "severity": "error",
+          "blocking": true,
+          "path": "package.json#/scripts/format:check",
+          "message": "Required script omits governed surface: format:check.",
+          "evidence": {
+            "scriptName": "format:check",
+            "requiredPath": "package.json",
+            "targets": [
+              "unrelated/file.ts"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "strict-config.false-green-regression",
+      "root": "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/fixtures/p0/surface-config-boundaries/invalid-config-false-green-regression",
+      "ok": false,
+      "expectedOk": false,
+      "ruleIds": [
+        "config-guards.invalid-eslint-config",
+        "config-guards.invalid-required-script",
+        "config-guards.partial-script-surface",
+        "config-guards.prettier-default-weakened"
+      ],
+      "expectedRuleIds": [
+        "config-guards.invalid-eslint-config",
+        "config-guards.prettier-default-weakened",
+        "config-guards.invalid-required-script"
+      ],
+      "typed": true,
+      "matchedExpectation": true,
+      "evidence": {
+        "tsconfigPath": "tsconfig.json",
+        "packageJsonPath": "package.json",
+        "mechanicalSurfacePath": "mechanical-surface.json",
+        "requiredTrueFlags": [
+          "strict",
+          "noImplicitAny",
+          "strictNullChecks",
+          "strictFunctionTypes",
+          "strictBindCallApply",
+          "strictPropertyInitialization",
+          "noImplicitThis",
+          "alwaysStrict",
+          "exactOptionalPropertyTypes",
+          "noUncheckedIndexedAccess",
+          "noImplicitOverride",
+          "noImplicitReturns",
+          "noPropertyAccessFromIndexSignature",
+          "useUnknownInCatchVariables",
+          "noFallthroughCasesInSwitch",
+          "isolatedModules",
+          "verbatimModuleSyntax",
+          "forceConsistentCasingInFileNames",
+          "noEmitOnError"
+        ],
+        "requiredFalseFlags": [
+          "allowUnreachableCode",
+          "allowUnusedLabels"
+        ],
+        "requiredPrettierDefaults": {
+          "printWidth": 100,
+          "semi": true,
+          "singleQuote": false,
+          "trailingComma": "all",
+          "arrowParens": "always",
+          "bracketSpacing": true,
+          "endOfLine": "lf"
+        },
+        "requiredEslintRules": [
+          "@typescript-eslint/no-explicit-any",
+          "@typescript-eslint/no-non-null-assertion",
+          "@typescript-eslint/no-unnecessary-type-assertion",
+          "@typescript-eslint/consistent-type-imports",
+          "@typescript-eslint/no-confusing-void-expression",
+          "@typescript-eslint/no-unsafe-assignment",
+          "@typescript-eslint/no-unsafe-argument",
+          "@typescript-eslint/no-unsafe-call",
+          "@typescript-eslint/no-unsafe-member-access",
+          "@typescript-eslint/no-unsafe-return",
+          "@typescript-eslint/restrict-template-expressions",
+          "@typescript-eslint/switch-exhaustiveness-check",
+          "no-empty",
+          "no-fallthrough",
+          "no-implicit-coercion"
+        ],
+        "eslintConfig": "eslint.config.mjs",
+        "prettierConfig": "prettier.config.mjs"
+      },
+      "sampleFindings": [
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.invalid-required-script",
+          "severity": "error",
+          "blocking": true,
+          "path": "package.json#/scripts/typecheck",
+          "message": "Required package script is a placeholder/no-op: typecheck.",
+          "evidence": {
+            "scriptName": "typecheck",
+            "command": "echo typecheck"
+          }
+        },
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.invalid-required-script",
+          "severity": "error",
+          "blocking": true,
+          "path": "package.json#/scripts/test",
+          "message": "Required package script is a placeholder/no-op: test.",
+          "evidence": {
+            "scriptName": "test",
+            "command": "echo test"
+          }
+        },
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.invalid-required-script",
+          "severity": "error",
+          "blocking": true,
+          "path": "package.json#/scripts/lint",
+          "message": "Required package script is a placeholder/no-op: lint.",
+          "evidence": {
+            "scriptName": "lint",
+            "command": "echo lint"
+          }
+        },
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.invalid-required-script",
+          "severity": "error",
+          "blocking": true,
+          "path": "package.json#/scripts/format:check",
+          "message": "Required package script is a placeholder/no-op: format:check.",
+          "evidence": {
+            "scriptName": "format:check",
+            "command": "echo format"
+          }
+        },
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.invalid-required-script",
+          "severity": "error",
+          "blocking": true,
+          "path": "package.json#/scripts/typecheck",
+          "message": "typecheck must invoke a real TypeScript no-emit check.",
+          "evidence": {
+            "scriptName": "typecheck",
+            "command": "echo typecheck"
+          }
+        },
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.invalid-required-script",
+          "severity": "error",
+          "blocking": true,
+          "path": "package.json#/scripts/lint",
+          "message": "lint must invoke ESLint.",
+          "evidence": {
+            "scriptName": "lint",
+            "command": "echo lint"
+          }
+        },
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.partial-script-surface",
+          "severity": "error",
+          "blocking": true,
+          "path": "package.json#/scripts/lint",
+          "message": "Required script omits governed surface: lint.",
+          "evidence": {
+            "scriptName": "lint",
+            "requiredPath": "packages/shared/src",
+            "targets": []
+          }
+        },
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.partial-script-surface",
+          "severity": "error",
+          "blocking": true,
+          "path": "package.json#/scripts/lint",
+          "message": "Required script omits governed surface: lint.",
+          "evidence": {
+            "scriptName": "lint",
+            "requiredPath": "packages/domain/src",
+            "targets": []
+          }
+        }
+      ]
+    },
+    {
+      "name": "strict-config.original-validation-evidence",
+      "root": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-10A-mechanical-P0-surface-config-boundaries/validation-evidence/config-false-green",
+      "ok": false,
+      "expectedOk": false,
+      "ruleIds": [
+        "config-guards.invalid-eslint-config",
+        "config-guards.invalid-required-script",
+        "config-guards.missing-required-script",
+        "config-guards.partial-script-surface",
+        "config-guards.prettier-default-weakened"
+      ],
+      "expectedRuleIds": [
+        "config-guards.invalid-eslint-config",
+        "config-guards.prettier-default-weakened",
+        "config-guards.invalid-required-script"
+      ],
+      "typed": true,
+      "matchedExpectation": true,
+      "evidence": {
+        "tsconfigPath": "tsconfig.json",
+        "packageJsonPath": "package.json",
+        "mechanicalSurfacePath": null,
+        "requiredTrueFlags": [
+          "strict",
+          "noImplicitAny",
+          "strictNullChecks",
+          "strictFunctionTypes",
+          "strictBindCallApply",
+          "strictPropertyInitialization",
+          "noImplicitThis",
+          "alwaysStrict",
+          "exactOptionalPropertyTypes",
+          "noUncheckedIndexedAccess",
+          "noImplicitOverride",
+          "noImplicitReturns",
+          "noPropertyAccessFromIndexSignature",
+          "useUnknownInCatchVariables",
+          "noFallthroughCasesInSwitch",
+          "isolatedModules",
+          "verbatimModuleSyntax",
+          "forceConsistentCasingInFileNames",
+          "noEmitOnError"
+        ],
+        "requiredFalseFlags": [
+          "allowUnreachableCode",
+          "allowUnusedLabels"
+        ],
+        "requiredPrettierDefaults": {
+          "printWidth": 100,
+          "semi": true,
+          "singleQuote": false,
+          "trailingComma": "all",
+          "arrowParens": "always",
+          "bracketSpacing": true,
+          "endOfLine": "lf"
+        },
+        "requiredEslintRules": [
+          "@typescript-eslint/no-explicit-any",
+          "@typescript-eslint/no-non-null-assertion",
+          "@typescript-eslint/no-unnecessary-type-assertion",
+          "@typescript-eslint/consistent-type-imports",
+          "@typescript-eslint/no-confusing-void-expression",
+          "@typescript-eslint/no-unsafe-assignment",
+          "@typescript-eslint/no-unsafe-argument",
+          "@typescript-eslint/no-unsafe-call",
+          "@typescript-eslint/no-unsafe-member-access",
+          "@typescript-eslint/no-unsafe-return",
+          "@typescript-eslint/restrict-template-expressions",
+          "@typescript-eslint/switch-exhaustiveness-check",
+          "no-empty",
+          "no-fallthrough",
+          "no-implicit-coercion"
+        ],
+        "eslintConfig": "eslint.config.mjs",
+        "prettierConfig": "prettier.config.mjs"
+      },
+      "sampleFindings": [
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.invalid-required-script",
+          "severity": "error",
+          "blocking": true,
+          "path": "package.json#/scripts/typecheck",
+          "message": "Required package script is a placeholder/no-op: typecheck.",
+          "evidence": {
+            "scriptName": "typecheck",
+            "command": "echo not-a-typecheck"
+          }
+        },
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.invalid-required-script",
+          "severity": "error",
+          "blocking": true,
+          "path": "package.json#/scripts/test",
+          "message": "Required package script is a placeholder/no-op: test.",
+          "evidence": {
+            "scriptName": "test",
+            "command": "echo not-a-test"
+          }
+        },
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.invalid-required-script",
+          "severity": "error",
+          "blocking": true,
+          "path": "package.json#/scripts/lint",
+          "message": "Required package script is a placeholder/no-op: lint.",
+          "evidence": {
+            "scriptName": "lint",
+            "command": "echo not-a-lint"
+          }
+        },
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.missing-required-script",
+          "severity": "error",
+          "blocking": true,
+          "path": "package.json#/scripts/format:check",
+          "message": "Required package script is missing: format:check.",
+          "evidence": {
+            "scriptName": "format:check"
+          }
+        },
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.invalid-required-script",
+          "severity": "error",
+          "blocking": true,
+          "path": "package.json#/scripts/typecheck",
+          "message": "typecheck must invoke a real TypeScript no-emit check.",
+          "evidence": {
+            "scriptName": "typecheck",
+            "command": "echo not-a-typecheck"
+          }
+        },
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.invalid-required-script",
+          "severity": "error",
+          "blocking": true,
+          "path": "package.json#/scripts/lint",
+          "message": "lint must invoke ESLint.",
+          "evidence": {
+            "scriptName": "lint",
+            "command": "echo not-a-lint"
+          }
+        },
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.partial-script-surface",
+          "severity": "error",
+          "blocking": true,
+          "path": "package.json#/scripts/lint",
+          "message": "Required script omits governed surface: lint.",
+          "evidence": {
+            "scriptName": "lint",
+            "requiredPath": "eslint.config.mjs",
+            "targets": []
+          }
+        },
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.invalid-required-script",
+          "severity": "error",
+          "blocking": true,
+          "path": "package.json#/scripts/test",
+          "message": "test must invoke a real test or witness runner.",
+          "evidence": {
+            "scriptName": "test",
+            "command": "echo not-a-test"
+          }
+        }
+      ]
+    },
+    {
+      "name": "strict-config.weak-ts-flags-existing",
+      "root": "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/fixtures/p0/surface-config-boundaries/invalid-config-weak-flags",
+      "ok": false,
+      "expectedOk": false,
+      "ruleIds": [
+        "config-guards.invalid-eslint-config",
+        "config-guards.missing-required-script",
+        "config-guards.prettier-default-weakened",
+        "config-guards.strict-ts-flag-weakened"
+      ],
+      "expectedRuleIds": [
+        "config-guards.strict-ts-flag-weakened"
+      ],
+      "typed": true,
+      "matchedExpectation": true,
+      "evidence": {
+        "tsconfigPath": "tsconfig.json",
+        "packageJsonPath": "package.json",
+        "mechanicalSurfacePath": "mechanical-surface.json",
+        "requiredTrueFlags": [
+          "strict",
+          "noImplicitAny",
+          "strictNullChecks",
+          "strictFunctionTypes",
+          "strictBindCallApply",
+          "strictPropertyInitialization",
+          "noImplicitThis",
+          "alwaysStrict",
+          "exactOptionalPropertyTypes",
+          "noUncheckedIndexedAccess",
+          "noImplicitOverride",
+          "noImplicitReturns",
+          "noPropertyAccessFromIndexSignature",
+          "useUnknownInCatchVariables",
+          "noFallthroughCasesInSwitch",
+          "isolatedModules",
+          "verbatimModuleSyntax",
+          "forceConsistentCasingInFileNames",
+          "noEmitOnError"
+        ],
+        "requiredFalseFlags": [
+          "allowUnreachableCode",
+          "allowUnusedLabels"
+        ],
+        "requiredPrettierDefaults": {
+          "printWidth": 100,
+          "semi": true,
+          "singleQuote": false,
+          "trailingComma": "all",
+          "arrowParens": "always",
+          "bracketSpacing": true,
+          "endOfLine": "lf"
+        },
+        "requiredEslintRules": [
+          "@typescript-eslint/no-explicit-any",
+          "@typescript-eslint/no-non-null-assertion",
+          "@typescript-eslint/no-unnecessary-type-assertion",
+          "@typescript-eslint/consistent-type-imports",
+          "@typescript-eslint/no-confusing-void-expression",
+          "@typescript-eslint/no-unsafe-assignment",
+          "@typescript-eslint/no-unsafe-argument",
+          "@typescript-eslint/no-unsafe-call",
+          "@typescript-eslint/no-unsafe-member-access",
+          "@typescript-eslint/no-unsafe-return",
+          "@typescript-eslint/restrict-template-expressions",
+          "@typescript-eslint/switch-exhaustiveness-check",
+          "no-empty",
+          "no-fallthrough",
+          "no-implicit-coercion"
+        ],
+        "eslintConfig": "eslint.config.mjs",
+        "prettierConfig": "prettier.config.mjs"
+      },
+      "sampleFindings": [
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.strict-ts-flag-weakened",
+          "severity": "error",
+          "blocking": true,
+          "path": "tsconfig.json#/compilerOptions/strict",
+          "message": "Required TypeScript strict flag must be true: strict.",
+          "evidence": {
+            "flag": "strict",
+            "expected": true,
+            "actual": false
+          }
+        },
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.strict-ts-flag-weakened",
+          "severity": "error",
+          "blocking": true,
+          "path": "tsconfig.json#/compilerOptions/noImplicitAny",
+          "message": "Required TypeScript strict flag must be true: noImplicitAny.",
+          "evidence": {
+            "flag": "noImplicitAny",
+            "expected": true,
+            "actual": false
+          }
+        },
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.strict-ts-flag-weakened",
+          "severity": "error",
+          "blocking": true,
+          "path": "tsconfig.json#/compilerOptions/strictNullChecks",
+          "message": "Required TypeScript strict flag must be true: strictNullChecks.",
+          "evidence": {
+            "flag": "strictNullChecks",
+            "expected": true,
+            "actual": false
+          }
+        },
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.strict-ts-flag-weakened",
+          "severity": "error",
+          "blocking": true,
+          "path": "tsconfig.json#/compilerOptions/strictFunctionTypes",
+          "message": "Required TypeScript strict flag must be true: strictFunctionTypes.",
+          "evidence": {
+            "flag": "strictFunctionTypes",
+            "expected": true,
+            "actual": false
+          }
+        },
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.strict-ts-flag-weakened",
+          "severity": "error",
+          "blocking": true,
+          "path": "tsconfig.json#/compilerOptions/strictBindCallApply",
+          "message": "Required TypeScript strict flag must be true: strictBindCallApply.",
+          "evidence": {
+            "flag": "strictBindCallApply",
+            "expected": true,
+            "actual": false
+          }
+        },
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.strict-ts-flag-weakened",
+          "severity": "error",
+          "blocking": true,
+          "path": "tsconfig.json#/compilerOptions/strictPropertyInitialization",
+          "message": "Required TypeScript strict flag must be true: strictPropertyInitialization.",
+          "evidence": {
+            "flag": "strictPropertyInitialization",
+            "expected": true,
+            "actual": false
+          }
+        },
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.strict-ts-flag-weakened",
+          "severity": "error",
+          "blocking": true,
+          "path": "tsconfig.json#/compilerOptions/noImplicitThis",
+          "message": "Required TypeScript strict flag must be true: noImplicitThis.",
+          "evidence": {
+            "flag": "noImplicitThis",
+            "expected": true,
+            "actual": false
+          }
+        },
+        {
+          "family": "p0.config-guards",
+          "ruleId": "config-guards.strict-ts-flag-weakened",
+          "severity": "error",
+          "blocking": true,
+          "path": "tsconfig.json#/compilerOptions/alwaysStrict",
+          "message": "Required TypeScript strict flag must be true: alwaysStrict.",
+          "evidence": {
+            "flag": "alwaysStrict",
+            "expected": true,
+            "actual": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "strict-config.adversarial-noUnusedLocals-noUnusedParameters-false",
+      "root": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-10A-mechanical-P0-surface-config-boundaries/revalidation-evidence/adversarial/no-unused-flags-weakened",
+      "ok": true,
+      "expectedOk": false,
+      "ruleIds": [],
+      "expectedRuleIds": [
+        "config-guards.strict-ts-flag-weakened"
+      ],
+      "typed": true,
+      "matchedExpectation": false,
+      "evidence": {
+        "tsconfigPath": "tsconfig.json",
+        "packageJsonPath": "package.json",
+        "mechanicalSurfacePath": "mechanical-surface.json",
+        "requiredTrueFlags": [
+          "strict",
+          "noImplicitAny",
+          "strictNullChecks",
+          "strictFunctionTypes",
+          "strictBindCallApply",
+          "strictPropertyInitialization",
+          "noImplicitThis",
+          "alwaysStrict",
+          "exactOptionalPropertyTypes",
+          "noUncheckedIndexedAccess",
+          "noImplicitOverride",
+          "noImplicitReturns",
+          "noPropertyAccessFromIndexSignature",
+          "useUnknownInCatchVariables",
+          "noFallthroughCasesInSwitch",
+          "isolatedModules",
+          "verbatimModuleSyntax",
+          "forceConsistentCasingInFileNames",
+          "noEmitOnError"
+        ],
+        "requiredFalseFlags": [
+          "allowUnreachableCode",
+          "allowUnusedLabels"
+        ],
+        "requiredPrettierDefaults": {
+          "printWidth": 100,
+          "semi": true,
+          "singleQuote": false,
+          "trailingComma": "all",
+          "arrowParens": "always",
+          "bracketSpacing": true,
+          "endOfLine": "lf"
+        },
+        "requiredEslintRules": [
+          "@typescript-eslint/no-explicit-any",
+          "@typescript-eslint/no-non-null-assertion",
+          "@typescript-eslint/no-unnecessary-type-assertion",
+          "@typescript-eslint/consistent-type-imports",
+          "@typescript-eslint/no-confusing-void-expression",
+          "@typescript-eslint/no-unsafe-assignment",
+          "@typescript-eslint/no-unsafe-argument",
+          "@typescript-eslint/no-unsafe-call",
+          "@typescript-eslint/no-unsafe-member-access",
+          "@typescript-eslint/no-unsafe-return",
+          "@typescript-eslint/restrict-template-expressions",
+          "@typescript-eslint/switch-exhaustiveness-check",
+          "no-empty",
+          "no-fallthrough",
+          "no-implicit-coercion"
+        ],
+        "eslintConfig": "eslint.config.mjs",
+        "prettierConfig": "prettier.config.mjs"
+      },
+      "sampleFindings": []
+    },
+    {
+      "name": "governed.valid-workspace",
+      "root": "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/fixtures/p0/surface-config-boundaries/valid-workspace",
+      "ok": true,
+      "expectedOk": true,
+      "ruleIds": [],
+      "expectedRuleIds": [],
+      "typed": true,
+      "matchedExpectation": true,
+      "evidence": {
+        "configPath": "mechanical-surface.json",
+        "governedSurfaceCount": 10,
+        "governableFileCount": 11,
+        "requiredPathCount": 7,
+        "excludedPathCount": 2
+      },
+      "sampleFindings": []
+    },
+    {
+      "name": "governed.omitted-file",
+      "root": "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/fixtures/p0/surface-config-boundaries/invalid-surface-omitted",
+      "ok": false,
+      "expectedOk": false,
+      "ruleIds": [
+        "governed-surface.omitted-file"
+      ],
+      "expectedRuleIds": [
+        "governed-surface.omitted-file"
+      ],
+      "typed": true,
+      "matchedExpectation": true,
+      "evidence": {
+        "configPath": "mechanical-surface.json",
+        "governedSurfaceCount": 8,
+        "governableFileCount": 10,
+        "requiredPathCount": 7,
+        "excludedPathCount": 2
+      },
+      "sampleFindings": [
+        {
+          "family": "p0.governed-surface",
+          "ruleId": "governed-surface.omitted-file",
+          "severity": "error",
+          "blocking": true,
+          "path": "README.md",
+          "message": "Governable file is omitted from the governed surface registry.",
+          "evidence": {
+            "filePath": "README.md"
+          }
+        }
+      ]
+    },
+    {
+      "name": "governed.duplicate-row",
+      "root": "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/fixtures/p0/surface-config-boundaries/invalid-surface-duplicate",
+      "ok": false,
+      "expectedOk": false,
+      "ruleIds": [
+        "governed-surface.duplicate-row"
+      ],
+      "expectedRuleIds": [
+        "governed-surface.duplicate-row"
+      ],
+      "typed": true,
+      "matchedExpectation": true,
+      "evidence": {
+        "configPath": "mechanical-surface.json",
+        "governedSurfaceCount": 10,
+        "governableFileCount": 10,
+        "requiredPathCount": 7,
+        "excludedPathCount": 2
+      },
+      "sampleFindings": [
+        {
+          "family": "p0.governed-surface",
+          "ruleId": "governed-surface.duplicate-row",
+          "severity": "error",
+          "blocking": true,
+          "path": "mechanical-surface.json#/surfaces/9",
+          "message": "Duplicate governed surface row is forbidden.",
+          "evidence": {
+            "duplicateOf": "mechanical-surface.json#/surfaces/0",
+            "path": "package.json",
+            "kind": "exact"
+          }
+        }
+      ]
+    },
+    {
+      "name": "governed.empty-tool-surface",
+      "root": "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/fixtures/p0/surface-config-boundaries/invalid-surface-empty-tool",
+      "ok": false,
+      "expectedOk": false,
+      "ruleIds": [
+        "governed-surface.empty-tool-surface"
+      ],
+      "expectedRuleIds": [
+        "governed-surface.empty-tool-surface"
+      ],
+      "typed": true,
+      "matchedExpectation": true,
+      "evidence": {
+        "configPath": "mechanical-surface.json",
+        "governedSurfaceCount": 9,
+        "governableFileCount": 10,
+        "requiredPathCount": 7,
+        "excludedPathCount": 2
+      },
+      "sampleFindings": [
+        {
+          "family": "p0.governed-surface",
+          "ruleId": "governed-surface.empty-tool-surface",
+          "severity": "error",
+          "blocking": true,
+          "path": "mechanical-surface.json#/surfaces/0",
+          "message": "Governed surface row must name at least one owning tool.",
+          "evidence": {
+            "path": "package.json"
+          }
+        }
+      ]
+    },
+    {
+      "name": "governed.excluded-path-leak",
+      "root": "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/fixtures/p0/surface-config-boundaries/invalid-surface-excluded-leak",
+      "ok": false,
+      "expectedOk": false,
+      "ruleIds": [
+        "governed-surface.excluded-path-leak"
+      ],
+      "expectedRuleIds": [
+        "governed-surface.excluded-path-leak"
+      ],
+      "typed": true,
+      "matchedExpectation": true,
+      "evidence": {
+        "configPath": "mechanical-surface.json",
+        "governedSurfaceCount": 10,
+        "governableFileCount": 10,
+        "requiredPathCount": 7,
+        "excludedPathCount": 2
+      },
+      "sampleFindings": [
+        {
+          "family": "p0.governed-surface",
+          "ruleId": "governed-surface.excluded-path-leak",
+          "severity": "error",
+          "blocking": true,
+          "path": "mechanical-surface.json#/surfaces/9",
+          "message": "Governed surface overlaps an excluded/generated/vendor path.",
+          "evidence": {
+            "surfacePath": "generated",
+            "excludedPath": "generated"
+          }
+        }
+      ]
+    },
+    {
+      "name": "governed.missing-required-path",
+      "root": "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/fixtures/p0/surface-config-boundaries/invalid-surface-missing-required",
+      "ok": false,
+      "expectedOk": false,
+      "ruleIds": [
+        "governed-surface.missing-required-path"
+      ],
+      "expectedRuleIds": [
+        "governed-surface.missing-required-path"
+      ],
+      "typed": true,
+      "matchedExpectation": true,
+      "evidence": {
+        "configPath": "mechanical-surface.json",
+        "governedSurfaceCount": 9,
+        "governableFileCount": 10,
+        "requiredPathCount": 8,
+        "excludedPathCount": 2
+      },
+      "sampleFindings": [
+        {
+          "family": "p0.governed-surface",
+          "ruleId": "governed-surface.missing-required-path",
+          "severity": "error",
+          "blocking": true,
+          "path": "packages/missing/src/index.ts",
+          "message": "Required governed path is absent on disk.",
+          "evidence": {
+            "requiredPath": "packages/missing/src/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "name": "boundaries.valid-workspace",
+      "root": "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/fixtures/p0/surface-config-boundaries/valid-workspace",
+      "ok": true,
+      "expectedOk": true,
+      "ruleIds": [],
+      "expectedRuleIds": [],
+      "typed": true,
+      "matchedExpectation": true,
+      "evidence": {
+        "configPath": "mechanical-boundaries.json",
+        "parser": "typescript",
+        "proofMode": "typescript-ast",
+        "packageCount": 3,
+        "sourceFileCount": 4,
+        "importCount": 3,
+        "graph": {
+          "@mini/shared": [],
+          "@mini/domain": [
+            "@mini/shared"
+          ],
+          "@mini/app": [
+            "@mini/domain",
+            "@mini/shared"
+          ]
+        }
+      },
+      "sampleFindings": []
+    },
+    {
+      "name": "boundaries.cycle",
+      "root": "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/fixtures/p0/surface-config-boundaries/invalid-boundary-cycle",
+      "ok": false,
+      "expectedOk": false,
+      "ruleIds": [
+        "boundaries.cycle"
+      ],
+      "expectedRuleIds": [
+        "boundaries.cycle"
+      ],
+      "typed": true,
+      "matchedExpectation": true,
+      "evidence": {
+        "configPath": "mechanical-boundaries.json",
+        "parser": "typescript",
+        "proofMode": "typescript-ast",
+        "packageCount": 3,
+        "sourceFileCount": 4,
+        "importCount": 4,
+        "graph": {
+          "@mini/shared": [
+            "@mini/domain"
+          ],
+          "@mini/domain": [
+            "@mini/shared"
+          ],
+          "@mini/app": [
+            "@mini/domain",
+            "@mini/shared"
+          ]
+        }
+      },
+      "sampleFindings": [
+        {
+          "family": "p0.boundaries",
+          "ruleId": "boundaries.cycle",
+          "severity": "error",
+          "blocking": true,
+          "path": "mechanical-boundaries.json",
+          "message": "Package boundary graph contains a forbidden cycle.",
+          "evidence": {
+            "cycle": [
+              "@mini/domain",
+              "@mini/shared",
+              "@mini/domain"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "boundaries.forbidden-direction",
+      "root": "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/fixtures/p0/surface-config-boundaries/invalid-boundary-forbidden-direction",
+      "ok": false,
+      "expectedOk": false,
+      "ruleIds": [
+        "boundaries.cycle",
+        "boundaries.forbidden-import-direction"
+      ],
+      "expectedRuleIds": [
+        "boundaries.forbidden-import-direction"
+      ],
+      "typed": true,
+      "matchedExpectation": true,
+      "evidence": {
+        "configPath": "mechanical-boundaries.json",
+        "parser": "typescript",
+        "proofMode": "typescript-ast",
+        "packageCount": 3,
+        "sourceFileCount": 4,
+        "importCount": 3,
+        "graph": {
+          "@mini/shared": [],
+          "@mini/domain": [
+            "@mini/app"
+          ],
+          "@mini/app": [
+            "@mini/domain",
+            "@mini/shared"
+          ]
+        }
+      },
+      "sampleFindings": [
+        {
+          "family": "p0.boundaries",
+          "ruleId": "boundaries.forbidden-import-direction",
+          "severity": "error",
+          "blocking": true,
+          "path": "packages/domain/src/index.ts",
+          "message": "Import violates the declared package boundary dependency direction.",
+          "evidence": {
+            "sourcePackage": "@mini/domain",
+            "targetPackage": "@mini/app",
+            "specifier": "@mini/app",
+            "line": 1,
+            "allowedDependencies": [
+              "@mini/shared"
+            ]
+          }
+        },
+        {
+          "family": "p0.boundaries",
+          "ruleId": "boundaries.cycle",
+          "severity": "error",
+          "blocking": true,
+          "path": "mechanical-boundaries.json",
+          "message": "Package boundary graph contains a forbidden cycle.",
+          "evidence": {
+            "cycle": [
+              "@mini/app",
+              "@mini/domain",
+              "@mini/app"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "boundaries.private-reach-in",
+      "root": "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/fixtures/p0/surface-config-boundaries/invalid-boundary-private-reachin",
+      "ok": false,
+      "expectedOk": false,
+      "ruleIds": [
+        "boundaries.private-reach-in"
+      ],
+      "expectedRuleIds": [
+        "boundaries.private-reach-in"
+      ],
+      "typed": true,
+      "matchedExpectation": true,
+      "evidence": {
+        "configPath": "mechanical-boundaries.json",
+        "parser": "typescript",
+        "proofMode": "typescript-ast",
+        "packageCount": 3,
+        "sourceFileCount": 4,
+        "importCount": 2,
+        "graph": {
+          "@mini/shared": [],
+          "@mini/domain": [
+            "@mini/shared"
+          ],
+          "@mini/app": [
+            "@mini/domain"
+          ]
+        }
+      },
+      "sampleFindings": [
+        {
+          "family": "p0.boundaries",
+          "ruleId": "boundaries.private-reach-in",
+          "severity": "error",
+          "blocking": true,
+          "path": "packages/app/src/index.ts",
+          "message": "Import reaches into another package private implementation surface.",
+          "evidence": {
+            "sourcePackage": "@mini/app",
+            "targetPackage": "@mini/domain",
+            "specifier": "@mini/domain/internal/secret",
+            "targetPackageRelativePath": "internal/secret",
+            "line": 1
+          }
+        }
+      ]
+    },
+    {
+      "name": "boundaries.parser-self-agreement-only",
+      "root": "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/fixtures/p0/surface-config-boundaries/invalid-boundary-parser-self-agreement",
+      "ok": false,
+      "expectedOk": false,
+      "ruleIds": [
+        "boundaries.parser-self-agreement-only"
+      ],
+      "expectedRuleIds": [
+        "boundaries.parser-self-agreement-only"
+      ],
+      "typed": true,
+      "matchedExpectation": true,
+      "evidence": {
+        "configPath": "mechanical-boundaries.json",
+        "parser": "typescript",
+        "proofMode": "typescript-ast",
+        "packageCount": 3,
+        "sourceFileCount": 4,
+        "importCount": 3,
+        "graph": {
+          "@mini/shared": [],
+          "@mini/domain": [
+            "@mini/shared"
+          ],
+          "@mini/app": [
+            "@mini/domain",
+            "@mini/shared"
+          ]
+        }
+      },
+      "sampleFindings": [
+        {
+          "family": "p0.boundaries",
+          "ruleId": "boundaries.parser-self-agreement-only",
+          "severity": "error",
+          "blocking": true,
+          "path": "mechanical-boundaries.json#/parserSelfAgreementOnly",
+          "message": "Parser self-agreement-only boundary proof is rejected; configured graph rules and source imports are required.",
+          "evidence": {}
+        }
+      ]
+    },
+    {
+      "name": "boundaries.regex-only-proof",
+      "root": "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/fixtures/p0/surface-config-boundaries/invalid-boundary-regex-proof",
+      "ok": false,
+      "expectedOk": false,
+      "ruleIds": [
+        "boundaries.regex-only-proof-rejected"
+      ],
+      "expectedRuleIds": [
+        "boundaries.regex-only-proof-rejected"
+      ],
+      "typed": true,
+      "matchedExpectation": true,
+      "evidence": {
+        "configPath": "mechanical-boundaries.json",
+        "parser": "typescript",
+        "proofMode": "typescript-ast",
+        "packageCount": 3,
+        "sourceFileCount": 4,
+        "importCount": 3,
+        "graph": {
+          "@mini/shared": [],
+          "@mini/domain": [
+            "@mini/shared"
+          ],
+          "@mini/app": [
+            "@mini/domain",
+            "@mini/shared"
+          ]
+        }
+      },
+      "sampleFindings": [
+        {
+          "family": "p0.boundaries",
+          "ruleId": "boundaries.regex-only-proof-rejected",
+          "severity": "error",
+          "blocking": true,
+          "path": "mechanical-boundaries.json#/proofMode",
+          "message": "Boundary proof must use the TypeScript AST parser, not regex or narrative proof.",
+          "evidence": {
+            "expected": "typescript-ast",
+            "actual": "regex-only"
+          }
+        }
+      ]
+    }
+  ],
+  "failedExpectations": [
+    {
+      "name": "strict-config.adversarial-noUnusedLocals-noUnusedParameters-false",
+      "root": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-10A-mechanical-P0-surface-config-boundaries/revalidation-evidence/adversarial/no-unused-flags-weakened",
+      "ok": true,
+      "expectedOk": false,
+      "ruleIds": [],
+      "expectedRuleIds": [
+        "config-guards.strict-ts-flag-weakened"
+      ],
+      "typed": true,
+      "matchedExpectation": false,
+      "evidence": {
+        "tsconfigPath": "tsconfig.json",
+        "packageJsonPath": "package.json",
+        "mechanicalSurfacePath": "mechanical-surface.json",
+        "requiredTrueFlags": [
+          "strict",
+          "noImplicitAny",
+          "strictNullChecks",
+          "strictFunctionTypes",
+          "strictBindCallApply",
+          "strictPropertyInitialization",
+          "noImplicitThis",
+          "alwaysStrict",
+          "exactOptionalPropertyTypes",
+          "noUncheckedIndexedAccess",
+          "noImplicitOverride",
+          "noImplicitReturns",
+          "noPropertyAccessFromIndexSignature",
+          "useUnknownInCatchVariables",
+          "noFallthroughCasesInSwitch",
+          "isolatedModules",
+          "verbatimModuleSyntax",
+          "forceConsistentCasingInFileNames",
+          "noEmitOnError"
+        ],
+        "requiredFalseFlags": [
+          "allowUnreachableCode",
+          "allowUnusedLabels"
+        ],
+        "requiredPrettierDefaults": {
+          "printWidth": 100,
+          "semi": true,
+          "singleQuote": false,
+          "trailingComma": "all",
+          "arrowParens": "always",
+          "bracketSpacing": true,
+          "endOfLine": "lf"
+        },
+        "requiredEslintRules": [
+          "@typescript-eslint/no-explicit-any",
+          "@typescript-eslint/no-non-null-assertion",
+          "@typescript-eslint/no-unnecessary-type-assertion",
+          "@typescript-eslint/consistent-type-imports",
+          "@typescript-eslint/no-confusing-void-expression",
+          "@typescript-eslint/no-unsafe-assignment",
+          "@typescript-eslint/no-unsafe-argument",
+          "@typescript-eslint/no-unsafe-call",
+          "@typescript-eslint/no-unsafe-member-access",
+          "@typescript-eslint/no-unsafe-return",
+          "@typescript-eslint/restrict-template-expressions",
+          "@typescript-eslint/switch-exhaustiveness-check",
+          "no-empty",
+          "no-fallthrough",
+          "no-implicit-coercion"
+        ],
+        "eslintConfig": "eslint.config.mjs",
+        "prettierConfig": "prettier.config.mjs"
+      },
+      "sampleFindings": []
+    }
+  ],
+  "adversarialFinding": "noUnusedLocals/noUnusedParameters weakened to false unexpectedly passed through validateStrictConfig()"
+}

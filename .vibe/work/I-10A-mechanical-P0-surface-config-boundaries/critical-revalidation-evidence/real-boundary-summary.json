@@ -1,0 +1,271 @@
+{
+  "ok": true,
+  "runnerMode": "node --input-type=module from packages/mechanical-gates cwd; public package subpath imports",
+  "providerResolution": {
+    "configGuards": "file:///Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/src/p0/config-guards/index.js",
+    "governedSurface": "file:///Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/src/p0/governed-surface/index.js",
+    "boundaries": "file:///Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/src/p0/boundaries/index.js",
+    "packageExports": {
+      "./p0/governed-surface": {
+        "types": "./src/p0/governed-surface/index.d.ts",
+        "import": "./src/p0/governed-surface/index.js"
+      },
+      "./p0/config-guards": {
+        "types": "./src/p0/config-guards/index.d.ts",
+        "import": "./src/p0/config-guards/index.js"
+      },
+      "./p0/boundaries": {
+        "types": "./src/p0/boundaries/index.d.ts",
+        "import": "./src/p0/boundaries/index.js"
+      }
+    }
+  },
+  "requiredNoUnusedInEvidence": true,
+  "totalCases": 42,
+  "failedExpectations": [],
+  "selectedCases": {
+    "strict.valid-workspace": {
+      "ok": true,
+      "expectedOk": true,
+      "ruleIds": [],
+      "flags": [],
+      "typed": true,
+      "matchedExpectation": true,
+      "extraCheck": {
+        "ok": true,
+        "missingTrue": [],
+        "missingFalse": []
+      }
+    },
+    "strict.noUnusedLocals:false fresh adversarial": {
+      "ok": false,
+      "expectedOk": false,
+      "ruleIds": [
+        "config-guards.strict-ts-flag-weakened"
+      ],
+      "flags": [
+        "noUnusedLocals"
+      ],
+      "typed": true,
+      "matchedExpectation": true,
+      "extraCheck": {
+        "ok": true
+      }
+    },
+    "strict.noUnusedParameters:false fresh adversarial": {
+      "ok": false,
+      "expectedOk": false,
+      "ruleIds": [
+        "config-guards.strict-ts-flag-weakened"
+      ],
+      "flags": [
+        "noUnusedParameters"
+      ],
+      "typed": true,
+      "matchedExpectation": true,
+      "extraCheck": {
+        "ok": true
+      }
+    },
+    "strict.both noUnused false fresh adversarial": {
+      "ok": false,
+      "expectedOk": false,
+      "ruleIds": [
+        "config-guards.strict-ts-flag-weakened"
+      ],
+      "flags": [
+        "noUnusedLocals",
+        "noUnusedParameters"
+      ],
+      "typed": true,
+      "matchedExpectation": true,
+      "extraCheck": {
+        "ok": true
+      }
+    },
+    "strict.missing noUnusedLocals fresh adversarial": {
+      "ok": false,
+      "expectedOk": false,
+      "ruleIds": [
+        "config-guards.strict-ts-flag-weakened"
+      ],
+      "flags": [
+        "noUnusedLocals"
+      ],
+      "typed": true,
+      "matchedExpectation": true,
+      "extraCheck": {
+        "ok": true
+      }
+    },
+    "strict.missing noUnusedParameters fresh adversarial": {
+      "ok": false,
+      "expectedOk": false,
+      "ruleIds": [
+        "config-guards.strict-ts-flag-weakened"
+      ],
+      "flags": [
+        "noUnusedParameters"
+      ],
+      "typed": true,
+      "matchedExpectation": true,
+      "extraCheck": {
+        "ok": true
+      }
+    },
+    "strict.prior revalidation no-unused adversarial": {
+      "ok": false,
+      "expectedOk": false,
+      "ruleIds": [
+        "config-guards.strict-ts-flag-weakened"
+      ],
+      "flags": [
+        "noUnusedLocals",
+        "noUnusedParameters"
+      ],
+      "typed": true,
+      "matchedExpectation": true,
+      "extraCheck": {
+        "ok": true
+      }
+    },
+    "strict.weak all TS flags fixture": {
+      "ok": false,
+      "expectedOk": false,
+      "ruleIds": [
+        "config-guards.invalid-eslint-config",
+        "config-guards.missing-required-script",
+        "config-guards.prettier-default-weakened",
+        "config-guards.strict-ts-flag-weakened"
+      ],
+      "flags": [
+        "allowUnreachableCode",
+        "allowUnusedLabels",
+        "alwaysStrict",
+        "exactOptionalPropertyTypes",
+        "forceConsistentCasingInFileNames",
+        "isolatedModules",
+        "noEmitOnError",
+        "noFallthroughCasesInSwitch",
+        "noImplicitAny",
+        "noImplicitOverride",
+        "noImplicitReturns",
+        "noImplicitThis",
+        "noPropertyAccessFromIndexSignature",
+        "noUncheckedIndexedAccess",
+        "noUnusedLocals",
+        "noUnusedParameters",
+        "strict",
+        "strictBindCallApply",
+        "strictFunctionTypes",
+        "strictNullChecks",
+        "strictPropertyInitialization",
+        "useUnknownInCatchVariables",
+        "verbatimModuleSyntax"
+      ],
+      "typed": true,
+      "matchedExpectation": true,
+      "extraCheck": {
+        "ok": true
+      }
+    },
+    "strict.product false-green regression fixture": {
+      "ok": false,
+      "expectedOk": false,
+      "ruleIds": [
+        "config-guards.invalid-eslint-config",
+        "config-guards.invalid-required-script",
+        "config-guards.partial-script-surface",
+        "config-guards.prettier-default-weakened"
+      ],
+      "flags": [],
+      "typed": true,
+      "matchedExpectation": true,
+      "extraCheck": {
+        "ok": true
+      }
+    },
+    "governed.valid-workspace": {
+      "ok": true,
+      "expectedOk": true,
+      "ruleIds": [],
+      "flags": [],
+      "typed": true,
+      "matchedExpectation": true,
+      "extraCheck": {
+        "ok": true
+      }
+    },
+    "boundaries.valid-workspace": {
+      "ok": true,
+      "expectedOk": true,
+      "ruleIds": [],
+      "flags": [],
+      "typed": true,
+      "matchedExpectation": true,
+      "extraCheck": {
+        "ok": true,
+        "parser": "typescript",
+        "proofMode": "typescript-ast"
+      }
+    },
+    "boundaries.regex-only proof": {
+      "ok": false,
+      "expectedOk": false,
+      "ruleIds": [
+        "boundaries.regex-only-proof-rejected"
+      ],
+      "flags": [],
+      "typed": true,
+      "matchedExpectation": true,
+      "extraCheck": {
+        "ok": true,
+        "parser": "typescript",
+        "proofMode": "typescript-ast"
+      }
+    }
+  },
+  "allMatched": true,
+  "narrativeRejected": true,
+  "boundaryValidEvidence": {
+    "configPath": "mechanical-boundaries.json",
+    "parser": "typescript",
+    "proofMode": "typescript-ast",
+    "packageCount": 3,
+    "sourceFileCount": 4,
+    "importCount": 3,
+    "graph": {
+      "@mini/shared": [],
+      "@mini/domain": [
+        "@mini/shared"
+      ],
+      "@mini/app": [
+        "@mini/domain",
+        "@mini/shared"
+      ]
+    }
+  },
+  "strictValidEvidenceFlags": [
+    "strict",
+    "noImplicitAny",
+    "strictNullChecks",
+    "strictFunctionTypes",
+    "strictBindCallApply",
+    "strictPropertyInitialization",
+    "noImplicitThis",
+    "alwaysStrict",
+    "exactOptionalPropertyTypes",
+    "noUncheckedIndexedAccess",
+    "noImplicitOverride",
+    "noImplicitReturns",
+    "noPropertyAccessFromIndexSignature",
+    "useUnknownInCatchVariables",
+    "noFallthroughCasesInSwitch",
+    "noUnusedLocals",
+    "noUnusedParameters",
+    "isolatedModules",
+    "verbatimModuleSyntax",
+    "forceConsistentCasingInFileNames",
+    "noEmitOnError"
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "source": "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/fixtures/p0/surface-config-boundaries/valid-workspace",
+  "cases": [
+    {
+      "name": "no-unused-locals-false",
+      "root": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-10A-mechanical-P0-surface-config-boundaries/critical-revalidation-evidence/adversarial/no-unused-locals-false",
+      "compilerOptions": {
+        "noUnusedLocals": false,
+        "noUnusedParameters": true
+      }
+    },
+    {
+      "name": "no-unused-parameters-false",
+      "root": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-10A-mechanical-P0-surface-config-boundaries/critical-revalidation-evidence/adversarial/no-unused-parameters-false",
+      "compilerOptions": {
+        "noUnusedLocals": true,
+        "noUnusedParameters": false
+      }
+    },
+    {
+      "name": "no-unused-both-false",
+      "root": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-10A-mechanical-P0-surface-config-boundaries/critical-revalidation-evidence/adversarial/no-unused-both-false",
+      "compilerOptions": {
+        "noUnusedLocals": false,
+        "noUnusedParameters": false
+      }
+    },
+    {
+      "name": "no-unused-locals-missing",
+      "root": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-10A-mechanical-P0-surface-config-boundaries/critical-revalidation-evidence/adversarial/no-unused-locals-missing",
+      "compilerOptions": {
+        "noUnusedLocals": "<missing>",
+        "noUnusedParameters": true
+      }
+    },
+    {
+      "name": "no-unused-parameters-missing",
+      "root": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-10A-mechanical-P0-surface-config-boundaries/critical-revalidation-evidence/adversarial/no-unused-parameters-missing",
+      "compilerOptions": {
+        "noUnusedLocals": true,
+        "noUnusedParameters": "<missing>"
+      }
+    }
+  ]
+}

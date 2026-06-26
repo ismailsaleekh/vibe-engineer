@@ -1,0 +1,745 @@
+{
+  "manifest": {
+    "exports": {
+      "./p0/governed-surface": {
+        "types": "./src/p0/governed-surface/index.d.ts",
+        "import": "./src/p0/governed-surface/index.js"
+      },
+      "./p0/config-guards": {
+        "types": "./src/p0/config-guards/index.d.ts",
+        "import": "./src/p0/config-guards/index.js"
+      },
+      "./p0/boundaries": {
+        "types": "./src/p0/boundaries/index.d.ts",
+        "import": "./src/p0/boundaries/index.js"
+      }
+    },
+    "scripts": {
+      "typecheck": "node fixtures/p0/surface-config-boundaries/witness.mjs --typecheck",
+      "test": "node fixtures/p0/surface-config-boundaries/witness.mjs",
+      "test:p0": "node fixtures/p0/surface-config-boundaries/witness.mjs"
+    },
+    "hasDependencies": false,
+    "hasDevDependencies": false
+  },
+  "sourceContractMarkers": {
+    "validateStrictConfigContainsNoUnusedLocals": true,
+    "validateStrictConfigContainsNoUnusedParameters": true,
+    "strictFlagRuleIdOccurrences": 2,
+    "returnsRequiredTrueFlagsEvidence": true
+  },
+  "noUnusedFixtureSummary": {
+    "invalid-config-ts-no-unused-locals-false": {
+      "noUnusedLocals": false,
+      "noUnusedParameters": true,
+      "allowUnreachableCode": false,
+      "allowUnusedLabels": false
+    },
+    "invalid-config-ts-no-unused-parameters-false": {
+      "noUnusedLocals": true,
+      "noUnusedParameters": false,
+      "allowUnreachableCode": false,
+      "allowUnusedLabels": false
+    },
+    "invalid-config-ts-no-unused-both-false": {
+      "noUnusedLocals": false,
+      "noUnusedParameters": false,
+      "allowUnreachableCode": false,
+      "allowUnusedLabels": false
+    },
+    "invalid-config-ts-no-unused-locals-missing": {
+      "noUnusedLocals": "<missing>",
+      "noUnusedParameters": true,
+      "allowUnreachableCode": false,
+      "allowUnusedLabels": false
+    },
+    "invalid-config-ts-no-unused-parameters-missing": {
+      "noUnusedLocals": true,
+      "noUnusedParameters": "<missing>",
+      "allowUnreachableCode": false,
+      "allowUnusedLabels": false
+    },
+    "invalid-config-weak-flags": {
+      "noUnusedLocals": false,
+      "noUnusedParameters": false,
+      "allowUnreachableCode": true,
+      "allowUnusedLabels": true
+    },
+    "valid-workspace": {
+      "noUnusedLocals": true,
+      "noUnusedParameters": true,
+      "allowUnreachableCode": false,
+      "allowUnusedLabels": false
+    }
+  },
+  "selectedConfigSummary": {
+    "invalid-config-eslint-empty": {
+      "files": {
+        "packageJson": true,
+        "tsconfigJson": true,
+        "eslintConfig": true,
+        "prettierConfig": true,
+        "mechanicalSurface": true
+      },
+      "scripts": {
+        "typecheck": "tsc --noEmit",
+        "test": "node test.mjs",
+        "lint": "eslint eslint.config.mjs packages/shared/src packages/domain/src packages/app/src",
+        "format:check": "prettier --check ."
+      },
+      "prettierSnippet": "export default {\n  \"printWidth\": 100,\n  \"semi\": true,\n  \"singleQuote\": false,\n  \"trailingComma\": \"all\",\n  \"arrowParens\": \"always\",\n  \"bracketSpacing\": true,\n  \"endOfLine\": \"lf\"\n};",
+      "eslintSnippet": "export default [];"
+    },
+    "invalid-config-eslint-missing-ts-no-explicit-any": {
+      "files": {
+        "packageJson": true,
+        "tsconfigJson": true,
+        "eslintConfig": true,
+        "prettierConfig": true,
+        "mechanicalSurface": true
+      },
+      "scripts": {
+        "typecheck": "tsc --noEmit",
+        "test": "node test.mjs",
+        "lint": "eslint eslint.config.mjs packages/shared/src packages/domain/src packages/app/src",
+        "format:check": "prettier --check ."
+      },
+      "prettierSnippet": "export default {\n  \"printWidth\": 100,\n  \"semi\": true,\n  \"singleQuote\": false,\n  \"trailingComma\": \"all\",\n  \"arrowParens\": \"always\",\n  \"bracketSpacing\": true,\n  \"endOfLine\": \"lf\"\n};",
+      "eslintSnippet": "export default [\n  {\n    files: [\"**/*.ts\", \"**/*.tsx\", \"**/*.mts\", \"**/*.cts\"],\n    rules: {\n  \"@typescript-eslint/no-non-null-assertion\": \"error\",\n  \"@typescript-eslint/ban-ts-comment\": [\n    \"error\",\n    {\n      \"ts-check\": false,\n      "
+    },
+    "invalid-config-eslint-downgraded-severity": {
+      "files": {
+        "packageJson": true,
+        "tsconfigJson": true,
+        "eslintConfig": true,
+        "prettierConfig": true,
+        "mechanicalSurface": true
+      },
+      "scripts": {
+        "typecheck": "tsc --noEmit",
+        "test": "node test.mjs",
+        "lint": "eslint eslint.config.mjs packages/shared/src packages/domain/src packages/app/src",
+        "format:check": "prettier --check ."
+      },
+      "prettierSnippet": "export default {\n  \"printWidth\": 100,\n  \"semi\": true,\n  \"singleQuote\": false,\n  \"trailingComma\": \"all\",\n  \"arrowParens\": \"always\",\n  \"bracketSpacing\": true,\n  \"endOfLine\": \"lf\"\n};",
+      "eslintSnippet": "export default [\n  {\n    files: [\"**/*.ts\", \"**/*.tsx\", \"**/*.mts\", \"**/*.cts\"],\n    rules: {\n  \"@typescript-eslint/no-explicit-any\": \"warn\",\n  \"@typescript-eslint/no-non-null-assertion\": \"error\",\n  \"@typescript-eslint/ban-ts-comment\": [\n  "
+    },
+    "invalid-config-eslint-ban-ts-comment-options": {
+      "files": {
+        "packageJson": true,
+        "tsconfigJson": true,
+        "eslintConfig": true,
+        "prettierConfig": true,
+        "mechanicalSurface": true
+      },
+      "scripts": {
+        "typecheck": "tsc --noEmit",
+        "test": "node test.mjs",
+        "lint": "eslint eslint.config.mjs packages/shared/src packages/domain/src packages/app/src",
+        "format:check": "prettier --check ."
+      },
+      "prettierSnippet": "export default {\n  \"printWidth\": 100,\n  \"semi\": true,\n  \"singleQuote\": false,\n  \"trailingComma\": \"all\",\n  \"arrowParens\": \"always\",\n  \"bracketSpacing\": true,\n  \"endOfLine\": \"lf\"\n};",
+      "eslintSnippet": "export default [\n  {\n    files: [\"**/*.ts\", \"**/*.tsx\", \"**/*.mts\", \"**/*.cts\"],\n    rules: {\n  \"@typescript-eslint/no-explicit-any\": \"error\",\n  \"@typescript-eslint/no-non-null-assertion\": \"error\",\n  \"@typescript-eslint/ban-ts-comment\": [\n "
+    },
+    "invalid-config-eslint-missing-json-parse-boundary": {
+      "files": {
+        "packageJson": true,
+        "tsconfigJson": true,
+        "eslintConfig": true,
+        "prettierConfig": true,
+        "mechanicalSurface": true
+      },
+      "scripts": {
+        "typecheck": "tsc --noEmit",
+        "test": "node test.mjs",
+        "lint": "eslint eslint.config.mjs packages/shared/src packages/domain/src packages/app/src",
+        "format:check": "prettier --check ."
+      },
+      "prettierSnippet": "export default {\n  \"printWidth\": 100,\n  \"semi\": true,\n  \"singleQuote\": false,\n  \"trailingComma\": \"all\",\n  \"arrowParens\": \"always\",\n  \"bracketSpacing\": true,\n  \"endOfLine\": \"lf\"\n};",
+      "eslintSnippet": "export default [\n  {\n    files: [\"**/*.ts\", \"**/*.tsx\", \"**/*.mts\", \"**/*.cts\"],\n    rules: {\n  \"@typescript-eslint/no-explicit-any\": \"error\",\n  \"@typescript-eslint/no-non-null-assertion\": \"error\",\n  \"@typescript-eslint/ban-ts-comment\": [\n "
+    },
+    "invalid-config-prettier-missing": {
+      "files": {
+        "packageJson": true,
+        "tsconfigJson": true,
+        "eslintConfig": true,
+        "prettierConfig": false,
+        "mechanicalSurface": true
+      },
+      "scripts": {
+        "typecheck": "tsc --noEmit",
+        "test": "node test.mjs",
+        "lint": "eslint eslint.config.mjs packages/shared/src packages/domain/src packages/app/src",
+        "format:check": "prettier --check ."
+      },
+      "prettierSnippet": "<missing>",
+      "eslintSnippet": "export default [\n  {\n    files: [\"**/*.ts\", \"**/*.tsx\", \"**/*.mts\", \"**/*.cts\"],\n    rules: {\n  \"@typescript-eslint/no-explicit-any\": \"error\",\n  \"@typescript-eslint/no-non-null-assertion\": \"error\",\n  \"@typescript-eslint/ban-ts-comment\": [\n "
+    },
+    "invalid-config-prettier-trailing-comma": {
+      "files": {
+        "packageJson": true,
+        "tsconfigJson": true,
+        "eslintConfig": true,
+        "prettierConfig": true,
+        "mechanicalSurface": true
+      },
+      "scripts": {
+        "typecheck": "tsc --noEmit",
+        "test": "node test.mjs",
+        "lint": "eslint eslint.config.mjs packages/shared/src packages/domain/src packages/app/src",
+        "format:check": "prettier --check ."
+      },
+      "prettierSnippet": "export default {\n  \"printWidth\": 100,\n  \"semi\": true,\n  \"singleQuote\": false,\n  \"trailingComma\": \"none\",\n  \"arrowParens\": \"always\",\n  \"bracketSpacing\": true,\n  \"endOfLine\": \"lf\"\n};",
+      "eslintSnippet": "export default [\n  {\n    files: [\"**/*.ts\", \"**/*.tsx\", \"**/*.mts\", \"**/*.cts\"],\n    rules: {\n  \"@typescript-eslint/no-explicit-any\": \"error\",\n  \"@typescript-eslint/no-non-null-assertion\": \"error\",\n  \"@typescript-eslint/ban-ts-comment\": [\n "
+    },
+    "invalid-config-prettier-omitted-print-width": {
+      "files": {
+        "packageJson": true,
+        "tsconfigJson": true,
+        "eslintConfig": true,
+        "prettierConfig": true,
+        "mechanicalSurface": true
+      },
+      "scripts": {
+        "typecheck": "tsc --noEmit",
+        "test": "node test.mjs",
+        "lint": "eslint eslint.config.mjs packages/shared/src packages/domain/src packages/app/src",
+        "format:check": "prettier --check ."
+      },
+      "prettierSnippet": "export default {\n  \"semi\": true,\n  \"singleQuote\": false,\n  \"trailingComma\": \"all\",\n  \"arrowParens\": \"always\",\n  \"bracketSpacing\": true,\n  \"endOfLine\": \"lf\"\n};",
+      "eslintSnippet": "export default [\n  {\n    files: [\"**/*.ts\", \"**/*.tsx\", \"**/*.mts\", \"**/*.cts\"],\n    rules: {\n  \"@typescript-eslint/no-explicit-any\": \"error\",\n  \"@typescript-eslint/no-non-null-assertion\": \"error\",\n  \"@typescript-eslint/ban-ts-comment\": [\n "
+    },
+    "invalid-config-prettier-wrong-semi": {
+      "files": {
+        "packageJson": true,
+        "tsconfigJson": true,
+        "eslintConfig": true,
+        "prettierConfig": true,
+        "mechanicalSurface": true
+      },
+      "scripts": {
+        "typecheck": "tsc --noEmit",
+        "test": "node test.mjs",
+        "lint": "eslint eslint.config.mjs packages/shared/src packages/domain/src packages/app/src",
+        "format:check": "prettier --check ."
+      },
+      "prettierSnippet": "export default {\n  \"printWidth\": 100,\n  \"semi\": false,\n  \"singleQuote\": false,\n  \"trailingComma\": \"all\",\n  \"arrowParens\": \"always\",\n  \"bracketSpacing\": true,\n  \"endOfLine\": \"lf\"\n};",
+      "eslintSnippet": "export default [\n  {\n    files: [\"**/*.ts\", \"**/*.tsx\", \"**/*.mts\", \"**/*.cts\"],\n    rules: {\n  \"@typescript-eslint/no-explicit-any\": \"error\",\n  \"@typescript-eslint/no-non-null-assertion\": \"error\",\n  \"@typescript-eslint/ban-ts-comment\": [\n "
+    },
+    "invalid-config-prettier-wrong-single-quote": {
+      "files": {
+        "packageJson": true,
+        "tsconfigJson": true,
+        "eslintConfig": true,
+        "prettierConfig": true,
+        "mechanicalSurface": true
+      },
+      "scripts": {
+        "typecheck": "tsc --noEmit",
+        "test": "node test.mjs",
+        "lint": "eslint eslint.config.mjs packages/shared/src packages/domain/src packages/app/src",
+        "format:check": "prettier --check ."
+      },
+      "prettierSnippet": "export default {\n  \"printWidth\": 100,\n  \"semi\": true,\n  \"singleQuote\": true,\n  \"trailingComma\": \"all\",\n  \"arrowParens\": \"always\",\n  \"bracketSpacing\": true,\n  \"endOfLine\": \"lf\"\n};",
+      "eslintSnippet": "export default [\n  {\n    files: [\"**/*.ts\", \"**/*.tsx\", \"**/*.mts\", \"**/*.cts\"],\n    rules: {\n  \"@typescript-eslint/no-explicit-any\": \"error\",\n  \"@typescript-eslint/no-non-null-assertion\": \"error\",\n  \"@typescript-eslint/ban-ts-comment\": [\n "
+    },
+    "invalid-config-prettier-wrong-arrow-parens": {
+      "files": {
+        "packageJson": true,
+        "tsconfigJson": true,
+        "eslintConfig": true,
+        "prettierConfig": true,
+        "mechanicalSurface": true
+      },
+      "scripts": {
+        "typecheck": "tsc --noEmit",
+        "test": "node test.mjs",
+        "lint": "eslint eslint.config.mjs packages/shared/src packages/domain/src packages/app/src",
+        "format:check": "prettier --check ."
+      },
+      "prettierSnippet": "export default {\n  \"printWidth\": 100,\n  \"semi\": true,\n  \"singleQuote\": false,\n  \"trailingComma\": \"all\",\n  \"arrowParens\": \"avoid\",\n  \"bracketSpacing\": true,\n  \"endOfLine\": \"lf\"\n};",
+      "eslintSnippet": "export default [\n  {\n    files: [\"**/*.ts\", \"**/*.tsx\", \"**/*.mts\", \"**/*.cts\"],\n    rules: {\n  \"@typescript-eslint/no-explicit-any\": \"error\",\n  \"@typescript-eslint/no-non-null-assertion\": \"error\",\n  \"@typescript-eslint/ban-ts-comment\": [\n "
+    },
+    "invalid-config-prettier-wrong-bracket-spacing": {
+      "files": {
+        "packageJson": true,
+        "tsconfigJson": true,
+        "eslintConfig": true,
+        "prettierConfig": true,
+        "mechanicalSurface": true
+      },
+      "scripts": {
+        "typecheck": "tsc --noEmit",
+        "test": "node test.mjs",
+        "lint": "eslint eslint.config.mjs packages/shared/src packages/domain/src packages/app/src",
+        "format:check": "prettier --check ."
+      },
+      "prettierSnippet": "export default {\n  \"printWidth\": 100,\n  \"semi\": true,\n  \"singleQuote\": false,\n  \"trailingComma\": \"all\",\n  \"arrowParens\": \"always\",\n  \"bracketSpacing\": false,\n  \"endOfLine\": \"lf\"\n};",
+      "eslintSnippet": "export default [\n  {\n    files: [\"**/*.ts\", \"**/*.tsx\", \"**/*.mts\", \"**/*.cts\"],\n    rules: {\n  \"@typescript-eslint/no-explicit-any\": \"error\",\n  \"@typescript-eslint/no-non-null-assertion\": \"error\",\n  \"@typescript-eslint/ban-ts-comment\": [\n "
+    },
+    "invalid-config-prettier-wrong-end-of-line": {
+      "files": {
+        "packageJson": true,
+        "tsconfigJson": true,
+        "eslintConfig": true,
+        "prettierConfig": true,
+        "mechanicalSurface": true
+      },
+      "scripts": {
+        "typecheck": "tsc --noEmit",
+        "test": "node test.mjs",
+        "lint": "eslint eslint.config.mjs packages/shared/src packages/domain/src packages/app/src",
+        "format:check": "prettier --check ."
+      },
+      "prettierSnippet": "export default {\n  \"printWidth\": 100,\n  \"semi\": true,\n  \"singleQuote\": false,\n  \"trailingComma\": \"all\",\n  \"arrowParens\": \"always\",\n  \"bracketSpacing\": true,\n  \"endOfLine\": \"auto\"\n};",
+      "eslintSnippet": "export default [\n  {\n    files: [\"**/*.ts\", \"**/*.tsx\", \"**/*.mts\", \"**/*.cts\"],\n    rules: {\n  \"@typescript-eslint/no-explicit-any\": \"error\",\n  \"@typescript-eslint/no-non-null-assertion\": \"error\",\n  \"@typescript-eslint/ban-ts-comment\": [\n "
+    },
+    "invalid-config-script-missing-lint": {
+      "files": {
+        "packageJson": true,
+        "tsconfigJson": true,
+        "eslintConfig": true,
+        "prettierConfig": true,
+        "mechanicalSurface": true
+      },
+      "scripts": {
+        "typecheck": "tsc --noEmit",
+        "test": "node test.mjs",
+        "format:check": "prettier --check ."
+      },
+      "prettierSnippet": "export default {\n  \"printWidth\": 100,\n  \"semi\": true,\n  \"singleQuote\": false,\n  \"trailingComma\": \"all\",\n  \"arrowParens\": \"always\",\n  \"bracketSpacing\": true,\n  \"endOfLine\": \"lf\"\n};",
+      "eslintSnippet": "export default [\n  {\n    files: [\"**/*.ts\", \"**/*.tsx\", \"**/*.mts\", \"**/*.cts\"],\n    rules: {\n  \"@typescript-eslint/no-explicit-any\": \"error\",\n  \"@typescript-eslint/no-non-null-assertion\": \"error\",\n  \"@typescript-eslint/ban-ts-comment\": [\n "
+    },
+    "invalid-config-script-missing-format-check": {
+      "files": {
+        "packageJson": true,
+        "tsconfigJson": true,
+        "eslintConfig": true,
+        "prettierConfig": true,
+        "mechanicalSurface": true
+      },
+      "scripts": {
+        "typecheck": "tsc --noEmit",
+        "test": "node test.mjs",
+        "lint": "eslint eslint.config.mjs packages/shared/src packages/domain/src packages/app/src"
+      },
+      "prettierSnippet": "export default {\n  \"printWidth\": 100,\n  \"semi\": true,\n  \"singleQuote\": false,\n  \"trailingComma\": \"all\",\n  \"arrowParens\": \"always\",\n  \"bracketSpacing\": true,\n  \"endOfLine\": \"lf\"\n};",
+      "eslintSnippet": "export default [\n  {\n    files: [\"**/*.ts\", \"**/*.tsx\", \"**/*.mts\", \"**/*.cts\"],\n    rules: {\n  \"@typescript-eslint/no-explicit-any\": \"error\",\n  \"@typescript-eslint/no-non-null-assertion\": \"error\",\n  \"@typescript-eslint/ban-ts-comment\": [\n "
+    },
+    "invalid-config-script-echo-placeholders": {
+      "files": {
+        "packageJson": true,
+        "tsconfigJson": true,
+        "eslintConfig": true,
+        "prettierConfig": true,
+        "mechanicalSurface": true
+      },
+      "scripts": {
+        "typecheck": "echo typecheck",
+        "test": "echo test",
+        "lint": "echo lint",
+        "format:check": "echo format"
+      },
+      "prettierSnippet": "export default {\n  \"printWidth\": 100,\n  \"semi\": true,\n  \"singleQuote\": false,\n  \"trailingComma\": \"all\",\n  \"arrowParens\": \"always\",\n  \"bracketSpacing\": true,\n  \"endOfLine\": \"lf\"\n};",
+      "eslintSnippet": "export default [\n  {\n    files: [\"**/*.ts\", \"**/*.tsx\", \"**/*.mts\", \"**/*.cts\"],\n    rules: {\n  \"@typescript-eslint/no-explicit-any\": \"error\",\n  \"@typescript-eslint/no-non-null-assertion\": \"error\",\n  \"@typescript-eslint/ban-ts-comment\": [\n "
+    },
+    "invalid-config-script-noop-commands": {
+      "files": {
+        "packageJson": true,
+        "tsconfigJson": true,
+        "eslintConfig": true,
+        "prettierConfig": true,
+        "mechanicalSurface": true
+      },
+      "scripts": {
+        "typecheck": "true",
+        "test": ":",
+        "lint": "echo lint",
+        "format:check": "true"
+      },
+      "prettierSnippet": "export default {\n  \"printWidth\": 100,\n  \"semi\": true,\n  \"singleQuote\": false,\n  \"trailingComma\": \"all\",\n  \"arrowParens\": \"always\",\n  \"bracketSpacing\": true,\n  \"endOfLine\": \"lf\"\n};",
+      "eslintSnippet": "export default [\n  {\n    files: [\"**/*.ts\", \"**/*.tsx\", \"**/*.mts\", \"**/*.cts\"],\n    rules: {\n  \"@typescript-eslint/no-explicit-any\": \"error\",\n  \"@typescript-eslint/no-non-null-assertion\": \"error\",\n  \"@typescript-eslint/ban-ts-comment\": [\n "
+    },
+    "invalid-config-script-omits-governed-surfaces": {
+      "files": {
+        "packageJson": true,
+        "tsconfigJson": true,
+        "eslintConfig": true,
+        "prettierConfig": true,
+        "mechanicalSurface": true
+      },
+      "scripts": {
+        "typecheck": "tsc --noEmit",
+        "test": "node test.mjs",
+        "lint": "eslint packages/shared/src",
+        "format:check": "prettier --check package.json"
+      },
+      "prettierSnippet": "export default {\n  \"printWidth\": 100,\n  \"semi\": true,\n  \"singleQuote\": false,\n  \"trailingComma\": \"all\",\n  \"arrowParens\": \"always\",\n  \"bracketSpacing\": true,\n  \"endOfLine\": \"lf\"\n};",
+      "eslintSnippet": "export default [\n  {\n    files: [\"**/*.ts\", \"**/*.tsx\", \"**/*.mts\", \"**/*.cts\"],\n    rules: {\n  \"@typescript-eslint/no-explicit-any\": \"error\",\n  \"@typescript-eslint/no-non-null-assertion\": \"error\",\n  \"@typescript-eslint/ban-ts-comment\": [\n "
+    },
+    "invalid-config-script-unrelated-surface": {
+      "files": {
+        "packageJson": true,
+        "tsconfigJson": true,
+        "eslintConfig": true,
+        "prettierConfig": true,
+        "mechanicalSurface": true
+      },
+      "scripts": {
+        "typecheck": "tsc --noEmit",
+        "test": "node test.mjs",
+        "lint": "eslint unrelated/file.ts",
+        "format:check": "prettier --check unrelated/file.ts"
+      },
+      "prettierSnippet": "export default {\n  \"printWidth\": 100,\n  \"semi\": true,\n  \"singleQuote\": false,\n  \"trailingComma\": \"all\",\n  \"arrowParens\": \"always\",\n  \"bracketSpacing\": true,\n  \"endOfLine\": \"lf\"\n};",
+      "eslintSnippet": "export default [\n  {\n    files: [\"**/*.ts\", \"**/*.tsx\", \"**/*.mts\", \"**/*.cts\"],\n    rules: {\n  \"@typescript-eslint/no-explicit-any\": \"error\",\n  \"@typescript-eslint/no-non-null-assertion\": \"error\",\n  \"@typescript-eslint/ban-ts-comment\": [\n "
+    },
+    "invalid-config-false-green-regression": {
+      "files": {
+        "packageJson": true,
+        "tsconfigJson": true,
+        "eslintConfig": true,
+        "prettierConfig": true,
+        "mechanicalSurface": true
+      },
+      "scripts": {
+        "typecheck": "echo typecheck",
+        "test": "echo test",
+        "lint": "echo lint",
+        "format:check": "echo format"
+      },
+      "prettierSnippet": "export default { trailingComma: \"none\" };",
+      "eslintSnippet": "export default [];"
+    },
+    "invalid-config-missing-surfaces": {
+      "files": {
+        "packageJson": true,
+        "tsconfigJson": true,
+        "eslintConfig": false,
+        "prettierConfig": false,
+        "mechanicalSurface": true
+      },
+      "scripts": {
+        "typecheck": "tsc --noEmit",
+        "test": "node test.mjs",
+        "lint": "eslint eslint.config.mjs packages/shared/src packages/domain/src packages/app/src"
+      },
+      "prettierSnippet": "<missing>",
+      "eslintSnippet": "<missing>"
+    }
+  },
+  "surfaceSummary": {
+    "valid-workspace": {
+      "surfaceCount": 10,
+      "requiredPaths": [
+        "package.json",
+        "tsconfig.json",
+        "eslint.config.mjs",
+        "prettier.config.mjs",
+        "packages/shared/src/index.ts",
+        "packages/domain/src/index.ts",
+        "packages/app/src/index.ts"
+      ],
+      "excludedPaths": [
+        "generated",
+        "vendor"
+      ],
+      "emptyToolRows": 0,
+      "duplicateKeys": []
+    },
+    "invalid-surface-omitted": {
+      "surfaceCount": 8,
+      "requiredPaths": [
+        "package.json",
+        "tsconfig.json",
+        "eslint.config.mjs",
+        "prettier.config.mjs",
+        "packages/shared/src/index.ts",
+        "packages/domain/src/index.ts",
+        "packages/app/src/index.ts"
+      ],
+      "excludedPaths": [
+        "generated",
+        "vendor"
+      ],
+      "emptyToolRows": 0,
+      "duplicateKeys": []
+    },
+    "invalid-surface-duplicate": {
+      "surfaceCount": 10,
+      "requiredPaths": [
+        "package.json",
+        "tsconfig.json",
+        "eslint.config.mjs",
+        "prettier.config.mjs",
+        "packages/shared/src/index.ts",
+        "packages/domain/src/index.ts",
+        "packages/app/src/index.ts"
+      ],
+      "excludedPaths": [
+        "generated",
+        "vendor"
+      ],
+      "emptyToolRows": 0,
+      "duplicateKeys": [
+        "exact:package.json"
+      ]
+    },
+    "invalid-surface-empty-tool": {
+      "surfaceCount": 9,
+      "requiredPaths": [
+        "package.json",
+        "tsconfig.json",
+        "eslint.config.mjs",
+        "prettier.config.mjs",
+        "packages/shared/src/index.ts",
+        "packages/domain/src/index.ts",
+        "packages/app/src/index.ts"
+      ],
+      "excludedPaths": [
+        "generated",
+        "vendor"
+      ],
+      "emptyToolRows": 1,
+      "duplicateKeys": []
+    },
+    "invalid-surface-excluded-leak": {
+      "surfaceCount": 10,
+      "requiredPaths": [
+        "package.json",
+        "tsconfig.json",
+        "eslint.config.mjs",
+        "prettier.config.mjs",
+        "packages/shared/src/index.ts",
+        "packages/domain/src/index.ts",
+        "packages/app/src/index.ts"
+      ],
+      "excludedPaths": [
+        "generated",
+        "vendor"
+      ],
+      "emptyToolRows": 0,
+      "duplicateKeys": []
+    },
+    "invalid-surface-missing-required": {
+      "surfaceCount": 9,
+      "requiredPaths": [
+        "package.json",
+        "tsconfig.json",
+        "eslint.config.mjs",
+        "prettier.config.mjs",
+        "packages/shared/src/index.ts",
+        "packages/domain/src/index.ts",
+        "packages/app/src/index.ts",
+        "packages/missing/src/index.ts"
+      ],
+      "excludedPaths": [
+        "generated",
+        "vendor"
+      ],
+      "emptyToolRows": 0,
+      "duplicateKeys": []
+    }
+  },
+  "boundarySummary": {
+    "valid-workspace": {
+      "proofMode": "typescript-ast",
+      "parserSelfAgreementOnly": false,
+      "packages": [
+        {
+          "name": "@mini/shared",
+          "allowedDependencies": [],
+          "privatePaths": [
+            "internal"
+          ]
+        },
+        {
+          "name": "@mini/domain",
+          "allowedDependencies": [
+            "@mini/shared"
+          ],
+          "privatePaths": [
+            "internal"
+          ]
+        },
+        {
+          "name": "@mini/app",
+          "allowedDependencies": [
+            "@mini/domain",
+            "@mini/shared"
+          ],
+          "privatePaths": [
+            "internal"
+          ]
+        }
+      ]
+    },
+    "invalid-boundary-cycle": {
+      "proofMode": "typescript-ast",
+      "parserSelfAgreementOnly": false,
+      "packages": [
+        {
+          "name": "@mini/shared",
+          "allowedDependencies": [
+            "@mini/domain"
+          ],
+          "privatePaths": [
+            "internal"
+          ]
+        },
+        {
+          "name": "@mini/domain",
+          "allowedDependencies": [
+            "@mini/shared"
+          ],
+          "privatePaths": [
+            "internal"
+          ]
+        },
+        {
+          "name": "@mini/app",
+          "allowedDependencies": [
+            "@mini/domain",
+            "@mini/shared"
+          ],
+          "privatePaths": [
+            "internal"
+          ]
+        }
+      ]
+    },
+    "invalid-boundary-forbidden-direction": {
+      "proofMode": "typescript-ast",
+      "parserSelfAgreementOnly": false,
+      "packages": [
+        {
+          "name": "@mini/shared",
+          "allowedDependencies": [],
+          "privatePaths": [
+            "internal"
+          ]
+        },
+        {
+          "name": "@mini/domain",
+          "allowedDependencies": [
+            "@mini/shared"
+          ],
+          "privatePaths": [
+            "internal"
+          ]
+        },
+        {
+          "name": "@mini/app",
+          "allowedDependencies": [
+            "@mini/domain",
+            "@mini/shared"
+          ],
+          "privatePaths": [
+            "internal"
+          ]
+        }
+      ]
+    },
+    "invalid-boundary-private-reachin": {
+      "proofMode": "typescript-ast",
+      "parserSelfAgreementOnly": false,
+      "packages": [
+        {
+          "name": "@mini/shared",
+          "allowedDependencies": [],
+          "privatePaths": [
+            "internal"
+          ]
+        },
+        {
+          "name": "@mini/domain",
+          "allowedDependencies": [
+            "@mini/shared"
+          ],
+          "privatePaths": [
+            "internal"
+          ]
+        },
+        {
+          "name": "@mini/app",
+          "allowedDependencies": [
+            "@mini/domain",
+            "@mini/shared"
+          ],
+          "privatePaths": [
+            "internal"
+          ]
+        }
+      ]
+    },
+    "invalid-boundary-parser-self-agreement": {
+      "proofMode": "typescript-ast",
+      "parserSelfAgreementOnly": true,
+      "packages": [
+        {
+          "name": "@mini/shared",
+          "allowedDependencies": [],
+          "privatePaths": [
+            "internal"
+          ]
+        },
+        {
+          "name": "@mini/domain",
+          "allowedDependencies": [
+            "@mini/shared"
+          ],
+          "privatePaths": [
+            "internal"
+          ]
+        },
+        {
+          "name": "@mini/app",
+          "allowedDependencies": [
+            "@mini/domain",
+            "@mini/shared"
+          ],
+          "privatePaths": [
+            "internal"
+          ]
+        }
+      ]
+    },
+    "invalid-boundary-regex-proof": {
+      "proofMode": "regex-only",
+      "parserSelfAgreementOnly": false,
+      "packages": [
+        {
+          "name": "@mini/shared",
+          "allowedDependencies": [],
+          "privatePaths": [
+            "internal"
+          ]
+        },
+        {
+          "name": "@mini/domain",
+          "allowedDependencies": [
+            "@mini/shared"
+          ],
+          "privatePaths": [
+            "internal"
+          ]
+        },
+        {
+          "name": "@mini/app",
+          "allowedDependencies": [
+            "@mini/domain",
+            "@mini/shared"
+          ],
+          "privatePaths": [
+            "internal"
+          ]
+        }
+      ]
+    }
+  },
+  "sourceP0Dirs": [
+    "boundaries",
+    "config-guards",
+    "governed-surface"
+  ]
+}

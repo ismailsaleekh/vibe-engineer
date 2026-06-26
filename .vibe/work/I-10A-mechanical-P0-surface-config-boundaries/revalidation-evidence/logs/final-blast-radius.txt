@@ -1,0 +1,67 @@
+# Final blast-radius and contract sweep
+## Q07 scoped status
+?? .vibe/work/I-10A-mechanical-P0-surface-config-boundaries/
+?? packages/mechanical-gates/
+exit=0
+## Q07 scoped tracked diff names
+exit=0
+## root/shared/sibling scoped status
+?? eslint.config.mjs
+?? package.json
+?? packages/artifacts/
+?? packages/testing/
+?? pnpm-lock.yaml
+?? pnpm-workspace.yaml
+?? prettier.config.mjs
+?? tsconfig.base.json
+exit=0
+## root/shared/sibling scoped tracked diff names
+exit=0
+## forbidden mechanical dirs
+exit=0
+## P0 source dirs
+packages/mechanical-gates/src/p0/boundaries
+packages/mechanical-gates/src/p0/config-guards
+packages/mechanical-gates/src/p0/governed-surface
+exit=0
+## package manifest dependency keys
+{
+  "dependencies": null,
+  "devDependencies": null,
+  "scripts": {
+    "typecheck": "node fixtures/p0/surface-config-boundaries/witness.mjs --typecheck",
+    "test": "node fixtures/p0/surface-config-boundaries/witness.mjs",
+    "test:p0": "node fixtures/p0/surface-config-boundaries/witness.mjs"
+  },
+  "exports": [
+    "./p0/governed-surface",
+    "./p0/config-guards",
+    "./p0/boundaries"
+  ]
+}
+exit=0
+## forbidden core/domain-specific string sweep in Q07 source/fixtures
+packages/mechanical-gates/fixtures/p0/surface-config-boundaries/witness.mjs:243:    noPackagesCoreAssumption: !JSON.stringify({ governed, config, boundaries }).includes("packages/core"),
+packages/mechanical-gates/fixtures/p0/surface-config-boundaries/witness.mjs:250:  assert(regressionEvidence.noPackagesCoreAssumption, "regression witness found forbidden packages/core assumption", regressionEvidence);
+exit=0
+## revalidation evidence inventory
+.vibe/work/I-10A-mechanical-P0-surface-config-boundaries/revalidation-evidence/adversarial/no-unused-flags-weakened/eslint.config.mjs
+.vibe/work/I-10A-mechanical-P0-surface-config-boundaries/revalidation-evidence/adversarial/no-unused-flags-weakened/generated/ignored.ts
+.vibe/work/I-10A-mechanical-P0-surface-config-boundaries/revalidation-evidence/adversarial/no-unused-flags-weakened/mechanical-boundaries.json
+.vibe/work/I-10A-mechanical-P0-surface-config-boundaries/revalidation-evidence/adversarial/no-unused-flags-weakened/mechanical-surface.json
+.vibe/work/I-10A-mechanical-P0-surface-config-boundaries/revalidation-evidence/adversarial/no-unused-flags-weakened/package.json
+.vibe/work/I-10A-mechanical-P0-surface-config-boundaries/revalidation-evidence/adversarial/no-unused-flags-weakened/prettier.config.mjs
+.vibe/work/I-10A-mechanical-P0-surface-config-boundaries/revalidation-evidence/adversarial/no-unused-flags-weakened/README.md
+.vibe/work/I-10A-mechanical-P0-surface-config-boundaries/revalidation-evidence/adversarial/no-unused-flags-weakened/test.mjs
+.vibe/work/I-10A-mechanical-P0-surface-config-boundaries/revalidation-evidence/adversarial/no-unused-flags-weakened/tsconfig.json
+.vibe/work/I-10A-mechanical-P0-surface-config-boundaries/revalidation-evidence/logs/final-blast-radius.txt
+.vibe/work/I-10A-mechanical-P0-surface-config-boundaries/revalidation-evidence/logs/package-local-witnesses.log
+.vibe/work/I-10A-mechanical-P0-surface-config-boundaries/revalidation-evidence/logs/real-boundary-revalidator-stdin.log
+.vibe/work/I-10A-mechanical-P0-surface-config-boundaries/revalidation-evidence/logs/real-boundary-revalidator.log
+.vibe/work/I-10A-mechanical-P0-surface-config-boundaries/revalidation-evidence/logs/required-reading-wc.txt
+.vibe/work/I-10A-mechanical-P0-surface-config-boundaries/revalidation-evidence/logs/scoped-dirty-inventory.txt
+.vibe/work/I-10A-mechanical-P0-surface-config-boundaries/revalidation-evidence/real-boundary-results.json
+.vibe/work/I-10A-mechanical-P0-surface-config-boundaries/revalidation-evidence/real-boundary-revalidator-stdin.mjs
+.vibe/work/I-10A-mechanical-P0-surface-config-boundaries/revalidation-evidence/real-boundary-revalidator.mjs
+.vibe/work/I-10A-mechanical-P0-surface-config-boundaries/revalidation-evidence/ts-no-unused-gap-summary.json
+exit=0
