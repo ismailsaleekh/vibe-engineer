@@ -1,0 +1,53 @@
+## git status short after validation commands
+?? .gitignore
+?? .npmrc
+?? .vibe/
+?? CHANGELOG.md
+?? CODE_OF_CONDUCT.md
+?? CONTRIBUTING.md
+?? LICENSE
+?? README.md
+?? SECURITY.md
+?? docs/
+?? eslint.config.mjs
+?? package.json
+?? packages/
+?? pnpm-lock.yaml
+?? pnpm-workspace.yaml
+?? prettier.config.mjs
+?? tsconfig.base.json
+?? turbo.json
+
+## validation evidence files
+.vibe/work/I-01A-artifact-schemas/evidence/validation/adversarial-schema-witness.exit
+.vibe/work/I-01A-artifact-schemas/evidence/validation/adversarial-schema-witness.log
+.vibe/work/I-01A-artifact-schemas/evidence/validation/adversarial-schema-witness.mjs
+.vibe/work/I-01A-artifact-schemas/evidence/validation/pnpm_--filter_vibe-engineer_artifacts_build.exit
+.vibe/work/I-01A-artifact-schemas/evidence/validation/pnpm_--filter_vibe-engineer_artifacts_build.log
+.vibe/work/I-01A-artifact-schemas/evidence/validation/pnpm_--filter_vibe-engineer_artifacts_test.exit
+.vibe/work/I-01A-artifact-schemas/evidence/validation/pnpm_--filter_vibe-engineer_artifacts_test.log
+.vibe/work/I-01A-artifact-schemas/evidence/validation/pnpm_--filter_vibe-engineer_artifacts_typecheck.exit
+.vibe/work/I-01A-artifact-schemas/evidence/validation/pnpm_--filter_vibe-engineer_artifacts_typecheck.log
+.vibe/work/I-01A-artifact-schemas/evidence/validation/pnpm_-r_list_--depth_-1_--json.exit
+.vibe/work/I-01A-artifact-schemas/evidence/validation/pnpm_-r_list_--depth_-1_--json.log
+.vibe/work/I-01A-artifact-schemas/evidence/validation/post-command-status.txt
+.vibe/work/I-01A-artifact-schemas/evidence/validation/public-api-witness.exit
+.vibe/work/I-01A-artifact-schemas/evidence/validation/public-api-witness.log
+.vibe/work/I-01A-artifact-schemas/evidence/validation/public-api-witness.mjs
+.vibe/work/I-01A-artifact-schemas/evidence/validation/runtime-consumer/consumer.mjs
+.vibe/work/I-01A-artifact-schemas/evidence/validation/runtime-consumer/node_modules/@vibe-engineer/artifacts
+.vibe/work/I-01A-artifact-schemas/evidence/validation/runtime-consumer/package.json
+.vibe/work/I-01A-artifact-schemas/evidence/validation/static-sweeps.txt
+.vibe/work/I-01A-artifact-schemas/evidence/validation/status-inventory.txt
+.vibe/work/I-01A-artifact-schemas/evidence/validation/tool-availability.txt
+.vibe/work/I-01A-artifact-schemas/evidence/validation/ts-consumer/consumer.ts
+.vibe/work/I-01A-artifact-schemas/evidence/validation/ts-consumer/node_modules/@vibe-engineer/artifacts
+.vibe/work/I-01A-artifact-schemas/evidence/validation/ts-consumer/package.json
+.vibe/work/I-01A-artifact-schemas/evidence/validation/ts-consumer/tsconfig.json
+.vibe/work/I-01A-artifact-schemas/evidence/validation/typescript-public-entrypoint.exit
+.vibe/work/I-01A-artifact-schemas/evidence/validation/typescript-public-entrypoint.log
+
+## node_modules sentinels
+absent node_modules
+present .vibe/work/I-01A-artifact-schemas/evidence/validation/ts-consumer/node_modules
+present .vibe/work/I-01A-artifact-schemas/evidence/validation/runtime-consumer/node_modules

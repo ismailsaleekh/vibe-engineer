@@ -1,0 +1,180 @@
+## relevant schema required fields and semantic schema snippets
+SCHEMA verification-delta
+required= ["schemaVersion","artifactKind","artifactId","title","createdAt","updatedAt","producer","status","ownership","links","extensions","summary","implementationPlanRef","sensitiveAreas","catalogVersion","requiredItems"]
+requiredItems= {
+  "type": "array",
+  "minItems": 1,
+  "itemRequired": [
+    "id",
+    "layer",
+    "action",
+    "rationale",
+    "expectedArtifacts",
+    "blocking",
+    "validationOwner",
+    "fixerOwner",
+    "evidenceRequired"
+  ]
+}
+links= {
+  "type": "array",
+  "minItems": 1,
+  "itemRequired": [
+    "rel",
+    "artifactKind",
+    "artifactId",
+    "path",
+    "required",
+    "statusAtLinkTime"
+  ]
+}
+SCHEMA implementation-plan
+required= ["schemaVersion","artifactKind","artifactId","title","createdAt","updatedAt","producer","status","ownership","links","extensions","workBriefRef","objective","scope","nonScope","contextClosure","affectedAreas","schematics","implementationSteps","acceptanceCriteria","definitionOfDone","risks","openBlockers","verificationDelta"]
+verificationDelta= {
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "artifactKind",
+    "artifactId",
+    "title",
+    "createdAt",
+    "updatedAt",
+    "producer",
+    "status",
+    "ownership",
+    "links",
+    "extensions",
+    "summary",
+    "implementationPlanRef",
+    "sensitiveAreas",
+    "catalogVersion",
+    "requiredItems"
+  ]
+}
+links= {
+  "type": "array",
+  "minItems": 1,
+  "itemRequired": [
+    "rel",
+    "artifactKind",
+    "artifactId",
+    "path",
+    "required",
+    "statusAtLinkTime"
+  ]
+}
+SCHEMA evidence-packet
+required= ["schemaVersion","artifactKind","artifactId","title","createdAt","updatedAt","producer","status","ownership","links","extensions","evidenceClass","layer","subjectRefs","commandOrTool","startedAt","endedAt","exitStatus","result","blocking","artifacts","warnings"]
+links= {
+  "type": "array",
+  "minItems": 1,
+  "itemRequired": [
+    "rel",
+    "artifactKind",
+    "artifactId",
+    "path",
+    "required",
+    "statusAtLinkTime"
+  ]
+}
+subjectRefs= {
+  "type": "array",
+  "minItems": 1,
+  "itemRequired": [
+    "rel",
+    "artifactKind",
+    "artifactId",
+    "path",
+    "required",
+    "statusAtLinkTime"
+  ]
+}
+SCHEMA build-result
+required= ["schemaVersion","artifactKind","artifactId","title","createdAt","updatedAt","producer","status","ownership","links","extensions","implementationPlanRef","implementationSummary","changedFilesSummary","schematicsUsed","testsAndVerificationChanged","verificationRuns","warningsAndBlockers","contextDocsUpdates","finalStatusReason"]
+links= {
+  "type": "array",
+  "minItems": 1,
+  "itemRequired": [
+    "rel",
+    "artifactKind",
+    "artifactId",
+    "path",
+    "required",
+    "statusAtLinkTime"
+  ]
+}
+verificationRuns= {
+  "type": "array",
+  "minItems": 1,
+  "itemRequired": [
+    "evidencePacketRef",
+    "summary",
+    "result",
+    "blocking"
+  ]
+}
+testsAndVerificationChanged= {
+  "type": "array",
+  "itemRequired": [
+    "path",
+    "changeKind",
+    "evidenceRef"
+  ]
+}
+warningsAndBlockers= {
+  "type": "array",
+  "itemRequired": [
+    "severity",
+    "blocking",
+    "owner",
+    "evidenceRef"
+  ]
+}
+SCHEMA ship-packet
+required= ["schemaVersion","artifactKind","artifactId","title","createdAt","updatedAt","producer","status","ownership","links","extensions","buildResultRef","finalVerification","contextPreservation","commitPreparation","prPreparation","releaseOrMigrationNotes","followUps","noPushWithoutApproval"]
+links= {
+  "type": "array",
+  "minItems": 1,
+  "itemRequired": [
+    "rel",
+    "artifactKind",
+    "artifactId",
+    "path",
+    "required",
+    "statusAtLinkTime"
+  ]
+}
+finalVerification= {
+  "type": "array",
+  "minItems": 1,
+  "itemRequired": [
+    "evidencePacketRef",
+    "summary",
+    "result",
+    "blocking"
+  ]
+}
+contextPreservation= {
+  "type": "object",
+  "required": [
+    "contextHeaderRefs",
+    "driftCheckEvidenceRefs",
+    "updateStatus"
+  ]
+}
+## valid fixture layer/ref summaries
+FIXTURE verification_delta
+layers= safety_hooks:add,typecheck:add,lint_format:not_applicable,mechanical_gate:add,unit:add,integration:add,contract_adapter:add,e2e:add,ui_verification:not_applicable,ai_eval:not_applicable,build_package:add,context_drift:add,observability:not_applicable,advisory_review:add,final_dod:add,schema_validation:add
+links= verification_delta_of:implementation_plan:true
+FIXTURE implementation_plan
+embedded layers= safety_hooks:add,typecheck:add,lint_format:not_applicable,mechanical_gate:add,unit:add,integration:add,contract_adapter:add,e2e:add,ui_verification:not_applicable,ai_eval:not_applicable,build_package:add,context_drift:add,observability:not_applicable,advisory_review:add,final_dod:add,schema_validation:add
+links= derived_from:work_brief:true
+FIXTURE evidence_packet
+links= evidence_for:implementation_plan:true
+subjectRefs= evidence_for:implementation_plan:true
+FIXTURE build_result
+links= implements:implementation_plan:true
+verificationRuns= evidence_for:evidence_packet:true
+FIXTURE ship_packet
+links= ship_packet_of:build_result:true
+finalVerification= evidence_for:evidence_packet:true

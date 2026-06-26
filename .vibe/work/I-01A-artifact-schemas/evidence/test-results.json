@@ -1,0 +1,106 @@
+{
+  "ok": true,
+  "witnesses": [
+    {
+      "name": "ajv strict schema compile",
+      "schemas": 10
+    },
+    {
+      "name": "schema catalog",
+      "schemas": 10
+    },
+    {
+      "name": "valid work_brief",
+      "filePath": "/Users/lizavasilyeva/work/vibe-engineer/packages/artifacts/fixtures/valid/work_brief.json"
+    },
+    {
+      "name": "valid implementation_plan",
+      "filePath": "/Users/lizavasilyeva/work/vibe-engineer/packages/artifacts/fixtures/valid/implementation_plan.json"
+    },
+    {
+      "name": "valid verification_delta",
+      "filePath": "/Users/lizavasilyeva/work/vibe-engineer/packages/artifacts/fixtures/valid/verification_delta.json"
+    },
+    {
+      "name": "valid build_result",
+      "filePath": "/Users/lizavasilyeva/work/vibe-engineer/packages/artifacts/fixtures/valid/build_result.json"
+    },
+    {
+      "name": "valid ship_packet",
+      "filePath": "/Users/lizavasilyeva/work/vibe-engineer/packages/artifacts/fixtures/valid/ship_packet.json"
+    },
+    {
+      "name": "valid evidence_packet",
+      "filePath": "/Users/lizavasilyeva/work/vibe-engineer/packages/artifacts/fixtures/valid/evidence_packet.json"
+    },
+    {
+      "name": "valid agent_registry_entry",
+      "filePath": "/Users/lizavasilyeva/work/vibe-engineer/packages/artifacts/fixtures/valid/agent_registry_entry.json"
+    },
+    {
+      "name": "valid context_file_header",
+      "filePath": "/Users/lizavasilyeva/work/vibe-engineer/packages/artifacts/fixtures/valid/context_file_header.json"
+    },
+    {
+      "name": "valid schematic_manifest",
+      "filePath": "/Users/lizavasilyeva/work/vibe-engineer/packages/artifacts/fixtures/valid/schematic_manifest.json"
+    },
+    {
+      "name": "valid skill_manifest",
+      "filePath": "/Users/lizavasilyeva/work/vibe-engineer/packages/artifacts/fixtures/valid/skill_manifest.json"
+    },
+    {
+      "name": "invalid work_brief",
+      "count": 5
+    },
+    {
+      "name": "invalid implementation_plan",
+      "count": 4
+    },
+    {
+      "name": "invalid verification_delta",
+      "count": 7
+    },
+    {
+      "name": "invalid build_result",
+      "count": 8
+    },
+    {
+      "name": "invalid ship_packet",
+      "count": 7
+    },
+    {
+      "name": "invalid evidence_packet",
+      "count": 5
+    },
+    {
+      "name": "invalid agent_registry_entry",
+      "count": 4
+    },
+    {
+      "name": "invalid context_file_header",
+      "count": 4
+    },
+    {
+      "name": "invalid schematic_manifest",
+      "count": 4
+    },
+    {
+      "name": "invalid skill_manifest",
+      "count": 4
+    },
+    {
+      "name": "non-json carriers",
+      "count": 3
+    },
+    {
+      "name": "F2/F3 adversarial fixtures",
+      "count": 10
+    },
+    {
+      "name": "type drift",
+      "positive": "passed",
+      "negative": "failed as expected"
+    }
+  ]
+}

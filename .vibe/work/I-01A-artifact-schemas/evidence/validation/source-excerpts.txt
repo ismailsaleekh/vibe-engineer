@@ -1,0 +1,244 @@
+## DL-02/brief Ajv and strict validator excerpts
+/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/implementation-briefs/impl-q03-brief-generated.md-9-Implement the foundational `@vibe-engineer/artifacts` package for DL-02 canonical artifact contracts.
+/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/implementation-briefs/impl-q03-brief-generated.md-10-
+/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/implementation-briefs/impl-q03-brief-generated.md:11:The package must provide strict JSON Schema 2020-12 schemas, generated TypeScript types, runtime validators, typed validation errors, version checks, link checks, and fixture/witness assets for all ten DL-02 artifact classes:
+/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/implementation-briefs/impl-q03-brief-generated.md-12-
+/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/implementation-briefs/impl-q03-brief-generated.md-13-1. Work Brief
+--
+/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/implementation-briefs/impl-q03-brief-generated.md-16-4. Build Result
+/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/implementation-briefs/impl-q03-brief-generated.md-17-5. Ship Packet
+/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/implementation-briefs/impl-q03-brief-generated.md:18:6. Evidence Packet
+/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/implementation-briefs/impl-q03-brief-generated.md-19-7. Agent Registry entry
+/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/implementation-briefs/impl-q03-brief-generated.md-20-8. Context file header
+--
+/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/implementation-briefs/impl-q03-brief-generated.md-27-
+/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/implementation-briefs/impl-q03-brief-generated.md-28-- commits canonical JSON Schemas for every DL-02 artifact class;
+/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/implementation-briefs/impl-q03-brief-generated.md:29:- uses a strict JSON Schema 2020-12 runtime validator, expected v1 choice Ajv strict mode unless an already-green explicit replacement decision exists;
+/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/implementation-briefs/impl-q03-brief-generated.md-30-- generates TypeScript types from the same canonical schemas or from a schema-authoring source that emits byte-equivalent committed schemas;
+/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/implementation-briefs/impl-q03-brief-generated.md-31-- exposes package APIs for validating artifact data and on-disk artifact JSON files;
+/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/implementation-briefs/impl-q03-brief-generated.md-32-- exposes typed validation errors with artifact path, artifact kind, schema id, schema version, JSON Pointer path, stable error code, and message;
+/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/implementation-briefs/impl-q03-brief-generated.md:33:- rejects unsupported versions, unknown fields, missing required links/fields, bad status handoffs, malformed extension maps, and heuristic/non-JSON carriers;
+/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/implementation-briefs/impl-q03-brief-generated.md-34-- includes valid and invalid on-disk JSON fixtures for every artifact class;
+/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/implementation-briefs/impl-q03-brief-generated.md-35-- includes targeted tests proving positive, negative, regression, and real-boundary requirements;
+--
+/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/implementation-briefs/impl-q03-brief-generated.md-128-4. Define canonical JSON Schemas for all ten DL-02 artifact classes using JSON Schema 2020-12 and strict modeled object boundaries.
+/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/implementation-briefs/impl-q03-brief-generated.md-129-5. Implement shared envelope/link/status/version/schema-ref constraints exactly from DL-02, including `additionalProperties: false` except explicitly namespaced `extensions` maps.
+/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/implementation-briefs/impl-q03-brief-generated.md:130:6. Implement strict runtime validation APIs for unknown input and on-disk JSON files. Do not parse Markdown/YAML/frontmatter/chat text as load-bearing artifacts.
+/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/implementation-briefs/impl-q03-brief-generated.md-131-7. Implement typed validation error mapping with stable error codes and JSON Pointer paths.
+/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/implementation-briefs/impl-q03-brief-generated.md-132-8. Generate TypeScript types from canonical schemas and add a drift check proving generated types correspond to committed schemas.
+/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/implementation-briefs/impl-q03-brief-generated.md:133:9. Add valid fixture JSON for every artifact kind and invalid fixtures covering missing required fields, unknown fields, unsupported versions, wrong artifact kind, bad links/status, and malformed extension data.
+/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/implementation-briefs/impl-q03-brief-generated.md-134-10. Add package tests using the tooling/scripts available after `I-00A` handoff. If required test tooling/scripts are absent, either add package-owned configuration inside `packages/artifacts/**` when permitted by the skeleton contract or stop `BLOCKED` for missing dependency/handoff.
+/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/implementation-briefs/impl-q03-brief-generated.md-135-11. Run targeted package checks and record exact commands, exit codes, and evidence paths in the report.
+--
+/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/implementation-briefs/impl-q03-brief-generated.md-163-- TypeScript types are generated from the same schema source and drift is detected;
+/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/implementation-briefs/impl-q03-brief-generated.md-164-- common envelope, link model, status discipline, producer, ownership, and extension constraints are enforced;
+/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/implementation-briefs/impl-q03-brief-generated.md:165:- Work Brief, Implementation Plan, embedded Verification Delta, Build Result, Ship Packet, Evidence Packet, Agent Registry entry, Context file header, Schematic manifest, and Skill manifest all validate successfully when valid;
+/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/implementation-briefs/impl-q03-brief-generated.md-166-- validation errors include path/kind/schema/version/pointer/code/message;
+/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/implementation-briefs/impl-q03-brief-generated.md-167-- domain-neutral generic fixture content passes.
+--
+/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/implementation-briefs/impl-q03-brief-generated.md-176-- wrong `artifactKind` for a validator;
+/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/implementation-briefs/impl-q03-brief-generated.md-177-- invalid status handoffs, including `build` from unapproved plan and `ship` from failed/blocked build result where represented at schema/status level;
+/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/implementation-briefs/impl-q03-brief-generated.md:178:- Verification Delta missing catalog categories or required item metadata;
+/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/implementation-briefs/impl-q03-brief-generated.md:179:- Build Result or Ship Packet claiming verification without Evidence Packet references;
+/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/implementation-briefs/impl-q03-brief-generated.md:180:- Evidence Packet that cannot distinguish deterministic blockers from advisory evidence;
+/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/implementation-briefs/impl-q03-brief-generated.md-181-- Agent/Skill/Schematic manifests without schema refs or allowed/forbidden action policy;
+/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/implementation-briefs/impl-q03-brief-generated.md-182-- Context headers missing scope/owner/dependency/update/drift metadata;
+--
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-31-`vibe-engineer` v1 artifact contracts are strict, JSON-native, schema-versioned, runtime-validated, and type-generated. The canonical carrier for all load-bearing artifact data is UTF-8 JSON validated against JSON Schema 2020-12 in strict mode, with TypeScript types generated from the same schemas. Markdown, YAML, chat text, and TypeScript object literals may be generated as human projections or authoring conveniences only; they are not canonical carriers and are never accepted through heuristic or regex parsing for load-bearing handoffs.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-32-
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md:33:The locked v1 schema catalog covers Work Brief, Implementation Plan, Verification Delta, Build Result, Ship Packet, Evidence Packet, Agent Registry entry, Context file header, Schematic manifest, and Skill manifest. The artifact chain remains raw intent → Work Brief → Implementation Plan containing a machine-readable Verification Delta → Build Result plus Evidence Packet references → Ship Packet. Registry, context, schematic, and skill manifests are side-linked typed artifacts that must validate before their consumers may rely on them.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-34-
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-35-## Decision details
+--
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-38-
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-39-1. The normative schema language is JSON Schema 2020-12.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md:40:2. Runtime validation in `packages/artifacts` must use a strict JSON Schema validator. The v1 implementation owner should use Ajv in strict mode unless a later explicit decision replaces it with an equivalent strict JSON Schema 2020-12 validator; replacing it must preserve all behavior in this decision.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md:41:3. TypeScript types must be generated from the same canonical schemas or from a schema-authoring source that emits byte-equivalent committed JSON Schemas. Hand-authored TypeScript interfaces are not the source of truth.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-42-4. Canonical artifact files are UTF-8 JSON objects with `additionalProperties: false` at every modeled object boundary except explicitly namespaced extension maps.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-43-5. Unknown top-level fields are invalid. Extension data must live under `extensions` with a namespace key, its own `schemaVersion`, and no ability to satisfy required core fields.
+--
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-127-- consequences: unsupported major, unknown minor without declared compatibility, missing version, or malformed version is a validation failure with typed evidence.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-128-
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md:129:### Embedded versus referenced Evidence Packets
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-130-
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md:131:- decision: referenced Evidence Packets accepted; embedding rejected for canonical Build/Ship handoffs
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-132-- rationale: evidence can be large and multi-layered, and later verification/storage lanes need standalone packets with deterministic/advisory classification.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md:133:- consequences: Build Results and Ship Packets carry evidence references and summaries; the Evidence Packet is the canonical evidence artifact.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-134-
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-135-### Schema-library/runtime-validation options
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-136-
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-137-- decision: JSON Schema 2020-12 plus strict runtime validator accepted; Zod-only/Valibot-only/TypeScript-only rejected as canonical
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md:138:- rationale: artifact files are a cross-package, CLI, CI, registry, context, and skill boundary. JSON Schema is the portable contract. Ajv strict mode is the expected v1 validator implementation because it supports JSON Schema and fail-closed behavior.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-139-- consequences: `I-01-artifact-schemas-config` may use a TypeScript schema builder internally only if the committed JSON Schema and generated types remain the audited source of truth.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-140-
+--
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-174-      reason: Needs Context file header schema.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-175-    - id: I-09-verification-runner-evidence-failure-routing
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md:176:      reason: Needs Evidence Packet schema and deterministic/advisory result model.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-177-    - id: I-14-pi-adapter-skill-consumption
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-178-      reason: Needs Skill manifest schema and selected-harness proof consequences.
+--
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-200-      relying_on: Header identity, drift, dependency, and update metadata.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-201-    - id: DL-10-verification-implementation
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md:202:      blocked_until: Verification Delta and Evidence Packet schemas are locked.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-203-      relying_on: Evidence/failure taxonomy carrier fields.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-204-    - id: DL-14-api-contract-mechanism
+--
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-300-  - Successor Implementation Plans link back with `rel: derived_from` and `artifactKind: work_brief`.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-301-  - Evidence links are optional at Work Brief stage and must be advisory/source-only if present.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md:302:- version/migration fields: `schemaVersion` required; unsupported versions reject before planning.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-303-- validation requirements and failure behavior: `plan` intake must reject missing title/type/sourceSkill/background/outcome/link fields; no skill-specific divergent Work Brief schemas are allowed.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-304-- domain-neutrality notes: Core fields use generic work/verification vocabulary only. Project/business terms may appear only as user-supplied content or extension data, not required core fields.
+--
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-356-  - `mechanicalGateImpacts`, `advisoryReviewItems`, `rerunHints`, `riskLinks`.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-357-- links:
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md:358:  - Links to Work Brief through the enclosing plan; links to expected Evidence Packets via `evidenceRequired` descriptors.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-359-- version/migration fields: `catalogVersion` and `schemaVersion` required. Unknown catalog items or missing catalog categories are validation failures unless explicitly marked `not_applicable` with rationale.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-360-- validation/failure behavior: Silent skipped verification catalog categories are invalid. `not_applicable` requires rationale. `blocked` requires blocking owner/condition.
+--
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-375-  - `schematicsUsed`: array with schematic manifest refs, input refs, dry-run/conflict status, and output paths.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-376-  - `testsAndVerificationChanged`: array of added/updated/reused verification assets.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md:377:  - `verificationRuns`: array of Evidence Packet refs plus result summary.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-378-  - `warningsAndBlockers`: array with `severity` (`critical | major-local | minor-local | advisory`), `blocking`, owner, and evidence ref.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-379-  - `contextDocsUpdates`: array of context/header refs and docs updates.
+--
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-383-- links:
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-384-  - Must link to exactly one approved Implementation Plan.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md:385:  - Must reference Evidence Packet artifacts for every verification claim.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-386-  - Ship Packet links back with `rel: derived_from` or `ship_packet_of`.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md:387:- version/migration fields: `schemaVersion` required; build consumers reject unsupported versions.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md:388:- validation/failure behavior: Narrative claims without Evidence Packet refs are invalid for verification status. `passed` is invalid when any deterministic blocking evidence failed or is missing.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-389-- domain-neutrality notes: Changed areas and summaries use generic module/package/contract/test vocabulary.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-390-- downstream consumers/proof owners: `ship` intake in `I-21/I-22`, verification/evidence in `I-09`, context in `I-08`, schema in `I-01`.
+--
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-399-  - `status`: `ready_for_review | blocked | superseded | approved_for_operator_action`.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-400-  - `buildResultRef`: required link to `BuildResultV1`.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md:401:  - `finalVerification`: array of Evidence Packet refs and summaries.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-402-  - `contextPreservation`: object with context header refs, drift-check evidence refs, and update status.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-403-  - `commitPreparation`: object with `suggestedCommitMessage`, optional `commitBody`, and `commitPerformedByAgent: false`.
+--
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-409-  - `operatorApprovalRef`, `rollbackNotes`, `knownAdvisoryWarnings`, `artifactBundleRefs`.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-410-- links:
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md:411:  - Must link to Build Result and final Evidence Packets.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-412-  - Must not claim verification without evidence refs.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-413-- version/migration fields: `schemaVersion` required.
+--
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-416-- downstream consumers/proof owners: final DoD/schema checks in `I-22/I-23`, CI/context verification in `I-20/I-08`, schema in `I-01`.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-417-
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md:418:### Evidence Packet
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-419-
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-420-- purpose and owner/producer: Canonical record of deterministic and advisory evidence. Produced by verification runner, build, ship, validators, or tools.
+--
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-439-- links:
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-440-  - Must link to the artifact it proves via `evidence_for`.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md:441:  - Build/Ship/Verification Delta reference Evidence Packets by id/path.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md:442:- version/migration fields: `schemaVersion` required; evidence readers reject unsupported versions.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-443-- validation/failure behavior: Deterministic evidence with `result: fail` and `blocking: true` hard-blocks dependent `passed` statuses. Advisory evidence cannot be the sole hard blocker unless promoted by task-specific criteria recorded in the plan.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-444-- domain-neutrality notes: Evidence layers are generic; command output may contain project data only as observed subject content.
+--
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-569-2. `brainstorm`, `grill-me`, or `task` produces exactly one canonical `WorkBriefV1` per normalized work item. Multiple drafts may exist only through `supersedes`/`superseded_by` links; the planner consumes a `ready` Work Brief.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-570-3. `plan` consumes a Work Brief only and produces an `ImplementationPlanV1` with an embedded `VerificationDeltaV1` that evaluates the verification catalog item by item.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md:571:4. `build` consumes an `approved` Implementation Plan only, performs implementation plus verification work, writes standalone `EvidencePacketV1` artifacts for commands/tools/runs, and writes a `BuildResultV1` that references those Evidence Packets.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md:572:5. `ship` consumes a `passed` Build Result only, runs final verification/context checks, writes any final Evidence Packets, and writes a `ShipPacketV1` with commit/PR preparation material and `noPushWithoutApproval: true`.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-573-6. Agent Registry entries side-link to Skill manifests and input/output schemas.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-574-7. Skill manifests side-link to core artifact schemas and selected harness integration hooks.
+--
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-609-  - `I-05`: actual `brainstorm`/`grill-me`/`task` writers produce Work Briefs consumed by actual plan intake.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-610-  - `I-06`: actual `plan` consumes Work Brief and writes Implementation Plan with complete machine-readable Verification Delta consumed by build intake/schema validator.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md:611:  - `I-21`: actual `build` consumes Implementation Plan and writes Build Result plus Evidence Packet refs consumed by ship intake.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-612-  - `I-22`: actual `ship` consumes Build Result/Evidence and writes Ship Packet consumed by final DoD/schema checks.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-613-  - `I-04`: actual registry consumer loads valid Agent Registry entries.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-614-  - `I-07`: actual schematic runner/validator consumes Schematic manifests.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-615-  - `I-08`: actual context writer/retriever consumes Context headers and detects drift metadata.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md:616:  - `I-09`: actual verification runner writes Evidence Packets consumed by build/ship/CI failure routing.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-617-  - `I-14`: actual selected-harness adapter consumes Skill manifests, or marks live proof `pending-live/BLOCKED` if unavailable.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-618-- negative witnesses required downstream:
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-619-  - Missing artifact kind, schema version, stable id, required predecessor link, or required evidence ref is rejected.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-620-  - Unsupported major/minor versions are rejected without fallback.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md:621:  - Verification Delta missing a catalog category is rejected.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md:622:  - Build Result/Ship Packet narrative claims without Evidence Packet refs are rejected.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md:623:  - Evidence Packet that cannot distinguish deterministic hard blockers from advisory review is rejected.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-624-  - Agent/Skill/Schematic manifests without schema refs or allowed/forbidden actions are rejected.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-625-  - Context headers missing scope/owner/drift/update metadata are rejected as authoritative context.
+--
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-699-9. Cross-artifact linking from raw intent through Ship Packet is explicit.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-700-10. Versioning, migrations, unsupported-version handling, and no-silent-fallback behavior are explicit.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md:701:11. Validation/type-generation consequences identify JSON Schema 2020-12, strict runtime validation, generated TypeScript types, and invalid-artifact witnesses.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-702-12. Real-boundary status is stated: not applicable for this decision itself; required for downstream implementation seams.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-703-13. DL-20A domain-neutrality rules are applied.
+--
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-714-- Status/output class is DL-24A-compatible and exactly one output class is used.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-715-- All ten artifact classes have concrete schema catalog sections.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md:716:- Work Brief → Implementation Plan → Verification Delta → Build Result → Evidence Packet → Ship Packet link model is explicit.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-717-- Registry entry, context header, schematic manifest, and skill manifest are included and not silently deferred.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-718-- `I-01` can implement validators/types without inventing schema classes, versions, carriers, core fields, or validation failure behavior.
+--
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-725-- Missing stable id/version/link semantics for Work Brief/Plan/Build/Ship is critical.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-726-- Verification Delta that can skip catalog categories silently is critical.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md:727:- Build Result or Ship Packet narrative verification without Evidence Packet refs is critical.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md:728:- Evidence Packet that cannot distinguish deterministic blockers from advisory review is critical.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-729-- Registry/Skill/Schematic manifests lacking input/output schema refs or allowed/forbidden actions are critical.
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md-730-- Any load-bearing parsing plan based on heuristic text/regex rather than typed JSON schema validation is critical.
+## I-00A validation dependency excerpts
+3-## Checkpoint 0 — report created first
+4-
+5:- Status: IN-PROGRESS
+6-- Validator: independent adversarial validation for `I-00A-workspace-package-skeleton`.
+7-- Created before reading any other file in this session.
+--
+16-## Checkpoint 1 — required source inventory
+17-
+18:- Status: IN-PROGRESS
+19-- Files inspected: none for content yet.
+20-- Command run:
+--
+28-## Checkpoint 2 — source/brief/report inspection started
+29-
+30:- Status: IN-PROGRESS
+31-- Files inspected for content so far:
+32-  - `/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/implementation-briefs/impl-q01-brief-generated.md`
+--
+51-## Checkpoint 3 — repository inventory and sibling state
+52-
+53:- Status: IN-PROGRESS
+54-- Commands run:
+55-  - `git status --short`; exit 0.
+56-  - `git diff --name-status -- .`; exit 0.
+57-  - `find` inventories for top-level entries, `packages`, I-00A work files, and `.vibe/ownership`; exit 0.
+58:  - `find` inventories for sibling `I-00B` and `I-01A` work dirs; exit 0.
+59-- Evidence:
+60-  - Greenfield repo is entirely untracked in git status; tracked diff is empty. Dirty-tree safety therefore must be judged by path ownership/inventory, not by clean status.
+61-  - I-00A-owned root/config/workspace files are present: `package.json`, `pnpm-lock.yaml`, `pnpm-workspace.yaml`, `turbo.json`, `tsconfig.base.json`, `eslint.config.mjs`, `prettier.config.mjs`, `.gitignore`, `.npmrc`.
+62-  - I-00B governance files are present and `I-00B-validation-report.md` verdict is PASS; these are sibling-owned, not I-00A-owned.
+63:  - `packages/artifacts/**` now contains I-01A source/schema/fixture files, and `I-01A-artifact-schemas/implementation-report.md` states those files were created by the I-01A lane; I-01A validation is only IN-PROGRESS. I-00A validation will not rely on those unvalidated source/schema facts beyond current workspace package discovery.
+64-  - `.vibe/ownership/I-00A-workspace-package-skeleton.md` is the only ownership file currently present.
+65-- Files inspected for content in this checkpoint:
+66-  - `/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-00B-governance-baseline/I-00B-validation-report.md`
+67:  - `/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-01A-artifact-schemas/implementation-report.md`
+68:  - `/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-01A-artifact-schemas/I-01A-validation-report.md`
+69-- Provisional risk note:
+70:  - Current on-disk package tree is no longer pure I-00A skeleton because I-01A has written `packages/artifacts/**`. This is a sibling/blast-radius condition, not yet an I-00A defect; validation must avoid treating unvalidated I-01A product source as proof of I-00A correctness.
+71-- Blockers: none.
+72-- Next step: inspect root configs, package manifests, ownership record, witness implementation, and existing I-00A evidence outputs.
+--
+74-## Checkpoint 4 — root/package surfaces and witnesses
+75-
+76:- Status: IN-PROGRESS
+77-- Files inspected directly:
+78-  - `package.json`, `pnpm-workspace.yaml`, `turbo.json`, `tsconfig.base.json`, `eslint.config.mjs`, `prettier.config.mjs`, `.npmrc`, `.gitignore`, `pnpm-lock.yaml`
+--
+90-  - `pnpm run workspace:graph`: exit 0; graph has root plus 18 workspace packages.
+91-  - `pnpm install --lockfile-only --ignore-scripts --frozen-lockfile`: exit 0; output says scope all 19 workspace projects; `node_modules` remains absent.
+92:  - `pnpm run workspace:surface`: exit 1 on current tree.
+93-  - `node .../workspace-surface-witness.mjs --root .../fixtures/valid-workspace`: exit 0.
+94-  - Negative fixtures `missing-package`, `packages-core`, `testing-prod-dependency`, `fake-cli-bin`: each exit 1 with the expected failure code.
+--
+97-  - TypeScript config is strict (`strict`, `noImplicitAny`, `strictNullChecks`, `noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`, `noEmitOnError`, etc.); ESLint config uses strict typed TypeScript config and forbids explicit `any`, non-null assertions, unsafe operations, and raw `JSON.parse` outside a named validator.
+98-  - Required package names are present. CLI package remains `vibe-engineer` with no `bin`; `@vibe-engineer/testing` remains private/test-only and no package has a production dependency on it. `packages/core`, future non-pi adapters, `apps`, `examples`, `.github`, `scripts`, and `node_modules` are absent.
+99:  - Current root `workspace:surface` failure is `PACKAGE_SOURCE_CREATED` for `packages/artifacts` entries (`README.md`, `fixtures`, `schemas`, `scripts`, `src`, `tests`). This aligns with the unvalidated sibling I-01A implementation state, not with root/package graph failure.
+100-- Provisional classification:
+101:  - Real package-manager boundary is green.
+102-  - Negative/regression witnesses are meaningful and pass as guards.
+103:  - The current-tree surface witness failure is a sibling-contamination/process risk to classify after final blast-radius review; I-00A validation must not use I-01A source as proof.
+104-- Blockers: none yet.
+105-- Next step: complete source-decision consistency checks, blast-radius sweeps, and final severity classification.

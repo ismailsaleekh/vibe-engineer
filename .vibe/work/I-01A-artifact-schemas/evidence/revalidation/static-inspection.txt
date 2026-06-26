@@ -1,0 +1,85 @@
+## schema counts and top-level constraints
+{
+  "count": 10,
+  "files": [
+    "agent-registry-entry.schema.json",
+    "build-result.schema.json",
+    "context-file-header.schema.json",
+    "evidence-packet.schema.json",
+    "implementation-plan.schema.json",
+    "schematic-manifest.schema.json",
+    "ship-packet.schema.json",
+    "skill-manifest.schema.json",
+    "verification-delta.schema.json",
+    "work-brief.schema.json"
+  ]
+}
+agent-registry-entry.schema.json: schema=https://json-schema.org/draft/2020-12/schema id=https://schemas.vibe-engineer.dev/artifacts/v1/agent-registry-entry.schema.json title=AgentRegistryEntryV1 kind=agent_registry_entry version=1.0.0 additionalProperties=false
+build-result.schema.json: schema=https://json-schema.org/draft/2020-12/schema id=https://schemas.vibe-engineer.dev/artifacts/v1/build-result.schema.json title=BuildResultV1 kind=build_result version=1.0.0 additionalProperties=false
+context-file-header.schema.json: schema=https://json-schema.org/draft/2020-12/schema id=https://schemas.vibe-engineer.dev/artifacts/v1/context-file-header.schema.json title=ContextFileHeaderV1 kind=context_file_header version=1.0.0 additionalProperties=false
+evidence-packet.schema.json: schema=https://json-schema.org/draft/2020-12/schema id=https://schemas.vibe-engineer.dev/artifacts/v1/evidence-packet.schema.json title=EvidencePacketV1 kind=evidence_packet version=1.0.0 additionalProperties=false
+implementation-plan.schema.json: schema=https://json-schema.org/draft/2020-12/schema id=https://schemas.vibe-engineer.dev/artifacts/v1/implementation-plan.schema.json title=ImplementationPlanV1 kind=implementation_plan version=1.0.0 additionalProperties=false
+schematic-manifest.schema.json: schema=https://json-schema.org/draft/2020-12/schema id=https://schemas.vibe-engineer.dev/artifacts/v1/schematic-manifest.schema.json title=SchematicManifestV1 kind=schematic_manifest version=1.0.0 additionalProperties=false
+ship-packet.schema.json: schema=https://json-schema.org/draft/2020-12/schema id=https://schemas.vibe-engineer.dev/artifacts/v1/ship-packet.schema.json title=ShipPacketV1 kind=ship_packet version=1.0.0 additionalProperties=false
+skill-manifest.schema.json: schema=https://json-schema.org/draft/2020-12/schema id=https://schemas.vibe-engineer.dev/artifacts/v1/skill-manifest.schema.json title=SkillManifestV1 kind=skill_manifest version=1.0.0 additionalProperties=false
+verification-delta.schema.json: schema=https://json-schema.org/draft/2020-12/schema id=https://schemas.vibe-engineer.dev/artifacts/v1/verification-delta.schema.json title=VerificationDeltaV1 kind=verification_delta version=1.0.0 additionalProperties=false
+work-brief.schema.json: schema=https://json-schema.org/draft/2020-12/schema id=https://schemas.vibe-engineer.dev/artifacts/v1/work-brief.schema.json title=WorkBriefV1 kind=work_brief version=1.0.0 additionalProperties=false
+## type declarations exported API lines
+3:export type ArtifactKind = "agent_registry_entry" | "build_result" | "context_file_header" | "evidence_packet" | "implementation_plan" | "schematic_manifest" | "ship_packet" | "skill_manifest" | "verification_delta" | "work_brief";
+5:export interface ArtifactValidationError {
+15:export type ArtifactValidationResult<T> =
+1384:export type AnyArtifactV1 = AgentRegistryEntryV1 | BuildResultV1 | ContextFileHeaderV1 | EvidencePacketV1 | ImplementationPlanV1 | SchematicManifestV1 | ShipPacketV1 | SkillManifestV1 | VerificationDeltaV1 | WorkBriefV1;
+1386:export const ARTIFACT_KINDS: readonly ArtifactKind[];
+1387:export const SUPPORTED_SCHEMA_VERSION: '1.0.0';
+1388:export const SCHEMA_FILES: Readonly<Record<ArtifactKind, string>>;
+1389:export function schemaPathForKind(kind: ArtifactKind): string | undefined;
+1390:export function loadSchema(kind: ArtifactKind): unknown;
+1391:export function loadAllSchemas(): Readonly<Record<ArtifactKind, unknown>>;
+1392:export function compileAllArtifactSchemas(): Readonly<{ schemaVersion: '1.0.0'; kinds: readonly ArtifactKind[] }>;
+1393:export function validateArtifact(data: unknown, options?: { artifactPath?: string }): ArtifactValidationResult<AnyArtifactV1>;
+1394:export function validateArtifactKind(kind: ArtifactKind, data: unknown, options?: { artifactPath?: string }): ArtifactValidationResult<AnyArtifactV1>;
+1395:export function validateArtifactFile(filePath: string, options?: { artifactPath?: string; kind?: ArtifactKind }): ArtifactValidationResult<AnyArtifactV1>;
+1396:export const ValidationErrorCode: Readonly<Record<string, string>>;
+## package scripts/deps
+{
+  "scripts": {
+    "generate:types": "node scripts/generate-types.mjs",
+    "check:types": "node scripts/check-generated-types.mjs",
+    "typecheck": "node scripts/check-generated-types.mjs && node scripts/typecheck-public-entrypoint.mjs",
+    "test": "node tests/run-tests.mjs",
+    "build": "node scripts/check-generated-types.mjs && node tests/run-tests.mjs"
+  },
+  "dependencies": {
+    "ajv": "8.17.1"
+  },
+  "exports": {
+    ".": {
+      "types": "./src/generated/types.d.ts",
+      "import": "./src/index.js"
+    },
+    "./schemas": "./src/schema-registry.js",
+    "./schemas/*": "./schemas/*"
+  }
+}
+## lockfile ajv snippets
+32:  packages/artifacts:
+34:      ajv:
+36:        version: 8.17.1
+235:  ajv@6.15.0:
+238:  ajv@8.17.1:
+607:      ajv: 6.15.0
+763:  ajv@6.15.0:
+770:  ajv@8.17.1:
+850:      ajv: 6.15.0
+## static source sweeps
+packages/artifacts/src/schema-registry.js:42:  return JSON.parse(fs.readFileSync(schemaPath, 'utf8'));
+packages/artifacts/src/validation.js:3:import Ajv2020 from 'ajv/dist/2020.js';
+packages/artifacts/src/validation.js:82:  return new Ajv2020({
+packages/artifacts/src/validation.js:83:    strict: true,
+packages/artifacts/src/validation.js:335:    parsed = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+packages/artifacts/tests/run-tests.mjs:38:  const data = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+packages/artifacts/tests/run-tests.mjs:59:const wb = JSON.parse(fs.readFileSync(path.join(validDir, 'work_brief.json'), 'utf8'));
+packages/artifacts/tests/run-tests.mjs:97:const changed = JSON.parse(fs.readFileSync(changedSchemaPath, 'utf8'));
+packages/artifacts/scripts/generate-types.mjs:35:const schemas = fs.readdirSync(schemasDir).filter((f) => f.endsWith('.schema.json')).sort().map((file) => JSON.parse(fs.readFileSync(path.join(schemasDir, file), 'utf8')));
+packages/artifacts/scripts/typecheck-public-entrypoint.mjs:15:    strict: true,
+## domain sweep

@@ -1,0 +1,365 @@
+{
+  "ok": true,
+  "checked": 34,
+  "failures": [],
+  "results": [
+    {
+      "name": "strict Ajv compile public API loads all schemas",
+      "ok": true,
+      "schemaVersion": "1.0.0",
+      "kinds": [
+        "work_brief",
+        "implementation_plan",
+        "verification_delta",
+        "build_result",
+        "ship_packet",
+        "evidence_packet",
+        "agent_registry_entry",
+        "context_file_header",
+        "schematic_manifest",
+        "skill_manifest"
+      ]
+    },
+    {
+      "name": "valid fixture accepted: work_brief",
+      "ok": true,
+      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/work-brief.schema.json"
+    },
+    {
+      "name": "valid fixture accepted: implementation_plan",
+      "ok": true,
+      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/implementation-plan.schema.json"
+    },
+    {
+      "name": "valid fixture accepted: verification_delta",
+      "ok": true,
+      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/verification-delta.schema.json"
+    },
+    {
+      "name": "valid fixture accepted: build_result",
+      "ok": true,
+      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/build-result.schema.json"
+    },
+    {
+      "name": "valid fixture accepted: ship_packet",
+      "ok": true,
+      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/ship-packet.schema.json"
+    },
+    {
+      "name": "valid fixture accepted: evidence_packet",
+      "ok": true,
+      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/evidence-packet.schema.json"
+    },
+    {
+      "name": "valid fixture accepted: agent_registry_entry",
+      "ok": true,
+      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/agent-registry-entry.schema.json"
+    },
+    {
+      "name": "valid fixture accepted: context_file_header",
+      "ok": true,
+      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/context-file-header.schema.json"
+    },
+    {
+      "name": "valid fixture accepted: schematic_manifest",
+      "ok": true,
+      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/schematic-manifest.schema.json"
+    },
+    {
+      "name": "valid fixture accepted: skill_manifest",
+      "ok": true,
+      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/skill-manifest.schema.json"
+    },
+    {
+      "name": "invalid fixture rejected: verification_delta/missing-catalog-category.json",
+      "ok": true,
+      "expectedCode": "VERIFICATION_CATALOG_INCOMPLETE",
+      "expectedPointer": "/requiredItems",
+      "errors": [
+        {
+          "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/packages/artifacts/fixtures/invalid/verification_delta/missing-catalog-category.json",
+          "artifactKind": "verification_delta",
+          "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/verification-delta.schema.json",
+          "schemaVersion": "1.0.0",
+          "pointer": "/requiredItems",
+          "code": "VERIFICATION_CATALOG_INCOMPLETE",
+          "message": "Verification Delta must include catalog layer schema_validation."
+        }
+      ]
+    },
+    {
+      "name": "invalid fixture rejected: verification_delta/not-applicable-missing-rationale.json",
+      "ok": true,
+      "expectedCode": "REQUIRED",
+      "expectedPointer": "/requiredItems/2/rationale",
+      "errors": [
+        {
+          "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/packages/artifacts/fixtures/invalid/verification_delta/not-applicable-missing-rationale.json",
+          "artifactKind": "verification_delta",
+          "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/verification-delta.schema.json",
+          "schemaVersion": "1.0.0",
+          "pointer": "/requiredItems/2/rationale",
+          "code": "REQUIRED",
+          "message": "must have required property 'rationale'"
+        },
+        {
+          "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/packages/artifacts/fixtures/invalid/verification_delta/not-applicable-missing-rationale.json",
+          "artifactKind": "verification_delta",
+          "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/verification-delta.schema.json",
+          "schemaVersion": "1.0.0",
+          "pointer": "/requiredItems/2/rationale",
+          "code": "NOT_APPLICABLE_RATIONALE_REQUIRED",
+          "message": "not_applicable verification catalog items require a rationale."
+        }
+      ]
+    },
+    {
+      "name": "invalid fixture rejected: verification_delta/blocked-missing-metadata.json",
+      "ok": true,
+      "expectedCode": "BLOCKED_ITEM_METADATA_REQUIRED",
+      "expectedPointer": "/requiredItems/0/blockedBy",
+      "errors": [
+        {
+          "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/packages/artifacts/fixtures/invalid/verification_delta/blocked-missing-metadata.json",
+          "artifactKind": "verification_delta",
+          "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/verification-delta.schema.json",
+          "schemaVersion": "1.0.0",
+          "pointer": "/requiredItems/0/blockedBy",
+          "code": "BLOCKED_ITEM_METADATA_REQUIRED",
+          "message": "blocked verification catalog items require blockedBy."
+        },
+        {
+          "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/packages/artifacts/fixtures/invalid/verification_delta/blocked-missing-metadata.json",
+          "artifactKind": "verification_delta",
+          "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/verification-delta.schema.json",
+          "schemaVersion": "1.0.0",
+          "pointer": "/requiredItems/0/unblockCondition",
+          "code": "BLOCKED_ITEM_METADATA_REQUIRED",
+          "message": "blocked verification catalog items require unblockCondition."
+        }
+      ]
+    },
+    {
+      "name": "invalid fixture rejected: implementation_plan/incomplete-verification-delta.json",
+      "ok": true,
+      "expectedCode": "VERIFICATION_CATALOG_INCOMPLETE",
+      "expectedPointer": "/verificationDelta/requiredItems",
+      "errors": [
+        {
+          "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/packages/artifacts/fixtures/invalid/implementation_plan/incomplete-verification-delta.json",
+          "artifactKind": "implementation_plan",
+          "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/implementation-plan.schema.json",
+          "schemaVersion": "1.0.0",
+          "pointer": "/verificationDelta/requiredItems",
+          "code": "VERIFICATION_CATALOG_INCOMPLETE",
+          "message": "Verification Delta must include catalog layer schema_validation."
+        }
+      ]
+    },
+    {
+      "name": "invalid fixture rejected: evidence_packet/missing-evidence-for-link.json",
+      "ok": true,
+      "expectedCode": "EVIDENCE_FOR_REQUIRED",
+      "expectedPointer": "/links",
+      "errors": [
+        {
+          "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/packages/artifacts/fixtures/invalid/evidence_packet/missing-evidence-for-link.json",
+          "artifactKind": "evidence_packet",
+          "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/evidence-packet.schema.json",
+          "schemaVersion": "1.0.0",
+          "pointer": "/links",
+          "code": "EVIDENCE_FOR_REQUIRED",
+          "message": "Evidence Packet must include a required top-level evidence_for link."
+        },
+        {
+          "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/packages/artifacts/fixtures/invalid/evidence_packet/missing-evidence-for-link.json",
+          "artifactKind": "evidence_packet",
+          "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/evidence-packet.schema.json",
+          "schemaVersion": "1.0.0",
+          "pointer": "/subjectRefs/0",
+          "code": "EVIDENCE_FOR_REQUIRED",
+          "message": "Evidence Packet subjectRefs must use required evidence_for links."
+        }
+      ]
+    },
+    {
+      "name": "invalid fixture rejected: build_result/verification-ref-non-evidence.json",
+      "ok": true,
+      "expectedCode": "EVIDENCE_LINK_REQUIRED",
+      "expectedPointer": "/verificationRuns/0/evidencePacketRef",
+      "errors": [
+        {
+          "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/packages/artifacts/fixtures/invalid/build_result/verification-ref-non-evidence.json",
+          "artifactKind": "build_result",
+          "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/build-result.schema.json",
+          "schemaVersion": "1.0.0",
+          "pointer": "/verificationRuns/0/evidencePacketRef",
+          "code": "EVIDENCE_LINK_REQUIRED",
+          "message": "Verification evidence references must be required evidence_for links to evidence_packet artifacts."
+        }
+      ]
+    },
+    {
+      "name": "invalid fixture rejected: build_result/verification-ref-wrong-relation.json",
+      "ok": true,
+      "expectedCode": "EVIDENCE_LINK_REQUIRED",
+      "expectedPointer": "/verificationRuns/0/evidencePacketRef",
+      "errors": [
+        {
+          "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/packages/artifacts/fixtures/invalid/build_result/verification-ref-wrong-relation.json",
+          "artifactKind": "build_result",
+          "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/build-result.schema.json",
+          "schemaVersion": "1.0.0",
+          "pointer": "/verificationRuns/0/evidencePacketRef",
+          "code": "EVIDENCE_LINK_REQUIRED",
+          "message": "Verification evidence references must be required evidence_for links to evidence_packet artifacts."
+        }
+      ]
+    },
+    {
+      "name": "invalid fixture rejected: build_result/narrative-verification-without-evidence-ref.json",
+      "ok": true,
+      "expectedCode": "REQUIRED",
+      "expectedPointer": "/verificationRuns/0/evidencePacketRef",
+      "errors": [
+        {
+          "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/packages/artifacts/fixtures/invalid/build_result/narrative-verification-without-evidence-ref.json",
+          "artifactKind": "build_result",
+          "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/build-result.schema.json",
+          "schemaVersion": "1.0.0",
+          "pointer": "/verificationRuns/0/evidencePacketRef",
+          "code": "REQUIRED",
+          "message": "must have required property 'evidencePacketRef'"
+        },
+        {
+          "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/packages/artifacts/fixtures/invalid/build_result/narrative-verification-without-evidence-ref.json",
+          "artifactKind": "build_result",
+          "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/build-result.schema.json",
+          "schemaVersion": "1.0.0",
+          "pointer": "/verificationRuns/0/evidencePacketRef",
+          "code": "EVIDENCE_LINK_REQUIRED",
+          "message": "Verification evidence references must be required evidence_for links to evidence_packet artifacts."
+        }
+      ]
+    },
+    {
+      "name": "invalid fixture rejected: ship_packet/final-verification-ref-non-evidence.json",
+      "ok": true,
+      "expectedCode": "EVIDENCE_LINK_REQUIRED",
+      "expectedPointer": "/finalVerification/0/evidencePacketRef",
+      "errors": [
+        {
+          "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/packages/artifacts/fixtures/invalid/ship_packet/final-verification-ref-non-evidence.json",
+          "artifactKind": "ship_packet",
+          "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/ship-packet.schema.json",
+          "schemaVersion": "1.0.0",
+          "pointer": "/finalVerification/0/evidencePacketRef",
+          "code": "EVIDENCE_LINK_REQUIRED",
+          "message": "Verification evidence references must be required evidence_for links to evidence_packet artifacts."
+        }
+      ]
+    },
+    {
+      "name": "invalid fixture rejected: ship_packet/final-verification-ref-wrong-relation.json",
+      "ok": true,
+      "expectedCode": "EVIDENCE_LINK_REQUIRED",
+      "expectedPointer": "/finalVerification/0/evidencePacketRef",
+      "errors": [
+        {
+          "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/packages/artifacts/fixtures/invalid/ship_packet/final-verification-ref-wrong-relation.json",
+          "artifactKind": "ship_packet",
+          "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/ship-packet.schema.json",
+          "schemaVersion": "1.0.0",
+          "pointer": "/finalVerification/0/evidencePacketRef",
+          "code": "EVIDENCE_LINK_REQUIRED",
+          "message": "Verification evidence references must be required evidence_for links to evidence_packet artifacts."
+        }
+      ]
+    },
+    {
+      "name": "mutated delta missing catalog layer fails loudly",
+      "ok": true
+    },
+    {
+      "name": "mutated not_applicable blank rationale fails loudly",
+      "ok": true
+    },
+    {
+      "name": "mutated blocked item missing metadata fails loudly",
+      "ok": true
+    },
+    {
+      "name": "mutated embedded delta missing catalog layer fails loudly",
+      "ok": true
+    },
+    {
+      "name": "mutated evidence packet without evidence_for fails loudly",
+      "ok": true
+    },
+    {
+      "name": "mutated build result non-evidence ref fails loudly",
+      "ok": true
+    },
+    {
+      "name": "mutated ship packet wrong evidence rel fails loudly",
+      "ok": true
+    },
+    {
+      "name": "unknown artifact kind fails closed",
+      "ok": true
+    },
+    {
+      "name": "unsupported schema version fails closed",
+      "ok": true
+    },
+    {
+      "name": "unknown top-level field fails closed",
+      "ok": true
+    },
+    {
+      "name": "non-json carrier rejected: chat-transcript.txt",
+      "ok": true,
+      "errors": [
+        {
+          "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/packages/artifacts/fixtures/invalid-carriers/chat-transcript.txt",
+          "artifactKind": null,
+          "schemaId": null,
+          "schemaVersion": null,
+          "pointer": "",
+          "code": "CARRIER_NOT_JSON",
+          "message": "Canonical artifact carriers must be UTF-8 JSON files; Markdown, YAML, frontmatter, and chat text are not accepted."
+        }
+      ]
+    },
+    {
+      "name": "non-json carrier rejected: implementation-plan.yaml",
+      "ok": true,
+      "errors": [
+        {
+          "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/packages/artifacts/fixtures/invalid-carriers/implementation-plan.yaml",
+          "artifactKind": null,
+          "schemaId": null,
+          "schemaVersion": null,
+          "pointer": "",
+          "code": "CARRIER_NOT_JSON",
+          "message": "Canonical artifact carriers must be UTF-8 JSON files; Markdown, YAML, frontmatter, and chat text are not accepted."
+        }
+      ]
+    },
+    {
+      "name": "non-json carrier rejected: work-brief.md",
+      "ok": true,
+      "errors": [
+        {
+          "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/packages/artifacts/fixtures/invalid-carriers/work-brief.md",
+          "artifactKind": null,
+          "schemaId": null,
+          "schemaVersion": null,
+          "pointer": "",
+          "code": "CARRIER_NOT_JSON",
+          "message": "Canonical artifact carriers must be UTF-8 JSON files; Markdown, YAML, frontmatter, and chat text are not accepted."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "ok": true,
+  "importedViaPackageExports": true,
+  "kindCount": 10,
+  "compiled": {
+    "schemaVersion": "1.0.0",
+    "kinds": [
+      "work_brief",
+      "implementation_plan",
+      "verification_delta",
+      "build_result",
+      "ship_packet",
+      "evidence_packet",
+      "agent_registry_entry",
+      "context_file_header",
+      "schematic_manifest",
+      "skill_manifest"
+    ]
+  },
+  "validWorkBriefOk": true,
+  "invalidDeltaOk": false,
+  "invalidDeltaErrors": [
+    {
+      "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/packages/artifacts/fixtures/invalid/verification_delta/missing-catalog-category.json",
+      "artifactKind": "verification_delta",
+      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/verification-delta.schema.json",
+      "schemaVersion": "1.0.0",
+      "pointer": "/requiredItems",
+      "code": "VERIFICATION_CATALOG_INCOMPLETE",
+      "message": "Verification Delta must include catalog layer schema_validation."
+    }
+  ],
+  "invalidCarrierOk": false,
+  "invalidCarrierErrors": [
+    {
+      "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/packages/artifacts/fixtures/invalid-carriers/not-json.md",
+      "artifactKind": null,
+      "schemaId": null,
+      "schemaVersion": null,
+      "pointer": "",
+      "code": "CARRIER_NOT_JSON",
+      "message": "Canonical artifact carriers must be UTF-8 JSON files; Markdown, YAML, frontmatter, and chat text are not accepted."
+    }
+  ]
+}

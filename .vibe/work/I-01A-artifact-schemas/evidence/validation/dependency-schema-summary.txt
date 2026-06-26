@@ -1,0 +1,99 @@
+## package dependency versions
+{
+  "dependencies": {},
+  "devDependencies": {},
+  "peerDependencies": {},
+  "scripts": {
+    "generate:types": "node scripts/generate-types.mjs",
+    "check:types": "node scripts/check-generated-types.mjs",
+    "typecheck": "node scripts/check-generated-types.mjs",
+    "test": "node tests/run-tests.mjs",
+    "build": "node scripts/check-generated-types.mjs && node tests/run-tests.mjs"
+  },
+  "exports": {
+    ".": {
+      "types": "./src/generated/types.d.ts",
+      "import": "./src/index.js"
+    },
+    "./schemas": "./src/schema-registry.js",
+    "./schemas/*": "./schemas/*"
+  }
+}
+## root lockfile contains ajv/json-schema tooling?
+pnpm-lock.yaml:28:        version: 8.62.0(eslint@9.39.1)(typescript@5.9.3)
+pnpm-lock.yaml:159:  '@types/json-schema@7.0.15':
+pnpm-lock.yaml:231:  ajv@6.15.0:
+pnpm-lock.yaml:418:  json-schema-traverse@0.4.1:
+pnpm-lock.yaml:542:  typescript@5.9.3:
+pnpm-lock.yaml:586:      '@types/json-schema': 7.0.15
+pnpm-lock.yaml:590:      ajv: 6.15.0
+pnpm-lock.yaml:647:  '@types/json-schema@7.0.15': {}
+pnpm-lock.yaml:649:  '@typescript-eslint/eslint-plugin@8.62.0(@typescript-eslint/parser@8.62.0(eslint@9.39.1)(typescript@5.9.3))(eslint@9.39.1)(typescript@5.9.3)':
+pnpm-lock.yaml:652:      '@typescript-eslint/parser': 8.62.0(eslint@9.39.1)(typescript@5.9.3)
+pnpm-lock.yaml:654:      '@typescript-eslint/type-utils': 8.62.0(eslint@9.39.1)(typescript@5.9.3)
+pnpm-lock.yaml:655:      '@typescript-eslint/utils': 8.62.0(eslint@9.39.1)(typescript@5.9.3)
+pnpm-lock.yaml:660:      ts-api-utils: 2.5.0(typescript@5.9.3)
+pnpm-lock.yaml:665:  '@typescript-eslint/parser@8.62.0(eslint@9.39.1)(typescript@5.9.3)':
+pnpm-lock.yaml:669:      '@typescript-eslint/typescript-estree': 8.62.0(typescript@5.9.3)
+pnpm-lock.yaml:677:  '@typescript-eslint/project-service@8.62.0(typescript@5.9.3)':
+pnpm-lock.yaml:679:      '@typescript-eslint/tsconfig-utils': 8.62.0(typescript@5.9.3)
+pnpm-lock.yaml:691:  '@typescript-eslint/tsconfig-utils@8.62.0(typescript@5.9.3)':
+pnpm-lock.yaml:695:  '@typescript-eslint/type-utils@8.62.0(eslint@9.39.1)(typescript@5.9.3)':
+pnpm-lock.yaml:698:      '@typescript-eslint/typescript-estree': 8.62.0(typescript@5.9.3)
+pnpm-lock.yaml:699:      '@typescript-eslint/utils': 8.62.0(eslint@9.39.1)(typescript@5.9.3)
+pnpm-lock.yaml:702:      ts-api-utils: 2.5.0(typescript@5.9.3)
+pnpm-lock.yaml:709:  '@typescript-eslint/typescript-estree@8.62.0(typescript@5.9.3)':
+pnpm-lock.yaml:711:      '@typescript-eslint/project-service': 8.62.0(typescript@5.9.3)
+pnpm-lock.yaml:712:      '@typescript-eslint/tsconfig-utils': 8.62.0(typescript@5.9.3)
+pnpm-lock.yaml:719:      ts-api-utils: 2.5.0(typescript@5.9.3)
+pnpm-lock.yaml:724:  '@typescript-eslint/utils@8.62.0(eslint@9.39.1)(typescript@5.9.3)':
+pnpm-lock.yaml:729:      '@typescript-eslint/typescript-estree': 8.62.0(typescript@5.9.3)
+pnpm-lock.yaml:746:  ajv@6.15.0:
+pnpm-lock.yaml:750:      json-schema-traverse: 0.4.1
+pnpm-lock.yaml:826:      ajv: 6.15.0
+pnpm-lock.yaml:928:  json-schema-traverse@0.4.1: {}
+pnpm-lock.yaml:1013:  ts-api-utils@2.5.0(typescript@5.9.3):
+pnpm-lock.yaml:1030:  typescript-eslint@8.62.0(eslint@9.39.1)(typescript@5.9.3):
+pnpm-lock.yaml:1032:      '@typescript-eslint/eslint-plugin': 8.62.0(@typescript-eslint/parser@8.62.0(eslint@9.39.1)(typescript@5.9.3))(eslint@9.39.1)(typescript@5.9.3)
+pnpm-lock.yaml:1033:      '@typescript-eslint/parser': 8.62.0(eslint@9.39.1)(typescript@5.9.3)
+pnpm-lock.yaml:1034:      '@typescript-eslint/typescript-estree': 8.62.0(typescript@5.9.3)
+pnpm-lock.yaml:1035:      '@typescript-eslint/utils': 8.62.0(eslint@9.39.1)(typescript@5.9.3)
+pnpm-lock.yaml:1041:  typescript@5.9.3: {}
+## schema/file counts
+      10
+      10
+      42
+## verification delta valid fixture layers
+{
+  "layers": [
+    "schema_validation"
+  ],
+  "missing": [
+    "safety_hooks",
+    "typecheck",
+    "lint_format",
+    "mechanical_gate",
+    "unit",
+    "integration",
+    "contract_adapter",
+    "e2e",
+    "ui_verification",
+    "ai_eval",
+    "build_package",
+    "context_drift",
+    "observability",
+    "advisory_review",
+    "final_dod"
+  ]
+}
+## schema summaries
+{"file":"agent-registry-entry.schema.json","title":"AgentRegistryEntryV1","kind":"agent_registry_entry","requiredCount":30,"additionalProperties":false,"dependencies":["sourceRefs","allowedTools","forbiddenActions","validatorRefs","fixerRefs"]}
+{"file":"build-result.schema.json","title":"BuildResultV1","kind":"build_result","requiredCount":20,"additionalProperties":false,"dependencies":["sourceRefs","implementationPlanRef","verificationRuns"]}
+{"file":"context-file-header.schema.json","title":"ContextFileHeaderV1","kind":"context_file_header","requiredCount":21,"additionalProperties":false,"dependencies":["sourceRefs","standardsRefs","replacementRef"]}
+{"file":"evidence-packet.schema.json","title":"EvidencePacketV1","kind":"evidence_packet","requiredCount":22,"additionalProperties":false,"dependencies":["sourceRefs","subjectRefs","stdoutRef","stderrRef","logsRef"]}
+{"file":"implementation-plan.schema.json","title":"ImplementationPlanV1","kind":"implementation_plan","requiredCount":24,"additionalProperties":false,"dependencies":["sourceRefs","workBriefRef"]}
+{"file":"schematic-manifest.schema.json","title":"SchematicManifestV1","kind":"schematic_manifest","requiredCount":23,"additionalProperties":false,"dependencies":["sourceRefs"]}
+{"file":"ship-packet.schema.json","title":"ShipPacketV1","kind":"ship_packet","requiredCount":19,"additionalProperties":false,"dependencies":["sourceRefs","buildResultRef","finalVerification","operatorApprovalRef","artifactBundleRefs"]}
+{"file":"skill-manifest.schema.json","title":"SkillManifestV1","kind":"skill_manifest","requiredCount":25,"additionalProperties":false,"dependencies":["sourceRefs","allowedActions","forbiddenActions"]}
+{"file":"verification-delta.schema.json","title":"VerificationDeltaV1","kind":"verification_delta","requiredCount":16,"additionalProperties":false,"dependencies":["sourceRefs","implementationPlanRef","requiredItems"]}
+{"file":"work-brief.schema.json","title":"WorkBriefV1","kind":"work_brief","requiredCount":22,"additionalProperties":false,"dependencies":["sourceRefs"]}

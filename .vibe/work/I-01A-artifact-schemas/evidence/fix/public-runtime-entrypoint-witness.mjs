@@ -1,0 +1,31 @@
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import { spawnSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
+
+const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../../../..');
+const packageRoot = path.join(repoRoot, 'packages/artifacts');
+const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'vibe-artifacts-runtime-consumer-'));
+const scoped = path.join(tmp, 'node_modules/@vibe-engineer');
+fs.mkdirSync(scoped, { recursive: true });
+fs.symlinkSync(packageRoot, path.join(scoped, 'artifacts'), 'dir');
+fs.writeFileSync(path.join(tmp, 'package.json'), JSON.stringify({ type: 'module', private: true }, null, 2));
+fs.writeFileSync(path.join(tmp, 'consumer.mjs'), `
+import path from 'node:path';
+import { validateArtifactFile, ValidationErrorCode, compileAllArtifactSchemas } from '@vibe-engineer/artifacts';
+const repoRoot = ${JSON.stringify(repoRoot)};
+const compiled = compileAllArtifactSchemas();
+if (compiled.kinds.length !== 10) throw new Error('expected ten compiled schemas');
+const valid = validateArtifactFile(path.join(repoRoot, 'packages/artifacts/fixtures/valid/work_brief.json'), { kind: 'work_brief' });
+if (!valid.ok) throw new Error('valid work_brief rejected: ' + JSON.stringify(valid.errors));
+const invalid = validateArtifactFile(path.join(repoRoot, 'packages/artifacts/fixtures/invalid/verification_delta/missing-catalog-category.json'), { kind: 'verification_delta' });
+if (invalid.ok) throw new Error('invalid verification_delta accepted');
+if (!invalid.errors.some((error) => error.code === ValidationErrorCode.VERIFICATION_CATALOG_INCOMPLETE && error.pointer === '/requiredItems')) throw new Error('expected catalog error: ' + JSON.stringify(invalid.errors));
+console.log(JSON.stringify({ ok: true, compiled: compiled.kinds.length, validKind: valid.kind, invalidCodes: invalid.errors.map((e) => e.code) }, null, 2));
+`);
+const result = spawnSync(process.execPath, [path.join(tmp, 'consumer.mjs')], { cwd: tmp, encoding: 'utf8' });
+if (result.stdout) process.stdout.write(result.stdout);
+if (result.stderr) process.stderr.write(result.stderr);
+fs.rmSync(tmp, { recursive: true, force: true });
+process.exit(result.status ?? 1);

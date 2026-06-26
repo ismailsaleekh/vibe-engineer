@@ -1,0 +1,31 @@
+## I-00A/I-00B report verdicts
+.vibe/work/I-00A-workspace-package-skeleton/I-00A-revalidation-report.md:3:Final verdict: PASS
+.vibe/work/I-00A-workspace-package-skeleton/I-00A-revalidation-report.md:131:## Final decision
+.vibe/work/I-00A-workspace-package-skeleton/I-00A-revalidation-report.md:132:PASS — I-00A is green after the fix. The current dirty-tree root `workspace:surface` passes through the actual package manager/witness boundary, the source-handoff regression is closed, original negatives still fail, I-00B remains green, and I-01A remains correctly unvalidated/blocked.
+.vibe/work/I-00B-governance-baseline/I-00B-validation-report.md:3:## Verdict
+.vibe/work/I-00B-governance-baseline/I-00B-validation-report.md:5:PASS
+.vibe/work/I-00B-governance-baseline/I-00B-validation-report.md:289:PASS. `I-00B-governance-baseline` can be marked implementation-green. Dependents may consume the governance baseline subject to the explicitly recorded public-release/contact/package-metadata blockers and normal downstream Triad gates.
+## root workspace:surface after I-01A fix/node_modules
+
+> @vibe-engineer/workspace@0.0.0 workspace:surface /Users/lizavasilyeva/work/vibe-engineer
+> node .vibe/work/I-00A-workspace-package-skeleton/witnesses/workspace-surface-witness.mjs --root .
+
+{
+  "ok": true,
+  "root": "/Users/lizavasilyeva/work/vibe-engineer",
+  "mode": "current-surface",
+  "checkedAt": "2026-06-23T14:09:22.892Z",
+  "requiredPackageCount": 18,
+  "failures": []
+}
+workspace_surface_exit=0
+## root workspace:graph after I-01A fix
+workspace_graph_exit=0
+    3322 /tmp/i01a-reval-workspace-graph.out
+       0 /tmp/i01a-reval-workspace-graph.err
+    3322 total
+## sibling package source inventory outside packages/artifacts
+## downstream gate implications from strategy/adjudication
+Q04/I-01B: requires I-00A PASS only; I-00A report PASS.
+Q07/I-10A: requires I-00A PASS only; I-00A report PASS.
+Q05/I-03 and Q06/I-04: require both I-00A PASS and I-01A PASS; pending this revalidation verdict.

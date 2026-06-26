@@ -1,0 +1,160 @@
+## git status short (scoped and top-level)
+?? .gitignore
+?? .npmrc
+?? .vibe/
+?? CHANGELOG.md
+?? CODE_OF_CONDUCT.md
+?? CONTRIBUTING.md
+?? LICENSE
+?? README.md
+?? SECURITY.md
+?? docs/
+?? eslint.config.mjs
+?? package.json
+?? packages/
+?? pnpm-lock.yaml
+?? pnpm-workspace.yaml
+?? prettier.config.mjs
+?? tsconfig.base.json
+?? turbo.json
+
+## I-01A owned files
+.vibe/work/I-01A-artifact-schemas/evidence/build.exit
+.vibe/work/I-01A-artifact-schemas/evidence/build.log
+.vibe/work/I-01A-artifact-schemas/evidence/owned-files-inventory.txt
+.vibe/work/I-01A-artifact-schemas/evidence/test-results.json
+.vibe/work/I-01A-artifact-schemas/evidence/test.exit
+.vibe/work/I-01A-artifact-schemas/evidence/test.log
+.vibe/work/I-01A-artifact-schemas/evidence/typecheck.exit
+.vibe/work/I-01A-artifact-schemas/evidence/typecheck.log
+.vibe/work/I-01A-artifact-schemas/evidence/validation/status-inventory.txt
+.vibe/work/I-01A-artifact-schemas/I-01A-validation-report.md
+.vibe/work/I-01A-artifact-schemas/implementation-report.md
+packages/artifacts/fixtures/invalid-carriers/chat-transcript.txt
+packages/artifacts/fixtures/invalid-carriers/implementation-plan.yaml
+packages/artifacts/fixtures/invalid-carriers/work-brief.md
+packages/artifacts/fixtures/invalid/agent_registry_entry/missing-schema-refs.json
+packages/artifacts/fixtures/invalid/agent_registry_entry/missing-schemaVersion.json
+packages/artifacts/fixtures/invalid/agent_registry_entry/unknown-field.json
+packages/artifacts/fixtures/invalid/agent_registry_entry/wrong-artifactKind.json
+packages/artifacts/fixtures/invalid/build_result/bad-plan-status-handoff.json
+packages/artifacts/fixtures/invalid/build_result/missing-evidence-refs.json
+packages/artifacts/fixtures/invalid/build_result/missing-schemaVersion.json
+packages/artifacts/fixtures/invalid/build_result/unknown-field.json
+packages/artifacts/fixtures/invalid/build_result/wrong-artifactKind.json
+packages/artifacts/fixtures/invalid/context_file_header/missing-drift-metadata.json
+packages/artifacts/fixtures/invalid/context_file_header/missing-schemaVersion.json
+packages/artifacts/fixtures/invalid/context_file_header/unknown-field.json
+packages/artifacts/fixtures/invalid/context_file_header/wrong-artifactKind.json
+packages/artifacts/fixtures/invalid/evidence_packet/advisory-as-deterministic-blocker.json
+packages/artifacts/fixtures/invalid/evidence_packet/missing-schemaVersion.json
+packages/artifacts/fixtures/invalid/evidence_packet/unknown-field.json
+packages/artifacts/fixtures/invalid/evidence_packet/wrong-artifactKind.json
+packages/artifacts/fixtures/invalid/implementation_plan/missing-schemaVersion.json
+packages/artifacts/fixtures/invalid/implementation_plan/unknown-field.json
+packages/artifacts/fixtures/invalid/implementation_plan/wrong-artifactKind.json
+packages/artifacts/fixtures/invalid/schematic_manifest/missing-input-schema-refs.json
+packages/artifacts/fixtures/invalid/schematic_manifest/missing-schemaVersion.json
+packages/artifacts/fixtures/invalid/schematic_manifest/unknown-field.json
+packages/artifacts/fixtures/invalid/schematic_manifest/wrong-artifactKind.json
+packages/artifacts/fixtures/invalid/ship_packet/failed-build-handoff.json
+packages/artifacts/fixtures/invalid/ship_packet/missing-schemaVersion.json
+packages/artifacts/fixtures/invalid/ship_packet/push-without-approval.json
+packages/artifacts/fixtures/invalid/ship_packet/unknown-field.json
+packages/artifacts/fixtures/invalid/ship_packet/wrong-artifactKind.json
+packages/artifacts/fixtures/invalid/skill_manifest/missing-forbidden-actions.json
+packages/artifacts/fixtures/invalid/skill_manifest/missing-schemaVersion.json
+packages/artifacts/fixtures/invalid/skill_manifest/unknown-field.json
+packages/artifacts/fixtures/invalid/skill_manifest/wrong-artifactKind.json
+packages/artifacts/fixtures/invalid/verification_delta/missing-requiredItems.json
+packages/artifacts/fixtures/invalid/verification_delta/missing-schemaVersion.json
+packages/artifacts/fixtures/invalid/verification_delta/unknown-field.json
+packages/artifacts/fixtures/invalid/verification_delta/wrong-artifactKind.json
+packages/artifacts/fixtures/invalid/work_brief/malformed-extension-core-field.json
+packages/artifacts/fixtures/invalid/work_brief/missing-schemaVersion.json
+packages/artifacts/fixtures/invalid/work_brief/unknown-field.json
+packages/artifacts/fixtures/invalid/work_brief/unsupported-version.json
+packages/artifacts/fixtures/invalid/work_brief/wrong-artifactKind.json
+packages/artifacts/fixtures/valid/agent_registry_entry.json
+packages/artifacts/fixtures/valid/build_result.json
+packages/artifacts/fixtures/valid/context_file_header.json
+packages/artifacts/fixtures/valid/evidence_packet.json
+packages/artifacts/fixtures/valid/implementation_plan.json
+packages/artifacts/fixtures/valid/schematic_manifest.json
+packages/artifacts/fixtures/valid/ship_packet.json
+packages/artifacts/fixtures/valid/skill_manifest.json
+packages/artifacts/fixtures/valid/verification_delta.json
+packages/artifacts/fixtures/valid/work_brief.json
+packages/artifacts/package.json
+packages/artifacts/README.md
+packages/artifacts/schemas/agent-registry-entry.schema.json
+packages/artifacts/schemas/build-result.schema.json
+packages/artifacts/schemas/context-file-header.schema.json
+packages/artifacts/schemas/evidence-packet.schema.json
+packages/artifacts/schemas/implementation-plan.schema.json
+packages/artifacts/schemas/schematic-manifest.schema.json
+packages/artifacts/schemas/ship-packet.schema.json
+packages/artifacts/schemas/skill-manifest.schema.json
+packages/artifacts/schemas/verification-delta.schema.json
+packages/artifacts/schemas/work-brief.schema.json
+packages/artifacts/scripts/check-generated-types.mjs
+packages/artifacts/scripts/generate-types.mjs
+packages/artifacts/src/errors.js
+packages/artifacts/src/generated/types.d.ts
+packages/artifacts/src/index.js
+packages/artifacts/src/schema-registry.js
+packages/artifacts/src/validation.js
+packages/artifacts/tests/run-tests.mjs
+
+## sibling package source dirs depth 3
+packages/adapters/pi/package.json
+packages/artifacts/package.json
+packages/artifacts/README.md
+packages/artifacts/schemas/agent-registry-entry.schema.json
+packages/artifacts/schemas/build-result.schema.json
+packages/artifacts/schemas/context-file-header.schema.json
+packages/artifacts/schemas/evidence-packet.schema.json
+packages/artifacts/schemas/implementation-plan.schema.json
+packages/artifacts/schemas/schematic-manifest.schema.json
+packages/artifacts/schemas/ship-packet.schema.json
+packages/artifacts/schemas/skill-manifest.schema.json
+packages/artifacts/schemas/verification-delta.schema.json
+packages/artifacts/schemas/work-brief.schema.json
+packages/artifacts/scripts/check-generated-types.mjs
+packages/artifacts/scripts/generate-types.mjs
+packages/artifacts/src/errors.js
+packages/artifacts/src/index.js
+packages/artifacts/src/schema-registry.js
+packages/artifacts/src/validation.js
+packages/artifacts/tests/run-tests.mjs
+packages/cli/package.json
+packages/config/package.json
+packages/context/package.json
+packages/contracts/package.json
+packages/mechanical-gates/package.json
+packages/observability/package.json
+packages/orchestration/package.json
+packages/presets/nest-react-rn/package.json
+packages/presets/typescript/package.json
+packages/registry/package.json
+packages/schematics/package.json
+packages/security/package.json
+packages/skills/package.json
+packages/standards/package.json
+packages/testing/package.json
+packages/verification/package.json
+
+## root sentinels
+present package.json
+present pnpm-lock.yaml
+present pnpm-workspace.yaml
+present turbo.json
+present tsconfig.base.json
+present eslint.config.mjs
+present prettier.config.mjs
+present .npmrc
+absent packages/core
+absent apps
+absent examples
+absent .github
+absent scripts
