@@ -1,0 +1,111 @@
+{
+  "schemaVersion": "1.0.0",
+  "artifactKind": "skill_manifest",
+  "artifactId": "artifact-skill_manifest-001",
+  "title": "Skill Manifest valid fixture",
+  "createdAt": "2026-06-23T00:00:00.000Z",
+  "updatedAt": "2026-06-23T00:00:00.000Z",
+  "producer": {
+    "kind": "skill",
+    "id": "skill-task",
+    "name": "task",
+    "version": "1.0.0",
+    "runId": "run-001"
+  },
+  "status": "active",
+  "ownership": {
+    "ownerLane": "I-01A-artifact-schemas",
+    "ownedWritePaths": [
+      "packages/artifacts/**"
+    ],
+    "readOnlyPaths": [
+      "docs/decisions/**"
+    ],
+    "untouchablePaths": [
+      ".git/**"
+    ],
+    "concurrencyNotes": "owned fixture"
+  },
+  "links": [
+    {
+      "rel": "produced_by",
+      "artifactKind": "skill_manifest",
+      "artifactId": "artifact-skill_manifest-001",
+      "path": "fixtures/valid/skill_manifest.json",
+      "required": true,
+      "statusAtLinkTime": "active"
+    }
+  ],
+  "extensions": {
+    "dev.vibe.fixture": {
+      "schemaVersion": "1.0.0",
+      "note": "domain-neutral fixture extension"
+    }
+  },
+  "tags": [
+    "domain-neutral"
+  ],
+  "skillId": "plan",
+  "skillVersion": "1.0.0",
+  "purpose": "Convert Work Brief artifacts into Implementation Plans.",
+  "inputArtifactSchemas": [
+    {
+      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/work-brief.schema.json",
+      "schemaVersion": "1.0.0",
+      "artifactKind": "work_brief"
+    }
+  ],
+  "outputArtifactSchemas": [
+    {
+      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/implementation-plan.schema.json",
+      "schemaVersion": "1.0.0",
+      "artifactKind": "implementation_plan"
+    }
+  ],
+  "allowedActions": [
+    "read_work_brief",
+    "write_plan"
+  ],
+  "forbiddenActions": [
+    "push_without_approval"
+  ],
+  "clarifyingQuestionPolicy": {
+    "mayAsk": true,
+    "conditions": [
+      "missing required work brief context"
+    ]
+  },
+  "blockingPolicy": {
+    "blockWhen": [
+      "missing work brief",
+      "invalid status"
+    ],
+    "evidenceRequired": true
+  },
+  "subagentRelationships": [],
+  "validatorFixerPolicy": {
+    "maxIterations": 3,
+    "independentValidationRequired": true
+  },
+  "storageHandoffContract": {
+    "artifactRefs": [
+      {
+        "rel": "derived_from",
+        "artifactKind": "work_brief",
+        "artifactId": "artifact-work_brief-001",
+        "path": "fixtures/valid/work_brief.json",
+        "required": true,
+        "statusAtLinkTime": "ready"
+      }
+    ],
+    "delegatedWritePaths": [
+      ".vibe/work/**"
+    ],
+    "nextSkillHandoffConstraints": [
+      "build consumes approved implementation_plan only"
+    ]
+  },
+  "selectedHarnessIntegrationHooks": [],
+  "owner": "skill-owner",
+  "unmodeledField": true
+}

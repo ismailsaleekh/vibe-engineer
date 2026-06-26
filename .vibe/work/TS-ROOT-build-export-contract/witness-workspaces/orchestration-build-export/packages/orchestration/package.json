@@ -1,0 +1,30 @@
+{
+  "name": "@vibe-engineer/orchestration",
+  "version": "0.0.0",
+  "license": "MIT",
+  "type": "module",
+  "description": "Strict durable DAG orchestration runtime primitives for vibe-engineer.",
+  "private": true,
+  "exports": {
+    ".": {
+      "types": "./dist/src/index.d.ts",
+      "import": "./dist/src/index.js"
+    }
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "build": "tsc -p tsconfig.json",
+    "test": "tsc -p tsconfig.json && node tests/run-tests.mjs",
+    "witness:real-boundary": "tsc -p tsconfig.json && node tests/real-boundary-witness.mjs",
+    "lint": "eslint src tests/typecheck.ts"
+  },
+  "vibeEngineer": {
+    "implementationUnit": "I-03-orchestration-runtime",
+    "implementationStatus": "implemented",
+    "packageRole": "internal-workspace-package",
+    "sourceStatus": "package-owned-source-created"
+  },
+  "dependencies": {
+    "@vibe-engineer/artifacts": "workspace:*"
+  }
+}

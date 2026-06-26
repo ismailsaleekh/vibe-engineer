@@ -1,0 +1,113 @@
+{
+  "schemaVersion": "1.0.0",
+  "artifactKind": "schematic_manifest",
+  "artifactId": "artifact-schematic_manifest-001",
+  "title": "Schematic Manifest valid fixture",
+  "createdAt": "2026-06-23T00:00:00.000Z",
+  "updatedAt": "2026-06-23T00:00:00.000Z",
+  "producer": {
+    "kind": "skill",
+    "id": "skill-task",
+    "name": "task",
+    "version": "1.0.0",
+    "runId": "run-001"
+  },
+  "status": "active",
+  "ownership": {
+    "ownerLane": "I-01A-artifact-schemas",
+    "ownedWritePaths": [
+      "packages/artifacts/**"
+    ],
+    "readOnlyPaths": [
+      "docs/decisions/**"
+    ],
+    "untouchablePaths": [
+      ".git/**"
+    ],
+    "concurrencyNotes": "owned fixture"
+  },
+  "links": [
+    {
+      "rel": "produced_by",
+      "artifactKind": "schematic_manifest",
+      "artifactId": "artifact-schematic_manifest-001",
+      "path": "fixtures/valid/schematic_manifest.json",
+      "required": true,
+      "statusAtLinkTime": "active"
+    }
+  ],
+  "extensions": {
+    "dev.vibe.fixture": {
+      "schemaVersion": "1.0.0",
+      "note": "domain-neutral fixture extension"
+    }
+  },
+  "tags": [
+    "domain-neutral"
+  ],
+  "schematicId": "schematic-module",
+  "schematicVersion": "1.0.0",
+  "purpose": "Generate a generic module fixture.",
+  "inputs": [
+    {
+      "name": "moduleName",
+      "schema": {
+        "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/schematic-manifest.schema.json",
+        "schemaVersion": "1.0.0",
+        "artifactKind": "schematic_manifest"
+      },
+      "required": true,
+      "defaultsPolicy": "user_supplied_only",
+      "domainNeutralityClassification": "core_generic"
+    }
+  ],
+  "generatedPaths": [
+    {
+      "pathTemplate": "packages/{moduleName}",
+      "ownership": "operator-owned",
+      "conflictPolicy": "fail",
+      "classification": "generated"
+    }
+  ],
+  "idempotency": {
+    "strategy": "stable identifiers",
+    "stableIdentifiers": [
+      "moduleName"
+    ],
+    "rerunBehavior": "skip identical files"
+  },
+  "conflictBehavior": "fail",
+  "dryRunBehavior": {
+    "reportsPlannedChanges": true,
+    "writesFiles": false
+  },
+  "requiredTests": [
+    {
+      "evidencePacketRef": {
+        "rel": "evidence_for",
+        "artifactKind": "evidence_packet",
+        "artifactId": "artifact-evidence_packet-001",
+        "path": "fixtures/valid/evidence_packet.json",
+        "required": true,
+        "statusAtLinkTime": "passed"
+      },
+      "summary": "Schematic test evidence.",
+      "result": "pass",
+      "blocking": true
+    }
+  ],
+  "contextUpdates": [],
+  "domainNeutrality": {
+    "coreSurface": true,
+    "allowedGenericTerms": [
+      "module",
+      "contract",
+      "test"
+    ],
+    "extensionBoundaries": [
+      "project input only"
+    ]
+  },
+  "owner": "schematic-owner",
+  "unmodeledField": true
+}

@@ -1,0 +1,276 @@
+{
+  "$schema": "./build-export-contract.schema.json",
+  "schemaVersion": "build-export-contract/1.0.0",
+  "contractId": "TS-ROOT-build-export-contract",
+  "status": "active",
+  "exceptionClasses": [
+    {
+      "id": "workspace-surface-witness-evidence-only",
+      "category": "evidence-only-root-script",
+      "subject": ".vibe/work/I-00A-workspace-package-skeleton/witnesses/workspace-surface-witness.mjs",
+      "allowedUse": "root workspace:surface evidence witness",
+      "forbiddenUses": [
+        "production-runtime-source",
+        "package-export-source",
+        "package-bin-source"
+      ],
+      "productionRuntimeOrExportSource": false,
+      "finalStateAllowed": false
+    },
+    {
+      "id": "audited-production-js-mjs-migration-debt",
+      "category": "migration-debt",
+      "auditedProductionJsMjsCount": 43,
+      "classification": "audited production JS/MJS remains debt until package TS migration lanes replace it with TypeScript source and generated dist/declarations",
+      "finalAllowlist": false,
+      "migrationOwner": "later package TypeScript migration lanes"
+    },
+    {
+      "id": "ts09v-verification-source-js-export-deferred",
+      "category": "deferred-verification-source-js-export-debt",
+      "deferralId": "TS-09V",
+      "subject": "packages/verification/package.json#/exports/.",
+      "requiredIndependentPasses": [
+        "I-09S",
+        "I-09A"
+      ],
+      "forbiddenUntilReady": [
+        "packages/verification/**",
+        "packages/verification/package.json#/exports",
+        "packages/verification/package.json#/types",
+        "packages/verification/dist/**"
+      ],
+      "finalStateAllowed": false
+    },
+    {
+      "id": "transient-build-outputs-ts-root-evidence-only",
+      "category": "owned-transient-evidence-output",
+      "allowedRoot": ".vibe/work/TS-ROOT-build-export-contract/**",
+      "forbiddenProductRoots": [
+        "packages/**/dist/**"
+      ],
+      "productDistMutationAllowed": false,
+      "finalStateAllowed": false
+    }
+  ],
+  "rootScripts": {
+    "build": {
+      "command": "pnpm exec turbo run build",
+      "delegatesToTurbo": true,
+      "usesWorkspaceExecution": true
+    },
+    "typecheck": {
+      "command": "pnpm exec turbo run typecheck",
+      "delegatesToTurbo": true,
+      "usesWorkspaceExecution": true
+    },
+    "test": {
+      "command": "pnpm exec turbo run test",
+      "delegatesToTurbo": true,
+      "usesWorkspaceExecution": true
+    },
+    "preserved": [
+      "workspace:graph",
+      "workspace:surface"
+    ]
+  },
+  "turboTasks": {
+    "build": {
+      "required": true,
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": [
+        "dist/**"
+      ]
+    },
+    "typecheck": {
+      "required": true,
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": []
+    },
+    "test": {
+      "required": true,
+      "dependsOn": [
+        "build",
+        "^build"
+      ],
+      "outputs": []
+    }
+  },
+  "strictCompilerOptions": {
+    "requiredTrue": [
+      "strict",
+      "noImplicitAny",
+      "strictNullChecks",
+      "strictFunctionTypes",
+      "strictBindCallApply",
+      "strictPropertyInitialization",
+      "noImplicitThis",
+      "alwaysStrict",
+      "exactOptionalPropertyTypes",
+      "noUncheckedIndexedAccess",
+      "noImplicitOverride",
+      "noImplicitReturns",
+      "noPropertyAccessFromIndexSignature",
+      "useUnknownInCatchVariables",
+      "noFallthroughCasesInSwitch",
+      "noUnusedLocals",
+      "noUnusedParameters",
+      "isolatedModules",
+      "verbatimModuleSyntax",
+      "forceConsistentCasingInFileNames",
+      "resolveJsonModule",
+      "declaration",
+      "declarationMap",
+      "sourceMap",
+      "noEmitOnError"
+    ],
+    "requiredFalse": [
+      "allowUnreachableCode",
+      "allowUnusedLabels",
+      "skipLibCheck"
+    ],
+    "forbidden": [
+      "allowJs"
+    ]
+  },
+  "packageTsconfigConvention": {
+    "policyId": "package-tsconfig-convention",
+    "appliesTo": "migrated TypeScript workspace packages",
+    "allowedExtends": [
+      "../../tsconfig.base.json",
+      "../../../tsconfig.base.json"
+    ],
+    "requiredBuildShape": {
+      "rootDirOwnedByPackage": true,
+      "outDir": "dist",
+      "declaration": true,
+      "declarationMap": true,
+      "noEmitOnError": true
+    },
+    "forbiddenCompilerOptions": [
+      "allowJs"
+    ],
+    "inheritedCompilerOptions": [
+      "module:NodeNext",
+      "moduleResolution:NodeNext"
+    ],
+    "runtimeImportWitnessRequired": true
+  },
+  "packageExportConvention": {
+    "policyId": "package-export-types-bin-convention",
+    "runtimeExports": {
+      "requiredTargetKind": "generated-dist-js",
+      "requiredTargetPattern": "dist/**/*.js",
+      "forbiddenFinalTargetKinds": [
+        "src-js",
+        "src-mjs"
+      ],
+      "sourceJsAllowedFinalState": false
+    },
+    "typesExports": {
+      "requiredTargetKind": "generated-dist-dts",
+      "requiredTargetPattern": "dist/**/*.d.ts"
+    },
+    "binEntries": {
+      "requiredWhenPresent": true,
+      "requiredTargetKind": "generated-dist-executable-js",
+      "sourceJsAllowedFinalState": false,
+      "spawnWitnessRequired": true
+    },
+    "currentSourceJsDebt": {
+      "auditedAsMigrationDebt": true,
+      "finalAllowlist": false,
+      "owner": "later package TypeScript migration lanes"
+    }
+  },
+  "generatedDistPolicy": {
+    "policyId": "generated-dist-policy",
+    "allowedOnlyWhen": {
+      "matchingTypeScriptSource": true,
+      "matchingDeclarationOutput": true,
+      "producedByBuild": true
+    },
+    "forbiddenUses": {
+      "handWrittenDistAllowed": false,
+      "hidesSourceJsDebtAllowed": false
+    },
+    "tsRootWitnessOutputs": {
+      "allowedRoot": ".vibe/work/TS-ROOT-build-export-contract/**",
+      "productDistWriteAllowed": false,
+      "forbiddenProductRoots": [
+        "packages/**/dist/**"
+      ]
+    }
+  },
+  "sourceJsDebtPolicy": {
+    "productionJsIsDebt": true,
+    "auditedProductionJsCount": 43,
+    "workspaceSurfaceWitness": {
+      "path": ".vibe/work/I-00A-workspace-package-skeleton/witnesses/workspace-surface-witness.mjs",
+      "classification": "evidence-only workspace surface witness referenced by root workspace:surface script; not production runtime/export/bin source",
+      "finalStateAllowed": false
+    },
+    "currentSourceJsExportsAndBins": [
+      {
+        "path": "packages/verification/package.json#/exports/.",
+        "classification": "TS-09V verification package source-JS export debt; current value ./src/index.js remains read-only in TS-ROOT",
+        "finalStateAllowed": false
+      },
+      {
+        "path": "packages/*/package.json exports-or-bin-to-src-js",
+        "classification": "audited package export/bin debt owned by later package TS migration lanes, not allowed final state",
+        "finalStateAllowed": false
+      }
+    ]
+  },
+  "ts09vDeferral": {
+    "deferred": true,
+    "requiredIndependentPasses": [
+      "I-09A"
+    ],
+    "forbiddenUntilReady": [
+      "packages/verification/**",
+      "packages/verification/package.json#/exports",
+      "packages/verification/package.json#/types",
+      "packages/verification/dist/**"
+    ]
+  },
+  "witnessPolicy": {
+    "structuredContractWitness": {
+      "parsesActualJsonFiles": true,
+      "regexOrProseSufficient": false,
+      "files": [
+        "packages/mechanical-gates/src/p0/build-export-contract/build-export-contract.schema.json",
+        "packages/mechanical-gates/src/p0/build-export-contract/build-export-contract.json",
+        "package.json",
+        "turbo.json",
+        "tsconfig.base.json",
+        "packages/verification/package.json"
+      ]
+    },
+    "realBoundaryWitness": {
+      "actualRootScriptToTurboToPackageBuild": true,
+      "transientWorkspaceOnly": true,
+      "packageExportImportRequired": true
+    },
+    "negativeWitnesses": [
+      "missing exceptionClasses rejects",
+      "preserved root scripts missing workspace:surface rejects",
+      "TS-09V requiredIndependentPasses missing I-09S rejects",
+      "freeform requirements-only package tsconfig/export/generated-dist policies reject",
+      "source-JS export/bin final state rejects",
+      "audited production JS/MJS final allowlist rejects",
+      "weakened strict flag or allowJs true rejects"
+    ],
+    "regressionWitnesses": [
+      "audited production JS/MJS count remains 43 migration debt",
+      "packages/verification/package.json remains TS-09V debt and untouched",
+      "root/package-manager/package manifests/tsconfigs/source/product dist/CI/scripts/docs unchanged except owned contract files",
+      "I-09A/I-09B/I-11/root/shared downstream gates remain blocked pending independent TS-ROOT revalidation"
+    ]
+  }
+}

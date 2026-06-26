@@ -1,0 +1,73 @@
+{
+  "repo": "/Users/lizavasilyeva/work/vibe-engineer",
+  "workspace": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/validation-evidence/transient-workspaces/root-turbo-orchestration-consumer",
+  "outputDir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/validation-evidence/real-boundary-output",
+  "copiedFiles": {
+    "root": [
+      "package.json",
+      "turbo.json",
+      "tsconfig.base.json",
+      "pnpm-workspace.yaml",
+      "pnpm-lock.yaml"
+    ],
+    "packages": [
+      "packages/orchestration",
+      "packages/artifacts"
+    ]
+  },
+  "rootBuild": {
+    "cwd": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/validation-evidence/transient-workspaces/root-turbo-orchestration-consumer",
+    "command": "pnpm run build",
+    "exitCode": 0,
+    "signal": null,
+    "startedAt": "2026-06-25T11:43:48.095Z",
+    "endedAt": "2026-06-25T11:43:49.570Z",
+    "stdoutPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/validation-evidence/real-boundary-output/root-pnpm-run-build.stdout",
+    "stderrPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/validation-evidence/real-boundary-output/root-pnpm-run-build.stderr",
+    "stdoutTail": "\n> @vibe-engineer/workspace@0.0.0 build /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/validation-evidence/transient-workspaces/root-turbo-orchestration-consumer\n> pnpm exec turbo run build\n\n\n   • Packages in scope: @vibe-engineer/artifacts, @vibe-engineer/orchestration\n   • Running build in 2 packages\n   • Remote caching disabled\n\n@vibe-engineer/artifacts:build: cache miss, executing 6aec2a652e362db9\n@vibe-engineer/artifacts:build: \n@vibe-engineer/artifacts:build: > @vibe-engineer/artifacts@0.0.0 build /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/validation-evidence/transient-workspaces/root-turbo-orchestration-consumer/packages/artifacts\n@vibe-engineer/artifacts:build: > node scripts/check-generated-types.mjs && node tests/run-tests.mjs\n@vibe-engineer/artifacts:build: \n@vibe-engineer/artifacts:build: generated type drift check passed\n@vibe-engineer/artifacts:build: {\n@vibe-engineer/artifacts:build:   \"ok\": true,\n@vibe-engineer/artifacts:build:   \"witnesses\": 25\n@vibe-engineer/artifacts:build: }\n@vibe-engineer/orchestration:build: cache miss, executing 7037e4cc80f92ed3\n@vibe-engineer/orchestration:build: \n@vibe-engineer/orchestration:build: > @vibe-engineer/orchestration@0.0.0 build /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/validation-evidence/transient-workspaces/root-turbo-orchestration-consumer/packages/orchestration\n@vibe-engineer/orchestration:build: > tsc -p tsconfig.json\n@vibe-engineer/orchestration:build: \n\n Tasks:    2 successful, 2 total\nCached:    0 cached, 2 total\n  Time:    999ms \n\n",
+    "stderrTail": " WARNING  No locally installed `turbo` found in your repository. Using globally installed version (2.9.18), which can cause unexpected behavior.\n\nInstalling the version in your repository (2.9.18) before calling `turbo` will result in more predictable behavior across environments.\n WARNING  no output files found for task @vibe-engineer/artifacts#build. Please check your `outputs` key in `turbo.json`\n"
+  },
+  "consumer": {
+    "cwd": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/validation-evidence/transient-workspaces/root-turbo-orchestration-consumer",
+    "command": "node /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/validation-evidence/transient-workspaces/root-turbo-orchestration-consumer/consumer/consume-orchestration.mjs",
+    "exitCode": 0,
+    "signal": null,
+    "startedAt": "2026-06-25T11:43:49.570Z",
+    "endedAt": "2026-06-25T11:43:49.726Z",
+    "stdoutPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/validation-evidence/real-boundary-output/consumer-import.stdout",
+    "stderrPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/validation-evidence/real-boundary-output/consumer-import.stderr",
+    "stdoutTail": "{\"resolved\":\"file:///Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/validation-evidence/transient-workspaces/root-turbo-orchestration-consumer/packages/orchestration/dist/src/index.js\",\"pathname\":\"/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/validation-evidence/transient-workspaces/root-turbo-orchestration-consumer/packages/orchestration/dist/src/index.js\",\"maxParallelAgents\":8,\"exists\":true,\"declarationExists\":true}\n",
+    "stderrTail": ""
+  },
+  "importProbe": {
+    "resolved": "file:///Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/validation-evidence/transient-workspaces/root-turbo-orchestration-consumer/packages/orchestration/dist/src/index.js",
+    "pathname": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/validation-evidence/transient-workspaces/root-turbo-orchestration-consumer/packages/orchestration/dist/src/index.js",
+    "maxParallelAgents": 8,
+    "exists": true,
+    "declarationExists": true
+  },
+  "distInventoryBefore": [],
+  "distInventoryAfter": [
+    "packages/orchestration/dist/src/index.d.ts",
+    "packages/orchestration/dist/src/index.d.ts.map",
+    "packages/orchestration/dist/src/index.js",
+    "packages/orchestration/dist/src/index.js.map",
+    "packages/orchestration/dist/tests/typecheck.d.ts",
+    "packages/orchestration/dist/tests/typecheck.d.ts.map",
+    "packages/orchestration/dist/tests/typecheck.js",
+    "packages/orchestration/dist/tests/typecheck.js.map"
+  ],
+  "assertions": {
+    "rootScriptExercised": true,
+    "rootBuildSucceeded": true,
+    "consumerSucceeded": true,
+    "expectedDistJsExists": true,
+    "expectedDistDtsExists": true,
+    "importResolvedUnderValidationWorkspace": true,
+    "importDidNotResolveToProductDist": true,
+    "importResolvedToExpectedDist": true,
+    "declarationProbePassed": true,
+    "maxParallelAgentsExportObserved": true
+  },
+  "ok": true
+}

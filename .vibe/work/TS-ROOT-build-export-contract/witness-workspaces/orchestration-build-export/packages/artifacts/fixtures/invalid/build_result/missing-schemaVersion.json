@@ -1,0 +1,84 @@
+{
+  "artifactKind": "build_result",
+  "artifactId": "artifact-build_result-001",
+  "title": "Build Result valid fixture",
+  "createdAt": "2026-06-23T00:00:00.000Z",
+  "updatedAt": "2026-06-23T00:00:00.000Z",
+  "producer": {
+    "kind": "skill",
+    "id": "skill-task",
+    "name": "task",
+    "version": "1.0.0",
+    "runId": "run-001"
+  },
+  "status": "passed",
+  "ownership": {
+    "ownerLane": "I-01A-artifact-schemas",
+    "ownedWritePaths": [
+      "packages/artifacts/**"
+    ],
+    "readOnlyPaths": [
+      "docs/decisions/**"
+    ],
+    "untouchablePaths": [
+      ".git/**"
+    ],
+    "concurrencyNotes": "owned fixture"
+  },
+  "links": [
+    {
+      "rel": "implements",
+      "artifactKind": "implementation_plan",
+      "artifactId": "artifact-implementation_plan-001",
+      "path": "fixtures/valid/implementation_plan.json",
+      "required": true,
+      "statusAtLinkTime": "approved"
+    }
+  ],
+  "extensions": {
+    "dev.vibe.fixture": {
+      "schemaVersion": "1.0.0",
+      "note": "domain-neutral fixture extension"
+    }
+  },
+  "tags": [
+    "domain-neutral"
+  ],
+  "implementationPlanRef": {
+    "rel": "implements",
+    "artifactKind": "implementation_plan",
+    "artifactId": "artifact-implementation_plan-001",
+    "path": "fixtures/valid/implementation_plan.json",
+    "required": true,
+    "statusAtLinkTime": "approved"
+  },
+  "implementationSummary": "Implemented package-owned artifact validation.",
+  "changedFilesSummary": [
+    {
+      "path": "packages/artifacts/src/index.js",
+      "changeKind": "created",
+      "ownerLane": "I-01A-artifact-schemas",
+      "summary": "Validator API"
+    }
+  ],
+  "schematicsUsed": [],
+  "testsAndVerificationChanged": [],
+  "verificationRuns": [
+    {
+      "evidencePacketRef": {
+        "rel": "evidence_for",
+        "artifactKind": "evidence_packet",
+        "artifactId": "artifact-evidence_packet-001",
+        "path": "fixtures/valid/evidence_packet.json",
+        "required": true,
+        "statusAtLinkTime": "passed"
+      },
+      "summary": "Typecheck evidence exists.",
+      "result": "pass",
+      "blocking": true
+    }
+  ],
+  "warningsAndBlockers": [],
+  "contextDocsUpdates": [],
+  "finalStatusReason": "All deterministic checks represented by Evidence Packet references."
+}

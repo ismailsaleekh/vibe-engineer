@@ -1,0 +1,81 @@
+{
+  "artifactKind": "verification_delta",
+  "artifactId": "artifact-verification_delta-001",
+  "title": "Verification Delta valid fixture",
+  "createdAt": "2026-06-23T00:00:00.000Z",
+  "updatedAt": "2026-06-23T00:00:00.000Z",
+  "producer": {
+    "kind": "skill",
+    "id": "skill-task",
+    "name": "task",
+    "version": "1.0.0",
+    "runId": "run-001"
+  },
+  "status": "complete",
+  "ownership": {
+    "ownerLane": "I-01A-artifact-schemas",
+    "ownedWritePaths": [
+      "packages/artifacts/**"
+    ],
+    "readOnlyPaths": [
+      "docs/decisions/**"
+    ],
+    "untouchablePaths": [
+      ".git/**"
+    ],
+    "concurrencyNotes": "owned fixture"
+  },
+  "links": [
+    {
+      "rel": "verification_delta_of",
+      "artifactKind": "implementation_plan",
+      "artifactId": "artifact-implementation_plan-001",
+      "path": "fixtures/valid/implementation_plan.json",
+      "required": true,
+      "statusAtLinkTime": "approved"
+    }
+  ],
+  "extensions": {
+    "dev.vibe.fixture": {
+      "schemaVersion": "1.0.0",
+      "note": "domain-neutral fixture extension"
+    }
+  },
+  "tags": [
+    "domain-neutral"
+  ],
+  "summary": "All required verification catalog items are represented.",
+  "implementationPlanRef": {
+    "rel": "verification_delta_of",
+    "artifactKind": "implementation_plan",
+    "artifactId": "artifact-implementation_plan-001",
+    "path": "fixtures/valid/implementation_plan.json",
+    "required": true,
+    "statusAtLinkTime": "approved"
+  },
+  "sensitiveAreas": [
+    "packages/artifacts"
+  ],
+  "catalogVersion": "1.0.0",
+  "requiredItems": [
+    {
+      "id": "schema-validation",
+      "layer": "schema_validation",
+      "action": "add",
+      "rationale": "Artifacts must validate against canonical schemas.",
+      "expectedArtifacts": [
+        "packages/artifacts/schemas/work-brief.schema.json"
+      ],
+      "blocking": true,
+      "validationOwner": "validator",
+      "fixerOwner": "fixer",
+      "evidenceRequired": [
+        {
+          "kind": "evidence_packet",
+          "description": "Schema validation evidence",
+          "blocking": true
+        }
+      ]
+    }
+  ]
+}

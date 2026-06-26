@@ -1,0 +1,47 @@
+{
+  "repo": "/Users/lizavasilyeva/work/vibe-engineer",
+  "workspace": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/validation-evidence/transient-workspaces/root-turbo-orchestration-consumer",
+  "outputDir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/validation-evidence/real-boundary-output",
+  "copiedFiles": {
+    "root": [
+      "package.json",
+      "turbo.json",
+      "tsconfig.base.json",
+      "pnpm-workspace.yaml",
+      "pnpm-lock.yaml"
+    ],
+    "packages": [
+      "packages/orchestration",
+      "packages/artifacts"
+    ]
+  },
+  "rootBuild": {
+    "cwd": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/validation-evidence/transient-workspaces/root-turbo-orchestration-consumer",
+    "command": "pnpm run build",
+    "exitCode": 1,
+    "signal": null,
+    "startedAt": "2026-06-25T11:41:56.220Z",
+    "endedAt": "2026-06-25T11:41:56.960Z",
+    "stdoutPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/validation-evidence/real-boundary-output/root-pnpm-run-build.stdout",
+    "stderrPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/validation-evidence/real-boundary-output/root-pnpm-run-build.stderr",
+    "stdoutTail": "\n   • Packages in scope: @vibe-engineer/artifacts, @vibe-engineer/orchestration\n   • Running build in 2 packages\n   • Remote caching disabled\n\n@vibe-engineer/artifacts:build: cache miss, executing 6aec2a652e362db9\n@vibe-engineer/artifacts:build: \n@vibe-engineer/artifacts:build: > @vibe-engineer/artifacts@0.0.0 build /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/validation-evidence/transient-workspaces/root-turbo-orchestration-consumer/packages/artifacts\n@vibe-engineer/artifacts:build: > node scripts/check-generated-types.mjs && node tests/run-tests.mjs\n@vibe-engineer/artifacts:build: \n@vibe-engineer/artifacts:build: generated type drift check passed\n@vibe-engineer/artifacts:build: node:internal/modules/package_json_reader:301\n@vibe-engineer/artifacts:build:   throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);\n@vibe-engineer/artifacts:build:         ^\n@vibe-engineer/artifacts:build: \n@vibe-engineer/artifacts:build: Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'ajv' imported from /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/validation-evidence/transient-workspaces/root-turbo-orchestration-consumer/packages/artifacts/src/validation.js\n@vibe-engineer/artifacts:build:     at Object.getPackageJSONURL (node:internal/modules/package_json_reader:301:9)\n@vibe-engineer/artifacts:build:     at packageResolve (node:internal/modules/esm/resolve:768:81)\n@vibe-engineer/artifacts:build:     at moduleResolve (node:internal/modules/esm/resolve:859:18)\n@vibe-engineer/artifacts:build:     at defaultResolve (node:internal/modules/esm/resolve:992:11)\n@vibe-engineer/artifacts:build:     at #cachedDefaultResolve (node:internal/modules/esm/loader:691:20)\n@vibe-engineer/artifacts:build:     at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:708:38)\n@vibe-engineer/artifacts:build:     at ModuleLoader.resolveSync (node:internal/modules/esm/loader:740:52)\n@vibe-engineer/artifacts:build:     at #resolve (node:internal/modules/esm/loader:673:17)\n@vibe-engineer/artifacts:build:     at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:593:35)\n@vibe-engineer/artifacts:build:     at ModuleJob.syncLink (node:internal/modules/esm/module_job:163:33) {\n@vibe-engineer/artifacts:build:   code: 'ERR_MODULE_NOT_FOUND'\n@vibe-engineer/artifacts:build: }\n@vibe-engineer/artifacts:build: \n@vibe-engineer/artifacts:build: Node.js v24.16.0\n@vibe-engineer/artifacts:build:  ELIFECYCLE  Command failed with exit code 1.\n@vibe-engineer/artifacts:build:  WARN   Local package.json exists, but node_modules missing, did you mean to install?\n\n Tasks:    0 successful, 1 total\nCached:    0 cached, 1 total\n  Time:    277ms \nFailed:    @vibe-engineer/artifacts#build\n\n ELIFECYCLE  Command failed with exit code 1.\n",
+    "stderrTail": " WARNING  No locally installed `turbo` found in your repository. Using globally installed version (2.9.18), which can cause unexpected behavior.\n\nInstalling the version in your repository (2.9.18) before calling `turbo` will result in more predictable behavior across environments.\n ERROR  @vibe-engineer/artifacts#build: command (/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/validation-evidence/transient-workspaces/root-turbo-orchestration-consumer/packages/artifacts) /Users/lizavasilyeva/Library/pnpm/pnpm run build exited (1)\n ERROR  run failed: command  exited (1)\n"
+  },
+  "consumer": null,
+  "importProbe": null,
+  "distInventoryBefore": [],
+  "distInventoryAfter": [],
+  "assertions": {
+    "rootScriptExercised": true,
+    "rootBuildSucceeded": false,
+    "consumerSucceeded": false,
+    "expectedDistJsExists": false,
+    "expectedDistDtsExists": false,
+    "importResolvedUnderValidationWorkspace": false,
+    "importDidNotResolveToProductDist": false,
+    "importResolvedToExpectedDist": false,
+    "declarationProbePassed": false,
+    "maxParallelAgentsExportObserved": false
+  },
+  "ok": false
+}

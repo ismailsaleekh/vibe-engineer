@@ -1,0 +1,834 @@
+{
+  "repo": "/Users/lizavasilyeva/work/vibe-engineer",
+  "evidenceRoot": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/post-fix-validation-evidence",
+  "resultPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/post-fix-validation-evidence/post-fix-structured-contract-validator-result.json",
+  "ok": true,
+  "jsonschema": {
+    "available": true,
+    "schemaErrors": [],
+    "results": [
+      {
+        "name": "actual-contract",
+        "errorCount": 0,
+        "errors": []
+      },
+      {
+        "name": "missing-exceptionClasses",
+        "errorCount": 1,
+        "errors": [
+          {
+            "path": "",
+            "schemaPath": "required",
+            "message": "'exceptionClasses' is a required property"
+          }
+        ]
+      },
+      {
+        "name": "extra-exception-class",
+        "errorCount": 2,
+        "errors": [
+          {
+            "path": "exceptionClasses",
+            "schemaPath": "properties/exceptionClasses/maxItems",
+            "message": "[{'id': 'workspace-surface-witness-evidence-only', 'category': 'evidence-only-root-script', 'subject': '.vibe/work/I-00A-workspace-package-skeleton/witnesses/workspace-surface-witness.mjs', 'allowedUse': 'root workspace:surface evidence witness', 'forbiddenUses': ['production-runtime-source', 'package-export-source', 'package-bin-source'], 'productionRuntimeOrExportSource': False, 'finalStateAllowed': False}, {'id': 'audited-production-js-mjs-migration-debt', 'category': 'migration-debt', 'auditedProductionJsMjsCount': 43, 'classification': 'audited production JS/MJS remains debt until package TS migration lanes replace it with TypeScript source and generated dist/declarations', 'finalAllowlist': False, 'migrationOwner': 'later package TypeScript migration lanes'}, {'id': 'ts09v-verification-source-js-export-deferred', 'category': 'deferred-verification-source-js-export-debt', 'deferralId': 'TS-09V', 'subject': 'packages/verification/package.json#/exports/.', 'requiredIndependentPasses': ['I-09S', 'I-09A'], 'forbiddenUntilReady': ['packages/verification/**', 'packages/verification/package.json#/exports', 'packages/verification/package.json#/types', 'packages/verification/dist/**'], 'finalStateAllowed': False}, {'id': 'transient-build-outputs-ts-root-evidence-only', 'category': 'owned-transient-evidence-output', 'allowedRoot': '.vibe/work/TS-ROOT-build-export-contract/**', 'forbiddenProductRoots': ['packages/**/dist/**'], 'productDistMutationAllowed': False, 'finalStateAllowed': False}, {'id': 'permissive-extra-exception', 'category': 'bad', 'finalStateAllowed': True}] is too long"
+          },
+          {
+            "path": "exceptionClasses",
+            "schemaPath": "properties/exceptionClasses/items",
+            "message": "Expected at most 4 items but found 1 extra: {'id': 'permissive-extra-exception', 'category': 'bad', 'finalStateAllowed': True}"
+          }
+        ]
+      },
+      {
+        "name": "missing-exception-workspace-surface-witness-evidence-only",
+        "errorCount": 23,
+        "errors": [
+          {
+            "path": "exceptionClasses",
+            "schemaPath": "properties/exceptionClasses/minItems",
+            "message": "[{'id': 'audited-production-js-mjs-migration-debt', 'category': 'migration-debt', 'auditedProductionJsMjsCount': 43, 'classification': 'audited production JS/MJS remains debt until package TS migration lanes replace it with TypeScript source and generated dist/declarations', 'finalAllowlist': False, 'migrationOwner': 'later package TypeScript migration lanes'}, {'id': 'ts09v-verification-source-js-export-deferred', 'category': 'deferred-verification-source-js-export-debt', 'deferralId': 'TS-09V', 'subject': 'packages/verification/package.json#/exports/.', 'requiredIndependentPasses': ['I-09S', 'I-09A'], 'forbiddenUntilReady': ['packages/verification/**', 'packages/verification/package.json#/exports', 'packages/verification/package.json#/types', 'packages/verification/dist/**'], 'finalStateAllowed': False}, {'id': 'transient-build-outputs-ts-root-evidence-only', 'category': 'owned-transient-evidence-output', 'allowedRoot': '.vibe/work/TS-ROOT-build-export-contract/**', 'forbiddenProductRoots': ['packages/**/dist/**'], 'productDistMutationAllowed': False, 'finalStateAllowed': False}] is too short"
+          },
+          {
+            "path": "exceptionClasses/0",
+            "schemaPath": "properties/exceptionClasses/prefixItems/0/additionalProperties",
+            "message": "Additional properties are not allowed ('auditedProductionJsMjsCount', 'classification', 'finalAllowlist', 'migrationOwner' were unexpected)"
+          },
+          {
+            "path": "exceptionClasses/0",
+            "schemaPath": "properties/exceptionClasses/prefixItems/0/required",
+            "message": "'subject' is a required property"
+          },
+          {
+            "path": "exceptionClasses/0",
+            "schemaPath": "properties/exceptionClasses/prefixItems/0/required",
+            "message": "'allowedUse' is a required property"
+          },
+          {
+            "path": "exceptionClasses/0",
+            "schemaPath": "properties/exceptionClasses/prefixItems/0/required",
+            "message": "'forbiddenUses' is a required property"
+          },
+          {
+            "path": "exceptionClasses/0",
+            "schemaPath": "properties/exceptionClasses/prefixItems/0/required",
+            "message": "'productionRuntimeOrExportSource' is a required property"
+          },
+          {
+            "path": "exceptionClasses/0",
+            "schemaPath": "properties/exceptionClasses/prefixItems/0/required",
+            "message": "'finalStateAllowed' is a required property"
+          },
+          {
+            "path": "exceptionClasses/0/id",
+            "schemaPath": "properties/exceptionClasses/prefixItems/0/properties/id/const",
+            "message": "'workspace-surface-witness-evidence-only' was expected"
+          },
+          {
+            "path": "exceptionClasses/0/category",
+            "schemaPath": "properties/exceptionClasses/prefixItems/0/properties/category/const",
+            "message": "'evidence-only-root-script' was expected"
+          },
+          {
+            "path": "exceptionClasses/1",
+            "schemaPath": "properties/exceptionClasses/prefixItems/1/additionalProperties",
+            "message": "Additional properties are not allowed ('deferralId', 'finalStateAllowed', 'forbiddenUntilReady', 'requiredIndependentPasses', 'subject' were unexpected)"
+          },
+          {
+            "path": "exceptionClasses/1",
+            "schemaPath": "properties/exceptionClasses/prefixItems/1/required",
+            "message": "'auditedProductionJsMjsCount' is a required property"
+          },
+          {
+            "path": "exceptionClasses/1",
+            "schemaPath": "properties/exceptionClasses/prefixItems/1/required",
+            "message": "'classification' is a required property"
+          },
+          {
+            "path": "exceptionClasses/1",
+            "schemaPath": "properties/exceptionClasses/prefixItems/1/required",
+            "message": "'finalAllowlist' is a required property"
+          },
+          {
+            "path": "exceptionClasses/1",
+            "schemaPath": "properties/exceptionClasses/prefixItems/1/required",
+            "message": "'migrationOwner' is a required property"
+          },
+          {
+            "path": "exceptionClasses/1/id",
+            "schemaPath": "properties/exceptionClasses/prefixItems/1/properties/id/const",
+            "message": "'audited-production-js-mjs-migration-debt' was expected"
+          },
+          {
+            "path": "exceptionClasses/1/category",
+            "schemaPath": "properties/exceptionClasses/prefixItems/1/properties/category/const",
+            "message": "'migration-debt' was expected"
+          },
+          {
+            "path": "exceptionClasses/2",
+            "schemaPath": "properties/exceptionClasses/prefixItems/2/additionalProperties",
+            "message": "Additional properties are not allowed ('allowedRoot', 'forbiddenProductRoots', 'productDistMutationAllowed' were unexpected)"
+          },
+          {
+            "path": "exceptionClasses/2",
+            "schemaPath": "properties/exceptionClasses/prefixItems/2/required",
+            "message": "'deferralId' is a required property"
+          },
+          {
+            "path": "exceptionClasses/2",
+            "schemaPath": "properties/exceptionClasses/prefixItems/2/required",
+            "message": "'subject' is a required property"
+          },
+          {
+            "path": "exceptionClasses/2",
+            "schemaPath": "properties/exceptionClasses/prefixItems/2/required",
+            "message": "'requiredIndependentPasses' is a required property"
+          }
+        ]
+      },
+      {
+        "name": "missing-exception-audited-production-js-mjs-migration-debt",
+        "errorCount": 15,
+        "errors": [
+          {
+            "path": "exceptionClasses",
+            "schemaPath": "properties/exceptionClasses/minItems",
+            "message": "[{'id': 'workspace-surface-witness-evidence-only', 'category': 'evidence-only-root-script', 'subject': '.vibe/work/I-00A-workspace-package-skeleton/witnesses/workspace-surface-witness.mjs', 'allowedUse': 'root workspace:surface evidence witness', 'forbiddenUses': ['production-runtime-source', 'package-export-source', 'package-bin-source'], 'productionRuntimeOrExportSource': False, 'finalStateAllowed': False}, {'id': 'ts09v-verification-source-js-export-deferred', 'category': 'deferred-verification-source-js-export-debt', 'deferralId': 'TS-09V', 'subject': 'packages/verification/package.json#/exports/.', 'requiredIndependentPasses': ['I-09S', 'I-09A'], 'forbiddenUntilReady': ['packages/verification/**', 'packages/verification/package.json#/exports', 'packages/verification/package.json#/types', 'packages/verification/dist/**'], 'finalStateAllowed': False}, {'id': 'transient-build-outputs-ts-root-evidence-only', 'category': 'owned-transient-evidence-output', 'allowedRoot': '.vibe/work/TS-ROOT-build-export-contract/**', 'forbiddenProductRoots': ['packages/**/dist/**'], 'productDistMutationAllowed': False, 'finalStateAllowed': False}] is too short"
+          },
+          {
+            "path": "exceptionClasses/1",
+            "schemaPath": "properties/exceptionClasses/prefixItems/1/additionalProperties",
+            "message": "Additional properties are not allowed ('deferralId', 'finalStateAllowed', 'forbiddenUntilReady', 'requiredIndependentPasses', 'subject' were unexpected)"
+          },
+          {
+            "path": "exceptionClasses/1",
+            "schemaPath": "properties/exceptionClasses/prefixItems/1/required",
+            "message": "'auditedProductionJsMjsCount' is a required property"
+          },
+          {
+            "path": "exceptionClasses/1",
+            "schemaPath": "properties/exceptionClasses/prefixItems/1/required",
+            "message": "'classification' is a required property"
+          },
+          {
+            "path": "exceptionClasses/1",
+            "schemaPath": "properties/exceptionClasses/prefixItems/1/required",
+            "message": "'finalAllowlist' is a required property"
+          },
+          {
+            "path": "exceptionClasses/1",
+            "schemaPath": "properties/exceptionClasses/prefixItems/1/required",
+            "message": "'migrationOwner' is a required property"
+          },
+          {
+            "path": "exceptionClasses/1/id",
+            "schemaPath": "properties/exceptionClasses/prefixItems/1/properties/id/const",
+            "message": "'audited-production-js-mjs-migration-debt' was expected"
+          },
+          {
+            "path": "exceptionClasses/1/category",
+            "schemaPath": "properties/exceptionClasses/prefixItems/1/properties/category/const",
+            "message": "'migration-debt' was expected"
+          },
+          {
+            "path": "exceptionClasses/2",
+            "schemaPath": "properties/exceptionClasses/prefixItems/2/additionalProperties",
+            "message": "Additional properties are not allowed ('allowedRoot', 'forbiddenProductRoots', 'productDistMutationAllowed' were unexpected)"
+          },
+          {
+            "path": "exceptionClasses/2",
+            "schemaPath": "properties/exceptionClasses/prefixItems/2/required",
+            "message": "'deferralId' is a required property"
+          },
+          {
+            "path": "exceptionClasses/2",
+            "schemaPath": "properties/exceptionClasses/prefixItems/2/required",
+            "message": "'subject' is a required property"
+          },
+          {
+            "path": "exceptionClasses/2",
+            "schemaPath": "properties/exceptionClasses/prefixItems/2/required",
+            "message": "'requiredIndependentPasses' is a required property"
+          },
+          {
+            "path": "exceptionClasses/2",
+            "schemaPath": "properties/exceptionClasses/prefixItems/2/required",
+            "message": "'forbiddenUntilReady' is a required property"
+          },
+          {
+            "path": "exceptionClasses/2/id",
+            "schemaPath": "properties/exceptionClasses/prefixItems/2/properties/id/const",
+            "message": "'ts09v-verification-source-js-export-deferred' was expected"
+          },
+          {
+            "path": "exceptionClasses/2/category",
+            "schemaPath": "properties/exceptionClasses/prefixItems/2/properties/category/const",
+            "message": "'deferred-verification-source-js-export-debt' was expected"
+          }
+        ]
+      },
+      {
+        "name": "missing-exception-ts09v-verification-source-js-export-deferred",
+        "errorCount": 8,
+        "errors": [
+          {
+            "path": "exceptionClasses",
+            "schemaPath": "properties/exceptionClasses/minItems",
+            "message": "[{'id': 'workspace-surface-witness-evidence-only', 'category': 'evidence-only-root-script', 'subject': '.vibe/work/I-00A-workspace-package-skeleton/witnesses/workspace-surface-witness.mjs', 'allowedUse': 'root workspace:surface evidence witness', 'forbiddenUses': ['production-runtime-source', 'package-export-source', 'package-bin-source'], 'productionRuntimeOrExportSource': False, 'finalStateAllowed': False}, {'id': 'audited-production-js-mjs-migration-debt', 'category': 'migration-debt', 'auditedProductionJsMjsCount': 43, 'classification': 'audited production JS/MJS remains debt until package TS migration lanes replace it with TypeScript source and generated dist/declarations', 'finalAllowlist': False, 'migrationOwner': 'later package TypeScript migration lanes'}, {'id': 'transient-build-outputs-ts-root-evidence-only', 'category': 'owned-transient-evidence-output', 'allowedRoot': '.vibe/work/TS-ROOT-build-export-contract/**', 'forbiddenProductRoots': ['packages/**/dist/**'], 'productDistMutationAllowed': False, 'finalStateAllowed': False}] is too short"
+          },
+          {
+            "path": "exceptionClasses/2",
+            "schemaPath": "properties/exceptionClasses/prefixItems/2/additionalProperties",
+            "message": "Additional properties are not allowed ('allowedRoot', 'forbiddenProductRoots', 'productDistMutationAllowed' were unexpected)"
+          },
+          {
+            "path": "exceptionClasses/2",
+            "schemaPath": "properties/exceptionClasses/prefixItems/2/required",
+            "message": "'deferralId' is a required property"
+          },
+          {
+            "path": "exceptionClasses/2",
+            "schemaPath": "properties/exceptionClasses/prefixItems/2/required",
+            "message": "'subject' is a required property"
+          },
+          {
+            "path": "exceptionClasses/2",
+            "schemaPath": "properties/exceptionClasses/prefixItems/2/required",
+            "message": "'requiredIndependentPasses' is a required property"
+          },
+          {
+            "path": "exceptionClasses/2",
+            "schemaPath": "properties/exceptionClasses/prefixItems/2/required",
+            "message": "'forbiddenUntilReady' is a required property"
+          },
+          {
+            "path": "exceptionClasses/2/id",
+            "schemaPath": "properties/exceptionClasses/prefixItems/2/properties/id/const",
+            "message": "'ts09v-verification-source-js-export-deferred' was expected"
+          },
+          {
+            "path": "exceptionClasses/2/category",
+            "schemaPath": "properties/exceptionClasses/prefixItems/2/properties/category/const",
+            "message": "'deferred-verification-source-js-export-debt' was expected"
+          }
+        ]
+      },
+      {
+        "name": "missing-exception-transient-build-outputs-ts-root-evidence-only",
+        "errorCount": 1,
+        "errors": [
+          {
+            "path": "exceptionClasses",
+            "schemaPath": "properties/exceptionClasses/minItems",
+            "message": "[{'id': 'workspace-surface-witness-evidence-only', 'category': 'evidence-only-root-script', 'subject': '.vibe/work/I-00A-workspace-package-skeleton/witnesses/workspace-surface-witness.mjs', 'allowedUse': 'root workspace:surface evidence witness', 'forbiddenUses': ['production-runtime-source', 'package-export-source', 'package-bin-source'], 'productionRuntimeOrExportSource': False, 'finalStateAllowed': False}, {'id': 'audited-production-js-mjs-migration-debt', 'category': 'migration-debt', 'auditedProductionJsMjsCount': 43, 'classification': 'audited production JS/MJS remains debt until package TS migration lanes replace it with TypeScript source and generated dist/declarations', 'finalAllowlist': False, 'migrationOwner': 'later package TypeScript migration lanes'}, {'id': 'ts09v-verification-source-js-export-deferred', 'category': 'deferred-verification-source-js-export-debt', 'deferralId': 'TS-09V', 'subject': 'packages/verification/package.json#/exports/.', 'requiredIndependentPasses': ['I-09S', 'I-09A'], 'forbiddenUntilReady': ['packages/verification/**', 'packages/verification/package.json#/exports', 'packages/verification/package.json#/types', 'packages/verification/dist/**'], 'finalStateAllowed': False}] is too short"
+          }
+        ]
+      },
+      {
+        "name": "preserved-missing-workspace-surface",
+        "errorCount": 2,
+        "errors": [
+          {
+            "path": "rootScripts/preserved",
+            "schemaPath": "properties/rootScripts/properties/preserved/minItems",
+            "message": "['workspace:graph'] is too short"
+          },
+          {
+            "path": "rootScripts/preserved",
+            "schemaPath": "properties/rootScripts/properties/preserved/allOf/1/contains",
+            "message": "['workspace:graph'] does not contain items matching the given schema"
+          }
+        ]
+      },
+      {
+        "name": "preserved-missing-workspace-graph",
+        "errorCount": 2,
+        "errors": [
+          {
+            "path": "rootScripts/preserved",
+            "schemaPath": "properties/rootScripts/properties/preserved/minItems",
+            "message": "['workspace:surface'] is too short"
+          },
+          {
+            "path": "rootScripts/preserved",
+            "schemaPath": "properties/rootScripts/properties/preserved/allOf/0/contains",
+            "message": "['workspace:surface'] does not contain items matching the given schema"
+          }
+        ]
+      },
+      {
+        "name": "ts09v-missing-i09s",
+        "errorCount": 4,
+        "errors": [
+          {
+            "path": "exceptionClasses/2/requiredIndependentPasses",
+            "schemaPath": "properties/exceptionClasses/prefixItems/2/properties/requiredIndependentPasses/minItems",
+            "message": "['I-09A'] is too short"
+          },
+          {
+            "path": "exceptionClasses/2/requiredIndependentPasses",
+            "schemaPath": "properties/exceptionClasses/prefixItems/2/properties/requiredIndependentPasses/allOf/0/contains",
+            "message": "['I-09A'] does not contain items matching the given schema"
+          },
+          {
+            "path": "ts09vDeferral/requiredIndependentPasses",
+            "schemaPath": "properties/ts09vDeferral/properties/requiredIndependentPasses/minItems",
+            "message": "['I-09A'] is too short"
+          },
+          {
+            "path": "ts09vDeferral/requiredIndependentPasses",
+            "schemaPath": "properties/ts09vDeferral/properties/requiredIndependentPasses/allOf/0/contains",
+            "message": "['I-09A'] does not contain items matching the given schema"
+          }
+        ]
+      },
+      {
+        "name": "ts09v-missing-i09a",
+        "errorCount": 4,
+        "errors": [
+          {
+            "path": "exceptionClasses/2/requiredIndependentPasses",
+            "schemaPath": "properties/exceptionClasses/prefixItems/2/properties/requiredIndependentPasses/minItems",
+            "message": "['I-09S'] is too short"
+          },
+          {
+            "path": "exceptionClasses/2/requiredIndependentPasses",
+            "schemaPath": "properties/exceptionClasses/prefixItems/2/properties/requiredIndependentPasses/allOf/1/contains",
+            "message": "['I-09S'] does not contain items matching the given schema"
+          },
+          {
+            "path": "ts09vDeferral/requiredIndependentPasses",
+            "schemaPath": "properties/ts09vDeferral/properties/requiredIndependentPasses/minItems",
+            "message": "['I-09S'] is too short"
+          },
+          {
+            "path": "ts09vDeferral/requiredIndependentPasses",
+            "schemaPath": "properties/ts09vDeferral/properties/requiredIndependentPasses/allOf/1/contains",
+            "message": "['I-09S'] does not contain items matching the given schema"
+          }
+        ]
+      },
+      {
+        "name": "package-tsconfig-freeform-requirements",
+        "errorCount": 8,
+        "errors": [
+          {
+            "path": "packageTsconfigConvention",
+            "schemaPath": "properties/packageTsconfigConvention/additionalProperties",
+            "message": "Additional properties are not allowed ('requirements' was unexpected)"
+          },
+          {
+            "path": "packageTsconfigConvention",
+            "schemaPath": "properties/packageTsconfigConvention/required",
+            "message": "'policyId' is a required property"
+          },
+          {
+            "path": "packageTsconfigConvention",
+            "schemaPath": "properties/packageTsconfigConvention/required",
+            "message": "'appliesTo' is a required property"
+          },
+          {
+            "path": "packageTsconfigConvention",
+            "schemaPath": "properties/packageTsconfigConvention/required",
+            "message": "'allowedExtends' is a required property"
+          },
+          {
+            "path": "packageTsconfigConvention",
+            "schemaPath": "properties/packageTsconfigConvention/required",
+            "message": "'requiredBuildShape' is a required property"
+          },
+          {
+            "path": "packageTsconfigConvention",
+            "schemaPath": "properties/packageTsconfigConvention/required",
+            "message": "'forbiddenCompilerOptions' is a required property"
+          },
+          {
+            "path": "packageTsconfigConvention",
+            "schemaPath": "properties/packageTsconfigConvention/required",
+            "message": "'inheritedCompilerOptions' is a required property"
+          },
+          {
+            "path": "packageTsconfigConvention",
+            "schemaPath": "properties/packageTsconfigConvention/required",
+            "message": "'runtimeImportWitnessRequired' is a required property"
+          }
+        ]
+      },
+      {
+        "name": "package-export-freeform-requirements",
+        "errorCount": 6,
+        "errors": [
+          {
+            "path": "packageExportConvention",
+            "schemaPath": "properties/packageExportConvention/additionalProperties",
+            "message": "Additional properties are not allowed ('requirements' was unexpected)"
+          },
+          {
+            "path": "packageExportConvention",
+            "schemaPath": "properties/packageExportConvention/required",
+            "message": "'policyId' is a required property"
+          },
+          {
+            "path": "packageExportConvention",
+            "schemaPath": "properties/packageExportConvention/required",
+            "message": "'runtimeExports' is a required property"
+          },
+          {
+            "path": "packageExportConvention",
+            "schemaPath": "properties/packageExportConvention/required",
+            "message": "'typesExports' is a required property"
+          },
+          {
+            "path": "packageExportConvention",
+            "schemaPath": "properties/packageExportConvention/required",
+            "message": "'binEntries' is a required property"
+          },
+          {
+            "path": "packageExportConvention",
+            "schemaPath": "properties/packageExportConvention/required",
+            "message": "'currentSourceJsDebt' is a required property"
+          }
+        ]
+      },
+      {
+        "name": "generated-dist-freeform-requirements",
+        "errorCount": 5,
+        "errors": [
+          {
+            "path": "generatedDistPolicy",
+            "schemaPath": "properties/generatedDistPolicy/additionalProperties",
+            "message": "Additional properties are not allowed ('requirements' was unexpected)"
+          },
+          {
+            "path": "generatedDistPolicy",
+            "schemaPath": "properties/generatedDistPolicy/required",
+            "message": "'policyId' is a required property"
+          },
+          {
+            "path": "generatedDistPolicy",
+            "schemaPath": "properties/generatedDistPolicy/required",
+            "message": "'allowedOnlyWhen' is a required property"
+          },
+          {
+            "path": "generatedDistPolicy",
+            "schemaPath": "properties/generatedDistPolicy/required",
+            "message": "'forbiddenUses' is a required property"
+          },
+          {
+            "path": "generatedDistPolicy",
+            "schemaPath": "properties/generatedDistPolicy/required",
+            "message": "'tsRootWitnessOutputs' is a required property"
+          }
+        ]
+      },
+      {
+        "name": "contract-omits-ts09v-deferral",
+        "errorCount": 1,
+        "errors": [
+          {
+            "path": "",
+            "schemaPath": "required",
+            "message": "'ts09vDeferral' is a required property"
+          }
+        ]
+      },
+      {
+        "name": "audited-production-js-final-allowlist",
+        "errorCount": 3,
+        "errors": [
+          {
+            "path": "exceptionClasses/1/finalAllowlist",
+            "schemaPath": "properties/exceptionClasses/prefixItems/1/properties/finalAllowlist/const",
+            "message": "False was expected"
+          },
+          {
+            "path": "packageExportConvention/currentSourceJsDebt/finalAllowlist",
+            "schemaPath": "properties/packageExportConvention/properties/currentSourceJsDebt/properties/finalAllowlist/const",
+            "message": "False was expected"
+          },
+          {
+            "path": "sourceJsDebtPolicy/productionJsIsDebt",
+            "schemaPath": "properties/sourceJsDebtPolicy/properties/productionJsIsDebt/const",
+            "message": "True was expected"
+          }
+        ]
+      },
+      {
+        "name": "source-js-export-final-state-allowed",
+        "errorCount": 1,
+        "errors": [
+          {
+            "path": "packageExportConvention/runtimeExports/sourceJsAllowedFinalState",
+            "schemaPath": "properties/packageExportConvention/properties/runtimeExports/properties/sourceJsAllowedFinalState/const",
+            "message": "False was expected"
+          }
+        ]
+      }
+    ]
+  },
+  "currentIssues": [],
+  "negativeResults": [
+    {
+      "name": "missing-exceptionClasses",
+      "kind": "contract",
+      "file": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/post-fix-validation-evidence/negative-fixtures/missing-exceptionClasses.json",
+      "structuralRejected": true,
+      "structuralIssueCodes": [
+        "CONTRACT_EXCEPTION_CLASSES_MISSING"
+      ],
+      "schemaRejected": true,
+      "schemaErrorCount": 1
+    },
+    {
+      "name": "extra-exception-class",
+      "kind": "contract",
+      "file": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/post-fix-validation-evidence/negative-fixtures/extra-exception-class.json",
+      "structuralRejected": true,
+      "structuralIssueCodes": [
+        "CONTRACT_EXCEPTION_CLASSES_NOT_FOUR",
+        "CONTRACT_EXCEPTION_CLASSES_NOT_EXACT_ORDER"
+      ],
+      "schemaRejected": true,
+      "schemaErrorCount": 2
+    },
+    {
+      "name": "missing-exception-workspace-surface-witness-evidence-only",
+      "kind": "contract",
+      "file": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/post-fix-validation-evidence/negative-fixtures/missing-exception-workspace-surface-witness-evidence-only.json",
+      "structuralRejected": true,
+      "structuralIssueCodes": [
+        "CONTRACT_EXCEPTION_CLASSES_NOT_FOUR",
+        "CONTRACT_EXCEPTION_CLASSES_NOT_EXACT_ORDER",
+        "CONTRACT_WORKSPACE_EXCEPTION_WEAK"
+      ],
+      "schemaRejected": true,
+      "schemaErrorCount": 23
+    },
+    {
+      "name": "missing-exception-audited-production-js-mjs-migration-debt",
+      "kind": "contract",
+      "file": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/post-fix-validation-evidence/negative-fixtures/missing-exception-audited-production-js-mjs-migration-debt.json",
+      "structuralRejected": true,
+      "structuralIssueCodes": [
+        "CONTRACT_EXCEPTION_CLASSES_NOT_FOUR",
+        "CONTRACT_EXCEPTION_CLASSES_NOT_EXACT_ORDER",
+        "CONTRACT_AUDITED_EXCEPTION_WEAK"
+      ],
+      "schemaRejected": true,
+      "schemaErrorCount": 15
+    },
+    {
+      "name": "missing-exception-ts09v-verification-source-js-export-deferred",
+      "kind": "contract",
+      "file": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/post-fix-validation-evidence/negative-fixtures/missing-exception-ts09v-verification-source-js-export-deferred.json",
+      "structuralRejected": true,
+      "structuralIssueCodes": [
+        "CONTRACT_EXCEPTION_CLASSES_NOT_FOUR",
+        "CONTRACT_EXCEPTION_CLASSES_NOT_EXACT_ORDER",
+        "CONTRACT_TS09V_EXCEPTION_WEAK"
+      ],
+      "schemaRejected": true,
+      "schemaErrorCount": 8
+    },
+    {
+      "name": "missing-exception-transient-build-outputs-ts-root-evidence-only",
+      "kind": "contract",
+      "file": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/post-fix-validation-evidence/negative-fixtures/missing-exception-transient-build-outputs-ts-root-evidence-only.json",
+      "structuralRejected": true,
+      "structuralIssueCodes": [
+        "CONTRACT_EXCEPTION_CLASSES_NOT_FOUR",
+        "CONTRACT_EXCEPTION_CLASSES_NOT_EXACT_ORDER",
+        "CONTRACT_TRANSIENT_EXCEPTION_WEAK"
+      ],
+      "schemaRejected": true,
+      "schemaErrorCount": 1
+    },
+    {
+      "name": "preserved-missing-workspace-surface",
+      "kind": "contract",
+      "file": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/post-fix-validation-evidence/negative-fixtures/preserved-missing-workspace-surface.json",
+      "structuralRejected": true,
+      "structuralIssueCodes": [
+        "CONTRACT_PRESERVED_SCRIPTS_WEAK"
+      ],
+      "schemaRejected": true,
+      "schemaErrorCount": 2
+    },
+    {
+      "name": "preserved-missing-workspace-graph",
+      "kind": "contract",
+      "file": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/post-fix-validation-evidence/negative-fixtures/preserved-missing-workspace-graph.json",
+      "structuralRejected": true,
+      "structuralIssueCodes": [
+        "CONTRACT_PRESERVED_SCRIPTS_WEAK"
+      ],
+      "schemaRejected": true,
+      "schemaErrorCount": 2
+    },
+    {
+      "name": "ts09v-missing-i09s",
+      "kind": "contract",
+      "file": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/post-fix-validation-evidence/negative-fixtures/ts09v-missing-i09s.json",
+      "structuralRejected": true,
+      "structuralIssueCodes": [
+        "CONTRACT_TS09V_EXCEPTION_WEAK",
+        "CONTRACT_TS09V_DEFERRAL_WEAK"
+      ],
+      "schemaRejected": true,
+      "schemaErrorCount": 4
+    },
+    {
+      "name": "ts09v-missing-i09a",
+      "kind": "contract",
+      "file": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/post-fix-validation-evidence/negative-fixtures/ts09v-missing-i09a.json",
+      "structuralRejected": true,
+      "structuralIssueCodes": [
+        "CONTRACT_TS09V_EXCEPTION_WEAK",
+        "CONTRACT_TS09V_DEFERRAL_WEAK"
+      ],
+      "schemaRejected": true,
+      "schemaErrorCount": 4
+    },
+    {
+      "name": "package-tsconfig-freeform-requirements",
+      "kind": "contract",
+      "file": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/post-fix-validation-evidence/negative-fixtures/package-tsconfig-freeform-requirements.json",
+      "structuralRejected": true,
+      "structuralIssueCodes": [
+        "CONTRACT_PACKAGE_TSCONFIG_POLICY_WEAK"
+      ],
+      "schemaRejected": true,
+      "schemaErrorCount": 8
+    },
+    {
+      "name": "package-export-freeform-requirements",
+      "kind": "contract",
+      "file": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/post-fix-validation-evidence/negative-fixtures/package-export-freeform-requirements.json",
+      "structuralRejected": true,
+      "structuralIssueCodes": [
+        "CONTRACT_PACKAGE_EXPORT_POLICY_WEAK"
+      ],
+      "schemaRejected": true,
+      "schemaErrorCount": 6
+    },
+    {
+      "name": "generated-dist-freeform-requirements",
+      "kind": "contract",
+      "file": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/post-fix-validation-evidence/negative-fixtures/generated-dist-freeform-requirements.json",
+      "structuralRejected": true,
+      "structuralIssueCodes": [
+        "CONTRACT_GENERATED_DIST_POLICY_WEAK"
+      ],
+      "schemaRejected": true,
+      "schemaErrorCount": 5
+    },
+    {
+      "name": "contract-omits-ts09v-deferral",
+      "kind": "contract",
+      "file": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/post-fix-validation-evidence/negative-fixtures/contract-omits-ts09v-deferral.json",
+      "structuralRejected": true,
+      "structuralIssueCodes": [
+        "CONTRACT_TS09V_DEFERRAL_WEAK"
+      ],
+      "schemaRejected": true,
+      "schemaErrorCount": 1
+    },
+    {
+      "name": "audited-production-js-final-allowlist",
+      "kind": "contract",
+      "file": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/post-fix-validation-evidence/negative-fixtures/audited-production-js-final-allowlist.json",
+      "structuralRejected": true,
+      "structuralIssueCodes": [
+        "CONTRACT_AUDITED_EXCEPTION_WEAK",
+        "CONTRACT_PACKAGE_EXPORT_POLICY_WEAK",
+        "CONTRACT_SOURCE_JS_DEBT_POLICY_WEAK"
+      ],
+      "schemaRejected": true,
+      "schemaErrorCount": 3
+    },
+    {
+      "name": "source-js-export-final-state-allowed",
+      "kind": "contract",
+      "file": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/post-fix-validation-evidence/negative-fixtures/source-js-export-final-state-allowed.json",
+      "structuralRejected": true,
+      "structuralIssueCodes": [
+        "CONTRACT_PACKAGE_EXPORT_POLICY_WEAK"
+      ],
+      "schemaRejected": true,
+      "schemaErrorCount": 1
+    },
+    {
+      "name": "tsconfig-strict-false",
+      "kind": "tsconfig",
+      "structuralRejected": true,
+      "structuralIssueCodes": [
+        "STRICT_FLAG_NOT_TRUE"
+      ],
+      "schemaRejected": null,
+      "schemaErrorCount": null
+    },
+    {
+      "name": "tsconfig-allowJs-true",
+      "kind": "tsconfig",
+      "structuralRejected": true,
+      "structuralIssueCodes": [
+        "ALLOW_JS_TRUE"
+      ],
+      "schemaRejected": null,
+      "schemaErrorCount": null
+    },
+    {
+      "name": "root-build-missing",
+      "kind": "rootPackage",
+      "structuralRejected": true,
+      "structuralIssueCodes": [
+        "ROOT_SCRIPT_NOT_TURBO"
+      ],
+      "schemaRejected": null,
+      "schemaErrorCount": null
+    },
+    {
+      "name": "root-typecheck-bypasses-turbo",
+      "kind": "rootPackage",
+      "structuralRejected": true,
+      "structuralIssueCodes": [
+        "ROOT_SCRIPT_NOT_TURBO"
+      ],
+      "schemaRejected": null,
+      "schemaErrorCount": null
+    },
+    {
+      "name": "root-test-bypasses-turbo",
+      "kind": "rootPackage",
+      "structuralRejected": true,
+      "structuralIssueCodes": [
+        "ROOT_SCRIPT_NOT_TURBO"
+      ],
+      "schemaRejected": null,
+      "schemaErrorCount": null
+    },
+    {
+      "name": "turbo-build-task-missing",
+      "kind": "turbo",
+      "structuralRejected": true,
+      "structuralIssueCodes": [
+        "TURBO_TASK_SET_NOT_EXACT",
+        "TURBO_TASK_MISSING"
+      ],
+      "schemaRejected": null,
+      "schemaErrorCount": null
+    },
+    {
+      "name": "package-export-bin-source-js-final-state",
+      "kind": "package",
+      "structuralRejected": true,
+      "structuralIssueCodes": [
+        "PACKAGE_EXPORT_SOURCE_JS_FINAL_STATE",
+        "PACKAGE_BIN_SOURCE_JS_FINAL_STATE",
+        "PACKAGE_TYPES_SOURCE_FINAL_STATE"
+      ],
+      "schemaRejected": null,
+      "schemaErrorCount": null
+    },
+    {
+      "name": "generated-dist-without-source-declaration-build-evidence",
+      "kind": "dist",
+      "structuralRejected": true,
+      "structuralIssueCodes": [
+        "DIST_WITHOUT_TS_SOURCE",
+        "DIST_WITHOUT_DECLARATION",
+        "DIST_WITHOUT_BUILD_EVIDENCE"
+      ],
+      "schemaRejected": null,
+      "schemaErrorCount": null
+    }
+  ],
+  "negativeFailures": [],
+  "rootScriptDirectWitness": {
+    "build": "pnpm exec turbo run build",
+    "typecheck": "pnpm exec turbo run typecheck",
+    "test": "pnpm exec turbo run test",
+    "workspaceGraphPresent": true,
+    "workspaceSurfacePresent": true,
+    "delegates": true
+  },
+  "regression": {
+    "auditedProductionJsDebt": {
+      "expectedCount": 43,
+      "allPresent": true,
+      "missing": []
+    },
+    "verificationPackageExport": "./src/index.js",
+    "verificationClassifiedAsTs09vDebt": true,
+    "workspaceSurfaceScript": "node .vibe/work/I-00A-workspace-package-skeleton/witnesses/workspace-surface-witness.mjs --root .",
+    "contractExceptionClassIds": [
+      "workspace-surface-witness-evidence-only",
+      "audited-production-js-mjs-migration-debt",
+      "ts09v-verification-source-js-export-deferred",
+      "transient-build-outputs-ts-root-evidence-only"
+    ],
+    "ts09vRequiredIndependentPasses": [
+      "I-09S",
+      "I-09A"
+    ]
+  }
+}

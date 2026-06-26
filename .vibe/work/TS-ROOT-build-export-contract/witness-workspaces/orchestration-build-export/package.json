@@ -1,0 +1,33 @@
+{
+  "name": "@vibe-engineer/workspace",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "packageManager": "pnpm@10.33.0",
+  "engines": {
+    "node": ">=20.19.0",
+    "pnpm": ">=10.33.0"
+  },
+  "scripts": {
+    "build": "pnpm exec turbo run build",
+    "typecheck": "pnpm exec turbo run typecheck",
+    "test": "pnpm exec turbo run test",
+    "workspace:graph": "pnpm -r list --depth -1 --json",
+    "workspace:surface": "node .vibe/work/I-00A-workspace-package-skeleton/witnesses/workspace-surface-witness.mjs --root ."
+  },
+  "devDependencies": {
+    "@eslint/js": "9.39.1",
+    "eslint": "9.39.1",
+    "prettier": "3.8.4",
+    "turbo": "2.9.18",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.62.0"
+  },
+  "vibeEngineer": {
+    "implementationUnit": "I-00A-workspace-package-skeleton",
+    "implementationStatus": "skeleton-only",
+    "publicPackage": "packages/cli",
+    "workspaceGraphWitness": ".vibe/work/I-00A-workspace-package-skeleton/witnesses/workspace-surface-witness.mjs"
+  }
+}

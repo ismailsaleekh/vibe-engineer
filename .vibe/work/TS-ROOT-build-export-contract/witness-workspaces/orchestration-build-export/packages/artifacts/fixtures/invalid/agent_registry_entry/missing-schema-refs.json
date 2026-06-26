@@ -1,0 +1,90 @@
+{
+  "schemaVersion": "1.0.0",
+  "artifactKind": "agent_registry_entry",
+  "artifactId": "artifact-agent_registry_entry-001",
+  "title": "Agent Registry Entry valid fixture",
+  "createdAt": "2026-06-23T00:00:00.000Z",
+  "updatedAt": "2026-06-23T00:00:00.000Z",
+  "producer": {
+    "kind": "skill",
+    "id": "skill-task",
+    "name": "task",
+    "version": "1.0.0",
+    "runId": "run-001"
+  },
+  "status": "active",
+  "ownership": {
+    "ownerLane": "I-01A-artifact-schemas",
+    "ownedWritePaths": [
+      "packages/artifacts/**"
+    ],
+    "readOnlyPaths": [
+      "docs/decisions/**"
+    ],
+    "untouchablePaths": [
+      ".git/**"
+    ],
+    "concurrencyNotes": "owned fixture"
+  },
+  "links": [
+    {
+      "rel": "produced_by",
+      "artifactKind": "agent_registry_entry",
+      "artifactId": "artifact-agent_registry_entry-001",
+      "path": "fixtures/valid/agent_registry_entry.json",
+      "required": true,
+      "statusAtLinkTime": "active"
+    }
+  ],
+  "extensions": {
+    "dev.vibe.fixture": {
+      "schemaVersion": "1.0.0",
+      "note": "domain-neutral fixture extension"
+    }
+  },
+  "tags": [
+    "domain-neutral"
+  ],
+  "agentId": "agent-validator",
+  "displayName": "Artifact Validator",
+  "agentType": "validator",
+  "purpose": "Validates canonical artifact JSON.",
+  "triggers": [
+    {
+      "event": "artifact_written",
+      "description": "Validate artifact on write."
+    }
+  ],
+  "inputSchemas": [],
+  "outputSchemas": [
+    {
+      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/evidence-packet.schema.json",
+      "schemaVersion": "1.0.0",
+      "artifactKind": "evidence_packet"
+    }
+  ],
+  "allowedTools": [
+    "read_file"
+  ],
+  "forbiddenActions": [
+    "git_push"
+  ],
+  "contextRequirements": [],
+  "expectedArtifactPaths": [
+    ".vibe/work/**"
+  ],
+  "safety": {
+    "parallelSafe": true,
+    "writesAllowed": false,
+    "requiresApprovalFor": [
+      "write"
+    ]
+  },
+  "validatorRefs": [],
+  "fixerRefs": [],
+  "maturity": "core",
+  "owner": "registry-owner",
+  "agentVersion": "1.0.0",
+  "evals": [],
+  "deprecation": null
+}

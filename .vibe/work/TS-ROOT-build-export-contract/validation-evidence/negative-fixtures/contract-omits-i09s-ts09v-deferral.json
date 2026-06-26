@@ -1,0 +1,158 @@
+{
+  "$schema": "./build-export-contract.schema.json",
+  "schemaVersion": "build-export-contract/1.0.0",
+  "contractId": "TS-ROOT-build-export-contract",
+  "status": "active",
+  "rootScripts": {
+    "build": {
+      "command": "pnpm exec turbo run build",
+      "delegatesToTurbo": true,
+      "usesWorkspaceExecution": true
+    },
+    "typecheck": {
+      "command": "pnpm exec turbo run typecheck",
+      "delegatesToTurbo": true,
+      "usesWorkspaceExecution": true
+    },
+    "test": {
+      "command": "pnpm exec turbo run test",
+      "delegatesToTurbo": true,
+      "usesWorkspaceExecution": true
+    },
+    "preserved": [
+      "workspace:graph",
+      "workspace:surface"
+    ]
+  },
+  "turboTasks": {
+    "build": {
+      "required": true,
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": [
+        "dist/**"
+      ]
+    },
+    "typecheck": {
+      "required": true,
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": []
+    },
+    "test": {
+      "required": true,
+      "dependsOn": [
+        "build",
+        "^build"
+      ],
+      "outputs": []
+    }
+  },
+  "strictCompilerOptions": {
+    "requiredTrue": [
+      "strict",
+      "noImplicitAny",
+      "strictNullChecks",
+      "strictFunctionTypes",
+      "strictBindCallApply",
+      "strictPropertyInitialization",
+      "noImplicitThis",
+      "alwaysStrict",
+      "exactOptionalPropertyTypes",
+      "noUncheckedIndexedAccess",
+      "noImplicitOverride",
+      "noImplicitReturns",
+      "noPropertyAccessFromIndexSignature",
+      "useUnknownInCatchVariables",
+      "noFallthroughCasesInSwitch",
+      "noUnusedLocals",
+      "noUnusedParameters",
+      "isolatedModules",
+      "verbatimModuleSyntax",
+      "forceConsistentCasingInFileNames",
+      "declaration",
+      "declarationMap",
+      "sourceMap",
+      "noEmitOnError"
+    ],
+    "requiredFalse": [
+      "allowUnreachableCode",
+      "allowUnusedLabels",
+      "skipLibCheck"
+    ],
+    "forbidden": [
+      "allowJs"
+    ]
+  },
+  "packageTsconfigConvention": {
+    "requirements": [
+      "Every migrated package tsconfig extends ../../tsconfig.base.json or the correct relative root base path.",
+      "Every migrated package sets a package-owned rootDir and outDir: dist.",
+      "Every migrated package emits declarations and declaration maps for exported TypeScript.",
+      "Every migrated package keeps noEmitOnError effective for build outputs.",
+      "No production package tsconfig may introduce allowJs; checkJs is not a migration substitute.",
+      "NodeNext module and moduleResolution settings are inherited or preserved; runtime ESM imports must be proven by actual Node import/spawn witnesses."
+    ]
+  },
+  "packageExportConvention": {
+    "requirements": [
+      "After a package migration, package exports import targets point to generated dist/**/*.js files.",
+      "After a package migration, package exports types targets and package types fields point to generated dist/**/*.d.ts files.",
+      "After CLI migration, package bin entries point to generated dist/** executable JavaScript with shebang behavior proven by spawn witness.",
+      "Package exports and bins must not point to packages/**/src/**/*.js or packages/**/src/**/*.mjs as final state.",
+      "Existing source-JS exports and bins are audited migration debt until their owning TS lane replaces them with dist/declaration outputs."
+    ]
+  },
+  "generatedDistPolicy": {
+    "requirements": [
+      "Generated dist/**/*.js is allowed only as build output from matching TypeScript source and matching declaration output.",
+      "Generated dist output must not be hand-written or used to hide production source-JS debt.",
+      "Build/export witnesses in TS-ROOT write emitted dist, declarations, cache, and temporary package-resolution fixtures only under .vibe/work/TS-ROOT-build-export-contract/**.",
+      "Product packages/**/dist/** is read-only for TS-ROOT and may be inventoried only as baseline evidence."
+    ]
+  },
+  "sourceJsDebtPolicy": {
+    "productionJsIsDebt": true,
+    "auditedProductionJsCount": 43,
+    "workspaceSurfaceWitness": {
+      "path": ".vibe/work/I-00A-workspace-package-skeleton/witnesses/workspace-surface-witness.mjs",
+      "classification": "evidence-only workspace surface witness referenced by root workspace:surface script; not package export/bin/runtime source",
+      "finalStateAllowed": false
+    },
+    "currentSourceJsExportsAndBins": [
+      {
+        "path": "packages/verification/package.json#/exports/.",
+        "classification": "TS-09V verification package source-JS export debt; current value ./src/index.js remains read-only in TS-ROOT",
+        "finalStateAllowed": false
+      },
+      {
+        "path": "packages/*/package.json exports-or-bin-to-src-js",
+        "classification": "audited package export/bin debt owned by later package TS migration lanes, not allowed final state",
+        "finalStateAllowed": false
+      }
+    ]
+  },
+  "ts09vDeferral": {
+    "deferred": true,
+    "requiredIndependentPasses": [
+      "I-09A"
+    ],
+    "forbiddenUntilReady": [
+      "packages/verification/**",
+      "packages/verification/package.json#/exports",
+      "packages/verification/package.json#/types",
+      "packages/verification/dist/**"
+    ]
+  },
+  "witnessPolicy": {
+    "requirements": [
+      "Structured contract witnesses parse JSON from actual package.json, turbo.json, tsconfig.base.json, build-export-contract.schema.json, and build-export-contract.json; regex/prose checks are insufficient.",
+      "Root build/export witnesses exercise the actual root script and Turbo command path in an owned transient workspace.",
+      "Package export consumption witnesses import a built package through package exports after transient build and prove owned transient dist/declaration outputs were used.",
+      "Negative witnesses reject weakened strict flags, allowJs, source-JS export/bin final state, and generated dist without TypeScript/declaration/build evidence.",
+      "Regression witnesses prove workspace:surface remains present and evidence-only, the audited 43 production JS/MJS files are not migrated or silently allowlisted by TS-ROOT, TS-09V remains deferred, and no lockfile/package-manager/package source/product dist path changed."
+    ]
+  }
+}

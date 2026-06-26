@@ -1,0 +1,145 @@
+{
+  "repo": "/Users/lizavasilyeva/work/vibe-engineer",
+  "evidenceRoot": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/validation-fix-evidence",
+  "parsedActualFiles": {
+    "schema": "packages/mechanical-gates/src/p0/build-export-contract/build-export-contract.schema.json",
+    "contract": "packages/mechanical-gates/src/p0/build-export-contract/build-export-contract.json",
+    "rootPackage": "package.json",
+    "turbo": "turbo.json",
+    "tsconfig": "tsconfig.base.json",
+    "verificationPackage": "packages/verification/package.json"
+  },
+  "ok": true,
+  "actualSchemaValidation": {
+    "exitCode": 0,
+    "stdout": "VALID\n",
+    "stderr": ""
+  },
+  "actualIssues": [],
+  "negativeResults": [
+    {
+      "name": "missing-exception-classes",
+      "kind": "schema-contract",
+      "file": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/validation-fix-evidence/negative-fixtures/missing-exception-classes.contract.json",
+      "rejected": true,
+      "validation": {
+        "exitCode": 1,
+        "stdout": "[\n  {\n    \"path\": [],\n    \"message\": \"'exceptionClasses' is a required property\",\n    \"schemaPath\": [\n      \"required\"\n    ]\n  }\n]\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "preserved-only-workspace-graph",
+      "kind": "schema-contract",
+      "file": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/validation-fix-evidence/negative-fixtures/preserved-only-workspace-graph.contract.json",
+      "rejected": true,
+      "validation": {
+        "exitCode": 1,
+        "stdout": "[\n  {\n    \"path\": [\n      \"rootScripts\",\n      \"preserved\"\n    ],\n    \"message\": \"['workspace:graph'] is too short\",\n    \"schemaPath\": [\n      \"properties\",\n      \"rootScripts\",\n      \"properties\",\n      \"preserved\",\n      \"minItems\"\n    ]\n  },\n  {\n    \"path\": [\n      \"rootScripts\",\n      \"preserved\"\n    ],\n    \"message\": \"['workspace:graph'] does not contain items matching the given schema\",\n    \"schemaPath\": [\n      \"properties\",\n      \"rootScripts\",\n      \"properties\",\n      \"preserved\",\n      \"allOf\",\n      1,\n      \"contains\"\n    ]\n  }\n]\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "ts09v-missing-i09s",
+      "kind": "schema-contract",
+      "file": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/validation-fix-evidence/negative-fixtures/ts09v-missing-i09s.contract.json",
+      "rejected": true,
+      "validation": {
+        "exitCode": 1,
+        "stdout": "[\n  {\n    \"path\": [\n      \"ts09vDeferral\",\n      \"requiredIndependentPasses\"\n    ],\n    \"message\": \"['I-09A'] is too short\",\n    \"schemaPath\": [\n      \"properties\",\n      \"ts09vDeferral\",\n      \"properties\",\n      \"requiredIndependentPasses\",\n      \"minItems\"\n    ]\n  },\n  {\n    \"path\": [\n      \"ts09vDeferral\",\n      \"requiredIndependentPasses\"\n    ],\n    \"message\": \"['I-09A'] does not contain items matching the given schema\",\n    \"schemaPath\": [\n      \"properties\",\n      \"ts09vDeferral\",\n      \"properties\",\n      \"requiredIndependentPasses\",\n      \"allOf\",\n      0,\n      \"contains\"\n    ]\n  }\n]\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "freeform-requirements-only-policies",
+      "kind": "schema-contract",
+      "file": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/validation-fix-evidence/negative-fixtures/freeform-requirements-only-policies.contract.json",
+      "rejected": true,
+      "validation": {
+        "exitCode": 1,
+        "stdout": "[\n  {\n    \"path\": [\n      \"generatedDistPolicy\"\n    ],\n    \"message\": \"Additional properties are not allowed ('requirements' was unexpected)\",\n    \"schemaPath\": [\n      \"properties\",\n      \"generatedDistPolicy\",\n      \"additionalProperties\"\n    ]\n  },\n  {\n    \"path\": [\n      \"generatedDistPolicy\"\n    ],\n    \"message\": \"'policyId' is a required property\",\n    \"schemaPath\": [\n      \"properties\",\n      \"generatedDistPolicy\",\n      \"required\"\n    ]\n  },\n  {\n    \"path\": [\n      \"generatedDistPolicy\"\n    ],\n    \"message\": \"'allowedOnlyWhen' is a required property\",\n    \"schemaPath\": [\n      \"properties\",\n      \"generatedDistPolicy\",\n      \"required\"\n    ]\n  },\n  {\n    \"path\": [\n      \"generatedDistPolicy\"\n    ],\n    \"message\": \"'forbiddenUses' is a required property\",\n    \"schemaPath\": [\n      \"properties\",\n      \"generatedDistPolicy\",\n      \"required\"\n    ]\n  },\n  {\n    \"path\": [\n      \"generatedDistPolicy\"\n    ],\n    \"message\": \"'tsRootWitnessOutputs' is a required property\",\n    \"schemaPath\": [\n      \"properties\",\n      \"generatedDistPolicy\",\n      \"required\"\n    ]\n  },\n  {\n    \"path\": [\n      \"packageExportConvention\"\n    ],\n    \"message\": \"Additional properties are not allowed ('requirements' was unexpected)\",\n    \"schemaPath\": [\n      \"properties\",\n      \"packageExportConvention\",\n      \"additionalProperties\"\n    ]\n  },\n  {\n    \"path\": [\n      \"packageExportConvention\"\n    ],\n    \"message\": \"'policyId' is a required property\",\n    \"schemaPath\": [\n      \"properties\",\n      \"packageExportConvention\",\n      \"required\"\n    ]\n  },\n  {\n    \"path\": [\n      \"packageExportConvention\"\n    ],\n    \"message\": \"'runtimeExports' is a required property\",\n    \"schemaPath\": [\n      \"properties\",\n      \"packageExportConvention\",\n      \"required\"\n    ]\n  },\n  {\n    \"path\": [\n      \"packageExportConvention\"\n    ],\n    \"message\": \"'typesExports' is a required property\",\n    \"schemaPath\": [\n      \"properties\",\n      \"packageExportConvention\",\n      \"required\"\n    ]\n  },\n  {\n    \"path\": [\n      \"packageExportConvention\"\n    ],\n    \"message\": \"'binEntries' is a required property\",\n    \"schemaPath\": [\n      \"properties\",\n      \"packageExportConvention\",\n      \"required\"\n    ]\n  },\n  {\n    \"path\": [\n      \"packageExportConvention\"\n    ],\n    \"message\": \"'currentSourceJsDebt' is a required property\",\n    \"schemaPath\": [\n      \"properties\",\n      \"packageExportConvention\",\n      \"required\"\n    ]\n  },\n  {\n    \"path\": [\n      \"packageTsconfigConvention\"\n    ],\n    \"message\": \"Additional properties are not allowed ('requirements' was unexpected)\",\n    \"schemaPath\": [\n      \"properties\",\n      \"packageTsconfigConvention\",\n      \"additionalProperties\"\n    ]\n  },\n  {\n    \"path\": [\n      \"packageTsconfigConvention\"\n    ],\n    \"message\": \"'policyId' is a required property\",\n    \"schemaPath\": [\n      \"properties\",\n      \"packageTsconfigConvention\",\n      \"required\"\n    ]\n  },\n  {\n    \"path\": [\n      \"packageTsconfigConvention\"\n    ],\n    \"message\": \"'appliesTo' is a required property\",\n    \"schemaPath\": [\n      \"properties\",\n      \"packageTsconfigConvention\",\n      \"required\"\n    ]\n  },\n  {\n    \"path\": [\n      \"packageTsconfigConvention\"\n    ],\n    \"message\": \"'allowedExtends' is a required property\",\n    \"schemaPath\": [\n      \"properties\",\n      \"packageTsconfigConvention\",\n      \"required\"\n    ]\n  },\n  {\n    \"path\": [\n      \"packageTsconfigConvention\"\n    ],\n    \"message\": \"'requiredBuildShape' is a required property\",\n    \"schemaPath\": [\n      \"properties\",\n      \"packageTsconfigConvention\",\n      \"required\"\n    ]\n  },\n  {\n    \"path\": [\n      \"packageTsconfigConvention\"\n    ],\n    \"message\": \"'forbiddenCompilerOptions' is a required property\",\n    \"schemaPath\": [\n      \"properties\",\n      \"packageTsconfigConvention\",\n      \"required\"\n    ]\n  },\n  {\n    \"path\": [\n      \"packageTsconfigConvention\"\n    ],\n    \"message\": \"'inheritedCompilerOptions' is a required property\",\n    \"schemaPath\": [\n      \"properties\",\n      \"packageTsconfigConvention\",\n      \"required\"\n    ]\n  },\n  {\n    \"path\": [\n      \"packageTsconfigConvention\"\n    ],\n    \"message\": \"'runtimeImportWitnessRequired' is a required property\",\n    \"schemaPath\": [\n      \"properties\",\n      \"packageTsconfigConvention\",\n      \"required\"\n    ]\n  }\n]\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "source-js-export-bin-final-allowed",
+      "kind": "schema-contract",
+      "file": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/validation-fix-evidence/negative-fixtures/source-js-export-bin-final-allowed.contract.json",
+      "rejected": true,
+      "validation": {
+        "exitCode": 1,
+        "stdout": "[\n  {\n    \"path\": [\n      \"packageExportConvention\",\n      \"binEntries\",\n      \"sourceJsAllowedFinalState\"\n    ],\n    \"message\": \"False was expected\",\n    \"schemaPath\": [\n      \"properties\",\n      \"packageExportConvention\",\n      \"properties\",\n      \"binEntries\",\n      \"properties\",\n      \"sourceJsAllowedFinalState\",\n      \"const\"\n    ]\n  },\n  {\n    \"path\": [\n      \"packageExportConvention\",\n      \"runtimeExports\",\n      \"sourceJsAllowedFinalState\"\n    ],\n    \"message\": \"False was expected\",\n    \"schemaPath\": [\n      \"properties\",\n      \"packageExportConvention\",\n      \"properties\",\n      \"runtimeExports\",\n      \"properties\",\n      \"sourceJsAllowedFinalState\",\n      \"const\"\n    ]\n  }\n]\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "audited-production-js-final-allowlist",
+      "kind": "schema-contract",
+      "file": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/validation-fix-evidence/negative-fixtures/audited-production-js-final-allowlist.contract.json",
+      "rejected": true,
+      "validation": {
+        "exitCode": 1,
+        "stdout": "[\n  {\n    \"path\": [\n      \"exceptionClasses\",\n      1,\n      \"finalAllowlist\"\n    ],\n    \"message\": \"False was expected\",\n    \"schemaPath\": [\n      \"properties\",\n      \"exceptionClasses\",\n      \"prefixItems\",\n      1,\n      \"properties\",\n      \"finalAllowlist\",\n      \"const\"\n    ]\n  },\n  {\n    \"path\": [\n      \"packageExportConvention\",\n      \"currentSourceJsDebt\",\n      \"finalAllowlist\"\n    ],\n    \"message\": \"False was expected\",\n    \"schemaPath\": [\n      \"properties\",\n      \"packageExportConvention\",\n      \"properties\",\n      \"currentSourceJsDebt\",\n      \"properties\",\n      \"finalAllowlist\",\n      \"const\"\n    ]\n  },\n  {\n    \"path\": [\n      \"sourceJsDebtPolicy\",\n      \"productionJsIsDebt\"\n    ],\n    \"message\": \"True was expected\",\n    \"schemaPath\": [\n      \"properties\",\n      \"sourceJsDebtPolicy\",\n      \"properties\",\n      \"productionJsIsDebt\",\n      \"const\"\n    ]\n  }\n]\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "weakened-strict-contract",
+      "kind": "schema-contract",
+      "file": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/validation-fix-evidence/negative-fixtures/weakened-strict-contract.contract.json",
+      "rejected": true,
+      "validation": {
+        "exitCode": 1,
+        "stdout": "[\n  {\n    \"path\": [\n      \"strictCompilerOptions\",\n      \"requiredTrue\"\n    ],\n    \"message\": \"['noImplicitAny', 'strictNullChecks', 'strictFunctionTypes', 'strictBindCallApply', 'strictPropertyInitialization', 'noImplicitThis', 'alwaysStrict', 'exactOptionalPropertyTypes', 'noUncheckedIndexedAccess', 'noImplicitOverride', 'noImplicitReturns', 'noPropertyAccessFromIndexSignature', 'useUnknownInCatchVariables', 'noFallthroughCasesInSwitch', 'noUnusedLocals', 'noUnusedParameters', 'isolatedModules', 'verbatimModuleSyntax', 'forceConsistentCasingInFileNames', 'resolveJsonModule', 'declaration', 'declarationMap', 'sourceMap', 'noEmitOnError'] is too short\",\n    \"schemaPath\": [\n      \"properties\",\n      \"strictCompilerOptions\",\n      \"properties\",\n      \"requiredTrue\",\n      \"minItems\"\n    ]\n  },\n  {\n    \"path\": [\n      \"strictCompilerOptions\",\n      \"requiredTrue\",\n      0\n    ],\n    \"message\": \"'strict' was expected\",\n    \"schemaPath\": [\n      \"properties\",\n      \"strictCompilerOptions\",\n      \"properties\",\n      \"requiredTrue\",\n      \"prefixItems\",\n      0,\n      \"const\"\n    ]\n  },\n  {\n    \"path\": [\n      \"strictCompilerOptions\",\n      \"requiredTrue\",\n      1\n    ],\n    \"message\": \"'noImplicitAny' was expected\",\n    \"schemaPath\": [\n      \"properties\",\n      \"strictCompilerOptions\",\n      \"properties\",\n      \"requiredTrue\",\n      \"prefixItems\",\n      1,\n      \"const\"\n    ]\n  },\n  {\n    \"path\": [\n      \"strictCompilerOptions\",\n      \"requiredTrue\",\n      2\n    ],\n    \"message\": \"'strictNullChecks' was expected\",\n    \"schemaPath\": [\n      \"properties\",\n      \"strictCompilerOptions\",\n      \"properties\",\n      \"requiredTrue\",\n      \"prefixItems\",\n      2,\n      \"const\"\n    ]\n  },\n  {\n    \"path\": [\n      \"strictCompilerOptions\",\n      \"requiredTrue\",\n      3\n    ],\n    \"message\": \"'strictFunctionTypes' was expected\",\n    \"schemaPath\": [\n      \"properties\",\n      \"strictCompilerOptions\",\n      \"properties\",\n      \"requiredTrue\",\n      \"prefixItems\",\n      3,\n      \"const\"\n    ]\n  },\n  {\n    \"path\": [\n      \"strictCompilerOptions\",\n      \"requiredTrue\",\n      4\n    ],\n    \"message\": \"'strictBindCallApply' was expected\",\n    \"schemaPath\": [\n      \"properties\",\n      \"strictCompilerOptions\",\n      \"properties\",\n      \"requiredTrue\",\n      \"prefixItems\",\n      4,\n      \"const\"\n    ]\n  },\n  {\n    \"path\": [\n      \"strictCompilerOptions\",\n      \"requiredTrue\",\n      5\n    ],\n    \"message\": \"'strictPropertyInitialization' was expected\",\n    \"schemaPath\": [\n      \"properties\",\n      \"strictCompilerOptions\",\n      \"properties\",\n      \"requiredTrue\",\n      \"prefixItems\",\n      5,\n      \"const\"\n    ]\n  },\n  {\n    \"path\": [\n      \"strictCompilerOptions\",\n      \"requiredTrue\",\n      6\n    ],\n    \"message\": \"'noImplicitThis' was expected\",\n    \"schemaPath\": [\n      \"properties\",\n      \"strictCompilerOptions\",\n      \"properties\",\n      \"requiredTrue\",\n      \"prefixItems\",\n      6,\n      \"const\"\n    ]\n  },\n  {\n    \"path\": [\n      \"strictCompilerOptions\",\n      \"requiredTrue\",\n      7\n    ],\n    \"message\": \"'alwaysStrict' was expected\",\n    \"schemaPath\": [\n      \"properties\",\n      \"strictCompilerOptions\",\n      \"properties\",\n      \"requiredTrue\",\n      \"prefixItems\",\n      7,\n      \"const\"\n    ]\n  },\n  {\n    \"path\": [\n      \"strictCompilerOptions\",\n      \"requiredTrue\",\n      8\n    ],\n    \"message\": \"'exactOptionalPropertyTypes' was expected\",\n    \"schemaPath\": [\n      \"properties\",\n      \"strictCompilerOptions\",\n      \"properties\",\n      \"requiredTrue\",\n      \"prefixItems\",\n      8,\n      \"const\"\n    ]\n  },\n  {\n    \"path\": [\n      \"strictCompilerOptions\",\n      \"requiredTrue\",\n      9\n    ],\n    \"message\": \"'noUncheckedIndexedAccess' was expected\",\n    \"schemaPath\": [\n      \"properties\",\n      \"strictCompilerOptions\",\n      \"properties\",\n      \"requiredTrue\",\n      \"prefixItems\",\n      9,\n      \"const\"\n    ]\n  },\n  {\n    \"path\": [\n      \"strictCompilerOptions\",\n      \"requiredTrue\",\n      10\n    ],\n    \"message\": \"'noImplicitOverride' was expected\",\n    \"schemaPath\": [\n      \"properties\",\n      \"strictCompilerOptions\",\n      \"properties\",\n      \"requiredTrue\",\n      \"prefixItems\",\n      10,\n      \"const\"\n    ]\n  },\n  {\n    \"path\": [\n      \"strictCompilerOptions\",\n      \"requiredTrue\",\n      11\n    ],\n    \"message\": \"'noImplicitReturns' was expected\",\n    \"schemaPath\": [\n      \"properties\",\n      \"strictCompilerOptions\",\n      \"properties\",\n      \"requiredTrue\",\n      \"prefixItems\",\n      11,\n      \"const\"\n    ]\n  },\n  {\n    \"path\": [\n      \"strictCompilerOptions\",\n      \"requiredTrue\",\n      12\n    ],\n    \"message\": \"'noPropertyAccessFromIndexSignature' was expected\",\n    \"schemaPath\": [\n      \"properties\",\n      \"strictCompilerOptions\",\n      \"properties\",\n      \"requiredTrue\",\n      \"prefixItems\",\n      12,\n      \"const\"\n    ]\n  },\n  {\n    \"path\": [\n      \"strictCompilerOptions\",\n      \"requiredTrue\",\n      13\n    ],\n    \"message\": \"'useUnknownInCatchVariables' was expected\",\n    \"schemaPath\": [\n      \"properties\",\n      \"strictCompilerOptions\",\n      \"properties\",\n      \"requiredTrue\",\n      \"prefixItems\",\n      13,\n      \"const\"\n    ]\n  },\n  {\n    \"path\": [\n      \"strictCompilerOptions\",\n      \"requiredTrue\",\n      14\n    ],\n    \"message\": \"'noFallthroughCasesInSwitch' was expected\",\n    \"schemaPath\": [\n      \"properties\",\n      \"strictCompilerOptions\",\n      \"properties\",\n      \"requiredTrue\",\n      \"prefixItems\",\n      14,\n      \"const\"\n    ]\n  },\n  {\n    \"path\": [\n      \"strictCompilerOptions\",\n      \"requiredTrue\",\n      15\n    ],\n    \"message\": \"'noUnusedLocals' was expected\",\n    \"schemaPath\": [\n      \"properties\",\n      \"strictCompilerOptions\",\n      \"properties\",\n      \"requiredTrue\",\n      \"prefixItems\",\n      15,\n      \"const\"\n    ]\n  },\n  {\n    \"path\": [\n      \"strictCompilerOptions\",\n      \"requiredTrue\",\n      16\n    ],\n    \"message\": \"'noUnusedParameters' was expected\",\n    \"schemaPath\": [\n      \"properties\",\n      \"strictCompilerOptions\",\n      \"properties\",\n      \"requiredTrue\",\n      \"prefixItems\",\n      16,\n      \"const\"\n    ]\n  },\n  {\n    \"path\": [\n      \"strictCompilerOptions\",\n      \"requiredTrue\",\n      17\n    ],\n    \"message\": \"'isolatedModules' was expected\",\n    \"schemaPath\": [\n      \"properties\",\n      \"strictCompilerOptions\",\n      \"properties\",\n      \"requiredTrue\",\n      \"prefixItems\",\n      17,\n      \"const\"\n    ]\n  },\n  {\n    \"path\": [\n      \"strictCompilerOptions\",\n      \"requiredTrue\",\n      18\n    ],\n    \"message\": \"'verbatimModuleSyntax' was expected\",\n    \"schemaPath\": [\n      \"properties\",\n      \"strictCompilerOptions\",\n      \"properties\",\n      \"requiredTrue\",\n      \"prefixItems\",\n      18,\n      \"const\"\n    ]\n  },\n  {\n    \"path\": [\n      \"strictCompilerOptions\",\n      \"requiredTrue\",\n      19\n    ],\n    \"message\": \"'forceConsistentCasingInFileNames' was expected\",\n    \"schemaPath\": [\n      \"properties\",\n      \"strictCompilerOptions\",\n      \"properties\",\n      \"requiredTrue\",\n      \"prefixItems\",\n      19,\n      \"const\"\n    ]\n  },\n  {\n    \"path\": [\n      \"strictCompilerOptions\",\n      \"requiredTrue\",\n      20\n    ],\n    \"message\": \"'resolveJsonModule' was expected\",\n    \"schemaPath\": [\n      \"properties\",\n      \"strictCompilerOptions\",\n      \"properties\",\n      \"requiredTrue\",\n      \"prefixItems\",\n      20,\n      \"const\"\n    ]\n  },\n  {\n    \"path\": [\n      \"strictCompilerOptions\",\n      \"requiredTrue\",\n      21\n    ],\n    \"message\": \"'declaration' was expected\",\n    \"schemaPath\": [\n      \"properties\",\n      \"strictCompilerOptions\",\n      \"properties\",\n      \"requiredTrue\",\n      \"prefixItems\",\n      21,\n      \"const\"\n    ]\n  },\n  {\n    \"path\": [\n      \"strictCompilerOptions\",\n      \"requiredTrue\",\n      22\n    ],\n    \"message\": \"'declarationMap' was expected\",\n    \"schemaPath\": [\n      \"properties\",\n      \"strictCompilerOptions\",\n      \"properties\",\n      \"requiredTrue\",\n      \"prefixItems\",\n      22,\n      \"const\"\n    ]\n  },\n  {\n    \"path\": [\n      \"strictCompilerOptions\",\n      \"requiredTrue\",\n      23\n    ],\n    \"message\": \"'sourceMap' was expected\",\n    \"schemaPath\": [\n      \"properties\",\n      \"strictCompilerOptions\",\n      \"properties\",\n      \"requiredTrue\",\n      \"prefixItems\",\n      23,\n      \"const\"\n    ]\n  }\n]\n",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "weakened-strict-tsconfig",
+      "kind": "tsconfig",
+      "file": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/validation-fix-evidence/negative-fixtures/weakened-strict-tsconfig.json",
+      "rejected": true,
+      "issueCodes": [
+        "STRICT_FLAG_NOT_TRUE"
+      ]
+    },
+    {
+      "name": "allow-js-tsconfig",
+      "kind": "tsconfig",
+      "file": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/validation-fix-evidence/negative-fixtures/allow-js-tsconfig.json",
+      "rejected": true,
+      "issueCodes": [
+        "ALLOW_JS_ENABLED"
+      ]
+    },
+    {
+      "name": "source-js-export-bin-package-final-state",
+      "kind": "package-final-state",
+      "file": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/validation-fix-evidence/negative-fixtures/source-js-export-bin.package.json",
+      "rejected": true,
+      "issueCodes": [
+        "PACKAGE_EXPORT_SOURCE_JS_FINAL_STATE",
+        "PACKAGE_BIN_SOURCE_JS_FINAL_STATE"
+      ]
+    }
+  ],
+  "negativeFailures": [],
+  "regression": {
+    "auditedProductionJsDebtCount": 43,
+    "auditedProductionJsDebtAllPresent": true,
+    "verificationPackageExport": "./src/index.js",
+    "verificationRemainsTs09vDebt": true,
+    "packagesVerificationForbiddenUntilReady": [
+      "packages/verification/**",
+      "packages/verification/package.json#/exports",
+      "packages/verification/package.json#/types",
+      "packages/verification/dist/**"
+    ],
+    "workspaceSurfaceScript": "node .vibe/work/I-00A-workspace-package-skeleton/witnesses/workspace-surface-witness.mjs --root .",
+    "downstreamRouting": [
+      "I-09A protected-drift routing: BLOCKED pending independent TS-ROOT revalidation PASS",
+      "I-09B: BLOCKED pending I-09A post-fix validation PASS / W-RB2.5 truth-green",
+      "I-11/root-baseline/shared-package lanes: BLOCKED pending independent TS-ROOT revalidation PASS"
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+
+> @vibe-engineer/workspace@0.0.0 build /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/post-fix-validation-evidence/transient-workspaces/post-fix-root-turbo-orchestration-consumer
+> pnpm exec turbo run build
+
+
+   • Packages in scope: @vibe-engineer/artifacts, @vibe-engineer/orchestration
+   • Running build in 2 packages
+   • Remote caching disabled
+
+@vibe-engineer/artifacts:build: cache miss, executing 6aec2a652e362db9
+@vibe-engineer/artifacts:build: 
+@vibe-engineer/artifacts:build: > @vibe-engineer/artifacts@0.0.0 build /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/post-fix-validation-evidence/transient-workspaces/post-fix-root-turbo-orchestration-consumer/packages/artifacts
+@vibe-engineer/artifacts:build: > node scripts/check-generated-types.mjs && node tests/run-tests.mjs
+@vibe-engineer/artifacts:build: 
+@vibe-engineer/artifacts:build: generated type drift check passed
+@vibe-engineer/artifacts:build: {
+@vibe-engineer/artifacts:build:   "ok": true,
+@vibe-engineer/artifacts:build:   "witnesses": 25
+@vibe-engineer/artifacts:build: }
+@vibe-engineer/orchestration:build: cache miss, executing 7037e4cc80f92ed3
+@vibe-engineer/orchestration:build: 
+@vibe-engineer/orchestration:build: > @vibe-engineer/orchestration@0.0.0 build /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/post-fix-validation-evidence/transient-workspaces/post-fix-root-turbo-orchestration-consumer/packages/orchestration
+@vibe-engineer/orchestration:build: > tsc -p tsconfig.json
+@vibe-engineer/orchestration:build: 
+
+ Tasks:    2 successful, 2 total
+Cached:    0 cached, 2 total
+  Time:    829ms 
+

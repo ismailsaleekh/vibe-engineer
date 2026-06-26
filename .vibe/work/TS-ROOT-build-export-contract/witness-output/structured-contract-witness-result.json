@@ -1,0 +1,29 @@
+{
+  "ok": true,
+  "targetRoot": "/Users/lizavasilyeva/work/vibe-engineer",
+  "parsedFiles": [
+    "package.json",
+    "turbo.json",
+    "tsconfig.base.json",
+    "build-export-contract.schema.json",
+    "build-export-contract.json",
+    "packages/verification/package.json"
+  ],
+  "positiveWitnesses": [
+    "root scripts delegate to Turbo",
+    "turbo tasks present",
+    "strict flags locked",
+    "build/export contract policy fields present"
+  ],
+  "negativeWitnesses": [
+    "weakened strict flag rejected",
+    "allowJs rejected",
+    "source-JS export/bin final state rejected",
+    "generated dist without TS/declaration/build evidence rejected"
+  ],
+  "regression": {
+    "auditedProductionJsCount": 43,
+    "verificationExportDebt": "./src/index.js"
+  },
+  "resultUrl": "file:///Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/witness-output/structured-contract-witness-result.json"
+}

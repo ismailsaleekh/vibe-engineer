@@ -1,0 +1,42 @@
+cwd: /Users/lizavasilyeva/work/vibe-engineer
+command: supplemental read-only package JS/node_modules sentinels used while constructing witnesses
+
+# mechanical-gates production JS files
+packages/mechanical-gates/src/aggregate/index.js
+packages/mechanical-gates/src/aggregate/run-p0-aggregate.js
+packages/mechanical-gates/src/p0/allowlist/index.js
+packages/mechanical-gates/src/p0/allowlist/validate-escape-allowlist.js
+packages/mechanical-gates/src/p0/boundaries/contracts.js
+packages/mechanical-gates/src/p0/boundaries/index.js
+packages/mechanical-gates/src/p0/boundaries/validate-package-boundaries.js
+packages/mechanical-gates/src/p0/config-guards/index.js
+packages/mechanical-gates/src/p0/config-guards/validate-strict-config.js
+packages/mechanical-gates/src/p0/domain-purity/index.js
+packages/mechanical-gates/src/p0/domain-purity/validate-domain-purity.js
+packages/mechanical-gates/src/p0/governed-surface/index.js
+packages/mechanical-gates/src/p0/governed-surface/validate-governed-surface.js
+packages/mechanical-gates/src/p0/testing-boundary/index.js
+packages/mechanical-gates/src/p0/testing-boundary/validate-testing-boundary.js
+
+# schematics/standards/testing source JS/MJS files
+packages/schematics/src/engine/index.js
+packages/schematics/src/engine/markers.js
+packages/schematics/src/manifest/loader.js
+packages/schematics/src/template/input.js
+packages/schematics/src/template/path-safety.js
+packages/schematics/src/template/renderer.js
+packages/standards/src/catalog-data.js
+packages/standards/src/errors.js
+packages/standards/src/index.js
+packages/standards/src/schema-registry.js
+packages/standards/src/validation.js
+packages/testing/src/index.js
+
+# node_modules tool sentinels (read-only)
+node_modules-present
+turbo-bin-present
+tsc-bin-present
+root-ajv-absent
+node_modules/.pnpm/ajv@6.15.0
+node_modules/.pnpm/ajv@8.17.1
+exit_code: 0

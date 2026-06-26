@@ -1,0 +1,157 @@
+{
+  "repo": "/Users/lizavasilyeva/work/vibe-engineer",
+  "evidenceRoot": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/validation-evidence",
+  "ok": false,
+  "currentIssues": [
+    {
+      "area": "contract",
+      "code": "CONTRACT_EXCEPTION_CLASSES_MISSING",
+      "message": "contract JSON lacks exact exceptionClasses array"
+    },
+    {
+      "area": "contract",
+      "code": "SCHEMA_PRESERVED_SCRIPTS_NOT_FAIL_CLOSED",
+      "message": "schema must fail closed unless both workspace:graph and workspace:surface are preserved",
+      "details": {
+        "preservedConsts": [
+          "workspace:graph"
+        ]
+      }
+    },
+    {
+      "area": "contract",
+      "code": "SCHEMA_TS09V_PASSES_NOT_FAIL_CLOSED",
+      "message": "schema must fail closed unless TS-09V defers until both I-09S and I-09A PASS",
+      "details": {
+        "requiredIndependentPassesConsts": [
+          "I-09A"
+        ]
+      }
+    },
+    {
+      "area": "contract",
+      "code": "SCHEMA_PACKAGE_EXPORT_POLICY_FREEFORM",
+      "message": "package export convention is freeform string requirements instead of typed fail-closed fields"
+    },
+    {
+      "area": "contract",
+      "code": "SCHEMA_GENERATED_DIST_POLICY_FREEFORM",
+      "message": "generated dist policy is freeform string requirements instead of typed fail-closed fields"
+    },
+    {
+      "area": "contract",
+      "code": "SCHEMA_PACKAGE_TSCONFIG_POLICY_FREEFORM",
+      "message": "package tsconfig convention is freeform string requirements instead of typed fail-closed fields"
+    },
+    {
+      "area": "contract",
+      "code": "SCHEMA_EXCEPTION_CLASSES_MISSING",
+      "message": "schema lacks exact exception classes required by TS migration amendment"
+    }
+  ],
+  "negativeResults": [
+    {
+      "name": "weakened strict flag",
+      "rejected": true,
+      "issueCodes": [
+        "STRICT_FLAG_NOT_TRUE"
+      ],
+      "issueCount": 1
+    },
+    {
+      "name": "allowJs true",
+      "rejected": true,
+      "issueCodes": [
+        "ALLOW_JS_ENABLED"
+      ],
+      "issueCount": 1
+    },
+    {
+      "name": "root build bypasses Turbo",
+      "rejected": true,
+      "issueCodes": [
+        "ROOT_SCRIPT_MUST_DELEGATE_TO_TURBO"
+      ],
+      "issueCount": 1
+    },
+    {
+      "name": "root test script missing",
+      "rejected": true,
+      "issueCodes": [
+        "ROOT_SCRIPT_MUST_DELEGATE_TO_TURBO"
+      ],
+      "issueCount": 1
+    },
+    {
+      "name": "missing Turbo typecheck task",
+      "rejected": true,
+      "issueCodes": [
+        "TURBO_TASK_SET_EXACT",
+        "TURBO_TASK_MISSING"
+      ],
+      "issueCount": 2
+    },
+    {
+      "name": "source-JS package export/bin final state",
+      "rejected": true,
+      "issueCodes": [
+        "PACKAGE_EXPORT_SOURCE_JS_FINAL_STATE",
+        "PACKAGE_BIN_SOURCE_JS_FINAL_STATE",
+        "PACKAGE_TYPES_SOURCE_FINAL_STATE"
+      ],
+      "issueCount": 3
+    },
+    {
+      "name": "generated dist without TS/declaration/build evidence",
+      "rejected": true,
+      "issueCodes": [
+        "GENERATED_DIST_MISSING_TS_SOURCE",
+        "GENERATED_DIST_MISSING_DECLARATION",
+        "GENERATED_DIST_MISSING_BUILD_EVIDENCE"
+      ],
+      "issueCount": 3
+    },
+    {
+      "name": "contract omits I-09S TS-09V deferral",
+      "rejected": true,
+      "issueCodes": [
+        "CONTRACT_TS09V_REQUIRED_PASS_MISSING",
+        "CONTRACT_EXCEPTION_CLASSES_MISSING",
+        "SCHEMA_PRESERVED_SCRIPTS_NOT_FAIL_CLOSED",
+        "SCHEMA_TS09V_PASSES_NOT_FAIL_CLOSED",
+        "SCHEMA_PACKAGE_EXPORT_POLICY_FREEFORM",
+        "SCHEMA_GENERATED_DIST_POLICY_FREEFORM",
+        "SCHEMA_PACKAGE_TSCONFIG_POLICY_FREEFORM",
+        "SCHEMA_EXCEPTION_CLASSES_MISSING"
+      ],
+      "issueCount": 8
+    },
+    {
+      "name": "contract treats production JS as final allowlist",
+      "rejected": true,
+      "issueCodes": [
+        "CONTRACT_PRODUCTION_JS_DEBT",
+        "CONTRACT_TS09V_DEBT_ENTRY",
+        "CONTRACT_EXCEPTION_CLASSES_MISSING",
+        "SCHEMA_PRESERVED_SCRIPTS_NOT_FAIL_CLOSED",
+        "SCHEMA_TS09V_PASSES_NOT_FAIL_CLOSED",
+        "SCHEMA_PACKAGE_EXPORT_POLICY_FREEFORM",
+        "SCHEMA_GENERATED_DIST_POLICY_FREEFORM",
+        "SCHEMA_PACKAGE_TSCONFIG_POLICY_FREEFORM",
+        "SCHEMA_EXCEPTION_CLASSES_MISSING"
+      ],
+      "issueCount": 9
+    }
+  ],
+  "negativeFailures": [],
+  "regression": {
+    "auditedProductionJsDebt": {
+      "expectedCount": 43,
+      "missing": [],
+      "allPresent": true
+    },
+    "verificationPackageExport": "./src/index.js",
+    "verificationClassifiedAsTs09vDebt": true,
+    "workspaceSurfaceScript": "node .vibe/work/I-00A-workspace-package-skeleton/witnesses/workspace-surface-witness.mjs --root ."
+  }
+}

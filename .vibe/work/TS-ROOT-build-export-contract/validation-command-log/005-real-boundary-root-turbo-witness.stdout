@@ -1,0 +1,47 @@
+{
+  "repo": "/Users/lizavasilyeva/work/vibe-engineer",
+  "workspace": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/validation-evidence/transient-workspaces/root-turbo-orchestration-consumer",
+  "outputDir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/validation-evidence/real-boundary-output",
+  "copiedFiles": {
+    "root": [
+      "package.json",
+      "turbo.json",
+      "tsconfig.base.json",
+      "pnpm-workspace.yaml",
+      "pnpm-lock.yaml"
+    ],
+    "packages": [
+      "packages/orchestration",
+      "packages/artifacts"
+    ]
+  },
+  "rootBuild": {
+    "cwd": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/validation-evidence/transient-workspaces/root-turbo-orchestration-consumer",
+    "command": "pnpm run build",
+    "exitCode": 1,
+    "signal": null,
+    "startedAt": "2026-06-25T11:41:11.413Z",
+    "endedAt": "2026-06-25T11:41:11.857Z",
+    "stdoutPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/validation-evidence/real-boundary-output/root-pnpm-run-build.stdout",
+    "stderrPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/validation-evidence/real-boundary-output/root-pnpm-run-build.stderr",
+    "stdoutTail": "\n> @vibe-engineer/workspace@0.0.0 build /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/validation-evidence/transient-workspaces/root-turbo-orchestration-consumer\n> pnpm exec turbo run build\n\n ELIFECYCLE  Command failed with exit code 1.\n",
+    "stderrTail": "node:internal/modules/cjs/loader:1503\n  throw err;\n  ^\n\nError: Cannot find module '/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/TS-ROOT-build-export-contract/validation-evidence/transient-workspaces/root-turbo-orchestration-consumer/node_modules/.pnpm/turbo@2.9.18/node_modules/turbo/bin/turbo'\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1500:15)\n    at wrapResolveFilename (node:internal/modules/cjs/loader:1071:27)\n    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1095:10)\n    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1116:12)\n    at Module._load (node:internal/modules/cjs/loader:1285:25)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\n    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)\n    at node:internal/main/run_main_module:33:47 {\n  code: 'MODULE_NOT_FOUND',\n  requireStack: []\n}\n\nNode.js v24.16.0\n"
+  },
+  "consumer": null,
+  "importProbe": null,
+  "distInventoryBefore": [],
+  "distInventoryAfter": [],
+  "assertions": {
+    "rootScriptExercised": true,
+    "rootBuildSucceeded": false,
+    "consumerSucceeded": false,
+    "expectedDistJsExists": false,
+    "expectedDistDtsExists": false,
+    "importResolvedUnderValidationWorkspace": false,
+    "importDidNotResolveToProductDist": false,
+    "importResolvedToExpectedDist": false,
+    "declarationProbePassed": false,
+    "maxParallelAgentsExportObserved": false
+  },
+  "ok": false
+}
