@@ -1,0 +1,49 @@
+{
+  "required": [
+    "schemaVersion",
+    "artifactKind",
+    "artifactId",
+    "title",
+    "createdAt",
+    "updatedAt",
+    "producer",
+    "status",
+    "ownership",
+    "links",
+    "extensions",
+    "sourceSkill",
+    "workType",
+    "background",
+    "problemOrOpportunity",
+    "desiredOutcome",
+    "constraints",
+    "userVisibleBehavior",
+    "nonGoals",
+    "risksAndUnknowns",
+    "acceptanceNotes",
+    "sourceMetadata"
+  ],
+  "required_count": 22,
+  "sourceSkill_enum": [
+    "brainstorm",
+    "grill-me",
+    "task"
+  ],
+  "status_enum": [
+    "draft",
+    "ready",
+    "blocked",
+    "superseded"
+  ],
+  "workType_enum": [
+    "feature",
+    "bug",
+    "chore",
+    "refactor",
+    "research",
+    "decision"
+  ],
+  "artifactKind_const": "work_brief",
+  "schemaVersion_const": "1.0.0",
+  "matches_expected_required": true
+}

@@ -1,0 +1,105 @@
+## git status short all
+?? .gitignore
+?? .npmrc
+?? .pi/
+?? .vibe/
+?? CHANGELOG.md
+?? CODE_OF_CONDUCT.md
+?? CONTRIBUTING.md
+?? LICENSE
+?? README.md
+?? SECURITY.md
+?? docs/
+?? eslint.config.mjs
+?? package.json
+?? packages/
+?? pnpm-lock.yaml
+?? pnpm-workspace.yaml
+?? prettier.config.mjs
+?? tsconfig.base.json
+?? turbo.json
+
+## git status I-05A owned/source paths
+?? .vibe/work/I-05A-input-skill-common-work-brief-writer/
+?? packages/skills/fixtures/work-brief/common/
+?? packages/skills/src/input/common/
+?? packages/skills/src/shared/
+
+## I-05A owned product files
+packages/skills/fixtures/work-brief/common/invalid-input/invalid-enums.json
+packages/skills/fixtures/work-brief/common/invalid-input/missing-desired-outcome.json
+packages/skills/fixtures/work-brief/common/invalid-input/missing-raw-intent.json
+packages/skills/fixtures/work-brief/common/valid-input/brainstorm.json
+packages/skills/fixtures/work-brief/common/valid-input/grill-me.json
+packages/skills/fixtures/work-brief/common/valid-input/task.json
+packages/skills/fixtures/work-brief/common/valid-output/brainstorm.work-brief.json
+packages/skills/fixtures/work-brief/common/valid-output/grill-me.work-brief.json
+packages/skills/fixtures/work-brief/common/valid-output/task.work-brief.json
+packages/skills/src/input/common/work-brief-consumer.js
+packages/skills/src/input/common/work-brief-writer.js
+packages/skills/src/shared/artifact-validation.js
+packages/skills/src/shared/atomic-json-writer.js
+packages/skills/src/shared/result.js
+packages/skills/src/shared/time-id.js
+
+## I-05A work-root files
+.vibe/work/I-05A-input-skill-common-work-brief-writer/evidence/finisher-20260625/checks/js-files.txt
+.vibe/work/I-05A-input-skill-common-work-brief-writer/evidence/finisher-20260625/checks/node-check-exit.txt
+.vibe/work/I-05A-input-skill-common-work-brief-writer/evidence/finisher-20260625/checks/node-check.stderr
+.vibe/work/I-05A-input-skill-common-work-brief-writer/evidence/finisher-20260625/checks/node-check.stdout
+.vibe/work/I-05A-input-skill-common-work-brief-writer/evidence/finisher-20260625/checks/work-brief-witness-exit.txt
+.vibe/work/I-05A-input-skill-common-work-brief-writer/evidence/finisher-20260625/checks/work-brief-witness.stderr
+.vibe/work/I-05A-input-skill-common-work-brief-writer/evidence/finisher-20260625/checks/work-brief-witness.stdout
+.vibe/work/I-05A-input-skill-common-work-brief-writer/evidence/finisher-20260625/import-probe/artifacts-import-from-root.stderr
+.vibe/work/I-05A-input-skill-common-work-brief-writer/evidence/finisher-20260625/import-probe/artifacts-import-from-root.stdout
+.vibe/work/I-05A-input-skill-common-work-brief-writer/evidence/finisher-20260625/import-probe/artifacts-import-from-skills.stderr
+.vibe/work/I-05A-input-skill-common-work-brief-writer/evidence/finisher-20260625/import-probe/artifacts-import-from-skills.stdout
+.vibe/work/I-05A-input-skill-common-work-brief-writer/evidence/finisher-20260625/import-probe/import-exits.txt
+.vibe/work/I-05A-input-skill-common-work-brief-writer/evidence/finisher-20260625/preflight/cwd-and-roots.txt
+.vibe/work/I-05A-input-skill-common-work-brief-writer/evidence/finisher-20260625/preflight/forbidden-sibling-inventory.txt
+.vibe/work/I-05A-input-skill-common-work-brief-writer/evidence/finisher-20260625/preflight/harness-forensic-inventory.txt
+.vibe/work/I-05A-input-skill-common-work-brief-writer/evidence/finisher-20260625/preflight/harness-forensic-sizes.txt
+.vibe/work/I-05A-input-skill-common-work-brief-writer/evidence/finisher-20260625/preflight/owned-inventory-before.txt
+.vibe/work/I-05A-input-skill-common-work-brief-writer/evidence/finisher-20260625/preflight/packages-skills-files-before.txt
+.vibe/work/I-05A-input-skill-common-work-brief-writer/evidence/finisher-20260625/preflight/protected-file-hashes-before.txt
+.vibe/work/I-05A-input-skill-common-work-brief-writer/evidence/finisher-20260625/preflight/target-misplaced-vibe-inventory.txt
+.vibe/work/I-05A-input-skill-common-work-brief-writer/evidence/finisher-20260625/regression/forbidden-sibling-inventory-after.txt
+.vibe/work/I-05A-input-skill-common-work-brief-writer/evidence/finisher-20260625/regression/owned-inventory-after.txt
+.vibe/work/I-05A-input-skill-common-work-brief-writer/evidence/finisher-20260625/regression/protected-file-hash-comparison.json
+.vibe/work/I-05A-input-skill-common-work-brief-writer/evidence/finisher-20260625/regression/protected-file-hash-diff.txt
+.vibe/work/I-05A-input-skill-common-work-brief-writer/evidence/finisher-20260625/regression/protected-file-hashes-after.txt
+.vibe/work/I-05A-input-skill-common-work-brief-writer/evidence/finisher-20260625/regression/source-sweep.txt
+.vibe/work/I-05A-input-skill-common-work-brief-writer/evidence/finisher-20260625/regression/target-status-scoped-after.txt
+.vibe/work/I-05A-input-skill-common-work-brief-writer/evidence/finisher-20260625/witness-output/invalid/malformed-json.json
+.vibe/work/I-05A-input-skill-common-work-brief-writer/evidence/finisher-20260625/witness-output/invalid/wrong-extension.txt
+.vibe/work/I-05A-input-skill-common-work-brief-writer/evidence/finisher-20260625/witness-output/produced/brainstorm.work-brief.json
+.vibe/work/I-05A-input-skill-common-work-brief-writer/evidence/finisher-20260625/witness-output/produced/grill-me.work-brief.json
+.vibe/work/I-05A-input-skill-common-work-brief-writer/evidence/finisher-20260625/witness-output/produced/task.work-brief.json
+.vibe/work/I-05A-input-skill-common-work-brief-writer/evidence/finisher-20260625/witness-output/witness-results.json
+.vibe/work/I-05A-input-skill-common-work-brief-writer/evidence/finisher-20260625/witnesses/run-work-brief-witnesses.mjs
+.vibe/work/I-05A-input-skill-common-work-brief-writer/evidence/finisher-preflight/artifacts-import-from-root.stderr
+.vibe/work/I-05A-input-skill-common-work-brief-writer/evidence/finisher-preflight/artifacts-import-from-root.stdout
+.vibe/work/I-05A-input-skill-common-work-brief-writer/evidence/finisher-preflight/artifacts-import-from-skills.stderr
+.vibe/work/I-05A-input-skill-common-work-brief-writer/evidence/finisher-preflight/artifacts-import-from-skills.stdout
+.vibe/work/I-05A-input-skill-common-work-brief-writer/evidence/finisher-preflight/config-cli-public-inventory.txt
+.vibe/work/I-05A-input-skill-common-work-brief-writer/evidence/finisher-preflight/cwd-and-roots.txt
+.vibe/work/I-05A-input-skill-common-work-brief-writer/evidence/finisher-preflight/forbidden-sibling-inventory.txt
+.vibe/work/I-05A-input-skill-common-work-brief-writer/evidence/finisher-preflight/harness-forensic-inventory.txt
+.vibe/work/I-05A-input-skill-common-work-brief-writer/evidence/finisher-preflight/harness-forensic-sizes.txt
+.vibe/work/I-05A-input-skill-common-work-brief-writer/evidence/finisher-preflight/import-exits.txt
+.vibe/work/I-05A-input-skill-common-work-brief-writer/evidence/finisher-preflight/owned-inventory-at-blocked.txt
+.vibe/work/I-05A-input-skill-common-work-brief-writer/evidence/finisher-preflight/owned-inventory-before.txt
+.vibe/work/I-05A-input-skill-common-work-brief-writer/evidence/finisher-preflight/packages-skills-files-at-blocked.txt
+.vibe/work/I-05A-input-skill-common-work-brief-writer/evidence/finisher-preflight/preflight-exit.txt
+.vibe/work/I-05A-input-skill-common-work-brief-writer/evidence/finisher-preflight/protected-target-status.txt
+.vibe/work/I-05A-input-skill-common-work-brief-writer/evidence/finisher-preflight/target-git-status-short.stderr
+.vibe/work/I-05A-input-skill-common-work-brief-writer/evidence/finisher-preflight/target-git-status-short.txt
+.vibe/work/I-05A-input-skill-common-work-brief-writer/evidence/finisher-preflight/target-misplaced-vibe-inventory.txt
+.vibe/work/I-05A-input-skill-common-work-brief-writer/I-05A-implementation-report.md
+.vibe/work/I-05A-input-skill-common-work-brief-writer/I-05A-validation-report.md
+.vibe/work/I-05A-input-skill-common-work-brief-writer/validation-evidence/01-inventory/cwd-and-roots-rerun.txt
+.vibe/work/I-05A-input-skill-common-work-brief-writer/validation-evidence/01-inventory/cwd-and-roots.txt
+.vibe/work/I-05A-input-skill-common-work-brief-writer/validation-evidence/01-inventory/status-and-files-rerun.txt
+.vibe/work/I-05A-input-skill-common-work-brief-writer/validation-evidence/01-inventory/status-and-files.txt
+
+## sibling/forbidden skills files excluding common I-05A paths

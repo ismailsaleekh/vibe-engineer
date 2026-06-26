@@ -1,0 +1,1696 @@
+{
+  "ok": true,
+  "checks": [
+    {
+      "name": "positive:brainstorm:writer-ok",
+      "pass": true,
+      "filePath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05A-input-skill-common-work-brief-writer/evidence/finisher-20260625/witness-output/produced/brainstorm.work-brief.json"
+    },
+    {
+      "name": "positive:brainstorm:artifact-validator-ok",
+      "pass": true,
+      "ok": true,
+      "artifact": {
+        "acceptanceNotes": [
+          {
+            "description": "A valid common input produces a validator-accepted Work Brief.",
+            "id": "accept-common-writer"
+          }
+        ],
+        "artifactId": "work-brief-brainstorm-common-fixture",
+        "artifactKind": "work_brief",
+        "background": "A domain-neutral harness workflow needs a durable typed intake artifact.",
+        "constraints": [
+          "Preserve typed JSON artifact boundaries",
+          "Avoid producer-specific behavior in the common writer"
+        ],
+        "createdAt": "2026-06-25T00:00:00.000Z",
+        "desiredOutcome": "The shared common writer emits a canonical Work Brief accepted by the artifacts validator.",
+        "extensions": {
+          "dev.vibe.skill-common": {
+            "fixture": "common-work-brief",
+            "schemaVersion": "1.0.0"
+          }
+        },
+        "links": [
+          {
+            "artifactId": "raw-intent-brainstorm-fixture",
+            "artifactKind": "work_brief",
+            "path": "raw/brainstorm.json",
+            "rel": "raw_intent",
+            "required": true,
+            "statusAtLinkTime": "captured"
+          }
+        ],
+        "nonGoals": [
+          "Do not implement plan intake",
+          "Do not implement producer-specific skill prompts"
+        ],
+        "ownership": {
+          "concurrencyNotes": "I-05A common writer fixture; producer-specific skill behavior is out of scope.",
+          "ownedWritePaths": [
+            "packages/skills/src/shared/**",
+            "packages/skills/src/input/common/**",
+            "packages/skills/fixtures/work-brief/common/**"
+          ],
+          "ownerLane": "I-05A-input-skill-common-work-brief-writer",
+          "readOnlyPaths": [
+            "packages/artifacts/**",
+            "packages/config/**",
+            "packages/cli/**",
+            "docs/decisions/**"
+          ],
+          "untouchablePaths": [
+            ".git/**",
+            "packages/skills/package.json",
+            "packages/skills/src/plan/**",
+            "packages/skills/src/input/brainstorm/**",
+            "packages/skills/src/input/grill-me/**",
+            "packages/skills/src/input/task/**"
+          ]
+        },
+        "problemOrOpportunity": "Planning must consume validated Work Brief JSON instead of raw chat.",
+        "producer": {
+          "id": "skill-brainstorm",
+          "kind": "skill",
+          "name": "brainstorm",
+          "runId": "run-i05a-common-fixture",
+          "version": "1.0.0"
+        },
+        "risksAndUnknowns": [
+          "Package dependency wiring must remain explicit"
+        ],
+        "schemaVersion": "1.0.0",
+        "sourceMetadata": {
+          "conversationRefs": [],
+          "inputTimestamp": "2026-06-25T00:00:00.000Z",
+          "operatorRefs": [
+            "operator-fixture"
+          ],
+          "rawIntentRefs": [
+            "raw-intent-common-fixture"
+          ]
+        },
+        "sourceSkill": "brainstorm",
+        "status": "ready",
+        "tags": [
+          "domain-neutral",
+          "common-writer"
+        ],
+        "title": "brainstorm common Work Brief fixture",
+        "updatedAt": "2026-06-25T00:00:00.000Z",
+        "userVisibleBehavior": [
+          "Agents can pass the same Work Brief class between skills"
+        ],
+        "workType": "feature"
+      },
+      "kind": "work_brief",
+      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/work-brief.schema.json",
+      "schemaVersion": "1.0.0"
+    },
+    {
+      "name": "positive:brainstorm:validateArtifactKind-ok",
+      "pass": true,
+      "ok": true,
+      "artifact": {
+        "schemaVersion": "1.0.0",
+        "artifactKind": "work_brief",
+        "artifactId": "work-brief-brainstorm-common-fixture",
+        "title": "brainstorm common Work Brief fixture",
+        "createdAt": "2026-06-25T00:00:00.000Z",
+        "updatedAt": "2026-06-25T00:00:00.000Z",
+        "producer": {
+          "kind": "skill",
+          "id": "skill-brainstorm",
+          "name": "brainstorm",
+          "version": "1.0.0",
+          "runId": "run-i05a-common-fixture"
+        },
+        "status": "ready",
+        "ownership": {
+          "concurrencyNotes": "I-05A common writer fixture; producer-specific skill behavior is out of scope.",
+          "ownedWritePaths": [
+            "packages/skills/src/shared/**",
+            "packages/skills/src/input/common/**",
+            "packages/skills/fixtures/work-brief/common/**"
+          ],
+          "ownerLane": "I-05A-input-skill-common-work-brief-writer",
+          "readOnlyPaths": [
+            "packages/artifacts/**",
+            "packages/config/**",
+            "packages/cli/**",
+            "docs/decisions/**"
+          ],
+          "untouchablePaths": [
+            ".git/**",
+            "packages/skills/package.json",
+            "packages/skills/src/plan/**",
+            "packages/skills/src/input/brainstorm/**",
+            "packages/skills/src/input/grill-me/**",
+            "packages/skills/src/input/task/**"
+          ]
+        },
+        "links": [
+          {
+            "rel": "raw_intent",
+            "artifactKind": "work_brief",
+            "artifactId": "raw-intent-brainstorm-fixture",
+            "path": "raw/brainstorm.json",
+            "required": true,
+            "statusAtLinkTime": "captured"
+          }
+        ],
+        "extensions": {
+          "dev.vibe.skill-common": {
+            "fixture": "common-work-brief",
+            "schemaVersion": "1.0.0"
+          }
+        },
+        "tags": [
+          "domain-neutral",
+          "common-writer"
+        ],
+        "sourceSkill": "brainstorm",
+        "workType": "feature",
+        "background": "A domain-neutral harness workflow needs a durable typed intake artifact.",
+        "problemOrOpportunity": "Planning must consume validated Work Brief JSON instead of raw chat.",
+        "desiredOutcome": "The shared common writer emits a canonical Work Brief accepted by the artifacts validator.",
+        "constraints": [
+          "Preserve typed JSON artifact boundaries",
+          "Avoid producer-specific behavior in the common writer"
+        ],
+        "userVisibleBehavior": [
+          "Agents can pass the same Work Brief class between skills"
+        ],
+        "nonGoals": [
+          "Do not implement plan intake",
+          "Do not implement producer-specific skill prompts"
+        ],
+        "risksAndUnknowns": [
+          "Package dependency wiring must remain explicit"
+        ],
+        "acceptanceNotes": [
+          {
+            "description": "A valid common input produces a validator-accepted Work Brief.",
+            "id": "accept-common-writer"
+          }
+        ],
+        "sourceMetadata": {
+          "conversationRefs": [],
+          "inputTimestamp": "2026-06-25T00:00:00.000Z",
+          "operatorRefs": [
+            "operator-fixture"
+          ],
+          "rawIntentRefs": [
+            "raw-intent-common-fixture"
+          ]
+        }
+      },
+      "kind": "work_brief",
+      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/work-brief.schema.json",
+      "schemaVersion": "1.0.0"
+    },
+    {
+      "name": "carrier:brainstorm:validateArtifactFile-ok",
+      "pass": true,
+      "ok": true,
+      "artifact": {
+        "acceptanceNotes": [
+          {
+            "description": "A valid common input produces a validator-accepted Work Brief.",
+            "id": "accept-common-writer"
+          }
+        ],
+        "artifactId": "work-brief-brainstorm-common-fixture",
+        "artifactKind": "work_brief",
+        "background": "A domain-neutral harness workflow needs a durable typed intake artifact.",
+        "constraints": [
+          "Preserve typed JSON artifact boundaries",
+          "Avoid producer-specific behavior in the common writer"
+        ],
+        "createdAt": "2026-06-25T00:00:00.000Z",
+        "desiredOutcome": "The shared common writer emits a canonical Work Brief accepted by the artifacts validator.",
+        "extensions": {
+          "dev.vibe.skill-common": {
+            "fixture": "common-work-brief",
+            "schemaVersion": "1.0.0"
+          }
+        },
+        "links": [
+          {
+            "artifactId": "raw-intent-brainstorm-fixture",
+            "artifactKind": "work_brief",
+            "path": "raw/brainstorm.json",
+            "rel": "raw_intent",
+            "required": true,
+            "statusAtLinkTime": "captured"
+          }
+        ],
+        "nonGoals": [
+          "Do not implement plan intake",
+          "Do not implement producer-specific skill prompts"
+        ],
+        "ownership": {
+          "concurrencyNotes": "I-05A common writer fixture; producer-specific skill behavior is out of scope.",
+          "ownedWritePaths": [
+            "packages/skills/src/shared/**",
+            "packages/skills/src/input/common/**",
+            "packages/skills/fixtures/work-brief/common/**"
+          ],
+          "ownerLane": "I-05A-input-skill-common-work-brief-writer",
+          "readOnlyPaths": [
+            "packages/artifacts/**",
+            "packages/config/**",
+            "packages/cli/**",
+            "docs/decisions/**"
+          ],
+          "untouchablePaths": [
+            ".git/**",
+            "packages/skills/package.json",
+            "packages/skills/src/plan/**",
+            "packages/skills/src/input/brainstorm/**",
+            "packages/skills/src/input/grill-me/**",
+            "packages/skills/src/input/task/**"
+          ]
+        },
+        "problemOrOpportunity": "Planning must consume validated Work Brief JSON instead of raw chat.",
+        "producer": {
+          "id": "skill-brainstorm",
+          "kind": "skill",
+          "name": "brainstorm",
+          "runId": "run-i05a-common-fixture",
+          "version": "1.0.0"
+        },
+        "risksAndUnknowns": [
+          "Package dependency wiring must remain explicit"
+        ],
+        "schemaVersion": "1.0.0",
+        "sourceMetadata": {
+          "conversationRefs": [],
+          "inputTimestamp": "2026-06-25T00:00:00.000Z",
+          "operatorRefs": [
+            "operator-fixture"
+          ],
+          "rawIntentRefs": [
+            "raw-intent-common-fixture"
+          ]
+        },
+        "sourceSkill": "brainstorm",
+        "status": "ready",
+        "tags": [
+          "domain-neutral",
+          "common-writer"
+        ],
+        "title": "brainstorm common Work Brief fixture",
+        "updatedAt": "2026-06-25T00:00:00.000Z",
+        "userVisibleBehavior": [
+          "Agents can pass the same Work Brief class between skills"
+        ],
+        "workType": "feature"
+      },
+      "kind": "work_brief",
+      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/work-brief.schema.json",
+      "schemaVersion": "1.0.0"
+    },
+    {
+      "name": "consumer:brainstorm:revalidate-ok",
+      "pass": true,
+      "ok": true,
+      "artifact": {
+        "acceptanceNotes": [
+          {
+            "description": "A valid common input produces a validator-accepted Work Brief.",
+            "id": "accept-common-writer"
+          }
+        ],
+        "artifactId": "work-brief-brainstorm-common-fixture",
+        "artifactKind": "work_brief",
+        "background": "A domain-neutral harness workflow needs a durable typed intake artifact.",
+        "constraints": [
+          "Preserve typed JSON artifact boundaries",
+          "Avoid producer-specific behavior in the common writer"
+        ],
+        "createdAt": "2026-06-25T00:00:00.000Z",
+        "desiredOutcome": "The shared common writer emits a canonical Work Brief accepted by the artifacts validator.",
+        "extensions": {
+          "dev.vibe.skill-common": {
+            "fixture": "common-work-brief",
+            "schemaVersion": "1.0.0"
+          }
+        },
+        "links": [
+          {
+            "artifactId": "raw-intent-brainstorm-fixture",
+            "artifactKind": "work_brief",
+            "path": "raw/brainstorm.json",
+            "rel": "raw_intent",
+            "required": true,
+            "statusAtLinkTime": "captured"
+          }
+        ],
+        "nonGoals": [
+          "Do not implement plan intake",
+          "Do not implement producer-specific skill prompts"
+        ],
+        "ownership": {
+          "concurrencyNotes": "I-05A common writer fixture; producer-specific skill behavior is out of scope.",
+          "ownedWritePaths": [
+            "packages/skills/src/shared/**",
+            "packages/skills/src/input/common/**",
+            "packages/skills/fixtures/work-brief/common/**"
+          ],
+          "ownerLane": "I-05A-input-skill-common-work-brief-writer",
+          "readOnlyPaths": [
+            "packages/artifacts/**",
+            "packages/config/**",
+            "packages/cli/**",
+            "docs/decisions/**"
+          ],
+          "untouchablePaths": [
+            ".git/**",
+            "packages/skills/package.json",
+            "packages/skills/src/plan/**",
+            "packages/skills/src/input/brainstorm/**",
+            "packages/skills/src/input/grill-me/**",
+            "packages/skills/src/input/task/**"
+          ]
+        },
+        "problemOrOpportunity": "Planning must consume validated Work Brief JSON instead of raw chat.",
+        "producer": {
+          "id": "skill-brainstorm",
+          "kind": "skill",
+          "name": "brainstorm",
+          "runId": "run-i05a-common-fixture",
+          "version": "1.0.0"
+        },
+        "risksAndUnknowns": [
+          "Package dependency wiring must remain explicit"
+        ],
+        "schemaVersion": "1.0.0",
+        "sourceMetadata": {
+          "conversationRefs": [],
+          "inputTimestamp": "2026-06-25T00:00:00.000Z",
+          "operatorRefs": [
+            "operator-fixture"
+          ],
+          "rawIntentRefs": [
+            "raw-intent-common-fixture"
+          ]
+        },
+        "sourceSkill": "brainstorm",
+        "status": "ready",
+        "tags": [
+          "domain-neutral",
+          "common-writer"
+        ],
+        "title": "brainstorm common Work Brief fixture",
+        "updatedAt": "2026-06-25T00:00:00.000Z",
+        "userVisibleBehavior": [
+          "Agents can pass the same Work Brief class between skills"
+        ],
+        "workType": "feature"
+      },
+      "kind": "work_brief",
+      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/work-brief.schema.json",
+      "schemaVersion": "1.0.0"
+    },
+    {
+      "name": "carrier:brainstorm:structure-consistent",
+      "pass": true,
+      "filePath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05A-input-skill-common-work-brief-writer/evidence/finisher-20260625/witness-output/produced/brainstorm.work-brief.json"
+    },
+    {
+      "name": "positive:grill-me:writer-ok",
+      "pass": true,
+      "filePath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05A-input-skill-common-work-brief-writer/evidence/finisher-20260625/witness-output/produced/grill-me.work-brief.json"
+    },
+    {
+      "name": "positive:grill-me:artifact-validator-ok",
+      "pass": true,
+      "ok": true,
+      "artifact": {
+        "acceptanceNotes": [
+          {
+            "description": "A valid common input produces a validator-accepted Work Brief.",
+            "id": "accept-common-writer"
+          }
+        ],
+        "artifactId": "work-brief-grill-me-common-fixture",
+        "artifactKind": "work_brief",
+        "background": "A domain-neutral harness workflow needs a durable typed intake artifact.",
+        "constraints": [
+          "Preserve typed JSON artifact boundaries",
+          "Avoid producer-specific behavior in the common writer"
+        ],
+        "createdAt": "2026-06-25T00:00:00.000Z",
+        "desiredOutcome": "The shared common writer emits a canonical Work Brief accepted by the artifacts validator.",
+        "extensions": {
+          "dev.vibe.skill-common": {
+            "fixture": "common-work-brief",
+            "schemaVersion": "1.0.0"
+          }
+        },
+        "links": [
+          {
+            "artifactId": "raw-intent-grill-me-fixture",
+            "artifactKind": "work_brief",
+            "path": "raw/grill-me.json",
+            "rel": "raw_intent",
+            "required": true,
+            "statusAtLinkTime": "captured"
+          }
+        ],
+        "nonGoals": [
+          "Do not implement plan intake",
+          "Do not implement producer-specific skill prompts"
+        ],
+        "ownership": {
+          "concurrencyNotes": "I-05A common writer fixture; producer-specific skill behavior is out of scope.",
+          "ownedWritePaths": [
+            "packages/skills/src/shared/**",
+            "packages/skills/src/input/common/**",
+            "packages/skills/fixtures/work-brief/common/**"
+          ],
+          "ownerLane": "I-05A-input-skill-common-work-brief-writer",
+          "readOnlyPaths": [
+            "packages/artifacts/**",
+            "packages/config/**",
+            "packages/cli/**",
+            "docs/decisions/**"
+          ],
+          "untouchablePaths": [
+            ".git/**",
+            "packages/skills/package.json",
+            "packages/skills/src/plan/**",
+            "packages/skills/src/input/brainstorm/**",
+            "packages/skills/src/input/grill-me/**",
+            "packages/skills/src/input/task/**"
+          ]
+        },
+        "problemOrOpportunity": "Planning must consume validated Work Brief JSON instead of raw chat.",
+        "producer": {
+          "id": "skill-grill-me",
+          "kind": "skill",
+          "name": "grill-me",
+          "runId": "run-i05a-common-fixture",
+          "version": "1.0.0"
+        },
+        "risksAndUnknowns": [
+          "Package dependency wiring must remain explicit"
+        ],
+        "schemaVersion": "1.0.0",
+        "sourceMetadata": {
+          "conversationRefs": [],
+          "inputTimestamp": "2026-06-25T00:00:00.000Z",
+          "operatorRefs": [
+            "operator-fixture"
+          ],
+          "rawIntentRefs": [
+            "raw-intent-common-fixture"
+          ]
+        },
+        "sourceSkill": "grill-me",
+        "status": "ready",
+        "tags": [
+          "domain-neutral",
+          "common-writer"
+        ],
+        "title": "grill-me common Work Brief fixture",
+        "updatedAt": "2026-06-25T00:00:00.000Z",
+        "userVisibleBehavior": [
+          "Agents can pass the same Work Brief class between skills"
+        ],
+        "workType": "feature"
+      },
+      "kind": "work_brief",
+      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/work-brief.schema.json",
+      "schemaVersion": "1.0.0"
+    },
+    {
+      "name": "positive:grill-me:validateArtifactKind-ok",
+      "pass": true,
+      "ok": true,
+      "artifact": {
+        "schemaVersion": "1.0.0",
+        "artifactKind": "work_brief",
+        "artifactId": "work-brief-grill-me-common-fixture",
+        "title": "grill-me common Work Brief fixture",
+        "createdAt": "2026-06-25T00:00:00.000Z",
+        "updatedAt": "2026-06-25T00:00:00.000Z",
+        "producer": {
+          "kind": "skill",
+          "id": "skill-grill-me",
+          "name": "grill-me",
+          "version": "1.0.0",
+          "runId": "run-i05a-common-fixture"
+        },
+        "status": "ready",
+        "ownership": {
+          "concurrencyNotes": "I-05A common writer fixture; producer-specific skill behavior is out of scope.",
+          "ownedWritePaths": [
+            "packages/skills/src/shared/**",
+            "packages/skills/src/input/common/**",
+            "packages/skills/fixtures/work-brief/common/**"
+          ],
+          "ownerLane": "I-05A-input-skill-common-work-brief-writer",
+          "readOnlyPaths": [
+            "packages/artifacts/**",
+            "packages/config/**",
+            "packages/cli/**",
+            "docs/decisions/**"
+          ],
+          "untouchablePaths": [
+            ".git/**",
+            "packages/skills/package.json",
+            "packages/skills/src/plan/**",
+            "packages/skills/src/input/brainstorm/**",
+            "packages/skills/src/input/grill-me/**",
+            "packages/skills/src/input/task/**"
+          ]
+        },
+        "links": [
+          {
+            "rel": "raw_intent",
+            "artifactKind": "work_brief",
+            "artifactId": "raw-intent-grill-me-fixture",
+            "path": "raw/grill-me.json",
+            "required": true,
+            "statusAtLinkTime": "captured"
+          }
+        ],
+        "extensions": {
+          "dev.vibe.skill-common": {
+            "fixture": "common-work-brief",
+            "schemaVersion": "1.0.0"
+          }
+        },
+        "tags": [
+          "domain-neutral",
+          "common-writer"
+        ],
+        "sourceSkill": "grill-me",
+        "workType": "feature",
+        "background": "A domain-neutral harness workflow needs a durable typed intake artifact.",
+        "problemOrOpportunity": "Planning must consume validated Work Brief JSON instead of raw chat.",
+        "desiredOutcome": "The shared common writer emits a canonical Work Brief accepted by the artifacts validator.",
+        "constraints": [
+          "Preserve typed JSON artifact boundaries",
+          "Avoid producer-specific behavior in the common writer"
+        ],
+        "userVisibleBehavior": [
+          "Agents can pass the same Work Brief class between skills"
+        ],
+        "nonGoals": [
+          "Do not implement plan intake",
+          "Do not implement producer-specific skill prompts"
+        ],
+        "risksAndUnknowns": [
+          "Package dependency wiring must remain explicit"
+        ],
+        "acceptanceNotes": [
+          {
+            "description": "A valid common input produces a validator-accepted Work Brief.",
+            "id": "accept-common-writer"
+          }
+        ],
+        "sourceMetadata": {
+          "conversationRefs": [],
+          "inputTimestamp": "2026-06-25T00:00:00.000Z",
+          "operatorRefs": [
+            "operator-fixture"
+          ],
+          "rawIntentRefs": [
+            "raw-intent-common-fixture"
+          ]
+        }
+      },
+      "kind": "work_brief",
+      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/work-brief.schema.json",
+      "schemaVersion": "1.0.0"
+    },
+    {
+      "name": "carrier:grill-me:validateArtifactFile-ok",
+      "pass": true,
+      "ok": true,
+      "artifact": {
+        "acceptanceNotes": [
+          {
+            "description": "A valid common input produces a validator-accepted Work Brief.",
+            "id": "accept-common-writer"
+          }
+        ],
+        "artifactId": "work-brief-grill-me-common-fixture",
+        "artifactKind": "work_brief",
+        "background": "A domain-neutral harness workflow needs a durable typed intake artifact.",
+        "constraints": [
+          "Preserve typed JSON artifact boundaries",
+          "Avoid producer-specific behavior in the common writer"
+        ],
+        "createdAt": "2026-06-25T00:00:00.000Z",
+        "desiredOutcome": "The shared common writer emits a canonical Work Brief accepted by the artifacts validator.",
+        "extensions": {
+          "dev.vibe.skill-common": {
+            "fixture": "common-work-brief",
+            "schemaVersion": "1.0.0"
+          }
+        },
+        "links": [
+          {
+            "artifactId": "raw-intent-grill-me-fixture",
+            "artifactKind": "work_brief",
+            "path": "raw/grill-me.json",
+            "rel": "raw_intent",
+            "required": true,
+            "statusAtLinkTime": "captured"
+          }
+        ],
+        "nonGoals": [
+          "Do not implement plan intake",
+          "Do not implement producer-specific skill prompts"
+        ],
+        "ownership": {
+          "concurrencyNotes": "I-05A common writer fixture; producer-specific skill behavior is out of scope.",
+          "ownedWritePaths": [
+            "packages/skills/src/shared/**",
+            "packages/skills/src/input/common/**",
+            "packages/skills/fixtures/work-brief/common/**"
+          ],
+          "ownerLane": "I-05A-input-skill-common-work-brief-writer",
+          "readOnlyPaths": [
+            "packages/artifacts/**",
+            "packages/config/**",
+            "packages/cli/**",
+            "docs/decisions/**"
+          ],
+          "untouchablePaths": [
+            ".git/**",
+            "packages/skills/package.json",
+            "packages/skills/src/plan/**",
+            "packages/skills/src/input/brainstorm/**",
+            "packages/skills/src/input/grill-me/**",
+            "packages/skills/src/input/task/**"
+          ]
+        },
+        "problemOrOpportunity": "Planning must consume validated Work Brief JSON instead of raw chat.",
+        "producer": {
+          "id": "skill-grill-me",
+          "kind": "skill",
+          "name": "grill-me",
+          "runId": "run-i05a-common-fixture",
+          "version": "1.0.0"
+        },
+        "risksAndUnknowns": [
+          "Package dependency wiring must remain explicit"
+        ],
+        "schemaVersion": "1.0.0",
+        "sourceMetadata": {
+          "conversationRefs": [],
+          "inputTimestamp": "2026-06-25T00:00:00.000Z",
+          "operatorRefs": [
+            "operator-fixture"
+          ],
+          "rawIntentRefs": [
+            "raw-intent-common-fixture"
+          ]
+        },
+        "sourceSkill": "grill-me",
+        "status": "ready",
+        "tags": [
+          "domain-neutral",
+          "common-writer"
+        ],
+        "title": "grill-me common Work Brief fixture",
+        "updatedAt": "2026-06-25T00:00:00.000Z",
+        "userVisibleBehavior": [
+          "Agents can pass the same Work Brief class between skills"
+        ],
+        "workType": "feature"
+      },
+      "kind": "work_brief",
+      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/work-brief.schema.json",
+      "schemaVersion": "1.0.0"
+    },
+    {
+      "name": "consumer:grill-me:revalidate-ok",
+      "pass": true,
+      "ok": true,
+      "artifact": {
+        "acceptanceNotes": [
+          {
+            "description": "A valid common input produces a validator-accepted Work Brief.",
+            "id": "accept-common-writer"
+          }
+        ],
+        "artifactId": "work-brief-grill-me-common-fixture",
+        "artifactKind": "work_brief",
+        "background": "A domain-neutral harness workflow needs a durable typed intake artifact.",
+        "constraints": [
+          "Preserve typed JSON artifact boundaries",
+          "Avoid producer-specific behavior in the common writer"
+        ],
+        "createdAt": "2026-06-25T00:00:00.000Z",
+        "desiredOutcome": "The shared common writer emits a canonical Work Brief accepted by the artifacts validator.",
+        "extensions": {
+          "dev.vibe.skill-common": {
+            "fixture": "common-work-brief",
+            "schemaVersion": "1.0.0"
+          }
+        },
+        "links": [
+          {
+            "artifactId": "raw-intent-grill-me-fixture",
+            "artifactKind": "work_brief",
+            "path": "raw/grill-me.json",
+            "rel": "raw_intent",
+            "required": true,
+            "statusAtLinkTime": "captured"
+          }
+        ],
+        "nonGoals": [
+          "Do not implement plan intake",
+          "Do not implement producer-specific skill prompts"
+        ],
+        "ownership": {
+          "concurrencyNotes": "I-05A common writer fixture; producer-specific skill behavior is out of scope.",
+          "ownedWritePaths": [
+            "packages/skills/src/shared/**",
+            "packages/skills/src/input/common/**",
+            "packages/skills/fixtures/work-brief/common/**"
+          ],
+          "ownerLane": "I-05A-input-skill-common-work-brief-writer",
+          "readOnlyPaths": [
+            "packages/artifacts/**",
+            "packages/config/**",
+            "packages/cli/**",
+            "docs/decisions/**"
+          ],
+          "untouchablePaths": [
+            ".git/**",
+            "packages/skills/package.json",
+            "packages/skills/src/plan/**",
+            "packages/skills/src/input/brainstorm/**",
+            "packages/skills/src/input/grill-me/**",
+            "packages/skills/src/input/task/**"
+          ]
+        },
+        "problemOrOpportunity": "Planning must consume validated Work Brief JSON instead of raw chat.",
+        "producer": {
+          "id": "skill-grill-me",
+          "kind": "skill",
+          "name": "grill-me",
+          "runId": "run-i05a-common-fixture",
+          "version": "1.0.0"
+        },
+        "risksAndUnknowns": [
+          "Package dependency wiring must remain explicit"
+        ],
+        "schemaVersion": "1.0.0",
+        "sourceMetadata": {
+          "conversationRefs": [],
+          "inputTimestamp": "2026-06-25T00:00:00.000Z",
+          "operatorRefs": [
+            "operator-fixture"
+          ],
+          "rawIntentRefs": [
+            "raw-intent-common-fixture"
+          ]
+        },
+        "sourceSkill": "grill-me",
+        "status": "ready",
+        "tags": [
+          "domain-neutral",
+          "common-writer"
+        ],
+        "title": "grill-me common Work Brief fixture",
+        "updatedAt": "2026-06-25T00:00:00.000Z",
+        "userVisibleBehavior": [
+          "Agents can pass the same Work Brief class between skills"
+        ],
+        "workType": "feature"
+      },
+      "kind": "work_brief",
+      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/work-brief.schema.json",
+      "schemaVersion": "1.0.0"
+    },
+    {
+      "name": "carrier:grill-me:structure-consistent",
+      "pass": true,
+      "filePath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05A-input-skill-common-work-brief-writer/evidence/finisher-20260625/witness-output/produced/grill-me.work-brief.json"
+    },
+    {
+      "name": "positive:task:writer-ok",
+      "pass": true,
+      "filePath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05A-input-skill-common-work-brief-writer/evidence/finisher-20260625/witness-output/produced/task.work-brief.json"
+    },
+    {
+      "name": "positive:task:artifact-validator-ok",
+      "pass": true,
+      "ok": true,
+      "artifact": {
+        "acceptanceNotes": [
+          {
+            "description": "A valid common input produces a validator-accepted Work Brief.",
+            "id": "accept-common-writer"
+          }
+        ],
+        "artifactId": "work-brief-task-common-fixture",
+        "artifactKind": "work_brief",
+        "background": "A domain-neutral harness workflow needs a durable typed intake artifact.",
+        "constraints": [
+          "Preserve typed JSON artifact boundaries",
+          "Avoid producer-specific behavior in the common writer"
+        ],
+        "createdAt": "2026-06-25T00:00:00.000Z",
+        "desiredOutcome": "The shared common writer emits a canonical Work Brief accepted by the artifacts validator.",
+        "extensions": {
+          "dev.vibe.skill-common": {
+            "fixture": "common-work-brief",
+            "schemaVersion": "1.0.0"
+          }
+        },
+        "links": [
+          {
+            "artifactId": "raw-intent-task-fixture",
+            "artifactKind": "work_brief",
+            "path": "raw/task.json",
+            "rel": "raw_intent",
+            "required": true,
+            "statusAtLinkTime": "captured"
+          }
+        ],
+        "nonGoals": [
+          "Do not implement plan intake",
+          "Do not implement producer-specific skill prompts"
+        ],
+        "ownership": {
+          "concurrencyNotes": "I-05A common writer fixture; producer-specific skill behavior is out of scope.",
+          "ownedWritePaths": [
+            "packages/skills/src/shared/**",
+            "packages/skills/src/input/common/**",
+            "packages/skills/fixtures/work-brief/common/**"
+          ],
+          "ownerLane": "I-05A-input-skill-common-work-brief-writer",
+          "readOnlyPaths": [
+            "packages/artifacts/**",
+            "packages/config/**",
+            "packages/cli/**",
+            "docs/decisions/**"
+          ],
+          "untouchablePaths": [
+            ".git/**",
+            "packages/skills/package.json",
+            "packages/skills/src/plan/**",
+            "packages/skills/src/input/brainstorm/**",
+            "packages/skills/src/input/grill-me/**",
+            "packages/skills/src/input/task/**"
+          ]
+        },
+        "problemOrOpportunity": "Planning must consume validated Work Brief JSON instead of raw chat.",
+        "producer": {
+          "id": "skill-task",
+          "kind": "skill",
+          "name": "task",
+          "runId": "run-i05a-common-fixture",
+          "version": "1.0.0"
+        },
+        "risksAndUnknowns": [
+          "Package dependency wiring must remain explicit"
+        ],
+        "schemaVersion": "1.0.0",
+        "sourceMetadata": {
+          "conversationRefs": [],
+          "inputTimestamp": "2026-06-25T00:00:00.000Z",
+          "operatorRefs": [
+            "operator-fixture"
+          ],
+          "rawIntentRefs": [
+            "raw-intent-common-fixture"
+          ]
+        },
+        "sourceSkill": "task",
+        "status": "ready",
+        "tags": [
+          "domain-neutral",
+          "common-writer"
+        ],
+        "title": "task common Work Brief fixture",
+        "updatedAt": "2026-06-25T00:00:00.000Z",
+        "userVisibleBehavior": [
+          "Agents can pass the same Work Brief class between skills"
+        ],
+        "workType": "feature"
+      },
+      "kind": "work_brief",
+      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/work-brief.schema.json",
+      "schemaVersion": "1.0.0"
+    },
+    {
+      "name": "positive:task:validateArtifactKind-ok",
+      "pass": true,
+      "ok": true,
+      "artifact": {
+        "schemaVersion": "1.0.0",
+        "artifactKind": "work_brief",
+        "artifactId": "work-brief-task-common-fixture",
+        "title": "task common Work Brief fixture",
+        "createdAt": "2026-06-25T00:00:00.000Z",
+        "updatedAt": "2026-06-25T00:00:00.000Z",
+        "producer": {
+          "kind": "skill",
+          "id": "skill-task",
+          "name": "task",
+          "version": "1.0.0",
+          "runId": "run-i05a-common-fixture"
+        },
+        "status": "ready",
+        "ownership": {
+          "concurrencyNotes": "I-05A common writer fixture; producer-specific skill behavior is out of scope.",
+          "ownedWritePaths": [
+            "packages/skills/src/shared/**",
+            "packages/skills/src/input/common/**",
+            "packages/skills/fixtures/work-brief/common/**"
+          ],
+          "ownerLane": "I-05A-input-skill-common-work-brief-writer",
+          "readOnlyPaths": [
+            "packages/artifacts/**",
+            "packages/config/**",
+            "packages/cli/**",
+            "docs/decisions/**"
+          ],
+          "untouchablePaths": [
+            ".git/**",
+            "packages/skills/package.json",
+            "packages/skills/src/plan/**",
+            "packages/skills/src/input/brainstorm/**",
+            "packages/skills/src/input/grill-me/**",
+            "packages/skills/src/input/task/**"
+          ]
+        },
+        "links": [
+          {
+            "rel": "raw_intent",
+            "artifactKind": "work_brief",
+            "artifactId": "raw-intent-task-fixture",
+            "path": "raw/task.json",
+            "required": true,
+            "statusAtLinkTime": "captured"
+          }
+        ],
+        "extensions": {
+          "dev.vibe.skill-common": {
+            "fixture": "common-work-brief",
+            "schemaVersion": "1.0.0"
+          }
+        },
+        "tags": [
+          "domain-neutral",
+          "common-writer"
+        ],
+        "sourceSkill": "task",
+        "workType": "feature",
+        "background": "A domain-neutral harness workflow needs a durable typed intake artifact.",
+        "problemOrOpportunity": "Planning must consume validated Work Brief JSON instead of raw chat.",
+        "desiredOutcome": "The shared common writer emits a canonical Work Brief accepted by the artifacts validator.",
+        "constraints": [
+          "Preserve typed JSON artifact boundaries",
+          "Avoid producer-specific behavior in the common writer"
+        ],
+        "userVisibleBehavior": [
+          "Agents can pass the same Work Brief class between skills"
+        ],
+        "nonGoals": [
+          "Do not implement plan intake",
+          "Do not implement producer-specific skill prompts"
+        ],
+        "risksAndUnknowns": [
+          "Package dependency wiring must remain explicit"
+        ],
+        "acceptanceNotes": [
+          {
+            "description": "A valid common input produces a validator-accepted Work Brief.",
+            "id": "accept-common-writer"
+          }
+        ],
+        "sourceMetadata": {
+          "conversationRefs": [],
+          "inputTimestamp": "2026-06-25T00:00:00.000Z",
+          "operatorRefs": [
+            "operator-fixture"
+          ],
+          "rawIntentRefs": [
+            "raw-intent-common-fixture"
+          ]
+        }
+      },
+      "kind": "work_brief",
+      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/work-brief.schema.json",
+      "schemaVersion": "1.0.0"
+    },
+    {
+      "name": "carrier:task:validateArtifactFile-ok",
+      "pass": true,
+      "ok": true,
+      "artifact": {
+        "acceptanceNotes": [
+          {
+            "description": "A valid common input produces a validator-accepted Work Brief.",
+            "id": "accept-common-writer"
+          }
+        ],
+        "artifactId": "work-brief-task-common-fixture",
+        "artifactKind": "work_brief",
+        "background": "A domain-neutral harness workflow needs a durable typed intake artifact.",
+        "constraints": [
+          "Preserve typed JSON artifact boundaries",
+          "Avoid producer-specific behavior in the common writer"
+        ],
+        "createdAt": "2026-06-25T00:00:00.000Z",
+        "desiredOutcome": "The shared common writer emits a canonical Work Brief accepted by the artifacts validator.",
+        "extensions": {
+          "dev.vibe.skill-common": {
+            "fixture": "common-work-brief",
+            "schemaVersion": "1.0.0"
+          }
+        },
+        "links": [
+          {
+            "artifactId": "raw-intent-task-fixture",
+            "artifactKind": "work_brief",
+            "path": "raw/task.json",
+            "rel": "raw_intent",
+            "required": true,
+            "statusAtLinkTime": "captured"
+          }
+        ],
+        "nonGoals": [
+          "Do not implement plan intake",
+          "Do not implement producer-specific skill prompts"
+        ],
+        "ownership": {
+          "concurrencyNotes": "I-05A common writer fixture; producer-specific skill behavior is out of scope.",
+          "ownedWritePaths": [
+            "packages/skills/src/shared/**",
+            "packages/skills/src/input/common/**",
+            "packages/skills/fixtures/work-brief/common/**"
+          ],
+          "ownerLane": "I-05A-input-skill-common-work-brief-writer",
+          "readOnlyPaths": [
+            "packages/artifacts/**",
+            "packages/config/**",
+            "packages/cli/**",
+            "docs/decisions/**"
+          ],
+          "untouchablePaths": [
+            ".git/**",
+            "packages/skills/package.json",
+            "packages/skills/src/plan/**",
+            "packages/skills/src/input/brainstorm/**",
+            "packages/skills/src/input/grill-me/**",
+            "packages/skills/src/input/task/**"
+          ]
+        },
+        "problemOrOpportunity": "Planning must consume validated Work Brief JSON instead of raw chat.",
+        "producer": {
+          "id": "skill-task",
+          "kind": "skill",
+          "name": "task",
+          "runId": "run-i05a-common-fixture",
+          "version": "1.0.0"
+        },
+        "risksAndUnknowns": [
+          "Package dependency wiring must remain explicit"
+        ],
+        "schemaVersion": "1.0.0",
+        "sourceMetadata": {
+          "conversationRefs": [],
+          "inputTimestamp": "2026-06-25T00:00:00.000Z",
+          "operatorRefs": [
+            "operator-fixture"
+          ],
+          "rawIntentRefs": [
+            "raw-intent-common-fixture"
+          ]
+        },
+        "sourceSkill": "task",
+        "status": "ready",
+        "tags": [
+          "domain-neutral",
+          "common-writer"
+        ],
+        "title": "task common Work Brief fixture",
+        "updatedAt": "2026-06-25T00:00:00.000Z",
+        "userVisibleBehavior": [
+          "Agents can pass the same Work Brief class between skills"
+        ],
+        "workType": "feature"
+      },
+      "kind": "work_brief",
+      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/work-brief.schema.json",
+      "schemaVersion": "1.0.0"
+    },
+    {
+      "name": "consumer:task:revalidate-ok",
+      "pass": true,
+      "ok": true,
+      "artifact": {
+        "acceptanceNotes": [
+          {
+            "description": "A valid common input produces a validator-accepted Work Brief.",
+            "id": "accept-common-writer"
+          }
+        ],
+        "artifactId": "work-brief-task-common-fixture",
+        "artifactKind": "work_brief",
+        "background": "A domain-neutral harness workflow needs a durable typed intake artifact.",
+        "constraints": [
+          "Preserve typed JSON artifact boundaries",
+          "Avoid producer-specific behavior in the common writer"
+        ],
+        "createdAt": "2026-06-25T00:00:00.000Z",
+        "desiredOutcome": "The shared common writer emits a canonical Work Brief accepted by the artifacts validator.",
+        "extensions": {
+          "dev.vibe.skill-common": {
+            "fixture": "common-work-brief",
+            "schemaVersion": "1.0.0"
+          }
+        },
+        "links": [
+          {
+            "artifactId": "raw-intent-task-fixture",
+            "artifactKind": "work_brief",
+            "path": "raw/task.json",
+            "rel": "raw_intent",
+            "required": true,
+            "statusAtLinkTime": "captured"
+          }
+        ],
+        "nonGoals": [
+          "Do not implement plan intake",
+          "Do not implement producer-specific skill prompts"
+        ],
+        "ownership": {
+          "concurrencyNotes": "I-05A common writer fixture; producer-specific skill behavior is out of scope.",
+          "ownedWritePaths": [
+            "packages/skills/src/shared/**",
+            "packages/skills/src/input/common/**",
+            "packages/skills/fixtures/work-brief/common/**"
+          ],
+          "ownerLane": "I-05A-input-skill-common-work-brief-writer",
+          "readOnlyPaths": [
+            "packages/artifacts/**",
+            "packages/config/**",
+            "packages/cli/**",
+            "docs/decisions/**"
+          ],
+          "untouchablePaths": [
+            ".git/**",
+            "packages/skills/package.json",
+            "packages/skills/src/plan/**",
+            "packages/skills/src/input/brainstorm/**",
+            "packages/skills/src/input/grill-me/**",
+            "packages/skills/src/input/task/**"
+          ]
+        },
+        "problemOrOpportunity": "Planning must consume validated Work Brief JSON instead of raw chat.",
+        "producer": {
+          "id": "skill-task",
+          "kind": "skill",
+          "name": "task",
+          "runId": "run-i05a-common-fixture",
+          "version": "1.0.0"
+        },
+        "risksAndUnknowns": [
+          "Package dependency wiring must remain explicit"
+        ],
+        "schemaVersion": "1.0.0",
+        "sourceMetadata": {
+          "conversationRefs": [],
+          "inputTimestamp": "2026-06-25T00:00:00.000Z",
+          "operatorRefs": [
+            "operator-fixture"
+          ],
+          "rawIntentRefs": [
+            "raw-intent-common-fixture"
+          ]
+        },
+        "sourceSkill": "task",
+        "status": "ready",
+        "tags": [
+          "domain-neutral",
+          "common-writer"
+        ],
+        "title": "task common Work Brief fixture",
+        "updatedAt": "2026-06-25T00:00:00.000Z",
+        "userVisibleBehavior": [
+          "Agents can pass the same Work Brief class between skills"
+        ],
+        "workType": "feature"
+      },
+      "kind": "work_brief",
+      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/work-brief.schema.json",
+      "schemaVersion": "1.0.0"
+    },
+    {
+      "name": "carrier:task:structure-consistent",
+      "pass": true,
+      "filePath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05A-input-skill-common-work-brief-writer/evidence/finisher-20260625/witness-output/produced/task.work-brief.json"
+    },
+    {
+      "name": "fixture-output:brainstorm:valid",
+      "pass": true,
+      "ok": true,
+      "artifact": {
+        "acceptanceNotes": [
+          {
+            "description": "A valid common input produces a validator-accepted Work Brief.",
+            "id": "accept-common-writer"
+          }
+        ],
+        "artifactId": "work-brief-brainstorm-common-fixture",
+        "artifactKind": "work_brief",
+        "background": "A domain-neutral harness workflow needs a durable typed intake artifact.",
+        "constraints": [
+          "Preserve typed JSON artifact boundaries",
+          "Avoid producer-specific behavior in the common writer"
+        ],
+        "createdAt": "2026-06-25T00:00:00.000Z",
+        "desiredOutcome": "The shared common writer emits a canonical Work Brief accepted by the artifacts validator.",
+        "extensions": {
+          "dev.vibe.skill-common": {
+            "fixture": "common-work-brief",
+            "schemaVersion": "1.0.0"
+          }
+        },
+        "links": [
+          {
+            "artifactId": "raw-intent-brainstorm-fixture",
+            "artifactKind": "work_brief",
+            "path": "raw/brainstorm.json",
+            "rel": "raw_intent",
+            "required": true,
+            "statusAtLinkTime": "captured"
+          }
+        ],
+        "nonGoals": [
+          "Do not implement plan intake",
+          "Do not implement producer-specific skill prompts"
+        ],
+        "ownership": {
+          "concurrencyNotes": "I-05A common writer fixture; producer-specific skill behavior is out of scope.",
+          "ownedWritePaths": [
+            "packages/skills/src/shared/**",
+            "packages/skills/src/input/common/**",
+            "packages/skills/fixtures/work-brief/common/**"
+          ],
+          "ownerLane": "I-05A-input-skill-common-work-brief-writer",
+          "readOnlyPaths": [
+            "packages/artifacts/**",
+            "packages/config/**",
+            "packages/cli/**",
+            "docs/decisions/**"
+          ],
+          "untouchablePaths": [
+            ".git/**",
+            "packages/skills/package.json",
+            "packages/skills/src/plan/**",
+            "packages/skills/src/input/brainstorm/**",
+            "packages/skills/src/input/grill-me/**",
+            "packages/skills/src/input/task/**"
+          ]
+        },
+        "problemOrOpportunity": "Planning must consume validated Work Brief JSON instead of raw chat.",
+        "producer": {
+          "id": "skill-brainstorm",
+          "kind": "skill",
+          "name": "brainstorm",
+          "runId": "run-i05a-common-fixture",
+          "version": "1.0.0"
+        },
+        "risksAndUnknowns": [
+          "Package dependency wiring must remain explicit"
+        ],
+        "schemaVersion": "1.0.0",
+        "sourceMetadata": {
+          "conversationRefs": [],
+          "inputTimestamp": "2026-06-25T00:00:00.000Z",
+          "operatorRefs": [
+            "operator-fixture"
+          ],
+          "rawIntentRefs": [
+            "raw-intent-common-fixture"
+          ]
+        },
+        "sourceSkill": "brainstorm",
+        "status": "ready",
+        "tags": [
+          "domain-neutral",
+          "common-writer"
+        ],
+        "title": "brainstorm common Work Brief fixture",
+        "updatedAt": "2026-06-25T00:00:00.000Z",
+        "userVisibleBehavior": [
+          "Agents can pass the same Work Brief class between skills"
+        ],
+        "workType": "feature"
+      },
+      "kind": "work_brief",
+      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/work-brief.schema.json",
+      "schemaVersion": "1.0.0"
+    },
+    {
+      "name": "fixture-output:grill-me:valid",
+      "pass": true,
+      "ok": true,
+      "artifact": {
+        "acceptanceNotes": [
+          {
+            "description": "A valid common input produces a validator-accepted Work Brief.",
+            "id": "accept-common-writer"
+          }
+        ],
+        "artifactId": "work-brief-grill-me-common-fixture",
+        "artifactKind": "work_brief",
+        "background": "A domain-neutral harness workflow needs a durable typed intake artifact.",
+        "constraints": [
+          "Preserve typed JSON artifact boundaries",
+          "Avoid producer-specific behavior in the common writer"
+        ],
+        "createdAt": "2026-06-25T00:00:00.000Z",
+        "desiredOutcome": "The shared common writer emits a canonical Work Brief accepted by the artifacts validator.",
+        "extensions": {
+          "dev.vibe.skill-common": {
+            "fixture": "common-work-brief",
+            "schemaVersion": "1.0.0"
+          }
+        },
+        "links": [
+          {
+            "artifactId": "raw-intent-grill-me-fixture",
+            "artifactKind": "work_brief",
+            "path": "raw/grill-me.json",
+            "rel": "raw_intent",
+            "required": true,
+            "statusAtLinkTime": "captured"
+          }
+        ],
+        "nonGoals": [
+          "Do not implement plan intake",
+          "Do not implement producer-specific skill prompts"
+        ],
+        "ownership": {
+          "concurrencyNotes": "I-05A common writer fixture; producer-specific skill behavior is out of scope.",
+          "ownedWritePaths": [
+            "packages/skills/src/shared/**",
+            "packages/skills/src/input/common/**",
+            "packages/skills/fixtures/work-brief/common/**"
+          ],
+          "ownerLane": "I-05A-input-skill-common-work-brief-writer",
+          "readOnlyPaths": [
+            "packages/artifacts/**",
+            "packages/config/**",
+            "packages/cli/**",
+            "docs/decisions/**"
+          ],
+          "untouchablePaths": [
+            ".git/**",
+            "packages/skills/package.json",
+            "packages/skills/src/plan/**",
+            "packages/skills/src/input/brainstorm/**",
+            "packages/skills/src/input/grill-me/**",
+            "packages/skills/src/input/task/**"
+          ]
+        },
+        "problemOrOpportunity": "Planning must consume validated Work Brief JSON instead of raw chat.",
+        "producer": {
+          "id": "skill-grill-me",
+          "kind": "skill",
+          "name": "grill-me",
+          "runId": "run-i05a-common-fixture",
+          "version": "1.0.0"
+        },
+        "risksAndUnknowns": [
+          "Package dependency wiring must remain explicit"
+        ],
+        "schemaVersion": "1.0.0",
+        "sourceMetadata": {
+          "conversationRefs": [],
+          "inputTimestamp": "2026-06-25T00:00:00.000Z",
+          "operatorRefs": [
+            "operator-fixture"
+          ],
+          "rawIntentRefs": [
+            "raw-intent-common-fixture"
+          ]
+        },
+        "sourceSkill": "grill-me",
+        "status": "ready",
+        "tags": [
+          "domain-neutral",
+          "common-writer"
+        ],
+        "title": "grill-me common Work Brief fixture",
+        "updatedAt": "2026-06-25T00:00:00.000Z",
+        "userVisibleBehavior": [
+          "Agents can pass the same Work Brief class between skills"
+        ],
+        "workType": "feature"
+      },
+      "kind": "work_brief",
+      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/work-brief.schema.json",
+      "schemaVersion": "1.0.0"
+    },
+    {
+      "name": "fixture-output:task:valid",
+      "pass": true,
+      "ok": true,
+      "artifact": {
+        "acceptanceNotes": [
+          {
+            "description": "A valid common input produces a validator-accepted Work Brief.",
+            "id": "accept-common-writer"
+          }
+        ],
+        "artifactId": "work-brief-task-common-fixture",
+        "artifactKind": "work_brief",
+        "background": "A domain-neutral harness workflow needs a durable typed intake artifact.",
+        "constraints": [
+          "Preserve typed JSON artifact boundaries",
+          "Avoid producer-specific behavior in the common writer"
+        ],
+        "createdAt": "2026-06-25T00:00:00.000Z",
+        "desiredOutcome": "The shared common writer emits a canonical Work Brief accepted by the artifacts validator.",
+        "extensions": {
+          "dev.vibe.skill-common": {
+            "fixture": "common-work-brief",
+            "schemaVersion": "1.0.0"
+          }
+        },
+        "links": [
+          {
+            "artifactId": "raw-intent-task-fixture",
+            "artifactKind": "work_brief",
+            "path": "raw/task.json",
+            "rel": "raw_intent",
+            "required": true,
+            "statusAtLinkTime": "captured"
+          }
+        ],
+        "nonGoals": [
+          "Do not implement plan intake",
+          "Do not implement producer-specific skill prompts"
+        ],
+        "ownership": {
+          "concurrencyNotes": "I-05A common writer fixture; producer-specific skill behavior is out of scope.",
+          "ownedWritePaths": [
+            "packages/skills/src/shared/**",
+            "packages/skills/src/input/common/**",
+            "packages/skills/fixtures/work-brief/common/**"
+          ],
+          "ownerLane": "I-05A-input-skill-common-work-brief-writer",
+          "readOnlyPaths": [
+            "packages/artifacts/**",
+            "packages/config/**",
+            "packages/cli/**",
+            "docs/decisions/**"
+          ],
+          "untouchablePaths": [
+            ".git/**",
+            "packages/skills/package.json",
+            "packages/skills/src/plan/**",
+            "packages/skills/src/input/brainstorm/**",
+            "packages/skills/src/input/grill-me/**",
+            "packages/skills/src/input/task/**"
+          ]
+        },
+        "problemOrOpportunity": "Planning must consume validated Work Brief JSON instead of raw chat.",
+        "producer": {
+          "id": "skill-task",
+          "kind": "skill",
+          "name": "task",
+          "runId": "run-i05a-common-fixture",
+          "version": "1.0.0"
+        },
+        "risksAndUnknowns": [
+          "Package dependency wiring must remain explicit"
+        ],
+        "schemaVersion": "1.0.0",
+        "sourceMetadata": {
+          "conversationRefs": [],
+          "inputTimestamp": "2026-06-25T00:00:00.000Z",
+          "operatorRefs": [
+            "operator-fixture"
+          ],
+          "rawIntentRefs": [
+            "raw-intent-common-fixture"
+          ]
+        },
+        "sourceSkill": "task",
+        "status": "ready",
+        "tags": [
+          "domain-neutral",
+          "common-writer"
+        ],
+        "title": "task common Work Brief fixture",
+        "updatedAt": "2026-06-25T00:00:00.000Z",
+        "userVisibleBehavior": [
+          "Agents can pass the same Work Brief class between skills"
+        ],
+        "workType": "feature"
+      },
+      "kind": "work_brief",
+      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/work-brief.schema.json",
+      "schemaVersion": "1.0.0"
+    },
+    {
+      "name": "negative:missing-desired-outcome:blocked",
+      "pass": true,
+      "reason": "validation_failed",
+      "stage": "before_persist",
+      "codes": [
+        "REQUIRED"
+      ]
+    },
+    {
+      "name": "negative:missing-desired-outcome:expected-code",
+      "pass": true,
+      "expectedCode": "REQUIRED",
+      "codes": [
+        "REQUIRED"
+      ]
+    },
+    {
+      "name": "negative:missing-desired-outcome:no-persist",
+      "pass": true,
+      "outputPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05A-input-skill-common-work-brief-writer/evidence/finisher-20260625/witness-output/invalid/missing-desired-outcome.work-brief.json"
+    },
+    {
+      "name": "negative:missing-raw-intent:blocked",
+      "pass": true,
+      "reason": "validation_failed",
+      "stage": "before_persist",
+      "codes": [
+        "BAD_LINK"
+      ]
+    },
+    {
+      "name": "negative:missing-raw-intent:expected-code",
+      "pass": true,
+      "expectedCode": "BAD_LINK",
+      "codes": [
+        "BAD_LINK"
+      ]
+    },
+    {
+      "name": "negative:missing-raw-intent:no-persist",
+      "pass": true,
+      "outputPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05A-input-skill-common-work-brief-writer/evidence/finisher-20260625/witness-output/invalid/missing-raw-intent.work-brief.json"
+    },
+    {
+      "name": "negative:invalid-enums:blocked",
+      "pass": true,
+      "reason": "validation_failed",
+      "stage": "before_persist",
+      "codes": [
+        "ENUM",
+        "ENUM",
+        "ENUM"
+      ]
+    },
+    {
+      "name": "negative:invalid-enums:expected-code",
+      "pass": true,
+      "expectedCode": "ENUM",
+      "codes": [
+        "ENUM",
+        "ENUM",
+        "ENUM"
+      ]
+    },
+    {
+      "name": "negative:invalid-enums:no-persist",
+      "pass": true,
+      "outputPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05A-input-skill-common-work-brief-writer/evidence/finisher-20260625/witness-output/invalid/invalid-enums.work-brief.json"
+    },
+    {
+      "name": "negative:wrong-extension:CARRIER_NOT_JSON",
+      "pass": true,
+      "codes": [
+        "CARRIER_NOT_JSON"
+      ]
+    },
+    {
+      "name": "negative:malformed-json:JSON_PARSE_ERROR",
+      "pass": true,
+      "codes": [
+        "JSON_PARSE_ERROR"
+      ]
+    },
+    {
+      "name": "regression:forbidden-path-absent:packages/skills/src/input/brainstorm",
+      "pass": true,
+      "relativePath": "packages/skills/src/input/brainstorm"
+    },
+    {
+      "name": "regression:forbidden-path-absent:packages/skills/src/input/grill-me",
+      "pass": true,
+      "relativePath": "packages/skills/src/input/grill-me"
+    },
+    {
+      "name": "regression:forbidden-path-absent:packages/skills/src/input/task",
+      "pass": true,
+      "relativePath": "packages/skills/src/input/task"
+    },
+    {
+      "name": "regression:forbidden-path-absent:packages/skills/src/plan",
+      "pass": true,
+      "relativePath": "packages/skills/src/plan"
+    },
+    {
+      "name": "regression:forbidden-path-absent:packages/skills/src/build",
+      "pass": true,
+      "relativePath": "packages/skills/src/build"
+    },
+    {
+      "name": "regression:forbidden-path-absent:packages/skills/src/ship",
+      "pass": true,
+      "relativePath": "packages/skills/src/ship"
+    },
+    {
+      "name": "regression:forbidden-path-absent:packages/skills/fixtures/work-brief/producers",
+      "pass": true,
+      "relativePath": "packages/skills/fixtures/work-brief/producers"
+    },
+    {
+      "name": "regression:six-skill-identities-unchanged",
+      "pass": true,
+      "lockedSkills": [
+        "brainstorm",
+        "grill-me",
+        "task",
+        "plan",
+        "build",
+        "ship"
+      ]
+    }
+  ]
+}

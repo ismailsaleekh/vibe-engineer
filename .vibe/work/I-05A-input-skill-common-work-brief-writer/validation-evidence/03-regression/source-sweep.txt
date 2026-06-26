@@ -1,0 +1,19 @@
+## import/export lines in I-05A product source
+packages/skills/src/shared/atomic-json-writer.js:1:import fs from 'node:fs/promises';
+packages/skills/src/shared/atomic-json-writer.js:2:import path from 'node:path';
+packages/skills/src/shared/time-id.js:1:import crypto from 'node:crypto';
+packages/skills/src/shared/artifact-validation.js:1:import { ValidationErrorCode, validateArtifact, validateArtifactFile, validateArtifactKind } from '@vibe-engineer/artifacts';
+packages/skills/src/input/common/work-brief-writer.js:1:import fs from 'node:fs/promises';
+packages/skills/src/input/common/work-brief-writer.js:2:import path from 'node:path';
+packages/skills/src/input/common/work-brief-writer.js:3:import { writeJsonAtomic } from '../../shared/atomic-json-writer.js';
+packages/skills/src/input/common/work-brief-writer.js:4:import { blocked, ok, validationBlocked } from '../../shared/result.js';
+packages/skills/src/input/common/work-brief-writer.js:5:import { deterministicArtifactId } from '../../shared/time-id.js';
+packages/skills/src/input/common/work-brief-writer.js:6:import { ValidationErrorCode, validateWorkBriefArtifact, validateWorkBriefFile } from '../../shared/artifact-validation.js';
+packages/skills/src/input/common/work-brief-consumer.js:1:import { ok, validationBlocked } from '../../shared/result.js';
+packages/skills/src/input/common/work-brief-consumer.js:2:import { validateWorkBriefFile } from '../../shared/artifact-validation.js';
+
+## forbidden relative artifacts/package reach-in candidates
+
+## forbidden plan/producer import candidates
+
+## prose/regex validation candidates
