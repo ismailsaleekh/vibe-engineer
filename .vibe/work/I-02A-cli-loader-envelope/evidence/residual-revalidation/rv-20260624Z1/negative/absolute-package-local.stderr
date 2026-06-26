@@ -1,0 +1,12 @@
+file:///Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/testing/run-witnesses.mjs:31
+    throw new Error(`Invalid I02A_CLI_TEST_EVIDENCE_ROOT: package-local .vibe evidence is forbidden (${candidate})`);
+          ^
+
+Error: Invalid I02A_CLI_TEST_EVIDENCE_ROOT: package-local .vibe evidence is forbidden (/Users/lizavasilyeva/work/vibe-engineer/packages/cli/.vibe/work/I-02A-cli-loader-envelope/evidence/residual-revalidation/bad-absolute)
+    at resolveEvidenceRoot (file:///Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/testing/run-witnesses.mjs:31:11)
+    at file:///Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/testing/run-witnesses.mjs:41:22
+    at ModuleJob.run (node:internal/modules/esm/module_job:439:25)
+    at async node:internal/modules/esm/loader:633:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.16.0

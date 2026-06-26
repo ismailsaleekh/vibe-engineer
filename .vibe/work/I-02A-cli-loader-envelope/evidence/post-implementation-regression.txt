@@ -1,0 +1,128 @@
+## post implementation owned/sibling inventory
+### packages/cli
+packages/cli
+packages/cli/node_modules
+packages/cli/node_modules/@vibe-engineer
+packages/cli/node_modules/@vibe-engineer/artifacts
+packages/cli/node_modules/@vibe-engineer/config
+packages/cli/package.json
+packages/cli/src
+packages/cli/src/command-loader
+packages/cli/src/command-loader/loader.js
+packages/cli/src/entry
+packages/cli/src/entry/vibe-engineer.js
+packages/cli/src/envelope
+packages/cli/src/envelope/result-envelope.js
+packages/cli/src/errors
+packages/cli/src/errors/codes.js
+packages/cli/src/testing
+packages/cli/src/testing/run-witnesses.mjs
+### packages/cli/src topdirs
+packages/cli/src
+packages/cli/src/command-loader
+packages/cli/src/entry
+packages/cli/src/envelope
+packages/cli/src/errors
+packages/cli/src/testing
+### forbidden commands dir
+packages/cli/src/commands absent
+### packages/core
+packages/core absent
+### root/provider/sibling manifest hashes (read-only snapshot)
+b3d1455aade0eb27f0775c3dbe2abefd89dada97caac9b10f041061abcb30306  package.json
+0259217fb38660de9e7298c4d6e363c7810a436479c189ce7ca088dd06576fff  pnpm-lock.yaml
+aee47e9964f53e767a6d6a86a27c86b218a76cd59453c3401defad6907be5f21  pnpm-workspace.yaml
+918ad4e48eb39826c9a034611fd765c3c418c7ccfb890bc9c469ba33d2261d7b  turbo.json
+2d343641168235bfa33dcb973b1dc4802b732be7bbca9bcd9ec391a2c9efe667  tsconfig.base.json
+9ecd2221b322cd7b8a57c8a59ee2df283755f06d78a2a2e2735ceb4fa8c6da48  eslint.config.mjs
+409519cfe8bc34c8b3aabc9832f1e2b2081080324e2fde96b9ec14b8f563e2e1  prettier.config.mjs
+9e8fbe90ac613ebefb6a5ad036560a03fc6b843ce041976e56af548bb0bbed4a  packages/config/package.json
+1ace06c206300412035f1954b08d6ed97a2e244265ef70a7789f4488cede7498  packages/artifacts/package.json
+65e53f4722ea3121c86d10785750e56c7927480a96adfe3c60e6472977acaa7f  packages/context/package.json
+b87923b67a5cf139ae67f6062c71d23393b307af153d1b874ccaf3e639e2f221  packages/mechanical-gates/package.json
+### forbidden later-command implementation term sweep in I-02A src
+packages/cli/src/envelope/result-envelope.js:1:import { createHash } from "node:crypto";
+packages/cli/src/envelope/result-envelope.js:2:import { dirname, basename, join } from "node:path";
+packages/cli/src/envelope/result-envelope.js:3:import { writeFile, rename, rm } from "node:fs/promises";
+packages/cli/src/envelope/result-envelope.js:4:import { CliClassification, CliErrorCode, EXIT_CODES, cliError, diagnostic } from "../errors/codes.js";
+packages/cli/src/envelope/result-envelope.js:29:  [CliClassification.OwnershipConflict, EXIT_CODES.ownershipConflict],
+packages/cli/src/envelope/result-envelope.js:30:  [CliClassification.WriteConflict, EXIT_CODES.ownershipConflict],
+packages/cli/src/envelope/result-envelope.js:46:export function createEnvelope({ invocation, status, payload, diagnostics = [], artifacts = [], errors = [], exitCode = null }) {
+packages/cli/src/envelope/result-envelope.js:65:  return createEnvelope({
+packages/cli/src/envelope/result-envelope.js:76:  return createEnvelope({
+packages/cli/src/envelope/result-envelope.js:98:  return createEnvelope({
+packages/cli/src/envelope/result-envelope.js:124:  return createEnvelope({
+packages/cli/src/envelope/result-envelope.js:136:  return createEnvelope({
+packages/cli/src/envelope/result-envelope.js:320:  return createHash("sha256").update(text).digest("hex");
+packages/cli/src/entry/vibe-engineer.js:2:import { randomUUID } from "node:crypto";
+packages/cli/src/entry/vibe-engineer.js:3:import { dirname, resolve } from "node:path";
+packages/cli/src/entry/vibe-engineer.js:4:import { fileURLToPath } from "node:url";
+packages/cli/src/entry/vibe-engineer.js:5:import { loadVibeConfigFile, loadVibeConfigFromProjectRoot } from "@vibe-engineer/config";
+packages/cli/src/entry/vibe-engineer.js:6:import { CliClassification, CliErrorCode } from "../errors/codes.js";
+packages/cli/src/entry/vibe-engineer.js:7:import { createCommandLoader } from "../command-loader/loader.js";
+packages/cli/src/entry/vibe-engineer.js:8:import {
+packages/cli/src/entry/vibe-engineer.js:10:  createEnvelope,
+packages/cli/src/entry/vibe-engineer.js:18:import { cliError, diagnostic } from "../errors/codes.js";
+packages/cli/src/entry/vibe-engineer.js:19:import { configBlockedEnvelope } from "../envelope/result-envelope.js";
+packages/cli/src/entry/vibe-engineer.js:54:  const entryDir = dirname(fileURLToPath(import.meta.url));
+packages/cli/src/entry/vibe-engineer.js:103:function createInvocation({ argv, options, command, startedAt }) {
+packages/cli/src/entry/vibe-engineer.js:133:  return createEnvelope({
+packages/cli/src/entry/vibe-engineer.js:148:  return createEnvelope({
+packages/cli/src/entry/vibe-engineer.js:203:  let invocation = createInvocation({ argv, options, command, startedAt });
+packages/cli/src/entry/vibe-engineer.js:223:    const loader = createCommandLoader();
+packages/cli/src/entry/vibe-engineer.js:236:if (import.meta.url === `file://${process.argv[1]}`) {
+packages/cli/src/command-loader/loader.js:1:import { readFile } from "node:fs/promises";
+packages/cli/src/command-loader/loader.js:2:import { CliClassification, CliErrorCode } from "../errors/codes.js";
+packages/cli/src/command-loader/loader.js:3:import { createEnvelope, foundationFailureEnvelope, invalidInvocationEnvelope, partialEnvelope, payload } from "../envelope/result-envelope.js";
+packages/cli/src/command-loader/loader.js:6:  "create",
+packages/cli/src/command-loader/loader.js:7:  "import",
+packages/cli/src/command-loader/loader.js:8:  "doctor",
+packages/cli/src/command-loader/loader.js:10:  "schematic",
+packages/cli/src/command-loader/loader.js:11:  "verify",
+packages/cli/src/command-loader/loader.js:12:  "security",
+packages/cli/src/command-loader/loader.js:13:  "build",
+packages/cli/src/command-loader/loader.js:14:  "ship",
+packages/cli/src/command-loader/loader.js:15:  "context",
+packages/cli/src/command-loader/loader.js:16:  "registry",
+packages/cli/src/command-loader/loader.js:92:async function helpCommand({ invocation, args, context }) {
+packages/cli/src/command-loader/loader.js:98:  return commandResult(createEnvelope({
+packages/cli/src/command-loader/loader.js:102:      commands: context.loader.listCommands().map((command) => ({ id: command.id, visibility: command.visibility, description: command.description })),
+packages/cli/src/command-loader/loader.js:108:async function versionCommand({ invocation, args, context }) {
+packages/cli/src/command-loader/loader.js:114:  const pkg = JSON.parse(await readFile(context.packageJsonPath, "utf8"));
+packages/cli/src/command-loader/loader.js:115:  return commandResult(createEnvelope({
+packages/cli/src/command-loader/loader.js:130:  return commandResult(createEnvelope({
+packages/cli/src/command-loader/loader.js:169:  async dispatch(commandId, args, context) {
+packages/cli/src/command-loader/loader.js:172:      return commandResult(invalidInvocationEnvelope(context.invocation, {
+packages/cli/src/command-loader/loader.js:179:    return this.commands.get(commandId).run({ invocation: context.invocation, args, context: { ...context, loader: this } });
+packages/cli/src/command-loader/loader.js:183:export function createCommandLoader(commands) {
+packages/cli/src/errors/codes.js:10:  OwnershipConflict: "ownership_conflict",
+packages/cli/src/errors/codes.js:39:  ownershipConflict: 5,
+packages/cli/src/testing/run-witnesses.mjs:1:import assert from "node:assert/strict";
+packages/cli/src/testing/run-witnesses.mjs:2:import { spawnSync } from "node:child_process";
+packages/cli/src/testing/run-witnesses.mjs:3:import { mkdirSync, readFileSync, writeFileSync, existsSync, rmSync } from "node:fs";
+packages/cli/src/testing/run-witnesses.mjs:4:import { dirname, resolve } from "node:path";
+packages/cli/src/testing/run-witnesses.mjs:5:import { fileURLToPath } from "node:url";
+packages/cli/src/testing/run-witnesses.mjs:6:import { validateArtifactFile } from "@vibe-engineer/artifacts";
+packages/cli/src/testing/run-witnesses.mjs:7:import { loadVibeConfigFile } from "@vibe-engineer/config";
+packages/cli/src/testing/run-witnesses.mjs:8:import { createCommandLoader } from "../command-loader/loader.js";
+packages/cli/src/testing/run-witnesses.mjs:9:import { createEnvelope, payload, validateCliResultEnvelope } from "../envelope/result-envelope.js";
+packages/cli/src/testing/run-witnesses.mjs:10:import { CliClassification, CliErrorCode } from "../errors/codes.js";
+packages/cli/src/testing/run-witnesses.mjs:12:const here = dirname(fileURLToPath(import.meta.url));
+packages/cli/src/testing/run-witnesses.mjs:59:const loader = createCommandLoader();
+packages/cli/src/testing/run-witnesses.mjs:85:const laterCommand = runCase("later-command-create", ["create", "--json", "--non-interactive"]);
+packages/cli/src/testing/run-witnesses.mjs:138:const validFailure = createEnvelope({
+### workspace graph
+workspace:graph exit=0 bytes=    3322
+### workspace surface
+
+> @vibe-engineer/workspace@0.0.0 workspace:surface /Users/lizavasilyeva/work/vibe-engineer
+> node .vibe/work/I-00A-workspace-package-skeleton/witnesses/workspace-surface-witness.mjs --root .
+
+{
+  "ok": true,
+  "root": "/Users/lizavasilyeva/work/vibe-engineer",
+  "mode": "current-surface",
+  "checkedAt": "2026-06-24T09:53:44.839Z",
+  "requiredPackageCount": 18,
+  "failures": []
+}

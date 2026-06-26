@@ -1,0 +1,164 @@
+$ git status --short -- package.json pnpm-lock.yaml pnpm-workspace.yaml turbo.json packages/cli/package.json packages/cli/src packages/cli/.vibe packages/config packages/artifacts packages/context packages/mechanical-gates packages/skills packages/adapters packages/verification examples .github scripts docs/decisions .vibe/work/I-02A-cli-loader-envelope
+?? .vibe/work/I-02A-cli-loader-envelope/
+?? docs/decisions/
+?? package.json
+?? packages/adapters/
+?? packages/artifacts/
+?? packages/cli/.vibe/
+?? packages/cli/package.json
+?? packages/cli/src/
+?? packages/config/
+?? packages/context/
+?? packages/mechanical-gates/
+?? packages/skills/
+?? packages/verification/
+?? pnpm-lock.yaml
+?? pnpm-workspace.yaml
+?? turbo.json
+status_exit=0
+$ git diff --name-only -- package.json pnpm-lock.yaml pnpm-workspace.yaml turbo.json packages/cli/package.json packages/cli/src packages/config packages/artifacts packages/context packages/mechanical-gates packages/skills packages/adapters packages/verification examples .github scripts docs/decisions
+diff_name_exit=0
+$ find packages/cli/src/commands -maxdepth 3 -type f 2>/dev/null | sort || true
+commands_find_exit=0
+$ find packages/core -maxdepth 3 -type f 2>/dev/null | sort || true
+core_find_exit=0
+$ rg later-command/package-manager forbidden markers
+/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/reports/i-02a-fix-wrapper-revalidation.md:16:- Dirty-tree safety: no git reset/stash/clean/checkout/restore run; no product or prompt files edited.
+/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/reports/i-02a-fix-wrapper-revalidation.md:39:  - Prior wrapper validation was `NEEDS-FIX` / major-local for wrong fix report path and overly broad `.vibe/work/I-02A-cli-loader-envelope/**` write license.
+/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/reports/i-02a-fix-wrapper-revalidation.md:61:  - Old report path `/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02A-cli-loader-envelope/I-02A-fix-report.md` is absent.
+/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/reports/i-02a-fix-wrapper-revalidation.md:64:  - No broad owned bullet for `/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02A-cli-loader-envelope/**`; wrapper line 86 marks every other workdir path read-only.
+/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/prompts/i-02a-fix-execute.md:5:You are operating inside a dirty-tree, multi-orchestrator environment. Never ask for a clean tree. Never use git stash/reset/clean/checkout/restore. Edit only explicitly owned write paths. Treat all unspecified paths as untouchable. If you discover a concrete ownership conflict, stop as BLOCKED with evidence.
+/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/prompts/i-02a-fix-execute.md:86:Existing I-02A implementation/validation reports, prior evidence, non-fix evidence directories, and every other path under `/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02A-cli-loader-envelope/**` outside the exact fix report and `evidence/fix/**` are read-only. Do not overwrite, delete, rename, or repurpose them.
+/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/prompts/i-02a-fix-execute.md:103:- `git stash`, `git reset`, `git clean`, `git checkout`, `git restore`;
+/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/prompts/i-02a-fix-execute.md:105:- `pnpm install`, `pnpm add`, `pnpm update`, `pnpm remove`, or equivalent package-manager/dependency/link-state mutation.
+rg_forbidden_exit=0
+$ rg later command names in packages/cli/src
+packages/cli/src/command-loader/loader.js:1:import { readFile } from "node:fs/promises";
+packages/cli/src/command-loader/loader.js:2:import { CliClassification, CliErrorCode } from "../errors/codes.js";
+packages/cli/src/command-loader/loader.js:3:import { sanitizeCommandForDisplay, sanitizeFlagForDisplay, sanitizeUserValueForDisplay } from "../errors/sanitization.js";
+packages/cli/src/command-loader/loader.js:4:import { createEnvelope, foundationFailureEnvelope, invalidInvocationEnvelope, partialEnvelope, payload } from "../envelope/result-envelope.js";
+packages/cli/src/command-loader/loader.js:7:  "create",
+packages/cli/src/command-loader/loader.js:8:  "import",
+packages/cli/src/command-loader/loader.js:9:  "doctor",
+packages/cli/src/command-loader/loader.js:10:  "config",
+packages/cli/src/command-loader/loader.js:11:  "schematic",
+packages/cli/src/command-loader/loader.js:12:  "verify",
+packages/cli/src/command-loader/loader.js:13:  "security",
+packages/cli/src/command-loader/loader.js:14:  "build",
+packages/cli/src/command-loader/loader.js:15:  "ship",
+packages/cli/src/command-loader/loader.js:16:  "context",
+packages/cli/src/command-loader/loader.js:17:  "registry",
+packages/cli/src/command-loader/loader.js:94:async function helpCommand({ invocation, args, context }) {
+packages/cli/src/command-loader/loader.js:100:  return commandResult(createEnvelope({
+packages/cli/src/command-loader/loader.js:104:      commands: context.loader.listCommands().map((command) => ({ id: command.id, visibility: command.visibility, description: command.description })),
+packages/cli/src/command-loader/loader.js:110:async function versionCommand({ invocation, args, context }) {
+packages/cli/src/command-loader/loader.js:116:  const pkg = JSON.parse(await readFile(context.packageJsonPath, "utf8"));
+packages/cli/src/command-loader/loader.js:117:  return commandResult(createEnvelope({
+packages/cli/src/command-loader/loader.js:132:  return commandResult(createEnvelope({
+packages/cli/src/command-loader/loader.js:180:  async dispatch(commandId, args, context) {
+packages/cli/src/command-loader/loader.js:183:      return commandResult(invalidInvocationEnvelope(context.invocation, {
+packages/cli/src/command-loader/loader.js:190:    return this.commands.get(commandId).run({ invocation: context.invocation, args, context: { ...context, loader: this } });
+packages/cli/src/command-loader/loader.js:194:export function createCommandLoader(commands) {
+packages/cli/src/errors/sanitization.js:21:const VALUE_FLAGS = new Set(["--result-file", "--project-root", "--config", "--status"]);
+packages/cli/src/errors/sanitization.js:26:  "create",
+packages/cli/src/errors/sanitization.js:27:  "import",
+packages/cli/src/errors/sanitization.js:28:  "doctor",
+packages/cli/src/errors/sanitization.js:29:  "config",
+packages/cli/src/errors/sanitization.js:30:  "schematic",
+packages/cli/src/errors/sanitization.js:31:  "verify",
+packages/cli/src/errors/sanitization.js:32:  "security",
+packages/cli/src/errors/sanitization.js:33:  "build",
+packages/cli/src/errors/sanitization.js:34:  "ship",
+packages/cli/src/errors/sanitization.js:35:  "context",
+packages/cli/src/errors/sanitization.js:36:  "registry",
+packages/cli/src/errors/codes.js:5:  InvalidConfig: "invalid_config",
+packages/cli/src/errors/codes.js:10:  OwnershipConflict: "ownership_conflict",
+packages/cli/src/errors/codes.js:39:  ownershipConflict: 5,
+packages/cli/src/entry/vibe-engineer.js:2:import { randomUUID } from "node:crypto";
+packages/cli/src/entry/vibe-engineer.js:3:import { dirname, resolve } from "node:path";
+packages/cli/src/entry/vibe-engineer.js:4:import { fileURLToPath } from "node:url";
+packages/cli/src/entry/vibe-engineer.js:5:import { loadVibeConfigFile, loadVibeConfigFromProjectRoot } from "@vibe-engineer/config";
+packages/cli/src/entry/vibe-engineer.js:6:import { CliClassification, CliErrorCode } from "../errors/codes.js";
+packages/cli/src/entry/vibe-engineer.js:7:import { parseFlagToken, sanitizeArgvForMetadata, sanitizeCommandForDisplay, sanitizeFlagForDisplay } from "../errors/sanitization.js";
+packages/cli/src/entry/vibe-engineer.js:8:import { createCommandLoader } from "../command-loader/loader.js";
+packages/cli/src/entry/vibe-engineer.js:9:import {
+packages/cli/src/entry/vibe-engineer.js:11:  createEnvelope,
+packages/cli/src/entry/vibe-engineer.js:19:import { cliError, diagnostic } from "../errors/codes.js";
+packages/cli/src/entry/vibe-engineer.js:20:import { configBlockedEnvelope } from "../envelope/result-envelope.js";
+packages/cli/src/entry/vibe-engineer.js:22:const GLOBAL_VALUE_FLAGS = new Set(["--result-file", "--project-root", "--config"]);
+packages/cli/src/entry/vibe-engineer.js:30:  const entryDir = dirname(fileURLToPath(import.meta.url));
+packages/cli/src/entry/vibe-engineer.js:41:    configPath: null,
+packages/cli/src/entry/vibe-engineer.js:62:      if (parsedFlag.flag === "--config") options.configPath = resolve(value);
+packages/cli/src/entry/vibe-engineer.js:81:function createInvocation({ argv, options, command, startedAt }) {
+packages/cli/src/entry/vibe-engineer.js:87:    configPath: options.configPath,
+packages/cli/src/entry/vibe-engineer.js:98:  if (options.configPath) {
+packages/cli/src/entry/vibe-engineer.js:99:    const result = await loadVibeConfigFile(options.configPath);
+packages/cli/src/entry/vibe-engineer.js:100:    return result.ok ? { ok: true, result } : { ok: false, envelope: configBlockedEnvelope(invocation, result) };
+packages/cli/src/entry/vibe-engineer.js:104:    return result.ok ? { ok: true, result } : { ok: false, envelope: configBlockedEnvelope(invocation, result) };
+packages/cli/src/entry/vibe-engineer.js:111:  return createEnvelope({
+packages/cli/src/entry/vibe-engineer.js:126:  return createEnvelope({
+packages/cli/src/entry/vibe-engineer.js:181:  let invocation = createInvocation({ argv, options, command, startedAt });
+packages/cli/src/entry/vibe-engineer.js:194:    const config = await loadConfigIfRequested(invocation, options);
+packages/cli/src/entry/vibe-engineer.js:195:    if (!config.ok) {
+packages/cli/src/entry/vibe-engineer.js:196:      const envelope = { ...config.envelope, invocation: finalizeInvocation(config.envelope.invocation) };
+packages/cli/src/entry/vibe-engineer.js:201:    const loader = createCommandLoader();
+packages/cli/src/entry/vibe-engineer.js:205:      config: config.result
+packages/cli/src/entry/vibe-engineer.js:222:if (import.meta.url === `file://${process.argv[1]}`) {
+packages/cli/src/testing/run-witnesses.mjs:1:import assert from "node:assert/strict";
+packages/cli/src/testing/run-witnesses.mjs:2:import { spawnSync } from "node:child_process";
+packages/cli/src/testing/run-witnesses.mjs:3:import { mkdirSync, readFileSync, writeFileSync, existsSync, rmSync, readdirSync, statSync } from "node:fs";
+packages/cli/src/testing/run-witnesses.mjs:4:import { dirname, resolve } from "node:path";
+packages/cli/src/testing/run-witnesses.mjs:5:import { fileURLToPath } from "node:url";
+packages/cli/src/testing/run-witnesses.mjs:6:import { validateArtifactFile } from "@vibe-engineer/artifacts";
+packages/cli/src/testing/run-witnesses.mjs:7:import { loadVibeConfigFile } from "@vibe-engineer/config";
+packages/cli/src/testing/run-witnesses.mjs:8:import { createCommandLoader } from "../command-loader/loader.js";
+packages/cli/src/testing/run-witnesses.mjs:9:import { createEnvelope, payload, validateCliResultEnvelope } from "../envelope/result-envelope.js";
+packages/cli/src/testing/run-witnesses.mjs:10:import { sanitizeArgvForMetadata } from "../errors/sanitization.js";
+packages/cli/src/testing/run-witnesses.mjs:11:import { CliClassification, CliErrorCode } from "../errors/codes.js";
+packages/cli/src/testing/run-witnesses.mjs:13:const here = dirname(fileURLToPath(import.meta.url));
+packages/cli/src/testing/run-witnesses.mjs:73:const validConfigPath = writeFixture("valid-project/vibe-engineer.config.json", JSON.stringify({ agenticHarness: "pi" }, null, 2));
+packages/cli/src/testing/run-witnesses.mjs:74:const malformedConfigPath = writeFixture("malformed-project/vibe-engineer.config.json", "{ not json");
+packages/cli/src/testing/run-witnesses.mjs:75:const unsupportedConfigPath = writeFixture("unsupported-project/vibe-engineer.config.json", JSON.stringify({ agenticHarness: "codex" }, null, 2));
+packages/cli/src/testing/run-witnesses.mjs:82:const loader = createCommandLoader();
+packages/cli/src/testing/run-witnesses.mjs:84:assert.throws(() => createCommandLoader([{ id: "dup", visibility: "internal", description: "a", run() {} }, { id: "dup", visibility: "internal", description: "b", run() {} }]), { code: CliErrorCode.DuplicateCommandId, classification: CliClassification.InvalidInvocation });
+packages/cli/src/testing/run-witnesses.mjs:85:assert.throws(() => createCommandLoader([{ id: "bad", visibility: "internal", description: "missing run" }]), { code: CliErrorCode.MalformedCommandMetadata, classification: CliClassification.InvalidInvocation });
+packages/cli/src/testing/run-witnesses.mjs:110:const laterCommand = runCase("later-command-create", ["create", "--json", "--non-interactive"]);
+packages/cli/src/testing/run-witnesses.mjs:164:const configSuccess = runCase("config-success", ["version", "--json", "--config", validConfigPath, "--non-interactive"]);
+packages/cli/src/testing/run-witnesses.mjs:165:assert.equal(configSuccess.result.status, 0);
+packages/cli/src/testing/run-witnesses.mjs:166:assertEnvelope(configSuccess.envelope);
+packages/cli/src/testing/run-witnesses.mjs:167:assert.equal(configSuccess.envelope.invocation.configPath, validConfigPath);
+packages/cli/src/testing/run-witnesses.mjs:169:const malformedConfig = runCase("malformed-config", ["version", "--json", "--config", malformedConfigPath, "--non-interactive"]);
+packages/cli/src/testing/run-witnesses.mjs:175:const unsupportedConfig = runCase("unsupported-config", ["version", "--json", "--config", unsupportedConfigPath, "--non-interactive"]);
+packages/cli/src/testing/run-witnesses.mjs:180:const secretConfigDir = fixturePath("secret-config-input");
+packages/cli/src/testing/run-witnesses.mjs:181:const secretConfigPath = writeFixture("secret-config-input/vibe-engineer.config.json", JSON.stringify({ agenticHarness: "codex", token: secretCanary }, null, 2));
+packages/cli/src/testing/run-witnesses.mjs:182:const secretConfig = runCase("secret-config-invalid-field", ["version", "--json", "--config", secretConfigPath, "--non-interactive"]);
+packages/cli/src/testing/run-witnesses.mjs:185:assertNoCanary("secret-config-invalid-field", secretCanary, secretConfig.result.stdout, secretConfig.result.stderr, JSON.stringify(secretConfig.envelope));
+packages/cli/src/testing/run-witnesses.mjs:208:const validFailure = createEnvelope({
+packages/cli/src/envelope/result-envelope.js:1:import { createHash } from "node:crypto";
+packages/cli/src/envelope/result-envelope.js:2:import { dirname, basename, join } from "node:path";
+packages/cli/src/envelope/result-envelope.js:3:import { writeFile, rename, rm } from "node:fs/promises";
+packages/cli/src/envelope/result-envelope.js:4:import { CliClassification, CliErrorCode, EXIT_CODES, cliError, diagnostic } from "../errors/codes.js";
+packages/cli/src/envelope/result-envelope.js:33:  [CliClassification.OwnershipConflict, EXIT_CODES.ownershipConflict],
+packages/cli/src/envelope/result-envelope.js:34:  [CliClassification.WriteConflict, EXIT_CODES.ownershipConflict],
+packages/cli/src/envelope/result-envelope.js:50:export function createEnvelope({ invocation, status, payload, diagnostics = [], artifacts = [], errors = [], exitCode = null }) {
+packages/cli/src/envelope/result-envelope.js:69:  return createEnvelope({
+packages/cli/src/envelope/result-envelope.js:80:  return createEnvelope({
+packages/cli/src/envelope/result-envelope.js:89:export function configBlockedEnvelope(invocation, configResult) {
+packages/cli/src/envelope/result-envelope.js:90:  const classification = configResult.classification === "missing_config" ? CliClassification.MissingPrerequisite : CliClassification.InvalidConfig;
+packages/cli/src/envelope/result-envelope.js:91:  const code = configResult.classification === "missing_config" ? CliErrorCode.MissingConfig : CliErrorCode.InvalidConfig;
+packages/cli/src/envelope/result-envelope.js:92:  const message = configResult.classification === "missing_config" ? "Required config file is missing." : "Config file is invalid.";
+packages/cli/src/envelope/result-envelope.js:93:  const diagnostics = (configResult.diagnostics ?? []).map((item) => ({
+packages/cli/src/envelope/result-envelope.js:98:    path: item.path ?? configResult.configPath ?? null,
+packages/cli/src/envelope/result-envelope.js:102:  return createEnvelope({
+packages/cli/src/envelope/result-envelope.js:105:    payload: payload("config_load_result", {
+packages/cli/src/envelope/result-envelope.js:107:      schemaId: configResult.schemaId ?? null,
+packages/cli/src/envelope/result-envelope.js:108:      schemaVersion: configResult.schemaVersion ?? null,
+packages/cli/src/envelope/result-envelope.js:111:    diagnostics: diagnostics.length > 0 ? diagnostics : [diagnostic({ code, classification, message, path: configResult.configPath ?? null })],
+packages/cli/src/envelope/result-envelope.js:117:        issueCodes: (configResult.issues ?? []).map((item) => item.code),
+packages/cli/src/envelope/result-envelope.js:118:        configPath: configResult.configPath ?? null,
+packages/cli/src/envelope/result-envelope.js:119:        projectRoot: configResult.projectRoot ?? null
+packages/cli/src/envelope/result-envelope.js:128:  return createEnvelope({
+packages/cli/src/envelope/result-envelope.js:140:  return createEnvelope({
+packages/cli/src/envelope/result-envelope.js:200:  if (!hasNullableString(invocation, "configPath")) errors.push("invocation.configPath must be string or null");
+packages/cli/src/envelope/result-envelope.js:349:  return createHash("sha256").update(text).digest("hex");
+rg_later_exit=0

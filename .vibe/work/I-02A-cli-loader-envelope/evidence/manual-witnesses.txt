@@ -1,0 +1,22 @@
+## binary entry spawn success
+command: node packages/cli/src/entry/vibe-engineer.js version --json --non-interactive
+{"schemaVersion":"vibe-engineer.cli.result.v1","invocation":{"id":"0341b0cf-24fc-4408-8a98-9f6af1ec1651","command":"version","argv":["version","--json","--non-interactive"],"projectRoot":null,"configPath":null,"startedAt":"2026-06-24T09:53:15.731Z","endedAt":"2026-06-24T09:53:15.734Z"},"status":"success","exitCode":0,"payload":{"kind":"version_result","schemaVersion":"vibe-engineer.cli.payload.v1","data":{"name":"vibe-engineer","version":"0.0.0"}},"diagnostics":[],"artifacts":[],"errors":[]}
+exit: 0
+
+## pnpm filter entry spawn success
+command: pnpm --filter vibe-engineer exec node src/entry/vibe-engineer.js version --json --non-interactive
+{"schemaVersion":"vibe-engineer.cli.result.v1","invocation":{"id":"68d6b269-6141-40de-a0e7-04ceb5dad44c","command":"version","argv":["version","--json","--non-interactive"],"projectRoot":null,"configPath":null,"startedAt":"2026-06-24T09:53:16.669Z","endedAt":"2026-06-24T09:53:16.670Z"},"status":"success","exitCode":0,"payload":{"kind":"version_result","schemaVersion":"vibe-engineer.cli.payload.v1","data":{"name":"vibe-engineer","version":"0.0.0"}},"diagnostics":[],"artifacts":[],"errors":[]}
+exit: 0
+
+## pnpm exec bin spawn success
+command: pnpm --filter vibe-engineer exec vibe-engineer version --json --non-interactive
+undefined
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli:
+ ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command "vibe-engineer" not found
+exit: 254
+
+## partial non-green
+command: node packages/cli/src/entry/vibe-engineer.js foundation --status partial --json --non-interactive
+{"schemaVersion":"vibe-engineer.cli.result.v1","invocation":{"id":"37e595cc-48bc-4d64-a4c0-88b084c2f220","command":"foundation","argv":["foundation","--status","partial","--json","--non-interactive"],"projectRoot":null,"configPath":null,"startedAt":"2026-06-24T09:53:17.009Z","endedAt":"2026-06-24T09:53:17.010Z"},"status":"partial","exitCode":8,"payload":{"kind":"foundation_result","schemaVersion":"vibe-engineer.cli.payload.v1","data":{"partial":{"overallDisposition":"not_passed_blocking","completedScopes":[{"id":"foundation.scope.completed","kind":"foundation_scope","required":true,"artifacts":["memory://foundation.completed"]}],"incompleteScopes":[{"id":"foundation.scope.incomplete","kind":"foundation_scope","required":true,"blocking":true,"reasonCode":"VE_PARTIAL_INCOMPLETE","classification":"partial_incomplete","nextAction":"rerun_foundation_scope"}],"resume":{"allowed":true,"command":["vibe-engineer","foundation","--status","success","--json","--non-interactive"]}}}},"diagnostics":[{"severity":"error","code":"VE_PARTIAL_INCOMPLETE","classification":"partial_incomplete","message":"Foundation command completed one required scope and left another required scope incomplete.","path":null,"span":null,"hint":null}],"artifacts":[],"errors":[{"code":"VE_PARTIAL_INCOMPLETE","classification":"partial_incomplete","retryable":true,"blocking":true,"message":"Foundation command completed one required scope and left another required scope incomplete.","details":{"incompleteScopeIds":["foundation.scope.incomplete"]}}]}
+exit: 8
+

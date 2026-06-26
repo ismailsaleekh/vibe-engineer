@@ -1,0 +1,12 @@
+## cli package-local provider imports
+cwd: packages/cli
+command: node --input-type=module -e const c=await import('@vibe-engineer/config'); const a=await import('@vibe-engineer/artifacts'); const required=['parseVibeConfig','loadVibeConfigFile','loadVibeConfigFromProjectRoot']; const missing=required.filter(k=>typeof c[k] !== 'function'); if (missing.length) { console.error('missing config', missing.join(',')); process.exit(1); } if (typeof a.validateArtifactFile !== 'function') { console.error('missing artifacts validateArtifactFile'); process.exit(1); } console.log(JSON.stringify({config: required, artifacts:['validateArtifactFile']}));
+{"config":["parseVibeConfig","loadVibeConfigFile","loadVibeConfigFromProjectRoot"],"artifacts":["validateArtifactFile"]}
+exit: 0
+
+## cli pnpm-filter provider imports
+cwd: .
+command: pnpm --filter vibe-engineer exec node --input-type=module -e const c=await import('@vibe-engineer/config'); const a=await import('@vibe-engineer/artifacts'); const required=['parseVibeConfig','loadVibeConfigFile','loadVibeConfigFromProjectRoot']; const missing=required.filter(k=>typeof c[k] !== 'function'); if (missing.length) { console.error('missing config', missing.join(',')); process.exit(1); } if (typeof a.validateArtifactFile !== 'function') { console.error('missing artifacts validateArtifactFile'); process.exit(1); } console.log('cli pnpm provider imports ok');
+cli pnpm provider imports ok
+exit: 0
+

@@ -1,0 +1,12 @@
+### cd packages/cli && node -e import @vibe-engineer/config loadVibeConfigFile
+config provider ok
+config_provider_exit=0
+### cd packages/cli && node -e import @vibe-engineer/artifacts validateArtifactFile
+artifacts provider ok
+artifacts_provider_exit=0
+### cd packages/cli && node -e import vibe-engineer/envelope validateCliResultEnvelope
+envelope public export ok
+envelope_public_exit=0
+### pnpm --filter vibe-engineer exec node -e import @vibe-engineer/config loadVibeConfigFromProjectRoot
+pnpm config provider ok
+pnpm_config_provider_exit=0

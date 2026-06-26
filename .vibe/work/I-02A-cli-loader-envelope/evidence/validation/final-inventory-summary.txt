@@ -1,0 +1,120 @@
+## packages/cli inventory
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/node_modules
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/node_modules/@vibe-engineer
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/node_modules/@vibe-engineer/artifacts
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/node_modules/@vibe-engineer/config
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/package.json
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/command-loader
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/command-loader/loader.js
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/entry
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/entry/vibe-engineer.js
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/envelope
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/envelope/result-envelope.js
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/errors
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/errors/codes.js
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/testing
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/testing/run-witnesses.mjs
+
+## packages/cli/src/commands
+ABSENT
+
+## packages/core
+ABSENT
+
+## package manifest deps summary
+{"dir":"packages/artifacts","name":"@vibe-engineer/artifacts","deps":{"ajv":"8.17.1"},"devDeps":{},"bin":null,"scripts":{"generate:types":"node scripts/generate-types.mjs","check:types":"node scripts/check-generated-types.mjs","typecheck":"node scripts/check-generated-types.mjs && node scripts/typecheck-public-entrypoint.mjs","test":"node tests/run-tests.mjs","build":"node scripts/check-generated-types.mjs && node tests/run-tests.mjs"}}
+{"dir":"packages/cli","name":"vibe-engineer","deps":{"@vibe-engineer/artifacts":"workspace:*","@vibe-engineer/config":"workspace:*"},"devDeps":{},"bin":{"vibe-engineer":"./src/entry/vibe-engineer.js"},"scripts":{"test":"node src/testing/run-witnesses.mjs"}}
+{"dir":"packages/config","name":"@vibe-engineer/config","deps":{},"devDeps":{},"bin":null,"scripts":{"typecheck":"tsc --noEmit -p tsconfig.json","test":"node tests/run-tests.mjs","lint":"eslint .","build":"tsc --noEmit -p tsconfig.json && node tests/run-tests.mjs"}}
+{"dir":"packages/context","name":"@vibe-engineer/context","deps":{"@vibe-engineer/artifacts":"workspace:*","@vibe-engineer/config":"workspace:*"},"devDeps":{},"bin":null,"scripts":{"test":"node tests/real-boundary-witness.mjs && node tests/negative-witness.mjs","build":"node --check src/index.js && node tests/real-boundary-witness.mjs && node tests/negative-witness.mjs","typecheck":"node --check src/index.js"}}
+{"dir":"packages/contracts","name":"@vibe-engineer/contracts","deps":{},"devDeps":{},"bin":null,"scripts":{}}
+{"dir":"packages/mechanical-gates","name":"@vibe-engineer/mechanical-gates","deps":{},"devDeps":{},"bin":null,"scripts":{"typecheck":"node fixtures/p0/surface-config-boundaries/witness.mjs --typecheck","test":"node fixtures/p0/surface-config-boundaries/witness.mjs","test:p0":"node fixtures/p0/surface-config-boundaries/witness.mjs"}}
+{"dir":"packages/observability","name":"@vibe-engineer/observability","deps":{},"devDeps":{},"bin":null,"scripts":{}}
+{"dir":"packages/orchestration","name":"@vibe-engineer/orchestration","deps":{"@vibe-engineer/artifacts":"workspace:*"},"devDeps":{},"bin":null,"scripts":{"typecheck":"tsc --noEmit -p tsconfig.json","build":"tsc -p tsconfig.json","test":"tsc -p tsconfig.json && node tests/run-tests.mjs","witness:real-boundary":"tsc -p tsconfig.json && node tests/real-boundary-witness.mjs","lint":"eslint src tests/typecheck.ts"}}
+{"dir":"packages/registry","name":"@vibe-engineer/registry","deps":{},"devDeps":{},"bin":null,"scripts":{"typecheck":"tsc --noEmit -p tsconfig.json","test":"node tests/run-tests.mjs","test:fixtures":"node tests/fixture-witness.mjs","build":"node scripts/build-smoke.mjs"}}
+{"dir":"packages/schematics","name":"@vibe-engineer/schematics","deps":{},"devDeps":{},"bin":null,"scripts":{}}
+{"dir":"packages/security","name":"@vibe-engineer/security","deps":{},"devDeps":{},"bin":null,"scripts":{}}
+{"dir":"packages/skills","name":"@vibe-engineer/skills","deps":{},"devDeps":{},"bin":null,"scripts":{}}
+{"dir":"packages/standards","name":"@vibe-engineer/standards","deps":{},"devDeps":{},"bin":null,"scripts":{}}
+{"dir":"packages/testing","name":"@vibe-engineer/testing","deps":{},"devDeps":{},"bin":null,"scripts":{}}
+{"dir":"packages/verification","name":"@vibe-engineer/verification","deps":{},"devDeps":{},"bin":null,"scripts":{}}
+
+## provider source import/export references from CLI
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/entry/vibe-engineer.js:5:import { loadVibeConfigFile, loadVibeConfigFromProjectRoot } from "@vibe-engineer/config";
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/testing/run-witnesses.mjs:6:import { validateArtifactFile } from "@vibe-engineer/artifacts";
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/testing/run-witnesses.mjs:7:import { loadVibeConfigFile } from "@vibe-engineer/config";
+
+## later command family terms in CLI src
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/command-loader/loader.js:1:import { readFile } from "node:fs/promises";
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/command-loader/loader.js:2:import { CliClassification, CliErrorCode } from "../errors/codes.js";
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/command-loader/loader.js:3:import { createEnvelope, foundationFailureEnvelope, invalidInvocationEnvelope, partialEnvelope, payload } from "../envelope/result-envelope.js";
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/command-loader/loader.js:6:  "create",
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/command-loader/loader.js:7:  "import",
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/command-loader/loader.js:8:  "doctor",
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/command-loader/loader.js:10:  "schematic",
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/command-loader/loader.js:11:  "verify",
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/command-loader/loader.js:12:  "security",
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/command-loader/loader.js:13:  "build",
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/command-loader/loader.js:14:  "ship",
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/command-loader/loader.js:15:  "context",
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/command-loader/loader.js:16:  "registry",
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/command-loader/loader.js:92:async function helpCommand({ invocation, args, context }) {
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/command-loader/loader.js:98:  return commandResult(createEnvelope({
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/command-loader/loader.js:102:      commands: context.loader.listCommands().map((command) => ({ id: command.id, visibility: command.visibility, description: command.description })),
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/command-loader/loader.js:108:async function versionCommand({ invocation, args, context }) {
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/command-loader/loader.js:114:  const pkg = JSON.parse(await readFile(context.packageJsonPath, "utf8"));
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/command-loader/loader.js:115:  return commandResult(createEnvelope({
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/command-loader/loader.js:130:  return commandResult(createEnvelope({
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/command-loader/loader.js:178:  async dispatch(commandId, args, context) {
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/command-loader/loader.js:181:      return commandResult(invalidInvocationEnvelope(context.invocation, {
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/command-loader/loader.js:188:    return this.commands.get(commandId).run({ invocation: context.invocation, args, context: { ...context, loader: this } });
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/command-loader/loader.js:192:export function createCommandLoader(commands) {
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/errors/codes.js:10:  OwnershipConflict: "ownership_conflict",
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/errors/codes.js:39:  ownershipConflict: 5,
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/envelope/result-envelope.js:1:import { createHash } from "node:crypto";
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/envelope/result-envelope.js:2:import { dirname, basename, join } from "node:path";
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/envelope/result-envelope.js:3:import { writeFile, rename, rm } from "node:fs/promises";
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/envelope/result-envelope.js:4:import { CliClassification, CliErrorCode, EXIT_CODES, cliError, diagnostic } from "../errors/codes.js";
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/envelope/result-envelope.js:29:  [CliClassification.OwnershipConflict, EXIT_CODES.ownershipConflict],
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/envelope/result-envelope.js:30:  [CliClassification.WriteConflict, EXIT_CODES.ownershipConflict],
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/envelope/result-envelope.js:46:export function createEnvelope({ invocation, status, payload, diagnostics = [], artifacts = [], errors = [], exitCode = null }) {
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/envelope/result-envelope.js:65:  return createEnvelope({
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/envelope/result-envelope.js:76:  return createEnvelope({
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/envelope/result-envelope.js:98:  return createEnvelope({
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/envelope/result-envelope.js:124:  return createEnvelope({
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/envelope/result-envelope.js:136:  return createEnvelope({
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/envelope/result-envelope.js:320:  return createHash("sha256").update(text).digest("hex");
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/testing/run-witnesses.mjs:1:import assert from "node:assert/strict";
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/testing/run-witnesses.mjs:2:import { spawnSync } from "node:child_process";
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/testing/run-witnesses.mjs:3:import { mkdirSync, readFileSync, writeFileSync, existsSync, rmSync } from "node:fs";
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/testing/run-witnesses.mjs:4:import { dirname, resolve } from "node:path";
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/testing/run-witnesses.mjs:5:import { fileURLToPath } from "node:url";
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/testing/run-witnesses.mjs:6:import { validateArtifactFile } from "@vibe-engineer/artifacts";
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/testing/run-witnesses.mjs:7:import { loadVibeConfigFile } from "@vibe-engineer/config";
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/testing/run-witnesses.mjs:8:import { createCommandLoader } from "../command-loader/loader.js";
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/testing/run-witnesses.mjs:9:import { createEnvelope, payload, validateCliResultEnvelope } from "../envelope/result-envelope.js";
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/testing/run-witnesses.mjs:10:import { CliClassification, CliErrorCode } from "../errors/codes.js";
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/testing/run-witnesses.mjs:12:const here = dirname(fileURLToPath(import.meta.url));
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/testing/run-witnesses.mjs:59:const loader = createCommandLoader();
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/testing/run-witnesses.mjs:61:assert.throws(() => createCommandLoader([{ id: "dup", visibility: "internal", description: "a", run() {} }, { id: "dup", visibility: "internal", description: "b", run() {} }]), { code: CliErrorCode.DuplicateCommandId, classification: CliClassification.InvalidInvocation });
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/testing/run-witnesses.mjs:62:assert.throws(() => createCommandLoader([{ id: "bad", visibility: "internal", description: "missing run" }]), { code: CliErrorCode.MalformedCommandMetadata, classification: CliClassification.InvalidInvocation });
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/testing/run-witnesses.mjs:87:const laterCommand = runCase("later-command-create", ["create", "--json", "--non-interactive"]);
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/testing/run-witnesses.mjs:140:const validFailure = createEnvelope({
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/entry/vibe-engineer.js:2:import { randomUUID } from "node:crypto";
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/entry/vibe-engineer.js:3:import { dirname, resolve } from "node:path";
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/entry/vibe-engineer.js:4:import { fileURLToPath } from "node:url";
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/entry/vibe-engineer.js:5:import { loadVibeConfigFile, loadVibeConfigFromProjectRoot } from "@vibe-engineer/config";
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/entry/vibe-engineer.js:6:import { CliClassification, CliErrorCode } from "../errors/codes.js";
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/entry/vibe-engineer.js:7:import { createCommandLoader } from "../command-loader/loader.js";
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/entry/vibe-engineer.js:8:import {
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/entry/vibe-engineer.js:10:  createEnvelope,
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/entry/vibe-engineer.js:18:import { cliError, diagnostic } from "../errors/codes.js";
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/entry/vibe-engineer.js:19:import { configBlockedEnvelope } from "../envelope/result-envelope.js";
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/entry/vibe-engineer.js:54:  const entryDir = dirname(fileURLToPath(import.meta.url));
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/entry/vibe-engineer.js:103:function createInvocation({ argv, options, command, startedAt }) {
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/entry/vibe-engineer.js:133:  return createEnvelope({
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/entry/vibe-engineer.js:148:  return createEnvelope({
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/entry/vibe-engineer.js:203:  let invocation = createInvocation({ argv, options, command, startedAt });
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/entry/vibe-engineer.js:223:    const loader = createCommandLoader();
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/entry/vibe-engineer.js:244:if (import.meta.url === `file://${process.argv[1]}`) {

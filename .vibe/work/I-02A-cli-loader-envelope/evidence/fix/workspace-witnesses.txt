@@ -1,0 +1,136 @@
+### workspace:graph
+
+> @vibe-engineer/workspace@0.0.0 workspace:graph /Users/lizavasilyeva/work/vibe-engineer
+> pnpm -r list --depth -1 --json
+
+[
+  {
+    "name": "@vibe-engineer/workspace",
+    "version": "0.0.0",
+    "path": "/Users/lizavasilyeva/work/vibe-engineer",
+    "private": true
+  },
+  {
+    "name": "@vibe-engineer/adapter-pi",
+    "version": "0.0.0",
+    "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/adapters/pi",
+    "private": true
+  },
+  {
+    "name": "@vibe-engineer/artifacts",
+    "version": "0.0.0",
+    "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/artifacts",
+    "private": true
+  },
+  {
+    "name": "vibe-engineer",
+    "version": "0.0.0",
+    "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/cli",
+    "private": false
+  },
+  {
+    "name": "@vibe-engineer/config",
+    "version": "0.0.0",
+    "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/config",
+    "private": true
+  },
+  {
+    "name": "@vibe-engineer/context",
+    "version": "0.0.0",
+    "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/context",
+    "private": true
+  },
+  {
+    "name": "@vibe-engineer/contracts",
+    "version": "0.0.0",
+    "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/contracts",
+    "private": true
+  },
+  {
+    "name": "@vibe-engineer/mechanical-gates",
+    "version": "0.0.0",
+    "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates",
+    "private": true
+  },
+  {
+    "name": "@vibe-engineer/observability",
+    "version": "0.0.0",
+    "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/observability",
+    "private": true
+  },
+  {
+    "name": "@vibe-engineer/orchestration",
+    "version": "0.0.0",
+    "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/orchestration",
+    "private": true
+  },
+  {
+    "name": "@vibe-engineer/preset-nest-react-rn",
+    "version": "0.0.0",
+    "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/presets/nest-react-rn",
+    "private": true
+  },
+  {
+    "name": "@vibe-engineer/preset-typescript",
+    "version": "0.0.0",
+    "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/presets/typescript",
+    "private": true
+  },
+  {
+    "name": "@vibe-engineer/registry",
+    "version": "0.0.0",
+    "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/registry",
+    "private": true
+  },
+  {
+    "name": "@vibe-engineer/schematics",
+    "version": "0.0.0",
+    "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/schematics",
+    "private": true
+  },
+  {
+    "name": "@vibe-engineer/security",
+    "version": "0.0.0",
+    "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/security",
+    "private": true
+  },
+  {
+    "name": "@vibe-engineer/skills",
+    "version": "0.0.0",
+    "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/skills",
+    "private": true
+  },
+  {
+    "name": "@vibe-engineer/standards",
+    "version": "0.0.0",
+    "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/standards",
+    "private": true
+  },
+  {
+    "name": "@vibe-engineer/testing",
+    "version": "0.0.0",
+    "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/testing",
+    "private": true
+  },
+  {
+    "name": "@vibe-engineer/verification",
+    "version": "0.0.0",
+    "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/verification",
+    "private": true
+  }
+]
+workspace:graph exit=0
+### workspace:surface
+
+> @vibe-engineer/workspace@0.0.0 workspace:surface /Users/lizavasilyeva/work/vibe-engineer
+> node .vibe/work/I-00A-workspace-package-skeleton/witnesses/workspace-surface-witness.mjs --root .
+
+{
+  "ok": true,
+  "root": "/Users/lizavasilyeva/work/vibe-engineer",
+  "mode": "current-surface",
+  "checkedAt": "2026-06-24T11:48:26.249Z",
+  "requiredPackageCount": 18,
+  "failures": []
+}
+workspace:surface exit=0

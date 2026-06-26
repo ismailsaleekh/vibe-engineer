@@ -1,0 +1,194 @@
+## git status scoped I-02A/root/provider/siblings
+?? package.json
+?? packages/artifacts/README.md
+?? packages/artifacts/fixtures/invalid-carriers/chat-transcript.txt
+?? packages/artifacts/fixtures/invalid-carriers/implementation-plan.yaml
+?? packages/artifacts/fixtures/invalid-carriers/work-brief.md
+?? packages/artifacts/fixtures/invalid/agent_registry_entry/missing-schema-refs.json
+?? packages/artifacts/fixtures/invalid/agent_registry_entry/missing-schemaVersion.json
+?? packages/artifacts/fixtures/invalid/agent_registry_entry/unknown-field.json
+?? packages/artifacts/fixtures/invalid/agent_registry_entry/wrong-artifactKind.json
+?? packages/artifacts/fixtures/invalid/build_result/bad-plan-status-handoff.json
+?? packages/artifacts/fixtures/invalid/build_result/missing-evidence-refs.json
+?? packages/artifacts/fixtures/invalid/build_result/missing-schemaVersion.json
+?? packages/artifacts/fixtures/invalid/build_result/narrative-verification-without-evidence-ref.json
+?? packages/artifacts/fixtures/invalid/build_result/unknown-field.json
+?? packages/artifacts/fixtures/invalid/build_result/verification-ref-non-evidence.json
+?? packages/artifacts/fixtures/invalid/build_result/verification-ref-wrong-relation.json
+?? packages/artifacts/fixtures/invalid/build_result/wrong-artifactKind.json
+?? packages/artifacts/fixtures/invalid/context_file_header/missing-drift-metadata.json
+?? packages/artifacts/fixtures/invalid/context_file_header/missing-schemaVersion.json
+?? packages/artifacts/fixtures/invalid/context_file_header/unknown-field.json
+?? packages/artifacts/fixtures/invalid/context_file_header/wrong-artifactKind.json
+?? packages/artifacts/fixtures/invalid/evidence_packet/advisory-as-deterministic-blocker.json
+?? packages/artifacts/fixtures/invalid/evidence_packet/missing-evidence-for-link.json
+?? packages/artifacts/fixtures/invalid/evidence_packet/missing-schemaVersion.json
+?? packages/artifacts/fixtures/invalid/evidence_packet/unknown-field.json
+?? packages/artifacts/fixtures/invalid/evidence_packet/wrong-artifactKind.json
+?? packages/artifacts/fixtures/invalid/implementation_plan/incomplete-verification-delta.json
+?? packages/artifacts/fixtures/invalid/implementation_plan/missing-schemaVersion.json
+?? packages/artifacts/fixtures/invalid/implementation_plan/unknown-field.json
+?? packages/artifacts/fixtures/invalid/implementation_plan/wrong-artifactKind.json
+?? packages/artifacts/fixtures/invalid/schematic_manifest/missing-input-schema-refs.json
+?? packages/artifacts/fixtures/invalid/schematic_manifest/missing-schemaVersion.json
+?? packages/artifacts/fixtures/invalid/schematic_manifest/unknown-field.json
+?? packages/artifacts/fixtures/invalid/schematic_manifest/wrong-artifactKind.json
+?? packages/artifacts/fixtures/invalid/ship_packet/failed-build-handoff.json
+?? packages/artifacts/fixtures/invalid/ship_packet/final-verification-ref-non-evidence.json
+?? packages/artifacts/fixtures/invalid/ship_packet/final-verification-ref-wrong-relation.json
+?? packages/artifacts/fixtures/invalid/ship_packet/missing-schemaVersion.json
+?? packages/artifacts/fixtures/invalid/ship_packet/push-without-approval.json
+?? packages/artifacts/fixtures/invalid/ship_packet/unknown-field.json
+?? packages/artifacts/fixtures/invalid/ship_packet/wrong-artifactKind.json
+?? packages/artifacts/fixtures/invalid/skill_manifest/missing-forbidden-actions.json
+?? packages/artifacts/fixtures/invalid/skill_manifest/missing-schemaVersion.json
+?? packages/artifacts/fixtures/invalid/skill_manifest/unknown-field.json
+?? packages/artifacts/fixtures/invalid/skill_manifest/wrong-artifactKind.json
+?? packages/artifacts/fixtures/invalid/verification_delta/blocked-missing-metadata.json
+?? packages/artifacts/fixtures/invalid/verification_delta/missing-catalog-category.json
+?? packages/artifacts/fixtures/invalid/verification_delta/missing-requiredItems.json
+?? packages/artifacts/fixtures/invalid/verification_delta/missing-schemaVersion.json
+?? packages/artifacts/fixtures/invalid/verification_delta/not-applicable-missing-rationale.json
+?? packages/artifacts/fixtures/invalid/verification_delta/unknown-field.json
+?? packages/artifacts/fixtures/invalid/verification_delta/wrong-artifactKind.json
+?? packages/artifacts/fixtures/invalid/work_brief/malformed-extension-core-field.json
+?? packages/artifacts/fixtures/invalid/work_brief/missing-schemaVersion.json
+?? packages/artifacts/fixtures/invalid/work_brief/unknown-field.json
+?? packages/artifacts/fixtures/invalid/work_brief/unsupported-version.json
+?? packages/artifacts/fixtures/invalid/work_brief/wrong-artifactKind.json
+?? packages/artifacts/fixtures/valid/agent_registry_entry.json
+?? packages/artifacts/fixtures/valid/build_result.json
+?? packages/artifacts/fixtures/valid/context_file_header.json
+?? packages/artifacts/fixtures/valid/evidence_packet.json
+?? packages/artifacts/fixtures/valid/implementation_plan.json
+?? packages/artifacts/fixtures/valid/schematic_manifest.json
+?? packages/artifacts/fixtures/valid/ship_packet.json
+?? packages/artifacts/fixtures/valid/skill_manifest.json
+?? packages/artifacts/fixtures/valid/verification_delta.json
+?? packages/artifacts/fixtures/valid/work_brief.json
+?? packages/artifacts/package.json
+?? packages/artifacts/schemas/agent-registry-entry.schema.json
+?? packages/artifacts/schemas/build-result.schema.json
+?? packages/artifacts/schemas/context-file-header.schema.json
+?? packages/artifacts/schemas/evidence-packet.schema.json
+?? packages/artifacts/schemas/implementation-plan.schema.json
+?? packages/artifacts/schemas/schematic-manifest.schema.json
+?? packages/artifacts/schemas/ship-packet.schema.json
+?? packages/artifacts/schemas/skill-manifest.schema.json
+?? packages/artifacts/schemas/verification-delta.schema.json
+?? packages/artifacts/schemas/work-brief.schema.json
+?? packages/artifacts/scripts/check-generated-types.mjs
+?? packages/artifacts/scripts/generate-types.mjs
+?? packages/artifacts/scripts/typecheck-public-entrypoint.mjs
+?? packages/artifacts/src/errors.js
+?? packages/artifacts/src/generated/types.d.ts
+?? packages/artifacts/src/index.js
+?? packages/artifacts/src/schema-registry.js
+?? packages/artifacts/src/validation.js
+?? packages/artifacts/tests/run-tests.mjs
+?? packages/cli/package.json
+?? packages/cli/src/command-loader/loader.js
+?? packages/cli/src/entry/vibe-engineer.js
+?? packages/cli/src/envelope/result-envelope.js
+?? packages/cli/src/errors/codes.js
+?? packages/cli/src/testing/run-witnesses.mjs
+?? packages/config/eslint.config.mjs
+?? packages/config/fixtures/projects/executable-format-only/vibe-engineer.config.toml
+?? packages/config/fixtures/projects/executable-format-only/vibe-engineer.config.ts
+?? packages/config/fixtures/projects/executable-format-only/vibe-engineer.config.yaml
+?? packages/config/fixtures/projects/invalid-fix-iterations-high/vibe-engineer.config.json
+?? packages/config/fixtures/projects/invalid-fix-iterations-low/vibe-engineer.config.json
+?? packages/config/fixtures/projects/invalid-hours-high/vibe-engineer.config.json
+?? packages/config/fixtures/projects/invalid-hours-zero/vibe-engineer.config.json
+?? packages/config/fixtures/projects/invalid-nested-key/vibe-engineer.config.json
+?? packages/config/fixtures/projects/invalid-range-high/vibe-engineer.config.json
+?? packages/config/fixtures/projects/invalid-range-low/vibe-engineer.config.json
+?? packages/config/fixtures/projects/invalid-secret-like-key/vibe-engineer.config.json
+?? packages/config/fixtures/projects/invalid-type/vibe-engineer.config.json
+?? packages/config/fixtures/projects/invalid-unknown-key/vibe-engineer.config.json
+?? packages/config/fixtures/projects/invalid-unsupported-harness-arbitrary/vibe-engineer.config.json
+?? packages/config/fixtures/projects/invalid-unsupported-harness-claude-code/vibe-engineer.config.json
+?? packages/config/fixtures/projects/invalid-unsupported-harness-codex/vibe-engineer.config.json
+?? packages/config/fixtures/projects/invalid-unsupported-harness-opencode/vibe-engineer.config.json
+?? packages/config/fixtures/projects/malformed-json/vibe-engineer.config.json
+?? packages/config/fixtures/projects/valid-full/vibe-engineer.config.json
+?? packages/config/fixtures/projects/valid-minimal/vibe-engineer.config.json
+?? packages/config/package.json
+?? packages/config/src/generated/types.d.ts
+?? packages/config/src/index.js
+?? packages/config/tests/public-api-consumer.ts
+?? packages/config/tests/run-tests.mjs
+?? packages/config/tsconfig.json
+?? packages/context/package.json
+?? packages/context/src/index.d.ts
+?? packages/context/src/index.js
+?? packages/context/tests/negative-witness.mjs
+?? packages/context/tests/real-boundary-witness.mjs
+?? packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-schema-narrowed/README.md
+?? packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-schema-narrowed/eslint.config.mjs
+?? packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-schema-narrowed/generated/ignored.ts
+?? packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-schema-narrowed/mechanical-boundaries.json
+?? packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-schema-narrowed/mechanical-domain-purity.json
+?? packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-schema-narrowed/mechanical-escape-allowlist.json
+?? packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-schema-narrowed/mechanical-surface.json
+?? packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-schema-narrowed/package.json
+?? packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-schema-narrowed/packages/app/src/as-unknown-schema.ts
+?? packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-schema-narrowed/packages/app/src/index.ts
+?? packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-schema-narrowed/packages/app/src/reviewed-escapes.ts
+?? packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-schema-narrowed/packages/app/src/sample-demo/story.ts
+?? packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-schema-narrowed/packages/domain/src/index.ts
+?? packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-schema-narrowed/packages/domain/src/internal/secret.ts
+?? packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-schema-narrowed/packages/shared/src/index.ts
+?? packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-schema-narrowed/prettier.config.mjs
+?? packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-schema-narrowed/test.mjs
+?? packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-schema-narrowed/tsconfig.json
+?? packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-unrelated-validate/README.md
+?? packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-unrelated-validate/eslint.config.mjs
+?? packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-unrelated-validate/generated/ignored.ts
+?? packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-unrelated-validate/mechanical-boundaries.json
+?? packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-unrelated-validate/mechanical-domain-purity.json
+?? packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-unrelated-validate/mechanical-escape-allowlist.json
+?? packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-unrelated-validate/mechanical-surface.json
+?? packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-unrelated-validate/package.json
+?? packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-unrelated-validate/packages/app/src/as-unknown.ts
+?? packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-unrelated-validate/packages/a
+...TRUNCATED IN SUMMARY...
+
+## inventory packages/cli/src
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/command-loader
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/command-loader/loader.js
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/entry
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/entry/vibe-engineer.js
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/envelope
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/envelope/result-envelope.js
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/errors
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/errors/codes.js
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/testing
+/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/testing/run-witnesses.mjs
+
+## inventory packages/core
+ABSENT
+
+## root/package manifests checksums
+b3d1455aade0eb27f0775c3dbe2abefd89dada97caac9b10f041061abcb30306  /Users/lizavasilyeva/work/vibe-engineer/package.json
+0259217fb38660de9e7298c4d6e363c7810a436479c189ce7ca088dd06576fff  /Users/lizavasilyeva/work/vibe-engineer/pnpm-lock.yaml
+aee47e9964f53e767a6d6a86a27c86b218a76cd59453c3401defad6907be5f21  /Users/lizavasilyeva/work/vibe-engineer/pnpm-workspace.yaml
+918ad4e48eb39826c9a034611fd765c3c418c7ccfb890bc9c469ba33d2261d7b  /Users/lizavasilyeva/work/vibe-engineer/turbo.json
+
+## package manifests checksums
+1ace06c206300412035f1954b08d6ed97a2e244265ef70a7789f4488cede7498  /Users/lizavasilyeva/work/vibe-engineer/packages/artifacts/package.json
+51ac1ec1417137a3644403ba94482797398ab06dfcc7d76420505cfb74d3a637  /Users/lizavasilyeva/work/vibe-engineer/packages/cli/package.json
+9e8fbe90ac613ebefb6a5ad036560a03fc6b843ce041976e56af548bb0bbed4a  /Users/lizavasilyeva/work/vibe-engineer/packages/config/package.json
+65e53f4722ea3121c86d10785750e56c7927480a96adfe3c60e6472977acaa7f  /Users/lizavasilyeva/work/vibe-engineer/packages/context/package.json
+e38b71fa9587331de18a017d7d7013849ee740c74a7c0049b1a6400c96b15760  /Users/lizavasilyeva/work/vibe-engineer/packages/contracts/package.json
+b87923b67a5cf139ae67f6062c71d23393b307af153d1b874ccaf3e639e2f221  /Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/package.json
+06524877f05981155e80c527ec5dffd524ec647c4ed7c88dabff69d85126e626  /Users/lizavasilyeva/work/vibe-engineer/packages/observability/package.json
+4735248118ea1874fe6e65558ef1802fc34b8ef1dc07ff0c0367d23e75818543  /Users/lizavasilyeva/work/vibe-engineer/packages/orchestration/package.json
+5e59cece64a816ac11450815b22f7cf8fd5b913af578de1348e24bbf0ed4d072  /Users/lizavasilyeva/work/vibe-engineer/packages/registry/package.json
+386e3572235a463bf2f1c300d0183e234507edf6901b63b12b4016bad85b7870  /Users/lizavasilyeva/work/vibe-engineer/packages/schematics/package.json
+444380c1f3cbd22c9b47cfb28b2e50bad0df17b3ed0f29020e3a19867a801339  /Users/lizavasilyeva/work/vibe-engineer/packages/security/package.json
+2de339b769cd4b6dfbf106a31439b38c54fe4d76a5dfe14a86829cda269ac004  /Users/lizavasilyeva/work/vibe-engineer/packages/skills/package.json
+63f29abf05e1ef6294a651fd41e39f56b36405b8d204ccc5d4d01d747384e156  /Users/lizavasilyeva/work/vibe-engineer/packages/standards/package.json
+4e8d5d34bfefb29b2e74250eccd72dd7354a6cb1c230194033e7c9c1dcd91d87  /Users/lizavasilyeva/work/vibe-engineer/packages/testing/package.json
+4e8b9d917e0cdd9e0ef80e5c427ccb17d4d3e3dae7fbe1a72efcbfa9a582a691  /Users/lizavasilyeva/work/vibe-engineer/packages/verification/package.json

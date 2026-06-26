@@ -1,0 +1,36 @@
+## negative fail-closed assertions
+relative-package-local exit=1
+absolute-package-local exit=1
+absolute-outside-carrier exit=1
+## .vibe/work/I-02A-cli-loader-envelope/evidence/residual-fix/20260624T000000Z-resolver/negative/absolute-outside-carrier.pre-inventory
+## pre inventories
+NO packages/cli/.vibe
+NO outside-residual-bad
+## .vibe/work/I-02A-cli-loader-envelope/evidence/residual-fix/20260624T000000Z-resolver/negative/absolute-package-local.pre-inventory
+## pre package-local inventory
+NO packages/cli/.vibe
+## .vibe/work/I-02A-cli-loader-envelope/evidence/residual-fix/20260624T000000Z-resolver/negative/relative-package-local.pre-inventory
+## pre package-local inventory
+NO packages/cli/.vibe
+## .vibe/work/I-02A-cli-loader-envelope/evidence/residual-fix/20260624T000000Z-resolver/negative/absolute-outside-carrier.post-inventory
+## post inventories
+NO packages/cli/.vibe
+NO outside-residual-bad
+## .vibe/work/I-02A-cli-loader-envelope/evidence/residual-fix/20260624T000000Z-resolver/negative/absolute-package-local.post-inventory
+## post package-local inventory
+NO packages/cli/.vibe
+## .vibe/work/I-02A-cli-loader-envelope/evidence/residual-fix/20260624T000000Z-resolver/negative/relative-package-local.post-inventory
+## post package-local inventory
+NO packages/cli/.vibe
+NO packages/cli/.vibe after negatives
+.vibe/work/I-02A-cli-loader-envelope/evidence/residual-fix/package-test-relative-20260624T000000Z-resolver/summary.json: ok=true cases=23
+.vibe/work/I-02A-cli-loader-envelope/evidence/residual-fix/package-test-absolute-20260624T000000Z-resolver/summary.json: ok=true cases=23
+.vibe/work/I-02A-cli-loader-envelope/evidence/residual-fix/package-test-cwd-relative-20260624T000000Z-resolver/summary.json: ok=true cases=23
+## scoped product/root/provider status after negatives
+?? package.json
+?? packages/artifacts/
+?? packages/cli/package.json
+?? packages/cli/src/testing/run-witnesses.mjs
+?? packages/config/
+?? pnpm-lock.yaml
+?? pnpm-workspace.yaml

@@ -1,0 +1,784 @@
+{
+  "ok": false,
+  "repoRoot": "/Users/lizavasilyeva/work/vibe-engineer",
+  "cliDir": "/Users/lizavasilyeva/work/vibe-engineer/packages/cli",
+  "entry": "/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/entry/vibe-engineer.js",
+  "outRoot": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02A-cli-loader-envelope/evidence/validation/harness",
+  "cases": [
+    {
+      "name": "provider-import-package-local",
+      "kind": "node-eval",
+      "status": 0,
+      "signal": null,
+      "stdoutBytes": 128,
+      "stderrBytes": 0,
+      "stdoutContainsSecretCanary": false,
+      "stderrContainsSecretCanary": false,
+      "cwd": "/Users/lizavasilyeva/work/vibe-engineer/packages/cli"
+    },
+    {
+      "name": "provider-import-pnpm-filter",
+      "kind": "pnpm",
+      "status": 0,
+      "signal": null,
+      "stdoutBytes": 12,
+      "stderrBytes": 0,
+      "stdoutContainsSecretCanary": false,
+      "stderrContainsSecretCanary": false,
+      "cwd": "/Users/lizavasilyeva/work/vibe-engineer",
+      "args": [
+        "--filter",
+        "vibe-engineer",
+        "exec",
+        "node",
+        "--input-type=module",
+        "-e",
+        "\n  const config = await import('@vibe-engineer/config');\n  const artifacts = await import('@vibe-engineer/artifacts');\n  if (typeof config.parseVibeConfig !== 'function' || typeof config.loadVibeConfigFile !== 'function' || typeof config.loadVibeConfigFromProjectRoot !== 'function') throw new Error('missing config exports');\n  if (typeof artifacts.validateArtifactFile !== 'function') throw new Error('missing artifact validator');\n  console.log(JSON.stringify({ok:true}));\n"
+      ]
+    },
+    {
+      "name": "package-manager-bin-smoke",
+      "kind": "pnpm",
+      "status": 254,
+      "signal": null,
+      "stdoutBytes": 135,
+      "stderrBytes": 0,
+      "stdoutContainsSecretCanary": false,
+      "stderrContainsSecretCanary": false,
+      "cwd": "/Users/lizavasilyeva/work/vibe-engineer",
+      "args": [
+        "--filter",
+        "vibe-engineer",
+        "exec",
+        "vibe-engineer",
+        "version",
+        "--json",
+        "--non-interactive"
+      ]
+    },
+    {
+      "name": "pnpm-filter-node-entry-spawn",
+      "kind": "pnpm",
+      "status": 0,
+      "signal": null,
+      "stdoutBytes": 497,
+      "stderrBytes": 0,
+      "stdoutContainsSecretCanary": false,
+      "stderrContainsSecretCanary": false,
+      "cwd": "/Users/lizavasilyeva/work/vibe-engineer",
+      "args": [
+        "--filter",
+        "vibe-engineer",
+        "exec",
+        "node",
+        "src/entry/vibe-engineer.js",
+        "version",
+        "--json",
+        "--non-interactive"
+      ]
+    },
+    {
+      "name": "envelope-validator-and-loader-public-export",
+      "kind": "node-eval",
+      "status": 0,
+      "signal": null,
+      "stdoutBytes": 435,
+      "stderrBytes": 0,
+      "stdoutContainsSecretCanary": false,
+      "stderrContainsSecretCanary": false,
+      "cwd": "/Users/lizavasilyeva/work/vibe-engineer/packages/cli"
+    },
+    {
+      "name": "version-success",
+      "kind": "cli-spawn",
+      "status": 0,
+      "signal": null,
+      "stdoutBytes": 497,
+      "stderrBytes": 0,
+      "stdoutContainsSecretCanary": false,
+      "stderrContainsSecretCanary": false,
+      "args": [
+        "version",
+        "--json",
+        "--non-interactive"
+      ],
+      "stdoutJsonLineCount": 1,
+      "envelopeStatus": "success",
+      "envelopeExitCode": 0,
+      "envelopeErrorClassifications": []
+    },
+    {
+      "name": "help-success",
+      "kind": "cli-spawn",
+      "status": 0,
+      "signal": null,
+      "stdoutBytes": 758,
+      "stderrBytes": 0,
+      "stdoutContainsSecretCanary": false,
+      "stderrContainsSecretCanary": false,
+      "args": [
+        "help",
+        "--json",
+        "--non-interactive"
+      ],
+      "stdoutJsonLineCount": 1,
+      "envelopeStatus": "success",
+      "envelopeExitCode": 0,
+      "envelopeErrorClassifications": []
+    },
+    {
+      "name": "result-file-positive",
+      "kind": "cli-spawn",
+      "status": 0,
+      "signal": null,
+      "stdoutBytes": 883,
+      "stderrBytes": 0,
+      "stdoutContainsSecretCanary": false,
+      "stderrContainsSecretCanary": false,
+      "args": [
+        "version",
+        "--json",
+        "--result-file",
+        "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02A-cli-loader-envelope/evidence/validation/harness/result-file-positive.json",
+        "--non-interactive"
+      ],
+      "stdoutJsonLineCount": 1,
+      "envelopeStatus": "success",
+      "envelopeExitCode": 0,
+      "envelopeErrorClassifications": []
+    },
+    {
+      "name": "result-file-quiet-positive",
+      "kind": "cli-spawn",
+      "status": 0,
+      "signal": null,
+      "stdoutBytes": 0,
+      "stderrBytes": 0,
+      "stdoutContainsSecretCanary": false,
+      "stderrContainsSecretCanary": false,
+      "args": [
+        "version",
+        "--json",
+        "--quiet",
+        "--result-file",
+        "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02A-cli-loader-envelope/evidence/validation/harness/quiet-result-file.json",
+        "--non-interactive"
+      ],
+      "stdoutJsonLineCount": 0,
+      "envelopeStatus": null,
+      "envelopeExitCode": null,
+      "envelopeErrorClassifications": []
+    },
+    {
+      "name": "config-success-file",
+      "kind": "cli-spawn",
+      "status": 0,
+      "signal": null,
+      "stdoutBytes": 815,
+      "stderrBytes": 0,
+      "stdoutContainsSecretCanary": false,
+      "stderrContainsSecretCanary": false,
+      "args": [
+        "version",
+        "--json",
+        "--config",
+        "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02A-cli-loader-envelope/evidence/validation/harness/fixtures/valid-project/vibe-engineer.config.json",
+        "--non-interactive"
+      ],
+      "stdoutJsonLineCount": 1,
+      "envelopeStatus": "success",
+      "envelopeExitCode": 0,
+      "envelopeErrorClassifications": []
+    },
+    {
+      "name": "config-success-project-root",
+      "kind": "cli-spawn",
+      "status": 0,
+      "signal": null,
+      "stdoutBytes": 769,
+      "stderrBytes": 0,
+      "stdoutContainsSecretCanary": false,
+      "stderrContainsSecretCanary": false,
+      "args": [
+        "version",
+        "--json",
+        "--project-root",
+        "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02A-cli-loader-envelope/evidence/validation/harness/fixtures/valid-project",
+        "--non-interactive"
+      ],
+      "stdoutJsonLineCount": 1,
+      "envelopeStatus": "success",
+      "envelopeExitCode": 0,
+      "envelopeErrorClassifications": []
+    },
+    {
+      "name": "unknown-command",
+      "kind": "cli-spawn",
+      "status": 2,
+      "signal": null,
+      "stdoutBytes": 824,
+      "stderrBytes": 0,
+      "stdoutContainsSecretCanary": false,
+      "stderrContainsSecretCanary": false,
+      "args": [
+        "unknown-command",
+        "--json",
+        "--non-interactive"
+      ],
+      "stdoutJsonLineCount": 1,
+      "envelopeStatus": "blocked",
+      "envelopeExitCode": 2,
+      "envelopeErrorClassifications": [
+        "invalid_invocation"
+      ]
+    },
+    {
+      "name": "later-create-command",
+      "kind": "cli-spawn",
+      "status": 2,
+      "signal": null,
+      "stdoutBytes": 863,
+      "stderrBytes": 0,
+      "stdoutContainsSecretCanary": false,
+      "stderrContainsSecretCanary": false,
+      "args": [
+        "create",
+        "--json",
+        "--non-interactive"
+      ],
+      "stdoutJsonLineCount": 1,
+      "envelopeStatus": "blocked",
+      "envelopeExitCode": 2,
+      "envelopeErrorClassifications": [
+        "unsupported_operation"
+      ]
+    },
+    {
+      "name": "later-doctor-command",
+      "kind": "cli-spawn",
+      "status": 2,
+      "signal": null,
+      "stdoutBytes": 863,
+      "stderrBytes": 0,
+      "stdoutContainsSecretCanary": false,
+      "stderrContainsSecretCanary": false,
+      "args": [
+        "doctor",
+        "--json",
+        "--non-interactive"
+      ],
+      "stdoutJsonLineCount": 1,
+      "envelopeStatus": "blocked",
+      "envelopeExitCode": 2,
+      "envelopeErrorClassifications": [
+        "unsupported_operation"
+      ]
+    },
+    {
+      "name": "later-config-command",
+      "kind": "cli-spawn",
+      "status": 2,
+      "signal": null,
+      "stdoutBytes": 863,
+      "stderrBytes": 0,
+      "stdoutContainsSecretCanary": false,
+      "stderrContainsSecretCanary": false,
+      "args": [
+        "config",
+        "--json",
+        "--non-interactive"
+      ],
+      "stdoutJsonLineCount": 1,
+      "envelopeStatus": "blocked",
+      "envelopeExitCode": 2,
+      "envelopeErrorClassifications": [
+        "unsupported_operation"
+      ]
+    },
+    {
+      "name": "unknown-global-flag",
+      "kind": "cli-spawn",
+      "status": 2,
+      "signal": null,
+      "stdoutBytes": 836,
+      "stderrBytes": 0,
+      "stdoutContainsSecretCanary": false,
+      "stderrContainsSecretCanary": false,
+      "args": [
+        "--bad-global",
+        "version",
+        "--json",
+        "--non-interactive"
+      ],
+      "stdoutJsonLineCount": 1,
+      "envelopeStatus": "blocked",
+      "envelopeExitCode": 2,
+      "envelopeErrorClassifications": [
+        "invalid_invocation"
+      ]
+    },
+    {
+      "name": "unknown-command-flag",
+      "kind": "cli-spawn",
+      "status": 2,
+      "signal": null,
+      "stdoutBytes": 859,
+      "stderrBytes": 0,
+      "stdoutContainsSecretCanary": false,
+      "stderrContainsSecretCanary": false,
+      "args": [
+        "version",
+        "--bad-flag",
+        "--json",
+        "--non-interactive"
+      ],
+      "stdoutJsonLineCount": 1,
+      "envelopeStatus": "blocked",
+      "envelopeExitCode": 2,
+      "envelopeErrorClassifications": [
+        "invalid_invocation"
+      ]
+    },
+    {
+      "name": "missing-result-file-value",
+      "kind": "cli-spawn",
+      "status": 2,
+      "signal": null,
+      "stdoutBytes": 829,
+      "stderrBytes": 0,
+      "stdoutContainsSecretCanary": false,
+      "stderrContainsSecretCanary": false,
+      "args": [
+        "version",
+        "--json",
+        "--result-file"
+      ],
+      "stdoutJsonLineCount": 1,
+      "envelopeStatus": "blocked",
+      "envelopeExitCode": 2,
+      "envelopeErrorClassifications": [
+        "invalid_invocation"
+      ]
+    },
+    {
+      "name": "missing-config-value",
+      "kind": "cli-spawn",
+      "status": 2,
+      "signal": null,
+      "stdoutBytes": 809,
+      "stderrBytes": 0,
+      "stdoutContainsSecretCanary": false,
+      "stderrContainsSecretCanary": false,
+      "args": [
+        "version",
+        "--json",
+        "--config"
+      ],
+      "stdoutJsonLineCount": 1,
+      "envelopeStatus": "blocked",
+      "envelopeExitCode": 2,
+      "envelopeErrorClassifications": [
+        "invalid_invocation"
+      ]
+    },
+    {
+      "name": "invalid-foundation-status",
+      "kind": "cli-spawn",
+      "status": 2,
+      "signal": null,
+      "stdoutBytes": 865,
+      "stderrBytes": 0,
+      "stdoutContainsSecretCanary": false,
+      "stderrContainsSecretCanary": false,
+      "args": [
+        "foundation",
+        "--status",
+        "green",
+        "--json",
+        "--non-interactive"
+      ],
+      "stdoutJsonLineCount": 1,
+      "envelopeStatus": "blocked",
+      "envelopeExitCode": 2,
+      "envelopeErrorClassifications": [
+        "invalid_invocation"
+      ]
+    },
+    {
+      "name": "unexpected-positional",
+      "kind": "cli-spawn",
+      "status": 2,
+      "signal": null,
+      "stdoutBytes": 866,
+      "stderrBytes": 0,
+      "stdoutContainsSecretCanary": false,
+      "stderrContainsSecretCanary": false,
+      "args": [
+        "version",
+        "extra",
+        "--json",
+        "--non-interactive"
+      ],
+      "stdoutJsonLineCount": 1,
+      "envelopeStatus": "blocked",
+      "envelopeExitCode": 2,
+      "envelopeErrorClassifications": [
+        "invalid_invocation"
+      ]
+    },
+    {
+      "name": "malformed-config",
+      "kind": "cli-spawn",
+      "status": 3,
+      "signal": null,
+      "stdoutBytes": 1418,
+      "stderrBytes": 0,
+      "stdoutContainsSecretCanary": false,
+      "stderrContainsSecretCanary": false,
+      "args": [
+        "version",
+        "--json",
+        "--config",
+        "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02A-cli-loader-envelope/evidence/validation/harness/fixtures/malformed-project/vibe-engineer.config.json",
+        "--non-interactive"
+      ],
+      "stdoutJsonLineCount": 1,
+      "envelopeStatus": "blocked",
+      "envelopeExitCode": 3,
+      "envelopeErrorClassifications": [
+        "invalid_config"
+      ]
+    },
+    {
+      "name": "missing-config-project-root",
+      "kind": "cli-spawn",
+      "status": 3,
+      "signal": null,
+      "stdoutBytes": 1699,
+      "stderrBytes": 0,
+      "stdoutContainsSecretCanary": false,
+      "stderrContainsSecretCanary": false,
+      "args": [
+        "version",
+        "--json",
+        "--project-root",
+        "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02A-cli-loader-envelope/evidence/validation/harness/fixtures/missing-project",
+        "--non-interactive"
+      ],
+      "stdoutJsonLineCount": 1,
+      "envelopeStatus": "blocked",
+      "envelopeExitCode": 3,
+      "envelopeErrorClassifications": [
+        "missing_prerequisite"
+      ]
+    },
+    {
+      "name": "unsupported-harness-config",
+      "kind": "cli-spawn",
+      "status": 3,
+      "signal": null,
+      "stdoutBytes": 1462,
+      "stderrBytes": 0,
+      "stdoutContainsSecretCanary": false,
+      "stderrContainsSecretCanary": false,
+      "args": [
+        "version",
+        "--json",
+        "--config",
+        "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02A-cli-loader-envelope/evidence/validation/harness/fixtures/unsupported-harness/vibe-engineer.config.json",
+        "--non-interactive"
+      ],
+      "stdoutJsonLineCount": 1,
+      "envelopeStatus": "blocked",
+      "envelopeExitCode": 3,
+      "envelopeErrorClassifications": [
+        "invalid_config"
+      ]
+    },
+    {
+      "name": "unsupported-config-format",
+      "kind": "cli-spawn",
+      "status": 3,
+      "signal": null,
+      "stdoutBytes": 1701,
+      "stderrBytes": 0,
+      "stdoutContainsSecretCanary": false,
+      "stderrContainsSecretCanary": false,
+      "args": [
+        "version",
+        "--json",
+        "--project-root",
+        "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02A-cli-loader-envelope/evidence/validation/harness/fixtures/unsupported-format",
+        "--non-interactive"
+      ],
+      "stdoutJsonLineCount": 1,
+      "envelopeStatus": "blocked",
+      "envelopeExitCode": 3,
+      "envelopeErrorClassifications": [
+        "invalid_config"
+      ]
+    },
+    {
+      "name": "simulated-foundation-failure",
+      "kind": "cli-spawn",
+      "status": 1,
+      "signal": null,
+      "stdoutBytes": 871,
+      "stderrBytes": 0,
+      "stdoutContainsSecretCanary": false,
+      "stderrContainsSecretCanary": false,
+      "args": [
+        "foundation",
+        "--status",
+        "failure",
+        "--json",
+        "--non-interactive"
+      ],
+      "stdoutJsonLineCount": 1,
+      "envelopeStatus": "failure",
+      "envelopeExitCode": 1,
+      "envelopeErrorClassifications": [
+        "deterministic_failure"
+      ]
+    },
+    {
+      "name": "partial-non-green",
+      "kind": "cli-spawn",
+      "status": 8,
+      "signal": null,
+      "stdoutBytes": 1532,
+      "stderrBytes": 0,
+      "stdoutContainsSecretCanary": false,
+      "stderrContainsSecretCanary": false,
+      "args": [
+        "foundation",
+        "--status",
+        "partial",
+        "--json",
+        "--non-interactive"
+      ],
+      "stdoutJsonLineCount": 1,
+      "envelopeStatus": "partial",
+      "envelopeExitCode": 8,
+      "envelopeErrorClassifications": [
+        "partial_incomplete"
+      ]
+    },
+    {
+      "name": "invalid-result-file-path",
+      "kind": "cli-spawn",
+      "status": 5,
+      "signal": null,
+      "stdoutBytes": 1388,
+      "stderrBytes": 0,
+      "stdoutContainsSecretCanary": false,
+      "stderrContainsSecretCanary": false,
+      "args": [
+        "version",
+        "--json",
+        "--result-file",
+        "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02A-cli-loader-envelope/evidence/validation/harness/missing-dir/out.json",
+        "--non-interactive"
+      ],
+      "stdoutJsonLineCount": 1,
+      "envelopeStatus": "blocked",
+      "envelopeExitCode": 5,
+      "envelopeErrorClassifications": [
+        "write_conflict"
+      ]
+    },
+    {
+      "name": "secret-separate-flag",
+      "kind": "cli-spawn",
+      "status": 2,
+      "signal": null,
+      "stdoutBytes": 873,
+      "stderrBytes": 0,
+      "stdoutContainsSecretCanary": false,
+      "stderrContainsSecretCanary": false,
+      "args": [
+        "version",
+        "--token",
+        "<redacted-validation-canary>",
+        "--json",
+        "--non-interactive"
+      ],
+      "stdoutJsonLineCount": 1,
+      "envelopeStatus": "blocked",
+      "envelopeExitCode": 2,
+      "envelopeErrorClassifications": [
+        "invalid_invocation"
+      ]
+    },
+    {
+      "name": "secret-inline-flag",
+      "kind": "cli-spawn",
+      "status": 2,
+      "signal": null,
+      "stdoutBytes": 953,
+      "stderrBytes": 0,
+      "stdoutContainsSecretCanary": true,
+      "stderrContainsSecretCanary": false,
+      "args": [
+        "--password=<redacted-validation-canary>",
+        "version",
+        "--json",
+        "--non-interactive"
+      ],
+      "stdoutJsonLineCount": 1,
+      "envelopeStatus": "blocked",
+      "envelopeExitCode": 2,
+      "envelopeErrorClassifications": [
+        "invalid_invocation"
+      ]
+    },
+    {
+      "name": "secret-inline-result-file",
+      "kind": "cli-spawn",
+      "status": 2,
+      "signal": null,
+      "stdoutBytes": 1096,
+      "stderrBytes": 0,
+      "stdoutContainsSecretCanary": true,
+      "stderrContainsSecretCanary": false,
+      "args": [
+        "--api-key=<redacted-validation-canary>",
+        "version",
+        "--json",
+        "--result-file",
+        "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02A-cli-loader-envelope/evidence/validation/harness/secret-result-file.json",
+        "--non-interactive"
+      ],
+      "stdoutJsonLineCount": 1,
+      "envelopeStatus": "blocked",
+      "envelopeExitCode": 2,
+      "envelopeErrorClassifications": [
+        "invalid_invocation"
+      ]
+    },
+    {
+      "name": "secret-inline-result-file-carrier-scan",
+      "kind": "carrier-scan",
+      "status": 2,
+      "signal": null,
+      "stdoutBytes": 1096,
+      "stderrBytes": 0,
+      "stdoutContainsSecretCanary": true,
+      "stderrContainsSecretCanary": false,
+      "resultFileContainsSecretCanary": false
+    },
+    {
+      "name": "artifact-provider-reachability",
+      "kind": "node-eval",
+      "status": 0,
+      "signal": null,
+      "stdoutBytes": 47,
+      "stderrBytes": 0,
+      "stdoutContainsSecretCanary": false,
+      "stderrContainsSecretCanary": false,
+      "cwd": "/Users/lizavasilyeva/work/vibe-engineer/packages/cli"
+    }
+  ],
+  "findings": [
+    {
+      "name": "envelope-validator-stable-classification",
+      "severity": "major-local",
+      "issue": "typed validator accepts diagnostic classification outside the stable DL-07 classification set"
+    },
+    {
+      "name": "envelope-validator-non-success-empty-errors",
+      "severity": "major-local",
+      "issue": "typed validator accepts failure envelope without diagnostic/error code evidence"
+    },
+    {
+      "name": "secret-inline-flag",
+      "severity": "major-local",
+      "issue": "secret canary leaked into process carrier",
+      "item": {
+        "name": "secret-inline-flag",
+        "kind": "cli-spawn",
+        "status": 2,
+        "signal": null,
+        "stdoutBytes": 953,
+        "stderrBytes": 0,
+        "stdoutContainsSecretCanary": true,
+        "stderrContainsSecretCanary": false,
+        "args": [
+          "--password=<redacted-validation-canary>",
+          "version",
+          "--json",
+          "--non-interactive"
+        ],
+        "stdoutJsonLineCount": 1,
+        "envelopeStatus": "blocked",
+        "envelopeExitCode": 2,
+        "envelopeErrorClassifications": [
+          "invalid_invocation"
+        ]
+      }
+    },
+    {
+      "name": "secret-inline-result-file",
+      "severity": "major-local",
+      "issue": "secret canary leaked into process carrier",
+      "item": {
+        "name": "secret-inline-result-file",
+        "kind": "cli-spawn",
+        "status": 2,
+        "signal": null,
+        "stdoutBytes": 1096,
+        "stderrBytes": 0,
+        "stdoutContainsSecretCanary": true,
+        "stderrContainsSecretCanary": false,
+        "args": [
+          "--api-key=<redacted-validation-canary>",
+          "version",
+          "--json",
+          "--result-file",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02A-cli-loader-envelope/evidence/validation/harness/secret-result-file.json",
+          "--non-interactive"
+        ],
+        "stdoutJsonLineCount": 1,
+        "envelopeStatus": "blocked",
+        "envelopeExitCode": 2,
+        "envelopeErrorClassifications": [
+          "invalid_invocation"
+        ]
+      }
+    },
+    {
+      "name": "secret-redaction-inline-unknown-flag",
+      "severity": "critical",
+      "issue": "inline secret-like unknown flag value appears in CLI machine carrier before redaction"
+    },
+    {
+      "name": "secret-inline-result-file-carrier-scan",
+      "severity": "major-local",
+      "issue": "secret canary leaked into process carrier",
+      "item": {
+        "name": "secret-inline-result-file-carrier-scan",
+        "kind": "carrier-scan",
+        "status": 2,
+        "signal": null,
+        "stdoutBytes": 1096,
+        "stderrBytes": 0,
+        "stdoutContainsSecretCanary": true,
+        "stderrContainsSecretCanary": false,
+        "resultFileContainsSecretCanary": false
+      }
+    }
+  ],
+  "inventory": {
+    "commandsDirExists": false,
+    "packagesCoreExists": false,
+    "cliSrcEntries": [
+      "command-loader",
+      "entry",
+      "envelope",
+      "errors",
+      "testing"
+    ],
+    "packageTestScriptWouldMutateImplementationEvidence": true,
+    "packageTestEvidenceRoot": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02A-cli-loader-envelope/evidence/package-test"
+  }
+}

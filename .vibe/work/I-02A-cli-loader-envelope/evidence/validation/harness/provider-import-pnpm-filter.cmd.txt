@@ -1,0 +1,7 @@
+cwd=/Users/lizavasilyeva/work/vibe-engineer pnpm --filter vibe-engineer exec node --input-type=module -e 
+  const config = await import('@vibe-engineer/config');
+  const artifacts = await import('@vibe-engineer/artifacts');
+  if (typeof config.parseVibeConfig !== 'function' || typeof config.loadVibeConfigFile !== 'function' || typeof config.loadVibeConfigFromProjectRoot !== 'function') throw new Error('missing config exports');
+  if (typeof artifacts.validateArtifactFile !== 'function') throw new Error('missing artifact validator');
+  console.log(JSON.stringify({ok:true}));
+

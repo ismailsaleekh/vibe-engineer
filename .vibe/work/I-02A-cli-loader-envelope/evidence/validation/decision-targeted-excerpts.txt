@@ -1,0 +1,1769 @@
+# DL-07 targeted excerpts
+6-- output_class: locked_decision_document
+7-- date: 2026-06-23
+8-- owner_lane: DL-07 decision-lock execution
+9:- artifact_path: `/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-07-cli-primitives.md`
+10:- report_path: `/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/DL-07-cli-primitives/DL-07-execution-report.md`
+11-
+12:This decision locks the CLI primitive boundary and common machine contract. Sibling decisions still own their domain schemas/protocols; implementation lanes remain blocked until their full dependency set is green.
+13-
+14-## Source citations
+15-
+16:- `/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/master-strategy/strategy-final.md` — §3 `Locked decisions implementation must preserve`; §4.1 `Harness repo package hypothesis`; §5.1 `Mandatory output discipline for all decision artifacts`; §5.2 `Decision-lock table`; §6 `Dependency DAG with scheduler gates`; §7 `Explicit ready queue rules`; §9.2 `Decision triad ownership`; §10 `Verification matrix by lane`; §11 `Early real-boundary witness plan`; §§14–18 `Evidence`, `Dirty-tree`, `Final closure`, and `Severity` requirements.
+17:- `/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/master-strategy/strategy-revalidation.md` — §1 `Verdict`; §4 `Final source-doc coverage check`; §5 `DAG and ready-queue safety check`; §7 `Verification and real-boundary witness check`; §8 `Coverage by product surface`; §9 `Severity gate and closure criteria check`; §10 `Recommendation`.
+18:- `/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/next/ready-queue.md` — §2 `First ready queue items`; §5 `Explicitly blocked items and blockers`.
+19:- `/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-24A-planning-output-discipline.md` — `Required future decision template`; `Dependency declaration format`; `Evidence checklist`; `Validator checklist`; `Real-boundary policy`; `Ownership and dirty-tree policy`; `Downstream gating impact`.
+20:- `/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/DL-24A-planning-output-discipline/reports/validation-report.md` — `Verdict`; `Recommendation`.
+21:- `/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-20A-domain-neutrality-foundation.md` — `Decision details`; `Core / extension / sample-demo boundary`; `Allowed and forbidden vocabulary policy`; `Decision-artifact checklist`; `Implementation enforcement plan`; `Verification and witness consequences`.
+22:- `/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/DL-20A-domain-neutrality-foundation/DL-20A-validation-report.md` — `Verdict`; `Domain-neutrality-specific audit`; `Recommendation`.
+23-- `/Users/lizavasilyeva/work/harness-starter/README.md` — §§3.2 `User interacts with skills, not low-level tooling`; 4 `Core workflow`; 7 `CLI role`; 8 `Schematics`; 9 `Verification model`; 10 `Context preservation and retrieval`; 13 `Relationship between starter kit and harness`; 14 `Initial implementation order`; 15 `Success criteria`; 16 `Locked decisions and planning backlog`.
+24-- `/Users/lizavasilyeva/work/harness-starter/docs/locked-decisions.md` — §§1 `Product / package / CLI name`; 4 `App creation UX`; 5 `Generated project config defaults`; 6 `Skills generated per app`; 7 `Schematics are internal/agent-facing`; 8 `Verification and context updates are automatic`; 10 `Verification-layer decisions`; 11 `Mechanical verification gates`.
+25-- `/Users/lizavasilyeva/work/harness-starter/docs/verification-layer.md` — §§1 `Core principles`; 2 `Artifact flow`; 3 `Responsibilities by skill/orchestrator`; 4 `Verification Delta`; 5 `Verification catalog`; 6 `Orchestration model`; 9 `Failure routing and fixing`; 11 `Agent registry`; 13 `Harness configuration`; 14 `Blocking policy summary`; 16 `Final invariant`.
+26-- `/Users/lizavasilyeva/work/harness-starter/docs/mechanical-verification-gates.md` — §§1 `Core verification doctrine`; 2 `Governed quality surface`; 5 `Schema and contract strictness gate`; 7 `Quality wiring-integrity gate`; 11 `How this fits the verification layer`; 12 `Implementation priority`; 13 `Final invariant`.
+27-- `/Users/lizavasilyeva/work/harness-starter/docs/planning-research-backlog.md` — §7 `CLI primitive design`; §2 `Artifact schemas`; §3 `Skill protocols`; §8 `Schematics system`; §9 `Context and memory system`; §10 `Verification implementation details`; §22 `Security and safety model`; §24 `Planning-phase output requirement`.
+28-- `/Users/lizavasilyeva/work/harness-starter/guides/high-level-orchestrator-playbook.md` — §§0 `Binding operator directives`; 5.2 `Work-item loop`; 10 `The quality bar`; 11 `Operator anti-patterns`.
+29:- `/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/prompts/quality-bar.md` — full quality bar.
+30-
+31-## Decision summary
+32-
+33:The CLI binary and command namespace are `vibe-engineer`. The CLI is a deterministic engine and primitive surface; normal users primarily operate through the six skills `brainstorm`, `grill-me`, `task`, `plan`, `build`, and `ship`.
+34-
+35-Backlog §7 is answered as follows:
+36-
+37:1. Public/documented user-facing CLI commands are limited to starter creation/import, diagnostics/config inspection, and skill launchers where the skill itself is user-facing. Low-level schematics, verification, context, registry, and most config primitives are agent/skill/CI/debug primitives, not ordinary user workflow.
+38:2. Skills, agents, CI, and generated projects call primitives by spawning the actual `vibe-engineer` binary with explicit flags, project roots, artifact paths, and machine mode; they must not rely on chat history or scrape prose logs.
+39:3. All automation consumes a stable CLI result envelope emitted as JSON to stdout and/or atomically written to a result file. The envelope carries versioning, status, typed payload, diagnostics, evidence/artifact links, typed error classification, and stable exit behavior.
+40-
+41-## Decision details
+42-
+43-### Binary and namespace
+44-
+45:- The executable name is `vibe-engineer`.
+46:- The CLI-owning package lane is `packages/cli` per the strategy hypothesis; exact package publishing details remain subject to `DL-01` where they do not change the locked binary name.
+47-- Command names and payload vocabulary must remain domain-neutral and use generic harness concepts.
+48:- Command implementations must be discoverable through a command loader owned initially by `I-02-cli-primitive-foundation`, so later command-family lanes do not race on one shared manual index.
+49-
+50-### Visibility classes
+51-
+--
+56-- `skill/agent primitive`: invoked by skills/agents as deterministic helpers; not expected in normal human workflow.
+57-- `CI primitive`: invoked by local/CI quality, validation, or generated-project automation.
+58-- `debug/diagnostic`: safe for advanced troubleshooting; may be human-readable by default but must support machine mode.
+59:- `internal/hidden`: implementation subcommand or substep not documented as stable for external users.
+60-- `rejected`: not part of v1 CLI surface.
+61-- `deferred`: not decided here because no dependent may rely on it until its owner decides it.
+62-
+63:### Normative command rules
+64-
+65:1. Any skill/agent/CI/debug command must support machine mode: `--json` and `--result-file <path>`.
+66:2. Automation must invoke commands with `--non-interactive` or an equivalent machine-mode flag; hidden prompts are forbidden in automation.
+67:3. Mutating commands must accept explicit project root and output/artifact/work paths. Hidden reliance on current chat, unstated agent memory, or ambient notebooks is forbidden.
+68:4. Human-readable output is not a contract. Only the result envelope and schema-validated artifacts are contracts.
+69:5. Destructive or security-sensitive behavior is not authorized by DL-07. It must wait for `DL-22-security-safety-model` and, where relevant, the owning command-family decision/implementation lane.
+70:6. DL-07 defines the common envelope and command boundary; it does not define artifact schemas, skill protocols, schematic manifests, context graph internals, verification evidence taxonomy, registry schema, or security policy internals.
+71-
+72-## CLI surface matrix
+73-
+74-| Command/family | Visibility class | Intended caller | Accepted input forms | Output/result envelope obligations | Side-effect policy | Interactive/non-interactive policy | Related artifact/schema decision | Implementation owner lane | Validation witness owner | Blocked/deferred notes |
+75-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+76:| `vibe-engineer create` | public user-facing; also skill/agent primitive for fixture generation | human, skill, agent, generated project setup | project path/name flags; selected agentic harness; optional brief path/string; config path; `--json`; `--result-file`; `--non-interactive` | `payload.kind=create_result`; generated paths; persisted harness/config summary; context/bootstrap artifacts; diagnostics; evidence links | writes a new starter/generated fixture only under explicit target path; must not write outside target/work paths | interactive allowed for humans with only locked prompts; automation requires all values and no hidden prompts | `DL-02`, `DL-06`, `DL-09`, `DL-16`, `DL-17`, `DL-22` | `I-15-create-import-starter-UX` after `I-02` foundation | `I-15`; rerun in `I-23` | Accepted. Must preserve no stack-preset/max-agents/bootstrap prompts. Security/destructive overwrite behavior waits for `DL-22`. |
+77:| `vibe-engineer import` | public user-facing; also skill/agent primitive | human, skill, agent, existing generated project | existing project root; selected agentic harness; optional brief/context path; config path; machine flags | `payload.kind=import_result`; detected project facts; config writes; context/bootstrap artifacts; diagnostics | mutates only explicit project root after safety/ownership checks | interactive allowed for humans; automation non-interactive only | `DL-02`, `DL-06`, `DL-09`, `DL-16`, `DL-17`, `DL-22` | `I-15-create-import-starter-UX` | `I-15`; rerun in `I-23` | Accepted. Destructive/conflict policy blocked on `DL-22`/`DL-08` where applicable. |
+78:| `vibe-engineer init` | rejected as public v1 command; internal/hidden only if an implementation lane needs a substep | implementation lane only | none as public API | none as public API | no public side effects | no public prompts | `DL-16`, `DL-17`, `DL-22` if later revived | none for public command | none | Rejected publicly to avoid a third creation UX path. Existing-project setup is `import`; new setup is `create`. |
+79:| `vibe-engineer schematic run <schematic-id>` | skill/agent primitive; debug/diagnostic for advanced dry-run only | skill, agent, implementation lane; advanced human debugging | schematic id; variables via flags/config/artifact; `--project-root`; `--dry-run`; `--result-file`; `--json`; `--non-interactive` | `payload.kind=schematic_result`; manifest id/version; planned/written/skipped/conflicted files; artifact links | dry-run is read-only; normal run writes only owned target paths declared by schematic/plan | no interactive prompts in agent/CI mode | `DL-02`, `DL-08`, `DL-09`, `DL-22` | `I-07-schematics-engine` with loader foundation from `I-02` | `I-07`; rerun in `I-23` | Accepted as primitive, not a normal user-facing skill. Exact manifest, idempotency, conflict behavior owned by `DL-08`. |
+80:| `vibe-engineer verify` | skill/agent primitive; CI primitive; debug/diagnostic | `build`, `ship`, agents, CI, advanced troubleshooting | project root; verification scope/plan/artifact paths; optional layer filters; machine flags | `payload.kind=verification_result`; deterministic/advisory status; evidence packet links; failure classifications; rerun hints | may write evidence artifacts under explicit evidence/work paths; must not mutate product source except through owning build/fix lanes | non-interactive in skill/CI; human debug may be human-readable but must support JSON | `DL-02`, `DL-10`, `DL-15`, `DL-18`, `DL-22` | `I-09-verification-runner-evidence-failure-routing`; CI parity in `I-20`; consumed by `I-21`/`I-22` | `I-09`, `I-20`, `I-21`, `I-22`, `I-23` | Accepted. Exact runner catalog/evidence/failure taxonomy owned by `DL-10`; security hooks by `DL-22`. |
+81:| `vibe-engineer context index` | skill/agent primitive; CI/debug primitive | build/ship/context agents, CI | project root; context roots; output graph path; machine flags | `payload.kind=context_index_result`; graph/index artifact links; stale/missing summaries | writes context index artifacts only to explicit context/work paths | non-interactive only for automation | `DL-02`, `DL-09` | `I-08-context-memory-drift`; consumed by `I-15`, `I-21`, `I-22` | `I-08`, `I-15`, `I-21`, `I-22`, `I-23` | Accepted. Graph format/storage/retrieval owned by `DL-09`. |
+82:| `vibe-engineer context validate` | skill/agent primitive; CI/debug primitive | build/ship/context agents, CI | project root; graph/context artifact paths; machine flags | `payload.kind=context_validation_result`; drift/missing/stale diagnostics; artifact links | read-only except optional evidence/result files | non-interactive only for automation | `DL-02`, `DL-09`, `DL-10` | `I-08-context-memory-drift`; CI/build/ship consumers later | `I-08`, `I-21`, `I-22`, `I-23` | Accepted. |
+83:| `vibe-engineer context update` | skill/agent primitive | `build`, `ship`, context agents | project root; source artifact paths; update plan; output paths; machine flags | `payload.kind=context_update_result`; changed context artifacts; links to plan/build/ship/evidence | writes context artifacts only under explicit owned project/context paths | non-interactive in automation; no hidden prompts | `DL-02`, `DL-09`, `DL-10`, `DL-22` | `I-08-context-memory-drift`; consumed by `I-21`/`I-22` | `I-08`, `I-21`, `I-22`, `I-23` | Accepted. Destructive/stale-conflict handling waits for `DL-22` if policy-sensitive. |
+84:| `vibe-engineer doctor` | public debug/diagnostic; CI primitive | human, agent, CI | project root/config path; scope flags; machine flags | `payload.kind=doctor_result`; health checks; dependency/config/registry/context summaries; diagnostics | read-only except result/evidence output | interactive not needed; human default may be prose; machine mode required for automation | `DL-02`, `DL-05`, `DL-09`, `DL-10`, `DL-22` | `I-02-cli-primitive-foundation` for base checks; later lanes extend by command loader | `I-02`, later relevant lanes | Accepted. Must not become substitute for normal build/ship verification. |
+85:| `vibe-engineer config inspect` | debug/diagnostic; CI primitive | human debugging, agent, CI | project root; config path; selectors; redaction mode; machine flags | `payload.kind=config_inspect_result`; resolved config summary; source locations; redacted values | read-only except result file | no prompts; human prose allowed only outside machine mode | `DL-02`, `DL-22` | `I-02-cli-primitive-foundation`; config package by `I-01` | `I-02`; `I-18` for security redaction if needed | Accepted. Secret/redaction policy depends on `DL-22`. |
+86:| `vibe-engineer config validate` | debug/diagnostic; CI primitive; skill/agent primitive | agent, CI, human debugging | project root; config path; machine flags | `payload.kind=config_validation_result`; schema errors; defaults applied; source locations | read-only except result/evidence | non-interactive | `DL-02`, `DL-22` | `I-02-cli-primitive-foundation`; config package by `I-01` | `I-02`; `I-18` if security policy applies | Accepted. |
+87:| `vibe-engineer update check` / `vibe-engineer update plan` | debug/diagnostic; CI primitive | human debugging, CI, agent | project root; current/target versions; config path; machine flags | `payload.kind=update_plan_result`; available migrations; risk/blocker summary; artifact links | read-only except plan/result artifacts | non-interactive | `DL-02`, `DL-19`, `DL-21`, `DL-22` | deferred beyond `I-02` unless scheduled by future migration/governance lane | future owner set by `DL-19`/`DL-21`/`DL-22` or later implementation plan | Accepted only for non-destructive check/plan. |
+88:| `vibe-engineer update apply` / migration apply | deferred | human/agent/CI only after future decision | not decided | must use CLI envelope if later accepted | potentially mutating/destructive | must obey future safety confirmations/non-interactive rules | `DL-19`, `DL-21`, `DL-22` | future migration/update lane, not authorized by DL-07 | future validator | Deferred because destructive/versioning policy is not decided. No dependent may implement/apply migrations from DL-07 alone. |
+89:| `vibe-engineer registry validate` | skill/agent primitive; CI primitive; debug/diagnostic | agents, CI, build/ship, advanced debugging | registry root/path; project root; scope; machine flags | `payload.kind=registry_validation_result`; accepted/rejected entries; schema/prompt/tool diagnostics | read-only except result/evidence | non-interactive | `DL-02`, `DL-03`, `DL-05`, `DL-06`, `DL-22` | `I-04-agent-registry-validation-meta`; command integration through `I-02` loader if needed | `I-04`, `I-14`, `I-21`, `I-23` | Accepted. Exact registry schema/meta-agent policy owned by `DL-05`. |
+90:| `vibe-engineer build` | skill launcher; public only as the `build` skill entrypoint | human through selected harness, skill adapter, agent | approved Implementation Plan path; project root; machine flags; approval token if future policy requires | `payload.kind=build_result`; Build Result artifact link; verification/context/evidence summaries | mutates implementation-owned files only under build orchestration ownership; writes Build Result/evidence/context | may be interactive only at user-approval boundaries defined by `DL-03`/`DL-22`; automation no hidden prompts | `DL-02`, `DL-03`, `DL-04`, `DL-09`, `DL-10`, `DL-22` | `I-21-build-skill-orchestration` after dependencies | `I-21`; rerun in `I-23` | Accepted as skill launcher, not a low-level primitive. Exact skill protocol owned by `DL-03`; security by `DL-22`. |
+91:| `vibe-engineer ship` | skill launcher; public only as the `ship` skill entrypoint | human through selected harness, skill adapter, agent | Build Result path; project root; machine flags; explicit approval for push/PR if future policy permits | `payload.kind=ship_packet`; Ship Packet artifact link; final verification/context/evidence summaries | prepares commit/PR material but must not push/open PR without approval | interactive approval allowed only where explicitly required; automation no hidden prompts | `DL-02`, `DL-03`, `DL-04`, `DL-09`, `DL-10`, `DL-22` | `I-22-ship-skill-orchestration` | `I-22`; rerun in `I-23` | Accepted as skill launcher. No push/PR authority is granted by DL-07. |
+92:| `vibe-engineer skill run <skill>` generic launcher | deferred | selected harness adapters, humans if later approved | not decided | must use CLI envelope if accepted | not decided | not decided | `DL-03`, `DL-06`, `DL-22` | future owner if `DL-03`/`DL-06` require it | future validator | Deferred to avoid replacing skill protocol/adapter decisions. `build`/`ship` concrete launchers remain accepted because strategy assigns CLI command paths to their implementation lanes. |
+93-
+94-## Machine-readable output and error contract
+95-
+96-### Required result envelope
+97-
+98:Every command in machine mode must emit exactly one final result envelope. The envelope is a contract, not a prose convention. `DL-02` owns final artifact-schema publication, but `DL-07` locks these required envelope fields and semantics for `I-02`:
+99-
+100-```json
+101-{
+102:  "schemaVersion": "vibe-engineer.cli.result.v1",
+103-  "invocation": {
+104-    "id": "<stable invocation id>",
+105:    "command": "<canonical command family>",
+106:    "argv": ["<normalized non-secret argv tokens>"],
+107-    "projectRoot": "<absolute or repo-relative resolved root>",
+108-    "configPath": "<path or null>",
+109-    "startedAt": "<ISO-8601>",
+110-    "endedAt": "<ISO-8601>"
+111-  },
+112:  "status": "success | failure | blocked | partial",
+113:  "exitCode": 0,
+114-  "payload": {
+115:    "kind": "<command-specific payload kind>",
+116-    "schemaVersion": "<payload schema version>",
+117-    "data": {}
+118-  },
+119:  "diagnostics": [
+120-    {
+121-      "severity": "info | warning | error",
+122-      "code": "VE_<STABLE_CODE>",
+--
+127-      "hint": "<optional remediation hint>"
+128-    }
+129-  ],
+130:  "artifacts": [
+131-    {
+132-      "kind": "<artifact kind>",
+133-      "path": "<path>",
+--
+136-      "sha256": "<optional content digest>"
+137-    }
+138-  ],
+139:  "errors": [
+140-    {
+141-      "code": "VE_<STABLE_ERROR_CODE>",
+142-      "classification": "<typed classification>",
+--
+151-
+152-Required properties:
+153-
+154:- `schemaVersion` is mandatory and versioned independently from command payload schemas.
+155:- `status` must be one of `success`, `failure`, `blocked`, or `partial`.
+156:- `payload.kind` must identify the command-specific payload type, even when `status` is not `success`.
+157:- `diagnostics[].code` and `errors[].code` are stable identifiers. Consumers must branch on codes/classifications, not on messages.
+158-- `message` and human-readable logs are for humans only and must not be treated as parser contracts.
+159:- `artifacts[]` must link emitted evidence, generated files, Work Brief/Plan/Build/Ship artifacts, context artifacts, registry reports, or result files when applicable.
+160:- When `status=partial`, the additional `payload.data.partial` fields defined in `Partial status contract` below are mandatory; `partial` without those fields is schema-invalid and must be rejected by consumers.
+161:- Secrets and credentials must never be exposed in the envelope; detailed redaction rules are owned by `DL-22`.
+162-
+163-### Exit status contract
+164-
+165:The process exit status must align with the envelope:
+166-
+167-| Exit code | Meaning | Envelope status | Typical classification |
+168-| --- | --- | --- | --- |
+169:| `0` | command succeeded | `success` | none or info/warning diagnostics only |
+170:| `1` | valid invocation completed and found deterministic failure | `failure` | `deterministic_failure` |
+171:| `2` | invalid arguments, unsupported option, or input artifact shape invalid before command execution | `blocked` | `invalid_invocation` or `invalid_input` |
+172:| `3` | project root, config, registry, or required prerequisite missing/invalid | `blocked` | `invalid_project`, `invalid_config`, `missing_prerequisite` |
+173:| `4` | safety/security/destructive-operation policy blocked execution | `blocked` | `safety_policy_block` |
+174:| `5` | ownership/path conflict, write conflict, or unsafe dirty-tree condition for owned paths | `blocked` | `ownership_conflict` or `write_conflict` |
+175:| `6` | required external/runtime provider unavailable | `blocked` | `external_unavailable` |
+176:| `7` | unexpected internal bug | `failure` | `internal_error` |
+177:| `8` | valid multi-scope invocation completed at least one required in-scope unit and left at least one required in-scope unit incomplete with typed incomplete-scope evidence | `partial` | `partial_incomplete` |
+178-
+179:Future commands may add command-specific diagnostic codes, but they must not redefine these exit meanings. `status=partial` with exit `0` is invalid. Exit `8` is the default and only common process exit for `partial` in human, agent, and CI invocation modes.
+180-
+181-### Status semantics and deterministic-gate mapping
+182-
+183-| Envelope status | Deterministic gate meaning | Higher-level/report mapping | Relationship to advisory findings |
+184-| --- | --- | --- | --- |
+185:| `success` | Passed. The command completed its required scope and all hard deterministic gates passed. | May be reported as `passed`, `DONE`, or equivalent by a consuming skill/orchestrator. | May include `info`/`warning` diagnostics for advisory findings. Advisory findings do not change the CLI status. |
+186:| `failure` | Failed. The command completed its required scope and found a deterministic failure, or hit an internal command failure classified as `internal_error`. | Usually maps to `failed` or `needs_fix` depending on the consuming workflow's vocabulary. | Not advisory. |
+187:| `blocked` | Blocked. The command could not validly execute or continue because invocation, inputs, prerequisites, safety policy, ownership, external availability, or project/config state prevented a trustworthy result. | Maps to `BLOCKED` or equivalent. A consumer may not convert it to `needs_fix` unless a documented fixer can resolve the exact prerequisite. | Not advisory. |
+188:| `partial` | Blocking incomplete result. It is not success, not passed, not advisory, and not a warning-only status. Deterministic gates must treat it as non-passing until a later complete rerun returns `success`. | May map to `needs_fix` only when the incomplete scopes are actionable by a fixer/resume path; otherwise maps to `BLOCKED`. It must never map to `passed`, `DONE`, or CI green. | Advisory-only findings must be represented as warning diagnostics on `success` or in command-specific advisory payload fields, not as `partial`. |
+189-
+190:`partial` is allowed only for commands with an explicit multi-scope or multi-target contract where at least one required in-scope unit completed with usable typed evidence and at least one required in-scope unit remained incomplete. If no required unit completed, use `blocked` or `failure` instead. If all required units completed but some advisory review is unavailable or inconclusive, use `success` with advisory diagnostics unless the owning verification decision makes that advisory item a hard gate.
+191-
+192-### Partial status contract
+193-
+194:When `status=partial`, the process exit code must be `8` for humans, agents, and CI. Human default mode may print a prose summary before process exit, but the process still exits `8`; machine mode must emit the envelope normally. Agent and CI consumers must treat exit `8` as a hard non-green result.
+195-
+196:A `partial` envelope must include these machine-readable fields in addition to the common envelope fields:
+197-
+198-```json
+199-{
+200:  "status": "partial",
+201:  "exitCode": 8,
+202-  "payload": {
+203:    "kind": "<command-specific payload kind>",
+204-    "schemaVersion": "<payload schema version>",
+205-    "data": {
+206:      "partial": {
+207-        "overallDisposition": "not_passed_blocking",
+208-        "completedScopes": [
+209-          {
+210-            "id": "<stable scope id>",
+211-            "kind": "<scope kind>",
+212-            "required": true,
+213:            "artifacts": ["<artifact path or artifact id>"]
+214-          }
+215-        ],
+216-        "incompleteScopes": [
+--
+220-            "required": true,
+221-            "blocking": true,
+222-            "reasonCode": "VE_<STABLE_CODE>",
+223:            "classification": "partial_incomplete",
+224-            "nextAction": "<typed next action or null>"
+225-          }
+226-        ],
+227-        "resume": {
+228-          "allowed": true,
+229:          "command": ["vibe-engineer", "<command>", "<args>"]
+230-        }
+231-      }
+232-    }
+--
+234-}
+235-```
+236-
+237:Minimum validity rules for `status=partial`:
+238-
+239:- `payload.data.partial.overallDisposition` must be exactly `not_passed_blocking`.
+240:- `completedScopes[]` must contain at least one completed required scope with a stable `id`, `kind`, and artifact/evidence reference; otherwise the command must report `blocked` or `failure`.
+241-- `incompleteScopes[]` must contain at least one required incomplete scope with `required: true`, `blocking: true`, stable `reasonCode`, and typed `classification`.
+242:- `diagnostics[]` must include at least one `severity: "error"` diagnostic with classification `partial_incomplete` and a stable code for the incomplete scope class.
+243:- `errors[]` must include at least one item with `classification: "partial_incomplete"`, `blocking: true`, and `details.incompleteScopeIds` listing the affected incomplete scopes. `retryable` must reflect whether `resume.allowed` is true.
+244:- `resume.allowed` must be boolean. When true, `resume.command` must be canonical argv for a non-interactive rerun/resume path; when false, `resume.command` must be `null` and consumers must classify the workflow as `BLOCKED` unless another typed fixer is available.
+245:- `artifacts[]` may list only artifacts actually produced and valid for completed scopes. Missing, invalid, or incomplete artifacts must be listed under `incompleteScopes[]`, not presented as successful output artifacts.
+246:- `partial` must not be emitted for invalid invocation, invalid project/config, missing global prerequisite, safety/security block, ownership/path conflict, unavailable required external provider, or internal bug; those conditions use exits `2` through `7` as applicable.
+247:- `partial` must not downgrade a hard deterministic failure to a warning, must not suppress a required blocker, and must not be used to let `build`, `ship`, validation, or CI proceed as green.
+248-
+249-### Stdout/stderr policy
+250-
+251:- In machine mode (`--json`, `--result-file`, or documented automation mode), stdout must contain only the final JSON envelope unless `--result-file` is used with `--quiet`, in which case stdout may be empty and the result file is the carrier.
+252:- If `--result-file <path>` is supplied, the command must write the same envelope atomically to that path.
+253:- Human progress, spinners, banners, and narrative summaries are forbidden on stdout in machine mode.
+254:- Stderr may carry human progress or runtime warnings, but agents/CI must not parse stderr as the contract. Spawn failures before envelope creation are the only exception and must be handled as process failures by the consumer.
+255:- Human default mode may print prose, tables, or summaries, but every command intended for automation must have machine mode.
+256-
+257-### Typed error classifications
+258-
+--
+264-- `invalid_config`
+265-- `missing_prerequisite`
+266-- `unsupported_operation`
+267:- `deterministic_failure`
+268-- `safety_policy_block`
+269-- `ownership_conflict`
+270-- `write_conflict`
+271-- `external_unavailable`
+272-- `internal_error`
+273:- `partial_incomplete`
+274-
+275:Sibling decisions may refine command-specific error codes and payload fields, but they must preserve these classifications for cross-command consumers. Sibling decisions may add narrower partial reason codes, but they must preserve the common `partial_incomplete` classification and exit `8` behavior.
+276-
+277-## Skill/agent/CI consumption contract
+278-
+279:- Skills, agents, CI, and generated projects must invoke the actual `vibe-engineer` binary/entrypoint, not import private command internals as a substitute for CLI-boundary proof.
+280:- Automation must pass `--json` and/or `--result-file <path>` and parse only the result envelope plus schema-validated artifacts.
+281-- Automation must supply explicit artifact paths: Work Brief, Implementation Plan, Verification Delta, Build Result, Ship Packet, Evidence Packet, context graph/index, registry paths, or schematic manifests as applicable.
+282:- Skills must treat primitive commands as deterministic helpers. A skill may summarize human text to the user, but skill-to-primitive and primitive-to-skill handoff is through typed artifacts and the CLI result envelope.
+283:- CI must treat nonzero exits as blocking according to the exit table and must record the envelope/evidence artifact paths.
+284:- For `status=partial`, skills/orchestrators must stop the current deterministic gate, record the envelope and completed-scope evidence, route actionable incomplete scopes to the appropriate fixer/resume path, and report `needs_fix` only when that workflow vocabulary means "non-green and fixable". If no safe fixer/resume path exists, they must report `BLOCKED`.
+285:- For `status=partial`, CI must fail/block the job on exit `8`; it may upload completed-scope evidence as diagnostic evidence, but it must not mark the aggregate quality, build, ship, or validation gate green.
+286:- For `status=partial`, evidence collectors must mark the command result and any aggregate evidence packet as incomplete/non-passing. Completed-scope artifacts may be retained as partial evidence, but they cannot prove the whole command or dependent gate passed.
+287:- Generated projects must call the installed/local `vibe-engineer` command path selected by their harness config; hidden global state or chat-history dependence is forbidden.
+288-- Consumers must never scrape phrases from human logs, progress output, stderr, or diagnostic messages.
+289-
+290-## Interactive and non-interactive behavior
+291-
+292-- `create` and `import` may prompt humans, but only for locked creation inputs: project/repo/app naming values, default agentic harness, and optional project brief.
+293-- `create` and `import` must not prompt for stack preset, max parallel agents, separate bootstrap/skip-bootstrap, or other forbidden UX additions.
+294:- All automation paths must be non-interactive. Missing required values in non-interactive mode must produce exit `2` or `3` with a typed envelope, not a prompt.
+295-- Commands invoked by `build`, `ship`, agents, CI, or validators must never pause for hidden confirmations.
+296:- Approval boundaries for destructive operations, commits, pushes, PRs, secrets, credentials, and unsafe external operations are not decided by DL-07. They are blocked on `DL-22` and relevant skill decisions.
+297-- Project-root discovery may walk upward from cwd to a documented config marker, but automation must be able to pass `--project-root`. The resolved root must appear in the envelope.
+298:- Config loading must be explicit and observable in the envelope. Defaults may be applied only through typed config rules; no command may infer contract-critical settings from chat history.
+299-
+300-## Alternatives considered
+301-
+302-### User-facing everything
+303-
+304-- decision: rejected
+305:- rationale: README and locked decisions state normal users should not operate dozens of low-level commands; users operate through six skills, with verification/context/schematics automatic.
+306:- consequences: low-level commands exist but are classified as skill/agent/CI/debug primitives.
+307-
+308-### Internal-only CLI
+309-
+310-- decision: rejected
+311:- rationale: locked decisions require `vibe-engineer create/import` for starter setup, diagnostics are necessary for support, and CI/agents need a stable process boundary.
+312-- consequences: a small public surface is documented while most primitives remain automation-first.
+313-
+314-### Prose/log output as the contract
+315-
+316-- decision: rejected
+317-- rationale: backlog §7 requires reliable agent parsing, and verification sources require evidence over assertion. Prose/log scraping would be heuristic and unstable.
+318:- consequences: JSON result envelope, stable codes, exit table, and artifact links are mandatory.
+319-
+320:### One giant command
+321-
+322-- decision: rejected
+323:- rationale: create, schematics, verification, context, registry, config, diagnostics, build, and ship have distinct ownership, payloads, side effects, and witness lanes.
+324:- consequences: command families are separated and mapped to owner lanes.
+325-
+326-### Command families with typed output
+327-
+--
+332-### Defer all exact CLI details to sibling decisions
+333-
+334-- decision: rejected
+335:- rationale: `I-02-cli-primitive-foundation` needs a stable output/error/exit contract and command namespace before it can safely proceed.
+336-- consequences: DL-07 locks common CLI semantics now and defers only sibling-owned payload internals or destructive/security details.
+337-
+338-## Dependencies and prerequisites
+--
+351-    - id: DL-20A-domain-neutrality-foundation
+352-      type: decision
+353-      required_status: LOCKED/PASS
+354:      rationale: Supplies domain-neutral core/extension/sample-demo rules for CLI names, prompts, outputs, diagnostics, and defaults.
+355-    - id: source-docs
+356-      type: source_doc
+357-      required_status: AVAILABLE
+358-      rationale: README, locked decisions, verification layer, mechanical gates, backlog, strategy, playbook, and quality bar define CLI role and proof requirements.
+359-  blocks:
+360-    - id: I-02-cli-primitive-foundation
+361:      reason: Needs binary namespace, common command contract, exit/error behavior, and result envelope.
+362-    - id: I-07-schematics-engine
+363:      reason: Needs schematic command visibility and CLI result obligations.
+364:    - id: I-09-verification-runner-evidence-failure-routing
+365:      reason: Needs verification command boundary, envelope, and evidence link obligations.
+366-    - id: I-15-create-import-starter-UX
+367-      reason: Needs create/import public surface and non-interactive machine behavior.
+368-    - id: I-21-build-skill-orchestration
+369-      reason: Needs build skill launcher and primitive-consumption contract.
+370-    - id: I-22-ship-skill-orchestration
+371-      reason: Needs ship skill launcher and no-push/no-hidden-prompt CLI boundaries.
+372:  blocked_dependents:
+373-    - id: I-02-cli-primitive-foundation
+374:      blocked_until: DL-07 is independently validated clean and DL-22/security prerequisites for CLI foundation are satisfied.
+375:      relying_on: common CLI envelope, exit codes, command visibility classes, config/doctor primitives, command-loader boundary.
+376-    - id: I-07-schematics-engine
+377:      blocked_until: DL-07, DL-08, and required artifact/config dependencies are green.
+378:      relying_on: `vibe-engineer schematic run` primitive contract.
+379:    - id: I-09-verification-runner-evidence-failure-routing
+380:      blocked_until: DL-07, DL-10, DL-22, and required artifact/orchestration dependencies are green.
+381:      relying_on: `vibe-engineer verify` primitive contract and evidence links.
+382-    - id: I-15-create-import-starter-UX
+383:      blocked_until: DL-07 plus create/import sibling decisions and prerequisites are green.
+384:      relying_on: public create/import command contract and prompt/non-interactive policy.
+385-    - id: I-21-build-skill-orchestration
+386:      blocked_until: DL-07 plus skill/context/verification/orchestration dependencies are green.
+387-      relying_on: build launcher contract and primitive consumption rules.
+388-    - id: I-22-ship-skill-orchestration
+389:      blocked_until: DL-07 plus skill/context/verification/security dependencies are green.
+390-      relying_on: ship launcher contract, final verification behavior, and no push/PR without approval boundary.
+391-    - id: update-apply-or-migration-apply implementation
+392:      blocked_until: DL-22 and future migration/versioning owner explicitly decide destructive apply behavior.
+393-      relying_on: security/destructive operation policy not owned by DL-07.
+394-  required_before_finalizing:
+395-    - id: DL-02-artifact-schemas
+396:      required_content: Final schema definitions for CLI result envelope publication and command-specific payload/artifact schemas.
+397-    - id: DL-03-skill-protocols
+398-      required_content: Exact skill invocation and artifact handoff protocol for skill launchers and primitive calls.
+399-    - id: DL-08-schematics-system
+--
+401-    - id: DL-09-context-memory-drift
+402-      required_content: Context graph/index/update/validate payload schemas and storage semantics.
+403-    - id: DL-10-verification-implementation
+404:      required_content: Verification runner, evidence packet, failure taxonomy, rerun/advisory/hard result semantics.
+405-    - id: DL-22-security-safety-model
+406:      required_content: Secret redaction, command allow/deny, destructive operation confirmation, safe external operation, and audit log policy.
+407-  deferrals:
+408:    - deferred_question: Exact payload fields for each command family beyond the common result envelope.
+409-      rationale: Payload internals belong to artifact, skill, schematic, context, verification, registry, and security decisions.
+410-      future_owner: DL-02, DL-03, DL-05, DL-08, DL-09, DL-10, DL-22 and owning I-* lanes.
+411-      allowed_now: true
+412:      blocked_dependents:
+413:        - affected command-family implementation until its owner decision is green
+414-      invalid_if_any_dependent_relies: true
+415:    - deferred_question: Destructive `update apply` / migration apply command behavior.
+416-      rationale: Security/destructive/versioning policy is not available and must not be invented here.
+417-      future_owner: DL-22 plus future migration/governance owner from DL-19/DL-21 or implementation planning.
+418-      allowed_now: true
+419:      blocked_dependents:
+420-        - update-apply-or-migration-apply implementation
+421-      invalid_if_any_dependent_relies: true
+422:    - deferred_question: Generic `vibe-engineer skill run <skill>` launcher.
+423:      rationale: Exact skill protocols and selected-harness adapter invocation are owned by DL-03 and DL-06; build/ship concrete command paths are accepted separately by strategy ownership.
+424-      future_owner: DL-03-skill-protocols / DL-06-agentic-harness-integrations
+425-      allowed_now: true
+426:      blocked_dependents:
+427-        - any generic skill-run CLI implementation
+428-      invalid_if_any_dependent_relies: true
+429-  owned_write_paths:
+430:    - /Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-07-cli-primitives.md
+431:    - /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/DL-07-cli-primitives/**
+432-  read_only_paths:
+433:    - /Users/lizavasilyeva/work/harness-starter/** source docs and orchestration artifacts
+434:    - /Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-24A-planning-output-discipline.md
+435:    - /Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-20A-domain-neutrality-foundation.md
+436:    - /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/DL-24A-planning-output-discipline/**
+437:    - /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/DL-20A-domain-neutrality-foundation/**
+438:    - /Users/lizavasilyeva/work/vibe-engineer/** inventory outside DL-07 owned paths
+439-  untouchable_paths:
+440:    - /Users/lizavasilyeva/work/vibe-engineer/.git/**
+441:    - /Users/lizavasilyeva/work/vibe-engineer/packages/**
+442:    - /Users/lizavasilyeva/work/vibe-engineer/apps/**
+443:    - /Users/lizavasilyeva/work/vibe-engineer/examples/**
+444:    - /Users/lizavasilyeva/work/vibe-engineer/scripts/**
+445:    - /Users/lizavasilyeva/work/vibe-engineer/.github/**
+446-    - root config files
+447-    - generated starter files
+448-    - non-owned decision/report paths
+--
+452-      condition: After independent DL-07 validation is clean and other lane prerequisites are satisfied.
+453-      shared_path_policy: serialized
+454-    - from: I-02-cli-primitive-foundation
+455:      to: I-07/I-09/I-15/I-21/I-22 command-family lanes
+456-      condition: Command loader/envelope foundation exists and ownership handoff is recorded.
+457-      shared_path_policy: serialized
+458-```
+459-
+460-## Blocked dependents
+461-
+462:At minimum, these lanes remain blocked until DL-07 is independently validated clean and their sibling prerequisites are satisfied:
+463-
+464:- `I-02-cli-primitive-foundation` — blocked on DL-07 common CLI contract plus `DL-22` for security-sensitive CLI foundation.
+465:- `I-07-schematics-engine` — blocked on DL-07 + `DL-08` and artifact/config prerequisites.
+466:- `I-09-verification-runner-evidence-failure-routing` — blocked on DL-07 + `DL-10` + `DL-22` and artifact/orchestration prerequisites.
+467:- `I-15-create-import-starter-UX` — blocked on DL-07 plus create/import/starter/context/security decisions.
+468:- `I-21-build-skill-orchestration` — blocked on DL-07 plus skill/orchestration/context/verification dependencies.
+469:- `I-22-ship-skill-orchestration` — blocked on DL-07 plus skill/context/verification/security dependencies.
+470-
+471:Additional blocked/deferred dependents:
+472-
+473:- Any destructive `update apply` / migration apply command is blocked until `DL-22` and a future migration/versioning owner decide the policy.
+474:- Any generic `vibe-engineer skill run <skill>` implementation is blocked until `DL-03`/`DL-06` decide the protocol/adapter boundary.
+475:- Any command-family implementation that relies on unresolved payload internals is blocked until its owner decision supplies the exact schema/protocol.
+476-
+477-## Verification/witness consequences
+478-
+479:- deterministic checks affected: CLI command-loader tests, result-envelope schema validation, status/exit-code mapping including `partial` exit `8`, stdout/stderr machine-mode discipline, non-interactive hidden-prompt checks, root/config/input validation, partial-envelope validity, and command-family payload schema checks.
+480-- positive witnesses required downstream:
+481:  - actual `vibe-engineer` binary emits schema-valid JSON envelope for accepted command families;
+482:  - `--result-file` is written atomically and matches stdout envelope where both are requested;
+483-  - `create`/`import` preserve locked prompts and generated config defaults;
+484-  - `verify`, `context`, `schematic`, `registry`, `config`, `doctor`, `build`, and `ship` return typed payload kinds and artifact links when implemented;
+485:  - the first implemented command family that can legitimately produce a multi-scope incomplete result proves an actual binary/spawn/stdout-stderr/exit/result-file witness where `status=partial` exits `8`, includes mandatory `payload.data.partial`, `diagnostics`, `errors`, and artifacts, and is consumed by the real skill/CI parser as non-green.
+486-- negative witnesses required downstream:
+487:  - invalid flags/inputs produce exit `2` and typed envelope;
+488:  - invalid config/project root produces exit `3` and typed envelope;
+489:  - deterministic verification failure produces exit `1` without prose scraping;
+490:  - safety/security/ownership conflicts produce typed blocked exits after `DL-22` policy exists;
+491:  - `status=partial` with exit `0`, missing `payload.data.partial`, no blocking incomplete scope, no `partial_incomplete` error, or aggregate consumer pass/CI green is rejected;
+492:  - a command using `partial` to mask invalid invocation, missing global prerequisite, safety block, ownership conflict, external-provider outage, internal bug, hard deterministic failure, or advisory-only warning is rejected;
+493:  - machine mode with human banners/progress on stdout is rejected;
+494-  - hidden prompt in non-interactive mode is rejected.
+495-- regression witnesses required downstream:
+496:  - binary remains `vibe-engineer`;
+497-  - normal users remain skill-first and are not required to run low-level verify/context/schematic primitives;
+498-  - six skills remain `brainstorm`, `grill-me`, `task`, `plan`, `build`, `ship`;
+499-  - create flow does not add forbidden prompts;
+--
+506-
+507-Earliest proof lanes:
+508-
+509:- `I-02-cli-primitive-foundation`: actual `vibe-engineer` binary invokes primitive command(s), emits schema-valid machine output, writes/reads result carriers, rejects invalid config/inputs, and locks consumer parser behavior so `partial`/exit `8` is non-green and cannot be treated as success.
+510:- `I-07-schematics-engine`: actual CLI schematic command writes/validates fixture output under owned paths.
+511:- `I-09-verification-runner-evidence-failure-routing`: actual `vibe-engineer verify` invokes runners/gates and writes evidence consumed by build/validators.
+512:- `I-15-create-import-starter-UX`: actual `vibe-engineer create/import` writes starter fixture and persists selected harness/config without forbidden prompts.
+513:- `I-21-build-skill-orchestration`: actual build skill/command consumes Implementation Plan and invokes verification/context/evidence paths.
+514:- `I-22-ship-skill-orchestration`: actual ship skill/command consumes Build Result and prepares Ship Packet without pushing.
+515-
+516:If any implementation lane cannot run the actual binary/spawn/stdout/stderr/process-exit/result-file/consumer parser boundary, that lane must remain `pending-live/BLOCKED`; shape-only fixtures or hand-authored envelopes are insufficient. For `partial`, the real-boundary witness must cross the actual CLI producer → stdout/stderr/process exit carrier → result-file carrier when used → skill/orchestrator/CI/evidence-consumer parser, and must prove the consumer blocks rather than treating partial evidence as whole-command proof.
+517-
+518-## Ownership/path consequences
+519-
+520-- owned_write_paths:
+521:  - `/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-07-cli-primitives.md`
+522:  - `/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/DL-07-cli-primitives/**`
+523-- read_only_paths:
+524:  - all cited source docs and orchestration artifacts in `/Users/lizavasilyeva/work/harness-starter/**`;
+525-  - prior decisions/reports for `DL-24A` and `DL-20A`;
+526-  - target repo inventory outside DL-07 owned paths;
+527:  - sibling decision artifacts/reports if present.
+528-- untouchable_paths:
+529:  - `/Users/lizavasilyeva/work/vibe-engineer/.git/**`;
+530-  - production package/source paths, root configs, CI, generated starter files;
+531-  - non-owned decision/report paths.
+532-- serialized/shared ownership notes:
+533:  - `I-02` owns the command loader/foundation and must provide serialized handoff before later command-family lanes edit shared CLI registration/package metadata.
+534-  - DL-07 authorizes no package/source/root/config/CI/generated-starter writes.
+535-
+536-## Domain-neutrality check
+537-
+538-- DL-20A status consulted: `LOCKED` and independently validated `PASS`.
+539:- governed surfaces affected by this decision: CLI command names, output envelopes, error classifications, diagnostics, prompts, docs implications, and future command-family examples.
+540-- surface classification: core harness CLI decision; no consuming-project extension or sample/demo implementation is created here.
+541:- positive generic vocabulary permitted: apps, packages, modules, contracts, adapters, tests, standards, context, plans, verification, schematics, skills, agents, registries, artifacts, evidence, config, project root, generated starter.
+542-- project/business terms mentioned: none as core defaults. DL-20A forbidden examples are not used as CLI defaults or examples here.
+543-- result: PASS. The CLI surface uses generic harness vocabulary and does not embed ecommerce, inventory, fashion, Billz, Telegram, Instagram, checkout/product/customer-order style models, or equivalent project/business assumptions.
+544:- extension boundary: project-specific names may enter only as explicit user/project inputs to `create`/`import` or consuming-project extension commands; they must not become core defaults.
+545-- sample/demo boundary: no sample/demo behavior is decided here; future examples must be labeled and checked under DL-20A.
+546:- deterministic/advisory enforcement owners: command/domain-neutrality enforcement maps to `DL-15`/`I-10`, `I-04`, `I-07`, `I-15`, `I-24`, `DL-20B`, and final bughunt as assigned by DL-20A.
+547-
+548-## Dirty-tree safety
+549-
+--
+559-
+560-### Command payload internals
+561-
+562:- deferred_question: exact command-specific payload fields and artifact schemas beyond the common envelope.
+563-- reason_now: those details belong to `DL-02`, `DL-03`, `DL-05`, `DL-08`, `DL-09`, `DL-10`, and related implementation lanes.
+564-- future_owner: listed sibling decisions and owner lanes.
+565:- required_before_finalizing: affected command-family implementations.
+566:- blocked_dependents: any lane relying on missing payload details.
+567:- proof_no_dependent_relies_now: `I-02` can implement the common envelope, exit codes, command loader, config/doctor primitives, and validation scaffolding without inventing command-family payload internals.
+568-
+569-### Destructive update/migration apply
+570-
+571:- deferred_question: whether/how `vibe-engineer update apply` or migration apply exists.
+572-- reason_now: destructive/security/versioning policy is owned by `DL-22` and future governance/migration owners.
+573-- future_owner: `DL-22-security-safety-model` plus future migration/versioning lane.
+574-- required_before_finalizing: any mutating update/migration implementation.
+575:- blocked_dependents: update/migration apply implementation.
+576-- proof_no_dependent_relies_now: non-destructive `update check/plan` is enough for current CLI primitive classification; no listed immediate implementation lane requires destructive update apply.
+577-
+578-### Generic skill launcher
+579-
+580:- deferred_question: whether `vibe-engineer skill run <skill>` exists as a generic skill launcher.
+581-- reason_now: skill protocol and selected-harness adapter invocation are owned by `DL-03` and `DL-06`.
+582-- future_owner: `DL-03-skill-protocols` and `DL-06-agentic-harness-integrations`.
+583-- required_before_finalizing: any generic skill-run CLI implementation.
+584:- blocked_dependents: generic skill-run implementation only.
+585:- proof_no_dependent_relies_now: concrete `build`/`ship` CLI paths are accepted because strategy assigns those command paths to `I-21`/`I-22`; other skills can remain adapter/skill surfaces until their owners decide.
+586-
+587-## Evidence checklist
+588-
+589:1. Report artifact was created first at `/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/DL-07-cli-primitives/DL-07-execution-report.md` and updated before the decision write.
+590-2. Source files inspected are listed in the execution report and cited above by path/section heading.
+591-3. Files changed are this decision artifact and the DL-07 execution report only.
+592-4. No production/package/root/config/CI/generated starter files were touched.
+593-5. This artifact produces exactly one output class: `locked_decision_document`.
+594:6. Dependencies, blocked dependents, required sequencing, deferrals, ownership, read-only, untouchable, and handoff fields use the DL-24A dependency declaration format.
+595:7. Deferrals prove that no dependent may rely on unresolved payload/destructive/generic-skill details; affected dependents are blocked.
+596-8. Verification/witness consequences list positive, negative, regression, and real-boundary requirements.
+597:9. Real-boundary status is stated: no live CLI proof is claimed by this decision; actual binary/spawn/carrier/consumer proof is required in implementation lanes.
+598-10. Ownership/path consequences are explicit and dirty-tree-safe.
+599-11. Domain-neutrality check is present and applies DL-20A.
+600:12. Locked decisions remain uncontradicted: `vibe-engineer`, two-repo direction, six skills, artifact flow, automatic build/ship verification/context/evidence, fixed create UX/defaults, schematics internal boundary, mechanical gates, and no push/PR without approval.
+601-13. Downstream dependents cannot finalize without this CLI primitive contract and their sibling prerequisites.
+602-14. Validator checklist and severity policy are included below.
+603-
+--
+607-
+608-### Positive witnesses
+609-
+610:- Artifact exists at `/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-07-cli-primitives.md` and follows DL-24A schema.
+611:- Artifact explicitly answers backlog §7: public/internal classification, skill/agent/CI invocation, and parseable output/error/exit format, including `partial` status semantics.
+612-- CLI surface matrix covers create/import/init, schematics, verification, context, doctor, config, update/migrations, registry validation, and build/ship launchers.
+613:- Machine-readable output/error contract is stable enough for `I-02` to implement without inventing parse rules, including exit `8`, required `payload.data.partial` fields, and non-green consumer handling for `status=partial`.
+614:- Accepted command families map to owner lanes and validation witness owners.
+615-- Skill-first UX and automatic verification/context behavior are preserved.
+616-- Domain-neutrality checklist is present and applied.
+617-
+618-### Negative witnesses
+619-
+620:- A CLI decision omitting output/exit/error semantics is not green.
+621-- A CLI decision relying on scraping human prose logs is rejected.
+622:- A decision making all commands ordinary public user-facing commands is rejected.
+623-- A decision that lets implementation proceed while deferring the output contract needed by `I-02` is rejected.
+624:- A decision that allows `status=partial` without exact exit code, blocking/non-blocking semantics, required machine fields, and consumer behavior is rejected.
+625:- A decision or implementation that permits `partial` to avoid a hard deterministic blocker, produce CI green, or replace `blocked`/`failure`/advisory semantics is rejected.
+626:- A decision that decides security/destructive command behavior without `DL-22` or blocked-dependent mapping is rejected.
+627-- A decision that uses project/business domain examples in core CLI defaults is rejected unless explicitly sample/demo or negative-example labeled.
+628-
+629-### Regression witnesses
+630-
+631:- Product/package/CLI name remains `vibe-engineer`.
+632-- Six user-facing skills remain `brainstorm`, `grill-me`, `task`, `plan`, `build`, `ship`.
+633-- Normal users are not required to run low-level `verify`, `context update`, or schematics during normal work.
+634-- Create flow asks only project naming, default agentic harness, and optional project brief; no stack preset, max-parallel-agents, or separate bootstrap prompt is added.
+--
+646-
+647-### Severity policy
+648-
+649:- `critical`: locked-decision contradiction; missing DL-24A/DL-20A prerequisite; out-of-license write; missing decision artifact; no parseable output/error contract while unblocking CLI implementation; public/internal command boundary contradictory to skill UX; invalid deferral relied on by dependents; false real-boundary closure; domain-specific core CLI defaults.
+650:- `major-local`: incomplete command matrix, unclear owner mapping, missing source citation, weak validation witness plan, or unresolved sibling-decision dependency that blocks direct CLI dependents but can be repaired within DL-07 paths.
+651-- `minor-local`: wording/format/citation clarity issue that does not weaken downstream gating.
+652:- `clean`: all schema, source, command, dependency, domain-neutrality, ownership, and witness requirements are satisfied.
+653-
+654-## Known ambiguities / future owners
+655-
+656:- `DL-02` owns final artifact schema publication and command-family payload schemas, including whether the CLI result envelope is also packaged as an artifact schema.
+657-- `DL-03` owns exact skill protocols, including user approval boundaries and whether any non-build/ship skills receive CLI launchers.
+658-- `DL-05` owns registry schema/meta-agent policy consumed by `registry validate`.
+659:- `DL-06` owns selected agentic harness adapter invocation details and generated skill/command files.
+660-- `DL-08` owns schematic API, manifest, variable/input system, idempotency, conflict behavior, and dry-run payloads.
+661-- `DL-09` owns context graph/storage/index/update/validate details.
+662:- `DL-10` owns verification runner, evidence model, failure taxonomy, rerun strategy, and advisory/hard result representation within the common DL-07 status contract, including the rule that `partial` is non-green exit `8` and advisory-only findings are not `partial`.
+663-- `DL-15` owns exact mechanical engine/tooling; `I-10` and later lanes own deterministic checks.
+664:- `DL-22` owns secret redaction, command allow/deny policy, sandbox/destructive-operation rules, external-operation safety, env conventions, and audit/evidence logs.
+665:- `DL-19`/`DL-21` or a future migration lane must decide versioning/update/migration apply semantics before any destructive update command exists.
+666:- No live CLI behavior is proven here; all actual binary/consumer proof belongs to implementation lanes and remains pending until those lanes run.
+
+# DL-01 targeted excerpts
+6-- output_class: locked_decision_document
+7-- date: 2026-06-23
+8-- owner_lane: DL-01 decision-lock execution
+9:- artifact_path: `/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-01-repo-package-structure.md`
+10:- report_path: `/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/DL-01-repo-package-structure/DL-01-execution-report.md`
+11-
+12-## Source citations
+13-
+14:- `/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/master-strategy/strategy-final.md` — §3 `Locked decisions implementation must preserve`; §4.1 `Harness repo package hypothesis`; §4.2 `Generated starter kit hypothesis`; §5.1 `Mandatory output discipline for all decision artifacts`; §5.2 `Decision-lock table`; §6 `Dependency DAG with scheduler gates`; §8 `Pass sizing and allocation`; §9.2 `Decision triad ownership`; §10 `Verification matrix by lane`; §11 `Early real-boundary witness plan`; §§14–18 evidence, dirty-tree, final closure, and severity requirements.
+15:- `/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/master-strategy/strategy-revalidation.md` — §1 `Verdict`; §4 `Final source-doc coverage check`; §5 `DAG and ready-queue safety check`; §7 `Verification and real-boundary witness check`; §9 `Severity gate and closure criteria check`; §10 `Recommendation`.
+16:- `/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-24A-planning-output-discipline.md` — `Required future decision template`; `Dependency declaration format`; `Evidence checklist`; `Validator checklist`; `Real-boundary policy`; `Ownership and dirty-tree policy`; `Downstream gating impact`.
+17:- `/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-20A-domain-neutrality-foundation.md` — `Core / extension / sample-demo boundary`; `Allowed and forbidden vocabulary policy`; `Decision-artifact checklist`; `Implementation enforcement plan`; `Verification/witness consequences`.
+18:- `/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/DL-24A-planning-output-discipline/reports/validation-report.md` — `Verdict`; `Recommendation`.
+19:- `/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/DL-20A-domain-neutrality-foundation/DL-20A-validation-report.md` — `Verdict`; `Domain-neutrality-specific audit`; `Recommendation`.
+20:- `/Users/lizavasilyeva/work/harness-starter/README.md` — §§1–3 `Product vision`, `The two repositories`, `Non-negotiable design rules`; §§11–13 `Harness package shape`, `Starter kit shape`, `Relationship between starter kit and harness`; §16 `Locked decisions and planning backlog`.
+21:- `/Users/lizavasilyeva/work/harness-starter/docs/locked-decisions.md` — §§1–3 `Product / package / CLI name`, `Two-repo direction`, `Starter kit stack`; §§5–11 for config defaults, skills, schematics, automatic verification/context, E2E, verification layer, and mechanical gates.
+22-- `/Users/lizavasilyeva/work/harness-starter/docs/verification-layer.md` — §§1–4 and §§11–16 for evidence, artifact flow, Verification Delta, registry, blocking policy, and final invariant.
+23:- `/Users/lizavasilyeva/work/harness-starter/docs/mechanical-verification-gates.md` — §§1–13 for mechanical gate package/verification implications.
+24:- `/Users/lizavasilyeva/work/harness-starter/docs/planning-research-backlog.md` — §1 `Repository and package structure`.
+25-- `/Users/lizavasilyeva/work/harness-starter/guides/high-level-orchestrator-playbook.md` — §§5.2 and 10 for Triad-B validation, dirty-tree safety, and real-boundary discipline.
+26-
+27-## Decision summary
+28-
+29:The harness repository is the single open-source monorepo named `vibe-engineer`. The generated/reference starter repository is named `vibe-engineer-starter`. The harness monorepo uses pnpm workspaces and Turborepo from day one, with a minimal source package split aligned to final-strategy implementation lanes. The public npm package and CLI binary are both `vibe-engineer`, implemented from `packages/cli`; all other harness packages use reserved scoped workspace names under `@vibe-engineer/*` but are private/internal and not independently published in the initial release.
+30-
+31:The starter consumes the harness by depending on the `vibe-engineer` package and using harness-generated assets/configuration. It must not copy harness implementation logic. Later lanes must prove real package-manager, import, contract, and CI joins before closure.
+32-
+33-## Decision details
+34-
+35-1. Exact repository names are locked:
+36:   - harness repo: `vibe-engineer`;
+37:   - generated/reference starter repo: `vibe-engineer-starter`.
+38:2. The harness repo is a monorepo from day one, not a single-package repo and not multiple independent repos.
+39:3. The root package is private and named `@vibe-engineer/workspace`; the root is never published.
+40:4. `packages/cli` is the public main npm package named `vibe-engineer` and owns the public binary named `vibe-engineer`.
+41:5. Internal workspace packages use scoped names under `@vibe-engineer/*` immediately so imports, ownership, and future publication do not require renaming.
+42:6. Initial independent npm publication is intentionally minimal: only `vibe-engineer` is public/published. Scoped packages are private workspace packages and may be bundled into, or otherwise consumed by, `vibe-engineer` according to later build/package decisions. They are not stable external APIs until a later governance/API decision promotes them.
+43:7. Presets and adapters have separate workspace packages because they are extension surfaces and final-strategy lanes, but they are private/internal initially.
+44:8. No package named `core` is created. The former broad core responsibilities are split into `artifacts`, `config`, `context`, `verification`, `contracts`, `standards`, and related lane-owned packages to avoid a single ambiguous god package.
+45:9. The starter repository and harness examples consume harness packages through dependency declarations, workspace links, packed tarballs, or published package references. Copying harness source or reimplementing harness logic in the starter is forbidden.
+46:10. Exact schemas, CLI command contracts, skill protocols, schematic APIs, verification engine details, mechanical checker implementation, starter app architecture, governance/license, docs system, security, and observability remain owned by their later DL/I lanes. DL-01 only fixes repository/package names, source package boundaries, publication posture, and consumption direction.
+47-
+48-## Alternatives considered
+49-
+50:### One unscoped package only, no workspace split
+51-
+52-- decision: rejected
+53:- rationale: it would hide artifact schemas, verification, mechanical gates, skills, adapters, contracts, and starter-generation responsibilities inside one ambiguous package, conflicting with final-strategy lane ownership.
+54-- consequences: fewer initial directories, but unsafe shared ownership and poor future real-boundary evidence.
+55-
+56:### Many independently published packages from day one
+57-
+58-- decision: rejected
+59:- rationale: it over-engineers public API stability before DL-07, DL-19, DL-21, and package build/release details are decided.
+60:- consequences: scoped names are reserved now, but initial publication remains one public package.
+61-
+62-### Split harness into multiple repositories
+63-
+64-- decision: rejected
+65-- rationale: final strategy and locked decisions require one open-source domain-neutral harness repo plus one generated/reference starter repo. Multiple harness repos would add cross-repo release friction before core seams are proven.
+66:- consequences: adapters/presets remain packages inside the harness monorepo unless a future governance decision explicitly splits them.
+67-
+68:### Make `@vibe-engineer/cli` the initial public package
+69-
+70-- decision: rejected
+71:- rationale: the locked product/package/CLI name is `vibe-engineer`. Users should install and invoke `vibe-engineer` without an additional scoped package name.
+72:- consequences: `@vibe-engineer/cli` is not used now; `vibe-engineer` is both main package and binary.
+73-
+74-### Starter copies harness code into its repo
+75-
+76-- decision: rejected
+77:- rationale: README §13 and strategy §4.2 require the starter to consume harness packages instead of duplicating logic.
+78-- consequences: I-15/I-23 validators must reject copied harness implementation in generated starter fixtures.
+79-
+80-## Dependencies and prerequisites
+--
+93-    - id: DL-20A-domain-neutrality-foundation
+94-      type: decision
+95-      required_status: LOCKED/PASS
+96:      rationale: Supplies core/extension/sample-demo boundaries and package/repo naming constraints.
+97-    - id: source-docs
+98-      type: source_doc
+99-      required_status: AVAILABLE
+100-      rationale: README, locked decisions, verification layer, mechanical gates, planning backlog, strategy, and playbook define DL-01 requirements.
+101-  blocks:
+102-    - id: I-00-repo-skeleton-governance
+103:      reason: I-00 needs exact repo/package/workspace names and package directory conventions.
+104:    - id: all package-owned implementation lanes
+105-      reason: Package paths/names and publication posture must be fixed before scaffolding.
+106-    - id: I-15-create-import-starter-UX
+107:      reason: Create/import must know how the starter consumes harness packages.
+108-  blocked_dependents:
+109-    - id: I-00-repo-skeleton-governance
+110-      blocked_until: DL-01 is independently validated clean, plus its other strategy prerequisites are green.
+111:      relying_on: exact repository names, root workspace direction, package directory conventions, public/private package posture.
+112:    - id: package-owned implementation lanes I-01..I-23
+113-      blocked_until: DL-01 is independently validated clean and lane-specific decisions are green.
+114:      relying_on: package path/name mapping and forbidden dependency directions.
+115-    - id: I-15-create-import-starter-UX
+116-      blocked_until: DL-01 is independently validated clean and DL-06/DL-07/DL-08/DL-16/DL-17 prerequisites are green.
+117-      relying_on: starter consumption model and no-copy rule.
+118-  required_before_finalizing:
+119-    - id: I-00-repo-skeleton-governance
+120:      required_content: Root private workspace name, package manager/workspace direction, package globs, and initial package directories/names from this decision.
+121-    - id: I-15-create-import-starter-UX
+122:      required_content: Generated starter dependency/import consumption of `vibe-engineer` rather than copied harness logic.
+123-    - id: I-20-ci-local-parity-wiring
+124:      required_content: Local/CI aggregate path references the decided package/workspace structure.
+125-  deferrals:
+126:    - deferred_question: Exact package build tooling, export maps, versioning, and release automation.
+127:      rationale: Owned by DL-19/I-00/I-20 and later package implementation lanes; DL-01 locks names and publication posture only.
+128-      future_owner: DL-19-open-source-governance / I-00-repo-skeleton-governance / I-20-ci-local-parity-wiring
+129-      allowed_now: true
+130-      blocked_dependents:
+131-        - release publication closure
+132-      invalid_if_any_dependent_relies: true
+133-    - deferred_question: Exact public CLI command contracts and subpath exports.
+134:      rationale: Owned by DL-07 and implementation lanes; DL-01 locks the package/binary identity only.
+135-      future_owner: DL-07-cli-primitives / I-02-cli-primitive-foundation
+136-      allowed_now: true
+137-      blocked_dependents:
+138-        - CLI command implementation closure
+139-      invalid_if_any_dependent_relies: true
+140-  owned_write_paths:
+141:    - /Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-01-repo-package-structure.md
+142:    - /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/DL-01-repo-package-structure/**
+143-  read_only_paths:
+144-    - /Users/lizavasilyeva/work/harness-starter/** source docs and orchestration artifacts
+145:    - /Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-24A-planning-output-discipline.md
+146:    - /Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-20A-domain-neutrality-foundation.md
+147:    - /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/DL-24A-planning-output-discipline/**
+148:    - /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/DL-20A-domain-neutrality-foundation/**
+149:    - /Users/lizavasilyeva/work/vibe-engineer/** inventory outside DL-01 owned paths
+150-  untouchable_paths:
+151:    - /Users/lizavasilyeva/work/vibe-engineer/.git/**
+152:    - /Users/lizavasilyeva/work/vibe-engineer/package.json
+153:    - /Users/lizavasilyeva/work/vibe-engineer/pnpm-workspace.yaml
+154:    - /Users/lizavasilyeva/work/vibe-engineer/turbo.json
+155:    - /Users/lizavasilyeva/work/vibe-engineer/tsconfig.base.json
+156:    - /Users/lizavasilyeva/work/vibe-engineer/packages/**
+157:    - /Users/lizavasilyeva/work/vibe-engineer/examples/**
+158:    - /Users/lizavasilyeva/work/vibe-engineer/.github/**
+159-    - all non-owned decision/report paths
+160-  handoff_notes:
+161-    - from: DL-01
+--
+163-      condition: After independent DL-01 validation is clean and I-00 prerequisites are satisfied.
+164-      shared_path_policy: serialized
+165-    - from: DL-01
+166:      to: package-owned implementation lanes
+167:      condition: Use package path/name table; do not reopen naming.
+168-      shared_path_policy: disjoint
+169-```
+170-
+171-## Blocked dependents
+172-
+173:No DL-01 repository/package naming question remains unresolved. After independent DL-01 validation is clean, no dependent is blocked by a DL-01 deferral.
+174-
+175:Until that validation occurs, `I-00-repo-skeleton-governance`, package-owned implementation lanes, and `I-15-create-import-starter-UX` remain blocked on DL-01. They may also remain blocked by their own listed prerequisites, including DL-19, DL-24B, DL-02, DL-06, DL-07, DL-08, DL-10, DL-14, DL-15, DL-16, DL-17, DL-18, DL-20B, DL-21, DL-22, and DL-23 where applicable.
+176-
+177-## Exact repository names
+178-
+179:- Harness repository name: `vibe-engineer`.
+180:- Starter/reference repository name: `vibe-engineer-starter`.
+181:- Harness root private workspace package name: `@vibe-engineer/workspace`.
+182:- Public main npm package name: `vibe-engineer`.
+183:- Public CLI binary name: `vibe-engineer`.
+184:- Reserved npm scope: `@vibe-engineer`.
+185-
+186-Naming rationale:
+187-
+188:- `vibe-engineer` preserves the locked product/package/CLI name and is generic enough for a domain-neutral harness.
+189:- `vibe-engineer-starter` makes the second repository visibly a generated/reference starter and not a fork of harness internals.
+190:- The `@vibe-engineer` scope is reserved now for internal workspace package names and future independent package publication without rename.
+191-
+192-Reserved future names:
+193-
+194:- Scoped package names listed in the package table are locked now as workspace package names.
+195-- No additional repository names are locked now. Consuming-project repositories are user/project-owned and named by the create/import flow.
+196:- `@vibe-engineer/cli` is not used now and must not be introduced without a later decision because `vibe-engineer` is the main public package.
+197-
+198-## Harness repository structure
+199-
+200:Decision: `vibe-engineer` is a pnpm/Turborepo monorepo from day one.
+201-
+202-Package manager/workspace direction:
+203-
+204:- Package manager: pnpm.
+205-- Task graph direction: Turborepo.
+206:- Root package: private, name `@vibe-engineer/workspace`, no npm publication.
+207:- Workspace package globs for I-00: `packages/*`, `packages/presets/*`, `packages/adapters/*`.
+208-- Harness examples/fixtures may exist under `examples/**`, but they are not the separate starter repo and are not public starter implementation ownership by default.
+209-
+210-Root/shared files that I-00 must own later:
+211-
+212:- `package.json` with private root workspace metadata;
+213:- `pnpm-workspace.yaml` with decided workspace globs;
+214-- `turbo.json`;
+215-- `tsconfig.base.json`;
+216-- lint/format configs;
+--
+220-
+221-Package directory conventions:
+222-
+223:- Production harness packages live under `packages/<name>`.
+224:- Presets live under `packages/presets/<preset-name>`.
+225:- Agentic harness adapters live under `packages/adapters/<adapter-name>`.
+226:- Test-only harness helpers live under `packages/testing` and are never production dependencies.
+227-- Starter/reference fixtures in the harness repo must live under lane-owned `examples/starter-reference/**` paths and must be labeled reference/sample/fixture.
+228:- There is no `packages/core`; each lane owns a named package or subpath from the table below.
+229-
+230-## Package and publishability table
+231-
+232-| Package directory | Package name | Public/private/internal status | Initial publish status | Primary consumers | Owning implementation lane from final strategy | Dependencies / forbidden dependencies |
+233-| --- | --- | --- | --- | --- | --- | --- |
+234:| `packages/cli` | `vibe-engineer` | public main package and CLI | publishable as the initial public npm package after governance/release gates | users, skills, CI, starter create/import, advanced agents | `I-02`, plus command lanes `I-07`, `I-09`, `I-15`, `I-18`, `I-21`, `I-22` | may depend on harness packages through public/internal APIs; must not depend on starter app packages or copy starter logic |
+235:| `packages/artifacts` | `@vibe-engineer/artifacts` | private internal workspace package; future public API candidate | not independently published initially; bundled/consumed by `vibe-engineer` where needed | all artifact writers/validators, skills, CLI, verification, context | `I-01` | foundational; must not depend on CLI, skills, adapters, verification runners, or starter code |
+236:| `packages/config` | `@vibe-engineer/config` | private internal workspace package; future public API candidate | not independently published initially | CLI, verification, schematics, create/import, generated config validators | `I-01` | may depend on artifacts; must not depend on CLI, adapters, skills, or starter code |
+237:| `packages/orchestration` | `@vibe-engineer/orchestration` | private internal workspace package | not independently published initially | plan/build/ship runtime, failure routing, allocation | `I-03` | may depend on artifacts, config, registry, context, verification contracts; must not depend on CLI or starter apps |
+238:| `packages/registry` | `@vibe-engineer/registry` | private internal workspace package; future extension API candidate | not independently published initially | agent/skill/schematic registry validation, adapters | `I-04` | may depend on artifacts/config; must not depend on CLI command implementation, starter apps, or one adapter |
+239:| `packages/skills` | `@vibe-engineer/skills` | private internal workspace package | not independently published initially | generated skills, adapters, CLI skill commands | `I-05`, `I-06`, `I-21`, `I-22` | may depend on artifacts, config, orchestration, registry, context, verification; must not depend on adapter-specific packages or starter apps |
+240:| `packages/schematics` | `@vibe-engineer/schematics` | private internal workspace package; future extension API candidate | not independently published initially | CLI schematic/create/import, implementation agents | `I-07` | may depend on artifacts, config, standards, contracts; must not depend on starter app implementation or adapter-specific packages |
+241:| `packages/context` | `@vibe-engineer/context` | private internal workspace package | not independently published initially | context index/update/drift, build/ship, create/import | `I-08` | may depend on artifacts/config; must not depend on CLI command internals or starter apps |
+242:| `packages/verification` | `@vibe-engineer/verification` | private internal workspace package | not independently published initially | verify command, build/ship, evidence/failure routing, CI | `I-09` | may depend on artifacts, config, context, registry, mechanical-gates/security/observability contracts; must not depend on starter apps |
+243:| `packages/mechanical-gates` | `@vibe-engineer/mechanical-gates` | private internal workspace package; future public API candidate | not independently published initially | verification runner, CI/local quality, mechanical fixtures | `I-10`, `I-11`, `I-12`, `I-13`, `I-20` | may depend on artifacts/config/contracts; must not depend on CLI command internals or starter apps |
+244:| `packages/contracts` | `@vibe-engineer/contracts` | private internal workspace package; future public API candidate | not independently published initially | contract strictness fixtures, generated starter contracts/client lanes | `I-11` | may depend on artifacts/config; must not depend on concrete starter apps or web/mobile packages |
+245:| `packages/security` | `@vibe-engineer/security` | private internal workspace package | not independently published initially | CLI safety commands, verification/build/ship hooks | `I-18` | may depend on artifacts/config/verification contracts; must not depend on starter app business code |
+246:| `packages/observability` | `@vibe-engineer/observability` | private internal workspace package | not independently published initially | generated starter observability defaults/tests, verification evidence | `I-19` | may depend on artifacts/config; must not depend on starter app implementation |
+247:| `packages/standards` | `@vibe-engineer/standards` | private internal workspace package; future public content package candidate | not independently published initially | schematics, docs/reference, generated standards | `I-24` with inputs from package lanes | may depend on artifacts only if needed; must not depend on runtime CLI/adapters/starter apps |
+248:| `packages/presets/typescript` | `@vibe-engineer/preset-typescript` | private preset workspace package; future public preset package | not independently published initially | schematics/create/import, generated TS/pnpm/turbo/lint/test defaults | `I-00`, `I-07`, `I-15`, `I-20` as applicable | may depend on config/standards/mechanical-gates metadata; must not include business-domain or starter app logic |
+249:| `packages/presets/nest-react-rn` | `@vibe-engineer/preset-nest-react-rn` | private preset workspace package; future public preset package | not independently published initially | starter generation for locked v1 stack | `I-15`, `I-16`, `I-17`, `I-19` | may depend on preset-typescript/schematics/contracts/standards metadata; must not become a second starter repo or copy harness runtime |
+250:| `packages/adapters/pi` | `@vibe-engineer/adapter-pi` | private adapter workspace package; future public adapter package | not independently published initially | selected first agentic harness integration, generated pi skills/commands | `I-14` | may depend on artifacts/config/registry/skills/context; must not depend on other adapters or starter apps |
+251:| `packages/adapters/claude-code` | `@vibe-engineer/adapter-claude-code` | reserved private adapter workspace package | not independently published initially; scaffold only when DL-06/lane owns it | future Claude Code integration | future DL-06-owned lane | same adapter dependency rule; no pi dependency unless through common registry contracts |
+252:| `packages/adapters/codex` | `@vibe-engineer/adapter-codex` | reserved private adapter workspace package | not independently published initially; scaffold only when DL-06/lane owns it | future Codex integration | future DL-06-owned lane | same adapter dependency rule; no starter app dependency |
+253:| `packages/adapters/opencode` | `@vibe-engineer/adapter-opencode` | reserved private adapter workspace package | not independently published initially; scaffold only when DL-06/lane owns it | future OpenCode integration | future DL-06-owned lane | same adapter dependency rule; no starter app dependency |
+254:| `packages/testing` | `@vibe-engineer/testing` | private test-only workspace package | never published initially | harness fixtures/helpers/tests only | relevant package implementation lanes | may depend on harness packages for tests; no production package may depend on it |
+255-
+256:## CLI and main package decision
+257-
+258:`vibe-engineer` is both:
+259-
+260:1. the main public npm package name; and
+261:2. the CLI binary name.
+262-
+263-Implementation consequences:
+264-
+265:- `packages/cli/package.json` must use `name: "vibe-engineer"` and expose a `bin` entry named `vibe-engineer` when I-02 owns package metadata.
+266:- Root `package.json` must not be the public package. It is private workspace metadata named `@vibe-engineer/workspace`.
+267:- There is no initial public `@vibe-engineer/cli` package.
+268-- CLI command contracts, output schemas, command-loader details, and subpath exports are owned by DL-07/I-02 and later command lanes, not DL-01.
+269:- If internal scoped packages are bundled into the CLI distribution, the bundling/build mechanism is a later implementation detail; it must not change package names or public identity.
+270-
+271-## Preset/plugin/adapter boundaries
+272-
+273:- Presets are package-level extension surfaces under `packages/presets/*`.
+274-- Built-in v1 preset names locked now:
+275:  - `@vibe-engineer/preset-typescript` at `packages/presets/typescript`;
+276:  - `@vibe-engineer/preset-nest-react-rn` at `packages/presets/nest-react-rn`.
+277:- Adapters are package-level integration surfaces under `packages/adapters/*`.
+278:- First adapter package name locked now:
+279:  - `@vibe-engineer/adapter-pi` at `packages/adapters/pi`.
+280-- Future adapter names reserved now:
+281:  - `@vibe-engineer/adapter-claude-code`;
+282:  - `@vibe-engineer/adapter-codex`;
+283:  - `@vibe-engineer/adapter-opencode`.
+284:- Presets/adapters are internal private workspace packages initially; promotion to independently published public packages requires later governance/API/release decisions.
+285-- Presets may provide configuration and generation assets. They must not contain project/business-domain defaults.
+286-- Adapters translate harness skills/registry/context concepts into a selected agentic harness format. They must not implement product-domain behavior and must not depend on starter apps.
+287-
+288-## Starter consumption model
+289-
+290:The generated/reference starter repository is `vibe-engineer-starter`.
+291-
+292-Normative consumption rules:
+293-
+294:1. The starter consumes the harness through dependency declarations on `vibe-engineer` and generated configuration/assets produced by `vibe-engineer` commands/schematics.
+295:2. During implementation before publication, starter fixtures must consume local harness packages through an actual workspace link, local package link, or packed tarball representing `vibe-engineer`; hand-copied harness source is not allowed.
+296:3. After publication, normal starter consumption is a package dependency on `vibe-engineer` plus generated project config selecting the agentic harness.
+297:4. The starter must not import private internal `@vibe-engineer/*` packages unless a later decision explicitly promotes a scoped package as a public stable API.
+298:5. Any direct code import from the harness by starter code must be through public `vibe-engineer` package exports or generated artifacts/contracts decided by later package/CLI/schema decisions.
+299-6. Harness logic must stay in the harness repo. Starter code may contain generated sample/demo/reference app logic, but not copied harness validators, runners, schematics, adapters, or skill engines.
+300:7. `examples/starter-reference/**` inside the harness repo is a fixture/reference area for implementation witnesses, not a substitute for the separate `vibe-engineer-starter` repository name.
+301-
+302-Future real-boundary proof owners:
+303-
+304:- `I-15-create-import-starter-UX` must prove an actual `vibe-engineer create` or equivalent generated starter fixture consumes harness packages through dependency/import declarations, not copied harness logic.
+305:- `I-11-contract-strictness-minimal-real-fixture` and `I-16-starter-api-contracts-client-golden` must prove actual provider/client/consumer joins using package boundaries compatible with this decision.
+306:- `I-20-ci-local-parity-wiring` must prove local aggregate quality and CI reference the decided workspace/package structure.
+307-
+308-## Minimality and over-engineering check
+309-
+310:This split is the minimum safe split because every package either:
+311-
+312-- maps to a final-strategy implementation lane with distinct ownership;
+313-- isolates a future public extension surface (`presets`, `adapters`);
+314:- prevents the unbounded `core` package from absorbing unrelated responsibilities; or
+315-- supports mandatory real-boundary proof (`contracts`, `verification`, `mechanical-gates`, `testing`).
+316-
+317:The split avoids over-engineering by keeping independent publication to a single initial public package, `vibe-engineer`, while using private workspace packages for source ownership and build/test isolation. It preserves lane boundaries without forcing public API stability before the relevant DL/I owners decide schemas, commands, protocol, governance, security, observability, or documentation details.
+318-
+319:`I-00-repo-skeleton-governance` can create the root workspace and package skeleton from this decision without reopening naming because this artifact locks:
+320-
+321-- exact repo names;
+322:- root private workspace package name;
+323:- package manager/workspace direction;
+324-- workspace globs;
+325:- package directories and package names;
+326-- initial public/private/publish posture;
+327:- `vibe-engineer` package/binary identity;
+328-- starter consumption direction.
+329-
+330-## Verification/witness consequences
+331-
+332:- deterministic checks affected: future workspace discovery, package manifest validation, import-boundary checks, no-copy starter consumption checks, mechanical governed-surface registry checks, and CI/local parity checks.
+333-- positive witnesses required downstream:
+334:  - `I-00`: actual pnpm workspace graph resolves decided package directories and root config.
+335:  - `I-15`: actual generated starter declares dependency on `vibe-engineer` and consumes harness-generated assets/imports without copied harness logic.
+336:  - `I-11`/`I-16`: actual contract/provider/client/consumer fixtures work across decided package boundaries.
+337:  - `I-20`: local aggregate quality and CI reference the same decided package/workspace graph.
+338-- negative witnesses required downstream:
+339:  - missing package from workspace graph fails;
+340-  - starter copying harness source fails;
+341:  - starter importing private `@vibe-engineer/*` packages without promotion fails;
+342:  - public package/binary renamed away from `vibe-engineer` fails;
+343:  - production package depending on `@vibe-engineer/testing` fails.
+344-- regression witnesses required downstream:
+345:  - product/package/CLI name remains `vibe-engineer`;
+346:  - two-repo direction remains `vibe-engineer` plus `vibe-engineer-starter`;
+347-  - harness core remains domain-neutral;
+348-  - six skills remain `brainstorm`, `grill-me`, `task`, `plan`, `build`, `ship`;
+349-  - artifact flow remains raw intent → Work Brief → Implementation Plan → Build Result → Ship Packet;
+350:  - fixed starter stack remains NestJS, React, React Native, strict TypeScript, pnpm, Turborepo, PostgreSQL, Prisma, shared contracts/client, tests/E2E/UI verification/CI/context/golden module;
+351:  - normal users interact through skills, not low-level package/CLI primitives;
+352-  - schematics remain deterministic agent-facing generators;
+353-  - `build` and `ship` automatically run verification/context/evidence.
+354-- real_boundary_required: yes for later implementation lanes; no live runtime seam is created by this decision artifact.
+355-- real_boundary_status: required_before_closure for I-00/I-11/I-15/I-16/I-20/I-23; not_applicable for this decision artifact.
+356:- if no live seam: this artifact locks package/repo boundaries only. It does not create package files, run a package manager, generate a starter, or claim package consumption is already proven.
+357-
+358-## Ownership/path consequences
+359-
+360-- owned_write_paths:
+361:  - `/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-01-repo-package-structure.md`
+362:  - `/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/DL-01-repo-package-structure/**`
+363-- read_only_paths:
+364-  - all cited source docs and orchestration artifacts in `/Users/lizavasilyeva/work/harness-starter/**`;
+365-  - prerequisite decision artifacts/reports for DL-24A and DL-20A;
+366-  - target repo inventory outside DL-01 owned paths.
+367-- untouchable_paths:
+368:  - `/Users/lizavasilyeva/work/vibe-engineer/.git/**`;
+369:  - root workspace/config/package/CI/source/starter files;
+370:  - `packages/**`, `examples/**`, generated starter files;
+371-  - all non-owned decision/report paths.
+372-- serialized/shared ownership notes:
+373-  - I-00 owns root workspace/config/governance creation later.
+374-  - I-20 owns later root/CI aggregate wiring handoff.
+375:  - Package implementation lanes own package source paths listed in the final strategy and this package table.
+376:  - CLI package metadata edits after I-02 require serialized handoff because `packages/cli/package.json` is shared by command lanes.
+377-
+378-## Domain-neutrality check
+379-
+380-- DL-20A status consulted: green/LOCKED/PASS.
+381-- domain-neutrality rule references: DL-20A `Core / extension / sample-demo boundary`, `Allowed and forbidden vocabulary policy`, `Decision-artifact checklist`, `Implementation enforcement plan`, and `Verification/witness consequences`.
+382:- governed surfaces affected by this decision: repository names, package names, package directory conventions, preset/adapter names, starter reference naming, and future consumption boundaries.
+383-- surface classification:
+384:  - `vibe-engineer` harness repo and all `@vibe-engineer/*` packages are core harness surfaces.
+385:  - `vibe-engineer-starter` is generated/reference starter surface.
+386-  - `examples/starter-reference/**` is sample/reference fixture surface.
+387-  - consuming-project repositories are project-owned extension surfaces.
+388-- positive generic terms permitted: artifacts, config, cli, orchestration, registry, skills, schematics, context, verification, mechanical gates, contracts, security, observability, standards, presets, adapters, testing.
+389:- project/business terms mentioned: none as package/repo names. Any source-cited forbidden terms are only negative examples under DL-20A.
+390:- result: PASS. Repo/package names are generic harness/development terms and do not encode ecommerce, inventory, fashion, Billz, Telegram, Instagram, checkout/product/customer-order style business models, or equivalent project-specific concepts.
+391-- later enforcement owner: DL-15/I-10 for mechanical governed-surface checks, I-04 for agent/prompt registry surfaces, I-07/I-15 for schematic/create outputs, I-24 for docs/examples labels, and DL-20B for audit.
+392-
+393-## Dirty-tree safety
+--
+419-- Report artifact was created before this decision artifact and updated after source/prerequisite/inventory inspection.
+420-- Exact source files inspected are listed in the execution report and cited by path/section here.
+421-- Files changed are limited to this decision artifact and the DL-01 execution report.
+422:- No production/package/root/config/CI/generated starter files were touched.
+423-- This artifact produces exactly one output class: `locked_decision_document`.
+424-- Dependencies, blocked dependents, deferrals, ownership, read-only paths, untouchable paths, and handoffs use the DL-24A dependency declaration format.
+425-- Every planning backlog §1 question is answered explicitly:
+426:  1. repo names: `vibe-engineer`, `vibe-engineer-starter`;
+427:  2. harness structure: pnpm/Turborepo monorepo from day one;
+428:  3. scope/publishing: public `vibe-engineer` package, private initial `@vibe-engineer/*` workspace packages;
+429:  4. internal package names: package table;
+430:  5. public/private packages: package table;
+431-  6. preset/plugin boundaries: presets/adapters sections;
+432:  7. starter consumption: dependency on `vibe-engineer`, no copied logic;
+433:  8. `vibe-engineer` CLI/main package: yes, both; scoped packages reserved/internal now;
+434:  9. minimal package split: no `core`, lane-aligned private workspace packages, one initial public package.
+435:- Locked product/package/CLI name `vibe-engineer` is preserved.
+436-- Two-repo direction is preserved with domain-neutral harness plus generated/reference starter kit repo.
+437-- Package boundaries map to final-strategy lanes without shared-file ambiguity beyond recorded serialized handoffs.
+438:- I-00 can create skeleton without reopening package/repo naming.
+439-- Later starter proof must show actual dependency/import/CLI-generated consumption rather than copied harness logic.
+440:- DL-20A domain-neutrality checklist is applied to repo/package names and examples.
+441-- Real-boundary status is not falsely marked proven.
+442-
+443-## Validation plan and severity policy
+--
+446-
+447-### Positive witnesses
+448-
+449:- `docs/decisions/DL-01-repo-package-structure.md` exists and uses the DL-24A schema with exactly one output class.
+450-- All backlog §1 questions are answered explicitly.
+451-- Exact harness and starter/reference repository names are locked.
+452:- The package/publication table includes package directory, package name, public/private/internal status, initial publish status, consumers, owner lanes, and dependency/forbidden-dependency notes.
+453:- `I-00-repo-skeleton-governance` can derive root workspace/package skeleton ownership without further naming decisions.
+454-- Starter consumption model forbids copying harness logic and names later real-boundary proof lanes.
+455:- Domain-neutrality checklist from DL-20A is present and passes for repo/package names.
+456-
+457-### Negative witnesses
+458-
+459-- Reject any interpretation that lets I-00 proceed with repo names open.
+460:- Reject any package metadata plan where `vibe-engineer` is not both main package and CLI binary.
+461:- Reject package tables missing visibility, initial publish status, consumers, owner lanes, or forbidden dependency notes.
+462:- Reject reintroducing a broad `packages/core` god package without a later decision.
+463:- Reject starter generation that copies harness implementation or imports private scoped packages without promotion.
+464:- Reject domain-specific core package/repo names or unlabeled business examples.
+465-- Reject any deferred DL-01 boundary that a downstream lane relies on.
+466-
+467-### Regression witnesses
+468-
+469:- Product/package/CLI name remains `vibe-engineer`.
+470-- Two-repo direction remains harness repo plus generated/reference starter kit repo.
+471-- Harness core remains domain-neutral.
+472-- Six skills remain `brainstorm`, `grill-me`, `task`, `plan`, `build`, `ship`.
+473-- Artifact flow remains raw intent → Work Brief → Implementation Plan → Build Result → Ship Packet.
+474:- Fixed starter stack remains NestJS, React, React Native, strict TypeScript, pnpm, Turborepo, PostgreSQL, Prisma, shared contracts/client, tests/E2E/UI verification/CI/context/golden module.
+475:- Normal users interact through skills, not low-level package/CLI primitives.
+476-- Schematics remain deterministic agent-facing generators.
+477-- `build` and `ship` automatically run verification/context/evidence.
+478-- DL-02, DL-03, DL-07, DL-08, DL-10, DL-14, DL-15, DL-16, DL-19, DL-21, DL-22, and DL-23 remain owners of their details.
+479-
+480-### Sibling/blast-radius checks
+481-
+482:- Check final strategy §§3–11 and §19 for DAG, package hypothesis, ownership, and proof-lane consistency.
+483-- Check DL-24A for output discipline compliance.
+484-- Check DL-20A for domain-neutrality compliance.
+485-- Check README §§2, 11, 12, 13; locked decisions §§1–3/§§5–11; verification layer; mechanical gates; and backlog §1 for contradictions.
+486:- Check target repo inventory to confirm no production/root/config/package/starter files or unrelated decision paths were edited by DL-01.
+487:- Check that package boundaries do not force later lanes to share unplanned write paths.
+488-
+489-### Severity policy
+490-
+491:- `critical`: locked decision contradiction; out-of-license write; missing decision artifact; missing DL-24A/DL-20A prerequisite; unresolved required backlog §1 decision with dependent relying on it; invalid deferral; starter-copying-harness model; missing package visibility/consumer/owner table; false real-boundary closure; unsafe dirty-tree operation.
+492:- `major-local`: incomplete package table, unclear publication status, unclear I-00 skeleton consequences, incomplete domain-neutrality check, or weak validation plan limited to DL-01 paths.
+493-- `minor-local`: citation/wording/format issue that does not weaken gates or unblock dependents incorrectly.
+494-- `clean`: all schema, source, ownership, domain-neutrality, and witness requirements are satisfied.
+495-
+--
+500-Future owners and non-blocking boundaries:
+501-
+502-- DL-19/I-00 decide exact governance/license/release metadata and create root files, but must preserve names from DL-01.
+503:- DL-07/I-02 decide exact CLI command contracts, subpath exports, command discovery, and package metadata details beyond `name`/`bin` identity.
+504:- DL-06/I-14 decide adapter abstraction and first pi implementation details, but must use the adapter package names and boundaries here.
+505:- DL-08/I-07 decide schematic API/template/idempotency details, but must use `@vibe-engineer/schematics` and preset boundaries here.
+506:- DL-15/I-10..I-13 decide exact mechanical engine implementation, but must use `@vibe-engineer/mechanical-gates` and preserve the governed package surface.
+507:- DL-16/I-15..I-17 decide detailed starter app architecture inside `vibe-engineer-starter` and harness-owned fixtures.
+508-- DL-21/I-24 decide public docs structure and examples, preserving domain-neutral labels.
+509-- DL-20B and DL-24B later audit domain-neutrality and output discipline across decisions.
+
+# DL-02 targeted excerpts
+6-- output_class: locked_decision_document
+7-- date: 2026-06-23
+8-- owner_lane: DL-02 decision-lock execution
+9:- artifact_path: `/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md`
+10:- report_path: `/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/DL-02-artifact-schemas/reports/decision-lock-execution-report.md`
+11-
+12-## Source citations
+13-
+14:- `/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/master-strategy/strategy-final.md` — §3 `Locked decisions implementation must preserve`; §4.1 `Harness repo package hypothesis`; §5.1 `Mandatory output discipline for all decision artifacts`; §5.2 `Decision-lock table`; §6 `Dependency DAG with scheduler gates`; §9.2 `Decision triad ownership`; §10 `Verification matrix by lane`; §11 `Early real-boundary witness plan`; §§14–18 evidence, dirty-tree, closure, and severity policy.
+15-- `/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/master-strategy/strategy-revalidation.md` — §1 `Verdict`; §4 `Final source-doc coverage check`; §5 `DAG and ready-queue safety check`; §7 `Verification and real-boundary witness check`; §9 `Severity gate and closure criteria check`; §10 `Recommendation`.
+16-- `/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-24A-planning-output-discipline.md` — `Required future decision template`; `Dependency declaration format`; `Evidence checklist`; `Validator checklist`; `Real-boundary policy`; `Ownership and dirty-tree policy`; `Downstream gating impact`.
+17-- `/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/DL-24A-planning-output-discipline/reports/validation-report.md` — `Verdict`; `Recommendation`.
+18:- `/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-20A-domain-neutrality-foundation.md` — `Core / extension / sample-demo boundary`; `Allowed and forbidden vocabulary policy`; `Decision-artifact checklist`; `Implementation enforcement plan`.
+19-- `/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/DL-20A-domain-neutrality-foundation/DL-20A-validation-report.md` — `Verdict`; `Domain-neutrality-specific audit`; `Recommendation`.
+20-- `/Users/lizavasilyeva/work/harness-starter/README.md` — §§3.5–6 `Artifacts over chat history` and `Artifact model`; §§4–5 core workflow and skill responsibilities; §§9–10 verification and context requirements.
+21:- `/Users/lizavasilyeva/work/harness-starter/docs/locked-decisions.md` — §§6–11 skills, schematics, automatic verification/context, verification-layer decisions, and mechanical gates.
+22:- `/Users/lizavasilyeva/work/harness-starter/docs/verification-layer.md` — §§1–4 evidence, artifact flow, skill responsibilities, and Verification Delta; §§5, 11, 13–16 verification catalog, registry, config, blocking policy, and final invariant.
+23:- `/Users/lizavasilyeva/work/harness-starter/docs/mechanical-verification-gates.md` — §§1, 5, 7, 11–13 mechanical doctrine, schema/contract strictness, wiring integrity, implementation priority, and final invariant.
+24:- `/Users/lizavasilyeva/work/harness-starter/docs/planning-research-backlog.md` — §2 `Artifact schemas`; §24 `Planning-phase output requirement`.
+25-- `/Users/lizavasilyeva/work/harness-starter/guides/high-level-orchestrator-playbook.md` — §§5.2 and 10 Triad B, evidence-bound validation, quality bar, and real-boundary truth.
+26-- `/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/briefs/ta-dl-02-brief-validation.md` — `Verdict`; `Coverage matrix`; `Required validation plan`.
+27-- `/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/prompts/quality-bar.md` — full quality bar.
+28-
+29-## Decision summary
+30-
+31:`vibe-engineer` v1 artifact contracts are strict, JSON-native, schema-versioned, runtime-validated, and type-generated. The canonical carrier for all load-bearing artifact data is UTF-8 JSON validated against JSON Schema 2020-12 in strict mode, with TypeScript types generated from the same schemas. Markdown, YAML, chat text, and TypeScript object literals may be generated as human projections or authoring conveniences only; they are not canonical carriers and are never accepted through heuristic or regex parsing for load-bearing handoffs.
+32-
+33:The locked v1 schema catalog covers Work Brief, Implementation Plan, Verification Delta, Build Result, Ship Packet, Evidence Packet, Agent Registry entry, Context file header, Schematic manifest, and Skill manifest. The artifact chain remains raw intent → Work Brief → Implementation Plan containing a machine-readable Verification Delta → Build Result plus Evidence Packet references → Ship Packet. Registry, context, schematic, and skill manifests are side-linked typed artifacts that must validate before their consumers may rely on them.
+34-
+35-## Decision details
+36-
+37:### Canonical schema technology and carrier
+38-
+39:1. The normative schema language is JSON Schema 2020-12.
+40:2. Runtime validation in `packages/artifacts` must use a strict JSON Schema validator. The v1 implementation owner should use Ajv in strict mode unless a later explicit decision replaces it with an equivalent strict JSON Schema 2020-12 validator; replacing it must preserve all behavior in this decision.
+41:3. TypeScript types must be generated from the same canonical schemas or from a schema-authoring source that emits byte-equivalent committed JSON Schemas. Hand-authored TypeScript interfaces are not the source of truth.
+42:4. Canonical artifact files are UTF-8 JSON objects with `additionalProperties: false` at every modeled object boundary except explicitly namespaced extension maps.
+43:5. Unknown top-level fields are invalid. Extension data must live under `extensions` with a namespace key, its own `schemaVersion`, and no ability to satisfy required core fields.
+44-6. Validation failure behavior is fail-closed: no silent fallback, no best-effort acceptance, no defaulting missing load-bearing fields, no unsupported-version acceptance, and no narrative evidence substituted for typed evidence.
+45:7. Typed validation errors must include artifact path, artifact kind, schema id, schema version, JSON Pointer path, error code, and human-readable message. Errors themselves become evidence entries when used by verification or blockers.
+46-
+47:### Common artifact envelope
+48-
+49:Every artifact class except embedded `VerificationDeltaV1` uses this common envelope; `VerificationDeltaV1` uses the same identity/version/producer/link conventions inside the Implementation Plan.
+50-
+51-Required common fields:
+52-
+53:- `schemaVersion`: semantic version string; v1 locked value is `1.0.0`.
+54:- `artifactKind`: one of `work_brief`, `implementation_plan`, `verification_delta`, `build_result`, `ship_packet`, `evidence_packet`, `agent_registry_entry`, `context_file_header`, `schematic_manifest`, `skill_manifest`.
+55:- `artifactId`: stable globally unique string generated by the producing system; it must not change when the file path changes.
+56-- `title`: concise domain-neutral title.
+57-- `createdAt`: RFC 3339 UTC timestamp.
+58-- `updatedAt`: RFC 3339 UTC timestamp.
+59:- `producer`: object with `kind` (`skill`, `agent`, `cli`, `schematic`, `verification_runner`, `human_operator`, `system`), `id`, `name`, optional `version`, and optional `runId`.
+60:- `status`: artifact-class-specific enum.
+61-- `ownership`: object with `ownerLane`, `ownedWritePaths`, `readOnlyPaths`, `untouchablePaths`, `concurrencyNotes`, and optional `handoffPolicy`.
+62:- `links`: typed array of artifact links.
+63:- `extensions`: object map keyed by reverse-DNS or package-like namespace; each extension value must include `schemaVersion` and may not redefine core fields.
+64-
+65-Required link shape:
+66-
+67:- `rel`: enum from `raw_intent`, `derived_from`, `supersedes`, `superseded_by`, `implements`, `verifies`, `evidence_for`, `consumed_by`, `produced_by`, `context_for`, `registry_entry_for`, `manifest_for`, `verification_delta_of`, `build_result_of`, `ship_packet_of`.
+68:- `artifactKind`: target artifact kind where known.
+69:- `artifactId`: target artifact id where known.
+70-- `path`: repository-relative or absolute path when the target is on disk.
+71-- `required`: boolean.
+72-- `statusAtLinkTime`: target status observed by the producer when linked.
+--
+82-
+83-### Required status discipline
+84-
+85:- A consumer must check both schema validity and artifact status before use.
+86-- `build` accepts only an Implementation Plan with `status: approved`.
+87-- `ship` accepts only a Build Result with `status: passed` unless a later security/ship decision explicitly defines a blocked handoff mode; it must never ship from `failed` or `blocked`.
+88-- `plan` consumes Work Brief only; raw intent is not a valid substitute for a Work Brief.
+--
+90-
+91-## Alternatives considered
+92-
+93:### Pure JSON canonical artifacts
+94-
+95-- decision: accepted
+96:- rationale: JSON is portable, stable for on-disk validation, directly expressible through JSON Schema 2020-12, easy to consume from CLI/skills/CI, and avoids YAML/frontmatter ambiguity.
+97:- consequences: human-readable rendering may be generated, but consumers validate JSON, not prose.
+98-
+99:### Pure YAML artifacts
+100-
+101-- decision: rejected
+102:- rationale: YAML has ambiguous scalar coercions and multiple parser behaviors, which weakens strict runtime contracts and negative invalid-version witnesses.
+103:- consequences: YAML may appear in docs snippets only, not as the v1 canonical carrier.
+104-
+105-### Markdown with frontmatter
+106-
+107-- decision: rejected as canonical; allowed only as generated projection
+108-- rationale: Work Briefs and plans need human context, but load-bearing handoffs cannot depend on narrative parsing, regex extraction, or frontmatter conventions.
+109:- consequences: if a Markdown view exists, it must be generated from validated JSON or explicitly marked non-authoritative.
+110-
+111-### TypeScript-only objects/interfaces
+112-
+113-- decision: rejected
+114:- rationale: TypeScript types alone do not validate on-disk artifacts at runtime and do not provide language-neutral CLI/CI/schema evidence.
+115-- consequences: TypeScript types are generated outputs, not the canonical contract.
+116-
+117:### Hybrid carrier
+118-
+119:- decision: accepted only as strict JSON canonical data plus optional projections/sidecars
+120-- rationale: humans benefit from readable summaries, but machines need one typed source of truth.
+121:- consequences: projections must link back to the canonical artifact id/version and must never be accepted as the source for a producer→consumer seam.
+122-
+123-### Strict versus permissive versioning
+124-
+125:- decision: strict versioning accepted; permissive fallback rejected
+126:- rationale: downstream lanes must fail loudly on unsupported schema versions rather than silently accepting stale or future contracts.
+127-- consequences: unsupported major, unknown minor without declared compatibility, missing version, or malformed version is a validation failure with typed evidence.
+128-
+129-### Embedded versus referenced Evidence Packets
+130-
+131-- decision: referenced Evidence Packets accepted; embedding rejected for canonical Build/Ship handoffs
+132-- rationale: evidence can be large and multi-layered, and later verification/storage lanes need standalone packets with deterministic/advisory classification.
+133:- consequences: Build Results and Ship Packets carry evidence references and summaries; the Evidence Packet is the canonical evidence artifact.
+134-
+135-### Schema-library/runtime-validation options
+136-
+137:- decision: JSON Schema 2020-12 plus strict runtime validator accepted; Zod-only/Valibot-only/TypeScript-only rejected as canonical
+138:- rationale: artifact files are a cross-package, CLI, CI, registry, context, and skill boundary. JSON Schema is the portable contract. Ajv strict mode is the expected v1 validator implementation because it supports JSON Schema and fail-closed behavior.
+139:- consequences: `I-01-artifact-schemas-config` may use a TypeScript schema builder internally only if the committed JSON Schema and generated types remain the audited source of truth.
+140-
+141-## Dependencies and prerequisites
+142-
+--
+154-    - id: DL-20A-domain-neutrality-foundation
+155-      type: decision
+156-      required_status: LOCKED/PASS
+157:      rationale: Supplies core/extension/sample-demo boundary and vocabulary policy for all artifact schemas.
+158-    - id: source-docs
+159-      type: source_doc
+160-      required_status: AVAILABLE
+161:      rationale: README, locked decisions, verification layer, mechanical gates, backlog, strategy, playbook, and validated DL-02 brief define artifact flow and proof requirements.
+162-  blocks:
+163:    - id: I-01-artifact-schemas-config
+164:      reason: Needs this catalog to implement schema validators, migrations, generated types, and config consequences.
+165-    - id: I-04-agent-registry-validation-meta
+166:      reason: Needs Agent Registry entry schema and links to input/output artifact schemas.
+167-    - id: I-05-input-skills-work-brief-vertical
+168:      reason: Needs Work Brief schema and actual writer/plan-intake seam requirements.
+169-    - id: I-06-plan-skill-verification-delta
+170:      reason: Needs Implementation Plan and Verification Delta schema.
+171:    - id: I-07-schematics-engine
+172:      reason: Needs Schematic manifest schema.
+173-    - id: I-08-context-memory-drift
+174:      reason: Needs Context file header schema.
+175-    - id: I-09-verification-runner-evidence-failure-routing
+176:      reason: Needs Evidence Packet schema and deterministic/advisory result model.
+177-    - id: I-14-pi-adapter-skill-consumption
+178:      reason: Needs Skill manifest schema and selected-harness proof consequences.
+179-    - id: I-21-build-skill-orchestration
+180:      reason: Needs Build Result schema and evidence linkage.
+181-    - id: I-22-ship-skill-orchestration
+182:      reason: Needs Ship Packet schema and no-push handoff fields.
+183:    - id: skills, CLI validation, context, verification, registry, schematic/skill manifest consumers
+184:      reason: All consume or validate one or more DL-02 artifact classes.
+185-  blocked_dependents:
+186-    - id: DL-03-skill-protocols
+187:      blocked_until: DL-02 schema contracts are locked.
+188:      relying_on: Skill input/output artifact schemas and allowed schema references.
+189-    - id: DL-05-agent-registry-validation-meta
+190:      blocked_until: Agent Registry entry schema is locked.
+191:      relying_on: Registry metadata and schema-reference fields.
+192-    - id: DL-07-cli-primitives
+193:      blocked_until: Canonical artifact carrier/validation behavior is locked.
+194:      relying_on: CLI machine-readable validation/error output semantics.
+195:    - id: DL-08-schematics-system
+196:      blocked_until: Schematic manifest schema is locked.
+197-      relying_on: Manifest identity/input/idempotency/conflict metadata.
+198-    - id: DL-09-context-memory-drift
+199:      blocked_until: Context file header schema is locked.
+200-      relying_on: Header identity, drift, dependency, and update metadata.
+201-    - id: DL-10-verification-implementation
+202:      blocked_until: Verification Delta and Evidence Packet schemas are locked.
+203:      relying_on: Evidence/failure taxonomy carrier fields.
+204-    - id: DL-14-api-contract-mechanism
+205:      blocked_until: Artifact schema strictness consequences are locked.
+206-      relying_on: Boundary validation doctrine alignment.
+207-    - id: DL-15-mechanical-engine
+208:      blocked_until: Artifact validation and schema/contract strictness consequences are locked.
+209:      relying_on: Mechanical gate schema strictness implications.
+210-    - id: DL-22-security-safety-model
+211:      blocked_until: Allowed/forbidden artifact validation failure behavior is locked.
+212-      relying_on: Safe failure/error evidence fields.
+213-  required_before_finalizing:
+214:    - id: I-01-artifact-schemas-config
+215:      required_content: Real validators/types/migrations for every DL-02 artifact class.
+216-    - id: I-05/I-06/I-21/I-22
+217:      required_content: Actual on-disk producer/carrier/consumer handoff witnesses.
+218-    - id: I-04/I-07/I-08/I-09/I-14
+219:      required_content: Actual registry/schematic/context/evidence/skill-manifest consumers accept valid artifacts and reject invalid ones.
+220-  deferrals:
+221:    - deferred_question: Exact file storage directories and naming templates for every artifact emitted by every skill.
+222:      rationale: Storage layout belongs to DL-03 skill protocols, DL-07 CLI, DL-09 context, and implementation lanes; this decision locks schema/carrier/link contracts.
+223-      future_owner: DL-03/DL-07/DL-09 and relevant I-* lanes
+224-      allowed_now: true
+225-      blocked_dependents:
+226-        - any dependent attempting to finalize storage paths without its owner decision
+227-      invalid_if_any_dependent_relies: true
+228-  owned_write_paths:
+229:    - docs/decisions/DL-02-artifact-schemas.md
+230:    - .vibe/work/DL-02-artifact-schemas/**
+231-  read_only_paths:
+232:    - /Users/lizavasilyeva/work/harness-starter/** source docs and orchestration artifacts
+233-    - /Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-24A-planning-output-discipline.md
+234-    - /Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-20A-domain-neutrality-foundation.md
+235-    - /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/DL-24A-planning-output-discipline/**
+--
+241-    - root config files
+242-    - CI files
+243-    - generated starter files
+244:    - CLI source
+245:    - schema package source
+246:    - context/verification/registry/schematic package source
+247-    - all non-DL-02 decision/report/work paths
+248-  handoff_notes:
+249-    - from: DL-02
+250:      to: I-01-artifact-schemas-config
+251-      condition: After DL-02 validation passes.
+252-      shared_path_policy: disjoint
+253-    - from: DL-02
+254-      to: DL-03/DL-07/DL-08/DL-09/DL-10/DL-14/DL-15/DL-22
+255:      condition: Later decisions may refine owned internals but must preserve DL-02 schema contracts.
+256-      shared_path_policy: disjoint
+257-```
+258-
+--
+260-
+261-Until this decision is independently validated, these dependents remain blocked or unable to close:
+262-
+263:- `I-01-artifact-schemas-config`.
+264-- Skill lanes: `I-05`, `I-06`, `I-21`, `I-22`, and `DL-03`.
+265:- CLI validation and primitive lanes: `DL-07`, `I-02`, and later command consumers.
+266-- Context lanes: `DL-09`, `I-08`, `I-21`, `I-22`.
+267-- Verification lanes: `DL-10`, `I-09`, `I-20`, `I-21`, `I-22`.
+268-- Registry lanes: `DL-05`, `I-04`.
+269-- Schematic manifest consumers: `DL-08`, `I-07`.
+270-- Skill manifest/adapter consumers: `DL-06`, `I-14`.
+271:- Contract/mechanical/security decisions that rely on strict schema behavior: `DL-14`, `DL-15`, `DL-22`.
+272-- Audits: `DL-20B`, `DL-24B`, and final bughunt must confirm this decision is preserved.
+273-
+274:## Artifact schema catalog
+275-
+276-### Work Brief
+277-
+278:- purpose and owner/producer: Captures normalized user intent. Produced by `brainstorm`, `grill-me`, or `task`; may be created by a human/operator importer only if it validates as the same schema.
+279:- canonical carrier/format: UTF-8 JSON object, usually stored as `work-brief.json` or a storage-owner equivalent; Markdown summaries are projections only.
+280:- schema identifier/name: `https://schemas.vibe-engineer.dev/artifacts/v1/work-brief.schema.json`, `WorkBriefV1`.
+281-- required fields:
+282:  - common envelope fields with `artifactKind: work_brief`.
+283-  - `status`: `draft | ready | blocked | superseded`.
+284-  - `sourceSkill`: `brainstorm | grill-me | task`.
+285-  - `workType`: `feature | bug | chore | refactor | research | decision`.
+--
+297-  - `candidateE2ECases`, `candidateUIStates`, `openQuestions`, `assumptions`, `relatedArtifacts`.
+298-- links to predecessor/successor/evidence:
+299-  - Must link to raw intent/source metadata with `rel: raw_intent` where a source exists.
+300:  - Successor Implementation Plans link back with `rel: derived_from` and `artifactKind: work_brief`.
+301-  - Evidence links are optional at Work Brief stage and must be advisory/source-only if present.
+302:- version/migration fields: `schemaVersion` required; unsupported versions reject before planning.
+303:- validation requirements and failure behavior: `plan` intake must reject missing title/type/sourceSkill/background/outcome/link fields; no skill-specific divergent Work Brief schemas are allowed.
+304-- domain-neutrality notes: Core fields use generic work/verification vocabulary only. Project/business terms may appear only as user-supplied content or extension data, not required core fields.
+305:- downstream consumers and proof owners: `plan` intake in `I-05/I-06`; schema validators/types in `I-01`; CLI/context consumers in later lanes.
+306-
+307-### Implementation Plan
+308-
+309-- purpose and owner/producer: Converts an approved Work Brief into an actionable, verifiable plan. Produced by `plan` only.
+310:- canonical carrier/format: UTF-8 JSON object, `implementation-plan.json` or storage-owner equivalent.
+311:- schema identifier/name: `https://schemas.vibe-engineer.dev/artifacts/v1/implementation-plan.schema.json`, `ImplementationPlanV1`.
+312-- required fields:
+313:  - common envelope fields with `artifactKind: implementation_plan`.
+314-  - `status`: `draft | approved | blocked | superseded`.
+315-  - `workBriefRef`: required link to a `WorkBriefV1` with acceptable status.
+316-  - `objective`: string.
+317-  - `scope`: array of strings.
+318-  - `nonScope`: array of strings.
+319:  - `contextClosure`: array of context/artifact references required before build.
+320:  - `affectedAreas`: array of objects with `kind` (`app | package | module | contract | adapter | test | docs | context | schematic | skill | other`), `path`, and `reason`.
+321:  - `schematics`: array of planned schematic refs/usages.
+322-  - `implementationSteps`: ordered array with `id`, `description`, optional `dependsOn`, expected touched areas, and acceptance links.
+323-  - `acceptanceCriteria`: array with stable ids and descriptions.
+324-  - `definitionOfDone`: array of typed checklist items.
+--
+329-  - `workDecompositionHints`, `parallelismHints`, `docsContextUpdatesExpected`, `approval`, `reviewNotes`.
+330-- links:
+331-  - Must link to exactly one Work Brief as predecessor.
+332:  - Must include `verificationDelta.artifactId` and link relation `verification_delta_of` inside the embedded delta.
+333:  - Build Results link to the Implementation Plan using `rel: implements` / `build_result_of`.
+334:- version/migration fields: plan and embedded delta each carry `schemaVersion`. A plan is invalid if plan and delta schemas are incompatible.
+335-- validation/failure behavior: `build` intake must reject any plan not `approved`, any missing Work Brief link, any missing Verification Delta catalog evaluation, or any unresolved blocking open blocker.
+336-- domain-neutrality notes: Affected areas use generic harness surface kinds. Project-specific names may be data values only.
+337:- downstream consumers/proof owners: `build` intake in `I-06/I-21`, schema/types in `I-01`, verification implementation in `I-09/I-10+`.
+338-
+339-### Verification Delta
+340-
+341-- purpose and owner/producer: Machine-readable statement of verification work required by the plan. Produced by `plan` and embedded in `ImplementationPlanV1`.
+342:- canonical carrier/format: JSON object using the same canonical JSON validation; embedded in Implementation Plan. A standalone file may be emitted only as a duplicate validated artifact linked to the plan; consumers read through the approved plan unless a later storage decision explicitly permits otherwise.
+343:- schema identifier/name: `https://schemas.vibe-engineer.dev/artifacts/v1/verification-delta.schema.json`, `VerificationDeltaV1`.
+344-- required fields:
+345:  - `schemaVersion`, `artifactKind: verification_delta`, `artifactId`, `createdAt`, `updatedAt`, `producer`, `status`.
+346-  - `status`: `complete | blocked | superseded`.
+347-  - `summary`: string.
+348-  - `implementationPlanRef`: link to enclosing or standalone Implementation Plan.
+--
+356-  - `mechanicalGateImpacts`, `advisoryReviewItems`, `rerunHints`, `riskLinks`.
+357-- links:
+358-  - Links to Work Brief through the enclosing plan; links to expected Evidence Packets via `evidenceRequired` descriptors.
+359:- version/migration fields: `catalogVersion` and `schemaVersion` required. Unknown catalog items or missing catalog categories are validation failures unless explicitly marked `not_applicable` with rationale.
+360-- validation/failure behavior: Silent skipped verification catalog categories are invalid. `not_applicable` requires rationale. `blocked` requires blocking owner/condition.
+361-- domain-neutrality notes: Layers and catalog ids describe generic verification surfaces, not business domains.
+362:- downstream consumers/proof owners: `I-06` planner, `I-09` verification runner, `I-21` build orchestration, `I-01` schema validation.
+363-
+364-### Build Result
+365-
+366:- purpose and owner/producer: Records implementation outcome, changed-file summary, verification assets, command results, context updates, and blockers. Produced by `build` only after consuming an approved Implementation Plan.
+367:- canonical carrier/format: UTF-8 JSON object.
+368:- schema identifier/name: `https://schemas.vibe-engineer.dev/artifacts/v1/build-result.schema.json`, `BuildResultV1`.
+369-- required fields:
+370:  - common envelope fields with `artifactKind: build_result`.
+371-  - `status`: `passed | failed | blocked | superseded`.
+372-  - `implementationPlanRef`: required link to approved Implementation Plan.
+373-  - `implementationSummary`: string.
+374-  - `changedFilesSummary`: array with `path`, `changeKind` (`created | modified | deleted | moved | unchanged_validated`), `ownerLane`, and summary.
+375:  - `schematicsUsed`: array with schematic manifest refs, input refs, dry-run/conflict status, and output paths.
+376-  - `testsAndVerificationChanged`: array of added/updated/reused verification assets.
+377:  - `verificationRuns`: array of Evidence Packet refs plus result summary.
+378-  - `warningsAndBlockers`: array with `severity` (`critical | major-local | minor-local | advisory`), `blocking`, owner, and evidence ref.
+379-  - `contextDocsUpdates`: array of context/header refs and docs updates.
+380-  - `finalStatusReason`: string.
+--
+382-  - `iterationHistory`, `fixAttempts`, `parallelWorkPackages`, `remainingFollowUps`, `advisoryFindings`.
+383-- links:
+384-  - Must link to exactly one approved Implementation Plan.
+385:  - Must reference Evidence Packet artifacts for every verification claim.
+386-  - Ship Packet links back with `rel: derived_from` or `ship_packet_of`.
+387:- version/migration fields: `schemaVersion` required; build consumers reject unsupported versions.
+388-- validation/failure behavior: Narrative claims without Evidence Packet refs are invalid for verification status. `passed` is invalid when any deterministic blocking evidence failed or is missing.
+389-- domain-neutrality notes: Changed areas and summaries use generic module/package/contract/test vocabulary.
+390:- downstream consumers/proof owners: `ship` intake in `I-21/I-22`, verification/evidence in `I-09`, context in `I-08`, schema in `I-01`.
+391-
+392-### Ship Packet
+393-
+394-- purpose and owner/producer: Final handoff that records final verification, context preservation, commit/PR preparation material, release/migration notes, reviewer notes, and explicit no-push semantics. Produced by `ship` only.
+395:- canonical carrier/format: UTF-8 JSON object.
+396:- schema identifier/name: `https://schemas.vibe-engineer.dev/artifacts/v1/ship-packet.schema.json`, `ShipPacketV1`.
+397-- required fields:
+398:  - common envelope fields with `artifactKind: ship_packet`.
+399-  - `status`: `ready_for_review | blocked | superseded | approved_for_operator_action`.
+400-  - `buildResultRef`: required link to `BuildResultV1`.
+401-  - `finalVerification`: array of Evidence Packet refs and summaries.
+--
+406-  - `followUps`: array with owner and blocking/non-blocking classification.
+407-  - `noPushWithoutApproval`: literal `true`.
+408-- optional fields:
+409:  - `operatorApprovalRef`, `rollbackNotes`, `knownAdvisoryWarnings`, `artifactBundleRefs`.
+410-- links:
+411-  - Must link to Build Result and final Evidence Packets.
+412-  - Must not claim verification without evidence refs.
+413:- version/migration fields: `schemaVersion` required.
+414-- validation/failure behavior: Any packet with `commitPerformedByAgent: true`, `prOpenedByAgent: true`, or missing `noPushWithoutApproval: true` is invalid in v1 unless a later explicit operator-owned decision changes the policy.
+415-- domain-neutrality notes: Release/migration notes describe generic technical changes; project-specific semantics live in consuming-project content only.
+416:- downstream consumers/proof owners: final DoD/schema checks in `I-22/I-23`, CI/context verification in `I-20/I-08`, schema in `I-01`.
+417-
+418-### Evidence Packet
+419-
+420-- purpose and owner/producer: Canonical record of deterministic and advisory evidence. Produced by verification runner, build, ship, validators, or tools.
+421:- canonical carrier/format: UTF-8 JSON object; standalone artifact referenced by Build Result and Ship Packet.
+422:- schema identifier/name: `https://schemas.vibe-engineer.dev/artifacts/v1/evidence-packet.schema.json`, `EvidencePacketV1`.
+423-- required fields:
+424:  - common envelope fields with `artifactKind: evidence_packet`.
+425-  - `status`: `passed | failed | blocked | advisory_warning | not_run | superseded`.
+426-  - `evidenceClass`: `deterministic | advisory | informational`.
+427:  - `layer`: verification layer enum including `safety_hooks`, `typecheck`, `lint_format`, `mechanical_gate`, `unit`, `integration`, `contract_adapter`, `e2e`, `ui_verification`, `ai_eval`, `build_package`, `context_drift`, `observability`, `advisory_review`, `final_dod`, `schema_validation`.
+428:  - `subjectRefs`: links to plan/build/ship/artifacts/files being evaluated.
+429-  - `commandOrTool`: object with `kind` (`command | tool | validator | agent | manual_operator`), `name`, optional `argv`, version, working directory, and environment summary.
+430-  - `startedAt`, `endedAt`: RFC 3339 UTC timestamps.
+431-  - `exitStatus`: object with `kind` (`exit_code | tool_status | not_applicable`), `code` or `status`.
+432:  - `result`: `pass | fail | blocked | advisory | skipped`.
+433-  - `blocking`: boolean.
+434:  - `artifacts`: array of output artifact paths/refs.
+435-  - `warnings`: array.
+436:  - `failureDetails`: required when result is `fail` or `blocked`.
+437-- optional fields:
+438-  - `stdoutRef`, `stderrRef`, `logsRef`, `screenshots`, `traces`, `metrics`, `rerunOf`, `normalizationNotes`.
+439-- links:
+440:  - Must link to the artifact it proves via `evidence_for`.
+441-  - Build/Ship/Verification Delta reference Evidence Packets by id/path.
+442:- version/migration fields: `schemaVersion` required; evidence readers reject unsupported versions.
+443:- validation/failure behavior: Deterministic evidence with `result: fail` and `blocking: true` hard-blocks dependent `passed` statuses. Advisory evidence cannot be the sole hard blocker unless promoted by task-specific criteria recorded in the plan.
+444-- domain-neutrality notes: Evidence layers are generic; command output may contain project data only as observed subject content.
+445:- downstream consumers/proof owners: `I-09` verification runner, `I-21/I-22` build/ship, `I-20` CI, validators, `I-01` schemas.
+446-
+447-### Agent Registry entry
+448-
+449:- purpose and owner/producer: Declares an agent/skill/meta-agent so registry consumers can validate identity, triggers, schemas, tools, context needs, paths, safety, maturity, owner, evals, and deprecation. Produced by registry/agent owners.
+450:- canonical carrier/format: UTF-8 JSON object.
+451:- schema identifier/name: `https://schemas.vibe-engineer.dev/artifacts/v1/agent-registry-entry.schema.json`, `AgentRegistryEntryV1`.
+452-- required fields:
+453:  - common envelope fields with `artifactKind: agent_registry_entry`.
+454-  - `status`: `active | disabled | deprecated | experimental`.
+455-  - `agentId`, `displayName`.
+456-  - `agentType`: `orchestrator | specialist | validator | fixer | reviewer | meta | skill_adapter`.
+457-  - `purpose`: string.
+458-  - `triggers`: array of typed trigger descriptors.
+459:  - `inputSchemas`: array of schema refs to DL-02 or later schema ids.
+460:  - `outputSchemas`: array of schema refs.
+461-  - `allowedTools`: array of tool/action ids.
+462-  - `forbiddenActions`: array of action ids/descriptions.
+463-  - `contextRequirements`: array of context/header refs or retrieval requirements.
+--
+472-- optional fields:
+473-  - `runtimeCostClass`, `examples`, `changelog`, `selectedHarnessAdapters`, `domainNeutralityReview`.
+474-- links:
+475:  - Links to skill manifests when the agent implements a skill; links to schema artifacts for input/output.
+476:- version/migration fields: `schemaVersion` and `agentVersion` required.
+477:- validation/failure behavior: Missing schema refs, allowed/forbidden actions, validator/fixer link validation, or orphaned references are invalid.
+478-- domain-neutrality notes: Core entries must pass DL-20A vocabulary rules; project-specific agents must be clearly extension-owned.
+479:- downstream consumers/proof owners: `I-04` registry validation, `I-14` adapter, `I-21` build orchestration, `I-01` schemas.
+480-
+481-### Context file header
+482-
+483:- purpose and owner/producer: Typed header metadata for context files so context retrievers can determine identity, scope, ownership, dependencies, verification status, update/drift status, and related artifacts. Produced by context writers, build, ship, or schematics.
+484:- canonical carrier/format: JSON object `ContextHeaderV1`. If a context body is Markdown or another human format, the canonical header must be a JSON sidecar or a JSON `header` member parsed by a typed JSON parser; Markdown/YAML frontmatter is not the load-bearing header.
+485:- schema identifier/name: `https://schemas.vibe-engineer.dev/artifacts/v1/context-file-header.schema.json`, `ContextHeaderV1`.
+486-- required fields:
+487:  - common envelope fields with `artifactKind: context_file_header`.
+488-  - `status`: `current | stale | needs_review | deprecated`.
+489-  - `contextId`.
+490:  - `scope`: object with `kind` (`repo | app | package | module | contract | adapter | test | standard | skill | schematic | decision | work_item | other`), `paths`, and `description`.
+491-  - `owner`: lane/team/agent id.
+492-  - `dependencies`: array of typed refs.
+493-  - `dependents`: array of typed refs.
+494-  - `relatedDecisions`: array of decision refs.
+495:  - `relatedPlansArtifacts`: array of artifact refs.
+496-  - `verificationMetadata`: object with last validation evidence refs and status.
+497-  - `updateMetadata`: object with `lastReviewedAt`, `lastUpdatedBy`, `updateReason`.
+498-  - `driftMetadata`: object with `driftStatus` (`unknown | clean | suspected | confirmed`), `lastDriftCheckAt`, and evidence refs.
+--
+500-  - `retrievalHints`, `summary`, `standardsRefs`, `ttl`, `replacementRef`.
+501-- links:
+502-  - Links to decisions/plans/build/ship/evidence and governed paths.
+503:- version/migration fields: `schemaVersion` required; stale unsupported headers are invalid for trusted retrieval.
+504-- validation/failure behavior: Missing identity/scope/owner/dependency/update/drift fields rejects context as authoritative; consumers may show it as untrusted only if explicitly modeled.
+505-- domain-neutrality notes: Scope kinds are generic harness surfaces.
+506:- downstream consumers/proof owners: `DL-09/I-08` context engine, `I-21/I-22` build/ship context updates, `I-01` schemas.
+507-
+508-### Schematic manifest
+509-
+510:- purpose and owner/producer: Declares deterministic generator identity, inputs, generated paths, idempotency/conflict/dry-run behavior, tests/context obligations, domain-neutrality, and ownership. Produced by schematic owners.
+511:- canonical carrier/format: UTF-8 JSON object.
+512:- schema identifier/name: `https://schemas.vibe-engineer.dev/artifacts/v1/schematic-manifest.schema.json`, `SchematicManifestV1`.
+513-- required fields:
+514:  - common envelope fields with `artifactKind: schematic_manifest`.
+515-  - `status`: `active | deprecated | experimental | disabled`.
+516:  - `schematicId`, `schematicVersion`, `purpose`.
+517:  - `inputs`: array with name, schema, required flag, defaults policy, and domain-neutrality classification.
+518-  - `generatedPaths`: array with path template, ownership, conflict policy, and generated/vendor/operator-owned classification.
+519-  - `idempotency`: object with strategy, stable identifiers, and rerun behavior.
+520-  - `conflictBehavior`: `fail | merge_with_typed_strategy | skip_if_identical`.
+--
+526-- optional fields:
+527-  - `examples`, `fixtures`, `deprecation`, `changelog`, `adapterRequirements`.
+528-- links:
+529:  - Links to generated artifact schemas, context headers, and evidence requirements.
+530:- version/migration fields: `schemaVersion` and `schematicVersion` required.
+531:- validation/failure behavior: Missing input/output schema refs, missing conflict/dry-run/idempotency behavior, or unlabeled project-specific defaults are invalid.
+532:- domain-neutrality notes: Core schematics must generate generic names/slots; project-specific values only enter as validated inputs or extension content.
+533:- downstream consumers/proof owners: `DL-08/I-07` schematic engine, `I-15` create/import, `I-01` schemas, `DL-20B` audit.
+534-
+535-### Skill manifest
+536-
+537:- purpose and owner/producer: Declares a skill's identity, artifact inputs/outputs, allowed/forbidden actions, blocking behavior, subagent relationships, storage/handoff contract, selected-harness hooks, and versioning. Produced by skill/adaptor owners.
+538:- canonical carrier/format: UTF-8 JSON object.
+539:- schema identifier/name: `https://schemas.vibe-engineer.dev/artifacts/v1/skill-manifest.schema.json`, `SkillManifestV1`.
+540-- required fields:
+541:  - common envelope fields with `artifactKind: skill_manifest`.
+542-  - `status`: `active | deprecated | experimental | disabled`.
+543-  - `skillId`: `brainstorm | grill-me | task | plan | build | ship` for core v1 skills.
+544-  - `skillVersion`: semver string.
+545-  - `purpose`: string.
+546:  - `inputArtifactSchemas`: array of schema refs; may be empty only for raw-intent producing skills.
+547:  - `outputArtifactSchemas`: array of schema refs.
+548-  - `allowedActions`: array.
+549-  - `forbiddenActions`: array.
+550-  - `clarifyingQuestionPolicy`: object describing when to ask versus proceed.
+551-  - `blockingPolicy`: object describing when to stop as blocked.
+552-  - `subagentRelationships`: array of agent registry refs and roles (`orchestrator | specialist | validator | fixer | reviewer | meta`).
+553-  - `validatorFixerPolicy`: object with max iterations and required independent validation.
+554:  - `storageHandoffContract`: object with artifact refs, write paths delegated by later storage decisions, and next-skill handoff constraints.
+555-  - `selectedHarnessIntegrationHooks`: array of adapter hook refs or explicit empty array.
+556-  - `owner`: string/object.
+557-- optional fields:
+558-  - `examples`, `evals`, `changelog`, `deprecation`, `securityNotes`, `contextRequirements`.
+559-- links:
+560:  - Links to Agent Registry entries, input/output artifact schemas, context headers, and evidence requirements.
+561:- version/migration fields: `schemaVersion` and `skillVersion` required.
+562:- validation/failure behavior: Missing input/output schema refs, forbidden action policy, blocking/clarifying behavior, or handoff contract invalidates the manifest.
+563-- domain-neutrality notes: Core skill prompts/manifests use generic harness vocabulary and locked skill names only.
+564:- downstream consumers/proof owners: `DL-03/I-05/I-06/I-21/I-22`, `DL-06/I-14` selected harness adapter, `I-04` registry, `I-01` schemas.
+565-
+566:## Cross-artifact linking model
+567-
+568-1. Raw intent is captured as source metadata and cannot be consumed directly by `plan`.
+569-2. `brainstorm`, `grill-me`, or `task` produces exactly one canonical `WorkBriefV1` per normalized work item. Multiple drafts may exist only through `supersedes`/`superseded_by` links; the planner consumes a `ready` Work Brief.
+570-3. `plan` consumes a Work Brief only and produces an `ImplementationPlanV1` with an embedded `VerificationDeltaV1` that evaluates the verification catalog item by item.
+571:4. `build` consumes an `approved` Implementation Plan only, performs implementation plus verification work, writes standalone `EvidencePacketV1` artifacts for commands/tools/runs, and writes a `BuildResultV1` that references those Evidence Packets.
+572-5. `ship` consumes a `passed` Build Result only, runs final verification/context checks, writes any final Evidence Packets, and writes a `ShipPacketV1` with commit/PR preparation material and `noPushWithoutApproval: true`.
+573:6. Agent Registry entries side-link to Skill manifests and input/output schemas.
+574:7. Skill manifests side-link to core artifact schemas and selected harness integration hooks.
+575-8. Schematic manifests side-link to generated paths, context header obligations, tests, and evidence requirements.
+576:9. Context file headers side-link to decisions, plans, build/ship artifacts, affected paths, dependencies/dependents, and drift evidence.
+577:10. Links are by stable `artifactId` plus path when available. Consumers must treat path-only links as incomplete unless the artifact id is not yet generated and the field explicitly permits pending resolution.
+578-
+579-## Versioning and migrations
+580-
+581:- V1 schema versions are `1.0.0` for every artifact class.
+582:- Major versions are incompatible by default. A v1 consumer must reject `2.x.x` or `0.x.x` artifacts unless an explicit migration has run and produced a new valid v1 artifact.
+583:- Minor versions may add optional fields only when the schema declares backward compatibility. Consumers must reject unknown minor versions unless `packages/artifacts` has an explicit compatibility table entry.
+584-- Patch versions may clarify constraints without changing accepted data shape.
+585:- Future migrations are owned by `packages/artifacts` in `I-01` and by later explicit migration/update lanes. They must be typed, evidence-producing transformations from one schema version to another.
+586-- No silent migration is allowed during normal consumption. If a migration is needed, the consumer returns a typed unsupported-version/migration-required error and records evidence.
+587:- Migration outputs must preserve `artifactId` only when semantics remain the same; otherwise they must create a new artifact with `derived_from`/`supersedes` links.
+588-
+589-## Validation and type-generation consequences
+590-
+591:`I-01-artifact-schemas-config` must implement these consequences without inventing new schema contracts:
+592-
+593:1. Commit or generate canonical JSON Schemas for all ten DL-02 artifact classes.
+594:2. Generate TypeScript types from the same schemas and make schema/type drift a test failure.
+595:3. Provide runtime validators that accept valid on-disk JSON artifacts and reject invalid artifacts for all ten classes.
+596:4. Provide typed validation errors with JSON Pointer paths and stable error codes.
+597-5. Enforce `additionalProperties: false` except extension maps.
+598:6. Enforce schema version and artifact kind before consumer-specific validation.
+599-7. Enforce link shape and required predecessor/successor links.
+600:8. Expose fixture/witness sets containing valid and invalid examples for every artifact class.
+601-9. Reject heuristic parsing, regex extraction from Markdown/YAML/chat text, and TypeScript-interface-only validation as load-bearing mechanisms.
+602:10. Align mechanical schema/contract strictness gates with generated artifact validation: generated artifact files are boundary data and must be validated before use.
+603-
+604-## Verification/witness consequences
+605-
+606:- deterministic checks affected: schema validation, type generation drift checks, artifact link validation, version/unsupported-version rejection, registry/context/schematic/skill manifest validation, verification/evidence consistency checks.
+607-- positive witnesses required downstream:
+608:  - `I-01`: actual validator accepts valid on-disk JSON artifacts for all ten classes.
+609-  - `I-05`: actual `brainstorm`/`grill-me`/`task` writers produce Work Briefs consumed by actual plan intake.
+610:  - `I-06`: actual `plan` consumes Work Brief and writes Implementation Plan with complete machine-readable Verification Delta consumed by build intake/schema validator.
+611-  - `I-21`: actual `build` consumes Implementation Plan and writes Build Result plus Evidence Packet refs consumed by ship intake.
+612:  - `I-22`: actual `ship` consumes Build Result/Evidence and writes Ship Packet consumed by final DoD/schema checks.
+613-  - `I-04`: actual registry consumer loads valid Agent Registry entries.
+614:  - `I-07`: actual schematic runner/validator consumes Schematic manifests.
+615-  - `I-08`: actual context writer/retriever consumes Context headers and detects drift metadata.
+616-  - `I-09`: actual verification runner writes Evidence Packets consumed by build/ship/CI failure routing.
+617-  - `I-14`: actual selected-harness adapter consumes Skill manifests, or marks live proof `pending-live/BLOCKED` if unavailable.
+618-- negative witnesses required downstream:
+619:  - Missing artifact kind, schema version, stable id, required predecessor link, or required evidence ref is rejected.
+620-  - Unsupported major/minor versions are rejected without fallback.
+621-  - Verification Delta missing a catalog category is rejected.
+622-  - Build Result/Ship Packet narrative claims without Evidence Packet refs are rejected.
+623-  - Evidence Packet that cannot distinguish deterministic hard blockers from advisory review is rejected.
+624:  - Agent/Skill/Schematic manifests without schema refs or allowed/forbidden actions are rejected.
+625-  - Context headers missing scope/owner/drift/update metadata are rejected as authoritative context.
+626-- regression witnesses required downstream:
+627:  - Product/package/CLI name remains `vibe-engineer`.
+628-  - Six skills remain `brainstorm`, `grill-me`, `task`, `plan`, `build`, `ship`.
+629-  - Artifact flow remains raw intent → Work Brief → Implementation Plan → Build Result → Ship Packet.
+630-  - `plan` consumes Work Brief only and owns Verification Delta.
+631-  - `build` consumes approved Implementation Plan only and records verification/evidence/context.
+632-  - `ship` consumes Build Result only, runs final checks, prepares commit/PR material, and does not push without approval.
+633:- real_boundary_required: no for this decision artifact itself; yes for downstream implementation seams.
+634-- real_boundary_status: not_applicable for DL-02 decision closure; required_before_closure for the listed downstream implementation lanes.
+635:- if no live seam: this decision defines schemas only and does not implement validators, writers, consumers, commands, or adapters.
+636-
+637-## Ownership/path consequences
+638-
+639-- owned_write_paths:
+640:  - `/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md`
+641:  - `/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/DL-02-artifact-schemas/**`
+642-- read_only_paths:
+643:  - source docs and orchestration artifacts in `/Users/lizavasilyeva/work/harness-starter/**`;
+644-  - prior decisions and validation reports for `DL-24A` and `DL-20A`;
+645-  - target repo inventory outside DL-02 owned paths.
+646-- untouchable_paths:
+647-  - `/Users/lizavasilyeva/work/vibe-engineer/.git/**`;
+648-  - production package/source/root config/CI/generated starter paths;
+649:  - CLI/source/schema/context/verification/registry/schematic package paths;
+650-  - all non-DL-02 decision/report/work paths.
+651-- serialized/shared ownership notes: none for DL-02. Later implementation lanes own disjoint package paths and must record handoffs if they need shared/root paths.
+652-
+653-## Domain-neutrality check
+654-
+655-- DL-20A status consulted: green/LOCKED/PASS.
+656:- governed surfaces affected: core artifact schemas, registry entries, context headers, schematic manifests, skill manifests, validation errors, examples/fixtures in future `I-01`.
+657:- surface classification: core harness schema decision.
+658:- permitted generic terms: apps, packages, modules, contracts, adapters, tests, standards, context, plans, verification, schematics, skills, agents, artifacts, evidence, registry, CLI, config, docs.
+659:- project/business terms: none used as required schema fields. Any future consuming-project vocabulary belongs in user-supplied artifact content or explicit extension metadata and must not become required core defaults.
+660-- extension boundary: only `extensions` accepts namespaced project-specific metadata; it cannot satisfy required core fields.
+661-- sample/demo boundary: future fixtures/examples must be labeled sample/demo/reference and replaceable.
+662:- enforcement owner: `I-01` schema fixtures plus `DL-20B` audit; `I-04/I-07/I-14/I-24` validate their manifests/docs/prompts where applicable.
+663:- result: PASS for this decision artifact.
+664-
+665-## Dirty-tree safety
+666-
+--
+677-
+678-Narrow non-blocking implementation/storage details assigned to future owners:
+679-
+680:- deferred_question: Exact artifact storage directory templates and file naming for every skill/CLI command.
+681:- reason_now: Storage layout and command UX belong to `DL-03`, `DL-07`, `DL-09`, and implementation lanes. DL-02 locks carrier/schema/link/version requirements needed by `I-01`.
+682-- future_owner: `DL-03`, `DL-07`, `DL-09`, `I-01`, `I-05`, `I-06`, `I-21`, `I-22`.
+683-- required_before_finalizing: any dependent that claims concrete storage paths.
+684-- blocked_dependents: only dependents attempting to finalize path layout without their owner decision.
+685:- proof_no_dependent_relies_now: `I-01` can implement schemas/validators/types from this decision without exact skill storage paths; skill/CLI/context lanes remain blocked on their own path/protocol decisions before closing.
+686-
+687:No schema class, required field family, versioning rule, validation behavior, or link model is deferred.
+688-
+689-## Evidence checklist
+690-
+691:1. Report artifact was created first at `/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/DL-02-artifact-schemas/reports/decision-lock-execution-report.md`.
+692-2. Source files inspected are listed in the execution report and cited above by path/section.
+693:3. Files changed are this decision artifact and the DL-02 execution report only.
+694-4. No production/package/root/config/CI/generated starter files were touched.
+695:5. This artifact produces exactly one output class: `locked_decision_document`.
+696-6. Dependencies, blocked dependents, required sequencing, deferrals, ownership, read-only, untouchable, and handoff fields use the DL-24A dependency declaration format.
+697:7. No unresolved schema field relied on by `I-01`, skills, CLI, context, verification, registry, or schematics is deferred.
+698:8. All ten required artifact classes have catalog sections with carrier, schema id, fields, status/enums, links, versions, validation behavior, domain-neutrality notes, consumers, and proof owners.
+699:9. Cross-artifact linking from raw intent through Ship Packet is explicit.
+700-10. Versioning, migrations, unsupported-version handling, and no-silent-fallback behavior are explicit.
+701:11. Validation/type-generation consequences identify JSON Schema 2020-12, strict runtime validation, generated TypeScript types, and invalid-artifact witnesses.
+702-12. Real-boundary status is stated: not applicable for this decision itself; required for downstream implementation seams.
+703-13. DL-20A domain-neutrality rules are applied.
+704:14. Locked decisions remain uncontradicted: `vibe-engineer`, six skills, artifact flow, Verification Delta, automatic verification/context, registry validation, mechanical gates, and no push/PR without approval.
+705-
+706-## Validation plan and severity policy
+707-
+--
+709-
+710-### Positive witnesses
+711-
+712:- Report exists and predates the decision artifact.
+713:- Decision artifact exists at `/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-02-artifact-schemas.md`.
+714-- Status/output class is DL-24A-compatible and exactly one output class is used.
+715:- All ten artifact classes have concrete schema catalog sections.
+716-- Work Brief → Implementation Plan → Verification Delta → Build Result → Evidence Packet → Ship Packet link model is explicit.
+717:- Registry entry, context header, schematic manifest, and skill manifest are included and not silently deferred.
+718:- `I-01` can implement validators/types without inventing schema classes, versions, carriers, core fields, or validation failure behavior.
+719-- Domain-neutrality uses generic core vocabulary.
+720-
+721-### Negative witnesses
+722-
+723:- Missing any required artifact class is critical.
+724:- Accepting unknown/invalid artifact versions silently is critical.
+725-- Missing stable id/version/link semantics for Work Brief/Plan/Build/Ship is critical.
+726-- Verification Delta that can skip catalog categories silently is critical.
+727-- Build Result or Ship Packet narrative verification without Evidence Packet refs is critical.
+728-- Evidence Packet that cannot distinguish deterministic blockers from advisory review is critical.
+729:- Registry/Skill/Schematic manifests lacking input/output schema refs or allowed/forbidden actions are critical.
+730:- Any load-bearing parsing plan based on heuristic text/regex rather than typed JSON schema validation is critical.
+731:- Any deferred schema field relied on by `I-01`, skills, CLI, context, verification, registry, or schematics is critical.
+732:- Core schema/examples leaking project-specific business vocabulary violate DL-20A unless clearly negative-example/sample-demo-labeled.
+733-
+734-### Regression witnesses
+735-
+736:- Product/package/CLI name remains `vibe-engineer`.
+737-- Six skills remain `brainstorm`, `grill-me`, `task`, `plan`, `build`, `ship`.
+738-- Artifact flow remains raw intent → Work Brief → Implementation Plan → Build Result → Ship Packet.
+739-- `plan` consumes Work Brief only and produces machine-readable Verification Delta.
+--
+745-### Sibling/blast-radius checks
+746-
+747-- Check final strategy §§3–11 and §§17–19 for consistency.
+748:- Check README artifact model and skill sections for field coverage.
+749-- Check verification-layer Verification Delta, evidence, agent registry, blocking policy, and final invariant sections.
+750:- Check mechanical gates schema/contract strictness and wiring doctrine for schema consequences.
+751:- Confirm DL-02 does not over-decide full skill protocols, CLI UX, context storage engine, verification runner internals, API contract mechanism, mechanical implementation, or security policy.
+752:- Confirm only `docs/decisions/DL-02-artifact-schemas.md` and `.vibe/work/DL-02-artifact-schemas/**` changed for this lane.
+753-
+754-### Severity policy
+755-
+756:- `critical`: missing prerequisite; source/locked-decision contradiction; out-of-license write; production implementation; missing required artifact class; schema system relies on heuristic parsing/silent fallback; invalid deferral relied on by dependents; no versioning/linking model; false real-boundary closure; domain-neutrality violation.
+757-- `major-local`: incomplete field catalog, unclear owner handoff, insufficient validation/type-generation consequence, or missing witness design limited to DL-02 paths.
+758:- `minor-local`: wording/citation/table clarity issue that does not weaken schema gates or unblock dependents incorrectly.
+759:- `clean`: all schema, source, ownership, dependency, domain-neutrality, and witness requirements satisfied.
+760-
+761-## Known ambiguities / future owners
+762-
+763-No blocking ambiguity remains for DL-02. Future owners must preserve these handoffs:
+764-
+765:- `I-01-artifact-schemas-config`: implement JSON Schemas, strict validators, generated TypeScript types, migrations, fixtures, positive/negative/regression tests, and real on-disk validation witnesses.
+766:- `DL-03` and skill implementation lanes: define full skill protocols, prompt behavior, storage paths, and handoff UX while using DL-02 schemas.
+767:- `DL-07`: define CLI command surface/output contracts while invoking DL-02 validators and errors.
+768:- `DL-08/I-07`: decide schematic engine internals while preserving `SchematicManifestV1` contract.
+769-- `DL-09/I-08`: decide context graph/storage/retrieval while preserving `ContextHeaderV1` contract.
+770-- `DL-10/I-09`: decide verification runner internals/failure taxonomy while preserving `VerificationDeltaV1` and `EvidencePacketV1` contracts.
+771:- `DL-14`: decide API contract mechanism without weakening artifact schema validation.
+772:- `DL-15`: wire mechanical schema/contract strictness to generated artifact validation.
+773:- `DL-22`: define security/safety policy without allowing unsafe artifact fallback behavior.
+774-- `DL-20B/DL-24B`: audit domain-neutrality and decision-output compliance across decisions.
