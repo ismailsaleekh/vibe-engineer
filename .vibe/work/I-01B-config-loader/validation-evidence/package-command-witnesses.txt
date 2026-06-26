@@ -1,0 +1,46 @@
+== root/shared sentinel hashes before command witnesses ==
+6a46b32757bda3114d76c909b57d9986e7a11e5e  package.json
+21ce092919198c97b24a56a9d7bf193d83a92b3c  pnpm-lock.yaml
+6912a9fad9cc01e444afaa2214bf4352ed64a2cc  pnpm-workspace.yaml
+a876fe344e1a1a684710843296c87d0e80aede21  tsconfig.base.json
+8fb37c14a0b8db5bacbbafa82f1eba298dfe0163  turbo.json
+b6813147c8e69b71c0c8a2f8237dd9899043c514  eslint.config.mjs
+9c072c22d6bd4c9a7d2efe141551692e5403e31c  .npmrc
+287a5de0ec70eee3ec9977f52fda788977e90c36  .gitignore
+
+== syntax check ==
+
+== package self import smoke ==
+{"loadProject":"function","parse":"function","schemaId":"vibe-engineer.config.v1","supported":["pi"]}
+
+== package-local node test ==
+@vibe-engineer/config tests passed
+
+== pnpm filter test ==
+
+> @vibe-engineer/config@0.0.0 test /Users/lizavasilyeva/work/vibe-engineer/packages/config
+> node tests/run-tests.mjs
+
+@vibe-engineer/config tests passed
+
+== pnpm filter typecheck ==
+
+> @vibe-engineer/config@0.0.0 typecheck /Users/lizavasilyeva/work/vibe-engineer/packages/config
+> tsc --noEmit -p tsconfig.json
+
+
+== pnpm filter lint ==
+
+> @vibe-engineer/config@0.0.0 lint /Users/lizavasilyeva/work/vibe-engineer/packages/config
+> eslint .
+
+
+== root/shared sentinel hashes after command witnesses ==
+6a46b32757bda3114d76c909b57d9986e7a11e5e  package.json
+21ce092919198c97b24a56a9d7bf193d83a92b3c  pnpm-lock.yaml
+6912a9fad9cc01e444afaa2214bf4352ed64a2cc  pnpm-workspace.yaml
+a876fe344e1a1a684710843296c87d0e80aede21  tsconfig.base.json
+8fb37c14a0b8db5bacbbafa82f1eba298dfe0163  turbo.json
+b6813147c8e69b71c0c8a2f8237dd9899043c514  eslint.config.mjs
+9c072c22d6bd4c9a7d2efe141551692e5403e31c  .npmrc
+287a5de0ec70eee3ec9977f52fda788977e90c36  .gitignore

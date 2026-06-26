@@ -1,0 +1,74 @@
+== final scoped status Q04/root/sibling sentinels ==
+?? .gitignore
+?? .npmrc
+?? .vibe/work/I-01B-config-loader/
+?? eslint.config.mjs
+?? package.json
+?? packages/config/
+?? packages/mechanical-gates/
+?? packages/orchestration/
+?? packages/registry/
+?? pnpm-lock.yaml
+?? pnpm-workspace.yaml
+?? tsconfig.base.json
+?? turbo.json
+
+== root/shared hashes ==
+6a46b32757bda3114d76c909b57d9986e7a11e5e  /Users/lizavasilyeva/work/vibe-engineer/package.json
+21ce092919198c97b24a56a9d7bf193d83a92b3c  /Users/lizavasilyeva/work/vibe-engineer/pnpm-lock.yaml
+6912a9fad9cc01e444afaa2214bf4352ed64a2cc  /Users/lizavasilyeva/work/vibe-engineer/pnpm-workspace.yaml
+a876fe344e1a1a684710843296c87d0e80aede21  /Users/lizavasilyeva/work/vibe-engineer/tsconfig.base.json
+8fb37c14a0b8db5bacbbafa82f1eba298dfe0163  /Users/lizavasilyeva/work/vibe-engineer/turbo.json
+b6813147c8e69b71c0c8a2f8237dd9899043c514  /Users/lizavasilyeva/work/vibe-engineer/eslint.config.mjs
+9c072c22d6bd4c9a7d2efe141551692e5403e31c  /Users/lizavasilyeva/work/vibe-engineer/.npmrc
+287a5de0ec70eee3ec9977f52fda788977e90c36  /Users/lizavasilyeva/work/vibe-engineer/.gitignore
+
+== Q04 package file inventory ==
+/Users/lizavasilyeva/work/vibe-engineer/packages/config/eslint.config.mjs
+/Users/lizavasilyeva/work/vibe-engineer/packages/config/fixtures/projects/executable-format-only/vibe-engineer.config.toml
+/Users/lizavasilyeva/work/vibe-engineer/packages/config/fixtures/projects/executable-format-only/vibe-engineer.config.ts
+/Users/lizavasilyeva/work/vibe-engineer/packages/config/fixtures/projects/executable-format-only/vibe-engineer.config.yaml
+/Users/lizavasilyeva/work/vibe-engineer/packages/config/fixtures/projects/invalid-fix-iterations-high/vibe-engineer.config.json
+/Users/lizavasilyeva/work/vibe-engineer/packages/config/fixtures/projects/invalid-fix-iterations-low/vibe-engineer.config.json
+/Users/lizavasilyeva/work/vibe-engineer/packages/config/fixtures/projects/invalid-hours-high/vibe-engineer.config.json
+/Users/lizavasilyeva/work/vibe-engineer/packages/config/fixtures/projects/invalid-hours-zero/vibe-engineer.config.json
+/Users/lizavasilyeva/work/vibe-engineer/packages/config/fixtures/projects/invalid-nested-key/vibe-engineer.config.json
+/Users/lizavasilyeva/work/vibe-engineer/packages/config/fixtures/projects/invalid-range-high/vibe-engineer.config.json
+/Users/lizavasilyeva/work/vibe-engineer/packages/config/fixtures/projects/invalid-range-low/vibe-engineer.config.json
+/Users/lizavasilyeva/work/vibe-engineer/packages/config/fixtures/projects/invalid-secret-like-key/vibe-engineer.config.json
+/Users/lizavasilyeva/work/vibe-engineer/packages/config/fixtures/projects/invalid-type/vibe-engineer.config.json
+/Users/lizavasilyeva/work/vibe-engineer/packages/config/fixtures/projects/invalid-unknown-key/vibe-engineer.config.json
+/Users/lizavasilyeva/work/vibe-engineer/packages/config/fixtures/projects/invalid-unsupported-harness-arbitrary/vibe-engineer.config.json
+/Users/lizavasilyeva/work/vibe-engineer/packages/config/fixtures/projects/invalid-unsupported-harness-claude-code/vibe-engineer.config.json
+/Users/lizavasilyeva/work/vibe-engineer/packages/config/fixtures/projects/invalid-unsupported-harness-codex/vibe-engineer.config.json
+/Users/lizavasilyeva/work/vibe-engineer/packages/config/fixtures/projects/invalid-unsupported-harness-opencode/vibe-engineer.config.json
+/Users/lizavasilyeva/work/vibe-engineer/packages/config/fixtures/projects/malformed-json/vibe-engineer.config.json
+/Users/lizavasilyeva/work/vibe-engineer/packages/config/fixtures/projects/valid-full/vibe-engineer.config.json
+/Users/lizavasilyeva/work/vibe-engineer/packages/config/fixtures/projects/valid-minimal/vibe-engineer.config.json
+/Users/lizavasilyeva/work/vibe-engineer/packages/config/package.json
+/Users/lizavasilyeva/work/vibe-engineer/packages/config/src/generated/types.d.ts
+/Users/lizavasilyeva/work/vibe-engineer/packages/config/src/index.js
+/Users/lizavasilyeva/work/vibe-engineer/packages/config/tests/public-api-consumer.ts
+/Users/lizavasilyeva/work/vibe-engineer/packages/config/tests/run-tests.mjs
+/Users/lizavasilyeva/work/vibe-engineer/packages/config/tsconfig.json
+
+== Q04 package temp directory observation ==
+/Users/lizavasilyeva/work/vibe-engineer/packages/config/.tmp
+
+== packages/core sentinel ==
+packages/core absent
+
+== create/cli/schematic/example maxParallelAgents sweep ==
+-- packages/cli --
+-- packages/schematics --
+-- examples absent --
+-- packages/artifacts --
+
+== config reference sweep outside owned config package ==
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-01-repo-package-structure.md:| `packages/config` | `@vibe-engineer/config` | private internal workspace package; future public API candidate | not independently published initially | CLI, verification, schematics, create/import, generated config validators | `I-01` | may depend on artifacts; must not depend on CLI, adapters, skills, or starter code |
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-16-starter-architecture.md:  vibe-engineer.config.*       # exact schema/extension owned by DL-02/DL-07/DL-22; required concepts locked
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-16-starter-architecture.md:Generated starter receives a root `vibe-engineer.config.*` file whose exact schema/extension is owned by DL-02/DL-07/DL-22, but it must contain these locked concepts:
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-07-cli-primitives.md:| `vibe-engineer config inspect` | debug/diagnostic; CI primitive | human debugging, agent, CI | project root; config path; selectors; redaction mode; machine flags | `payload.kind=config_inspect_result`; resolved config summary; source locations; redacted values | read-only except result file | no prompts; human prose allowed only outside machine mode | `DL-02`, `DL-22` | `I-02-cli-primitive-foundation`; config package by `I-01` | `I-02`; `I-18` for security redaction if needed | Accepted. Secret/redaction policy depends on `DL-22`. |
+/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-07-cli-primitives.md:| `vibe-engineer config validate` | debug/diagnostic; CI primitive; skill/agent primitive | agent, CI, human debugging | project root; config path; machine flags | `payload.kind=config_validation_result`; schema errors; defaults applied; source locations | read-only except result/evidence | non-interactive | `DL-02`, `DL-22` | `I-02-cli-primitive-foundation`; config package by `I-01` | `I-02`; `I-18` if security policy applies | Accepted. |
+
+== static config package safety sweep ==
