@@ -1,0 +1,784 @@
+{
+  "implementation_plan": {
+    "$id": "https://schemas.vibe-engineer.dev/artifacts/v1/implementation-plan.schema.json",
+    "required": [
+      "schemaVersion",
+      "artifactKind",
+      "artifactId",
+      "title",
+      "createdAt",
+      "updatedAt",
+      "producer",
+      "status",
+      "ownership",
+      "links",
+      "extensions",
+      "workBriefRef",
+      "objective",
+      "scope",
+      "nonScope",
+      "contextClosure",
+      "affectedAreas",
+      "schematics",
+      "implementationSteps",
+      "acceptanceCriteria",
+      "definitionOfDone",
+      "risks",
+      "openBlockers",
+      "verificationDelta"
+    ],
+    "properties": [
+      "acceptanceCriteria",
+      "affectedAreas",
+      "approval",
+      "approvedBy",
+      "artifactId",
+      "artifactKind",
+      "contextClosure",
+      "createdAt",
+      "definitionOfDone",
+      "description",
+      "docsContextUpdatesExpected",
+      "extensions",
+      "implementationSteps",
+      "links",
+      "nonScope",
+      "objective",
+      "openBlockers",
+      "ownership",
+      "parallelismHints",
+      "producer",
+      "retention",
+      "reviewNotes",
+      "risks",
+      "schemaVersion",
+      "schematics",
+      "scope",
+      "sourceRefs",
+      "status",
+      "supersessionReason",
+      "tags",
+      "title",
+      "updatedAt",
+      "verificationDelta",
+      "workBriefRef",
+      "workDecompositionHints"
+    ],
+    "enum_locations": [
+      {
+        "path": "$.properties.artifactKind",
+        "enum": [
+          "implementation_plan"
+        ]
+      },
+      {
+        "path": "$.properties.producer.properties.kind",
+        "enum": [
+          "skill",
+          "agent",
+          "cli",
+          "schematic",
+          "verification_runner",
+          "human_operator",
+          "system"
+        ]
+      },
+      {
+        "path": "$.properties.status",
+        "enum": [
+          "draft",
+          "approved",
+          "blocked",
+          "superseded"
+        ]
+      },
+      {
+        "path": "$.properties.links.items.properties.rel",
+        "enum": [
+          "raw_intent",
+          "derived_from",
+          "supersedes",
+          "superseded_by",
+          "implements",
+          "verifies",
+          "evidence_for",
+          "consumed_by",
+          "produced_by",
+          "context_for",
+          "registry_entry_for",
+          "manifest_for",
+          "verification_delta_of",
+          "build_result_of",
+          "ship_packet_of"
+        ]
+      },
+      {
+        "path": "$.properties.links.items.properties.artifactKind",
+        "enum": [
+          "work_brief",
+          "implementation_plan",
+          "verification_delta",
+          "build_result",
+          "ship_packet",
+          "evidence_packet",
+          "agent_registry_entry",
+          "context_file_header",
+          "schematic_manifest",
+          "skill_manifest"
+        ]
+      },
+      {
+        "path": "$.properties.sourceRefs.items.properties.kind",
+        "enum": [
+          "source_doc",
+          "prompt",
+          "issue",
+          "url",
+          "artifact",
+          "raw_intent"
+        ]
+      },
+      {
+        "path": "$.properties.approvedBy.properties.producer.properties.kind",
+        "enum": [
+          "skill",
+          "agent",
+          "cli",
+          "schematic",
+          "verification_runner",
+          "human_operator",
+          "system"
+        ]
+      },
+      {
+        "path": "$.properties.workBriefRef.properties.rel",
+        "enum": [
+          "raw_intent",
+          "derived_from",
+          "supersedes",
+          "superseded_by",
+          "implements",
+          "verifies",
+          "evidence_for",
+          "consumed_by",
+          "produced_by",
+          "context_for",
+          "registry_entry_for",
+          "manifest_for",
+          "verification_delta_of",
+          "build_result_of",
+          "ship_packet_of"
+        ]
+      },
+      {
+        "path": "$.properties.workBriefRef.properties.artifactKind",
+        "enum": [
+          "work_brief",
+          "implementation_plan",
+          "verification_delta",
+          "build_result",
+          "ship_packet",
+          "evidence_packet",
+          "agent_registry_entry",
+          "context_file_header",
+          "schematic_manifest",
+          "skill_manifest"
+        ]
+      },
+      {
+        "path": "$.properties.contextClosure.items.properties.rel",
+        "enum": [
+          "raw_intent",
+          "derived_from",
+          "supersedes",
+          "superseded_by",
+          "implements",
+          "verifies",
+          "evidence_for",
+          "consumed_by",
+          "produced_by",
+          "context_for",
+          "registry_entry_for",
+          "manifest_for",
+          "verification_delta_of",
+          "build_result_of",
+          "ship_packet_of"
+        ]
+      },
+      {
+        "path": "$.properties.contextClosure.items.properties.artifactKind",
+        "enum": [
+          "work_brief",
+          "implementation_plan",
+          "verification_delta",
+          "build_result",
+          "ship_packet",
+          "evidence_packet",
+          "agent_registry_entry",
+          "context_file_header",
+          "schematic_manifest",
+          "skill_manifest"
+        ]
+      },
+      {
+        "path": "$.properties.affectedAreas.items.properties.kind",
+        "enum": [
+          "app",
+          "package",
+          "module",
+          "contract",
+          "adapter",
+          "test",
+          "docs",
+          "context",
+          "schematic",
+          "skill",
+          "other"
+        ]
+      },
+      {
+        "path": "$.properties.schematics.items.properties.schematicRef.properties.rel",
+        "enum": [
+          "raw_intent",
+          "derived_from",
+          "supersedes",
+          "superseded_by",
+          "implements",
+          "verifies",
+          "evidence_for",
+          "consumed_by",
+          "produced_by",
+          "context_for",
+          "registry_entry_for",
+          "manifest_for",
+          "verification_delta_of",
+          "build_result_of",
+          "ship_packet_of"
+        ]
+      },
+      {
+        "path": "$.properties.schematics.items.properties.schematicRef.properties.artifactKind",
+        "enum": [
+          "work_brief",
+          "implementation_plan",
+          "verification_delta",
+          "build_result",
+          "ship_packet",
+          "evidence_packet",
+          "agent_registry_entry",
+          "context_file_header",
+          "schematic_manifest",
+          "skill_manifest"
+        ]
+      },
+      {
+        "path": "$.properties.schematics.items.properties.plannedInputsRef.properties.rel",
+        "enum": [
+          "raw_intent",
+          "derived_from",
+          "supersedes",
+          "superseded_by",
+          "implements",
+          "verifies",
+          "evidence_for",
+          "consumed_by",
+          "produced_by",
+          "context_for",
+          "registry_entry_for",
+          "manifest_for",
+          "verification_delta_of",
+          "build_result_of",
+          "ship_packet_of"
+        ]
+      },
+      {
+        "path": "$.properties.schematics.items.properties.plannedInputsRef.properties.artifactKind",
+        "enum": [
+          "work_brief",
+          "implementation_plan",
+          "verification_delta",
+          "build_result",
+          "ship_packet",
+          "evidence_packet",
+          "agent_registry_entry",
+          "context_file_header",
+          "schematic_manifest",
+          "skill_manifest"
+        ]
+      },
+      {
+        "path": "$.properties.implementationSteps.items.properties.expectedTouchedAreas.items.properties.kind",
+        "enum": [
+          "app",
+          "package",
+          "module",
+          "contract",
+          "adapter",
+          "test",
+          "docs",
+          "context",
+          "schematic",
+          "skill",
+          "other"
+        ]
+      },
+      {
+        "path": "$.properties.verificationDelta.properties.artifactKind",
+        "enum": [
+          "verification_delta"
+        ]
+      },
+      {
+        "path": "$.properties.verificationDelta.properties.producer.properties.kind",
+        "enum": [
+          "skill",
+          "agent",
+          "cli",
+          "schematic",
+          "verification_runner",
+          "human_operator",
+          "system"
+        ]
+      },
+      {
+        "path": "$.properties.verificationDelta.properties.status",
+        "enum": [
+          "complete",
+          "blocked",
+          "superseded"
+        ]
+      },
+      {
+        "path": "$.properties.verificationDelta.properties.links.items.properties.rel",
+        "enum": [
+          "raw_intent",
+          "derived_from",
+          "supersedes",
+          "superseded_by",
+          "implements",
+          "verifies",
+          "evidence_for",
+          "consumed_by",
+          "produced_by",
+          "context_for",
+          "registry_entry_for",
+          "manifest_for",
+          "verification_delta_of",
+          "build_result_of",
+          "ship_packet_of"
+        ]
+      },
+      {
+        "path": "$.properties.verificationDelta.properties.links.items.properties.artifactKind",
+        "enum": [
+          "work_brief",
+          "implementation_plan",
+          "verification_delta",
+          "build_result",
+          "ship_packet",
+          "evidence_packet",
+          "agent_registry_entry",
+          "context_file_header",
+          "schematic_manifest",
+          "skill_manifest"
+        ]
+      },
+      {
+        "path": "$.properties.verificationDelta.properties.sourceRefs.items.properties.kind",
+        "enum": [
+          "source_doc",
+          "prompt",
+          "issue",
+          "url",
+          "artifact",
+          "raw_intent"
+        ]
+      },
+      {
+        "path": "$.properties.verificationDelta.properties.approvedBy.properties.producer.properties.kind",
+        "enum": [
+          "skill",
+          "agent",
+          "cli",
+          "schematic",
+          "verification_runner",
+          "human_operator",
+          "system"
+        ]
+      },
+      {
+        "path": "$.properties.verificationDelta.properties.implementationPlanRef.properties.rel",
+        "enum": [
+          "raw_intent",
+          "derived_from",
+          "supersedes",
+          "superseded_by",
+          "implements",
+          "verifies",
+          "evidence_for",
+          "consumed_by",
+          "produced_by",
+          "context_for",
+          "registry_entry_for",
+          "manifest_for",
+          "verification_delta_of",
+          "build_result_of",
+          "ship_packet_of"
+        ]
+      },
+      {
+        "path": "$.properties.verificationDelta.properties.implementationPlanRef.properties.artifactKind",
+        "enum": [
+          "work_brief",
+          "implementation_plan",
+          "verification_delta",
+          "build_result",
+          "ship_packet",
+          "evidence_packet",
+          "agent_registry_entry",
+          "context_file_header",
+          "schematic_manifest",
+          "skill_manifest"
+        ]
+      },
+      {
+        "path": "$.properties.verificationDelta.properties.requiredItems.items.properties.layer",
+        "enum": [
+          "safety_hooks",
+          "typecheck",
+          "lint_format",
+          "mechanical_gate",
+          "unit",
+          "integration",
+          "contract_adapter",
+          "e2e",
+          "ui_verification",
+          "ai_eval",
+          "build_package",
+          "context_drift",
+          "observability",
+          "advisory_review",
+          "final_dod",
+          "schema_validation"
+        ]
+      },
+      {
+        "path": "$.properties.verificationDelta.properties.requiredItems.items.properties.action",
+        "enum": [
+          "add",
+          "update",
+          "reuse",
+          "not_applicable",
+          "blocked"
+        ]
+      },
+      {
+        "path": "$.properties.verificationDelta.properties.requiredItems.items.properties.evidenceRequired.items.properties.kind",
+        "enum": [
+          "evidence_packet",
+          "test_report",
+          "command_log",
+          "screenshot",
+          "trace",
+          "metric",
+          "context_header"
+        ]
+      },
+      {
+        "path": "$.properties.verificationDelta.properties.riskLinks.items.properties.rel",
+        "enum": [
+          "raw_intent",
+          "derived_from",
+          "supersedes",
+          "superseded_by",
+          "implements",
+          "verifies",
+          "evidence_for",
+          "consumed_by",
+          "produced_by",
+          "context_for",
+          "registry_entry_for",
+          "manifest_for",
+          "verification_delta_of",
+          "build_result_of",
+          "ship_packet_of"
+        ]
+      },
+      {
+        "path": "$.properties.verificationDelta.properties.riskLinks.items.properties.artifactKind",
+        "enum": [
+          "work_brief",
+          "implementation_plan",
+          "verification_delta",
+          "build_result",
+          "ship_packet",
+          "evidence_packet",
+          "agent_registry_entry",
+          "context_file_header",
+          "schematic_manifest",
+          "skill_manifest"
+        ]
+      },
+      {
+        "path": "$.properties.approval.properties.approvedBy.properties.kind",
+        "enum": [
+          "skill",
+          "agent",
+          "cli",
+          "schematic",
+          "verification_runner",
+          "human_operator",
+          "system"
+        ]
+      }
+    ]
+  },
+  "verification_delta": {
+    "$id": "https://schemas.vibe-engineer.dev/artifacts/v1/verification-delta.schema.json",
+    "required": [
+      "schemaVersion",
+      "artifactKind",
+      "artifactId",
+      "title",
+      "createdAt",
+      "updatedAt",
+      "producer",
+      "status",
+      "ownership",
+      "links",
+      "extensions",
+      "summary",
+      "implementationPlanRef",
+      "sensitiveAreas",
+      "catalogVersion",
+      "requiredItems"
+    ],
+    "properties": [
+      "advisoryReviewItems",
+      "approvedBy",
+      "artifactId",
+      "artifactKind",
+      "catalogVersion",
+      "createdAt",
+      "description",
+      "extensions",
+      "implementationPlanRef",
+      "links",
+      "mechanicalGateImpacts",
+      "ownership",
+      "producer",
+      "requiredItems",
+      "rerunHints",
+      "retention",
+      "riskLinks",
+      "schemaVersion",
+      "sensitiveAreas",
+      "sourceRefs",
+      "status",
+      "summary",
+      "supersessionReason",
+      "tags",
+      "title",
+      "updatedAt"
+    ],
+    "enum_locations": [
+      {
+        "path": "$.properties.artifactKind",
+        "enum": [
+          "verification_delta"
+        ]
+      },
+      {
+        "path": "$.properties.producer.properties.kind",
+        "enum": [
+          "skill",
+          "agent",
+          "cli",
+          "schematic",
+          "verification_runner",
+          "human_operator",
+          "system"
+        ]
+      },
+      {
+        "path": "$.properties.status",
+        "enum": [
+          "complete",
+          "blocked",
+          "superseded"
+        ]
+      },
+      {
+        "path": "$.properties.links.items.properties.rel",
+        "enum": [
+          "raw_intent",
+          "derived_from",
+          "supersedes",
+          "superseded_by",
+          "implements",
+          "verifies",
+          "evidence_for",
+          "consumed_by",
+          "produced_by",
+          "context_for",
+          "registry_entry_for",
+          "manifest_for",
+          "verification_delta_of",
+          "build_result_of",
+          "ship_packet_of"
+        ]
+      },
+      {
+        "path": "$.properties.links.items.properties.artifactKind",
+        "enum": [
+          "work_brief",
+          "implementation_plan",
+          "verification_delta",
+          "build_result",
+          "ship_packet",
+          "evidence_packet",
+          "agent_registry_entry",
+          "context_file_header",
+          "schematic_manifest",
+          "skill_manifest"
+        ]
+      },
+      {
+        "path": "$.properties.sourceRefs.items.properties.kind",
+        "enum": [
+          "source_doc",
+          "prompt",
+          "issue",
+          "url",
+          "artifact",
+          "raw_intent"
+        ]
+      },
+      {
+        "path": "$.properties.approvedBy.properties.producer.properties.kind",
+        "enum": [
+          "skill",
+          "agent",
+          "cli",
+          "schematic",
+          "verification_runner",
+          "human_operator",
+          "system"
+        ]
+      },
+      {
+        "path": "$.properties.implementationPlanRef.properties.rel",
+        "enum": [
+          "raw_intent",
+          "derived_from",
+          "supersedes",
+          "superseded_by",
+          "implements",
+          "verifies",
+          "evidence_for",
+          "consumed_by",
+          "produced_by",
+          "context_for",
+          "registry_entry_for",
+          "manifest_for",
+          "verification_delta_of",
+          "build_result_of",
+          "ship_packet_of"
+        ]
+      },
+      {
+        "path": "$.properties.implementationPlanRef.properties.artifactKind",
+        "enum": [
+          "work_brief",
+          "implementation_plan",
+          "verification_delta",
+          "build_result",
+          "ship_packet",
+          "evidence_packet",
+          "agent_registry_entry",
+          "context_file_header",
+          "schematic_manifest",
+          "skill_manifest"
+        ]
+      },
+      {
+        "path": "$.properties.requiredItems.items.properties.layer",
+        "enum": [
+          "safety_hooks",
+          "typecheck",
+          "lint_format",
+          "mechanical_gate",
+          "unit",
+          "integration",
+          "contract_adapter",
+          "e2e",
+          "ui_verification",
+          "ai_eval",
+          "build_package",
+          "context_drift",
+          "observability",
+          "advisory_review",
+          "final_dod",
+          "schema_validation"
+        ]
+      },
+      {
+        "path": "$.properties.requiredItems.items.properties.action",
+        "enum": [
+          "add",
+          "update",
+          "reuse",
+          "not_applicable",
+          "blocked"
+        ]
+      },
+      {
+        "path": "$.properties.requiredItems.items.properties.evidenceRequired.items.properties.kind",
+        "enum": [
+          "evidence_packet",
+          "test_report",
+          "command_log",
+          "screenshot",
+          "trace",
+          "metric",
+          "context_header"
+        ]
+      },
+      {
+        "path": "$.properties.riskLinks.items.properties.rel",
+        "enum": [
+          "raw_intent",
+          "derived_from",
+          "supersedes",
+          "superseded_by",
+          "implements",
+          "verifies",
+          "evidence_for",
+          "consumed_by",
+          "produced_by",
+          "context_for",
+          "registry_entry_for",
+          "manifest_for",
+          "verification_delta_of",
+          "build_result_of",
+          "ship_packet_of"
+        ]
+      },
+      {
+        "path": "$.properties.riskLinks.items.properties.artifactKind",
+        "enum": [
+          "work_brief",
+          "implementation_plan",
+          "verification_delta",
+          "build_result",
+          "ship_packet",
+          "evidence_packet",
+          "agent_registry_entry",
+          "context_file_header",
+          "schematic_manifest",
+          "skill_manifest"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "compileAllArtifactSchemas": {
+    "schemaVersion": "1.0.0",
+    "kinds": [
+      "work_brief",
+      "implementation_plan",
+      "verification_delta",
+      "build_result",
+      "ship_packet",
+      "evidence_packet",
+      "agent_registry_entry",
+      "context_file_header",
+      "schematic_manifest",
+      "skill_manifest"
+    ]
+  },
+  "validatorExportsAvailable": {
+    "validateArtifact": "function",
+    "validateArtifactKind": "function",
+    "validateArtifactFile": "function"
+  },
+  "i06CatalogLayers": [
+    "safety_hooks",
+    "typecheck",
+    "lint_format",
+    "mechanical_gate",
+    "unit",
+    "integration",
+    "contract_adapter",
+    "e2e",
+    "ui_verification",
+    "ai_eval",
+    "build_package",
+    "context_drift",
+    "observability",
+    "advisory_review",
+    "final_dod",
+    "schema_validation"
+  ],
+  "i06Actions": [
+    "add",
+    "update",
+    "reuse",
+    "not_applicable",
+    "blocked"
+  ],
+  "mechanicalGateConsiderations": [
+    "strict_config",
+    "governed_surface",
+    "escape_allowlist",
+    "schema_contract_strictness",
+    "ratchet",
+    "wiring_integrity",
+    "smell",
+    "test_anti_pattern"
+  ]
+}

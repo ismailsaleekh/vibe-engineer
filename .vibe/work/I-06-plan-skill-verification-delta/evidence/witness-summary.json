@@ -1,0 +1,533 @@
+{
+  "ok": true,
+  "checkCount": 32,
+  "failedChecks": [],
+  "checks": [
+    {
+      "name": "approved plan creation",
+      "pass": true,
+      "details": {}
+    },
+    {
+      "name": "blocked plan creation",
+      "pass": true,
+      "details": {}
+    },
+    {
+      "name": "actual plan intake accepts brainstorm fixture",
+      "pass": true,
+      "details": {}
+    },
+    {
+      "name": "actual plan intake accepts grill-me fixture",
+      "pass": true,
+      "details": {}
+    },
+    {
+      "name": "actual plan intake accepts task fixture",
+      "pass": true,
+      "details": {}
+    },
+    {
+      "name": "approved plan has implementation_plan kind",
+      "pass": true,
+      "details": {
+        "artifactKind": "implementation_plan"
+      }
+    },
+    {
+      "name": "approved plan has all catalog layers",
+      "pass": true,
+      "details": {
+        "count": 16
+      }
+    },
+    {
+      "name": "approved plan catalog set exact",
+      "pass": true,
+      "details": {
+        "layers": [
+          "safety_hooks",
+          "typecheck",
+          "lint_format",
+          "mechanical_gate",
+          "unit",
+          "integration",
+          "contract_adapter",
+          "e2e",
+          "ui_verification",
+          "ai_eval",
+          "build_package",
+          "context_drift",
+          "observability",
+          "advisory_review",
+          "final_dod",
+          "schema_validation"
+        ]
+      }
+    },
+    {
+      "name": "public validator accepts approved plan object",
+      "pass": true,
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "name": "public validator accepts blocked plan object",
+      "pass": true,
+      "details": {
+        "ok": true
+      }
+    },
+    {
+      "name": "approved plan persists safely",
+      "pass": true,
+      "details": {}
+    },
+    {
+      "name": "public validator accepts persisted approved plan",
+      "pass": true,
+      "details": {}
+    },
+    {
+      "name": "build-intake-facing helper accepts approved persisted plan",
+      "pass": true,
+      "details": {}
+    },
+    {
+      "name": "blocked plan persists as schema-valid carrier",
+      "pass": true,
+      "details": {}
+    },
+    {
+      "name": "build-intake-facing helper rejects blocked persisted plan",
+      "pass": true,
+      "details": {
+        "reason": "implementation_plan_not_approved",
+        "errors": [
+          {
+            "field": "status",
+            "code": "PLAN_NOT_APPROVED",
+            "message": "Build intake requires an approved Implementation Plan with no blocking blockers or blocked Verification Delta items."
+          }
+        ]
+      }
+    },
+    {
+      "name": "raw chat/prose intake bypass rejected",
+      "pass": true,
+      "details": {
+        "reason": "invalid_intake_descriptor"
+      }
+    },
+    {
+      "name": "direct object bypass rejected before planning",
+      "pass": true,
+      "details": {
+        "reason": "invalid_intake_descriptor",
+        "errors": [
+          {
+            "field": "inputRoot",
+            "code": "INVALID_INPUT",
+            "message": "inputRoot must be a non-empty string."
+          },
+          {
+            "field": "artifactName",
+            "code": "INVALID_INPUT",
+            "message": "artifactName must be a non-empty string."
+          }
+        ]
+      }
+    },
+    {
+      "name": "missing Work Brief file rejected",
+      "pass": true,
+      "details": {
+        "reason": "missing_work_brief"
+      }
+    },
+    {
+      "name": "malformed JSON Work Brief rejected through intake path",
+      "pass": true,
+      "details": {
+        "reason": "validation_failed",
+        "stage": "consumer_revalidate",
+        "errors": [
+          {
+            "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-06-plan-skill-verification-delta/evidence/runtime-temp/malformed-json.json",
+            "artifactKind": "work_brief",
+            "schemaId": null,
+            "schemaVersion": null,
+            "pointer": "",
+            "code": "JSON_PARSE_ERROR",
+            "message": "Invalid JSON artifact: Expected property name or '}' in JSON at position 2 (line 1 column 3)"
+          }
+        ]
+      }
+    },
+    {
+      "name": "wrong Work Brief artifact kind rejected through artifact validator/intake",
+      "pass": true,
+      "details": {
+        "reason": "validation_failed",
+        "stage": "consumer_revalidate",
+        "errors": [
+          {
+            "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-06-plan-skill-verification-delta/evidence/runtime-temp/wrong-kind-work-brief.json",
+            "artifactKind": "implementation_plan",
+            "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/work-brief.schema.json",
+            "schemaVersion": "1.0.0",
+            "pointer": "/artifactKind",
+            "code": "ARTIFACT_KIND_MISMATCH",
+            "message": "Expected artifactKind work_brief."
+          },
+          {
+            "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-06-plan-skill-verification-delta/evidence/runtime-temp/wrong-kind-work-brief.json",
+            "artifactKind": "implementation_plan",
+            "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/work-brief.schema.json",
+            "schemaVersion": "1.0.0",
+            "pointer": "/artifactKind",
+            "code": "CONST",
+            "message": "must be equal to constant"
+          },
+          {
+            "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-06-plan-skill-verification-delta/evidence/runtime-temp/wrong-kind-work-brief.json",
+            "artifactKind": "implementation_plan",
+            "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/work-brief.schema.json",
+            "schemaVersion": "1.0.0",
+            "pointer": "/artifactKind",
+            "code": "ENUM",
+            "message": "must be equal to one of the allowed values"
+          }
+        ]
+      }
+    },
+    {
+      "name": "wrong Work Brief schema version rejected through artifact validator/intake",
+      "pass": true,
+      "details": {
+        "reason": "validation_failed",
+        "stage": "consumer_revalidate",
+        "errors": [
+          {
+            "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-06-plan-skill-verification-delta/evidence/runtime-temp/wrong-version-work-brief.json",
+            "artifactKind": "work_brief",
+            "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/work-brief.schema.json",
+            "schemaVersion": "9.9.9",
+            "pointer": "/schemaVersion",
+            "code": "UNSUPPORTED_VERSION",
+            "message": "Unsupported artifact schemaVersion 9.9.9."
+          },
+          {
+            "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-06-plan-skill-verification-delta/evidence/runtime-temp/wrong-version-work-brief.json",
+            "artifactKind": "work_brief",
+            "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/work-brief.schema.json",
+            "schemaVersion": "9.9.9",
+            "pointer": "/schemaVersion",
+            "code": "CONST",
+            "message": "must be equal to constant"
+          }
+        ]
+      }
+    },
+    {
+      "name": "blocked Work Brief is not approved as green-consumable",
+      "pass": true,
+      "details": {
+        "reason": "work_brief_blocked"
+      }
+    },
+    {
+      "name": "missing Verification Delta layer fails public validation",
+      "pass": true,
+      "details": {
+        "ok": false,
+        "reason": "validation_failed",
+        "stage": "implementation_plan_public_artifact",
+        "errors": [
+          {
+            "pointer": "/verificationDelta/requiredItems",
+            "code": "VERIFICATION_CATALOG_INCOMPLETE",
+            "message": "Verification Delta must include catalog layer ai_eval."
+          }
+        ]
+      }
+    },
+    {
+      "name": "invalid Verification Delta action fails public validation",
+      "pass": true,
+      "details": {
+        "ok": false,
+        "reason": "validation_failed",
+        "stage": "implementation_plan_public_artifact",
+        "errors": [
+          {
+            "pointer": "/verificationDelta/requiredItems/0/action",
+            "code": "ENUM",
+            "message": "must be equal to one of the allowed values"
+          }
+        ]
+      }
+    },
+    {
+      "name": "blocked delta missing rationale/metadata fails public validation",
+      "pass": true,
+      "details": {
+        "ok": false,
+        "reason": "validation_failed",
+        "stage": "implementation_plan_public_artifact",
+        "errors": [
+          {
+            "pointer": "/verificationDelta/requiredItems/5/rationale",
+            "code": "MIN_LENGTH",
+            "message": "must NOT have fewer than 1 characters"
+          },
+          {
+            "pointer": "/verificationDelta/requiredItems/5/blockedBy",
+            "code": "BLOCKED_ITEM_METADATA_REQUIRED",
+            "message": "blocked verification catalog items require blockedBy."
+          },
+          {
+            "pointer": "/verificationDelta/requiredItems/5/unblockCondition",
+            "code": "BLOCKED_ITEM_METADATA_REQUIRED",
+            "message": "blocked verification catalog items require unblockCondition."
+          }
+        ]
+      }
+    },
+    {
+      "name": "wrong Implementation Plan artifact kind fixture fails public validation",
+      "pass": true,
+      "details": {
+        "ok": false,
+        "reason": "validation_failed",
+        "stage": "implementation_plan_public_artifact",
+        "errors": [
+          {
+            "pointer": "/sourceSkill",
+            "code": "REQUIRED",
+            "message": "must have required property 'sourceSkill'"
+          },
+          {
+            "pointer": "/workType",
+            "code": "REQUIRED",
+            "message": "must have required property 'workType'"
+          },
+          {
+            "pointer": "/background",
+            "code": "REQUIRED",
+            "message": "must have required property 'background'"
+          },
+          {
+            "pointer": "/problemOrOpportunity",
+            "code": "REQUIRED",
+            "message": "must have required property 'problemOrOpportunity'"
+          },
+          {
+            "pointer": "/desiredOutcome",
+            "code": "REQUIRED",
+            "message": "must have required property 'desiredOutcome'"
+          },
+          {
+            "pointer": "/constraints",
+            "code": "REQUIRED",
+            "message": "must have required property 'constraints'"
+          },
+          {
+            "pointer": "/userVisibleBehavior",
+            "code": "REQUIRED",
+            "message": "must have required property 'userVisibleBehavior'"
+          },
+          {
+            "pointer": "/nonGoals",
+            "code": "REQUIRED",
+            "message": "must have required property 'nonGoals'"
+          },
+          {
+            "pointer": "/risksAndUnknowns",
+            "code": "REQUIRED",
+            "message": "must have required property 'risksAndUnknowns'"
+          },
+          {
+            "pointer": "/acceptanceNotes",
+            "code": "REQUIRED",
+            "message": "must have required property 'acceptanceNotes'"
+          },
+          {
+            "pointer": "/sourceMetadata",
+            "code": "REQUIRED",
+            "message": "must have required property 'sourceMetadata'"
+          },
+          {
+            "pointer": "/workBriefRef",
+            "code": "UNKNOWN_FIELD",
+            "message": "must NOT have additional properties"
+          },
+          {
+            "pointer": "/objective",
+            "code": "UNKNOWN_FIELD",
+            "message": "must NOT have additional properties"
+          },
+          {
+            "pointer": "/scope",
+            "code": "UNKNOWN_FIELD",
+            "message": "must NOT have additional properties"
+          },
+          {
+            "pointer": "/nonScope",
+            "code": "UNKNOWN_FIELD",
+            "message": "must NOT have additional properties"
+          },
+          {
+            "pointer": "/contextClosure",
+            "code": "UNKNOWN_FIELD",
+            "message": "must NOT have additional properties"
+          },
+          {
+            "pointer": "/affectedAreas",
+            "code": "UNKNOWN_FIELD",
+            "message": "must NOT have additional properties"
+          },
+          {
+            "pointer": "/schematics",
+            "code": "UNKNOWN_FIELD",
+            "message": "must NOT have additional properties"
+          },
+          {
+            "pointer": "/implementationSteps",
+            "code": "UNKNOWN_FIELD",
+            "message": "must NOT have additional properties"
+          },
+          {
+            "pointer": "/acceptanceCriteria",
+            "code": "UNKNOWN_FIELD",
+            "message": "must NOT have additional properties"
+          },
+          {
+            "pointer": "/definitionOfDone",
+            "code": "UNKNOWN_FIELD",
+            "message": "must NOT have additional properties"
+          },
+          {
+            "pointer": "/risks",
+            "code": "UNKNOWN_FIELD",
+            "message": "must NOT have additional properties"
+          },
+          {
+            "pointer": "/openBlockers",
+            "code": "UNKNOWN_FIELD",
+            "message": "must NOT have additional properties"
+          },
+          {
+            "pointer": "/verificationDelta",
+            "code": "UNKNOWN_FIELD",
+            "message": "must NOT have additional properties"
+          },
+          {
+            "pointer": "/workDecompositionHints",
+            "code": "UNKNOWN_FIELD",
+            "message": "must NOT have additional properties"
+          },
+          {
+            "pointer": "/parallelismHints",
+            "code": "UNKNOWN_FIELD",
+            "message": "must NOT have additional properties"
+          },
+          {
+            "pointer": "/docsContextUpdatesExpected",
+            "code": "UNKNOWN_FIELD",
+            "message": "must NOT have additional properties"
+          },
+          {
+            "pointer": "/approval",
+            "code": "UNKNOWN_FIELD",
+            "message": "must NOT have additional properties"
+          },
+          {
+            "pointer": "/reviewNotes",
+            "code": "UNKNOWN_FIELD",
+            "message": "must NOT have additional properties"
+          },
+          {
+            "pointer": "/status",
+            "code": "ENUM",
+            "message": "must be equal to one of the allowed values"
+          },
+          {
+            "pointer": "/links",
+            "code": "BAD_LINK",
+            "message": "Work Brief must include a required raw_intent link."
+          }
+        ]
+      }
+    },
+    {
+      "name": "wrong Implementation Plan schema version fixture fails public validation",
+      "pass": true,
+      "details": {
+        "ok": false,
+        "reason": "validation_failed",
+        "stage": "implementation_plan_public_artifact",
+        "errors": [
+          {
+            "pointer": "/schemaVersion",
+            "code": "UNSUPPORTED_VERSION",
+            "message": "Unsupported artifact schemaVersion 9.9.9."
+          },
+          {
+            "pointer": "/schemaVersion",
+            "code": "CONST",
+            "message": "must be equal to constant"
+          }
+        ]
+      }
+    },
+    {
+      "name": "unsafe output path traversal rejected",
+      "pass": true,
+      "details": {
+        "reason": "unsafe_output_path",
+        "errors": [
+          {
+            "field": "artifactName",
+            "code": "PATH_TRAVERSAL_REJECTED",
+            "message": "artifactName must stay inside outputRoot."
+          }
+        ]
+      }
+    },
+    {
+      "name": "absolute artifact name rejected",
+      "pass": true,
+      "details": {
+        "reason": "unsafe_output_path"
+      }
+    },
+    {
+      "name": "non-json output carrier rejected",
+      "pass": true,
+      "details": {
+        "reason": "output_carrier_not_json"
+      }
+    },
+    {
+      "name": "positive implementation-plan fixtures are domain-neutral",
+      "pass": true,
+      "details": {
+        "leaked": []
+      }
+    },
+    {
+      "name": "createAndMaybePersist real boundary succeeds",
+      "pass": true,
+      "details": {}
+    }
+  ],
+  "persistedArtifacts": {
+    "approved": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-06-plan-skill-verification-delta/evidence/persisted-plans/approved-plan.persisted.json",
+    "blocked": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-06-plan-skill-verification-delta/evidence/persisted-plans/blocked-plan.persisted.json",
+    "createAndPersist": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-06-plan-skill-verification-delta/evidence/persisted-plans/create-and-persist.json"
+  },
+  "fixtureRoot": "/Users/lizavasilyeva/work/vibe-engineer/packages/skills/fixtures/implementation-plan"
+}

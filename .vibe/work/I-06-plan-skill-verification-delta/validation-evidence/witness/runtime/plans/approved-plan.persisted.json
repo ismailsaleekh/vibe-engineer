@@ -1,0 +1,631 @@
+{
+  "acceptanceCriteria": [
+    {
+      "description": "Produced brainstorm Work Brief validates through the artifacts package",
+      "id": "ac-accept-1"
+    },
+    {
+      "description": "Plan intake consumes the produced Work Brief only after it is persisted",
+      "id": "ac-accept-2"
+    }
+  ],
+  "affectedAreas": [
+    {
+      "kind": "skill",
+      "path": "packages/skills/src/plan/**",
+      "reason": "Plan validates brainstorm intake seam."
+    }
+  ],
+  "approval": {
+    "approvedAt": "2026-06-25T12:00:00.000Z",
+    "approvedBy": {
+      "id": "skill-plan",
+      "kind": "skill",
+      "name": "plan",
+      "runId": "validation-run-brainstorm",
+      "version": "1.0.0"
+    },
+    "notes": "Approved by plan skill because no blocking Verification Delta item or open blocker remains."
+  },
+  "artifactId": "implementation-plan-validation-brainstorm",
+  "artifactKind": "implementation_plan",
+  "contextClosure": [
+    {
+      "artifactId": "work-brief-brainstorm-producer-fixture",
+      "artifactKind": "work_brief",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-06-plan-skill-verification-delta/validation-evidence/witness/runtime/work-briefs/brainstorm.work-brief.json",
+      "rel": "derived_from",
+      "required": true,
+      "statusAtLinkTime": "ready"
+    }
+  ],
+  "createdAt": "2026-06-25T12:00:00.000Z",
+  "definitionOfDone": [
+    {
+      "blocking": true,
+      "description": "Implementation Plan and embedded Verification Delta validate through the public @vibe-engineer/artifacts validator before and after persistence.",
+      "id": "dod-public-schema-validation"
+    },
+    {
+      "blocking": true,
+      "description": "All 16 Verification Delta catalog layers are present with required evidence expectations.",
+      "id": "dod-all-delta-layers-classified"
+    },
+    {
+      "blocking": true,
+      "description": "An independent validator must inspect the changed files and real producer→consumer seams.",
+      "id": "dod-independent-validation"
+    }
+  ],
+  "docsContextUpdatesExpected": [
+    "Update context or handoff artifacts only when owned by the executing lane."
+  ],
+  "extensions": {
+    "dev.vibe.plan-skill": {
+      "intakeRelativePath": "brainstorm.work-brief.json",
+      "schemaVersion": "1.0.0",
+      "sourceSkill": "brainstorm",
+      "workType": "feature"
+    }
+  },
+  "implementationSteps": [
+    {
+      "acceptanceLinks": [
+        "ac-accept-1",
+        "ac-accept-2"
+      ],
+      "description": "Consume Work Brief work-brief-brainstorm-producer-fixture through plan intake and preserve typed artifact handoff.",
+      "expectedTouchedAreas": [
+        {
+          "kind": "skill",
+          "path": "packages/skills/src/plan/**",
+          "reason": "Plan validates brainstorm intake seam."
+        }
+      ],
+      "id": "step-read-work-brief"
+    },
+    {
+      "acceptanceLinks": [
+        "ac-accept-1",
+        "ac-accept-2"
+      ],
+      "dependsOn": [
+        "step-read-work-brief"
+      ],
+      "description": "Implement the approved scope: The brainstorm producer writes a validator-accepted Work Brief through the common writer.",
+      "expectedTouchedAreas": [
+        {
+          "kind": "skill",
+          "path": "packages/skills/src/plan/**",
+          "reason": "Plan validates brainstorm intake seam."
+        }
+      ],
+      "id": "step-implement-scope"
+    },
+    {
+      "acceptanceLinks": [
+        "ac-accept-1",
+        "ac-accept-2"
+      ],
+      "dependsOn": [
+        "step-implement-scope"
+      ],
+      "description": "Execute all required Verification Delta layers or keep the plan blocked with explicit unblock metadata.",
+      "expectedTouchedAreas": [
+        {
+          "kind": "test",
+          "path": ".vibe/work/**",
+          "reason": "Verification evidence must be captured as durable artifacts or command logs."
+        }
+      ],
+      "id": "step-verify-delta"
+    }
+  ],
+  "links": [
+    {
+      "artifactId": "work-brief-brainstorm-producer-fixture",
+      "artifactKind": "work_brief",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-06-plan-skill-verification-delta/validation-evidence/witness/runtime/work-briefs/brainstorm.work-brief.json",
+      "rel": "derived_from",
+      "required": true,
+      "statusAtLinkTime": "ready"
+    },
+    {
+      "artifactId": "implementation-plan-validation-brainstorm-verification-delta",
+      "artifactKind": "verification_delta",
+      "path": "implementation-plan-validation-brainstorm-verification-delta.json",
+      "rel": "verification_delta_of",
+      "required": true,
+      "statusAtLinkTime": "complete"
+    }
+  ],
+  "nonScope": [
+    "Do not produce an Implementation Plan"
+  ],
+  "objective": "The brainstorm producer writes a validator-accepted Work Brief through the common writer.",
+  "openBlockers": [],
+  "ownership": {
+    "concurrencyNotes": "Plan skill consumes only persisted Work Brief carriers through the I-05B/I-05A plan-intake seam; build and ship remain downstream.",
+    "handoffPolicy": "Implementation Plan artifacts require independent validation before downstream build intake.",
+    "ownedWritePaths": [
+      "packages/skills/src/plan/orchestrator/**",
+      "packages/skills/src/plan/verification-delta/**",
+      "packages/skills/fixtures/implementation-plan/**",
+      ".vibe/work/I-06-plan-skill-verification-delta/**"
+    ],
+    "ownerLane": "I-06-plan-skill-verification-delta",
+    "readOnlyPaths": [
+      "packages/skills/src/plan/intake/**",
+      "packages/skills/src/shared/**",
+      "packages/skills/src/input/**",
+      "packages/artifacts/**"
+    ],
+    "untouchablePaths": [
+      ".git/**",
+      "package.json",
+      "pnpm-lock.yaml",
+      "packages/skills/package.json",
+      "packages/skills/src/build/**",
+      "packages/skills/src/ship/**"
+    ]
+  },
+  "parallelismHints": [
+    "Parallel work is allowed only across disjoint owned paths and after dependency gates pass."
+  ],
+  "producer": {
+    "id": "skill-plan",
+    "kind": "skill",
+    "name": "plan",
+    "runId": "validation-run-brainstorm",
+    "version": "1.0.0"
+  },
+  "reviewNotes": [
+    "Plan is ready for independent validation and downstream build intake."
+  ],
+  "risks": [
+    {
+      "description": "Candidate signals may need refinement by plan",
+      "id": "risk-work-brief-1",
+      "mitigation": "Planner must convert candidate risk into explicit Verification Delta evidence or an open blocker.",
+      "sensitiveArea": "work_brief.risksAndUnknowns"
+    },
+    {
+      "description": "Exploration notes must not become final planner-owned risk classification",
+      "id": "risk-work-brief-2",
+      "mitigation": "Planner must convert candidate risk into explicit Verification Delta evidence or an open blocker.",
+      "sensitiveArea": "work_brief.risksAndUnknowns"
+    },
+    {
+      "description": "Validate brainstorm Work Brief handoff through public artifact contracts.",
+      "id": "risk-sensitive-1",
+      "mitigation": "Independent validation must inspect this sensitive area before closure.",
+      "sensitiveArea": "artifact_handoff"
+    }
+  ],
+  "schemaVersion": "1.0.0",
+  "schematics": [],
+  "scope": [
+    "Exploratory work can otherwise remain trapped in chat history.",
+    "The brainstorm producer writes a validator-accepted Work Brief through the common writer."
+  ],
+  "status": "approved",
+  "title": "Implementation Plan for Explore typed intake artifact flow",
+  "updatedAt": "2026-06-25T12:00:00.000Z",
+  "verificationDelta": {
+    "advisoryReviewItems": [
+      "Independent validation must classify deterministic blockers before any advisory review can be treated as closure."
+    ],
+    "artifactId": "implementation-plan-validation-brainstorm-verification-delta",
+    "artifactKind": "verification_delta",
+    "catalogVersion": "1.0.0",
+    "createdAt": "2026-06-25T12:00:00.000Z",
+    "extensions": {
+      "dev.vibe.plan-skill": {
+        "schemaVersion": "1.0.0",
+        "sourceSkill": "brainstorm",
+        "sourceWorkBriefId": "work-brief-brainstorm-producer-fixture"
+      }
+    },
+    "implementationPlanRef": {
+      "artifactId": "implementation-plan-validation-brainstorm",
+      "artifactKind": "implementation_plan",
+      "path": "implementation-plan-validation-brainstorm.json",
+      "rel": "verification_delta_of",
+      "required": true,
+      "statusAtLinkTime": "approved"
+    },
+    "links": [
+      {
+        "artifactId": "implementation-plan-validation-brainstorm",
+        "artifactKind": "implementation_plan",
+        "path": "implementation-plan-validation-brainstorm.json",
+        "rel": "verification_delta_of",
+        "required": true,
+        "statusAtLinkTime": "approved"
+      }
+    ],
+    "mechanicalGateImpacts": [
+      "strict_config: considered for this plan.",
+      "governed_surface: considered for this plan.",
+      "escape_allowlist: considered for this plan.",
+      "schema_contract_strictness: considered for this plan.",
+      "ratchet: considered for this plan.",
+      "wiring_integrity: considered for this plan.",
+      "smell: considered for this plan.",
+      "test_anti_pattern: considered for this plan."
+    ],
+    "ownership": {
+      "concurrencyNotes": "Plan skill consumes only persisted Work Brief carriers through the I-05B/I-05A plan-intake seam; build and ship remain downstream.",
+      "handoffPolicy": "Implementation Plan artifacts require independent validation before downstream build intake.",
+      "ownedWritePaths": [
+        "packages/skills/src/plan/orchestrator/**",
+        "packages/skills/src/plan/verification-delta/**",
+        "packages/skills/fixtures/implementation-plan/**",
+        ".vibe/work/I-06-plan-skill-verification-delta/**"
+      ],
+      "ownerLane": "I-06-plan-skill-verification-delta",
+      "readOnlyPaths": [
+        "packages/skills/src/plan/intake/**",
+        "packages/skills/src/shared/**",
+        "packages/skills/src/input/**",
+        "packages/artifacts/**"
+      ],
+      "untouchablePaths": [
+        ".git/**",
+        "package.json",
+        "pnpm-lock.yaml",
+        "packages/skills/package.json",
+        "packages/skills/src/build/**",
+        "packages/skills/src/ship/**"
+      ]
+    },
+    "producer": {
+      "id": "skill-plan",
+      "kind": "skill",
+      "name": "plan",
+      "runId": "validation-run-brainstorm",
+      "version": "1.0.0"
+    },
+    "requiredItems": [
+      {
+        "action": "add",
+        "blocking": true,
+        "evidenceRequired": [
+          {
+            "blocking": true,
+            "description": "Evidence proving safety_hooks verification outcome for implementation-plan-validation-brainstorm.",
+            "kind": "command_log"
+          }
+        ],
+        "expectedArtifacts": [
+          "implementation-plan-validation-brainstorm/verification/safety_hooks"
+        ],
+        "fixerOwner": "implementation-agent",
+        "id": "vd-safety_hooks",
+        "layer": "safety_hooks",
+        "rationale": "Confirm guarded execution, forbidden-action handling, and operator-safety hooks before closure. Required for this feature implementation plan.",
+        "validationOwner": "independent-validator"
+      },
+      {
+        "action": "add",
+        "blocking": true,
+        "evidenceRequired": [
+          {
+            "blocking": true,
+            "description": "Evidence proving typecheck verification outcome for implementation-plan-validation-brainstorm.",
+            "kind": "command_log"
+          }
+        ],
+        "expectedArtifacts": [
+          "implementation-plan-validation-brainstorm/verification/typecheck"
+        ],
+        "fixerOwner": "implementation-agent",
+        "id": "vd-typecheck",
+        "layer": "typecheck",
+        "rationale": "Run package-appropriate type or syntax checks for changed source and witness code. Required for this feature implementation plan.",
+        "validationOwner": "independent-validator"
+      },
+      {
+        "action": "add",
+        "blocking": true,
+        "evidenceRequired": [
+          {
+            "blocking": true,
+            "description": "Evidence proving lint_format verification outcome for implementation-plan-validation-brainstorm.",
+            "kind": "command_log"
+          }
+        ],
+        "expectedArtifacts": [
+          "implementation-plan-validation-brainstorm/verification/lint_format"
+        ],
+        "fixerOwner": "implementation-agent",
+        "id": "vd-lint_format",
+        "layer": "lint_format",
+        "rationale": "Run package-appropriate lint and formatting integrity checks without broad rewrites. Required for this feature implementation plan.",
+        "validationOwner": "independent-validator"
+      },
+      {
+        "action": "add",
+        "blocking": true,
+        "evidenceRequired": [
+          {
+            "blocking": true,
+            "description": "Evidence proving mechanical_gate verification outcome for implementation-plan-validation-brainstorm.",
+            "kind": "test_report"
+          }
+        ],
+        "expectedArtifacts": [
+          "implementation-plan-validation-brainstorm/verification/mechanical_gate"
+        ],
+        "fixerOwner": "implementation-agent",
+        "id": "vd-mechanical_gate",
+        "layer": "mechanical_gate",
+        "rationale": "Evaluate strict config, governed surfaces, escape allowlists, schema/contract strictness, ratchets, wiring integrity, smell checks, and test anti-pattern risk. Required for this feature implementation plan.",
+        "validationOwner": "independent-validator"
+      },
+      {
+        "action": "add",
+        "blocking": true,
+        "evidenceRequired": [
+          {
+            "blocking": true,
+            "description": "Evidence proving unit verification outcome for implementation-plan-validation-brainstorm.",
+            "kind": "test_report"
+          }
+        ],
+        "expectedArtifacts": [
+          "implementation-plan-validation-brainstorm/verification/unit"
+        ],
+        "fixerOwner": "implementation-agent",
+        "id": "vd-unit",
+        "layer": "unit",
+        "rationale": "Exercise isolated deterministic behavior for changed planner and verification-delta logic. Required for this feature implementation plan.",
+        "validationOwner": "independent-validator"
+      },
+      {
+        "action": "add",
+        "blocking": true,
+        "evidenceRequired": [
+          {
+            "blocking": true,
+            "description": "Evidence proving integration verification outcome for implementation-plan-validation-brainstorm.",
+            "kind": "test_report"
+          }
+        ],
+        "expectedArtifacts": [
+          "implementation-plan-validation-brainstorm/verification/integration"
+        ],
+        "fixerOwner": "implementation-agent",
+        "id": "vd-integration",
+        "layer": "integration",
+        "rationale": "Exercise producer-to-intake-to-plan orchestration using real artifacts and carriers. Required for this feature implementation plan.",
+        "validationOwner": "independent-validator"
+      },
+      {
+        "action": "add",
+        "blocking": true,
+        "evidenceRequired": [
+          {
+            "blocking": true,
+            "description": "Evidence proving contract_adapter verification outcome for implementation-plan-validation-brainstorm.",
+            "kind": "evidence_packet"
+          }
+        ],
+        "expectedArtifacts": [
+          "implementation-plan-validation-brainstorm/verification/contract_adapter"
+        ],
+        "fixerOwner": "implementation-agent",
+        "id": "vd-contract_adapter",
+        "layer": "contract_adapter",
+        "rationale": "Verify public artifact schema contracts and adapter boundaries used by the plan seam. Required for this feature implementation plan.",
+        "validationOwner": "independent-validator"
+      },
+      {
+        "action": "add",
+        "blocking": true,
+        "evidenceRequired": [
+          {
+            "blocking": true,
+            "description": "Evidence proving e2e verification outcome for implementation-plan-validation-brainstorm.",
+            "kind": "trace"
+          }
+        ],
+        "expectedArtifacts": [
+          "implementation-plan-validation-brainstorm/verification/e2e"
+        ],
+        "fixerOwner": "implementation-agent",
+        "id": "vd-e2e",
+        "layer": "e2e",
+        "rationale": "Prove the intended user-facing planning flow through a durable artifact carrier where available. Required for this feature implementation plan.",
+        "validationOwner": "independent-validator"
+      },
+      {
+        "action": "add",
+        "blocking": true,
+        "evidenceRequired": [
+          {
+            "blocking": true,
+            "description": "Evidence proving ui_verification verification outcome for implementation-plan-validation-brainstorm.",
+            "kind": "screenshot"
+          }
+        ],
+        "expectedArtifacts": [
+          "implementation-plan-validation-brainstorm/verification/ui_verification"
+        ],
+        "fixerOwner": "implementation-agent",
+        "id": "vd-ui_verification",
+        "layer": "ui_verification",
+        "rationale": "Classify user-interface verification need for this plan scope with explicit rationale. Required for this feature implementation plan.",
+        "validationOwner": "independent-validator"
+      },
+      {
+        "action": "add",
+        "blocking": true,
+        "evidenceRequired": [
+          {
+            "blocking": true,
+            "description": "Evidence proving ai_eval verification outcome for implementation-plan-validation-brainstorm.",
+            "kind": "metric"
+          }
+        ],
+        "expectedArtifacts": [
+          "implementation-plan-validation-brainstorm/verification/ai_eval"
+        ],
+        "fixerOwner": "implementation-agent",
+        "id": "vd-ai_eval",
+        "layer": "ai_eval",
+        "rationale": "Classify AI-evaluation need for any model-mediated behavior with explicit rationale. Required for this feature implementation plan.",
+        "validationOwner": "independent-validator"
+      },
+      {
+        "action": "add",
+        "blocking": true,
+        "evidenceRequired": [
+          {
+            "blocking": true,
+            "description": "Evidence proving build_package verification outcome for implementation-plan-validation-brainstorm.",
+            "kind": "command_log"
+          }
+        ],
+        "expectedArtifacts": [
+          "implementation-plan-validation-brainstorm/verification/build_package"
+        ],
+        "fixerOwner": "implementation-agent",
+        "id": "vd-build_package",
+        "layer": "build_package",
+        "rationale": "Run package build or package-local integrity checks needed by the touched surface. Required for this feature implementation plan.",
+        "validationOwner": "independent-validator"
+      },
+      {
+        "action": "add",
+        "blocking": true,
+        "evidenceRequired": [
+          {
+            "blocking": true,
+            "description": "Evidence proving context_drift verification outcome for implementation-plan-validation-brainstorm.",
+            "kind": "context_header"
+          }
+        ],
+        "expectedArtifacts": [
+          "implementation-plan-validation-brainstorm/verification/context_drift"
+        ],
+        "fixerOwner": "implementation-agent",
+        "id": "vd-context_drift",
+        "layer": "context_drift",
+        "rationale": "Check context, docs, prompts, schemas, and handoff drift for the changed surface. Required for this feature implementation plan.",
+        "validationOwner": "independent-validator"
+      },
+      {
+        "action": "add",
+        "blocking": true,
+        "evidenceRequired": [
+          {
+            "blocking": true,
+            "description": "Evidence proving observability verification outcome for implementation-plan-validation-brainstorm.",
+            "kind": "trace"
+          }
+        ],
+        "expectedArtifacts": [
+          "implementation-plan-validation-brainstorm/verification/observability"
+        ],
+        "fixerOwner": "implementation-agent",
+        "id": "vd-observability",
+        "layer": "observability",
+        "rationale": "Verify logs, evidence paths, metrics, or traces needed to inspect the change. Required for this feature implementation plan.",
+        "validationOwner": "independent-validator"
+      },
+      {
+        "action": "add",
+        "blocking": true,
+        "evidenceRequired": [
+          {
+            "blocking": true,
+            "description": "Evidence proving advisory_review verification outcome for implementation-plan-validation-brainstorm.",
+            "kind": "evidence_packet"
+          }
+        ],
+        "expectedArtifacts": [
+          "implementation-plan-validation-brainstorm/verification/advisory_review"
+        ],
+        "fixerOwner": "implementation-agent",
+        "id": "vd-advisory_review",
+        "layer": "advisory_review",
+        "rationale": "Record advisory review needs separately from deterministic validation gates. Required for this feature implementation plan.",
+        "validationOwner": "independent-validator"
+      },
+      {
+        "action": "add",
+        "blocking": true,
+        "evidenceRequired": [
+          {
+            "blocking": true,
+            "description": "Evidence proving final_dod verification outcome for implementation-plan-validation-brainstorm.",
+            "kind": "evidence_packet"
+          }
+        ],
+        "expectedArtifacts": [
+          "implementation-plan-validation-brainstorm/verification/final_dod"
+        ],
+        "fixerOwner": "implementation-agent",
+        "id": "vd-final_dod",
+        "layer": "final_dod",
+        "rationale": "Confirm final definition-of-done evidence and independent validation handoff. Required for this feature implementation plan.",
+        "validationOwner": "independent-validator"
+      },
+      {
+        "action": "add",
+        "blocking": true,
+        "evidenceRequired": [
+          {
+            "blocking": true,
+            "description": "Evidence proving schema_validation verification outcome for implementation-plan-validation-brainstorm.",
+            "kind": "command_log"
+          }
+        ],
+        "expectedArtifacts": [
+          "implementation-plan-validation-brainstorm/verification/schema_validation"
+        ],
+        "fixerOwner": "implementation-agent",
+        "id": "vd-schema_validation",
+        "layer": "schema_validation",
+        "rationale": "Validate every produced canonical artifact through the public artifact validator before and after persistence. Required for this feature implementation plan.",
+        "validationOwner": "independent-validator"
+      }
+    ],
+    "rerunHints": [
+      "Re-run public artifact validation after every plan or carrier mutation."
+    ],
+    "riskLinks": [
+      {
+        "artifactId": "work-brief-brainstorm-producer-fixture",
+        "artifactKind": "work_brief",
+        "path": "work-brief-brainstorm-producer-fixture.json",
+        "rel": "derived_from",
+        "required": true,
+        "statusAtLinkTime": "ready"
+      }
+    ],
+    "schemaVersion": "1.0.0",
+    "sensitiveAreas": [
+      "artifact_handoff: Validate brainstorm Work Brief handoff through public artifact contracts.",
+      "work_type:feature: Work type influences required verification scope.",
+      "constraints: Work Brief constraints require planner-owned verification treatment.",
+      "risks_and_unknowns: Work Brief candidate risks require planner-owned mitigation."
+    ],
+    "status": "complete",
+    "summary": "Verification Delta covers 16 locked layers for work-brief-brainstorm-producer-fixture.",
+    "title": "Verification Delta for Explore typed intake artifact flow",
+    "updatedAt": "2026-06-25T12:00:00.000Z"
+  },
+  "workBriefRef": {
+    "artifactId": "work-brief-brainstorm-producer-fixture",
+    "artifactKind": "work_brief",
+    "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-06-plan-skill-verification-delta/validation-evidence/witness/runtime/work-briefs/brainstorm.work-brief.json",
+    "rel": "derived_from",
+    "required": true,
+    "statusAtLinkTime": "ready"
+  },
+  "workDecompositionHints": [
+    "Keep implementation work packages within the validated orchestration size bound."
+  ]
+}

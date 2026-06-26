@@ -1,0 +1,113 @@
+{
+  "schemaVersion": "9.9.9",
+  "artifactKind": "work_brief",
+  "artifactId": "work-brief-task-producer-fixture",
+  "title": "Normalize a direct bug request into Work Brief",
+  "createdAt": "2026-06-25T00:00:00.000Z",
+  "updatedAt": "2026-06-25T00:00:00.000Z",
+  "producer": {
+    "kind": "skill",
+    "id": "skill-task",
+    "name": "task",
+    "version": "1.0.0",
+    "runId": "run-i05b-task-fixture"
+  },
+  "status": "ready",
+  "ownership": {
+    "ownerLane": "I-05B-brainstorm-grill-task-producers",
+    "ownedWritePaths": [
+      "packages/skills/src/input/brainstorm/**",
+      "packages/skills/src/input/grill-me/**",
+      "packages/skills/src/input/task/**",
+      "packages/skills/src/plan/intake/**",
+      "packages/skills/fixtures/work-brief/producers/**"
+    ],
+    "readOnlyPaths": [
+      "packages/skills/src/shared/**",
+      "packages/skills/src/input/common/**",
+      "packages/artifacts/**",
+      "docs/decisions/**"
+    ],
+    "untouchablePaths": [
+      ".git/**",
+      "packages/skills/package.json",
+      "pnpm-lock.yaml",
+      "package.json"
+    ],
+    "concurrencyNotes": "I-05B producer-owned Work Brief output; final planning/risk analysis is downstream."
+  },
+  "links": [
+    {
+      "rel": "raw_intent",
+      "artifactKind": "work_brief",
+      "artifactId": "raw-intent-task-producer-fixture",
+      "path": "raw/task-producer.json",
+      "required": true,
+      "statusAtLinkTime": "captured"
+    }
+  ],
+  "extensions": {
+    "dev.vibe.skill-producers": {
+      "schemaVersion": "1.0.0",
+      "sourceSkill": "task",
+      "producerSignals": {
+        "objective": "Capture a direct bug request as a typed Work Brief for planning.",
+        "request": "A generated artifact handoff fails when a malformed carrier is supplied.",
+        "bugEvidenceCaptured": true
+      }
+    }
+  },
+  "tags": [
+    "domain-neutral",
+    "task"
+  ],
+  "sourceSkill": "task",
+  "workType": "bug",
+  "background": "Direct task intake should preserve enough bug evidence for planning.",
+  "problemOrOpportunity": "Bug-shaped work is unsafe to plan without observed behavior, expected behavior, and reproduction basis.\n\nTask objective: Capture a direct bug request as a typed Work Brief for planning.",
+  "desiredOutcome": "The task producer writes a validator-accepted bug Work Brief through the common writer.",
+  "constraints": [
+    "Require bug evidence before persistence",
+    "Use the shared Work Brief artifact class"
+  ],
+  "userVisibleBehavior": [
+    "Users can submit a direct bug request without bypassing Work Brief persistence"
+  ],
+  "nonGoals": [
+    "Do not run the bug fix"
+  ],
+  "risksAndUnknowns": [
+    "Reproduction details may need expansion during planning"
+  ],
+  "acceptanceNotes": [
+    {
+      "id": "accept-1",
+      "description": "Produced task Work Brief validates through the artifacts package"
+    },
+    {
+      "id": "accept-2",
+      "description": "Bug-shaped task without reproduction basis fails closed"
+    }
+  ],
+  "sourceMetadata": {
+    "rawIntentRefs": [
+      "raw-intent-task-producer-fixture"
+    ],
+    "conversationRefs": [],
+    "operatorRefs": [
+      "operator-fixture"
+    ],
+    "inputTimestamp": "2026-06-25T00:00:00.000Z"
+  },
+  "observedBehavior": "Plan intake reports a malformed carrier when the file is not valid JSON.",
+  "expectedBehavior": "Plan intake rejects the carrier with a typed validation result and no downstream plan output.",
+  "reproductionSteps": [
+    "Write a non-JSON file in an allowed intake root",
+    "Call plan intake with that relative artifact name"
+  ],
+  "logsOrErrors": [
+    "JSON_PARSE_ERROR from the artifact validator"
+  ],
+  "affectedSurface": "Work Brief intake seam",
+  "urgency": "medium"
+}
