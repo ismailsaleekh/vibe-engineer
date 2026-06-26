@@ -1,0 +1,344 @@
+{
+  "schemaVersion": "vibe-engineer.cli.result.v1",
+  "invocation": {
+    "id": "i-09b-fix-deterministic-nonzero-preserved",
+    "command": "verify",
+    "argv": [
+      "verify",
+      "--implementation-plan",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/root-cause/fixtures/schema-only.implementation-plan.json",
+      "--evidence-root",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/root-cause/cases/deterministic-nonzero-preserved/packets",
+      "--project-root",
+      "/Users/lizavasilyeva/work/vibe-engineer",
+      "--run-id",
+      "i09b-fix-deterministic-nonzero-preserved",
+      "--runner-catalog",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/root-cause/cases/deterministic-nonzero-preserved/runner-catalog.json",
+      "--result-file",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/root-cause/cases/deterministic-nonzero-preserved/result/cli-result.json"
+    ],
+    "projectRoot": "/Users/lizavasilyeva/work/vibe-engineer",
+    "configPath": null,
+    "startedAt": "2026-06-25T19:17:53.473Z",
+    "endedAt": "2026-06-25T19:17:53.473Z"
+  },
+  "status": "failure",
+  "exitCode": 1,
+  "payload": {
+    "kind": "verification_result",
+    "schemaVersion": "vibe-engineer.cli.payload.v1",
+    "data": {
+      "ok": false,
+      "runnerStatus": "failed",
+      "runId": "i09b-fix-deterministic-nonzero-preserved",
+      "rerunOf": null,
+      "evidencePackets": [
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/root-cause/cases/deterministic-nonzero-preserved/packets/evidence_i09b-fix-deterministic-nonzero-preserved_safety-hooks_00.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "e97747cd67b1b5e56350b296a1dd89f659eb0cc8f5f2199cb99d17118847803b",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/root-cause/cases/deterministic-nonzero-preserved/packets/evidence_i09b-fix-deterministic-nonzero-preserved_typecheck_01.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "dede996157d1bb258aa6fc9fec7ad16d612478205ef99ab40772da7f5ed94422",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/root-cause/cases/deterministic-nonzero-preserved/packets/evidence_i09b-fix-deterministic-nonzero-preserved_lint-format_02.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "be20f1d6ba33872385197de5e5a1053ee4fc5f634ca365d876aa909153872a7f",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/root-cause/cases/deterministic-nonzero-preserved/packets/evidence_i09b-fix-deterministic-nonzero-preserved_mechanical-gate_03.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "3de1718d9a280414f8947abd800e7d915329a67c83b8ccc427a9668d1d365100",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/root-cause/cases/deterministic-nonzero-preserved/packets/evidence_i09b-fix-deterministic-nonzero-preserved_unit_04.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "6fe97c361516ea196e18c2412e20593c2b86a38f519f0c4807d35ffcf2ae8941",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/root-cause/cases/deterministic-nonzero-preserved/packets/evidence_i09b-fix-deterministic-nonzero-preserved_integration_05.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "2590b73a78182b7354697e8b08201373a07ca4fc58a958528e41abea83298c07",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/root-cause/cases/deterministic-nonzero-preserved/packets/evidence_i09b-fix-deterministic-nonzero-preserved_contract-adapter_06.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "98b7d43a6fdc050548dc88d36fd16600f0ad23c4396d54381b3f729bcc8f35e6",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/root-cause/cases/deterministic-nonzero-preserved/packets/evidence_i09b-fix-deterministic-nonzero-preserved_e2e_07.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "3dbdf4d6eab079dcfb93b3fbc87b77fb6fb6c81503de109867009e792939f8e7",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/root-cause/cases/deterministic-nonzero-preserved/packets/evidence_i09b-fix-deterministic-nonzero-preserved_ui-verification_08.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "25fc97ba6559cc76ae1feda98b467234068e71817d5b1bcdef8ad2673077b05f",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/root-cause/cases/deterministic-nonzero-preserved/packets/evidence_i09b-fix-deterministic-nonzero-preserved_ai-eval_09.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "4df5e438b6ce71d5b62287a12c981a3f71fec8443a7d1ee2e3feb379e1b42e26",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/root-cause/cases/deterministic-nonzero-preserved/packets/evidence_i09b-fix-deterministic-nonzero-preserved_build-package_10.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "6fdc6dce7276cc534593a5d8d43399c92f6a3257c9db3b3cdbcd342e2c158cd7",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/root-cause/cases/deterministic-nonzero-preserved/packets/evidence_i09b-fix-deterministic-nonzero-preserved_context-drift_11.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "3002c4c63f0685721bd884d0ce7a136d4e259536ca842353c6cc11f78661169f",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/root-cause/cases/deterministic-nonzero-preserved/packets/evidence_i09b-fix-deterministic-nonzero-preserved_observability_12.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "bab089a8ef9e719f73c3d15c3875b0e9aaf730d304ec6f46c73dc85edfb73e66",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/root-cause/cases/deterministic-nonzero-preserved/packets/evidence_i09b-fix-deterministic-nonzero-preserved_advisory-review_13.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "ef9581cdd94e02c41d7b275fb585820bded8de22d0278376276ed93d87751d9b",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/root-cause/cases/deterministic-nonzero-preserved/packets/evidence_i09b-fix-deterministic-nonzero-preserved_final-dod_14.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "43c72b80323868b7770e1d4cfba1590ce5ce68a0208c856f89095bb584b29152",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/root-cause/cases/deterministic-nonzero-preserved/packets/evidence_i09b-fix-deterministic-nonzero-preserved_schema-validation_15.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "dbfe7b74dd0c3b126f26ea87c3a4cc73a50c4ce24fe2621f3845bc7e8f2a4fdc",
+          "valid": true
+        }
+      ],
+      "executedItems": [
+        "schema-validation"
+      ],
+      "recordedItems": [
+        "safety-hooks",
+        "typecheck",
+        "lint-format",
+        "mechanical-gate",
+        "unit",
+        "integration",
+        "contract-adapter",
+        "e2e",
+        "ui-verification",
+        "ai-eval",
+        "build-package",
+        "context-drift",
+        "observability",
+        "advisory-review",
+        "final-dod"
+      ],
+      "blockedItems": [],
+      "failures": [
+        {
+          "code": "RUNNER_NONZERO_EXIT",
+          "classification": "test_assertion_failure",
+          "message": "Runner exited with code 9."
+        }
+      ],
+      "warnings": [
+        "safety_hooks is represented for the domain-neutral I-09A fixture.",
+        "typecheck is represented for the domain-neutral I-09A fixture.",
+        "lint_format is represented for the domain-neutral I-09A fixture.",
+        "mechanical_gate is represented for the domain-neutral I-09A fixture.",
+        "unit is represented for the domain-neutral I-09A fixture.",
+        "integration is represented for the domain-neutral I-09A fixture.",
+        "contract_adapter is represented for the domain-neutral I-09A fixture.",
+        "e2e is represented for the domain-neutral I-09A fixture.",
+        "ui_verification is represented for the domain-neutral I-09A fixture.",
+        "ai_eval is represented for the domain-neutral I-09A fixture.",
+        "build_package is represented for the domain-neutral I-09A fixture.",
+        "context_drift is represented for the domain-neutral I-09A fixture.",
+        "observability is represented for the domain-neutral I-09A fixture.",
+        "advisory_review is represented for the domain-neutral I-09A fixture.",
+        "final_dod is represented for the domain-neutral I-09A fixture."
+      ]
+    }
+  },
+  "diagnostics": [
+    {
+      "severity": "error",
+      "code": "VE_INVALID_INVOCATION",
+      "classification": "deterministic_failure",
+      "message": "Runner exited with code 9.",
+      "path": null,
+      "span": null,
+      "hint": null
+    }
+  ],
+  "artifacts": [
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/root-cause/cases/deterministic-nonzero-preserved/packets/evidence_i09b-fix-deterministic-nonzero-preserved_safety-hooks_00.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "e97747cd67b1b5e56350b296a1dd89f659eb0cc8f5f2199cb99d17118847803b"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/root-cause/cases/deterministic-nonzero-preserved/packets/evidence_i09b-fix-deterministic-nonzero-preserved_typecheck_01.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "dede996157d1bb258aa6fc9fec7ad16d612478205ef99ab40772da7f5ed94422"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/root-cause/cases/deterministic-nonzero-preserved/packets/evidence_i09b-fix-deterministic-nonzero-preserved_lint-format_02.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "be20f1d6ba33872385197de5e5a1053ee4fc5f634ca365d876aa909153872a7f"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/root-cause/cases/deterministic-nonzero-preserved/packets/evidence_i09b-fix-deterministic-nonzero-preserved_mechanical-gate_03.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "3de1718d9a280414f8947abd800e7d915329a67c83b8ccc427a9668d1d365100"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/root-cause/cases/deterministic-nonzero-preserved/packets/evidence_i09b-fix-deterministic-nonzero-preserved_unit_04.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "6fe97c361516ea196e18c2412e20593c2b86a38f519f0c4807d35ffcf2ae8941"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/root-cause/cases/deterministic-nonzero-preserved/packets/evidence_i09b-fix-deterministic-nonzero-preserved_integration_05.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "2590b73a78182b7354697e8b08201373a07ca4fc58a958528e41abea83298c07"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/root-cause/cases/deterministic-nonzero-preserved/packets/evidence_i09b-fix-deterministic-nonzero-preserved_contract-adapter_06.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "98b7d43a6fdc050548dc88d36fd16600f0ad23c4396d54381b3f729bcc8f35e6"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/root-cause/cases/deterministic-nonzero-preserved/packets/evidence_i09b-fix-deterministic-nonzero-preserved_e2e_07.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "3dbdf4d6eab079dcfb93b3fbc87b77fb6fb6c81503de109867009e792939f8e7"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/root-cause/cases/deterministic-nonzero-preserved/packets/evidence_i09b-fix-deterministic-nonzero-preserved_ui-verification_08.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "25fc97ba6559cc76ae1feda98b467234068e71817d5b1bcdef8ad2673077b05f"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/root-cause/cases/deterministic-nonzero-preserved/packets/evidence_i09b-fix-deterministic-nonzero-preserved_ai-eval_09.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "4df5e438b6ce71d5b62287a12c981a3f71fec8443a7d1ee2e3feb379e1b42e26"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/root-cause/cases/deterministic-nonzero-preserved/packets/evidence_i09b-fix-deterministic-nonzero-preserved_build-package_10.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "6fdc6dce7276cc534593a5d8d43399c92f6a3257c9db3b3cdbcd342e2c158cd7"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/root-cause/cases/deterministic-nonzero-preserved/packets/evidence_i09b-fix-deterministic-nonzero-preserved_context-drift_11.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "3002c4c63f0685721bd884d0ce7a136d4e259536ca842353c6cc11f78661169f"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/root-cause/cases/deterministic-nonzero-preserved/packets/evidence_i09b-fix-deterministic-nonzero-preserved_observability_12.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "bab089a8ef9e719f73c3d15c3875b0e9aaf730d304ec6f46c73dc85edfb73e66"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/root-cause/cases/deterministic-nonzero-preserved/packets/evidence_i09b-fix-deterministic-nonzero-preserved_advisory-review_13.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "ef9581cdd94e02c41d7b275fb585820bded8de22d0278376276ed93d87751d9b"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/root-cause/cases/deterministic-nonzero-preserved/packets/evidence_i09b-fix-deterministic-nonzero-preserved_final-dod_14.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "43c72b80323868b7770e1d4cfba1590ce5ce68a0208c856f89095bb584b29152"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/root-cause/cases/deterministic-nonzero-preserved/packets/evidence_i09b-fix-deterministic-nonzero-preserved_schema-validation_15.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "dbfe7b74dd0c3b126f26ea87c3a4cc73a50c4ce24fe2621f3845bc7e8f2a4fdc"
+    },
+    {
+      "kind": "cli_result",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/root-cause/cases/deterministic-nonzero-preserved/result/cli-result.json",
+      "schemaVersion": "vibe-engineer.cli.result.v1",
+      "role": "report",
+      "sha256": null
+    }
+  ],
+  "errors": [
+    {
+      "code": "VE_INVALID_INVOCATION",
+      "classification": "deterministic_failure",
+      "retryable": false,
+      "blocking": false,
+      "message": "Runner exited with code 9.",
+      "details": {
+        "runnerCode": "RUNNER_NONZERO_EXIT",
+        "runnerClassification": "test_assertion_failure",
+        "evidencePacketPaths": [
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/root-cause/cases/deterministic-nonzero-preserved/packets/evidence_i09b-fix-deterministic-nonzero-preserved_safety-hooks_00.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/root-cause/cases/deterministic-nonzero-preserved/packets/evidence_i09b-fix-deterministic-nonzero-preserved_typecheck_01.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/root-cause/cases/deterministic-nonzero-preserved/packets/evidence_i09b-fix-deterministic-nonzero-preserved_lint-format_02.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/root-cause/cases/deterministic-nonzero-preserved/packets/evidence_i09b-fix-deterministic-nonzero-preserved_mechanical-gate_03.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/root-cause/cases/deterministic-nonzero-preserved/packets/evidence_i09b-fix-deterministic-nonzero-preserved_unit_04.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/root-cause/cases/deterministic-nonzero-preserved/packets/evidence_i09b-fix-deterministic-nonzero-preserved_integration_05.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/root-cause/cases/deterministic-nonzero-preserved/packets/evidence_i09b-fix-deterministic-nonzero-preserved_contract-adapter_06.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/root-cause/cases/deterministic-nonzero-preserved/packets/evidence_i09b-fix-deterministic-nonzero-preserved_e2e_07.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/root-cause/cases/deterministic-nonzero-preserved/packets/evidence_i09b-fix-deterministic-nonzero-preserved_ui-verification_08.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/root-cause/cases/deterministic-nonzero-preserved/packets/evidence_i09b-fix-deterministic-nonzero-preserved_ai-eval_09.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/root-cause/cases/deterministic-nonzero-preserved/packets/evidence_i09b-fix-deterministic-nonzero-preserved_build-package_10.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/root-cause/cases/deterministic-nonzero-preserved/packets/evidence_i09b-fix-deterministic-nonzero-preserved_context-drift_11.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/root-cause/cases/deterministic-nonzero-preserved/packets/evidence_i09b-fix-deterministic-nonzero-preserved_observability_12.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/root-cause/cases/deterministic-nonzero-preserved/packets/evidence_i09b-fix-deterministic-nonzero-preserved_advisory-review_13.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/root-cause/cases/deterministic-nonzero-preserved/packets/evidence_i09b-fix-deterministic-nonzero-preserved_final-dod_14.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/root-cause/cases/deterministic-nonzero-preserved/packets/evidence_i09b-fix-deterministic-nonzero-preserved_schema-validation_15.json"
+        ]
+      }
+    }
+  ]
+}

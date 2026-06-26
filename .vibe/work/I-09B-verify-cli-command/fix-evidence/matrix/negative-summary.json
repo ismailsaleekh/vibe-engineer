@@ -1,0 +1,898 @@
+{
+  "n1": {
+    "name": "n1-cli",
+    "status": "blocked",
+    "exitCode": 2,
+    "classification": "invalid_input",
+    "code": "VE_INVALID_INVOCATION",
+    "runnerStatus": "not_run",
+    "resultFile": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n1-cli/result/cli-result.json",
+    "resultFileExists": true,
+    "resultFileSha256": "720ca5a5e633dbd3b2e5a0e823691385816437756b8922fda8749168104a81bb",
+    "packetCount": 0,
+    "packetSummaries": []
+  },
+  "n2": {
+    "name": "n2-cli",
+    "status": "blocked",
+    "exitCode": 3,
+    "classification": "missing_prerequisite",
+    "code": "VE_MISSING_CONFIG",
+    "runnerStatus": "blocked",
+    "resultFile": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n2-cli/result/cli-result.json",
+    "resultFileExists": true,
+    "resultFileSha256": "031fff26f585162d36ee2db447e9bf40946fc3c0c99c8096a499b7dc8a6bc2f7",
+    "packetCount": 16,
+    "packetSummaries": [
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n2-cli/packets/evidence_i09b-n2-cli_safety-hooks_00.json",
+        "sha256": "51ea01ef9bab7c1989347c95887e097892fa44a125e5a8ef57ebe19e91ed05ca",
+        "artifactId": "evidence:i09b-n2-cli:safety-hooks:00",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n2-cli/packets/evidence_i09b-n2-cli_typecheck_01.json",
+        "sha256": "7faf4ce5022980da8c121d5ce90d2b6add347edb8ddf2bf548481737ec8f2641",
+        "artifactId": "evidence:i09b-n2-cli:typecheck:01",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n2-cli/packets/evidence_i09b-n2-cli_lint-format_02.json",
+        "sha256": "dae141ced2ab19801bdd170dd2c0b2870d0512d03b34767c42ca5ff6b691ccd2",
+        "artifactId": "evidence:i09b-n2-cli:lint-format:02",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n2-cli/packets/evidence_i09b-n2-cli_mechanical-gate_03.json",
+        "sha256": "4107cb212599dba076b440c585f60154f66aa6036e307aef51a250fdd8ef53dd",
+        "artifactId": "evidence:i09b-n2-cli:mechanical-gate:03",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n2-cli/packets/evidence_i09b-n2-cli_unit_04.json",
+        "sha256": "ecb51cb774e390f725f857b8ab803cdc8493b5e6d0822f5402c6e0637e497baa",
+        "artifactId": "evidence:i09b-n2-cli:unit:04",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n2-cli/packets/evidence_i09b-n2-cli_integration_05.json",
+        "sha256": "eab3e980952c2772a2622639e132e43ebcf535ea41798e5e3cea24a3132d8c0a",
+        "artifactId": "evidence:i09b-n2-cli:integration:05",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n2-cli/packets/evidence_i09b-n2-cli_contract-adapter_06.json",
+        "sha256": "1215b30af59a26a5c2a55fac0af4a756a9e242f4f651ea215885796a43808f45",
+        "artifactId": "evidence:i09b-n2-cli:contract-adapter:06",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n2-cli/packets/evidence_i09b-n2-cli_e2e_07.json",
+        "sha256": "49b013a1a2605e6527996382b0cf0fd7042e3152ffaff8973a054f49a5173d5e",
+        "artifactId": "evidence:i09b-n2-cli:e2e:07",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n2-cli/packets/evidence_i09b-n2-cli_ui-verification_08.json",
+        "sha256": "259b84ae8856dd75d1ee2a1185b52f263618723ac3b155870df4049e231cccf3",
+        "artifactId": "evidence:i09b-n2-cli:ui-verification:08",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n2-cli/packets/evidence_i09b-n2-cli_ai-eval_09.json",
+        "sha256": "34c4085b36a2c2f2eece61a59037c4a3938693cbfd67ac72751fad87e129b3cf",
+        "artifactId": "evidence:i09b-n2-cli:ai-eval:09",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n2-cli/packets/evidence_i09b-n2-cli_build-package_10.json",
+        "sha256": "e024bdb29725bd3cc9ebffb487ee61ac124d82fb9253f17061104e11a0ddf4a3",
+        "artifactId": "evidence:i09b-n2-cli:build-package:10",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n2-cli/packets/evidence_i09b-n2-cli_context-drift_11.json",
+        "sha256": "3de1048a46d49ea8556cb5850b57fb0618da9027f364874c85e5beca279f7467",
+        "artifactId": "evidence:i09b-n2-cli:context-drift:11",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n2-cli/packets/evidence_i09b-n2-cli_observability_12.json",
+        "sha256": "ee3e211e409b641301633a5110e82ef61a14d1c98a2af6df667731fdc0c92cbc",
+        "artifactId": "evidence:i09b-n2-cli:observability:12",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n2-cli/packets/evidence_i09b-n2-cli_advisory-review_13.json",
+        "sha256": "da942ce0ecfed80c99294f25f258228ffc62cb6ee3e3c594dd1e2b05094018a8",
+        "artifactId": "evidence:i09b-n2-cli:advisory-review:13",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n2-cli/packets/evidence_i09b-n2-cli_final-dod_14.json",
+        "sha256": "e1d35b92426c07f08a712ea8f726f73a0ec31aa5b00ec9cc2e1389102141f443",
+        "artifactId": "evidence:i09b-n2-cli:final-dod:14",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n2-cli/packets/evidence_i09b-n2-cli_schema-validation_15.json",
+        "sha256": "72ba52a26a0cb257fcf32980a335ace500cd89196586a9aea4e0e81252cacb70",
+        "artifactId": "evidence:i09b-n2-cli:schema-validation:15",
+        "status": "blocked",
+        "result": "blocked",
+        "failureCode": "MISSING_RUNNER_OR_PREREQUISITE",
+        "failureClassification": "missing_runner_or_prerequisite",
+        "rerunOf": null
+      }
+    ]
+  },
+  "n3": {
+    "name": "n3-cli",
+    "status": "blocked",
+    "exitCode": 3,
+    "classification": "missing_prerequisite",
+    "code": "VE_MISSING_CONFIG",
+    "runnerStatus": "blocked",
+    "resultFile": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n3-cli/result/cli-result.json",
+    "resultFileExists": true,
+    "resultFileSha256": "ec7f5b6eb1fefdc2131e0d94abb716d1e5e8cda8bb45eef89b44543879702376",
+    "packetCount": 16,
+    "packetSummaries": [
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n3-cli/packets/evidence_i09b-n3-cli_safety-hooks_00.json",
+        "sha256": "67708595fbd6064a91ffd3aa3d950f155fb5c1403cf1cec9bcee518587c7576a",
+        "artifactId": "evidence:i09b-n3-cli:safety-hooks:00",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n3-cli/packets/evidence_i09b-n3-cli_typecheck_01.json",
+        "sha256": "a73eabe914c5ae5c09ef0d2c99c2d029c2032d9f9a7c797afad2e7cfef16f51b",
+        "artifactId": "evidence:i09b-n3-cli:typecheck:01",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n3-cli/packets/evidence_i09b-n3-cli_lint-format_02.json",
+        "sha256": "e0f6cb1fc84ae51327882fca1d8254472033000ecd42fdf42d9ccb23307cd1ee",
+        "artifactId": "evidence:i09b-n3-cli:lint-format:02",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n3-cli/packets/evidence_i09b-n3-cli_mechanical-gate_03.json",
+        "sha256": "56e521c145ecb332ac8c17b4dbe68752e249d40e6253923e27eb0afd1ff71fba",
+        "artifactId": "evidence:i09b-n3-cli:mechanical-gate:03",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n3-cli/packets/evidence_i09b-n3-cli_unit_04.json",
+        "sha256": "2ee45a7ca126c364786074b1cca8fa3dfb955d04d3e27eb818d1d0681f922645",
+        "artifactId": "evidence:i09b-n3-cli:unit:04",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n3-cli/packets/evidence_i09b-n3-cli_integration_05.json",
+        "sha256": "aa16eaa19c98f5865c6849637432fa7bfc86dbe1a3a76a903f39f7111567e200",
+        "artifactId": "evidence:i09b-n3-cli:integration:05",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n3-cli/packets/evidence_i09b-n3-cli_contract-adapter_06.json",
+        "sha256": "aabeb62979cefb2d56e0139f2789143ba1b5951802bd28f02b3d6d862e845165",
+        "artifactId": "evidence:i09b-n3-cli:contract-adapter:06",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n3-cli/packets/evidence_i09b-n3-cli_e2e_07.json",
+        "sha256": "74787a7b545c12daec0c75dc13c28690a283da892cab3a917d6f050da20408b2",
+        "artifactId": "evidence:i09b-n3-cli:e2e:07",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n3-cli/packets/evidence_i09b-n3-cli_ui-verification_08.json",
+        "sha256": "269344e61f48631be9a0b2a1c9a5ef22df460db71268fbf9c3ac3869e708caa2",
+        "artifactId": "evidence:i09b-n3-cli:ui-verification:08",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n3-cli/packets/evidence_i09b-n3-cli_ai-eval_09.json",
+        "sha256": "5a144fb186193b0c2aac8273548f83477a76af0d3bbfc43f9b9d0311be8d8179",
+        "artifactId": "evidence:i09b-n3-cli:ai-eval:09",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n3-cli/packets/evidence_i09b-n3-cli_build-package_10.json",
+        "sha256": "3e8f5ee380b97b7c27bf9a8390207d5ab15c8931c34711017aa1bccb7f1e1345",
+        "artifactId": "evidence:i09b-n3-cli:build-package:10",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n3-cli/packets/evidence_i09b-n3-cli_context-drift_11.json",
+        "sha256": "2f12e818eacb76ed1bf3f133378b7144f77d1e9123ce74014b9333f3c50965f8",
+        "artifactId": "evidence:i09b-n3-cli:context-drift:11",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n3-cli/packets/evidence_i09b-n3-cli_observability_12.json",
+        "sha256": "8f1deb91227087eb0febd634f6b75f7d2f99ee1f888b0dc54ca1c939798184ed",
+        "artifactId": "evidence:i09b-n3-cli:observability:12",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n3-cli/packets/evidence_i09b-n3-cli_advisory-review_13.json",
+        "sha256": "4b4a7a7805386f0fd46a9f85f5e25ec76f88c5c7a890f11e58f4b9a3220ff98b",
+        "artifactId": "evidence:i09b-n3-cli:advisory-review:13",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n3-cli/packets/evidence_i09b-n3-cli_final-dod_14.json",
+        "sha256": "8c78093a861b2a4bf8b9e9b00f7b50c8b1a8208b6c4436c0b8a1e31908f8c271",
+        "artifactId": "evidence:i09b-n3-cli:final-dod:14",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n3-cli/packets/evidence_i09b-n3-cli_schema-validation_15.json",
+        "sha256": "da4c27c8c2f06b6e3b3a766f45161fc998b08d899fb2c6f2dcaa25cb6be6d119",
+        "artifactId": "evidence:i09b-n3-cli:schema-validation:15",
+        "status": "blocked",
+        "result": "blocked",
+        "failureCode": "MISSING_EVIDENCE",
+        "failureClassification": "missing_evidence",
+        "rerunOf": null
+      }
+    ]
+  },
+  "n4": {
+    "name": "n4-cli",
+    "status": "blocked",
+    "exitCode": 2,
+    "classification": "invalid_input",
+    "code": "VE_INVALID_INVOCATION",
+    "runnerStatus": "not_run",
+    "resultFile": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n4-cli/result/cli-result.json",
+    "resultFileExists": true,
+    "resultFileSha256": "20c28c399f49dbfe274b8b752ebeb8ea99123e6797e17111c1e9049e953f0720",
+    "packetCount": 0,
+    "packetSummaries": []
+  },
+  "n5": {
+    "name": "n5-cli",
+    "status": "blocked",
+    "exitCode": 2,
+    "classification": "invalid_input",
+    "code": "VE_INVALID_INVOCATION",
+    "runnerStatus": "blocked",
+    "resultFile": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n5-cli/result/cli-result.json",
+    "resultFileExists": true,
+    "resultFileSha256": "a5ec1e0568bb4f7c226ec2f7ef14cb0c6548714d6348361086e177ff5b0a8c20",
+    "packetCount": 16,
+    "packetSummaries": [
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_safety-hooks_00.json",
+        "sha256": "66a6be6c760d30e8b5f73d947ccc34433834f9fc5f71461c094d51a60f4fe302",
+        "artifactId": "evidence:i09b-n5-cli:safety-hooks:00",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_typecheck_01.json",
+        "sha256": "52f05d4edcd82b85644f6d191f30baf10fa30115f1b82791ceb3bb16baa270e2",
+        "artifactId": "evidence:i09b-n5-cli:typecheck:01",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_lint-format_02.json",
+        "sha256": "5bb1eba2cc849c5d5c11dcb2f5ea4524d364c1693b628e8ef152a1a83258868d",
+        "artifactId": "evidence:i09b-n5-cli:lint-format:02",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_mechanical-gate_03.json",
+        "sha256": "1b4e48d14bc129ff2cd20e994dc5bd3c2fb80b426a6e6b798ae6a642a2fc9913",
+        "artifactId": "evidence:i09b-n5-cli:mechanical-gate:03",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_unit_04.json",
+        "sha256": "971beb897c1b364f0dd5c861c79f2ea93fca91a94cdd46ab61da6a8a2fc9c166",
+        "artifactId": "evidence:i09b-n5-cli:unit:04",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_integration_05.json",
+        "sha256": "14503f322ce7e6f932d279069042b6498b839d54486531d4fd363dff8496b05d",
+        "artifactId": "evidence:i09b-n5-cli:integration:05",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_contract-adapter_06.json",
+        "sha256": "54a238462bc153b9925b45af39c0ea8fb443b0d2f6cd3b1b29df0915a1777db9",
+        "artifactId": "evidence:i09b-n5-cli:contract-adapter:06",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_e2e_07.json",
+        "sha256": "30d36dab291e8322b621f43ee589782c4d7ba97990adda10378e94522d3ce93a",
+        "artifactId": "evidence:i09b-n5-cli:e2e:07",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_ui-verification_08.json",
+        "sha256": "37ff7a737016f03ff0e18d4907cec59da0f9768159686d201a624abfc97e71ba",
+        "artifactId": "evidence:i09b-n5-cli:ui-verification:08",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_ai-eval_09.json",
+        "sha256": "2cb232098e17f12587b3471693b4295ca37f9907ee5372cae7872b1a65c0f7da",
+        "artifactId": "evidence:i09b-n5-cli:ai-eval:09",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_build-package_10.json",
+        "sha256": "7919cc48aa3e761206fbf745b28144c1ebd8aaba6a0898c0aefe592431432de2",
+        "artifactId": "evidence:i09b-n5-cli:build-package:10",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_context-drift_11.json",
+        "sha256": "2367f896eb5267e9ba5fac56f4cc84e7a3f76472bd245904680b8d84c6faa22d",
+        "artifactId": "evidence:i09b-n5-cli:context-drift:11",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_observability_12.json",
+        "sha256": "b594d82cebb1213eb96f77bcccc6e0b887cc6358d2c3efc1e5a5ece7de1ee492",
+        "artifactId": "evidence:i09b-n5-cli:observability:12",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_advisory-review_13.json",
+        "sha256": "4bca7491324b1ed71128894c58c0f01ee0869bb7ff816ab467dedae3e06c3b58",
+        "artifactId": "evidence:i09b-n5-cli:advisory-review:13",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_final-dod_14.json",
+        "sha256": "d33f884d5cebacd7ec27fb68ee845a16f76709d8f68c43f7791351e8fbb1fd42",
+        "artifactId": "evidence:i09b-n5-cli:final-dod:14",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_schema-validation_15.json",
+        "sha256": "4ac4de754b6f82e6858a84aba5f00dfbdc2895a9aae5c6c04dffc04c4943e7fb",
+        "artifactId": "evidence:i09b-n5-cli:schema-validation:15",
+        "status": "blocked",
+        "result": "blocked",
+        "failureCode": "MALFORMED_EVIDENCE_PACKET",
+        "failureClassification": "schema_or_contract_failure",
+        "rerunOf": null
+      }
+    ]
+  },
+  "n6": {
+    "name": "n6-cli",
+    "status": "failure",
+    "exitCode": 7,
+    "classification": "internal_error",
+    "code": "VE_INTERNAL_ERROR",
+    "runnerStatus": "failed",
+    "resultFile": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n6-cli/result/cli-result.json",
+    "resultFileExists": true,
+    "resultFileSha256": "3d4904b468ef7183dea910baa95b3022f673b64c1099d87f4f6d3cebeea7d154",
+    "packetCount": 16,
+    "packetSummaries": [
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n6-cli/packets/evidence_i09b-n6-cli_safety-hooks_00.json",
+        "sha256": "3fe507dfe7c6bab80f6615cbf2e2e3af28367db2d67599e601083623d8126969",
+        "artifactId": "evidence:i09b-n6-cli:safety-hooks:00",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n6-cli/packets/evidence_i09b-n6-cli_typecheck_01.json",
+        "sha256": "04aa0c434099637323e2abda8ad109a3f61e8626365fd692c81da1b13f1605d5",
+        "artifactId": "evidence:i09b-n6-cli:typecheck:01",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n6-cli/packets/evidence_i09b-n6-cli_lint-format_02.json",
+        "sha256": "93b393953aef8714249c5efc274744ff5d99587749199b3ce79089803a519afb",
+        "artifactId": "evidence:i09b-n6-cli:lint-format:02",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n6-cli/packets/evidence_i09b-n6-cli_mechanical-gate_03.json",
+        "sha256": "5c3bd43506a4541b948b559a22ab6e2b72c4e948c2313c64dcc012e6735fec36",
+        "artifactId": "evidence:i09b-n6-cli:mechanical-gate:03",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n6-cli/packets/evidence_i09b-n6-cli_unit_04.json",
+        "sha256": "51453bdce3c313abe99f87ebabedb983cdffee831fed79940460983c12611745",
+        "artifactId": "evidence:i09b-n6-cli:unit:04",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n6-cli/packets/evidence_i09b-n6-cli_integration_05.json",
+        "sha256": "4e47c109d525a07b0f386b21ae0bd9414aeb753a61c5678b23edd27a6d7d2109",
+        "artifactId": "evidence:i09b-n6-cli:integration:05",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n6-cli/packets/evidence_i09b-n6-cli_contract-adapter_06.json",
+        "sha256": "bcd16f47e3041256b350a729b7565ef0ed3551f4d2c0361b06c76379907b8a5d",
+        "artifactId": "evidence:i09b-n6-cli:contract-adapter:06",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n6-cli/packets/evidence_i09b-n6-cli_e2e_07.json",
+        "sha256": "50b86df613a0065a6535c43f13bdbb81de42be6d606dd78e60eac3ff8b9a32a7",
+        "artifactId": "evidence:i09b-n6-cli:e2e:07",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n6-cli/packets/evidence_i09b-n6-cli_ui-verification_08.json",
+        "sha256": "0451136d0c16b7ccbb5d53962e1fce3bbf645c971521fb2a9d8008b4479633dc",
+        "artifactId": "evidence:i09b-n6-cli:ui-verification:08",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n6-cli/packets/evidence_i09b-n6-cli_ai-eval_09.json",
+        "sha256": "09836638f10b8c6efe00afa3110d5fc0962f086e14119985d35de5cca667e09d",
+        "artifactId": "evidence:i09b-n6-cli:ai-eval:09",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n6-cli/packets/evidence_i09b-n6-cli_build-package_10.json",
+        "sha256": "07a536af67324c1088a679ecd6526bcf4e578a694cf08aa633d370908b8656e3",
+        "artifactId": "evidence:i09b-n6-cli:build-package:10",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n6-cli/packets/evidence_i09b-n6-cli_context-drift_11.json",
+        "sha256": "31524a9bb2aba0e3213a4c4254d711b8447ba534069ef600d241f709fa7e1b00",
+        "artifactId": "evidence:i09b-n6-cli:context-drift:11",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n6-cli/packets/evidence_i09b-n6-cli_observability_12.json",
+        "sha256": "30a4fcf8fd62a70585ea43bee09bd3fb246b362252a0a067531fbf511f629415",
+        "artifactId": "evidence:i09b-n6-cli:observability:12",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n6-cli/packets/evidence_i09b-n6-cli_advisory-review_13.json",
+        "sha256": "6ca2654c3b6127a53826e1c1bc4ebe4008a253fc8a7713cdb17444bfd97b8c43",
+        "artifactId": "evidence:i09b-n6-cli:advisory-review:13",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n6-cli/packets/evidence_i09b-n6-cli_final-dod_14.json",
+        "sha256": "4f33bb67beca928edb23de007194ddd6cb96ce2ee273d162038cd62637a81c6f",
+        "artifactId": "evidence:i09b-n6-cli:final-dod:14",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n6-cli/packets/evidence_i09b-n6-cli_schema-validation_15.json",
+        "sha256": "8502efcfcf1bbc23c5bd6a8ceb87a709f6589b386e7311e7e5b9d1c0ae5723f0",
+        "artifactId": "evidence:i09b-n6-cli:schema-validation:15",
+        "status": "failed",
+        "result": "fail",
+        "failureCode": "RUNNER_INTERNAL_ERROR",
+        "failureClassification": "runner_internal_error",
+        "rerunOf": null
+      }
+    ]
+  },
+  "n7": {
+    "name": "n7-cli",
+    "status": "success",
+    "exitCode": 0,
+    "classification": null,
+    "code": "VE_INVALID_INVOCATION",
+    "runnerStatus": "advisory_warning",
+    "resultFile": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n7-cli/result/cli-result.json",
+    "resultFileExists": true,
+    "resultFileSha256": "feb0fe026a92800e63aaf253a3117b41cdef60717cad71512de15f2df0069e59",
+    "packetCount": 16,
+    "packetSummaries": [
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n7-cli/packets/evidence_i09b-n7-cli_safety-hooks_00.json",
+        "sha256": "2a13ddf0b9c3681c6492f663e3404d0a7349d93a63bfb6997baf66090dc97386",
+        "artifactId": "evidence:i09b-n7-cli:safety-hooks:00",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n7-cli/packets/evidence_i09b-n7-cli_typecheck_01.json",
+        "sha256": "97d1a293800690eb502b8317f3202a78e65c43bc405b43a096de834d7070a3aa",
+        "artifactId": "evidence:i09b-n7-cli:typecheck:01",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n7-cli/packets/evidence_i09b-n7-cli_lint-format_02.json",
+        "sha256": "6ec0cebd15ff05cd60dbc003c7719018caab3738972514f2ddef983be2245d37",
+        "artifactId": "evidence:i09b-n7-cli:lint-format:02",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n7-cli/packets/evidence_i09b-n7-cli_mechanical-gate_03.json",
+        "sha256": "237e5c4ef8605c6fda91f961595a2d6b34f0b8a58ac282144120557d13db3058",
+        "artifactId": "evidence:i09b-n7-cli:mechanical-gate:03",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n7-cli/packets/evidence_i09b-n7-cli_unit_04.json",
+        "sha256": "d40f41bf63cd037fdf1de4575d97f3a68cb3a01d774e96d0c1b5449514592518",
+        "artifactId": "evidence:i09b-n7-cli:unit:04",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n7-cli/packets/evidence_i09b-n7-cli_integration_05.json",
+        "sha256": "1bc515ff4e1eb32bfc6b8903fe1cdbbb85aaf81bc52e29c520aa93ab4ab14197",
+        "artifactId": "evidence:i09b-n7-cli:integration:05",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n7-cli/packets/evidence_i09b-n7-cli_contract-adapter_06.json",
+        "sha256": "94ae2241b5066ad2e0866183ed5381383905d3aa6c3bfa798132bc27f0362da5",
+        "artifactId": "evidence:i09b-n7-cli:contract-adapter:06",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n7-cli/packets/evidence_i09b-n7-cli_e2e_07.json",
+        "sha256": "98a949bd7d4fffe0780ecd470d1c52807ce2b7952248848c1cd2c6ccbe87a9cb",
+        "artifactId": "evidence:i09b-n7-cli:e2e:07",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n7-cli/packets/evidence_i09b-n7-cli_ui-verification_08.json",
+        "sha256": "0f3f1daae74e9c7db5a40991796291e51ee3b2342509302bc617ba4ca13eb2cc",
+        "artifactId": "evidence:i09b-n7-cli:ui-verification:08",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n7-cli/packets/evidence_i09b-n7-cli_ai-eval_09.json",
+        "sha256": "ba46b2f5b001ccd5d23144d07118d4d2c0ba4564caf52aa1d650295f221d76b7",
+        "artifactId": "evidence:i09b-n7-cli:ai-eval:09",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n7-cli/packets/evidence_i09b-n7-cli_build-package_10.json",
+        "sha256": "322503eb860b5b67dd242662a2f25e9896c61330149cb9b9dbb7a55f272ff30e",
+        "artifactId": "evidence:i09b-n7-cli:build-package:10",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n7-cli/packets/evidence_i09b-n7-cli_context-drift_11.json",
+        "sha256": "1034dbcdb74858aad80f80d09b1fd750b50279b9ac2c2dc9764454c22500f592",
+        "artifactId": "evidence:i09b-n7-cli:context-drift:11",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n7-cli/packets/evidence_i09b-n7-cli_observability_12.json",
+        "sha256": "0ffa752c3734f59622a32c8bc60278dac79ba4e83944892bc8a67e0ba36eae99",
+        "artifactId": "evidence:i09b-n7-cli:observability:12",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n7-cli/packets/evidence_i09b-n7-cli_advisory-review_13.json",
+        "sha256": "1d46e0140a6c60c6b00c1828568921bfa6a8692aeb1938ad4d4ee8703d0122e6",
+        "artifactId": "evidence:i09b-n7-cli:advisory-review:13",
+        "status": "advisory_warning",
+        "result": "advisory",
+        "failureCode": "ADVISORY_FINDING",
+        "failureClassification": "advisory_finding",
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n7-cli/packets/evidence_i09b-n7-cli_final-dod_14.json",
+        "sha256": "48e68f29ead990f196c485d82d931ce8b6a01aeba1551e708a179b716e3ef8e7",
+        "artifactId": "evidence:i09b-n7-cli:final-dod:14",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      },
+      {
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/n7-cli/packets/evidence_i09b-n7-cli_schema-validation_15.json",
+        "sha256": "26ff17c209e559e5a221c62cf5724ec5583dc824cb1fcc5e858d848dc450e196",
+        "artifactId": "evidence:i09b-n7-cli:schema-validation:15",
+        "status": "not_run",
+        "result": "skipped",
+        "failureCode": null,
+        "failureClassification": null,
+        "rerunOf": null
+      }
+    ]
+  }
+}

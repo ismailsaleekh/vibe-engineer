@@ -1,0 +1,346 @@
+{
+  "schemaVersion": "vibe-engineer.cli.result.v1",
+  "invocation": {
+    "id": "i-09b-post-fix-verify-5fb99d4b",
+    "command": "verify",
+    "argv": [
+      "verify",
+      "--implementation-plan",
+      "<value>",
+      "--evidence-root",
+      "<value>",
+      "--project-root",
+      "<value>",
+      "--run-id",
+      "<value>",
+      "--runner-catalog",
+      "<value>",
+      "--result-file",
+      "<value>"
+    ],
+    "projectRoot": "/Users/lizavasilyeva/work/vibe-engineer",
+    "configPath": null,
+    "startedAt": "2026-06-25T20:18:52.189Z",
+    "endedAt": "2026-06-25T20:18:52.189Z"
+  },
+  "status": "blocked",
+  "exitCode": 4,
+  "payload": {
+    "kind": "verification_result",
+    "schemaVersion": "vibe-engineer.cli.payload.v1",
+    "data": {
+      "ok": false,
+      "runnerStatus": "blocked",
+      "runId": "i09b-post-fix-aggregate-output-cap",
+      "rerunOf": null,
+      "evidencePackets": [
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/aggregate-output-cap/packets/evidence_i09b-post-fix-aggregate-output-cap_safety-hooks_00.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "9a26632e60b827ee92194e06fe91bc199ee1550014a09b80045cf606fb71d38d",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/aggregate-output-cap/packets/evidence_i09b-post-fix-aggregate-output-cap_typecheck_01.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "433892bba82bd22c776d18f62c2381968dd23a2361fd628f850848c0f844cf74",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/aggregate-output-cap/packets/evidence_i09b-post-fix-aggregate-output-cap_lint-format_02.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "4644b5d6521374096763693b5c2908c9a5394e64d0ebadf7c513126de36ab83e",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/aggregate-output-cap/packets/evidence_i09b-post-fix-aggregate-output-cap_mechanical-gate_03.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "ef8d4634105f0b6cfabebddb59e841bb0f180e695d261a485a6a54478d0fe253",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/aggregate-output-cap/packets/evidence_i09b-post-fix-aggregate-output-cap_unit_04.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "89ab467a0fae4de261809dbdfeea8e973955292d528538f6c0ef5651ecaffca1",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/aggregate-output-cap/packets/evidence_i09b-post-fix-aggregate-output-cap_integration_05.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "d921ffb4aaadef874faca1c9d0a8a9ce5321e135ae574e9f61c8aeafe6e5a85a",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/aggregate-output-cap/packets/evidence_i09b-post-fix-aggregate-output-cap_contract-adapter_06.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "e0bc96c27547654371226d012665a329cb8f3d275535b0261dc095c06e80bba8",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/aggregate-output-cap/packets/evidence_i09b-post-fix-aggregate-output-cap_e2e_07.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "c2605c2dca45d55d96ae2e63c33031b9096dbfbb5881ab99c5bba4698c632b80",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/aggregate-output-cap/packets/evidence_i09b-post-fix-aggregate-output-cap_ui-verification_08.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "6639ecf435abbce5858b5fe1411c95987e636d6684dbb97e8a457753808f91eb",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/aggregate-output-cap/packets/evidence_i09b-post-fix-aggregate-output-cap_ai-eval_09.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "e60fafb140926bb09779b5d49afe51423f1f17451876813c8d97bc0b5e88de49",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/aggregate-output-cap/packets/evidence_i09b-post-fix-aggregate-output-cap_build-package_10.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "159d39dcf6c67af4690fb4eea67851e3023e01930c473a276e24e98be536f783",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/aggregate-output-cap/packets/evidence_i09b-post-fix-aggregate-output-cap_context-drift_11.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "9110a2015b206d8ba3abe2e9b0bc6d49e9c494a51505c308750d531c4614f6d9",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/aggregate-output-cap/packets/evidence_i09b-post-fix-aggregate-output-cap_observability_12.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "55a77917de94fd795358487953f2453d3dd148393d92f4575273e99669d90ac7",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/aggregate-output-cap/packets/evidence_i09b-post-fix-aggregate-output-cap_advisory-review_13.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "e1496cbf28848e315300153528c12cd68bb61319ff8d942ed996b0c704990ec7",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/aggregate-output-cap/packets/evidence_i09b-post-fix-aggregate-output-cap_final-dod_14.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "2d15c347ff97f875be469684ebda50f6ae5f5c6155fd24a00fa95c3de81cb07f",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/aggregate-output-cap/packets/evidence_i09b-post-fix-aggregate-output-cap_schema-validation_15.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "4e58b86b33d81ed4fb6f2507614acfe8cb36fefe0cf9fcd1e7ae86ce11b30932",
+          "valid": true
+        }
+      ],
+      "executedItems": [
+        "schema-validation"
+      ],
+      "recordedItems": [
+        "safety-hooks",
+        "typecheck",
+        "lint-format",
+        "mechanical-gate",
+        "unit",
+        "integration",
+        "contract-adapter",
+        "e2e",
+        "ui-verification",
+        "ai-eval",
+        "build-package",
+        "context-drift",
+        "observability",
+        "advisory-review",
+        "final-dod"
+      ],
+      "blockedItems": [
+        "schema-validation"
+      ],
+      "failures": [
+        {
+          "code": "OUTPUT_LIMIT_EXCEEDED",
+          "classification": "safety_or_security_policy_failure",
+          "message": "Command aggregate stdout and stderr exceeded configured maxOutputBytes."
+        }
+      ],
+      "warnings": [
+        "I-09B post-fix regression fixture rationale for safety-hooks.",
+        "I-09B post-fix regression fixture rationale for typecheck.",
+        "I-09B post-fix regression fixture rationale for lint-format.",
+        "I-09B post-fix regression fixture rationale for mechanical-gate.",
+        "I-09B post-fix regression fixture rationale for unit.",
+        "I-09B post-fix regression fixture rationale for integration.",
+        "I-09B post-fix regression fixture rationale for contract-adapter.",
+        "I-09B post-fix regression fixture rationale for e2e.",
+        "I-09B post-fix regression fixture rationale for ui-verification.",
+        "I-09B post-fix regression fixture rationale for ai-eval.",
+        "I-09B post-fix regression fixture rationale for build-package.",
+        "I-09B post-fix regression fixture rationale for context-drift.",
+        "I-09B post-fix regression fixture rationale for observability.",
+        "I-09B post-fix regression fixture rationale for advisory-review.",
+        "I-09B post-fix regression fixture rationale for final-dod."
+      ]
+    }
+  },
+  "diagnostics": [
+    {
+      "severity": "error",
+      "code": "VE_INVALID_INVOCATION",
+      "classification": "safety_policy_block",
+      "message": "Command aggregate stdout and stderr exceeded configured maxOutputBytes.",
+      "path": null,
+      "span": null,
+      "hint": null
+    }
+  ],
+  "artifacts": [
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/aggregate-output-cap/packets/evidence_i09b-post-fix-aggregate-output-cap_safety-hooks_00.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "9a26632e60b827ee92194e06fe91bc199ee1550014a09b80045cf606fb71d38d"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/aggregate-output-cap/packets/evidence_i09b-post-fix-aggregate-output-cap_typecheck_01.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "433892bba82bd22c776d18f62c2381968dd23a2361fd628f850848c0f844cf74"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/aggregate-output-cap/packets/evidence_i09b-post-fix-aggregate-output-cap_lint-format_02.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "4644b5d6521374096763693b5c2908c9a5394e64d0ebadf7c513126de36ab83e"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/aggregate-output-cap/packets/evidence_i09b-post-fix-aggregate-output-cap_mechanical-gate_03.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "ef8d4634105f0b6cfabebddb59e841bb0f180e695d261a485a6a54478d0fe253"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/aggregate-output-cap/packets/evidence_i09b-post-fix-aggregate-output-cap_unit_04.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "89ab467a0fae4de261809dbdfeea8e973955292d528538f6c0ef5651ecaffca1"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/aggregate-output-cap/packets/evidence_i09b-post-fix-aggregate-output-cap_integration_05.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "d921ffb4aaadef874faca1c9d0a8a9ce5321e135ae574e9f61c8aeafe6e5a85a"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/aggregate-output-cap/packets/evidence_i09b-post-fix-aggregate-output-cap_contract-adapter_06.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "e0bc96c27547654371226d012665a329cb8f3d275535b0261dc095c06e80bba8"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/aggregate-output-cap/packets/evidence_i09b-post-fix-aggregate-output-cap_e2e_07.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "c2605c2dca45d55d96ae2e63c33031b9096dbfbb5881ab99c5bba4698c632b80"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/aggregate-output-cap/packets/evidence_i09b-post-fix-aggregate-output-cap_ui-verification_08.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "6639ecf435abbce5858b5fe1411c95987e636d6684dbb97e8a457753808f91eb"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/aggregate-output-cap/packets/evidence_i09b-post-fix-aggregate-output-cap_ai-eval_09.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "e60fafb140926bb09779b5d49afe51423f1f17451876813c8d97bc0b5e88de49"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/aggregate-output-cap/packets/evidence_i09b-post-fix-aggregate-output-cap_build-package_10.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "159d39dcf6c67af4690fb4eea67851e3023e01930c473a276e24e98be536f783"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/aggregate-output-cap/packets/evidence_i09b-post-fix-aggregate-output-cap_context-drift_11.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "9110a2015b206d8ba3abe2e9b0bc6d49e9c494a51505c308750d531c4614f6d9"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/aggregate-output-cap/packets/evidence_i09b-post-fix-aggregate-output-cap_observability_12.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "55a77917de94fd795358487953f2453d3dd148393d92f4575273e99669d90ac7"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/aggregate-output-cap/packets/evidence_i09b-post-fix-aggregate-output-cap_advisory-review_13.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "e1496cbf28848e315300153528c12cd68bb61319ff8d942ed996b0c704990ec7"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/aggregate-output-cap/packets/evidence_i09b-post-fix-aggregate-output-cap_final-dod_14.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "2d15c347ff97f875be469684ebda50f6ae5f5c6155fd24a00fa95c3de81cb07f"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/aggregate-output-cap/packets/evidence_i09b-post-fix-aggregate-output-cap_schema-validation_15.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "4e58b86b33d81ed4fb6f2507614acfe8cb36fefe0cf9fcd1e7ae86ce11b30932"
+    },
+    {
+      "kind": "cli_result",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/aggregate-output-cap/result/cli-result.json",
+      "schemaVersion": "vibe-engineer.cli.result.v1",
+      "role": "report",
+      "sha256": null
+    }
+  ],
+  "errors": [
+    {
+      "code": "VE_INVALID_INVOCATION",
+      "classification": "safety_policy_block",
+      "retryable": false,
+      "blocking": true,
+      "message": "Command aggregate stdout and stderr exceeded configured maxOutputBytes.",
+      "details": {
+        "runnerCode": "OUTPUT_LIMIT_EXCEEDED",
+        "runnerClassification": "safety_or_security_policy_failure",
+        "evidencePacketPaths": [
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/aggregate-output-cap/packets/evidence_i09b-post-fix-aggregate-output-cap_safety-hooks_00.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/aggregate-output-cap/packets/evidence_i09b-post-fix-aggregate-output-cap_typecheck_01.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/aggregate-output-cap/packets/evidence_i09b-post-fix-aggregate-output-cap_lint-format_02.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/aggregate-output-cap/packets/evidence_i09b-post-fix-aggregate-output-cap_mechanical-gate_03.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/aggregate-output-cap/packets/evidence_i09b-post-fix-aggregate-output-cap_unit_04.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/aggregate-output-cap/packets/evidence_i09b-post-fix-aggregate-output-cap_integration_05.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/aggregate-output-cap/packets/evidence_i09b-post-fix-aggregate-output-cap_contract-adapter_06.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/aggregate-output-cap/packets/evidence_i09b-post-fix-aggregate-output-cap_e2e_07.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/aggregate-output-cap/packets/evidence_i09b-post-fix-aggregate-output-cap_ui-verification_08.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/aggregate-output-cap/packets/evidence_i09b-post-fix-aggregate-output-cap_ai-eval_09.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/aggregate-output-cap/packets/evidence_i09b-post-fix-aggregate-output-cap_build-package_10.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/aggregate-output-cap/packets/evidence_i09b-post-fix-aggregate-output-cap_context-drift_11.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/aggregate-output-cap/packets/evidence_i09b-post-fix-aggregate-output-cap_observability_12.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/aggregate-output-cap/packets/evidence_i09b-post-fix-aggregate-output-cap_advisory-review_13.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/aggregate-output-cap/packets/evidence_i09b-post-fix-aggregate-output-cap_final-dod_14.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/aggregate-output-cap/packets/evidence_i09b-post-fix-aggregate-output-cap_schema-validation_15.json"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,346 @@
+{
+  "schemaVersion": "vibe-engineer.cli.result.v1",
+  "invocation": {
+    "id": "i-09b-validation-verify-75b429e1",
+    "command": "verify",
+    "argv": [
+      "verify",
+      "--implementation-plan",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/fixtures/schema-only-passed.implementation-plan.json",
+      "--evidence-root",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/i09a-safety/touch-denied/packets",
+      "--project-root",
+      "/Users/lizavasilyeva/work/vibe-engineer",
+      "--run-id",
+      "i09b-touch-denied",
+      "--runner-catalog",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/i09a-safety/touch-denied/runner-catalog.json",
+      "--result-file",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/i09a-safety/touch-denied/result/cli-result.json"
+    ],
+    "projectRoot": "/Users/lizavasilyeva/work/vibe-engineer",
+    "configPath": null,
+    "startedAt": "2026-06-25T18:51:13.591Z",
+    "endedAt": "2026-06-25T18:51:13.591Z"
+  },
+  "status": "blocked",
+  "exitCode": 4,
+  "payload": {
+    "kind": "verification_result",
+    "schemaVersion": "vibe-engineer.cli.payload.v1",
+    "data": {
+      "ok": false,
+      "runnerStatus": "blocked",
+      "runId": "i09b-touch-denied",
+      "rerunOf": null,
+      "evidencePackets": [
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/i09a-safety/touch-denied/packets/evidence_i09b-touch-denied_safety-hooks_00.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "18ed97959866300eed460adceabaa5946e1541f4f3c3b19af9310f7ecc497cb4",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/i09a-safety/touch-denied/packets/evidence_i09b-touch-denied_typecheck_01.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "6fed6bb849acb718d1d29a725ad3b47cf4e819084bd8c68a75cf185bbd34ad8c",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/i09a-safety/touch-denied/packets/evidence_i09b-touch-denied_lint-format_02.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "fcbe04def25239f984eb8c7c95daef6b4797e23277d4058de118b523f9e65b5f",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/i09a-safety/touch-denied/packets/evidence_i09b-touch-denied_mechanical-gate_03.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "5411f2863cf889ce39c9f2941002d6618f36e1df2200603467728f0fe03a72fe",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/i09a-safety/touch-denied/packets/evidence_i09b-touch-denied_unit_04.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "307a64378bb6cf2648db945ace6db90681efa58a4ab229cf17a775c1f718b1f3",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/i09a-safety/touch-denied/packets/evidence_i09b-touch-denied_integration_05.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "4c1621b24394f9aa73f2894addefdc0817b078a5c0160622b82130f001367870",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/i09a-safety/touch-denied/packets/evidence_i09b-touch-denied_contract-adapter_06.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "19de9773a3c95c7d5d43c144876998ffbd08e109927dee1201e8f2e44a14373c",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/i09a-safety/touch-denied/packets/evidence_i09b-touch-denied_e2e_07.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "ebf06d1cbcbf9a2f04b0f66980a77788442f739116cc8c39cbc9e67957663226",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/i09a-safety/touch-denied/packets/evidence_i09b-touch-denied_ui-verification_08.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "bc82c42caea12432801453bed2e65e479cd7ab6f1fc63ef966e87dcfa46fcfc4",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/i09a-safety/touch-denied/packets/evidence_i09b-touch-denied_ai-eval_09.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "f43eac7ed145916edd76fee87079cd98d6e83eae98e93f310cda60713125895a",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/i09a-safety/touch-denied/packets/evidence_i09b-touch-denied_build-package_10.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "54007b2efe72c65eb0f9c2b8213b569f168d999c0b9961192549fdbae7aebd59",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/i09a-safety/touch-denied/packets/evidence_i09b-touch-denied_context-drift_11.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "71ffdcbd692efcd0672b595beb3df1910f8e33e4c2a71171be37bf6de1104f99",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/i09a-safety/touch-denied/packets/evidence_i09b-touch-denied_observability_12.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "68dc6e73a351307cbb08291c180c247b347ab40defc7ded1fda069f829609b0b",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/i09a-safety/touch-denied/packets/evidence_i09b-touch-denied_advisory-review_13.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "bba711b46aa58528b136eba1772cb3780180287c84b6501b6e860a1bd799be4a",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/i09a-safety/touch-denied/packets/evidence_i09b-touch-denied_final-dod_14.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "22d6b7a44118e506b3d5a0292691d1f330891a34097762e1aeff9fef3c4f26ae",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/i09a-safety/touch-denied/packets/evidence_i09b-touch-denied_schema-validation_15.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "a2158219a11636dd4e0e59dddcceff9bd32f6f70e1536f34877ea300d714534e",
+          "valid": true
+        }
+      ],
+      "executedItems": [
+        "schema-validation"
+      ],
+      "recordedItems": [
+        "safety-hooks",
+        "typecheck",
+        "lint-format",
+        "mechanical-gate",
+        "unit",
+        "integration",
+        "contract-adapter",
+        "e2e",
+        "ui-verification",
+        "ai-eval",
+        "build-package",
+        "context-drift",
+        "observability",
+        "advisory-review",
+        "final-dod"
+      ],
+      "blockedItems": [
+        "schema-validation"
+      ],
+      "failures": [
+        {
+          "code": "COMMAND_POLICY_DENIED",
+          "classification": "safety_or_security_policy_failure",
+          "message": "Executable touch is denied by policy."
+        }
+      ],
+      "warnings": [
+        "safety_hooks is represented for the domain-neutral I-09A fixture.",
+        "typecheck is represented for the domain-neutral I-09A fixture.",
+        "lint_format is represented for the domain-neutral I-09A fixture.",
+        "mechanical_gate is represented for the domain-neutral I-09A fixture.",
+        "unit is represented for the domain-neutral I-09A fixture.",
+        "integration is represented for the domain-neutral I-09A fixture.",
+        "contract_adapter is represented for the domain-neutral I-09A fixture.",
+        "e2e is represented for the domain-neutral I-09A fixture.",
+        "ui_verification is represented for the domain-neutral I-09A fixture.",
+        "ai_eval is represented for the domain-neutral I-09A fixture.",
+        "build_package is represented for the domain-neutral I-09A fixture.",
+        "context_drift is represented for the domain-neutral I-09A fixture.",
+        "observability is represented for the domain-neutral I-09A fixture.",
+        "advisory_review is represented for the domain-neutral I-09A fixture.",
+        "final_dod is represented for the domain-neutral I-09A fixture."
+      ]
+    }
+  },
+  "diagnostics": [
+    {
+      "severity": "error",
+      "code": "VE_INVALID_INVOCATION",
+      "classification": "safety_policy_block",
+      "message": "Executable touch is denied by policy.",
+      "path": null,
+      "span": null,
+      "hint": null
+    }
+  ],
+  "artifacts": [
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/i09a-safety/touch-denied/packets/evidence_i09b-touch-denied_safety-hooks_00.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "18ed97959866300eed460adceabaa5946e1541f4f3c3b19af9310f7ecc497cb4"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/i09a-safety/touch-denied/packets/evidence_i09b-touch-denied_typecheck_01.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "6fed6bb849acb718d1d29a725ad3b47cf4e819084bd8c68a75cf185bbd34ad8c"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/i09a-safety/touch-denied/packets/evidence_i09b-touch-denied_lint-format_02.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "fcbe04def25239f984eb8c7c95daef6b4797e23277d4058de118b523f9e65b5f"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/i09a-safety/touch-denied/packets/evidence_i09b-touch-denied_mechanical-gate_03.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "5411f2863cf889ce39c9f2941002d6618f36e1df2200603467728f0fe03a72fe"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/i09a-safety/touch-denied/packets/evidence_i09b-touch-denied_unit_04.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "307a64378bb6cf2648db945ace6db90681efa58a4ab229cf17a775c1f718b1f3"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/i09a-safety/touch-denied/packets/evidence_i09b-touch-denied_integration_05.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "4c1621b24394f9aa73f2894addefdc0817b078a5c0160622b82130f001367870"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/i09a-safety/touch-denied/packets/evidence_i09b-touch-denied_contract-adapter_06.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "19de9773a3c95c7d5d43c144876998ffbd08e109927dee1201e8f2e44a14373c"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/i09a-safety/touch-denied/packets/evidence_i09b-touch-denied_e2e_07.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "ebf06d1cbcbf9a2f04b0f66980a77788442f739116cc8c39cbc9e67957663226"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/i09a-safety/touch-denied/packets/evidence_i09b-touch-denied_ui-verification_08.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "bc82c42caea12432801453bed2e65e479cd7ab6f1fc63ef966e87dcfa46fcfc4"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/i09a-safety/touch-denied/packets/evidence_i09b-touch-denied_ai-eval_09.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "f43eac7ed145916edd76fee87079cd98d6e83eae98e93f310cda60713125895a"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/i09a-safety/touch-denied/packets/evidence_i09b-touch-denied_build-package_10.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "54007b2efe72c65eb0f9c2b8213b569f168d999c0b9961192549fdbae7aebd59"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/i09a-safety/touch-denied/packets/evidence_i09b-touch-denied_context-drift_11.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "71ffdcbd692efcd0672b595beb3df1910f8e33e4c2a71171be37bf6de1104f99"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/i09a-safety/touch-denied/packets/evidence_i09b-touch-denied_observability_12.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "68dc6e73a351307cbb08291c180c247b347ab40defc7ded1fda069f829609b0b"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/i09a-safety/touch-denied/packets/evidence_i09b-touch-denied_advisory-review_13.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "bba711b46aa58528b136eba1772cb3780180287c84b6501b6e860a1bd799be4a"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/i09a-safety/touch-denied/packets/evidence_i09b-touch-denied_final-dod_14.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "22d6b7a44118e506b3d5a0292691d1f330891a34097762e1aeff9fef3c4f26ae"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/i09a-safety/touch-denied/packets/evidence_i09b-touch-denied_schema-validation_15.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "a2158219a11636dd4e0e59dddcceff9bd32f6f70e1536f34877ea300d714534e"
+    },
+    {
+      "kind": "cli_result",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/i09a-safety/touch-denied/result/cli-result.json",
+      "schemaVersion": "vibe-engineer.cli.result.v1",
+      "role": "report",
+      "sha256": null
+    }
+  ],
+  "errors": [
+    {
+      "code": "VE_INVALID_INVOCATION",
+      "classification": "safety_policy_block",
+      "retryable": false,
+      "blocking": true,
+      "message": "Executable touch is denied by policy.",
+      "details": {
+        "runnerCode": "COMMAND_POLICY_DENIED",
+        "runnerClassification": "safety_or_security_policy_failure",
+        "evidencePacketPaths": [
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/i09a-safety/touch-denied/packets/evidence_i09b-touch-denied_safety-hooks_00.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/i09a-safety/touch-denied/packets/evidence_i09b-touch-denied_typecheck_01.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/i09a-safety/touch-denied/packets/evidence_i09b-touch-denied_lint-format_02.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/i09a-safety/touch-denied/packets/evidence_i09b-touch-denied_mechanical-gate_03.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/i09a-safety/touch-denied/packets/evidence_i09b-touch-denied_unit_04.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/i09a-safety/touch-denied/packets/evidence_i09b-touch-denied_integration_05.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/i09a-safety/touch-denied/packets/evidence_i09b-touch-denied_contract-adapter_06.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/i09a-safety/touch-denied/packets/evidence_i09b-touch-denied_e2e_07.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/i09a-safety/touch-denied/packets/evidence_i09b-touch-denied_ui-verification_08.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/i09a-safety/touch-denied/packets/evidence_i09b-touch-denied_ai-eval_09.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/i09a-safety/touch-denied/packets/evidence_i09b-touch-denied_build-package_10.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/i09a-safety/touch-denied/packets/evidence_i09b-touch-denied_context-drift_11.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/i09a-safety/touch-denied/packets/evidence_i09b-touch-denied_observability_12.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/i09a-safety/touch-denied/packets/evidence_i09b-touch-denied_advisory-review_13.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/i09a-safety/touch-denied/packets/evidence_i09b-touch-denied_final-dod_14.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/i09a-safety/touch-denied/packets/evidence_i09b-touch-denied_schema-validation_15.json"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "status": "blocked",
+  "exitCode": 2,
+  "payload": {
+    "kind": "verification_result",
+    "schemaVersion": "vibe-engineer.cli.payload.v1",
+    "data": {
+      "ok": false,
+      "runnerStatus": "not_run",
+      "runnerCode": "PLAN_NOT_APPROVED"
+    }
+  },
+  "errors": [
+    {
+      "code": "VE_INVALID_INVOCATION",
+      "classification": "invalid_input",
+      "retryable": false,
+      "blocking": true,
+      "message": "Implementation Plan status must be approved before verification can run.",
+      "details": {
+        "runnerCode": "PLAN_NOT_APPROVED",
+        "errorName": "VerificationRunnerError"
+      }
+    }
+  ],
+  "diagnostics": [
+    {
+      "severity": "error",
+      "code": "VE_INVALID_INVOCATION",
+      "classification": "invalid_input",
+      "message": "Implementation Plan status must be approved before verification can run.",
+      "path": null,
+      "span": null,
+      "hint": null
+    }
+  ],
+  "artifacts": [
+    {
+      "kind": "cli_result",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/evidence/n1-cli/cli-result.json",
+      "schemaVersion": "vibe-engineer.cli.result.v1",
+      "role": "report",
+      "sha256": null
+    }
+  ]
+}

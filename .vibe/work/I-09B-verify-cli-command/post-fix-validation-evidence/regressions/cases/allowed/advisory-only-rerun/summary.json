@@ -1,0 +1,605 @@
+{
+  "name": "allowed/advisory-only-rerun",
+  "status": "success",
+  "exitCode": 0,
+  "classification": null,
+  "code": null,
+  "runnerStatus": "advisory_warning",
+  "failures": [
+    {
+      "code": "ADVISORY_FINDING",
+      "classification": "advisory_finding",
+      "message": "Runner exited with code 9."
+    }
+  ],
+  "executedItems": [
+    "advisory-review"
+  ],
+  "recordedItems": [
+    "safety-hooks",
+    "typecheck",
+    "lint-format",
+    "mechanical-gate",
+    "unit",
+    "integration",
+    "contract-adapter",
+    "e2e",
+    "ui-verification",
+    "ai-eval",
+    "build-package",
+    "context-drift",
+    "observability",
+    "final-dod",
+    "schema-validation"
+  ],
+  "blockedItems": [],
+  "resultFile": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/allowed/advisory-only-rerun/result/cli-result.json",
+  "resultFileExists": true,
+  "resultFileSha256": "ce10ac0e9886ac5e599880e3472e922b8453a9852d74cf1cbb6a96ccc9e0ebdc",
+  "packetCount": 16,
+  "packetSummaries": [
+    {
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/allowed/advisory-only-rerun/packets/evidence_i09b-post-fix-advisory-only_safety-hooks_00.json",
+      "sha256": "55816dcb40df2b35599a695c91f80d0c865ed273bfee768aaa8ae7ac23f699c0",
+      "artifactId": "evidence:i09b-post-fix-advisory-only:safety-hooks:00",
+      "status": "not_run",
+      "result": "skipped",
+      "blocking": false,
+      "failureCode": null,
+      "failureClassification": null,
+      "rerunOf": "prior-post-fix-advisory-run",
+      "artifacts": [],
+      "stdoutRef": null,
+      "stderrRef": null,
+      "logsRef": null
+    },
+    {
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/allowed/advisory-only-rerun/packets/evidence_i09b-post-fix-advisory-only_typecheck_01.json",
+      "sha256": "0c798eb9c8e275619a07d36a01a9817b010ca4e9b30fb1cbce8cc58ac10be4e4",
+      "artifactId": "evidence:i09b-post-fix-advisory-only:typecheck:01",
+      "status": "not_run",
+      "result": "skipped",
+      "blocking": false,
+      "failureCode": null,
+      "failureClassification": null,
+      "rerunOf": "prior-post-fix-advisory-run",
+      "artifacts": [],
+      "stdoutRef": null,
+      "stderrRef": null,
+      "logsRef": null
+    },
+    {
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/allowed/advisory-only-rerun/packets/evidence_i09b-post-fix-advisory-only_lint-format_02.json",
+      "sha256": "642886f3b94728a36950832d44b6b1ac3dbbd5a1b233ba6ddbe4a63d8a5c7d2b",
+      "artifactId": "evidence:i09b-post-fix-advisory-only:lint-format:02",
+      "status": "not_run",
+      "result": "skipped",
+      "blocking": false,
+      "failureCode": null,
+      "failureClassification": null,
+      "rerunOf": "prior-post-fix-advisory-run",
+      "artifacts": [],
+      "stdoutRef": null,
+      "stderrRef": null,
+      "logsRef": null
+    },
+    {
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/allowed/advisory-only-rerun/packets/evidence_i09b-post-fix-advisory-only_mechanical-gate_03.json",
+      "sha256": "2a857f75aa61fe660912cb06f8e466b92a7f918d187e6cd66e6fd630ffeaf5e9",
+      "artifactId": "evidence:i09b-post-fix-advisory-only:mechanical-gate:03",
+      "status": "not_run",
+      "result": "skipped",
+      "blocking": false,
+      "failureCode": null,
+      "failureClassification": null,
+      "rerunOf": "prior-post-fix-advisory-run",
+      "artifacts": [],
+      "stdoutRef": null,
+      "stderrRef": null,
+      "logsRef": null
+    },
+    {
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/allowed/advisory-only-rerun/packets/evidence_i09b-post-fix-advisory-only_unit_04.json",
+      "sha256": "d6fa48baee260114607a2fdd09d3c491a714cddc9a912afbc3b4780c257f4341",
+      "artifactId": "evidence:i09b-post-fix-advisory-only:unit:04",
+      "status": "not_run",
+      "result": "skipped",
+      "blocking": false,
+      "failureCode": null,
+      "failureClassification": null,
+      "rerunOf": "prior-post-fix-advisory-run",
+      "artifacts": [],
+      "stdoutRef": null,
+      "stderrRef": null,
+      "logsRef": null
+    },
+    {
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/allowed/advisory-only-rerun/packets/evidence_i09b-post-fix-advisory-only_integration_05.json",
+      "sha256": "1af9112ba1fb8629e9dc41a11556dad2232b4185621d41f55738a2898ca2e145",
+      "artifactId": "evidence:i09b-post-fix-advisory-only:integration:05",
+      "status": "not_run",
+      "result": "skipped",
+      "blocking": false,
+      "failureCode": null,
+      "failureClassification": null,
+      "rerunOf": "prior-post-fix-advisory-run",
+      "artifacts": [],
+      "stdoutRef": null,
+      "stderrRef": null,
+      "logsRef": null
+    },
+    {
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/allowed/advisory-only-rerun/packets/evidence_i09b-post-fix-advisory-only_contract-adapter_06.json",
+      "sha256": "3572f7a2d956c590d3ef773d7150168948909955854571aebfd97db00922c62d",
+      "artifactId": "evidence:i09b-post-fix-advisory-only:contract-adapter:06",
+      "status": "not_run",
+      "result": "skipped",
+      "blocking": false,
+      "failureCode": null,
+      "failureClassification": null,
+      "rerunOf": "prior-post-fix-advisory-run",
+      "artifacts": [],
+      "stdoutRef": null,
+      "stderrRef": null,
+      "logsRef": null
+    },
+    {
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/allowed/advisory-only-rerun/packets/evidence_i09b-post-fix-advisory-only_e2e_07.json",
+      "sha256": "79d59eae6483edcf19ed8e4b60eaaa5382a41db53f82a97938d9b75499c3f4d3",
+      "artifactId": "evidence:i09b-post-fix-advisory-only:e2e:07",
+      "status": "not_run",
+      "result": "skipped",
+      "blocking": false,
+      "failureCode": null,
+      "failureClassification": null,
+      "rerunOf": "prior-post-fix-advisory-run",
+      "artifacts": [],
+      "stdoutRef": null,
+      "stderrRef": null,
+      "logsRef": null
+    },
+    {
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/allowed/advisory-only-rerun/packets/evidence_i09b-post-fix-advisory-only_ui-verification_08.json",
+      "sha256": "6d7d023e05e0575f62aff2164e57ed1ba7b8d737732cf687636227ac022b3b78",
+      "artifactId": "evidence:i09b-post-fix-advisory-only:ui-verification:08",
+      "status": "not_run",
+      "result": "skipped",
+      "blocking": false,
+      "failureCode": null,
+      "failureClassification": null,
+      "rerunOf": "prior-post-fix-advisory-run",
+      "artifacts": [],
+      "stdoutRef": null,
+      "stderrRef": null,
+      "logsRef": null
+    },
+    {
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/allowed/advisory-only-rerun/packets/evidence_i09b-post-fix-advisory-only_ai-eval_09.json",
+      "sha256": "daf85b14782c8abbb32bae2648c9f22f17a7b116875d853a5c6a9f22e2ef84e9",
+      "artifactId": "evidence:i09b-post-fix-advisory-only:ai-eval:09",
+      "status": "not_run",
+      "result": "skipped",
+      "blocking": false,
+      "failureCode": null,
+      "failureClassification": null,
+      "rerunOf": "prior-post-fix-advisory-run",
+      "artifacts": [],
+      "stdoutRef": null,
+      "stderrRef": null,
+      "logsRef": null
+    },
+    {
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/allowed/advisory-only-rerun/packets/evidence_i09b-post-fix-advisory-only_build-package_10.json",
+      "sha256": "17a984d56c1b190a0a0436f3f0e9cf2c98a8755eb138369a5432ff0873ce6523",
+      "artifactId": "evidence:i09b-post-fix-advisory-only:build-package:10",
+      "status": "not_run",
+      "result": "skipped",
+      "blocking": false,
+      "failureCode": null,
+      "failureClassification": null,
+      "rerunOf": "prior-post-fix-advisory-run",
+      "artifacts": [],
+      "stdoutRef": null,
+      "stderrRef": null,
+      "logsRef": null
+    },
+    {
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/allowed/advisory-only-rerun/packets/evidence_i09b-post-fix-advisory-only_context-drift_11.json",
+      "sha256": "41b74bb7093eb3fba6fa3847bba1e1fc696a8c4e3b8619c4710ae29cb5095f30",
+      "artifactId": "evidence:i09b-post-fix-advisory-only:context-drift:11",
+      "status": "not_run",
+      "result": "skipped",
+      "blocking": false,
+      "failureCode": null,
+      "failureClassification": null,
+      "rerunOf": "prior-post-fix-advisory-run",
+      "artifacts": [],
+      "stdoutRef": null,
+      "stderrRef": null,
+      "logsRef": null
+    },
+    {
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/allowed/advisory-only-rerun/packets/evidence_i09b-post-fix-advisory-only_observability_12.json",
+      "sha256": "7479d8933c6eaab141de326910f98dc21221a2d94d376df422440ae5ae5b8978",
+      "artifactId": "evidence:i09b-post-fix-advisory-only:observability:12",
+      "status": "not_run",
+      "result": "skipped",
+      "blocking": false,
+      "failureCode": null,
+      "failureClassification": null,
+      "rerunOf": "prior-post-fix-advisory-run",
+      "artifacts": [],
+      "stdoutRef": null,
+      "stderrRef": null,
+      "logsRef": null
+    },
+    {
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/allowed/advisory-only-rerun/packets/evidence_i09b-post-fix-advisory-only_advisory-review_13.json",
+      "sha256": "702ccce5d35494e1f8a5009fa8fd42e4152d13ae4645a2764027ae094b29386e",
+      "artifactId": "evidence:i09b-post-fix-advisory-only:advisory-review:13",
+      "status": "advisory_warning",
+      "result": "advisory",
+      "blocking": false,
+      "failureCode": "ADVISORY_FINDING",
+      "failureClassification": "advisory_finding",
+      "rerunOf": "prior-post-fix-advisory-run",
+      "artifacts": [
+        "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/allowed/advisory-only-rerun/packets/sidecars/i09b-post-fix-advisory-only-advisory-review-13.stdout.log",
+        "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/allowed/advisory-only-rerun/packets/sidecars/i09b-post-fix-advisory-only-advisory-review-13.stderr.log",
+        "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/allowed/advisory-only-rerun/packets/sidecars/i09b-post-fix-advisory-only-advisory-review-13.runner.log"
+      ],
+      "stdoutRef": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/allowed/advisory-only-rerun/packets/sidecars/i09b-post-fix-advisory-only-advisory-review-13.stdout.log",
+      "stderrRef": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/allowed/advisory-only-rerun/packets/sidecars/i09b-post-fix-advisory-only-advisory-review-13.stderr.log",
+      "logsRef": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/allowed/advisory-only-rerun/packets/sidecars/i09b-post-fix-advisory-only-advisory-review-13.runner.log"
+    },
+    {
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/allowed/advisory-only-rerun/packets/evidence_i09b-post-fix-advisory-only_final-dod_14.json",
+      "sha256": "c6e91dde2da6b928ee1073496b3d4d884d84fa8cb6ca8a8e9f4f59a3fa3908e4",
+      "artifactId": "evidence:i09b-post-fix-advisory-only:final-dod:14",
+      "status": "not_run",
+      "result": "skipped",
+      "blocking": false,
+      "failureCode": null,
+      "failureClassification": null,
+      "rerunOf": "prior-post-fix-advisory-run",
+      "artifacts": [],
+      "stdoutRef": null,
+      "stderrRef": null,
+      "logsRef": null
+    },
+    {
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/allowed/advisory-only-rerun/packets/evidence_i09b-post-fix-advisory-only_schema-validation_15.json",
+      "sha256": "d4cb437524adc5ae84852bcf52f154e7250bdaadbfea7223857c86eff65ae972",
+      "artifactId": "evidence:i09b-post-fix-advisory-only:schema-validation:15",
+      "status": "not_run",
+      "result": "skipped",
+      "blocking": false,
+      "failureCode": null,
+      "failureClassification": null,
+      "rerunOf": "prior-post-fix-advisory-run",
+      "artifacts": [],
+      "stdoutRef": null,
+      "stderrRef": null,
+      "logsRef": null
+    }
+  ],
+  "envelopeValidation": {
+    "ok": true,
+    "envelope": {
+      "schemaVersion": "vibe-engineer.cli.result.v1",
+      "invocation": {
+        "id": "i-09b-post-fix-verify-dd953172",
+        "command": "verify",
+        "argv": [
+          "verify",
+          "--implementation-plan",
+          "<value>",
+          "--evidence-root",
+          "<value>",
+          "--project-root",
+          "<value>",
+          "--run-id",
+          "<value>",
+          "--runner-catalog",
+          "<value>",
+          "--result-file",
+          "<value>",
+          "--rerun-of",
+          "<value>"
+        ],
+        "projectRoot": "/Users/lizavasilyeva/work/vibe-engineer",
+        "configPath": null,
+        "startedAt": "2026-06-25T20:18:51.856Z",
+        "endedAt": "2026-06-25T20:18:51.856Z"
+      },
+      "status": "success",
+      "exitCode": 0,
+      "payload": {
+        "kind": "verification_result",
+        "schemaVersion": "vibe-engineer.cli.payload.v1",
+        "data": {
+          "ok": true,
+          "runnerStatus": "advisory_warning",
+          "runId": "i09b-post-fix-advisory-only",
+          "rerunOf": "prior-post-fix-advisory-run",
+          "evidencePackets": [
+            {
+              "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/allowed/advisory-only-rerun/packets/evidence_i09b-post-fix-advisory-only_safety-hooks_00.json",
+              "schemaVersion": "1.0.0",
+              "sha256": "55816dcb40df2b35599a695c91f80d0c865ed273bfee768aaa8ae7ac23f699c0",
+              "valid": true
+            },
+            {
+              "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/allowed/advisory-only-rerun/packets/evidence_i09b-post-fix-advisory-only_typecheck_01.json",
+              "schemaVersion": "1.0.0",
+              "sha256": "0c798eb9c8e275619a07d36a01a9817b010ca4e9b30fb1cbce8cc58ac10be4e4",
+              "valid": true
+            },
+            {
+              "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/allowed/advisory-only-rerun/packets/evidence_i09b-post-fix-advisory-only_lint-format_02.json",
+              "schemaVersion": "1.0.0",
+              "sha256": "642886f3b94728a36950832d44b6b1ac3dbbd5a1b233ba6ddbe4a63d8a5c7d2b",
+              "valid": true
+            },
+            {
+              "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/allowed/advisory-only-rerun/packets/evidence_i09b-post-fix-advisory-only_mechanical-gate_03.json",
+              "schemaVersion": "1.0.0",
+              "sha256": "2a857f75aa61fe660912cb06f8e466b92a7f918d187e6cd66e6fd630ffeaf5e9",
+              "valid": true
+            },
+            {
+              "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/allowed/advisory-only-rerun/packets/evidence_i09b-post-fix-advisory-only_unit_04.json",
+              "schemaVersion": "1.0.0",
+              "sha256": "d6fa48baee260114607a2fdd09d3c491a714cddc9a912afbc3b4780c257f4341",
+              "valid": true
+            },
+            {
+              "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/allowed/advisory-only-rerun/packets/evidence_i09b-post-fix-advisory-only_integration_05.json",
+              "schemaVersion": "1.0.0",
+              "sha256": "1af9112ba1fb8629e9dc41a11556dad2232b4185621d41f55738a2898ca2e145",
+              "valid": true
+            },
+            {
+              "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/allowed/advisory-only-rerun/packets/evidence_i09b-post-fix-advisory-only_contract-adapter_06.json",
+              "schemaVersion": "1.0.0",
+              "sha256": "3572f7a2d956c590d3ef773d7150168948909955854571aebfd97db00922c62d",
+              "valid": true
+            },
+            {
+              "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/allowed/advisory-only-rerun/packets/evidence_i09b-post-fix-advisory-only_e2e_07.json",
+              "schemaVersion": "1.0.0",
+              "sha256": "79d59eae6483edcf19ed8e4b60eaaa5382a41db53f82a97938d9b75499c3f4d3",
+              "valid": true
+            },
+            {
+              "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/allowed/advisory-only-rerun/packets/evidence_i09b-post-fix-advisory-only_ui-verification_08.json",
+              "schemaVersion": "1.0.0",
+              "sha256": "6d7d023e05e0575f62aff2164e57ed1ba7b8d737732cf687636227ac022b3b78",
+              "valid": true
+            },
+            {
+              "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/allowed/advisory-only-rerun/packets/evidence_i09b-post-fix-advisory-only_ai-eval_09.json",
+              "schemaVersion": "1.0.0",
+              "sha256": "daf85b14782c8abbb32bae2648c9f22f17a7b116875d853a5c6a9f22e2ef84e9",
+              "valid": true
+            },
+            {
+              "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/allowed/advisory-only-rerun/packets/evidence_i09b-post-fix-advisory-only_build-package_10.json",
+              "schemaVersion": "1.0.0",
+              "sha256": "17a984d56c1b190a0a0436f3f0e9cf2c98a8755eb138369a5432ff0873ce6523",
+              "valid": true
+            },
+            {
+              "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/allowed/advisory-only-rerun/packets/evidence_i09b-post-fix-advisory-only_context-drift_11.json",
+              "schemaVersion": "1.0.0",
+              "sha256": "41b74bb7093eb3fba6fa3847bba1e1fc696a8c4e3b8619c4710ae29cb5095f30",
+              "valid": true
+            },
+            {
+              "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/allowed/advisory-only-rerun/packets/evidence_i09b-post-fix-advisory-only_observability_12.json",
+              "schemaVersion": "1.0.0",
+              "sha256": "7479d8933c6eaab141de326910f98dc21221a2d94d376df422440ae5ae5b8978",
+              "valid": true
+            },
+            {
+              "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/allowed/advisory-only-rerun/packets/evidence_i09b-post-fix-advisory-only_advisory-review_13.json",
+              "schemaVersion": "1.0.0",
+              "sha256": "702ccce5d35494e1f8a5009fa8fd42e4152d13ae4645a2764027ae094b29386e",
+              "valid": true
+            },
+            {
+              "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/allowed/advisory-only-rerun/packets/evidence_i09b-post-fix-advisory-only_final-dod_14.json",
+              "schemaVersion": "1.0.0",
+              "sha256": "c6e91dde2da6b928ee1073496b3d4d884d84fa8cb6ca8a8e9f4f59a3fa3908e4",
+              "valid": true
+            },
+            {
+              "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/allowed/advisory-only-rerun/packets/evidence_i09b-post-fix-advisory-only_schema-validation_15.json",
+              "schemaVersion": "1.0.0",
+              "sha256": "d4cb437524adc5ae84852bcf52f154e7250bdaadbfea7223857c86eff65ae972",
+              "valid": true
+            }
+          ],
+          "executedItems": [
+            "advisory-review"
+          ],
+          "recordedItems": [
+            "safety-hooks",
+            "typecheck",
+            "lint-format",
+            "mechanical-gate",
+            "unit",
+            "integration",
+            "contract-adapter",
+            "e2e",
+            "ui-verification",
+            "ai-eval",
+            "build-package",
+            "context-drift",
+            "observability",
+            "final-dod",
+            "schema-validation"
+          ],
+          "blockedItems": [],
+          "failures": [
+            {
+              "code": "ADVISORY_FINDING",
+              "classification": "advisory_finding",
+              "message": "Runner exited with code 9."
+            }
+          ],
+          "warnings": [
+            "I-09B post-fix regression fixture rationale for safety-hooks.",
+            "I-09B post-fix regression fixture rationale for typecheck.",
+            "I-09B post-fix regression fixture rationale for lint-format.",
+            "I-09B post-fix regression fixture rationale for mechanical-gate.",
+            "I-09B post-fix regression fixture rationale for unit.",
+            "I-09B post-fix regression fixture rationale for integration.",
+            "I-09B post-fix regression fixture rationale for contract-adapter.",
+            "I-09B post-fix regression fixture rationale for e2e.",
+            "I-09B post-fix regression fixture rationale for ui-verification.",
+            "I-09B post-fix regression fixture rationale for ai-eval.",
+            "I-09B post-fix regression fixture rationale for build-package.",
+            "I-09B post-fix regression fixture rationale for context-drift.",
+            "I-09B post-fix regression fixture rationale for observability.",
+            "I-09B post-fix regression fixture rationale for final-dod.",
+            "I-09B post-fix regression fixture rationale for schema-validation."
+          ]
+        }
+      },
+      "diagnostics": [
+        {
+          "severity": "warning",
+          "code": "VE_INVALID_INVOCATION",
+          "classification": "deterministic_failure",
+          "message": "Verification completed with advisory-only findings.",
+          "path": null,
+          "span": null,
+          "hint": null
+        }
+      ],
+      "artifacts": [
+        {
+          "kind": "evidence_packet",
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/allowed/advisory-only-rerun/packets/evidence_i09b-post-fix-advisory-only_safety-hooks_00.json",
+          "schemaVersion": "1.0.0",
+          "role": "evidence_packet",
+          "sha256": "55816dcb40df2b35599a695c91f80d0c865ed273bfee768aaa8ae7ac23f699c0"
+        },
+        {
+          "kind": "evidence_packet",
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/allowed/advisory-only-rerun/packets/evidence_i09b-post-fix-advisory-only_typecheck_01.json",
+          "schemaVersion": "1.0.0",
+          "role": "evidence_packet",
+          "sha256": "0c798eb9c8e275619a07d36a01a9817b010ca4e9b30fb1cbce8cc58ac10be4e4"
+        },
+        {
+          "kind": "evidence_packet",
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/allowed/advisory-only-rerun/packets/evidence_i09b-post-fix-advisory-only_lint-format_02.json",
+          "schemaVersion": "1.0.0",
+          "role": "evidence_packet",
+          "sha256": "642886f3b94728a36950832d44b6b1ac3dbbd5a1b233ba6ddbe4a63d8a5c7d2b"
+        },
+        {
+          "kind": "evidence_packet",
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/allowed/advisory-only-rerun/packets/evidence_i09b-post-fix-advisory-only_mechanical-gate_03.json",
+          "schemaVersion": "1.0.0",
+          "role": "evidence_packet",
+          "sha256": "2a857f75aa61fe660912cb06f8e466b92a7f918d187e6cd66e6fd630ffeaf5e9"
+        },
+        {
+          "kind": "evidence_packet",
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/allowed/advisory-only-rerun/packets/evidence_i09b-post-fix-advisory-only_unit_04.json",
+          "schemaVersion": "1.0.0",
+          "role": "evidence_packet",
+          "sha256": "d6fa48baee260114607a2fdd09d3c491a714cddc9a912afbc3b4780c257f4341"
+        },
+        {
+          "kind": "evidence_packet",
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/allowed/advisory-only-rerun/packets/evidence_i09b-post-fix-advisory-only_integration_05.json",
+          "schemaVersion": "1.0.0",
+          "role": "evidence_packet",
+          "sha256": "1af9112ba1fb8629e9dc41a11556dad2232b4185621d41f55738a2898ca2e145"
+        },
+        {
+          "kind": "evidence_packet",
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/allowed/advisory-only-rerun/packets/evidence_i09b-post-fix-advisory-only_contract-adapter_06.json",
+          "schemaVersion": "1.0.0",
+          "role": "evidence_packet",
+          "sha256": "3572f7a2d956c590d3ef773d7150168948909955854571aebfd97db00922c62d"
+        },
+        {
+          "kind": "evidence_packet",
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/allowed/advisory-only-rerun/packets/evidence_i09b-post-fix-advisory-only_e2e_07.json",
+          "schemaVersion": "1.0.0",
+          "role": "evidence_packet",
+          "sha256": "79d59eae6483edcf19ed8e4b60eaaa5382a41db53f82a97938d9b75499c3f4d3"
+        },
+        {
+          "kind": "evidence_packet",
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/allowed/advisory-only-rerun/packets/evidence_i09b-post-fix-advisory-only_ui-verification_08.json",
+          "schemaVersion": "1.0.0",
+          "role": "evidence_packet",
+          "sha256": "6d7d023e05e0575f62aff2164e57ed1ba7b8d737732cf687636227ac022b3b78"
+        },
+        {
+          "kind": "evidence_packet",
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/allowed/advisory-only-rerun/packets/evidence_i09b-post-fix-advisory-only_ai-eval_09.json",
+          "schemaVersion": "1.0.0",
+          "role": "evidence_packet",
+          "sha256": "daf85b14782c8abbb32bae2648c9f22f17a7b116875d853a5c6a9f22e2ef84e9"
+        },
+        {
+          "kind": "evidence_packet",
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/allowed/advisory-only-rerun/packets/evidence_i09b-post-fix-advisory-only_build-package_10.json",
+          "schemaVersion": "1.0.0",
+          "role": "evidence_packet",
+          "sha256": "17a984d56c1b190a0a0436f3f0e9cf2c98a8755eb138369a5432ff0873ce6523"
+        },
+        {
+          "kind": "evidence_packet",
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/allowed/advisory-only-rerun/packets/evidence_i09b-post-fix-advisory-only_context-drift_11.json",
+          "schemaVersion": "1.0.0",
+          "role": "evidence_packet",
+          "sha256": "41b74bb7093eb3fba6fa3847bba1e1fc696a8c4e3b8619c4710ae29cb5095f30"
+        },
+        {
+          "kind": "evidence_packet",
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/allowed/advisory-only-rerun/packets/evidence_i09b-post-fix-advisory-only_observability_12.json",
+          "schemaVersion": "1.0.0",
+          "role": "evidence_packet",
+          "sha256": "7479d8933c6eaab141de326910f98dc21221a2d94d376df422440ae5ae5b8978"
+        },
+        {
+          "kind": "evidence_packet",
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/allowed/advisory-only-rerun/packets/evidence_i09b-post-fix-advisory-only_advisory-review_13.json",
+          "schemaVersion": "1.0.0",
+          "role": "evidence_packet",
+          "sha256": "702ccce5d35494e1f8a5009fa8fd42e4152d13ae4645a2764027ae094b29386e"
+        },
+        {
+          "kind": "evidence_packet",
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/allowed/advisory-only-rerun/packets/evidence_i09b-post-fix-advisory-only_final-dod_14.json",
+          "schemaVersion": "1.0.0",
+          "role": "evidence_packet",
+          "sha256": "c6e91dde2da6b928ee1073496b3d4d884d84fa8cb6ca8a8e9f4f59a3fa3908e4"
+        },
+        {
+          "kind": "evidence_packet",
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/allowed/advisory-only-rerun/packets/evidence_i09b-post-fix-advisory-only_schema-validation_15.json",
+          "schemaVersion": "1.0.0",
+          "role": "evidence_packet",
+          "sha256": "d4cb437524adc5ae84852bcf52f154e7250bdaadbfea7223857c86eff65ae972"
+        },
+        {
+          "kind": "cli_result",
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/allowed/advisory-only-rerun/result/cli-result.json",
+          "schemaVersion": "vibe-engineer.cli.result.v1",
+          "role": "report",
+          "sha256": null
+        }
+      ],
+      "errors": []
+    }
+  }
+}

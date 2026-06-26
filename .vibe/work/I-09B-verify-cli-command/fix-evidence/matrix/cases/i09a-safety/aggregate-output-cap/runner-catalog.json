@@ -1,0 +1,55 @@
+[
+  {
+    "id": "i09b-schema-validation",
+    "requiredItemIds": [
+      "schema-validation"
+    ],
+    "layer": "schema_validation",
+    "evidenceClass": "deterministic",
+    "blocking": true,
+    "kind": "command",
+    "command": "/Users/lizavasilyeva/.nvm/versions/node/v24.16.0/bin/node",
+    "args": [
+      "/Users/lizavasilyeva/work/vibe-engineer/packages/verification/fixtures/runners/large-output-runner.mjs",
+      "both",
+      "80"
+    ],
+    "cwd": ".",
+    "expectedArtifacts": [],
+    "argPaths": [
+      {
+        "index": 0,
+        "root": "projectRoot"
+      }
+    ],
+    "publicArgs": [
+      {
+        "index": 1,
+        "value": "both"
+      }
+    ],
+    "scalarArgs": [
+      {
+        "index": 2,
+        "kind": "byte_count"
+      }
+    ],
+    "safety": {
+      "classification": "local_deterministic_write",
+      "timeoutMs": 2000,
+      "maxStdoutBytes": 128,
+      "maxStderrBytes": 128,
+      "maxOutputBytes": 96,
+      "allowedReadRoots": [
+        "/Users/lizavasilyeva/work/vibe-engineer"
+      ],
+      "allowedWriteRoots": [
+        "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix"
+      ],
+      "envAllowlist": [],
+      "passThroughEnv": false,
+      "cwdContainedInProjectRoot": true,
+      "expectedArtifactsContained": true
+    }
+  }
+]

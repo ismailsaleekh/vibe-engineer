@@ -1,0 +1,15 @@
+packages/cli/package.json dependency:
+workspace:*
+packages/verification/package.json export:
+./src/index.js
+pnpm-lock cli importer edges:
+38:  packages/cli:
+40:      '@vibe-engineer/artifacts':
+46:      '@vibe-engineer/verification':
+54:      '@vibe-engineer/artifacts':
+104:      '@vibe-engineer/artifacts':
+114:      '@vibe-engineer/artifacts':
+124:      '@vibe-engineer/artifacts':
+132:  packages/verification:
+134:      '@vibe-engineer/artifacts':
+137:      '@vibe-engineer/orchestration':

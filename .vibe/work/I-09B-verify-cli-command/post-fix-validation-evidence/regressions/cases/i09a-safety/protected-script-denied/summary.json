@@ -1,0 +1,633 @@
+{
+  "name": "i09a-safety/protected-script-denied",
+  "status": "blocked",
+  "exitCode": 4,
+  "classification": "safety_policy_block",
+  "code": "VE_INVALID_INVOCATION",
+  "runnerStatus": "blocked",
+  "failures": [
+    {
+      "code": "COMMAND_POLICY_DENIED",
+      "classification": "safety_or_security_policy_failure",
+      "message": "Node command runners require argv[0] to be a typed projectRoot runner script path."
+    }
+  ],
+  "executedItems": [
+    "schema-validation"
+  ],
+  "recordedItems": [
+    "safety-hooks",
+    "typecheck",
+    "lint-format",
+    "mechanical-gate",
+    "unit",
+    "integration",
+    "contract-adapter",
+    "e2e",
+    "ui-verification",
+    "ai-eval",
+    "build-package",
+    "context-drift",
+    "observability",
+    "advisory-review",
+    "final-dod"
+  ],
+  "blockedItems": [
+    "schema-validation"
+  ],
+  "resultFile": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/result/cli-result.json",
+  "resultFileExists": true,
+  "resultFileSha256": "dc90c7e40b5d4e4085f7c365d40dd762e71714488c144e05e1b6ac00a802ed88",
+  "packetCount": 16,
+  "packetSummaries": [
+    {
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_safety-hooks_00.json",
+      "sha256": "b75f820d903a08cafe451d0cf84e8215a33911b3ddbe41dd5724c9aab8133327",
+      "artifactId": "evidence:i09b-post-fix-protected-script-denied:safety-hooks:00",
+      "status": "not_run",
+      "result": "skipped",
+      "blocking": false,
+      "failureCode": null,
+      "failureClassification": null,
+      "rerunOf": null,
+      "artifacts": [],
+      "stdoutRef": null,
+      "stderrRef": null,
+      "logsRef": null
+    },
+    {
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_typecheck_01.json",
+      "sha256": "ec90b1e49a543c15757339338afcab34f9a327b37d8d3a5c313b8614f049863d",
+      "artifactId": "evidence:i09b-post-fix-protected-script-denied:typecheck:01",
+      "status": "not_run",
+      "result": "skipped",
+      "blocking": false,
+      "failureCode": null,
+      "failureClassification": null,
+      "rerunOf": null,
+      "artifacts": [],
+      "stdoutRef": null,
+      "stderrRef": null,
+      "logsRef": null
+    },
+    {
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_lint-format_02.json",
+      "sha256": "679a7d31ffd9bc5c00bab32a7da6e1959b9ead8d2bbaf0045ce21b075c3e03de",
+      "artifactId": "evidence:i09b-post-fix-protected-script-denied:lint-format:02",
+      "status": "not_run",
+      "result": "skipped",
+      "blocking": false,
+      "failureCode": null,
+      "failureClassification": null,
+      "rerunOf": null,
+      "artifacts": [],
+      "stdoutRef": null,
+      "stderrRef": null,
+      "logsRef": null
+    },
+    {
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_mechanical-gate_03.json",
+      "sha256": "7fd9b46158c2a7b8961ebc8cd572c183ece9243eed610e846f486879ac50228c",
+      "artifactId": "evidence:i09b-post-fix-protected-script-denied:mechanical-gate:03",
+      "status": "not_run",
+      "result": "skipped",
+      "blocking": false,
+      "failureCode": null,
+      "failureClassification": null,
+      "rerunOf": null,
+      "artifacts": [],
+      "stdoutRef": null,
+      "stderrRef": null,
+      "logsRef": null
+    },
+    {
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_unit_04.json",
+      "sha256": "67c1314290708d09fa457fd13998e0e062485162be577c451ac491c3e41e9f65",
+      "artifactId": "evidence:i09b-post-fix-protected-script-denied:unit:04",
+      "status": "not_run",
+      "result": "skipped",
+      "blocking": false,
+      "failureCode": null,
+      "failureClassification": null,
+      "rerunOf": null,
+      "artifacts": [],
+      "stdoutRef": null,
+      "stderrRef": null,
+      "logsRef": null
+    },
+    {
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_integration_05.json",
+      "sha256": "7ec0e44254466e206a0152273085d60bf3524d8b8b22ec688c8a536e111bef5d",
+      "artifactId": "evidence:i09b-post-fix-protected-script-denied:integration:05",
+      "status": "not_run",
+      "result": "skipped",
+      "blocking": false,
+      "failureCode": null,
+      "failureClassification": null,
+      "rerunOf": null,
+      "artifacts": [],
+      "stdoutRef": null,
+      "stderrRef": null,
+      "logsRef": null
+    },
+    {
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_contract-adapter_06.json",
+      "sha256": "507d852bdb9dcb560900448ef70cf11243c4b72022886f8c0b0eff4af644b32a",
+      "artifactId": "evidence:i09b-post-fix-protected-script-denied:contract-adapter:06",
+      "status": "not_run",
+      "result": "skipped",
+      "blocking": false,
+      "failureCode": null,
+      "failureClassification": null,
+      "rerunOf": null,
+      "artifacts": [],
+      "stdoutRef": null,
+      "stderrRef": null,
+      "logsRef": null
+    },
+    {
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_e2e_07.json",
+      "sha256": "8d4cb85b442014edb0db1fccdbc102bff88a650e4a0fb577aa49e44d72e82b20",
+      "artifactId": "evidence:i09b-post-fix-protected-script-denied:e2e:07",
+      "status": "not_run",
+      "result": "skipped",
+      "blocking": false,
+      "failureCode": null,
+      "failureClassification": null,
+      "rerunOf": null,
+      "artifacts": [],
+      "stdoutRef": null,
+      "stderrRef": null,
+      "logsRef": null
+    },
+    {
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_ui-verification_08.json",
+      "sha256": "c590e897c737fd90f4d689245e3c1a99483dce20c5ecdfb7463dcec889fbafdb",
+      "artifactId": "evidence:i09b-post-fix-protected-script-denied:ui-verification:08",
+      "status": "not_run",
+      "result": "skipped",
+      "blocking": false,
+      "failureCode": null,
+      "failureClassification": null,
+      "rerunOf": null,
+      "artifacts": [],
+      "stdoutRef": null,
+      "stderrRef": null,
+      "logsRef": null
+    },
+    {
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_ai-eval_09.json",
+      "sha256": "14bdfd26a3117149c4d4cb07b8672554d2e5bde692cd27b69ce1a4e1c2cc3279",
+      "artifactId": "evidence:i09b-post-fix-protected-script-denied:ai-eval:09",
+      "status": "not_run",
+      "result": "skipped",
+      "blocking": false,
+      "failureCode": null,
+      "failureClassification": null,
+      "rerunOf": null,
+      "artifacts": [],
+      "stdoutRef": null,
+      "stderrRef": null,
+      "logsRef": null
+    },
+    {
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_build-package_10.json",
+      "sha256": "d662503fb9bbe757ecf8ff8dd8d63b3e41ac1c8ac4181ab7aef51c7e185f9dec",
+      "artifactId": "evidence:i09b-post-fix-protected-script-denied:build-package:10",
+      "status": "not_run",
+      "result": "skipped",
+      "blocking": false,
+      "failureCode": null,
+      "failureClassification": null,
+      "rerunOf": null,
+      "artifacts": [],
+      "stdoutRef": null,
+      "stderrRef": null,
+      "logsRef": null
+    },
+    {
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_context-drift_11.json",
+      "sha256": "9d36e601c424f01927b4e23d56d8e98e96c38fe18aa0002e8dd198d3eb3d8f52",
+      "artifactId": "evidence:i09b-post-fix-protected-script-denied:context-drift:11",
+      "status": "not_run",
+      "result": "skipped",
+      "blocking": false,
+      "failureCode": null,
+      "failureClassification": null,
+      "rerunOf": null,
+      "artifacts": [],
+      "stdoutRef": null,
+      "stderrRef": null,
+      "logsRef": null
+    },
+    {
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_observability_12.json",
+      "sha256": "b39cd27f1f597f06c7d036c8c44d560faecd3329e06fcb192fa3ea0b48f35227",
+      "artifactId": "evidence:i09b-post-fix-protected-script-denied:observability:12",
+      "status": "not_run",
+      "result": "skipped",
+      "blocking": false,
+      "failureCode": null,
+      "failureClassification": null,
+      "rerunOf": null,
+      "artifacts": [],
+      "stdoutRef": null,
+      "stderrRef": null,
+      "logsRef": null
+    },
+    {
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_advisory-review_13.json",
+      "sha256": "e270af5520a80f944534fd8963c438f327c604ae9b48b5900685e16404820a02",
+      "artifactId": "evidence:i09b-post-fix-protected-script-denied:advisory-review:13",
+      "status": "not_run",
+      "result": "skipped",
+      "blocking": false,
+      "failureCode": null,
+      "failureClassification": null,
+      "rerunOf": null,
+      "artifacts": [],
+      "stdoutRef": null,
+      "stderrRef": null,
+      "logsRef": null
+    },
+    {
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_final-dod_14.json",
+      "sha256": "82d1e467aa2513a451fdaaea84d2724cebe9ec397c1440f9fcd68cab0e07b475",
+      "artifactId": "evidence:i09b-post-fix-protected-script-denied:final-dod:14",
+      "status": "not_run",
+      "result": "skipped",
+      "blocking": false,
+      "failureCode": null,
+      "failureClassification": null,
+      "rerunOf": null,
+      "artifacts": [],
+      "stdoutRef": null,
+      "stderrRef": null,
+      "logsRef": null
+    },
+    {
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_schema-validation_15.json",
+      "sha256": "bb5706062fa401f158bb0c361e2cb0f8cab7a81c91390f283c609e0e057fed8e",
+      "artifactId": "evidence:i09b-post-fix-protected-script-denied:schema-validation:15",
+      "status": "blocked",
+      "result": "blocked",
+      "blocking": true,
+      "failureCode": "COMMAND_POLICY_DENIED",
+      "failureClassification": "safety_or_security_policy_failure",
+      "rerunOf": null,
+      "artifacts": [],
+      "stdoutRef": null,
+      "stderrRef": null,
+      "logsRef": null
+    }
+  ],
+  "envelopeValidation": {
+    "ok": true,
+    "envelope": {
+      "schemaVersion": "vibe-engineer.cli.result.v1",
+      "invocation": {
+        "id": "i-09b-post-fix-verify-eb0e19a6",
+        "command": "verify",
+        "argv": [
+          "verify",
+          "--implementation-plan",
+          "<value>",
+          "--evidence-root",
+          "<value>",
+          "--project-root",
+          "<value>",
+          "--run-id",
+          "<value>",
+          "--runner-catalog",
+          "<value>",
+          "--result-file",
+          "<value>"
+        ],
+        "projectRoot": "/Users/lizavasilyeva/work/vibe-engineer",
+        "configPath": null,
+        "startedAt": "2026-06-25T20:18:52.046Z",
+        "endedAt": "2026-06-25T20:18:52.046Z"
+      },
+      "status": "blocked",
+      "exitCode": 4,
+      "payload": {
+        "kind": "verification_result",
+        "schemaVersion": "vibe-engineer.cli.payload.v1",
+        "data": {
+          "ok": false,
+          "runnerStatus": "blocked",
+          "runId": "i09b-post-fix-protected-script-denied",
+          "rerunOf": null,
+          "evidencePackets": [
+            {
+              "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_safety-hooks_00.json",
+              "schemaVersion": "1.0.0",
+              "sha256": "b75f820d903a08cafe451d0cf84e8215a33911b3ddbe41dd5724c9aab8133327",
+              "valid": true
+            },
+            {
+              "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_typecheck_01.json",
+              "schemaVersion": "1.0.0",
+              "sha256": "ec90b1e49a543c15757339338afcab34f9a327b37d8d3a5c313b8614f049863d",
+              "valid": true
+            },
+            {
+              "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_lint-format_02.json",
+              "schemaVersion": "1.0.0",
+              "sha256": "679a7d31ffd9bc5c00bab32a7da6e1959b9ead8d2bbaf0045ce21b075c3e03de",
+              "valid": true
+            },
+            {
+              "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_mechanical-gate_03.json",
+              "schemaVersion": "1.0.0",
+              "sha256": "7fd9b46158c2a7b8961ebc8cd572c183ece9243eed610e846f486879ac50228c",
+              "valid": true
+            },
+            {
+              "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_unit_04.json",
+              "schemaVersion": "1.0.0",
+              "sha256": "67c1314290708d09fa457fd13998e0e062485162be577c451ac491c3e41e9f65",
+              "valid": true
+            },
+            {
+              "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_integration_05.json",
+              "schemaVersion": "1.0.0",
+              "sha256": "7ec0e44254466e206a0152273085d60bf3524d8b8b22ec688c8a536e111bef5d",
+              "valid": true
+            },
+            {
+              "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_contract-adapter_06.json",
+              "schemaVersion": "1.0.0",
+              "sha256": "507d852bdb9dcb560900448ef70cf11243c4b72022886f8c0b0eff4af644b32a",
+              "valid": true
+            },
+            {
+              "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_e2e_07.json",
+              "schemaVersion": "1.0.0",
+              "sha256": "8d4cb85b442014edb0db1fccdbc102bff88a650e4a0fb577aa49e44d72e82b20",
+              "valid": true
+            },
+            {
+              "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_ui-verification_08.json",
+              "schemaVersion": "1.0.0",
+              "sha256": "c590e897c737fd90f4d689245e3c1a99483dce20c5ecdfb7463dcec889fbafdb",
+              "valid": true
+            },
+            {
+              "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_ai-eval_09.json",
+              "schemaVersion": "1.0.0",
+              "sha256": "14bdfd26a3117149c4d4cb07b8672554d2e5bde692cd27b69ce1a4e1c2cc3279",
+              "valid": true
+            },
+            {
+              "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_build-package_10.json",
+              "schemaVersion": "1.0.0",
+              "sha256": "d662503fb9bbe757ecf8ff8dd8d63b3e41ac1c8ac4181ab7aef51c7e185f9dec",
+              "valid": true
+            },
+            {
+              "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_context-drift_11.json",
+              "schemaVersion": "1.0.0",
+              "sha256": "9d36e601c424f01927b4e23d56d8e98e96c38fe18aa0002e8dd198d3eb3d8f52",
+              "valid": true
+            },
+            {
+              "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_observability_12.json",
+              "schemaVersion": "1.0.0",
+              "sha256": "b39cd27f1f597f06c7d036c8c44d560faecd3329e06fcb192fa3ea0b48f35227",
+              "valid": true
+            },
+            {
+              "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_advisory-review_13.json",
+              "schemaVersion": "1.0.0",
+              "sha256": "e270af5520a80f944534fd8963c438f327c604ae9b48b5900685e16404820a02",
+              "valid": true
+            },
+            {
+              "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_final-dod_14.json",
+              "schemaVersion": "1.0.0",
+              "sha256": "82d1e467aa2513a451fdaaea84d2724cebe9ec397c1440f9fcd68cab0e07b475",
+              "valid": true
+            },
+            {
+              "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_schema-validation_15.json",
+              "schemaVersion": "1.0.0",
+              "sha256": "bb5706062fa401f158bb0c361e2cb0f8cab7a81c91390f283c609e0e057fed8e",
+              "valid": true
+            }
+          ],
+          "executedItems": [
+            "schema-validation"
+          ],
+          "recordedItems": [
+            "safety-hooks",
+            "typecheck",
+            "lint-format",
+            "mechanical-gate",
+            "unit",
+            "integration",
+            "contract-adapter",
+            "e2e",
+            "ui-verification",
+            "ai-eval",
+            "build-package",
+            "context-drift",
+            "observability",
+            "advisory-review",
+            "final-dod"
+          ],
+          "blockedItems": [
+            "schema-validation"
+          ],
+          "failures": [
+            {
+              "code": "COMMAND_POLICY_DENIED",
+              "classification": "safety_or_security_policy_failure",
+              "message": "Node command runners require argv[0] to be a typed projectRoot runner script path."
+            }
+          ],
+          "warnings": [
+            "I-09B post-fix regression fixture rationale for safety-hooks.",
+            "I-09B post-fix regression fixture rationale for typecheck.",
+            "I-09B post-fix regression fixture rationale for lint-format.",
+            "I-09B post-fix regression fixture rationale for mechanical-gate.",
+            "I-09B post-fix regression fixture rationale for unit.",
+            "I-09B post-fix regression fixture rationale for integration.",
+            "I-09B post-fix regression fixture rationale for contract-adapter.",
+            "I-09B post-fix regression fixture rationale for e2e.",
+            "I-09B post-fix regression fixture rationale for ui-verification.",
+            "I-09B post-fix regression fixture rationale for ai-eval.",
+            "I-09B post-fix regression fixture rationale for build-package.",
+            "I-09B post-fix regression fixture rationale for context-drift.",
+            "I-09B post-fix regression fixture rationale for observability.",
+            "I-09B post-fix regression fixture rationale for advisory-review.",
+            "I-09B post-fix regression fixture rationale for final-dod."
+          ]
+        }
+      },
+      "diagnostics": [
+        {
+          "severity": "error",
+          "code": "VE_INVALID_INVOCATION",
+          "classification": "safety_policy_block",
+          "message": "Node command runners require argv[0] to be a typed projectRoot runner script path.",
+          "path": null,
+          "span": null,
+          "hint": null
+        }
+      ],
+      "artifacts": [
+        {
+          "kind": "evidence_packet",
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_safety-hooks_00.json",
+          "schemaVersion": "1.0.0",
+          "role": "evidence_packet",
+          "sha256": "b75f820d903a08cafe451d0cf84e8215a33911b3ddbe41dd5724c9aab8133327"
+        },
+        {
+          "kind": "evidence_packet",
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_typecheck_01.json",
+          "schemaVersion": "1.0.0",
+          "role": "evidence_packet",
+          "sha256": "ec90b1e49a543c15757339338afcab34f9a327b37d8d3a5c313b8614f049863d"
+        },
+        {
+          "kind": "evidence_packet",
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_lint-format_02.json",
+          "schemaVersion": "1.0.0",
+          "role": "evidence_packet",
+          "sha256": "679a7d31ffd9bc5c00bab32a7da6e1959b9ead8d2bbaf0045ce21b075c3e03de"
+        },
+        {
+          "kind": "evidence_packet",
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_mechanical-gate_03.json",
+          "schemaVersion": "1.0.0",
+          "role": "evidence_packet",
+          "sha256": "7fd9b46158c2a7b8961ebc8cd572c183ece9243eed610e846f486879ac50228c"
+        },
+        {
+          "kind": "evidence_packet",
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_unit_04.json",
+          "schemaVersion": "1.0.0",
+          "role": "evidence_packet",
+          "sha256": "67c1314290708d09fa457fd13998e0e062485162be577c451ac491c3e41e9f65"
+        },
+        {
+          "kind": "evidence_packet",
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_integration_05.json",
+          "schemaVersion": "1.0.0",
+          "role": "evidence_packet",
+          "sha256": "7ec0e44254466e206a0152273085d60bf3524d8b8b22ec688c8a536e111bef5d"
+        },
+        {
+          "kind": "evidence_packet",
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_contract-adapter_06.json",
+          "schemaVersion": "1.0.0",
+          "role": "evidence_packet",
+          "sha256": "507d852bdb9dcb560900448ef70cf11243c4b72022886f8c0b0eff4af644b32a"
+        },
+        {
+          "kind": "evidence_packet",
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_e2e_07.json",
+          "schemaVersion": "1.0.0",
+          "role": "evidence_packet",
+          "sha256": "8d4cb85b442014edb0db1fccdbc102bff88a650e4a0fb577aa49e44d72e82b20"
+        },
+        {
+          "kind": "evidence_packet",
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_ui-verification_08.json",
+          "schemaVersion": "1.0.0",
+          "role": "evidence_packet",
+          "sha256": "c590e897c737fd90f4d689245e3c1a99483dce20c5ecdfb7463dcec889fbafdb"
+        },
+        {
+          "kind": "evidence_packet",
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_ai-eval_09.json",
+          "schemaVersion": "1.0.0",
+          "role": "evidence_packet",
+          "sha256": "14bdfd26a3117149c4d4cb07b8672554d2e5bde692cd27b69ce1a4e1c2cc3279"
+        },
+        {
+          "kind": "evidence_packet",
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_build-package_10.json",
+          "schemaVersion": "1.0.0",
+          "role": "evidence_packet",
+          "sha256": "d662503fb9bbe757ecf8ff8dd8d63b3e41ac1c8ac4181ab7aef51c7e185f9dec"
+        },
+        {
+          "kind": "evidence_packet",
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_context-drift_11.json",
+          "schemaVersion": "1.0.0",
+          "role": "evidence_packet",
+          "sha256": "9d36e601c424f01927b4e23d56d8e98e96c38fe18aa0002e8dd198d3eb3d8f52"
+        },
+        {
+          "kind": "evidence_packet",
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_observability_12.json",
+          "schemaVersion": "1.0.0",
+          "role": "evidence_packet",
+          "sha256": "b39cd27f1f597f06c7d036c8c44d560faecd3329e06fcb192fa3ea0b48f35227"
+        },
+        {
+          "kind": "evidence_packet",
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_advisory-review_13.json",
+          "schemaVersion": "1.0.0",
+          "role": "evidence_packet",
+          "sha256": "e270af5520a80f944534fd8963c438f327c604ae9b48b5900685e16404820a02"
+        },
+        {
+          "kind": "evidence_packet",
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_final-dod_14.json",
+          "schemaVersion": "1.0.0",
+          "role": "evidence_packet",
+          "sha256": "82d1e467aa2513a451fdaaea84d2724cebe9ec397c1440f9fcd68cab0e07b475"
+        },
+        {
+          "kind": "evidence_packet",
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_schema-validation_15.json",
+          "schemaVersion": "1.0.0",
+          "role": "evidence_packet",
+          "sha256": "bb5706062fa401f158bb0c361e2cb0f8cab7a81c91390f283c609e0e057fed8e"
+        },
+        {
+          "kind": "cli_result",
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/result/cli-result.json",
+          "schemaVersion": "vibe-engineer.cli.result.v1",
+          "role": "report",
+          "sha256": null
+        }
+      ],
+      "errors": [
+        {
+          "code": "VE_INVALID_INVOCATION",
+          "classification": "safety_policy_block",
+          "retryable": false,
+          "blocking": true,
+          "message": "Node command runners require argv[0] to be a typed projectRoot runner script path.",
+          "details": {
+            "runnerCode": "COMMAND_POLICY_DENIED",
+            "runnerClassification": "safety_or_security_policy_failure",
+            "evidencePacketPaths": [
+              "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_safety-hooks_00.json",
+              "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_typecheck_01.json",
+              "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_lint-format_02.json",
+              "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_mechanical-gate_03.json",
+              "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_unit_04.json",
+              "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_integration_05.json",
+              "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_contract-adapter_06.json",
+              "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_e2e_07.json",
+              "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_ui-verification_08.json",
+              "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_ai-eval_09.json",
+              "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_build-package_10.json",
+              "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_context-drift_11.json",
+              "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_observability_12.json",
+              "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_advisory-review_13.json",
+              "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_final-dod_14.json",
+              "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/protected-script-denied/packets/evidence_i09b-post-fix-protected-script-denied_schema-validation_15.json"
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

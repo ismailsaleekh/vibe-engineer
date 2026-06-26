@@ -1,0 +1,78 @@
+{
+  "name": "invalid/secret-like-input",
+  "status": "blocked",
+  "exitCode": 2,
+  "classification": "invalid_input",
+  "code": "VE_INVALID_INVOCATION",
+  "runnerStatus": null,
+  "failures": [],
+  "executedItems": [],
+  "recordedItems": [],
+  "blockedItems": [],
+  "resultFile": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/invalid/secret-like-input/result/cli-result.json",
+  "resultFileExists": false,
+  "resultFileSha256": null,
+  "packetCount": 0,
+  "packetSummaries": [],
+  "envelopeValidation": {
+    "ok": true,
+    "envelope": {
+      "schemaVersion": "vibe-engineer.cli.result.v1",
+      "invocation": {
+        "id": "i-09b-post-fix-verify-4497ad52",
+        "command": "verify",
+        "argv": [
+          "verify",
+          "--implementation-plan",
+          "<value>",
+          "--evidence-root",
+          "<value>",
+          "--project-root",
+          "<value>",
+          "--run-id",
+          "<value>",
+          "--runner-catalog",
+          "<value>"
+        ],
+        "projectRoot": "/Users/lizavasilyeva/work/vibe-engineer",
+        "configPath": null,
+        "startedAt": "2026-06-25T20:18:51.896Z",
+        "endedAt": "2026-06-25T20:18:51.896Z"
+      },
+      "status": "blocked",
+      "exitCode": 2,
+      "payload": {
+        "kind": "cli_invocation_error",
+        "schemaVersion": "vibe-engineer.cli.payload.v1",
+        "data": {
+          "accepted": false
+        }
+      },
+      "diagnostics": [
+        {
+          "severity": "error",
+          "code": "VE_INVALID_INVOCATION",
+          "classification": "invalid_input",
+          "message": "Secret-like verify input is not accepted.",
+          "path": null,
+          "span": null,
+          "hint": null
+        }
+      ],
+      "artifacts": [],
+      "errors": [
+        {
+          "code": "VE_INVALID_INVOCATION",
+          "classification": "invalid_input",
+          "retryable": false,
+          "blocking": true,
+          "message": "Secret-like verify input is not accepted.",
+          "details": {
+            "flag": "--run-id",
+            "value": "<redacted>"
+          }
+        }
+      ]
+    }
+  }
+}

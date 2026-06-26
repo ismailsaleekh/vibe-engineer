@@ -1,0 +1,679 @@
+COMMAND: implementation report/evidence inventory and hashes
+CWD: /Users/lizavasilyeva/work/vibe-engineer
+DATE_UTC: 2026-06-25T18:42:34Z
+
+## I-09B workroot inventory (depth 4)
+.vibe/work/I-09B-verify-cli-command/command-log/baseline/cli-context-verification-import.stderr
+.vibe/work/I-09B-verify-cli-command/command-log/baseline/git-status.stderr
+.vibe/work/I-09B-verify-cli-command/command-log/checks/import-final.exit
+.vibe/work/I-09B-verify-cli-command/command-log/checks/import-final.stderr
+.vibe/work/I-09B-verify-cli-command/command-log/checks/import-final.stdout
+.vibe/work/I-09B-verify-cli-command/command-log/checks/import.exit
+.vibe/work/I-09B-verify-cli-command/command-log/checks/import.stderr
+.vibe/work/I-09B-verify-cli-command/command-log/checks/import.stdout
+.vibe/work/I-09B-verify-cli-command/command-log/checks/node-check-final.exit
+.vibe/work/I-09B-verify-cli-command/command-log/checks/node-check-final.stderr
+.vibe/work/I-09B-verify-cli-command/command-log/checks/node-check-final.stdout
+.vibe/work/I-09B-verify-cli-command/command-log/checks/node-check.exit
+.vibe/work/I-09B-verify-cli-command/command-log/checks/node-check.stderr
+.vibe/work/I-09B-verify-cli-command/command-log/checks/node-check.stdout
+.vibe/work/I-09B-verify-cli-command/command-log/checks/tsc-final.exit
+.vibe/work/I-09B-verify-cli-command/command-log/checks/tsc-final.stderr
+.vibe/work/I-09B-verify-cli-command/command-log/checks/tsc-final.stdout
+.vibe/work/I-09B-verify-cli-command/command-log/checks/tsc-noresolve.exit
+.vibe/work/I-09B-verify-cli-command/command-log/checks/tsc-noresolve.stderr
+.vibe/work/I-09B-verify-cli-command/command-log/checks/tsc-noresolve.stdout
+.vibe/work/I-09B-verify-cli-command/command-log/checks/tsc-preserve.exit
+.vibe/work/I-09B-verify-cli-command/command-log/checks/tsc-preserve.stderr
+.vibe/work/I-09B-verify-cli-command/command-log/checks/tsc-preserve.stdout
+.vibe/work/I-09B-verify-cli-command/command-log/checks/tsc-relaxed.exit
+.vibe/work/I-09B-verify-cli-command/command-log/checks/tsc-relaxed.stderr
+.vibe/work/I-09B-verify-cli-command/command-log/checks/tsc-relaxed.stdout
+.vibe/work/I-09B-verify-cli-command/command-log/checks/tsc.exit
+.vibe/work/I-09B-verify-cli-command/command-log/checks/tsc.stderr
+.vibe/work/I-09B-verify-cli-command/command-log/checks/tsc.stdout
+.vibe/work/I-09B-verify-cli-command/command-log/final/git-status.stderr
+.vibe/work/I-09B-verify-cli-command/command-log/witnesses.exit
+.vibe/work/I-09B-verify-cli-command/command-log/witnesses.stderr
+.vibe/work/I-09B-verify-cli-command/command-log/witnesses.stdout
+.vibe/work/I-09B-verify-cli-command/evidence/baseline/cli-context-verification-import.stdout
+.vibe/work/I-09B-verify-cli-command/evidence/baseline/git-status-short.txt
+.vibe/work/I-09B-verify-cli-command/evidence/baseline/manifest-lock-root-sha256.txt
+.vibe/work/I-09B-verify-cli-command/evidence/baseline/readonly-source-sha256.txt
+.vibe/work/I-09B-verify-cli-command/evidence/baseline/verify-owned-file-list.txt
+.vibe/work/I-09B-verify-cli-command/evidence/final/final-summary.txt
+.vibe/work/I-09B-verify-cli-command/evidence/final/git-status-short.txt
+.vibe/work/I-09B-verify-cli-command/evidence/final/manifest-lock-root-sha256.diff
+.vibe/work/I-09B-verify-cli-command/evidence/final/manifest-lock-root-sha256.txt
+.vibe/work/I-09B-verify-cli-command/evidence/final/r4-summary.txt
+.vibe/work/I-09B-verify-cli-command/evidence/final/readonly-source-sha256.diff
+.vibe/work/I-09B-verify-cli-command/evidence/final/readonly-source-sha256.txt
+.vibe/work/I-09B-verify-cli-command/evidence/final/secret-scan-evidence-command-log.txt
+.vibe/work/I-09B-verify-cli-command/evidence/final/static-seam-scan.txt
+.vibe/work/I-09B-verify-cli-command/evidence/final/verify-js-mjs-files.txt
+.vibe/work/I-09B-verify-cli-command/evidence/final/verify-owned-file-list.txt
+.vibe/work/I-09B-verify-cli-command/evidence/invalid-duplicate/summary.json
+.vibe/work/I-09B-verify-cli-command/evidence/invalid-malformed-carrier-source/bad.json
+.vibe/work/I-09B-verify-cli-command/evidence/invalid-malformed-catalog/summary.json
+.vibe/work/I-09B-verify-cli-command/evidence/invalid-missing-value/summary.json
+.vibe/work/I-09B-verify-cli-command/evidence/invalid-positional/summary.json
+.vibe/work/I-09B-verify-cli-command/evidence/invalid-secret-input/summary.json
+.vibe/work/I-09B-verify-cli-command/evidence/invalid-unknown-flag/summary.json
+.vibe/work/I-09B-verify-cli-command/evidence/n1-cli/cli-result.json
+.vibe/work/I-09B-verify-cli-command/evidence/n1-cli/runner-catalog.json
+.vibe/work/I-09B-verify-cli-command/evidence/n1-cli/summary.json
+.vibe/work/I-09B-verify-cli-command/evidence/n2-cli/cli-result.json
+.vibe/work/I-09B-verify-cli-command/evidence/n2-cli/packets/evidence_n2-cli_advisory-review_13.json
+.vibe/work/I-09B-verify-cli-command/evidence/n2-cli/packets/evidence_n2-cli_ai-eval_09.json
+.vibe/work/I-09B-verify-cli-command/evidence/n2-cli/packets/evidence_n2-cli_build-package_10.json
+.vibe/work/I-09B-verify-cli-command/evidence/n2-cli/packets/evidence_n2-cli_context-drift_11.json
+.vibe/work/I-09B-verify-cli-command/evidence/n2-cli/packets/evidence_n2-cli_contract-adapter_06.json
+.vibe/work/I-09B-verify-cli-command/evidence/n2-cli/packets/evidence_n2-cli_e2e_07.json
+.vibe/work/I-09B-verify-cli-command/evidence/n2-cli/packets/evidence_n2-cli_final-dod_14.json
+.vibe/work/I-09B-verify-cli-command/evidence/n2-cli/packets/evidence_n2-cli_integration_05.json
+.vibe/work/I-09B-verify-cli-command/evidence/n2-cli/packets/evidence_n2-cli_lint-format_02.json
+.vibe/work/I-09B-verify-cli-command/evidence/n2-cli/packets/evidence_n2-cli_mechanical-gate_03.json
+.vibe/work/I-09B-verify-cli-command/evidence/n2-cli/packets/evidence_n2-cli_observability_12.json
+.vibe/work/I-09B-verify-cli-command/evidence/n2-cli/packets/evidence_n2-cli_safety-hooks_00.json
+.vibe/work/I-09B-verify-cli-command/evidence/n2-cli/packets/evidence_n2-cli_schema-validation_15.json
+.vibe/work/I-09B-verify-cli-command/evidence/n2-cli/packets/evidence_n2-cli_typecheck_01.json
+.vibe/work/I-09B-verify-cli-command/evidence/n2-cli/packets/evidence_n2-cli_ui-verification_08.json
+.vibe/work/I-09B-verify-cli-command/evidence/n2-cli/packets/evidence_n2-cli_unit_04.json
+.vibe/work/I-09B-verify-cli-command/evidence/n2-cli/runner-catalog.json
+.vibe/work/I-09B-verify-cli-command/evidence/n2-cli/summary.json
+.vibe/work/I-09B-verify-cli-command/evidence/n3-cli/cli-result.json
+.vibe/work/I-09B-verify-cli-command/evidence/n3-cli/packets/evidence_n3-cli_advisory-review_13.json
+.vibe/work/I-09B-verify-cli-command/evidence/n3-cli/packets/evidence_n3-cli_ai-eval_09.json
+.vibe/work/I-09B-verify-cli-command/evidence/n3-cli/packets/evidence_n3-cli_build-package_10.json
+.vibe/work/I-09B-verify-cli-command/evidence/n3-cli/packets/evidence_n3-cli_context-drift_11.json
+.vibe/work/I-09B-verify-cli-command/evidence/n3-cli/packets/evidence_n3-cli_contract-adapter_06.json
+.vibe/work/I-09B-verify-cli-command/evidence/n3-cli/packets/evidence_n3-cli_e2e_07.json
+.vibe/work/I-09B-verify-cli-command/evidence/n3-cli/packets/evidence_n3-cli_final-dod_14.json
+.vibe/work/I-09B-verify-cli-command/evidence/n3-cli/packets/evidence_n3-cli_integration_05.json
+.vibe/work/I-09B-verify-cli-command/evidence/n3-cli/packets/evidence_n3-cli_lint-format_02.json
+.vibe/work/I-09B-verify-cli-command/evidence/n3-cli/packets/evidence_n3-cli_mechanical-gate_03.json
+.vibe/work/I-09B-verify-cli-command/evidence/n3-cli/packets/evidence_n3-cli_observability_12.json
+.vibe/work/I-09B-verify-cli-command/evidence/n3-cli/packets/evidence_n3-cli_safety-hooks_00.json
+.vibe/work/I-09B-verify-cli-command/evidence/n3-cli/packets/evidence_n3-cli_schema-validation_15.json
+.vibe/work/I-09B-verify-cli-command/evidence/n3-cli/packets/evidence_n3-cli_typecheck_01.json
+.vibe/work/I-09B-verify-cli-command/evidence/n3-cli/packets/evidence_n3-cli_ui-verification_08.json
+.vibe/work/I-09B-verify-cli-command/evidence/n3-cli/packets/evidence_n3-cli_unit_04.json
+.vibe/work/I-09B-verify-cli-command/evidence/n3-cli/runner-catalog.json
+.vibe/work/I-09B-verify-cli-command/evidence/n3-cli/summary.json
+.vibe/work/I-09B-verify-cli-command/evidence/n4-cli/cli-result.json
+.vibe/work/I-09B-verify-cli-command/evidence/n4-cli/runner-catalog.json
+.vibe/work/I-09B-verify-cli-command/evidence/n4-cli/summary.json
+.vibe/work/I-09B-verify-cli-command/evidence/n5-cli/cli-result.json
+.vibe/work/I-09B-verify-cli-command/evidence/n5-cli/packets/evidence_n5-cli_advisory-review_13.json
+.vibe/work/I-09B-verify-cli-command/evidence/n5-cli/packets/evidence_n5-cli_ai-eval_09.json
+.vibe/work/I-09B-verify-cli-command/evidence/n5-cli/packets/evidence_n5-cli_build-package_10.json
+.vibe/work/I-09B-verify-cli-command/evidence/n5-cli/packets/evidence_n5-cli_context-drift_11.json
+.vibe/work/I-09B-verify-cli-command/evidence/n5-cli/packets/evidence_n5-cli_contract-adapter_06.json
+.vibe/work/I-09B-verify-cli-command/evidence/n5-cli/packets/evidence_n5-cli_e2e_07.json
+.vibe/work/I-09B-verify-cli-command/evidence/n5-cli/packets/evidence_n5-cli_final-dod_14.json
+.vibe/work/I-09B-verify-cli-command/evidence/n5-cli/packets/evidence_n5-cli_integration_05.json
+.vibe/work/I-09B-verify-cli-command/evidence/n5-cli/packets/evidence_n5-cli_lint-format_02.json
+.vibe/work/I-09B-verify-cli-command/evidence/n5-cli/packets/evidence_n5-cli_mechanical-gate_03.json
+.vibe/work/I-09B-verify-cli-command/evidence/n5-cli/packets/evidence_n5-cli_observability_12.json
+.vibe/work/I-09B-verify-cli-command/evidence/n5-cli/packets/evidence_n5-cli_safety-hooks_00.json
+.vibe/work/I-09B-verify-cli-command/evidence/n5-cli/packets/evidence_n5-cli_schema-validation_15.json
+.vibe/work/I-09B-verify-cli-command/evidence/n5-cli/packets/evidence_n5-cli_typecheck_01.json
+.vibe/work/I-09B-verify-cli-command/evidence/n5-cli/packets/evidence_n5-cli_ui-verification_08.json
+.vibe/work/I-09B-verify-cli-command/evidence/n5-cli/packets/evidence_n5-cli_unit_04.json
+.vibe/work/I-09B-verify-cli-command/evidence/n5-cli/runner-catalog.json
+.vibe/work/I-09B-verify-cli-command/evidence/n5-cli/summary.json
+.vibe/work/I-09B-verify-cli-command/evidence/n6-cli/cli-result.json
+.vibe/work/I-09B-verify-cli-command/evidence/n6-cli/packets/evidence_n6-cli_advisory-review_13.json
+.vibe/work/I-09B-verify-cli-command/evidence/n6-cli/packets/evidence_n6-cli_ai-eval_09.json
+.vibe/work/I-09B-verify-cli-command/evidence/n6-cli/packets/evidence_n6-cli_build-package_10.json
+.vibe/work/I-09B-verify-cli-command/evidence/n6-cli/packets/evidence_n6-cli_context-drift_11.json
+.vibe/work/I-09B-verify-cli-command/evidence/n6-cli/packets/evidence_n6-cli_contract-adapter_06.json
+.vibe/work/I-09B-verify-cli-command/evidence/n6-cli/packets/evidence_n6-cli_e2e_07.json
+.vibe/work/I-09B-verify-cli-command/evidence/n6-cli/packets/evidence_n6-cli_final-dod_14.json
+.vibe/work/I-09B-verify-cli-command/evidence/n6-cli/packets/evidence_n6-cli_integration_05.json
+.vibe/work/I-09B-verify-cli-command/evidence/n6-cli/packets/evidence_n6-cli_lint-format_02.json
+.vibe/work/I-09B-verify-cli-command/evidence/n6-cli/packets/evidence_n6-cli_mechanical-gate_03.json
+.vibe/work/I-09B-verify-cli-command/evidence/n6-cli/packets/evidence_n6-cli_observability_12.json
+.vibe/work/I-09B-verify-cli-command/evidence/n6-cli/packets/evidence_n6-cli_safety-hooks_00.json
+.vibe/work/I-09B-verify-cli-command/evidence/n6-cli/packets/evidence_n6-cli_schema-validation_15.json
+.vibe/work/I-09B-verify-cli-command/evidence/n6-cli/packets/evidence_n6-cli_typecheck_01.json
+.vibe/work/I-09B-verify-cli-command/evidence/n6-cli/packets/evidence_n6-cli_ui-verification_08.json
+.vibe/work/I-09B-verify-cli-command/evidence/n6-cli/packets/evidence_n6-cli_unit_04.json
+.vibe/work/I-09B-verify-cli-command/evidence/n6-cli/runner-catalog.json
+.vibe/work/I-09B-verify-cli-command/evidence/n6-cli/summary.json
+.vibe/work/I-09B-verify-cli-command/evidence/n7-cli-plan/plan.json
+.vibe/work/I-09B-verify-cli-command/evidence/n7-cli/cli-result.json
+.vibe/work/I-09B-verify-cli-command/evidence/n7-cli/packets/evidence_n7-cli_advisory-review_13.json
+.vibe/work/I-09B-verify-cli-command/evidence/n7-cli/packets/evidence_n7-cli_ai-eval_09.json
+.vibe/work/I-09B-verify-cli-command/evidence/n7-cli/packets/evidence_n7-cli_build-package_10.json
+.vibe/work/I-09B-verify-cli-command/evidence/n7-cli/packets/evidence_n7-cli_context-drift_11.json
+.vibe/work/I-09B-verify-cli-command/evidence/n7-cli/packets/evidence_n7-cli_contract-adapter_06.json
+.vibe/work/I-09B-verify-cli-command/evidence/n7-cli/packets/evidence_n7-cli_e2e_07.json
+.vibe/work/I-09B-verify-cli-command/evidence/n7-cli/packets/evidence_n7-cli_final-dod_14.json
+.vibe/work/I-09B-verify-cli-command/evidence/n7-cli/packets/evidence_n7-cli_integration_05.json
+.vibe/work/I-09B-verify-cli-command/evidence/n7-cli/packets/evidence_n7-cli_lint-format_02.json
+.vibe/work/I-09B-verify-cli-command/evidence/n7-cli/packets/evidence_n7-cli_mechanical-gate_03.json
+.vibe/work/I-09B-verify-cli-command/evidence/n7-cli/packets/evidence_n7-cli_observability_12.json
+.vibe/work/I-09B-verify-cli-command/evidence/n7-cli/packets/evidence_n7-cli_safety-hooks_00.json
+.vibe/work/I-09B-verify-cli-command/evidence/n7-cli/packets/evidence_n7-cli_schema-validation_15.json
+.vibe/work/I-09B-verify-cli-command/evidence/n7-cli/packets/evidence_n7-cli_typecheck_01.json
+.vibe/work/I-09B-verify-cli-command/evidence/n7-cli/packets/evidence_n7-cli_ui-verification_08.json
+.vibe/work/I-09B-verify-cli-command/evidence/n7-cli/packets/evidence_n7-cli_unit_04.json
+.vibe/work/I-09B-verify-cli-command/evidence/n7-cli/runner-catalog.json
+.vibe/work/I-09B-verify-cli-command/evidence/n7-cli/summary.json
+.vibe/work/I-09B-verify-cli-command/evidence/p1-cli/cli-result.json
+.vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/evidence_p1-cli_advisory-review_13.json
+.vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/evidence_p1-cli_ai-eval_09.json
+.vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/evidence_p1-cli_build-package_10.json
+.vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/evidence_p1-cli_context-drift_11.json
+.vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/evidence_p1-cli_contract-adapter_06.json
+.vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/evidence_p1-cli_e2e_07.json
+.vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/evidence_p1-cli_final-dod_14.json
+.vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/evidence_p1-cli_integration_05.json
+.vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/evidence_p1-cli_lint-format_02.json
+.vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/evidence_p1-cli_mechanical-gate_03.json
+.vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/evidence_p1-cli_observability_12.json
+.vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/evidence_p1-cli_safety-hooks_00.json
+.vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/evidence_p1-cli_schema-validation_15.json
+.vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/evidence_p1-cli_typecheck_01.json
+.vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/evidence_p1-cli_ui-verification_08.json
+.vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/evidence_p1-cli_unit_04.json
+.vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/schema-validation-output.json
+.vibe/work/I-09B-verify-cli-command/evidence/p1-cli/runner-catalog.json
+.vibe/work/I-09B-verify-cli-command/evidence/p1-cli/summary.json
+.vibe/work/I-09B-verify-cli-command/evidence/r1/spawn.json
+.vibe/work/I-09B-verify-cli-command/evidence/r2/foundation-spawn.json
+.vibe/work/I-09B-verify-cli-command/evidence/r3/cli-result.json
+.vibe/work/I-09B-verify-cli-command/evidence/r3/packets/evidence_r3_advisory-review_13.json
+.vibe/work/I-09B-verify-cli-command/evidence/r3/packets/evidence_r3_ai-eval_09.json
+.vibe/work/I-09B-verify-cli-command/evidence/r3/packets/evidence_r3_build-package_10.json
+.vibe/work/I-09B-verify-cli-command/evidence/r3/packets/evidence_r3_context-drift_11.json
+.vibe/work/I-09B-verify-cli-command/evidence/r3/packets/evidence_r3_contract-adapter_06.json
+.vibe/work/I-09B-verify-cli-command/evidence/r3/packets/evidence_r3_e2e_07.json
+.vibe/work/I-09B-verify-cli-command/evidence/r3/packets/evidence_r3_final-dod_14.json
+.vibe/work/I-09B-verify-cli-command/evidence/r3/packets/evidence_r3_integration_05.json
+.vibe/work/I-09B-verify-cli-command/evidence/r3/packets/evidence_r3_lint-format_02.json
+.vibe/work/I-09B-verify-cli-command/evidence/r3/packets/evidence_r3_mechanical-gate_03.json
+.vibe/work/I-09B-verify-cli-command/evidence/r3/packets/evidence_r3_observability_12.json
+.vibe/work/I-09B-verify-cli-command/evidence/r3/packets/evidence_r3_safety-hooks_00.json
+.vibe/work/I-09B-verify-cli-command/evidence/r3/packets/evidence_r3_schema-validation_15.json
+.vibe/work/I-09B-verify-cli-command/evidence/r3/packets/evidence_r3_typecheck_01.json
+.vibe/work/I-09B-verify-cli-command/evidence/r3/packets/evidence_r3_ui-verification_08.json
+.vibe/work/I-09B-verify-cli-command/evidence/r3/packets/evidence_r3_unit_04.json
+.vibe/work/I-09B-verify-cli-command/evidence/r3/packets/secret-output.txt
+.vibe/work/I-09B-verify-cli-command/evidence/r3/runner-catalog.json
+.vibe/work/I-09B-verify-cli-command/evidence/r3/summary.json
+.vibe/work/I-09B-verify-cli-command/evidence/schema-only-cli/plan.json
+.vibe/work/I-09B-verify-cli-command/evidence/seams/package-api-lock-seams.txt
+.vibe/work/I-09B-verify-cli-command/evidence/w-rb3/cli-result.json
+.vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/evidence_w-rb3_advisory-review_13.json
+.vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/evidence_w-rb3_ai-eval_09.json
+.vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/evidence_w-rb3_build-package_10.json
+.vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/evidence_w-rb3_context-drift_11.json
+.vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/evidence_w-rb3_contract-adapter_06.json
+.vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/evidence_w-rb3_e2e_07.json
+.vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/evidence_w-rb3_final-dod_14.json
+.vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/evidence_w-rb3_integration_05.json
+.vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/evidence_w-rb3_lint-format_02.json
+.vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/evidence_w-rb3_mechanical-gate_03.json
+.vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/evidence_w-rb3_observability_12.json
+.vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/evidence_w-rb3_safety-hooks_00.json
+.vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/evidence_w-rb3_schema-validation_15.json
+.vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/evidence_w-rb3_typecheck_01.json
+.vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/evidence_w-rb3_ui-verification_08.json
+.vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/evidence_w-rb3_unit_04.json
+.vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/schema-validation-output.json
+.vibe/work/I-09B-verify-cli-command/evidence/w-rb3/runner-catalog.json
+.vibe/work/I-09B-verify-cli-command/evidence/w-rb3/summary.json
+.vibe/work/I-09B-verify-cli-command/evidence/witness-failure.json
+.vibe/work/I-09B-verify-cli-command/evidence/witness-summary.json
+.vibe/work/I-09B-verify-cli-command/I-09B-implementation-report.md
+.vibe/work/I-09B-verify-cli-command/I-09B-validation-report.md
+.vibe/work/I-09B-verify-cli-command/typecheck-ambient.d.ts
+.vibe/work/I-09B-verify-cli-command/validation-evidence/baseline/command.log
+.vibe/work/I-09B-verify-cli-command/validation-evidence/baseline/file-inventory-and-hashes.stderr
+.vibe/work/I-09B-verify-cli-command/validation-evidence/baseline/file-inventory-and-hashes.txt
+.vibe/work/I-09B-verify-cli-command/validation-evidence/baseline/git-diff.stderr
+.vibe/work/I-09B-verify-cli-command/validation-evidence/baseline/git-diff.txt
+.vibe/work/I-09B-verify-cli-command/validation-evidence/baseline/git-status.stderr
+.vibe/work/I-09B-verify-cli-command/validation-evidence/baseline/git-status.txt
+.vibe/work/I-09B-verify-cli-command/validation-evidence/implementation-inspection/inventory-and-hashes.stderr
+.vibe/work/I-09B-verify-cli-command/validation-evidence/implementation-inspection/inventory-and-hashes.txt
+.vibe/work/I-09B-verify-cli-command/witnesses.mjs
+
+## implementer evidence inventory
+.vibe/work/I-09B-verify-cli-command/evidence/baseline/cli-context-verification-import.stdout
+.vibe/work/I-09B-verify-cli-command/evidence/baseline/git-status-short.txt
+.vibe/work/I-09B-verify-cli-command/evidence/baseline/manifest-lock-root-sha256.txt
+.vibe/work/I-09B-verify-cli-command/evidence/baseline/readonly-source-sha256.txt
+.vibe/work/I-09B-verify-cli-command/evidence/baseline/verify-owned-file-list.txt
+.vibe/work/I-09B-verify-cli-command/evidence/final/final-summary.txt
+.vibe/work/I-09B-verify-cli-command/evidence/final/git-status-short.txt
+.vibe/work/I-09B-verify-cli-command/evidence/final/manifest-lock-root-sha256.diff
+.vibe/work/I-09B-verify-cli-command/evidence/final/manifest-lock-root-sha256.txt
+.vibe/work/I-09B-verify-cli-command/evidence/final/r4-summary.txt
+.vibe/work/I-09B-verify-cli-command/evidence/final/readonly-source-sha256.diff
+.vibe/work/I-09B-verify-cli-command/evidence/final/readonly-source-sha256.txt
+.vibe/work/I-09B-verify-cli-command/evidence/final/secret-scan-evidence-command-log.txt
+.vibe/work/I-09B-verify-cli-command/evidence/final/static-seam-scan.txt
+.vibe/work/I-09B-verify-cli-command/evidence/final/verify-js-mjs-files.txt
+.vibe/work/I-09B-verify-cli-command/evidence/final/verify-owned-file-list.txt
+.vibe/work/I-09B-verify-cli-command/evidence/invalid-duplicate/summary.json
+.vibe/work/I-09B-verify-cli-command/evidence/invalid-malformed-carrier-source/bad.json
+.vibe/work/I-09B-verify-cli-command/evidence/invalid-malformed-catalog/summary.json
+.vibe/work/I-09B-verify-cli-command/evidence/invalid-missing-value/summary.json
+.vibe/work/I-09B-verify-cli-command/evidence/invalid-positional/summary.json
+.vibe/work/I-09B-verify-cli-command/evidence/invalid-secret-input/summary.json
+.vibe/work/I-09B-verify-cli-command/evidence/invalid-unknown-flag/summary.json
+.vibe/work/I-09B-verify-cli-command/evidence/n1-cli/cli-result.json
+.vibe/work/I-09B-verify-cli-command/evidence/n1-cli/runner-catalog.json
+.vibe/work/I-09B-verify-cli-command/evidence/n1-cli/summary.json
+.vibe/work/I-09B-verify-cli-command/evidence/n2-cli/cli-result.json
+.vibe/work/I-09B-verify-cli-command/evidence/n2-cli/packets/evidence_n2-cli_advisory-review_13.json
+.vibe/work/I-09B-verify-cli-command/evidence/n2-cli/packets/evidence_n2-cli_ai-eval_09.json
+.vibe/work/I-09B-verify-cli-command/evidence/n2-cli/packets/evidence_n2-cli_build-package_10.json
+.vibe/work/I-09B-verify-cli-command/evidence/n2-cli/packets/evidence_n2-cli_context-drift_11.json
+.vibe/work/I-09B-verify-cli-command/evidence/n2-cli/packets/evidence_n2-cli_contract-adapter_06.json
+.vibe/work/I-09B-verify-cli-command/evidence/n2-cli/packets/evidence_n2-cli_e2e_07.json
+.vibe/work/I-09B-verify-cli-command/evidence/n2-cli/packets/evidence_n2-cli_final-dod_14.json
+.vibe/work/I-09B-verify-cli-command/evidence/n2-cli/packets/evidence_n2-cli_integration_05.json
+.vibe/work/I-09B-verify-cli-command/evidence/n2-cli/packets/evidence_n2-cli_lint-format_02.json
+.vibe/work/I-09B-verify-cli-command/evidence/n2-cli/packets/evidence_n2-cli_mechanical-gate_03.json
+.vibe/work/I-09B-verify-cli-command/evidence/n2-cli/packets/evidence_n2-cli_observability_12.json
+.vibe/work/I-09B-verify-cli-command/evidence/n2-cli/packets/evidence_n2-cli_safety-hooks_00.json
+.vibe/work/I-09B-verify-cli-command/evidence/n2-cli/packets/evidence_n2-cli_schema-validation_15.json
+.vibe/work/I-09B-verify-cli-command/evidence/n2-cli/packets/evidence_n2-cli_typecheck_01.json
+.vibe/work/I-09B-verify-cli-command/evidence/n2-cli/packets/evidence_n2-cli_ui-verification_08.json
+.vibe/work/I-09B-verify-cli-command/evidence/n2-cli/packets/evidence_n2-cli_unit_04.json
+.vibe/work/I-09B-verify-cli-command/evidence/n2-cli/runner-catalog.json
+.vibe/work/I-09B-verify-cli-command/evidence/n2-cli/summary.json
+.vibe/work/I-09B-verify-cli-command/evidence/n3-cli/cli-result.json
+.vibe/work/I-09B-verify-cli-command/evidence/n3-cli/packets/evidence_n3-cli_advisory-review_13.json
+.vibe/work/I-09B-verify-cli-command/evidence/n3-cli/packets/evidence_n3-cli_ai-eval_09.json
+.vibe/work/I-09B-verify-cli-command/evidence/n3-cli/packets/evidence_n3-cli_build-package_10.json
+.vibe/work/I-09B-verify-cli-command/evidence/n3-cli/packets/evidence_n3-cli_context-drift_11.json
+.vibe/work/I-09B-verify-cli-command/evidence/n3-cli/packets/evidence_n3-cli_contract-adapter_06.json
+.vibe/work/I-09B-verify-cli-command/evidence/n3-cli/packets/evidence_n3-cli_e2e_07.json
+.vibe/work/I-09B-verify-cli-command/evidence/n3-cli/packets/evidence_n3-cli_final-dod_14.json
+.vibe/work/I-09B-verify-cli-command/evidence/n3-cli/packets/evidence_n3-cli_integration_05.json
+.vibe/work/I-09B-verify-cli-command/evidence/n3-cli/packets/evidence_n3-cli_lint-format_02.json
+.vibe/work/I-09B-verify-cli-command/evidence/n3-cli/packets/evidence_n3-cli_mechanical-gate_03.json
+.vibe/work/I-09B-verify-cli-command/evidence/n3-cli/packets/evidence_n3-cli_observability_12.json
+.vibe/work/I-09B-verify-cli-command/evidence/n3-cli/packets/evidence_n3-cli_safety-hooks_00.json
+.vibe/work/I-09B-verify-cli-command/evidence/n3-cli/packets/evidence_n3-cli_schema-validation_15.json
+.vibe/work/I-09B-verify-cli-command/evidence/n3-cli/packets/evidence_n3-cli_typecheck_01.json
+.vibe/work/I-09B-verify-cli-command/evidence/n3-cli/packets/evidence_n3-cli_ui-verification_08.json
+.vibe/work/I-09B-verify-cli-command/evidence/n3-cli/packets/evidence_n3-cli_unit_04.json
+.vibe/work/I-09B-verify-cli-command/evidence/n3-cli/packets/sidecars/n3-cli-schema-validation-15.runner.log
+.vibe/work/I-09B-verify-cli-command/evidence/n3-cli/packets/sidecars/n3-cli-schema-validation-15.stderr.log
+.vibe/work/I-09B-verify-cli-command/evidence/n3-cli/packets/sidecars/n3-cli-schema-validation-15.stdout.log
+.vibe/work/I-09B-verify-cli-command/evidence/n3-cli/runner-catalog.json
+.vibe/work/I-09B-verify-cli-command/evidence/n3-cli/summary.json
+.vibe/work/I-09B-verify-cli-command/evidence/n4-cli/cli-result.json
+.vibe/work/I-09B-verify-cli-command/evidence/n4-cli/runner-catalog.json
+.vibe/work/I-09B-verify-cli-command/evidence/n4-cli/summary.json
+.vibe/work/I-09B-verify-cli-command/evidence/n5-cli/cli-result.json
+.vibe/work/I-09B-verify-cli-command/evidence/n5-cli/packets/evidence_n5-cli_advisory-review_13.json
+.vibe/work/I-09B-verify-cli-command/evidence/n5-cli/packets/evidence_n5-cli_ai-eval_09.json
+.vibe/work/I-09B-verify-cli-command/evidence/n5-cli/packets/evidence_n5-cli_build-package_10.json
+.vibe/work/I-09B-verify-cli-command/evidence/n5-cli/packets/evidence_n5-cli_context-drift_11.json
+.vibe/work/I-09B-verify-cli-command/evidence/n5-cli/packets/evidence_n5-cli_contract-adapter_06.json
+.vibe/work/I-09B-verify-cli-command/evidence/n5-cli/packets/evidence_n5-cli_e2e_07.json
+.vibe/work/I-09B-verify-cli-command/evidence/n5-cli/packets/evidence_n5-cli_final-dod_14.json
+.vibe/work/I-09B-verify-cli-command/evidence/n5-cli/packets/evidence_n5-cli_integration_05.json
+.vibe/work/I-09B-verify-cli-command/evidence/n5-cli/packets/evidence_n5-cli_lint-format_02.json
+.vibe/work/I-09B-verify-cli-command/evidence/n5-cli/packets/evidence_n5-cli_mechanical-gate_03.json
+.vibe/work/I-09B-verify-cli-command/evidence/n5-cli/packets/evidence_n5-cli_observability_12.json
+.vibe/work/I-09B-verify-cli-command/evidence/n5-cli/packets/evidence_n5-cli_safety-hooks_00.json
+.vibe/work/I-09B-verify-cli-command/evidence/n5-cli/packets/evidence_n5-cli_schema-validation_15.json
+.vibe/work/I-09B-verify-cli-command/evidence/n5-cli/packets/evidence_n5-cli_typecheck_01.json
+.vibe/work/I-09B-verify-cli-command/evidence/n5-cli/packets/evidence_n5-cli_ui-verification_08.json
+.vibe/work/I-09B-verify-cli-command/evidence/n5-cli/packets/evidence_n5-cli_unit_04.json
+.vibe/work/I-09B-verify-cli-command/evidence/n5-cli/runner-catalog.json
+.vibe/work/I-09B-verify-cli-command/evidence/n5-cli/summary.json
+.vibe/work/I-09B-verify-cli-command/evidence/n6-cli/cli-result.json
+.vibe/work/I-09B-verify-cli-command/evidence/n6-cli/packets/evidence_n6-cli_advisory-review_13.json
+.vibe/work/I-09B-verify-cli-command/evidence/n6-cli/packets/evidence_n6-cli_ai-eval_09.json
+.vibe/work/I-09B-verify-cli-command/evidence/n6-cli/packets/evidence_n6-cli_build-package_10.json
+.vibe/work/I-09B-verify-cli-command/evidence/n6-cli/packets/evidence_n6-cli_context-drift_11.json
+.vibe/work/I-09B-verify-cli-command/evidence/n6-cli/packets/evidence_n6-cli_contract-adapter_06.json
+.vibe/work/I-09B-verify-cli-command/evidence/n6-cli/packets/evidence_n6-cli_e2e_07.json
+.vibe/work/I-09B-verify-cli-command/evidence/n6-cli/packets/evidence_n6-cli_final-dod_14.json
+.vibe/work/I-09B-verify-cli-command/evidence/n6-cli/packets/evidence_n6-cli_integration_05.json
+.vibe/work/I-09B-verify-cli-command/evidence/n6-cli/packets/evidence_n6-cli_lint-format_02.json
+.vibe/work/I-09B-verify-cli-command/evidence/n6-cli/packets/evidence_n6-cli_mechanical-gate_03.json
+.vibe/work/I-09B-verify-cli-command/evidence/n6-cli/packets/evidence_n6-cli_observability_12.json
+.vibe/work/I-09B-verify-cli-command/evidence/n6-cli/packets/evidence_n6-cli_safety-hooks_00.json
+.vibe/work/I-09B-verify-cli-command/evidence/n6-cli/packets/evidence_n6-cli_schema-validation_15.json
+.vibe/work/I-09B-verify-cli-command/evidence/n6-cli/packets/evidence_n6-cli_typecheck_01.json
+.vibe/work/I-09B-verify-cli-command/evidence/n6-cli/packets/evidence_n6-cli_ui-verification_08.json
+.vibe/work/I-09B-verify-cli-command/evidence/n6-cli/packets/evidence_n6-cli_unit_04.json
+.vibe/work/I-09B-verify-cli-command/evidence/n6-cli/runner-catalog.json
+.vibe/work/I-09B-verify-cli-command/evidence/n6-cli/summary.json
+.vibe/work/I-09B-verify-cli-command/evidence/n7-cli-plan/plan.json
+.vibe/work/I-09B-verify-cli-command/evidence/n7-cli/cli-result.json
+.vibe/work/I-09B-verify-cli-command/evidence/n7-cli/packets/evidence_n7-cli_advisory-review_13.json
+.vibe/work/I-09B-verify-cli-command/evidence/n7-cli/packets/evidence_n7-cli_ai-eval_09.json
+.vibe/work/I-09B-verify-cli-command/evidence/n7-cli/packets/evidence_n7-cli_build-package_10.json
+.vibe/work/I-09B-verify-cli-command/evidence/n7-cli/packets/evidence_n7-cli_context-drift_11.json
+.vibe/work/I-09B-verify-cli-command/evidence/n7-cli/packets/evidence_n7-cli_contract-adapter_06.json
+.vibe/work/I-09B-verify-cli-command/evidence/n7-cli/packets/evidence_n7-cli_e2e_07.json
+.vibe/work/I-09B-verify-cli-command/evidence/n7-cli/packets/evidence_n7-cli_final-dod_14.json
+.vibe/work/I-09B-verify-cli-command/evidence/n7-cli/packets/evidence_n7-cli_integration_05.json
+.vibe/work/I-09B-verify-cli-command/evidence/n7-cli/packets/evidence_n7-cli_lint-format_02.json
+.vibe/work/I-09B-verify-cli-command/evidence/n7-cli/packets/evidence_n7-cli_mechanical-gate_03.json
+.vibe/work/I-09B-verify-cli-command/evidence/n7-cli/packets/evidence_n7-cli_observability_12.json
+.vibe/work/I-09B-verify-cli-command/evidence/n7-cli/packets/evidence_n7-cli_safety-hooks_00.json
+.vibe/work/I-09B-verify-cli-command/evidence/n7-cli/packets/evidence_n7-cli_schema-validation_15.json
+.vibe/work/I-09B-verify-cli-command/evidence/n7-cli/packets/evidence_n7-cli_typecheck_01.json
+.vibe/work/I-09B-verify-cli-command/evidence/n7-cli/packets/evidence_n7-cli_ui-verification_08.json
+.vibe/work/I-09B-verify-cli-command/evidence/n7-cli/packets/evidence_n7-cli_unit_04.json
+.vibe/work/I-09B-verify-cli-command/evidence/n7-cli/packets/sidecars/n7-cli-advisory-review-13.runner.log
+.vibe/work/I-09B-verify-cli-command/evidence/n7-cli/packets/sidecars/n7-cli-advisory-review-13.stderr.log
+.vibe/work/I-09B-verify-cli-command/evidence/n7-cli/packets/sidecars/n7-cli-advisory-review-13.stdout.log
+.vibe/work/I-09B-verify-cli-command/evidence/n7-cli/runner-catalog.json
+.vibe/work/I-09B-verify-cli-command/evidence/n7-cli/summary.json
+.vibe/work/I-09B-verify-cli-command/evidence/p1-cli/cli-result.json
+.vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/evidence_p1-cli_advisory-review_13.json
+.vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/evidence_p1-cli_ai-eval_09.json
+.vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/evidence_p1-cli_build-package_10.json
+.vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/evidence_p1-cli_context-drift_11.json
+.vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/evidence_p1-cli_contract-adapter_06.json
+.vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/evidence_p1-cli_e2e_07.json
+.vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/evidence_p1-cli_final-dod_14.json
+.vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/evidence_p1-cli_integration_05.json
+.vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/evidence_p1-cli_lint-format_02.json
+.vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/evidence_p1-cli_mechanical-gate_03.json
+.vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/evidence_p1-cli_observability_12.json
+.vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/evidence_p1-cli_safety-hooks_00.json
+.vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/evidence_p1-cli_schema-validation_15.json
+.vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/evidence_p1-cli_typecheck_01.json
+.vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/evidence_p1-cli_ui-verification_08.json
+.vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/evidence_p1-cli_unit_04.json
+.vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/schema-validation-output.json
+.vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/sidecars/p1-cli-advisory-review-13.runner.log
+.vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/sidecars/p1-cli-advisory-review-13.stderr.log
+.vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/sidecars/p1-cli-advisory-review-13.stdout.log
+.vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/sidecars/p1-cli-schema-validation-15.runner.log
+.vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/sidecars/p1-cli-schema-validation-15.stderr.log
+.vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/sidecars/p1-cli-schema-validation-15.stdout.log
+.vibe/work/I-09B-verify-cli-command/evidence/p1-cli/runner-catalog.json
+.vibe/work/I-09B-verify-cli-command/evidence/p1-cli/summary.json
+.vibe/work/I-09B-verify-cli-command/evidence/r1/spawn.json
+.vibe/work/I-09B-verify-cli-command/evidence/r2/foundation-spawn.json
+.vibe/work/I-09B-verify-cli-command/evidence/r3/cli-result.json
+.vibe/work/I-09B-verify-cli-command/evidence/r3/packets/evidence_r3_advisory-review_13.json
+.vibe/work/I-09B-verify-cli-command/evidence/r3/packets/evidence_r3_ai-eval_09.json
+.vibe/work/I-09B-verify-cli-command/evidence/r3/packets/evidence_r3_build-package_10.json
+.vibe/work/I-09B-verify-cli-command/evidence/r3/packets/evidence_r3_context-drift_11.json
+.vibe/work/I-09B-verify-cli-command/evidence/r3/packets/evidence_r3_contract-adapter_06.json
+.vibe/work/I-09B-verify-cli-command/evidence/r3/packets/evidence_r3_e2e_07.json
+.vibe/work/I-09B-verify-cli-command/evidence/r3/packets/evidence_r3_final-dod_14.json
+.vibe/work/I-09B-verify-cli-command/evidence/r3/packets/evidence_r3_integration_05.json
+.vibe/work/I-09B-verify-cli-command/evidence/r3/packets/evidence_r3_lint-format_02.json
+.vibe/work/I-09B-verify-cli-command/evidence/r3/packets/evidence_r3_mechanical-gate_03.json
+.vibe/work/I-09B-verify-cli-command/evidence/r3/packets/evidence_r3_observability_12.json
+.vibe/work/I-09B-verify-cli-command/evidence/r3/packets/evidence_r3_safety-hooks_00.json
+.vibe/work/I-09B-verify-cli-command/evidence/r3/packets/evidence_r3_schema-validation_15.json
+.vibe/work/I-09B-verify-cli-command/evidence/r3/packets/evidence_r3_typecheck_01.json
+.vibe/work/I-09B-verify-cli-command/evidence/r3/packets/evidence_r3_ui-verification_08.json
+.vibe/work/I-09B-verify-cli-command/evidence/r3/packets/evidence_r3_unit_04.json
+.vibe/work/I-09B-verify-cli-command/evidence/r3/packets/secret-output.txt
+.vibe/work/I-09B-verify-cli-command/evidence/r3/packets/sidecars/r3-advisory-review-13.runner.log
+.vibe/work/I-09B-verify-cli-command/evidence/r3/packets/sidecars/r3-advisory-review-13.stderr.log
+.vibe/work/I-09B-verify-cli-command/evidence/r3/packets/sidecars/r3-advisory-review-13.stdout.log
+.vibe/work/I-09B-verify-cli-command/evidence/r3/packets/sidecars/r3-schema-validation-15.runner.log
+.vibe/work/I-09B-verify-cli-command/evidence/r3/packets/sidecars/r3-schema-validation-15.stderr.log
+.vibe/work/I-09B-verify-cli-command/evidence/r3/packets/sidecars/r3-schema-validation-15.stdout.log
+.vibe/work/I-09B-verify-cli-command/evidence/r3/runner-catalog.json
+.vibe/work/I-09B-verify-cli-command/evidence/r3/summary.json
+.vibe/work/I-09B-verify-cli-command/evidence/schema-only-cli/plan.json
+.vibe/work/I-09B-verify-cli-command/evidence/seams/package-api-lock-seams.txt
+.vibe/work/I-09B-verify-cli-command/evidence/w-rb3/cli-result.json
+.vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/evidence_w-rb3_advisory-review_13.json
+.vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/evidence_w-rb3_ai-eval_09.json
+.vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/evidence_w-rb3_build-package_10.json
+.vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/evidence_w-rb3_context-drift_11.json
+.vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/evidence_w-rb3_contract-adapter_06.json
+.vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/evidence_w-rb3_e2e_07.json
+.vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/evidence_w-rb3_final-dod_14.json
+.vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/evidence_w-rb3_integration_05.json
+.vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/evidence_w-rb3_lint-format_02.json
+.vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/evidence_w-rb3_mechanical-gate_03.json
+.vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/evidence_w-rb3_observability_12.json
+.vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/evidence_w-rb3_safety-hooks_00.json
+.vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/evidence_w-rb3_schema-validation_15.json
+.vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/evidence_w-rb3_typecheck_01.json
+.vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/evidence_w-rb3_ui-verification_08.json
+.vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/evidence_w-rb3_unit_04.json
+.vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/schema-validation-output.json
+.vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/sidecars/w-rb3-advisory-review-13.runner.log
+.vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/sidecars/w-rb3-advisory-review-13.stderr.log
+.vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/sidecars/w-rb3-advisory-review-13.stdout.log
+.vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/sidecars/w-rb3-schema-validation-15.runner.log
+.vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/sidecars/w-rb3-schema-validation-15.stderr.log
+.vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/sidecars/w-rb3-schema-validation-15.stdout.log
+.vibe/work/I-09B-verify-cli-command/evidence/w-rb3/runner-catalog.json
+.vibe/work/I-09B-verify-cli-command/evidence/w-rb3/summary.json
+.vibe/work/I-09B-verify-cli-command/evidence/witness-failure.json
+.vibe/work/I-09B-verify-cli-command/evidence/witness-summary.json
+
+## implementer report/evidence hashes
+3646c7657b9ad39eaf5219e0a2974a75bc2c7fd1be2cb4834b162d36a93e85ef  .vibe/work/I-09B-verify-cli-command/I-09B-implementation-report.md
+274d2e1057cc759cad6244a5b054e809c6efa83ffb4aa67a6aca3616f9ef7b41  .vibe/work/I-09B-verify-cli-command/evidence/witness-summary.json
+4a1ba4a4b5922794e1824927b46204f3d114a5e7c4aee9eed0ee78b1ba129827  .vibe/work/I-09B-verify-cli-command/evidence/final/final-summary.txt
+a924460730d392ec8e1326f54a53a1d8d76534732a7af8c069cf4c8dafd540f2  .vibe/work/I-09B-verify-cli-command/evidence/baseline/cli-context-verification-import.stdout
+dd5834e2d0c118f874b94a8068183433cedcf9708250843a289bae9000c0b0d9  .vibe/work/I-09B-verify-cli-command/evidence/baseline/git-status-short.txt
+4a25db87cd926fa8a2304fb71a8831fd41d60a46440f1d624ba75b7373af7e51  .vibe/work/I-09B-verify-cli-command/evidence/baseline/manifest-lock-root-sha256.txt
+27f49a8172512ca0bfac429dc018c3f742e9095073a54a0f5bab654e11277880  .vibe/work/I-09B-verify-cli-command/evidence/baseline/readonly-source-sha256.txt
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  .vibe/work/I-09B-verify-cli-command/evidence/baseline/verify-owned-file-list.txt
+4a1ba4a4b5922794e1824927b46204f3d114a5e7c4aee9eed0ee78b1ba129827  .vibe/work/I-09B-verify-cli-command/evidence/final/final-summary.txt
+dd5834e2d0c118f874b94a8068183433cedcf9708250843a289bae9000c0b0d9  .vibe/work/I-09B-verify-cli-command/evidence/final/git-status-short.txt
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  .vibe/work/I-09B-verify-cli-command/evidence/final/manifest-lock-root-sha256.diff
+4a25db87cd926fa8a2304fb71a8831fd41d60a46440f1d624ba75b7373af7e51  .vibe/work/I-09B-verify-cli-command/evidence/final/manifest-lock-root-sha256.txt
+19ced29fb22746be49cdc2f395ff346274c4b18854ce9e76038e68566356f5c4  .vibe/work/I-09B-verify-cli-command/evidence/final/r4-summary.txt
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  .vibe/work/I-09B-verify-cli-command/evidence/final/readonly-source-sha256.diff
+27f49a8172512ca0bfac429dc018c3f742e9095073a54a0f5bab654e11277880  .vibe/work/I-09B-verify-cli-command/evidence/final/readonly-source-sha256.txt
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  .vibe/work/I-09B-verify-cli-command/evidence/final/secret-scan-evidence-command-log.txt
+7777d7811b8659c58b6194b06305faae6ff80c81199c20bcd10b599ceec90b23  .vibe/work/I-09B-verify-cli-command/evidence/final/static-seam-scan.txt
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  .vibe/work/I-09B-verify-cli-command/evidence/final/verify-js-mjs-files.txt
+78de15e694714450b42db09a2760fd47eff35c9d69a6d24aab4497a1b62ea692  .vibe/work/I-09B-verify-cli-command/evidence/final/verify-owned-file-list.txt
+68d4298d5ec17e2c978f2781defa69bcf42f91d941c23e9cfb6f7c0781b514c2  .vibe/work/I-09B-verify-cli-command/evidence/invalid-duplicate/summary.json
+4ffc8c69b5df0bf6ba7f4e4a086b3475b38ddc8ac29ab1ff5c376e4195cf1e4a  .vibe/work/I-09B-verify-cli-command/evidence/invalid-malformed-carrier-source/bad.json
+c51294d20af412b66e962cf263a56748efd309be7193b615b2a95c06222ba715  .vibe/work/I-09B-verify-cli-command/evidence/invalid-malformed-catalog/summary.json
+6e2d2e1a636b18f86b690dd4604b596ab0ff5ae7eaf0ba663984ea3cade94bd1  .vibe/work/I-09B-verify-cli-command/evidence/invalid-missing-value/summary.json
+1cfeee11ffbd410c194be042285a3e52d17a1b27fdb5a453d827b568a9bfed0c  .vibe/work/I-09B-verify-cli-command/evidence/invalid-positional/summary.json
+5ae553666277a40d6646adb2797b282610ecdf448fa92da7ad00e7705ac518e0  .vibe/work/I-09B-verify-cli-command/evidence/invalid-secret-input/summary.json
+5dab52f299fb447353d089273378c620a737c1dd074e6672a0ab8d658d68e86e  .vibe/work/I-09B-verify-cli-command/evidence/invalid-unknown-flag/summary.json
+b377e57c32c834d4bae986deaa506494d90c63f8a6bb7216fca4ee3c249b0943  .vibe/work/I-09B-verify-cli-command/evidence/n1-cli/cli-result.json
+5d4a2a21d05cc5703f0aaacfda67671f5effb2d8662e38b827eb4e66dd660235  .vibe/work/I-09B-verify-cli-command/evidence/n1-cli/runner-catalog.json
+188b6e726fcd37dea86110b8c3ff3caea64cd07f0a54bc37310c4a59787df245  .vibe/work/I-09B-verify-cli-command/evidence/n1-cli/summary.json
+27be841014a0920a6c534502664a4bab6f290dfa9605a04be2dbfe3db9e75204  .vibe/work/I-09B-verify-cli-command/evidence/n2-cli/cli-result.json
+cecd90eb100839763281bd1f00b7bf463ab1f03bd8681b3b84b400470468381f  .vibe/work/I-09B-verify-cli-command/evidence/n2-cli/packets/evidence_n2-cli_advisory-review_13.json
+32b7a01bb0941a1137ee9ddc453e5e6c6e99670750c1f6dd4031b7125203cd1e  .vibe/work/I-09B-verify-cli-command/evidence/n2-cli/packets/evidence_n2-cli_ai-eval_09.json
+ac2cf4a232f1febbc2094c0b89a359a18e5925264a1769a8fc9b8882d23cd1db  .vibe/work/I-09B-verify-cli-command/evidence/n2-cli/packets/evidence_n2-cli_build-package_10.json
+4c8c09029aaaf1135f724647a6179864d3fa5b80cc519d5e61ada3e4945e0ca8  .vibe/work/I-09B-verify-cli-command/evidence/n2-cli/packets/evidence_n2-cli_context-drift_11.json
+a66e5d39e4e876df136d18e5efdc436e7525817e2e01e9b92b14770065aa2cde  .vibe/work/I-09B-verify-cli-command/evidence/n2-cli/packets/evidence_n2-cli_contract-adapter_06.json
+c99872ab470b30a6a47bcc761016f2036c7f33ef9ee219db45b83d7a13bd5475  .vibe/work/I-09B-verify-cli-command/evidence/n2-cli/packets/evidence_n2-cli_e2e_07.json
+036daecb8f473be673b8f1dc0bc31ce61b4dc12710f07630df6190dd70cc539e  .vibe/work/I-09B-verify-cli-command/evidence/n2-cli/packets/evidence_n2-cli_final-dod_14.json
+59c764c684c10c9db4ca4a0ec49108cbda731a9346643a272544bde9cab645b9  .vibe/work/I-09B-verify-cli-command/evidence/n2-cli/packets/evidence_n2-cli_integration_05.json
+e59f161a324e531ed459f72239265ff32cf87cc123280300943b219a198a5366  .vibe/work/I-09B-verify-cli-command/evidence/n2-cli/packets/evidence_n2-cli_lint-format_02.json
+767994dfaee9626ca3da60d1743ac5a5df92d628e4342a473dd0285dd134b178  .vibe/work/I-09B-verify-cli-command/evidence/n2-cli/packets/evidence_n2-cli_mechanical-gate_03.json
+4d92f5ee89e94170a15ceb9337d41a8f3c78448c6a4aa9a363430cecf3af69ee  .vibe/work/I-09B-verify-cli-command/evidence/n2-cli/packets/evidence_n2-cli_observability_12.json
+5eb8b409bac977f952a161c836baba4f92b66da4e25517ee3ee6b0b590462cbb  .vibe/work/I-09B-verify-cli-command/evidence/n2-cli/packets/evidence_n2-cli_safety-hooks_00.json
+6c6667bf62c7d78e4f6dccc0d1a529ac39d5f61943e0f11c1d3c4c5bf6e8dd00  .vibe/work/I-09B-verify-cli-command/evidence/n2-cli/packets/evidence_n2-cli_schema-validation_15.json
+22ff9406610e8c70f1303fcacbf9421bb024c3a8773cc7ed7f7522fcb151295b  .vibe/work/I-09B-verify-cli-command/evidence/n2-cli/packets/evidence_n2-cli_typecheck_01.json
+6ae8fb3c0c80bc1b3cf7685b904151bc70c255a377cbfa1957a0996754a08947  .vibe/work/I-09B-verify-cli-command/evidence/n2-cli/packets/evidence_n2-cli_ui-verification_08.json
+c4aac97049b3c46ea992f857b98dd7bc4f79911749d623c31f6aa6ac52d24e2a  .vibe/work/I-09B-verify-cli-command/evidence/n2-cli/packets/evidence_n2-cli_unit_04.json
+37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570  .vibe/work/I-09B-verify-cli-command/evidence/n2-cli/runner-catalog.json
+5f888767d01270af1059c550c2eafc9a7c35320ebaa9a2f3c3798fc650260e5b  .vibe/work/I-09B-verify-cli-command/evidence/n2-cli/summary.json
+6e7a2bd5b8d625d74c5af951a24523c3d532fa22ad56ef49d5eca7493549b592  .vibe/work/I-09B-verify-cli-command/evidence/n3-cli/cli-result.json
+9bfec5f8dda74f2fab6d86e3303394199b1998c74338520f79ea4673c0ca2aa0  .vibe/work/I-09B-verify-cli-command/evidence/n3-cli/packets/evidence_n3-cli_advisory-review_13.json
+4eb663a9ff7737a86dc35924374782249e731c0dc188b1c03420fdc50186ae92  .vibe/work/I-09B-verify-cli-command/evidence/n3-cli/packets/evidence_n3-cli_ai-eval_09.json
+bdbbf07589abd7bdee967400eb64f5a4a07bc44057b5f67ca4f42b8241d49363  .vibe/work/I-09B-verify-cli-command/evidence/n3-cli/packets/evidence_n3-cli_build-package_10.json
+c15d8130ce5f6ab495601d64e8d2c9b8b5c8fe2089322ee01758939c64fc390a  .vibe/work/I-09B-verify-cli-command/evidence/n3-cli/packets/evidence_n3-cli_context-drift_11.json
+2d136ffeb27cfd552a0b7f22a9646083152405b0ff5be703b0aa963ddcb01d69  .vibe/work/I-09B-verify-cli-command/evidence/n3-cli/packets/evidence_n3-cli_contract-adapter_06.json
+58a898229449f5349d4b1f15eb7a0417e3f5f8268dcd18d1d1be1a28321a4a4e  .vibe/work/I-09B-verify-cli-command/evidence/n3-cli/packets/evidence_n3-cli_e2e_07.json
+fb5b6694cc93d28d0c02d5a3cdbd2416142ba4235c297d506c8386c7a30e8174  .vibe/work/I-09B-verify-cli-command/evidence/n3-cli/packets/evidence_n3-cli_final-dod_14.json
+ee41e245a2095304a4cc9f763b72d7ce9609e76dfa3e45c2da2222472ddb318a  .vibe/work/I-09B-verify-cli-command/evidence/n3-cli/packets/evidence_n3-cli_integration_05.json
+e747453d1463631e15443a8f1b2806cae956527001e56f083e5aaa18656cd53d  .vibe/work/I-09B-verify-cli-command/evidence/n3-cli/packets/evidence_n3-cli_lint-format_02.json
+9c8b5d349c291976309325bd2a750a38e5440bf6b25bdcb327a1298b07086945  .vibe/work/I-09B-verify-cli-command/evidence/n3-cli/packets/evidence_n3-cli_mechanical-gate_03.json
+4ff79017ede360f6b9ebcddbd6259c0f6824f17a1c6b50bc102b9fb08a16fd3b  .vibe/work/I-09B-verify-cli-command/evidence/n3-cli/packets/evidence_n3-cli_observability_12.json
+4dea6de2da682a1eb9dd2e16c1751a254c3637ec5a7a360dc2e3f2dc41a17625  .vibe/work/I-09B-verify-cli-command/evidence/n3-cli/packets/evidence_n3-cli_safety-hooks_00.json
+5240c77c7d78ac83eb9efc8b3560f932499f8436c008f69d4692e8be3f483b6a  .vibe/work/I-09B-verify-cli-command/evidence/n3-cli/packets/evidence_n3-cli_schema-validation_15.json
+12671bd6b5d9452612e9eee5e542d17f19f732136d44712c210ba8acece1cb2c  .vibe/work/I-09B-verify-cli-command/evidence/n3-cli/packets/evidence_n3-cli_typecheck_01.json
+fba426ad65974ff821e13151d086f1a7201138ff8b0be7e026fbe4121b76648e  .vibe/work/I-09B-verify-cli-command/evidence/n3-cli/packets/evidence_n3-cli_ui-verification_08.json
+99883e330285573df09eeb31bf557cd5e98f6c821408fa499f06e24f356bc6d8  .vibe/work/I-09B-verify-cli-command/evidence/n3-cli/packets/evidence_n3-cli_unit_04.json
+7bd181df323ab78700a97e2bf19bed82652f819edfbf2f1b6516b3722a310013  .vibe/work/I-09B-verify-cli-command/evidence/n3-cli/packets/sidecars/n3-cli-schema-validation-15.runner.log
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  .vibe/work/I-09B-verify-cli-command/evidence/n3-cli/packets/sidecars/n3-cli-schema-validation-15.stderr.log
+752751978a6f447f1e335ad71fbb27cf188f4245042ae7cb74c9a7237e332564  .vibe/work/I-09B-verify-cli-command/evidence/n3-cli/packets/sidecars/n3-cli-schema-validation-15.stdout.log
+9faf9481d74b1c5a3939b2ebe405a81a72c7781428a777a16d7769ab1e78724e  .vibe/work/I-09B-verify-cli-command/evidence/n3-cli/runner-catalog.json
+b90ff1bbd866d9b0690ed283c1b3dbaf9e39546689db596a6f230ef943f49f9c  .vibe/work/I-09B-verify-cli-command/evidence/n3-cli/summary.json
+48891a1005cd28a3c314214e20e9d40485a8db6590f300597bb6f1a3cad2515e  .vibe/work/I-09B-verify-cli-command/evidence/n4-cli/cli-result.json
+37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570  .vibe/work/I-09B-verify-cli-command/evidence/n4-cli/runner-catalog.json
+b9ef44e270aca413d70e0d959f2a92da5cc97ed624d9f54fb73781524f950ef1  .vibe/work/I-09B-verify-cli-command/evidence/n4-cli/summary.json
+bf83eb06815835da87bc5d4192e480886c6ab7db16d3a846fd4c7f32db0ba406  .vibe/work/I-09B-verify-cli-command/evidence/n5-cli/cli-result.json
+1b57b7b6faa1ab0d9ef3f7826c03d67f30f365748e8f717dde8be68a442d1f69  .vibe/work/I-09B-verify-cli-command/evidence/n5-cli/packets/evidence_n5-cli_advisory-review_13.json
+0c0087af8f66b4d09a8e79f31b91c8fb0bd73fc9ece7538efc822e5be1628f55  .vibe/work/I-09B-verify-cli-command/evidence/n5-cli/packets/evidence_n5-cli_ai-eval_09.json
+2ce887349e8659d123f068c94d0a97c76a0622a752084d803cdee584b01b417c  .vibe/work/I-09B-verify-cli-command/evidence/n5-cli/packets/evidence_n5-cli_build-package_10.json
+607c04b7584b6bede801cef232bce4d1f06e14c0f4191f12fc44fddebf791257  .vibe/work/I-09B-verify-cli-command/evidence/n5-cli/packets/evidence_n5-cli_context-drift_11.json
+a820d764167b2d9058259b2876577547ab03e02eeb9da7ba0e4da274715eb67e  .vibe/work/I-09B-verify-cli-command/evidence/n5-cli/packets/evidence_n5-cli_contract-adapter_06.json
+2ef6429e423f1a94e489bf9f0f7e616cfde018524ad860ee49bee24fc6d0737f  .vibe/work/I-09B-verify-cli-command/evidence/n5-cli/packets/evidence_n5-cli_e2e_07.json
+cff7b8f2c1d966f522c8af67603bc1cd59f487b3c8fef2539a7dd3af00719be7  .vibe/work/I-09B-verify-cli-command/evidence/n5-cli/packets/evidence_n5-cli_final-dod_14.json
+bf9aa147fe2404ee7edb87dfbb1dfabec669cf6990465a68eead78e32f72b509  .vibe/work/I-09B-verify-cli-command/evidence/n5-cli/packets/evidence_n5-cli_integration_05.json
+1cf64da450a066ac555b09fcd768c854d56fb866dc0c7697df329a9397967d75  .vibe/work/I-09B-verify-cli-command/evidence/n5-cli/packets/evidence_n5-cli_lint-format_02.json
+645891a83f73ad19a7aea1c14371840a1d7608313bf4b41dc4b602b151f6f90d  .vibe/work/I-09B-verify-cli-command/evidence/n5-cli/packets/evidence_n5-cli_mechanical-gate_03.json
+10a78157215636883eea2bc38282f9283213cb14b85714e55d0cf235396079cd  .vibe/work/I-09B-verify-cli-command/evidence/n5-cli/packets/evidence_n5-cli_observability_12.json
+9952d3e8bda0a90d5903efa7c3300a0c3d5587a4c7ff1ec925a419c39115d1d1  .vibe/work/I-09B-verify-cli-command/evidence/n5-cli/packets/evidence_n5-cli_safety-hooks_00.json
+b3e161aa8313f02974b32aa5707bcc02e95bad651ae0ef43320bfed1d922218f  .vibe/work/I-09B-verify-cli-command/evidence/n5-cli/packets/evidence_n5-cli_schema-validation_15.json
+c3f043dc8800bf40f1139ba060829fd3d7a3e1ed4540eea0fe07b0237b66688f  .vibe/work/I-09B-verify-cli-command/evidence/n5-cli/packets/evidence_n5-cli_typecheck_01.json
+f32800a16fc0257d8743575c259a6839eda4da143732dd0201151f37c92f3267  .vibe/work/I-09B-verify-cli-command/evidence/n5-cli/packets/evidence_n5-cli_ui-verification_08.json
+0360539474248931132ea53af7360dcac3b3a4ed2f0521911ba7ba9aabac64f1  .vibe/work/I-09B-verify-cli-command/evidence/n5-cli/packets/evidence_n5-cli_unit_04.json
+454295a460d40f302601a6d652c6b0483923f5dca8f382c20b2e633855d26c5f  .vibe/work/I-09B-verify-cli-command/evidence/n5-cli/runner-catalog.json
+cde768b4931829cc498041916ab84c92110aec5eda986b9bd1d6c94304122fcb  .vibe/work/I-09B-verify-cli-command/evidence/n5-cli/summary.json
+365b49d84aed1bc3f4f78d24e64c934257727ad2ffa0e0804bddcad94e07d924  .vibe/work/I-09B-verify-cli-command/evidence/n6-cli/cli-result.json
+8ab5d3efb7093bab6da9e1f7c318356b19a9667cc6fc90ce803db1999eae2a15  .vibe/work/I-09B-verify-cli-command/evidence/n6-cli/packets/evidence_n6-cli_advisory-review_13.json
+874b5e537e8f75d51a79d0b1358157e151333e461dd683b9690ef93d92cb789b  .vibe/work/I-09B-verify-cli-command/evidence/n6-cli/packets/evidence_n6-cli_ai-eval_09.json
+22c24edabede75fc62833182ed60147cb778201bbabf1b528e31cfb1d4a924fd  .vibe/work/I-09B-verify-cli-command/evidence/n6-cli/packets/evidence_n6-cli_build-package_10.json
+d9513e2db7fe6d74da6f34e1e97ebb961ed2c2616582823599a36c9369eaa6c8  .vibe/work/I-09B-verify-cli-command/evidence/n6-cli/packets/evidence_n6-cli_context-drift_11.json
+e459c8ba3fdbc5fbb7b5f479d38f02b4f8c7e3f83b322b328846cf2639c2324c  .vibe/work/I-09B-verify-cli-command/evidence/n6-cli/packets/evidence_n6-cli_contract-adapter_06.json
+32df39a5803f378c15d2239ce22a4ab03968bac416745500bddf0a532905b5a6  .vibe/work/I-09B-verify-cli-command/evidence/n6-cli/packets/evidence_n6-cli_e2e_07.json
+d65a5fe581e6ede05065febb96d6f0920c66cc2f807977a714f07e3ef699315f  .vibe/work/I-09B-verify-cli-command/evidence/n6-cli/packets/evidence_n6-cli_final-dod_14.json
+f744f7c21dac35a57c82ab2cdc015f8ca1bdf7d7bddcca99d53acb933c3c7bc8  .vibe/work/I-09B-verify-cli-command/evidence/n6-cli/packets/evidence_n6-cli_integration_05.json
+d7a11bb040c4eaa2702a754ed9320dcab3087cb047e27f68ad529887549ac50f  .vibe/work/I-09B-verify-cli-command/evidence/n6-cli/packets/evidence_n6-cli_lint-format_02.json
+623ffc57a05a4cd3b5b1e4f9053bca0159fc3b4a403896e2559844cf58c67044  .vibe/work/I-09B-verify-cli-command/evidence/n6-cli/packets/evidence_n6-cli_mechanical-gate_03.json
+eb9fd124ca08298c0fed1511df02ec2810fa7bc4ecd8dd7361cc6e4070ed8202  .vibe/work/I-09B-verify-cli-command/evidence/n6-cli/packets/evidence_n6-cli_observability_12.json
+3fe49a2ed740525809bb1ee975691697e766453fcf321a09893cedfb883f174b  .vibe/work/I-09B-verify-cli-command/evidence/n6-cli/packets/evidence_n6-cli_safety-hooks_00.json
+5485d24ff0ab87f8191da068a602b54ed5951451c01cd2666dd451c5284573c5  .vibe/work/I-09B-verify-cli-command/evidence/n6-cli/packets/evidence_n6-cli_schema-validation_15.json
+b39c1576a874c6300e9a1778390a1abd32a3b47b6ae63e2cc57199653370ec39  .vibe/work/I-09B-verify-cli-command/evidence/n6-cli/packets/evidence_n6-cli_typecheck_01.json
+8e31970d4a1f7502aab561a2257f57b8beca3f4af431c2869a180167f968518c  .vibe/work/I-09B-verify-cli-command/evidence/n6-cli/packets/evidence_n6-cli_ui-verification_08.json
+8c0eed8102731ad8ba31033eb7847fd2dbac412cab6ec4256bc819a38549883a  .vibe/work/I-09B-verify-cli-command/evidence/n6-cli/packets/evidence_n6-cli_unit_04.json
+1518bdb5f783bca5b5ae6c5f9cbda5991ff0f717977c20889f12a26356ab1641  .vibe/work/I-09B-verify-cli-command/evidence/n6-cli/runner-catalog.json
+f33c7eef5ea230aa0a9f1502da10a93d1783b06df8babc70bb82fcad8d998ff9  .vibe/work/I-09B-verify-cli-command/evidence/n6-cli/summary.json
+84e1b3065839ff496c300a943dcecd476d435dd6c118914c5d90d7fcaf9bec8d  .vibe/work/I-09B-verify-cli-command/evidence/n7-cli-plan/plan.json
+49e7034eeadc493e9dd7800d22bfaccb14a6f0a1ab5aa83c16dfb58ddb011a85  .vibe/work/I-09B-verify-cli-command/evidence/n7-cli/cli-result.json
+81d1806692221bcf7e7ad5631cfa44ad0f5b2ab9eb9de1599cba7eb752ff9560  .vibe/work/I-09B-verify-cli-command/evidence/n7-cli/packets/evidence_n7-cli_advisory-review_13.json
+33e95c165c895b63a6b46dc574333f2a147043cd564f03b8a0205a74042ad0c0  .vibe/work/I-09B-verify-cli-command/evidence/n7-cli/packets/evidence_n7-cli_ai-eval_09.json
+07ef11d2e47671853f78a54a8543162a532b8971f3537aa88b3ecc40d5a0c338  .vibe/work/I-09B-verify-cli-command/evidence/n7-cli/packets/evidence_n7-cli_build-package_10.json
+256081ad8adcc2436198dc4e9355410a5729ca8ddc0401c18d8c05128c7c352e  .vibe/work/I-09B-verify-cli-command/evidence/n7-cli/packets/evidence_n7-cli_context-drift_11.json
+f90b6c6cf98a6974edbff1e3187771fe98aeb457d5d1c11502e1346a2866415f  .vibe/work/I-09B-verify-cli-command/evidence/n7-cli/packets/evidence_n7-cli_contract-adapter_06.json
+dcca73a351a07fbfa8801e7d0e56855afd69597ff7fb55a0fb9fee07f2ef8567  .vibe/work/I-09B-verify-cli-command/evidence/n7-cli/packets/evidence_n7-cli_e2e_07.json
+a8237a520f6cd617724fe70928f43275abb982f67d0f5ee205c1ef30afb7eff7  .vibe/work/I-09B-verify-cli-command/evidence/n7-cli/packets/evidence_n7-cli_final-dod_14.json
+c5c821d0a549cdf6e8b77300a85523465fd072a711dc0e81c87806b46ab9f908  .vibe/work/I-09B-verify-cli-command/evidence/n7-cli/packets/evidence_n7-cli_integration_05.json
+2dc5ca4cd37a2838c5e9fdf6a098ba3efc216e9766d859b3ac6d224c9855cb67  .vibe/work/I-09B-verify-cli-command/evidence/n7-cli/packets/evidence_n7-cli_lint-format_02.json
+3032599774e6228fcc04def0b20910302e76a5249024f1d2cd268807d7a147ac  .vibe/work/I-09B-verify-cli-command/evidence/n7-cli/packets/evidence_n7-cli_mechanical-gate_03.json
+11cde23d54f4dd856a5cc1d2d2117264fec8381814888ea7d2fd9ed5dada04ad  .vibe/work/I-09B-verify-cli-command/evidence/n7-cli/packets/evidence_n7-cli_observability_12.json
+95902aadc807b6880c0676f40d5993ec89da9a3b87379b256fb19e73749cd370  .vibe/work/I-09B-verify-cli-command/evidence/n7-cli/packets/evidence_n7-cli_safety-hooks_00.json
+932166ed7162cd9ed303dced8a9dabba8f1132d5974d2ebf589e8f7a5855f7e6  .vibe/work/I-09B-verify-cli-command/evidence/n7-cli/packets/evidence_n7-cli_schema-validation_15.json
+e72caea0002f1d7ee2b10d8918cc5a8dee1ed0724622e2348a53a7d43ddb3904  .vibe/work/I-09B-verify-cli-command/evidence/n7-cli/packets/evidence_n7-cli_typecheck_01.json
+ce1405f48a5abb346dae75e07901f325ada110217e864e966e50eec60a3716b8  .vibe/work/I-09B-verify-cli-command/evidence/n7-cli/packets/evidence_n7-cli_ui-verification_08.json
+a895d8f7e098bae062e7d759b15c0249ae4c8e3a19744705bdbff917578e3fb8  .vibe/work/I-09B-verify-cli-command/evidence/n7-cli/packets/evidence_n7-cli_unit_04.json
+baf0b08db3502294d98b9d8dff92daeeaebae393850320f778b0a15eb9837f27  .vibe/work/I-09B-verify-cli-command/evidence/n7-cli/packets/sidecars/n7-cli-advisory-review-13.runner.log
+6e38a5c9f799709abf5965abb264d1c416d8bb217b8b843ef4a83a3b64f60385  .vibe/work/I-09B-verify-cli-command/evidence/n7-cli/packets/sidecars/n7-cli-advisory-review-13.stderr.log
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  .vibe/work/I-09B-verify-cli-command/evidence/n7-cli/packets/sidecars/n7-cli-advisory-review-13.stdout.log
+c04aec6984fa631eb5983ee98a46e41709359caf9fd765eb041a0e118b9103ea  .vibe/work/I-09B-verify-cli-command/evidence/n7-cli/runner-catalog.json
+e28260501cd937c0bd88a90bfda87574c249f88d968819602dde4626ae10bda0  .vibe/work/I-09B-verify-cli-command/evidence/n7-cli/summary.json
+25ddc3b1c278ba4f7e8f28ede74b388e5b3c21cee3ce91837320289938263f01  .vibe/work/I-09B-verify-cli-command/evidence/p1-cli/cli-result.json
+63e1cffff0e2165deac1f94635fc12bbf794eddcb6f9c59c0d19c3ac6a680fed  .vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/evidence_p1-cli_advisory-review_13.json
+0da6a70d68aa74618cac6c19ec9d76143996b1a29df80bc196a0cb6b060fdbeb  .vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/evidence_p1-cli_ai-eval_09.json
+e3bdca7369fb976946d6f6b050b99e5dbccf672918620902cabc8d5ecc294d32  .vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/evidence_p1-cli_build-package_10.json
+ef953cf738330180a2b817a61d2840ce01e5b756e026e48fa52f9009a989a6e3  .vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/evidence_p1-cli_context-drift_11.json
+337ce41bdcfddab77d85f79b86141fd442a93595b0f248c480de867bcc1613ac  .vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/evidence_p1-cli_contract-adapter_06.json
+6f9e45dc168ccdea065f0d337a703f3cbbc49e7367f66bb2651dd271d4b2c380  .vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/evidence_p1-cli_e2e_07.json
+1d39a6dd5f04b17c2bed18aa767f2deea57fe65a14572bdbc7b722d1af82bc60  .vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/evidence_p1-cli_final-dod_14.json
+8a2f667baf1cdf4b3d9ce3413ccbc9fda6040ff5abbfdfee020cb8b08fa6a7f1  .vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/evidence_p1-cli_integration_05.json
+0e6b3761401b8fad717aa40b92308305d4459c0bb7ab133c2261f457d57c2d02  .vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/evidence_p1-cli_lint-format_02.json
+8e48e849589fdd4fd55e68f9cd44ece7187c815901f270ae1387bd1c37f9d072  .vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/evidence_p1-cli_mechanical-gate_03.json
+4d78b34f93dae5f487bbdc9bf3b6e47c40fa6ecdcb0cb224bfe1b50cb442bd7a  .vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/evidence_p1-cli_observability_12.json
+3ea1a5c07677bf433c5ac6cc7470b92f42703733dfd9b54acfe5bb4851b1cb8d  .vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/evidence_p1-cli_safety-hooks_00.json
+752bdf8458e287190bd6c00c2d8d79f69cb7e0f21a556a4bd29db9a091a854a5  .vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/evidence_p1-cli_schema-validation_15.json
+873d785593fbc9ce660d0c01692a2d625335ff7a63cdd89879b2ebba8459baf5  .vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/evidence_p1-cli_typecheck_01.json
+102b204e059436e53775b4c1eef1b7d6a0ad77129ec1d954d48c8740c94c0771  .vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/evidence_p1-cli_ui-verification_08.json
+6a568334701a21416435f3a7e4f9051207ee78f7dfb292217597e37e942f91cb  .vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/evidence_p1-cli_unit_04.json
+e4a8dafcb3ec8a6986df4c64d83a262e31eab81897cda3592049b009cc27928f  .vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/schema-validation-output.json
+baf0b08db3502294d98b9d8dff92daeeaebae393850320f778b0a15eb9837f27  .vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/sidecars/p1-cli-advisory-review-13.runner.log
+6e38a5c9f799709abf5965abb264d1c416d8bb217b8b843ef4a83a3b64f60385  .vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/sidecars/p1-cli-advisory-review-13.stderr.log
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  .vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/sidecars/p1-cli-advisory-review-13.stdout.log
+2df51a932cdc036d11fb513edd7d441454f4dd92115b50a1b5e696e4199d0a7d  .vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/sidecars/p1-cli-schema-validation-15.runner.log
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  .vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/sidecars/p1-cli-schema-validation-15.stderr.log
+3d66853ec13e527fccc73cddfe13c170df2ac1c3312a290cff4a1e4ca5cd4cc1  .vibe/work/I-09B-verify-cli-command/evidence/p1-cli/packets/sidecars/p1-cli-schema-validation-15.stdout.log
+61d7041d8971089c78cda46ad9ec6bf05ffd783add86745ddb92bb6a786cd7c2  .vibe/work/I-09B-verify-cli-command/evidence/p1-cli/runner-catalog.json
+d4f6b0e943e26bf7a0f0ba0027290e6541005fd230ad0ec5e4c80e89c4464fc3  .vibe/work/I-09B-verify-cli-command/evidence/p1-cli/summary.json
+aad6de981e2230a51f44a2a301b8f3e269fe6a8d20a3833fa02514fc8107a87b  .vibe/work/I-09B-verify-cli-command/evidence/r1/spawn.json
+1ca9b6688b61786821ea34f5fb8fc79c5e9ee4b2aafcc3b260e77af21f10f3ca  .vibe/work/I-09B-verify-cli-command/evidence/r2/foundation-spawn.json
+3dbd1b591fe13948446286102e889a65b511fd02c3a0a73e837d1c193d420129  .vibe/work/I-09B-verify-cli-command/evidence/r3/cli-result.json
+416a2564cdbd12cd3303571d19b95a1408138bc7da70bd1abed2313044d8de56  .vibe/work/I-09B-verify-cli-command/evidence/r3/packets/evidence_r3_advisory-review_13.json
+8b729f7ee91f0c51ed15ae51d6040df7642f126cfe451ab09c5ff3edb35ca98e  .vibe/work/I-09B-verify-cli-command/evidence/r3/packets/evidence_r3_ai-eval_09.json
+ddc76ddb462daa1bb46e4174ae1acb37584a1b8443ece446a1cc67af319bfbab  .vibe/work/I-09B-verify-cli-command/evidence/r3/packets/evidence_r3_build-package_10.json
+da60c4373b71c09424c12d1f2a98e66ab24d71d3d45c0ff124fde6542914c2a1  .vibe/work/I-09B-verify-cli-command/evidence/r3/packets/evidence_r3_context-drift_11.json
+f38d06fd037bc75b89dfe5c6c8650f275c9d31523b344ede869567f30c0aad8c  .vibe/work/I-09B-verify-cli-command/evidence/r3/packets/evidence_r3_contract-adapter_06.json
+5e28860a7c62c3842cc3844aec79454ac8381452a28680f81de4df7217a769ec  .vibe/work/I-09B-verify-cli-command/evidence/r3/packets/evidence_r3_e2e_07.json
+a1f4d90de7f73289e5f4cdb1616b80a27a222af2de1a013dedf29e3ea2f5dd74  .vibe/work/I-09B-verify-cli-command/evidence/r3/packets/evidence_r3_final-dod_14.json
+762a01f11114874fe4df01d30947eb5b5ca23c4c12c7da1a7cf018c19d791982  .vibe/work/I-09B-verify-cli-command/evidence/r3/packets/evidence_r3_integration_05.json
+4f15d1f90ab74e8724925f978f4937c8872b5ee267e0adcdd865a145ea243942  .vibe/work/I-09B-verify-cli-command/evidence/r3/packets/evidence_r3_lint-format_02.json
+f401d91db0a4a515fabc9556c45d23ce37b1d89017ca106811e62ffa8d4de877  .vibe/work/I-09B-verify-cli-command/evidence/r3/packets/evidence_r3_mechanical-gate_03.json
+845c21c269a389db8623adbb82ad01b9f4ebd0fcc906e5d3f91d3967aff41edd  .vibe/work/I-09B-verify-cli-command/evidence/r3/packets/evidence_r3_observability_12.json
+b097beb30ad646f1d317fa9bdb581282b7055c297144a5e2ddad3c7c77d6fb1a  .vibe/work/I-09B-verify-cli-command/evidence/r3/packets/evidence_r3_safety-hooks_00.json
+2a52c05cfb2bec916fc2af48685791584d1488623c0a4bd28031a045365e95bc  .vibe/work/I-09B-verify-cli-command/evidence/r3/packets/evidence_r3_schema-validation_15.json
+9fdb169cb185520e677003342fce9fc7c1256ef2782b4da55ff44b243da7572b  .vibe/work/I-09B-verify-cli-command/evidence/r3/packets/evidence_r3_typecheck_01.json
+228553d019d5863157afc047da891b16dc14b3619a447e1571f6d154e506f04a  .vibe/work/I-09B-verify-cli-command/evidence/r3/packets/evidence_r3_ui-verification_08.json
+3b4828d78263f6d6e281b4e8a58f796b83d64d727fab6679f5c4a121238b0bf2  .vibe/work/I-09B-verify-cli-command/evidence/r3/packets/evidence_r3_unit_04.json
+9102cd16cc10cb5b4e8b802f4fecbf81f20b516d66f0b93e64287f6a21d56223  .vibe/work/I-09B-verify-cli-command/evidence/r3/packets/secret-output.txt
+baf0b08db3502294d98b9d8dff92daeeaebae393850320f778b0a15eb9837f27  .vibe/work/I-09B-verify-cli-command/evidence/r3/packets/sidecars/r3-advisory-review-13.runner.log
+6e38a5c9f799709abf5965abb264d1c416d8bb217b8b843ef4a83a3b64f60385  .vibe/work/I-09B-verify-cli-command/evidence/r3/packets/sidecars/r3-advisory-review-13.stderr.log
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  .vibe/work/I-09B-verify-cli-command/evidence/r3/packets/sidecars/r3-advisory-review-13.stdout.log
+e2fb4f4ec11d281502c8614c5f964ec1478f4ee3fca2623aa05d0a1a969f9802  .vibe/work/I-09B-verify-cli-command/evidence/r3/packets/sidecars/r3-schema-validation-15.runner.log
+41e9b44efffe56435f15ae1f22ad77f525c55318281b6316a5a1917083ca2d23  .vibe/work/I-09B-verify-cli-command/evidence/r3/packets/sidecars/r3-schema-validation-15.stderr.log
+3a0831ab230198baaff9c0e737c406132e0a524396337a05e073c69860ba0527  .vibe/work/I-09B-verify-cli-command/evidence/r3/packets/sidecars/r3-schema-validation-15.stdout.log
+d54c3cf86d3342c0b5a22517658cd473a36259942755b3c26d831478317aea3f  .vibe/work/I-09B-verify-cli-command/evidence/r3/runner-catalog.json
+8ff759857262b9f3eb5b15f3455534d6d60bc99213381a2e3d3ddea1dc0837d9  .vibe/work/I-09B-verify-cli-command/evidence/r3/summary.json
+897776a2ee1509e31c60980d038274d68911f8614e4ae34493670d377f510287  .vibe/work/I-09B-verify-cli-command/evidence/schema-only-cli/plan.json
+b1917843bbedcb6dab0e15794fb6dc09824eed0a2b35a083db1f802cbe70448b  .vibe/work/I-09B-verify-cli-command/evidence/seams/package-api-lock-seams.txt
+3f97daf1cce8e3678d364d1e5c31b5acb4278fe21a032a775a237af6b6409968  .vibe/work/I-09B-verify-cli-command/evidence/w-rb3/cli-result.json
+3327537d026d4c9ed2b003d2d5c39222bc3cecace58d8e3aead6eb3619f2b126  .vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/evidence_w-rb3_advisory-review_13.json
+b19850e93d718c3d4cfe64b7947115b65e86211a9a024183ff9caa566e08197f  .vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/evidence_w-rb3_ai-eval_09.json
+3e9eab43eb61abccd96df32e16489fc7a71e706ab50f18dac34903cb7e1b7102  .vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/evidence_w-rb3_build-package_10.json
+739636477c40903f6166011eec43b386958e44cda7e9e176c366c38187c8daf6  .vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/evidence_w-rb3_context-drift_11.json
+c2d7b0761a42d6a62f29bd994f17b9e3e05dfda8cf10265db18a241a3b83713a  .vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/evidence_w-rb3_contract-adapter_06.json
+0acb24d6d363cef27d67b21866a17eeafa42bb1c1bb332e827df3a07a678969f  .vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/evidence_w-rb3_e2e_07.json
+06e01e3a54dfe8271d632f3288789f426e0c772760a7349b9d6de37bf4dae17d  .vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/evidence_w-rb3_final-dod_14.json
+f6f45af0cb56a4befe405e64c163e995b4881fd92355aae6a77f67e5377ad4e4  .vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/evidence_w-rb3_integration_05.json
+4d3ff5e840ebe91d8ece0a3fc7e31914af8ad8032c9c498bc7024f3b0ebe24fb  .vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/evidence_w-rb3_lint-format_02.json
+ccaf6478f5cb32d66b2483a425522463ebf694a8c9fa92edcf9ff52c23867a83  .vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/evidence_w-rb3_mechanical-gate_03.json
+7221c8e46192f8f32b55fc2710c210adace0163b6cb7c371bd01c95b84b009cc  .vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/evidence_w-rb3_observability_12.json
+c50bf4c1742ce7123357bcb152d6d37198eb781662713ec92321a84c0c4804a5  .vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/evidence_w-rb3_safety-hooks_00.json
+0edaec52bbf2d462e0eb880124d1f7e87f266ecdf8fa0625c1f1761ce1ab449b  .vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/evidence_w-rb3_schema-validation_15.json
+b8945f049bb4561bacdc891f6b8420a475bd844cb1aca0e1ef218a93f841f40f  .vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/evidence_w-rb3_typecheck_01.json
+6089ae47c2a56acd5eb096d094d3fb66a326d6e77a712a0504de16b0e35915ce  .vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/evidence_w-rb3_ui-verification_08.json
+63d9b2a70b7fadc4ef2bac21ebdf3e36e28be4f3af0cf2b89428237b2a8f77f0  .vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/evidence_w-rb3_unit_04.json
+e4a8dafcb3ec8a6986df4c64d83a262e31eab81897cda3592049b009cc27928f  .vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/schema-validation-output.json
+baf0b08db3502294d98b9d8dff92daeeaebae393850320f778b0a15eb9837f27  .vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/sidecars/w-rb3-advisory-review-13.runner.log
+6e38a5c9f799709abf5965abb264d1c416d8bb217b8b843ef4a83a3b64f60385  .vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/sidecars/w-rb3-advisory-review-13.stderr.log
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  .vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/sidecars/w-rb3-advisory-review-13.stdout.log
+04fbcab25f9914de7067e1e04ccdf6de500d146162e3f0976ac8433f0928989c  .vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/sidecars/w-rb3-schema-validation-15.runner.log
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  .vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/sidecars/w-rb3-schema-validation-15.stderr.log
+3d66853ec13e527fccc73cddfe13c170df2ac1c3312a290cff4a1e4ca5cd4cc1  .vibe/work/I-09B-verify-cli-command/evidence/w-rb3/packets/sidecars/w-rb3-schema-validation-15.stdout.log
+b238399410afbc7706f6161390fe08209bb294bb4da1e73f9862a187a3ea446d  .vibe/work/I-09B-verify-cli-command/evidence/w-rb3/runner-catalog.json
+921c9a4dda5a8b2254b1c4564571176eae75ea77e9cc6de3b55e6b3d09089eb4  .vibe/work/I-09B-verify-cli-command/evidence/w-rb3/summary.json
+100052567ff52103d54a22ba34c9065e31eec4aea58aa06a514527a17e1a5132  .vibe/work/I-09B-verify-cli-command/evidence/witness-failure.json
+274d2e1057cc759cad6244a5b054e809c6efa83ffb4aa67a6aca3616f9ef7b41  .vibe/work/I-09B-verify-cli-command/evidence/witness-summary.json

@@ -1,0 +1,51 @@
+{
+  "w-rb3": {
+    "status": "success",
+    "packetCount": 16
+  },
+  "p1-cli": {
+    "status": "success",
+    "packetCount": 16
+  },
+  "n1-cli": {
+    "status": "blocked",
+    "classification": "invalid_input"
+  },
+  "n2-cli": {
+    "status": "blocked",
+    "classification": "missing_prerequisite"
+  },
+  "n3-cli": {
+    "status": "blocked",
+    "classification": "missing_prerequisite"
+  },
+  "n4-cli": {
+    "status": "blocked",
+    "classification": "invalid_input"
+  },
+  "n5-cli": {
+    "status": "blocked",
+    "classification": "invalid_input"
+  },
+  "n6-cli": {
+    "status": "failure",
+    "classification": "internal_error"
+  },
+  "n7-cli": {
+    "status": "success",
+    "runnerStatus": "advisory_warning"
+  },
+  "invalidInvocation": "covered unknown flag, positional, missing value, duplicate, malformed catalog, and secret-like value",
+  "r1": {
+    "exit": 2,
+    "classification": "unsupported_operation"
+  },
+  "r2": {
+    "exit": 0,
+    "status": "success"
+  },
+  "r3": {
+    "status": "success",
+    "secretPatternHits": 0
+  }
+}

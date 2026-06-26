@@ -1,0 +1,298 @@
+{
+  "schemaVersion": "vibe-engineer.cli.result.v1",
+  "invocation": {
+    "id": "i-09b-fix-verify-09736eb5",
+    "command": "verify",
+    "argv": [
+      "verify",
+      "--implementation-plan",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/fixtures/schema-only-passed.implementation-plan.json",
+      "--evidence-root",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/p1-cli/packets",
+      "--project-root",
+      "/Users/lizavasilyeva/work/vibe-engineer",
+      "--run-id",
+      "i09b-p1-cli",
+      "--runner-catalog",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/p1-cli/runner-catalog.json",
+      "--result-file",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/p1-cli/result/cli-result.json"
+    ],
+    "projectRoot": "/Users/lizavasilyeva/work/vibe-engineer",
+    "configPath": null,
+    "startedAt": "2026-06-25T19:17:53.743Z",
+    "endedAt": "2026-06-25T19:17:53.743Z"
+  },
+  "status": "success",
+  "exitCode": 0,
+  "payload": {
+    "kind": "verification_result",
+    "schemaVersion": "vibe-engineer.cli.payload.v1",
+    "data": {
+      "ok": true,
+      "runnerStatus": "passed",
+      "runId": "i09b-p1-cli",
+      "rerunOf": null,
+      "evidencePackets": [
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/p1-cli/packets/evidence_i09b-p1-cli_safety-hooks_00.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "23880550c6ca1760c166e8e86df2c46f767c698a08a8e669c688d6707b6df939",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/p1-cli/packets/evidence_i09b-p1-cli_typecheck_01.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "c3ba69f968f14be99ea8df08fb27f1dcb6dc44e22528de762719566b681185fa",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/p1-cli/packets/evidence_i09b-p1-cli_lint-format_02.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "f0e45dd3f3882bf9953c6366bd1d13ea30dda18ad51c58ea7a2d24847d7f1c13",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/p1-cli/packets/evidence_i09b-p1-cli_mechanical-gate_03.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "5105d8f0fd7008d0158d69d866224abc85da622bfaf2e914722651d376ce5bf1",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/p1-cli/packets/evidence_i09b-p1-cli_unit_04.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "d4d03f6f78c69a5772df670f498caf97537fffbbeb3afa62b9b8931ca25bd95e",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/p1-cli/packets/evidence_i09b-p1-cli_integration_05.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "7e3cf38888af38979cd54ab0c2f91c5fd98fa1b531397823f71f187f51b37084",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/p1-cli/packets/evidence_i09b-p1-cli_contract-adapter_06.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "4dd2cab07ddfe78eae4d4e71a22c00ffccb6955b750a2441cdc08a21a4fa6ce6",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/p1-cli/packets/evidence_i09b-p1-cli_e2e_07.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "80a984a3f963dfef23b581b0534b0a374dafce07e298d0e576836ec5acb7b820",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/p1-cli/packets/evidence_i09b-p1-cli_ui-verification_08.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "c87b4708b51df16970fb3bf8de9cab3ce92f16dff28b65ff303de875112d5c8a",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/p1-cli/packets/evidence_i09b-p1-cli_ai-eval_09.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "557563f0430ebe65e6965f47420383ad858b78450884faa3d417e07627f24e14",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/p1-cli/packets/evidence_i09b-p1-cli_build-package_10.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "e4477fcdd42aff789f6f7d75d3aa4b2bf4ba2ca5ae234affdec5bf2fbb796c4e",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/p1-cli/packets/evidence_i09b-p1-cli_context-drift_11.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "8121f714653562a74f429e5d484216c29558f5b55d6a7e7281a4810802ab8afe",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/p1-cli/packets/evidence_i09b-p1-cli_observability_12.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "dab349828cece8837d14e4cf5987cabc4d0035a5db630214a296d9fd6336e309",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/p1-cli/packets/evidence_i09b-p1-cli_advisory-review_13.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "d8c44dae6107690ea8d06fccea5f053d229049da23d4b28d19c2973127c95de3",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/p1-cli/packets/evidence_i09b-p1-cli_final-dod_14.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "38547f394935c0bf537b4087113cc684513a20125dd490f2f6c032423e04df89",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/p1-cli/packets/evidence_i09b-p1-cli_schema-validation_15.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "d6c4f89e5ae0ddaea03a52d28108522622160c58f5d51f55958dc67dcb03a879",
+          "valid": true
+        }
+      ],
+      "executedItems": [
+        "schema-validation"
+      ],
+      "recordedItems": [
+        "safety-hooks",
+        "typecheck",
+        "lint-format",
+        "mechanical-gate",
+        "unit",
+        "integration",
+        "contract-adapter",
+        "e2e",
+        "ui-verification",
+        "ai-eval",
+        "build-package",
+        "context-drift",
+        "observability",
+        "advisory-review",
+        "final-dod"
+      ],
+      "blockedItems": [],
+      "failures": [],
+      "warnings": [
+        "safety_hooks is represented for the domain-neutral I-09A fixture.",
+        "typecheck is represented for the domain-neutral I-09A fixture.",
+        "lint_format is represented for the domain-neutral I-09A fixture.",
+        "mechanical_gate is represented for the domain-neutral I-09A fixture.",
+        "unit is represented for the domain-neutral I-09A fixture.",
+        "integration is represented for the domain-neutral I-09A fixture.",
+        "contract_adapter is represented for the domain-neutral I-09A fixture.",
+        "e2e is represented for the domain-neutral I-09A fixture.",
+        "ui_verification is represented for the domain-neutral I-09A fixture.",
+        "ai_eval is represented for the domain-neutral I-09A fixture.",
+        "build_package is represented for the domain-neutral I-09A fixture.",
+        "context_drift is represented for the domain-neutral I-09A fixture.",
+        "observability is represented for the domain-neutral I-09A fixture.",
+        "advisory_review is represented for the domain-neutral I-09A fixture.",
+        "final_dod is represented for the domain-neutral I-09A fixture."
+      ]
+    }
+  },
+  "diagnostics": [],
+  "artifacts": [
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/p1-cli/packets/evidence_i09b-p1-cli_safety-hooks_00.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "23880550c6ca1760c166e8e86df2c46f767c698a08a8e669c688d6707b6df939"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/p1-cli/packets/evidence_i09b-p1-cli_typecheck_01.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "c3ba69f968f14be99ea8df08fb27f1dcb6dc44e22528de762719566b681185fa"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/p1-cli/packets/evidence_i09b-p1-cli_lint-format_02.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "f0e45dd3f3882bf9953c6366bd1d13ea30dda18ad51c58ea7a2d24847d7f1c13"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/p1-cli/packets/evidence_i09b-p1-cli_mechanical-gate_03.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "5105d8f0fd7008d0158d69d866224abc85da622bfaf2e914722651d376ce5bf1"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/p1-cli/packets/evidence_i09b-p1-cli_unit_04.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "d4d03f6f78c69a5772df670f498caf97537fffbbeb3afa62b9b8931ca25bd95e"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/p1-cli/packets/evidence_i09b-p1-cli_integration_05.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "7e3cf38888af38979cd54ab0c2f91c5fd98fa1b531397823f71f187f51b37084"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/p1-cli/packets/evidence_i09b-p1-cli_contract-adapter_06.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "4dd2cab07ddfe78eae4d4e71a22c00ffccb6955b750a2441cdc08a21a4fa6ce6"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/p1-cli/packets/evidence_i09b-p1-cli_e2e_07.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "80a984a3f963dfef23b581b0534b0a374dafce07e298d0e576836ec5acb7b820"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/p1-cli/packets/evidence_i09b-p1-cli_ui-verification_08.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "c87b4708b51df16970fb3bf8de9cab3ce92f16dff28b65ff303de875112d5c8a"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/p1-cli/packets/evidence_i09b-p1-cli_ai-eval_09.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "557563f0430ebe65e6965f47420383ad858b78450884faa3d417e07627f24e14"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/p1-cli/packets/evidence_i09b-p1-cli_build-package_10.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "e4477fcdd42aff789f6f7d75d3aa4b2bf4ba2ca5ae234affdec5bf2fbb796c4e"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/p1-cli/packets/evidence_i09b-p1-cli_context-drift_11.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "8121f714653562a74f429e5d484216c29558f5b55d6a7e7281a4810802ab8afe"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/p1-cli/packets/evidence_i09b-p1-cli_observability_12.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "dab349828cece8837d14e4cf5987cabc4d0035a5db630214a296d9fd6336e309"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/p1-cli/packets/evidence_i09b-p1-cli_advisory-review_13.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "d8c44dae6107690ea8d06fccea5f053d229049da23d4b28d19c2973127c95de3"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/p1-cli/packets/evidence_i09b-p1-cli_final-dod_14.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "38547f394935c0bf537b4087113cc684513a20125dd490f2f6c032423e04df89"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/p1-cli/packets/evidence_i09b-p1-cli_schema-validation_15.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "d6c4f89e5ae0ddaea03a52d28108522622160c58f5d51f55958dc67dcb03a879"
+    },
+    {
+      "kind": "cli_result",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/p1-cli/result/cli-result.json",
+      "schemaVersion": "vibe-engineer.cli.result.v1",
+      "role": "report",
+      "sha256": null
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,94 @@
+{
+  "schemaVersion": "1.0.0",
+  "artifactKind": "evidence_packet",
+  "artifactId": "evidence:p1-cli:mechanical-gate:03",
+  "title": "Verification evidence for mechanical-gate",
+  "createdAt": "2026-06-25T18:20:22.798Z",
+  "updatedAt": "2026-06-25T18:20:22.798Z",
+  "producer": {
+    "kind": "verification_runner",
+    "id": "i-09a-runner-core",
+    "name": "@vibe-engineer/verification",
+    "version": "0.1.0",
+    "runId": "p1-cli"
+  },
+  "status": "not_run",
+  "ownership": {
+    "ownerLane": "I-09A-verification-runner-core-evidence-routing",
+    "ownedWritePaths": [
+      "packages/verification/src/**",
+      "packages/verification/fixtures/**",
+      "packages/verification/tests/**",
+      ".vibe/work/I-09A-verification-runner-core-evidence-routing/**"
+    ],
+    "readOnlyPaths": [
+      "packages/artifacts/**",
+      "packages/orchestration/**",
+      "packages/cli/**"
+    ],
+    "untouchablePaths": [
+      ".git/**",
+      "pnpm-lock.yaml",
+      "package.json",
+      "pnpm-workspace.yaml"
+    ],
+    "concurrencyNotes": "I-09A runner core evidence packet written atomically under evidenceRoot."
+  },
+  "links": [
+    {
+      "rel": "evidence_for",
+      "artifactKind": "implementation_plan",
+      "artifactId": "i09a-plan-approved",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/verification/fixtures/plans/approved-plan.json",
+      "required": true,
+      "statusAtLinkTime": "approved"
+    }
+  ],
+  "extensions": {
+    "dev.vibe.verification": {
+      "schemaVersion": "1.0.0",
+      "requiredItemId": "mechanical-gate",
+      "requiredItemAction": "not_applicable",
+      "runId": "p1-cli",
+      "runnerVersion": "0.1.0"
+    }
+  },
+  "evidenceClass": "informational",
+  "layer": "mechanical_gate",
+  "subjectRefs": [
+    {
+      "rel": "evidence_for",
+      "artifactKind": "implementation_plan",
+      "artifactId": "i09a-plan-approved",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/verification/fixtures/plans/approved-plan.json",
+      "required": true,
+      "statusAtLinkTime": "approved"
+    },
+    {
+      "rel": "evidence_for",
+      "artifactKind": "verification_delta",
+      "artifactId": "i09a-delta-approved",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/verification/fixtures/plans/approved-plan.json",
+      "required": true,
+      "statusAtLinkTime": "complete"
+    }
+  ],
+  "commandOrTool": {
+    "kind": "manual_operator",
+    "name": "delta-item-not_applicable",
+    "workingDirectory": "/Users/lizavasilyeva/work/vibe-engineer",
+    "environmentSummary": "no command executed"
+  },
+  "startedAt": "2026-06-25T18:20:22.798Z",
+  "endedAt": "2026-06-25T18:20:22.798Z",
+  "exitStatus": {
+    "kind": "not_applicable",
+    "status": "skipped"
+  },
+  "result": "skipped",
+  "blocking": false,
+  "artifacts": [],
+  "warnings": [
+    "mechanical_gate is represented for the domain-neutral I-09A fixture."
+  ]
+}

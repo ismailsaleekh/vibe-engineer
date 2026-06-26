@@ -1,0 +1,93 @@
+COMMAND: static verify/source contract scan
+DATE_UTC: 2026-06-25T18:43:43Z
+
+## verify JS/MJS files
+
+## verify TS files
+packages/cli/src/commands/verify/index.ts
+
+## import/export lines
+1:import { createHash } from "node:crypto";
+2:import { existsSync, readFileSync, realpathSync, statSync } from "node:fs";
+3:import { mkdir, readFile } from "node:fs/promises";
+4:import { dirname, isAbsolute, relative, resolve } from "node:path";
+5:import { validateArtifactFile } from "@vibe-engineer/artifacts";
+6:import { runVerificationPlan } from "@vibe-engineer/verification";
+7:import {
+15:import { CliClassification, CliErrorCode, cliError, diagnostic } from "../../errors/codes.js";
+16:import { parseFlagToken, sanitizeFlagForDisplay } from "../../errors/sanitization.js";
+379:    const validation = validateArtifactFile(packetPath, { kind: "evidence_packet" });
+503:    const result = await runVerificationPlan({
+534:export const verifyCommand = Object.freeze({
+541:export default verifyCommand;
+
+## suspect fallback/hack tokens
+
+## command loader default registration lines
+6:const LATER_COMMANDS = new Set([
+12:  "verify",
+139:const FOUNDATION_COMMANDS = Object.freeze([
+159:  constructor(commands = FOUNDATION_COMMANDS) {
+182:      const unsupported = LATER_COMMANDS.has(commandId);
+194:export function createCommandLoader(commands) {
+
+## entry default loader lines
+201:    const loader = createCommandLoader();
+202:    const result = await loader.dispatch(command, options.commandArgs, {
+
+## package-name API seams
+packages/cli/package.json:7:  "bin": {
+packages/cli/package.json:10:  "exports": {
+packages/cli/package.json:27:    "@vibe-engineer/artifacts": "workspace:*",
+packages/cli/package.json:29:    "@vibe-engineer/verification": "workspace:*"
+packages/verification/package.json:2:  "name": "@vibe-engineer/verification",
+packages/verification/package.json:7:  "exports": {
+packages/verification/package.json:11:    "@vibe-engineer/artifacts": "workspace:*",
+packages/artifacts/package.json:2:  "name": "@vibe-engineer/artifacts",
+packages/artifacts/package.json:8:  "exports": {
+
+## verification public exports/status/API markers
+6:import { validateArtifactFile, validateArtifact, validateArtifactKind } from '@vibe-engineer/artifacts';
+8:export const VERIFICATION_RUNNER_VERSION = '0.1.0';
+10:export const VERIFICATION_STATUSES = Object.freeze({
+17:export const VERIFICATION_STATUS_VALUES = Object.freeze(Object.values(VERIFICATION_STATUSES));
+55:const MAX_TIMEOUT_MS = 30000;
+57:const MAX_OUTPUT_BYTES = 2 * 1024 * 1024;
+69:const NODE_EVAL_ARGS = new Set(['-e', '--eval', '-p', '--print']);
+71:export class VerificationRunnerError extends Error {
+246:    if (NODE_EVAL_ARGS.has(arg)) return { ok: false, code: 'COMMAND_POLICY_DENIED', message: 'Node inline eval/print argv is denied before spawn.' };
+321:    const fileValidation = validateArtifactFile(tempPath, { kind: 'evidence_packet' });
+411:  const deniedExecutables = new Set(['git', 'rm', 'curl', 'wget', 'ssh', 'scp', 'gh', 'pulumi', 'terraform', 'docker', 'touch']);
+412:  if (deniedExecutables.has(executableName)) return { ok: false, code: 'COMMAND_POLICY_DENIED', message: `Executable ${executableName} is denied by policy.` };
+413:  const packageManagers = new Set(['pnpm', 'npm', 'yarn', 'corepack']);
+414:  if (packageManagers.has(executableName)) return { ok: false, code: 'COMMAND_POLICY_DENIED', message: 'Package-manager commands are denied in I-09A runners.' };
+432:  if (timeoutMs > MAX_TIMEOUT_MS || maxStdoutBytes > MAX_STREAM_BYTES || maxStderrBytes > MAX_STREAM_BYTES || maxOutputBytes > MAX_OUTPUT_BYTES) return { ok: false, code: 'RESOURCE_CAP_EXCEEDED', message: 'Command timeout/output caps exceed implementation-owned maxima.' };
+439:  if (NODE_EVAL_ARGS.has(scriptArg)) return { ok: false, code: 'COMMAND_POLICY_DENIED', message: 'Node inline eval/print runners are denied before spawn.' };
+566:  const child = spawn(command, args, { cwd, env: envResult.env, shell: false, stdio: ['ignore', 'pipe', 'pipe'] });
+653:    if (name === 'validateArtifactFile') {
+657:      const validation = validateArtifactFile(abs, { kind: /** @type {any} */ (kind) });
+706:export async function runVerificationPlan(options) {
+714:  const planValidation = validateArtifactFile(implementationPlanPath, { kind: 'implementation_plan' });
+
+## artifacts validator markers
+7:const CORE_FIELDS = new Set(['schemaVersion','artifactKind','artifactId','title','createdAt','updatedAt','producer','status','ownership','links','extensions','description','tags','sourceRefs','approvedBy','supersessionReason','retention']);
+43:    artifactKind: isObject(data) ? data.artifactKind ?? null : null,
+123:  if (!ARTIFACT_KINDS.includes(data.artifactKind)) {
+124:    addError(errors, ctx, '/artifactKind', ValidationErrorCode.ARTIFACT_KIND_MISMATCH, 'Unknown artifactKind.');
+126:  if (expectedKind && data.artifactKind !== expectedKind) {
+127:    addError(errors, ctx, '/artifactKind', ValidationErrorCode.ARTIFACT_KIND_MISMATCH, `Expected artifactKind ${expectedKind}.`);
+131:function linkMatches(link, rel, artifactKind, requiredStatus) {
+132:  return isObject(link) && link.rel === rel && link.artifactKind === artifactKind && (!requiredStatus || link.statusAtLinkTime === requiredStatus) && link.required === true;
+139:function requireLink(errors, ctx, pointer, link, rel, artifactKind, requiredStatus) {
+140:  if (!linkMatches(link, rel, artifactKind, requiredStatus)) {
+142:    addError(errors, ctx, pointer, ValidationErrorCode.BAD_LINK, `Required ${rel} link to ${artifactKind}${statusText} is missing or malformed.`);
+216:      if (data.verificationDelta?.artifactKind !== 'verification_delta') {
+217:        addError(errors, ctx, '/verificationDelta/artifactKind', ValidationErrorCode.BAD_LINK, 'Implementation Plan must embed a Verification Delta artifact.');
+299:export function validateArtifactKind(kind, data, options = {}) {
+315:export function validateArtifact(data, options = {}) {
+317:    const ctx = { artifactPath: options.artifactPath ?? null, artifactKind: null, schemaVersion: null, schemaId: null };
+320:  const kind = data.artifactKind;
+323:    return { ok: false, errors: [makeValidationError({ ...ctx, pointer: '/artifactKind', code: ValidationErrorCode.ARTIFACT_KIND_MISMATCH, message: 'Unknown artifactKind.' })] };
+328:export function validateArtifactFile(filePath, options = {}) {
+331:    return { ok: false, errors: [makeValidationError({ artifactPath, artifactKind: options.kind ?? null, schemaId: null, schemaVersion: null, pointer: '', code: ValidationErrorCode.CARRIER_NOT_JSON, message: 'Canonical artifact carriers must be UTF-8 JSON files; Markdown, YAML, frontmatter, and chat text are not accepted.' })] };
+337:    return { ok: false, errors: [makeValidationError({ artifactPath, artifactKind: options.kind ?? null, schemaId: null, schemaVersion: null, pointer: '', code: ValidationErrorCode.JSON_PARSE_ERROR, message: `Invalid JSON artifact: ${error.message}` })] };

@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "vibe-engineer.cli.result.v1",
+  "invocation": {
+    "id": "i-09b-post-fix-root-n2-literal-missing-script",
+    "command": "verify",
+    "argv": [
+      "verify",
+      "--implementation-plan",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/root-cause/fixtures/root-cause.implementation-plan.json",
+      "--evidence-root",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/root-cause/cases/n2-literal-missing-script/packets",
+      "--project-root",
+      "/Users/lizavasilyeva/work/vibe-engineer",
+      "--run-id",
+      "i09b-post-fix-n2-literal-missing-script",
+      "--runner-catalog",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/root-cause/cases/n2-literal-missing-script/runner-catalog.json",
+      "--result-file",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/root-cause/cases/n2-literal-missing-script/result/cli-result.json"
+    ],
+    "projectRoot": "/Users/lizavasilyeva/work/vibe-engineer",
+    "configPath": null,
+    "startedAt": "2026-06-25T20:13:01.089Z",
+    "endedAt": "2026-06-25T20:13:01.089Z"
+  },
+  "status": "blocked",
+  "exitCode": 3,
+  "payload": {
+    "kind": "verification_result",
+    "schemaVersion": "vibe-engineer.cli.payload.v1",
+    "data": {
+      "ok": false,
+      "runnerStatus": "blocked",
+      "runId": "i09b-post-fix-n2-literal-missing-script",
+      "rerunOf": null,
+      "evidencePackets": [],
+      "executedItems": [],
+      "recordedItems": [],
+      "blockedItems": [
+        "schema-validation"
+      ],
+      "failures": [
+        {
+          "code": "MISSING_RUNNER_OR_PREREQUISITE",
+          "classification": "missing_runner_or_prerequisite",
+          "message": "Declared Node runner script is missing."
+        }
+      ],
+      "warnings": []
+    }
+  },
+  "diagnostics": [
+    {
+      "severity": "error",
+      "code": "VE_MISSING_CONFIG",
+      "classification": "missing_prerequisite",
+      "message": "Declared Node runner script is missing.",
+      "path": null,
+      "span": null,
+      "hint": null
+    }
+  ],
+  "artifacts": [
+    {
+      "kind": "cli_result",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/root-cause/cases/n2-literal-missing-script/result/cli-result.json",
+      "schemaVersion": "vibe-engineer.cli.result.v1",
+      "role": "report",
+      "sha256": null
+    }
+  ],
+  "errors": [
+    {
+      "code": "VE_MISSING_CONFIG",
+      "classification": "missing_prerequisite",
+      "retryable": true,
+      "blocking": true,
+      "message": "Declared Node runner script is missing.",
+      "details": {
+        "runnerCode": "MISSING_RUNNER_OR_PREREQUISITE",
+        "runnerClassification": "missing_runner_or_prerequisite",
+        "evidencePacketPaths": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "vibe-engineer.cli.result.v1",
+  "invocation": {
+    "id": "i-09b-post-fix-verify-f2a9f530",
+    "command": "verify",
+    "argv": [
+      "verify",
+      "--definitely-unknown"
+    ],
+    "projectRoot": "/Users/lizavasilyeva/work/vibe-engineer",
+    "configPath": null,
+    "startedAt": "2026-06-25T20:18:51.893Z",
+    "endedAt": "2026-06-25T20:18:51.893Z"
+  },
+  "status": "blocked",
+  "exitCode": 2,
+  "payload": {
+    "kind": "cli_invocation_error",
+    "schemaVersion": "vibe-engineer.cli.payload.v1",
+    "data": {
+      "accepted": false
+    }
+  },
+  "diagnostics": [
+    {
+      "severity": "error",
+      "code": "VE_INVALID_FLAG",
+      "classification": "invalid_invocation",
+      "message": "Unsupported verify flag: --definitely-unknown.",
+      "path": null,
+      "span": null,
+      "hint": null
+    }
+  ],
+  "artifacts": [],
+  "errors": [
+    {
+      "code": "VE_INVALID_FLAG",
+      "classification": "invalid_invocation",
+      "retryable": false,
+      "blocking": true,
+      "message": "Unsupported verify flag: --definitely-unknown.",
+      "details": {
+        "flag": "--definitely-unknown"
+      }
+    }
+  ]
+}

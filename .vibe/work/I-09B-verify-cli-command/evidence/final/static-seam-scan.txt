@@ -1,0 +1,14 @@
+.vibe/work/I-09B-verify-cli-command/witnesses.mjs:7:import { validateCliResultEnvelope } from '../../../packages/cli/src/envelope/result-envelope.js';
+.vibe/work/I-09B-verify-cli-command/witnesses.mjs:9:import { validateArtifactFile } from '../../../packages/artifacts/src/index.js';
+.vibe/work/I-09B-verify-cli-command/witnesses.mjs:23:function assertEnvelope(envelope) { const v = validateCliResultEnvelope(envelope); assert.equal(v.ok, true, JSON.stringify(v.errors)); }
+.vibe/work/I-09B-verify-cli-command/witnesses.mjs:24:function assertPackets(paths) { for (const p of paths) assert.equal(validateArtifactFile(p, { kind: 'evidence_packet' }).ok, true, p); }
+.vibe/work/I-09B-verify-cli-command/witnesses.mjs:87:  const loader = createCommandLoader([verifyCommand]);
+.vibe/work/I-09B-verify-cli-command/witnesses.mjs:99:  const result = await createCommandLoader([verifyCommand]).dispatch('verify', args, { invocation, packageJsonPath: path.join(repoRoot, 'packages/cli/package.json'), config: null });
+packages/cli/src/commands/verify/index.ts:5:import { validateArtifactFile } from "@vibe-engineer/artifacts";
+packages/cli/src/commands/verify/index.ts:6:import { runVerificationPlan } from "@vibe-engineer/verification";
+packages/cli/src/commands/verify/index.ts:12:  validateCliResultEnvelope,
+packages/cli/src/commands/verify/index.ts:13:  writeResultFileAtomic
+packages/cli/src/commands/verify/index.ts:357:    const validation = validateArtifactFile(packetPath, { kind: "evidence_packet" });
+packages/cli/src/commands/verify/index.ts:461:  const validation = validateCliResultEnvelope(finalEnvelope);
+packages/cli/src/commands/verify/index.ts:465:      await writeResultFileAtomic(resultFile, finalEnvelope);
+packages/cli/src/commands/verify/index.ts:481:    const result = await runVerificationPlan({

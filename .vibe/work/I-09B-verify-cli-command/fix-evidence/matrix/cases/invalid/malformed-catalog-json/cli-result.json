@@ -1,0 +1,59 @@
+{
+  "schemaVersion": "vibe-engineer.cli.result.v1",
+  "invocation": {
+    "id": "i-09b-fix-verify-85a1191a",
+    "command": "verify",
+    "argv": [
+      "verify",
+      "--implementation-plan",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/fixtures/schema-only-passed.implementation-plan.json",
+      "--evidence-root",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/invalid/malformed-catalog-json/packets",
+      "--project-root",
+      "/Users/lizavasilyeva/work/vibe-engineer",
+      "--run-id",
+      "i09b-invalid-malformed-catalog",
+      "--runner-catalog",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/invalid/malformed-catalog-json/runner-catalog.json",
+      "--result-file",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/invalid/malformed-catalog-json/result/cli-result.json"
+    ],
+    "projectRoot": "/Users/lizavasilyeva/work/vibe-engineer",
+    "configPath": null,
+    "startedAt": "2026-06-25T19:17:53.855Z",
+    "endedAt": "2026-06-25T19:17:53.855Z"
+  },
+  "status": "blocked",
+  "exitCode": 2,
+  "payload": {
+    "kind": "cli_invocation_error",
+    "schemaVersion": "vibe-engineer.cli.payload.v1",
+    "data": {
+      "accepted": false
+    }
+  },
+  "diagnostics": [
+    {
+      "severity": "error",
+      "code": "VE_INVALID_INVOCATION",
+      "classification": "invalid_input",
+      "message": "Runner catalog must be a readable JSON file.",
+      "path": null,
+      "span": null,
+      "hint": null
+    }
+  ],
+  "artifacts": [],
+  "errors": [
+    {
+      "code": "VE_INVALID_INVOCATION",
+      "classification": "invalid_input",
+      "retryable": false,
+      "blocking": true,
+      "message": "Runner catalog must be a readable JSON file.",
+      "details": {
+        "flag": "--runner-catalog"
+      }
+    }
+  ]
+}

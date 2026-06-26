@@ -1,0 +1,29 @@
+packages/cli/src/commands/verify/index.ts(1,28): error TS2307: Cannot find module 'node:crypto' or its corresponding type declarations.
+packages/cli/src/commands/verify/index.ts(3,10): error TS2614: Module '"node:fs/promises"' has no exported member 'mkdir'. Did you mean to use 'import mkdir from "node:fs/promises"' instead?
+packages/cli/src/commands/verify/index.ts(3,17): error TS2614: Module '"node:fs/promises"' has no exported member 'readFile'. Did you mean to use 'import readFile from "node:fs/promises"' instead?
+packages/cli/src/commands/verify/index.ts(131,5): error TS2322: Type 'string' is not assignable to type '"VE_INVALID_INVOCATION"'.
+packages/cli/src/commands/verify/index.ts(132,5): error TS2322: Type 'string' is not assignable to type '"invalid_invocation"'.
+packages/cli/src/commands/verify/index.ts(475,47): error TS2339: Property 'envelope' does not exist on type 'ParseResult'.
+  Property 'envelope' does not exist on type '{ ok: true; options: VerifyOptions; }'.
+packages/verification/src/index.js(317,193): error TS2339: Property 'errors' does not exist on type 'ArtifactValidationResult<AnyArtifactV1>'.
+  Property 'errors' does not exist on type '{ ok: true; artifact: AnyArtifactV1; kind: ArtifactKind; schemaId: string; schemaVersion: string; }'.
+packages/verification/src/index.js(322,165): error TS2339: Property 'errors' does not exist on type 'ArtifactValidationResult<AnyArtifactV1>'.
+  Property 'errors' does not exist on type '{ ok: true; artifact: AnyArtifactV1; kind: ArtifactKind; schemaId: string; schemaVersion: string; }'.
+packages/verification/src/index.js(538,681): error TS2339: Property 'code' does not exist on type '{ ok: true; } | { ok: false; code: string; message: string; }'.
+  Property 'code' does not exist on type '{ ok: true; }'.
+packages/verification/src/index.js(538,694): error TS2339: Property 'message' does not exist on type '{ ok: true; } | { ok: false; code: string; message: string; }'.
+  Property 'message' does not exist on type '{ ok: true; }'.
+packages/verification/src/index.js(544,654): error TS2339: Property 'code' does not exist on type '{ ok: true; env: Record<string, string>; summary: string; } | { ok: false; code: string; message: string; }'.
+  Property 'code' does not exist on type '{ ok: true; env: Record<string, string>; summary: string; }'.
+packages/verification/src/index.js(544,670): error TS2339: Property 'message' does not exist on type '{ ok: true; env: Record<string, string>; summary: string; } | { ok: false; code: string; message: string; }'.
+  Property 'message' does not exist on type '{ ok: true; env: Record<string, string>; summary: string; }'.
+packages/verification/src/index.js(629,49): error TS2339: Property 'code' does not exist on type '{ ok: true; path: string; size: number; } | { ok: false; code: string; message: string; }'.
+  Property 'code' does not exist on type '{ ok: true; path: string; size: number; }'.
+packages/verification/src/index.js(630,150): error TS2339: Property 'code' does not exist on type '{ ok: true; path: string; size: number; } | { ok: false; code: string; message: string; }'.
+  Property 'code' does not exist on type '{ ok: true; path: string; size: number; }'.
+packages/verification/src/index.js(630,175): error TS2339: Property 'message' does not exist on type '{ ok: true; path: string; size: number; } | { ok: false; code: string; message: string; }'.
+  Property 'message' does not exist on type '{ ok: true; path: string; size: number; }'.
+packages/verification/src/index.js(715,158): error TS2339: Property 'errors' does not exist on type 'ArtifactValidationResult<AnyArtifactV1>'.
+  Property 'errors' does not exist on type '{ ok: true; artifact: AnyArtifactV1; kind: ArtifactKind; schemaId: string; schemaVersion: string; }'.
+packages/verification/src/index.js(720,167): error TS2339: Property 'errors' does not exist on type 'ArtifactValidationResult<AnyArtifactV1>'.
+  Property 'errors' does not exist on type '{ ok: true; artifact: AnyArtifactV1; kind: ArtifactKind; schemaId: string; schemaVersion: string; }'.

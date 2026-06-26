@@ -1,0 +1,347 @@
+{
+  "schemaVersion": "vibe-engineer.cli.result.v1",
+  "invocation": {
+    "id": "i-09b-validation-verify-ffe4b805",
+    "command": "verify",
+    "argv": [
+      "verify",
+      "--implementation-plan",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/fixtures/schema-only-passed.implementation-plan.json",
+      "--evidence-root",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/n5-cli/packets",
+      "--project-root",
+      "/Users/lizavasilyeva/work/vibe-engineer",
+      "--run-id",
+      "i09b-n5-cli",
+      "--runner-catalog",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/n5-cli/runner-catalog.json",
+      "--result-file",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/n5-cli/result/cli-result.json"
+    ],
+    "projectRoot": "/Users/lizavasilyeva/work/vibe-engineer",
+    "configPath": null,
+    "startedAt": "2026-06-25T18:51:13.524Z",
+    "endedAt": "2026-06-25T18:51:13.524Z"
+  },
+  "status": "blocked",
+  "exitCode": 2,
+  "payload": {
+    "kind": "verification_result",
+    "schemaVersion": "vibe-engineer.cli.payload.v1",
+    "data": {
+      "ok": false,
+      "runnerStatus": "blocked",
+      "runId": "i09b-n5-cli",
+      "rerunOf": null,
+      "evidencePackets": [
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_safety-hooks_00.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "fda7a27f58f8786f625504641f9ca035e57089d9a5959a53d2c285f8673f153d",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_typecheck_01.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "5d793b7e0e00b88f97e8512730ee51ea868ee75dfb101890f90ee359b0f3d0be",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_lint-format_02.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "4a69b21069ecb9ff04d4540b23835c0292b6419c49bdee7f83224978fc842edf",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_mechanical-gate_03.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "de567746dd5fcd701187089ea666f1ebaf85d8904456fff40cdec8286eb5ac8c",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_unit_04.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "e39146f672f36352092dbb8f3c5ddc191770337eb70dac21ff5dbcef1fad8dbc",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_integration_05.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "62e57f78d0710aba0a474840f4aee4264cbeef340916b747c917221871c1a58b",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_contract-adapter_06.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "e2bfab6e6a470740bb21faa27a991789d5efa49fe4a38969ad0a382cd8a97199",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_e2e_07.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "0a0e67a230f59fdacd7a2f9c8a48b277c4790335f81b7ddc19177778c290feb4",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_ui-verification_08.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "77532131cac8793105c9052d103c30f9643167df3d23278cb96dd19398f6e3c2",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_ai-eval_09.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "d4f7bb4162ccb94191dd49df208da062709d778090c27f51ecf55d1c0acf2216",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_build-package_10.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "4b46e3cc951ad083971f1e8ecbed96b3028190e45642f41e133a811c5644e06c",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_context-drift_11.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "f00ecfbb260506535fcb8ae04fda0b2b183b98cdda3ef136932fbca4a3bac934",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_observability_12.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "9702130f24ef8e27bede6471c929ec85571f6ad048bce5130835a5f99bba8130",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_advisory-review_13.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "5b949008f316a9dfa4a4984eb0ea89382f01666b389277280bcdab091f5b9488",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_final-dod_14.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "e4a3c3bd115589816df7a3d98147785e2231deae3705a28f03c5174119e0a95a",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_schema-validation_15.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "9be12b6667f489e91d1a4e89b1570481aa58c106b8de3e7c8d5b2d299aef05d4",
+          "valid": true
+        }
+      ],
+      "executedItems": [
+        "schema-validation"
+      ],
+      "recordedItems": [
+        "safety-hooks",
+        "typecheck",
+        "lint-format",
+        "mechanical-gate",
+        "unit",
+        "integration",
+        "contract-adapter",
+        "e2e",
+        "ui-verification",
+        "ai-eval",
+        "build-package",
+        "context-drift",
+        "observability",
+        "advisory-review",
+        "final-dod"
+      ],
+      "blockedItems": [
+        "schema-validation"
+      ],
+      "failures": [
+        {
+          "code": "MALFORMED_EVIDENCE_PACKET",
+          "classification": "schema_or_contract_failure",
+          "message": "Malformed Evidence Packet candidate was rejected by real artifact validation."
+        }
+      ],
+      "warnings": [
+        "safety_hooks is represented for the domain-neutral I-09A fixture.",
+        "typecheck is represented for the domain-neutral I-09A fixture.",
+        "lint_format is represented for the domain-neutral I-09A fixture.",
+        "mechanical_gate is represented for the domain-neutral I-09A fixture.",
+        "unit is represented for the domain-neutral I-09A fixture.",
+        "integration is represented for the domain-neutral I-09A fixture.",
+        "contract_adapter is represented for the domain-neutral I-09A fixture.",
+        "e2e is represented for the domain-neutral I-09A fixture.",
+        "ui_verification is represented for the domain-neutral I-09A fixture.",
+        "ai_eval is represented for the domain-neutral I-09A fixture.",
+        "build_package is represented for the domain-neutral I-09A fixture.",
+        "context_drift is represented for the domain-neutral I-09A fixture.",
+        "observability is represented for the domain-neutral I-09A fixture.",
+        "advisory_review is represented for the domain-neutral I-09A fixture.",
+        "final_dod is represented for the domain-neutral I-09A fixture.",
+        "Malformed Evidence Packet candidate rejected before final persistence."
+      ]
+    }
+  },
+  "diagnostics": [
+    {
+      "severity": "error",
+      "code": "VE_INVALID_INVOCATION",
+      "classification": "invalid_input",
+      "message": "Malformed Evidence Packet candidate was rejected by real artifact validation.",
+      "path": null,
+      "span": null,
+      "hint": null
+    }
+  ],
+  "artifacts": [
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_safety-hooks_00.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "fda7a27f58f8786f625504641f9ca035e57089d9a5959a53d2c285f8673f153d"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_typecheck_01.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "5d793b7e0e00b88f97e8512730ee51ea868ee75dfb101890f90ee359b0f3d0be"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_lint-format_02.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "4a69b21069ecb9ff04d4540b23835c0292b6419c49bdee7f83224978fc842edf"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_mechanical-gate_03.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "de567746dd5fcd701187089ea666f1ebaf85d8904456fff40cdec8286eb5ac8c"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_unit_04.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "e39146f672f36352092dbb8f3c5ddc191770337eb70dac21ff5dbcef1fad8dbc"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_integration_05.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "62e57f78d0710aba0a474840f4aee4264cbeef340916b747c917221871c1a58b"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_contract-adapter_06.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "e2bfab6e6a470740bb21faa27a991789d5efa49fe4a38969ad0a382cd8a97199"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_e2e_07.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "0a0e67a230f59fdacd7a2f9c8a48b277c4790335f81b7ddc19177778c290feb4"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_ui-verification_08.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "77532131cac8793105c9052d103c30f9643167df3d23278cb96dd19398f6e3c2"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_ai-eval_09.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "d4f7bb4162ccb94191dd49df208da062709d778090c27f51ecf55d1c0acf2216"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_build-package_10.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "4b46e3cc951ad083971f1e8ecbed96b3028190e45642f41e133a811c5644e06c"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_context-drift_11.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "f00ecfbb260506535fcb8ae04fda0b2b183b98cdda3ef136932fbca4a3bac934"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_observability_12.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "9702130f24ef8e27bede6471c929ec85571f6ad048bce5130835a5f99bba8130"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_advisory-review_13.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "5b949008f316a9dfa4a4984eb0ea89382f01666b389277280bcdab091f5b9488"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_final-dod_14.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "e4a3c3bd115589816df7a3d98147785e2231deae3705a28f03c5174119e0a95a"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_schema-validation_15.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "9be12b6667f489e91d1a4e89b1570481aa58c106b8de3e7c8d5b2d299aef05d4"
+    },
+    {
+      "kind": "cli_result",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/n5-cli/result/cli-result.json",
+      "schemaVersion": "vibe-engineer.cli.result.v1",
+      "role": "report",
+      "sha256": null
+    }
+  ],
+  "errors": [
+    {
+      "code": "VE_INVALID_INVOCATION",
+      "classification": "invalid_input",
+      "retryable": false,
+      "blocking": true,
+      "message": "Malformed Evidence Packet candidate was rejected by real artifact validation.",
+      "details": {
+        "runnerCode": "MALFORMED_EVIDENCE_PACKET",
+        "runnerClassification": "schema_or_contract_failure",
+        "evidencePacketPaths": [
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_safety-hooks_00.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_typecheck_01.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_lint-format_02.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_mechanical-gate_03.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_unit_04.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_integration_05.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_contract-adapter_06.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_e2e_07.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_ui-verification_08.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_ai-eval_09.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_build-package_10.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_context-drift_11.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_observability_12.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_advisory-review_13.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_final-dod_14.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/cases/n5-cli/packets/evidence_i09b-n5-cli_schema-validation_15.json"
+        ]
+      }
+    }
+  ]
+}

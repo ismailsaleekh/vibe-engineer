@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "vibe-engineer.cli.result.v1",
+  "invocation": {
+    "id": "i-09b-validation-verify-3b1efb1d",
+    "command": "verify",
+    "argv": [
+      "verify",
+      "--implementation-plan",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/fixtures/schema-only-passed.implementation-plan.json",
+      "--evidence-root",
+      "../outside-i09b-validation",
+      "--project-root",
+      "/Users/lizavasilyeva/work/vibe-engineer",
+      "--run-id",
+      "i09b-invalid-path-escape",
+      "--runner-catalog",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/fixtures/invalid-matrix-valid-runner-catalog.json"
+    ],
+    "projectRoot": "/Users/lizavasilyeva/work/vibe-engineer",
+    "configPath": null,
+    "startedAt": "2026-06-25T18:51:13.466Z",
+    "endedAt": "2026-06-25T18:51:13.466Z"
+  },
+  "status": "blocked",
+  "exitCode": 2,
+  "payload": {
+    "kind": "cli_invocation_error",
+    "schemaVersion": "vibe-engineer.cli.payload.v1",
+    "data": {
+      "accepted": false
+    }
+  },
+  "diagnostics": [
+    {
+      "severity": "error",
+      "code": "VE_INVALID_INVOCATION",
+      "classification": "invalid_input",
+      "message": "evidence root escapes project root.",
+      "path": null,
+      "span": null,
+      "hint": null
+    }
+  ],
+  "artifacts": [],
+  "errors": [
+    {
+      "code": "VE_INVALID_INVOCATION",
+      "classification": "invalid_input",
+      "retryable": false,
+      "blocking": true,
+      "message": "evidence root escapes project root.",
+      "details": {
+        "flag": "--evidence-root"
+      }
+    }
+  ]
+}

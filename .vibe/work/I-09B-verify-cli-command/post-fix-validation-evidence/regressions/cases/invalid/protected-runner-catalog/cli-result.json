@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "vibe-engineer.cli.result.v1",
+  "invocation": {
+    "id": "i-09b-post-fix-verify-dcbe98e7",
+    "command": "verify",
+    "argv": [
+      "verify",
+      "--implementation-plan",
+      "<value>",
+      "--evidence-root",
+      "<value>",
+      "--project-root",
+      "<value>",
+      "--run-id",
+      "<value>",
+      "--runner-catalog",
+      "<value>"
+    ],
+    "projectRoot": "/Users/lizavasilyeva/work/vibe-engineer",
+    "configPath": null,
+    "startedAt": "2026-06-25T20:18:51.897Z",
+    "endedAt": "2026-06-25T20:18:51.897Z"
+  },
+  "status": "blocked",
+  "exitCode": 2,
+  "payload": {
+    "kind": "cli_invocation_error",
+    "schemaVersion": "vibe-engineer.cli.payload.v1",
+    "data": {
+      "accepted": false
+    }
+  },
+  "diagnostics": [
+    {
+      "severity": "error",
+      "code": "VE_INVALID_INVOCATION",
+      "classification": "invalid_input",
+      "message": "runner catalog path targets a protected project path.",
+      "path": null,
+      "span": null,
+      "hint": null
+    }
+  ],
+  "artifacts": [],
+  "errors": [
+    {
+      "code": "VE_INVALID_INVOCATION",
+      "classification": "invalid_input",
+      "retryable": false,
+      "blocking": true,
+      "message": "runner catalog path targets a protected project path.",
+      "details": {
+        "flag": "--runner-catalog"
+      }
+    }
+  ]
+}

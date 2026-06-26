@@ -1,0 +1,7 @@
+packages/cli/src/commands/verify/index.ts(1,28): error TS2307: Cannot find module 'node:crypto' or its corresponding type declarations.
+packages/cli/src/commands/verify/index.ts(3,10): error TS2614: Module '"node:fs/promises"' has no exported member 'mkdir'. Did you mean to use 'import mkdir from "node:fs/promises"' instead?
+packages/cli/src/commands/verify/index.ts(3,17): error TS2614: Module '"node:fs/promises"' has no exported member 'readFile'. Did you mean to use 'import readFile from "node:fs/promises"' instead?
+packages/cli/src/commands/verify/index.ts(131,5): error TS2322: Type 'string' is not assignable to type '"VE_INVALID_INVOCATION"'.
+packages/cli/src/commands/verify/index.ts(132,5): error TS2322: Type 'string' is not assignable to type '"invalid_invocation"'.
+packages/cli/src/commands/verify/index.ts(475,47): error TS2339: Property 'envelope' does not exist on type 'ParseResult'.
+  Property 'envelope' does not exist on type '{ ok: true; options: VerifyOptions; }'.

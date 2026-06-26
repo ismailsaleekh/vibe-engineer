@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "vibe-engineer.cli.result.v1",
+  "invocation": {
+    "id": "i-09b-fix-verify-52f399a2",
+    "command": "verify",
+    "argv": [
+      "verify",
+      "--implementation-plan",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/fixtures/schema-only-passed.implementation-plan.json",
+      "--evidence-root",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/invalid/missing-required-input/packets",
+      "--project-root",
+      "/Users/lizavasilyeva/work/vibe-engineer",
+      "--run-id",
+      "i09b-invalid-missing-required"
+    ],
+    "projectRoot": "/Users/lizavasilyeva/work/vibe-engineer",
+    "configPath": null,
+    "startedAt": "2026-06-25T19:17:53.856Z",
+    "endedAt": "2026-06-25T19:17:53.856Z"
+  },
+  "status": "blocked",
+  "exitCode": 2,
+  "payload": {
+    "kind": "cli_invocation_error",
+    "schemaVersion": "vibe-engineer.cli.payload.v1",
+    "data": {
+      "accepted": false
+    }
+  },
+  "diagnostics": [
+    {
+      "severity": "error",
+      "code": "VE_MISSING_FLAG_VALUE",
+      "classification": "invalid_invocation",
+      "message": "Missing required verify flag.",
+      "path": null,
+      "span": null,
+      "hint": null
+    }
+  ],
+  "artifacts": [],
+  "errors": [
+    {
+      "code": "VE_MISSING_FLAG_VALUE",
+      "classification": "invalid_invocation",
+      "retryable": false,
+      "blocking": true,
+      "message": "Missing required verify flag.",
+      "details": {
+        "flag": "--runner-catalog"
+      }
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "schemaVersion": "1.0.0",
+  "artifactKind": "evidence_packet",
+  "artifactId": "evidence:i09b-aggregate-output-cap:schema-validation:15",
+  "title": "Verification evidence for schema-validation",
+  "createdAt": "2026-06-25T19:17:54.178Z",
+  "updatedAt": "2026-06-25T19:17:54.178Z",
+  "producer": {
+    "kind": "verification_runner",
+    "id": "i-09a-runner-core",
+    "name": "@vibe-engineer/verification",
+    "version": "0.1.0",
+    "runId": "i09b-aggregate-output-cap"
+  },
+  "status": "blocked",
+  "ownership": {
+    "ownerLane": "I-09A-verification-runner-core-evidence-routing",
+    "ownedWritePaths": [
+      "packages/verification/src/**",
+      "packages/verification/fixtures/**",
+      "packages/verification/tests/**",
+      ".vibe/work/I-09A-verification-runner-core-evidence-routing/**"
+    ],
+    "readOnlyPaths": [
+      "packages/artifacts/**",
+      "packages/orchestration/**",
+      "packages/cli/**"
+    ],
+    "untouchablePaths": [
+      ".git/**",
+      "pnpm-lock.yaml",
+      "package.json",
+      "pnpm-workspace.yaml"
+    ],
+    "concurrencyNotes": "I-09A runner core evidence packet written atomically under evidenceRoot."
+  },
+  "links": [
+    {
+      "rel": "evidence_for",
+      "artifactKind": "implementation_plan",
+      "artifactId": "i09b-validation-schema-only-passed-plan",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/fixtures/schema-only-passed.implementation-plan.json",
+      "required": true,
+      "statusAtLinkTime": "approved"
+    }
+  ],
+  "extensions": {
+    "dev.vibe.verification": {
+      "schemaVersion": "1.0.0",
+      "requiredItemId": "schema-validation",
+      "requiredItemAction": "add",
+      "runId": "i09b-aggregate-output-cap",
+      "runnerVersion": "0.1.0"
+    }
+  },
+  "evidenceClass": "deterministic",
+  "layer": "schema_validation",
+  "subjectRefs": [
+    {
+      "rel": "evidence_for",
+      "artifactKind": "implementation_plan",
+      "artifactId": "i09b-validation-schema-only-passed-plan",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/fixtures/schema-only-passed.implementation-plan.json",
+      "required": true,
+      "statusAtLinkTime": "approved"
+    },
+    {
+      "rel": "evidence_for",
+      "artifactKind": "verification_delta",
+      "artifactId": "i09b-validation-schema-only-passed-delta",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/fixtures/schema-only-passed.implementation-plan.json",
+      "required": true,
+      "statusAtLinkTime": "complete"
+    }
+  ],
+  "commandOrTool": {
+    "kind": "command",
+    "name": "/Users/lizavasilyeva/.nvm/versions/node/v24.16.0/bin/node",
+    "argv": [
+      "/Users/lizavasilyeva/work/vibe-engineer/packages/verification/fixtures/runners/large-output-runner.mjs",
+      "both",
+      "80"
+    ],
+    "workingDirectory": "/Users/lizavasilyeva/work/vibe-engineer",
+    "environmentSummary": "allowlist:empty; provided:none; raw-process-env:false"
+  },
+  "startedAt": "2026-06-25T19:17:54.156Z",
+  "endedAt": "2026-06-25T19:17:54.178Z",
+  "exitStatus": {
+    "kind": "exit_code",
+    "code": -1,
+    "status": "SIGTERM"
+  },
+  "result": "blocked",
+  "blocking": true,
+  "artifacts": [
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/i09a-safety/aggregate-output-cap/packets/sidecars/i09b-aggregate-output-cap-schema-validation-15.stdout.log",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/i09a-safety/aggregate-output-cap/packets/sidecars/i09b-aggregate-output-cap-schema-validation-15.stderr.log",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/i09a-safety/aggregate-output-cap/packets/sidecars/i09b-aggregate-output-cap-schema-validation-15.runner.log"
+  ],
+  "warnings": [],
+  "failureDetails": {
+    "code": "OUTPUT_LIMIT_EXCEEDED",
+    "message": "Command aggregate stdout and stderr exceeded configured maxOutputBytes.",
+    "classification": "safety_or_security_policy_failure"
+  },
+  "stdoutRef": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/i09a-safety/aggregate-output-cap/packets/sidecars/i09b-aggregate-output-cap-schema-validation-15.stdout.log",
+  "stderrRef": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/i09a-safety/aggregate-output-cap/packets/sidecars/i09b-aggregate-output-cap-schema-validation-15.stderr.log",
+  "logsRef": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/fix-evidence/matrix/cases/i09a-safety/aggregate-output-cap/packets/sidecars/i09b-aggregate-output-cap-schema-validation-15.runner.log",
+  "normalizationNotes": "Output was bounded and redacted before persistence."
+}

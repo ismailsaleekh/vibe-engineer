@@ -1,0 +1,149 @@
+{
+  "status": "PASS",
+  "command": "/Users/lizavasilyeva/.nvm/versions/node/v24.16.0/bin/node /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/i09b-regression-matrix.mjs",
+  "cwd": "/Users/lizavasilyeva/work/vibe-engineer",
+  "packageContextProbe": {
+    "cwd": "/Users/lizavasilyeva/work/vibe-engineer/packages/cli",
+    "verificationResolved": "file:///Users/lizavasilyeva/work/vibe-engineer/packages/verification/src/index.js",
+    "artifactsResolved": "file:///Users/lizavasilyeva/work/vibe-engineer/packages/artifacts/src/index.js",
+    "runVerificationPlanType": "function",
+    "validateArtifactFileType": "function",
+    "verificationStatuses": {
+      "PASSED": "passed",
+      "FAILED": "failed",
+      "BLOCKED": "blocked",
+      "ADVISORY_WARNING": "advisory_warning"
+    },
+    "evidenceFailureClassifications": {
+      "DETERMINISTIC_PRODUCT_OR_CODE_FAILURE": "deterministic_product_or_code_failure",
+      "SCHEMA_OR_CONTRACT_FAILURE": "schema_or_contract_failure",
+      "SAFETY_OR_SECURITY_POLICY_FAILURE": "safety_or_security_policy_failure",
+      "MECHANICAL_GATE_FAILURE": "mechanical_gate_failure",
+      "TEST_ASSERTION_FAILURE": "test_assertion_failure",
+      "TEST_BUG": "test_bug",
+      "ENVIRONMENT_ISSUE": "environment_issue",
+      "TIMING_OR_FLAKY_SUSPICION": "timing_or_flaky_suspicion",
+      "EXTERNAL_DEPENDENCY_DRIFT": "external_dependency_drift",
+      "ADVISORY_FINDING": "advisory_finding",
+      "MISSING_EVIDENCE": "missing_evidence",
+      "MISSING_RUNNER_OR_PREREQUISITE": "missing_runner_or_prerequisite",
+      "SKIPPED_REQUIRED_DELTA_CATEGORY": "skipped_required_delta_category",
+      "BLOCKED_PREREQUISITE": "blocked_prerequisite",
+      "RUNNER_INTERNAL_ERROR": "runner_internal_error",
+      "CLASSIFICATION_UNKNOWN": "classification_unknown"
+    },
+    "verificationExportKeys": [
+      "EVIDENCE_FAILURE_CLASSIFICATIONS",
+      "EVIDENCE_FAILURE_CLASSIFICATION_VALUES",
+      "EVIDENCE_RESULTS",
+      "VERIFICATION_RUNNER_VERSION",
+      "VERIFICATION_STATUSES",
+      "VERIFICATION_STATUS_VALUES",
+      "VerificationRunnerError",
+      "runVerificationPlan"
+    ],
+    "artifactsExportKeys": [
+      "ARTIFACT_KINDS",
+      "SCHEMA_FILES",
+      "SUPPORTED_SCHEMA_VERSION",
+      "ValidationErrorCode",
+      "compileAllArtifactSchemas",
+      "loadAllSchemas",
+      "loadSchema",
+      "schemaPathForKind",
+      "validateArtifact",
+      "validateArtifactFile",
+      "validateArtifactKind"
+    ]
+  },
+  "plans": {
+    "schemaOnlyPlan": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/fixtures/schema-only-passed.implementation-plan.json",
+    "advisoryOnlyPlan": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/fixtures/advisory-only-warning.implementation-plan.json",
+    "draftPlan": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/fixtures/draft-plan-not-approved.implementation-plan.json",
+    "missingCategoryPlan": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/fixtures/missing-category-plan.implementation-plan.json"
+  },
+  "positive": {
+    "p1Status": "success",
+    "p1RunnerStatus": "passed",
+    "advisoryStatus": "success",
+    "advisoryRunnerStatus": "advisory_warning"
+  },
+  "invalidInvocationCount": 11,
+  "negatives": {
+    "n1": {
+      "status": "blocked",
+      "classification": "invalid_input",
+      "runnerStatus": "not_run",
+      "packetCount": 0
+    },
+    "n2MissingSpec": {
+      "status": "blocked",
+      "classification": "missing_prerequisite",
+      "runnerStatus": "blocked",
+      "packetCount": 16
+    },
+    "n2MissingScript": {
+      "status": "blocked",
+      "classification": "missing_prerequisite",
+      "runnerStatus": "blocked",
+      "packetCount": 0
+    },
+    "n3": {
+      "status": "blocked",
+      "classification": "missing_prerequisite",
+      "runnerStatus": "blocked",
+      "packetCount": 16
+    },
+    "n4": {
+      "status": "blocked",
+      "classification": "invalid_input",
+      "runnerStatus": "not_run",
+      "packetCount": 0
+    },
+    "n5": {
+      "status": "blocked",
+      "classification": "invalid_input",
+      "runnerStatus": "blocked",
+      "packetCount": 16
+    },
+    "n6": {
+      "status": "failure",
+      "classification": "internal_error",
+      "runnerStatus": "failed",
+      "packetCount": 16
+    },
+    "n7": {
+      "status": "success",
+      "classification": null,
+      "runnerStatus": "advisory_warning",
+      "packetCount": 16
+    }
+  },
+  "inheritedSafetyCases": [
+    "touchDenied",
+    "nodeEvalDenied",
+    "protectedScriptDenied",
+    "scriptPathEscapeDenied",
+    "timeoutCap",
+    "aggregateOutputCap",
+    "secretOutputRedaction"
+  ],
+  "regression": {
+    "r1Classification": "unsupported_operation",
+    "foundationStatus": "success",
+    "siblingCount": 3
+  },
+  "redaction": {
+    "hitCount": 0,
+    "sentinelSha256s": [
+      "a4b8cba3402de2290ab755df539d35c9a75b92192c49ac7c6e49ced3950f9754",
+      "4f85ccf79e4bc49757897d870ad2d4edf14ec00d763de2c26e30c43e0c423f47",
+      "b78fd1c011d655c83c869d8563b71ae7b147b9e87d0217272228fff8e9ff58ab",
+      "1c0ab336ba4294112cca7455c308c2469928506737fa2f857cd1e0e6a46ad2c9",
+      "a0b4ed25912d92d343c8318a2eaba364092226bcc748cb2c66f765113dde558b",
+      "516bae80dd4d3591cfdeeecb9f4de51f457d2f532dd3146ca6fdd7daee79303d",
+      "20ff772079550987a5b8e8a618b0813a42bac02b861a772c4da158ad7a187f98",
+      "8533d852b1c51febec8b4cb1a2d26194816e05296448f4a8a03b5bb54859d2da"
+    ]
+  }
+}

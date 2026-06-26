@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "nodeCheckExit": 0,
+  "tscRawExit": 2,
+  "tscRawFinding": "raw targeted tsc fails only because Node ambient declarations are absent in this workspace",
+  "tscWithValidationAmbientExit": 0,
+  "verifyJsMjsCount": 0,
+  "suspiciousTokenScanExit": 1,
+  "suspiciousTokenScanNote": "grep exit 1 means no suspicious fallback/dynamic eval/mock/private verification import tokens matched",
+  "evidence": {
+    "nodeCheck": "post-fix-validation-evidence/checks/node-check-verify.*",
+    "tscRaw": "post-fix-validation-evidence/checks/tsc-verify.raw.*",
+    "tscAmbient": "post-fix-validation-evidence/checks/tsc-verify.with-ambient.*",
+    "ambient": "post-fix-validation-evidence/checks/typecheck-ambient.d.ts",
+    "verifyJsMjs": "post-fix-validation-evidence/checks/verify-js-mjs-files.txt",
+    "sourcePolicyScan": "post-fix-validation-evidence/inspection/static-source-inspection.txt"
+  }
+}

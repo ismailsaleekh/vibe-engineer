@@ -1,0 +1,46 @@
+{
+  "status": "blocked",
+  "exitCode": 2,
+  "payload": {
+    "kind": "verification_result",
+    "schemaVersion": "vibe-engineer.cli.payload.v1",
+    "data": {
+      "ok": false,
+      "runnerStatus": "not_run",
+      "runnerCode": "INVALID_IMPLEMENTATION_PLAN"
+    }
+  },
+  "errors": [
+    {
+      "code": "VE_INVALID_INVOCATION",
+      "classification": "invalid_input",
+      "retryable": false,
+      "blocking": true,
+      "message": "Verification runner rejected the request.",
+      "details": {
+        "runnerCode": "INVALID_IMPLEMENTATION_PLAN",
+        "errorName": "VerificationRunnerError"
+      }
+    }
+  ],
+  "diagnostics": [
+    {
+      "severity": "error",
+      "code": "VE_INVALID_INVOCATION",
+      "classification": "invalid_input",
+      "message": "Verification runner rejected the request.",
+      "path": null,
+      "span": null,
+      "hint": null
+    }
+  ],
+  "artifacts": [
+    {
+      "kind": "cli_result",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/evidence/n4-cli/cli-result.json",
+      "schemaVersion": "vibe-engineer.cli.result.v1",
+      "role": "report",
+      "sha256": null
+    }
+  ]
+}

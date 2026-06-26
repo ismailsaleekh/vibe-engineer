@@ -1,0 +1,50 @@
+[
+  {
+    "id": "post-fix-schema-validation",
+    "requiredItemIds": [
+      "schema-validation"
+    ],
+    "layer": "schema_validation",
+    "evidenceClass": "deterministic",
+    "blocking": true,
+    "kind": "command",
+    "command": "/Users/lizavasilyeva/.nvm/versions/node/v24.16.0/bin/node",
+    "args": [
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/fixtures/runners/post-fix-pass-runner.mjs",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/invalid-shared-output/packets/runner-output.json"
+    ],
+    "cwd": ".",
+    "expectedArtifacts": [
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/invalid-shared-output/packets/runner-output.json"
+    ],
+    "argPaths": [
+      {
+        "index": 0,
+        "root": "projectRoot"
+      },
+      {
+        "index": 1,
+        "root": "evidenceRoot"
+      }
+    ],
+    "publicArgs": [],
+    "scalarArgs": [],
+    "safety": {
+      "classification": "local_deterministic_write",
+      "timeoutMs": 2000,
+      "maxStdoutBytes": 8192,
+      "maxStderrBytes": 8192,
+      "maxOutputBytes": 8192,
+      "allowedReadRoots": [
+        "/Users/lizavasilyeva/work/vibe-engineer"
+      ],
+      "allowedWriteRoots": [
+        "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/invalid-shared-output/packets"
+      ],
+      "envAllowlist": [],
+      "passThroughEnv": false,
+      "cwdContainedInProjectRoot": true,
+      "expectedArtifactsContained": true
+    }
+  }
+]

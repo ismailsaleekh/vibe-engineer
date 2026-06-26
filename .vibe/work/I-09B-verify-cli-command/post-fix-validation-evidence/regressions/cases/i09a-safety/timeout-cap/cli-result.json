@@ -1,0 +1,346 @@
+{
+  "schemaVersion": "vibe-engineer.cli.result.v1",
+  "invocation": {
+    "id": "i-09b-post-fix-verify-93c40b6d",
+    "command": "verify",
+    "argv": [
+      "verify",
+      "--implementation-plan",
+      "<value>",
+      "--evidence-root",
+      "<value>",
+      "--project-root",
+      "<value>",
+      "--run-id",
+      "<value>",
+      "--runner-catalog",
+      "<value>",
+      "--result-file",
+      "<value>"
+    ],
+    "projectRoot": "/Users/lizavasilyeva/work/vibe-engineer",
+    "configPath": null,
+    "startedAt": "2026-06-25T20:18:52.072Z",
+    "endedAt": "2026-06-25T20:18:52.072Z"
+  },
+  "status": "blocked",
+  "exitCode": 4,
+  "payload": {
+    "kind": "verification_result",
+    "schemaVersion": "vibe-engineer.cli.payload.v1",
+    "data": {
+      "ok": false,
+      "runnerStatus": "blocked",
+      "runId": "i09b-post-fix-timeout-cap",
+      "rerunOf": null,
+      "evidencePackets": [
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/timeout-cap/packets/evidence_i09b-post-fix-timeout-cap_safety-hooks_00.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "3330078b4239f50fa6aefa4d19485c354d6fdd6b7099f6290d37a10bcb5afeda",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/timeout-cap/packets/evidence_i09b-post-fix-timeout-cap_typecheck_01.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "427c113f2cfc22a35c495de29be0e1b4b6e2ad3e834b1dc3143b4807fcfd4061",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/timeout-cap/packets/evidence_i09b-post-fix-timeout-cap_lint-format_02.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "4560f49e53ed875b2151a7b226169d5111161ef8c973cd861c459a9f1af651a8",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/timeout-cap/packets/evidence_i09b-post-fix-timeout-cap_mechanical-gate_03.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "d9afb51a7a1e7c0a0969f88bcb2006fb46472099f057cd72942dcce35e05358d",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/timeout-cap/packets/evidence_i09b-post-fix-timeout-cap_unit_04.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "8057da91e17b7eae07bc71979d1c12a6539a97fb674b90896c50d96974bfd355",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/timeout-cap/packets/evidence_i09b-post-fix-timeout-cap_integration_05.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "52688189ccd3acc45ca367bcd7a3ba3be8df18202811bfbd10f2b106d95e7f7b",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/timeout-cap/packets/evidence_i09b-post-fix-timeout-cap_contract-adapter_06.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "10bc0e4656521f893b24cc05cf996e7443af73563a207ff8939437cf56a9392a",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/timeout-cap/packets/evidence_i09b-post-fix-timeout-cap_e2e_07.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "d8a31ae5343dd36a54b62113c1c80207106af121547a7ea444b42c60bd734dcf",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/timeout-cap/packets/evidence_i09b-post-fix-timeout-cap_ui-verification_08.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "bbf54c63053f8d821fc910758c18720da2e290070eb6c1f8378fd8974e24bf4e",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/timeout-cap/packets/evidence_i09b-post-fix-timeout-cap_ai-eval_09.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "f963fc1ac820a22bb8cac7b0ce0c6bd37b9c8d597bc90518a875b15179686e4a",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/timeout-cap/packets/evidence_i09b-post-fix-timeout-cap_build-package_10.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "dfd9be220c67c10d0c3a7513c65f2953eae20578cf4bab526086e4a1c71cd808",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/timeout-cap/packets/evidence_i09b-post-fix-timeout-cap_context-drift_11.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "e4b43aff4a8ec72b7d8acd80d97037d00d0ee4a271db341bfe88e1b94e0e9360",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/timeout-cap/packets/evidence_i09b-post-fix-timeout-cap_observability_12.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "57c49a197630f145759a2bc8e9615547e845924631e1777082251ffbf145c0df",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/timeout-cap/packets/evidence_i09b-post-fix-timeout-cap_advisory-review_13.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "d1e4a9d832b377b171ea6f28e9df68fd0741bc7f17d5cce1d11764eaf49759be",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/timeout-cap/packets/evidence_i09b-post-fix-timeout-cap_final-dod_14.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "0c2563c995be23d8b64a6a3339582614a8d0cd90fc001751c5f6964e1cdedc1e",
+          "valid": true
+        },
+        {
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/timeout-cap/packets/evidence_i09b-post-fix-timeout-cap_schema-validation_15.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "1bdad5f90b14e3257ed5f67f91510071fae2d3f557ee11b305019e5b3225ecc1",
+          "valid": true
+        }
+      ],
+      "executedItems": [
+        "schema-validation"
+      ],
+      "recordedItems": [
+        "safety-hooks",
+        "typecheck",
+        "lint-format",
+        "mechanical-gate",
+        "unit",
+        "integration",
+        "contract-adapter",
+        "e2e",
+        "ui-verification",
+        "ai-eval",
+        "build-package",
+        "context-drift",
+        "observability",
+        "advisory-review",
+        "final-dod"
+      ],
+      "blockedItems": [
+        "schema-validation"
+      ],
+      "failures": [
+        {
+          "code": "COMMAND_TIMEOUT",
+          "classification": "safety_or_security_policy_failure",
+          "message": "Command timed out and was terminated."
+        }
+      ],
+      "warnings": [
+        "I-09B post-fix regression fixture rationale for safety-hooks.",
+        "I-09B post-fix regression fixture rationale for typecheck.",
+        "I-09B post-fix regression fixture rationale for lint-format.",
+        "I-09B post-fix regression fixture rationale for mechanical-gate.",
+        "I-09B post-fix regression fixture rationale for unit.",
+        "I-09B post-fix regression fixture rationale for integration.",
+        "I-09B post-fix regression fixture rationale for contract-adapter.",
+        "I-09B post-fix regression fixture rationale for e2e.",
+        "I-09B post-fix regression fixture rationale for ui-verification.",
+        "I-09B post-fix regression fixture rationale for ai-eval.",
+        "I-09B post-fix regression fixture rationale for build-package.",
+        "I-09B post-fix regression fixture rationale for context-drift.",
+        "I-09B post-fix regression fixture rationale for observability.",
+        "I-09B post-fix regression fixture rationale for advisory-review.",
+        "I-09B post-fix regression fixture rationale for final-dod."
+      ]
+    }
+  },
+  "diagnostics": [
+    {
+      "severity": "error",
+      "code": "VE_INVALID_INVOCATION",
+      "classification": "safety_policy_block",
+      "message": "Command timed out and was terminated.",
+      "path": null,
+      "span": null,
+      "hint": null
+    }
+  ],
+  "artifacts": [
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/timeout-cap/packets/evidence_i09b-post-fix-timeout-cap_safety-hooks_00.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "3330078b4239f50fa6aefa4d19485c354d6fdd6b7099f6290d37a10bcb5afeda"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/timeout-cap/packets/evidence_i09b-post-fix-timeout-cap_typecheck_01.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "427c113f2cfc22a35c495de29be0e1b4b6e2ad3e834b1dc3143b4807fcfd4061"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/timeout-cap/packets/evidence_i09b-post-fix-timeout-cap_lint-format_02.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "4560f49e53ed875b2151a7b226169d5111161ef8c973cd861c459a9f1af651a8"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/timeout-cap/packets/evidence_i09b-post-fix-timeout-cap_mechanical-gate_03.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "d9afb51a7a1e7c0a0969f88bcb2006fb46472099f057cd72942dcce35e05358d"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/timeout-cap/packets/evidence_i09b-post-fix-timeout-cap_unit_04.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "8057da91e17b7eae07bc71979d1c12a6539a97fb674b90896c50d96974bfd355"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/timeout-cap/packets/evidence_i09b-post-fix-timeout-cap_integration_05.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "52688189ccd3acc45ca367bcd7a3ba3be8df18202811bfbd10f2b106d95e7f7b"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/timeout-cap/packets/evidence_i09b-post-fix-timeout-cap_contract-adapter_06.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "10bc0e4656521f893b24cc05cf996e7443af73563a207ff8939437cf56a9392a"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/timeout-cap/packets/evidence_i09b-post-fix-timeout-cap_e2e_07.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "d8a31ae5343dd36a54b62113c1c80207106af121547a7ea444b42c60bd734dcf"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/timeout-cap/packets/evidence_i09b-post-fix-timeout-cap_ui-verification_08.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "bbf54c63053f8d821fc910758c18720da2e290070eb6c1f8378fd8974e24bf4e"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/timeout-cap/packets/evidence_i09b-post-fix-timeout-cap_ai-eval_09.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "f963fc1ac820a22bb8cac7b0ce0c6bd37b9c8d597bc90518a875b15179686e4a"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/timeout-cap/packets/evidence_i09b-post-fix-timeout-cap_build-package_10.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "dfd9be220c67c10d0c3a7513c65f2953eae20578cf4bab526086e4a1c71cd808"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/timeout-cap/packets/evidence_i09b-post-fix-timeout-cap_context-drift_11.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "e4b43aff4a8ec72b7d8acd80d97037d00d0ee4a271db341bfe88e1b94e0e9360"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/timeout-cap/packets/evidence_i09b-post-fix-timeout-cap_observability_12.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "57c49a197630f145759a2bc8e9615547e845924631e1777082251ffbf145c0df"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/timeout-cap/packets/evidence_i09b-post-fix-timeout-cap_advisory-review_13.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "d1e4a9d832b377b171ea6f28e9df68fd0741bc7f17d5cce1d11764eaf49759be"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/timeout-cap/packets/evidence_i09b-post-fix-timeout-cap_final-dod_14.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "0c2563c995be23d8b64a6a3339582614a8d0cd90fc001751c5f6964e1cdedc1e"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/timeout-cap/packets/evidence_i09b-post-fix-timeout-cap_schema-validation_15.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "1bdad5f90b14e3257ed5f67f91510071fae2d3f557ee11b305019e5b3225ecc1"
+    },
+    {
+      "kind": "cli_result",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/timeout-cap/result/cli-result.json",
+      "schemaVersion": "vibe-engineer.cli.result.v1",
+      "role": "report",
+      "sha256": null
+    }
+  ],
+  "errors": [
+    {
+      "code": "VE_INVALID_INVOCATION",
+      "classification": "safety_policy_block",
+      "retryable": false,
+      "blocking": true,
+      "message": "Command timed out and was terminated.",
+      "details": {
+        "runnerCode": "COMMAND_TIMEOUT",
+        "runnerClassification": "safety_or_security_policy_failure",
+        "evidencePacketPaths": [
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/timeout-cap/packets/evidence_i09b-post-fix-timeout-cap_safety-hooks_00.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/timeout-cap/packets/evidence_i09b-post-fix-timeout-cap_typecheck_01.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/timeout-cap/packets/evidence_i09b-post-fix-timeout-cap_lint-format_02.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/timeout-cap/packets/evidence_i09b-post-fix-timeout-cap_mechanical-gate_03.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/timeout-cap/packets/evidence_i09b-post-fix-timeout-cap_unit_04.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/timeout-cap/packets/evidence_i09b-post-fix-timeout-cap_integration_05.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/timeout-cap/packets/evidence_i09b-post-fix-timeout-cap_contract-adapter_06.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/timeout-cap/packets/evidence_i09b-post-fix-timeout-cap_e2e_07.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/timeout-cap/packets/evidence_i09b-post-fix-timeout-cap_ui-verification_08.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/timeout-cap/packets/evidence_i09b-post-fix-timeout-cap_ai-eval_09.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/timeout-cap/packets/evidence_i09b-post-fix-timeout-cap_build-package_10.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/timeout-cap/packets/evidence_i09b-post-fix-timeout-cap_context-drift_11.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/timeout-cap/packets/evidence_i09b-post-fix-timeout-cap_observability_12.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/timeout-cap/packets/evidence_i09b-post-fix-timeout-cap_advisory-review_13.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/timeout-cap/packets/evidence_i09b-post-fix-timeout-cap_final-dod_14.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/post-fix-validation-evidence/regressions/cases/i09a-safety/timeout-cap/packets/evidence_i09b-post-fix-timeout-cap_schema-validation_15.json"
+        ]
+      }
+    }
+  ]
+}

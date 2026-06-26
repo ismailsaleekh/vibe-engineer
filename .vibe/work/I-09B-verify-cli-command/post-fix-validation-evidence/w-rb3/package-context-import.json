@@ -1,0 +1,59 @@
+{
+  "cliPackageContext": "/Users/lizavasilyeva/work/vibe-engineer/packages/cli/package.json",
+  "probe": {
+    "cwd": "/Users/lizavasilyeva/work/vibe-engineer/packages/cli",
+    "verificationResolved": "file:///Users/lizavasilyeva/work/vibe-engineer/packages/verification/src/index.js",
+    "artifactsResolved": "file:///Users/lizavasilyeva/work/vibe-engineer/packages/artifacts/src/index.js",
+    "runVerificationPlanType": "function",
+    "validateArtifactFileType": "function",
+    "verificationExportKeys": [
+      "EVIDENCE_FAILURE_CLASSIFICATIONS",
+      "EVIDENCE_FAILURE_CLASSIFICATION_VALUES",
+      "EVIDENCE_RESULTS",
+      "VERIFICATION_RUNNER_VERSION",
+      "VERIFICATION_STATUSES",
+      "VERIFICATION_STATUS_VALUES",
+      "VerificationRunnerError",
+      "runVerificationPlan"
+    ],
+    "artifactsExportKeys": [
+      "ARTIFACT_KINDS",
+      "SCHEMA_FILES",
+      "SUPPORTED_SCHEMA_VERSION",
+      "ValidationErrorCode",
+      "compileAllArtifactSchemas",
+      "loadAllSchemas",
+      "loadSchema",
+      "schemaPathForKind",
+      "validateArtifact",
+      "validateArtifactFile",
+      "validateArtifactKind"
+    ]
+  },
+  "directImportRunVerificationPlanType": "function",
+  "directImportValidateArtifactFileType": "function",
+  "verificationStatusConstants": {
+    "PASSED": "passed",
+    "FAILED": "failed",
+    "BLOCKED": "blocked",
+    "ADVISORY_WARNING": "advisory_warning"
+  },
+  "evidenceFailureClassifications": {
+    "DETERMINISTIC_PRODUCT_OR_CODE_FAILURE": "deterministic_product_or_code_failure",
+    "SCHEMA_OR_CONTRACT_FAILURE": "schema_or_contract_failure",
+    "SAFETY_OR_SECURITY_POLICY_FAILURE": "safety_or_security_policy_failure",
+    "MECHANICAL_GATE_FAILURE": "mechanical_gate_failure",
+    "TEST_ASSERTION_FAILURE": "test_assertion_failure",
+    "TEST_BUG": "test_bug",
+    "ENVIRONMENT_ISSUE": "environment_issue",
+    "TIMING_OR_FLAKY_SUSPICION": "timing_or_flaky_suspicion",
+    "EXTERNAL_DEPENDENCY_DRIFT": "external_dependency_drift",
+    "ADVISORY_FINDING": "advisory_finding",
+    "MISSING_EVIDENCE": "missing_evidence",
+    "MISSING_RUNNER_OR_PREREQUISITE": "missing_runner_or_prerequisite",
+    "SKIPPED_REQUIRED_DELTA_CATEGORY": "skipped_required_delta_category",
+    "BLOCKED_PREREQUISITE": "blocked_prerequisite",
+    "RUNNER_INTERNAL_ERROR": "runner_internal_error",
+    "CLASSIFICATION_UNKNOWN": "classification_unknown"
+  }
+}

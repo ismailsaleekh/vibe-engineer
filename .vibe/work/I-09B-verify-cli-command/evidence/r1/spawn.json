@@ -1,0 +1,13 @@
+{
+  "code": 2,
+  "stdout": "{\"schemaVersion\":\"vibe-engineer.cli.result.v1\",\"invocation\":{\"id\":\"dbc05d80-9838-41a4-8b02-7933f2db0d7a\",\"command\":\"verify\",\"argv\":[\"--json\",\"--non-interactive\",\"verify\"],\"projectRoot\":null,\"configPath\":null,\"startedAt\":\"2026-06-25T18:20:22.995Z\",\"endedAt\":\"2026-06-25T18:20:22.996Z\"},\"status\":\"blocked\",\"exitCode\":2,\"payload\":{\"kind\":\"cli_invocation_error\",\"schemaVersion\":\"vibe-engineer.cli.payload.v1\",\"data\":{\"accepted\":false}},\"diagnostics\":[{\"severity\":\"error\",\"code\":\"VE_UNSUPPORTED_OPERATION\",\"classification\":\"unsupported_operation\",\"message\":\"Command family is not implemented in I-02A.\",\"path\":null,\"span\":null,\"hint\":null}],\"artifacts\":[],\"errors\":[{\"code\":\"VE_UNSUPPORTED_OPERATION\",\"classification\":\"unsupported_operation\",\"retryable\":false,\"blocking\":true,\"message\":\"Command family is not implemented in I-02A.\",\"details\":{\"commandId\":\"verify\"}}]}\n",
+  "stderr": "",
+  "cwd": "/Users/lizavasilyeva/work/vibe-engineer",
+  "argv": [
+    "/Users/lizavasilyeva/.nvm/versions/node/v24.16.0/bin/node",
+    "packages/cli/src/entry/vibe-engineer.js",
+    "--json",
+    "--non-interactive",
+    "verify"
+  ]
+}

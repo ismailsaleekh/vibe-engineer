@@ -1,0 +1,214 @@
+{
+  "foundation": {
+    "code": 0,
+    "signal": null,
+    "stdout": "{\"schemaVersion\":\"vibe-engineer.cli.result.v1\",\"invocation\":{\"id\":\"c077ed66-f348-4835-84f4-86381fd3271d\",\"command\":\"foundation\",\"argv\":[\"--json\",\"--non-interactive\",\"foundation\",\"--status\",\"<value>\"],\"projectRoot\":null,\"configPath\":null,\"startedAt\":\"2026-06-25T19:17:54.284Z\",\"endedAt\":\"2026-06-25T19:17:54.285Z\"},\"status\":\"success\",\"exitCode\":0,\"payload\":{\"kind\":\"foundation_result\",\"schemaVersion\":\"vibe-engineer.cli.payload.v1\",\"data\":{\"ok\":true,\"commandLoaderBoundary\":\"i-02a-foundation\"}},\"diagnostics\":[],\"artifacts\":[],\"errors\":[]}\n",
+    "stderr": "",
+    "cwd": "/Users/lizavasilyeva/work/vibe-engineer",
+    "argv": [
+      "/Users/lizavasilyeva/.nvm/versions/node/v24.16.0/bin/node",
+      "/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/entry/vibe-engineer.js",
+      "--json",
+      "--non-interactive",
+      "foundation",
+      "--status",
+      "success"
+    ],
+    "stdoutSha256": "c6de490f0a3765c13576e39ed17f126477355fc4be9419cd78a7e84c330230a7",
+    "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "envelope": {
+      "schemaVersion": "vibe-engineer.cli.result.v1",
+      "invocation": {
+        "id": "c077ed66-f348-4835-84f4-86381fd3271d",
+        "command": "foundation",
+        "argv": [
+          "--json",
+          "--non-interactive",
+          "foundation",
+          "--status",
+          "<value>"
+        ],
+        "projectRoot": null,
+        "configPath": null,
+        "startedAt": "2026-06-25T19:17:54.284Z",
+        "endedAt": "2026-06-25T19:17:54.285Z"
+      },
+      "status": "success",
+      "exitCode": 0,
+      "payload": {
+        "kind": "foundation_result",
+        "schemaVersion": "vibe-engineer.cli.payload.v1",
+        "data": {
+          "ok": true,
+          "commandLoaderBoundary": "i-02a-foundation"
+        }
+      },
+      "diagnostics": [],
+      "artifacts": [],
+      "errors": []
+    }
+  },
+  "siblingCases": [
+    {
+      "command": "doctor",
+      "args": [
+        "--unknown-doctor-flag"
+      ],
+      "envelope": {
+        "schemaVersion": "vibe-engineer.cli.result.v1",
+        "invocation": {
+          "id": "i-09b-fix-doctor-84da4df5",
+          "command": "doctor",
+          "argv": [
+            "doctor",
+            "--unknown-doctor-flag"
+          ],
+          "projectRoot": "/Users/lizavasilyeva/work/vibe-engineer",
+          "configPath": null,
+          "startedAt": "2026-06-25T19:17:54.288Z",
+          "endedAt": "2026-06-25T19:17:54.288Z"
+        },
+        "status": "blocked",
+        "exitCode": 2,
+        "payload": {
+          "kind": "cli_invocation_error",
+          "schemaVersion": "vibe-engineer.cli.payload.v1",
+          "data": {
+            "accepted": false
+          }
+        },
+        "diagnostics": [
+          {
+            "severity": "error",
+            "code": "VE_INVALID_FLAG",
+            "classification": "invalid_invocation",
+            "message": "Unsupported doctor flag: --unknown-doctor-flag.",
+            "path": null,
+            "span": null,
+            "hint": null
+          }
+        ],
+        "artifacts": [],
+        "errors": [
+          {
+            "code": "VE_INVALID_FLAG",
+            "classification": "invalid_invocation",
+            "retryable": false,
+            "blocking": true,
+            "message": "Unsupported doctor flag: --unknown-doctor-flag.",
+            "details": {
+              "flag": "--unknown-doctor-flag"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "command": "config",
+      "args": [
+        "inspect",
+        "--unknown-config-flag"
+      ],
+      "envelope": {
+        "schemaVersion": "vibe-engineer.cli.result.v1",
+        "invocation": {
+          "id": "i-09b-fix-config-a3316423",
+          "command": "config",
+          "argv": [
+            "config",
+            "inspect",
+            "--unknown-config-flag"
+          ],
+          "projectRoot": "/Users/lizavasilyeva/work/vibe-engineer",
+          "configPath": null,
+          "startedAt": "2026-06-25T19:17:54.288Z",
+          "endedAt": "2026-06-25T19:17:54.288Z"
+        },
+        "status": "blocked",
+        "exitCode": 2,
+        "payload": {
+          "kind": "cli_invocation_error",
+          "schemaVersion": "vibe-engineer.cli.payload.v1",
+          "data": {
+            "accepted": false
+          }
+        },
+        "diagnostics": [
+          {
+            "severity": "error",
+            "code": "VE_INVALID_FLAG",
+            "classification": "invalid_invocation",
+            "message": "Unsupported config flag: --unknown-config-flag.",
+            "path": null,
+            "span": null,
+            "hint": null
+          }
+        ],
+        "artifacts": [],
+        "errors": [
+          {
+            "code": "VE_INVALID_FLAG",
+            "classification": "invalid_invocation",
+            "retryable": false,
+            "blocking": true,
+            "message": "Unsupported config flag: --unknown-config-flag.",
+            "details": {
+              "flag": "--unknown-config-flag"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "command": "schematic",
+      "args": [],
+      "envelope": {
+        "schemaVersion": "vibe-engineer.cli.result.v1",
+        "invocation": {
+          "id": "i-09b-fix-schematic-9340809f",
+          "command": "schematic",
+          "argv": [
+            "schematic"
+          ],
+          "projectRoot": "/Users/lizavasilyeva/work/vibe-engineer",
+          "configPath": null,
+          "startedAt": "2026-06-25T19:17:54.288Z",
+          "endedAt": "2026-06-25T19:17:54.288Z"
+        },
+        "status": "blocked",
+        "exitCode": 2,
+        "payload": {
+          "kind": "schematic_result",
+          "schemaVersion": "vibe-engineer.cli.payload.v1",
+          "data": {
+            "accepted": false
+          }
+        },
+        "diagnostics": [
+          {
+            "severity": "error",
+            "code": "VE_INVALID_INVOCATION",
+            "classification": "invalid_invocation",
+            "message": "Missing required schematic option manifest.",
+            "path": null,
+            "span": null,
+            "hint": null
+          }
+        ],
+        "artifacts": [],
+        "errors": [
+          {
+            "code": "VE_INVALID_INVOCATION",
+            "classification": "invalid_invocation",
+            "retryable": false,
+            "blocking": true,
+            "message": "Missing required schematic option manifest.",
+            "details": {
+              "option": "manifest"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

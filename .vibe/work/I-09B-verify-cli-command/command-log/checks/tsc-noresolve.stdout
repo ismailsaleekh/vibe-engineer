@@ -1,0 +1,10 @@
+packages/cli/src/commands/verify/index.ts(1,28): error TS2307: Cannot find module 'node:crypto' or its corresponding type declarations.
+packages/cli/src/commands/verify/index.ts(2,66): error TS2307: Cannot find module 'node:fs' or its corresponding type declarations.
+packages/cli/src/commands/verify/index.ts(3,33): error TS2307: Cannot find module 'node:fs/promises' or its corresponding type declarations.
+packages/cli/src/commands/verify/index.ts(4,56): error TS2307: Cannot find module 'node:path' or its corresponding type declarations.
+packages/cli/src/commands/verify/index.ts(5,38): error TS2307: Cannot find module '@vibe-engineer/artifacts' or its corresponding type declarations.
+packages/cli/src/commands/verify/index.ts(6,37): error TS7016: Could not find a declaration file for module '@vibe-engineer/verification'. '/Users/lizavasilyeva/work/vibe-engineer/packages/verification/src/index.js' implicitly has an 'any' type.
+  Try `npm i --save-dev @types/vibe-engineer__verification` if it exists or add a new declaration (.d.ts) file containing `declare module '@vibe-engineer/verification';`
+packages/cli/src/commands/verify/index.ts(14,8): error TS7016: Could not find a declaration file for module '../../envelope/result-envelope.js'. '/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/envelope/result-envelope.js' implicitly has an 'any' type.
+packages/cli/src/commands/verify/index.ts(15,71): error TS7016: Could not find a declaration file for module '../../errors/codes.js'. '/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/errors/codes.js' implicitly has an 'any' type.
+packages/cli/src/commands/verify/index.ts(16,56): error TS7016: Could not find a declaration file for module '../../errors/sanitization.js'. '/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/errors/sanitization.js' implicitly has an 'any' type.

@@ -1,0 +1,42 @@
+# post-fix static source inspection
+## verify inventory
+packages/cli/src/commands/verify/index.ts
+## verify js/mjs inventory
+## verify sha256
+1ef387ed4e46ac50ab362dafdcbd9f7ad2d9dffcb16e9f7792150689589b9c57  packages/cli/src/commands/verify/index.ts
+## command metadata/export grep
+5:import { validateArtifactFile } from "@vibe-engineer/artifacts";
+6:import { EVIDENCE_FAILURE_CLASSIFICATIONS, VERIFICATION_STATUSES, runVerificationPlan } from "@vibe-engineer/verification";
+105:const RUNNER_MISSING_PREREQUISITE = String(EVIDENCE_FAILURE_CLASSIFICATIONS.MISSING_RUNNER_OR_PREREQUISITE);
+106:const RUNNER_STATUS_BLOCKED = String(VERIFICATION_STATUSES.BLOCKED);
+563:async function run({ invocation, args }: CommandContext): Promise<{ envelope: UnknownRecord }> {
+579:    const result = await runVerificationPlan({
+610:export const verifyCommand = Object.freeze({
+611:  id: "verify",
+612:  visibility: "implementation",
+613:  description: "Run an approved Implementation Plan through the verification runner and emit CLI result evidence.",
+617:export default verifyCommand;
+## suspicious production tokens
+## command loader default unsupported verify grep
+packages/cli/src/command-loader/loader.js:6:const LATER_COMMANDS = new Set([
+packages/cli/src/command-loader/loader.js:12:  "verify",
+packages/cli/src/command-loader/loader.js:182:      const unsupported = LATER_COMMANDS.has(commandId);
+packages/cli/src/entry/vibe-engineer.js:201:    const loader = createCommandLoader();
+## verification public exports grep
+10:export const VERIFICATION_STATUSES = Object.freeze({
+27:export const EVIDENCE_FAILURE_CLASSIFICATIONS = Object.freeze({
+39:  MISSING_RUNNER_OR_PREREQUISITE: 'missing_runner_or_prerequisite',
+400:function validateCommandSafety(spec, projectRoot, evidenceRoot, cwd) {
+535:  const safety = validateCommandSafety(spec, projectRoot, evidenceRoot, cwd);
+607:    const classification = err.code === 'ENOENT' ? EVIDENCE_FAILURE_CLASSIFICATIONS.MISSING_RUNNER_OR_PREREQUISITE : EVIDENCE_FAILURE_CLASSIFICATIONS.RUNNER_INTERNAL_ERROR;
+608:    const code = err.code === 'ENOENT' ? 'MISSING_RUNNER_OR_PREREQUISITE' : 'RUNNER_SPAWN_ERROR';
+620:    const packet = makePacket({ ...common, status: spec.evidenceClass === 'advisory' && spec.blocking === false ? 'advisory_warning' : 'failed', result: spec.evidenceClass === 'advisory' && spec.blocking === false ? 'advisory' : 'fail', blocking: Boolean(spec.blocking), failureDetails: failureDetails(spec.evidenceClass === 'advisory' && spec.blocking === false ? 'ADVISORY_FINDING' : 'RUNNER_NONZERO_EXIT', `Runner exited with code ${String(exitCode)}.`, spec.evidenceClass === 'advisory' && spec.blocking === false ? EVIDENCE_FAILURE_CLASSIFICATIONS.ADVISORY_FINDING : classification) });
+706:export async function runVerificationPlan(options) {
+763:        outcomes = [await recordNonExecuted(item, itemCtx, 'blocked', 'blocked', true, EVIDENCE_FAILURE_CLASSIFICATIONS.MISSING_RUNNER_OR_PREREQUISITE, 'MISSING_RUNNER_OR_PREREQUISITE', 'No runner spec resolved for required add/update Verification Delta item.')];
+## artifacts validator exports grep
+packages/artifacts/src/index.js:3:export { compileAllArtifactSchemas, validateArtifact, validateArtifactFile, validateArtifactKind } from './validation.js';
+packages/artifacts/src/validation.js:299:export function validateArtifactKind(kind, data, options = {}) {
+packages/artifacts/src/validation.js:315:export function validateArtifact(data, options = {}) {
+packages/artifacts/src/validation.js:325:  return validateArtifactKind(kind, data, options);
+packages/artifacts/src/validation.js:328:export function validateArtifactFile(filePath, options = {}) {
+packages/artifacts/src/validation.js:339:  return options.kind ? validateArtifactKind(options.kind, parsed, { artifactPath }) : validateArtifact(parsed, { artifactPath });

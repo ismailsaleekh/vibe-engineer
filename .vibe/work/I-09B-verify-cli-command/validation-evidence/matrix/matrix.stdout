@@ -1,0 +1,68 @@
+{
+  "status": "PASS",
+  "command": "/Users/lizavasilyeva/.nvm/versions/node/v24.16.0/bin/node /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/i09b-matrix-witness.mjs",
+  "cwd": "/Users/lizavasilyeva/work/vibe-engineer",
+  "plans": {
+    "schemaOnlyPlan": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/fixtures/schema-only-passed.implementation-plan.json",
+    "advisoryOnlyPlan": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09B-verify-cli-command/validation-evidence/matrix/fixtures/advisory-only-warning.implementation-plan.json"
+  },
+  "positive": {
+    "p1Status": "success",
+    "p1RunnerStatus": "passed",
+    "advisoryStatus": "success",
+    "advisoryRunnerStatus": "advisory_warning"
+  },
+  "invalidInvocationCount": 10,
+  "negatives": {
+    "n1": {
+      "status": "blocked",
+      "classification": "invalid_input",
+      "runnerStatus": "not_run"
+    },
+    "n2": {
+      "status": "blocked",
+      "classification": "missing_prerequisite",
+      "runnerStatus": "blocked"
+    },
+    "n3": {
+      "status": "blocked",
+      "classification": "missing_prerequisite",
+      "runnerStatus": "blocked"
+    },
+    "n4": {
+      "status": "blocked",
+      "classification": "invalid_input",
+      "runnerStatus": "not_run"
+    },
+    "n5": {
+      "status": "blocked",
+      "classification": "invalid_input",
+      "runnerStatus": "blocked"
+    },
+    "n6": {
+      "status": "failure",
+      "classification": "internal_error",
+      "runnerStatus": "failed"
+    },
+    "n7": {
+      "status": "success",
+      "classification": null,
+      "runnerStatus": "advisory_warning"
+    }
+  },
+  "inheritedSafetyCases": [
+    "touchDenied",
+    "nodeEvalDenied",
+    "timeoutCap",
+    "aggregateOutputCap",
+    "secretOutputRedaction"
+  ],
+  "regression": {
+    "r1Classification": "unsupported_operation",
+    "foundationStatus": "success",
+    "siblingCount": 3
+  },
+  "redaction": {
+    "hitCount": 0
+  }
+}
