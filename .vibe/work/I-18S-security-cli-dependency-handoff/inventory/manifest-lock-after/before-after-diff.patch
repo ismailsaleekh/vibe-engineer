@@ -1,0 +1,36 @@
+--- .vibe/work/I-18S-security-cli-dependency-handoff/inventory/manifest-lock-before/packages-security-package.json	2026-06-26 08:15:10
++++ packages/security/package.json	2026-06-26 08:16:28
+@@ -3,7 +3,10 @@
+   "version": "0.0.0",
+   "license": "MIT",
+   "type": "module",
+-  "description": "Skeleton manifest for @vibe-engineer/security; implementation is owned by a later validated lane.",
++  "description": "Security and safety policy package for typed fail-closed harness gates.",
++  "exports": {
++    ".": "./src/index.js"
++  },
+   "vibeEngineer": {
+     "implementationUnit": "I-00A-workspace-package-skeleton",
+     "implementationStatus": "skeleton-only",
+--- .vibe/work/I-18S-security-cli-dependency-handoff/inventory/manifest-lock-before/packages-cli-package.json	2026-06-26 08:15:10
++++ packages/cli/package.json	2026-06-26 08:16:35
+@@ -26,6 +26,7 @@
+   "dependencies": {
+     "@vibe-engineer/artifacts": "workspace:*",
+     "@vibe-engineer/config": "workspace:*",
++    "@vibe-engineer/security": "workspace:*",
+     "@vibe-engineer/verification": "workspace:*"
+   }
+ }
+--- .vibe/work/I-18S-security-cli-dependency-handoff/inventory/manifest-lock-before/pnpm-lock.yaml	2026-06-26 08:15:10
++++ pnpm-lock.yaml	2026-06-26 08:17:20
+@@ -43,6 +43,9 @@
+       '@vibe-engineer/config':
+         specifier: workspace:*
+         version: link:../config
++      '@vibe-engineer/security':
++        specifier: workspace:*
++        version: link:../security
+       '@vibe-engineer/verification':
+         specifier: workspace:*
+         version: link:../verification

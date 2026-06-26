@@ -1,0 +1,15 @@
+  packages/cli:
+    dependencies:
+      '@vibe-engineer/artifacts':
+        specifier: workspace:*
+        version: link:../artifacts
+      '@vibe-engineer/config':
+        specifier: workspace:*
+        version: link:../config
+      '@vibe-engineer/security':
+        specifier: workspace:*
+        version: link:../security
+      '@vibe-engineer/verification':
+        specifier: workspace:*
+        version: link:../verification
+

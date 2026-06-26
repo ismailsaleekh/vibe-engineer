@@ -1,0 +1,11 @@
+cwd: /Users/lizavasilyeva/work/vibe-engineer
+packages/cli dependency:
+workspace:*
+packages/cli node_modules symlink:
+{"isSymbolicLink":true,"isDirectory":false}
+target=../../../security
+realpath=/Users/lizavasilyeva/work/vibe-engineer/packages/security
+import.meta.resolve from packages/cli:
+file:///Users/lizavasilyeva/work/vibe-engineer/packages/cli/node_modules/@vibe-engineer/security/src/index.js
+dynamic import from packages/cli (expected pending I-18A source):
+{"code":"ERR_MODULE_NOT_FOUND","expectedMissingExportedSource":true,"pending":"I-18A package API source not implemented yet"}
