@@ -1,0 +1,362 @@
+{
+  "testingManifest": {
+    "name": "@vibe-engineer/testing",
+    "private": true,
+    "hasPublishConfig": false,
+    "hasFiles": false,
+    "hasBin": false,
+    "hasPrepublishOnly": false,
+    "dependencies": null,
+    "devDependencies": null,
+    "vibeEngineer": {
+      "implementationUnit": "I-10C-testing-helper-boundary-package",
+      "implementationStatus": "implemented",
+      "packageRole": "test-only-workspace-package",
+      "sourceStatus": "package-owned-source-created",
+      "testOnly": true,
+      "productionDependencyAllowed": false
+    }
+  },
+  "helperSourceDomainForbiddenTermsPresent": false,
+  "mechanicalManifestHasTestingExport": false,
+  "mechanicalManifestScripts": {
+    "typecheck": "node fixtures/p0/surface-config-boundaries/witness.mjs --typecheck",
+    "test": "node fixtures/p0/surface-config-boundaries/witness.mjs",
+    "test:p0": "node fixtures/p0/surface-config-boundaries/witness.mjs"
+  },
+  "aggregateMentionsTestingBoundary": false,
+  "contractsP0FamiliesMentionsTesting": false,
+  "validatorSourceSignals": {
+    "importsTypescript": true,
+    "usesCreateSourceFile": true,
+    "usesReadJsonFileBounded": true,
+    "usesReadTextFileBounded": true,
+    "usesNormalizeProjectPath": true,
+    "usesCreateFinding": true,
+    "usesCreateValidatorResult": true,
+    "familyLiteralCount": 1,
+    "regexConstructorUsed": false
+  },
+  "fixturePolicyCount": 8,
+  "fixturePolicies": [
+    {
+      "file": "packages/mechanical-gates/fixtures/p0/testing-boundary/malformed-manifest/mechanical-testing-boundary.json",
+      "proofMode": "typescript-ast",
+      "parserSelfAgreementOnly": null,
+      "packageManifestRoots": [
+        "packages"
+      ],
+      "sourceRoots": [
+        "packages"
+      ]
+    },
+    {
+      "file": "packages/mechanical-gates/fixtures/p0/testing-boundary/malformed-policy/mechanical-testing-boundary.json",
+      "proofMode": null,
+      "parserSelfAgreementOnly": null,
+      "packageManifestRoots": null,
+      "sourceRoots": null
+    },
+    {
+      "file": "packages/mechanical-gates/fixtures/p0/testing-boundary/missing-manifest/mechanical-testing-boundary.json",
+      "proofMode": "typescript-ast",
+      "parserSelfAgreementOnly": null,
+      "packageManifestRoots": [
+        "packages"
+      ],
+      "sourceRoots": [
+        "packages"
+      ]
+    },
+    {
+      "file": "packages/mechanical-gates/fixtures/p0/testing-boundary/production-dependency/mechanical-testing-boundary.json",
+      "proofMode": "typescript-ast",
+      "parserSelfAgreementOnly": null,
+      "packageManifestRoots": [
+        "packages"
+      ],
+      "sourceRoots": [
+        "packages"
+      ]
+    },
+    {
+      "file": "packages/mechanical-gates/fixtures/p0/testing-boundary/production-import/mechanical-testing-boundary.json",
+      "proofMode": "typescript-ast",
+      "parserSelfAgreementOnly": null,
+      "packageManifestRoots": [
+        "packages"
+      ],
+      "sourceRoots": [
+        "packages"
+      ]
+    },
+    {
+      "file": "packages/mechanical-gates/fixtures/p0/testing-boundary/publishable-testing/mechanical-testing-boundary.json",
+      "proofMode": "typescript-ast",
+      "parserSelfAgreementOnly": null,
+      "packageManifestRoots": [
+        "packages"
+      ],
+      "sourceRoots": [
+        "packages"
+      ]
+    },
+    {
+      "file": "packages/mechanical-gates/fixtures/p0/testing-boundary/regex-only-proof/mechanical-testing-boundary.json",
+      "proofMode": "regex",
+      "parserSelfAgreementOnly": true,
+      "packageManifestRoots": [
+        "packages"
+      ],
+      "sourceRoots": [
+        "packages"
+      ]
+    },
+    {
+      "file": "packages/mechanical-gates/fixtures/p0/testing-boundary/valid-test-only/mechanical-testing-boundary.json",
+      "proofMode": "typescript-ast",
+      "parserSelfAgreementOnly": null,
+      "packageManifestRoots": [
+        "packages"
+      ],
+      "sourceRoots": [
+        "packages"
+      ]
+    }
+  ],
+  "fixtureManifestCount": 17,
+  "fixtureManifests": [
+    {
+      "file": "packages/mechanical-gates/fixtures/p0/testing-boundary/malformed-manifest/packages/consumer/package.json",
+      "name": null,
+      "private": null,
+      "dependencySections": {},
+      "vibeEngineer": null,
+      "publishConfig": null,
+      "hasFiles": false,
+      "hasBin": false
+    },
+    {
+      "file": "packages/mechanical-gates/fixtures/p0/testing-boundary/malformed-manifest/packages/testing/package.json",
+      "name": "@vibe-engineer/testing",
+      "private": true,
+      "dependencySections": {},
+      "vibeEngineer": {
+        "testOnly": true,
+        "productionDependencyAllowed": false
+      },
+      "publishConfig": null,
+      "hasFiles": false,
+      "hasBin": false
+    },
+    {
+      "file": "packages/mechanical-gates/fixtures/p0/testing-boundary/malformed-policy/packages/consumer/package.json",
+      "name": "@fixture/consumer",
+      "private": true,
+      "dependencySections": {
+        "devDependencies": {
+          "@vibe-engineer/testing": "workspace:*"
+        }
+      },
+      "vibeEngineer": null,
+      "publishConfig": null,
+      "hasFiles": false,
+      "hasBin": false
+    },
+    {
+      "file": "packages/mechanical-gates/fixtures/p0/testing-boundary/malformed-policy/packages/testing/package.json",
+      "name": "@vibe-engineer/testing",
+      "private": true,
+      "dependencySections": {},
+      "vibeEngineer": {
+        "testOnly": true,
+        "productionDependencyAllowed": false
+      },
+      "publishConfig": null,
+      "hasFiles": false,
+      "hasBin": false
+    },
+    {
+      "file": "packages/mechanical-gates/fixtures/p0/testing-boundary/missing-manifest/packages/testing/package.json",
+      "name": "@vibe-engineer/testing",
+      "private": true,
+      "dependencySections": {},
+      "vibeEngineer": {
+        "testOnly": true,
+        "productionDependencyAllowed": false
+      },
+      "publishConfig": null,
+      "hasFiles": false,
+      "hasBin": false
+    },
+    {
+      "file": "packages/mechanical-gates/fixtures/p0/testing-boundary/missing-policy/packages/consumer/package.json",
+      "name": "@fixture/consumer",
+      "private": true,
+      "dependencySections": {
+        "devDependencies": {
+          "@vibe-engineer/testing": "workspace:*"
+        }
+      },
+      "vibeEngineer": null,
+      "publishConfig": null,
+      "hasFiles": false,
+      "hasBin": false
+    },
+    {
+      "file": "packages/mechanical-gates/fixtures/p0/testing-boundary/missing-policy/packages/testing/package.json",
+      "name": "@vibe-engineer/testing",
+      "private": true,
+      "dependencySections": {},
+      "vibeEngineer": {
+        "testOnly": true,
+        "productionDependencyAllowed": false
+      },
+      "publishConfig": null,
+      "hasFiles": false,
+      "hasBin": false
+    },
+    {
+      "file": "packages/mechanical-gates/fixtures/p0/testing-boundary/production-dependency/packages/consumer/package.json",
+      "name": "@fixture/consumer",
+      "private": true,
+      "dependencySections": {
+        "dependencies": {
+          "@vibe-engineer/testing": "workspace:*"
+        }
+      },
+      "vibeEngineer": null,
+      "publishConfig": null,
+      "hasFiles": false,
+      "hasBin": false
+    },
+    {
+      "file": "packages/mechanical-gates/fixtures/p0/testing-boundary/production-dependency/packages/testing/package.json",
+      "name": "@vibe-engineer/testing",
+      "private": true,
+      "dependencySections": {},
+      "vibeEngineer": {
+        "testOnly": true,
+        "productionDependencyAllowed": false
+      },
+      "publishConfig": null,
+      "hasFiles": false,
+      "hasBin": false
+    },
+    {
+      "file": "packages/mechanical-gates/fixtures/p0/testing-boundary/production-import/packages/consumer/package.json",
+      "name": "@fixture/consumer",
+      "private": true,
+      "dependencySections": {
+        "devDependencies": {
+          "@vibe-engineer/testing": "workspace:*"
+        }
+      },
+      "vibeEngineer": null,
+      "publishConfig": null,
+      "hasFiles": false,
+      "hasBin": false
+    },
+    {
+      "file": "packages/mechanical-gates/fixtures/p0/testing-boundary/production-import/packages/testing/package.json",
+      "name": "@vibe-engineer/testing",
+      "private": true,
+      "dependencySections": {},
+      "vibeEngineer": {
+        "testOnly": true,
+        "productionDependencyAllowed": false
+      },
+      "publishConfig": null,
+      "hasFiles": false,
+      "hasBin": false
+    },
+    {
+      "file": "packages/mechanical-gates/fixtures/p0/testing-boundary/publishable-testing/packages/consumer/package.json",
+      "name": "@fixture/consumer",
+      "private": true,
+      "dependencySections": {
+        "devDependencies": {
+          "@vibe-engineer/testing": "workspace:*"
+        }
+      },
+      "vibeEngineer": null,
+      "publishConfig": null,
+      "hasFiles": false,
+      "hasBin": false
+    },
+    {
+      "file": "packages/mechanical-gates/fixtures/p0/testing-boundary/publishable-testing/packages/testing/package.json",
+      "name": "@vibe-engineer/testing",
+      "private": false,
+      "dependencySections": {},
+      "vibeEngineer": {
+        "testOnly": true,
+        "productionDependencyAllowed": false
+      },
+      "publishConfig": {
+        "access": "public"
+      },
+      "hasFiles": false,
+      "hasBin": false
+    },
+    {
+      "file": "packages/mechanical-gates/fixtures/p0/testing-boundary/regex-only-proof/packages/consumer/package.json",
+      "name": "@fixture/consumer",
+      "private": true,
+      "dependencySections": {
+        "devDependencies": {
+          "@vibe-engineer/testing": "workspace:*"
+        }
+      },
+      "vibeEngineer": null,
+      "publishConfig": null,
+      "hasFiles": false,
+      "hasBin": false
+    },
+    {
+      "file": "packages/mechanical-gates/fixtures/p0/testing-boundary/regex-only-proof/packages/testing/package.json",
+      "name": "@vibe-engineer/testing",
+      "private": true,
+      "dependencySections": {},
+      "vibeEngineer": {
+        "testOnly": true,
+        "productionDependencyAllowed": false
+      },
+      "publishConfig": null,
+      "hasFiles": false,
+      "hasBin": false
+    },
+    {
+      "file": "packages/mechanical-gates/fixtures/p0/testing-boundary/valid-test-only/packages/consumer/package.json",
+      "name": "@fixture/consumer",
+      "private": true,
+      "dependencySections": {
+        "devDependencies": {
+          "@vibe-engineer/testing": "workspace:*"
+        }
+      },
+      "vibeEngineer": null,
+      "publishConfig": null,
+      "hasFiles": false,
+      "hasBin": false
+    },
+    {
+      "file": "packages/mechanical-gates/fixtures/p0/testing-boundary/valid-test-only/packages/testing/package.json",
+      "name": "@vibe-engineer/testing",
+      "private": true,
+      "dependencySections": {},
+      "vibeEngineer": {
+        "testOnly": true,
+        "productionDependencyAllowed": false
+      },
+      "publishConfig": null,
+      "hasFiles": false,
+      "hasBin": false
+    }
+  ],
+  "forbiddenSurfaceExists": {
+    "packagesCore": false,
+    "p1TestingBoundary": false,
+    "p2TestingBoundary": false
+  }
+}

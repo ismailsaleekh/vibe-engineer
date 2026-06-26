@@ -1,0 +1,301 @@
+{
+  "ok": true,
+  "caseCount": 14,
+  "failedCount": 0,
+  "results": [
+    {
+      "name": "positive-dev-only",
+      "ok": true,
+      "ruleIds": [],
+      "typedFindings": true,
+      "evidence": {
+        "parser": "typescript",
+        "proofMode": "typescript-ast",
+        "packageCount": 2,
+        "sourceFileCount": 3,
+        "productionImportCount": 0,
+        "dependencyEdges": [
+          {
+            "packageName": "@fixture/consumer",
+            "section": "devDependencies",
+            "dependencyName": "@vibe-engineer/testing",
+            "productionReachable": false,
+            "manifestPath": "packages/consumer/package.json"
+          }
+        ]
+      }
+    },
+    {
+      "name": "optional-prod-dep",
+      "ok": false,
+      "ruleIds": [
+        "testing-boundary.production-dependency"
+      ],
+      "typedFindings": true,
+      "evidence": {
+        "parser": "typescript",
+        "proofMode": "typescript-ast",
+        "packageCount": 2,
+        "sourceFileCount": 3,
+        "productionImportCount": 0,
+        "dependencyEdges": [
+          {
+            "packageName": "@fixture/consumer",
+            "section": "optionalDependencies",
+            "dependencyName": "@vibe-engineer/testing",
+            "productionReachable": true,
+            "manifestPath": "packages/consumer/package.json"
+          }
+        ]
+      }
+    },
+    {
+      "name": "peer-prod-dep",
+      "ok": false,
+      "ruleIds": [
+        "testing-boundary.production-dependency"
+      ],
+      "typedFindings": true,
+      "evidence": {
+        "parser": "typescript",
+        "proofMode": "typescript-ast",
+        "packageCount": 2,
+        "sourceFileCount": 3,
+        "productionImportCount": 0,
+        "dependencyEdges": [
+          {
+            "packageName": "@fixture/consumer",
+            "section": "peerDependencies",
+            "dependencyName": "@vibe-engineer/testing",
+            "productionReachable": true,
+            "manifestPath": "packages/consumer/package.json"
+          }
+        ]
+      }
+    },
+    {
+      "name": "type-import-production",
+      "ok": false,
+      "ruleIds": [
+        "testing-boundary.production-import"
+      ],
+      "typedFindings": true,
+      "evidence": {
+        "parser": "typescript",
+        "proofMode": "typescript-ast",
+        "packageCount": 2,
+        "sourceFileCount": 3,
+        "productionImportCount": 1,
+        "dependencyEdges": [
+          {
+            "packageName": "@fixture/consumer",
+            "section": "devDependencies",
+            "dependencyName": "@vibe-engineer/testing",
+            "productionReachable": false,
+            "manifestPath": "packages/consumer/package.json"
+          }
+        ]
+      }
+    },
+    {
+      "name": "export-subpath-production",
+      "ok": false,
+      "ruleIds": [
+        "testing-boundary.production-import"
+      ],
+      "typedFindings": true,
+      "evidence": {
+        "parser": "typescript",
+        "proofMode": "typescript-ast",
+        "packageCount": 2,
+        "sourceFileCount": 3,
+        "productionImportCount": 1,
+        "dependencyEdges": [
+          {
+            "packageName": "@fixture/consumer",
+            "section": "devDependencies",
+            "dependencyName": "@vibe-engineer/testing",
+            "productionReachable": false,
+            "manifestPath": "packages/consumer/package.json"
+          }
+        ]
+      }
+    },
+    {
+      "name": "require-production",
+      "ok": false,
+      "ruleIds": [
+        "testing-boundary.production-import"
+      ],
+      "typedFindings": true,
+      "evidence": {
+        "parser": "typescript",
+        "proofMode": "typescript-ast",
+        "packageCount": 2,
+        "sourceFileCount": 3,
+        "productionImportCount": 1,
+        "dependencyEdges": [
+          {
+            "packageName": "@fixture/consumer",
+            "section": "devDependencies",
+            "dependencyName": "@vibe-engineer/testing",
+            "productionReachable": false,
+            "manifestPath": "packages/consumer/package.json"
+          }
+        ]
+      }
+    },
+    {
+      "name": "source-root-traversal",
+      "ok": false,
+      "ruleIds": [
+        "testing-boundary.source-root-unreadable"
+      ],
+      "typedFindings": true,
+      "evidence": {
+        "parser": "typescript",
+        "proofMode": "typescript-ast",
+        "packageCount": 2,
+        "sourceFileCount": 0,
+        "productionImportCount": 0,
+        "dependencyEdges": [
+          {
+            "packageName": "@fixture/consumer",
+            "section": "devDependencies",
+            "dependencyName": "@vibe-engineer/testing",
+            "productionReachable": false,
+            "manifestPath": "packages/consumer/package.json"
+          }
+        ]
+      }
+    },
+    {
+      "name": "required-manifest-traversal",
+      "ok": false,
+      "ruleIds": [
+        "testing-boundary.manifest-unreadable"
+      ],
+      "typedFindings": true,
+      "evidence": {
+        "parser": "typescript",
+        "proofMode": "typescript-ast",
+        "packageCount": 2,
+        "sourceFileCount": 3,
+        "productionImportCount": 0,
+        "dependencyEdges": [
+          {
+            "packageName": "@fixture/consumer",
+            "section": "devDependencies",
+            "dependencyName": "@vibe-engineer/testing",
+            "productionReachable": false,
+            "manifestPath": "packages/consumer/package.json"
+          }
+        ]
+      }
+    },
+    {
+      "name": "malformed-dependency-section",
+      "ok": false,
+      "ruleIds": [
+        "testing-boundary.manifest-schema"
+      ],
+      "typedFindings": true,
+      "evidence": {
+        "parser": "typescript",
+        "proofMode": "typescript-ast",
+        "packageCount": 2,
+        "sourceFileCount": 3,
+        "productionImportCount": 0,
+        "dependencyEdges": []
+      }
+    },
+    {
+      "name": "missing-test-only-manifest",
+      "ok": false,
+      "ruleIds": [
+        "testing-boundary.test-only-manifest-missing"
+      ],
+      "typedFindings": true,
+      "evidence": {
+        "parser": "typescript",
+        "proofMode": "typescript-ast",
+        "packageCount": 1,
+        "sourceFileCount": 2,
+        "productionImportCount": 0,
+        "dependencyEdges": [
+          {
+            "packageName": "@fixture/consumer",
+            "section": "devDependencies",
+            "dependencyName": "@vibe-engineer/testing",
+            "productionReachable": false,
+            "manifestPath": "packages/consumer/package.json"
+          }
+        ]
+      }
+    },
+    {
+      "name": "missing-package-root",
+      "ok": false,
+      "ruleIds": [
+        "testing-boundary.manifest-unreadable"
+      ],
+      "typedFindings": true,
+      "evidence": {
+        "parser": "typescript",
+        "proofMode": "typescript-ast",
+        "packageCount": 1,
+        "sourceFileCount": 3,
+        "productionImportCount": 0,
+        "dependencyEdges": []
+      }
+    },
+    {
+      "name": "option-policy-disagree",
+      "ok": false,
+      "ruleIds": [
+        "testing-boundary.policy-schema"
+      ],
+      "typedFindings": true,
+      "evidence": {
+        "parser": "typescript",
+        "proofMode": "typescript-ast"
+      }
+    },
+    {
+      "name": "publish-config-public",
+      "ok": false,
+      "ruleIds": [
+        "testing-boundary.publishable-test-package"
+      ],
+      "typedFindings": true,
+      "evidence": {
+        "parser": "typescript",
+        "proofMode": "typescript-ast",
+        "packageCount": 2,
+        "sourceFileCount": 3,
+        "productionImportCount": 0,
+        "dependencyEdges": [
+          {
+            "packageName": "@fixture/consumer",
+            "section": "devDependencies",
+            "dependencyName": "@vibe-engineer/testing",
+            "productionReachable": false,
+            "manifestPath": "packages/consumer/package.json"
+          }
+        ]
+      }
+    },
+    {
+      "name": "policy-path-traversal",
+      "ok": false,
+      "ruleIds": [
+        "testing-boundary.policy-unreadable"
+      ],
+      "typedFindings": true,
+      "evidence": {
+        "parser": "typescript",
+        "proofMode": "typescript-ast"
+      }
+    }
+  ]
+}

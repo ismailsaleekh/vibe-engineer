@@ -1,0 +1,30 @@
+===== I-10C testing-boundary witness =====
+cwd: /Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates
+command: node fixtures/p0/testing-boundary/witness.mjs
+{"ok":true,"mode":"p0-testing-boundary","fixtureRoot":"fixtures/p0/testing-boundary","positive":{"dependencyEdges":[{"packageName":"@fixture/consumer","section":"devDependencies","dependencyName":"@vibe-engineer/testing","productionReachable":false,"manifestPath":"packages/consumer/package.json"}],"sourceImports":[{"sourceFile":"packages/consumer/fixtures/helper.ts","testSurface":true,"specifier":"@vibe-engineer/testing","line":1,"column":1},{"sourceFile":"packages/consumer/src/consumer.test.ts","testSurface":true,"specifier":"@vibe-engineer/testing","line":1,"column":1}],"testOnlyManifests":[{"manifestPath":"packages/testing/package.json","private":true,"testOnly":true,"productionDependencyAllowed":false}],"realTestingPackage":[{"manifestPath":"packages/testing/package.json","private":true,"testOnly":true,"productionDependencyAllowed":false}],"helperConsumption":{"ok":true,"helperPackage":"@vibe-engineer/testing","workspaceRoot":"/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/vibe-helper-consumer-bQWb7Q"}},"negativeWitnesses":9,"regressionEvidence":{"noPackagesCoreAssumption":true,"aggregateUnchangedByWitness":true,"mechanicalPackageNoTestingExport":true,"noP1P2TestingBoundaryCreated":true}}
+exit: 0
+
+===== I-10C testing-boundary typecheck witness =====
+cwd: /Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates
+command: node fixtures/p0/testing-boundary/witness.mjs --typecheck
+{"ok":true,"mode":"typecheck","checkedFiles":11,"declarationConsumer":"typescript","apiShape":{"validateTestingBoundary":"function","assertTypedFindings":"function","createEphemeralWorkspace":"function","assertOkResult":"function","assertBlockingFinding":"function","normalizeForSnapshot":"function"}}
+exit: 0
+
+===== I-10A surface/config/boundaries regression =====
+cwd: /Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates
+command: node fixtures/p0/surface-config-boundaries/witness.mjs
+{"ok":true,"mode":"p0-surface-config-boundaries","fixtureRoot":"fixtures/p0/surface-config-boundaries","positive":{"governedEvidence":{"configPath":"mechanical-surface.json","governedSurfaceCount":10,"governableFileCount":11,"requiredPathCount":7,"excludedPathCount":2},"configEvidence":{"tsconfigPath":"tsconfig.json","packageJsonPath":"package.json","mechanicalSurfacePath":"mechanical-surface.json","requiredTrueFlags":["strict","noImplicitAny","strictNullChecks","strictFunctionTypes","strictBindCallApply","strictPropertyInitialization","noImplicitThis","alwaysStrict","exactOptionalPropertyTypes","noUncheckedIndexedAccess","noImplicitOverride","noImplicitReturns","noPropertyAccessFromIndexSignature","useUnknownInCatchVariables","noFallthroughCasesInSwitch","noUnusedLocals","noUnusedParameters","isolatedModules","verbatimModuleSyntax","forceConsistentCasingInFileNames","noEmitOnError"],"requiredFalseFlags":["allowUnreachableCode","allowUnusedLabels"],"requiredPrettierDefaults":{"printWidth":100,"semi":true,"singleQuote":false,"trailingComma":"all","arrowParens":"always","bracketSpacing":true,"endOfLine":"lf"},"requiredEslintRules":["@typescript-eslint/no-explicit-any","@typescript-eslint/no-non-null-assertion","@typescript-eslint/no-unnecessary-type-assertion","@typescript-eslint/consistent-type-imports","@typescript-eslint/no-confusing-void-expression","@typescript-eslint/no-unsafe-assignment","@typescript-eslint/no-unsafe-argument","@typescript-eslint/no-unsafe-call","@typescript-eslint/no-unsafe-member-access","@typescript-eslint/no-unsafe-return","@typescript-eslint/restrict-template-expressions","@typescript-eslint/switch-exhaustiveness-check","no-empty","no-fallthrough","no-implicit-coercion"],"eslintConfig":"eslint.config.mjs","prettierConfig":"prettier.config.mjs"},"boundaryEvidence":{"configPath":"mechanical-boundaries.json","parser":"typescript","proofMode":"typescript-ast","packageCount":3,"sourceFileCount":4,"importCount":3,"graph":{"@mini/shared":[],"@mini/domain":["@mini/shared"],"@mini/app":["@mini/domain","@mini/shared"]}}},"negativeWitnesses":54,"regressionEvidence":{"noPackagesCoreAssumption":true,"productName":"vibe-engineer","sixSkillsInvariantNotContradicted":true,"artifactFlowInvariantNotContradicted":true,"domainNeutralHarnessCoreNotContradicted":true,"fixedStarterStackNotContradicted":true}}
+exit: 0
+
+===== I-10B allowlist/domain/aggregate regression =====
+cwd: /Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates
+command: node fixtures/p0/allowlist-domain-aggregate/witness.mjs
+{"ok":true,"mode":"p0-allowlist-domain-aggregate","fixtureRoot":"fixtures/p0/allowlist-domain-aggregate","positive":{"allowlistEvidence":{"policyPath":"mechanical-escape-allowlist.json","scannedFileCount":6,"detectedEscapeCount":1,"allowlistEntryCount":1,"hardBannedEscapes":["as-any"],"parser":"typescript","proofMode":"typescript-ast-and-comment-scanner"},"domainEvidence":{"policyPath":"mechanical-domain-purity.json","scannedFileCount":6,"surfaceCount":4,"forbiddenTerms":["ecommerce","inventory","Billz","Telegram"],"parser":"typescript","proofMode":"typescript-ast-string-comment-path-carriers"},"aggregateSummary":{"p0.governed-surface":{"ok":true,"findingCount":0},"p0.config-guards":{"ok":true,"findingCount":0},"p0.boundaries":{"ok":true,"findingCount":0},"p0.allowlist":{"ok":true,"findingCount":0},"p0.domain-purity":{"ok":true,"findingCount":0}}},"negativeWitnesses":34,"regressionEvidence":{"noPackagesCoreAssumption":true,"noTestingProductionDependency":true,"noP1P2TestingBoundaryCreated":true}}
+exit: 0
+
+===== testing helper real consumer =====
+cwd: /Users/lizavasilyeva/work/vibe-engineer/packages/testing
+command: node fixtures/helper-consumer.mjs
+{"ok":true,"helperPackage":"@vibe-engineer/testing","workspaceRoot":"/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/vibe-helper-consumer-mxiH5K"}
+exit: 0
+

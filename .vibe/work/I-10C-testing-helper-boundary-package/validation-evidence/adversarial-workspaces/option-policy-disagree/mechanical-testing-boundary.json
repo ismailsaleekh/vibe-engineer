@@ -1,0 +1,49 @@
+{
+  "proofMode": "typescript-ast",
+  "testOnlyPackageName": "@vibe-engineer/testing",
+  "packageManifestRoots": [
+    "packages"
+  ],
+  "requiredPackageManifestPaths": [
+    "packages/testing/package.json"
+  ],
+  "sourceRoots": [
+    "packages"
+  ],
+  "sourceExtensions": [
+    ".js",
+    ".mjs",
+    ".cjs",
+    ".ts",
+    ".tsx",
+    ".jsx"
+  ],
+  "excludedDirectoryNames": [
+    "node_modules",
+    ".git",
+    ".tmp",
+    "dist",
+    "build",
+    "coverage",
+    "generated",
+    "vendor"
+  ],
+  "testSurface": {
+    "fileSuffixes": [
+      ".test.js",
+      ".test.mjs",
+      ".test.cjs",
+      ".test.ts",
+      ".test.tsx",
+      ".spec.js",
+      ".spec.mjs",
+      ".spec.cjs",
+      ".spec.ts",
+      ".spec.tsx"
+    ],
+    "directorySegments": [
+      "__tests__",
+      "fixtures"
+    ]
+  }
+}

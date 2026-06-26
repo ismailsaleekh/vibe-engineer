@@ -1,0 +1,1549 @@
+===== packages/testing/fixtures/helper-consumer.mjs (1186 bytes) =====
+import { strict as assert } from "node:assert";
+import { readFile } from "node:fs/promises";
+
+import {
+  assertBlockingFinding,
+  assertOkResult,
+  createEphemeralWorkspace,
+  normalizeForSnapshot
+} from "@vibe-engineer/testing";
+
+const workspace = await createEphemeralWorkspace({ prefix: "vibe-helper-consumer-" });
+try {
+  const written = await workspace.writeFile("fixtures/sample.txt", "stable helper witness\n");
+  const text = await readFile(written, "utf8");
+  assert.equal(text, "stable helper witness\n");
+
+  const okResult = assertOkResult({ ok: true, findings: [] }, "synthetic typed helper result");
+  assert.equal(okResult.ok, true);
+
+  const blocking = assertBlockingFinding({
+    ok: false,
+    findings: [{ ruleId: "example.blocking", blocking: true, evidence: { path: written } }]
+  }, "example.blocking", "synthetic typed helper failure");
+  assert.equal(blocking.ruleId, "example.blocking");
+
+  const normalized = normalizeForSnapshot({ path: written });
+  assert.equal(typeof normalized.path, "string");
+
+  console.log(JSON.stringify({ ok: true, helperPackage: "@vibe-engineer/testing", workspaceRoot: workspace.root }));
+} finally {
+  await workspace.dispose();
+}
+
+===== packages/testing/fixtures/mechanical-testing-boundary.json (822 bytes) =====
+{
+  "proofMode": "typescript-ast",
+  "testOnlyPackageName": "@vibe-engineer/testing",
+  "packageManifestRoots": [
+    "packages/testing"
+  ],
+  "requiredPackageManifestPaths": [
+    "packages/testing/package.json"
+  ],
+  "sourceRoots": [
+    "packages/testing"
+  ],
+  "sourceExtensions": [
+    ".js",
+    ".mjs",
+    ".cjs",
+    ".ts",
+    ".tsx",
+    ".jsx"
+  ],
+  "excludedDirectoryNames": [
+    "node_modules",
+    ".git",
+    ".tmp",
+    "dist",
+    "build",
+    "coverage",
+    "generated",
+    "vendor"
+  ],
+  "testSurface": {
+    "fileSuffixes": [
+      ".test.js",
+      ".test.mjs",
+      ".test.cjs",
+      ".test.ts",
+      ".test.tsx",
+      ".spec.js",
+      ".spec.mjs",
+      ".spec.cjs",
+      ".spec.ts",
+      ".spec.tsx"
+    ],
+    "directorySegments": [
+      "__tests__",
+      "fixtures"
+    ]
+  }
+}
+
+===== packages/testing/fixtures/type-consumer.ts (652 bytes) =====
+import {
+  assertBlockingFinding,
+  assertOkResult,
+  createEphemeralWorkspace,
+  normalizeForSnapshot,
+  type EphemeralWorkspace,
+  type TypedResultLike
+} from "@vibe-engineer/testing";
+
+async function consumeHelpers(): Promise<EphemeralWorkspace> {
+  const workspace = await createEphemeralWorkspace({ prefix: "type-consumer-" });
+  await workspace.writeFile("example.txt", "typed");
+  return workspace;
+}
+
+const ok: TypedResultLike = { ok: true, findings: [] };
+assertOkResult(ok);
+assertBlockingFinding({ ok: false, findings: [{ ruleId: "typed.rule", blocking: true }] }, "typed.rule");
+normalizeForSnapshot({ stable: true });
+void consumeHelpers;
+
+===== packages/testing/package.json (783 bytes) =====
+{
+  "name": "@vibe-engineer/testing",
+  "version": "0.0.0",
+  "license": "MIT",
+  "type": "module",
+  "description": "Private test-only helper package for vibe-engineer harness fixtures and tests.",
+  "private": true,
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "import": "./src/index.js"
+    }
+  },
+  "scripts": {
+    "test": "node fixtures/helper-consumer.mjs",
+    "typecheck": "node --check src/index.js && node --check fixtures/helper-consumer.mjs"
+  },
+  "vibeEngineer": {
+    "implementationUnit": "I-10C-testing-helper-boundary-package",
+    "implementationStatus": "implemented",
+    "packageRole": "test-only-workspace-package",
+    "sourceStatus": "package-owned-source-created",
+    "testOnly": true,
+    "productionDependencyAllowed": false
+  }
+}
+
+===== packages/testing/src/index.d.ts (827 bytes) =====
+export interface EphemeralWorkspace {
+  root: string;
+  writeFile(relativePath: string, contents: string): Promise<string>;
+  dispose(): Promise<void>;
+}
+
+export interface CreateEphemeralWorkspaceOptions {
+  prefix?: string;
+}
+
+export interface TypedFindingLike {
+  ruleId: string;
+  blocking: boolean;
+  [key: string]: unknown;
+}
+
+export interface TypedResultLike {
+  ok: boolean;
+  findings: TypedFindingLike[];
+  [key: string]: unknown;
+}
+
+export function createEphemeralWorkspace(options?: CreateEphemeralWorkspaceOptions): Promise<EphemeralWorkspace>;
+export function assertOkResult<T extends TypedResultLike>(result: T, label?: string): T;
+export function assertBlockingFinding<T extends TypedResultLike>(result: T, ruleId: string, label?: string): TypedFindingLike;
+export function normalizeForSnapshot<T>(value: T): T;
+
+===== packages/testing/src/index.js (2384 bytes) =====
+import { mkdtemp, rm, mkdir, writeFile } from "node:fs/promises";
+import { tmpdir } from "node:os";
+import path from "node:path";
+
+export async function createEphemeralWorkspace(options = {}) {
+  const prefix = options.prefix ?? "vibe-test-workspace-";
+  const root = await mkdtemp(path.join(tmpdir(), prefix));
+  let disposed = false;
+  return {
+    root,
+    async writeFile(relativePath, contents) {
+      assertSafeRelativePath(relativePath);
+      const absolute = path.join(root, relativePath);
+      await mkdir(path.dirname(absolute), { recursive: true });
+      await writeFile(absolute, contents, "utf8");
+      return absolute;
+    },
+    async dispose() {
+      if (!disposed) {
+        disposed = true;
+        await rm(root, { recursive: true, force: true });
+      }
+    }
+  };
+}
+
+export function assertOkResult(result, label = "validator result") {
+  assertResultCarrier(result, label);
+  if (!result.ok) {
+    throw new Error(`${label} expected ok=true but returned ${result.findings.length} finding(s).`);
+  }
+  return result;
+}
+
+export function assertBlockingFinding(result, ruleId, label = "validator result") {
+  assertResultCarrier(result, label);
+  const finding = result.findings.find((candidate) => candidate.ruleId === ruleId && candidate.blocking === true);
+  if (!finding) {
+    throw new Error(`${label} missing blocking finding ${ruleId}.`);
+  }
+  return finding;
+}
+
+export function normalizeForSnapshot(value) {
+  return JSON.parse(JSON.stringify(value, (_key, nested) => {
+    if (typeof nested === "string") {
+      return nested.replaceAll("\\", "/").replace(/\/private\/var\/folders\/[^/]+\/[^/]+\/T\//gu, "/tmp/");
+    }
+    return nested;
+  }));
+}
+
+function assertSafeRelativePath(relativePath) {
+  if (typeof relativePath !== "string" || relativePath.length === 0) {
+    throw new Error("relativePath must be a non-empty string.");
+  }
+  const normalized = path.posix.normalize(relativePath.split(path.sep).join("/"));
+  if (normalized === "." || normalized.startsWith("../") || normalized === ".." || path.isAbsolute(relativePath)) {
+    throw new Error(`Unsafe workspace relative path: ${relativePath}`);
+  }
+}
+
+function assertResultCarrier(result, label) {
+  if (!result || typeof result !== "object" || typeof result.ok !== "boolean" || !Array.isArray(result.findings)) {
+    throw new Error(`${label} is not a typed result carrier.`);
+  }
+}
+
+===== packages/mechanical-gates/src/p0/testing-boundary/index.d.ts (1505 bytes) =====
+import type { P0Finding, P0ValidatorResult } from "../boundaries/index.js";
+
+export type DependencySection = "dependencies" | "peerDependencies" | "optionalDependencies" | "devDependencies";
+
+export interface TestingBoundaryOptions {
+  policyPath?: string;
+  testOnlyPackageName?: string;
+}
+
+export interface TestingBoundaryPolicy {
+  proofMode: "typescript-ast";
+  testOnlyPackageName: string;
+  packageManifestRoots: string[];
+  requiredPackageManifestPaths: string[];
+  sourceRoots: string[];
+  sourceExtensions: string[];
+  excludedDirectoryNames: string[];
+  testSurface: {
+    fileSuffixes: string[];
+    directorySegments: string[];
+  };
+  parserSelfAgreementOnly?: false;
+}
+
+export interface TestingBoundaryResult extends P0ValidatorResult {
+  family: "p0.testing-boundary";
+  findings: P0Finding[];
+  evidence: {
+    policyPath: string;
+    parser: "typescript";
+    proofMode: "typescript-ast";
+    testOnlyPackageName: string;
+    packageCount: number;
+    sourceFileCount: number;
+    importCount: number;
+    productionImportCount: number;
+    dependencyEdges: Array<{ packageName: string; section: DependencySection; dependencyName: string; productionReachable: boolean; manifestPath: string }>;
+    testOnlyManifests: Array<{ manifestPath: string; private: boolean; testOnly: boolean; productionDependencyAllowed: boolean }>;
+    [key: string]: unknown;
+  };
+}
+
+export function validateTestingBoundary(projectRoot: string, options?: TestingBoundaryOptions): Promise<TestingBoundaryResult>;
+
+===== packages/mechanical-gates/src/p0/testing-boundary/index.js (74 bytes) =====
+export { validateTestingBoundary } from "./validate-testing-boundary.js";
+
+===== packages/mechanical-gates/src/p0/testing-boundary/validate-testing-boundary.js (17552 bytes) =====
+import path from "node:path";
+import ts from "typescript";
+import {
+  assertTypedFindings,
+  createFinding,
+  createValidatorResult,
+  normalizeProjectPath,
+  readJsonFileBounded,
+  readTextFileBounded,
+  walkProjectFiles
+} from "../boundaries/contracts.js";
+
+const FAMILY = "p0.testing-boundary";
+const DEFAULT_POLICY_PATH = "mechanical-testing-boundary.json";
+const PRODUCTION_DEPENDENCY_SECTIONS = ["dependencies", "peerDependencies", "optionalDependencies"];
+const DEV_DEPENDENCY_SECTION = "devDependencies";
+
+function finding(ruleId, findingPath, message, evidence = {}) {
+  return createFinding({ family: FAMILY, ruleId, path: findingPath, message, evidence });
+}
+
+function failClosedResult(projectRoot, ruleId, findingPath, message, evidence = {}) {
+  const findings = [finding(ruleId, findingPath, message, evidence)];
+  return createValidatorResult({
+    family: FAMILY,
+    projectRoot,
+    findings,
+    evidence: {
+      policyPath: evidence.policyPath ?? DEFAULT_POLICY_PATH,
+      parser: "typescript",
+      proofMode: "typescript-ast",
+      failClosed: true
+    }
+  });
+}
+
+function isPlainObject(value) {
+  return Boolean(value) && typeof value === "object" && !Array.isArray(value);
+}
+
+function asStringArray(value) {
+  return Array.isArray(value) && value.length > 0 && value.every((entry) => typeof entry === "string" && entry.length > 0) ? value : undefined;
+}
+
+function validatePolicy(policy, options, policyPath, findings) {
+  if (!isPlainObject(policy)) {
+    findings.push(finding("testing-boundary.policy-schema", policyPath, "Testing-boundary policy must be a JSON object."));
+    return undefined;
+  }
+
+  if (policy.proofMode !== "typescript-ast") {
+    findings.push(finding("testing-boundary.regex-only-proof-rejected", `${policyPath}#/proofMode`, "Testing-boundary proof must use TypeScript AST import discovery, not regex or narrative proof.", {
+      expected: "typescript-ast",
+      actual: policy.proofMode ?? null
+    }));
+  }
+  if (policy.parserSelfAgreementOnly === true) {
+    findings.push(finding("testing-boundary.parser-self-agreement-only", `${policyPath}#/parserSelfAgreementOnly`, "Parser self-agreement-only proof is rejected; real manifests and source imports are required."));
+  }
+
+  const testOnlyPackageName = options.testOnlyPackageName ?? policy.testOnlyPackageName;
+  if (typeof testOnlyPackageName !== "string" || testOnlyPackageName.length === 0) {
+    findings.push(finding("testing-boundary.policy-schema", `${policyPath}#/testOnlyPackageName`, "Policy must name the test-only package."));
+  }
+  if (typeof policy.testOnlyPackageName === "string" && options.testOnlyPackageName && options.testOnlyPackageName !== policy.testOnlyPackageName) {
+    findings.push(finding("testing-boundary.policy-schema", `${policyPath}#/testOnlyPackageName`, "Options and policy disagree on the test-only package name.", {
+      option: options.testOnlyPackageName,
+      policy: policy.testOnlyPackageName
+    }));
+  }
+
+  const packageManifestRoots = asStringArray(policy.packageManifestRoots);
+  const requiredPackageManifestPaths = asStringArray(policy.requiredPackageManifestPaths);
+  const sourceRoots = asStringArray(policy.sourceRoots);
+  const sourceExtensions = asStringArray(policy.sourceExtensions);
+  const excludedDirectoryNames = asStringArray(policy.excludedDirectoryNames);
+  const testSurface = isPlainObject(policy.testSurface) ? policy.testSurface : undefined;
+  const testFileSuffixes = testSurface ? asStringArray(testSurface.fileSuffixes) : undefined;
+  const testDirectorySegments = testSurface ? asStringArray(testSurface.directorySegments) : undefined;
+
+  for (const [jsonPath, value] of [
+    ["packageManifestRoots", packageManifestRoots],
+    ["requiredPackageManifestPaths", requiredPackageManifestPaths],
+    ["sourceRoots", sourceRoots],
+    ["sourceExtensions", sourceExtensions],
+    ["excludedDirectoryNames", excludedDirectoryNames],
+    ["testSurface/fileSuffixes", testFileSuffixes],
+    ["testSurface/directorySegments", testDirectorySegments]
+  ]) {
+    if (!value) {
+      findings.push(finding("testing-boundary.policy-schema", `${policyPath}#/${jsonPath}`, "Testing-boundary policy field must be a non-empty string array."));
+    }
+  }
+
+  if (findings.length > 0) return undefined;
+  return {
+    testOnlyPackageName,
+    packageManifestRoots,
+    requiredPackageManifestPaths,
+    sourceRoots,
+    sourceExtensions: new Set(sourceExtensions),
+    excludedDirectoryNames,
+    testFileSuffixes,
+    testDirectorySegments
+  };
+}
+
+function isExcludedPath(filePath, excludedDirectoryNames) {
+  const segments = filePath.split("/");
+  return segments.some((segment) => excludedDirectoryNames.includes(segment));
+}
+
+function isSourceFile(filePath, policy) {
+  return policy.sourceExtensions.has(path.posix.extname(filePath)) && !isExcludedPath(filePath, policy.excludedDirectoryNames);
+}
+
+function isTestSurface(filePath, policy) {
+  const basename = path.posix.basename(filePath);
+  if (policy.testFileSuffixes.some((suffix) => basename.endsWith(suffix))) return true;
+  const segments = filePath.split("/");
+  return policy.testDirectorySegments.some((segment) => segments.includes(segment));
+}
+
+function sourceKindFor(filePath) {
+  if (filePath.endsWith(".tsx") || filePath.endsWith(".jsx")) return ts.ScriptKind.TSX;
+  if (filePath.endsWith(".js") || filePath.endsWith(".mjs") || filePath.endsWith(".cjs")) return ts.ScriptKind.JS;
+  return ts.ScriptKind.TS;
+}
+
+function discoverImports(sourceText, sourceFile) {
+  const parsed = ts.createSourceFile(sourceFile, sourceText, ts.ScriptTarget.Latest, true, sourceKindFor(sourceFile));
+  const imports = [];
+
+  function record(node, moduleSpecifier) {
+    if (moduleSpecifier && ts.isStringLiteralLike(moduleSpecifier)) {
+      const position = parsed.getLineAndCharacterOfPosition(node.getStart(parsed));
+      imports.push({ specifier: moduleSpecifier.text, line: position.line + 1, column: position.character + 1 });
+    }
+  }
+
+  function visit(node) {
+    if (ts.isImportDeclaration(node) || ts.isExportDeclaration(node)) {
+      record(node, node.moduleSpecifier);
+    }
+    if (ts.isCallExpression(node) && node.expression.kind === ts.SyntaxKind.ImportKeyword && node.arguments.length === 1) {
+      record(node, node.arguments[0]);
+    }
+    if (ts.isCallExpression(node) && ts.isIdentifier(node.expression) && node.expression.text === "require" && node.arguments.length === 1) {
+      record(node, node.arguments[0]);
+    }
+    ts.forEachChild(node, visit);
+  }
+
+  visit(parsed);
+  return imports;
+}
+
+function importsTestOnlyPackage(specifier, packageName) {
+  return specifier === packageName || specifier.startsWith(`${packageName}/`);
+}
+
+function isPublishableTestOnlyManifest(manifest) {
+  if (manifest.private !== true) return true;
+  if (isPlainObject(manifest.publishConfig) && manifest.publishConfig.access === "public") return true;
+  if ("files" in manifest) return true;
+  if ("bin" in manifest) return true;
+  if (isPlainObject(manifest.scripts) && typeof manifest.scripts.prepublishOnly === "string") return true;
+  return false;
+}
+
+function hasTestOnlyPolicy(manifest) {
+  return manifest.vibeEngineer?.testOnly === true && manifest.vibeEngineer?.productionDependencyAllowed === false;
+}
+
+async function collectPackageManifests(projectRoot, policy, findings) {
+  const manifestPaths = new Set();
+  for (const root of policy.packageManifestRoots) {
+    let safeRoot;
+    try {
+      safeRoot = normalizeProjectPath(projectRoot, root);
+      const files = await walkProjectFiles(projectRoot, { start: safeRoot, excludeDirectoryNames: policy.excludedDirectoryNames });
+      for (const file of files) {
+        if (path.posix.basename(file) === "package.json" && !isExcludedPath(file, policy.excludedDirectoryNames)) {
+          manifestPaths.add(file);
+        }
+      }
+    } catch (error) {
+      findings.push(finding("testing-boundary.manifest-unreadable", root, "Package manifest root is unreadable or outside the validation root.", {
+        root,
+        errorName: error instanceof Error ? error.name : undefined,
+        errorMessage: error instanceof Error ? error.message : String(error),
+        errorCode: error && typeof error === "object" && "code" in error ? error.code : undefined
+      }));
+    }
+  }
+  for (const required of policy.requiredPackageManifestPaths) manifestPaths.add(required);
+
+  const manifests = [];
+  for (const manifestPath of [...manifestPaths].sort()) {
+    let safeManifestPath;
+    try {
+      safeManifestPath = normalizeProjectPath(projectRoot, manifestPath);
+      const manifest = await readJsonFileBounded(projectRoot, safeManifestPath);
+      if (!isPlainObject(manifest) || typeof manifest.name !== "string" || manifest.name.length === 0) {
+        findings.push(finding("testing-boundary.manifest-schema", safeManifestPath, "package.json must be an object with a non-empty name."));
+        continue;
+      }
+      manifests.push({ manifest, manifestPath: safeManifestPath, packageRoot: path.posix.dirname(safeManifestPath) });
+    } catch (error) {
+      findings.push(finding("testing-boundary.manifest-unreadable", manifestPath, "Required package manifest is missing, unreadable, malformed, or outside the validation root.", {
+        manifestPath,
+        errorName: error instanceof Error ? error.name : undefined,
+        errorMessage: error instanceof Error ? error.message : String(error),
+        errorCode: error && typeof error === "object" && "code" in error ? error.code : undefined
+      }));
+    }
+  }
+  return manifests;
+}
+
+function inspectDependencyEdges(manifests, testOnlyPackageName, findings) {
+  const dependencyEdges = [];
+  for (const row of manifests) {
+    for (const section of [...PRODUCTION_DEPENDENCY_SECTIONS, DEV_DEPENDENCY_SECTION]) {
+      const dependencies = row.manifest[section];
+      if (dependencies === undefined) continue;
+      if (!isPlainObject(dependencies)) {
+        findings.push(finding("testing-boundary.manifest-schema", `${row.manifestPath}#/${section}`, "Dependency section must be an object when present."));
+        continue;
+      }
+      if (testOnlyPackageName in dependencies) {
+        const productionReachable = PRODUCTION_DEPENDENCY_SECTIONS.includes(section);
+        dependencyEdges.push({
+          packageName: row.manifest.name,
+          section,
+          dependencyName: testOnlyPackageName,
+          productionReachable,
+          manifestPath: row.manifestPath
+        });
+        if (productionReachable) {
+          findings.push(finding("testing-boundary.production-dependency", `${row.manifestPath}#/${section}/${testOnlyPackageName}`, "Production-reachable dependency on the test-only package is forbidden.", {
+            packageName: row.manifest.name,
+            section,
+            dependencyName: testOnlyPackageName
+          }));
+        }
+      }
+    }
+  }
+  return dependencyEdges;
+}
+
+function inspectTestOnlyPackageManifest(manifests, testOnlyPackageName, findings) {
+  const testOnlyRows = manifests.filter((row) => row.manifest.name === testOnlyPackageName);
+  if (testOnlyRows.length === 0) {
+    findings.push(finding("testing-boundary.test-only-manifest-missing", ".", "The test-only package manifest was not found in the governed package graph.", { testOnlyPackageName }));
+  }
+  const evidence = [];
+  for (const row of testOnlyRows) {
+    const publishable = isPublishableTestOnlyManifest(row.manifest);
+    if (publishable) {
+      findings.push(finding("testing-boundary.publishable-test-package", row.manifestPath, "The test-only package must be private and non-publishable.", {
+        private: row.manifest.private ?? null,
+        hasPublishConfig: isPlainObject(row.manifest.publishConfig),
+        hasFiles: "files" in row.manifest,
+        hasBin: "bin" in row.manifest,
+        hasPrepublishOnly: isPlainObject(row.manifest.scripts) && typeof row.manifest.scripts.prepublishOnly === "string"
+      }));
+    }
+    if (!hasTestOnlyPolicy(row.manifest)) {
+      findings.push(finding("testing-boundary.test-only-policy-missing", `${row.manifestPath}#/vibeEngineer`, "The test-only package manifest must declare testOnly:true and productionDependencyAllowed:false."));
+    }
+    evidence.push({
+      manifestPath: row.manifestPath,
+      private: row.manifest.private === true,
+      testOnly: row.manifest.vibeEngineer?.testOnly === true,
+      productionDependencyAllowed: row.manifest.vibeEngineer?.productionDependencyAllowed === true
+    });
+  }
+  return evidence;
+}
+
+async function collectSourceFiles(projectRoot, policy, findings) {
+  const files = new Set();
+  for (const sourceRoot of policy.sourceRoots) {
+    try {
+      const safeSourceRoot = normalizeProjectPath(projectRoot, sourceRoot);
+      const rootFiles = await walkProjectFiles(projectRoot, { start: safeSourceRoot, excludeDirectoryNames: policy.excludedDirectoryNames });
+      for (const file of rootFiles) {
+        if (isSourceFile(file, policy)) files.add(file);
+      }
+    } catch (error) {
+      findings.push(finding("testing-boundary.source-root-unreadable", sourceRoot, "Source root is unreadable or outside the validation root.", {
+        sourceRoot,
+        errorName: error instanceof Error ? error.name : undefined,
+        errorMessage: error instanceof Error ? error.message : String(error),
+        errorCode: error && typeof error === "object" && "code" in error ? error.code : undefined
+      }));
+    }
+  }
+  return [...files].sort();
+}
+
+async function inspectSourceImports(projectRoot, sourceFiles, policy, findings) {
+  let importCount = 0;
+  let productionImportCount = 0;
+  const importEvidence = [];
+  for (const sourceFile of sourceFiles) {
+    let sourceText;
+    try {
+      sourceText = await readTextFileBounded(projectRoot, sourceFile);
+    } catch (error) {
+      findings.push(finding("testing-boundary.source-unreadable", sourceFile, "Source file is unreadable during AST import discovery; testing-boundary fails closed.", {
+        sourceFile,
+        errorName: error instanceof Error ? error.name : undefined,
+        errorMessage: error instanceof Error ? error.message : String(error),
+        errorCode: error && typeof error === "object" && "code" in error ? error.code : undefined
+      }));
+      continue;
+    }
+    for (const importRecord of discoverImports(sourceText, sourceFile)) {
+      importCount += 1;
+      if (!importsTestOnlyPackage(importRecord.specifier, policy.testOnlyPackageName)) continue;
+      const testSurface = isTestSurface(sourceFile, policy);
+      importEvidence.push({ sourceFile, testSurface, specifier: importRecord.specifier, line: importRecord.line, column: importRecord.column });
+      if (!testSurface) {
+        productionImportCount += 1;
+        findings.push(finding("testing-boundary.production-import", sourceFile, "Production source must not import the test-only package.", {
+          specifier: importRecord.specifier,
+          line: importRecord.line,
+          column: importRecord.column,
+          parser: "typescript",
+          proofMode: "typescript-ast"
+        }));
+      }
+    }
+  }
+  return { importCount, productionImportCount, importEvidence };
+}
+
+export async function validateTestingBoundary(projectRoot, options = {}) {
+  const policyPath = options.policyPath ?? DEFAULT_POLICY_PATH;
+  const findings = [];
+  let policyJson;
+  try {
+    const safePolicyPath = normalizeProjectPath(projectRoot, policyPath);
+    policyJson = await readJsonFileBounded(projectRoot, safePolicyPath);
+  } catch (error) {
+    return failClosedResult(projectRoot, "testing-boundary.policy-unreadable", policyPath, "Testing-boundary policy is missing, unreadable, malformed, or outside the validation root.", {
+      policyPath,
+      errorName: error instanceof Error ? error.name : undefined,
+      errorMessage: error instanceof Error ? error.message : String(error),
+      errorCode: error && typeof error === "object" && "code" in error ? error.code : undefined
+    });
+  }
+
+  const policy = validatePolicy(policyJson, options, policyPath, findings);
+  if (!policy) {
+    return createValidatorResult({
+      family: FAMILY,
+      projectRoot,
+      findings,
+      evidence: { policyPath, parser: "typescript", proofMode: "typescript-ast", failClosed: true }
+    });
+  }
+
+  const manifests = await collectPackageManifests(projectRoot, policy, findings);
+  const dependencyEdges = inspectDependencyEdges(manifests, policy.testOnlyPackageName, findings);
+  const testOnlyManifests = inspectTestOnlyPackageManifest(manifests, policy.testOnlyPackageName, findings);
+  const sourceFiles = await collectSourceFiles(projectRoot, policy, findings);
+  const { importCount, productionImportCount, importEvidence } = await inspectSourceImports(projectRoot, sourceFiles, policy, findings);
+
+  assertTypedFindings(findings);
+  return createValidatorResult({
+    family: FAMILY,
+    projectRoot,
+    findings,
+    evidence: {
+      policyPath,
+      parser: "typescript",
+      proofMode: "typescript-ast",
+      testOnlyPackageName: policy.testOnlyPackageName,
+      packageCount: manifests.length,
+      sourceFileCount: sourceFiles.length,
+      importCount,
+      productionImportCount,
+      dependencyEdges,
+      testOnlyManifests,
+      sourceImports: importEvidence,
+      productionDependencySections: PRODUCTION_DEPENDENCY_SECTIONS,
+      devDependencySection: DEV_DEPENDENCY_SECTION,
+      excludedDirectoryNames: policy.excludedDirectoryNames,
+      testSurface: {
+        fileSuffixes: policy.testFileSuffixes,
+        directorySegments: policy.testDirectorySegments
+      }
+    }
+  });
+}
+
+===== packages/mechanical-gates/fixtures/p0/testing-boundary/malformed-manifest/mechanical-testing-boundary.json (844 bytes) =====
+{
+  "proofMode": "typescript-ast",
+  "testOnlyPackageName": "@vibe-engineer/testing",
+  "packageManifestRoots": [
+    "packages"
+  ],
+  "requiredPackageManifestPaths": [
+    "packages/testing/package.json",
+    "packages/consumer/package.json"
+  ],
+  "sourceRoots": [
+    "packages"
+  ],
+  "sourceExtensions": [
+    ".js",
+    ".mjs",
+    ".cjs",
+    ".ts",
+    ".tsx",
+    ".jsx"
+  ],
+  "excludedDirectoryNames": [
+    "node_modules",
+    ".git",
+    ".tmp",
+    "dist",
+    "build",
+    "coverage",
+    "generated",
+    "vendor"
+  ],
+  "testSurface": {
+    "fileSuffixes": [
+      ".test.js",
+      ".test.mjs",
+      ".test.cjs",
+      ".test.ts",
+      ".test.tsx",
+      ".spec.js",
+      ".spec.mjs",
+      ".spec.cjs",
+      ".spec.ts",
+      ".spec.tsx"
+    ],
+    "directorySegments": [
+      "__tests__",
+      "fixtures"
+    ]
+  }
+}
+
+===== packages/mechanical-gates/fixtures/p0/testing-boundary/malformed-manifest/packages/consumer/package.json (42 bytes) =====
+{ "name": "@fixture/consumer", "version": 
+
+===== packages/mechanical-gates/fixtures/p0/testing-boundary/malformed-manifest/packages/consumer/src/index.ts (31 bytes) =====
+export const runtimeValue = 1;
+
+===== packages/mechanical-gates/fixtures/p0/testing-boundary/malformed-manifest/packages/testing/package.json (188 bytes) =====
+{
+  "name": "@vibe-engineer/testing",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "vibeEngineer": {
+    "testOnly": true,
+    "productionDependencyAllowed": false
+  }
+}
+
+===== packages/mechanical-gates/fixtures/p0/testing-boundary/malformed-manifest/packages/testing/src/index.js (28 bytes) =====
+export const helper = true;
+
+===== packages/mechanical-gates/fixtures/p0/testing-boundary/malformed-policy/mechanical-testing-boundary.json (15 bytes) =====
+{ "proofMode": 
+
+===== packages/mechanical-gates/fixtures/p0/testing-boundary/malformed-policy/packages/consumer/package.json (167 bytes) =====
+{
+  "name": "@fixture/consumer",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@vibe-engineer/testing": "workspace:*"
+  }
+}
+
+===== packages/mechanical-gates/fixtures/p0/testing-boundary/malformed-policy/packages/consumer/src/index.ts (31 bytes) =====
+export const runtimeValue = 1;
+
+===== packages/mechanical-gates/fixtures/p0/testing-boundary/malformed-policy/packages/testing/package.json (188 bytes) =====
+{
+  "name": "@vibe-engineer/testing",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "vibeEngineer": {
+    "testOnly": true,
+    "productionDependencyAllowed": false
+  }
+}
+
+===== packages/mechanical-gates/fixtures/p0/testing-boundary/missing-manifest/mechanical-testing-boundary.json (843 bytes) =====
+{
+  "proofMode": "typescript-ast",
+  "testOnlyPackageName": "@vibe-engineer/testing",
+  "packageManifestRoots": [
+    "packages"
+  ],
+  "requiredPackageManifestPaths": [
+    "packages/testing/package.json",
+    "packages/missing/package.json"
+  ],
+  "sourceRoots": [
+    "packages"
+  ],
+  "sourceExtensions": [
+    ".js",
+    ".mjs",
+    ".cjs",
+    ".ts",
+    ".tsx",
+    ".jsx"
+  ],
+  "excludedDirectoryNames": [
+    "node_modules",
+    ".git",
+    ".tmp",
+    "dist",
+    "build",
+    "coverage",
+    "generated",
+    "vendor"
+  ],
+  "testSurface": {
+    "fileSuffixes": [
+      ".test.js",
+      ".test.mjs",
+      ".test.cjs",
+      ".test.ts",
+      ".test.tsx",
+      ".spec.js",
+      ".spec.mjs",
+      ".spec.cjs",
+      ".spec.ts",
+      ".spec.tsx"
+    ],
+    "directorySegments": [
+      "__tests__",
+      "fixtures"
+    ]
+  }
+}
+
+===== packages/mechanical-gates/fixtures/p0/testing-boundary/missing-manifest/packages/consumer/fixtures/helper.ts (33 bytes) =====
+import '@vibe-engineer/testing';
+
+===== packages/mechanical-gates/fixtures/p0/testing-boundary/missing-manifest/packages/consumer/src/consumer.test.ts (101 bytes) =====
+import { assertOkResult } from '@vibe-engineer/testing';
+assertOkResult({ ok: true, findings: [] });
+
+===== packages/mechanical-gates/fixtures/p0/testing-boundary/missing-manifest/packages/consumer/src/index.ts (31 bytes) =====
+export const runtimeValue = 1;
+
+===== packages/mechanical-gates/fixtures/p0/testing-boundary/missing-manifest/packages/testing/package.json (188 bytes) =====
+{
+  "name": "@vibe-engineer/testing",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "vibeEngineer": {
+    "testOnly": true,
+    "productionDependencyAllowed": false
+  }
+}
+
+===== packages/mechanical-gates/fixtures/p0/testing-boundary/missing-manifest/packages/testing/src/index.js (28 bytes) =====
+export const helper = true;
+
+===== packages/mechanical-gates/fixtures/p0/testing-boundary/missing-policy/packages/consumer/package.json (167 bytes) =====
+{
+  "name": "@fixture/consumer",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@vibe-engineer/testing": "workspace:*"
+  }
+}
+
+===== packages/mechanical-gates/fixtures/p0/testing-boundary/missing-policy/packages/consumer/src/consumer.test.ts (33 bytes) =====
+import '@vibe-engineer/testing';
+
+===== packages/mechanical-gates/fixtures/p0/testing-boundary/missing-policy/packages/testing/package.json (188 bytes) =====
+{
+  "name": "@vibe-engineer/testing",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "vibeEngineer": {
+    "testOnly": true,
+    "productionDependencyAllowed": false
+  }
+}
+
+===== packages/mechanical-gates/fixtures/p0/testing-boundary/production-dependency/mechanical-testing-boundary.json (844 bytes) =====
+{
+  "proofMode": "typescript-ast",
+  "testOnlyPackageName": "@vibe-engineer/testing",
+  "packageManifestRoots": [
+    "packages"
+  ],
+  "requiredPackageManifestPaths": [
+    "packages/testing/package.json",
+    "packages/consumer/package.json"
+  ],
+  "sourceRoots": [
+    "packages"
+  ],
+  "sourceExtensions": [
+    ".js",
+    ".mjs",
+    ".cjs",
+    ".ts",
+    ".tsx",
+    ".jsx"
+  ],
+  "excludedDirectoryNames": [
+    "node_modules",
+    ".git",
+    ".tmp",
+    "dist",
+    "build",
+    "coverage",
+    "generated",
+    "vendor"
+  ],
+  "testSurface": {
+    "fileSuffixes": [
+      ".test.js",
+      ".test.mjs",
+      ".test.cjs",
+      ".test.ts",
+      ".test.tsx",
+      ".spec.js",
+      ".spec.mjs",
+      ".spec.cjs",
+      ".spec.ts",
+      ".spec.tsx"
+    ],
+    "directorySegments": [
+      "__tests__",
+      "fixtures"
+    ]
+  }
+}
+
+===== packages/mechanical-gates/fixtures/p0/testing-boundary/production-dependency/packages/consumer/fixtures/helper.ts (33 bytes) =====
+import '@vibe-engineer/testing';
+
+===== packages/mechanical-gates/fixtures/p0/testing-boundary/production-dependency/packages/consumer/package.json (164 bytes) =====
+{
+  "name": "@fixture/consumer",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "dependencies": {
+    "@vibe-engineer/testing": "workspace:*"
+  }
+}
+
+===== packages/mechanical-gates/fixtures/p0/testing-boundary/production-dependency/packages/consumer/src/consumer.test.ts (101 bytes) =====
+import { assertOkResult } from '@vibe-engineer/testing';
+assertOkResult({ ok: true, findings: [] });
+
+===== packages/mechanical-gates/fixtures/p0/testing-boundary/production-dependency/packages/consumer/src/index.ts (31 bytes) =====
+export const runtimeValue = 1;
+
+===== packages/mechanical-gates/fixtures/p0/testing-boundary/production-dependency/packages/testing/package.json (188 bytes) =====
+{
+  "name": "@vibe-engineer/testing",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "vibeEngineer": {
+    "testOnly": true,
+    "productionDependencyAllowed": false
+  }
+}
+
+===== packages/mechanical-gates/fixtures/p0/testing-boundary/production-dependency/packages/testing/src/index.js (28 bytes) =====
+export const helper = true;
+
+===== packages/mechanical-gates/fixtures/p0/testing-boundary/production-import/mechanical-testing-boundary.json (844 bytes) =====
+{
+  "proofMode": "typescript-ast",
+  "testOnlyPackageName": "@vibe-engineer/testing",
+  "packageManifestRoots": [
+    "packages"
+  ],
+  "requiredPackageManifestPaths": [
+    "packages/testing/package.json",
+    "packages/consumer/package.json"
+  ],
+  "sourceRoots": [
+    "packages"
+  ],
+  "sourceExtensions": [
+    ".js",
+    ".mjs",
+    ".cjs",
+    ".ts",
+    ".tsx",
+    ".jsx"
+  ],
+  "excludedDirectoryNames": [
+    "node_modules",
+    ".git",
+    ".tmp",
+    "dist",
+    "build",
+    "coverage",
+    "generated",
+    "vendor"
+  ],
+  "testSurface": {
+    "fileSuffixes": [
+      ".test.js",
+      ".test.mjs",
+      ".test.cjs",
+      ".test.ts",
+      ".test.tsx",
+      ".spec.js",
+      ".spec.mjs",
+      ".spec.cjs",
+      ".spec.ts",
+      ".spec.tsx"
+    ],
+    "directorySegments": [
+      "__tests__",
+      "fixtures"
+    ]
+  }
+}
+
+===== packages/mechanical-gates/fixtures/p0/testing-boundary/production-import/packages/consumer/fixtures/helper.ts (33 bytes) =====
+import '@vibe-engineer/testing';
+
+===== packages/mechanical-gates/fixtures/p0/testing-boundary/production-import/packages/consumer/package.json (167 bytes) =====
+{
+  "name": "@fixture/consumer",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@vibe-engineer/testing": "workspace:*"
+  }
+}
+
+===== packages/mechanical-gates/fixtures/p0/testing-boundary/production-import/packages/consumer/src/consumer.test.ts (101 bytes) =====
+import { assertOkResult } from '@vibe-engineer/testing';
+assertOkResult({ ok: true, findings: [] });
+
+===== packages/mechanical-gates/fixtures/p0/testing-boundary/production-import/packages/consumer/src/index.ts (132 bytes) =====
+import { assertOkResult } from '@vibe-engineer/testing';
+export const runtimeValue = assertOkResult({ ok: true, findings: [] }).ok;
+
+===== packages/mechanical-gates/fixtures/p0/testing-boundary/production-import/packages/testing/package.json (188 bytes) =====
+{
+  "name": "@vibe-engineer/testing",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "vibeEngineer": {
+    "testOnly": true,
+    "productionDependencyAllowed": false
+  }
+}
+
+===== packages/mechanical-gates/fixtures/p0/testing-boundary/production-import/packages/testing/src/index.js (28 bytes) =====
+export const helper = true;
+
+===== packages/mechanical-gates/fixtures/p0/testing-boundary/publishable-testing/mechanical-testing-boundary.json (844 bytes) =====
+{
+  "proofMode": "typescript-ast",
+  "testOnlyPackageName": "@vibe-engineer/testing",
+  "packageManifestRoots": [
+    "packages"
+  ],
+  "requiredPackageManifestPaths": [
+    "packages/testing/package.json",
+    "packages/consumer/package.json"
+  ],
+  "sourceRoots": [
+    "packages"
+  ],
+  "sourceExtensions": [
+    ".js",
+    ".mjs",
+    ".cjs",
+    ".ts",
+    ".tsx",
+    ".jsx"
+  ],
+  "excludedDirectoryNames": [
+    "node_modules",
+    ".git",
+    ".tmp",
+    "dist",
+    "build",
+    "coverage",
+    "generated",
+    "vendor"
+  ],
+  "testSurface": {
+    "fileSuffixes": [
+      ".test.js",
+      ".test.mjs",
+      ".test.cjs",
+      ".test.ts",
+      ".test.tsx",
+      ".spec.js",
+      ".spec.mjs",
+      ".spec.cjs",
+      ".spec.ts",
+      ".spec.tsx"
+    ],
+    "directorySegments": [
+      "__tests__",
+      "fixtures"
+    ]
+  }
+}
+
+===== packages/mechanical-gates/fixtures/p0/testing-boundary/publishable-testing/packages/consumer/fixtures/helper.ts (33 bytes) =====
+import '@vibe-engineer/testing';
+
+===== packages/mechanical-gates/fixtures/p0/testing-boundary/publishable-testing/packages/consumer/package.json (167 bytes) =====
+{
+  "name": "@fixture/consumer",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@vibe-engineer/testing": "workspace:*"
+  }
+}
+
+===== packages/mechanical-gates/fixtures/p0/testing-boundary/publishable-testing/packages/consumer/src/consumer.test.ts (101 bytes) =====
+import { assertOkResult } from '@vibe-engineer/testing';
+assertOkResult({ ok: true, findings: [] });
+
+===== packages/mechanical-gates/fixtures/p0/testing-boundary/publishable-testing/packages/consumer/src/index.ts (31 bytes) =====
+export const runtimeValue = 1;
+
+===== packages/mechanical-gates/fixtures/p0/testing-boundary/publishable-testing/packages/testing/package.json (238 bytes) =====
+{
+  "name": "@vibe-engineer/testing",
+  "version": "0.0.0",
+  "type": "module",
+  "private": false,
+  "vibeEngineer": {
+    "testOnly": true,
+    "productionDependencyAllowed": false
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
+
+===== packages/mechanical-gates/fixtures/p0/testing-boundary/publishable-testing/packages/testing/src/index.js (28 bytes) =====
+export const helper = true;
+
+===== packages/mechanical-gates/fixtures/p0/testing-boundary/regex-only-proof/mechanical-testing-boundary.json (870 bytes) =====
+{
+  "proofMode": "regex",
+  "testOnlyPackageName": "@vibe-engineer/testing",
+  "packageManifestRoots": [
+    "packages"
+  ],
+  "requiredPackageManifestPaths": [
+    "packages/testing/package.json",
+    "packages/consumer/package.json"
+  ],
+  "sourceRoots": [
+    "packages"
+  ],
+  "sourceExtensions": [
+    ".js",
+    ".mjs",
+    ".cjs",
+    ".ts",
+    ".tsx",
+    ".jsx"
+  ],
+  "excludedDirectoryNames": [
+    "node_modules",
+    ".git",
+    ".tmp",
+    "dist",
+    "build",
+    "coverage",
+    "generated",
+    "vendor"
+  ],
+  "testSurface": {
+    "fileSuffixes": [
+      ".test.js",
+      ".test.mjs",
+      ".test.cjs",
+      ".test.ts",
+      ".test.tsx",
+      ".spec.js",
+      ".spec.mjs",
+      ".spec.cjs",
+      ".spec.ts",
+      ".spec.tsx"
+    ],
+    "directorySegments": [
+      "__tests__",
+      "fixtures"
+    ]
+  },
+  "parserSelfAgreementOnly": true
+}
+
+===== packages/mechanical-gates/fixtures/p0/testing-boundary/regex-only-proof/packages/consumer/package.json (167 bytes) =====
+{
+  "name": "@fixture/consumer",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@vibe-engineer/testing": "workspace:*"
+  }
+}
+
+===== packages/mechanical-gates/fixtures/p0/testing-boundary/regex-only-proof/packages/consumer/src/consumer.test.ts (33 bytes) =====
+import '@vibe-engineer/testing';
+
+===== packages/mechanical-gates/fixtures/p0/testing-boundary/regex-only-proof/packages/consumer/src/index.ts (72 bytes) =====
+// Narrative says no production imports.
+export const runtimeValue = 1;
+
+===== packages/mechanical-gates/fixtures/p0/testing-boundary/regex-only-proof/packages/testing/package.json (188 bytes) =====
+{
+  "name": "@vibe-engineer/testing",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "vibeEngineer": {
+    "testOnly": true,
+    "productionDependencyAllowed": false
+  }
+}
+
+===== packages/mechanical-gates/fixtures/p0/testing-boundary/type-consumer.ts (543 bytes) =====
+import type { TestingBoundaryOptions, TestingBoundaryResult } from "../../../src/p0/testing-boundary/index.js";
+import { validateTestingBoundary } from "../../../src/p0/testing-boundary/index.js";
+
+const options: TestingBoundaryOptions = { policyPath: "mechanical-testing-boundary.json" };
+
+async function consume(projectRoot: string): Promise<TestingBoundaryResult> {
+  const result = await validateTestingBoundary(projectRoot, options);
+  const family: "p0.testing-boundary" = result.family;
+  void family;
+  return result;
+}
+
+void consume;
+
+===== packages/mechanical-gates/fixtures/p0/testing-boundary/valid-test-only/mechanical-testing-boundary.json (844 bytes) =====
+{
+  "proofMode": "typescript-ast",
+  "testOnlyPackageName": "@vibe-engineer/testing",
+  "packageManifestRoots": [
+    "packages"
+  ],
+  "requiredPackageManifestPaths": [
+    "packages/testing/package.json",
+    "packages/consumer/package.json"
+  ],
+  "sourceRoots": [
+    "packages"
+  ],
+  "sourceExtensions": [
+    ".js",
+    ".mjs",
+    ".cjs",
+    ".ts",
+    ".tsx",
+    ".jsx"
+  ],
+  "excludedDirectoryNames": [
+    "node_modules",
+    ".git",
+    ".tmp",
+    "dist",
+    "build",
+    "coverage",
+    "generated",
+    "vendor"
+  ],
+  "testSurface": {
+    "fileSuffixes": [
+      ".test.js",
+      ".test.mjs",
+      ".test.cjs",
+      ".test.ts",
+      ".test.tsx",
+      ".spec.js",
+      ".spec.mjs",
+      ".spec.cjs",
+      ".spec.ts",
+      ".spec.tsx"
+    ],
+    "directorySegments": [
+      "__tests__",
+      "fixtures"
+    ]
+  }
+}
+
+===== packages/mechanical-gates/fixtures/p0/testing-boundary/valid-test-only/packages/consumer/fixtures/helper.ts (33 bytes) =====
+import '@vibe-engineer/testing';
+
+===== packages/mechanical-gates/fixtures/p0/testing-boundary/valid-test-only/packages/consumer/package.json (167 bytes) =====
+{
+  "name": "@fixture/consumer",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@vibe-engineer/testing": "workspace:*"
+  }
+}
+
+===== packages/mechanical-gates/fixtures/p0/testing-boundary/valid-test-only/packages/consumer/src/consumer.test.ts (101 bytes) =====
+import { assertOkResult } from '@vibe-engineer/testing';
+assertOkResult({ ok: true, findings: [] });
+
+===== packages/mechanical-gates/fixtures/p0/testing-boundary/valid-test-only/packages/consumer/src/index.ts (31 bytes) =====
+export const runtimeValue = 1;
+
+===== packages/mechanical-gates/fixtures/p0/testing-boundary/valid-test-only/packages/testing/package.json (188 bytes) =====
+{
+  "name": "@vibe-engineer/testing",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "vibeEngineer": {
+    "testOnly": true,
+    "productionDependencyAllowed": false
+  }
+}
+
+===== packages/mechanical-gates/fixtures/p0/testing-boundary/valid-test-only/packages/testing/src/index.js (28 bytes) =====
+export const helper = true;
+
+===== packages/mechanical-gates/fixtures/p0/testing-boundary/witness.mjs (10826 bytes) =====
+import { spawnSync } from "node:child_process";
+import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
+import { dirname, extname, join, relative } from "node:path";
+import { fileURLToPath } from "node:url";
+
+import { assertTypedFindings } from "../../../src/p0/boundaries/index.js";
+import { validateTestingBoundary } from "../../../src/p0/testing-boundary/index.js";
+
+const fixtureRoot = dirname(fileURLToPath(import.meta.url));
+const packageRoot = join(fixtureRoot, "..", "..", "..");
+const repoRoot = join(packageRoot, "..", "..");
+const testingPackageRoot = join(repoRoot, "packages", "testing");
+const typecheckOnly = process.argv.includes("--typecheck");
+
+function workspace(name) {
+  return join(fixtureRoot, name);
+}
+
+function assert(condition, message, evidence = {}) {
+  if (!condition) {
+    const error = new Error(message);
+    error.evidence = evidence;
+    throw error;
+  }
+}
+
+function ruleIds(result) {
+  return new Set(result.findings.map((finding) => finding.ruleId));
+}
+
+function assertResultTyped(result) {
+  assert(result && typeof result === "object", "result must be object", { result });
+  assert(result.family === "p0.testing-boundary", "result family mismatch", { family: result.family });
+  assert(typeof result.ok === "boolean", "result ok must be boolean", { result });
+  assert(Array.isArray(result.findings), "result findings must be array", { result });
+  assertTypedFindings(result.findings);
+  assert(result.evidence && typeof result.evidence === "object", "result evidence must be object", { result });
+}
+
+async function expectPass(label, root, options) {
+  const result = await validateTestingBoundary(root, options);
+  assertResultTyped(result);
+  assert(result.ok, `${label} expected pass`, { findings: result.findings, evidence: result.evidence });
+  return result;
+}
+
+async function expectFail(label, root, expectedRuleIds, options) {
+  const result = await validateTestingBoundary(root, options);
+  assertResultTyped(result);
+  assert(!result.ok, `${label} expected fail`, { result });
+  const actual = ruleIds(result);
+  for (const expectedRuleId of expectedRuleIds) {
+    assert(actual.has(expectedRuleId), `${label} missing expected rule ${expectedRuleId}`, {
+      expectedRuleIds,
+      actualRuleIds: [...actual],
+      findings: result.findings
+    });
+  }
+  return result;
+}
+
+function runCommand(label, command, args, options) {
+  const completed = spawnSync(command, args, { encoding: "utf8", ...options });
+  assert(completed.status === 0, `${label} failed`, {
+    command,
+    args,
+    cwd: options?.cwd,
+    status: completed.status,
+    stdout: completed.stdout,
+    stderr: completed.stderr
+  });
+  return completed;
+}
+
+function collectSyntaxFiles(root, allowedExtensions = new Set([".js", ".mjs"])) {
+  const files = [];
+  function visit(directory) {
+    for (const entry of readdirSync(directory, { withFileTypes: true })) {
+      const absolute = join(directory, entry.name);
+      if (entry.isDirectory()) {
+        if (!["node_modules", ".git", "dist", "build", "coverage"].includes(entry.name)) visit(absolute);
+        continue;
+      }
+      if (entry.isFile() && allowedExtensions.has(extname(entry.name))) files.push(absolute);
+    }
+  }
+  if (existsSync(root)) visit(root);
+  return files.sort();
+}
+
+function runNodeCheck(absoluteFile) {
+  const relativeFile = relative(packageRoot, absoluteFile);
+  runCommand(`node --check ${relativeFile}`, process.execPath, ["--check", absoluteFile], { cwd: packageRoot });
+}
+
+function runTypescriptConsumerCheck() {
+  const tsc = join(repoRoot, "node_modules", ".bin", "tsc");
+  assert(existsSync(tsc), "existing TypeScript compiler is required for declaration consumer checks", { tsc });
+  runCommand("testing-boundary declaration consumer", tsc, [
+    "--noEmit",
+    "--target", "ES2022",
+    "--module", "NodeNext",
+    "--moduleResolution", "NodeNext",
+    "--strict",
+    "--skipLibCheck", "false",
+    "fixtures/p0/testing-boundary/type-consumer.ts"
+  ], { cwd: packageRoot });
+  runCommand("testing helper declaration consumer", tsc, [
+    "--noEmit",
+    "--target", "ES2022",
+    "--module", "NodeNext",
+    "--moduleResolution", "NodeNext",
+    "--strict",
+    "--skipLibCheck", "false",
+    "fixtures/type-consumer.ts"
+  ], { cwd: testingPackageRoot });
+}
+
+async function runTypecheckWitness() {
+  const syntaxFiles = [
+    ...collectSyntaxFiles(join(packageRoot, "src", "p0", "testing-boundary")),
+    ...collectSyntaxFiles(join(packageRoot, "fixtures", "p0", "testing-boundary")),
+    ...collectSyntaxFiles(join(testingPackageRoot, "src")),
+    ...collectSyntaxFiles(join(testingPackageRoot, "fixtures"))
+  ];
+  for (const file of syntaxFiles) runNodeCheck(file);
+  runTypescriptConsumerCheck();
+  const helperModule = await import(new URL("../../../../testing/src/index.js", import.meta.url));
+  const apiShape = {
+    validateTestingBoundary: typeof validateTestingBoundary,
+    assertTypedFindings: typeof assertTypedFindings,
+    createEphemeralWorkspace: typeof helperModule.createEphemeralWorkspace,
+    assertOkResult: typeof helperModule.assertOkResult,
+    assertBlockingFinding: typeof helperModule.assertBlockingFinding,
+    normalizeForSnapshot: typeof helperModule.normalizeForSnapshot
+  };
+  assert(Object.values(apiShape).every((value) => value === "function"), "testing-boundary/helper APIs failed to load as functions", apiShape);
+  console.log(JSON.stringify({ ok: true, mode: "typecheck", checkedFiles: syntaxFiles.length, declarationConsumer: "typescript", apiShape }));
+}
+
+function assertNoSharedMechanicalWiring() {
+  const mechanicalPackage = JSON.parse(readFileSync(join(packageRoot, "package.json"), "utf8"));
+  assert(!Object.prototype.hasOwnProperty.call(mechanicalPackage.exports, "./p0/testing-boundary"), "mechanical-gates package export was wired out of license", { exports: mechanicalPackage.exports });
+  const aggregateSource = readFileSync(join(packageRoot, "src", "aggregate", "run-p0-aggregate.js"), "utf8");
+  assert(!aggregateSource.includes("p0.testing-boundary"), "aggregate runner unexpectedly includes testing-boundary family", {});
+}
+
+async function runFullWitness() {
+  const positive = await expectPass("test-only dependency and test-surface import", workspace("valid-test-only"));
+  assert(positive.evidence.dependencyEdges.some((edge) => edge.section === "devDependencies" && edge.productionReachable === false), "positive fixture must prove devDependency edge", positive.evidence);
+  assert(positive.evidence.sourceImports.every((entry) => entry.testSurface === true), "positive fixture must confine imports to test/fixture surfaces", positive.evidence);
+  assert(positive.evidence.testOnlyManifests.every((entry) => entry.private === true && entry.testOnly === true && entry.productionDependencyAllowed === false), "positive fixture test-only package must be private/non-publishable/test-only", positive.evidence);
+
+  const realTestingPackage = await expectPass("real packages/testing manifest", repoRoot, { policyPath: "packages/testing/fixtures/mechanical-testing-boundary.json" });
+  assert(realTestingPackage.evidence.testOnlyManifests.length === 1, "real testing package manifest must be inspected", realTestingPackage.evidence);
+  assert(realTestingPackage.evidence.testOnlyManifests[0].private === true, "real testing package must be private", realTestingPackage.evidence);
+
+  const helperConsumption = runCommand("@vibe-engineer/testing helper consumer", process.execPath, ["fixtures/helper-consumer.mjs"], { cwd: testingPackageRoot });
+  const helperOutput = JSON.parse(helperConsumption.stdout.trim());
+  assert(helperOutput.ok === true && helperOutput.helperPackage === "@vibe-engineer/testing", "helper consumer did not exercise package self-reference", helperOutput);
+
+  const productionDependency = await expectFail("production dependency edge", workspace("production-dependency"), ["testing-boundary.production-dependency"]);
+  assert(productionDependency.findings.some((finding) => finding.blocking === true && finding.evidence.section === "dependencies"), "production dependency finding must be blocking and section-specific", productionDependency.findings);
+
+  const productionImport = await expectFail("production source import", workspace("production-import"), ["testing-boundary.production-import"]);
+  assert(productionImport.findings.some((finding) => finding.evidence.parser === "typescript" && finding.evidence.proofMode === "typescript-ast"), "production import finding must prove TypeScript AST discovery", productionImport.findings);
+
+  await expectFail("publishable test-only package", workspace("publishable-testing"), ["testing-boundary.publishable-test-package"]);
+  await expectFail("missing required manifest", workspace("missing-manifest"), ["testing-boundary.manifest-unreadable"]);
+  await expectFail("malformed manifest", workspace("malformed-manifest"), ["testing-boundary.manifest-unreadable"]);
+  await expectFail("missing policy", workspace("missing-policy"), ["testing-boundary.policy-unreadable"]);
+  await expectFail("malformed policy", workspace("malformed-policy"), ["testing-boundary.policy-unreadable"]);
+  await expectFail("regex/narrative/parser-self-agreement proof", workspace("regex-only-proof"), ["testing-boundary.regex-only-proof-rejected", "testing-boundary.parser-self-agreement-only"]);
+  await expectFail("policy path traversal", workspace("valid-test-only"), ["testing-boundary.policy-unreadable"], { policyPath: "../outside-root.json" });
+
+  assertNoSharedMechanicalWiring();
+
+  const regressionEvidence = {
+    noPackagesCoreAssumption: !JSON.stringify({ positive: positive.evidence, realTestingPackage: realTestingPackage.evidence }).includes("packages/core"),
+    aggregateUnchangedByWitness: true,
+    mechanicalPackageNoTestingExport: true,
+    noP1P2TestingBoundaryCreated: !existsSync(join(packageRoot, "src", "p1", "testing-boundary")) && !existsSync(join(packageRoot, "src", "p2", "testing-boundary"))
+  };
+  assert(regressionEvidence.noPackagesCoreAssumption, "testing-boundary evidence contains forbidden packages/core assumption", regressionEvidence);
+  assert(regressionEvidence.noP1P2TestingBoundaryCreated, "testing-boundary created P1/P2 surfaces", regressionEvidence);
+
+  console.log(JSON.stringify({
+    ok: true,
+    mode: "p0-testing-boundary",
+    fixtureRoot: relative(packageRoot, fixtureRoot),
+    positive: {
+      dependencyEdges: positive.evidence.dependencyEdges,
+      sourceImports: positive.evidence.sourceImports,
+      testOnlyManifests: positive.evidence.testOnlyManifests,
+      realTestingPackage: realTestingPackage.evidence.testOnlyManifests,
+      helperConsumption: helperOutput
+    },
+    negativeWitnesses: 9,
+    regressionEvidence
+  }));
+}
+
+if (typecheckOnly) {
+  await runTypecheckWitness();
+} else {
+  await runFullWitness();
+}
+
