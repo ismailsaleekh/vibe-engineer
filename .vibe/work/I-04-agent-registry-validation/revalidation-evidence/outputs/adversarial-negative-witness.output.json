@@ -1,0 +1,1151 @@
+{
+  "ok": true,
+  "total": 34,
+  "failures": [],
+  "cases": [
+    {
+      "label": "valid validation-owned fixture copy passes",
+      "caseName": "valid-full-fixture-copy",
+      "pass": true,
+      "ok": true,
+      "expectedRule": null,
+      "forbiddenRule": null,
+      "ruleIds": [],
+      "errors": []
+    },
+    {
+      "label": "stable/core entry with only self registry_entry_for link rejects as unlinked",
+      "caseName": "self-only-registry-entry-for",
+      "pass": true,
+      "ok": false,
+      "expectedRule": "registry.graph.unlinked_stable_core",
+      "forbiddenRule": null,
+      "ruleIds": [
+        "registry.graph.unlinked_stable_core"
+      ],
+      "errors": [
+        {
+          "ruleId": "registry.graph.unlinked_stable_core",
+          "pointer": "/links",
+          "entryId": "fixture-specialist",
+          "message": "Stable/core registry entry is reachable only from itself and lacks allowed dormant/deprecated/sample rationale.",
+          "details": null
+        }
+      ]
+    },
+    {
+      "label": "active stable/core entry disconnected from loaded registry graph rejects",
+      "caseName": "disconnected-component",
+      "pass": true,
+      "ok": false,
+      "expectedRule": "registry.graph.unlinked_stable_core",
+      "forbiddenRule": null,
+      "ruleIds": [
+        "registry.graph.unlinked_stable_core"
+      ],
+      "errors": [
+        {
+          "ruleId": "registry.graph.unlinked_stable_core",
+          "pointer": "/links",
+          "entryId": "island-reviewer",
+          "message": "Stable/core registry entry is disconnected from the loaded non-self registry graph.",
+          "details": {
+            "component": [
+              "island-reviewer",
+              "island-specialist"
+            ],
+            "mainComponent": [
+              "fixture-fixer",
+              "fixture-validator",
+              "fixture-orchestrator",
+              "fixture-specialist",
+              "fixture-meta-advisor",
+              "fixture-skill-adapter",
+              "fixture-reviewer"
+            ]
+          }
+        },
+        {
+          "ruleId": "registry.graph.unlinked_stable_core",
+          "pointer": "/links",
+          "entryId": "island-specialist",
+          "message": "Stable/core registry entry is disconnected from the loaded non-self registry graph.",
+          "details": {
+            "component": [
+              "island-reviewer",
+              "island-specialist"
+            ],
+            "mainComponent": [
+              "fixture-fixer",
+              "fixture-validator",
+              "fixture-orchestrator",
+              "fixture-specialist",
+              "fixture-meta-advisor",
+              "fixture-skill-adapter",
+              "fixture-reviewer"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "top-level required non-self agent_registry_entry link to missing entry rejects",
+      "caseName": "missing-top-level-agent-link",
+      "pass": true,
+      "ok": false,
+      "expectedRule": "registry.graph.ref_resolution",
+      "forbiddenRule": null,
+      "ruleIds": [
+        "registry.graph.ref_resolution"
+      ],
+      "errors": [
+        {
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/links/1",
+          "entryId": "fixture-specialist",
+          "message": "Registry reference missing-linked-entry does not resolve to a loaded agent_registry_entry.",
+          "details": null
+        }
+      ]
+    },
+    {
+      "label": "missing eval evidence file rejects",
+      "caseName": "missing-eval-evidence-file",
+      "pass": true,
+      "ok": false,
+      "expectedRule": "registry.policy.maturity_evidence",
+      "forbiddenRule": null,
+      "ruleIds": [
+        "registry.policy.maturity_evidence"
+      ],
+      "errors": [
+        {
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/evals/0/path",
+          "entryId": "fixture-specialist",
+          "message": "eval evidence packet file does not exist: packages/registry/.generated-fixtures/missing-eval-evidence-file/evidence/missing-eval.json.",
+          "details": {
+            "artifactId": "evidence:fixture-specialist:eval",
+            "path": "packages/registry/.generated-fixtures/missing-eval-evidence-file/evidence/missing-eval.json"
+          }
+        }
+      ]
+    },
+    {
+      "label": "missing smoke evidence file rejects",
+      "caseName": "missing-smoke-evidence-file",
+      "pass": true,
+      "ok": false,
+      "expectedRule": "registry.policy.maturity_evidence",
+      "forbiddenRule": null,
+      "ruleIds": [
+        "registry.policy.maturity_evidence"
+      ],
+      "errors": [
+        {
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/extensions/dev.vibe.registry/smokeRefs/0/path",
+          "entryId": "fixture-specialist",
+          "message": "smoke evidence packet file does not exist: packages/registry/.generated-fixtures/missing-smoke-evidence-file/evidence/missing-smoke.json.",
+          "details": {
+            "artifactId": "evidence:fixture-specialist:smoke",
+            "path": "packages/registry/.generated-fixtures/missing-smoke-evidence-file/evidence/missing-smoke.json"
+          }
+        }
+      ]
+    },
+    {
+      "label": "evidence path traversal/out-of-owned location rejects",
+      "caseName": "out-of-owned-evidence-path",
+      "pass": true,
+      "ok": false,
+      "expectedRule": "registry.policy.maturity_evidence",
+      "forbiddenRule": null,
+      "ruleIds": [
+        "registry.policy.maturity_evidence"
+      ],
+      "errors": [
+        {
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/evals/0/path",
+          "entryId": "fixture-specialist",
+          "message": "eval evidence path must stay inside Q06-owned registry/package evidence locations.",
+          "details": {
+            "path": ".vibe/work/I-04-agent-registry-validation/revalidation-evidence/not-allowed.json",
+            "allowedPrefixes": [
+              ".vibe/registry/",
+              ".vibe/work/I-04-agent-registry-validation/evidence/",
+              ".vibe/work/I-04-agent-registry-validation/fix-evidence/",
+              "packages/registry/fixtures/evidence/",
+              "packages/registry/.generated-fixtures/"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "evidence packet artifactId/path mismatch rejects",
+      "caseName": "evidence-artifactid-path-mismatch",
+      "pass": true,
+      "ok": false,
+      "expectedRule": "registry.policy.maturity_evidence",
+      "forbiddenRule": null,
+      "ruleIds": [
+        "registry.policy.maturity_evidence"
+      ],
+      "errors": [
+        {
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/evals/0/artifactId",
+          "entryId": "fixture-specialist",
+          "message": "eval evidence artifactId does not match registry reference.",
+          "details": {
+            "expected": "evidence:fixture-specialist:eval",
+            "actual": "evidence:wrong-artifact-id"
+          }
+        }
+      ]
+    },
+    {
+      "label": "evidence packet wrong artifact kind rejects through I-01A evidence validator",
+      "caseName": "evidence-wrong-artifact-kind",
+      "pass": true,
+      "ok": false,
+      "expectedRule": "registry.policy.maturity_evidence",
+      "forbiddenRule": null,
+      "ruleIds": [
+        "registry.policy.maturity_evidence"
+      ],
+      "errors": [
+        {
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/evals/0",
+          "entryId": "fixture-specialist",
+          "message": "eval evidence packet failed I-01A schema validation: Expected artifactKind evidence_packet.",
+          "details": {
+            "evidencePointer": "/artifactKind",
+            "artifactId": "evidence:fixture-specialist:eval",
+            "path": "packages/registry/.generated-fixtures/evidence-wrong-artifact-kind/evidence/fixture-specialist-eval.json"
+          }
+        },
+        {
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/evals/0",
+          "entryId": "fixture-specialist",
+          "message": "eval evidence packet failed I-01A schema validation: must be equal to constant",
+          "details": {
+            "evidencePointer": "/artifactKind",
+            "artifactId": "evidence:fixture-specialist:eval",
+            "path": "packages/registry/.generated-fixtures/evidence-wrong-artifact-kind/evidence/fixture-specialist-eval.json"
+          }
+        },
+        {
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/evals/0",
+          "entryId": "fixture-specialist",
+          "message": "eval evidence packet failed I-01A schema validation: must be equal to one of the allowed values",
+          "details": {
+            "evidencePointer": "/artifactKind",
+            "artifactId": "evidence:fixture-specialist:eval",
+            "path": "packages/registry/.generated-fixtures/evidence-wrong-artifact-kind/evidence/fixture-specialist-eval.json"
+          }
+        }
+      ]
+    },
+    {
+      "label": "evidence packet failed/stale status rejects",
+      "caseName": "evidence-failed-status",
+      "pass": true,
+      "ok": false,
+      "expectedRule": "registry.policy.maturity_evidence",
+      "forbiddenRule": null,
+      "ruleIds": [
+        "registry.policy.maturity_evidence"
+      ],
+      "errors": [
+        {
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/evals/0",
+          "entryId": "fixture-specialist",
+          "message": "eval evidence must have status passed and result pass.",
+          "details": {
+            "status": "failed",
+            "result": "fail"
+          }
+        }
+      ]
+    },
+    {
+      "label": "evidence packet subjectRef mismatch rejects",
+      "caseName": "evidence-subjectref-mismatch",
+      "pass": true,
+      "ok": false,
+      "expectedRule": "registry.policy.maturity_evidence",
+      "forbiddenRule": null,
+      "ruleIds": [
+        "registry.policy.maturity_evidence"
+      ],
+      "errors": [
+        {
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/subjectRefs",
+          "entryId": "fixture-specialist",
+          "message": "eval evidence packet must have a required evidence_for subjectRef for this agent registry entry.",
+          "details": {
+            "expectedAgentId": "fixture-specialist",
+            "expectedStatus": "active"
+          }
+        }
+      ]
+    },
+    {
+      "label": "evidence packet agent id mismatch rejects",
+      "caseName": "evidence-agent-id-mismatch",
+      "pass": true,
+      "ok": false,
+      "expectedRule": "registry.policy.maturity_evidence",
+      "forbiddenRule": null,
+      "ruleIds": [
+        "registry.policy.maturity_evidence"
+      ],
+      "errors": [
+        {
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/extensions/dev.vibe.registry.evidence",
+          "entryId": "fixture-specialist",
+          "message": "eval evidence packet extension is stale or targets the wrong agent/version/type.",
+          "details": {
+            "expected": {
+              "agentId": "fixture-specialist",
+              "agentVersion": "1.0.0",
+              "evidenceType": "eval"
+            },
+            "actual": {
+              "agentId": "fixture-fixer",
+              "agentVersion": "1.0.0",
+              "evidenceType": "eval"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "label": "evidence packet agent version mismatch rejects",
+      "caseName": "evidence-agent-version-mismatch",
+      "pass": true,
+      "ok": false,
+      "expectedRule": "registry.policy.maturity_evidence",
+      "forbiddenRule": null,
+      "ruleIds": [
+        "registry.policy.maturity_evidence"
+      ],
+      "errors": [
+        {
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/extensions/dev.vibe.registry.evidence",
+          "entryId": "fixture-specialist",
+          "message": "eval evidence packet extension is stale or targets the wrong agent/version/type.",
+          "details": {
+            "expected": {
+              "agentId": "fixture-specialist",
+              "agentVersion": "1.0.0",
+              "evidenceType": "eval"
+            },
+            "actual": {
+              "agentId": "fixture-specialist",
+              "agentVersion": "9.9.9",
+              "evidenceType": "eval"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "label": "evidence packet evidence-type mismatch rejects",
+      "caseName": "evidence-type-mismatch",
+      "pass": true,
+      "ok": false,
+      "expectedRule": "registry.policy.maturity_evidence",
+      "forbiddenRule": null,
+      "ruleIds": [
+        "registry.policy.maturity_evidence"
+      ],
+      "errors": [
+        {
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/extensions/dev.vibe.registry.evidence",
+          "entryId": "fixture-specialist",
+          "message": "eval evidence packet extension is stale or targets the wrong agent/version/type.",
+          "details": {
+            "expected": {
+              "agentId": "fixture-specialist",
+              "agentVersion": "1.0.0",
+              "evidenceType": "eval"
+            },
+            "actual": {
+              "agentId": "fixture-specialist",
+              "agentVersion": "1.0.0",
+              "evidenceType": "smoke"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "label": "validatorRef targeting fixer rejects with type compatibility rule",
+      "caseName": "validator-ref-to-fixer",
+      "pass": true,
+      "ok": false,
+      "expectedRule": "registry.graph.ref_type_compatibility",
+      "forbiddenRule": null,
+      "ruleIds": [
+        "registry.graph.ref_type_compatibility"
+      ],
+      "errors": [
+        {
+          "ruleId": "registry.graph.ref_type_compatibility",
+          "pointer": "/validatorRefs/0",
+          "entryId": "fixture-specialist",
+          "message": "validatorRefs must target validator/reviewer-compatible entries; fixture-fixer is fixer.",
+          "details": {
+            "targetAgentId": "fixture-fixer",
+            "targetAgentType": "fixer",
+            "allowedTargetTypes": [
+              "validator",
+              "reviewer"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "fixerRef targeting validator rejects with type compatibility rule",
+      "caseName": "fixer-ref-to-validator",
+      "pass": true,
+      "ok": false,
+      "expectedRule": "registry.graph.ref_type_compatibility",
+      "forbiddenRule": null,
+      "ruleIds": [
+        "registry.graph.ref_type_compatibility"
+      ],
+      "errors": [
+        {
+          "ruleId": "registry.graph.ref_type_compatibility",
+          "pointer": "/fixerRefs/0",
+          "entryId": "fixture-specialist",
+          "message": "fixerRefs must target fixer/orchestrator repair-compatible entries; fixture-validator is validator.",
+          "details": {
+            "targetAgentId": "fixture-validator",
+            "targetAgentType": "validator",
+            "allowedTargetTypes": [
+              "fixer",
+              "orchestrator"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "missing validator ref remains ref resolution, not wrong-type",
+      "caseName": "missing-validator-ref-resolution",
+      "pass": true,
+      "ok": false,
+      "expectedRule": "registry.graph.ref_resolution",
+      "forbiddenRule": "registry.graph.ref_type_compatibility",
+      "ruleIds": [
+        "registry.graph.ref_resolution"
+      ],
+      "errors": [
+        {
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/validatorRefs/0",
+          "entryId": "fixture-specialist",
+          "message": "Registry reference missing-validator does not resolve to a loaded agent_registry_entry.",
+          "details": null
+        }
+      ]
+    },
+    {
+      "label": "missing fixer ref remains ref resolution, not wrong-type",
+      "caseName": "missing-fixer-ref-resolution",
+      "pass": true,
+      "ok": false,
+      "expectedRule": "registry.graph.ref_resolution",
+      "forbiddenRule": "registry.graph.ref_type_compatibility",
+      "ruleIds": [
+        "registry.graph.ref_resolution"
+      ],
+      "errors": [
+        {
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/fixerRefs/0",
+          "entryId": "fixture-specialist",
+          "message": "Registry reference missing-fixer does not resolve to a loaded agent_registry_entry.",
+          "details": null
+        }
+      ]
+    },
+    {
+      "label": "duplicate id rejects",
+      "caseName": "duplicate-id",
+      "pass": true,
+      "ok": false,
+      "expectedRule": "registry.graph.duplicate_id",
+      "forbiddenRule": null,
+      "ruleIds": [
+        "registry.graph.duplicate_id",
+        "registry.graph.ref_resolution",
+        "registry.graph.unlinked_stable_core"
+      ],
+      "errors": [
+        {
+          "ruleId": "registry.graph.duplicate_id",
+          "pointer": "/agentId",
+          "entryId": "fixture-specialist",
+          "message": "Duplicate registry agentId fixture-specialist; first path /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-04-agent-registry-validation/revalidation-evidence/harness/adversarial-case-root/cases/duplicate-id/fixture-specialist-0.json.",
+          "details": null
+        },
+        {
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/validatorRefs/0",
+          "entryId": "fixture-specialist",
+          "message": "Registry reference fixture-validator does not resolve to a loaded agent_registry_entry.",
+          "details": null
+        },
+        {
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/fixerRefs/0",
+          "entryId": "fixture-specialist",
+          "message": "Registry reference fixture-fixer does not resolve to a loaded agent_registry_entry.",
+          "details": null
+        },
+        {
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/links/1",
+          "entryId": "fixture-specialist",
+          "message": "Registry reference fixture-orchestrator does not resolve to a loaded agent_registry_entry.",
+          "details": null
+        },
+        {
+          "ruleId": "registry.graph.unlinked_stable_core",
+          "pointer": "/links",
+          "entryId": "fixture-specialist",
+          "message": "Stable/core registry entry is reachable only from itself and lacks allowed dormant/deprecated/sample rationale.",
+          "details": null
+        }
+      ]
+    },
+    {
+      "label": "missing metadata rejects through schema",
+      "caseName": "missing-metadata",
+      "pass": true,
+      "ok": false,
+      "expectedRule": "schema.i01a.agent_registry_entry",
+      "forbiddenRule": null,
+      "ruleIds": [
+        "schema.i01a.agent_registry_entry"
+      ],
+      "errors": [
+        {
+          "ruleId": "schema.i01a.agent_registry_entry",
+          "pointer": "/owner",
+          "entryId": null,
+          "message": "must have required property 'owner'",
+          "details": null
+        }
+      ]
+    },
+    {
+      "label": "wrong schema version rejects through schema",
+      "caseName": "wrong-schema-version",
+      "pass": true,
+      "ok": false,
+      "expectedRule": "schema.i01a.agent_registry_entry",
+      "forbiddenRule": null,
+      "ruleIds": [
+        "schema.i01a.agent_registry_entry"
+      ],
+      "errors": [
+        {
+          "ruleId": "schema.i01a.agent_registry_entry",
+          "pointer": "/schemaVersion",
+          "entryId": null,
+          "message": "Unsupported artifact schemaVersion 9.0.0.",
+          "details": null
+        },
+        {
+          "ruleId": "schema.i01a.agent_registry_entry",
+          "pointer": "/schemaVersion",
+          "entryId": null,
+          "message": "must be equal to constant",
+          "details": null
+        }
+      ]
+    },
+    {
+      "label": "wrong entry artifact kind rejects through schema",
+      "caseName": "wrong-entry-artifact-kind",
+      "pass": true,
+      "ok": false,
+      "expectedRule": "schema.i01a.agent_registry_entry",
+      "forbiddenRule": null,
+      "ruleIds": [
+        "schema.i01a.agent_registry_entry"
+      ],
+      "errors": [
+        {
+          "ruleId": "schema.i01a.agent_registry_entry",
+          "pointer": "/artifactKind",
+          "entryId": null,
+          "message": "Expected artifactKind agent_registry_entry.",
+          "details": null
+        },
+        {
+          "ruleId": "schema.i01a.agent_registry_entry",
+          "pointer": "/artifactKind",
+          "entryId": null,
+          "message": "must be equal to constant",
+          "details": null
+        },
+        {
+          "ruleId": "schema.i01a.agent_registry_entry",
+          "pointer": "/artifactKind",
+          "entryId": null,
+          "message": "must be equal to one of the allowed values",
+          "details": null
+        }
+      ]
+    },
+    {
+      "label": "invalid schema refs reject",
+      "caseName": "invalid-schema-ref",
+      "pass": true,
+      "ok": false,
+      "expectedRule": "registry.policy.maturity_evidence",
+      "forbiddenRule": null,
+      "ruleIds": [
+        "registry.graph.ref_resolution",
+        "registry.graph.unlinked_stable_core",
+        "registry.policy.maturity_evidence"
+      ],
+      "errors": [
+        {
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/outputSchemas/0/schemaId",
+          "entryId": "fixture-specialist",
+          "message": "outputSchemas must use canonical I-01A schema id for artifactKind build_result.",
+          "details": {
+            "expected": "https://schemas.vibe-engineer.dev/artifacts/v1/build-result.schema.json",
+            "actual": "https://schemas.vibe-engineer.dev/artifacts/v1/work-brief.schema.json"
+          }
+        },
+        {
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/validatorRefs/0",
+          "entryId": "fixture-specialist",
+          "message": "Registry reference fixture-validator does not resolve to a loaded agent_registry_entry.",
+          "details": null
+        },
+        {
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/fixerRefs/0",
+          "entryId": "fixture-specialist",
+          "message": "Registry reference fixture-fixer does not resolve to a loaded agent_registry_entry.",
+          "details": null
+        },
+        {
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/links/1",
+          "entryId": "fixture-specialist",
+          "message": "Registry reference fixture-orchestrator does not resolve to a loaded agent_registry_entry.",
+          "details": null
+        },
+        {
+          "ruleId": "registry.graph.unlinked_stable_core",
+          "pointer": "/links",
+          "entryId": "fixture-specialist",
+          "message": "Stable/core registry entry is reachable only from itself and lacks allowed dormant/deprecated/sample rationale.",
+          "details": null
+        }
+      ]
+    },
+    {
+      "label": "allowed tool / forbidden action contradiction rejects",
+      "caseName": "tool-contradiction",
+      "pass": true,
+      "ok": false,
+      "expectedRule": "registry.policy.tool_forbidden_precedence",
+      "forbiddenRule": null,
+      "ruleIds": [
+        "registry.graph.ref_resolution",
+        "registry.graph.unlinked_stable_core",
+        "registry.policy.tool_forbidden_precedence"
+      ],
+      "errors": [
+        {
+          "ruleId": "registry.policy.tool_forbidden_precedence",
+          "pointer": "/forbiddenActions",
+          "entryId": "fixture-specialist",
+          "message": "Forbidden action bash contradicts allowed tool bash; forbidden policy wins.",
+          "details": null
+        },
+        {
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/validatorRefs/0",
+          "entryId": "fixture-specialist",
+          "message": "Registry reference fixture-validator does not resolve to a loaded agent_registry_entry.",
+          "details": null
+        },
+        {
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/fixerRefs/0",
+          "entryId": "fixture-specialist",
+          "message": "Registry reference fixture-fixer does not resolve to a loaded agent_registry_entry.",
+          "details": null
+        },
+        {
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/links/1",
+          "entryId": "fixture-specialist",
+          "message": "Registry reference fixture-orchestrator does not resolve to a loaded agent_registry_entry.",
+          "details": null
+        },
+        {
+          "ruleId": "registry.graph.unlinked_stable_core",
+          "pointer": "/links",
+          "entryId": "fixture-specialist",
+          "message": "Stable/core registry entry is reachable only from itself and lacks allowed dormant/deprecated/sample rationale.",
+          "details": null
+        }
+      ]
+    },
+    {
+      "label": "self-validation-only rejects",
+      "caseName": "self-validation-only",
+      "pass": true,
+      "ok": false,
+      "expectedRule": "registry.graph.self_validation_only",
+      "forbiddenRule": null,
+      "ruleIds": [
+        "registry.graph.ref_type_compatibility",
+        "registry.graph.self_validation_only",
+        "registry.graph.unlinked_stable_core"
+      ],
+      "errors": [
+        {
+          "ruleId": "registry.graph.ref_type_compatibility",
+          "pointer": "/validatorRefs/0",
+          "entryId": "fixture-specialist",
+          "message": "validatorRefs must target validator/reviewer-compatible entries; fixture-specialist is specialist.",
+          "details": {
+            "targetAgentId": "fixture-specialist",
+            "targetAgentType": "specialist",
+            "allowedTargetTypes": [
+              "validator",
+              "reviewer"
+            ]
+          }
+        },
+        {
+          "ruleId": "registry.graph.self_validation_only",
+          "pointer": "/validatorRefs",
+          "entryId": "fixture-specialist",
+          "message": "Self-validation cannot be the only blocking validator.",
+          "details": null
+        },
+        {
+          "ruleId": "registry.graph.unlinked_stable_core",
+          "pointer": "/links",
+          "entryId": "fixture-specialist",
+          "message": "Stable/core registry entry is reachable only from itself and lacks allowed dormant/deprecated/sample rationale.",
+          "details": null
+        }
+      ]
+    },
+    {
+      "label": "independence cycle rejects",
+      "caseName": "independence-cycle",
+      "pass": true,
+      "ok": false,
+      "expectedRule": "registry.graph.independence_cycle",
+      "forbiddenRule": null,
+      "ruleIds": [
+        "registry.graph.independence_cycle"
+      ],
+      "errors": [
+        {
+          "ruleId": "registry.graph.independence_cycle",
+          "pointer": "/validatorRefs",
+          "entryId": "cycle-a",
+          "message": "Blocking validator cycle defeats independence: cycle-a -> cycle-b -> cycle-a.",
+          "details": {
+            "cycle": [
+              "cycle-a",
+              "cycle-b",
+              "cycle-a"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "unused validator rejects",
+      "caseName": "unused-validator",
+      "pass": true,
+      "ok": false,
+      "expectedRule": "registry.graph.unused_validator_fixer",
+      "forbiddenRule": null,
+      "ruleIds": [
+        "registry.graph.unlinked_stable_core",
+        "registry.graph.unused_validator_fixer"
+      ],
+      "errors": [
+        {
+          "ruleId": "registry.graph.unlinked_stable_core",
+          "pointer": "/links",
+          "entryId": "fixture-validator",
+          "message": "Stable/core registry entry is reachable only from itself and lacks allowed dormant/deprecated/sample rationale.",
+          "details": null
+        },
+        {
+          "ruleId": "registry.graph.unused_validator_fixer",
+          "pointer": "/agentType",
+          "entryId": "fixture-validator",
+          "message": "validator entry is not referenced by any loaded entry and lacks allowed dormant/deprecated rationale.",
+          "details": null
+        }
+      ]
+    },
+    {
+      "label": "deprecation without supersession rejects",
+      "caseName": "deprecation-supersession",
+      "pass": true,
+      "ok": false,
+      "expectedRule": "registry.policy.deprecation_supersession",
+      "forbiddenRule": null,
+      "ruleIds": [
+        "registry.graph.ref_resolution",
+        "registry.policy.deprecation_supersession"
+      ],
+      "errors": [
+        {
+          "ruleId": "registry.policy.deprecation_supersession",
+          "pointer": "/deprecation",
+          "entryId": "fixture-specialist",
+          "message": "Deprecated entries require supersessionReason and extension supersededBy metadata.",
+          "details": null
+        },
+        {
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/validatorRefs/0",
+          "entryId": "fixture-specialist",
+          "message": "Registry reference fixture-validator does not resolve to a loaded agent_registry_entry.",
+          "details": null
+        },
+        {
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/fixerRefs/0",
+          "entryId": "fixture-specialist",
+          "message": "Registry reference fixture-fixer does not resolve to a loaded agent_registry_entry.",
+          "details": null
+        }
+      ]
+    },
+    {
+      "label": "unknown skill link rejects",
+      "caseName": "unknown-skill-link",
+      "pass": true,
+      "ok": false,
+      "expectedRule": "registry.policy.skill_links",
+      "forbiddenRule": null,
+      "ruleIds": [
+        "registry.graph.ref_resolution",
+        "registry.graph.unlinked_stable_core",
+        "registry.policy.skill_links"
+      ],
+      "errors": [
+        {
+          "ruleId": "registry.policy.skill_links",
+          "pointer": "/extensions/dev.vibe.registry/linkedSkills",
+          "entryId": "fixture-skill-adapter",
+          "message": "Registry entry references unknown skills: unknown-skill.",
+          "details": null
+        },
+        {
+          "ruleId": "registry.policy.skill_links",
+          "pointer": "/extensions/dev.vibe.registry/linkedSkills",
+          "entryId": "fixture-skill-adapter",
+          "message": "Core skill_adapter must link exactly the six locked skills: brainstorm, grill-me, task, plan, build, ship.",
+          "details": null
+        },
+        {
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/validatorRefs/0",
+          "entryId": "fixture-skill-adapter",
+          "message": "Registry reference fixture-validator does not resolve to a loaded agent_registry_entry.",
+          "details": null
+        },
+        {
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/links/1",
+          "entryId": "fixture-skill-adapter",
+          "message": "Registry reference fixture-orchestrator does not resolve to a loaded agent_registry_entry.",
+          "details": null
+        },
+        {
+          "ruleId": "registry.graph.unlinked_stable_core",
+          "pointer": "/links",
+          "entryId": "fixture-skill-adapter",
+          "message": "Stable/core registry entry is reachable only from itself and lacks allowed dormant/deprecated/sample rationale.",
+          "details": null
+        }
+      ]
+    },
+    {
+      "label": "domain leakage rejects",
+      "caseName": "domain-leakage",
+      "pass": true,
+      "ok": false,
+      "expectedRule": "registry.policy.domain_neutrality",
+      "forbiddenRule": null,
+      "ruleIds": [
+        "registry.graph.ref_resolution",
+        "registry.graph.unlinked_stable_core",
+        "registry.policy.domain_neutrality"
+      ],
+      "errors": [
+        {
+          "ruleId": "registry.policy.domain_neutrality",
+          "pointer": "",
+          "entryId": "fixture-specialist",
+          "message": "Core registry entry contains project/business vocabulary forbidden by DL-20A: ecommerce, inventory, fashion, billz, telegram, instagram.",
+          "details": {
+            "forbiddenTerms": [
+              "ecommerce",
+              "inventory",
+              "fashion",
+              "billz",
+              "telegram",
+              "instagram"
+            ]
+          }
+        },
+        {
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/validatorRefs/0",
+          "entryId": "fixture-specialist",
+          "message": "Registry reference fixture-validator does not resolve to a loaded agent_registry_entry.",
+          "details": null
+        },
+        {
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/fixerRefs/0",
+          "entryId": "fixture-specialist",
+          "message": "Registry reference fixture-fixer does not resolve to a loaded agent_registry_entry.",
+          "details": null
+        },
+        {
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/links/1",
+          "entryId": "fixture-specialist",
+          "message": "Registry reference fixture-orchestrator does not resolve to a loaded agent_registry_entry.",
+          "details": null
+        },
+        {
+          "ruleId": "registry.graph.unlinked_stable_core",
+          "pointer": "/links",
+          "entryId": "fixture-specialist",
+          "message": "Stable/core registry entry is reachable only from itself and lacks allowed dormant/deprecated/sample rationale.",
+          "details": null
+        }
+      ]
+    },
+    {
+      "label": "meta silent mutation / bypass rejects",
+      "caseName": "meta-mutation",
+      "pass": true,
+      "ok": false,
+      "expectedRule": "registry.policy.meta_agent_safety",
+      "forbiddenRule": null,
+      "ruleIds": [
+        "registry.graph.ref_resolution",
+        "registry.graph.unlinked_stable_core",
+        "registry.policy.meta_agent_safety"
+      ],
+      "errors": [
+        {
+          "ruleId": "registry.policy.meta_agent_safety",
+          "pointer": "/extensions/dev.vibe.registry/outputAuthority",
+          "entryId": "fixture-meta-advisor",
+          "message": "Meta-agent output authority must be recommendation_only or patch_material.",
+          "details": null
+        },
+        {
+          "ruleId": "registry.policy.meta_agent_safety",
+          "pointer": "/extensions/dev.vibe.registry/normalRoute",
+          "entryId": "fixture-meta-advisor",
+          "message": "Meta-agent recommendations must route through normal planning, build, and verification.",
+          "details": null
+        },
+        {
+          "ruleId": "registry.policy.meta_agent_safety",
+          "pointer": "/safety/writesAllowed",
+          "entryId": "fixture-meta-advisor",
+          "message": "Meta-agents must not be allowed to mutate files directly.",
+          "details": null
+        },
+        {
+          "ruleId": "registry.policy.meta_agent_safety",
+          "pointer": "/forbiddenActions",
+          "entryId": "fixture-meta-advisor",
+          "message": "Meta-agent must forbid silent_mutation.",
+          "details": null
+        },
+        {
+          "ruleId": "registry.policy.meta_agent_safety",
+          "pointer": "/forbiddenActions",
+          "entryId": "fixture-meta-advisor",
+          "message": "Meta-agent must forbid auto_registration.",
+          "details": null
+        },
+        {
+          "ruleId": "registry.policy.meta_agent_safety",
+          "pointer": "/forbiddenActions",
+          "entryId": "fixture-meta-advisor",
+          "message": "Meta-agent must forbid direct_file_mutation.",
+          "details": null
+        },
+        {
+          "ruleId": "registry.policy.meta_agent_safety",
+          "pointer": "/forbiddenActions",
+          "entryId": "fixture-meta-advisor",
+          "message": "Meta-agent must forbid pr.",
+          "details": null
+        },
+        {
+          "ruleId": "registry.policy.meta_agent_safety",
+          "pointer": "/forbiddenActions",
+          "entryId": "fixture-meta-advisor",
+          "message": "Meta-agent must forbid verification_bypass.",
+          "details": null
+        },
+        {
+          "ruleId": "registry.policy.meta_agent_safety",
+          "pointer": "/allowedTools",
+          "entryId": "fixture-meta-advisor",
+          "message": "Meta-agent allowed tools include direct mutation capability: write.",
+          "details": null
+        },
+        {
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/validatorRefs/0",
+          "entryId": "fixture-meta-advisor",
+          "message": "Registry reference fixture-validator does not resolve to a loaded agent_registry_entry.",
+          "details": null
+        },
+        {
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/links/1",
+          "entryId": "fixture-meta-advisor",
+          "message": "Registry reference fixture-orchestrator does not resolve to a loaded agent_registry_entry.",
+          "details": null
+        },
+        {
+          "ruleId": "registry.graph.unlinked_stable_core",
+          "pointer": "/links",
+          "entryId": "fixture-meta-advisor",
+          "message": "Stable/core registry entry is reachable only from itself and lacks allowed dormant/deprecated/sample rationale.",
+          "details": null
+        }
+      ]
+    },
+    {
+      "label": "adapter runtime assumptions reject",
+      "caseName": "adapter-assumptions",
+      "pass": true,
+      "ok": false,
+      "expectedRule": "registry.policy.adapter_scope",
+      "forbiddenRule": null,
+      "ruleIds": [
+        "registry.graph.ref_resolution",
+        "registry.graph.unlinked_stable_core",
+        "registry.policy.adapter_scope"
+      ],
+      "errors": [
+        {
+          "ruleId": "registry.policy.adapter_scope",
+          "pointer": "/selectedHarnessAdapters",
+          "entryId": "fixture-skill-adapter",
+          "message": "Non-pi harness support remains deferred/blocked: non-pi.",
+          "details": null
+        },
+        {
+          "ruleId": "registry.policy.adapter_scope",
+          "pointer": "/extensions/dev.vibe.registry",
+          "entryId": "fixture-skill-adapter",
+          "message": "Adapter manifest/runtime assumptions and non-pi support claims are out of scope for registry validation.",
+          "details": null
+        },
+        {
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/validatorRefs/0",
+          "entryId": "fixture-skill-adapter",
+          "message": "Registry reference fixture-validator does not resolve to a loaded agent_registry_entry.",
+          "details": null
+        },
+        {
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/links/1",
+          "entryId": "fixture-skill-adapter",
+          "message": "Registry reference fixture-orchestrator does not resolve to a loaded agent_registry_entry.",
+          "details": null
+        },
+        {
+          "ruleId": "registry.graph.unlinked_stable_core",
+          "pointer": "/links",
+          "entryId": "fixture-skill-adapter",
+          "message": "Stable/core registry entry is reachable only from itself and lacks allowed dormant/deprecated/sample rationale.",
+          "details": null
+        }
+      ]
+    },
+    {
+      "label": "project-extension rejected without explicit scope",
+      "caseName": "project-extension.json",
+      "pass": true,
+      "ok": false,
+      "expectedRule": "registry.policy.scope_classification",
+      "forbiddenRule": null,
+      "ruleIds": [
+        "registry.policy.scope_classification"
+      ],
+      "errors": [
+        {
+          "ruleId": "registry.policy.scope_classification",
+          "pointer": "/extensions/dev.vibe.registry/registryScope",
+          "entryId": "fixture-project-extension",
+          "message": "Project-extension registry entries are accepted only when project_extension scope is explicitly enabled."
+        }
+      ]
+    },
+    {
+      "label": "sample/demo rejected without explicit sample option",
+      "caseName": "sample-demo.json",
+      "pass": true,
+      "ok": false,
+      "expectedRule": "registry.policy.scope_classification",
+      "forbiddenRule": null,
+      "ruleIds": [
+        "registry.policy.scope_classification"
+      ],
+      "errors": [
+        {
+          "ruleId": "registry.policy.scope_classification",
+          "pointer": "/extensions/dev.vibe.registry",
+          "entryId": "fixture-sample-demo",
+          "message": "Sample/demo entries are accepted only when explicitly allowed, labeled, and isolated."
+        }
+      ]
+    }
+  ]
+}

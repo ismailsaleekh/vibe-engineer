@@ -1,0 +1,93 @@
+{
+  "schemaVersion": "1.0.0",
+  "artifactKind": "evidence_packet",
+  "artifactId": "evidence:fixture-orchestrator:smoke",
+  "title": "fixture-orchestrator smoke evidence",
+  "createdAt": "2026-06-23T00:00:00Z",
+  "updatedAt": "2026-06-23T00:00:00Z",
+  "producer": {
+    "kind": "verification_runner",
+    "id": "i-04-agent-registry-validation",
+    "name": "I-04 agent registry validation",
+    "version": "1.0.0",
+    "runId": "q06-revalidation-evidence-subjectref-mismatch-fixture-orchestrator-smoke"
+  },
+  "status": "passed",
+  "ownership": {
+    "ownerLane": "I-04-agent-registry-validation",
+    "ownedWritePaths": [
+      "packages/registry/**"
+    ],
+    "readOnlyPaths": [
+      "packages/artifacts/**"
+    ],
+    "untouchablePaths": [
+      ".git/**",
+      "docs/decisions/**"
+    ],
+    "concurrencyNotes": "smoke evidence carrier is Q06-owned and deterministic.",
+    "handoffPolicy": "Registry consumers require independent Q06 revalidation before relying on this evidence."
+  },
+  "links": [
+    {
+      "rel": "evidence_for",
+      "artifactKind": "agent_registry_entry",
+      "artifactId": "fixture-orchestrator",
+      "path": "cases/evidence-subjectref-mismatch/fixture-orchestrator.json",
+      "required": true,
+      "statusAtLinkTime": "active"
+    }
+  ],
+  "extensions": {
+    "dev.vibe.registry.evidence": {
+      "schemaVersion": "1.0.0",
+      "agentId": "fixture-orchestrator",
+      "agentVersion": "1.0.0",
+      "evidenceType": "smoke",
+      "registryEntryPath": "cases/evidence-subjectref-mismatch/fixture-orchestrator.json"
+    }
+  },
+  "description": "Deterministic smoke evidence packet backing stable/core registry maturity for fixture-specialist.",
+  "tags": [
+    "registry",
+    "smoke",
+    "domain-neutral"
+  ],
+  "evidenceClass": "deterministic",
+  "layer": "integration",
+  "subjectRefs": [
+    {
+      "rel": "evidence_for",
+      "artifactKind": "agent_registry_entry",
+      "artifactId": "fixture-orchestrator",
+      "path": "cases/evidence-subjectref-mismatch/fixture-orchestrator.json",
+      "required": true,
+      "statusAtLinkTime": "active"
+    }
+  ],
+  "commandOrTool": {
+    "kind": "validator",
+    "name": "registry-smoke-witness",
+    "argv": [
+      "pnpm",
+      "--filter",
+      "@vibe-engineer/registry",
+      "test"
+    ],
+    "version": "1.0.0",
+    "workingDirectory": ".",
+    "environmentSummary": "Q06 deterministic on-disk registry/evidence boundary witness"
+  },
+  "startedAt": "2026-06-23T00:00:00Z",
+  "endedAt": "2026-06-23T00:00:00Z",
+  "exitStatus": {
+    "kind": "exit_code",
+    "code": 0
+  },
+  "result": "pass",
+  "blocking": true,
+  "artifacts": [
+    "packages/registry/.generated-fixtures/evidence-subjectref-mismatch/evidence/fixture-orchestrator-smoke.json"
+  ],
+  "warnings": []
+}

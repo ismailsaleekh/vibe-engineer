@@ -1,0 +1,197 @@
+--- owned inventory packages/registry
+packages/registry/.generated-fixtures/fix-witness-ref-type/fixture-fixer.json
+packages/registry/.generated-fixtures/fix-witness-ref-type/fixture-specialist.json
+packages/registry/.generated-fixtures/invalid/_evidence/fixture-specialist-non-load-bearing.json
+packages/registry/.generated-fixtures/invalid/adapter-assumptions/fixture-skill-adapter.json
+packages/registry/.generated-fixtures/invalid/bare-allow-dormant/fixture-specialist.json
+packages/registry/.generated-fixtures/invalid/contradictory-active-dormant/fixture-specialist.json
+packages/registry/.generated-fixtures/invalid/domain-leakage/fixture-specialist.json
+packages/registry/.generated-fixtures/invalid/evidence-artifact-mismatch/fixture-specialist.json
+packages/registry/.generated-fixtures/invalid/evidence-artifact-mismatch/packet.json
+packages/registry/.generated-fixtures/invalid/fixer-ref-to-validator/fixture-specialist.json
+packages/registry/.generated-fixtures/invalid/fixer-ref-to-validator/fixture-validator.json
+packages/registry/.generated-fixtures/invalid/incomplete-non-load-bearing-rationale/fixture-specialist.json
+packages/registry/.generated-fixtures/invalid/independence-cycle/cycle-a.json
+packages/registry/.generated-fixtures/invalid/independence-cycle/cycle-b.json
+packages/registry/.generated-fixtures/invalid/invalid-schema-ref/fixture-specialist.json
+packages/registry/.generated-fixtures/invalid/meta-mutation/fixture-meta-advisor.json
+packages/registry/.generated-fixtures/invalid/missing-eval-evidence-file/fixture-specialist.json
+packages/registry/.generated-fixtures/invalid/missing-independent-validator/fixture-orchestrator.json
+packages/registry/.generated-fixtures/invalid/missing-independent-validator/fixture-reviewer.json
+packages/registry/.generated-fixtures/invalid/missing-independent-validator/fixture-specialist.json
+packages/registry/.generated-fixtures/invalid/missing-independent-validator/fixture-validator.json
+packages/registry/.generated-fixtures/invalid/missing-metadata/fixture-specialist.json
+packages/registry/.generated-fixtures/invalid/missing-schema-refs/fixture-specialist.json
+packages/registry/.generated-fixtures/invalid/missing-smoke-evidence-file/fixture-specialist.json
+packages/registry/.generated-fixtures/invalid/missing-top-level-agent-link/fixture-specialist.json
+packages/registry/.generated-fixtures/invalid/missing-validator-still-ref-resolution/fixture-specialist.json
+packages/registry/.generated-fixtures/invalid/omitted-validator-refs/fixture-specialist.json
+packages/registry/.generated-fixtures/invalid/optional-validator-only/fixture-orchestrator.json
+packages/registry/.generated-fixtures/invalid/optional-validator-only/fixture-reviewer.json
+packages/registry/.generated-fixtures/invalid/optional-validator-only/fixture-specialist.json
+packages/registry/.generated-fixtures/invalid/optional-validator-only/fixture-validator.json
+packages/registry/.generated-fixtures/invalid/orphan-ref/fixture-specialist.json
+packages/registry/.generated-fixtures/invalid/self-only-top-level-link/fixture-specialist.json
+packages/registry/.generated-fixtures/invalid/self-validation-only/fixture-specialist.json
+packages/registry/.generated-fixtures/invalid/stale-evidence-version/fixture-specialist.json
+packages/registry/.generated-fixtures/invalid/stale-evidence-version/packet.json
+packages/registry/.generated-fixtures/invalid/stale-evidence/fixture-specialist.json
+packages/registry/.generated-fixtures/invalid/tool-contradiction/fixture-specialist.json
+packages/registry/.generated-fixtures/invalid/unlinked-stable-core/fixture-specialist.json
+packages/registry/.generated-fixtures/invalid/unused-validator/unused-validator.json
+packages/registry/.generated-fixtures/invalid/valid-non-load-bearing-rationale/fixture-specialist.json
+packages/registry/.generated-fixtures/invalid/validator-ref-to-fixer/fixture-fixer.json
+packages/registry/.generated-fixtures/invalid/validator-ref-to-fixer/fixture-specialist.json
+packages/registry/.generated-fixtures/invalid/wrong-kind/fixture-specialist.json
+packages/registry/.generated-fixtures/invalid/wrong-version/fixture-specialist.json
+packages/registry/fixtures/evidence/fixture-fixer-eval.json
+packages/registry/fixtures/evidence/fixture-fixer-smoke.json
+packages/registry/fixtures/evidence/fixture-meta-advisor-eval.json
+packages/registry/fixtures/evidence/fixture-meta-advisor-smoke.json
+packages/registry/fixtures/evidence/fixture-orchestrator-eval.json
+packages/registry/fixtures/evidence/fixture-orchestrator-smoke.json
+packages/registry/fixtures/evidence/fixture-reviewer-eval.json
+packages/registry/fixtures/evidence/fixture-reviewer-smoke.json
+packages/registry/fixtures/evidence/fixture-skill-adapter-eval.json
+packages/registry/fixtures/evidence/fixture-skill-adapter-smoke.json
+packages/registry/fixtures/evidence/fixture-specialist-eval.json
+packages/registry/fixtures/evidence/fixture-specialist-smoke.json
+packages/registry/fixtures/evidence/fixture-validator-eval.json
+packages/registry/fixtures/evidence/fixture-validator-smoke.json
+packages/registry/fixtures/invalid/README.md
+packages/registry/fixtures/valid/core-set/fixture-fixer.json
+packages/registry/fixtures/valid/core-set/fixture-meta-advisor.json
+packages/registry/fixtures/valid/core-set/fixture-orchestrator.json
+packages/registry/fixtures/valid/core-set/fixture-reviewer.json
+packages/registry/fixtures/valid/core-set/fixture-skill-adapter.json
+packages/registry/fixtures/valid/core-set/fixture-specialist.json
+packages/registry/fixtures/valid/core-set/fixture-validator.json
+packages/registry/fixtures/valid/scoped/project-extension.json
+packages/registry/fixtures/valid/scoped/sample-demo.json
+packages/registry/package.json
+packages/registry/scripts/build-smoke.mjs
+packages/registry/src/index.d.ts
+packages/registry/src/index.js
+packages/registry/tests/fixture-witness.mjs
+packages/registry/tests/run-tests.mjs
+packages/registry/tsconfig.json
+--- owned inventory .vibe/registry
+.vibe/registry/core-agents/core-orchestrator.json
+.vibe/registry/core-agents/core-specialist.json
+.vibe/registry/core-agents/locked-skill-adapter.json
+.vibe/registry/core-agents/registry-fixer.json
+.vibe/registry/core-agents/registry-meta-advisor.json
+.vibe/registry/core-agents/registry-quality-validator.json
+.vibe/registry/core-agents/registry-reviewer.json
+.vibe/registry/evidence/core-orchestrator-eval.json
+.vibe/registry/evidence/core-orchestrator-smoke.json
+.vibe/registry/evidence/core-specialist-eval.json
+.vibe/registry/evidence/core-specialist-smoke.json
+.vibe/registry/evidence/locked-skill-adapter-eval.json
+.vibe/registry/evidence/locked-skill-adapter-smoke.json
+.vibe/registry/evidence/registry-fixer-eval.json
+.vibe/registry/evidence/registry-fixer-smoke.json
+.vibe/registry/evidence/registry-meta-advisor-eval.json
+.vibe/registry/evidence/registry-meta-advisor-smoke.json
+.vibe/registry/evidence/registry-quality-validator-eval.json
+.vibe/registry/evidence/registry-quality-validator-smoke.json
+.vibe/registry/evidence/registry-reviewer-eval.json
+.vibe/registry/evidence/registry-reviewer-smoke.json
+--- owned inventory work
+.vibe/work/I-04-agent-registry-validation/fix-evidence/real-boundary-witness.output.json
+.vibe/work/I-04-agent-registry-validation/I-04-fix-report.md
+.vibe/work/I-04-agent-registry-validation/I-04-residual-fix-report.md
+.vibe/work/I-04-agent-registry-validation/I-04-revalidation-report.md
+.vibe/work/I-04-agent-registry-validation/I-04-validation-report.md
+.vibe/work/I-04-agent-registry-validation/implementation-report.md
+.vibe/work/I-04-agent-registry-validation/residual-fix-evidence/evidence/fixture-specialist-non-load-bearing.json
+.vibe/work/I-04-agent-registry-validation/residual-fix-evidence/final-sweep.txt
+.vibe/work/I-04-agent-registry-validation/residual-fix-evidence/residual-boundary-witness.mjs
+.vibe/work/I-04-agent-registry-validation/residual-fix-evidence/residual-boundary-witness.output.json
+.vibe/work/I-04-agent-registry-validation/residual-fix-evidence/residual-boundary-witness.run.txt
+.vibe/work/I-04-agent-registry-validation/revalidation-evidence/commands/blast_radius_contract_sweep.txt
+.vibe/work/I-04-agent-registry-validation/revalidation-evidence/commands/copied_harness_inventory.txt
+.vibe/work/I-04-agent-registry-validation/revalidation-evidence/commands/core_domain_term_scan.txt
+.vibe/work/I-04-agent-registry-validation/revalidation-evidence/commands/final_dirty_tree_after_policy_gap.txt
+.vibe/work/I-04-agent-registry-validation/revalidation-evidence/commands/final_dirty_tree_and_writes.txt
+.vibe/work/I-04-agent-registry-validation/revalidation-evidence/commands/ground_truth_line_counts.txt
+.vibe/work/I-04-agent-registry-validation/revalidation-evidence/commands/ledger_q06_relevant.txt
+.vibe/work/I-04-agent-registry-validation/revalidation-evidence/commands/q06_owned_inventory.txt
+.vibe/work/I-04-agent-registry-validation/revalidation-evidence/commands/q06_scoped_status.txt
+.vibe/work/I-04-agent-registry-validation/revalidation-evidence/commands/registry_carrier_summary.json
+.vibe/work/I-04-agent-registry-validation/revalidation-evidence/commands/sentinel_scoped_status.txt
+.vibe/work/I-04-agent-registry-validation/revalidation-evidence/commands/sentinel_tracked_diff_names.txt
+.vibe/work/I-04-agent-registry-validation/revalidation-evidence/harness/adversarial-negative-witness.mjs
+.vibe/work/I-04-agent-registry-validation/revalidation-evidence/harness/policy-gap-witness.mjs
+.vibe/work/I-04-agent-registry-validation/revalidation-evidence/harness/positive-boundary-witness.mjs
+.vibe/work/I-04-agent-registry-validation/revalidation-evidence/outputs/adversarial-negative-witness.output.json
+.vibe/work/I-04-agent-registry-validation/revalidation-evidence/outputs/adversarial-negative-witness.run.txt
+.vibe/work/I-04-agent-registry-validation/revalidation-evidence/outputs/copied_package_test.txt
+.vibe/work/I-04-agent-registry-validation/revalidation-evidence/outputs/policy-gap-witness.output.json
+.vibe/work/I-04-agent-registry-validation/revalidation-evidence/outputs/policy-gap-witness.run.txt
+.vibe/work/I-04-agent-registry-validation/revalidation-evidence/outputs/positive-boundary-witness.output.json
+.vibe/work/I-04-agent-registry-validation/revalidation-evidence/outputs/safe_package_commands.txt
+.vibe/work/I-04-agent-registry-validation/validation-evidence/adversarial-witness.mjs
+.vibe/work/I-04-agent-registry-validation/validation-evidence/adversarial-witness.output.json
+.vibe/work/I-04-agent-registry-validation/validation-evidence/artifact-boundary.output.json
+.vibe/work/I-04-agent-registry-validation/validation-evidence/evidence-ref-case/fixture-fixer.json
+.vibe/work/I-04-agent-registry-validation/validation-evidence/evidence-ref-case/fixture-meta-advisor.json
+.vibe/work/I-04-agent-registry-validation/validation-evidence/evidence-ref-case/fixture-orchestrator.json
+.vibe/work/I-04-agent-registry-validation/validation-evidence/evidence-ref-case/fixture-reviewer.json
+.vibe/work/I-04-agent-registry-validation/validation-evidence/evidence-ref-case/fixture-skill-adapter.json
+.vibe/work/I-04-agent-registry-validation/validation-evidence/evidence-ref-case/fixture-specialist.json
+.vibe/work/I-04-agent-registry-validation/validation-evidence/evidence-ref-case/fixture-validator.json
+.vibe/work/I-04-agent-registry-validation/validation-evidence/evidence-reference-witness.mjs
+.vibe/work/I-04-agent-registry-validation/validation-evidence/evidence-reference-witness.output.json
+.vibe/work/I-04-agent-registry-validation/validation-evidence/import-smoke.output.json
+.vibe/work/I-04-agent-registry-validation/validation-evidence/package-test-copy-test.output
+.vibe/work/I-04-agent-registry-validation/validation-evidence/package-test-copy/package.json
+.vibe/work/I-04-agent-registry-validation/validation-evidence/ref-type-case/fixture-fixer.json
+.vibe/work/I-04-agent-registry-validation/validation-evidence/ref-type-case/fixture-meta-advisor.json
+.vibe/work/I-04-agent-registry-validation/validation-evidence/ref-type-case/fixture-orchestrator.json
+.vibe/work/I-04-agent-registry-validation/validation-evidence/ref-type-case/fixture-reviewer.json
+.vibe/work/I-04-agent-registry-validation/validation-evidence/ref-type-case/fixture-skill-adapter.json
+.vibe/work/I-04-agent-registry-validation/validation-evidence/ref-type-case/fixture-specialist.json
+.vibe/work/I-04-agent-registry-validation/validation-evidence/ref-type-case/fixture-validator.json
+.vibe/work/I-04-agent-registry-validation/validation-evidence/ref-type-witness.mjs
+.vibe/work/I-04-agent-registry-validation/validation-evidence/ref-type-witness.output.json
+.vibe/work/I-04-agent-registry-validation/validation-evidence/registry-boundary.output.json
+--- q06 scoped status
+?? .vibe/registry/
+?? .vibe/work/I-04-agent-registry-validation/
+?? packages/registry/
+--- sentinel tracked diff names
+--- registry imports
+packages/registry/src/index.d.ts:1:import type { AgentRegistryEntryV1, ArtifactKind } from '../../artifacts/src/generated/types.d.ts';
+packages/registry/tests/run-tests.mjs:1:import assert from 'node:assert/strict';
+packages/registry/tests/run-tests.mjs:2:import fs from 'node:fs';
+packages/registry/tests/run-tests.mjs:3:import path from 'node:path';
+packages/registry/tests/run-tests.mjs:4:import { fileURLToPath } from 'node:url';
+packages/registry/tests/run-tests.mjs:12:} from '@vibe-engineer/registry';
+packages/registry/scripts/build-smoke.mjs:1:import assert from 'node:assert/strict';
+packages/registry/scripts/build-smoke.mjs:2:import fs from 'node:fs';
+packages/registry/scripts/build-smoke.mjs:3:import path from 'node:path';
+packages/registry/scripts/build-smoke.mjs:4:import { fileURLToPath } from 'node:url';
+packages/registry/scripts/build-smoke.mjs:5:import { canonicalSchemaIdsByKind, loadRegistry } from '@vibe-engineer/registry';
+packages/registry/tests/fixture-witness.mjs:1:import assert from 'node:assert/strict';
+packages/registry/tests/fixture-witness.mjs:2:import path from 'node:path';
+packages/registry/tests/fixture-witness.mjs:3:import { fileURLToPath } from 'node:url';
+packages/registry/tests/fixture-witness.mjs:4:import { assertRegistryOk, loadRegistry } from '@vibe-engineer/registry';
+packages/registry/src/index.js:1:import fs from 'node:fs';
+packages/registry/src/index.js:2:import path from 'node:path';
+packages/registry/src/index.js:3:import { fileURLToPath } from 'node:url';
+packages/registry/src/index.js:4:import { ARTIFACT_KINDS, loadSchema, validateArtifactFile } from '../../artifacts/src/index.js';
+--- testing dependency
+packages/registry/tests/run-tests.mjs:326:assert.equal(JSON.stringify(registryPackage).includes('@vibe-engineer/testing'), false);
+--- packages core
+packages/core absent=0
+--- scripts
+{"typecheck":"tsc --noEmit -p tsconfig.json","test":"node tests/run-tests.mjs","test:fixtures":"node tests/fixture-witness.mjs","build":"node scripts/build-smoke.mjs"}
+deps {} devDeps {}
+--- domain terms in core
+.vibe/registry/core-agents/core-specialist.json:129:    "git_checkout",
+.vibe/registry/core-agents/locked-skill-adapter.json:137:    "git_checkout",
+.vibe/registry/core-agents/registry-quality-validator.json:129:    "git_checkout",
+.vibe/registry/core-agents/registry-fixer.json:134:    "git_checkout",
+.vibe/registry/core-agents/core-orchestrator.json:139:    "git_checkout",
+.vibe/registry/core-agents/registry-reviewer.json:129:    "git_checkout",

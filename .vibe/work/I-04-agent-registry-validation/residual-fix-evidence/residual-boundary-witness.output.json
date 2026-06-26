@@ -1,0 +1,164 @@
+{
+  "ok": true,
+  "positives": {
+    "coreOk": true,
+    "fixtureOk": true,
+    "agentSchemaAllOk": true,
+    "evidenceSchemaAllOk": true,
+    "agentTypes": [
+      "fixer",
+      "meta",
+      "orchestrator",
+      "reviewer",
+      "skill_adapter",
+      "specialist",
+      "validator"
+    ],
+    "loadBearingValidatorPolicy": "all core/fixture non-reviewer load-bearing entries have non-self required validatorRefs; reviewer is terminal independent oversight target"
+  },
+  "validTypedBypass": {
+    "ok": true,
+    "ruleIds": [],
+    "errors": []
+  },
+  "negatives": [
+    {
+      "label": "connected load-bearing specialist with empty validatorRefs",
+      "expectedRule": "registry.graph.required_validator",
+      "ok": false,
+      "ruleIds": [
+        "registry.graph.required_validator"
+      ],
+      "errors": [
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.required_validator",
+          "pointer": "/validatorRefs",
+          "message": "Active stable/core load-bearing registry entries require at least one non-self required validatorRef to an independent validator/reviewer entry unless an explicit typed non-load-bearing policy applies."
+        }
+      ]
+    },
+    {
+      "label": "optional-only validatorRef",
+      "expectedRule": "registry.graph.required_validator",
+      "ok": false,
+      "ruleIds": [
+        "registry.graph.required_validator"
+      ],
+      "errors": [
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.required_validator",
+          "pointer": "/validatorRefs",
+          "message": "Active stable/core load-bearing registry entries require at least one non-self required validatorRef to an independent validator/reviewer entry unless an explicit typed non-load-bearing policy applies."
+        }
+      ]
+    },
+    {
+      "label": "missing validator target remains ref-resolution",
+      "expectedRule": "registry.graph.ref_resolution",
+      "ok": false,
+      "ruleIds": [
+        "registry.graph.ref_resolution"
+      ],
+      "errors": [
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/validatorRefs/0",
+          "message": "Registry reference missing-validator does not resolve to a loaded agent_registry_entry."
+        }
+      ]
+    },
+    {
+      "label": "bare allowDormant no rationale",
+      "expectedRule": "registry.policy.dormant_rationale",
+      "ok": false,
+      "ruleIds": [
+        "registry.graph.required_validator",
+        "registry.graph.unlinked_stable_core",
+        "registry.policy.dormant_rationale"
+      ],
+      "errors": [
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.policy.dormant_rationale",
+          "pointer": "/extensions/dev.vibe.registry/allowDormant",
+          "message": "Bare allowDormant=true is not an allowed graph/validator bypass; provide typed nonLoadBearingRationale or dormantRationale metadata with owner, rationale, decisionRef, and evidenceRef."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.required_validator",
+          "pointer": "/validatorRefs",
+          "message": "Active stable/core load-bearing registry entries require at least one non-self required validatorRef to an independent validator/reviewer entry unless an explicit typed non-load-bearing policy applies."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.unlinked_stable_core",
+          "pointer": "/links",
+          "message": "Stable/core registry entry is reachable only from itself and lacks allowed typed dormant/deprecated/sample/non-load-bearing rationale."
+        }
+      ]
+    },
+    {
+      "label": "incomplete rationale",
+      "expectedRule": "registry.policy.dormant_rationale",
+      "ok": false,
+      "ruleIds": [
+        "registry.graph.required_validator",
+        "registry.graph.unlinked_stable_core",
+        "registry.policy.dormant_rationale"
+      ],
+      "errors": [
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.policy.dormant_rationale",
+          "pointer": "/extensions/dev.vibe.registry/nonLoadBearingRationale",
+          "message": "Typed dormant/non-load-bearing bypass rationale is incomplete: missing owner/approver, decisionRef, evidenceRef."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.required_validator",
+          "pointer": "/validatorRefs",
+          "message": "Active stable/core load-bearing registry entries require at least one non-self required validatorRef to an independent validator/reviewer entry unless an explicit typed non-load-bearing policy applies."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.unlinked_stable_core",
+          "pointer": "/links",
+          "message": "Stable/core registry entry is reachable only from itself and lacks allowed typed dormant/deprecated/sample/non-load-bearing rationale."
+        }
+      ]
+    },
+    {
+      "label": "contradictory active dormant rationale",
+      "expectedRule": "registry.policy.dormant_rationale",
+      "ok": false,
+      "ruleIds": [
+        "registry.graph.required_validator",
+        "registry.graph.unlinked_stable_core",
+        "registry.policy.dormant_rationale"
+      ],
+      "errors": [
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.policy.dormant_rationale",
+          "pointer": "/extensions/dev.vibe.registry/dormantRationale",
+          "message": "Active stable/core entries cannot claim dormant bypass; use non_load_bearing rationale or change entry status through a valid policy."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.required_validator",
+          "pointer": "/validatorRefs",
+          "message": "Active stable/core load-bearing registry entries require at least one non-self required validatorRef to an independent validator/reviewer entry unless an explicit typed non-load-bearing policy applies."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.unlinked_stable_core",
+          "pointer": "/links",
+          "message": "Stable/core registry entry is reachable only from itself and lacks allowed typed dormant/deprecated/sample/non-load-bearing rationale."
+        }
+      ]
+    }
+  ]
+}

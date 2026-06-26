@@ -1,0 +1,17 @@
+COMMAND: pnpm --filter @vibe-engineer/registry typecheck
+
+> @vibe-engineer/registry@0.0.0 typecheck /Users/lizavasilyeva/work/vibe-engineer/packages/registry
+> tsc --noEmit -p tsconfig.json
+
+COMMAND: pnpm --filter @vibe-engineer/registry test:fixtures
+
+> @vibe-engineer/registry@0.0.0 test:fixtures /Users/lizavasilyeva/work/vibe-engineer/packages/registry
+> node tests/fixture-witness.mjs
+
+fixture witness passed: public @vibe-engineer/registry API loaded core entries and fixtures through canonical on-disk JSON
+COMMAND: pnpm --filter @vibe-engineer/registry build
+
+> @vibe-engineer/registry@0.0.0 build /Users/lizavasilyeva/work/vibe-engineer/packages/registry
+> node scripts/build-smoke.mjs
+
+registry build smoke passed

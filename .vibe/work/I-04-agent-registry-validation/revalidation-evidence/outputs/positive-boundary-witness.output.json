@@ -1,0 +1,126 @@
+{
+  "ok": true,
+  "coreEntries": [
+    {
+      "agentId": "core-orchestrator",
+      "agentType": "orchestrator"
+    },
+    {
+      "agentId": "core-specialist",
+      "agentType": "specialist"
+    },
+    {
+      "agentId": "locked-skill-adapter",
+      "agentType": "skill_adapter"
+    },
+    {
+      "agentId": "registry-fixer",
+      "agentType": "fixer"
+    },
+    {
+      "agentId": "registry-meta-advisor",
+      "agentType": "meta"
+    },
+    {
+      "agentId": "registry-quality-validator",
+      "agentType": "validator"
+    },
+    {
+      "agentId": "registry-reviewer",
+      "agentType": "reviewer"
+    }
+  ],
+  "fixtureEntries": [
+    {
+      "agentId": "fixture-fixer",
+      "agentType": "fixer"
+    },
+    {
+      "agentId": "fixture-meta-advisor",
+      "agentType": "meta"
+    },
+    {
+      "agentId": "fixture-orchestrator",
+      "agentType": "orchestrator"
+    },
+    {
+      "agentId": "fixture-reviewer",
+      "agentType": "reviewer"
+    },
+    {
+      "agentId": "fixture-skill-adapter",
+      "agentType": "skill_adapter"
+    },
+    {
+      "agentId": "fixture-specialist",
+      "agentType": "specialist"
+    },
+    {
+      "agentId": "fixture-validator",
+      "agentType": "validator"
+    }
+  ],
+  "coreEvidencePackets": 14,
+  "fixtureEvidencePackets": 14,
+  "topLevelLinks": [
+    {
+      "from": "core-orchestrator",
+      "to": "core-specialist",
+      "required": true,
+      "rel": "context_for"
+    },
+    {
+      "from": "core-specialist",
+      "to": "core-orchestrator",
+      "required": true,
+      "rel": "context_for"
+    },
+    {
+      "from": "locked-skill-adapter",
+      "to": "core-orchestrator",
+      "required": true,
+      "rel": "context_for"
+    },
+    {
+      "from": "registry-fixer",
+      "to": "core-orchestrator",
+      "required": true,
+      "rel": "context_for"
+    },
+    {
+      "from": "registry-meta-advisor",
+      "to": "core-orchestrator",
+      "required": true,
+      "rel": "context_for"
+    },
+    {
+      "from": "registry-quality-validator",
+      "to": "core-orchestrator",
+      "required": true,
+      "rel": "context_for"
+    },
+    {
+      "from": "registry-reviewer",
+      "to": "core-orchestrator",
+      "required": true,
+      "rel": "context_for"
+    }
+  ],
+  "productName": "vibe-engineer",
+  "lockedSkills": [
+    "brainstorm",
+    "grill-me",
+    "task",
+    "plan",
+    "build",
+    "ship"
+  ],
+  "artifactFlow": [
+    "raw_intent",
+    "work_brief",
+    "implementation_plan",
+    "build_result",
+    "ship_packet"
+  ]
+}
+exit_code=0

@@ -1,0 +1,2056 @@
+{
+  "ok": true,
+  "positiveCount": 5,
+  "negativeCount": 47,
+  "positiveFailures": [],
+  "negativeFailures": [],
+  "positives": [
+    {
+      "label": "actual core entries load through public registry API",
+      "pass": true,
+      "ok": true,
+      "failures": [],
+      "errors": []
+    },
+    {
+      "label": "package fixture entries load through public registry API",
+      "pass": true,
+      "ok": true,
+      "failures": [],
+      "errors": []
+    },
+    {
+      "label": "I-01A validates actual agent_registry_entry and evidence_packet carriers",
+      "pass": true,
+      "agentCarrierCount": 14,
+      "evidenceCarrierCount": 28,
+      "failingAgents": [],
+      "failingEvidence": []
+    },
+    {
+      "label": "product invariants",
+      "pass": true,
+      "productName": "vibe-engineer",
+      "lockedSkills": [
+        "brainstorm",
+        "grill-me",
+        "task",
+        "plan",
+        "build",
+        "ship"
+      ],
+      "artifactFlow": [
+        "raw_intent",
+        "work_brief",
+        "implementation_plan",
+        "build_result",
+        "ship_packet"
+      ],
+      "packagesCoreExists": false
+    },
+    {
+      "label": "valid explicit evidence-backed non_load_bearing rationale passes only under typed policy",
+      "pass": true,
+      "ok": true,
+      "failures": [],
+      "errors": []
+    }
+  ],
+  "negatives": [
+    {
+      "label": "connected active stable/core specialist with empty validatorRefs rejects",
+      "pass": true,
+      "expectedRules": [
+        "registry.graph.required_validator"
+      ],
+      "actualOk": false,
+      "actualRuleIds": [
+        "registry.graph.required_validator"
+      ],
+      "missingRules": [],
+      "extraFailures": [],
+      "errors": [
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.required_validator",
+          "pointer": "/validatorRefs",
+          "message": "Active stable/core load-bearing registry entries require at least one non-self required validatorRef to an independent validator/reviewer entry unless an explicit typed non-load-bearing policy applies."
+        }
+      ]
+    },
+    {
+      "label": "active stable/core specialist with omitted validatorRefs rejects",
+      "pass": true,
+      "expectedRules": [
+        "schema.i01a.agent_registry_entry"
+      ],
+      "actualOk": false,
+      "actualRuleIds": [
+        "schema.i01a.agent_registry_entry"
+      ],
+      "missingRules": [],
+      "extraFailures": [],
+      "errors": [
+        {
+          "entryId": null,
+          "ruleId": "schema.i01a.agent_registry_entry",
+          "pointer": "/validatorRefs",
+          "message": "must have required property 'validatorRefs'"
+        }
+      ]
+    },
+    {
+      "label": "active stable/core specialist with self-only validatorRef rejects",
+      "pass": true,
+      "expectedRules": [
+        "registry.graph.self_validation_only",
+        "registry.graph.required_validator"
+      ],
+      "actualOk": false,
+      "actualRuleIds": [
+        "registry.graph.ref_type_compatibility",
+        "registry.graph.self_validation_only",
+        "registry.graph.required_validator"
+      ],
+      "missingRules": [],
+      "extraFailures": [],
+      "errors": [
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.ref_type_compatibility",
+          "pointer": "/validatorRefs/0",
+          "message": "validatorRefs must target validator/reviewer-compatible entries; fixture-specialist is specialist."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.self_validation_only",
+          "pointer": "/validatorRefs",
+          "message": "Self-validation cannot be the only blocking validator."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.required_validator",
+          "pointer": "/validatorRefs",
+          "message": "Active stable/core load-bearing registry entries require at least one non-self required validatorRef to an independent validator/reviewer entry unless an explicit typed non-load-bearing policy applies."
+        }
+      ]
+    },
+    {
+      "label": "active stable/core specialist with optional-only validatorRef rejects",
+      "pass": true,
+      "expectedRules": [
+        "registry.graph.required_validator"
+      ],
+      "actualOk": false,
+      "actualRuleIds": [
+        "registry.graph.required_validator"
+      ],
+      "missingRules": [],
+      "extraFailures": [],
+      "errors": [
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.required_validator",
+          "pointer": "/validatorRefs",
+          "message": "Active stable/core load-bearing registry entries require at least one non-self required validatorRef to an independent validator/reviewer entry unless an explicit typed non-load-bearing policy applies."
+        }
+      ]
+    },
+    {
+      "label": "missing validator target rejects as ref_resolution",
+      "pass": true,
+      "expectedRules": [
+        "registry.graph.ref_resolution"
+      ],
+      "actualOk": false,
+      "actualRuleIds": [
+        "registry.graph.ref_resolution"
+      ],
+      "missingRules": [],
+      "extraFailures": [],
+      "errors": [
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/validatorRefs/0",
+          "message": "Registry reference missing-validator does not resolve to a loaded agent_registry_entry."
+        }
+      ]
+    },
+    {
+      "label": "validatorRef targeting fixer rejects type compatibility",
+      "pass": true,
+      "expectedRules": [
+        "registry.graph.ref_type_compatibility"
+      ],
+      "actualOk": false,
+      "actualRuleIds": [
+        "registry.graph.ref_type_compatibility"
+      ],
+      "missingRules": [],
+      "extraFailures": [],
+      "errors": [
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.ref_type_compatibility",
+          "pointer": "/validatorRefs/0",
+          "message": "validatorRefs must target validator/reviewer-compatible entries; fixture-fixer is fixer."
+        }
+      ]
+    },
+    {
+      "label": "validatorRef targeting orchestrator rejects type compatibility",
+      "pass": true,
+      "expectedRules": [
+        "registry.graph.ref_type_compatibility"
+      ],
+      "actualOk": false,
+      "actualRuleIds": [
+        "registry.graph.ref_type_compatibility"
+      ],
+      "missingRules": [],
+      "extraFailures": [],
+      "errors": [
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.ref_type_compatibility",
+          "pointer": "/validatorRefs/0",
+          "message": "validatorRefs must target validator/reviewer-compatible entries; fixture-orchestrator is orchestrator."
+        }
+      ]
+    },
+    {
+      "label": "validatorRef targeting specialist rejects type compatibility",
+      "pass": true,
+      "expectedRules": [
+        "registry.graph.ref_type_compatibility"
+      ],
+      "actualOk": false,
+      "actualRuleIds": [
+        "registry.graph.ref_type_compatibility",
+        "registry.graph.self_validation_only",
+        "registry.graph.required_validator"
+      ],
+      "missingRules": [],
+      "extraFailures": [],
+      "errors": [
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.ref_type_compatibility",
+          "pointer": "/validatorRefs/0",
+          "message": "validatorRefs must target validator/reviewer-compatible entries; fixture-specialist is specialist."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.self_validation_only",
+          "pointer": "/validatorRefs",
+          "message": "Self-validation cannot be the only blocking validator."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.required_validator",
+          "pointer": "/validatorRefs",
+          "message": "Active stable/core load-bearing registry entries require at least one non-self required validatorRef to an independent validator/reviewer entry unless an explicit typed non-load-bearing policy applies."
+        }
+      ]
+    },
+    {
+      "label": "bare allowDormant=true does not bypass graph or required-validator policy",
+      "pass": true,
+      "expectedRules": [
+        "registry.policy.dormant_rationale",
+        "registry.graph.required_validator",
+        "registry.graph.unlinked_stable_core"
+      ],
+      "actualOk": false,
+      "actualRuleIds": [
+        "registry.policy.dormant_rationale",
+        "registry.graph.required_validator",
+        "registry.graph.unlinked_stable_core"
+      ],
+      "missingRules": [],
+      "extraFailures": [],
+      "errors": [
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.policy.dormant_rationale",
+          "pointer": "/extensions/dev.vibe.registry/allowDormant",
+          "message": "Bare allowDormant=true is not an allowed graph/validator bypass; provide typed nonLoadBearingRationale or dormantRationale metadata with owner, rationale, decisionRef, and evidenceRef."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.required_validator",
+          "pointer": "/validatorRefs",
+          "message": "Active stable/core load-bearing registry entries require at least one non-self required validatorRef to an independent validator/reviewer entry unless an explicit typed non-load-bearing policy applies."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.unlinked_stable_core",
+          "pointer": "/links",
+          "message": "Stable/core registry entry is reachable only from itself and lacks allowed typed dormant/deprecated/sample/non-load-bearing rationale."
+        }
+      ]
+    },
+    {
+      "label": "bare allowDormant=true does not bypass unused validator policy",
+      "pass": true,
+      "expectedRules": [
+        "registry.policy.dormant_rationale",
+        "registry.graph.required_validator",
+        "registry.graph.unlinked_stable_core",
+        "registry.graph.unused_validator_fixer"
+      ],
+      "actualOk": false,
+      "actualRuleIds": [
+        "registry.policy.maturity_evidence",
+        "registry.policy.maturity_evidence",
+        "registry.policy.maturity_evidence",
+        "registry.policy.maturity_evidence",
+        "registry.policy.dormant_rationale",
+        "registry.graph.required_validator",
+        "registry.graph.unlinked_stable_core",
+        "registry.graph.unused_validator_fixer"
+      ],
+      "missingRules": [],
+      "extraFailures": [],
+      "errors": [
+        {
+          "entryId": "unused-bare-dormant-validator",
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/subjectRefs",
+          "message": "eval evidence packet must have a required evidence_for subjectRef for this agent registry entry."
+        },
+        {
+          "entryId": "unused-bare-dormant-validator",
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/extensions/dev.vibe.registry.evidence",
+          "message": "eval evidence packet extension is stale or targets the wrong agent/version/type."
+        },
+        {
+          "entryId": "unused-bare-dormant-validator",
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/subjectRefs",
+          "message": "smoke evidence packet must have a required evidence_for subjectRef for this agent registry entry."
+        },
+        {
+          "entryId": "unused-bare-dormant-validator",
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/extensions/dev.vibe.registry.evidence",
+          "message": "smoke evidence packet extension is stale or targets the wrong agent/version/type."
+        },
+        {
+          "entryId": "unused-bare-dormant-validator",
+          "ruleId": "registry.policy.dormant_rationale",
+          "pointer": "/extensions/dev.vibe.registry/allowDormant",
+          "message": "Bare allowDormant=true is not an allowed graph/validator bypass; provide typed nonLoadBearingRationale or dormantRationale metadata with owner, rationale, decisionRef, and evidenceRef."
+        },
+        {
+          "entryId": "unused-bare-dormant-validator",
+          "ruleId": "registry.graph.required_validator",
+          "pointer": "/validatorRefs",
+          "message": "Active stable/core load-bearing registry entries require at least one non-self required validatorRef to an independent validator/reviewer entry unless an explicit typed non-load-bearing policy applies."
+        },
+        {
+          "entryId": "unused-bare-dormant-validator",
+          "ruleId": "registry.graph.unlinked_stable_core",
+          "pointer": "/links",
+          "message": "Stable/core registry entry is reachable only from itself and lacks allowed typed dormant/deprecated/sample/non-load-bearing rationale."
+        },
+        {
+          "entryId": "unused-bare-dormant-validator",
+          "ruleId": "registry.graph.unused_validator_fixer",
+          "pointer": "/agentType",
+          "message": "validator entry is not referenced by any loaded entry and lacks allowed typed dormant/deprecated/non-load-bearing rationale."
+        }
+      ]
+    },
+    {
+      "label": "non-load-bearing rationale missing owner decision evidence rejects",
+      "pass": true,
+      "expectedRules": [
+        "registry.policy.dormant_rationale"
+      ],
+      "actualOk": false,
+      "actualRuleIds": [
+        "registry.policy.dormant_rationale",
+        "registry.graph.required_validator",
+        "registry.graph.unlinked_stable_core"
+      ],
+      "missingRules": [],
+      "extraFailures": [],
+      "errors": [
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.policy.dormant_rationale",
+          "pointer": "/extensions/dev.vibe.registry/nonLoadBearingRationale",
+          "message": "Typed dormant/non-load-bearing bypass rationale is incomplete: missing owner/approver, decisionRef, evidenceRef."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.required_validator",
+          "pointer": "/validatorRefs",
+          "message": "Active stable/core load-bearing registry entries require at least one non-self required validatorRef to an independent validator/reviewer entry unless an explicit typed non-load-bearing policy applies."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.unlinked_stable_core",
+          "pointer": "/links",
+          "message": "Stable/core registry entry is reachable only from itself and lacks allowed typed dormant/deprecated/sample/non-load-bearing rationale."
+        }
+      ]
+    },
+    {
+      "label": "rationale missing status/state rejects",
+      "pass": true,
+      "expectedRules": [
+        "registry.policy.dormant_rationale"
+      ],
+      "actualOk": false,
+      "actualRuleIds": [
+        "registry.policy.dormant_rationale",
+        "registry.graph.required_validator",
+        "registry.graph.unlinked_stable_core"
+      ],
+      "missingRules": [],
+      "extraFailures": [],
+      "errors": [
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.policy.dormant_rationale",
+          "pointer": "/extensions/dev.vibe.registry/nonLoadBearingRationale",
+          "message": "Typed dormant/non-load-bearing bypass rationale is incomplete: missing status/state."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.required_validator",
+          "pointer": "/validatorRefs",
+          "message": "Active stable/core load-bearing registry entries require at least one non-self required validatorRef to an independent validator/reviewer entry unless an explicit typed non-load-bearing policy applies."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.unlinked_stable_core",
+          "pointer": "/links",
+          "message": "Stable/core registry entry is reachable only from itself and lacks allowed typed dormant/deprecated/sample/non-load-bearing rationale."
+        }
+      ]
+    },
+    {
+      "label": "contradictory active+dormant rationale rejects",
+      "pass": true,
+      "expectedRules": [
+        "registry.policy.dormant_rationale"
+      ],
+      "actualOk": false,
+      "actualRuleIds": [
+        "registry.policy.dormant_rationale",
+        "registry.graph.required_validator",
+        "registry.graph.unlinked_stable_core"
+      ],
+      "missingRules": [],
+      "extraFailures": [],
+      "errors": [
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.policy.dormant_rationale",
+          "pointer": "/extensions/dev.vibe.registry/dormantRationale",
+          "message": "Active stable/core entries cannot claim dormant bypass; use non_load_bearing rationale or change entry status through a valid policy."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.required_validator",
+          "pointer": "/validatorRefs",
+          "message": "Active stable/core load-bearing registry entries require at least one non-self required validatorRef to an independent validator/reviewer entry unless an explicit typed non-load-bearing policy applies."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.unlinked_stable_core",
+          "pointer": "/links",
+          "message": "Stable/core registry entry is reachable only from itself and lacks allowed typed dormant/deprecated/sample/non-load-bearing rationale."
+        }
+      ]
+    },
+    {
+      "label": "deprecated entry without supersession/rationale rejects",
+      "pass": true,
+      "expectedRules": [
+        "registry.policy.deprecation_supersession"
+      ],
+      "actualOk": false,
+      "actualRuleIds": [
+        "registry.policy.maturity_evidence",
+        "registry.policy.maturity_evidence",
+        "registry.policy.deprecation_supersession",
+        "registry.graph.ref_resolution",
+        "registry.graph.ref_resolution",
+        "registry.graph.ref_resolution"
+      ],
+      "missingRules": [],
+      "extraFailures": [],
+      "errors": [
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/subjectRefs",
+          "message": "eval evidence packet must have a required evidence_for subjectRef for this agent registry entry."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/subjectRefs",
+          "message": "smoke evidence packet must have a required evidence_for subjectRef for this agent registry entry."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.policy.deprecation_supersession",
+          "pointer": "/deprecation",
+          "message": "Deprecated entries require supersessionReason and extension supersededBy metadata."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/validatorRefs/0",
+          "message": "Registry reference fixture-validator does not resolve to a loaded agent_registry_entry."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/fixerRefs/0",
+          "message": "Registry reference fixture-fixer does not resolve to a loaded agent_registry_entry."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/links/1",
+          "message": "Registry reference fixture-orchestrator does not resolve to a loaded agent_registry_entry."
+        }
+      ]
+    },
+    {
+      "label": "sample/demo fixture rejects without explicit sample option",
+      "pass": true,
+      "expectedRules": [
+        "registry.policy.scope_classification"
+      ],
+      "actualOk": false,
+      "actualRuleIds": [
+        "registry.policy.scope_classification"
+      ],
+      "missingRules": [],
+      "extraFailures": [],
+      "errors": [
+        {
+          "entryId": "fixture-sample-demo",
+          "ruleId": "registry.policy.scope_classification",
+          "pointer": "/extensions/dev.vibe.registry",
+          "message": "Sample/demo entries are accepted only when explicitly allowed, labeled, and isolated."
+        }
+      ]
+    },
+    {
+      "label": "sample/demo with explicit option but missing isolation rejects",
+      "pass": true,
+      "expectedRules": [
+        "registry.policy.scope_classification"
+      ],
+      "actualOk": false,
+      "actualRuleIds": [
+        "registry.policy.scope_classification"
+      ],
+      "missingRules": [],
+      "extraFailures": [],
+      "errors": [
+        {
+          "entryId": "fixture-sample-demo",
+          "ruleId": "registry.policy.scope_classification",
+          "pointer": "/extensions/dev.vibe.registry",
+          "message": "Sample/demo entries are accepted only when explicitly allowed, labeled, and isolated."
+        }
+      ]
+    },
+    {
+      "label": "project-extension fixture rejects unless project_extension scope explicitly enabled",
+      "pass": true,
+      "expectedRules": [
+        "registry.policy.scope_classification"
+      ],
+      "actualOk": false,
+      "actualRuleIds": [
+        "registry.policy.scope_classification"
+      ],
+      "missingRules": [],
+      "extraFailures": [],
+      "errors": [
+        {
+          "entryId": "fixture-project-extension",
+          "ruleId": "registry.policy.scope_classification",
+          "pointer": "/extensions/dev.vibe.registry/registryScope",
+          "message": "Project-extension registry entries are accepted only when project_extension scope is explicitly enabled."
+        }
+      ]
+    },
+    {
+      "label": "self-only registry_entry_for link does not satisfy reachability",
+      "pass": true,
+      "expectedRules": [
+        "registry.graph.unlinked_stable_core"
+      ],
+      "actualOk": false,
+      "actualRuleIds": [
+        "registry.graph.required_validator",
+        "registry.graph.unlinked_stable_core"
+      ],
+      "missingRules": [],
+      "extraFailures": [],
+      "errors": [
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.required_validator",
+          "pointer": "/validatorRefs",
+          "message": "Active stable/core load-bearing registry entries require at least one non-self required validatorRef to an independent validator/reviewer entry unless an explicit typed non-load-bearing policy applies."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.unlinked_stable_core",
+          "pointer": "/links",
+          "message": "Stable/core registry entry is reachable only from itself and lacks allowed typed dormant/deprecated/sample/non-load-bearing rationale."
+        }
+      ]
+    },
+    {
+      "label": "top-level non-self agent_registry_entry link to missing target rejects",
+      "pass": true,
+      "expectedRules": [
+        "registry.graph.ref_resolution"
+      ],
+      "actualOk": false,
+      "actualRuleIds": [
+        "registry.graph.ref_resolution"
+      ],
+      "missingRules": [],
+      "extraFailures": [],
+      "errors": [
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/links/0",
+          "message": "Registry reference missing-linked-entry does not resolve to a loaded agent_registry_entry."
+        }
+      ]
+    },
+    {
+      "label": "duplicate IDs reject",
+      "pass": true,
+      "expectedRules": [
+        "registry.graph.duplicate_id"
+      ],
+      "actualOk": false,
+      "actualRuleIds": [
+        "registry.graph.duplicate_id",
+        "registry.graph.ref_resolution",
+        "registry.graph.ref_resolution",
+        "registry.graph.ref_resolution",
+        "registry.graph.unlinked_stable_core"
+      ],
+      "missingRules": [],
+      "extraFailures": [],
+      "errors": [
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.duplicate_id",
+          "pointer": "/agentId",
+          "message": "Duplicate registry agentId fixture-specialist; first path /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-04-agent-registry-validation/residual-revalidation-evidence/cases/residual-revalidation-case-root/duplicate-agent-ids/entries/duplicate-a.json."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/validatorRefs/0",
+          "message": "Registry reference fixture-validator does not resolve to a loaded agent_registry_entry."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/fixerRefs/0",
+          "message": "Registry reference fixture-fixer does not resolve to a loaded agent_registry_entry."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/links/1",
+          "message": "Registry reference fixture-orchestrator does not resolve to a loaded agent_registry_entry."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.unlinked_stable_core",
+          "pointer": "/links",
+          "message": "Stable/core registry entry is reachable only from itself and lacks allowed typed dormant/deprecated/sample/non-load-bearing rationale."
+        }
+      ]
+    },
+    {
+      "label": "disconnected active stable/core component rejects",
+      "pass": true,
+      "expectedRules": [
+        "registry.graph.unlinked_stable_core"
+      ],
+      "actualOk": false,
+      "actualRuleIds": [
+        "registry.graph.ref_resolution",
+        "registry.graph.unlinked_stable_core",
+        "registry.graph.unlinked_stable_core",
+        "registry.graph.unlinked_stable_core"
+      ],
+      "missingRules": [],
+      "extraFailures": [],
+      "errors": [
+        {
+          "entryId": "core-specialist",
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/fixerRefs/0",
+          "message": "Registry reference registry-fixer does not resolve to a loaded agent_registry_entry."
+        },
+        {
+          "entryId": "core-specialist",
+          "ruleId": "registry.graph.unlinked_stable_core",
+          "pointer": "/links",
+          "message": "Stable/core registry entry is disconnected from the loaded non-self registry graph."
+        },
+        {
+          "entryId": "registry-quality-validator",
+          "ruleId": "registry.graph.unlinked_stable_core",
+          "pointer": "/links",
+          "message": "Stable/core registry entry is disconnected from the loaded non-self registry graph."
+        },
+        {
+          "entryId": "registry-reviewer",
+          "ruleId": "registry.graph.unlinked_stable_core",
+          "pointer": "/links",
+          "message": "Stable/core registry entry is disconnected from the loaded non-self registry graph."
+        }
+      ]
+    },
+    {
+      "label": "unused validator rejects where policy requires",
+      "pass": true,
+      "expectedRules": [
+        "registry.graph.unused_validator_fixer"
+      ],
+      "actualOk": false,
+      "actualRuleIds": [
+        "registry.graph.unused_validator_fixer"
+      ],
+      "missingRules": [],
+      "extraFailures": [],
+      "errors": [
+        {
+          "entryId": "fixture-validator",
+          "ruleId": "registry.graph.unused_validator_fixer",
+          "pointer": "/agentType",
+          "message": "validator entry is not referenced by any loaded entry and lacks allowed typed dormant/deprecated/non-load-bearing rationale."
+        }
+      ]
+    },
+    {
+      "label": "missing eval evidence rejects",
+      "pass": true,
+      "expectedRules": [
+        "registry.policy.maturity_evidence"
+      ],
+      "actualOk": false,
+      "actualRuleIds": [
+        "registry.policy.maturity_evidence",
+        "registry.graph.ref_resolution",
+        "registry.graph.ref_resolution",
+        "registry.graph.ref_resolution",
+        "registry.graph.unlinked_stable_core"
+      ],
+      "missingRules": [],
+      "extraFailures": [],
+      "errors": [
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/evals/0/path",
+          "message": "eval evidence packet file does not exist: packages/registry/fixtures/evidence/missing-eval.json."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/validatorRefs/0",
+          "message": "Registry reference fixture-validator does not resolve to a loaded agent_registry_entry."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/fixerRefs/0",
+          "message": "Registry reference fixture-fixer does not resolve to a loaded agent_registry_entry."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/links/1",
+          "message": "Registry reference fixture-orchestrator does not resolve to a loaded agent_registry_entry."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.unlinked_stable_core",
+          "pointer": "/links",
+          "message": "Stable/core registry entry is reachable only from itself and lacks allowed typed dormant/deprecated/sample/non-load-bearing rationale."
+        }
+      ]
+    },
+    {
+      "label": "missing smoke evidence rejects",
+      "pass": true,
+      "expectedRules": [
+        "registry.policy.maturity_evidence"
+      ],
+      "actualOk": false,
+      "actualRuleIds": [
+        "registry.policy.maturity_evidence",
+        "registry.graph.ref_resolution",
+        "registry.graph.ref_resolution",
+        "registry.graph.ref_resolution",
+        "registry.graph.unlinked_stable_core"
+      ],
+      "missingRules": [],
+      "extraFailures": [],
+      "errors": [
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/extensions/dev.vibe.registry/smokeRefs/0/path",
+          "message": "smoke evidence packet file does not exist: packages/registry/fixtures/evidence/missing-smoke.json."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/validatorRefs/0",
+          "message": "Registry reference fixture-validator does not resolve to a loaded agent_registry_entry."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/fixerRefs/0",
+          "message": "Registry reference fixture-fixer does not resolve to a loaded agent_registry_entry."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/links/1",
+          "message": "Registry reference fixture-orchestrator does not resolve to a loaded agent_registry_entry."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.unlinked_stable_core",
+          "pointer": "/links",
+          "message": "Stable/core registry entry is reachable only from itself and lacks allowed typed dormant/deprecated/sample/non-load-bearing rationale."
+        }
+      ]
+    },
+    {
+      "label": "path traversal/out-of-owned evidence path rejects",
+      "pass": true,
+      "expectedRules": [
+        "registry.policy.maturity_evidence"
+      ],
+      "actualOk": false,
+      "actualRuleIds": [
+        "registry.policy.maturity_evidence",
+        "registry.graph.ref_resolution",
+        "registry.graph.ref_resolution",
+        "registry.graph.ref_resolution",
+        "registry.graph.unlinked_stable_core"
+      ],
+      "missingRules": [],
+      "extraFailures": [],
+      "errors": [
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/evals/0/path",
+          "message": "eval evidence path must stay inside Q06-owned registry/package evidence locations."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/validatorRefs/0",
+          "message": "Registry reference fixture-validator does not resolve to a loaded agent_registry_entry."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/fixerRefs/0",
+          "message": "Registry reference fixture-fixer does not resolve to a loaded agent_registry_entry."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/links/1",
+          "message": "Registry reference fixture-orchestrator does not resolve to a loaded agent_registry_entry."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.unlinked_stable_core",
+          "pointer": "/links",
+          "message": "Stable/core registry entry is reachable only from itself and lacks allowed typed dormant/deprecated/sample/non-load-bearing rationale."
+        }
+      ]
+    },
+    {
+      "label": "evidence artifactId/path mismatch rejects",
+      "pass": true,
+      "expectedRules": [
+        "registry.policy.maturity_evidence"
+      ],
+      "actualOk": false,
+      "actualRuleIds": [
+        "registry.policy.maturity_evidence",
+        "registry.graph.ref_resolution",
+        "registry.graph.ref_resolution",
+        "registry.graph.ref_resolution",
+        "registry.graph.unlinked_stable_core"
+      ],
+      "missingRules": [],
+      "extraFailures": [],
+      "errors": [
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/evals/0/artifactId",
+          "message": "eval evidence artifactId does not match registry reference."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/validatorRefs/0",
+          "message": "Registry reference fixture-validator does not resolve to a loaded agent_registry_entry."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/fixerRefs/0",
+          "message": "Registry reference fixture-fixer does not resolve to a loaded agent_registry_entry."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/links/1",
+          "message": "Registry reference fixture-orchestrator does not resolve to a loaded agent_registry_entry."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.unlinked_stable_core",
+          "pointer": "/links",
+          "message": "Stable/core registry entry is reachable only from itself and lacks allowed typed dormant/deprecated/sample/non-load-bearing rationale."
+        }
+      ]
+    },
+    {
+      "label": "wrong evidence kind rejects through I-01A evidence_packet validation",
+      "pass": true,
+      "expectedRules": [
+        "registry.policy.maturity_evidence"
+      ],
+      "actualOk": false,
+      "actualRuleIds": [
+        "registry.policy.maturity_evidence",
+        "registry.policy.maturity_evidence",
+        "registry.policy.maturity_evidence",
+        "registry.policy.maturity_evidence",
+        "registry.policy.maturity_evidence",
+        "registry.policy.maturity_evidence",
+        "registry.policy.maturity_evidence",
+        "registry.policy.maturity_evidence",
+        "registry.policy.maturity_evidence",
+        "registry.policy.maturity_evidence",
+        "registry.policy.maturity_evidence",
+        "registry.policy.maturity_evidence",
+        "registry.policy.maturity_evidence",
+        "registry.policy.maturity_evidence",
+        "registry.policy.maturity_evidence",
+        "registry.policy.maturity_evidence",
+        "registry.policy.maturity_evidence",
+        "registry.policy.maturity_evidence",
+        "registry.policy.maturity_evidence",
+        "registry.policy.maturity_evidence",
+        "registry.policy.maturity_evidence",
+        "registry.policy.maturity_evidence",
+        "registry.policy.maturity_evidence",
+        "registry.policy.maturity_evidence",
+        "registry.policy.maturity_evidence",
+        "registry.policy.maturity_evidence",
+        "registry.policy.maturity_evidence",
+        "registry.policy.maturity_evidence",
+        "registry.policy.maturity_evidence",
+        "registry.policy.maturity_evidence",
+        "registry.policy.maturity_evidence",
+        "registry.policy.maturity_evidence",
+        "registry.policy.maturity_evidence",
+        "registry.policy.maturity_evidence",
+        "registry.policy.maturity_evidence",
+        "registry.policy.maturity_evidence",
+        "registry.policy.maturity_evidence",
+        "registry.policy.maturity_evidence",
+        "registry.policy.maturity_evidence",
+        "registry.policy.maturity_evidence",
+        "registry.graph.ref_resolution",
+        "registry.graph.ref_resolution",
+        "registry.graph.ref_resolution",
+        "registry.graph.unlinked_stable_core"
+      ],
+      "missingRules": [],
+      "extraFailures": [],
+      "errors": [
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/evals/0",
+          "message": "eval evidence packet failed I-01A schema validation: Expected artifactKind evidence_packet."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/evals/0",
+          "message": "eval evidence packet failed I-01A schema validation: must have required property 'evidenceClass'"
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/evals/0",
+          "message": "eval evidence packet failed I-01A schema validation: must have required property 'layer'"
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/evals/0",
+          "message": "eval evidence packet failed I-01A schema validation: must have required property 'subjectRefs'"
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/evals/0",
+          "message": "eval evidence packet failed I-01A schema validation: must have required property 'commandOrTool'"
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/evals/0",
+          "message": "eval evidence packet failed I-01A schema validation: must have required property 'startedAt'"
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/evals/0",
+          "message": "eval evidence packet failed I-01A schema validation: must have required property 'endedAt'"
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/evals/0",
+          "message": "eval evidence packet failed I-01A schema validation: must have required property 'exitStatus'"
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/evals/0",
+          "message": "eval evidence packet failed I-01A schema validation: must have required property 'result'"
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/evals/0",
+          "message": "eval evidence packet failed I-01A schema validation: must have required property 'blocking'"
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/evals/0",
+          "message": "eval evidence packet failed I-01A schema validation: must have required property 'artifacts'"
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/evals/0",
+          "message": "eval evidence packet failed I-01A schema validation: must have required property 'warnings'"
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/evals/0",
+          "message": "eval evidence packet failed I-01A schema validation: must NOT have additional properties"
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/evals/0",
+          "message": "eval evidence packet failed I-01A schema validation: must NOT have additional properties"
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/evals/0",
+          "message": "eval evidence packet failed I-01A schema validation: must NOT have additional properties"
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/evals/0",
+          "message": "eval evidence packet failed I-01A schema validation: must NOT have additional properties"
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/evals/0",
+          "message": "eval evidence packet failed I-01A schema validation: must NOT have additional properties"
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/evals/0",
+          "message": "eval evidence packet failed I-01A schema validation: must NOT have additional properties"
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/evals/0",
+          "message": "eval evidence packet failed I-01A schema validation: must NOT have additional properties"
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/evals/0",
+          "message": "eval evidence packet failed I-01A schema validation: must NOT have additional properties"
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/evals/0",
+          "message": "eval evidence packet failed I-01A schema validation: must NOT have additional properties"
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/evals/0",
+          "message": "eval evidence packet failed I-01A schema validation: must NOT have additional properties"
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/evals/0",
+          "message": "eval evidence packet failed I-01A schema validation: must NOT have additional properties"
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/evals/0",
+          "message": "eval evidence packet failed I-01A schema validation: must NOT have additional properties"
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/evals/0",
+          "message": "eval evidence packet failed I-01A schema validation: must NOT have additional properties"
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/evals/0",
+          "message": "eval evidence packet failed I-01A schema validation: must NOT have additional properties"
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/evals/0",
+          "message": "eval evidence packet failed I-01A schema validation: must NOT have additional properties"
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/evals/0",
+          "message": "eval evidence packet failed I-01A schema validation: must NOT have additional properties"
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/evals/0",
+          "message": "eval evidence packet failed I-01A schema validation: must NOT have additional properties"
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/evals/0",
+          "message": "eval evidence packet failed I-01A schema validation: must NOT have additional properties"
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/evals/0",
+          "message": "eval evidence packet failed I-01A schema validation: must NOT have additional properties"
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/evals/0",
+          "message": "eval evidence packet failed I-01A schema validation: must NOT have additional properties"
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/evals/0",
+          "message": "eval evidence packet failed I-01A schema validation: must NOT have additional properties"
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/evals/0",
+          "message": "eval evidence packet failed I-01A schema validation: must NOT have additional properties"
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/evals/0",
+          "message": "eval evidence packet failed I-01A schema validation: must NOT have additional properties"
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/evals/0",
+          "message": "eval evidence packet failed I-01A schema validation: must NOT have additional properties"
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/evals/0",
+          "message": "eval evidence packet failed I-01A schema validation: must be equal to constant"
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/evals/0",
+          "message": "eval evidence packet failed I-01A schema validation: must be equal to one of the allowed values"
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/evals/0",
+          "message": "eval evidence packet failed I-01A schema validation: must be equal to one of the allowed values"
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/evals/0",
+          "message": "eval evidence packet failed I-01A schema validation: Evidence Packet must include a required top-level evidence_for link."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/validatorRefs/0",
+          "message": "Registry reference fixture-validator does not resolve to a loaded agent_registry_entry."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/fixerRefs/0",
+          "message": "Registry reference fixture-fixer does not resolve to a loaded agent_registry_entry."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/links/1",
+          "message": "Registry reference fixture-orchestrator does not resolve to a loaded agent_registry_entry."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.unlinked_stable_core",
+          "pointer": "/links",
+          "message": "Stable/core registry entry is reachable only from itself and lacks allowed typed dormant/deprecated/sample/non-load-bearing rationale."
+        }
+      ]
+    },
+    {
+      "label": "failed/stale evidence status rejects",
+      "pass": true,
+      "expectedRules": [
+        "registry.policy.maturity_evidence"
+      ],
+      "actualOk": false,
+      "actualRuleIds": [
+        "registry.policy.maturity_evidence",
+        "registry.graph.ref_resolution",
+        "registry.graph.ref_resolution",
+        "registry.graph.ref_resolution",
+        "registry.graph.unlinked_stable_core"
+      ],
+      "missingRules": [],
+      "extraFailures": [],
+      "errors": [
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/evals/0",
+          "message": "eval evidence must have status passed and result pass."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/validatorRefs/0",
+          "message": "Registry reference fixture-validator does not resolve to a loaded agent_registry_entry."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/fixerRefs/0",
+          "message": "Registry reference fixture-fixer does not resolve to a loaded agent_registry_entry."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/links/1",
+          "message": "Registry reference fixture-orchestrator does not resolve to a loaded agent_registry_entry."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.unlinked_stable_core",
+          "pointer": "/links",
+          "message": "Stable/core registry entry is reachable only from itself and lacks allowed typed dormant/deprecated/sample/non-load-bearing rationale."
+        }
+      ]
+    },
+    {
+      "label": "subjectRef mismatch rejects",
+      "pass": true,
+      "expectedRules": [
+        "registry.policy.maturity_evidence"
+      ],
+      "actualOk": false,
+      "actualRuleIds": [
+        "registry.policy.maturity_evidence",
+        "registry.graph.ref_resolution",
+        "registry.graph.ref_resolution",
+        "registry.graph.ref_resolution",
+        "registry.graph.unlinked_stable_core"
+      ],
+      "missingRules": [],
+      "extraFailures": [],
+      "errors": [
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/subjectRefs",
+          "message": "eval evidence packet must have a required evidence_for subjectRef for this agent registry entry."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/validatorRefs/0",
+          "message": "Registry reference fixture-validator does not resolve to a loaded agent_registry_entry."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/fixerRefs/0",
+          "message": "Registry reference fixture-fixer does not resolve to a loaded agent_registry_entry."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/links/1",
+          "message": "Registry reference fixture-orchestrator does not resolve to a loaded agent_registry_entry."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.unlinked_stable_core",
+          "pointer": "/links",
+          "message": "Stable/core registry entry is reachable only from itself and lacks allowed typed dormant/deprecated/sample/non-load-bearing rationale."
+        }
+      ]
+    },
+    {
+      "label": "evidence agent id mismatch rejects",
+      "pass": true,
+      "expectedRules": [
+        "registry.policy.maturity_evidence"
+      ],
+      "actualOk": false,
+      "actualRuleIds": [
+        "registry.policy.maturity_evidence",
+        "registry.graph.ref_resolution",
+        "registry.graph.ref_resolution",
+        "registry.graph.ref_resolution",
+        "registry.graph.unlinked_stable_core"
+      ],
+      "missingRules": [],
+      "extraFailures": [],
+      "errors": [
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/extensions/dev.vibe.registry.evidence",
+          "message": "eval evidence packet extension is stale or targets the wrong agent/version/type."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/validatorRefs/0",
+          "message": "Registry reference fixture-validator does not resolve to a loaded agent_registry_entry."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/fixerRefs/0",
+          "message": "Registry reference fixture-fixer does not resolve to a loaded agent_registry_entry."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/links/1",
+          "message": "Registry reference fixture-orchestrator does not resolve to a loaded agent_registry_entry."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.unlinked_stable_core",
+          "pointer": "/links",
+          "message": "Stable/core registry entry is reachable only from itself and lacks allowed typed dormant/deprecated/sample/non-load-bearing rationale."
+        }
+      ]
+    },
+    {
+      "label": "evidence agent version mismatch rejects",
+      "pass": true,
+      "expectedRules": [
+        "registry.policy.maturity_evidence"
+      ],
+      "actualOk": false,
+      "actualRuleIds": [
+        "registry.policy.maturity_evidence",
+        "registry.graph.ref_resolution",
+        "registry.graph.ref_resolution",
+        "registry.graph.ref_resolution",
+        "registry.graph.unlinked_stable_core"
+      ],
+      "missingRules": [],
+      "extraFailures": [],
+      "errors": [
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/extensions/dev.vibe.registry.evidence",
+          "message": "eval evidence packet extension is stale or targets the wrong agent/version/type."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/validatorRefs/0",
+          "message": "Registry reference fixture-validator does not resolve to a loaded agent_registry_entry."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/fixerRefs/0",
+          "message": "Registry reference fixture-fixer does not resolve to a loaded agent_registry_entry."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/links/1",
+          "message": "Registry reference fixture-orchestrator does not resolve to a loaded agent_registry_entry."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.unlinked_stable_core",
+          "pointer": "/links",
+          "message": "Stable/core registry entry is reachable only from itself and lacks allowed typed dormant/deprecated/sample/non-load-bearing rationale."
+        }
+      ]
+    },
+    {
+      "label": "evidence-type mismatch rejects",
+      "pass": true,
+      "expectedRules": [
+        "registry.policy.maturity_evidence"
+      ],
+      "actualOk": false,
+      "actualRuleIds": [
+        "registry.policy.maturity_evidence",
+        "registry.graph.ref_resolution",
+        "registry.graph.ref_resolution",
+        "registry.graph.ref_resolution",
+        "registry.graph.unlinked_stable_core"
+      ],
+      "missingRules": [],
+      "extraFailures": [],
+      "errors": [
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/extensions/dev.vibe.registry.evidence",
+          "message": "eval evidence packet extension is stale or targets the wrong agent/version/type."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/validatorRefs/0",
+          "message": "Registry reference fixture-validator does not resolve to a loaded agent_registry_entry."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/fixerRefs/0",
+          "message": "Registry reference fixture-fixer does not resolve to a loaded agent_registry_entry."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/links/1",
+          "message": "Registry reference fixture-orchestrator does not resolve to a loaded agent_registry_entry."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.unlinked_stable_core",
+          "pointer": "/links",
+          "message": "Stable/core registry entry is reachable only from itself and lacks allowed typed dormant/deprecated/sample/non-load-bearing rationale."
+        }
+      ]
+    },
+    {
+      "label": "validatorRef-to-fixer rejects",
+      "pass": true,
+      "expectedRules": [
+        "registry.graph.ref_type_compatibility"
+      ],
+      "actualOk": false,
+      "actualRuleIds": [
+        "registry.graph.ref_type_compatibility"
+      ],
+      "missingRules": [],
+      "extraFailures": [],
+      "errors": [
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.ref_type_compatibility",
+          "pointer": "/validatorRefs/0",
+          "message": "validatorRefs must target validator/reviewer-compatible entries; fixture-fixer is fixer."
+        }
+      ]
+    },
+    {
+      "label": "fixerRef-to-validator rejects",
+      "pass": true,
+      "expectedRules": [
+        "registry.graph.ref_type_compatibility"
+      ],
+      "actualOk": false,
+      "actualRuleIds": [
+        "registry.graph.ref_type_compatibility"
+      ],
+      "missingRules": [],
+      "extraFailures": [],
+      "errors": [
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.ref_type_compatibility",
+          "pointer": "/fixerRefs/0",
+          "message": "fixerRefs must target fixer/orchestrator repair-compatible entries; fixture-validator is validator."
+        }
+      ]
+    },
+    {
+      "label": "fixerRef-to-reviewer rejects",
+      "pass": true,
+      "expectedRules": [
+        "registry.graph.ref_type_compatibility"
+      ],
+      "actualOk": false,
+      "actualRuleIds": [
+        "registry.graph.ref_type_compatibility"
+      ],
+      "missingRules": [],
+      "extraFailures": [],
+      "errors": [
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.ref_type_compatibility",
+          "pointer": "/fixerRefs/0",
+          "message": "fixerRefs must target fixer/orchestrator repair-compatible entries; fixture-reviewer is reviewer."
+        }
+      ]
+    },
+    {
+      "label": "missing fixer remains ref_resolution not wrong-type",
+      "pass": true,
+      "expectedRules": [
+        "registry.graph.ref_resolution"
+      ],
+      "actualOk": false,
+      "actualRuleIds": [
+        "registry.graph.ref_resolution"
+      ],
+      "missingRules": [],
+      "extraFailures": [],
+      "errors": [
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/fixerRefs/0",
+          "message": "Registry reference missing-fixer does not resolve to a loaded agent_registry_entry."
+        }
+      ]
+    },
+    {
+      "label": "missing metadata rejects",
+      "pass": true,
+      "expectedRules": [
+        "schema.i01a.agent_registry_entry"
+      ],
+      "actualOk": false,
+      "actualRuleIds": [
+        "schema.i01a.agent_registry_entry"
+      ],
+      "missingRules": [],
+      "extraFailures": [],
+      "errors": [
+        {
+          "entryId": null,
+          "ruleId": "schema.i01a.agent_registry_entry",
+          "pointer": "/owner",
+          "message": "must have required property 'owner'"
+        }
+      ]
+    },
+    {
+      "label": "wrong schema version rejects",
+      "pass": true,
+      "expectedRules": [
+        "schema.i01a.agent_registry_entry"
+      ],
+      "actualOk": false,
+      "actualRuleIds": [
+        "schema.i01a.agent_registry_entry",
+        "schema.i01a.agent_registry_entry"
+      ],
+      "missingRules": [],
+      "extraFailures": [],
+      "errors": [
+        {
+          "entryId": null,
+          "ruleId": "schema.i01a.agent_registry_entry",
+          "pointer": "/schemaVersion",
+          "message": "Unsupported artifact schemaVersion 9.0.0."
+        },
+        {
+          "entryId": null,
+          "ruleId": "schema.i01a.agent_registry_entry",
+          "pointer": "/schemaVersion",
+          "message": "must be equal to constant"
+        }
+      ]
+    },
+    {
+      "label": "wrong artifact kind rejects",
+      "pass": true,
+      "expectedRules": [
+        "schema.i01a.agent_registry_entry"
+      ],
+      "actualOk": false,
+      "actualRuleIds": [
+        "schema.i01a.agent_registry_entry",
+        "schema.i01a.agent_registry_entry",
+        "schema.i01a.agent_registry_entry"
+      ],
+      "missingRules": [],
+      "extraFailures": [],
+      "errors": [
+        {
+          "entryId": null,
+          "ruleId": "schema.i01a.agent_registry_entry",
+          "pointer": "/artifactKind",
+          "message": "Expected artifactKind agent_registry_entry."
+        },
+        {
+          "entryId": null,
+          "ruleId": "schema.i01a.agent_registry_entry",
+          "pointer": "/artifactKind",
+          "message": "must be equal to constant"
+        },
+        {
+          "entryId": null,
+          "ruleId": "schema.i01a.agent_registry_entry",
+          "pointer": "/artifactKind",
+          "message": "must be equal to one of the allowed values"
+        }
+      ]
+    },
+    {
+      "label": "missing schema refs rejects",
+      "pass": true,
+      "expectedRules": [
+        "schema.i01a.agent_registry_entry"
+      ],
+      "actualOk": false,
+      "actualRuleIds": [
+        "schema.i01a.agent_registry_entry",
+        "schema.i01a.agent_registry_entry"
+      ],
+      "missingRules": [],
+      "extraFailures": [],
+      "errors": [
+        {
+          "entryId": null,
+          "ruleId": "schema.i01a.agent_registry_entry",
+          "pointer": "/inputSchemas",
+          "message": "must NOT have fewer than 1 items"
+        },
+        {
+          "entryId": null,
+          "ruleId": "schema.i01a.agent_registry_entry",
+          "pointer": "/inputSchemas",
+          "message": "Agent registry entries require input and output schema refs."
+        }
+      ]
+    },
+    {
+      "label": "invalid schema refs reject",
+      "pass": true,
+      "expectedRules": [
+        "registry.policy.maturity_evidence"
+      ],
+      "actualOk": false,
+      "actualRuleIds": [
+        "registry.policy.maturity_evidence"
+      ],
+      "missingRules": [],
+      "extraFailures": [],
+      "errors": [
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/outputSchemas/0/schemaId",
+          "message": "outputSchemas must use canonical I-01A schema id for artifactKind build_result."
+        }
+      ]
+    },
+    {
+      "label": "allowed-tool/forbidden-action contradiction rejects",
+      "pass": true,
+      "expectedRules": [
+        "registry.policy.tool_forbidden_precedence"
+      ],
+      "actualOk": false,
+      "actualRuleIds": [
+        "registry.policy.tool_forbidden_precedence",
+        "registry.graph.ref_resolution",
+        "registry.graph.ref_resolution",
+        "registry.graph.ref_resolution",
+        "registry.graph.unlinked_stable_core"
+      ],
+      "missingRules": [],
+      "extraFailures": [],
+      "errors": [
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.policy.tool_forbidden_precedence",
+          "pointer": "/forbiddenActions",
+          "message": "Forbidden action bash contradicts allowed tool bash; forbidden policy wins."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/validatorRefs/0",
+          "message": "Registry reference fixture-validator does not resolve to a loaded agent_registry_entry."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/fixerRefs/0",
+          "message": "Registry reference fixture-fixer does not resolve to a loaded agent_registry_entry."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/links/1",
+          "message": "Registry reference fixture-orchestrator does not resolve to a loaded agent_registry_entry."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.unlinked_stable_core",
+          "pointer": "/links",
+          "message": "Stable/core registry entry is reachable only from itself and lacks allowed typed dormant/deprecated/sample/non-load-bearing rationale."
+        }
+      ]
+    },
+    {
+      "label": "independence-defeating validator cycle rejects",
+      "pass": true,
+      "expectedRules": [
+        "registry.graph.independence_cycle"
+      ],
+      "actualOk": false,
+      "actualRuleIds": [
+        "registry.graph.ref_type_compatibility",
+        "registry.graph.ref_resolution",
+        "registry.graph.independence_cycle"
+      ],
+      "missingRules": [],
+      "extraFailures": [],
+      "errors": [
+        {
+          "entryId": "fixture-reviewer",
+          "ruleId": "registry.graph.ref_type_compatibility",
+          "pointer": "/validatorRefs/0",
+          "message": "validatorRefs must target validator/reviewer-compatible entries; fixture-specialist is specialist."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/fixerRefs/0",
+          "message": "Registry reference fixture-fixer does not resolve to a loaded agent_registry_entry."
+        },
+        {
+          "entryId": "fixture-reviewer",
+          "ruleId": "registry.graph.independence_cycle",
+          "pointer": "/validatorRefs",
+          "message": "Blocking validator cycle defeats independence: fixture-reviewer -> fixture-specialist -> fixture-reviewer."
+        }
+      ]
+    },
+    {
+      "label": "domain leakage rejects in core entries",
+      "pass": true,
+      "expectedRules": [
+        "registry.policy.domain_neutrality"
+      ],
+      "actualOk": false,
+      "actualRuleIds": [
+        "registry.policy.domain_neutrality",
+        "registry.graph.ref_resolution",
+        "registry.graph.ref_resolution",
+        "registry.graph.ref_resolution",
+        "registry.graph.unlinked_stable_core"
+      ],
+      "missingRules": [],
+      "extraFailures": [],
+      "errors": [
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.policy.domain_neutrality",
+          "pointer": "",
+          "message": "Core registry entry contains project/business vocabulary forbidden by DL-20A: ecommerce, inventory, fashion, billz, telegram, instagram."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/validatorRefs/0",
+          "message": "Registry reference fixture-validator does not resolve to a loaded agent_registry_entry."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/fixerRefs/0",
+          "message": "Registry reference fixture-fixer does not resolve to a loaded agent_registry_entry."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/links/1",
+          "message": "Registry reference fixture-orchestrator does not resolve to a loaded agent_registry_entry."
+        },
+        {
+          "entryId": "fixture-specialist",
+          "ruleId": "registry.graph.unlinked_stable_core",
+          "pointer": "/links",
+          "message": "Stable/core registry entry is reachable only from itself and lacks allowed typed dormant/deprecated/sample/non-load-bearing rationale."
+        }
+      ]
+    },
+    {
+      "label": "meta-agent mutation/auto-registration/direct mutation/push/PR/verification bypass rejects",
+      "pass": true,
+      "expectedRules": [
+        "registry.policy.meta_agent_safety"
+      ],
+      "actualOk": false,
+      "actualRuleIds": [
+        "registry.policy.meta_agent_safety",
+        "registry.policy.meta_agent_safety",
+        "registry.policy.meta_agent_safety",
+        "registry.policy.meta_agent_safety",
+        "registry.policy.meta_agent_safety",
+        "registry.policy.meta_agent_safety",
+        "registry.policy.meta_agent_safety",
+        "registry.policy.meta_agent_safety",
+        "registry.graph.ref_resolution",
+        "registry.graph.ref_resolution",
+        "registry.graph.unlinked_stable_core"
+      ],
+      "missingRules": [],
+      "extraFailures": [],
+      "errors": [
+        {
+          "entryId": "fixture-meta-advisor",
+          "ruleId": "registry.policy.meta_agent_safety",
+          "pointer": "/extensions/dev.vibe.registry/outputAuthority",
+          "message": "Meta-agent output authority must be recommendation_only or patch_material."
+        },
+        {
+          "entryId": "fixture-meta-advisor",
+          "ruleId": "registry.policy.meta_agent_safety",
+          "pointer": "/safety/writesAllowed",
+          "message": "Meta-agents must not be allowed to mutate files directly."
+        },
+        {
+          "entryId": "fixture-meta-advisor",
+          "ruleId": "registry.policy.meta_agent_safety",
+          "pointer": "/forbiddenActions",
+          "message": "Meta-agent must forbid silent_mutation."
+        },
+        {
+          "entryId": "fixture-meta-advisor",
+          "ruleId": "registry.policy.meta_agent_safety",
+          "pointer": "/forbiddenActions",
+          "message": "Meta-agent must forbid auto_registration."
+        },
+        {
+          "entryId": "fixture-meta-advisor",
+          "ruleId": "registry.policy.meta_agent_safety",
+          "pointer": "/forbiddenActions",
+          "message": "Meta-agent must forbid direct_file_mutation."
+        },
+        {
+          "entryId": "fixture-meta-advisor",
+          "ruleId": "registry.policy.meta_agent_safety",
+          "pointer": "/forbiddenActions",
+          "message": "Meta-agent must forbid pr."
+        },
+        {
+          "entryId": "fixture-meta-advisor",
+          "ruleId": "registry.policy.meta_agent_safety",
+          "pointer": "/forbiddenActions",
+          "message": "Meta-agent must forbid verification_bypass."
+        },
+        {
+          "entryId": "fixture-meta-advisor",
+          "ruleId": "registry.policy.meta_agent_safety",
+          "pointer": "/allowedTools",
+          "message": "Meta-agent allowed tools include direct mutation capability: write."
+        },
+        {
+          "entryId": "fixture-meta-advisor",
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/validatorRefs/0",
+          "message": "Registry reference fixture-validator does not resolve to a loaded agent_registry_entry."
+        },
+        {
+          "entryId": "fixture-meta-advisor",
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/links/1",
+          "message": "Registry reference fixture-orchestrator does not resolve to a loaded agent_registry_entry."
+        },
+        {
+          "entryId": "fixture-meta-advisor",
+          "ruleId": "registry.graph.unlinked_stable_core",
+          "pointer": "/links",
+          "message": "Stable/core registry entry is reachable only from itself and lacks allowed typed dormant/deprecated/sample/non-load-bearing rationale."
+        }
+      ]
+    },
+    {
+      "label": "adapter runtime and non-pi assumptions reject",
+      "pass": true,
+      "expectedRules": [
+        "registry.policy.adapter_scope"
+      ],
+      "actualOk": false,
+      "actualRuleIds": [
+        "registry.policy.adapter_scope",
+        "registry.policy.adapter_scope",
+        "registry.graph.ref_resolution",
+        "registry.graph.ref_resolution",
+        "registry.graph.unlinked_stable_core"
+      ],
+      "missingRules": [],
+      "extraFailures": [],
+      "errors": [
+        {
+          "entryId": "fixture-skill-adapter",
+          "ruleId": "registry.policy.adapter_scope",
+          "pointer": "/selectedHarnessAdapters",
+          "message": "Non-pi harness support remains deferred/blocked: non-pi."
+        },
+        {
+          "entryId": "fixture-skill-adapter",
+          "ruleId": "registry.policy.adapter_scope",
+          "pointer": "/extensions/dev.vibe.registry",
+          "message": "Adapter manifest/runtime assumptions and non-pi support claims are out of scope for registry validation."
+        },
+        {
+          "entryId": "fixture-skill-adapter",
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/validatorRefs/0",
+          "message": "Registry reference fixture-validator does not resolve to a loaded agent_registry_entry."
+        },
+        {
+          "entryId": "fixture-skill-adapter",
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/links/1",
+          "message": "Registry reference fixture-orchestrator does not resolve to a loaded agent_registry_entry."
+        },
+        {
+          "entryId": "fixture-skill-adapter",
+          "ruleId": "registry.graph.unlinked_stable_core",
+          "pointer": "/links",
+          "message": "Stable/core registry entry is reachable only from itself and lacks allowed typed dormant/deprecated/sample/non-load-bearing rationale."
+        }
+      ]
+    },
+    {
+      "label": "unknown skill link rejects",
+      "pass": true,
+      "expectedRules": [
+        "registry.policy.skill_links"
+      ],
+      "actualOk": false,
+      "actualRuleIds": [
+        "registry.policy.skill_links",
+        "registry.policy.skill_links",
+        "registry.graph.ref_resolution",
+        "registry.graph.ref_resolution",
+        "registry.graph.unlinked_stable_core"
+      ],
+      "missingRules": [],
+      "extraFailures": [],
+      "errors": [
+        {
+          "entryId": "fixture-skill-adapter",
+          "ruleId": "registry.policy.skill_links",
+          "pointer": "/extensions/dev.vibe.registry/linkedSkills",
+          "message": "Registry entry references unknown skills: unknown-skill."
+        },
+        {
+          "entryId": "fixture-skill-adapter",
+          "ruleId": "registry.policy.skill_links",
+          "pointer": "/extensions/dev.vibe.registry/linkedSkills",
+          "message": "Core skill_adapter must link exactly the six locked skills: brainstorm, grill-me, task, plan, build, ship."
+        },
+        {
+          "entryId": "fixture-skill-adapter",
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/validatorRefs/0",
+          "message": "Registry reference fixture-validator does not resolve to a loaded agent_registry_entry."
+        },
+        {
+          "entryId": "fixture-skill-adapter",
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/links/1",
+          "message": "Registry reference fixture-orchestrator does not resolve to a loaded agent_registry_entry."
+        },
+        {
+          "entryId": "fixture-skill-adapter",
+          "ruleId": "registry.graph.unlinked_stable_core",
+          "pointer": "/links",
+          "message": "Stable/core registry entry is reachable only from itself and lacks allowed typed dormant/deprecated/sample/non-load-bearing rationale."
+        }
+      ]
+    }
+  ],
+  "caseRoot": ".vibe/work/I-04-agent-registry-validation/residual-revalidation-evidence/cases/residual-revalidation-case-root"
+}

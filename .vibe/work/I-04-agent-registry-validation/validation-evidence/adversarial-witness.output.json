@@ -1,0 +1,158 @@
+{
+  "observations": [
+    {
+      "label": "real core registry entries load through public API",
+      "expected": "ok",
+      "ok": true,
+      "errors": []
+    },
+    {
+      "label": "valid fixture set loads through public API",
+      "expected": "ok",
+      "ok": true,
+      "errors": []
+    },
+    {
+      "label": "missing owner rejects through I-01A schema",
+      "expected": "schema.i01a.agent_registry_entry",
+      "ok": true,
+      "actualOk": false,
+      "errors": [
+        {
+          "ruleId": "schema.i01a.agent_registry_entry",
+          "pointer": "/owner",
+          "message": "must have required property 'owner'"
+        }
+      ]
+    },
+    {
+      "label": "unknown skill link rejects",
+      "expected": "registry.policy.skill_links",
+      "ok": true,
+      "actualOk": false,
+      "errors": [
+        {
+          "ruleId": "registry.policy.skill_links",
+          "pointer": "/extensions/dev.vibe.registry/linkedSkills",
+          "message": "Registry entry references unknown skills: unknown-skill."
+        },
+        {
+          "ruleId": "registry.policy.skill_links",
+          "pointer": "/extensions/dev.vibe.registry/linkedSkills",
+          "message": "Core skill_adapter must link exactly the six locked skills: brainstorm, grill-me, task, plan, build, ship."
+        },
+        {
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/validatorRefs/0",
+          "message": "Registry reference fixture-validator does not resolve to a loaded agent_registry_entry."
+        }
+      ]
+    },
+    {
+      "label": "unsafe meta mutation rejects",
+      "expected": "registry.policy.meta_agent_safety",
+      "ok": true,
+      "actualOk": false,
+      "errors": [
+        {
+          "ruleId": "registry.policy.meta_agent_safety",
+          "pointer": "/extensions/dev.vibe.registry/outputAuthority",
+          "message": "Meta-agent output authority must be recommendation_only or patch_material."
+        },
+        {
+          "ruleId": "registry.policy.meta_agent_safety",
+          "pointer": "/safety/writesAllowed",
+          "message": "Meta-agents must not be allowed to mutate files directly."
+        },
+        {
+          "ruleId": "registry.policy.meta_agent_safety",
+          "pointer": "/allowedTools",
+          "message": "Meta-agent allowed tools include direct mutation capability: write."
+        },
+        {
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/validatorRefs/0",
+          "message": "Registry reference fixture-validator does not resolve to a loaded agent_registry_entry."
+        }
+      ]
+    },
+    {
+      "label": "schema-ref mismatch rejects",
+      "expected": "registry.policy.maturity_evidence",
+      "ok": true,
+      "actualOk": false,
+      "errors": [
+        {
+          "ruleId": "registry.policy.maturity_evidence",
+          "pointer": "/inputSchemas/0/schemaId",
+          "message": "inputSchemas must use canonical I-01A schema id for artifactKind implementation_plan."
+        },
+        {
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/validatorRefs/0",
+          "message": "Registry reference fixture-validator does not resolve to a loaded agent_registry_entry."
+        },
+        {
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/fixerRefs/0",
+          "message": "Registry reference fixture-fixer does not resolve to a loaded agent_registry_entry."
+        }
+      ]
+    },
+    {
+      "label": "stable core with only self registry_entry_for link rejects as unlinked",
+      "expected": "registry.graph.unlinked_stable_core",
+      "ok": false,
+      "actualOk": true,
+      "errors": []
+    },
+    {
+      "label": "top-level required agent_registry_entry link to missing entry rejects",
+      "expected": "registry.graph.ref_resolution",
+      "ok": false,
+      "actualOk": true,
+      "errors": []
+    },
+    {
+      "label": "deprecated entry missing supersession rejects",
+      "expected": "registry.policy.deprecation_supersession",
+      "ok": true,
+      "actualOk": false,
+      "errors": [
+        {
+          "ruleId": "registry.policy.deprecation_supersession",
+          "pointer": "/deprecation",
+          "message": "Deprecated entries require supersessionReason and extension supersededBy metadata."
+        },
+        {
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/validatorRefs/0",
+          "message": "Registry reference fixture-validator does not resolve to a loaded agent_registry_entry."
+        },
+        {
+          "ruleId": "registry.graph.ref_resolution",
+          "pointer": "/fixerRefs/0",
+          "message": "Registry reference fixture-fixer does not resolve to a loaded agent_registry_entry."
+        }
+      ]
+    }
+  ],
+  "failures": [
+    {
+      "label": "stable core with only self registry_entry_for link rejects as unlinked",
+      "expected": "registry.graph.unlinked_stable_core",
+      "ok": false,
+      "actualOk": true,
+      "errors": []
+    },
+    {
+      "label": "top-level required agent_registry_entry link to missing entry rejects",
+      "expected": "registry.graph.ref_resolution",
+      "ok": false,
+      "actualOk": true,
+      "errors": []
+    }
+  ],
+  "failureCount": 2
+}
+ADVERSARIAL_DEFECTS 2

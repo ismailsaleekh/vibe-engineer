@@ -1,0 +1,199 @@
+## registry imports
+packages/registry/scripts/build-smoke.mjs:1:import assert from 'node:assert/strict';
+packages/registry/scripts/build-smoke.mjs:2:import fs from 'node:fs';
+packages/registry/scripts/build-smoke.mjs:3:import path from 'node:path';
+packages/registry/scripts/build-smoke.mjs:4:import { fileURLToPath } from 'node:url';
+packages/registry/scripts/build-smoke.mjs:5:import { canonicalSchemaIdsByKind, loadRegistry } from '@vibe-engineer/registry';
+packages/registry/src/index.js:1:import fs from 'node:fs';
+packages/registry/src/index.js:2:import path from 'node:path';
+packages/registry/src/index.js:3:import { fileURLToPath } from 'node:url';
+packages/registry/src/index.js:4:import { ARTIFACT_KINDS, loadSchema, validateArtifactFile } from '../../artifacts/src/index.js';
+packages/registry/tests/run-tests.mjs:1:import assert from 'node:assert/strict';
+packages/registry/tests/run-tests.mjs:2:import fs from 'node:fs';
+packages/registry/tests/run-tests.mjs:3:import path from 'node:path';
+packages/registry/tests/run-tests.mjs:4:import { fileURLToPath } from 'node:url';
+packages/registry/tests/run-tests.mjs:5:import {
+packages/registry/tests/fixture-witness.mjs:1:import assert from 'node:assert/strict';
+packages/registry/tests/fixture-witness.mjs:2:import path from 'node:path';
+packages/registry/tests/fixture-witness.mjs:3:import { fileURLToPath } from 'node:url';
+packages/registry/tests/fixture-witness.mjs:4:import { assertRegistryOk, loadRegistry } from '@vibe-engineer/registry';
+packages/registry/src/index.d.ts:1:import type { AgentRegistryEntryV1, ArtifactKind } from '../../artifacts/src/generated/types.d.ts';
+
+## forbidden sibling package imports
+packages/registry/tests/run-tests.mjs:256:assert.equal(JSON.stringify(registryPackage).includes('@vibe-engineer/testing'), false);
+
+## registry package dependency fields
+{
+  "dependencies": {},
+  "devDependencies": {},
+  "peerDependencies": {}
+}
+
+## packages/core sentinel
+packages/core ABSENT
+
+## registry terms affecting build/ship/plan/nonpi/meta
+packages/registry/src/index.d.ts:52:export const LOCKED_SKILLS: readonly ['brainstorm', 'grill-me', 'task', 'plan', 'build', 'ship'];
+packages/registry/src/index.d.ts:54:export const ARTIFACT_FLOW: readonly ['raw_intent', 'work_brief', 'implementation_plan', 'build_result', 'ship_packet'];
+packages/registry/src/index.js:32:export const LOCKED_SKILLS = Object.freeze(['brainstorm', 'grill-me', 'task', 'plan', 'build', 'ship']);
+packages/registry/src/index.js:34:export const ARTIFACT_FLOW = Object.freeze(['raw_intent', 'work_brief', 'implementation_plan', 'build_result', 'ship_packet']);
+packages/registry/src/index.js:341:  const authority = ext.outputAuthority;
+packages/registry/src/index.js:343:    errors.push(makeError({ filePath, entryId: entry.agentId, ruleId: RegistryRuleId.META_AGENT_SAFETY, pointer: `/extensions/${REGISTRY_EXTENSION}/outputAuthority`, message: 'Meta-agent output authority must be recommendation_only or patch_material.' }));
+packages/registry/src/index.js:345:  const normalRoute = Array.isArray(ext.normalRoute) ? ext.normalRoute : [];
+packages/registry/src/index.js:346:  for (const required of ['planning', 'build', 'verification']) {
+packages/registry/src/index.js:347:    if (!normalRoute.includes(required)) {
+packages/registry/src/index.js:348:      errors.push(makeError({ filePath, entryId: entry.agentId, ruleId: RegistryRuleId.META_AGENT_SAFETY, pointer: `/extensions/${REGISTRY_EXTENSION}/normalRoute`, message: 'Meta-agent recommendations must route through normal planning, build, and verification.' }));
+packages/registry/src/index.js:375:  if (ext.adapterRuntimeImplemented === true || ext.adapterManifestWrites === true || (ext.nonPiHarnessSupport && ext.nonPiHarnessSupport !== 'deferred_blocked')) {
+packages/registry/fixtures/evidence/fixture-skill-adapter-eval.json:16:  "ownership": {
+packages/registry/fixtures/evidence/fixture-specialist-smoke.json:16:  "ownership": {
+packages/registry/fixtures/evidence/fixture-validator-smoke.json:16:  "ownership": {
+packages/registry/fixtures/evidence/fixture-specialist-eval.json:16:  "ownership": {
+.vibe/registry/core-agents/core-specialist.json:15:  "ownership": {
+.vibe/registry/core-agents/core-specialist.json:69:      "normalRoute": [
+.vibe/registry/core-agents/core-specialist.json:71:        "build",
+.vibe/registry/core-agents/core-specialist.json:74:      "outputAuthority": "bounded_execution",
+.vibe/registry/core-agents/core-specialist.json:75:      "nonPiHarnessSupport": "deferred_blocked",
+.vibe/registry/core-agents/core-specialist.json:76:      "adapterRuntimeImplemented": false,
+.vibe/registry/core-agents/core-specialist.json:115:      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/build-result.schema.json",
+.vibe/registry/core-agents/core-specialist.json:117:      "artifactKind": "build_result"
+packages/registry/fixtures/evidence/fixture-meta-advisor-eval.json:16:  "ownership": {
+packages/registry/fixtures/evidence/fixture-reviewer-smoke.json:16:  "ownership": {
+packages/registry/fixtures/evidence/fixture-validator-eval.json:16:  "ownership": {
+packages/registry/fixtures/evidence/fixture-fixer-smoke.json:16:  "ownership": {
+packages/registry/fixtures/evidence/fixture-orchestrator-eval.json:16:  "ownership": {
+packages/registry/fixtures/evidence/fixture-fixer-eval.json:16:  "ownership": {
+packages/registry/fixtures/evidence/fixture-skill-adapter-smoke.json:16:  "ownership": {
+packages/registry/fixtures/evidence/fixture-meta-advisor-smoke.json:16:  "ownership": {
+.vibe/registry/core-agents/locked-skill-adapter.json:15:  "ownership": {
+.vibe/registry/core-agents/locked-skill-adapter.json:69:      "normalRoute": [
+.vibe/registry/core-agents/locked-skill-adapter.json:71:        "build",
+.vibe/registry/core-agents/locked-skill-adapter.json:74:      "outputAuthority": "bounded_execution",
+.vibe/registry/core-agents/locked-skill-adapter.json:75:      "nonPiHarnessSupport": "deferred_blocked",
+.vibe/registry/core-agents/locked-skill-adapter.json:76:      "adapterRuntimeImplemented": false,
+.vibe/registry/core-agents/locked-skill-adapter.json:83:        "build",
+.vibe/registry/core-agents/locked-skill-adapter.json:84:        "ship"
+packages/registry/fixtures/evidence/fixture-orchestrator-smoke.json:16:  "ownership": {
+packages/registry/fixtures/evidence/fixture-reviewer-eval.json:16:  "ownership": {
+packages/registry/package.json:18:    "build": "node scripts/build-smoke.mjs"
+packages/registry/tests/run-tests.mjs:76:assert.equal(meta.extensions['dev.vibe.registry'].outputAuthority, 'recommendation_only');
+packages/registry/tests/run-tests.mjs:103:  entry.artifactKind = 'build_result';
+packages/registry/tests/run-tests.mjs:114:  entry.outputSchemas[0].schemaId = canonicalSchemaIdsByKind().build_result;
+packages/registry/tests/run-tests.mjs:226:  entry.extensions['dev.vibe.registry'].outputAuthority = 'direct_mutation';
+packages/registry/tests/run-tests.mjs:237:  entry.extensions['dev.vibe.registry'].adapterRuntimeImplemented = true;
+packages/registry/tests/run-tests.mjs:252:assert.deepEqual([...LOCKED_SKILLS], ['brainstorm', 'grill-me', 'task', 'plan', 'build', 'ship']);
+packages/registry/tests/run-tests.mjs:253:assert.deepEqual([...ARTIFACT_FLOW], ['raw_intent', 'work_brief', 'implementation_plan', 'build_result', 'ship_packet']);
+packages/registry/scripts/build-smoke.mjs:15:console.log('registry build smoke passed');
+packages/registry/fixtures/valid/core-set/fixture-specialist.json:15:  "ownership": {
+packages/registry/fixtures/valid/core-set/fixture-specialist.json:63:      "normalRoute": [
+packages/registry/fixtures/valid/core-set/fixture-specialist.json:65:        "build",
+packages/registry/fixtures/valid/core-set/fixture-specialist.json:68:      "outputAuthority": "bounded_execution",
+packages/registry/fixtures/valid/core-set/fixture-specialist.json:69:      "nonPiHarnessSupport": "deferred_blocked",
+packages/registry/fixtures/valid/core-set/fixture-specialist.json:70:      "adapterRuntimeImplemented": false,
+packages/registry/fixtures/valid/core-set/fixture-specialist.json:105:      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/build-result.schema.json",
+packages/registry/fixtures/valid/core-set/fixture-specialist.json:107:      "artifactKind": "build_result"
+packages/registry/fixtures/valid/core-set/fixture-reviewer.json:15:  "ownership": {
+packages/registry/fixtures/valid/core-set/fixture-reviewer.json:63:      "normalRoute": [
+packages/registry/fixtures/valid/core-set/fixture-reviewer.json:65:        "build",
+packages/registry/fixtures/valid/core-set/fixture-reviewer.json:68:      "outputAuthority": "bounded_execution",
+packages/registry/fixtures/valid/core-set/fixture-reviewer.json:69:      "nonPiHarnessSupport": "deferred_blocked",
+packages/registry/fixtures/valid/core-set/fixture-reviewer.json:70:      "adapterRuntimeImplemented": false,
+.vibe/registry/core-agents/core-orchestrator.json:15:  "ownership": {
+.vibe/registry/core-agents/core-orchestrator.json:69:      "normalRoute": [
+.vibe/registry/core-agents/core-orchestrator.json:71:        "build",
+.vibe/registry/core-agents/core-orchestrator.json:74:      "outputAuthority": "bounded_execution",
+.vibe/registry/core-agents/core-orchestrator.json:75:      "nonPiHarnessSupport": "deferred_blocked",
+.vibe/registry/core-agents/core-orchestrator.json:76:      "adapterRuntimeImplemented": false,
+.vibe/registry/core-agents/core-orchestrator.json:99:  "purpose": "Coordinates planning, build, verification, and handoff routing while preserving independent validation gates.",
+.vibe/registry/core-agents/core-orchestrator.json:125:      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/build-result.schema.json",
+.vibe/registry/core-agents/core-orchestrator.json:127:      "artifactKind": "build_result"
+.vibe/registry/core-agents/registry-meta-advisor.json:15:  "ownership": {
+.vibe/registry/core-agents/registry-meta-advisor.json:69:      "normalRoute": [
+.vibe/registry/core-agents/registry-meta-advisor.json:71:        "build",
+.vibe/registry/core-agents/registry-meta-advisor.json:74:      "outputAuthority": "recommendation_only",
+.vibe/registry/core-agents/registry-meta-advisor.json:75:      "nonPiHarnessSupport": "deferred_blocked",
+.vibe/registry/core-agents/registry-meta-advisor.json:76:      "adapterRuntimeImplemented": false,
+.vibe/registry/core-agents/registry-meta-advisor.json:99:  "purpose": "Produces recommendation-only registry improvement material routed through normal planning, build, and verification.",
+packages/registry/fixtures/valid/core-set/fixture-orchestrator.json:15:  "ownership": {
+packages/registry/fixtures/valid/core-set/fixture-orchestrator.json:63:      "normalRoute": [
+packages/registry/fixtures/valid/core-set/fixture-orchestrator.json:65:        "build",
+packages/registry/fixtures/valid/core-set/fixture-orchestrator.json:68:      "outputAuthority": "bounded_execution",
+packages/registry/fixtures/valid/core-set/fixture-orchestrator.json:69:      "nonPiHarnessSupport": "deferred_blocked",
+packages/registry/fixtures/valid/core-set/fixture-orchestrator.json:70:      "adapterRuntimeImplemented": false,
+packages/registry/fixtures/valid/core-set/fixture-meta-advisor.json:15:  "ownership": {
+packages/registry/fixtures/valid/core-set/fixture-meta-advisor.json:63:      "normalRoute": [
+packages/registry/fixtures/valid/core-set/fixture-meta-advisor.json:65:        "build",
+packages/registry/fixtures/valid/core-set/fixture-meta-advisor.json:68:      "outputAuthority": "recommendation_only",
+packages/registry/fixtures/valid/core-set/fixture-meta-advisor.json:69:      "nonPiHarnessSupport": "deferred_blocked",
+packages/registry/fixtures/valid/core-set/fixture-meta-advisor.json:70:      "adapterRuntimeImplemented": false,
+.vibe/registry/core-agents/registry-reviewer.json:15:  "ownership": {
+.vibe/registry/core-agents/registry-reviewer.json:69:      "normalRoute": [
+.vibe/registry/core-agents/registry-reviewer.json:71:        "build",
+.vibe/registry/core-agents/registry-reviewer.json:74:      "outputAuthority": "bounded_execution",
+.vibe/registry/core-agents/registry-reviewer.json:75:      "nonPiHarnessSupport": "deferred_blocked",
+.vibe/registry/core-agents/registry-reviewer.json:76:      "adapterRuntimeImplemented": false,
+.vibe/registry/core-agents/registry-quality-validator.json:15:  "ownership": {
+.vibe/registry/core-agents/registry-quality-validator.json:69:      "normalRoute": [
+.vibe/registry/core-agents/registry-quality-validator.json:71:        "build",
+.vibe/registry/core-agents/registry-quality-validator.json:74:      "outputAuthority": "bounded_execution",
+.vibe/registry/core-agents/registry-quality-validator.json:75:      "nonPiHarnessSupport": "deferred_blocked",
+.vibe/registry/core-agents/registry-quality-validator.json:76:      "adapterRuntimeImplemented": false,
+packages/registry/fixtures/valid/core-set/fixture-fixer.json:15:  "ownership": {
+packages/registry/fixtures/valid/core-set/fixture-fixer.json:63:      "normalRoute": [
+packages/registry/fixtures/valid/core-set/fixture-fixer.json:65:        "build",
+packages/registry/fixtures/valid/core-set/fixture-fixer.json:68:      "outputAuthority": "bounded_execution",
+packages/registry/fixtures/valid/core-set/fixture-fixer.json:69:      "nonPiHarnessSupport": "deferred_blocked",
+packages/registry/fixtures/valid/core-set/fixture-fixer.json:70:      "adapterRuntimeImplemented": false,
+packages/registry/fixtures/valid/core-set/fixture-fixer.json:105:      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/build-result.schema.json",
+packages/registry/fixtures/valid/core-set/fixture-fixer.json:107:      "artifactKind": "build_result"
+.vibe/registry/core-agents/registry-fixer.json:15:  "ownership": {
+.vibe/registry/core-agents/registry-fixer.json:69:      "normalRoute": [
+.vibe/registry/core-agents/registry-fixer.json:71:        "build",
+.vibe/registry/core-agents/registry-fixer.json:74:      "outputAuthority": "bounded_execution",
+.vibe/registry/core-agents/registry-fixer.json:75:      "nonPiHarnessSupport": "deferred_blocked",
+.vibe/registry/core-agents/registry-fixer.json:76:      "adapterRuntimeImplemented": false,
+.vibe/registry/core-agents/registry-fixer.json:120:      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/build-result.schema.json",
+.vibe/registry/core-agents/registry-fixer.json:122:      "artifactKind": "build_result"
+packages/registry/fixtures/valid/core-set/fixture-validator.json:15:  "ownership": {
+packages/registry/fixtures/valid/core-set/fixture-validator.json:63:      "normalRoute": [
+packages/registry/fixtures/valid/core-set/fixture-validator.json:65:        "build",
+packages/registry/fixtures/valid/core-set/fixture-validator.json:68:      "outputAuthority": "bounded_execution",
+packages/registry/fixtures/valid/core-set/fixture-validator.json:69:      "nonPiHarnessSupport": "deferred_blocked",
+packages/registry/fixtures/valid/core-set/fixture-validator.json:70:      "adapterRuntimeImplemented": false,
+packages/registry/fixtures/valid/core-set/fixture-skill-adapter.json:15:  "ownership": {
+packages/registry/fixtures/valid/core-set/fixture-skill-adapter.json:63:      "normalRoute": [
+packages/registry/fixtures/valid/core-set/fixture-skill-adapter.json:65:        "build",
+packages/registry/fixtures/valid/core-set/fixture-skill-adapter.json:68:      "outputAuthority": "bounded_execution",
+packages/registry/fixtures/valid/core-set/fixture-skill-adapter.json:69:      "nonPiHarnessSupport": "deferred_blocked",
+packages/registry/fixtures/valid/core-set/fixture-skill-adapter.json:70:      "adapterRuntimeImplemented": false,
+packages/registry/fixtures/valid/core-set/fixture-skill-adapter.json:77:        "build",
+packages/registry/fixtures/valid/core-set/fixture-skill-adapter.json:78:        "ship"
+.vibe/registry/evidence/registry-fixer-smoke.json:16:  "ownership": {
+packages/registry/fixtures/valid/scoped/project-extension.json:15:  "ownership": {
+packages/registry/fixtures/valid/scoped/project-extension.json:48:      "normalRoute": [
+packages/registry/fixtures/valid/scoped/project-extension.json:50:        "build",
+packages/registry/fixtures/valid/scoped/project-extension.json:53:      "outputAuthority": "bounded_execution",
+packages/registry/fixtures/valid/scoped/project-extension.json:54:      "nonPiHarnessSupport": "deferred_blocked",
+packages/registry/fixtures/valid/scoped/project-extension.json:55:      "adapterRuntimeImplemented": false,
+packages/registry/fixtures/valid/scoped/project-extension.json:92:      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/build-result.schema.json",
+packages/registry/fixtures/valid/scoped/project-extension.json:94:      "artifactKind": "build_result"
+.vibe/registry/evidence/registry-meta-advisor-smoke.json:16:  "ownership": {
+packages/registry/fixtures/valid/scoped/sample-demo.json:15:  "ownership": {
+packages/registry/fixtures/valid/scoped/sample-demo.json:48:      "normalRoute": [
+packages/registry/fixtures/valid/scoped/sample-demo.json:50:        "build",
+packages/registry/fixtures/valid/scoped/sample-demo.json:53:      "outputAuthority": "bounded_execution",
+packages/registry/fixtures/valid/scoped/sample-demo.json:54:      "nonPiHarnessSupport": "deferred_blocked",
+packages/registry/fixtures/valid/scoped/sample-demo.json:55:      "adapterRuntimeImplemented": false,
+packages/registry/fixtures/valid/scoped/sample-demo.json:92:      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/build-result.schema.json",
+packages/registry/fixtures/valid/scoped/sample-demo.json:94:      "artifactKind": "build_result"
+.vibe/registry/evidence/core-orchestrator-eval.json:16:  "ownership": {
+.vibe/registry/evidence/core-specialist-eval.json:16:  "ownership": {
+.vibe/registry/evidence/locked-skill-adapter-eval.json:16:  "ownership": {
+.vibe/registry/evidence/core-orchestrator-smoke.json:16:  "ownership": {
+.vibe/registry/evidence/locked-skill-adapter-smoke.json:16:  "ownership": {
+.vibe/registry/evidence/core-specialist-smoke.json:16:  "ownership": {
+.vibe/registry/evidence/registry-fixer-eval.json:16:  "ownership": {
+.vibe/registry/evidence/registry-meta-advisor-eval.json:16:  "ownership": {
+.vibe/registry/evidence/registry-quality-validator-eval.json:16:  "ownership": {
+.vibe/registry/evidence/registry-reviewer-eval.json:16:  "ownership": {
+.vibe/registry/evidence/registry-reviewer-smoke.json:16:  "ownership": {
+.vibe/registry/evidence/registry-quality-validator-smoke.json:16:  "ownership": {

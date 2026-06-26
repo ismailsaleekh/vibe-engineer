@@ -1,0 +1,278 @@
+### FINAL TRACKED DIFF NAMES (sentinels)
+### FINAL SCOPED STATUS (sentinels)
+?? .vibe/registry/
+?? .vibe/work/I-04-agent-registry-validation/
+?? docs/decisions/
+?? package.json
+?? packages/adapters/
+?? packages/artifacts/
+?? packages/config/
+?? packages/mechanical-gates/
+?? packages/orchestration/
+?? packages/registry/
+?? packages/skills/
+?? pnpm-lock.yaml
+?? pnpm-workspace.yaml
+?? tsconfig.base.json
+?? turbo.json
+### Q06 STATUS
+?? .vibe/registry/
+?? .vibe/work/I-04-agent-registry-validation/
+?? packages/registry/
+### Q06 INVENTORY COUNTS
+packages/registry files:       76
+.vibe/registry files:       21
+q06 work files:     1619
+### ROOT/SENTINEL MTIMES
+2026-06-23T16:39:32+0500 /Users/lizavasilyeva/work/vibe-engineer/package.json
+2026-06-23T19:08:10+0500 /Users/lizavasilyeva/work/vibe-engineer/pnpm-lock.yaml
+2026-06-23T16:39:32+0500 /Users/lizavasilyeva/work/vibe-engineer/pnpm-workspace.yaml
+2026-06-23T16:39:32+0500 /Users/lizavasilyeva/work/vibe-engineer/turbo.json
+2026-06-23T16:39:32+0500 /Users/lizavasilyeva/work/vibe-engineer/tsconfig.base.json
+2026-06-23T14:56:50+0500 /Users/lizavasilyeva/work/vibe-engineer/docs/decisions
+2026-06-23T18:47:01+0500 /Users/lizavasilyeva/work/vibe-engineer/packages/artifacts
+2026-06-23T21:30:03+0500 /Users/lizavasilyeva/work/vibe-engineer/packages/config
+2026-06-23T19:35:49+0500 /Users/lizavasilyeva/work/vibe-engineer/packages/orchestration
+2026-06-23T21:30:39+0500 /Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates
+2026-06-23T16:39:32+0500 /Users/lizavasilyeva/work/vibe-engineer/packages/skills
+2026-06-23T16:39:32+0500 /Users/lizavasilyeva/work/vibe-engineer/packages/adapters
+2026-06-23T21:31:59+0500 /Users/lizavasilyeva/work/vibe-engineer/packages/registry
+2026-06-23T22:13:25+0500 /Users/lizavasilyeva/work/vibe-engineer/.vibe/registry
+2026-06-24T01:34:19+0500 /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-04-agent-registry-validation
+### REGISTRY IMPORTS
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/scripts/build-smoke.mjs:1:import assert from 'node:assert/strict';
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/scripts/build-smoke.mjs:2:import fs from 'node:fs';
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/scripts/build-smoke.mjs:3:import path from 'node:path';
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/scripts/build-smoke.mjs:4:import { fileURLToPath } from 'node:url';
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/scripts/build-smoke.mjs:5:import { canonicalSchemaIdsByKind, loadRegistry } from '@vibe-engineer/registry';
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/src/index.d.ts:1:import type { AgentRegistryEntryV1, ArtifactKind } from '../../artifacts/src/generated/types.d.ts';
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/tests/run-tests.mjs:1:import assert from 'node:assert/strict';
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/tests/run-tests.mjs:2:import fs from 'node:fs';
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/tests/run-tests.mjs:3:import path from 'node:path';
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/tests/run-tests.mjs:4:import { fileURLToPath } from 'node:url';
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/tests/fixture-witness.mjs:1:import assert from 'node:assert/strict';
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/tests/fixture-witness.mjs:2:import path from 'node:path';
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/tests/fixture-witness.mjs:3:import { fileURLToPath } from 'node:url';
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/tests/fixture-witness.mjs:4:import { assertRegistryOk, loadRegistry } from '@vibe-engineer/registry';
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/src/index.js:1:import fs from 'node:fs';
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/src/index.js:2:import path from 'node:path';
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/src/index.js:3:import { fileURLToPath } from 'node:url';
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/src/index.js:4:import { ARTIFACT_KINDS, loadSchema, validateArtifactFile } from '../../artifacts/src/index.js';
+### UNAUTHORIZED SIBLING IMPORT NEEDLES
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/tests/run-tests.mjs:326:assert.equal(JSON.stringify(registryPackage).includes('@vibe-engineer/testing'), false);
+### CANONICAL SCHEMA DUPLICATION NEEDLES
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/scripts/build-smoke.mjs:12:assert.ok(canonicalSchemaIdsByKind().agent_registry_entry.endsWith('/agent-registry-entry.schema.json'));
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/src/index.js:4:import { ARTIFACT_KINDS, loadSchema, validateArtifactFile } from '../../artifacts/src/index.js';
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/src/index.js:43:const SCHEMA_IDS_BY_KIND = Object.freeze(Object.fromEntries(ARTIFACT_KINDS.map((kind) => [kind, loadSchema(kind).$id])));
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/src/index.js:245:  const evidenceResult = validateArtifactFile(evidencePath, { kind: 'evidence_packet' });
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/src/index.js:674:    const schemaResult = validateArtifactFile(filePath, { kind: 'agent_registry_entry' });
+### PACKAGE MANIFEST DEPENDENCIES
+{
+  "rootName": "@vibe-engineer/workspace",
+  "publicPackage": "packages/cli",
+  "registryName": "@vibe-engineer/registry",
+  "registryDependencies": {},
+  "registryDevDependencies": {},
+  "hasTestingDependency": false,
+  "packageCoreExists": false
+}
+### PUBLIC CONSTANTS / CORE CONTRACT METADATA
+{
+  "productName": "vibe-engineer",
+  "lockedSkills": [
+    "brainstorm",
+    "grill-me",
+    "task",
+    "plan",
+    "build",
+    "ship"
+  ],
+  "artifactFlow": [
+    "raw_intent",
+    "work_brief",
+    "implementation_plan",
+    "build_result",
+    "ship_packet"
+  ],
+  "coreOk": true,
+  "metaAuthority": "recommendation_only",
+  "metaRoute": [
+    "planning",
+    "build",
+    "verification"
+  ],
+  "nonPiHarnessSupportValues": [
+    "deferred_blocked"
+  ],
+  "adapterRuntimeImplementedValues": [
+    false
+  ],
+  "reviewerValidatorRefs": [],
+  "loadBearingValidatorGaps": []
+}
+### DOMAIN TERM SCAN CORE REGISTRY/EVIDENCE
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/core-agents/core-specialist.json:129:    "git_checkout",
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/core-agents/locked-skill-adapter.json:137:    "git_checkout",
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/core-agents/registry-quality-validator.json:129:    "git_checkout",
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/core-agents/registry-reviewer.json:129:    "git_checkout",
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/core-agents/core-orchestrator.json:139:    "git_checkout",
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/core-agents/registry-fixer.json:134:    "git_checkout",
+### DOMAIN TERM SCAN PACKAGE REGISTRY CONTEXTS
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/src/index.js:40:const FORBIDDEN_CORE_TERMS = Object.freeze(['ecommerce', 'e-commerce', 'inventory', 'fashion', 'billz', 'telegram', 'instagram', 'shopify', 'checkout', 'cart', 'sku']);
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/tests/run-tests.mjs:301:  entry.purpose = 'Coordinates ecommerce inventory fashion Billz Telegram Instagram workflows.';
+### CONTRACT TERM SCAN ROOT/DOC PROMPTS (read-only)
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/src/index.d.ts:52:export const LOCKED_SKILLS: readonly ['brainstorm', 'grill-me', 'task', 'plan', 'build', 'ship'];
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/src/index.d.ts:53:export const PRODUCT_NAME: 'vibe-engineer';
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/src/index.d.ts:54:export const ARTIFACT_FLOW: readonly ['raw_intent', 'work_brief', 'implementation_plan', 'build_result', 'ship_packet'];
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/core-agents/core-specialist.json:75:      "nonPiHarnessSupport": "deferred_blocked",
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/core-agents/core-specialist.json:76:      "adapterRuntimeImplemented": false,
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/core-agents/core-specialist.json:108:      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/implementation-plan.schema.json",
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/core-agents/core-specialist.json:115:      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/build-result.schema.json",
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/core-agents/core-specialist.json:117:      "artifactKind": "build_result"
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/core-agents/core-specialist.json:175:  "owner": "vibe-engineer",
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/src/index.js:34:export const LOCKED_SKILLS = Object.freeze(['brainstorm', 'grill-me', 'task', 'plan', 'build', 'ship']);
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/src/index.js:35:export const PRODUCT_NAME = 'vibe-engineer';
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/src/index.js:36:export const ARTIFACT_FLOW = Object.freeze(['raw_intent', 'work_brief', 'implementation_plan', 'build_result', 'ship_packet']);
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/src/index.js:347:  if (!['recommendation_only', 'patch_material'].includes(authority)) {
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/src/index.js:348:    errors.push(makeError({ filePath, entryId: entry.agentId, ruleId: RegistryRuleId.META_AGENT_SAFETY, pointer: `/extensions/${REGISTRY_EXTENSION}/outputAuthority`, message: 'Meta-agent output authority must be recommendation_only or patch_material.' }));
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/src/index.js:380:  if (ext.adapterRuntimeImplemented === true || ext.adapterManifestWrites === true || (ext.nonPiHarnessSupport && ext.nonPiHarnessSupport !== 'deferred_blocked')) {
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/core-agents/locked-skill-adapter.json:75:      "nonPiHarnessSupport": "deferred_blocked",
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/core-agents/locked-skill-adapter.json:76:      "adapterRuntimeImplemented": false,
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/core-agents/locked-skill-adapter.json:79:        "brainstorm",
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/core-agents/locked-skill-adapter.json:80:        "grill-me",
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/core-agents/locked-skill-adapter.json:116:      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/skill-manifest.schema.json",
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/core-agents/locked-skill-adapter.json:123:      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/agent-registry-entry.schema.json",
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/core-agents/locked-skill-adapter.json:174:  "owner": "vibe-engineer",
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/core-agents/registry-quality-validator.json:75:      "nonPiHarnessSupport": "deferred_blocked",
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/core-agents/registry-quality-validator.json:76:      "adapterRuntimeImplemented": false,
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/core-agents/registry-quality-validator.json:108:      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/agent-registry-entry.schema.json",
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/core-agents/registry-quality-validator.json:115:      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/evidence-packet.schema.json",
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/core-agents/registry-quality-validator.json:166:  "owner": "vibe-engineer",
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/core-agents/registry-reviewer.json:75:      "nonPiHarnessSupport": "deferred_blocked",
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/core-agents/registry-reviewer.json:76:      "adapterRuntimeImplemented": false,
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/core-agents/registry-reviewer.json:108:      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/evidence-packet.schema.json",
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/core-agents/registry-reviewer.json:115:      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/evidence-packet.schema.json",
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/core-agents/registry-reviewer.json:157:  "owner": "vibe-engineer",
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/core-agents/core-orchestrator.json:75:      "nonPiHarnessSupport": "deferred_blocked",
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/core-agents/core-orchestrator.json:76:      "adapterRuntimeImplemented": false,
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/core-agents/core-orchestrator.json:108:      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/work-brief.schema.json",
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/core-agents/core-orchestrator.json:113:      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/implementation-plan.schema.json",
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/core-agents/core-orchestrator.json:120:      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/implementation-plan.schema.json",
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/core-agents/core-orchestrator.json:125:      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/build-result.schema.json",
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/core-agents/core-orchestrator.json:127:      "artifactKind": "build_result"
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/core-agents/core-orchestrator.json:185:  "owner": "vibe-engineer",
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/core-agents/registry-fixer.json:75:      "nonPiHarnessSupport": "deferred_blocked",
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/core-agents/registry-fixer.json:76:      "adapterRuntimeImplemented": false,
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/core-agents/registry-fixer.json:108:      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/evidence-packet.schema.json",
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/core-agents/registry-fixer.json:113:      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/agent-registry-entry.schema.json",
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/core-agents/registry-fixer.json:120:      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/build-result.schema.json",
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/core-agents/registry-fixer.json:122:      "artifactKind": "build_result"
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/core-agents/registry-fixer.json:171:  "owner": "vibe-engineer",
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/evidence/fixture-skill-adapter-eval.json:74:      "@vibe-engineer/registry",
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/core-agents/registry-meta-advisor.json:74:      "outputAuthority": "recommendation_only",
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/core-agents/registry-meta-advisor.json:75:      "nonPiHarnessSupport": "deferred_blocked",
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/core-agents/registry-meta-advisor.json:76:      "adapterRuntimeImplemented": false,
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/core-agents/registry-meta-advisor.json:108:      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/evidence-packet.schema.json",
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/core-agents/registry-meta-advisor.json:113:      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/agent-registry-entry.schema.json",
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/core-agents/registry-meta-advisor.json:120:      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/implementation-plan.schema.json",
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/core-agents/registry-meta-advisor.json:173:  "owner": "vibe-engineer",
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/evidence/fixture-specialist-smoke.json:74:      "@vibe-engineer/registry",
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/evidence/fixture-validator-smoke.json:74:      "@vibe-engineer/registry",
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/evidence/fixture-specialist-eval.json:74:      "@vibe-engineer/registry",
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/evidence/registry-fixer-smoke.json:78:      "@vibe-engineer/registry",
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/evidence/fixture-meta-advisor-eval.json:74:      "@vibe-engineer/registry",
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/evidence/core-specialist-eval.json:78:      "@vibe-engineer/registry",
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/evidence/fixture-validator-eval.json:74:      "@vibe-engineer/registry",
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/evidence/locked-skill-adapter-smoke.json:78:      "@vibe-engineer/registry",
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/evidence/fixture-skill-adapter-smoke.json:74:      "@vibe-engineer/registry",
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/evidence/locked-skill-adapter-eval.json:78:      "@vibe-engineer/registry",
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/evidence/fixture-meta-advisor-smoke.json:74:      "@vibe-engineer/registry",
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/evidence/registry-reviewer-smoke.json:78:      "@vibe-engineer/registry",
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/evidence/fixture-orchestrator-eval.json:74:      "@vibe-engineer/registry",
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/evidence/core-orchestrator-eval.json:78:      "@vibe-engineer/registry",
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/evidence/fixture-fixer-eval.json:74:      "@vibe-engineer/registry",
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/evidence/registry-quality-validator-smoke.json:78:      "@vibe-engineer/registry",
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/evidence/fixture-orchestrator-smoke.json:74:      "@vibe-engineer/registry",
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/evidence/registry-meta-advisor-smoke.json:78:      "@vibe-engineer/registry",
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/evidence/fixture-reviewer-smoke.json:74:      "@vibe-engineer/registry",
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/evidence/registry-fixer-eval.json:78:      "@vibe-engineer/registry",
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/evidence/fixture-fixer-smoke.json:74:      "@vibe-engineer/registry",
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/evidence/core-specialist-smoke.json:78:      "@vibe-engineer/registry",
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/evidence/fixture-reviewer-eval.json:74:      "@vibe-engineer/registry",
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/evidence/registry-quality-validator-eval.json:78:      "@vibe-engineer/registry",
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/evidence/core-orchestrator-smoke.json:78:      "@vibe-engineer/registry",
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/evidence/registry-reviewer-eval.json:78:      "@vibe-engineer/registry",
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/registry/evidence/registry-meta-advisor-eval.json:78:      "@vibe-engineer/registry",
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/valid/core-set/fixture-specialist.json:69:      "nonPiHarnessSupport": "deferred_blocked",
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/valid/core-set/fixture-specialist.json:70:      "adapterRuntimeImplemented": false,
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/valid/core-set/fixture-specialist.json:98:      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/implementation-plan.schema.json",
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/valid/core-set/fixture-specialist.json:105:      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/build-result.schema.json",
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/valid/core-set/fixture-specialist.json:107:      "artifactKind": "build_result"
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/valid/core-set/fixture-specialist.json:161:  "owner": "vibe-engineer",
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/valid/core-set/fixture-skill-adapter.json:69:      "nonPiHarnessSupport": "deferred_blocked",
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/valid/core-set/fixture-skill-adapter.json:70:      "adapterRuntimeImplemented": false,
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/valid/core-set/fixture-skill-adapter.json:73:        "brainstorm",
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/valid/core-set/fixture-skill-adapter.json:74:        "grill-me",
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/valid/core-set/fixture-skill-adapter.json:106:      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/skill-manifest.schema.json",
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/valid/core-set/fixture-skill-adapter.json:113:      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/agent-registry-entry.schema.json",
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/valid/core-set/fixture-skill-adapter.json:160:  "owner": "vibe-engineer",
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/valid/core-set/fixture-validator.json:69:      "nonPiHarnessSupport": "deferred_blocked",
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/valid/core-set/fixture-validator.json:70:      "adapterRuntimeImplemented": false,
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/valid/core-set/fixture-validator.json:98:      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/agent-registry-entry.schema.json",
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/valid/core-set/fixture-validator.json:105:      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/evidence-packet.schema.json",
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/valid/core-set/fixture-validator.json:152:  "owner": "vibe-engineer",
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/valid/core-set/fixture-reviewer.json:69:      "nonPiHarnessSupport": "deferred_blocked",
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/valid/core-set/fixture-reviewer.json:70:      "adapterRuntimeImplemented": false,
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/valid/core-set/fixture-reviewer.json:98:      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/evidence-packet.schema.json",
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/valid/core-set/fixture-reviewer.json:105:      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/evidence-packet.schema.json",
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/valid/core-set/fixture-reviewer.json:143:  "owner": "vibe-engineer",
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/valid/scoped/project-extension.json:54:      "nonPiHarnessSupport": "deferred_blocked",
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/valid/scoped/project-extension.json:55:      "adapterRuntimeImplemented": false,
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/valid/scoped/project-extension.json:85:      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/work-brief.schema.json",
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/valid/scoped/project-extension.json:92:      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/build-result.schema.json",
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/valid/scoped/project-extension.json:94:      "artifactKind": "build_result"
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/valid/scoped/project-extension.json:130:  "owner": "vibe-engineer",
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/valid/core-set/fixture-meta-advisor.json:68:      "outputAuthority": "recommendation_only",
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/valid/core-set/fixture-meta-advisor.json:69:      "nonPiHarnessSupport": "deferred_blocked",
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/valid/core-set/fixture-meta-advisor.json:70:      "adapterRuntimeImplemented": false,
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/valid/core-set/fixture-meta-advisor.json:98:      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/evidence-packet.schema.json",
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/valid/core-set/fixture-meta-advisor.json:105:      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/implementation-plan.schema.json",
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/valid/core-set/fixture-meta-advisor.json:156:  "owner": "vibe-engineer",
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/valid/scoped/sample-demo.json:54:      "nonPiHarnessSupport": "deferred_blocked",
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/valid/scoped/sample-demo.json:55:      "adapterRuntimeImplemented": false,
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/valid/scoped/sample-demo.json:85:      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/work-brief.schema.json",
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/valid/scoped/sample-demo.json:92:      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/build-result.schema.json",
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/valid/scoped/sample-demo.json:94:      "artifactKind": "build_result"
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/valid/scoped/sample-demo.json:130:  "owner": "vibe-engineer",
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/valid/core-set/fixture-orchestrator.json:69:      "nonPiHarnessSupport": "deferred_blocked",
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/valid/core-set/fixture-orchestrator.json:70:      "adapterRuntimeImplemented": false,
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/valid/core-set/fixture-orchestrator.json:98:      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/work-brief.schema.json",
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/valid/core-set/fixture-orchestrator.json:105:      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/implementation-plan.schema.json",
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/valid/core-set/fixture-orchestrator.json:161:  "owner": "vibe-engineer",
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/valid/core-set/fixture-fixer.json:69:      "nonPiHarnessSupport": "deferred_blocked",
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/valid/core-set/fixture-fixer.json:70:      "adapterRuntimeImplemented": false,
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/valid/core-set/fixture-fixer.json:98:      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/evidence-packet.schema.json",
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/valid/core-set/fixture-fixer.json:105:      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/build-result.schema.json",
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/valid/core-set/fixture-fixer.json:107:      "artifactKind": "build_result"
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/valid/core-set/fixture-fixer.json:152:  "owner": "vibe-engineer",
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/scripts/build-smoke.mjs:5:import { canonicalSchemaIdsByKind, loadRegistry } from '@vibe-engineer/registry';
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/package.json:2:  "name": "@vibe-engineer/registry",
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/package.json:6:  "description": "Strict schema-backed loader and policy validator for vibe-engineer agent registry entries.",
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/tests/run-tests.mjs:12:} from '@vibe-engineer/registry';
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/tests/run-tests.mjs:90:assert.equal(meta.extensions['dev.vibe.registry'].outputAuthority, 'recommendation_only');
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/tests/run-tests.mjs:117:  entry.artifactKind = 'build_result';
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/tests/run-tests.mjs:128:  entry.outputSchemas[0].schemaId = canonicalSchemaIdsByKind().build_result;
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/tests/run-tests.mjs:307:  entry.extensions['dev.vibe.registry'].adapterRuntimeImplemented = true;
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/tests/run-tests.mjs:319:assert.equal(PRODUCT_NAME, 'vibe-engineer');
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/tests/run-tests.mjs:321:assert.equal(readJson(path.join(packageRoot, 'package.json')).name, '@vibe-engineer/registry');
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/tests/run-tests.mjs:322:assert.deepEqual([...LOCKED_SKILLS], ['brainstorm', 'grill-me', 'task', 'plan', 'build', 'ship']);
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/tests/run-tests.mjs:323:assert.deepEqual([...ARTIFACT_FLOW], ['raw_intent', 'work_brief', 'implementation_plan', 'build_result', 'ship_packet']);
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/tests/run-tests.mjs:324:assert.equal(fs.existsSync(path.join(repoRoot, 'packages/core')), false);
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/tests/run-tests.mjs:326:assert.equal(JSON.stringify(registryPackage).includes('@vibe-engineer/testing'), false);
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/tests/fixture-witness.mjs:4:import { assertRegistryOk, loadRegistry } from '@vibe-engineer/registry';
+/Users/lizavasilyeva/work/vibe-engineer/packages/registry/tests/fixture-witness.mjs:35:console.log('fixture witness passed: public @vibe-engineer/registry API loaded core entries and fixtures through canonical on-disk JSON');
+### NODE_MODULES / SHARED INSTALL STATE SENTINEL
+2026-06-23T18:47:01+0500 /Users/lizavasilyeva/work/vibe-engineer/node_modules
+packages/registry/node_modules absent
+### FORBIDDEN COMMAND NOTE
+No git stash/reset/clean/checkout/restore or pnpm install/add/update/remove commands were run by this validator.

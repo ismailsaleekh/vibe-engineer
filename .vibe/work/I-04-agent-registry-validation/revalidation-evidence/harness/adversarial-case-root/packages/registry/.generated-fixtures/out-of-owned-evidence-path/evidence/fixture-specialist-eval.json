@@ -1,0 +1,93 @@
+{
+  "schemaVersion": "1.0.0",
+  "artifactKind": "evidence_packet",
+  "artifactId": "evidence:fixture-specialist:eval",
+  "title": "fixture-specialist eval evidence",
+  "createdAt": "2026-06-23T00:00:00Z",
+  "updatedAt": "2026-06-23T00:00:00Z",
+  "producer": {
+    "kind": "verification_runner",
+    "id": "i-04-agent-registry-validation",
+    "name": "I-04 agent registry validation",
+    "version": "1.0.0",
+    "runId": "q06-revalidation-out-of-owned-evidence-path-fixture-specialist-eval"
+  },
+  "status": "passed",
+  "ownership": {
+    "ownerLane": "I-04-agent-registry-validation",
+    "ownedWritePaths": [
+      "packages/registry/**"
+    ],
+    "readOnlyPaths": [
+      "packages/artifacts/**"
+    ],
+    "untouchablePaths": [
+      ".git/**",
+      "docs/decisions/**"
+    ],
+    "concurrencyNotes": "eval evidence carrier is Q06-owned and deterministic.",
+    "handoffPolicy": "Registry consumers require independent Q06 revalidation before relying on this evidence."
+  },
+  "links": [
+    {
+      "rel": "evidence_for",
+      "artifactKind": "agent_registry_entry",
+      "artifactId": "fixture-specialist",
+      "path": "cases/out-of-owned-evidence-path/fixture-specialist.json",
+      "required": true,
+      "statusAtLinkTime": "active"
+    }
+  ],
+  "extensions": {
+    "dev.vibe.registry.evidence": {
+      "schemaVersion": "1.0.0",
+      "agentId": "fixture-specialist",
+      "agentVersion": "1.0.0",
+      "evidenceType": "eval",
+      "registryEntryPath": "cases/out-of-owned-evidence-path/fixture-specialist.json"
+    }
+  },
+  "description": "Deterministic eval evidence packet backing stable/core registry maturity for fixture-specialist.",
+  "tags": [
+    "registry",
+    "eval",
+    "domain-neutral"
+  ],
+  "evidenceClass": "deterministic",
+  "layer": "ai_eval",
+  "subjectRefs": [
+    {
+      "rel": "evidence_for",
+      "artifactKind": "agent_registry_entry",
+      "artifactId": "fixture-specialist",
+      "path": "cases/out-of-owned-evidence-path/fixture-specialist.json",
+      "required": true,
+      "statusAtLinkTime": "active"
+    }
+  ],
+  "commandOrTool": {
+    "kind": "validator",
+    "name": "registry-eval-witness",
+    "argv": [
+      "pnpm",
+      "--filter",
+      "@vibe-engineer/registry",
+      "test"
+    ],
+    "version": "1.0.0",
+    "workingDirectory": ".",
+    "environmentSummary": "Q06 deterministic on-disk registry/evidence boundary witness"
+  },
+  "startedAt": "2026-06-23T00:00:00Z",
+  "endedAt": "2026-06-23T00:00:00Z",
+  "exitStatus": {
+    "kind": "exit_code",
+    "code": 0
+  },
+  "result": "pass",
+  "blocking": true,
+  "artifacts": [
+    "packages/registry/.generated-fixtures/out-of-owned-evidence-path/evidence/fixture-specialist-eval.json"
+  ],
+  "warnings": []
+}

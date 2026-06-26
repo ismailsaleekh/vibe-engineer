@@ -1,0 +1,26 @@
+{
+  "name": "@vibe-engineer/registry",
+  "version": "0.0.0",
+  "license": "MIT",
+  "type": "module",
+  "description": "Strict schema-backed loader and policy validator for vibe-engineer agent registry entries.",
+  "private": true,
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "import": "./src/index.js"
+    }
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "test": "node tests/run-tests.mjs",
+    "test:fixtures": "node tests/fixture-witness.mjs",
+    "build": "node scripts/build-smoke.mjs"
+  },
+  "vibeEngineer": {
+    "implementationUnit": "I-04-agent-registry-validation",
+    "implementationStatus": "implemented",
+    "packageRole": "internal-workspace-package",
+    "sourceStatus": "package-owned-source-created"
+  }
+}

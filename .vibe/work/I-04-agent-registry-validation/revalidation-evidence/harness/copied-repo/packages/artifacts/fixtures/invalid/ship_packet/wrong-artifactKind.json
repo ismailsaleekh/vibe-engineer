@@ -1,0 +1,103 @@
+{
+  "schemaVersion": "1.0.0",
+  "artifactKind": "work_brief",
+  "artifactId": "artifact-ship_packet-001",
+  "title": "Ship Packet valid fixture",
+  "createdAt": "2026-06-23T00:00:00.000Z",
+  "updatedAt": "2026-06-23T00:00:00.000Z",
+  "producer": {
+    "kind": "skill",
+    "id": "skill-task",
+    "name": "task",
+    "version": "1.0.0",
+    "runId": "run-001"
+  },
+  "status": "ready_for_review",
+  "ownership": {
+    "ownerLane": "I-01A-artifact-schemas",
+    "ownedWritePaths": [
+      "packages/artifacts/**"
+    ],
+    "readOnlyPaths": [
+      "docs/decisions/**"
+    ],
+    "untouchablePaths": [
+      ".git/**"
+    ],
+    "concurrencyNotes": "owned fixture"
+  },
+  "links": [
+    {
+      "rel": "ship_packet_of",
+      "artifactKind": "build_result",
+      "artifactId": "artifact-build_result-001",
+      "path": "fixtures/valid/build_result.json",
+      "required": true,
+      "statusAtLinkTime": "passed"
+    }
+  ],
+  "extensions": {
+    "dev.vibe.fixture": {
+      "schemaVersion": "1.0.0",
+      "note": "domain-neutral fixture extension"
+    }
+  },
+  "tags": [
+    "domain-neutral"
+  ],
+  "buildResultRef": {
+    "rel": "ship_packet_of",
+    "artifactKind": "build_result",
+    "artifactId": "artifact-build_result-001",
+    "path": "fixtures/valid/build_result.json",
+    "required": true,
+    "statusAtLinkTime": "passed"
+  },
+  "finalVerification": [
+    {
+      "evidencePacketRef": {
+        "rel": "evidence_for",
+        "artifactKind": "evidence_packet",
+        "artifactId": "artifact-evidence_packet-001",
+        "path": "fixtures/valid/evidence_packet.json",
+        "required": true,
+        "statusAtLinkTime": "passed"
+      },
+      "summary": "Final verification evidence.",
+      "result": "pass",
+      "blocking": true
+    }
+  ],
+  "contextPreservation": {
+    "contextHeaderRefs": [],
+    "driftCheckEvidenceRefs": [
+      {
+        "rel": "evidence_for",
+        "artifactKind": "evidence_packet",
+        "artifactId": "artifact-evidence_packet-001",
+        "path": "fixtures/valid/evidence_packet.json",
+        "required": true,
+        "statusAtLinkTime": "passed"
+      }
+    ],
+    "updateStatus": "clean"
+  },
+  "commitPreparation": {
+    "suggestedCommitMessage": "Implement artifact schemas",
+    "commitPerformedByAgent": false
+  },
+  "prPreparation": {
+    "suggestedTitle": "Implement artifact schemas",
+    "suggestedBody": "Package-owned schema implementation.",
+    "reviewerNotes": [],
+    "prOpenedByAgent": false
+  },
+  "releaseOrMigrationNotes": [
+    {
+      "note": "No migration required.",
+      "rationale": "Initial v1 schemas."
+    }
+  ],
+  "followUps": [],
+  "noPushWithoutApproval": true
+}

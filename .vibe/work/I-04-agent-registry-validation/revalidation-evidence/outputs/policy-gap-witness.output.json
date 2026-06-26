@@ -1,0 +1,36 @@
+{
+  "ok": false,
+  "defectCount": 2,
+  "cases": [
+    {
+      "caseName": "missing-independent-validator",
+      "expectation": "DL-05 requires every load-bearing stable/core producer to name an independent default validator or be explicitly blocked; connected stable/core specialist with validatorRefs=[] must reject.",
+      "actualOk": true,
+      "actualRuleIds": [],
+      "errors": []
+    },
+    {
+      "caseName": "allow-dormant-without-rationale",
+      "expectation": "Graph/orphan policy allows dormant stable/core entries only with explicit allowed dormant/deprecated/sample rationale; allowDormant=true without rationale must not silently bypass reachability.",
+      "actualOk": true,
+      "actualRuleIds": [],
+      "errors": []
+    }
+  ],
+  "defects": [
+    {
+      "caseName": "missing-independent-validator",
+      "expectation": "DL-05 requires every load-bearing stable/core producer to name an independent default validator or be explicitly blocked; connected stable/core specialist with validatorRefs=[] must reject.",
+      "actualOk": true,
+      "actualRuleIds": [],
+      "errors": []
+    },
+    {
+      "caseName": "allow-dormant-without-rationale",
+      "expectation": "Graph/orphan policy allows dormant stable/core entries only with explicit allowed dormant/deprecated/sample rationale; allowDormant=true without rationale must not silently bypass reachability.",
+      "actualOk": true,
+      "actualRuleIds": [],
+      "errors": []
+    }
+  ]
+}

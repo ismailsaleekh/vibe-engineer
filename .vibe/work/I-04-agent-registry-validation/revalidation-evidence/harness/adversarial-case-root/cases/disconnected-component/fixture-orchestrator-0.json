@@ -1,0 +1,188 @@
+{
+  "schemaVersion": "1.0.0",
+  "artifactKind": "agent_registry_entry",
+  "artifactId": "fixture-orchestrator",
+  "title": "Fixture Orchestrator",
+  "createdAt": "2026-06-23T00:00:00Z",
+  "updatedAt": "2026-06-23T00:00:00Z",
+  "producer": {
+    "kind": "system",
+    "id": "i-04-agent-registry-validation",
+    "name": "I-04 agent registry validation",
+    "version": "1.0.0"
+  },
+  "status": "active",
+  "ownership": {
+    "ownerLane": "I-04-agent-registry-validation-revalidation",
+    "ownedWritePaths": [
+      ".vibe/work/I-04-agent-registry-validation/revalidation-evidence/**"
+    ],
+    "readOnlyPaths": [
+      "packages/registry/**",
+      "packages/artifacts/**"
+    ],
+    "untouchablePaths": [
+      ".git/**",
+      "package.json",
+      "pnpm-lock.yaml",
+      "pnpm-workspace.yaml"
+    ],
+    "concurrencyNotes": "Validation-owned adversarial carrier; product files are read-only.",
+    "handoffPolicy": "Fixtures are evidence only and do not register production runtime behavior."
+  },
+  "links": [
+    {
+      "rel": "registry_entry_for",
+      "artifactKind": "agent_registry_entry",
+      "artifactId": "fixture-orchestrator",
+      "path": "cases/disconnected-component/fixture-orchestrator.json",
+      "required": true,
+      "statusAtLinkTime": "active"
+    },
+    {
+      "rel": "context_for",
+      "artifactKind": "agent_registry_entry",
+      "artifactId": "fixture-fixer",
+      "path": "cases/disconnected-component/fixture-fixer.json",
+      "required": true,
+      "statusAtLinkTime": "active"
+    }
+  ],
+  "extensions": {
+    "dev.vibe.registry": {
+      "schemaVersion": "1.0.0",
+      "classification": "core",
+      "registryScope": "core",
+      "smokeRefs": [
+        {
+          "rel": "evidence_for",
+          "artifactKind": "evidence_packet",
+          "artifactId": "evidence:fixture-orchestrator:smoke",
+          "path": "packages/registry/.generated-fixtures/disconnected-component/evidence/fixture-orchestrator-smoke.json",
+          "required": true,
+          "statusAtLinkTime": "passed"
+        }
+      ],
+      "normalRoute": [
+        "planning",
+        "build",
+        "verification"
+      ],
+      "outputAuthority": "bounded_execution",
+      "nonPiHarnessSupport": "deferred_blocked",
+      "adapterRuntimeImplemented": false,
+      "adapterManifestWrites": false
+    }
+  },
+  "description": "Fixture Orchestrator fixture registry entry.",
+  "tags": [
+    "fixture",
+    "orchestrator",
+    "domain-neutral"
+  ],
+  "sourceRefs": [
+    {
+      "kind": "artifact",
+      "ref": "packages/registry/fixtures"
+    }
+  ],
+  "agentId": "fixture-orchestrator",
+  "displayName": "Fixture Orchestrator",
+  "agentType": "orchestrator",
+  "purpose": "Coordinates fixture planning and evidence routing.",
+  "triggers": [
+    {
+      "event": "fixture.orchestrator",
+      "description": "Fixture trigger for registry validator coverage."
+    }
+  ],
+  "inputSchemas": [
+    {
+      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/work-brief.schema.json",
+      "schemaVersion": "1.0.0",
+      "artifactKind": "work_brief"
+    }
+  ],
+  "outputSchemas": [
+    {
+      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/implementation-plan.schema.json",
+      "schemaVersion": "1.0.0",
+      "artifactKind": "implementation_plan"
+    }
+  ],
+  "allowedTools": [
+    "read",
+    "analysis",
+    "structured-report"
+  ],
+  "forbiddenActions": [
+    "git_stash",
+    "git_reset",
+    "git_clean",
+    "out_of_owned_path_write",
+    "push",
+    "pr_without_approval",
+    "verification_bypass"
+  ],
+  "contextRequirements": [
+    "fixture-context"
+  ],
+  "expectedArtifactPaths": [
+    "cases/disconnected-component/fixture-orchestrator.json"
+  ],
+  "safety": {
+    "parallelSafe": true,
+    "writesAllowed": true,
+    "requiresApprovalFor": [
+      "root_or_lockfile_mutation",
+      "push",
+      "pull_request"
+    ],
+    "maxIterations": 2
+  },
+  "validatorRefs": [
+    {
+      "rel": "verifies",
+      "artifactKind": "agent_registry_entry",
+      "artifactId": "fixture-validator",
+      "path": "cases/disconnected-component/fixture-validator.json",
+      "required": true,
+      "statusAtLinkTime": "active"
+    }
+  ],
+  "fixerRefs": [
+    {
+      "rel": "implements",
+      "artifactKind": "agent_registry_entry",
+      "artifactId": "fixture-fixer",
+      "path": "cases/disconnected-component/fixture-fixer.json",
+      "required": true,
+      "statusAtLinkTime": "active"
+    }
+  ],
+  "maturity": "stable",
+  "owner": "vibe-engineer",
+  "agentVersion": "1.0.0",
+  "evals": [
+    {
+      "rel": "evidence_for",
+      "artifactKind": "evidence_packet",
+      "artifactId": "evidence:fixture-orchestrator:eval",
+      "path": "packages/registry/.generated-fixtures/disconnected-component/evidence/fixture-orchestrator-eval.json",
+      "required": true,
+      "statusAtLinkTime": "passed"
+    }
+  ],
+  "deprecation": null,
+  "runtimeCostClass": "bounded",
+  "examples": [
+    "fixture-orchestrator fixture demonstrates registry validation."
+  ],
+  "changelog": [
+    "1.0.0: Fixture added for registry validation."
+  ],
+  "selectedHarnessAdapters": [
+    "pi"
+  ],
+  "domainNeutralityReview": "PASS DL-20A: fixture is domain-neutral."
+}

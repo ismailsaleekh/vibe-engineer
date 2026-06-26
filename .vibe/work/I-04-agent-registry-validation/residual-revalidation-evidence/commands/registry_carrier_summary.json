@@ -1,0 +1,2551 @@
+{
+  "entryCount": 16,
+  "evidenceCount": 55,
+  "entries": [
+    {
+      "path": ".vibe/registry/core-agents/core-orchestrator.json",
+      "id": "core-orchestrator",
+      "artifactId": "core-orchestrator",
+      "type": "orchestrator",
+      "status": "active",
+      "maturity": "core",
+      "classification": "core",
+      "registryScope": "core",
+      "allowDormant": null,
+      "hasNonLoadBearingRationale": false,
+      "hasDormantRationale": false,
+      "validatorRefs": [
+        {
+          "id": "registry-quality-validator",
+          "kind": "agent_registry_entry",
+          "required": true,
+          "rel": "verifies"
+        }
+      ],
+      "fixerRefs": [
+        {
+          "id": "registry-fixer",
+          "kind": "agent_registry_entry",
+          "required": true,
+          "rel": "implements"
+        }
+      ],
+      "topLevelAgentLinks": [
+        {
+          "id": "core-orchestrator",
+          "required": true,
+          "rel": "registry_entry_for"
+        },
+        {
+          "id": "core-specialist",
+          "required": true,
+          "rel": "context_for"
+        }
+      ],
+      "evalRefs": [
+        {
+          "id": "evidence:core-orchestrator:eval",
+          "kind": "evidence_packet",
+          "path": ".vibe/registry/evidence/core-orchestrator-eval.json",
+          "required": true,
+          "statusAtLinkTime": "passed"
+        }
+      ],
+      "smokeRefs": [
+        {
+          "id": "evidence:core-orchestrator:smoke",
+          "kind": "evidence_packet",
+          "path": ".vibe/registry/evidence/core-orchestrator-smoke.json",
+          "required": true,
+          "statusAtLinkTime": "passed"
+        }
+      ],
+      "domainNeutralityReview": "PASS DL-20A: core metadata is domain-neutral and contains no product/business vocabulary.",
+      "outputAuthority": "bounded_execution",
+      "normalRoute": [
+        "planning",
+        "build",
+        "verification"
+      ],
+      "linkedSkills": null,
+      "adapterRuntimeImplemented": false,
+      "nonPiHarnessSupport": "deferred_blocked"
+    },
+    {
+      "path": ".vibe/registry/core-agents/core-specialist.json",
+      "id": "core-specialist",
+      "artifactId": "core-specialist",
+      "type": "specialist",
+      "status": "active",
+      "maturity": "core",
+      "classification": "core",
+      "registryScope": "core",
+      "allowDormant": null,
+      "hasNonLoadBearingRationale": false,
+      "hasDormantRationale": false,
+      "validatorRefs": [
+        {
+          "id": "registry-quality-validator",
+          "kind": "agent_registry_entry",
+          "required": true,
+          "rel": "verifies"
+        }
+      ],
+      "fixerRefs": [
+        {
+          "id": "registry-fixer",
+          "kind": "agent_registry_entry",
+          "required": true,
+          "rel": "implements"
+        }
+      ],
+      "topLevelAgentLinks": [
+        {
+          "id": "core-specialist",
+          "required": true,
+          "rel": "registry_entry_for"
+        },
+        {
+          "id": "core-orchestrator",
+          "required": true,
+          "rel": "context_for"
+        }
+      ],
+      "evalRefs": [
+        {
+          "id": "evidence:core-specialist:eval",
+          "kind": "evidence_packet",
+          "path": ".vibe/registry/evidence/core-specialist-eval.json",
+          "required": true,
+          "statusAtLinkTime": "passed"
+        }
+      ],
+      "smokeRefs": [
+        {
+          "id": "evidence:core-specialist:smoke",
+          "kind": "evidence_packet",
+          "path": ".vibe/registry/evidence/core-specialist-smoke.json",
+          "required": true,
+          "statusAtLinkTime": "passed"
+        }
+      ],
+      "domainNeutralityReview": "PASS DL-20A: core metadata is domain-neutral and contains no product/business vocabulary.",
+      "outputAuthority": "bounded_execution",
+      "normalRoute": [
+        "planning",
+        "build",
+        "verification"
+      ],
+      "linkedSkills": null,
+      "adapterRuntimeImplemented": false,
+      "nonPiHarnessSupport": "deferred_blocked"
+    },
+    {
+      "path": ".vibe/registry/core-agents/locked-skill-adapter.json",
+      "id": "locked-skill-adapter",
+      "artifactId": "locked-skill-adapter",
+      "type": "skill_adapter",
+      "status": "active",
+      "maturity": "core",
+      "classification": "core",
+      "registryScope": "core",
+      "allowDormant": null,
+      "hasNonLoadBearingRationale": false,
+      "hasDormantRationale": false,
+      "validatorRefs": [
+        {
+          "id": "registry-quality-validator",
+          "kind": "agent_registry_entry",
+          "required": true,
+          "rel": "verifies"
+        }
+      ],
+      "fixerRefs": [],
+      "topLevelAgentLinks": [
+        {
+          "id": "locked-skill-adapter",
+          "required": true,
+          "rel": "registry_entry_for"
+        },
+        {
+          "id": "core-orchestrator",
+          "required": true,
+          "rel": "context_for"
+        }
+      ],
+      "evalRefs": [
+        {
+          "id": "evidence:locked-skill-adapter:eval",
+          "kind": "evidence_packet",
+          "path": ".vibe/registry/evidence/locked-skill-adapter-eval.json",
+          "required": true,
+          "statusAtLinkTime": "passed"
+        }
+      ],
+      "smokeRefs": [
+        {
+          "id": "evidence:locked-skill-adapter:smoke",
+          "kind": "evidence_packet",
+          "path": ".vibe/registry/evidence/locked-skill-adapter-smoke.json",
+          "required": true,
+          "statusAtLinkTime": "passed"
+        }
+      ],
+      "domainNeutralityReview": "PASS DL-20A: core metadata is domain-neutral and contains no product/business vocabulary.",
+      "outputAuthority": "bounded_execution",
+      "normalRoute": [
+        "planning",
+        "build",
+        "verification"
+      ],
+      "linkedSkills": [
+        "brainstorm",
+        "grill-me",
+        "task",
+        "plan",
+        "build",
+        "ship"
+      ],
+      "adapterRuntimeImplemented": false,
+      "nonPiHarnessSupport": "deferred_blocked"
+    },
+    {
+      "path": ".vibe/registry/core-agents/registry-fixer.json",
+      "id": "registry-fixer",
+      "artifactId": "registry-fixer",
+      "type": "fixer",
+      "status": "active",
+      "maturity": "core",
+      "classification": "core",
+      "registryScope": "core",
+      "allowDormant": null,
+      "hasNonLoadBearingRationale": false,
+      "hasDormantRationale": false,
+      "validatorRefs": [
+        {
+          "id": "registry-quality-validator",
+          "kind": "agent_registry_entry",
+          "required": true,
+          "rel": "verifies"
+        }
+      ],
+      "fixerRefs": [],
+      "topLevelAgentLinks": [
+        {
+          "id": "registry-fixer",
+          "required": true,
+          "rel": "registry_entry_for"
+        },
+        {
+          "id": "core-orchestrator",
+          "required": true,
+          "rel": "context_for"
+        }
+      ],
+      "evalRefs": [
+        {
+          "id": "evidence:registry-fixer:eval",
+          "kind": "evidence_packet",
+          "path": ".vibe/registry/evidence/registry-fixer-eval.json",
+          "required": true,
+          "statusAtLinkTime": "passed"
+        }
+      ],
+      "smokeRefs": [
+        {
+          "id": "evidence:registry-fixer:smoke",
+          "kind": "evidence_packet",
+          "path": ".vibe/registry/evidence/registry-fixer-smoke.json",
+          "required": true,
+          "statusAtLinkTime": "passed"
+        }
+      ],
+      "domainNeutralityReview": "PASS DL-20A: core metadata is domain-neutral and contains no product/business vocabulary.",
+      "outputAuthority": "bounded_execution",
+      "normalRoute": [
+        "planning",
+        "build",
+        "verification"
+      ],
+      "linkedSkills": null,
+      "adapterRuntimeImplemented": false,
+      "nonPiHarnessSupport": "deferred_blocked"
+    },
+    {
+      "path": ".vibe/registry/core-agents/registry-meta-advisor.json",
+      "id": "registry-meta-advisor",
+      "artifactId": "registry-meta-advisor",
+      "type": "meta",
+      "status": "active",
+      "maturity": "core",
+      "classification": "core",
+      "registryScope": "core",
+      "allowDormant": null,
+      "hasNonLoadBearingRationale": false,
+      "hasDormantRationale": false,
+      "validatorRefs": [
+        {
+          "id": "registry-quality-validator",
+          "kind": "agent_registry_entry",
+          "required": true,
+          "rel": "verifies"
+        }
+      ],
+      "fixerRefs": [],
+      "topLevelAgentLinks": [
+        {
+          "id": "registry-meta-advisor",
+          "required": true,
+          "rel": "registry_entry_for"
+        },
+        {
+          "id": "core-orchestrator",
+          "required": true,
+          "rel": "context_for"
+        }
+      ],
+      "evalRefs": [
+        {
+          "id": "evidence:registry-meta-advisor:eval",
+          "kind": "evidence_packet",
+          "path": ".vibe/registry/evidence/registry-meta-advisor-eval.json",
+          "required": true,
+          "statusAtLinkTime": "passed"
+        }
+      ],
+      "smokeRefs": [
+        {
+          "id": "evidence:registry-meta-advisor:smoke",
+          "kind": "evidence_packet",
+          "path": ".vibe/registry/evidence/registry-meta-advisor-smoke.json",
+          "required": true,
+          "statusAtLinkTime": "passed"
+        }
+      ],
+      "domainNeutralityReview": "PASS DL-20A: core metadata is domain-neutral and contains no product/business vocabulary.",
+      "outputAuthority": "recommendation_only",
+      "normalRoute": [
+        "planning",
+        "build",
+        "verification"
+      ],
+      "linkedSkills": null,
+      "adapterRuntimeImplemented": false,
+      "nonPiHarnessSupport": "deferred_blocked"
+    },
+    {
+      "path": ".vibe/registry/core-agents/registry-quality-validator.json",
+      "id": "registry-quality-validator",
+      "artifactId": "registry-quality-validator",
+      "type": "validator",
+      "status": "active",
+      "maturity": "core",
+      "classification": "core",
+      "registryScope": "core",
+      "allowDormant": null,
+      "hasNonLoadBearingRationale": false,
+      "hasDormantRationale": false,
+      "validatorRefs": [
+        {
+          "id": "registry-reviewer",
+          "kind": "agent_registry_entry",
+          "required": true,
+          "rel": "verifies"
+        }
+      ],
+      "fixerRefs": [],
+      "topLevelAgentLinks": [
+        {
+          "id": "registry-quality-validator",
+          "required": true,
+          "rel": "registry_entry_for"
+        },
+        {
+          "id": "core-orchestrator",
+          "required": true,
+          "rel": "context_for"
+        }
+      ],
+      "evalRefs": [
+        {
+          "id": "evidence:registry-quality-validator:eval",
+          "kind": "evidence_packet",
+          "path": ".vibe/registry/evidence/registry-quality-validator-eval.json",
+          "required": true,
+          "statusAtLinkTime": "passed"
+        }
+      ],
+      "smokeRefs": [
+        {
+          "id": "evidence:registry-quality-validator:smoke",
+          "kind": "evidence_packet",
+          "path": ".vibe/registry/evidence/registry-quality-validator-smoke.json",
+          "required": true,
+          "statusAtLinkTime": "passed"
+        }
+      ],
+      "domainNeutralityReview": "PASS DL-20A: core metadata is domain-neutral and contains no product/business vocabulary.",
+      "outputAuthority": "bounded_execution",
+      "normalRoute": [
+        "planning",
+        "build",
+        "verification"
+      ],
+      "linkedSkills": null,
+      "adapterRuntimeImplemented": false,
+      "nonPiHarnessSupport": "deferred_blocked"
+    },
+    {
+      "path": ".vibe/registry/core-agents/registry-reviewer.json",
+      "id": "registry-reviewer",
+      "artifactId": "registry-reviewer",
+      "type": "reviewer",
+      "status": "active",
+      "maturity": "core",
+      "classification": "core",
+      "registryScope": "core",
+      "allowDormant": null,
+      "hasNonLoadBearingRationale": false,
+      "hasDormantRationale": false,
+      "validatorRefs": [],
+      "fixerRefs": [],
+      "topLevelAgentLinks": [
+        {
+          "id": "registry-reviewer",
+          "required": true,
+          "rel": "registry_entry_for"
+        },
+        {
+          "id": "core-orchestrator",
+          "required": true,
+          "rel": "context_for"
+        }
+      ],
+      "evalRefs": [
+        {
+          "id": "evidence:registry-reviewer:eval",
+          "kind": "evidence_packet",
+          "path": ".vibe/registry/evidence/registry-reviewer-eval.json",
+          "required": true,
+          "statusAtLinkTime": "passed"
+        }
+      ],
+      "smokeRefs": [
+        {
+          "id": "evidence:registry-reviewer:smoke",
+          "kind": "evidence_packet",
+          "path": ".vibe/registry/evidence/registry-reviewer-smoke.json",
+          "required": true,
+          "statusAtLinkTime": "passed"
+        }
+      ],
+      "domainNeutralityReview": "PASS DL-20A: core metadata is domain-neutral and contains no product/business vocabulary.",
+      "outputAuthority": "bounded_execution",
+      "normalRoute": [
+        "planning",
+        "build",
+        "verification"
+      ],
+      "linkedSkills": null,
+      "adapterRuntimeImplemented": false,
+      "nonPiHarnessSupport": "deferred_blocked"
+    },
+    {
+      "path": "packages/registry/fixtures/valid/core-set/fixture-fixer.json",
+      "id": "fixture-fixer",
+      "artifactId": "fixture-fixer",
+      "type": "fixer",
+      "status": "active",
+      "maturity": "stable",
+      "classification": "core",
+      "registryScope": "core",
+      "allowDormant": null,
+      "hasNonLoadBearingRationale": false,
+      "hasDormantRationale": false,
+      "validatorRefs": [
+        {
+          "id": "fixture-validator",
+          "kind": "agent_registry_entry",
+          "required": true,
+          "rel": "verifies"
+        }
+      ],
+      "fixerRefs": [],
+      "topLevelAgentLinks": [
+        {
+          "id": "fixture-fixer",
+          "required": true,
+          "rel": "registry_entry_for"
+        },
+        {
+          "id": "fixture-orchestrator",
+          "required": true,
+          "rel": "context_for"
+        }
+      ],
+      "evalRefs": [
+        {
+          "id": "evidence:fixture-fixer:eval",
+          "kind": "evidence_packet",
+          "path": "packages/registry/fixtures/evidence/fixture-fixer-eval.json",
+          "required": true,
+          "statusAtLinkTime": "passed"
+        }
+      ],
+      "smokeRefs": [
+        {
+          "id": "evidence:fixture-fixer:smoke",
+          "kind": "evidence_packet",
+          "path": "packages/registry/fixtures/evidence/fixture-fixer-smoke.json",
+          "required": true,
+          "statusAtLinkTime": "passed"
+        }
+      ],
+      "domainNeutralityReview": "PASS DL-20A: fixture is domain-neutral.",
+      "outputAuthority": "bounded_execution",
+      "normalRoute": [
+        "planning",
+        "build",
+        "verification"
+      ],
+      "linkedSkills": null,
+      "adapterRuntimeImplemented": false,
+      "nonPiHarnessSupport": "deferred_blocked"
+    },
+    {
+      "path": "packages/registry/fixtures/valid/core-set/fixture-meta-advisor.json",
+      "id": "fixture-meta-advisor",
+      "artifactId": "fixture-meta-advisor",
+      "type": "meta",
+      "status": "active",
+      "maturity": "stable",
+      "classification": "core",
+      "registryScope": "core",
+      "allowDormant": null,
+      "hasNonLoadBearingRationale": false,
+      "hasDormantRationale": false,
+      "validatorRefs": [
+        {
+          "id": "fixture-validator",
+          "kind": "agent_registry_entry",
+          "required": true,
+          "rel": "verifies"
+        }
+      ],
+      "fixerRefs": [],
+      "topLevelAgentLinks": [
+        {
+          "id": "fixture-meta-advisor",
+          "required": true,
+          "rel": "registry_entry_for"
+        },
+        {
+          "id": "fixture-orchestrator",
+          "required": true,
+          "rel": "context_for"
+        }
+      ],
+      "evalRefs": [
+        {
+          "id": "evidence:fixture-meta-advisor:eval",
+          "kind": "evidence_packet",
+          "path": "packages/registry/fixtures/evidence/fixture-meta-advisor-eval.json",
+          "required": true,
+          "statusAtLinkTime": "passed"
+        }
+      ],
+      "smokeRefs": [
+        {
+          "id": "evidence:fixture-meta-advisor:smoke",
+          "kind": "evidence_packet",
+          "path": "packages/registry/fixtures/evidence/fixture-meta-advisor-smoke.json",
+          "required": true,
+          "statusAtLinkTime": "passed"
+        }
+      ],
+      "domainNeutralityReview": "PASS DL-20A: fixture is domain-neutral.",
+      "outputAuthority": "recommendation_only",
+      "normalRoute": [
+        "planning",
+        "build",
+        "verification"
+      ],
+      "linkedSkills": null,
+      "adapterRuntimeImplemented": false,
+      "nonPiHarnessSupport": "deferred_blocked"
+    },
+    {
+      "path": "packages/registry/fixtures/valid/core-set/fixture-orchestrator.json",
+      "id": "fixture-orchestrator",
+      "artifactId": "fixture-orchestrator",
+      "type": "orchestrator",
+      "status": "active",
+      "maturity": "stable",
+      "classification": "core",
+      "registryScope": "core",
+      "allowDormant": null,
+      "hasNonLoadBearingRationale": false,
+      "hasDormantRationale": false,
+      "validatorRefs": [
+        {
+          "id": "fixture-validator",
+          "kind": "agent_registry_entry",
+          "required": true,
+          "rel": "verifies"
+        }
+      ],
+      "fixerRefs": [
+        {
+          "id": "fixture-fixer",
+          "kind": "agent_registry_entry",
+          "required": true,
+          "rel": "implements"
+        }
+      ],
+      "topLevelAgentLinks": [
+        {
+          "id": "fixture-orchestrator",
+          "required": true,
+          "rel": "registry_entry_for"
+        },
+        {
+          "id": "fixture-fixer",
+          "required": true,
+          "rel": "context_for"
+        }
+      ],
+      "evalRefs": [
+        {
+          "id": "evidence:fixture-orchestrator:eval",
+          "kind": "evidence_packet",
+          "path": "packages/registry/fixtures/evidence/fixture-orchestrator-eval.json",
+          "required": true,
+          "statusAtLinkTime": "passed"
+        }
+      ],
+      "smokeRefs": [
+        {
+          "id": "evidence:fixture-orchestrator:smoke",
+          "kind": "evidence_packet",
+          "path": "packages/registry/fixtures/evidence/fixture-orchestrator-smoke.json",
+          "required": true,
+          "statusAtLinkTime": "passed"
+        }
+      ],
+      "domainNeutralityReview": "PASS DL-20A: fixture is domain-neutral.",
+      "outputAuthority": "bounded_execution",
+      "normalRoute": [
+        "planning",
+        "build",
+        "verification"
+      ],
+      "linkedSkills": null,
+      "adapterRuntimeImplemented": false,
+      "nonPiHarnessSupport": "deferred_blocked"
+    },
+    {
+      "path": "packages/registry/fixtures/valid/core-set/fixture-reviewer.json",
+      "id": "fixture-reviewer",
+      "artifactId": "fixture-reviewer",
+      "type": "reviewer",
+      "status": "active",
+      "maturity": "stable",
+      "classification": "core",
+      "registryScope": "core",
+      "allowDormant": null,
+      "hasNonLoadBearingRationale": false,
+      "hasDormantRationale": false,
+      "validatorRefs": [],
+      "fixerRefs": [],
+      "topLevelAgentLinks": [
+        {
+          "id": "fixture-reviewer",
+          "required": true,
+          "rel": "registry_entry_for"
+        },
+        {
+          "id": "fixture-orchestrator",
+          "required": true,
+          "rel": "context_for"
+        }
+      ],
+      "evalRefs": [
+        {
+          "id": "evidence:fixture-reviewer:eval",
+          "kind": "evidence_packet",
+          "path": "packages/registry/fixtures/evidence/fixture-reviewer-eval.json",
+          "required": true,
+          "statusAtLinkTime": "passed"
+        }
+      ],
+      "smokeRefs": [
+        {
+          "id": "evidence:fixture-reviewer:smoke",
+          "kind": "evidence_packet",
+          "path": "packages/registry/fixtures/evidence/fixture-reviewer-smoke.json",
+          "required": true,
+          "statusAtLinkTime": "passed"
+        }
+      ],
+      "domainNeutralityReview": "PASS DL-20A: fixture is domain-neutral.",
+      "outputAuthority": "bounded_execution",
+      "normalRoute": [
+        "planning",
+        "build",
+        "verification"
+      ],
+      "linkedSkills": null,
+      "adapterRuntimeImplemented": false,
+      "nonPiHarnessSupport": "deferred_blocked"
+    },
+    {
+      "path": "packages/registry/fixtures/valid/core-set/fixture-skill-adapter.json",
+      "id": "fixture-skill-adapter",
+      "artifactId": "fixture-skill-adapter",
+      "type": "skill_adapter",
+      "status": "active",
+      "maturity": "stable",
+      "classification": "core",
+      "registryScope": "core",
+      "allowDormant": null,
+      "hasNonLoadBearingRationale": false,
+      "hasDormantRationale": false,
+      "validatorRefs": [
+        {
+          "id": "fixture-validator",
+          "kind": "agent_registry_entry",
+          "required": true,
+          "rel": "verifies"
+        }
+      ],
+      "fixerRefs": [],
+      "topLevelAgentLinks": [
+        {
+          "id": "fixture-skill-adapter",
+          "required": true,
+          "rel": "registry_entry_for"
+        },
+        {
+          "id": "fixture-orchestrator",
+          "required": true,
+          "rel": "context_for"
+        }
+      ],
+      "evalRefs": [
+        {
+          "id": "evidence:fixture-skill-adapter:eval",
+          "kind": "evidence_packet",
+          "path": "packages/registry/fixtures/evidence/fixture-skill-adapter-eval.json",
+          "required": true,
+          "statusAtLinkTime": "passed"
+        }
+      ],
+      "smokeRefs": [
+        {
+          "id": "evidence:fixture-skill-adapter:smoke",
+          "kind": "evidence_packet",
+          "path": "packages/registry/fixtures/evidence/fixture-skill-adapter-smoke.json",
+          "required": true,
+          "statusAtLinkTime": "passed"
+        }
+      ],
+      "domainNeutralityReview": "PASS DL-20A: fixture is domain-neutral.",
+      "outputAuthority": "bounded_execution",
+      "normalRoute": [
+        "planning",
+        "build",
+        "verification"
+      ],
+      "linkedSkills": [
+        "brainstorm",
+        "grill-me",
+        "task",
+        "plan",
+        "build",
+        "ship"
+      ],
+      "adapterRuntimeImplemented": false,
+      "nonPiHarnessSupport": "deferred_blocked"
+    },
+    {
+      "path": "packages/registry/fixtures/valid/core-set/fixture-specialist.json",
+      "id": "fixture-specialist",
+      "artifactId": "fixture-specialist",
+      "type": "specialist",
+      "status": "active",
+      "maturity": "stable",
+      "classification": "core",
+      "registryScope": "core",
+      "allowDormant": null,
+      "hasNonLoadBearingRationale": false,
+      "hasDormantRationale": false,
+      "validatorRefs": [
+        {
+          "id": "fixture-validator",
+          "kind": "agent_registry_entry",
+          "required": true,
+          "rel": "verifies"
+        }
+      ],
+      "fixerRefs": [
+        {
+          "id": "fixture-fixer",
+          "kind": "agent_registry_entry",
+          "required": true,
+          "rel": "implements"
+        }
+      ],
+      "topLevelAgentLinks": [
+        {
+          "id": "fixture-specialist",
+          "required": true,
+          "rel": "registry_entry_for"
+        },
+        {
+          "id": "fixture-orchestrator",
+          "required": true,
+          "rel": "context_for"
+        }
+      ],
+      "evalRefs": [
+        {
+          "id": "evidence:fixture-specialist:eval",
+          "kind": "evidence_packet",
+          "path": "packages/registry/fixtures/evidence/fixture-specialist-eval.json",
+          "required": true,
+          "statusAtLinkTime": "passed"
+        }
+      ],
+      "smokeRefs": [
+        {
+          "id": "evidence:fixture-specialist:smoke",
+          "kind": "evidence_packet",
+          "path": "packages/registry/fixtures/evidence/fixture-specialist-smoke.json",
+          "required": true,
+          "statusAtLinkTime": "passed"
+        }
+      ],
+      "domainNeutralityReview": "PASS DL-20A: fixture is domain-neutral.",
+      "outputAuthority": "bounded_execution",
+      "normalRoute": [
+        "planning",
+        "build",
+        "verification"
+      ],
+      "linkedSkills": null,
+      "adapterRuntimeImplemented": false,
+      "nonPiHarnessSupport": "deferred_blocked"
+    },
+    {
+      "path": "packages/registry/fixtures/valid/core-set/fixture-validator.json",
+      "id": "fixture-validator",
+      "artifactId": "fixture-validator",
+      "type": "validator",
+      "status": "active",
+      "maturity": "stable",
+      "classification": "core",
+      "registryScope": "core",
+      "allowDormant": null,
+      "hasNonLoadBearingRationale": false,
+      "hasDormantRationale": false,
+      "validatorRefs": [
+        {
+          "id": "fixture-reviewer",
+          "kind": "agent_registry_entry",
+          "required": true,
+          "rel": "verifies"
+        }
+      ],
+      "fixerRefs": [],
+      "topLevelAgentLinks": [
+        {
+          "id": "fixture-validator",
+          "required": true,
+          "rel": "registry_entry_for"
+        },
+        {
+          "id": "fixture-orchestrator",
+          "required": true,
+          "rel": "context_for"
+        }
+      ],
+      "evalRefs": [
+        {
+          "id": "evidence:fixture-validator:eval",
+          "kind": "evidence_packet",
+          "path": "packages/registry/fixtures/evidence/fixture-validator-eval.json",
+          "required": true,
+          "statusAtLinkTime": "passed"
+        }
+      ],
+      "smokeRefs": [
+        {
+          "id": "evidence:fixture-validator:smoke",
+          "kind": "evidence_packet",
+          "path": "packages/registry/fixtures/evidence/fixture-validator-smoke.json",
+          "required": true,
+          "statusAtLinkTime": "passed"
+        }
+      ],
+      "domainNeutralityReview": "PASS DL-20A: fixture is domain-neutral.",
+      "outputAuthority": "bounded_execution",
+      "normalRoute": [
+        "planning",
+        "build",
+        "verification"
+      ],
+      "linkedSkills": null,
+      "adapterRuntimeImplemented": false,
+      "nonPiHarnessSupport": "deferred_blocked"
+    },
+    {
+      "path": "packages/registry/fixtures/valid/scoped/project-extension.json",
+      "id": "fixture-project-extension",
+      "artifactId": "fixture-project-extension",
+      "type": "specialist",
+      "status": "active",
+      "maturity": "experimental",
+      "classification": "project_extension",
+      "registryScope": "project_extension",
+      "allowDormant": null,
+      "hasNonLoadBearingRationale": false,
+      "hasDormantRationale": false,
+      "validatorRefs": [],
+      "fixerRefs": [],
+      "topLevelAgentLinks": [
+        {
+          "id": "fixture-project-extension",
+          "required": true,
+          "rel": "registry_entry_for"
+        }
+      ],
+      "evalRefs": [],
+      "smokeRefs": [
+        {}
+      ],
+      "domainNeutralityReview": "PASS DL-20A: extension fixture isolated.",
+      "outputAuthority": "bounded_execution",
+      "normalRoute": [
+        "planning",
+        "build",
+        "verification"
+      ],
+      "linkedSkills": null,
+      "adapterRuntimeImplemented": false,
+      "nonPiHarnessSupport": "deferred_blocked"
+    },
+    {
+      "path": "packages/registry/fixtures/valid/scoped/sample-demo.json",
+      "id": "fixture-sample-demo",
+      "artifactId": "fixture-sample-demo",
+      "type": "specialist",
+      "status": "active",
+      "maturity": "experimental",
+      "classification": "sample_demo",
+      "registryScope": "sample_demo",
+      "allowDormant": null,
+      "hasNonLoadBearingRationale": false,
+      "hasDormantRationale": false,
+      "validatorRefs": [],
+      "fixerRefs": [],
+      "topLevelAgentLinks": [
+        {
+          "id": "fixture-sample-demo",
+          "required": true,
+          "rel": "registry_entry_for"
+        }
+      ],
+      "evalRefs": [],
+      "smokeRefs": [
+        {}
+      ],
+      "domainNeutralityReview": "PASS DL-20A: sample fixture isolated.",
+      "outputAuthority": "bounded_execution",
+      "normalRoute": [
+        "planning",
+        "build",
+        "verification"
+      ],
+      "linkedSkills": null,
+      "adapterRuntimeImplemented": false,
+      "nonPiHarnessSupport": "deferred_blocked"
+    }
+  ],
+  "evidence": [
+    {
+      "path": ".vibe/registry/evidence/core-orchestrator-eval.json",
+      "artifactKind": "evidence_packet",
+      "artifactId": "evidence:core-orchestrator:eval",
+      "status": "passed",
+      "result": "pass",
+      "layer": "ai_eval",
+      "evidenceClass": "deterministic",
+      "agentId": "core-orchestrator",
+      "agentVersion": "1.0.0",
+      "evidenceType": "eval",
+      "subjectRefs": [
+        {
+          "kind": "agent_registry_entry",
+          "id": "core-orchestrator",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": ".vibe/registry/core-agents/core-orchestrator.json"
+        }
+      ],
+      "links": [
+        {
+          "rel": "evidence_for",
+          "kind": "agent_registry_entry",
+          "id": "core-orchestrator",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": ".vibe/registry/core-agents/core-orchestrator.json"
+        }
+      ]
+    },
+    {
+      "path": ".vibe/registry/evidence/core-orchestrator-smoke.json",
+      "artifactKind": "evidence_packet",
+      "artifactId": "evidence:core-orchestrator:smoke",
+      "status": "passed",
+      "result": "pass",
+      "layer": "integration",
+      "evidenceClass": "deterministic",
+      "agentId": "core-orchestrator",
+      "agentVersion": "1.0.0",
+      "evidenceType": "smoke",
+      "subjectRefs": [
+        {
+          "kind": "agent_registry_entry",
+          "id": "core-orchestrator",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": ".vibe/registry/core-agents/core-orchestrator.json"
+        }
+      ],
+      "links": [
+        {
+          "rel": "evidence_for",
+          "kind": "agent_registry_entry",
+          "id": "core-orchestrator",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": ".vibe/registry/core-agents/core-orchestrator.json"
+        }
+      ]
+    },
+    {
+      "path": ".vibe/registry/evidence/core-specialist-eval.json",
+      "artifactKind": "evidence_packet",
+      "artifactId": "evidence:core-specialist:eval",
+      "status": "passed",
+      "result": "pass",
+      "layer": "ai_eval",
+      "evidenceClass": "deterministic",
+      "agentId": "core-specialist",
+      "agentVersion": "1.0.0",
+      "evidenceType": "eval",
+      "subjectRefs": [
+        {
+          "kind": "agent_registry_entry",
+          "id": "core-specialist",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": ".vibe/registry/core-agents/core-specialist.json"
+        }
+      ],
+      "links": [
+        {
+          "rel": "evidence_for",
+          "kind": "agent_registry_entry",
+          "id": "core-specialist",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": ".vibe/registry/core-agents/core-specialist.json"
+        }
+      ]
+    },
+    {
+      "path": ".vibe/registry/evidence/core-specialist-smoke.json",
+      "artifactKind": "evidence_packet",
+      "artifactId": "evidence:core-specialist:smoke",
+      "status": "passed",
+      "result": "pass",
+      "layer": "integration",
+      "evidenceClass": "deterministic",
+      "agentId": "core-specialist",
+      "agentVersion": "1.0.0",
+      "evidenceType": "smoke",
+      "subjectRefs": [
+        {
+          "kind": "agent_registry_entry",
+          "id": "core-specialist",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": ".vibe/registry/core-agents/core-specialist.json"
+        }
+      ],
+      "links": [
+        {
+          "rel": "evidence_for",
+          "kind": "agent_registry_entry",
+          "id": "core-specialist",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": ".vibe/registry/core-agents/core-specialist.json"
+        }
+      ]
+    },
+    {
+      "path": ".vibe/registry/evidence/locked-skill-adapter-eval.json",
+      "artifactKind": "evidence_packet",
+      "artifactId": "evidence:locked-skill-adapter:eval",
+      "status": "passed",
+      "result": "pass",
+      "layer": "ai_eval",
+      "evidenceClass": "deterministic",
+      "agentId": "locked-skill-adapter",
+      "agentVersion": "1.0.0",
+      "evidenceType": "eval",
+      "subjectRefs": [
+        {
+          "kind": "agent_registry_entry",
+          "id": "locked-skill-adapter",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": ".vibe/registry/core-agents/locked-skill-adapter.json"
+        }
+      ],
+      "links": [
+        {
+          "rel": "evidence_for",
+          "kind": "agent_registry_entry",
+          "id": "locked-skill-adapter",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": ".vibe/registry/core-agents/locked-skill-adapter.json"
+        }
+      ]
+    },
+    {
+      "path": ".vibe/registry/evidence/locked-skill-adapter-smoke.json",
+      "artifactKind": "evidence_packet",
+      "artifactId": "evidence:locked-skill-adapter:smoke",
+      "status": "passed",
+      "result": "pass",
+      "layer": "integration",
+      "evidenceClass": "deterministic",
+      "agentId": "locked-skill-adapter",
+      "agentVersion": "1.0.0",
+      "evidenceType": "smoke",
+      "subjectRefs": [
+        {
+          "kind": "agent_registry_entry",
+          "id": "locked-skill-adapter",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": ".vibe/registry/core-agents/locked-skill-adapter.json"
+        }
+      ],
+      "links": [
+        {
+          "rel": "evidence_for",
+          "kind": "agent_registry_entry",
+          "id": "locked-skill-adapter",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": ".vibe/registry/core-agents/locked-skill-adapter.json"
+        }
+      ]
+    },
+    {
+      "path": ".vibe/registry/evidence/registry-fixer-eval.json",
+      "artifactKind": "evidence_packet",
+      "artifactId": "evidence:registry-fixer:eval",
+      "status": "passed",
+      "result": "pass",
+      "layer": "ai_eval",
+      "evidenceClass": "deterministic",
+      "agentId": "registry-fixer",
+      "agentVersion": "1.0.0",
+      "evidenceType": "eval",
+      "subjectRefs": [
+        {
+          "kind": "agent_registry_entry",
+          "id": "registry-fixer",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": ".vibe/registry/core-agents/registry-fixer.json"
+        }
+      ],
+      "links": [
+        {
+          "rel": "evidence_for",
+          "kind": "agent_registry_entry",
+          "id": "registry-fixer",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": ".vibe/registry/core-agents/registry-fixer.json"
+        }
+      ]
+    },
+    {
+      "path": ".vibe/registry/evidence/registry-fixer-smoke.json",
+      "artifactKind": "evidence_packet",
+      "artifactId": "evidence:registry-fixer:smoke",
+      "status": "passed",
+      "result": "pass",
+      "layer": "integration",
+      "evidenceClass": "deterministic",
+      "agentId": "registry-fixer",
+      "agentVersion": "1.0.0",
+      "evidenceType": "smoke",
+      "subjectRefs": [
+        {
+          "kind": "agent_registry_entry",
+          "id": "registry-fixer",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": ".vibe/registry/core-agents/registry-fixer.json"
+        }
+      ],
+      "links": [
+        {
+          "rel": "evidence_for",
+          "kind": "agent_registry_entry",
+          "id": "registry-fixer",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": ".vibe/registry/core-agents/registry-fixer.json"
+        }
+      ]
+    },
+    {
+      "path": ".vibe/registry/evidence/registry-meta-advisor-eval.json",
+      "artifactKind": "evidence_packet",
+      "artifactId": "evidence:registry-meta-advisor:eval",
+      "status": "passed",
+      "result": "pass",
+      "layer": "ai_eval",
+      "evidenceClass": "deterministic",
+      "agentId": "registry-meta-advisor",
+      "agentVersion": "1.0.0",
+      "evidenceType": "eval",
+      "subjectRefs": [
+        {
+          "kind": "agent_registry_entry",
+          "id": "registry-meta-advisor",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": ".vibe/registry/core-agents/registry-meta-advisor.json"
+        }
+      ],
+      "links": [
+        {
+          "rel": "evidence_for",
+          "kind": "agent_registry_entry",
+          "id": "registry-meta-advisor",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": ".vibe/registry/core-agents/registry-meta-advisor.json"
+        }
+      ]
+    },
+    {
+      "path": ".vibe/registry/evidence/registry-meta-advisor-smoke.json",
+      "artifactKind": "evidence_packet",
+      "artifactId": "evidence:registry-meta-advisor:smoke",
+      "status": "passed",
+      "result": "pass",
+      "layer": "integration",
+      "evidenceClass": "deterministic",
+      "agentId": "registry-meta-advisor",
+      "agentVersion": "1.0.0",
+      "evidenceType": "smoke",
+      "subjectRefs": [
+        {
+          "kind": "agent_registry_entry",
+          "id": "registry-meta-advisor",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": ".vibe/registry/core-agents/registry-meta-advisor.json"
+        }
+      ],
+      "links": [
+        {
+          "rel": "evidence_for",
+          "kind": "agent_registry_entry",
+          "id": "registry-meta-advisor",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": ".vibe/registry/core-agents/registry-meta-advisor.json"
+        }
+      ]
+    },
+    {
+      "path": ".vibe/registry/evidence/registry-quality-validator-eval.json",
+      "artifactKind": "evidence_packet",
+      "artifactId": "evidence:registry-quality-validator:eval",
+      "status": "passed",
+      "result": "pass",
+      "layer": "ai_eval",
+      "evidenceClass": "deterministic",
+      "agentId": "registry-quality-validator",
+      "agentVersion": "1.0.0",
+      "evidenceType": "eval",
+      "subjectRefs": [
+        {
+          "kind": "agent_registry_entry",
+          "id": "registry-quality-validator",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": ".vibe/registry/core-agents/registry-quality-validator.json"
+        }
+      ],
+      "links": [
+        {
+          "rel": "evidence_for",
+          "kind": "agent_registry_entry",
+          "id": "registry-quality-validator",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": ".vibe/registry/core-agents/registry-quality-validator.json"
+        }
+      ]
+    },
+    {
+      "path": ".vibe/registry/evidence/registry-quality-validator-smoke.json",
+      "artifactKind": "evidence_packet",
+      "artifactId": "evidence:registry-quality-validator:smoke",
+      "status": "passed",
+      "result": "pass",
+      "layer": "integration",
+      "evidenceClass": "deterministic",
+      "agentId": "registry-quality-validator",
+      "agentVersion": "1.0.0",
+      "evidenceType": "smoke",
+      "subjectRefs": [
+        {
+          "kind": "agent_registry_entry",
+          "id": "registry-quality-validator",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": ".vibe/registry/core-agents/registry-quality-validator.json"
+        }
+      ],
+      "links": [
+        {
+          "rel": "evidence_for",
+          "kind": "agent_registry_entry",
+          "id": "registry-quality-validator",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": ".vibe/registry/core-agents/registry-quality-validator.json"
+        }
+      ]
+    },
+    {
+      "path": ".vibe/registry/evidence/registry-reviewer-eval.json",
+      "artifactKind": "evidence_packet",
+      "artifactId": "evidence:registry-reviewer:eval",
+      "status": "passed",
+      "result": "pass",
+      "layer": "ai_eval",
+      "evidenceClass": "deterministic",
+      "agentId": "registry-reviewer",
+      "agentVersion": "1.0.0",
+      "evidenceType": "eval",
+      "subjectRefs": [
+        {
+          "kind": "agent_registry_entry",
+          "id": "registry-reviewer",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": ".vibe/registry/core-agents/registry-reviewer.json"
+        }
+      ],
+      "links": [
+        {
+          "rel": "evidence_for",
+          "kind": "agent_registry_entry",
+          "id": "registry-reviewer",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": ".vibe/registry/core-agents/registry-reviewer.json"
+        }
+      ]
+    },
+    {
+      "path": ".vibe/registry/evidence/registry-reviewer-smoke.json",
+      "artifactKind": "evidence_packet",
+      "artifactId": "evidence:registry-reviewer:smoke",
+      "status": "passed",
+      "result": "pass",
+      "layer": "integration",
+      "evidenceClass": "deterministic",
+      "agentId": "registry-reviewer",
+      "agentVersion": "1.0.0",
+      "evidenceType": "smoke",
+      "subjectRefs": [
+        {
+          "kind": "agent_registry_entry",
+          "id": "registry-reviewer",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": ".vibe/registry/core-agents/registry-reviewer.json"
+        }
+      ],
+      "links": [
+        {
+          "rel": "evidence_for",
+          "kind": "agent_registry_entry",
+          "id": "registry-reviewer",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": ".vibe/registry/core-agents/registry-reviewer.json"
+        }
+      ]
+    },
+    {
+      "path": "packages/registry/fixtures/evidence/fixture-fixer-eval.json",
+      "artifactKind": "evidence_packet",
+      "artifactId": "evidence:fixture-fixer:eval",
+      "status": "passed",
+      "result": "pass",
+      "layer": "ai_eval",
+      "evidenceClass": "deterministic",
+      "agentId": "fixture-fixer",
+      "agentVersion": "1.0.0",
+      "evidenceType": "eval",
+      "subjectRefs": [
+        {
+          "kind": "agent_registry_entry",
+          "id": "fixture-fixer",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-fixer.json"
+        }
+      ],
+      "links": [
+        {
+          "rel": "evidence_for",
+          "kind": "agent_registry_entry",
+          "id": "fixture-fixer",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-fixer.json"
+        }
+      ]
+    },
+    {
+      "path": "packages/registry/fixtures/evidence/fixture-fixer-smoke.json",
+      "artifactKind": "evidence_packet",
+      "artifactId": "evidence:fixture-fixer:smoke",
+      "status": "passed",
+      "result": "pass",
+      "layer": "integration",
+      "evidenceClass": "deterministic",
+      "agentId": "fixture-fixer",
+      "agentVersion": "1.0.0",
+      "evidenceType": "smoke",
+      "subjectRefs": [
+        {
+          "kind": "agent_registry_entry",
+          "id": "fixture-fixer",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-fixer.json"
+        }
+      ],
+      "links": [
+        {
+          "rel": "evidence_for",
+          "kind": "agent_registry_entry",
+          "id": "fixture-fixer",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-fixer.json"
+        }
+      ]
+    },
+    {
+      "path": "packages/registry/fixtures/evidence/fixture-meta-advisor-eval.json",
+      "artifactKind": "evidence_packet",
+      "artifactId": "evidence:fixture-meta-advisor:eval",
+      "status": "passed",
+      "result": "pass",
+      "layer": "ai_eval",
+      "evidenceClass": "deterministic",
+      "agentId": "fixture-meta-advisor",
+      "agentVersion": "1.0.0",
+      "evidenceType": "eval",
+      "subjectRefs": [
+        {
+          "kind": "agent_registry_entry",
+          "id": "fixture-meta-advisor",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-meta-advisor.json"
+        }
+      ],
+      "links": [
+        {
+          "rel": "evidence_for",
+          "kind": "agent_registry_entry",
+          "id": "fixture-meta-advisor",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-meta-advisor.json"
+        }
+      ]
+    },
+    {
+      "path": "packages/registry/fixtures/evidence/fixture-meta-advisor-smoke.json",
+      "artifactKind": "evidence_packet",
+      "artifactId": "evidence:fixture-meta-advisor:smoke",
+      "status": "passed",
+      "result": "pass",
+      "layer": "integration",
+      "evidenceClass": "deterministic",
+      "agentId": "fixture-meta-advisor",
+      "agentVersion": "1.0.0",
+      "evidenceType": "smoke",
+      "subjectRefs": [
+        {
+          "kind": "agent_registry_entry",
+          "id": "fixture-meta-advisor",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-meta-advisor.json"
+        }
+      ],
+      "links": [
+        {
+          "rel": "evidence_for",
+          "kind": "agent_registry_entry",
+          "id": "fixture-meta-advisor",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-meta-advisor.json"
+        }
+      ]
+    },
+    {
+      "path": "packages/registry/fixtures/evidence/fixture-orchestrator-eval.json",
+      "artifactKind": "evidence_packet",
+      "artifactId": "evidence:fixture-orchestrator:eval",
+      "status": "passed",
+      "result": "pass",
+      "layer": "ai_eval",
+      "evidenceClass": "deterministic",
+      "agentId": "fixture-orchestrator",
+      "agentVersion": "1.0.0",
+      "evidenceType": "eval",
+      "subjectRefs": [
+        {
+          "kind": "agent_registry_entry",
+          "id": "fixture-orchestrator",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-orchestrator.json"
+        }
+      ],
+      "links": [
+        {
+          "rel": "evidence_for",
+          "kind": "agent_registry_entry",
+          "id": "fixture-orchestrator",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-orchestrator.json"
+        }
+      ]
+    },
+    {
+      "path": "packages/registry/fixtures/evidence/fixture-orchestrator-smoke.json",
+      "artifactKind": "evidence_packet",
+      "artifactId": "evidence:fixture-orchestrator:smoke",
+      "status": "passed",
+      "result": "pass",
+      "layer": "integration",
+      "evidenceClass": "deterministic",
+      "agentId": "fixture-orchestrator",
+      "agentVersion": "1.0.0",
+      "evidenceType": "smoke",
+      "subjectRefs": [
+        {
+          "kind": "agent_registry_entry",
+          "id": "fixture-orchestrator",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-orchestrator.json"
+        }
+      ],
+      "links": [
+        {
+          "rel": "evidence_for",
+          "kind": "agent_registry_entry",
+          "id": "fixture-orchestrator",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-orchestrator.json"
+        }
+      ]
+    },
+    {
+      "path": "packages/registry/fixtures/evidence/fixture-reviewer-eval.json",
+      "artifactKind": "evidence_packet",
+      "artifactId": "evidence:fixture-reviewer:eval",
+      "status": "passed",
+      "result": "pass",
+      "layer": "ai_eval",
+      "evidenceClass": "deterministic",
+      "agentId": "fixture-reviewer",
+      "agentVersion": "1.0.0",
+      "evidenceType": "eval",
+      "subjectRefs": [
+        {
+          "kind": "agent_registry_entry",
+          "id": "fixture-reviewer",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-reviewer.json"
+        }
+      ],
+      "links": [
+        {
+          "rel": "evidence_for",
+          "kind": "agent_registry_entry",
+          "id": "fixture-reviewer",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-reviewer.json"
+        }
+      ]
+    },
+    {
+      "path": "packages/registry/fixtures/evidence/fixture-reviewer-smoke.json",
+      "artifactKind": "evidence_packet",
+      "artifactId": "evidence:fixture-reviewer:smoke",
+      "status": "passed",
+      "result": "pass",
+      "layer": "integration",
+      "evidenceClass": "deterministic",
+      "agentId": "fixture-reviewer",
+      "agentVersion": "1.0.0",
+      "evidenceType": "smoke",
+      "subjectRefs": [
+        {
+          "kind": "agent_registry_entry",
+          "id": "fixture-reviewer",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-reviewer.json"
+        }
+      ],
+      "links": [
+        {
+          "rel": "evidence_for",
+          "kind": "agent_registry_entry",
+          "id": "fixture-reviewer",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-reviewer.json"
+        }
+      ]
+    },
+    {
+      "path": "packages/registry/fixtures/evidence/fixture-skill-adapter-eval.json",
+      "artifactKind": "evidence_packet",
+      "artifactId": "evidence:fixture-skill-adapter:eval",
+      "status": "passed",
+      "result": "pass",
+      "layer": "ai_eval",
+      "evidenceClass": "deterministic",
+      "agentId": "fixture-skill-adapter",
+      "agentVersion": "1.0.0",
+      "evidenceType": "eval",
+      "subjectRefs": [
+        {
+          "kind": "agent_registry_entry",
+          "id": "fixture-skill-adapter",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-skill-adapter.json"
+        }
+      ],
+      "links": [
+        {
+          "rel": "evidence_for",
+          "kind": "agent_registry_entry",
+          "id": "fixture-skill-adapter",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-skill-adapter.json"
+        }
+      ]
+    },
+    {
+      "path": "packages/registry/fixtures/evidence/fixture-skill-adapter-smoke.json",
+      "artifactKind": "evidence_packet",
+      "artifactId": "evidence:fixture-skill-adapter:smoke",
+      "status": "passed",
+      "result": "pass",
+      "layer": "integration",
+      "evidenceClass": "deterministic",
+      "agentId": "fixture-skill-adapter",
+      "agentVersion": "1.0.0",
+      "evidenceType": "smoke",
+      "subjectRefs": [
+        {
+          "kind": "agent_registry_entry",
+          "id": "fixture-skill-adapter",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-skill-adapter.json"
+        }
+      ],
+      "links": [
+        {
+          "rel": "evidence_for",
+          "kind": "agent_registry_entry",
+          "id": "fixture-skill-adapter",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-skill-adapter.json"
+        }
+      ]
+    },
+    {
+      "path": "packages/registry/fixtures/evidence/fixture-specialist-eval.json",
+      "artifactKind": "evidence_packet",
+      "artifactId": "evidence:fixture-specialist:eval",
+      "status": "passed",
+      "result": "pass",
+      "layer": "ai_eval",
+      "evidenceClass": "deterministic",
+      "agentId": "fixture-specialist",
+      "agentVersion": "1.0.0",
+      "evidenceType": "eval",
+      "subjectRefs": [
+        {
+          "kind": "agent_registry_entry",
+          "id": "fixture-specialist",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-specialist.json"
+        }
+      ],
+      "links": [
+        {
+          "rel": "evidence_for",
+          "kind": "agent_registry_entry",
+          "id": "fixture-specialist",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-specialist.json"
+        }
+      ]
+    },
+    {
+      "path": "packages/registry/fixtures/evidence/fixture-specialist-smoke.json",
+      "artifactKind": "evidence_packet",
+      "artifactId": "evidence:fixture-specialist:smoke",
+      "status": "passed",
+      "result": "pass",
+      "layer": "integration",
+      "evidenceClass": "deterministic",
+      "agentId": "fixture-specialist",
+      "agentVersion": "1.0.0",
+      "evidenceType": "smoke",
+      "subjectRefs": [
+        {
+          "kind": "agent_registry_entry",
+          "id": "fixture-specialist",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-specialist.json"
+        }
+      ],
+      "links": [
+        {
+          "rel": "evidence_for",
+          "kind": "agent_registry_entry",
+          "id": "fixture-specialist",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-specialist.json"
+        }
+      ]
+    },
+    {
+      "path": "packages/registry/fixtures/evidence/fixture-validator-eval.json",
+      "artifactKind": "evidence_packet",
+      "artifactId": "evidence:fixture-validator:eval",
+      "status": "passed",
+      "result": "pass",
+      "layer": "ai_eval",
+      "evidenceClass": "deterministic",
+      "agentId": "fixture-validator",
+      "agentVersion": "1.0.0",
+      "evidenceType": "eval",
+      "subjectRefs": [
+        {
+          "kind": "agent_registry_entry",
+          "id": "fixture-validator",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-validator.json"
+        }
+      ],
+      "links": [
+        {
+          "rel": "evidence_for",
+          "kind": "agent_registry_entry",
+          "id": "fixture-validator",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-validator.json"
+        }
+      ]
+    },
+    {
+      "path": "packages/registry/fixtures/evidence/fixture-validator-smoke.json",
+      "artifactKind": "evidence_packet",
+      "artifactId": "evidence:fixture-validator:smoke",
+      "status": "passed",
+      "result": "pass",
+      "layer": "integration",
+      "evidenceClass": "deterministic",
+      "agentId": "fixture-validator",
+      "agentVersion": "1.0.0",
+      "evidenceType": "smoke",
+      "subjectRefs": [
+        {
+          "kind": "agent_registry_entry",
+          "id": "fixture-validator",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-validator.json"
+        }
+      ],
+      "links": [
+        {
+          "rel": "evidence_for",
+          "kind": "agent_registry_entry",
+          "id": "fixture-validator",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-validator.json"
+        }
+      ]
+    },
+    {
+      "path": ".vibe/work/I-04-agent-registry-validation/residual-fix-evidence/cases/bare-allow-dormant/entries/fixture-specialist.json",
+      "artifactKind": "agent_registry_entry",
+      "artifactId": "fixture-specialist",
+      "status": "active",
+      "agentId": null,
+      "agentVersion": null,
+      "evidenceType": null,
+      "subjectRefs": [],
+      "links": [
+        {
+          "rel": "registry_entry_for",
+          "kind": "agent_registry_entry",
+          "id": "fixture-specialist",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "self.json"
+        }
+      ]
+    },
+    {
+      "path": ".vibe/work/I-04-agent-registry-validation/residual-fix-evidence/cases/contradictory-active-dormant/entries/fixture-specialist.json",
+      "artifactKind": "agent_registry_entry",
+      "artifactId": "fixture-specialist",
+      "status": "active",
+      "agentId": null,
+      "agentVersion": null,
+      "evidenceType": null,
+      "subjectRefs": [],
+      "links": [
+        {
+          "rel": "registry_entry_for",
+          "kind": "agent_registry_entry",
+          "id": "fixture-specialist",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "self.json"
+        }
+      ]
+    },
+    {
+      "path": ".vibe/work/I-04-agent-registry-validation/residual-fix-evidence/cases/incomplete-rationale/entries/fixture-specialist.json",
+      "artifactKind": "agent_registry_entry",
+      "artifactId": "fixture-specialist",
+      "status": "active",
+      "agentId": null,
+      "agentVersion": null,
+      "evidenceType": null,
+      "subjectRefs": [],
+      "links": [
+        {
+          "rel": "registry_entry_for",
+          "kind": "agent_registry_entry",
+          "id": "fixture-specialist",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "self.json"
+        }
+      ]
+    },
+    {
+      "path": ".vibe/work/I-04-agent-registry-validation/residual-fix-evidence/cases/missing-independent-validator/entries/fixture-fixer.json",
+      "artifactKind": "agent_registry_entry",
+      "artifactId": "fixture-fixer",
+      "status": "active",
+      "agentId": null,
+      "agentVersion": null,
+      "evidenceType": null,
+      "subjectRefs": [],
+      "links": [
+        {
+          "rel": "registry_entry_for",
+          "kind": "agent_registry_entry",
+          "id": "fixture-fixer",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-fixer.json"
+        },
+        {
+          "rel": "context_for",
+          "kind": "agent_registry_entry",
+          "id": "fixture-orchestrator",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-orchestrator.json"
+        }
+      ]
+    },
+    {
+      "path": ".vibe/work/I-04-agent-registry-validation/residual-fix-evidence/cases/missing-independent-validator/entries/fixture-meta-advisor.json",
+      "artifactKind": "agent_registry_entry",
+      "artifactId": "fixture-meta-advisor",
+      "status": "active",
+      "agentId": null,
+      "agentVersion": null,
+      "evidenceType": null,
+      "subjectRefs": [],
+      "links": [
+        {
+          "rel": "registry_entry_for",
+          "kind": "agent_registry_entry",
+          "id": "fixture-meta-advisor",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-meta-advisor.json"
+        },
+        {
+          "rel": "context_for",
+          "kind": "agent_registry_entry",
+          "id": "fixture-orchestrator",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-orchestrator.json"
+        }
+      ]
+    },
+    {
+      "path": ".vibe/work/I-04-agent-registry-validation/residual-fix-evidence/cases/missing-independent-validator/entries/fixture-orchestrator.json",
+      "artifactKind": "agent_registry_entry",
+      "artifactId": "fixture-orchestrator",
+      "status": "active",
+      "agentId": null,
+      "agentVersion": null,
+      "evidenceType": null,
+      "subjectRefs": [],
+      "links": [
+        {
+          "rel": "registry_entry_for",
+          "kind": "agent_registry_entry",
+          "id": "fixture-orchestrator",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-orchestrator.json"
+        },
+        {
+          "rel": "context_for",
+          "kind": "agent_registry_entry",
+          "id": "fixture-fixer",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-fixer.json"
+        }
+      ]
+    },
+    {
+      "path": ".vibe/work/I-04-agent-registry-validation/residual-fix-evidence/cases/missing-independent-validator/entries/fixture-reviewer.json",
+      "artifactKind": "agent_registry_entry",
+      "artifactId": "fixture-reviewer",
+      "status": "active",
+      "agentId": null,
+      "agentVersion": null,
+      "evidenceType": null,
+      "subjectRefs": [],
+      "links": [
+        {
+          "rel": "registry_entry_for",
+          "kind": "agent_registry_entry",
+          "id": "fixture-reviewer",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-reviewer.json"
+        },
+        {
+          "rel": "context_for",
+          "kind": "agent_registry_entry",
+          "id": "fixture-orchestrator",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-orchestrator.json"
+        }
+      ]
+    },
+    {
+      "path": ".vibe/work/I-04-agent-registry-validation/residual-fix-evidence/cases/missing-independent-validator/entries/fixture-skill-adapter.json",
+      "artifactKind": "agent_registry_entry",
+      "artifactId": "fixture-skill-adapter",
+      "status": "active",
+      "agentId": null,
+      "agentVersion": null,
+      "evidenceType": null,
+      "subjectRefs": [],
+      "links": [
+        {
+          "rel": "registry_entry_for",
+          "kind": "agent_registry_entry",
+          "id": "fixture-skill-adapter",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-skill-adapter.json"
+        },
+        {
+          "rel": "context_for",
+          "kind": "agent_registry_entry",
+          "id": "fixture-orchestrator",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-orchestrator.json"
+        }
+      ]
+    },
+    {
+      "path": ".vibe/work/I-04-agent-registry-validation/residual-fix-evidence/cases/missing-independent-validator/entries/fixture-specialist.json",
+      "artifactKind": "agent_registry_entry",
+      "artifactId": "fixture-specialist",
+      "status": "active",
+      "agentId": null,
+      "agentVersion": null,
+      "evidenceType": null,
+      "subjectRefs": [],
+      "links": [
+        {
+          "rel": "registry_entry_for",
+          "kind": "agent_registry_entry",
+          "id": "fixture-specialist",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-specialist.json"
+        },
+        {
+          "rel": "context_for",
+          "kind": "agent_registry_entry",
+          "id": "fixture-orchestrator",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-orchestrator.json"
+        }
+      ]
+    },
+    {
+      "path": ".vibe/work/I-04-agent-registry-validation/residual-fix-evidence/cases/missing-independent-validator/entries/fixture-validator.json",
+      "artifactKind": "agent_registry_entry",
+      "artifactId": "fixture-validator",
+      "status": "active",
+      "agentId": null,
+      "agentVersion": null,
+      "evidenceType": null,
+      "subjectRefs": [],
+      "links": [
+        {
+          "rel": "registry_entry_for",
+          "kind": "agent_registry_entry",
+          "id": "fixture-validator",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-validator.json"
+        },
+        {
+          "rel": "context_for",
+          "kind": "agent_registry_entry",
+          "id": "fixture-orchestrator",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-orchestrator.json"
+        }
+      ]
+    },
+    {
+      "path": ".vibe/work/I-04-agent-registry-validation/residual-fix-evidence/cases/missing-validator-target/entries/fixture-fixer.json",
+      "artifactKind": "agent_registry_entry",
+      "artifactId": "fixture-fixer",
+      "status": "active",
+      "agentId": null,
+      "agentVersion": null,
+      "evidenceType": null,
+      "subjectRefs": [],
+      "links": [
+        {
+          "rel": "registry_entry_for",
+          "kind": "agent_registry_entry",
+          "id": "fixture-fixer",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-fixer.json"
+        },
+        {
+          "rel": "context_for",
+          "kind": "agent_registry_entry",
+          "id": "fixture-orchestrator",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-orchestrator.json"
+        }
+      ]
+    },
+    {
+      "path": ".vibe/work/I-04-agent-registry-validation/residual-fix-evidence/cases/missing-validator-target/entries/fixture-meta-advisor.json",
+      "artifactKind": "agent_registry_entry",
+      "artifactId": "fixture-meta-advisor",
+      "status": "active",
+      "agentId": null,
+      "agentVersion": null,
+      "evidenceType": null,
+      "subjectRefs": [],
+      "links": [
+        {
+          "rel": "registry_entry_for",
+          "kind": "agent_registry_entry",
+          "id": "fixture-meta-advisor",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-meta-advisor.json"
+        },
+        {
+          "rel": "context_for",
+          "kind": "agent_registry_entry",
+          "id": "fixture-orchestrator",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-orchestrator.json"
+        }
+      ]
+    },
+    {
+      "path": ".vibe/work/I-04-agent-registry-validation/residual-fix-evidence/cases/missing-validator-target/entries/fixture-orchestrator.json",
+      "artifactKind": "agent_registry_entry",
+      "artifactId": "fixture-orchestrator",
+      "status": "active",
+      "agentId": null,
+      "agentVersion": null,
+      "evidenceType": null,
+      "subjectRefs": [],
+      "links": [
+        {
+          "rel": "registry_entry_for",
+          "kind": "agent_registry_entry",
+          "id": "fixture-orchestrator",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-orchestrator.json"
+        },
+        {
+          "rel": "context_for",
+          "kind": "agent_registry_entry",
+          "id": "fixture-fixer",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-fixer.json"
+        }
+      ]
+    },
+    {
+      "path": ".vibe/work/I-04-agent-registry-validation/residual-fix-evidence/cases/missing-validator-target/entries/fixture-reviewer.json",
+      "artifactKind": "agent_registry_entry",
+      "artifactId": "fixture-reviewer",
+      "status": "active",
+      "agentId": null,
+      "agentVersion": null,
+      "evidenceType": null,
+      "subjectRefs": [],
+      "links": [
+        {
+          "rel": "registry_entry_for",
+          "kind": "agent_registry_entry",
+          "id": "fixture-reviewer",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-reviewer.json"
+        },
+        {
+          "rel": "context_for",
+          "kind": "agent_registry_entry",
+          "id": "fixture-orchestrator",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-orchestrator.json"
+        }
+      ]
+    },
+    {
+      "path": ".vibe/work/I-04-agent-registry-validation/residual-fix-evidence/cases/missing-validator-target/entries/fixture-skill-adapter.json",
+      "artifactKind": "agent_registry_entry",
+      "artifactId": "fixture-skill-adapter",
+      "status": "active",
+      "agentId": null,
+      "agentVersion": null,
+      "evidenceType": null,
+      "subjectRefs": [],
+      "links": [
+        {
+          "rel": "registry_entry_for",
+          "kind": "agent_registry_entry",
+          "id": "fixture-skill-adapter",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-skill-adapter.json"
+        },
+        {
+          "rel": "context_for",
+          "kind": "agent_registry_entry",
+          "id": "fixture-orchestrator",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-orchestrator.json"
+        }
+      ]
+    },
+    {
+      "path": ".vibe/work/I-04-agent-registry-validation/residual-fix-evidence/cases/missing-validator-target/entries/fixture-specialist.json",
+      "artifactKind": "agent_registry_entry",
+      "artifactId": "fixture-specialist",
+      "status": "active",
+      "agentId": null,
+      "agentVersion": null,
+      "evidenceType": null,
+      "subjectRefs": [],
+      "links": [
+        {
+          "rel": "registry_entry_for",
+          "kind": "agent_registry_entry",
+          "id": "fixture-specialist",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-specialist.json"
+        },
+        {
+          "rel": "context_for",
+          "kind": "agent_registry_entry",
+          "id": "fixture-orchestrator",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-orchestrator.json"
+        }
+      ]
+    },
+    {
+      "path": ".vibe/work/I-04-agent-registry-validation/residual-fix-evidence/cases/missing-validator-target/entries/fixture-validator.json",
+      "artifactKind": "agent_registry_entry",
+      "artifactId": "fixture-validator",
+      "status": "active",
+      "agentId": null,
+      "agentVersion": null,
+      "evidenceType": null,
+      "subjectRefs": [],
+      "links": [
+        {
+          "rel": "registry_entry_for",
+          "kind": "agent_registry_entry",
+          "id": "fixture-validator",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-validator.json"
+        },
+        {
+          "rel": "context_for",
+          "kind": "agent_registry_entry",
+          "id": "fixture-orchestrator",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-orchestrator.json"
+        }
+      ]
+    },
+    {
+      "path": ".vibe/work/I-04-agent-registry-validation/residual-fix-evidence/cases/optional-validator-only/entries/fixture-fixer.json",
+      "artifactKind": "agent_registry_entry",
+      "artifactId": "fixture-fixer",
+      "status": "active",
+      "agentId": null,
+      "agentVersion": null,
+      "evidenceType": null,
+      "subjectRefs": [],
+      "links": [
+        {
+          "rel": "registry_entry_for",
+          "kind": "agent_registry_entry",
+          "id": "fixture-fixer",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-fixer.json"
+        },
+        {
+          "rel": "context_for",
+          "kind": "agent_registry_entry",
+          "id": "fixture-orchestrator",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-orchestrator.json"
+        }
+      ]
+    },
+    {
+      "path": ".vibe/work/I-04-agent-registry-validation/residual-fix-evidence/cases/optional-validator-only/entries/fixture-meta-advisor.json",
+      "artifactKind": "agent_registry_entry",
+      "artifactId": "fixture-meta-advisor",
+      "status": "active",
+      "agentId": null,
+      "agentVersion": null,
+      "evidenceType": null,
+      "subjectRefs": [],
+      "links": [
+        {
+          "rel": "registry_entry_for",
+          "kind": "agent_registry_entry",
+          "id": "fixture-meta-advisor",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-meta-advisor.json"
+        },
+        {
+          "rel": "context_for",
+          "kind": "agent_registry_entry",
+          "id": "fixture-orchestrator",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-orchestrator.json"
+        }
+      ]
+    },
+    {
+      "path": ".vibe/work/I-04-agent-registry-validation/residual-fix-evidence/cases/optional-validator-only/entries/fixture-orchestrator.json",
+      "artifactKind": "agent_registry_entry",
+      "artifactId": "fixture-orchestrator",
+      "status": "active",
+      "agentId": null,
+      "agentVersion": null,
+      "evidenceType": null,
+      "subjectRefs": [],
+      "links": [
+        {
+          "rel": "registry_entry_for",
+          "kind": "agent_registry_entry",
+          "id": "fixture-orchestrator",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-orchestrator.json"
+        },
+        {
+          "rel": "context_for",
+          "kind": "agent_registry_entry",
+          "id": "fixture-fixer",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-fixer.json"
+        }
+      ]
+    },
+    {
+      "path": ".vibe/work/I-04-agent-registry-validation/residual-fix-evidence/cases/optional-validator-only/entries/fixture-reviewer.json",
+      "artifactKind": "agent_registry_entry",
+      "artifactId": "fixture-reviewer",
+      "status": "active",
+      "agentId": null,
+      "agentVersion": null,
+      "evidenceType": null,
+      "subjectRefs": [],
+      "links": [
+        {
+          "rel": "registry_entry_for",
+          "kind": "agent_registry_entry",
+          "id": "fixture-reviewer",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-reviewer.json"
+        },
+        {
+          "rel": "context_for",
+          "kind": "agent_registry_entry",
+          "id": "fixture-orchestrator",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-orchestrator.json"
+        }
+      ]
+    },
+    {
+      "path": ".vibe/work/I-04-agent-registry-validation/residual-fix-evidence/cases/optional-validator-only/entries/fixture-skill-adapter.json",
+      "artifactKind": "agent_registry_entry",
+      "artifactId": "fixture-skill-adapter",
+      "status": "active",
+      "agentId": null,
+      "agentVersion": null,
+      "evidenceType": null,
+      "subjectRefs": [],
+      "links": [
+        {
+          "rel": "registry_entry_for",
+          "kind": "agent_registry_entry",
+          "id": "fixture-skill-adapter",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-skill-adapter.json"
+        },
+        {
+          "rel": "context_for",
+          "kind": "agent_registry_entry",
+          "id": "fixture-orchestrator",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-orchestrator.json"
+        }
+      ]
+    },
+    {
+      "path": ".vibe/work/I-04-agent-registry-validation/residual-fix-evidence/cases/optional-validator-only/entries/fixture-specialist.json",
+      "artifactKind": "agent_registry_entry",
+      "artifactId": "fixture-specialist",
+      "status": "active",
+      "agentId": null,
+      "agentVersion": null,
+      "evidenceType": null,
+      "subjectRefs": [],
+      "links": [
+        {
+          "rel": "registry_entry_for",
+          "kind": "agent_registry_entry",
+          "id": "fixture-specialist",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-specialist.json"
+        },
+        {
+          "rel": "context_for",
+          "kind": "agent_registry_entry",
+          "id": "fixture-orchestrator",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-orchestrator.json"
+        }
+      ]
+    },
+    {
+      "path": ".vibe/work/I-04-agent-registry-validation/residual-fix-evidence/cases/optional-validator-only/entries/fixture-validator.json",
+      "artifactKind": "agent_registry_entry",
+      "artifactId": "fixture-validator",
+      "status": "active",
+      "agentId": null,
+      "agentVersion": null,
+      "evidenceType": null,
+      "subjectRefs": [],
+      "links": [
+        {
+          "rel": "registry_entry_for",
+          "kind": "agent_registry_entry",
+          "id": "fixture-validator",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-validator.json"
+        },
+        {
+          "rel": "context_for",
+          "kind": "agent_registry_entry",
+          "id": "fixture-orchestrator",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "packages/registry/fixtures/valid/core-set/fixture-orchestrator.json"
+        }
+      ]
+    },
+    {
+      "path": ".vibe/work/I-04-agent-registry-validation/residual-fix-evidence/cases/valid-non-load-bearing/entries/fixture-specialist.json",
+      "artifactKind": "agent_registry_entry",
+      "artifactId": "fixture-specialist",
+      "status": "active",
+      "agentId": null,
+      "agentVersion": null,
+      "evidenceType": null,
+      "subjectRefs": [],
+      "links": [
+        {
+          "rel": "registry_entry_for",
+          "kind": "agent_registry_entry",
+          "id": "fixture-specialist",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "self.json"
+        }
+      ]
+    },
+    {
+      "path": ".vibe/work/I-04-agent-registry-validation/residual-fix-evidence/evidence/fixture-specialist-non-load-bearing.json",
+      "artifactKind": "evidence_packet",
+      "artifactId": "evidence:fixture-specialist:non_load_bearing:residual",
+      "status": "passed",
+      "result": "pass",
+      "layer": "ai_eval",
+      "evidenceClass": "deterministic",
+      "agentId": "fixture-specialist",
+      "agentVersion": "1.0.0",
+      "evidenceType": "non_load_bearing",
+      "subjectRefs": [
+        {
+          "kind": "agent_registry_entry",
+          "id": "fixture-specialist",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "fixture-specialist.json"
+        }
+      ],
+      "links": [
+        {
+          "rel": "evidence_for",
+          "kind": "agent_registry_entry",
+          "id": "fixture-specialist",
+          "required": true,
+          "statusAtLinkTime": "active",
+          "path": "fixture-specialist.json"
+        }
+      ]
+    },
+    {
+      "path": ".vibe/work/I-04-agent-registry-validation/residual-fix-evidence/residual-boundary-witness.output.json",
+      "agentId": null,
+      "agentVersion": null,
+      "evidenceType": null,
+      "subjectRefs": [],
+      "links": []
+    }
+  ]
+}

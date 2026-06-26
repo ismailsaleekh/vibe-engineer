@@ -1,0 +1,183 @@
+{
+  "schemaVersion": "1.0.0",
+  "artifactKind": "agent_registry_entry",
+  "artifactId": "fixture-meta-advisor",
+  "title": "Fixture Meta Advisor",
+  "createdAt": "2026-06-23T00:00:00Z",
+  "updatedAt": "2026-06-23T00:00:00Z",
+  "producer": {
+    "kind": "system",
+    "id": "i-04-agent-registry-validation",
+    "name": "I-04 agent registry validation",
+    "version": "1.0.0"
+  },
+  "status": "active",
+  "ownership": {
+    "ownerLane": "I-04-agent-registry-validation-revalidation",
+    "ownedWritePaths": [
+      ".vibe/work/I-04-agent-registry-validation/revalidation-evidence/**"
+    ],
+    "readOnlyPaths": [
+      "packages/registry/**",
+      "packages/artifacts/**"
+    ],
+    "untouchablePaths": [
+      ".git/**",
+      "package.json",
+      "pnpm-lock.yaml",
+      "pnpm-workspace.yaml"
+    ],
+    "concurrencyNotes": "Validation-owned adversarial carrier; product files are read-only.",
+    "handoffPolicy": "Fixtures are evidence only and do not register production runtime behavior."
+  },
+  "links": [
+    {
+      "rel": "registry_entry_for",
+      "artifactKind": "agent_registry_entry",
+      "artifactId": "fixture-meta-advisor",
+      "path": "cases/validator-ref-to-fixer/fixture-meta-advisor.json",
+      "required": true,
+      "statusAtLinkTime": "active"
+    },
+    {
+      "rel": "context_for",
+      "artifactKind": "agent_registry_entry",
+      "artifactId": "fixture-orchestrator",
+      "path": "cases/validator-ref-to-fixer/fixture-orchestrator.json",
+      "required": true,
+      "statusAtLinkTime": "active"
+    }
+  ],
+  "extensions": {
+    "dev.vibe.registry": {
+      "schemaVersion": "1.0.0",
+      "classification": "core",
+      "registryScope": "core",
+      "smokeRefs": [
+        {
+          "rel": "evidence_for",
+          "artifactKind": "evidence_packet",
+          "artifactId": "evidence:fixture-meta-advisor:smoke",
+          "path": "packages/registry/.generated-fixtures/validator-ref-to-fixer/evidence/fixture-meta-advisor-smoke.json",
+          "required": true,
+          "statusAtLinkTime": "passed"
+        }
+      ],
+      "normalRoute": [
+        "planning",
+        "build",
+        "verification"
+      ],
+      "outputAuthority": "recommendation_only",
+      "nonPiHarnessSupport": "deferred_blocked",
+      "adapterRuntimeImplemented": false,
+      "adapterManifestWrites": false
+    }
+  },
+  "description": "Fixture Meta Advisor fixture registry entry.",
+  "tags": [
+    "fixture",
+    "meta",
+    "domain-neutral"
+  ],
+  "sourceRefs": [
+    {
+      "kind": "artifact",
+      "ref": "packages/registry/fixtures"
+    }
+  ],
+  "agentId": "fixture-meta-advisor",
+  "displayName": "Fixture Meta Advisor",
+  "agentType": "meta",
+  "purpose": "Exercises recommendation-only meta-agent behavior.",
+  "triggers": [
+    {
+      "event": "fixture.meta",
+      "description": "Fixture trigger for registry validator coverage."
+    }
+  ],
+  "inputSchemas": [
+    {
+      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/evidence-packet.schema.json",
+      "schemaVersion": "1.0.0",
+      "artifactKind": "evidence_packet"
+    }
+  ],
+  "outputSchemas": [
+    {
+      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/implementation-plan.schema.json",
+      "schemaVersion": "1.0.0",
+      "artifactKind": "implementation_plan"
+    }
+  ],
+  "allowedTools": [
+    "read",
+    "analysis",
+    "recommendation"
+  ],
+  "forbiddenActions": [
+    "silent_mutation",
+    "auto_registration",
+    "direct_file_mutation",
+    "push",
+    "pr",
+    "verification_bypass",
+    "git_stash",
+    "git_reset",
+    "git_clean",
+    "out_of_owned_path_write"
+  ],
+  "contextRequirements": [
+    "fixture-context"
+  ],
+  "expectedArtifactPaths": [
+    "cases/validator-ref-to-fixer/fixture-meta-advisor.json"
+  ],
+  "safety": {
+    "parallelSafe": true,
+    "writesAllowed": false,
+    "requiresApprovalFor": [
+      "any_file_mutation",
+      "registry_change",
+      "push",
+      "pull_request"
+    ],
+    "maxIterations": 1
+  },
+  "validatorRefs": [
+    {
+      "rel": "verifies",
+      "artifactKind": "agent_registry_entry",
+      "artifactId": "fixture-validator",
+      "path": "cases/validator-ref-to-fixer/fixture-validator.json",
+      "required": true,
+      "statusAtLinkTime": "active"
+    }
+  ],
+  "fixerRefs": [],
+  "maturity": "stable",
+  "owner": "vibe-engineer",
+  "agentVersion": "1.0.0",
+  "evals": [
+    {
+      "rel": "evidence_for",
+      "artifactKind": "evidence_packet",
+      "artifactId": "evidence:fixture-meta-advisor:eval",
+      "path": "packages/registry/.generated-fixtures/validator-ref-to-fixer/evidence/fixture-meta-advisor-eval.json",
+      "required": true,
+      "statusAtLinkTime": "passed"
+    }
+  ],
+  "deprecation": null,
+  "runtimeCostClass": "bounded",
+  "examples": [
+    "fixture-meta-advisor fixture demonstrates registry validation."
+  ],
+  "changelog": [
+    "1.0.0: Fixture added for registry validation."
+  ],
+  "selectedHarnessAdapters": [
+    "pi"
+  ],
+  "domainNeutralityReview": "PASS DL-20A: fixture is domain-neutral."
+}

@@ -1,0 +1,185 @@
+{
+  "schemaVersion": "1.0.0",
+  "artifactKind": "agent_registry_entry",
+  "artifactId": "fixture-skill-adapter",
+  "title": "Fixture Skill Adapter",
+  "createdAt": "2026-06-23T00:00:00Z",
+  "updatedAt": "2026-06-23T00:00:00Z",
+  "producer": {
+    "kind": "system",
+    "id": "i-04-agent-registry-validation",
+    "name": "I-04 agent registry validation",
+    "version": "1.0.0"
+  },
+  "status": "active",
+  "ownership": {
+    "ownerLane": "I-04-agent-registry-validation",
+    "ownedWritePaths": [
+      "packages/registry/fixtures/**"
+    ],
+    "readOnlyPaths": [
+      "packages/artifacts/**"
+    ],
+    "untouchablePaths": [
+      ".git/**",
+      "docs/decisions/**"
+    ],
+    "concurrencyNotes": "Fixture-owned registry entries are isolated to the registry package.",
+    "handoffPolicy": "Fixtures are evidence only and do not register production runtime behavior."
+  },
+  "links": [
+    {
+      "rel": "registry_entry_for",
+      "artifactKind": "agent_registry_entry",
+      "artifactId": "fixture-skill-adapter",
+      "path": "packages/registry/fixtures/valid/core-set/fixture-skill-adapter.json",
+      "required": true,
+      "statusAtLinkTime": "active"
+    },
+    {
+      "rel": "context_for",
+      "artifactKind": "agent_registry_entry",
+      "artifactId": "fixture-orchestrator",
+      "path": "packages/registry/fixtures/valid/core-set/fixture-orchestrator.json",
+      "required": true,
+      "statusAtLinkTime": "active"
+    }
+  ],
+  "extensions": {
+    "dev.vibe.registry": {
+      "schemaVersion": "1.0.0",
+      "classification": "core",
+      "registryScope": "core",
+      "smokeRefs": [
+        {
+          "rel": "evidence_for",
+          "artifactKind": "evidence_packet",
+          "artifactId": "evidence:fixture-skill-adapter:smoke",
+          "path": "packages/registry/fixtures/evidence/fixture-skill-adapter-smoke.json",
+          "required": true,
+          "statusAtLinkTime": "passed"
+        }
+      ],
+      "normalRoute": [
+        "planning",
+        "build",
+        "verification"
+      ],
+      "outputAuthority": "bounded_execution",
+      "nonPiHarnessSupport": "deferred_blocked",
+      "adapterRuntimeImplemented": true,
+      "adapterManifestWrites": false,
+      "linkedSkills": [
+        "brainstorm",
+        "grill-me",
+        "task",
+        "plan",
+        "build",
+        "ship"
+      ]
+    }
+  },
+  "description": "Fixture Skill Adapter fixture registry entry.",
+  "tags": [
+    "fixture",
+    "skill_adapter",
+    "domain-neutral"
+  ],
+  "sourceRefs": [
+    {
+      "kind": "artifact",
+      "ref": "packages/registry/fixtures"
+    }
+  ],
+  "agentId": "fixture-skill-adapter",
+  "displayName": "Fixture Skill Adapter",
+  "agentType": "skill_adapter",
+  "purpose": "Exercises exact locked skill linkage without runtime claims.",
+  "triggers": [
+    {
+      "event": "fixture.skill_adapter",
+      "description": "Fixture trigger for registry validator coverage."
+    }
+  ],
+  "inputSchemas": [
+    {
+      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/skill-manifest.schema.json",
+      "schemaVersion": "1.0.0",
+      "artifactKind": "skill_manifest"
+    }
+  ],
+  "outputSchemas": [
+    {
+      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/agent-registry-entry.schema.json",
+      "schemaVersion": "1.0.0",
+      "artifactKind": "agent_registry_entry"
+    }
+  ],
+  "allowedTools": [
+    "read",
+    "analysis",
+    "structured-report"
+  ],
+  "forbiddenActions": [
+    "git_stash",
+    "git_reset",
+    "git_clean",
+    "out_of_owned_path_write",
+    "push",
+    "pr_without_approval",
+    "verification_bypass"
+  ],
+  "contextRequirements": [
+    "fixture-context"
+  ],
+  "expectedArtifactPaths": [
+    "packages/registry/fixtures/valid/core-set/fixture-skill-adapter.json"
+  ],
+  "safety": {
+    "parallelSafe": true,
+    "writesAllowed": true,
+    "requiresApprovalFor": [
+      "root_or_lockfile_mutation",
+      "push",
+      "pull_request"
+    ],
+    "maxIterations": 2
+  },
+  "validatorRefs": [
+    {
+      "rel": "verifies",
+      "artifactKind": "agent_registry_entry",
+      "artifactId": "fixture-validator",
+      "path": "packages/registry/fixtures/valid/core-set/fixture-validator.json",
+      "required": true,
+      "statusAtLinkTime": "active"
+    }
+  ],
+  "fixerRefs": [],
+  "maturity": "stable",
+  "owner": "vibe-engineer",
+  "agentVersion": "1.0.0",
+  "evals": [
+    {
+      "rel": "evidence_for",
+      "artifactKind": "evidence_packet",
+      "artifactId": "evidence:fixture-skill-adapter:eval",
+      "path": "packages/registry/fixtures/evidence/fixture-skill-adapter-eval.json",
+      "required": true,
+      "statusAtLinkTime": "passed"
+    }
+  ],
+  "deprecation": null,
+  "runtimeCostClass": "bounded",
+  "examples": [
+    "fixture-skill-adapter fixture demonstrates registry validation."
+  ],
+  "changelog": [
+    "1.0.0: Fixture added for registry validation."
+  ],
+  "selectedHarnessAdapters": [
+    "pi",
+    "non-pi"
+  ],
+  "domainNeutralityReview": "PASS DL-20A: fixture is domain-neutral."
+}

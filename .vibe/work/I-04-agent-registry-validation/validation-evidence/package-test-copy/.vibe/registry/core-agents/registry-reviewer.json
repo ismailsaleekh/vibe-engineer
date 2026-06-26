@@ -1,0 +1,166 @@
+{
+  "schemaVersion": "1.0.0",
+  "artifactKind": "agent_registry_entry",
+  "artifactId": "registry-reviewer",
+  "title": "Registry Reviewer",
+  "createdAt": "2026-06-23T00:00:00Z",
+  "updatedAt": "2026-06-23T00:00:00Z",
+  "producer": {
+    "kind": "system",
+    "id": "i-04-agent-registry-validation",
+    "name": "I-04 agent registry validation",
+    "version": "1.0.0"
+  },
+  "status": "active",
+  "ownership": {
+    "ownerLane": "I-04-agent-registry-validation",
+    "ownedWritePaths": [
+      ".vibe/registry/core-agents/**"
+    ],
+    "readOnlyPaths": [
+      "packages/artifacts/**",
+      "docs/decisions/**"
+    ],
+    "untouchablePaths": [
+      ".git/**",
+      "packages/adapters/**",
+      "packages/skills/**",
+      "packages/orchestration/**",
+      "packages/config/**",
+      "packages/mechanical-gates/**",
+      "docs/decisions/**"
+    ],
+    "concurrencyNotes": "Core registry entries are Q06-owned and remain domain-neutral; sibling packages are read-only.",
+    "handoffPolicy": "Recommendation and validation metadata only; implementation consumers require independent validation before use."
+  },
+  "links": [
+    {
+      "rel": "registry_entry_for",
+      "artifactKind": "agent_registry_entry",
+      "artifactId": "registry-reviewer",
+      "path": ".vibe/registry/core-agents/registry-reviewer.json",
+      "required": true,
+      "statusAtLinkTime": "active"
+    }
+  ],
+  "extensions": {
+    "dev.vibe.registry": {
+      "schemaVersion": "1.0.0",
+      "classification": "core",
+      "registryScope": "core",
+      "smokeRefs": [
+        "smoke:registry-reviewer"
+      ],
+      "normalRoute": [
+        "planning",
+        "build",
+        "verification"
+      ],
+      "outputAuthority": "bounded_execution",
+      "nonPiHarnessSupport": "deferred_blocked",
+      "adapterRuntimeImplemented": false,
+      "adapterManifestWrites": false
+    }
+  },
+  "description": "Registry Reviewer core registry entry for typed reviewer coordination.",
+  "tags": [
+    "core",
+    "reviewer",
+    "domain-neutral"
+  ],
+  "sourceRefs": [
+    {
+      "kind": "source_doc",
+      "ref": "docs/decisions/DL-05-agent-registry-validation-meta.md"
+    },
+    {
+      "kind": "source_doc",
+      "ref": "docs/decisions/DL-20A-domain-neutrality-foundation.md"
+    }
+  ],
+  "agentId": "registry-reviewer",
+  "displayName": "Registry Reviewer",
+  "agentType": "reviewer",
+  "purpose": "Provides independent review recommendations for registry quality evidence and validator behavior.",
+  "triggers": [
+    {
+      "event": "registry.reviewer.requested",
+      "description": "Run when a reviewer registry capability is needed."
+    }
+  ],
+  "inputSchemas": [
+    {
+      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/evidence-packet.schema.json",
+      "schemaVersion": "1.0.0",
+      "artifactKind": "evidence_packet"
+    }
+  ],
+  "outputSchemas": [
+    {
+      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/evidence-packet.schema.json",
+      "schemaVersion": "1.0.0",
+      "artifactKind": "evidence_packet"
+    }
+  ],
+  "allowedTools": [
+    "read",
+    "analysis",
+    "structured-report"
+  ],
+  "forbiddenActions": [
+    "git_stash",
+    "git_reset",
+    "git_clean",
+    "git_checkout",
+    "git_restore",
+    "out_of_owned_path_write",
+    "push",
+    "pr_without_approval",
+    "verification_bypass"
+  ],
+  "contextRequirements": [
+    "quality-bar",
+    "owned-paths",
+    "canonical-artifact-schemas"
+  ],
+  "expectedArtifactPaths": [
+    ".vibe/registry/core-agents/registry-reviewer.json"
+  ],
+  "safety": {
+    "parallelSafe": true,
+    "writesAllowed": true,
+    "requiresApprovalFor": [
+      "root_or_lockfile_mutation",
+      "push",
+      "pull_request"
+    ],
+    "maxIterations": 3
+  },
+  "validatorRefs": [],
+  "fixerRefs": [],
+  "maturity": "core",
+  "owner": "vibe-engineer",
+  "agentVersion": "1.0.0",
+  "evals": [
+    {
+      "rel": "evidence_for",
+      "artifactKind": "evidence_packet",
+      "artifactId": "evidence:registry-reviewer",
+      "path": ".vibe/work/I-04-agent-registry-validation/evidence/registry-reviewer.json",
+      "required": true,
+      "statusAtLinkTime": "passed"
+    }
+  ],
+  "deprecation": null,
+  "runtimeCostClass": "bounded",
+  "examples": [
+    "registry-reviewer handles domain-neutral registry workflow evidence."
+  ],
+  "changelog": [
+    "1.0.0: Initial domain-neutral core registry entry with DL-05 policy metadata."
+  ],
+  "selectedHarnessAdapters": [
+    "pi"
+  ],
+  "domainNeutralityReview": "PASS DL-20A: core metadata is domain-neutral and contains no product/business vocabulary."
+}

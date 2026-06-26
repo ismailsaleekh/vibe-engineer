@@ -1,0 +1,348 @@
+{
+  "schemaVersion": "1.0.0",
+  "artifactKind": "verification_delta",
+  "artifactId": "artifact-verification_delta-001",
+  "title": "Verification Delta valid fixture",
+  "createdAt": "2026-06-23T00:00:00.000Z",
+  "updatedAt": "2026-06-23T00:00:00.000Z",
+  "producer": {
+    "kind": "skill",
+    "id": "skill-task",
+    "name": "task",
+    "version": "1.0.0",
+    "runId": "run-001"
+  },
+  "status": "complete",
+  "ownership": {
+    "ownerLane": "I-01A-artifact-schemas",
+    "ownedWritePaths": [
+      "packages/artifacts/**"
+    ],
+    "readOnlyPaths": [
+      "docs/decisions/**"
+    ],
+    "untouchablePaths": [
+      ".git/**"
+    ],
+    "concurrencyNotes": "owned fixture"
+  },
+  "links": [
+    {
+      "rel": "verification_delta_of",
+      "artifactKind": "implementation_plan",
+      "artifactId": "artifact-implementation_plan-001",
+      "path": "fixtures/valid/implementation_plan.json",
+      "required": true,
+      "statusAtLinkTime": "approved"
+    }
+  ],
+  "extensions": {
+    "dev.vibe.fixture": {
+      "schemaVersion": "1.0.0",
+      "note": "domain-neutral fixture extension"
+    }
+  },
+  "tags": [
+    "domain-neutral"
+  ],
+  "summary": "All required verification catalog items are represented.",
+  "implementationPlanRef": {
+    "rel": "verification_delta_of",
+    "artifactKind": "implementation_plan",
+    "artifactId": "artifact-implementation_plan-001",
+    "path": "fixtures/valid/implementation_plan.json",
+    "required": true,
+    "statusAtLinkTime": "approved"
+  },
+  "sensitiveAreas": [
+    "packages/artifacts"
+  ],
+  "catalogVersion": "1.0.0",
+  "requiredItems": [
+    {
+      "id": "safety-hooks",
+      "layer": "safety_hooks",
+      "action": "add",
+      "rationale": "safety_hooks verification evidence is required for this domain-neutral package fixture.",
+      "expectedArtifacts": [
+        ".vibe/work/I-01A-artifact-schemas/evidence/fix/01-safety_hooks.log"
+      ],
+      "blocking": true,
+      "validationOwner": "validator",
+      "fixerOwner": "fixer",
+      "evidenceRequired": [
+        {
+          "kind": "evidence_packet",
+          "description": "safety_hooks evidence",
+          "blocking": true
+        }
+      ]
+    },
+    {
+      "id": "typecheck",
+      "layer": "typecheck",
+      "action": "add",
+      "rationale": "typecheck verification evidence is required for this domain-neutral package fixture.",
+      "expectedArtifacts": [
+        ".vibe/work/I-01A-artifact-schemas/evidence/fix/02-typecheck.log"
+      ],
+      "blocking": true,
+      "validationOwner": "validator",
+      "fixerOwner": "fixer",
+      "evidenceRequired": [
+        {
+          "kind": "evidence_packet",
+          "description": "typecheck evidence",
+          "blocking": true
+        }
+      ]
+    },
+    {
+      "id": "lint-format",
+      "layer": "lint_format",
+      "action": "not_applicable",
+      "rationale": "lint_format is explicitly not applicable for this domain-neutral package fixture.",
+      "expectedArtifacts": [
+        ".vibe/work/I-01A-artifact-schemas/evidence/fix/03-lint_format.log"
+      ],
+      "blocking": true,
+      "validationOwner": "validator",
+      "fixerOwner": "fixer",
+      "evidenceRequired": [
+        {
+          "kind": "evidence_packet",
+          "description": "lint_format evidence",
+          "blocking": true
+        }
+      ]
+    },
+    {
+      "id": "mechanical-gate",
+      "layer": "mechanical_gate",
+      "action": "add",
+      "rationale": "mechanical_gate verification evidence is required for this domain-neutral package fixture.",
+      "expectedArtifacts": [
+        ".vibe/work/I-01A-artifact-schemas/evidence/fix/04-mechanical_gate.log"
+      ],
+      "blocking": true,
+      "validationOwner": "validator",
+      "fixerOwner": "fixer",
+      "evidenceRequired": [
+        {
+          "kind": "evidence_packet",
+          "description": "mechanical_gate evidence",
+          "blocking": true
+        }
+      ]
+    },
+    {
+      "id": "unit",
+      "layer": "unit",
+      "action": "add",
+      "rationale": "unit verification evidence is required for this domain-neutral package fixture.",
+      "expectedArtifacts": [
+        ".vibe/work/I-01A-artifact-schemas/evidence/fix/05-unit.log"
+      ],
+      "blocking": true,
+      "validationOwner": "validator",
+      "fixerOwner": "fixer",
+      "evidenceRequired": [
+        {
+          "kind": "evidence_packet",
+          "description": "unit evidence",
+          "blocking": true
+        }
+      ]
+    },
+    {
+      "id": "integration",
+      "layer": "integration",
+      "action": "add",
+      "rationale": "integration verification evidence is required for this domain-neutral package fixture.",
+      "expectedArtifacts": [
+        ".vibe/work/I-01A-artifact-schemas/evidence/fix/06-integration.log"
+      ],
+      "blocking": true,
+      "validationOwner": "validator",
+      "fixerOwner": "fixer",
+      "evidenceRequired": [
+        {
+          "kind": "evidence_packet",
+          "description": "integration evidence",
+          "blocking": true
+        }
+      ]
+    },
+    {
+      "id": "contract-adapter",
+      "layer": "contract_adapter",
+      "action": "add",
+      "rationale": "contract_adapter verification evidence is required for this domain-neutral package fixture.",
+      "expectedArtifacts": [
+        ".vibe/work/I-01A-artifact-schemas/evidence/fix/07-contract_adapter.log"
+      ],
+      "blocking": true,
+      "validationOwner": "validator",
+      "fixerOwner": "fixer",
+      "evidenceRequired": [
+        {
+          "kind": "evidence_packet",
+          "description": "contract_adapter evidence",
+          "blocking": true
+        }
+      ]
+    },
+    {
+      "id": "e2e",
+      "layer": "e2e",
+      "action": "add",
+      "rationale": "e2e verification evidence is required for this domain-neutral package fixture.",
+      "expectedArtifacts": [
+        ".vibe/work/I-01A-artifact-schemas/evidence/fix/08-e2e.log"
+      ],
+      "blocking": true,
+      "validationOwner": "validator",
+      "fixerOwner": "fixer",
+      "evidenceRequired": [
+        {
+          "kind": "evidence_packet",
+          "description": "e2e evidence",
+          "blocking": true
+        }
+      ]
+    },
+    {
+      "id": "ui-verification",
+      "layer": "ui_verification",
+      "action": "not_applicable",
+      "rationale": "ui_verification is explicitly not applicable for this domain-neutral package fixture.",
+      "expectedArtifacts": [
+        ".vibe/work/I-01A-artifact-schemas/evidence/fix/09-ui_verification.log"
+      ],
+      "blocking": true,
+      "validationOwner": "validator",
+      "fixerOwner": "fixer",
+      "evidenceRequired": [
+        {
+          "kind": "evidence_packet",
+          "description": "ui_verification evidence",
+          "blocking": true
+        }
+      ]
+    },
+    {
+      "id": "ai-eval",
+      "layer": "ai_eval",
+      "action": "not_applicable",
+      "rationale": "ai_eval is explicitly not applicable for this domain-neutral package fixture.",
+      "expectedArtifacts": [
+        ".vibe/work/I-01A-artifact-schemas/evidence/fix/10-ai_eval.log"
+      ],
+      "blocking": true,
+      "validationOwner": "validator",
+      "fixerOwner": "fixer",
+      "evidenceRequired": [
+        {
+          "kind": "evidence_packet",
+          "description": "ai_eval evidence",
+          "blocking": true
+        }
+      ]
+    },
+    {
+      "id": "build-package",
+      "layer": "build_package",
+      "action": "add",
+      "rationale": "build_package verification evidence is required for this domain-neutral package fixture.",
+      "expectedArtifacts": [
+        ".vibe/work/I-01A-artifact-schemas/evidence/fix/11-build_package.log"
+      ],
+      "blocking": true,
+      "validationOwner": "validator",
+      "fixerOwner": "fixer",
+      "evidenceRequired": [
+        {
+          "kind": "evidence_packet",
+          "description": "build_package evidence",
+          "blocking": true
+        }
+      ]
+    },
+    {
+      "id": "context-drift",
+      "layer": "context_drift",
+      "action": "add",
+      "rationale": "context_drift verification evidence is required for this domain-neutral package fixture.",
+      "expectedArtifacts": [
+        ".vibe/work/I-01A-artifact-schemas/evidence/fix/12-context_drift.log"
+      ],
+      "blocking": true,
+      "validationOwner": "validator",
+      "fixerOwner": "fixer",
+      "evidenceRequired": [
+        {
+          "kind": "context_header",
+          "description": "context_drift evidence",
+          "blocking": true
+        }
+      ]
+    },
+    {
+      "id": "observability",
+      "layer": "observability",
+      "action": "not_applicable",
+      "rationale": "observability is explicitly not applicable for this domain-neutral package fixture.",
+      "expectedArtifacts": [
+        ".vibe/work/I-01A-artifact-schemas/evidence/fix/13-observability.log"
+      ],
+      "blocking": true,
+      "validationOwner": "validator",
+      "fixerOwner": "fixer",
+      "evidenceRequired": [
+        {
+          "kind": "evidence_packet",
+          "description": "observability evidence",
+          "blocking": true
+        }
+      ]
+    },
+    {
+      "id": "advisory-review",
+      "layer": "advisory_review",
+      "action": "add",
+      "rationale": "advisory_review verification evidence is required for this domain-neutral package fixture.",
+      "expectedArtifacts": [
+        ".vibe/work/I-01A-artifact-schemas/evidence/fix/14-advisory_review.log"
+      ],
+      "blocking": false,
+      "validationOwner": "validator",
+      "fixerOwner": "fixer",
+      "evidenceRequired": [
+        {
+          "kind": "evidence_packet",
+          "description": "advisory_review evidence",
+          "blocking": false
+        }
+      ]
+    },
+    {
+      "id": "final-dod",
+      "layer": "final_dod",
+      "action": "add",
+      "rationale": "final_dod verification evidence is required for this domain-neutral package fixture.",
+      "expectedArtifacts": [
+        ".vibe/work/I-01A-artifact-schemas/evidence/fix/15-final_dod.log"
+      ],
+      "blocking": true,
+      "validationOwner": "validator",
+      "fixerOwner": "fixer",
+      "evidenceRequired": [
+        {
+          "kind": "evidence_packet",
+          "description": "final_dod evidence",
+          "blocking": true
+        }
+      ]
+    }
+  ]
+}

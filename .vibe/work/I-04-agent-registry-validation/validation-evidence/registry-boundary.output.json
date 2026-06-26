@@ -1,0 +1,67 @@
+{
+  "ok": true,
+  "fileCount": 7,
+  "entryIds": [
+    "core-orchestrator",
+    "core-specialist",
+    "locked-skill-adapter",
+    "registry-fixer",
+    "registry-meta-advisor",
+    "registry-quality-validator",
+    "registry-reviewer"
+  ],
+  "agentTypes": [
+    "fixer",
+    "meta",
+    "orchestrator",
+    "reviewer",
+    "skill_adapter",
+    "specialist",
+    "validator"
+  ],
+  "validatorLinks": [
+    {
+      "from": "core-orchestrator",
+      "to": "registry-quality-validator",
+      "required": true
+    },
+    {
+      "from": "core-specialist",
+      "to": "registry-quality-validator",
+      "required": true
+    },
+    {
+      "from": "locked-skill-adapter",
+      "to": "registry-quality-validator",
+      "required": true
+    },
+    {
+      "from": "registry-fixer",
+      "to": "registry-quality-validator",
+      "required": true
+    },
+    {
+      "from": "registry-meta-advisor",
+      "to": "registry-quality-validator",
+      "required": true
+    },
+    {
+      "from": "registry-quality-validator",
+      "to": "registry-reviewer",
+      "required": true
+    }
+  ],
+  "fixerLinks": [
+    {
+      "from": "core-orchestrator",
+      "to": "registry-fixer",
+      "required": true
+    },
+    {
+      "from": "core-specialist",
+      "to": "registry-fixer",
+      "required": true
+    }
+  ],
+  "errors": []
+}

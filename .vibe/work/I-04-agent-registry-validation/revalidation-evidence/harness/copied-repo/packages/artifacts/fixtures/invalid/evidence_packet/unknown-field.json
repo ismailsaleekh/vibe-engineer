@@ -1,0 +1,84 @@
+{
+  "schemaVersion": "1.0.0",
+  "artifactKind": "evidence_packet",
+  "artifactId": "artifact-evidence_packet-001",
+  "title": "Evidence Packet valid fixture",
+  "createdAt": "2026-06-23T00:00:00.000Z",
+  "updatedAt": "2026-06-23T00:00:00.000Z",
+  "producer": {
+    "kind": "skill",
+    "id": "skill-task",
+    "name": "task",
+    "version": "1.0.0",
+    "runId": "run-001"
+  },
+  "status": "passed",
+  "ownership": {
+    "ownerLane": "I-01A-artifact-schemas",
+    "ownedWritePaths": [
+      "packages/artifacts/**"
+    ],
+    "readOnlyPaths": [
+      "docs/decisions/**"
+    ],
+    "untouchablePaths": [
+      ".git/**"
+    ],
+    "concurrencyNotes": "owned fixture"
+  },
+  "links": [
+    {
+      "rel": "evidence_for",
+      "artifactKind": "implementation_plan",
+      "artifactId": "artifact-implementation_plan-001",
+      "path": "fixtures/valid/implementation_plan.json",
+      "required": true,
+      "statusAtLinkTime": "approved"
+    }
+  ],
+  "extensions": {
+    "dev.vibe.fixture": {
+      "schemaVersion": "1.0.0",
+      "note": "domain-neutral fixture extension"
+    }
+  },
+  "tags": [
+    "domain-neutral"
+  ],
+  "evidenceClass": "deterministic",
+  "layer": "typecheck",
+  "subjectRefs": [
+    {
+      "rel": "evidence_for",
+      "artifactKind": "implementation_plan",
+      "artifactId": "artifact-implementation_plan-001",
+      "path": "fixtures/valid/implementation_plan.json",
+      "required": true,
+      "statusAtLinkTime": "approved"
+    }
+  ],
+  "commandOrTool": {
+    "kind": "command",
+    "name": "typecheck",
+    "argv": [
+      "pnpm",
+      "typecheck"
+    ],
+    "version": "1.0.0",
+    "workingDirectory": ".",
+    "environmentSummary": "local deterministic fixture"
+  },
+  "startedAt": "2026-06-23T00:00:00.000Z",
+  "endedAt": "2026-06-23T00:00:00.000Z",
+  "exitStatus": {
+    "kind": "exit_code",
+    "code": 0
+  },
+  "result": "pass",
+  "blocking": true,
+  "artifacts": [
+    ".vibe/work/I-01A-artifact-schemas/evidence/typecheck.log"
+  ],
+  "warnings": [],
+  "unmodeledField": true
+}
