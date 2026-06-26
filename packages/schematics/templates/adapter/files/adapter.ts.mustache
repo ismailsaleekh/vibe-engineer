@@ -1,0 +1,15 @@
+export interface {{pascalName}}AdapterBoundary {
+  readonly adapterId: "{{kebabName}}";
+  readonly producer: "actual-provider";
+  readonly carrier: "typed-carrier";
+  readonly consumer: "actual-consumer";
+  readonly witnessStandard: "{{standardId}}";
+}
+
+export const {{camelName}}AdapterBoundary: {{pascalName}}AdapterBoundary = Object.freeze({
+  adapterId: "{{kebabName}}",
+  producer: "actual-provider",
+  carrier: "typed-carrier",
+  consumer: "actual-consumer",
+  witnessStandard: "{{standardId}}",
+});

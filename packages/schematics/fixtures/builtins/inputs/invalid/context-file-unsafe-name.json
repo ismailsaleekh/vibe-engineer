@@ -1,0 +1,10 @@
+{
+  "name": "../escape",
+  "standardId": "dirty-tree-ownership",
+  "standardTitle": "Dirty-tree ownership discipline",
+  "standardSummary": "Agents edit only owned paths, preserve unrelated work, and stop on concrete ownership conflict.",
+  "presetId": "vibe-engineer.typescript.strict",
+  "quickGateLabel": "quality:quick",
+  "packageManager": "pnpm@10.33.0",
+  "typecheckCommand": "tsc --noEmit -p packages/example/tsconfig.json"
+}

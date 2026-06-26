@@ -1,0 +1,13 @@
+export interface ExampleContractContractEnvelope {
+  readonly contractId: "example-contract";
+  readonly standard: "typed-boundary-contracts";
+  readonly standardTitle: "Typed boundary contracts";
+  readonly typecheckCommand: "tsc --noEmit -p packages/example/tsconfig.json";
+}
+
+export const exampleContractContract = Object.freeze({
+  contractId: "example-contract",
+  standard: "typed-boundary-contracts",
+  standardTitle: "Typed boundary contracts",
+  typecheckCommand: "tsc --noEmit -p packages/example/tsconfig.json",
+} satisfies ExampleContractContractEnvelope);

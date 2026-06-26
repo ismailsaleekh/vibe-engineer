@@ -1,0 +1,15 @@
+export interface ExampleModuleModuleDescriptor {
+  readonly moduleId: "example-module";
+  readonly title: "Example Module";
+  readonly standardId: "deterministic-schematics";
+  readonly presetId: "vibe-engineer.typescript.strict";
+  readonly quickGate: "quality:quick";
+}
+
+export const exampleModuleModule: ExampleModuleModuleDescriptor = Object.freeze({
+  moduleId: "example-module",
+  title: "Example Module",
+  standardId: "deterministic-schematics",
+  presetId: "vibe-engineer.typescript.strict",
+  quickGate: "quality:quick",
+});

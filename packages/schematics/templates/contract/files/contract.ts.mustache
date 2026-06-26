@@ -1,0 +1,13 @@
+export interface {{pascalName}}ContractEnvelope {
+  readonly contractId: "{{kebabName}}";
+  readonly standard: "{{standardId}}";
+  readonly standardTitle: "{{standardTitle}}";
+  readonly typecheckCommand: "{{typecheckCommand}}";
+}
+
+export const {{camelName}}Contract = Object.freeze({
+  contractId: "{{kebabName}}",
+  standard: "{{standardId}}",
+  standardTitle: "{{standardTitle}}",
+  typecheckCommand: "{{typecheckCommand}}",
+} satisfies {{pascalName}}ContractEnvelope);

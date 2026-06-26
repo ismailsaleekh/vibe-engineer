@@ -1,0 +1,362 @@
+{
+  "schemaVersion": "1.0.0",
+  "artifactKind": "schematic_manifest",
+  "artifactId": "i-07b-built-in-adapter-manifest",
+  "title": "Built-in Adapter Schematic",
+  "createdAt": "2026-06-26T00:00:00.000Z",
+  "updatedAt": "2026-06-26T00:00:00.000Z",
+  "producer": {
+    "kind": "schematic",
+    "id": "i-07b-built-in-adapter",
+    "name": "Built-in Adapter Schematic",
+    "version": "1.0.0",
+    "runId": "i-07b-builtins"
+  },
+  "status": "active",
+  "ownership": {
+    "ownerLane": "I-07B-built-in-schematics-fixtures",
+    "ownedWritePaths": [
+      "packages/schematics/src/builtins/**",
+      "packages/schematics/templates/**",
+      "packages/schematics/fixtures/builtins/**",
+      ".vibe/work/I-07B-built-in-schematics-fixtures/**"
+    ],
+    "readOnlyPaths": [
+      "packages/schematics/src/engine/**",
+      "packages/schematics/src/manifest/**",
+      "packages/schematics/src/template/**",
+      "packages/standards/**",
+      "packages/presets/typescript/**",
+      "packages/cli/src/commands/schematic/**"
+    ],
+    "untouchablePaths": [
+      ".git/**",
+      "package.json",
+      "pnpm-lock.yaml",
+      "pnpm-workspace.yaml",
+      "turbo.json",
+      "packages/schematics/package.json",
+      "packages/cli/src/entry/**",
+      "packages/cli/src/command-loader/**"
+    ],
+    "concurrencyNotes": "Lane-owned built-in schematic manifest and template fixture for adapter.",
+    "handoffPolicy": "No root, package manifest, CLI loader, standards package, or TypeScript preset package edits are allowed from this lane."
+  },
+  "links": [
+    {
+      "rel": "produced_by",
+      "artifactKind": "schematic_manifest",
+      "artifactId": "i-07b-built-in-adapter-manifest",
+      "path": "packages/schematics/templates/adapter/manifest.json",
+      "required": true,
+      "statusAtLinkTime": "active"
+    }
+  ],
+  "extensions": {
+    "dev.vibe-engineer.schematics.dl08": {
+      "schemaVersion": "1.0.0",
+      "builtInId": "builtin.adapter",
+      "templateRoot": "files",
+      "partials": {},
+      "nameField": "name",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "standardId",
+          "standardTitle",
+          "standardSummary",
+          "presetId",
+          "quickGateLabel",
+          "packageManager",
+          "typecheckCommand"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[A-Za-z][A-Za-z0-9 _.-]*$"
+          },
+          "standardId": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^real-boundary-witnesses$"
+          },
+          "standardTitle": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^Real boundary witnesses$"
+          },
+          "standardSummary": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^A seam is green only after the actual producer, carrier, and consumer run together\\.$"
+          },
+          "presetId": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^vibe-engineer\\.typescript\\.strict$"
+          },
+          "quickGateLabel": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^quality:quick$"
+          },
+          "packageManager": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^pnpm@10\\.33\\.0$"
+          },
+          "typecheckCommand": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^tsc --noEmit -p packages/example/tsconfig\\.json$"
+          }
+        }
+      },
+      "touchedPathPatterns": [
+        "src/adapters/**"
+      ],
+      "forbiddenPathPatterns": [
+        ".git/**",
+        "node_modules/**",
+        "package.json",
+        "pnpm-lock.yaml",
+        "pnpm-workspace.yaml",
+        "turbo.json",
+        "tsconfig.base.json",
+        "packages/**/package.json",
+        ".github/**",
+        "scripts/**",
+        "infra/**",
+        "docs/decisions/**"
+      ],
+      "operations": [
+        {
+          "id": "10-adapter-dir",
+          "kind": "create_directory",
+          "pathTemplate": "src/adapters/{{pathSegment}}"
+        },
+        {
+          "id": "20-adapter",
+          "kind": "replace_generated_file",
+          "pathTemplate": "src/adapters/{{pathSegment}}/adapter.ts",
+          "template": "adapter.ts.mustache",
+          "artifactType": "code",
+          "blockId": "adapter"
+        }
+      ],
+      "generatedArtifactTypes": [
+        "code"
+      ],
+      "generatedMarkerRequiredForUpdates": true,
+      "overwriteAllowedByDefault": false,
+      "semanticMergeAllowedInV1": false,
+      "projectOwned": false,
+      "coreDefault": true,
+      "requiresExplicitRegistration": true,
+      "securitySafety": {
+        "noNetwork": true,
+        "noShell": true,
+        "deterministicOnly": true
+      },
+      "standardIds": [
+        "real-boundary-witnesses",
+        "deterministic-schematics"
+      ],
+      "typescriptPreset": {
+        "required": true,
+        "presetId": "vibe-engineer.typescript.strict",
+        "requiredFileKinds": [
+          "typescript-config",
+          "eslint-policy",
+          "prettier-policy",
+          "workspace-config",
+          "turbo-config",
+          "package-manifest"
+        ]
+      }
+    }
+  },
+  "description": "Generate a generic adapter boundary descriptor and real-boundary checklist.",
+  "tags": [
+    "domain-neutral",
+    "built-in",
+    "dl-08",
+    "adapter"
+  ],
+  "sourceRefs": [
+    {
+      "kind": "artifact",
+      "ref": "I-07B-built-in-schematics-fixtures"
+    },
+    {
+      "kind": "artifact",
+      "ref": "real-boundary-witnesses"
+    },
+    {
+      "kind": "artifact",
+      "ref": "vibe-engineer.typescript.strict"
+    }
+  ],
+  "schematicId": "builtin.adapter",
+  "schematicVersion": "1.0.0",
+  "purpose": "Generate a generic adapter boundary descriptor and real-boundary checklist.",
+  "inputs": [
+    {
+      "name": "name",
+      "schema": {
+        "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/schematic-manifest.schema.json",
+        "schemaVersion": "1.0.0",
+        "artifactKind": "schematic_manifest"
+      },
+      "required": true,
+      "defaultsPolicy": "user_supplied_only",
+      "domainNeutralityClassification": "core_generic"
+    },
+    {
+      "name": "standardId",
+      "schema": {
+        "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/schematic-manifest.schema.json",
+        "schemaVersion": "1.0.0",
+        "artifactKind": "schematic_manifest"
+      },
+      "required": true,
+      "defaultsPolicy": "user_supplied_only",
+      "domainNeutralityClassification": "core_generic"
+    },
+    {
+      "name": "standardTitle",
+      "schema": {
+        "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/schematic-manifest.schema.json",
+        "schemaVersion": "1.0.0",
+        "artifactKind": "schematic_manifest"
+      },
+      "required": true,
+      "defaultsPolicy": "user_supplied_only",
+      "domainNeutralityClassification": "core_generic"
+    },
+    {
+      "name": "standardSummary",
+      "schema": {
+        "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/schematic-manifest.schema.json",
+        "schemaVersion": "1.0.0",
+        "artifactKind": "schematic_manifest"
+      },
+      "required": true,
+      "defaultsPolicy": "user_supplied_only",
+      "domainNeutralityClassification": "core_generic"
+    },
+    {
+      "name": "presetId",
+      "schema": {
+        "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/schematic-manifest.schema.json",
+        "schemaVersion": "1.0.0",
+        "artifactKind": "schematic_manifest"
+      },
+      "required": true,
+      "defaultsPolicy": "user_supplied_only",
+      "domainNeutralityClassification": "core_generic"
+    },
+    {
+      "name": "quickGateLabel",
+      "schema": {
+        "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/schematic-manifest.schema.json",
+        "schemaVersion": "1.0.0",
+        "artifactKind": "schematic_manifest"
+      },
+      "required": true,
+      "defaultsPolicy": "user_supplied_only",
+      "domainNeutralityClassification": "core_generic"
+    },
+    {
+      "name": "packageManager",
+      "schema": {
+        "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/schematic-manifest.schema.json",
+        "schemaVersion": "1.0.0",
+        "artifactKind": "schematic_manifest"
+      },
+      "required": true,
+      "defaultsPolicy": "user_supplied_only",
+      "domainNeutralityClassification": "core_generic"
+    },
+    {
+      "name": "typecheckCommand",
+      "schema": {
+        "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/schematic-manifest.schema.json",
+        "schemaVersion": "1.0.0",
+        "artifactKind": "schematic_manifest"
+      },
+      "required": true,
+      "defaultsPolicy": "user_supplied_only",
+      "domainNeutralityClassification": "core_generic"
+    }
+  ],
+  "generatedPaths": [
+    {
+      "pathTemplate": "src/adapters/{{pathSegment}}/adapter.ts",
+      "ownership": "generated",
+      "conflictPolicy": "fail",
+      "classification": "generated"
+    }
+  ],
+  "idempotency": {
+    "strategy": "noop_when_same_input_templates_and_existing_generated_content",
+    "stableIdentifiers": [
+      "schematicId",
+      "schematicVersion",
+      "blockId",
+      "inputFingerprint",
+      "templateFingerprint"
+    ],
+    "rerunBehavior": "create_missing_noop_same_replace_owned_generated_conflict_on_user_edits"
+  },
+  "conflictBehavior": "fail",
+  "dryRunBehavior": {
+    "reportsPlannedChanges": true,
+    "writesFiles": false
+  },
+  "requiredTests": [
+    {
+      "evidencePacketRef": {
+        "rel": "evidence_for",
+        "artifactKind": "evidence_packet",
+        "artifactId": "i-07b-builtins-evidence",
+        "path": ".vibe/work/I-07B-built-in-schematics-fixtures/evidence/builtins/summary.json",
+        "required": true,
+        "statusAtLinkTime": "passed"
+      },
+      "summary": "I-07B built-in schematic witness evidence.",
+      "result": "pass",
+      "blocking": true
+    }
+  ],
+  "contextUpdates": [],
+  "domainNeutrality": {
+    "coreSurface": true,
+    "allowedGenericTerms": [
+      "module",
+      "contract",
+      "adapter",
+      "test",
+      "fixture",
+      "context",
+      "standard",
+      "doc",
+      "evidence",
+      "package",
+      "boundary",
+      "preset",
+      "typescript",
+      "schema",
+      "generator"
+    ],
+    "extensionBoundaries": [
+      "project_extension",
+      "sample_demo",
+      "negative_fixture"
+    ]
+  },
+  "owner": "I-07B-built-in-schematics-fixtures"
+}

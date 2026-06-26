@@ -1,0 +1,13 @@
+export interface {{pascalName}}FixtureCase {
+  readonly fixtureId: "{{kebabName}}";
+  readonly expectedStatus: "pass";
+  readonly evidenceStandard: "{{standardId}}";
+  readonly packageManager: "{{packageManager}}";
+}
+
+export const {{camelName}}FixtureCase: {{pascalName}}FixtureCase = Object.freeze({
+  fixtureId: "{{kebabName}}",
+  expectedStatus: "pass",
+  evidenceStandard: "{{standardId}}",
+  packageManager: "{{packageManager}}",
+});

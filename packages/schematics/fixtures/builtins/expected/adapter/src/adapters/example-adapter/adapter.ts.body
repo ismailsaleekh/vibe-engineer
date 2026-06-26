@@ -1,0 +1,15 @@
+export interface ExampleAdapterAdapterBoundary {
+  readonly adapterId: "example-adapter";
+  readonly producer: "actual-provider";
+  readonly carrier: "typed-carrier";
+  readonly consumer: "actual-consumer";
+  readonly witnessStandard: "real-boundary-witnesses";
+}
+
+export const exampleAdapterAdapterBoundary: ExampleAdapterAdapterBoundary = Object.freeze({
+  adapterId: "example-adapter",
+  producer: "actual-provider",
+  carrier: "typed-carrier",
+  consumer: "actual-consumer",
+  witnessStandard: "real-boundary-witnesses",
+});
