@@ -1,0 +1,21 @@
+## Frozen-lockfile parity witness — pre/post sha256
+command: pnpm install --ignore-scripts --frozen-lockfile --lockfile-only
+exit: 0
+
+PRE:
+0259217fb38660de9e7298c4d6e363c7810a436479c189ce7ca088dd06576fff  pnpm-lock.yaml
+b3d1455aade0eb27f0775c3dbe2abefd89dada97caac9b10f041061abcb30306  package.json
+aee47e9964f53e767a6d6a86a27c86b218a76cd59453c3401defad6907be5f21  pnpm-workspace.yaml
+8f6bb49e6ce9bf9112d1f8ac68bf6174be0c1c9e88d695eb136290227605b376  packages/cli/package.json
+5cc025408945cd154ed3131bad620251b2476cc546f8643d7ad4c8971e2deb28  packages/context/package.json
+b87923b67a5cf139ae67f6062c71d23393b307af153d1b874ccaf3e639e2f221  packages/mechanical-gates/package.json
+
+POST:
+0259217fb38660de9e7298c4d6e363c7810a436479c189ce7ca088dd06576fff  pnpm-lock.yaml
+b3d1455aade0eb27f0775c3dbe2abefd89dada97caac9b10f041061abcb30306  package.json
+aee47e9964f53e767a6d6a86a27c86b218a76cd59453c3401defad6907be5f21  pnpm-workspace.yaml
+8f6bb49e6ce9bf9112d1f8ac68bf6174be0c1c9e88d695eb136290227605b376  packages/cli/package.json
+5cc025408945cd154ed3131bad620251b2476cc546f8643d7ad4c8971e2deb28  packages/context/package.json
+b87923b67a5cf139ae67f6062c71d23393b307af153d1b874ccaf3e639e2f221  packages/mechanical-gates/package.json
+
+DIFF: NO DRIFT (identical)

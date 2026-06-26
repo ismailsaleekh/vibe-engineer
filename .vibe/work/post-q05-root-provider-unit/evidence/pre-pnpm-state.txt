@@ -1,0 +1,110 @@
+## Pre-pnpm state
+2026-06-24T08:17:11Z
+\n## bg/status/ledger evidence
+bg_status: no background tasks visible in this Pi extension runtime (tool call immediately before this command).
+status.md: ROOT-PROVIDER-X running as only active root/package-manager lane; I-10B residual brief generation read-only; I-10B residual product fix blocked until root-lane race safety clear.
+ledger tail: ROOT-PROVIDER-X launched as only active root/package-manager lane; residual I-10B planner read-only; heartbeat rearmed.
+\n## changed manifest excerpts
+### packages/cli/package.json
+{
+  "name": "vibe-engineer",
+  "version": "0.0.0",
+  "license": "MIT",
+  "type": "module",
+  "description": "Skeleton manifest for vibe-engineer; implementation is owned by a later validated lane.",
+  "vibeEngineer": {
+    "implementationUnit": "I-00A-workspace-package-skeleton",
+    "implementationStatus": "skeleton-only",
+    "packageRole": "public-cli-package",
+    "sourceStatus": "not-created-in-I-00A",
+    "binStatus": "intentionally-absent-until-I-02A"
+  },
+  "private": false,
+  "dependencies": {
+    "@vibe-engineer/artifacts": "workspace:*",
+    "@vibe-engineer/config": "workspace:*"
+  }
+}
+
+### packages/context/package.json
+{
+  "name": "@vibe-engineer/context",
+  "version": "0.0.0",
+  "license": "MIT",
+  "type": "module",
+  "description": "Skeleton manifest for @vibe-engineer/context; implementation is owned by a later validated lane.",
+  "vibeEngineer": {
+    "implementationUnit": "I-00A-workspace-package-skeleton",
+    "implementationStatus": "skeleton-only",
+    "packageRole": "internal-workspace-package",
+    "sourceStatus": "not-created-in-I-00A"
+  },
+  "private": true,
+  "dependencies": {
+    "@vibe-engineer/artifacts": "workspace:*",
+    "@vibe-engineer/config": "workspace:*"
+  }
+}
+
+### packages/mechanical-gates/package.json
+{
+  "name": "@vibe-engineer/mechanical-gates",
+  "version": "0.0.0",
+  "license": "MIT",
+  "type": "module",
+  "description": "Typed P0 governed-surface, strict-config, and package-boundary mechanical validators.",
+  "private": true,
+  "exports": {
+    "./aggregate": {
+      "types": "./src/aggregate/index.d.ts",
+      "import": "./src/aggregate/index.js"
+    },
+    "./p0/allowlist": {
+      "types": "./src/p0/allowlist/index.d.ts",
+      "import": "./src/p0/allowlist/index.js"
+    },
+    "./p0/domain-purity": {
+      "types": "./src/p0/domain-purity/index.d.ts",
+      "import": "./src/p0/domain-purity/index.js"
+    },
+    "./p0/governed-surface": {
+      "types": "./src/p0/governed-surface/index.d.ts",
+      "import": "./src/p0/governed-surface/index.js"
+    },
+    "./p0/config-guards": {
+      "types": "./src/p0/config-guards/index.d.ts",
+      "import": "./src/p0/config-guards/index.js"
+    },
+    "./p0/boundaries": {
+      "types": "./src/p0/boundaries/index.d.ts",
+      "import": "./src/p0/boundaries/index.js"
+    }
+  },
+  "scripts": {
+    "typecheck": "node fixtures/p0/surface-config-boundaries/witness.mjs --typecheck",
+    "test": "node fixtures/p0/surface-config-boundaries/witness.mjs",
+    "test:p0": "node fixtures/p0/surface-config-boundaries/witness.mjs"
+  },
+  "vibeEngineer": {
+    "implementationUnit": "I-10A-mechanical-P0-surface-config-boundaries",
+    "implementationStatus": "implemented",
+    "packageRole": "internal-workspace-package",
+    "sourceStatus": "package-owned-p0-source-created"
+  }
+}
+
+\n## scoped git status
+?? .vibe/work/post-q05-root-provider-unit/evidence/pre-change-lock-importers.txt
+?? .vibe/work/post-q05-root-provider-unit/evidence/pre-change-sentinels.txt
+?? .vibe/work/post-q05-root-provider-unit/evidence/pre-pnpm-state.txt
+?? .vibe/work/post-q05-root-provider-unit/implementation-report.md
+?? package.json
+?? packages/artifacts/package.json
+?? packages/cli/package.json
+?? packages/config/package.json
+?? packages/context/package.json
+?? packages/mechanical-gates/package.json
+?? packages/orchestration/package.json
+?? packages/registry/package.json
+?? pnpm-lock.yaml
+?? pnpm-workspace.yaml

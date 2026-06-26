@@ -1,0 +1,340 @@
+## Witness run
+2026-06-24T08:18:54Z
+\n# Required real-boundary witnesses (§9)
+
+## CLI package-local provider imports
+cwd=/Users/lizavasilyeva/work/vibe-engineer/packages/cli
+command=node --input-type=module -e ...
+cli provider imports ok
+exit=0
+
+## CLI pnpm-filter provider imports
+cwd=/Users/lizavasilyeva/work/vibe-engineer
+command=pnpm --filter vibe-engineer exec node --input-type=module -e ...
+cli pnpm provider imports ok
+exit=0
+
+## Context package-local provider imports
+cwd=/Users/lizavasilyeva/work/vibe-engineer/packages/context
+command=node --input-type=module -e ...
+context provider imports ok
+exit=0
+
+## Context pnpm-filter provider imports
+cwd=/Users/lizavasilyeva/work/vibe-engineer
+command=pnpm --filter @vibe-engineer/context exec node --input-type=module -e ...
+context pnpm provider imports ok
+exit=0
+
+## Mechanical package-local public exports
+cwd=/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates
+command=node --input-type=module -e ...
+mechanical public exports ok
+exit=0
+
+## Mechanical pnpm-filter public exports
+cwd=/Users/lizavasilyeva/work/vibe-engineer
+command=pnpm --filter @vibe-engineer/mechanical-gates exec node --input-type=module -e ...
+mechanical pnpm public exports ok
+exit=0
+\n# Positive/regression/negative witnesses (§10)
+
+## pnpm recursive package list
+cwd=/Users/lizavasilyeva/work/vibe-engineer
+command=pnpm -r list --depth -1 --json
+[
+  {
+    "name": "@vibe-engineer/workspace",
+    "version": "0.0.0",
+    "path": "/Users/lizavasilyeva/work/vibe-engineer",
+    "private": true
+  },
+  {
+    "name": "@vibe-engineer/adapter-pi",
+    "version": "0.0.0",
+    "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/adapters/pi",
+    "private": true
+  },
+  {
+    "name": "@vibe-engineer/artifacts",
+    "version": "0.0.0",
+    "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/artifacts",
+    "private": true
+  },
+  {
+    "name": "vibe-engineer",
+    "version": "0.0.0",
+    "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/cli",
+    "private": false
+  },
+  {
+    "name": "@vibe-engineer/config",
+    "version": "0.0.0",
+    "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/config",
+    "private": true
+  },
+  {
+    "name": "@vibe-engineer/context",
+    "version": "0.0.0",
+    "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/context",
+    "private": true
+  },
+  {
+    "name": "@vibe-engineer/contracts",
+    "version": "0.0.0",
+    "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/contracts",
+    "private": true
+  },
+  {
+    "name": "@vibe-engineer/mechanical-gates",
+    "version": "0.0.0",
+    "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates",
+    "private": true
+  },
+  {
+    "name": "@vibe-engineer/observability",
+    "version": "0.0.0",
+    "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/observability",
+    "private": true
+  },
+  {
+    "name": "@vibe-engineer/orchestration",
+    "version": "0.0.0",
+    "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/orchestration",
+    "private": true
+  },
+  {
+    "name": "@vibe-engineer/preset-nest-react-rn",
+    "version": "0.0.0",
+    "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/presets/nest-react-rn",
+    "private": true
+  },
+  {
+    "name": "@vibe-engineer/preset-typescript",
+    "version": "0.0.0",
+    "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/presets/typescript",
+    "private": true
+  },
+  {
+    "name": "@vibe-engineer/registry",
+    "version": "0.0.0",
+    "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/registry",
+    "private": true
+  },
+  {
+    "name": "@vibe-engineer/schematics",
+    "version": "0.0.0",
+    "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/schematics",
+    "private": true
+  },
+  {
+    "name": "@vibe-engineer/security",
+    "version": "0.0.0",
+    "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/security",
+    "private": true
+  },
+  {
+    "name": "@vibe-engineer/skills",
+    "version": "0.0.0",
+    "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/skills",
+    "private": true
+  },
+  {
+    "name": "@vibe-engineer/standards",
+    "version": "0.0.0",
+    "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/standards",
+    "private": true
+  },
+  {
+    "name": "@vibe-engineer/testing",
+    "version": "0.0.0",
+    "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/testing",
+    "private": true
+  },
+  {
+    "name": "@vibe-engineer/verification",
+    "version": "0.0.0",
+    "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/verification",
+    "private": true
+  }
+]
+exit=0
+
+## workspace graph
+cwd=/Users/lizavasilyeva/work/vibe-engineer
+command=pnpm run workspace:graph
+
+> @vibe-engineer/workspace@0.0.0 workspace:graph /Users/lizavasilyeva/work/vibe-engineer
+> pnpm -r list --depth -1 --json
+
+[
+  {
+    "name": "@vibe-engineer/workspace",
+    "version": "0.0.0",
+    "path": "/Users/lizavasilyeva/work/vibe-engineer",
+    "private": true
+  },
+  {
+    "name": "@vibe-engineer/adapter-pi",
+    "version": "0.0.0",
+    "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/adapters/pi",
+    "private": true
+  },
+  {
+    "name": "@vibe-engineer/artifacts",
+    "version": "0.0.0",
+    "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/artifacts",
+    "private": true
+  },
+  {
+    "name": "vibe-engineer",
+    "version": "0.0.0",
+    "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/cli",
+    "private": false
+  },
+  {
+    "name": "@vibe-engineer/config",
+    "version": "0.0.0",
+    "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/config",
+    "private": true
+  },
+  {
+    "name": "@vibe-engineer/context",
+    "version": "0.0.0",
+    "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/context",
+    "private": true
+  },
+  {
+    "name": "@vibe-engineer/contracts",
+    "version": "0.0.0",
+    "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/contracts",
+    "private": true
+  },
+  {
+    "name": "@vibe-engineer/mechanical-gates",
+    "version": "0.0.0",
+    "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates",
+    "private": true
+  },
+  {
+    "name": "@vibe-engineer/observability",
+    "version": "0.0.0",
+    "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/observability",
+    "private": true
+  },
+  {
+    "name": "@vibe-engineer/orchestration",
+    "version": "0.0.0",
+    "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/orchestration",
+    "private": true
+  },
+  {
+    "name": "@vibe-engineer/preset-nest-react-rn",
+    "version": "0.0.0",
+    "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/presets/nest-react-rn",
+    "private": true
+  },
+  {
+    "name": "@vibe-engineer/preset-typescript",
+    "version": "0.0.0",
+    "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/presets/typescript",
+    "private": true
+  },
+  {
+    "name": "@vibe-engineer/registry",
+    "version": "0.0.0",
+    "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/registry",
+    "private": true
+  },
+  {
+    "name": "@vibe-engineer/schematics",
+    "version": "0.0.0",
+    "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/schematics",
+    "private": true
+  },
+  {
+    "name": "@vibe-engineer/security",
+    "version": "0.0.0",
+    "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/security",
+    "private": true
+  },
+  {
+    "name": "@vibe-engineer/skills",
+    "version": "0.0.0",
+    "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/skills",
+    "private": true
+  },
+  {
+    "name": "@vibe-engineer/standards",
+    "version": "0.0.0",
+    "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/standards",
+    "private": true
+  },
+  {
+    "name": "@vibe-engineer/testing",
+    "version": "0.0.0",
+    "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/testing",
+    "private": true
+  },
+  {
+    "name": "@vibe-engineer/verification",
+    "version": "0.0.0",
+    "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/verification",
+    "private": true
+  }
+]
+exit=0
+
+## workspace surface
+cwd=/Users/lizavasilyeva/work/vibe-engineer
+command=pnpm run workspace:surface
+
+> @vibe-engineer/workspace@0.0.0 workspace:surface /Users/lizavasilyeva/work/vibe-engineer
+> node .vibe/work/I-00A-workspace-package-skeleton/witnesses/workspace-surface-witness.mjs --root .
+
+{
+  "ok": true,
+  "root": "/Users/lizavasilyeva/work/vibe-engineer",
+  "mode": "current-surface",
+  "checkedAt": "2026-06-24T08:18:59.156Z",
+  "requiredPackageCount": 18,
+  "failures": []
+}
+exit=0
+
+## Private mechanical subpath remains blocked
+cwd=/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates
+command=node --input-type=module -e ...
+private mechanical subpath blocked
+exit=0
+
+## Registry latent artifact public seam probe (expected separate latent failure or no dependency)
+cwd=/Users/lizavasilyeva/work/vibe-engineer/packages/registry
+command=node --input-type=module -e ...
+registry artifacts public seam remains latent: ERR_MODULE_NOT_FOUND
+exit=0
+
+## Orchestration artifact seam regression
+cwd=/Users/lizavasilyeva/work/vibe-engineer
+command=pnpm --filter @vibe-engineer/orchestration exec node --input-type=module -e ...
+orchestration artifact seam ok
+exit=0
+
+## Existing I-10A mechanical public subpaths
+cwd=/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates
+command=node --input-type=module -e ...
+file:///Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/[eval1]:1
+const gs = await import('@vibe-engineer/mechanical-gates/p0/governed-surface'); if (typeof gs.validateGovernedSurface !== 'function') throw new Error('governed-surface missing'); const cg = await import('@vibe-engineer/mechanical-gates/p0/config-guards'); if (typeof cg.validateStrictConfigGuard !== 'function') throw new Error('config-guards missing'); const b = await import('@vibe-engineer/mechanical-gates/p0/boundaries'); if (typeof b.validatePackageBoundaries !== 'function') throw new Error('boundaries missing'); console.log('existing I-10A mechanical exports ok')
+                                                                                                                                                                                                                                                                                                                              ^
+
+Error: config-guards missing
+    at file:///Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/[eval1]:1:319
+
+Node.js v24.16.0
+exit=1
+
+## No production @vibe-engineer/testing dependency
+cwd=/Users/lizavasilyeva/work/vibe-engineer
+command=node scan package manifests
+no production @vibe-engineer/testing dependency
+exit=0

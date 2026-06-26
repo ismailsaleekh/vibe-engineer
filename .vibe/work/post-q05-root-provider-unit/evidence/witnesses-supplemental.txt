@@ -1,0 +1,14 @@
+## Supplemental regression witnesses
+2026-06-24T08:19:23Z
+
+## Existing I-10A mechanical public subpaths with actual exports
+cwd=/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates
+command=node --input-type=module -e ...
+existing I-10A mechanical exports ok
+exit=0
+
+## Existing I-10A pnpm-filter public subpaths with actual exports
+cwd=/Users/lizavasilyeva/work/vibe-engineer
+command=pnpm --filter @vibe-engineer/mechanical-gates exec node --input-type=module -e ...
+existing I-10A pnpm mechanical exports ok
+exit=0

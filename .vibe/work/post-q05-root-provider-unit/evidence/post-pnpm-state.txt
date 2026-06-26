@@ -1,0 +1,81 @@
+## Post-pnpm state
+2026-06-24T08:18:00Z
+\n## pnpm command results
+1. cd /Users/lizavasilyeva/work/vibe-engineer && pnpm install --ignore-scripts — exit 0; Scope all 19 workspace projects; resolved 120, reused 115, downloaded 0, added 0; Already up to date; Done in 1.2s using pnpm v10.33.0.
+2. cd /Users/lizavasilyeva/work/vibe-engineer && pnpm install --ignore-scripts --frozen-lockfile — exit 0; Lockfile is up to date; Already up to date; Done in 134ms using pnpm v10.33.0.
+\n## lockfile importer snippets
+### packages/cli
+  packages/cli:
+    dependencies:
+      '@vibe-engineer/artifacts':
+        specifier: workspace:*
+        version: link:../artifacts
+      '@vibe-engineer/config':
+        specifier: workspace:*
+        version: link:../config
+
+
+### packages/context
+  packages/context:
+    dependencies:
+      '@vibe-engineer/artifacts':
+        specifier: workspace:*
+        version: link:../artifacts
+      '@vibe-engineer/config':
+        specifier: workspace:*
+        version: link:../config
+
+
+### packages/mechanical-gates
+  packages/mechanical-gates: {}
+
+
+### packages/orchestration
+  packages/orchestration:
+    dependencies:
+      '@vibe-engineer/artifacts':
+        specifier: workspace:*
+        version: link:../artifacts
+
+
+### packages/registry
+  packages/registry: {}
+
+
+\n## package-local link-state
+### packages/cli/node_modules/@vibe-engineer/config
+readlink: ../../../config
+realpath: /Users/lizavasilyeva/work/vibe-engineer/packages/config
+### packages/cli/node_modules/@vibe-engineer/artifacts
+readlink: ../../../artifacts
+realpath: /Users/lizavasilyeva/work/vibe-engineer/packages/artifacts
+### packages/context/node_modules/@vibe-engineer/artifacts
+readlink: ../../../artifacts
+realpath: /Users/lizavasilyeva/work/vibe-engineer/packages/artifacts
+### packages/context/node_modules/@vibe-engineer/config
+readlink: ../../../config
+realpath: /Users/lizavasilyeva/work/vibe-engineer/packages/config
+### packages/orchestration/node_modules/@vibe-engineer/artifacts
+readlink: ../../../artifacts
+realpath: /Users/lizavasilyeva/work/vibe-engineer/packages/artifacts
+\n## node_modules scoped dirs
+packages/cli/node_modules/@vibe-engineer/artifacts
+packages/cli/node_modules/@vibe-engineer/config
+packages/context/node_modules/@vibe-engineer/artifacts
+packages/context/node_modules/@vibe-engineer/config
+\n## scoped git status
+?? .vibe/work/post-q05-root-provider-unit/evidence/post-pnpm-state.txt
+?? .vibe/work/post-q05-root-provider-unit/evidence/pre-change-lock-importers.txt
+?? .vibe/work/post-q05-root-provider-unit/evidence/pre-change-sentinels.txt
+?? .vibe/work/post-q05-root-provider-unit/evidence/pre-pnpm-state.txt
+?? .vibe/work/post-q05-root-provider-unit/implementation-report.md
+?? package.json
+?? packages/artifacts/package.json
+?? packages/cli/package.json
+?? packages/config/package.json
+?? packages/context/package.json
+?? packages/mechanical-gates/package.json
+?? packages/orchestration/package.json
+?? packages/registry/package.json
+?? pnpm-lock.yaml
+?? pnpm-workspace.yaml

@@ -1,0 +1,24 @@
+## packages/cli
+  packages/cli: {}
+
+
+## packages/context
+  packages/context: {}
+
+
+## packages/mechanical-gates
+  packages/mechanical-gates: {}
+
+
+## packages/orchestration
+  packages/orchestration:
+    dependencies:
+      '@vibe-engineer/artifacts':
+        specifier: workspace:*
+        version: link:../artifacts
+
+
+## packages/registry
+  packages/registry: {}
+
+
