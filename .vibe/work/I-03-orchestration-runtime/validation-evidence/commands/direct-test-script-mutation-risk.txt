@@ -1,0 +1,29 @@
+COMMAND: inspect package test/witness scripts for validator-write-license risk
+--- package scripts ---
+{
+  "test": "tsc -p tsconfig.json && node tests/run-tests.mjs",
+  "build": "tsc -p tsconfig.json",
+  "witness": "tsc -p tsconfig.json && node tests/real-boundary-witness.mjs"
+}
+--- hardcoded evidence writes in scripts ---
+packages/orchestration/package.json:16:    "build": "tsc -p tsconfig.json",
+packages/orchestration/package.json:17:    "test": "tsc -p tsconfig.json && node tests/run-tests.mjs",
+packages/orchestration/package.json:18:    "witness:real-boundary": "tsc -p tsconfig.json && node tests/real-boundary-witness.mjs",
+packages/orchestration/tests/real-boundary-witness.mjs:20:const evidenceRoot = path.resolve(repoRoot, '.vibe/work/I-03-orchestration-runtime/evidence/real-boundary');
+packages/orchestration/tests/real-boundary-witness.mjs:21:fs.rmSync(evidenceRoot, { recursive: true, force: true });
+packages/orchestration/tests/real-boundary-witness.mjs:22:fs.mkdirSync(evidenceRoot, { recursive: true });
+packages/orchestration/tests/real-boundary-witness.mjs:26:fs.writeFileSync(path.join(evidenceRoot, 'artifact-public-import.txt'), `public @vibe-engineer/artifacts validateArtifactFile ok=${publicImportResult.ok}\n`, 'utf8');
+packages/orchestration/tests/real-boundary-witness.mjs:29:fs.copyFileSync('fixtures/work-plans/valid-acyclic.json', path.join(evidenceRoot, 'producer-carrier-work-plan.json'));
+packages/orchestration/tests/real-boundary-witness.mjs:30:const stateFile = path.join(evidenceRoot, 'durable-run-state.json');
+packages/orchestration/tests/real-boundary-witness.mjs:33:fs.writeFileSync(path.join(evidenceRoot, 'producer.txt'), 'producer consumed on-disk work plan and canonical artifact fixture through public package seam\n', 'utf8');
+packages/orchestration/tests/real-boundary-witness.mjs:43:fs.writeFileSync(path.join(evidenceRoot, 'join.txt'), `${JSON.stringify(joinDecision, null, 2)}\n`, 'utf8');
+packages/orchestration/tests/real-boundary-witness.mjs:50:fs.writeFileSync(path.join(evidenceRoot, 'resume.txt'), `${JSON.stringify(resumeInspection, null, 2)}\n`, 'utf8');
+packages/orchestration/tests/real-boundary-witness.mjs:51:fs.writeFileSync(path.join(evidenceRoot, 'consumer-scheduler-output.json'), `${JSON.stringify({ firstDecision, secondDecision, thirdDecision, joinDecision, resumeInspection }, null, 2)}\n`, 'utf8');
+packages/orchestration/tests/run-tests.mjs:24:const evidenceRoot = path.resolve(repoRoot, '.vibe/work/I-03-orchestration-runtime/evidence/tests');
+packages/orchestration/tests/run-tests.mjs:25:fs.rmSync(evidenceRoot, { recursive: true, force: true });
+packages/orchestration/tests/run-tests.mjs:26:fs.mkdirSync(evidenceRoot, { recursive: true });
+packages/orchestration/tests/run-tests.mjs:44:  const planPath = path.join(evidenceRoot, `${name}.json`);
+packages/orchestration/tests/run-tests.mjs:45:  fs.writeFileSync(planPath, `${JSON.stringify(plan, null, 2)}\n`, 'utf8');
+packages/orchestration/tests/run-tests.mjs:50:  return path.join(evidenceRoot, `${name}.state.json`);
+packages/orchestration/tests/run-tests.mjs:196:fs.writeFileSync(path.join(evidenceRoot, 'unit-witness-summary.json'), `${JSON.stringify({ ok: true, witnesses: 'positive-negative-regression', publicArtifactImport: true }, null, 2)}\n`, 'utf8');
+EXIT_CODE: 0

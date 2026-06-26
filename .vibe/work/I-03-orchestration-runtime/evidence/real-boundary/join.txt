@@ -1,0 +1,21 @@
+{
+  "consumerNodeId": "join-artifact",
+  "joinedArtifactIds": [
+    "artifact-evidence_packet-001"
+  ],
+  "joinRecords": [
+    {
+      "consumerNodeId": "join-artifact",
+      "upstreamNodeId": "produce-artifact",
+      "artifactId": "artifact-evidence_packet-001",
+      "artifactKind": "evidence_packet",
+      "artifactPath": "fixtures/artifacts/valid/evidence_packet.json",
+      "schemaVersion": "1.0.0",
+      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/evidence-packet.schema.json",
+      "evidenceRefs": [
+        ".vibe/work/I-03-orchestration-runtime/evidence/real-boundary/artifact-public-import.txt"
+      ],
+      "joinedAt": "2026-06-24T01:00:03.000Z"
+    }
+  ]
+}

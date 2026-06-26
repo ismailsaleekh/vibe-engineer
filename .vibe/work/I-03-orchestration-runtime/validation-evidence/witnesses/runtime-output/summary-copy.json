@@ -1,0 +1,167 @@
+{
+  "ok": true,
+  "positives": [
+    "public @vibe-engineer/artifacts validateArtifactFile accepted valid canonical evidence_packet",
+    "valid acyclic work plan accepted with default limits 8/3/6",
+    "actual runtime API consumed on-disk plan and wrote durable state before scheduling and after schedule/transition/join",
+    "scheduler emitted dependency-ready non-conflicting nodes and preserved maxParallelAgents 8",
+    "join validated canonical upstream artifact through public artifacts package and persisted join metadata",
+    "resume read persisted state and did not retry passed/validated nodes with valid clean artifacts",
+    "failure-routing hook/status fields carried with DL-10 owner and no local taxonomy field"
+  ],
+  "negatives": [
+    "public @vibe-engineer/artifacts validateArtifactFile rejected invalid canonical evidence_packet",
+    {
+      "label": "cycle rejected",
+      "code": "DAG_CYCLE",
+      "issues": [
+        {
+          "code": "DAG_CYCLE",
+          "path": "/nodes",
+          "message": "Cycle detected: produce-artifact -> ship-state -> join-artifact -> produce-artifact."
+        }
+      ]
+    },
+    {
+      "label": "missing dependency rejected",
+      "code": "MISSING_DEPENDENCY",
+      "issues": [
+        {
+          "code": "MISSING_DEPENDENCY",
+          "path": "/nodes/1/dependsOn/0",
+          "message": "Dependency missing-node is not declared."
+        }
+      ]
+    },
+    {
+      "label": "shared write ownership conflict rejected",
+      "code": "WRITE_OWNERSHIP_CONFLICT",
+      "issues": [
+        {
+          "code": "WRITE_OWNERSHIP_CONFLICT",
+          "path": "/nodes",
+          "message": "Write ownership conflict between produce-artifact:packages/orchestration/fixtures/runtime-output/produce-artifact and join-artifact:packages/orchestration/fixtures/runtime-output/produce-artifact."
+        }
+      ]
+    },
+    {
+      "label": "read-only write claim rejected",
+      "code": "READONLY_WRITE_CLAIM",
+      "issues": [
+        {
+          "code": "READONLY_WRITE_CLAIM",
+          "path": "/nodes/produce-artifact/ownershipClaims",
+          "message": "Node produce-artifact claims read-only path packages/artifacts/schemas/forbidden.schema.json."
+        }
+      ]
+    },
+    {
+      "label": "untouchable git write claim rejected",
+      "code": "UNTOUCHABLE_WRITE_CLAIM",
+      "issues": [
+        {
+          "code": "UNTOUCHABLE_WRITE_CLAIM",
+          "path": "/nodes/produce-artifact/ownershipClaims",
+          "message": "Node produce-artifact claims untouchable path .git/config."
+        }
+      ]
+    },
+    "pending-live/BLOCKED prerequisite prevented dependent closure",
+    {
+      "label": "active count above 8 rejected",
+      "code": "ACTIVE_COUNT_EXCEEDS_CAP",
+      "issues": [
+        {
+          "code": "ACTIVE_COUNT_EXCEEDS_CAP",
+          "path": "/nodes",
+          "message": "Active count 9 exceeds 8."
+        }
+      ]
+    },
+    {
+      "label": "validation/fix iterations above 3 rejected",
+      "code": "VALIDATION_FIX_CAP_EXCEEDED",
+      "issues": [
+        {
+          "code": "VALIDATION_FIX_CAP_EXCEEDED",
+          "path": "/validationFixIterations",
+          "message": "Iteration count 4 exceeds 3."
+        }
+      ]
+    },
+    {
+      "label": "unsplit work package above 6 hours rejected",
+      "code": "WORK_PACKAGE_TOO_LARGE",
+      "issues": [
+        {
+          "code": "WORK_PACKAGE_TOO_LARGE",
+          "path": "/nodes/produce-artifact/estimate/agenticHours",
+          "message": "Unsplit work package produce-artifact exceeds 6 agentic hours."
+        }
+      ]
+    },
+    {
+      "label": "missing dependency artifact rejected",
+      "code": "MISSING_DEPENDENCY_ARTIFACT",
+      "issues": [
+        {
+          "code": "MISSING_DEPENDENCY_ARTIFACT",
+          "path": "fixtures/artifacts/valid/missing.json",
+          "message": "Artifact fixtures/artifacts/valid/missing.json is missing."
+        }
+      ]
+    },
+    {
+      "label": "invalid canonical artifact rejected through public artifacts package",
+      "code": "INVALID_CANONICAL_ARTIFACT",
+      "issues": [
+        {
+          "code": "INVALID_CANONICAL_ARTIFACT",
+          "path": "/schemaVersion",
+          "message": "schemaVersion must be semantic version 1.0.0."
+        },
+        {
+          "code": "INVALID_CANONICAL_ARTIFACT",
+          "path": "/schemaVersion",
+          "message": "must have required property 'schemaVersion'"
+        }
+      ]
+    },
+    {
+      "label": "stale/unowned dirty artifact not reusable as green",
+      "code": "STALE_OR_UNOWNED_DIRTY_ARTIFACT",
+      "issues": [
+        {
+          "code": "STALE_OR_UNOWNED_DIRTY_ARTIFACT",
+          "path": "/expectedOutputs",
+          "message": "Output artifact-evidence_packet-001 has dirtyState dirty-unowned."
+        }
+      ]
+    },
+    {
+      "label": "conflicting outputs not silently merged",
+      "code": "CONFLICTING_OUTPUTS",
+      "issues": [
+        {
+          "code": "CONFLICTING_OUTPUTS",
+          "path": "/outputRefs",
+          "message": "Output artifact-evidence_packet-001 conflicts by artifactId or path."
+        }
+      ]
+    }
+  ],
+  "regressions": [
+    "six skills remain brainstorm/grill-me/task/plan/build/ship in canonical public skill_manifest schema",
+    "artifact flow remains raw intent -> Work Brief -> Implementation Plan -> Build Result -> Ship Packet through public validators and links",
+    "plan owns risk/Verification Delta and build/ship automatic verification/context/evidence preserved in locked docs",
+    "DL-10 remains external hook/status owner, no live provider spawn, no CLI surface, no packages/core, public artifact import seam only",
+    "tracked diff for root/docs/sibling sentinels is empty; dirty untracked tree is path-scoped separately"
+  ],
+  "defaultLimits": {
+    "maxParallelAgents": 8,
+    "maxValidationFixIterations": 3,
+    "agenticWorkPackageTargetHours": 6
+  },
+  "evidenceRoot": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-03-orchestration-runtime/validation-evidence/witnesses/runtime-output",
+  "boundaryStatePath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-03-orchestration-runtime/validation-evidence/witnesses/runtime-output/states/real-boundary.json"
+}

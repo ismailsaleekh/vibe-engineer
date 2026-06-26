@@ -1,0 +1,12 @@
+COMMANDS: actual Q05 root dependency seam checks
+--- manifest dependency ---
+orchestration dependency workspace:*
+--- lockfile importer snippet ---
+lock importer link:../artifacts ok
+--- link state ---
+isSymbolicLink true readlink ../../../artifacts realpath /Users/lizavasilyeva/work/vibe-engineer/packages/artifacts
+--- package cwd public artifact import ---
+artifact public seam ok
+--- pnpm filter public artifact import ---
+pnpm filter artifact seam ok
+EXIT_CODE: 0

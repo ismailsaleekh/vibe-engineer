@@ -1,0 +1,7 @@
+COMMAND: pnpm --filter @vibe-engineer/orchestration exec tsc -p tsconfig.json --outDir ../../.vibe/work/I-03-orchestration-runtime/validation-evidence/build/dist
+--- diff generated validation build vs committed package dist ---
+Files packages/orchestration/dist/src/index.d.ts.map and .vibe/work/I-03-orchestration-runtime/validation-evidence/build/dist/src/index.d.ts.map differ
+Files packages/orchestration/dist/src/index.js.map and .vibe/work/I-03-orchestration-runtime/validation-evidence/build/dist/src/index.js.map differ
+Files packages/orchestration/dist/tests/typecheck.d.ts.map and .vibe/work/I-03-orchestration-runtime/validation-evidence/build/dist/tests/typecheck.d.ts.map differ
+Files packages/orchestration/dist/tests/typecheck.js.map and .vibe/work/I-03-orchestration-runtime/validation-evidence/build/dist/tests/typecheck.js.map differ
+EXIT_CODE: 1

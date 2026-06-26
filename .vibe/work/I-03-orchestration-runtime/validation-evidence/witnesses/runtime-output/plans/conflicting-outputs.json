@@ -1,0 +1,154 @@
+{
+  "schemaVersion": "orchestration-work-plan/1.0.0",
+  "runId": "q05-valid-run",
+  "limits": {
+    "maxParallelAgents": 8,
+    "maxValidationFixIterations": 3,
+    "agenticWorkPackageTargetHours": 6
+  },
+  "untouchablePaths": [
+    ".git/**",
+    "pnpm-lock.yaml"
+  ],
+  "readOnlyPaths": [
+    "packages/artifacts/**"
+  ],
+  "nodes": [
+    {
+      "id": "produce-artifact",
+      "title": "Produce canonical evidence artifact",
+      "dependsOn": [],
+      "ownershipClaims": [
+        {
+          "path": "packages/orchestration/fixtures/runtime-output/produce-artifact",
+          "access": "write",
+          "ownerNodeId": "produce-artifact"
+        }
+      ],
+      "expectedOutputs": [
+        {
+          "artifactId": "artifact-evidence_packet-001",
+          "artifactKind": "evidence_packet",
+          "path": "fixtures/artifacts/valid/evidence_packet.json",
+          "ownerNodeId": "produce-artifact",
+          "status": "validated",
+          "dirtyState": "clean",
+          "evidenceRefs": [
+            ".vibe/work/I-03-orchestration-runtime/evidence/real-boundary/artifact-public-import.txt"
+          ]
+        }
+      ],
+      "evidenceRefs": [
+        ".vibe/work/I-03-orchestration-runtime/evidence/real-boundary/producer.txt"
+      ],
+      "failureRouting": {
+        "status": "none",
+        "hookRef": "dl10-hook-placeholder:produce-artifact",
+        "owner": "DL-10",
+        "classificationRef": "dl10-taxonomy-owned-elsewhere",
+        "evidenceRefs": []
+      },
+      "estimate": {
+        "agenticHours": 2,
+        "split": true
+      }
+    },
+    {
+      "id": "produce-artifact-duplicate",
+      "title": "Produce canonical evidence artifact",
+      "dependsOn": [],
+      "ownershipClaims": [
+        {
+          "path": "packages/orchestration/validation-duplicate",
+          "access": "write",
+          "ownerNodeId": "produce-artifact-duplicate"
+        }
+      ],
+      "expectedOutputs": [
+        {
+          "artifactId": "artifact-evidence_packet-001",
+          "artifactKind": "evidence_packet",
+          "path": "fixtures/artifacts/valid/evidence_packet.json",
+          "ownerNodeId": "produce-artifact-duplicate",
+          "status": "validated",
+          "dirtyState": "clean",
+          "evidenceRefs": [
+            ".vibe/work/I-03-orchestration-runtime/evidence/real-boundary/artifact-public-import.txt"
+          ]
+        }
+      ],
+      "evidenceRefs": [
+        ".vibe/work/I-03-orchestration-runtime/evidence/real-boundary/producer.txt"
+      ],
+      "failureRouting": {
+        "status": "none",
+        "hookRef": "dl10-hook-placeholder:produce-artifact",
+        "owner": "DL-10",
+        "classificationRef": "dl10-taxonomy-owned-elsewhere",
+        "evidenceRefs": []
+      },
+      "estimate": {
+        "agenticHours": 2,
+        "split": true
+      }
+    },
+    {
+      "id": "join-artifact",
+      "title": "Join validated artifact into dependent work",
+      "dependsOn": [
+        "produce-artifact",
+        "produce-artifact-duplicate"
+      ],
+      "ownershipClaims": [
+        {
+          "path": "packages/orchestration/fixtures/runtime-output/join-artifact",
+          "access": "write",
+          "ownerNodeId": "join-artifact"
+        }
+      ],
+      "expectedOutputs": [],
+      "evidenceRefs": [
+        ".vibe/work/I-03-orchestration-runtime/evidence/real-boundary/join.txt"
+      ],
+      "failureRouting": {
+        "status": "routing-needed",
+        "hookRef": "dl10-hook-placeholder:join-artifact",
+        "owner": "DL-10",
+        "routeTo": "verification-failure-router-owned-by-DL-10",
+        "evidenceRefs": []
+      },
+      "estimate": {
+        "agenticHours": 3,
+        "split": true
+      }
+    },
+    {
+      "id": "ship-state",
+      "title": "Inspect resumable final state",
+      "dependsOn": [
+        "join-artifact"
+      ],
+      "ownershipClaims": [
+        {
+          "path": "packages/orchestration/fixtures/runtime-output/ship-state",
+          "access": "write",
+          "ownerNodeId": "ship-state"
+        }
+      ],
+      "expectedOutputs": [],
+      "evidenceRefs": [
+        ".vibe/work/I-03-orchestration-runtime/evidence/real-boundary/resume.txt"
+      ],
+      "failureRouting": {
+        "status": "none",
+        "hookRef": "dl10-hook-placeholder:ship-state",
+        "owner": "DL-10",
+        "evidenceRefs": []
+      },
+      "estimate": {
+        "agenticHours": 1,
+        "split": true
+      }
+    }
+  ]
+}

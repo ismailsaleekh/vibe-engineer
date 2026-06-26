@@ -1,0 +1,13 @@
+COMMAND: compare validation build vs package dist excluding source maps
+--- generated files ---
+.vibe/work/I-03-orchestration-runtime/validation-evidence/build/dist/src/index.d.ts
+.vibe/work/I-03-orchestration-runtime/validation-evidence/build/dist/src/index.d.ts.map
+.vibe/work/I-03-orchestration-runtime/validation-evidence/build/dist/src/index.js
+.vibe/work/I-03-orchestration-runtime/validation-evidence/build/dist/src/index.js.map
+.vibe/work/I-03-orchestration-runtime/validation-evidence/build/dist/tests/typecheck.d.ts
+.vibe/work/I-03-orchestration-runtime/validation-evidence/build/dist/tests/typecheck.d.ts.map
+.vibe/work/I-03-orchestration-runtime/validation-evidence/build/dist/tests/typecheck.js
+.vibe/work/I-03-orchestration-runtime/validation-evidence/build/dist/tests/typecheck.js.map
+--- diff js/d.ts only ---
+js/d.ts content compare completed
+EXIT_CODE: 0

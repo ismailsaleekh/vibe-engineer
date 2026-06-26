@@ -1,0 +1,26 @@
+COMMAND: forbidden seam/static sweeps over Q05 owned package
+--- private artifact seam / pnpm store / mocks stubs ---
+ok: no private artifact seam/mock/stub matches
+--- live spawn/provider/CLI surface sweep ---
+packages/orchestration/tests/run-tests.mjs:194:assert.equal(assertNoLiveProviderSpawningCapability(), true, 'runtime exposes no live provider spawn capability');
+LIVE_OR_CLI_MATCHES_ABOVE
+--- unsafe type escape/suppression sweep ---
+ok: no broad unsafe type escape/suppression matches
+--- raw JSON.parse locations (must be followed by typed boundary parsing in source; tests allowed) ---
+packages/orchestration/tests/real-boundary-witness.mjs:39:const secondDecision = selectReadyNodes(plan, JSON.parse(fs.readFileSync(stateFile, 'utf8')));
+packages/orchestration/tests/real-boundary-witness.mjs:45:const thirdDecision = selectReadyNodes(plan, JSON.parse(fs.readFileSync(stateFile, 'utf8')));
+packages/orchestration/src/index.ts:204:const parseJsonDocument: (text: string) => unknown = JSON.parse;
+packages/orchestration/tests/run-tests.mjs:29:  return JSON.parse(fs.readFileSync('fixtures/work-plans/valid-acyclic.json', 'utf8'));
+packages/orchestration/tests/run-tests.mjs:54:  return JSON.parse(JSON.stringify(value));
+packages/orchestration/tests/run-tests.mjs:83:const blockedState = JSON.parse(fs.readFileSync(statePath('positive'), 'utf8'));
+packages/orchestration/tests/run-tests.mjs:115:const blockedDecision = selectReadyNodes(parseWorkPlan(loadValidPlanObject()), { ...blockedRuntime, nodes: JSON.parse(fs.readFileSync(statePath('blocked-prerequisite'), 'utf8')).nodes });
+--- package public artifact imports ---
+packages/orchestration/package.json:28:    "@vibe-engineer/artifacts": "workspace:*"
+packages/orchestration/src/index.ts:3:import { validateArtifactFile } from '@vibe-engineer/artifacts';
+packages/orchestration/src/index.ts:4:import type { ArtifactKind, ArtifactValidationError } from '@vibe-engineer/artifacts';
+packages/orchestration/tests/real-boundary-witness.mjs:5:import { validateArtifactFile } from '@vibe-engineer/artifacts';
+packages/orchestration/tests/real-boundary-witness.mjs:26:fs.writeFileSync(path.join(evidenceRoot, 'artifact-public-import.txt'), `public @vibe-engineer/artifacts validateArtifactFile ok=${publicImportResult.ok}\n`, 'utf8');
+packages/orchestration/tests/run-tests.mjs:5:import { loadSchema, validateArtifactFile } from '@vibe-engineer/artifacts';
+packages/orchestration/tests/run-tests.mjs:58:assert.equal(publicArtifact.ok, true, 'public @vibe-engineer/artifacts validates canonical fixture');
+packages/orchestration/tests/run-tests.mjs:60:assert.equal(invalidPublicArtifact.ok, false, 'public @vibe-engineer/artifacts rejects invalid fixture');
+EXIT_CODE: 0

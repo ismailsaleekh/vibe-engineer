@@ -1,0 +1,74 @@
+{
+  "firstDecision": {
+    "scheduledNodeIds": [
+      "produce-artifact"
+    ],
+    "blockedNodeIds": [
+      "join-artifact",
+      "ship-state"
+    ],
+    "reasons": [
+      "join-artifact: dependency produce-artifact is not validated/passed",
+      "ship-state: dependency join-artifact is not validated/passed"
+    ],
+    "activeCount": 0,
+    "maxParallelAgents": 8
+  },
+  "secondDecision": {
+    "scheduledNodeIds": [
+      "join-artifact"
+    ],
+    "blockedNodeIds": [
+      "ship-state"
+    ],
+    "reasons": [
+      "ship-state: dependency join-artifact is not validated/passed"
+    ],
+    "activeCount": 0,
+    "maxParallelAgents": 8
+  },
+  "thirdDecision": {
+    "scheduledNodeIds": [
+      "ship-state"
+    ],
+    "blockedNodeIds": [],
+    "reasons": [],
+    "activeCount": 0,
+    "maxParallelAgents": 8
+  },
+  "joinDecision": {
+    "consumerNodeId": "join-artifact",
+    "joinedArtifactIds": [
+      "artifact-evidence_packet-001"
+    ],
+    "joinRecords": [
+      {
+        "consumerNodeId": "join-artifact",
+        "upstreamNodeId": "produce-artifact",
+        "artifactId": "artifact-evidence_packet-001",
+        "artifactKind": "evidence_packet",
+        "artifactPath": "fixtures/artifacts/valid/evidence_packet.json",
+        "schemaVersion": "1.0.0",
+        "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/evidence-packet.schema.json",
+        "evidenceRefs": [
+          ".vibe/work/I-03-orchestration-runtime/evidence/real-boundary/artifact-public-import.txt"
+        ],
+        "joinedAt": "2026-06-24T02:00:03.000Z"
+      }
+    ]
+  },
+  "resumeInspection": {
+    "resume": {
+      "cursorNodeIds": [],
+      "completedNodeIds": [
+        "produce-artifact",
+        "join-artifact"
+      ],
+      "retryNodeIds": [],
+      "blockedNodeIds": [],
+      "inspectedAt": "2026-06-24T02:00:06.000Z",
+      "reasons": []
+    },
+    "invalidations": []
+  }
+}

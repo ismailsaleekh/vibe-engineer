@@ -1,0 +1,118 @@
+{
+  "schemaVersion": "orchestration-runtime-state/1.0.0",
+  "runId": "q05-valid-run",
+  "workPlanPath": "fixtures/work-plans/valid-acyclic.json",
+  "limits": {
+    "maxParallelAgents": 8,
+    "maxValidationFixIterations": 3,
+    "agenticWorkPackageTargetHours": 6
+  },
+  "nodes": [
+    {
+      "id": "produce-artifact",
+      "status": "validated",
+      "attempts": 1,
+      "validationFixIterations": 0,
+      "failureRouting": {
+        "status": "none",
+        "hookRef": "dl10-hook-placeholder:produce-artifact",
+        "owner": "DL-10",
+        "classificationRef": "dl10-taxonomy-owned-elsewhere",
+        "evidenceRefs": []
+      },
+      "evidenceRefs": [
+        ".vibe/work/I-03-orchestration-runtime/evidence/real-boundary/producer.txt"
+      ],
+      "outputRefs": [
+        {
+          "artifactId": "artifact-evidence_packet-001",
+          "artifactKind": "evidence_packet",
+          "path": "fixtures/artifacts/valid/evidence_packet.json",
+          "ownerNodeId": "produce-artifact",
+          "status": "validated",
+          "dirtyState": "clean",
+          "evidenceRefs": [
+            ".vibe/work/I-03-orchestration-runtime/evidence/real-boundary/artifact-public-import.txt"
+          ]
+        }
+      ],
+      "startedAt": "2026-06-24T01:00:01.000Z",
+      "endedAt": "2026-06-24T01:00:02.000Z"
+    },
+    {
+      "id": "join-artifact",
+      "status": "passed",
+      "attempts": 0,
+      "validationFixIterations": 0,
+      "failureRouting": {
+        "status": "routing-needed",
+        "hookRef": "dl10-hook-placeholder:join-artifact",
+        "owner": "DL-10",
+        "routeTo": "verification-failure-router-owned-by-DL-10",
+        "evidenceRefs": []
+      },
+      "evidenceRefs": [
+        ".vibe/work/I-03-orchestration-runtime/evidence/real-boundary/join.txt"
+      ],
+      "outputRefs": [],
+      "endedAt": "2026-06-24T01:00:04.000Z"
+    },
+    {
+      "id": "ship-state",
+      "status": "pending",
+      "attempts": 0,
+      "validationFixIterations": 0,
+      "failureRouting": {
+        "status": "none",
+        "hookRef": "dl10-hook-placeholder:ship-state",
+        "owner": "DL-10",
+        "evidenceRefs": []
+      },
+      "evidenceRefs": [
+        ".vibe/work/I-03-orchestration-runtime/evidence/real-boundary/resume.txt"
+      ],
+      "outputRefs": []
+    }
+  ],
+  "activeClaims": [],
+  "joinRecords": [
+    {
+      "consumerNodeId": "join-artifact",
+      "upstreamNodeId": "produce-artifact",
+      "artifactId": "artifact-evidence_packet-001",
+      "artifactKind": "evidence_packet",
+      "artifactPath": "fixtures/artifacts/valid/evidence_packet.json",
+      "schemaVersion": "1.0.0",
+      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/evidence-packet.schema.json",
+      "evidenceRefs": [
+        ".vibe/work/I-03-orchestration-runtime/evidence/real-boundary/artifact-public-import.txt"
+      ],
+      "joinedAt": "2026-06-24T01:00:03.000Z"
+    }
+  ],
+  "failureRoutes": [],
+  "resume": {
+    "cursorNodeIds": [
+      "produce-artifact"
+    ],
+    "completedNodeIds": [],
+    "retryNodeIds": [],
+    "blockedNodeIds": [
+      "join-artifact",
+      "ship-state"
+    ],
+    "inspectedAt": "2026-06-24T01:00:01.000Z",
+    "reasons": [
+      "join-artifact: dependency produce-artifact is not validated/passed",
+      "ship-state: dependency join-artifact is not validated/passed"
+    ]
+  },
+  "checkpoints": [
+    "2026-06-24T01:00:00.000Z initial-state-written",
+    "2026-06-24T01:00:01.000Z schedule produce-artifact",
+    "2026-06-24T01:00:02.000Z transition produce-artifact validated",
+    "2026-06-24T01:00:03.000Z join join-artifact artifact-evidence_packet-001",
+    "2026-06-24T01:00:04.000Z transition join-artifact passed"
+  ],
+  "updatedAt": "2026-06-24T01:00:04.000Z"
+}
