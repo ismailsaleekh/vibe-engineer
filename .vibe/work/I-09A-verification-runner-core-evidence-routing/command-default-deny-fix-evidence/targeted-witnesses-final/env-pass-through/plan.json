@@ -1,0 +1,483 @@
+{
+  "schemaVersion": "1.0.0",
+  "artifactKind": "implementation_plan",
+  "artifactId": "i09a-plan-approved",
+  "title": "I-09A approved fixture plan",
+  "createdAt": "2026-06-25T00:00:00.000Z",
+  "updatedAt": "2026-06-25T00:00:00.000Z",
+  "producer": {
+    "kind": "agent",
+    "id": "i-09a-fixture",
+    "name": "I-09A Fixture",
+    "version": "1.0.0",
+    "runId": "fixture-run"
+  },
+  "status": "approved",
+  "ownership": {
+    "ownerLane": "I-09A-verification-runner-core-evidence-routing",
+    "ownedWritePaths": [
+      "packages/verification/fixtures/**"
+    ],
+    "readOnlyPaths": [
+      "packages/artifacts/**"
+    ],
+    "untouchablePaths": [
+      ".git/**"
+    ],
+    "concurrencyNotes": "domain-neutral deterministic fixture"
+  },
+  "links": [
+    {
+      "rel": "derived_from",
+      "artifactKind": "work_brief",
+      "artifactId": "i09a-work-brief",
+      "path": "packages/verification/fixtures/plans/work-brief-placeholder.json",
+      "required": true,
+      "statusAtLinkTime": "ready"
+    }
+  ],
+  "extensions": {
+    "dev.vibe.verification-fixture": {
+      "schemaVersion": "1.0.0",
+      "purpose": "runner-core witness fixture"
+    }
+  },
+  "workBriefRef": {
+    "rel": "derived_from",
+    "artifactKind": "work_brief",
+    "artifactId": "i09a-work-brief",
+    "path": "packages/verification/fixtures/plans/work-brief-placeholder.json",
+    "required": true,
+    "statusAtLinkTime": "ready"
+  },
+  "objective": "Exercise domain-neutral verification runner core.",
+  "scope": [
+    "packages/verification"
+  ],
+  "nonScope": [
+    "packages/cli source edits"
+  ],
+  "contextClosure": [
+    {
+      "rel": "context_for",
+      "artifactKind": "context_file_header",
+      "artifactId": "i09a-context",
+      "path": "packages/verification/fixtures/plans/context-placeholder.json",
+      "required": true,
+      "statusAtLinkTime": "current"
+    }
+  ],
+  "affectedAreas": [
+    {
+      "kind": "package",
+      "path": "packages/verification",
+      "reason": "verification runner core fixture"
+    }
+  ],
+  "schematics": [],
+  "implementationSteps": [
+    {
+      "id": "step-runner",
+      "description": "Run deterministic fixture runners.",
+      "dependsOn": [],
+      "expectedTouchedAreas": [
+        {
+          "kind": "test",
+          "path": "packages/verification/fixtures",
+          "reason": "fixture evidence"
+        }
+      ],
+      "acceptanceLinks": [
+        "accept-runner"
+      ]
+    }
+  ],
+  "acceptanceCriteria": [
+    {
+      "id": "accept-runner",
+      "description": "Runner writes schema-valid evidence packets."
+    }
+  ],
+  "definitionOfDone": [
+    {
+      "id": "dod-evidence",
+      "description": "Evidence packets validate.",
+      "blocking": true
+    }
+  ],
+  "risks": [],
+  "openBlockers": [],
+  "verificationDelta": {
+    "schemaVersion": "1.0.0",
+    "artifactKind": "verification_delta",
+    "artifactId": "i09a-delta-approved",
+    "title": "I-09A complete Verification Delta fixture",
+    "createdAt": "2026-06-25T00:00:00.000Z",
+    "updatedAt": "2026-06-25T00:00:00.000Z",
+    "producer": {
+      "kind": "agent",
+      "id": "i-09a-fixture",
+      "name": "I-09A Fixture",
+      "version": "1.0.0",
+      "runId": "fixture-run"
+    },
+    "status": "complete",
+    "ownership": {
+      "ownerLane": "I-09A-verification-runner-core-evidence-routing",
+      "ownedWritePaths": [
+        "packages/verification/fixtures/**"
+      ],
+      "readOnlyPaths": [
+        "packages/artifacts/**"
+      ],
+      "untouchablePaths": [
+        ".git/**"
+      ],
+      "concurrencyNotes": "domain-neutral deterministic fixture"
+    },
+    "links": [
+      {
+        "rel": "verification_delta_of",
+        "artifactKind": "implementation_plan",
+        "artifactId": "i09a-plan-approved",
+        "path": "packages/verification/fixtures/plans/approved-plan.json",
+        "required": true,
+        "statusAtLinkTime": "approved"
+      }
+    ],
+    "extensions": {
+      "dev.vibe.verification-fixture": {
+        "schemaVersion": "1.0.0",
+        "purpose": "runner-core witness fixture"
+      }
+    },
+    "summary": "Complete catalog for I-09A fixture.",
+    "implementationPlanRef": {
+      "rel": "verification_delta_of",
+      "artifactKind": "implementation_plan",
+      "artifactId": "i09a-plan-approved",
+      "path": "packages/verification/fixtures/plans/approved-plan.json",
+      "required": true,
+      "statusAtLinkTime": "approved"
+    },
+    "sensitiveAreas": [
+      "verification runner command safety"
+    ],
+    "catalogVersion": "1.0.0",
+    "requiredItems": [
+      {
+        "id": "safety-hooks",
+        "layer": "safety_hooks",
+        "action": "not_applicable",
+        "rationale": "safety_hooks is represented for the domain-neutral I-09A fixture.",
+        "expectedArtifacts": [
+          ".vibe/work/I-09A-verification-runner-core-evidence-routing/fixture/safety_hooks.txt"
+        ],
+        "blocking": true,
+        "validationOwner": "i-09a-validator",
+        "fixerOwner": "i-09a-fixer",
+        "evidenceRequired": [
+          {
+            "kind": "evidence_packet",
+            "description": "safety_hooks evidence packet",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "typecheck",
+        "layer": "typecheck",
+        "action": "not_applicable",
+        "rationale": "typecheck is represented for the domain-neutral I-09A fixture.",
+        "expectedArtifacts": [
+          ".vibe/work/I-09A-verification-runner-core-evidence-routing/fixture/typecheck.txt"
+        ],
+        "blocking": true,
+        "validationOwner": "i-09a-validator",
+        "fixerOwner": "i-09a-fixer",
+        "evidenceRequired": [
+          {
+            "kind": "evidence_packet",
+            "description": "typecheck evidence packet",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "lint-format",
+        "layer": "lint_format",
+        "action": "not_applicable",
+        "rationale": "lint_format is represented for the domain-neutral I-09A fixture.",
+        "expectedArtifacts": [
+          ".vibe/work/I-09A-verification-runner-core-evidence-routing/fixture/lint_format.txt"
+        ],
+        "blocking": true,
+        "validationOwner": "i-09a-validator",
+        "fixerOwner": "i-09a-fixer",
+        "evidenceRequired": [
+          {
+            "kind": "evidence_packet",
+            "description": "lint_format evidence packet",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "mechanical-gate",
+        "layer": "mechanical_gate",
+        "action": "not_applicable",
+        "rationale": "mechanical_gate is represented for the domain-neutral I-09A fixture.",
+        "expectedArtifacts": [
+          ".vibe/work/I-09A-verification-runner-core-evidence-routing/fixture/mechanical_gate.txt"
+        ],
+        "blocking": true,
+        "validationOwner": "i-09a-validator",
+        "fixerOwner": "i-09a-fixer",
+        "evidenceRequired": [
+          {
+            "kind": "evidence_packet",
+            "description": "mechanical_gate evidence packet",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "unit",
+        "layer": "unit",
+        "action": "not_applicable",
+        "rationale": "unit is represented for the domain-neutral I-09A fixture.",
+        "expectedArtifacts": [
+          ".vibe/work/I-09A-verification-runner-core-evidence-routing/fixture/unit.txt"
+        ],
+        "blocking": true,
+        "validationOwner": "i-09a-validator",
+        "fixerOwner": "i-09a-fixer",
+        "evidenceRequired": [
+          {
+            "kind": "evidence_packet",
+            "description": "unit evidence packet",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "integration",
+        "layer": "integration",
+        "action": "not_applicable",
+        "rationale": "integration is represented for the domain-neutral I-09A fixture.",
+        "expectedArtifacts": [
+          ".vibe/work/I-09A-verification-runner-core-evidence-routing/fixture/integration.txt"
+        ],
+        "blocking": true,
+        "validationOwner": "i-09a-validator",
+        "fixerOwner": "i-09a-fixer",
+        "evidenceRequired": [
+          {
+            "kind": "evidence_packet",
+            "description": "integration evidence packet",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "contract-adapter",
+        "layer": "contract_adapter",
+        "action": "not_applicable",
+        "rationale": "contract_adapter is represented for the domain-neutral I-09A fixture.",
+        "expectedArtifacts": [
+          ".vibe/work/I-09A-verification-runner-core-evidence-routing/fixture/contract_adapter.txt"
+        ],
+        "blocking": true,
+        "validationOwner": "i-09a-validator",
+        "fixerOwner": "i-09a-fixer",
+        "evidenceRequired": [
+          {
+            "kind": "evidence_packet",
+            "description": "contract_adapter evidence packet",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "e2e",
+        "layer": "e2e",
+        "action": "not_applicable",
+        "rationale": "e2e is represented for the domain-neutral I-09A fixture.",
+        "expectedArtifacts": [
+          ".vibe/work/I-09A-verification-runner-core-evidence-routing/fixture/e2e.txt"
+        ],
+        "blocking": true,
+        "validationOwner": "i-09a-validator",
+        "fixerOwner": "i-09a-fixer",
+        "evidenceRequired": [
+          {
+            "kind": "evidence_packet",
+            "description": "e2e evidence packet",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "ui-verification",
+        "layer": "ui_verification",
+        "action": "not_applicable",
+        "rationale": "ui_verification is represented for the domain-neutral I-09A fixture.",
+        "expectedArtifacts": [
+          ".vibe/work/I-09A-verification-runner-core-evidence-routing/fixture/ui_verification.txt"
+        ],
+        "blocking": true,
+        "validationOwner": "i-09a-validator",
+        "fixerOwner": "i-09a-fixer",
+        "evidenceRequired": [
+          {
+            "kind": "evidence_packet",
+            "description": "ui_verification evidence packet",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "ai-eval",
+        "layer": "ai_eval",
+        "action": "not_applicable",
+        "rationale": "ai_eval is represented for the domain-neutral I-09A fixture.",
+        "expectedArtifacts": [
+          ".vibe/work/I-09A-verification-runner-core-evidence-routing/fixture/ai_eval.txt"
+        ],
+        "blocking": true,
+        "validationOwner": "i-09a-validator",
+        "fixerOwner": "i-09a-fixer",
+        "evidenceRequired": [
+          {
+            "kind": "evidence_packet",
+            "description": "ai_eval evidence packet",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "build-package",
+        "layer": "build_package",
+        "action": "not_applicable",
+        "rationale": "build_package is represented for the domain-neutral I-09A fixture.",
+        "expectedArtifacts": [
+          ".vibe/work/I-09A-verification-runner-core-evidence-routing/fixture/build_package.txt"
+        ],
+        "blocking": true,
+        "validationOwner": "i-09a-validator",
+        "fixerOwner": "i-09a-fixer",
+        "evidenceRequired": [
+          {
+            "kind": "evidence_packet",
+            "description": "build_package evidence packet",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "context-drift",
+        "layer": "context_drift",
+        "action": "not_applicable",
+        "rationale": "context_drift is represented for the domain-neutral I-09A fixture.",
+        "expectedArtifacts": [
+          ".vibe/work/I-09A-verification-runner-core-evidence-routing/fixture/context_drift.txt"
+        ],
+        "blocking": true,
+        "validationOwner": "i-09a-validator",
+        "fixerOwner": "i-09a-fixer",
+        "evidenceRequired": [
+          {
+            "kind": "evidence_packet",
+            "description": "context_drift evidence packet",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "observability",
+        "layer": "observability",
+        "action": "not_applicable",
+        "rationale": "observability is represented for the domain-neutral I-09A fixture.",
+        "expectedArtifacts": [
+          ".vibe/work/I-09A-verification-runner-core-evidence-routing/fixture/observability.txt"
+        ],
+        "blocking": true,
+        "validationOwner": "i-09a-validator",
+        "fixerOwner": "i-09a-fixer",
+        "evidenceRequired": [
+          {
+            "kind": "evidence_packet",
+            "description": "observability evidence packet",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "advisory-review",
+        "layer": "advisory_review",
+        "action": "not_applicable",
+        "rationale": "advisory_review is represented for the domain-neutral I-09A fixture.",
+        "expectedArtifacts": [
+          ".vibe/work/I-09A-verification-runner-core-evidence-routing/fixture/advisory_review.txt"
+        ],
+        "blocking": false,
+        "validationOwner": "i-09a-validator",
+        "fixerOwner": "i-09a-fixer",
+        "evidenceRequired": [
+          {
+            "kind": "evidence_packet",
+            "description": "advisory_review evidence packet",
+            "blocking": false
+          }
+        ]
+      },
+      {
+        "id": "final-dod",
+        "layer": "final_dod",
+        "action": "not_applicable",
+        "rationale": "final_dod is represented for the domain-neutral I-09A fixture.",
+        "expectedArtifacts": [
+          ".vibe/work/I-09A-verification-runner-core-evidence-routing/fixture/final_dod.txt"
+        ],
+        "blocking": true,
+        "validationOwner": "i-09a-validator",
+        "fixerOwner": "i-09a-fixer",
+        "evidenceRequired": [
+          {
+            "kind": "evidence_packet",
+            "description": "final_dod evidence packet",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "schema-validation",
+        "layer": "schema_validation",
+        "action": "add",
+        "rationale": "schema_validation is represented for the domain-neutral I-09A fixture.",
+        "expectedArtifacts": [
+          ".vibe/work/I-09A-verification-runner-core-evidence-routing/fixture/schema_validation.txt"
+        ],
+        "blocking": true,
+        "validationOwner": "i-09a-validator",
+        "fixerOwner": "i-09a-fixer",
+        "evidenceRequired": [
+          {
+            "kind": "evidence_packet",
+            "description": "schema_validation evidence packet",
+            "blocking": true
+          }
+        ]
+      }
+    ],
+    "mechanicalGateImpacts": [
+      "represented as mechanical_gate layer evidence only; engine implementation out of scope"
+    ],
+    "advisoryReviewItems": [
+      "advisory_review fixture"
+    ],
+    "rerunHints": [
+      "rerunOf preserves prior evidence lineage"
+    ]
+  }
+}

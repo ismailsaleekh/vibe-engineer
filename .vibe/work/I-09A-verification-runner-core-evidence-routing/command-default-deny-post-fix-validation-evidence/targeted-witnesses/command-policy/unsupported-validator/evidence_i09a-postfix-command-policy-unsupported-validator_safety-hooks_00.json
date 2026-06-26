@@ -1,0 +1,94 @@
+{
+  "schemaVersion": "1.0.0",
+  "artifactKind": "evidence_packet",
+  "artifactId": "evidence:i09a-postfix-command-policy-unsupported-validator:safety-hooks:00",
+  "title": "Verification evidence for safety-hooks",
+  "createdAt": "2026-06-25T16:28:58.335Z",
+  "updatedAt": "2026-06-25T16:28:58.335Z",
+  "producer": {
+    "kind": "verification_runner",
+    "id": "i-09a-runner-core",
+    "name": "@vibe-engineer/verification",
+    "version": "0.1.0",
+    "runId": "i09a-postfix-command-policy-unsupported-validator"
+  },
+  "status": "not_run",
+  "ownership": {
+    "ownerLane": "I-09A-verification-runner-core-evidence-routing",
+    "ownedWritePaths": [
+      "packages/verification/src/**",
+      "packages/verification/fixtures/**",
+      "packages/verification/tests/**",
+      ".vibe/work/I-09A-verification-runner-core-evidence-routing/**"
+    ],
+    "readOnlyPaths": [
+      "packages/artifacts/**",
+      "packages/orchestration/**",
+      "packages/cli/**"
+    ],
+    "untouchablePaths": [
+      ".git/**",
+      "pnpm-lock.yaml",
+      "package.json",
+      "pnpm-workspace.yaml"
+    ],
+    "concurrencyNotes": "I-09A runner core evidence packet written atomically under evidenceRoot."
+  },
+  "links": [
+    {
+      "rel": "evidence_for",
+      "artifactKind": "implementation_plan",
+      "artifactId": "i09a-plan-approved",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/verification/fixtures/plans/approved-plan.json",
+      "required": true,
+      "statusAtLinkTime": "approved"
+    }
+  ],
+  "extensions": {
+    "dev.vibe.verification": {
+      "schemaVersion": "1.0.0",
+      "requiredItemId": "safety-hooks",
+      "requiredItemAction": "not_applicable",
+      "runId": "i09a-postfix-command-policy-unsupported-validator",
+      "runnerVersion": "0.1.0"
+    }
+  },
+  "evidenceClass": "informational",
+  "layer": "safety_hooks",
+  "subjectRefs": [
+    {
+      "rel": "evidence_for",
+      "artifactKind": "implementation_plan",
+      "artifactId": "i09a-plan-approved",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/verification/fixtures/plans/approved-plan.json",
+      "required": true,
+      "statusAtLinkTime": "approved"
+    },
+    {
+      "rel": "evidence_for",
+      "artifactKind": "verification_delta",
+      "artifactId": "i09a-delta-approved",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/verification/fixtures/plans/approved-plan.json",
+      "required": true,
+      "statusAtLinkTime": "complete"
+    }
+  ],
+  "commandOrTool": {
+    "kind": "manual_operator",
+    "name": "delta-item-not_applicable",
+    "workingDirectory": "/Users/lizavasilyeva/work/vibe-engineer",
+    "environmentSummary": "no command executed"
+  },
+  "startedAt": "2026-06-25T16:28:58.335Z",
+  "endedAt": "2026-06-25T16:28:58.335Z",
+  "exitStatus": {
+    "kind": "not_applicable",
+    "status": "skipped"
+  },
+  "result": "skipped",
+  "blocking": false,
+  "artifacts": [],
+  "warnings": [
+    "safety_hooks is represented for the domain-neutral I-09A fixture."
+  ]
+}

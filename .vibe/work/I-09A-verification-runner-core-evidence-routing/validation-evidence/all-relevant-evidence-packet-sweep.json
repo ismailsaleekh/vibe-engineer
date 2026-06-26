@@ -1,0 +1,41 @@
+{
+  "command": "node --input-type=module < validate-all-relevant-evidence-packets.js (cwd packages/verification)",
+  "totalPacketCount": 832,
+  "byRoot": {
+    "implementer-evidence": {
+      "packetCount": 352,
+      "validationErrorCount": 0
+    },
+    "validation-evidence": {
+      "packetCount": 480,
+      "validationErrorCount": 0
+    }
+  },
+  "validationErrorCount": 0,
+  "validationErrors": [],
+  "classifications": {
+    "missing_runner_or_prerequisite": 19,
+    "safety_or_security_policy_failure": 32,
+    "advisory_finding": 9,
+    "missing_evidence": 2,
+    "schema_or_contract_failure": 2,
+    "runner_internal_error": 2
+  },
+  "codes": {
+    "MISSING_RUNNER_OR_PREREQUISITE": 19,
+    "ENVIRONMENT_POLICY_DENIED": 3,
+    "ADVISORY_FINDING": 9,
+    "COMMAND_TIMEOUT": 3,
+    "ARTIFACT_LIMIT_EXCEEDED": 2,
+    "STDERR_LIMIT_EXCEEDED": 2,
+    "STDOUT_LIMIT_EXCEEDED": 2,
+    "MISSING_EVIDENCE": 2,
+    "MALFORMED_EVIDENCE_PACKET": 2,
+    "RUNNER_INTERNAL_ERROR": 2,
+    "COMMAND_POLICY_DENIED": 14,
+    "UNSAFE_CWD": 2,
+    "UNSAFE_PATH": 4
+  },
+  "nonEnum": [],
+  "dl22CodesAsClassifications": []
+}

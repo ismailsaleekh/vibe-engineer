@@ -1,0 +1,100 @@
+{
+  "schemaVersion": "1.0.0",
+  "artifactKind": "evidence_packet",
+  "artifactId": "evidence:i09a-n8-unknown-side-effect-touch:schema-validation:15",
+  "title": "Verification evidence for schema-validation",
+  "createdAt": "2026-06-25T15:57:47.894Z",
+  "updatedAt": "2026-06-25T15:57:47.894Z",
+  "producer": {
+    "kind": "verification_runner",
+    "id": "i-09a-runner-core",
+    "name": "@vibe-engineer/verification",
+    "version": "0.1.0",
+    "runId": "i09a-n8-unknown-side-effect-touch"
+  },
+  "status": "blocked",
+  "ownership": {
+    "ownerLane": "I-09A-verification-runner-core-evidence-routing",
+    "ownedWritePaths": [
+      "packages/verification/src/**",
+      "packages/verification/fixtures/**",
+      "packages/verification/tests/**",
+      ".vibe/work/I-09A-verification-runner-core-evidence-routing/**"
+    ],
+    "readOnlyPaths": [
+      "packages/artifacts/**",
+      "packages/orchestration/**",
+      "packages/cli/**"
+    ],
+    "untouchablePaths": [
+      ".git/**",
+      "pnpm-lock.yaml",
+      "package.json",
+      "pnpm-workspace.yaml"
+    ],
+    "concurrencyNotes": "I-09A runner core evidence packet written atomically under evidenceRoot."
+  },
+  "links": [
+    {
+      "rel": "evidence_for",
+      "artifactKind": "implementation_plan",
+      "artifactId": "i09a-plan-approved",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/verification/fixtures/plans/approved-plan.json",
+      "required": true,
+      "statusAtLinkTime": "approved"
+    }
+  ],
+  "extensions": {
+    "dev.vibe.verification": {
+      "schemaVersion": "1.0.0",
+      "requiredItemId": "schema-validation",
+      "requiredItemAction": "add",
+      "runId": "i09a-n8-unknown-side-effect-touch",
+      "runnerVersion": "0.1.0"
+    }
+  },
+  "evidenceClass": "deterministic",
+  "layer": "schema_validation",
+  "subjectRefs": [
+    {
+      "rel": "evidence_for",
+      "artifactKind": "implementation_plan",
+      "artifactId": "i09a-plan-approved",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/verification/fixtures/plans/approved-plan.json",
+      "required": true,
+      "statusAtLinkTime": "approved"
+    },
+    {
+      "rel": "evidence_for",
+      "artifactKind": "verification_delta",
+      "artifactId": "i09a-delta-approved",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/verification/fixtures/plans/approved-plan.json",
+      "required": true,
+      "statusAtLinkTime": "complete"
+    }
+  ],
+  "commandOrTool": {
+    "kind": "command",
+    "name": "touch",
+    "argv": [
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/unknown-side-effect-touch/sentinel"
+    ],
+    "workingDirectory": "/Users/lizavasilyeva/work/vibe-engineer",
+    "environmentSummary": "not constructed; denied before spawn"
+  },
+  "startedAt": "2026-06-25T15:57:47.894Z",
+  "endedAt": "2026-06-25T15:57:47.894Z",
+  "exitStatus": {
+    "kind": "tool_status",
+    "status": "not_spawned"
+  },
+  "result": "blocked",
+  "blocking": true,
+  "artifacts": [],
+  "warnings": [],
+  "failureDetails": {
+    "code": "COMMAND_POLICY_DENIED",
+    "message": "Executable touch is denied by policy.",
+    "classification": "safety_or_security_policy_failure"
+  }
+}

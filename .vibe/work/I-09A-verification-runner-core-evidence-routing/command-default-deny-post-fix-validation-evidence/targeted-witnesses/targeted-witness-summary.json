@@ -1,0 +1,723 @@
+{
+  "ok": true,
+  "verdict": "PASS",
+  "caseCount": 37,
+  "cases": [
+    {
+      "id": "positive-allowlist",
+      "ok": true,
+      "details": {
+        "id": "positive-allowlist",
+        "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-post-fix-validation-evidence/targeted-witnesses/positive-allowlist",
+        "status": "advisory_warning",
+        "packetCount": 16,
+        "validationOk": true,
+        "failureCodes": [
+          "ADVISORY_FINDING"
+        ],
+        "classifications": [
+          "advisory_finding"
+        ]
+      }
+    },
+    {
+      "id": "plan-not-approved",
+      "ok": true,
+      "details": {
+        "name": "VerificationRunnerError",
+        "code": "PLAN_NOT_APPROVED",
+        "message": "Implementation Plan status must be approved before verification can run.",
+        "details": {
+          "status": "draft"
+        }
+      }
+    },
+    {
+      "id": "missing-required-category",
+      "ok": true,
+      "details": {
+        "name": "VerificationRunnerError",
+        "code": "INVALID_IMPLEMENTATION_PLAN",
+        "message": "Implementation Plan failed artifact validation.",
+        "details": [
+          {
+            "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/packages/verification/fixtures/plans/missing-category-plan.json",
+            "artifactKind": "implementation_plan",
+            "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/implementation-plan.schema.json",
+            "schemaVersion": "1.0.0",
+            "pointer": "/verificationDelta/requiredItems",
+            "code": "VERIFICATION_CATALOG_INCOMPLETE",
+            "message": "Verification Delta must include catalog layer schema_validation."
+          }
+        ]
+      }
+    },
+    {
+      "id": "w-rb2-orchestration",
+      "ok": true,
+      "details": {
+        "joinedArtifactIds": [
+          "evidence:i09a-postfix-positive-allowlist:safety-hooks:00"
+        ],
+        "completedNodeIds": [
+          "producer"
+        ],
+        "invalidations": [
+          {
+            "nodeId": "producer",
+            "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-post-fix-validation-evidence/targeted-witnesses/w-rb2-orchestration/missing.json",
+            "reason": "missing artifact"
+          }
+        ]
+      }
+    },
+    {
+      "id": "w-rb2-5-cli-context",
+      "ok": true,
+      "details": {
+        "code": 0,
+        "cwd": "/Users/lizavasilyeva/work/vibe-engineer/packages/cli",
+        "stderr": ""
+      }
+    },
+    {
+      "id": "rerun-lineage",
+      "ok": true,
+      "details": {
+        "id": "rerun-lineage",
+        "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-post-fix-validation-evidence/targeted-witnesses/rerun-lineage",
+        "status": "advisory_warning",
+        "packetCount": 16,
+        "validationOk": true,
+        "failureCodes": [
+          "ADVISORY_FINDING"
+        ],
+        "classifications": [
+          "advisory_finding"
+        ],
+        "priorPacket": "evidence:i09a-postfix-positive-allowlist:safety-hooks:00"
+      }
+    },
+    {
+      "id": "command-policy/unknown-side-effect-touch",
+      "ok": true,
+      "details": {
+        "id": "command-policy/unknown-side-effect-touch",
+        "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-post-fix-validation-evidence/targeted-witnesses/command-policy/unknown-side-effect-touch",
+        "status": "blocked",
+        "packetCount": 16,
+        "validationOk": true,
+        "failureCodes": [
+          "ADVISORY_FINDING",
+          "COMMAND_POLICY_DENIED"
+        ],
+        "classifications": [
+          "advisory_finding",
+          "safety_or_security_policy_failure"
+        ],
+        "sentinel": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-post-fix-validation-evidence/targeted-witnesses/command-policy/unknown-touch-sentinel",
+        "sentinelExists": false
+      }
+    },
+    {
+      "id": "command-policy/unknown-non-node-mkdir",
+      "ok": true,
+      "details": {
+        "id": "command-policy/unknown-non-node-mkdir",
+        "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-post-fix-validation-evidence/targeted-witnesses/command-policy/unknown-non-node-mkdir",
+        "status": "blocked",
+        "packetCount": 16,
+        "validationOk": true,
+        "failureCodes": [
+          "ADVISORY_FINDING",
+          "UNSAFE_PATH"
+        ],
+        "classifications": [
+          "advisory_finding",
+          "safety_or_security_policy_failure"
+        ],
+        "sentinel": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-post-fix-validation-evidence/targeted-witnesses/command-policy/unknown-mkdir-sentinel",
+        "sentinelExists": false
+      }
+    },
+    {
+      "id": "command-policy/shell-string-command",
+      "ok": true,
+      "details": {
+        "id": "command-policy/shell-string-command",
+        "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-post-fix-validation-evidence/targeted-witnesses/command-policy/shell-string-command",
+        "status": "blocked",
+        "packetCount": 16,
+        "validationOk": true,
+        "failureCodes": [
+          "ADVISORY_FINDING",
+          "COMMAND_POLICY_DENIED"
+        ],
+        "classifications": [
+          "advisory_finding",
+          "safety_or_security_policy_failure"
+        ]
+      }
+    },
+    {
+      "id": "command-policy/shell-true",
+      "ok": true,
+      "details": {
+        "id": "command-policy/shell-true",
+        "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-post-fix-validation-evidence/targeted-witnesses/command-policy/shell-true",
+        "status": "blocked",
+        "packetCount": 16,
+        "validationOk": true,
+        "failureCodes": [
+          "ADVISORY_FINDING",
+          "COMMAND_POLICY_DENIED"
+        ],
+        "classifications": [
+          "advisory_finding",
+          "safety_or_security_policy_failure"
+        ]
+      }
+    },
+    {
+      "id": "command-policy/package-manager-pnpm",
+      "ok": true,
+      "details": {
+        "id": "command-policy/package-manager-pnpm",
+        "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-post-fix-validation-evidence/targeted-witnesses/command-policy/package-manager-pnpm",
+        "status": "blocked",
+        "packetCount": 16,
+        "validationOk": true,
+        "failureCodes": [
+          "ADVISORY_FINDING",
+          "COMMAND_POLICY_DENIED"
+        ],
+        "classifications": [
+          "advisory_finding",
+          "safety_or_security_policy_failure"
+        ]
+      }
+    },
+    {
+      "id": "command-policy/git-status",
+      "ok": true,
+      "details": {
+        "id": "command-policy/git-status",
+        "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-post-fix-validation-evidence/targeted-witnesses/command-policy/git-status",
+        "status": "blocked",
+        "packetCount": 16,
+        "validationOk": true,
+        "failureCodes": [
+          "ADVISORY_FINDING",
+          "COMMAND_POLICY_DENIED"
+        ],
+        "classifications": [
+          "advisory_finding",
+          "safety_or_security_policy_failure"
+        ]
+      }
+    },
+    {
+      "id": "command-policy/node-eval",
+      "ok": true,
+      "details": {
+        "id": "command-policy/node-eval",
+        "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-post-fix-validation-evidence/targeted-witnesses/command-policy/node-eval",
+        "status": "blocked",
+        "packetCount": 16,
+        "validationOk": true,
+        "failureCodes": [
+          "ADVISORY_FINDING",
+          "COMMAND_POLICY_DENIED"
+        ],
+        "classifications": [
+          "advisory_finding",
+          "safety_or_security_policy_failure"
+        ]
+      }
+    },
+    {
+      "id": "command-policy/node-print",
+      "ok": true,
+      "details": {
+        "id": "command-policy/node-print",
+        "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-post-fix-validation-evidence/targeted-witnesses/command-policy/node-print",
+        "status": "blocked",
+        "packetCount": 16,
+        "validationOk": true,
+        "failureCodes": [
+          "ADVISORY_FINDING",
+          "COMMAND_POLICY_DENIED"
+        ],
+        "classifications": [
+          "advisory_finding",
+          "safety_or_security_policy_failure"
+        ]
+      }
+    },
+    {
+      "id": "command-policy/missing-typed-runner-path",
+      "ok": true,
+      "details": {
+        "id": "command-policy/missing-typed-runner-path",
+        "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-post-fix-validation-evidence/targeted-witnesses/command-policy/missing-typed-runner-path",
+        "status": "blocked",
+        "packetCount": 16,
+        "validationOk": true,
+        "failureCodes": [
+          "ADVISORY_FINDING",
+          "COMMAND_POLICY_DENIED"
+        ],
+        "classifications": [
+          "advisory_finding",
+          "safety_or_security_policy_failure"
+        ]
+      }
+    },
+    {
+      "id": "command-policy/untyped-argv",
+      "ok": true,
+      "details": {
+        "id": "command-policy/untyped-argv",
+        "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-post-fix-validation-evidence/targeted-witnesses/command-policy/untyped-argv",
+        "status": "blocked",
+        "packetCount": 16,
+        "validationOk": true,
+        "failureCodes": [
+          "ADVISORY_FINDING",
+          "COMMAND_POLICY_DENIED"
+        ],
+        "classifications": [
+          "advisory_finding",
+          "safety_or_security_policy_failure"
+        ]
+      }
+    },
+    {
+      "id": "command-policy/unsupported-kind",
+      "ok": true,
+      "details": {
+        "id": "command-policy/unsupported-kind",
+        "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-post-fix-validation-evidence/targeted-witnesses/command-policy/unsupported-kind",
+        "status": "blocked",
+        "packetCount": 16,
+        "validationOk": true,
+        "failureCodes": [
+          "UNSUPPORTED_COMMAND"
+        ],
+        "classifications": [
+          "safety_or_security_policy_failure"
+        ]
+      }
+    },
+    {
+      "id": "command-policy/unsupported-validator",
+      "ok": true,
+      "details": {
+        "id": "command-policy/unsupported-validator",
+        "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-post-fix-validation-evidence/targeted-witnesses/command-policy/unsupported-validator",
+        "status": "blocked",
+        "packetCount": 16,
+        "validationOk": true,
+        "failureCodes": [
+          "ADVISORY_FINDING",
+          "UNSUPPORTED_ACTION"
+        ],
+        "classifications": [
+          "advisory_finding",
+          "safety_or_security_policy_failure"
+        ]
+      }
+    },
+    {
+      "id": "command-policy/unsafe-cwd",
+      "ok": true,
+      "details": {
+        "id": "command-policy/unsafe-cwd",
+        "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-post-fix-validation-evidence/targeted-witnesses/command-policy/unsafe-cwd",
+        "status": "blocked",
+        "packetCount": 16,
+        "validationOk": true,
+        "failureCodes": [
+          "ADVISORY_FINDING",
+          "UNSAFE_CWD"
+        ],
+        "classifications": [
+          "advisory_finding",
+          "safety_or_security_policy_failure"
+        ]
+      }
+    },
+    {
+      "id": "command-policy/unsafe-protected-path",
+      "ok": true,
+      "details": {
+        "id": "command-policy/unsafe-protected-path",
+        "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-post-fix-validation-evidence/targeted-witnesses/command-policy/unsafe-protected-path",
+        "status": "blocked",
+        "packetCount": 16,
+        "validationOk": true,
+        "failureCodes": [
+          "ADVISORY_FINDING",
+          "UNSAFE_PATH"
+        ],
+        "classifications": [
+          "advisory_finding",
+          "safety_or_security_policy_failure"
+        ]
+      }
+    },
+    {
+      "id": "command-policy/env-pass-through",
+      "ok": true,
+      "details": {
+        "id": "command-policy/env-pass-through",
+        "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-post-fix-validation-evidence/targeted-witnesses/command-policy/env-pass-through",
+        "status": "blocked",
+        "packetCount": 16,
+        "validationOk": true,
+        "failureCodes": [
+          "ADVISORY_FINDING",
+          "ENVIRONMENT_POLICY_DENIED"
+        ],
+        "classifications": [
+          "advisory_finding",
+          "safety_or_security_policy_failure"
+        ]
+      }
+    },
+    {
+      "id": "unsupported-action-artifact-rejection",
+      "ok": true,
+      "details": {
+        "name": "VerificationRunnerError",
+        "code": "INVALID_IMPLEMENTATION_PLAN",
+        "message": "Implementation Plan failed artifact validation.",
+        "details": [
+          {
+            "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-post-fix-validation-evidence/targeted-witnesses/plan-variants/unsupported-action.json",
+            "artifactKind": "implementation_plan",
+            "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/implementation-plan.schema.json",
+            "schemaVersion": "1.0.0",
+            "pointer": "/verificationDelta/requiredItems/0/action",
+            "code": "ENUM",
+            "message": "must be equal to one of the allowed values"
+          }
+        ]
+      }
+    },
+    {
+      "id": "resources/aggregate-output-cap",
+      "ok": true,
+      "details": {
+        "id": "resources/aggregate-output-cap",
+        "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-post-fix-validation-evidence/targeted-witnesses/resources/aggregate-output-cap",
+        "status": "blocked",
+        "packetCount": 16,
+        "validationOk": true,
+        "failureCodes": [
+          "ADVISORY_FINDING",
+          "OUTPUT_LIMIT_EXCEEDED"
+        ],
+        "classifications": [
+          "advisory_finding",
+          "safety_or_security_policy_failure"
+        ]
+      }
+    },
+    {
+      "id": "resources/stdout-only-cap",
+      "ok": true,
+      "details": {
+        "id": "resources/stdout-only-cap",
+        "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-post-fix-validation-evidence/targeted-witnesses/resources/stdout-only-cap",
+        "status": "blocked",
+        "packetCount": 16,
+        "validationOk": true,
+        "failureCodes": [
+          "ADVISORY_FINDING",
+          "STDOUT_LIMIT_EXCEEDED"
+        ],
+        "classifications": [
+          "advisory_finding",
+          "safety_or_security_policy_failure"
+        ]
+      }
+    },
+    {
+      "id": "resources/stderr-only-cap",
+      "ok": true,
+      "details": {
+        "id": "resources/stderr-only-cap",
+        "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-post-fix-validation-evidence/targeted-witnesses/resources/stderr-only-cap",
+        "status": "blocked",
+        "packetCount": 16,
+        "validationOk": true,
+        "failureCodes": [
+          "ADVISORY_FINDING",
+          "STDERR_LIMIT_EXCEEDED"
+        ],
+        "classifications": [
+          "advisory_finding",
+          "safety_or_security_policy_failure"
+        ]
+      }
+    },
+    {
+      "id": "resources/timeout",
+      "ok": true,
+      "details": {
+        "id": "resources/timeout",
+        "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-post-fix-validation-evidence/targeted-witnesses/resources/timeout",
+        "status": "blocked",
+        "packetCount": 16,
+        "validationOk": true,
+        "failureCodes": [
+          "ADVISORY_FINDING",
+          "COMMAND_TIMEOUT"
+        ],
+        "classifications": [
+          "advisory_finding",
+          "safety_or_security_policy_failure"
+        ]
+      }
+    },
+    {
+      "id": "resources/artifact-cap",
+      "ok": true,
+      "details": {
+        "id": "resources/artifact-cap",
+        "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-post-fix-validation-evidence/targeted-witnesses/resources/artifact-cap",
+        "status": "blocked",
+        "packetCount": 16,
+        "validationOk": true,
+        "failureCodes": [
+          "ADVISORY_FINDING",
+          "ARTIFACT_LIMIT_EXCEEDED"
+        ],
+        "classifications": [
+          "advisory_finding",
+          "safety_or_security_policy_failure"
+        ]
+      }
+    },
+    {
+      "id": "resources/missing-cap",
+      "ok": true,
+      "details": {
+        "id": "resources/missing-cap",
+        "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-post-fix-validation-evidence/targeted-witnesses/resources/missing-cap",
+        "status": "blocked",
+        "packetCount": 16,
+        "validationOk": true,
+        "failureCodes": [
+          "ADVISORY_FINDING",
+          "RESOURCE_CAP_MISSING"
+        ],
+        "classifications": [
+          "advisory_finding",
+          "safety_or_security_policy_failure"
+        ]
+      }
+    },
+    {
+      "id": "resources/malformed-cap",
+      "ok": true,
+      "details": {
+        "id": "resources/malformed-cap",
+        "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-post-fix-validation-evidence/targeted-witnesses/resources/malformed-cap",
+        "status": "blocked",
+        "packetCount": 16,
+        "validationOk": true,
+        "failureCodes": [
+          "ADVISORY_FINDING",
+          "RESOURCE_CAP_MISSING"
+        ],
+        "classifications": [
+          "advisory_finding",
+          "safety_or_security_policy_failure"
+        ]
+      }
+    },
+    {
+      "id": "resources/overlarge-cap",
+      "ok": true,
+      "details": {
+        "id": "resources/overlarge-cap",
+        "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-post-fix-validation-evidence/targeted-witnesses/resources/overlarge-cap",
+        "status": "blocked",
+        "packetCount": 16,
+        "validationOk": true,
+        "failureCodes": [
+          "ADVISORY_FINDING",
+          "RESOURCE_CAP_EXCEEDED"
+        ],
+        "classifications": [
+          "advisory_finding",
+          "safety_or_security_policy_failure"
+        ]
+      }
+    },
+    {
+      "id": "resources/missing-evidence",
+      "ok": true,
+      "details": {
+        "id": "resources/missing-evidence",
+        "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-post-fix-validation-evidence/targeted-witnesses/resources/missing-evidence",
+        "status": "blocked",
+        "packetCount": 16,
+        "validationOk": true,
+        "failureCodes": [
+          "ADVISORY_FINDING",
+          "MISSING_EVIDENCE"
+        ],
+        "classifications": [
+          "advisory_finding",
+          "missing_evidence"
+        ]
+      }
+    },
+    {
+      "id": "command-policy/symlink-expected-artifact-escape",
+      "ok": true,
+      "details": {
+        "id": "command-policy/symlink-expected-artifact-escape",
+        "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-post-fix-validation-evidence/targeted-witnesses/command-policy/symlink-expected-artifact-escape",
+        "status": "blocked",
+        "packetCount": 16,
+        "validationOk": true,
+        "failureCodes": [
+          "ADVISORY_FINDING",
+          "UNSAFE_PATH"
+        ],
+        "classifications": [
+          "advisory_finding",
+          "safety_or_security_policy_failure"
+        ]
+      }
+    },
+    {
+      "id": "command-policy/absolute-out-of-root-path",
+      "ok": true,
+      "details": {
+        "id": "command-policy/absolute-out-of-root-path",
+        "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-post-fix-validation-evidence/targeted-witnesses/command-policy/absolute-out-of-root-path",
+        "status": "blocked",
+        "packetCount": 16,
+        "validationOk": true,
+        "failureCodes": [
+          "ADVISORY_FINDING",
+          "UNSAFE_PATH"
+        ],
+        "classifications": [
+          "advisory_finding",
+          "safety_or_security_policy_failure"
+        ]
+      }
+    },
+    {
+      "id": "schema/malformed-evidence-packet-candidate",
+      "ok": true,
+      "details": {
+        "id": "schema/malformed-evidence-packet-candidate",
+        "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-post-fix-validation-evidence/targeted-witnesses/schema/malformed-evidence-packet-candidate",
+        "status": "blocked",
+        "packetCount": 16,
+        "validationOk": true,
+        "failureCodes": [
+          "ADVISORY_FINDING",
+          "MALFORMED_EVIDENCE_PACKET"
+        ],
+        "classifications": [
+          "advisory_finding",
+          "schema_or_contract_failure"
+        ]
+      }
+    },
+    {
+      "id": "command-policy/secret-argv-deny",
+      "ok": true,
+      "details": {
+        "id": "command-policy/secret-argv-deny",
+        "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-post-fix-validation-evidence/targeted-witnesses/command-policy/secret-argv-deny",
+        "status": "blocked",
+        "packetCount": 16,
+        "validationOk": true,
+        "failureCodes": [
+          "ADVISORY_FINDING",
+          "COMMAND_POLICY_DENIED"
+        ],
+        "classifications": [
+          "advisory_finding",
+          "safety_or_security_policy_failure"
+        ]
+      }
+    },
+    {
+      "id": "command-policy/secret-env-deny",
+      "ok": true,
+      "details": {
+        "id": "command-policy/secret-env-deny",
+        "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-post-fix-validation-evidence/targeted-witnesses/command-policy/secret-env-deny",
+        "status": "blocked",
+        "packetCount": 16,
+        "validationOk": true,
+        "failureCodes": [
+          "ADVISORY_FINDING",
+          "ENVIRONMENT_POLICY_DENIED"
+        ],
+        "classifications": [
+          "advisory_finding",
+          "safety_or_security_policy_failure"
+        ]
+      }
+    },
+    {
+      "id": "secret-redaction/secret-output",
+      "ok": true,
+      "details": {
+        "id": "secret-redaction/secret-output",
+        "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-post-fix-validation-evidence/targeted-witnesses/secret-redaction/secret-output",
+        "status": "advisory_warning",
+        "packetCount": 16,
+        "validationOk": true,
+        "failureCodes": [
+          "ADVISORY_FINDING"
+        ],
+        "classifications": [
+          "advisory_finding"
+        ]
+      }
+    }
+  ],
+  "findings": [],
+  "packetSummary": {
+    "packetCount": 544,
+    "invalidPackets": 0,
+    "classificationInventory": {
+      "advisory_finding": 33,
+      "missing_evidence": 1,
+      "safety_or_security_policy_failure": 29,
+      "schema_or_contract_failure": 1
+    },
+    "codeInventory": {
+      "ADVISORY_FINDING": 33,
+      "ARTIFACT_LIMIT_EXCEEDED": 1,
+      "COMMAND_POLICY_DENIED": 11,
+      "COMMAND_TIMEOUT": 1,
+      "ENVIRONMENT_POLICY_DENIED": 2,
+      "MALFORMED_EVIDENCE_PACKET": 1,
+      "MISSING_EVIDENCE": 1,
+      "OUTPUT_LIMIT_EXCEEDED": 1,
+      "RESOURCE_CAP_EXCEEDED": 1,
+      "RESOURCE_CAP_MISSING": 2,
+      "STDERR_LIMIT_EXCEEDED": 1,
+      "STDOUT_LIMIT_EXCEEDED": 1,
+      "UNSAFE_CWD": 1,
+      "UNSAFE_PATH": 4,
+      "UNSUPPORTED_ACTION": 1,
+      "UNSUPPORTED_COMMAND": 2
+    },
+    "obsoleteClassifications": [],
+    "badCodeFields": []
+  }
+}

@@ -1,0 +1,618 @@
+[
+  {
+    "path": "packages/verification/package.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/cli/src/command-loader",
+    "type": "dir"
+  },
+  {
+    "path": "packages/cli/src/command-loader/loader.js",
+    "type": "file"
+  },
+  {
+    "path": "packages/cli/src/commands",
+    "type": "dir"
+  },
+  {
+    "path": "packages/cli/src/commands/config",
+    "type": "dir"
+  },
+  {
+    "path": "packages/cli/src/commands/config/index.js",
+    "type": "file"
+  },
+  {
+    "path": "packages/cli/src/commands/doctor",
+    "type": "dir"
+  },
+  {
+    "path": "packages/cli/src/commands/doctor/index.js",
+    "type": "file"
+  },
+  {
+    "path": "packages/cli/src/commands/schematic",
+    "type": "dir"
+  },
+  {
+    "path": "packages/cli/src/commands/schematic/artifacts-adapter.js",
+    "type": "file"
+  },
+  {
+    "path": "packages/cli/src/commands/schematic/index.js",
+    "type": "file"
+  },
+  {
+    "path": "packages/cli/src/commands/schematic/run-cli-witnesses.mjs",
+    "type": "file"
+  },
+  {
+    "path": "packages/cli/src/entry",
+    "type": "dir"
+  },
+  {
+    "path": "packages/cli/src/entry/vibe-engineer.js",
+    "type": "file"
+  },
+  {
+    "path": "packages/cli/src/envelope",
+    "type": "dir"
+  },
+  {
+    "path": "packages/cli/src/envelope/result-envelope.js",
+    "type": "file"
+  },
+  {
+    "path": "packages/cli/src/errors",
+    "type": "dir"
+  },
+  {
+    "path": "packages/cli/src/errors/codes.js",
+    "type": "file"
+  },
+  {
+    "path": "packages/cli/src/errors/sanitization.js",
+    "type": "file"
+  },
+  {
+    "path": "packages/cli/src/testing",
+    "type": "dir"
+  },
+  {
+    "path": "packages/cli/src/testing/run-witnesses.mjs",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/README.md",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures",
+    "type": "dir"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid",
+    "type": "dir"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid/agent_registry_entry",
+    "type": "dir"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid/agent_registry_entry/missing-schema-refs.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid/agent_registry_entry/missing-schemaVersion.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid/agent_registry_entry/unknown-field.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid/agent_registry_entry/wrong-artifactKind.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid/build_result",
+    "type": "dir"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid/build_result/bad-plan-status-handoff.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid/build_result/missing-evidence-refs.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid/build_result/missing-schemaVersion.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid/build_result/narrative-verification-without-evidence-ref.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid/build_result/unknown-field.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid/build_result/verification-ref-non-evidence.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid/build_result/verification-ref-wrong-relation.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid/build_result/wrong-artifactKind.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid/context_file_header",
+    "type": "dir"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid/context_file_header/missing-drift-metadata.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid/context_file_header/missing-schemaVersion.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid/context_file_header/unknown-field.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid/context_file_header/wrong-artifactKind.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid/evidence_packet",
+    "type": "dir"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid/evidence_packet/advisory-as-deterministic-blocker.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid/evidence_packet/missing-evidence-for-link.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid/evidence_packet/missing-schemaVersion.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid/evidence_packet/unknown-field.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid/evidence_packet/wrong-artifactKind.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid/implementation_plan",
+    "type": "dir"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid/implementation_plan/incomplete-verification-delta.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid/implementation_plan/missing-schemaVersion.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid/implementation_plan/unknown-field.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid/implementation_plan/wrong-artifactKind.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid/schematic_manifest",
+    "type": "dir"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid/schematic_manifest/missing-input-schema-refs.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid/schematic_manifest/missing-schemaVersion.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid/schematic_manifest/unknown-field.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid/schematic_manifest/wrong-artifactKind.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid/ship_packet",
+    "type": "dir"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid/ship_packet/failed-build-handoff.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid/ship_packet/final-verification-ref-non-evidence.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid/ship_packet/final-verification-ref-wrong-relation.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid/ship_packet/missing-schemaVersion.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid/ship_packet/push-without-approval.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid/ship_packet/unknown-field.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid/ship_packet/wrong-artifactKind.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid/skill_manifest",
+    "type": "dir"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid/skill_manifest/missing-forbidden-actions.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid/skill_manifest/missing-schemaVersion.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid/skill_manifest/unknown-field.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid/skill_manifest/wrong-artifactKind.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid/verification_delta",
+    "type": "dir"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid/verification_delta/blocked-missing-metadata.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid/verification_delta/missing-catalog-category.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid/verification_delta/missing-requiredItems.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid/verification_delta/missing-schemaVersion.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid/verification_delta/not-applicable-missing-rationale.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid/verification_delta/unknown-field.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid/verification_delta/wrong-artifactKind.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid/work_brief",
+    "type": "dir"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid/work_brief/malformed-extension-core-field.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid/work_brief/missing-schemaVersion.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid/work_brief/unknown-field.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid/work_brief/unsupported-version.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid/work_brief/wrong-artifactKind.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid-carriers",
+    "type": "dir"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid-carriers/chat-transcript.txt",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid-carriers/implementation-plan.yaml",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/invalid-carriers/work-brief.md",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/valid",
+    "type": "dir"
+  },
+  {
+    "path": "packages/artifacts/fixtures/valid/agent_registry_entry.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/valid/build_result.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/valid/context_file_header.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/valid/evidence_packet.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/valid/implementation_plan.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/valid/schematic_manifest.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/valid/ship_packet.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/valid/skill_manifest.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/valid/verification_delta.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/fixtures/valid/work_brief.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/package.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/schemas",
+    "type": "dir"
+  },
+  {
+    "path": "packages/artifacts/schemas/agent-registry-entry.schema.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/schemas/build-result.schema.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/schemas/context-file-header.schema.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/schemas/evidence-packet.schema.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/schemas/implementation-plan.schema.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/schemas/schematic-manifest.schema.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/schemas/ship-packet.schema.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/schemas/skill-manifest.schema.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/schemas/verification-delta.schema.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/schemas/work-brief.schema.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/scripts",
+    "type": "dir"
+  },
+  {
+    "path": "packages/artifacts/scripts/check-generated-types.mjs",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/scripts/generate-types.mjs",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/scripts/typecheck-public-entrypoint.mjs",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/src",
+    "type": "dir"
+  },
+  {
+    "path": "packages/artifacts/src/errors.js",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/src/generated",
+    "type": "dir"
+  },
+  {
+    "path": "packages/artifacts/src/generated/types.d.ts",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/src/index.js",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/src/schema-registry.js",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/src/validation.js",
+    "type": "file"
+  },
+  {
+    "path": "packages/artifacts/tests",
+    "type": "dir"
+  },
+  {
+    "path": "packages/artifacts/tests/run-tests.mjs",
+    "type": "file"
+  },
+  {
+    "path": "packages/orchestration/dist",
+    "type": "dir"
+  },
+  {
+    "path": "packages/orchestration/dist/src",
+    "type": "dir"
+  },
+  {
+    "path": "packages/orchestration/dist/src/index.d.ts",
+    "type": "file"
+  },
+  {
+    "path": "packages/orchestration/dist/src/index.d.ts.map",
+    "type": "file"
+  },
+  {
+    "path": "packages/orchestration/dist/src/index.js",
+    "type": "file"
+  },
+  {
+    "path": "packages/orchestration/dist/src/index.js.map",
+    "type": "file"
+  },
+  {
+    "path": "packages/orchestration/dist/tests",
+    "type": "dir"
+  },
+  {
+    "path": "packages/orchestration/dist/tests/typecheck.d.ts",
+    "type": "file"
+  },
+  {
+    "path": "packages/orchestration/dist/tests/typecheck.d.ts.map",
+    "type": "file"
+  },
+  {
+    "path": "packages/orchestration/dist/tests/typecheck.js",
+    "type": "file"
+  },
+  {
+    "path": "packages/orchestration/dist/tests/typecheck.js.map",
+    "type": "file"
+  },
+  {
+    "path": "packages/orchestration/fixtures",
+    "type": "dir"
+  },
+  {
+    "path": "packages/orchestration/fixtures/artifacts",
+    "type": "dir"
+  },
+  {
+    "path": "packages/orchestration/fixtures/artifacts/invalid",
+    "type": "dir"
+  },
+  {
+    "path": "packages/orchestration/fixtures/artifacts/invalid/evidence_packet-missing-schemaVersion.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/orchestration/fixtures/artifacts/valid",
+    "type": "dir"
+  },
+  {
+    "path": "packages/orchestration/fixtures/artifacts/valid/evidence_packet.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/orchestration/fixtures/work-plans",
+    "type": "dir"
+  },
+  {
+    "path": "packages/orchestration/fixtures/work-plans/valid-acyclic.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/orchestration/package.json",
+    "type": "file"
+  },
+  {
+    "path": "packages/orchestration/src",
+    "type": "dir"
+  },
+  {
+    "path": "packages/orchestration/src/index.ts",
+    "type": "file"
+  },
+  {
+    "path": "packages/orchestration/src/node-shims.d.ts",
+    "type": "file"
+  },
+  {
+    "path": "packages/orchestration/tests",
+    "type": "dir"
+  },
+  {
+    "path": "packages/orchestration/tests/real-boundary-witness.mjs",
+    "type": "file"
+  },
+  {
+    "path": "packages/orchestration/tests/run-tests.mjs",
+    "type": "file"
+  },
+  {
+    "path": "packages/orchestration/tests/typecheck.ts",
+    "type": "file"
+  },
+  {
+    "path": "packages/orchestration/tsconfig.json",
+    "type": "file"
+  }
+]

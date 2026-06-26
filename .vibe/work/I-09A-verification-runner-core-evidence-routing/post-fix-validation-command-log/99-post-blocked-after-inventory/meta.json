@@ -1,0 +1,18 @@
+{
+  "id": "99-post-blocked-after-inventory",
+  "cwd": "/Users/lizavasilyeva/work/vibe-engineer",
+  "command": "bash -lc \"set -euo pipefail\\nprintf \\\"## pwd\\\\n\\\"; pwd\\nprintf \\\"\\\\n## git status --short\\\\n\\\"; git status --short\\nprintf \\\"\\\\n## scoped status\\\\n\\\"; git status --short -- packages/verification packages/cli packages/artifacts packages/orchestration package.json pnpm-workspace.yaml pnpm-lock.yaml tsconfig.json turbo.json docs .github scripts || true\\nprintf \\\"\\\\n## validation-owned roots inventory\\\\n\\\"; find .vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-evidence .vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-command-log -type f 2>/dev/null | sort\\nprintf \\\"\\\\n## protected roots current hashes\\\\n\\\"; for p in package.json turbo.json pnpm-lock.yaml pnpm-workspace.yaml; do if [ -f \\\"$p\\\" ]; then shasum -a 256 \\\"$p\\\"; else printf \\\"MISSING %s\\\\n\\\" \\\"$p\\\"; fi; done\\n\"",
+  "argv": [
+    "bash",
+    "-lc",
+    "set -euo pipefail\nprintf \"## pwd\\n\"; pwd\nprintf \"\\n## git status --short\\n\"; git status --short\nprintf \"\\n## scoped status\\n\"; git status --short -- packages/verification packages/cli packages/artifacts packages/orchestration package.json pnpm-workspace.yaml pnpm-lock.yaml tsconfig.json turbo.json docs .github scripts || true\nprintf \"\\n## validation-owned roots inventory\\n\"; find .vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-evidence .vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-command-log -type f 2>/dev/null | sort\nprintf \"\\n## protected roots current hashes\\n\"; for p in package.json turbo.json pnpm-lock.yaml pnpm-workspace.yaml; do if [ -f \"$p\" ]; then shasum -a 256 \"$p\"; else printf \"MISSING %s\\n\" \"$p\"; fi; done\n"
+  ],
+  "startedAt": "2026-06-25T14:02:15.568Z",
+  "endedAt": "2026-06-25T14:02:15.655Z",
+  "exitCode": 0,
+  "signal": null,
+  "error": null,
+  "stdoutPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-command-log/99-post-blocked-after-inventory/stdout.txt",
+  "stderrPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-command-log/99-post-blocked-after-inventory/stderr.txt",
+  "summaryPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-command-log/99-post-blocked-after-inventory/summary.md"
+}

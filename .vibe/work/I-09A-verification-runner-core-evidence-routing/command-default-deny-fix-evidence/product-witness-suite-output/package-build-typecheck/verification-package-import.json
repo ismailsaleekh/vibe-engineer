@@ -1,0 +1,12 @@
+{
+  "code": 0,
+  "stdout": "",
+  "stderr": "",
+  "cwd": "/Users/lizavasilyeva/work/vibe-engineer/packages/verification",
+  "argv": [
+    "/Users/lizavasilyeva/.nvm/versions/node/v24.16.0/bin/node",
+    "--input-type=module",
+    "-e",
+    "import { runVerificationPlan, VerificationRunnerError, VERIFICATION_RUNNER_VERSION, VERIFICATION_STATUSES } from '@vibe-engineer/verification'; if (typeof runVerificationPlan !== 'function') throw new Error('bad api'); if (typeof VerificationRunnerError !== 'function') throw new Error('bad error'); if (typeof VERIFICATION_RUNNER_VERSION !== 'string') throw new Error('bad version'); if (!Object.isFrozen(VERIFICATION_STATUSES)) throw new Error('statuses not frozen');"
+  ]
+}

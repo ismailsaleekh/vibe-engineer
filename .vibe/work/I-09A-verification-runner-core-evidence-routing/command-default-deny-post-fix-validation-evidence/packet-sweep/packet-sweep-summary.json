@@ -1,0 +1,60 @@
+{
+  "ok": true,
+  "roots": [
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-post-fix-validation-evidence",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-command-log",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-post-fix-validation-command-log"
+  ],
+  "packetCount": 3248,
+  "invalidPacketCount": 0,
+  "invalidPackets": [],
+  "classificationInventory": {
+    "advisory_finding": 53,
+    "missing_evidence": 5,
+    "missing_runner_or_prerequisite": 92,
+    "runner_internal_error": 4,
+    "safety_or_security_policy_failure": 160,
+    "schema_or_contract_failure": 5
+  },
+  "codeInventory": {
+    "ADVISORY_FINDING": 53,
+    "ARTIFACT_LIMIT_EXCEEDED": 5,
+    "COMMAND_POLICY_DENIED": 71,
+    "COMMAND_TIMEOUT": 12,
+    "ENVIRONMENT_POLICY_DENIED": 9,
+    "MALFORMED_EVIDENCE_PACKET": 5,
+    "MISSING_EVIDENCE": 5,
+    "MISSING_RUNNER_OR_PREREQUISITE": 92,
+    "OUTPUT_LIMIT_EXCEEDED": 8,
+    "RESOURCE_CAP_EXCEEDED": 1,
+    "RESOURCE_CAP_MISSING": 2,
+    "RUNNER_INTERNAL_ERROR": 4,
+    "STDERR_LIMIT_EXCEEDED": 8,
+    "STDOUT_LIMIT_EXCEEDED": 8,
+    "UNSAFE_CWD": 8,
+    "UNSAFE_PATH": 19,
+    "UNSUPPORTED_ACTION": 4,
+    "UNSUPPORTED_COMMAND": 5
+  },
+  "obsoleteClassifications": [],
+  "dl22CodeAsClassification": [],
+  "badCodes": [],
+  "secretPatternHitCount": 0,
+  "secretPatternHits": [],
+  "dl22CodesObserved": [
+    "ARTIFACT_LIMIT_EXCEEDED",
+    "COMMAND_POLICY_DENIED",
+    "COMMAND_TIMEOUT",
+    "ENVIRONMENT_POLICY_DENIED",
+    "OUTPUT_LIMIT_EXCEEDED",
+    "RESOURCE_CAP_EXCEEDED",
+    "RESOURCE_CAP_MISSING",
+    "STDERR_LIMIT_EXCEEDED",
+    "STDOUT_LIMIT_EXCEEDED",
+    "UNSAFE_CWD",
+    "UNSAFE_PATH",
+    "UNSUPPORTED_ACTION",
+    "UNSUPPORTED_COMMAND"
+  ]
+}

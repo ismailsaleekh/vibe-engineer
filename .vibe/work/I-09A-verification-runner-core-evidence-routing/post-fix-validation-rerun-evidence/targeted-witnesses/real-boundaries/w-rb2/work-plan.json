@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "orchestration-work-plan/1.0.0",
+  "runId": "i09a-rerun-w-rb2",
+  "limits": {
+    "maxParallelAgents": 2,
+    "maxValidationFixIterations": 1,
+    "agenticWorkPackageTargetHours": 1
+  },
+  "untouchablePaths": [
+    ".git/**"
+  ],
+  "readOnlyPaths": [
+    "packages/cli/**"
+  ],
+  "nodes": [
+    {
+      "id": "producer",
+      "title": "producer",
+      "dependsOn": [],
+      "ownershipClaims": [],
+      "expectedOutputs": [],
+      "evidenceRefs": [],
+      "failureRouting": {
+        "status": "none",
+        "hookRef": "none",
+        "owner": "i09a",
+        "evidenceRefs": []
+      },
+      "estimate": {
+        "agenticHours": 1,
+        "split": false
+      }
+    },
+    {
+      "id": "consumer",
+      "title": "consumer",
+      "dependsOn": [
+        "producer"
+      ],
+      "ownershipClaims": [],
+      "expectedOutputs": [],
+      "evidenceRefs": [],
+      "failureRouting": {
+        "status": "none",
+        "hookRef": "none",
+        "owner": "i09a",
+        "evidenceRefs": []
+      },
+      "estimate": {
+        "agenticHours": 1,
+        "split": false
+      }
+    }
+  ]
+}

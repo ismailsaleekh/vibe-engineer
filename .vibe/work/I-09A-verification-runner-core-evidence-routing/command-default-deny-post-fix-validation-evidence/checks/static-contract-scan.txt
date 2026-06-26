@@ -1,0 +1,31 @@
+--- @ts-nocheck ---
+--- broad any / mock shim vendor terms ---
+packages/verification/src/node-ambient.d.ts:2:  const fs: any;
+packages/verification/src/node-ambient.d.ts:4:  export const existsSync: any;
+packages/verification/src/node-ambient.d.ts:5:  export const realpathSync: any;
+packages/verification/src/node-ambient.d.ts:6:  export const statSync: any;
+packages/verification/src/node-ambient.d.ts:7:  export const readFileSync: any;
+packages/verification/src/node-ambient.d.ts:8:  export const readdirSync: any;
+packages/verification/src/node-ambient.d.ts:9:  export const mkdirSync: any;
+packages/verification/src/node-ambient.d.ts:10:  export const writeFileSync: any;
+packages/verification/src/node-ambient.d.ts:13:  const fsp: any;
+packages/verification/src/node-ambient.d.ts:17:  const path: any;
+packages/verification/src/node-ambient.d.ts:19:  export const dirname: any;
+packages/verification/src/node-ambient.d.ts:20:  export const basename: any;
+packages/verification/src/node-ambient.d.ts:21:  export const join: any;
+packages/verification/src/node-ambient.d.ts:22:  export const resolve: any;
+packages/verification/src/node-ambient.d.ts:23:  export const relative: any;
+packages/verification/src/node-ambient.d.ts:24:  export const isAbsolute: any;
+packages/verification/src/node-ambient.d.ts:27:  export const spawn: any;
+packages/verification/src/node-ambient.d.ts:29:declare module 'node:assert/strict' { const assert: any; export default assert; }
+packages/verification/src/node-ambient.d.ts:30:declare module 'node:url' { export const fileURLToPath: any; }
+packages/verification/src/node-ambient.d.ts:31:declare const process: any;
+packages/verification/src/node-ambient.d.ts:32:declare const Buffer: any;
+packages/verification/src/node-ambient.d.ts:33:declare const TextDecoder: any;
+packages/verification/tests/run-witnesses.mjs:12:/** @typedef {Record<string, any>} AnyRecord */
+packages/verification/tests/run-witnesses.mjs:112:/** @param {string} caseName @param {() => Promise<unknown>} fn @returns {Promise<any>} */
+packages/verification/tests/run-witnesses.mjs:113:async function expectError(caseName, fn) { try { await fn(); } catch (error) { const caught = /** @type {any} */ (error); await writeJson(path.join(evidenceRoot, caseName, 'error.json'), { name: caught.name, code: caught.code, message: caught.message, details: caught.details }); return caught; } throw new Error(`${caseName} expected error`); }
+packages/verification/tests/run-witnesses.mjs:140:  const workPlan = /** @type {any} */ ({ schemaVersion: 'orchestration-work-plan/1.0.0', runId: 'i09a-w-rb2', limits: { maxParallelAgents: 8, maxValidationFixIterations: 3, agenticWorkPackageTargetHours: 6 }, untouchablePaths: ['.git/**'], readOnlyPaths: ['packages/cli/**'], nodes: [
+packages/verification/tests/run-witnesses.mjs:236:  await writeJson(path.join(dir, 'result.json'), { invalidCandidateOk: validation.ok, errors: /** @type {any} */ (validation).errors, correctedClassification: timeoutPacket.failureDetails });
+packages/verification/src/index.js:395:  if (!EVIDENCE_FAILURE_CLASSIFICATION_VALUES.includes(/** @type {any} */ (classification))) throw new VerificationRunnerError('INVALID_FAILURE_CLASSIFICATION', `Unsupported Evidence Packet failure classification ${classification}.`);
+packages/verification/src/index.js:657:      const validation = validateArtifactFile(abs, { kind: /** @type {any} */ (kind) });

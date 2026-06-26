@@ -1,0 +1,73 @@
+{
+  "status": "blocked",
+  "runId": "i09a-rerun-overlarge-caps",
+  "evidencePackets": [
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/resources/overlarge-caps/evidence_i09a-rerun-overlarge-caps_safety-hooks_00.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/resources/overlarge-caps/evidence_i09a-rerun-overlarge-caps_typecheck_01.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/resources/overlarge-caps/evidence_i09a-rerun-overlarge-caps_lint-format_02.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/resources/overlarge-caps/evidence_i09a-rerun-overlarge-caps_mechanical-gate_03.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/resources/overlarge-caps/evidence_i09a-rerun-overlarge-caps_unit_04.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/resources/overlarge-caps/evidence_i09a-rerun-overlarge-caps_integration_05.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/resources/overlarge-caps/evidence_i09a-rerun-overlarge-caps_contract-adapter_06.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/resources/overlarge-caps/evidence_i09a-rerun-overlarge-caps_e2e_07.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/resources/overlarge-caps/evidence_i09a-rerun-overlarge-caps_ui-verification_08.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/resources/overlarge-caps/evidence_i09a-rerun-overlarge-caps_ai-eval_09.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/resources/overlarge-caps/evidence_i09a-rerun-overlarge-caps_build-package_10.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/resources/overlarge-caps/evidence_i09a-rerun-overlarge-caps_context-drift_11.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/resources/overlarge-caps/evidence_i09a-rerun-overlarge-caps_observability_12.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/resources/overlarge-caps/evidence_i09a-rerun-overlarge-caps_advisory-review_13.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/resources/overlarge-caps/evidence_i09a-rerun-overlarge-caps_final-dod_14.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/resources/overlarge-caps/evidence_i09a-rerun-overlarge-caps_schema-validation_15.json"
+  ],
+  "executedItems": [
+    "advisory-review",
+    "schema-validation"
+  ],
+  "recordedItems": [
+    "safety-hooks",
+    "typecheck",
+    "lint-format",
+    "mechanical-gate",
+    "unit",
+    "integration",
+    "contract-adapter",
+    "e2e",
+    "ui-verification",
+    "ai-eval",
+    "build-package",
+    "context-drift",
+    "observability",
+    "final-dod"
+  ],
+  "blockedItems": [
+    "schema-validation"
+  ],
+  "failures": [
+    {
+      "code": "ADVISORY_FINDING",
+      "message": "Runner exited with code 9.",
+      "classification": "advisory_finding"
+    },
+    {
+      "code": "RESOURCE_CAP_EXCEEDED",
+      "message": "Command timeout/output caps exceed implementation-owned maxima.",
+      "classification": "safety_or_security_policy_failure"
+    }
+  ],
+  "warnings": [
+    "safety_hooks is represented for the domain-neutral I-09A fixture.",
+    "typecheck is represented for the domain-neutral I-09A fixture.",
+    "lint_format is represented for the domain-neutral I-09A fixture.",
+    "mechanical_gate is represented for the domain-neutral I-09A fixture.",
+    "unit is represented for the domain-neutral I-09A fixture.",
+    "integration is represented for the domain-neutral I-09A fixture.",
+    "contract_adapter is represented for the domain-neutral I-09A fixture.",
+    "e2e is represented for the domain-neutral I-09A fixture.",
+    "ui_verification is represented for the domain-neutral I-09A fixture.",
+    "ai_eval is represented for the domain-neutral I-09A fixture.",
+    "build_package is represented for the domain-neutral I-09A fixture.",
+    "context_drift is represented for the domain-neutral I-09A fixture.",
+    "observability is represented for the domain-neutral I-09A fixture.",
+    "final_dod is represented for the domain-neutral I-09A fixture."
+  ]
+}

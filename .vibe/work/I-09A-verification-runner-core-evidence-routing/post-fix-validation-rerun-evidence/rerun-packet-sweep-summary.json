@@ -1,0 +1,39 @@
+{
+  "packetCount": 864,
+  "expectedInvalidPacketCount": 1,
+  "invalidPackets": [],
+  "classifications": {
+    "missing_runner_or_prerequisite": 21,
+    "safety_or_security_policy_failure": 39,
+    "advisory_finding": 34,
+    "missing_evidence": 1,
+    "schema_or_contract_failure": 1,
+    "runner_internal_error": 2
+  },
+  "codes": {
+    "MISSING_RUNNER_OR_PREREQUISITE": 21,
+    "ENVIRONMENT_POLICY_DENIED": 3,
+    "ADVISORY_FINDING": 34,
+    "COMMAND_TIMEOUT": 3,
+    "ARTIFACT_LIMIT_EXCEEDED": 2,
+    "STDERR_LIMIT_EXCEEDED": 2,
+    "STDOUT_LIMIT_EXCEEDED": 2,
+    "MISSING_EVIDENCE": 1,
+    "MALFORMED_EVIDENCE_PACKET": 1,
+    "RUNNER_INTERNAL_ERROR": 2,
+    "COMMAND_POLICY_DENIED": 14,
+    "UNSAFE_CWD": 2,
+    "UNSAFE_PATH": 8,
+    "RESOURCE_CAP_MISSING": 2,
+    "RESOURCE_CAP_EXCEEDED": 1
+  },
+  "invalidClassifications": [],
+  "obsoleteClassifications": [],
+  "badCodes": [],
+  "staticSecretHits": [],
+  "scannedRoots": [
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-command-log"
+  ],
+  "ok": true
+}

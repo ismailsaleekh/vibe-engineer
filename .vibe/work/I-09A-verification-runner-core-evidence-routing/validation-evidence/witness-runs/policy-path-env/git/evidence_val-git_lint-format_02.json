@@ -1,0 +1,94 @@
+{
+  "schemaVersion": "1.0.0",
+  "artifactKind": "evidence_packet",
+  "artifactId": "evidence:val-git:lint-format:02",
+  "title": "Verification evidence for lint-format",
+  "createdAt": "2026-06-25T09:02:22.665Z",
+  "updatedAt": "2026-06-25T09:02:22.665Z",
+  "producer": {
+    "kind": "verification_runner",
+    "id": "i-09a-runner-core",
+    "name": "@vibe-engineer/verification",
+    "version": "0.1.0",
+    "runId": "val-git"
+  },
+  "status": "not_run",
+  "ownership": {
+    "ownerLane": "I-09A-verification-runner-core-evidence-routing",
+    "ownedWritePaths": [
+      "packages/verification/src/**",
+      "packages/verification/fixtures/**",
+      "packages/verification/tests/**",
+      ".vibe/work/I-09A-verification-runner-core-evidence-routing/**"
+    ],
+    "readOnlyPaths": [
+      "packages/artifacts/**",
+      "packages/orchestration/**",
+      "packages/cli/**"
+    ],
+    "untouchablePaths": [
+      ".git/**",
+      "pnpm-lock.yaml",
+      "package.json",
+      "pnpm-workspace.yaml"
+    ],
+    "concurrencyNotes": "I-09A runner core evidence packet written atomically under evidenceRoot."
+  },
+  "links": [
+    {
+      "rel": "evidence_for",
+      "artifactKind": "implementation_plan",
+      "artifactId": "i09a-plan-approved",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/validation-evidence/plans/policy-single-add.json",
+      "required": true,
+      "statusAtLinkTime": "approved"
+    }
+  ],
+  "extensions": {
+    "dev.vibe.verification": {
+      "schemaVersion": "1.0.0",
+      "requiredItemId": "lint-format",
+      "requiredItemAction": "not_applicable",
+      "runId": "val-git",
+      "runnerVersion": "0.1.0"
+    }
+  },
+  "evidenceClass": "informational",
+  "layer": "lint_format",
+  "subjectRefs": [
+    {
+      "rel": "evidence_for",
+      "artifactKind": "implementation_plan",
+      "artifactId": "i09a-plan-approved",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/validation-evidence/plans/policy-single-add.json",
+      "required": true,
+      "statusAtLinkTime": "approved"
+    },
+    {
+      "rel": "evidence_for",
+      "artifactKind": "verification_delta",
+      "artifactId": "i09a-delta-approved",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/validation-evidence/plans/policy-single-add.json",
+      "required": true,
+      "statusAtLinkTime": "complete"
+    }
+  ],
+  "commandOrTool": {
+    "kind": "manual_operator",
+    "name": "delta-item-not_applicable",
+    "workingDirectory": "/Users/lizavasilyeva/work/vibe-engineer",
+    "environmentSummary": "no command executed"
+  },
+  "startedAt": "2026-06-25T09:02:22.665Z",
+  "endedAt": "2026-06-25T09:02:22.665Z",
+  "exitStatus": {
+    "kind": "not_applicable",
+    "status": "skipped"
+  },
+  "result": "skipped",
+  "blocking": false,
+  "artifacts": [],
+  "warnings": [
+    "lint_format is represented for the domain-neutral I-09A fixture."
+  ]
+}

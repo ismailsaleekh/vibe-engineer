@@ -1,0 +1,268 @@
+{
+  "statuses": {
+    "overall": "NEEDS-FIX"
+  },
+  "findings": [
+    {
+      "id": "F-MAJOR-WITNESS-SUITE-NOT-VALIDATION-SAFE",
+      "severity": "major-local",
+      "summary": "Existing witness suite hardcodes implementer evidence/** under the I-09A work root and cannot be redirected to validation-evidence; validator must not rerun it without overwriting read-only implementation evidence.",
+      "evidence": {
+        "file": "packages/verification/tests/run-witnesses.mjs"
+      }
+    },
+    {
+      "id": "F-MAJOR-TYPECHECK-WEAKENED-BY-TS-NOCHECK",
+      "severity": "major-local",
+      "summary": "Witness entrypoint begins with // @ts-nocheck, so strict checkJs evidence does not actually typecheck the largest witness file.",
+      "evidence": {
+        "file": "packages/verification/tests/run-witnesses.mjs"
+      }
+    },
+    {
+      "id": "F-MAJOR-DL22-DEFAULT-DENY",
+      "severity": "major-local",
+      "summary": "Unknown arbitrary node -e command with local_deterministic_write classification and no typed script/arg paths was spawned and passed instead of being denied before spawn.",
+      "evidence": {
+        "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/validation-evidence/witness-runs/policy-path-env/unknown-side-effect-node-eval",
+        "aggregateStatus": "passed",
+        "evidencePackets": [
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/validation-evidence/witness-runs/policy-path-env/unknown-side-effect-node-eval/evidence_val-unknown-side-effect_safety-hooks_00.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/validation-evidence/witness-runs/policy-path-env/unknown-side-effect-node-eval/evidence_val-unknown-side-effect_typecheck_01.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/validation-evidence/witness-runs/policy-path-env/unknown-side-effect-node-eval/evidence_val-unknown-side-effect_lint-format_02.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/validation-evidence/witness-runs/policy-path-env/unknown-side-effect-node-eval/evidence_val-unknown-side-effect_mechanical-gate_03.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/validation-evidence/witness-runs/policy-path-env/unknown-side-effect-node-eval/evidence_val-unknown-side-effect_unit_04.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/validation-evidence/witness-runs/policy-path-env/unknown-side-effect-node-eval/evidence_val-unknown-side-effect_integration_05.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/validation-evidence/witness-runs/policy-path-env/unknown-side-effect-node-eval/evidence_val-unknown-side-effect_contract-adapter_06.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/validation-evidence/witness-runs/policy-path-env/unknown-side-effect-node-eval/evidence_val-unknown-side-effect_e2e_07.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/validation-evidence/witness-runs/policy-path-env/unknown-side-effect-node-eval/evidence_val-unknown-side-effect_ui-verification_08.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/validation-evidence/witness-runs/policy-path-env/unknown-side-effect-node-eval/evidence_val-unknown-side-effect_ai-eval_09.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/validation-evidence/witness-runs/policy-path-env/unknown-side-effect-node-eval/evidence_val-unknown-side-effect_build-package_10.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/validation-evidence/witness-runs/policy-path-env/unknown-side-effect-node-eval/evidence_val-unknown-side-effect_context-drift_11.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/validation-evidence/witness-runs/policy-path-env/unknown-side-effect-node-eval/evidence_val-unknown-side-effect_observability_12.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/validation-evidence/witness-runs/policy-path-env/unknown-side-effect-node-eval/evidence_val-unknown-side-effect_advisory-review_13.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/validation-evidence/witness-runs/policy-path-env/unknown-side-effect-node-eval/evidence_val-unknown-side-effect_final-dod_14.json",
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/validation-evidence/witness-runs/policy-path-env/unknown-side-effect-node-eval/evidence_val-unknown-side-effect_schema-validation_15.json"
+        ]
+      }
+    },
+    {
+      "id": "F-MAJOR-PATH-SYMLINK-ESCAPE",
+      "severity": "major-local",
+      "summary": "Expected artifact symlink inside evidenceRoot pointing to root package.json was accepted and passed; expected-artifact containment does not canonicalize realpath for symlink escape.",
+      "evidence": {
+        "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/validation-evidence/witness-runs/policy-path-env/symlink-escape-run",
+        "symlink": "witness-runs/policy-path-env/symlink-escape/package-json-link",
+        "aggregateStatus": "passed"
+      }
+    },
+    {
+      "id": "F-CRITICAL-SECRET-ARGV-LEAK",
+      "severity": "critical",
+      "summary": "Secret-like argv value was persisted raw in runner Evidence Packet and/or sidecar output instead of being denied or redacted.",
+      "evidence": {
+        "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/validation-evidence/witness-runs/r3-secret-argv-leak",
+        "hitCount": 2,
+        "hitPaths": [
+          "witness-runs/r3-secret-argv-leak/evidence_val-r3-secret-argv_schema-validation_15.json",
+          "witness-runs/r3-secret-argv-leak/sidecars/val-r3-secret-argv-schema-validation-15.runner.log"
+        ]
+      }
+    }
+  ],
+  "witnesses": {
+    "W-RB1/P1/P2": {
+      "status": "advisory_warning",
+      "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/validation-evidence/witness-runs/w-rb1-p1-p2",
+      "packetCount": 16,
+      "executedItems": [
+        "advisory-review",
+        "schema-validation"
+      ],
+      "recordedItems": [
+        "safety-hooks",
+        "typecheck",
+        "lint-format",
+        "mechanical-gate",
+        "unit",
+        "integration",
+        "contract-adapter",
+        "e2e",
+        "ui-verification",
+        "ai-eval",
+        "build-package",
+        "context-drift",
+        "observability",
+        "final-dod"
+      ]
+    },
+    "W-RB2/P3-consumer": {
+      "status": "PASS",
+      "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/validation-evidence/witness-runs/w-rb2",
+      "joinedArtifactIds": [
+        "evidence:val-p3-rerun:safety-hooks:00"
+      ],
+      "invalidations": 1
+    },
+    "W-RB2.5": {
+      "status": "PASS",
+      "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/validation-evidence/witness-runs/w-rb2-5-public-api-handoff",
+      "cwd": "/Users/lizavasilyeva/work/vibe-engineer/packages/cli",
+      "spawnExit": 0
+    },
+    "P3": {
+      "status": "PASS",
+      "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/validation-evidence/witness-runs/p3-rerun-lineage",
+      "prior": "evidence:val-w-rb1-p1-p2:safety-hooks:00",
+      "packetCount": 16
+    },
+    "N1-N7": {
+      "status": "PASS",
+      "n1NoSentinel": true
+    },
+    "N8/N9/N10-policy-path-env": {
+      "status": "COMPLETED",
+      "cases": [
+        {
+          "name": "missing-classification",
+          "expectedCode": "COMMAND_POLICY_DENIED",
+          "status": "blocked",
+          "matched": true
+        },
+        {
+          "name": "unknown-classification",
+          "expectedCode": "COMMAND_POLICY_DENIED",
+          "status": "blocked",
+          "matched": true
+        },
+        {
+          "name": "shell-true",
+          "expectedCode": "COMMAND_POLICY_DENIED",
+          "status": "blocked",
+          "matched": true
+        },
+        {
+          "name": "package-manager",
+          "expectedCode": "COMMAND_POLICY_DENIED",
+          "status": "blocked",
+          "matched": true
+        },
+        {
+          "name": "git",
+          "expectedCode": "COMMAND_POLICY_DENIED",
+          "status": "blocked",
+          "matched": true
+        },
+        {
+          "name": "rm",
+          "expectedCode": "COMMAND_POLICY_DENIED",
+          "status": "blocked",
+          "matched": true
+        },
+        {
+          "name": "curl-network",
+          "expectedCode": "COMMAND_POLICY_DENIED",
+          "status": "blocked",
+          "matched": true
+        },
+        {
+          "name": "production-impacting-classification",
+          "expectedCode": "COMMAND_POLICY_DENIED",
+          "status": "blocked",
+          "matched": true
+        },
+        {
+          "name": "shell-string-command",
+          "expectedCode": "COMMAND_POLICY_DENIED",
+          "status": "blocked",
+          "matched": true
+        },
+        {
+          "name": "cwd-escape",
+          "expectedCode": "UNSAFE_CWD",
+          "status": "blocked",
+          "matched": true
+        },
+        {
+          "name": "protected-artifact-root-package",
+          "expectedCode": "UNSAFE_PATH",
+          "status": "blocked",
+          "matched": true
+        },
+        {
+          "name": "protected-artifact-cli-source",
+          "expectedCode": "UNSAFE_PATH",
+          "status": "blocked",
+          "matched": true
+        },
+        {
+          "name": "protected-artifact-artifacts-package",
+          "expectedCode": "UNSAFE_PATH",
+          "status": "blocked",
+          "matched": true
+        },
+        {
+          "name": "raw-env-pass-through",
+          "expectedCode": "ENVIRONMENT_POLICY_DENIED",
+          "status": "blocked",
+          "matched": true
+        },
+        {
+          "name": "secret-env-key",
+          "expectedCode": "ENVIRONMENT_POLICY_DENIED",
+          "status": "blocked",
+          "matched": true
+        }
+      ]
+    },
+    "N11/N12/N13": {
+      "status": "PASS",
+      "nonEnumRejected": true
+    },
+    "R3-secret-argv": {
+      "status": "FAIL",
+      "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/validation-evidence/witness-runs/r3-secret-argv-leak",
+      "rawSecretHitCount": 2,
+      "hitPaths": [
+        "witness-runs/r3-secret-argv-leak/evidence_val-r3-secret-argv_schema-validation_15.json",
+        "witness-runs/r3-secret-argv-leak/sidecars/val-r3-secret-argv-schema-validation-15.runner.log"
+      ]
+    }
+  },
+  "packetValidation": {
+    "packetCount": 480,
+    "validationErrors": [],
+    "classifications": {
+      "safety_or_security_policy_failure": 19,
+      "missing_runner_or_prerequisite": 1,
+      "missing_evidence": 1,
+      "schema_or_contract_failure": 1,
+      "runner_internal_error": 1,
+      "advisory_finding": 4
+    },
+    "codes": {
+      "COMMAND_TIMEOUT": 1,
+      "ARTIFACT_LIMIT_EXCEEDED": 1,
+      "STDERR_LIMIT_EXCEEDED": 1,
+      "STDOUT_LIMIT_EXCEEDED": 1,
+      "MISSING_RUNNER_OR_PREREQUISITE": 1,
+      "MISSING_EVIDENCE": 1,
+      "MALFORMED_EVIDENCE_PACKET": 1,
+      "RUNNER_INTERNAL_ERROR": 1,
+      "ADVISORY_FINDING": 4,
+      "COMMAND_POLICY_DENIED": 9,
+      "UNSAFE_CWD": 1,
+      "UNSAFE_PATH": 3,
+      "ENVIRONMENT_POLICY_DENIED": 2
+    },
+    "nonEnum": [],
+    "dl22CodeAsClassification": []
+  },
+  "staticFindings": {
+    "hardcodedEvidence": true,
+    "tsNoCheck": true,
+    "usesSpawnShellFalse": true,
+    "usesArtifactValidator": true,
+    "usesProcessEnvWholesale": true
+  }
+}

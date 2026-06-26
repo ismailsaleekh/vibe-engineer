@@ -1,0 +1,285 @@
+{
+  "sourcePacket": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/real-boundaries/w-rb1-positive/evidence_i09a-rerun-w-rb1_schema-validation_15.json",
+  "join": {
+    "consumerNodeId": "consumer",
+    "joinedArtifactIds": [
+      "evidence:i09a-rerun-w-rb1:schema-validation:15"
+    ],
+    "joinRecords": [
+      {
+        "consumerNodeId": "consumer",
+        "upstreamNodeId": "producer",
+        "artifactId": "evidence:i09a-rerun-w-rb1:schema-validation:15",
+        "artifactKind": "evidence_packet",
+        "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/real-boundaries/w-rb1-positive/evidence_i09a-rerun-w-rb1_schema-validation_15.json",
+        "schemaVersion": "1.0.0",
+        "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/evidence-packet.schema.json",
+        "evidenceRefs": [
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/real-boundaries/w-rb1-positive/evidence_i09a-rerun-w-rb1_schema-validation_15.json"
+        ],
+        "joinedAt": "2026-06-25T00:00:02.000Z"
+      }
+    ]
+  },
+  "resume": {
+    "resume": {
+      "cursorNodeIds": [
+        "consumer"
+      ],
+      "completedNodeIds": [
+        "producer"
+      ],
+      "retryNodeIds": [],
+      "blockedNodeIds": [],
+      "inspectedAt": "2026-06-25T00:00:03.000Z",
+      "reasons": []
+    },
+    "invalidations": []
+  },
+  "missingInvalid": {
+    "resume": {
+      "cursorNodeIds": [
+        "consumer"
+      ],
+      "completedNodeIds": [],
+      "retryNodeIds": [
+        "producer"
+      ],
+      "blockedNodeIds": [],
+      "inspectedAt": "2026-06-25T00:00:05.000Z",
+      "reasons": [
+        "producer: invalidated by /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/real-boundaries/w-rb2/missing.json"
+      ]
+    },
+    "invalidations": [
+      {
+        "nodeId": "producer",
+        "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/real-boundaries/w-rb2/missing.json",
+        "reason": "missing artifact"
+      }
+    ]
+  },
+  "invalidPacketInvalid": {
+    "resume": {
+      "cursorNodeIds": [
+        "consumer"
+      ],
+      "completedNodeIds": [],
+      "retryNodeIds": [
+        "producer"
+      ],
+      "blockedNodeIds": [],
+      "inspectedAt": "2026-06-25T00:00:07.000Z",
+      "reasons": [
+        "producer: invalidated by /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/real-boundaries/w-rb2/invalid-packet.json"
+      ]
+    },
+    "invalidations": [
+      {
+        "nodeId": "producer",
+        "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/real-boundaries/w-rb2/invalid-packet.json",
+        "reason": "invalid canonical artifact",
+        "errors": [
+          {
+            "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/real-boundaries/w-rb2/invalid-packet.json",
+            "artifactKind": "evidence_packet",
+            "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/evidence-packet.schema.json",
+            "schemaVersion": null,
+            "pointer": "/schemaVersion",
+            "code": "UNSUPPORTED_VERSION",
+            "message": "schemaVersion must be semantic version 1.0.0."
+          },
+          {
+            "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/real-boundaries/w-rb2/invalid-packet.json",
+            "artifactKind": "evidence_packet",
+            "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/evidence-packet.schema.json",
+            "schemaVersion": null,
+            "pointer": "/schemaVersion",
+            "code": "REQUIRED",
+            "message": "must have required property 'schemaVersion'"
+          },
+          {
+            "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/real-boundaries/w-rb2/invalid-packet.json",
+            "artifactKind": "evidence_packet",
+            "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/evidence-packet.schema.json",
+            "schemaVersion": null,
+            "pointer": "/title",
+            "code": "REQUIRED",
+            "message": "must have required property 'title'"
+          },
+          {
+            "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/real-boundaries/w-rb2/invalid-packet.json",
+            "artifactKind": "evidence_packet",
+            "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/evidence-packet.schema.json",
+            "schemaVersion": null,
+            "pointer": "/createdAt",
+            "code": "REQUIRED",
+            "message": "must have required property 'createdAt'"
+          },
+          {
+            "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/real-boundaries/w-rb2/invalid-packet.json",
+            "artifactKind": "evidence_packet",
+            "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/evidence-packet.schema.json",
+            "schemaVersion": null,
+            "pointer": "/updatedAt",
+            "code": "REQUIRED",
+            "message": "must have required property 'updatedAt'"
+          },
+          {
+            "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/real-boundaries/w-rb2/invalid-packet.json",
+            "artifactKind": "evidence_packet",
+            "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/evidence-packet.schema.json",
+            "schemaVersion": null,
+            "pointer": "/producer",
+            "code": "REQUIRED",
+            "message": "must have required property 'producer'"
+          },
+          {
+            "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/real-boundaries/w-rb2/invalid-packet.json",
+            "artifactKind": "evidence_packet",
+            "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/evidence-packet.schema.json",
+            "schemaVersion": null,
+            "pointer": "/status",
+            "code": "REQUIRED",
+            "message": "must have required property 'status'"
+          },
+          {
+            "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/real-boundaries/w-rb2/invalid-packet.json",
+            "artifactKind": "evidence_packet",
+            "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/evidence-packet.schema.json",
+            "schemaVersion": null,
+            "pointer": "/ownership",
+            "code": "REQUIRED",
+            "message": "must have required property 'ownership'"
+          },
+          {
+            "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/real-boundaries/w-rb2/invalid-packet.json",
+            "artifactKind": "evidence_packet",
+            "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/evidence-packet.schema.json",
+            "schemaVersion": null,
+            "pointer": "/links",
+            "code": "REQUIRED",
+            "message": "must have required property 'links'"
+          },
+          {
+            "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/real-boundaries/w-rb2/invalid-packet.json",
+            "artifactKind": "evidence_packet",
+            "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/evidence-packet.schema.json",
+            "schemaVersion": null,
+            "pointer": "/extensions",
+            "code": "REQUIRED",
+            "message": "must have required property 'extensions'"
+          },
+          {
+            "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/real-boundaries/w-rb2/invalid-packet.json",
+            "artifactKind": "evidence_packet",
+            "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/evidence-packet.schema.json",
+            "schemaVersion": null,
+            "pointer": "/evidenceClass",
+            "code": "REQUIRED",
+            "message": "must have required property 'evidenceClass'"
+          },
+          {
+            "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/real-boundaries/w-rb2/invalid-packet.json",
+            "artifactKind": "evidence_packet",
+            "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/evidence-packet.schema.json",
+            "schemaVersion": null,
+            "pointer": "/layer",
+            "code": "REQUIRED",
+            "message": "must have required property 'layer'"
+          },
+          {
+            "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/real-boundaries/w-rb2/invalid-packet.json",
+            "artifactKind": "evidence_packet",
+            "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/evidence-packet.schema.json",
+            "schemaVersion": null,
+            "pointer": "/subjectRefs",
+            "code": "REQUIRED",
+            "message": "must have required property 'subjectRefs'"
+          },
+          {
+            "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/real-boundaries/w-rb2/invalid-packet.json",
+            "artifactKind": "evidence_packet",
+            "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/evidence-packet.schema.json",
+            "schemaVersion": null,
+            "pointer": "/commandOrTool",
+            "code": "REQUIRED",
+            "message": "must have required property 'commandOrTool'"
+          },
+          {
+            "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/real-boundaries/w-rb2/invalid-packet.json",
+            "artifactKind": "evidence_packet",
+            "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/evidence-packet.schema.json",
+            "schemaVersion": null,
+            "pointer": "/startedAt",
+            "code": "REQUIRED",
+            "message": "must have required property 'startedAt'"
+          },
+          {
+            "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/real-boundaries/w-rb2/invalid-packet.json",
+            "artifactKind": "evidence_packet",
+            "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/evidence-packet.schema.json",
+            "schemaVersion": null,
+            "pointer": "/endedAt",
+            "code": "REQUIRED",
+            "message": "must have required property 'endedAt'"
+          },
+          {
+            "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/real-boundaries/w-rb2/invalid-packet.json",
+            "artifactKind": "evidence_packet",
+            "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/evidence-packet.schema.json",
+            "schemaVersion": null,
+            "pointer": "/exitStatus",
+            "code": "REQUIRED",
+            "message": "must have required property 'exitStatus'"
+          },
+          {
+            "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/real-boundaries/w-rb2/invalid-packet.json",
+            "artifactKind": "evidence_packet",
+            "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/evidence-packet.schema.json",
+            "schemaVersion": null,
+            "pointer": "/result",
+            "code": "REQUIRED",
+            "message": "must have required property 'result'"
+          },
+          {
+            "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/real-boundaries/w-rb2/invalid-packet.json",
+            "artifactKind": "evidence_packet",
+            "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/evidence-packet.schema.json",
+            "schemaVersion": null,
+            "pointer": "/blocking",
+            "code": "REQUIRED",
+            "message": "must have required property 'blocking'"
+          },
+          {
+            "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/real-boundaries/w-rb2/invalid-packet.json",
+            "artifactKind": "evidence_packet",
+            "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/evidence-packet.schema.json",
+            "schemaVersion": null,
+            "pointer": "/artifacts",
+            "code": "REQUIRED",
+            "message": "must have required property 'artifacts'"
+          },
+          {
+            "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/real-boundaries/w-rb2/invalid-packet.json",
+            "artifactKind": "evidence_packet",
+            "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/evidence-packet.schema.json",
+            "schemaVersion": null,
+            "pointer": "/warnings",
+            "code": "REQUIRED",
+            "message": "must have required property 'warnings'"
+          },
+          {
+            "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/real-boundaries/w-rb2/invalid-packet.json",
+            "artifactKind": "evidence_packet",
+            "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/evidence-packet.schema.json",
+            "schemaVersion": null,
+            "pointer": "/links",
+            "code": "EVIDENCE_FOR_REQUIRED",
+            "message": "Evidence Packet must include a required top-level evidence_for link."
+          }
+        ]
+      }
+    ]
+  }
+}

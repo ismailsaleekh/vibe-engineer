@@ -1,0 +1,668 @@
+[
+  {
+    "status": "blocked",
+    "runId": "i09a-n8-missing-classification",
+    "evidencePackets": [
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/missing-classification/evidence_i09a-n8-missing-classification_safety-hooks_00.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/missing-classification/evidence_i09a-n8-missing-classification_typecheck_01.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/missing-classification/evidence_i09a-n8-missing-classification_lint-format_02.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/missing-classification/evidence_i09a-n8-missing-classification_mechanical-gate_03.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/missing-classification/evidence_i09a-n8-missing-classification_unit_04.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/missing-classification/evidence_i09a-n8-missing-classification_integration_05.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/missing-classification/evidence_i09a-n8-missing-classification_contract-adapter_06.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/missing-classification/evidence_i09a-n8-missing-classification_e2e_07.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/missing-classification/evidence_i09a-n8-missing-classification_ui-verification_08.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/missing-classification/evidence_i09a-n8-missing-classification_ai-eval_09.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/missing-classification/evidence_i09a-n8-missing-classification_build-package_10.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/missing-classification/evidence_i09a-n8-missing-classification_context-drift_11.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/missing-classification/evidence_i09a-n8-missing-classification_observability_12.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/missing-classification/evidence_i09a-n8-missing-classification_advisory-review_13.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/missing-classification/evidence_i09a-n8-missing-classification_final-dod_14.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/missing-classification/evidence_i09a-n8-missing-classification_schema-validation_15.json"
+    ],
+    "executedItems": [
+      "schema-validation"
+    ],
+    "recordedItems": [
+      "safety-hooks",
+      "typecheck",
+      "lint-format",
+      "mechanical-gate",
+      "unit",
+      "integration",
+      "contract-adapter",
+      "e2e",
+      "ui-verification",
+      "ai-eval",
+      "build-package",
+      "context-drift",
+      "observability",
+      "final-dod"
+    ],
+    "blockedItems": [
+      "advisory-review",
+      "schema-validation"
+    ],
+    "failures": [
+      {
+        "code": "MISSING_RUNNER_OR_PREREQUISITE",
+        "message": "No runner spec resolved for required add/update Verification Delta item.",
+        "classification": "missing_runner_or_prerequisite"
+      },
+      {
+        "code": "COMMAND_POLICY_DENIED",
+        "message": "Command classification is missing, unknown, or denied.",
+        "classification": "safety_or_security_policy_failure"
+      }
+    ],
+    "warnings": [
+      "safety_hooks is represented for the domain-neutral I-09A fixture.",
+      "typecheck is represented for the domain-neutral I-09A fixture.",
+      "lint_format is represented for the domain-neutral I-09A fixture.",
+      "mechanical_gate is represented for the domain-neutral I-09A fixture.",
+      "unit is represented for the domain-neutral I-09A fixture.",
+      "integration is represented for the domain-neutral I-09A fixture.",
+      "contract_adapter is represented for the domain-neutral I-09A fixture.",
+      "e2e is represented for the domain-neutral I-09A fixture.",
+      "ui_verification is represented for the domain-neutral I-09A fixture.",
+      "ai_eval is represented for the domain-neutral I-09A fixture.",
+      "build_package is represented for the domain-neutral I-09A fixture.",
+      "context_drift is represented for the domain-neutral I-09A fixture.",
+      "observability is represented for the domain-neutral I-09A fixture.",
+      "advisory_review is represented for the domain-neutral I-09A fixture.",
+      "final_dod is represented for the domain-neutral I-09A fixture."
+    ]
+  },
+  {
+    "status": "blocked",
+    "runId": "i09a-n8-shell-true",
+    "evidencePackets": [
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/shell-true/evidence_i09a-n8-shell-true_safety-hooks_00.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/shell-true/evidence_i09a-n8-shell-true_typecheck_01.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/shell-true/evidence_i09a-n8-shell-true_lint-format_02.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/shell-true/evidence_i09a-n8-shell-true_mechanical-gate_03.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/shell-true/evidence_i09a-n8-shell-true_unit_04.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/shell-true/evidence_i09a-n8-shell-true_integration_05.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/shell-true/evidence_i09a-n8-shell-true_contract-adapter_06.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/shell-true/evidence_i09a-n8-shell-true_e2e_07.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/shell-true/evidence_i09a-n8-shell-true_ui-verification_08.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/shell-true/evidence_i09a-n8-shell-true_ai-eval_09.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/shell-true/evidence_i09a-n8-shell-true_build-package_10.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/shell-true/evidence_i09a-n8-shell-true_context-drift_11.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/shell-true/evidence_i09a-n8-shell-true_observability_12.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/shell-true/evidence_i09a-n8-shell-true_advisory-review_13.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/shell-true/evidence_i09a-n8-shell-true_final-dod_14.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/shell-true/evidence_i09a-n8-shell-true_schema-validation_15.json"
+    ],
+    "executedItems": [
+      "schema-validation"
+    ],
+    "recordedItems": [
+      "safety-hooks",
+      "typecheck",
+      "lint-format",
+      "mechanical-gate",
+      "unit",
+      "integration",
+      "contract-adapter",
+      "e2e",
+      "ui-verification",
+      "ai-eval",
+      "build-package",
+      "context-drift",
+      "observability",
+      "final-dod"
+    ],
+    "blockedItems": [
+      "advisory-review",
+      "schema-validation"
+    ],
+    "failures": [
+      {
+        "code": "MISSING_RUNNER_OR_PREREQUISITE",
+        "message": "No runner spec resolved for required add/update Verification Delta item.",
+        "classification": "missing_runner_or_prerequisite"
+      },
+      {
+        "code": "COMMAND_POLICY_DENIED",
+        "message": "shell:true is denied.",
+        "classification": "safety_or_security_policy_failure"
+      }
+    ],
+    "warnings": [
+      "safety_hooks is represented for the domain-neutral I-09A fixture.",
+      "typecheck is represented for the domain-neutral I-09A fixture.",
+      "lint_format is represented for the domain-neutral I-09A fixture.",
+      "mechanical_gate is represented for the domain-neutral I-09A fixture.",
+      "unit is represented for the domain-neutral I-09A fixture.",
+      "integration is represented for the domain-neutral I-09A fixture.",
+      "contract_adapter is represented for the domain-neutral I-09A fixture.",
+      "e2e is represented for the domain-neutral I-09A fixture.",
+      "ui_verification is represented for the domain-neutral I-09A fixture.",
+      "ai_eval is represented for the domain-neutral I-09A fixture.",
+      "build_package is represented for the domain-neutral I-09A fixture.",
+      "context_drift is represented for the domain-neutral I-09A fixture.",
+      "observability is represented for the domain-neutral I-09A fixture.",
+      "advisory_review is represented for the domain-neutral I-09A fixture.",
+      "final_dod is represented for the domain-neutral I-09A fixture."
+    ]
+  },
+  {
+    "status": "blocked",
+    "runId": "i09a-n8-package-manager",
+    "evidencePackets": [
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/package-manager/evidence_i09a-n8-package-manager_safety-hooks_00.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/package-manager/evidence_i09a-n8-package-manager_typecheck_01.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/package-manager/evidence_i09a-n8-package-manager_lint-format_02.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/package-manager/evidence_i09a-n8-package-manager_mechanical-gate_03.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/package-manager/evidence_i09a-n8-package-manager_unit_04.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/package-manager/evidence_i09a-n8-package-manager_integration_05.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/package-manager/evidence_i09a-n8-package-manager_contract-adapter_06.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/package-manager/evidence_i09a-n8-package-manager_e2e_07.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/package-manager/evidence_i09a-n8-package-manager_ui-verification_08.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/package-manager/evidence_i09a-n8-package-manager_ai-eval_09.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/package-manager/evidence_i09a-n8-package-manager_build-package_10.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/package-manager/evidence_i09a-n8-package-manager_context-drift_11.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/package-manager/evidence_i09a-n8-package-manager_observability_12.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/package-manager/evidence_i09a-n8-package-manager_advisory-review_13.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/package-manager/evidence_i09a-n8-package-manager_final-dod_14.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/package-manager/evidence_i09a-n8-package-manager_schema-validation_15.json"
+    ],
+    "executedItems": [
+      "schema-validation"
+    ],
+    "recordedItems": [
+      "safety-hooks",
+      "typecheck",
+      "lint-format",
+      "mechanical-gate",
+      "unit",
+      "integration",
+      "contract-adapter",
+      "e2e",
+      "ui-verification",
+      "ai-eval",
+      "build-package",
+      "context-drift",
+      "observability",
+      "final-dod"
+    ],
+    "blockedItems": [
+      "advisory-review",
+      "schema-validation"
+    ],
+    "failures": [
+      {
+        "code": "MISSING_RUNNER_OR_PREREQUISITE",
+        "message": "No runner spec resolved for required add/update Verification Delta item.",
+        "classification": "missing_runner_or_prerequisite"
+      },
+      {
+        "code": "COMMAND_POLICY_DENIED",
+        "message": "Package-manager commands are denied in I-09A runners.",
+        "classification": "safety_or_security_policy_failure"
+      }
+    ],
+    "warnings": [
+      "safety_hooks is represented for the domain-neutral I-09A fixture.",
+      "typecheck is represented for the domain-neutral I-09A fixture.",
+      "lint_format is represented for the domain-neutral I-09A fixture.",
+      "mechanical_gate is represented for the domain-neutral I-09A fixture.",
+      "unit is represented for the domain-neutral I-09A fixture.",
+      "integration is represented for the domain-neutral I-09A fixture.",
+      "contract_adapter is represented for the domain-neutral I-09A fixture.",
+      "e2e is represented for the domain-neutral I-09A fixture.",
+      "ui_verification is represented for the domain-neutral I-09A fixture.",
+      "ai_eval is represented for the domain-neutral I-09A fixture.",
+      "build_package is represented for the domain-neutral I-09A fixture.",
+      "context_drift is represented for the domain-neutral I-09A fixture.",
+      "observability is represented for the domain-neutral I-09A fixture.",
+      "advisory_review is represented for the domain-neutral I-09A fixture.",
+      "final_dod is represented for the domain-neutral I-09A fixture."
+    ]
+  },
+  {
+    "status": "blocked",
+    "runId": "i09a-n8-git",
+    "evidencePackets": [
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/git/evidence_i09a-n8-git_safety-hooks_00.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/git/evidence_i09a-n8-git_typecheck_01.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/git/evidence_i09a-n8-git_lint-format_02.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/git/evidence_i09a-n8-git_mechanical-gate_03.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/git/evidence_i09a-n8-git_unit_04.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/git/evidence_i09a-n8-git_integration_05.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/git/evidence_i09a-n8-git_contract-adapter_06.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/git/evidence_i09a-n8-git_e2e_07.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/git/evidence_i09a-n8-git_ui-verification_08.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/git/evidence_i09a-n8-git_ai-eval_09.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/git/evidence_i09a-n8-git_build-package_10.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/git/evidence_i09a-n8-git_context-drift_11.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/git/evidence_i09a-n8-git_observability_12.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/git/evidence_i09a-n8-git_advisory-review_13.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/git/evidence_i09a-n8-git_final-dod_14.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/git/evidence_i09a-n8-git_schema-validation_15.json"
+    ],
+    "executedItems": [
+      "schema-validation"
+    ],
+    "recordedItems": [
+      "safety-hooks",
+      "typecheck",
+      "lint-format",
+      "mechanical-gate",
+      "unit",
+      "integration",
+      "contract-adapter",
+      "e2e",
+      "ui-verification",
+      "ai-eval",
+      "build-package",
+      "context-drift",
+      "observability",
+      "final-dod"
+    ],
+    "blockedItems": [
+      "advisory-review",
+      "schema-validation"
+    ],
+    "failures": [
+      {
+        "code": "MISSING_RUNNER_OR_PREREQUISITE",
+        "message": "No runner spec resolved for required add/update Verification Delta item.",
+        "classification": "missing_runner_or_prerequisite"
+      },
+      {
+        "code": "COMMAND_POLICY_DENIED",
+        "message": "Executable git is denied by policy.",
+        "classification": "safety_or_security_policy_failure"
+      }
+    ],
+    "warnings": [
+      "safety_hooks is represented for the domain-neutral I-09A fixture.",
+      "typecheck is represented for the domain-neutral I-09A fixture.",
+      "lint_format is represented for the domain-neutral I-09A fixture.",
+      "mechanical_gate is represented for the domain-neutral I-09A fixture.",
+      "unit is represented for the domain-neutral I-09A fixture.",
+      "integration is represented for the domain-neutral I-09A fixture.",
+      "contract_adapter is represented for the domain-neutral I-09A fixture.",
+      "e2e is represented for the domain-neutral I-09A fixture.",
+      "ui_verification is represented for the domain-neutral I-09A fixture.",
+      "ai_eval is represented for the domain-neutral I-09A fixture.",
+      "build_package is represented for the domain-neutral I-09A fixture.",
+      "context_drift is represented for the domain-neutral I-09A fixture.",
+      "observability is represented for the domain-neutral I-09A fixture.",
+      "advisory_review is represented for the domain-neutral I-09A fixture.",
+      "final_dod is represented for the domain-neutral I-09A fixture."
+    ]
+  },
+  {
+    "status": "blocked",
+    "runId": "i09a-n8-shell-string",
+    "evidencePackets": [
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/shell-string/evidence_i09a-n8-shell-string_safety-hooks_00.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/shell-string/evidence_i09a-n8-shell-string_typecheck_01.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/shell-string/evidence_i09a-n8-shell-string_lint-format_02.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/shell-string/evidence_i09a-n8-shell-string_mechanical-gate_03.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/shell-string/evidence_i09a-n8-shell-string_unit_04.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/shell-string/evidence_i09a-n8-shell-string_integration_05.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/shell-string/evidence_i09a-n8-shell-string_contract-adapter_06.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/shell-string/evidence_i09a-n8-shell-string_e2e_07.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/shell-string/evidence_i09a-n8-shell-string_ui-verification_08.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/shell-string/evidence_i09a-n8-shell-string_ai-eval_09.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/shell-string/evidence_i09a-n8-shell-string_build-package_10.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/shell-string/evidence_i09a-n8-shell-string_context-drift_11.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/shell-string/evidence_i09a-n8-shell-string_observability_12.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/shell-string/evidence_i09a-n8-shell-string_advisory-review_13.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/shell-string/evidence_i09a-n8-shell-string_final-dod_14.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/shell-string/evidence_i09a-n8-shell-string_schema-validation_15.json"
+    ],
+    "executedItems": [
+      "schema-validation"
+    ],
+    "recordedItems": [
+      "safety-hooks",
+      "typecheck",
+      "lint-format",
+      "mechanical-gate",
+      "unit",
+      "integration",
+      "contract-adapter",
+      "e2e",
+      "ui-verification",
+      "ai-eval",
+      "build-package",
+      "context-drift",
+      "observability",
+      "final-dod"
+    ],
+    "blockedItems": [
+      "advisory-review",
+      "schema-validation"
+    ],
+    "failures": [
+      {
+        "code": "MISSING_RUNNER_OR_PREREQUISITE",
+        "message": "No runner spec resolved for required add/update Verification Delta item.",
+        "classification": "missing_runner_or_prerequisite"
+      },
+      {
+        "code": "COMMAND_POLICY_DENIED",
+        "message": "Shell-string command syntax is denied.",
+        "classification": "safety_or_security_policy_failure"
+      }
+    ],
+    "warnings": [
+      "safety_hooks is represented for the domain-neutral I-09A fixture.",
+      "typecheck is represented for the domain-neutral I-09A fixture.",
+      "lint_format is represented for the domain-neutral I-09A fixture.",
+      "mechanical_gate is represented for the domain-neutral I-09A fixture.",
+      "unit is represented for the domain-neutral I-09A fixture.",
+      "integration is represented for the domain-neutral I-09A fixture.",
+      "contract_adapter is represented for the domain-neutral I-09A fixture.",
+      "e2e is represented for the domain-neutral I-09A fixture.",
+      "ui_verification is represented for the domain-neutral I-09A fixture.",
+      "ai_eval is represented for the domain-neutral I-09A fixture.",
+      "build_package is represented for the domain-neutral I-09A fixture.",
+      "context_drift is represented for the domain-neutral I-09A fixture.",
+      "observability is represented for the domain-neutral I-09A fixture.",
+      "advisory_review is represented for the domain-neutral I-09A fixture.",
+      "final_dod is represented for the domain-neutral I-09A fixture."
+    ]
+  },
+  {
+    "status": "blocked",
+    "runId": "i09a-n8-node-eval",
+    "evidencePackets": [
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/node-eval/evidence_i09a-n8-node-eval_safety-hooks_00.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/node-eval/evidence_i09a-n8-node-eval_typecheck_01.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/node-eval/evidence_i09a-n8-node-eval_lint-format_02.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/node-eval/evidence_i09a-n8-node-eval_mechanical-gate_03.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/node-eval/evidence_i09a-n8-node-eval_unit_04.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/node-eval/evidence_i09a-n8-node-eval_integration_05.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/node-eval/evidence_i09a-n8-node-eval_contract-adapter_06.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/node-eval/evidence_i09a-n8-node-eval_e2e_07.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/node-eval/evidence_i09a-n8-node-eval_ui-verification_08.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/node-eval/evidence_i09a-n8-node-eval_ai-eval_09.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/node-eval/evidence_i09a-n8-node-eval_build-package_10.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/node-eval/evidence_i09a-n8-node-eval_context-drift_11.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/node-eval/evidence_i09a-n8-node-eval_observability_12.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/node-eval/evidence_i09a-n8-node-eval_advisory-review_13.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/node-eval/evidence_i09a-n8-node-eval_final-dod_14.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/node-eval/evidence_i09a-n8-node-eval_schema-validation_15.json"
+    ],
+    "executedItems": [
+      "schema-validation"
+    ],
+    "recordedItems": [
+      "safety-hooks",
+      "typecheck",
+      "lint-format",
+      "mechanical-gate",
+      "unit",
+      "integration",
+      "contract-adapter",
+      "e2e",
+      "ui-verification",
+      "ai-eval",
+      "build-package",
+      "context-drift",
+      "observability",
+      "final-dod"
+    ],
+    "blockedItems": [
+      "advisory-review",
+      "schema-validation"
+    ],
+    "failures": [
+      {
+        "code": "MISSING_RUNNER_OR_PREREQUISITE",
+        "message": "No runner spec resolved for required add/update Verification Delta item.",
+        "classification": "missing_runner_or_prerequisite"
+      },
+      {
+        "code": "COMMAND_POLICY_DENIED",
+        "message": "Node inline eval/print argv is denied before spawn.",
+        "classification": "safety_or_security_policy_failure"
+      }
+    ],
+    "warnings": [
+      "safety_hooks is represented for the domain-neutral I-09A fixture.",
+      "typecheck is represented for the domain-neutral I-09A fixture.",
+      "lint_format is represented for the domain-neutral I-09A fixture.",
+      "mechanical_gate is represented for the domain-neutral I-09A fixture.",
+      "unit is represented for the domain-neutral I-09A fixture.",
+      "integration is represented for the domain-neutral I-09A fixture.",
+      "contract_adapter is represented for the domain-neutral I-09A fixture.",
+      "e2e is represented for the domain-neutral I-09A fixture.",
+      "ui_verification is represented for the domain-neutral I-09A fixture.",
+      "ai_eval is represented for the domain-neutral I-09A fixture.",
+      "build_package is represented for the domain-neutral I-09A fixture.",
+      "context_drift is represented for the domain-neutral I-09A fixture.",
+      "observability is represented for the domain-neutral I-09A fixture.",
+      "advisory_review is represented for the domain-neutral I-09A fixture.",
+      "final_dod is represented for the domain-neutral I-09A fixture."
+    ]
+  },
+  {
+    "status": "blocked",
+    "runId": "i09a-n8-secret-argv",
+    "evidencePackets": [
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/secret-argv/evidence_i09a-n8-secret-argv_safety-hooks_00.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/secret-argv/evidence_i09a-n8-secret-argv_typecheck_01.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/secret-argv/evidence_i09a-n8-secret-argv_lint-format_02.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/secret-argv/evidence_i09a-n8-secret-argv_mechanical-gate_03.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/secret-argv/evidence_i09a-n8-secret-argv_unit_04.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/secret-argv/evidence_i09a-n8-secret-argv_integration_05.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/secret-argv/evidence_i09a-n8-secret-argv_contract-adapter_06.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/secret-argv/evidence_i09a-n8-secret-argv_e2e_07.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/secret-argv/evidence_i09a-n8-secret-argv_ui-verification_08.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/secret-argv/evidence_i09a-n8-secret-argv_ai-eval_09.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/secret-argv/evidence_i09a-n8-secret-argv_build-package_10.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/secret-argv/evidence_i09a-n8-secret-argv_context-drift_11.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/secret-argv/evidence_i09a-n8-secret-argv_observability_12.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/secret-argv/evidence_i09a-n8-secret-argv_advisory-review_13.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/secret-argv/evidence_i09a-n8-secret-argv_final-dod_14.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/secret-argv/evidence_i09a-n8-secret-argv_schema-validation_15.json"
+    ],
+    "executedItems": [
+      "schema-validation"
+    ],
+    "recordedItems": [
+      "safety-hooks",
+      "typecheck",
+      "lint-format",
+      "mechanical-gate",
+      "unit",
+      "integration",
+      "contract-adapter",
+      "e2e",
+      "ui-verification",
+      "ai-eval",
+      "build-package",
+      "context-drift",
+      "observability",
+      "final-dod"
+    ],
+    "blockedItems": [
+      "advisory-review",
+      "schema-validation"
+    ],
+    "failures": [
+      {
+        "code": "MISSING_RUNNER_OR_PREREQUISITE",
+        "message": "No runner spec resolved for required add/update Verification Delta item.",
+        "classification": "missing_runner_or_prerequisite"
+      },
+      {
+        "code": "COMMAND_POLICY_DENIED",
+        "message": "scalarArgs entry does not match a safe typed scalar argv value.",
+        "classification": "safety_or_security_policy_failure"
+      }
+    ],
+    "warnings": [
+      "safety_hooks is represented for the domain-neutral I-09A fixture.",
+      "typecheck is represented for the domain-neutral I-09A fixture.",
+      "lint_format is represented for the domain-neutral I-09A fixture.",
+      "mechanical_gate is represented for the domain-neutral I-09A fixture.",
+      "unit is represented for the domain-neutral I-09A fixture.",
+      "integration is represented for the domain-neutral I-09A fixture.",
+      "contract_adapter is represented for the domain-neutral I-09A fixture.",
+      "e2e is represented for the domain-neutral I-09A fixture.",
+      "ui_verification is represented for the domain-neutral I-09A fixture.",
+      "ai_eval is represented for the domain-neutral I-09A fixture.",
+      "build_package is represented for the domain-neutral I-09A fixture.",
+      "context_drift is represented for the domain-neutral I-09A fixture.",
+      "observability is represented for the domain-neutral I-09A fixture.",
+      "advisory_review is represented for the domain-neutral I-09A fixture.",
+      "final_dod is represented for the domain-neutral I-09A fixture."
+    ]
+  },
+  {
+    "status": "blocked",
+    "runId": "i09a-n8-unknown-side-effect-touch",
+    "evidencePackets": [
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/unknown-side-effect-touch/evidence_i09a-n8-unknown-side-effect-touch_safety-hooks_00.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/unknown-side-effect-touch/evidence_i09a-n8-unknown-side-effect-touch_typecheck_01.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/unknown-side-effect-touch/evidence_i09a-n8-unknown-side-effect-touch_lint-format_02.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/unknown-side-effect-touch/evidence_i09a-n8-unknown-side-effect-touch_mechanical-gate_03.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/unknown-side-effect-touch/evidence_i09a-n8-unknown-side-effect-touch_unit_04.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/unknown-side-effect-touch/evidence_i09a-n8-unknown-side-effect-touch_integration_05.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/unknown-side-effect-touch/evidence_i09a-n8-unknown-side-effect-touch_contract-adapter_06.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/unknown-side-effect-touch/evidence_i09a-n8-unknown-side-effect-touch_e2e_07.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/unknown-side-effect-touch/evidence_i09a-n8-unknown-side-effect-touch_ui-verification_08.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/unknown-side-effect-touch/evidence_i09a-n8-unknown-side-effect-touch_ai-eval_09.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/unknown-side-effect-touch/evidence_i09a-n8-unknown-side-effect-touch_build-package_10.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/unknown-side-effect-touch/evidence_i09a-n8-unknown-side-effect-touch_context-drift_11.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/unknown-side-effect-touch/evidence_i09a-n8-unknown-side-effect-touch_observability_12.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/unknown-side-effect-touch/evidence_i09a-n8-unknown-side-effect-touch_advisory-review_13.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/unknown-side-effect-touch/evidence_i09a-n8-unknown-side-effect-touch_final-dod_14.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/unknown-side-effect-touch/evidence_i09a-n8-unknown-side-effect-touch_schema-validation_15.json"
+    ],
+    "executedItems": [
+      "schema-validation"
+    ],
+    "recordedItems": [
+      "safety-hooks",
+      "typecheck",
+      "lint-format",
+      "mechanical-gate",
+      "unit",
+      "integration",
+      "contract-adapter",
+      "e2e",
+      "ui-verification",
+      "ai-eval",
+      "build-package",
+      "context-drift",
+      "observability",
+      "final-dod"
+    ],
+    "blockedItems": [
+      "advisory-review",
+      "schema-validation"
+    ],
+    "failures": [
+      {
+        "code": "MISSING_RUNNER_OR_PREREQUISITE",
+        "message": "No runner spec resolved for required add/update Verification Delta item.",
+        "classification": "missing_runner_or_prerequisite"
+      },
+      {
+        "code": "COMMAND_POLICY_DENIED",
+        "message": "Executable touch is denied by policy.",
+        "classification": "safety_or_security_policy_failure"
+      }
+    ],
+    "warnings": [
+      "safety_hooks is represented for the domain-neutral I-09A fixture.",
+      "typecheck is represented for the domain-neutral I-09A fixture.",
+      "lint_format is represented for the domain-neutral I-09A fixture.",
+      "mechanical_gate is represented for the domain-neutral I-09A fixture.",
+      "unit is represented for the domain-neutral I-09A fixture.",
+      "integration is represented for the domain-neutral I-09A fixture.",
+      "contract_adapter is represented for the domain-neutral I-09A fixture.",
+      "e2e is represented for the domain-neutral I-09A fixture.",
+      "ui_verification is represented for the domain-neutral I-09A fixture.",
+      "ai_eval is represented for the domain-neutral I-09A fixture.",
+      "build_package is represented for the domain-neutral I-09A fixture.",
+      "context_drift is represented for the domain-neutral I-09A fixture.",
+      "observability is represented for the domain-neutral I-09A fixture.",
+      "advisory_review is represented for the domain-neutral I-09A fixture.",
+      "final_dod is represented for the domain-neutral I-09A fixture."
+    ]
+  },
+  {
+    "status": "blocked",
+    "runId": "i09a-n8-unknown-non-node-executable",
+    "evidencePackets": [
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/unknown-non-node-executable/evidence_i09a-n8-unknown-non-node-executable_safety-hooks_00.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/unknown-non-node-executable/evidence_i09a-n8-unknown-non-node-executable_typecheck_01.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/unknown-non-node-executable/evidence_i09a-n8-unknown-non-node-executable_lint-format_02.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/unknown-non-node-executable/evidence_i09a-n8-unknown-non-node-executable_mechanical-gate_03.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/unknown-non-node-executable/evidence_i09a-n8-unknown-non-node-executable_unit_04.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/unknown-non-node-executable/evidence_i09a-n8-unknown-non-node-executable_integration_05.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/unknown-non-node-executable/evidence_i09a-n8-unknown-non-node-executable_contract-adapter_06.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/unknown-non-node-executable/evidence_i09a-n8-unknown-non-node-executable_e2e_07.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/unknown-non-node-executable/evidence_i09a-n8-unknown-non-node-executable_ui-verification_08.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/unknown-non-node-executable/evidence_i09a-n8-unknown-non-node-executable_ai-eval_09.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/unknown-non-node-executable/evidence_i09a-n8-unknown-non-node-executable_build-package_10.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/unknown-non-node-executable/evidence_i09a-n8-unknown-non-node-executable_context-drift_11.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/unknown-non-node-executable/evidence_i09a-n8-unknown-non-node-executable_observability_12.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/unknown-non-node-executable/evidence_i09a-n8-unknown-non-node-executable_advisory-review_13.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/unknown-non-node-executable/evidence_i09a-n8-unknown-non-node-executable_final-dod_14.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/command-default-deny-fix-evidence/product-witness-suite-output-final/n8-command-policy/unknown-non-node-executable/evidence_i09a-n8-unknown-non-node-executable_schema-validation_15.json"
+    ],
+    "executedItems": [
+      "schema-validation"
+    ],
+    "recordedItems": [
+      "safety-hooks",
+      "typecheck",
+      "lint-format",
+      "mechanical-gate",
+      "unit",
+      "integration",
+      "contract-adapter",
+      "e2e",
+      "ui-verification",
+      "ai-eval",
+      "build-package",
+      "context-drift",
+      "observability",
+      "final-dod"
+    ],
+    "blockedItems": [
+      "advisory-review",
+      "schema-validation"
+    ],
+    "failures": [
+      {
+        "code": "MISSING_RUNNER_OR_PREREQUISITE",
+        "message": "No runner spec resolved for required add/update Verification Delta item.",
+        "classification": "missing_runner_or_prerequisite"
+      },
+      {
+        "code": "UNSAFE_PATH",
+        "message": "Command executable path escapes projectRoot.",
+        "classification": "safety_or_security_policy_failure"
+      }
+    ],
+    "warnings": [
+      "safety_hooks is represented for the domain-neutral I-09A fixture.",
+      "typecheck is represented for the domain-neutral I-09A fixture.",
+      "lint_format is represented for the domain-neutral I-09A fixture.",
+      "mechanical_gate is represented for the domain-neutral I-09A fixture.",
+      "unit is represented for the domain-neutral I-09A fixture.",
+      "integration is represented for the domain-neutral I-09A fixture.",
+      "contract_adapter is represented for the domain-neutral I-09A fixture.",
+      "e2e is represented for the domain-neutral I-09A fixture.",
+      "ui_verification is represented for the domain-neutral I-09A fixture.",
+      "ai_eval is represented for the domain-neutral I-09A fixture.",
+      "build_package is represented for the domain-neutral I-09A fixture.",
+      "context_drift is represented for the domain-neutral I-09A fixture.",
+      "observability is represented for the domain-neutral I-09A fixture.",
+      "advisory_review is represented for the domain-neutral I-09A fixture.",
+      "final_dod is represented for the domain-neutral I-09A fixture."
+    ]
+  }
+]

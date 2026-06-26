@@ -1,0 +1,69 @@
+{
+  "status": "blocked",
+  "runId": "val-n2",
+  "evidencePackets": [
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/validation-evidence/witness-runs/n2-missing-executable/evidence_val-n2_safety-hooks_00.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/validation-evidence/witness-runs/n2-missing-executable/evidence_val-n2_typecheck_01.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/validation-evidence/witness-runs/n2-missing-executable/evidence_val-n2_lint-format_02.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/validation-evidence/witness-runs/n2-missing-executable/evidence_val-n2_mechanical-gate_03.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/validation-evidence/witness-runs/n2-missing-executable/evidence_val-n2_unit_04.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/validation-evidence/witness-runs/n2-missing-executable/evidence_val-n2_integration_05.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/validation-evidence/witness-runs/n2-missing-executable/evidence_val-n2_contract-adapter_06.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/validation-evidence/witness-runs/n2-missing-executable/evidence_val-n2_e2e_07.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/validation-evidence/witness-runs/n2-missing-executable/evidence_val-n2_ui-verification_08.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/validation-evidence/witness-runs/n2-missing-executable/evidence_val-n2_ai-eval_09.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/validation-evidence/witness-runs/n2-missing-executable/evidence_val-n2_build-package_10.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/validation-evidence/witness-runs/n2-missing-executable/evidence_val-n2_context-drift_11.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/validation-evidence/witness-runs/n2-missing-executable/evidence_val-n2_observability_12.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/validation-evidence/witness-runs/n2-missing-executable/evidence_val-n2_advisory-review_13.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/validation-evidence/witness-runs/n2-missing-executable/evidence_val-n2_final-dod_14.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/validation-evidence/witness-runs/n2-missing-executable/evidence_val-n2_schema-validation_15.json"
+  ],
+  "executedItems": [
+    "schema-validation"
+  ],
+  "recordedItems": [
+    "safety-hooks",
+    "typecheck",
+    "lint-format",
+    "mechanical-gate",
+    "unit",
+    "integration",
+    "contract-adapter",
+    "e2e",
+    "ui-verification",
+    "ai-eval",
+    "build-package",
+    "context-drift",
+    "observability",
+    "advisory-review",
+    "final-dod"
+  ],
+  "blockedItems": [
+    "schema-validation"
+  ],
+  "failures": [
+    {
+      "code": "MISSING_RUNNER_OR_PREREQUISITE",
+      "message": "spawn /Users/lizavasilyeva/work/vibe-engineer/packages/verification/fixtures/runners/missing-executable ENOENT",
+      "classification": "missing_runner_or_prerequisite"
+    }
+  ],
+  "warnings": [
+    "safety_hooks is represented for the domain-neutral I-09A fixture.",
+    "typecheck is represented for the domain-neutral I-09A fixture.",
+    "lint_format is represented for the domain-neutral I-09A fixture.",
+    "mechanical_gate is represented for the domain-neutral I-09A fixture.",
+    "unit is represented for the domain-neutral I-09A fixture.",
+    "integration is represented for the domain-neutral I-09A fixture.",
+    "contract_adapter is represented for the domain-neutral I-09A fixture.",
+    "e2e is represented for the domain-neutral I-09A fixture.",
+    "ui_verification is represented for the domain-neutral I-09A fixture.",
+    "ai_eval is represented for the domain-neutral I-09A fixture.",
+    "build_package is represented for the domain-neutral I-09A fixture.",
+    "context_drift is represented for the domain-neutral I-09A fixture.",
+    "observability is represented for the domain-neutral I-09A fixture.",
+    "advisory_review is represented for the domain-neutral I-09A fixture.",
+    "final_dod is represented for the domain-neutral I-09A fixture."
+  ]
+}

@@ -1,0 +1,34 @@
+20:const evidenceRoot = resolveEvidenceRoot();
+28:  const cliIndex = process.argv.indexOf('--evidence-root');
+30:  const configured = cliValue || process.env.VIBE_VERIFICATION_WITNESS_EVIDENCE_ROOT || '';
+33:  return path.join(workRoot, 'evidence-reruns', stamp);
+67:  if (out && finalArgs.includes(out)) argPaths.push({ index: finalArgs.indexOf(out), root: 'evidenceRoot' });
+89:      allowedWriteRoots: [path.dirname(out ?? evidenceRoot)],
+105:  const dir = path.join(evidenceRoot, caseName);
+108:  const result = await runVerificationPlan({ implementationPlanPath: options.plan ?? approvedPlan, evidenceRoot: dir, projectRoot: repoRoot, runId: options.runId ?? `i09a-${caseName.replaceAll('_','-').replaceAll('/','-')}`, runnerCatalog: options.catalog ?? catalogFor(dir), ...(options.rerunOf ? { rerunOf: options.rerunOf } : {}) });
+113:async function expectError(caseName, fn) { try { await fn(); } catch (error) { const caught = /** @type {any} */ (error); await writeJson(path.join(evidenceRoot, caseName, 'error.json'), { name: caught.name, code: caught.code, message: caught.message, details: caught.details }); return caught; } throw new Error(`${caseName} expected error`); }
+117:async function planVariant(caseName, mutate) { const plan = clonePlan(); mutate(plan); const file = path.join(evidenceRoot, `${caseName}-plan`, 'plan.json'); await writeJson(file, plan); return file; }
+129:  await writeJson(path.join(evidenceRoot, 'p1', 'result.json'), result);
+130:  await writeJson(path.join(evidenceRoot, 'p2', 'result.json'), { recordedItems: result.recordedItems, skippedPackets: packets.filter((p) => p.result === 'skipped').map((p) => p.artifactId) });
+135:  const dir = path.join(evidenceRoot, 'w-rb2'); await fsp.mkdir(dir, { recursive: true });
+156:  const dir = path.join(evidenceRoot, 'w-rb2-5-public-api-handoff'); await fsp.mkdir(dir, { recursive: true });
+162:    const result = await runVerificationPlan({ implementationPlanPath: ${JSON.stringify(approvedPlan)}, evidenceRoot: ${JSON.stringify(dir)}, projectRoot: ${JSON.stringify(repoRoot)}, runId: 'i09a-w-rb2-5', runnerCatalog: ${JSON.stringify(catalogFor(dir))} });
+180:  await writeJson(path.join(evidenceRoot, 'p3', 'result.json'), { prior, result });
+184:  await fsp.mkdir(path.join(evidenceRoot, 'n1'), { recursive: true });
+185:  const sentinel = path.join(evidenceRoot, 'n1', 'sentinel.json');
+186:  await expectError('n1', () => runVerificationPlan({ implementationPlanPath: draftPlan, evidenceRoot: path.join(evidenceRoot, 'n1'), projectRoot: repoRoot, runId: 'i09a-n1', runnerCatalog: [commandSpec({ out: sentinel })] }));
+189:  r = await runCase('n3', { catalog: [commandSpec({ script: 'no-artifact-runner.mjs', out: path.join(evidenceRoot, 'n3', 'missing-output.json') })] }); assert.ok(findFailure(r.result, 'MISSING_EVIDENCE'));
+190:  await fsp.mkdir(path.join(evidenceRoot, 'n4'), { recursive: true }); await expectError('n4', () => runVerificationPlan({ implementationPlanPath: missingCategoryPlan, evidenceRoot: path.join(evidenceRoot, 'n4'), projectRoot: repoRoot, runId: 'i09a-n4', runnerCatalog: [] }));
+199:    { name: 'missing-classification', spec: commandSpec({ out: path.join(evidenceRoot, 'n8-command-policy/missing-classification/out.json'), safety: { classification: undefined } }) },
+200:    { name: 'shell-true', spec: commandSpec({ out: path.join(evidenceRoot, 'n8-command-policy/shell-true/out.json'), extra: { shell: true } }) },
+209:  await writeJson(path.join(evidenceRoot, 'n8-command-policy', 'summary.json'), results);
+213:  let r = await runCase('n9-path-containment/cwd-escape', { runId: 'i09a-n9-cwd', catalog: [{ ...commandSpec({ out: path.join(evidenceRoot, 'n9-path-containment/cwd-escape/out.json') }), cwd: '..' }] }); assert.ok(findFailure(r.result, 'UNSAFE_CWD'));
+215:  const symlinkCaseDir = path.join(evidenceRoot, 'n9-path-containment/symlink-escape'); await fsp.mkdir(symlinkCaseDir, { recursive: true }); const symlinkPath = path.join(symlinkCaseDir, 'package-json-link'); await fsp.rm(symlinkPath, { force: true }); await fsp.symlink(path.join(repoRoot, 'package.json'), symlinkPath);
+217:  r = await runCase('n10-env-redaction/pass-through', { runId: 'i09a-n10-env', catalog: [{ ...commandSpec({ out: path.join(evidenceRoot, 'n10-env-redaction/pass-through/out.json') }), safety: { ...commandSpec({ out: path.join(evidenceRoot, 'n10-env-redaction/pass-through/out.json') }).safety, passThroughEnv: true } }] }); assert.ok(findFailure(r.result, 'ENVIRONMENT_POLICY_DENIED'));
+218:  r = await runCase('n10-env-redaction/secret-output', { runId: 'i09a-n10-secret', catalog: [commandSpec({ script: 'secret-output-runner.mjs', out: path.join(evidenceRoot, 'n10-env-redaction/secret-output/out.txt') }), advisorySpec()] }); validatePackets(r.result); await assertNoSecretsInTree(path.join(evidenceRoot, 'n10-env-redaction/secret-output'));
+222:  r = await runCase('n12-output-caps/artifact', { runId: 'i09a-n12-artifact', catalog: [commandSpec({ script: 'large-artifact-runner.mjs', out: path.join(evidenceRoot, 'n12-output-caps/artifact/out.txt'), args: [path.join(runnersDir, 'large-artifact-runner.mjs'), path.join(evidenceRoot, 'n12-output-caps/artifact/out.txt'), '4096'], scalarArgs: [scalarArg(2, 'byte_count')], safety: { maxOutputBytes: 64 } })] }); assert.ok(findFailure(r.result, 'ARTIFACT_LIMIT_EXCEEDED'));
+226:  const dir = path.join(evidenceRoot, 'n13-schema-classification'); await fsp.mkdir(dir, { recursive: true });
+237:  const dir = path.join(evidenceRoot, 'package-build-typecheck'); await fsp.mkdir(dir, { recursive: true });
+244:  await fsp.mkdir(evidenceRoot, { recursive: true });
+254:  await writeJson(path.join(evidenceRoot, 'r3', 'result.json'), { redactionSweep: 'covered-by-n8-secret-argv-denial-n10-secret-output-and-no-secret-tree-sweep' });
+255:  console.log(JSON.stringify({ ok: true, evidenceRoot }, null, 2));

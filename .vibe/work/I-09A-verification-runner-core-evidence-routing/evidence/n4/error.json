@@ -1,0 +1,16 @@
+{
+  "name": "VerificationRunnerError",
+  "code": "INVALID_IMPLEMENTATION_PLAN",
+  "message": "Implementation Plan failed artifact validation.",
+  "details": [
+    {
+      "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/packages/verification/fixtures/plans/missing-category-plan.json",
+      "artifactKind": "implementation_plan",
+      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/implementation-plan.schema.json",
+      "schemaVersion": "1.0.0",
+      "pointer": "/verificationDelta/requiredItems",
+      "code": "VERIFICATION_CATALOG_INCOMPLETE",
+      "message": "Verification Delta must include catalog layer schema_validation."
+    }
+  ]
+}

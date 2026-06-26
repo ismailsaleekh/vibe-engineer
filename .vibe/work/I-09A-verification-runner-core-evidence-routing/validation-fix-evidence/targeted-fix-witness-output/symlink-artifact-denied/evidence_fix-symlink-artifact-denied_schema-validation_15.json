@@ -1,0 +1,101 @@
+{
+  "schemaVersion": "1.0.0",
+  "artifactKind": "evidence_packet",
+  "artifactId": "evidence:fix-symlink-artifact-denied:schema-validation:15",
+  "title": "Verification evidence for schema-validation",
+  "createdAt": "2026-06-25T10:50:51.930Z",
+  "updatedAt": "2026-06-25T10:50:51.930Z",
+  "producer": {
+    "kind": "verification_runner",
+    "id": "i-09a-runner-core",
+    "name": "@vibe-engineer/verification",
+    "version": "0.1.0",
+    "runId": "fix-symlink-artifact-denied"
+  },
+  "status": "blocked",
+  "ownership": {
+    "ownerLane": "I-09A-verification-runner-core-evidence-routing",
+    "ownedWritePaths": [
+      "packages/verification/src/**",
+      "packages/verification/fixtures/**",
+      "packages/verification/tests/**",
+      ".vibe/work/I-09A-verification-runner-core-evidence-routing/**"
+    ],
+    "readOnlyPaths": [
+      "packages/artifacts/**",
+      "packages/orchestration/**",
+      "packages/cli/**"
+    ],
+    "untouchablePaths": [
+      ".git/**",
+      "pnpm-lock.yaml",
+      "package.json",
+      "pnpm-workspace.yaml"
+    ],
+    "concurrencyNotes": "I-09A runner core evidence packet written atomically under evidenceRoot."
+  },
+  "links": [
+    {
+      "rel": "evidence_for",
+      "artifactKind": "implementation_plan",
+      "artifactId": "i09a-plan-approved",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/validation-fix-evidence/targeted-fix-witness-output/plan.json",
+      "required": true,
+      "statusAtLinkTime": "approved"
+    }
+  ],
+  "extensions": {
+    "dev.vibe.verification": {
+      "schemaVersion": "1.0.0",
+      "requiredItemId": "schema-validation",
+      "requiredItemAction": "add",
+      "runId": "fix-symlink-artifact-denied",
+      "runnerVersion": "0.1.0"
+    }
+  },
+  "evidenceClass": "deterministic",
+  "layer": "schema_validation",
+  "subjectRefs": [
+    {
+      "rel": "evidence_for",
+      "artifactKind": "implementation_plan",
+      "artifactId": "i09a-plan-approved",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/validation-fix-evidence/targeted-fix-witness-output/plan.json",
+      "required": true,
+      "statusAtLinkTime": "approved"
+    },
+    {
+      "rel": "evidence_for",
+      "artifactKind": "verification_delta",
+      "artifactId": "i09a-delta-approved",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/validation-fix-evidence/targeted-fix-witness-output/plan.json",
+      "required": true,
+      "statusAtLinkTime": "complete"
+    }
+  ],
+  "commandOrTool": {
+    "kind": "command",
+    "name": "/Users/lizavasilyeva/.nvm/versions/node/v24.16.0/bin/node",
+    "argv": [
+      "/Users/lizavasilyeva/work/vibe-engineer/packages/verification/fixtures/runners/pass-runner.mjs",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/validation-fix-evidence/targeted-fix-witness-output/symlink-setup/package-json-link"
+    ],
+    "workingDirectory": "/Users/lizavasilyeva/work/vibe-engineer",
+    "environmentSummary": "not constructed; denied before spawn"
+  },
+  "startedAt": "2026-06-25T10:50:51.929Z",
+  "endedAt": "2026-06-25T10:50:51.930Z",
+  "exitStatus": {
+    "kind": "tool_status",
+    "status": "not_spawned"
+  },
+  "result": "blocked",
+  "blocking": true,
+  "artifacts": [],
+  "warnings": [],
+  "failureDetails": {
+    "code": "UNSAFE_PATH",
+    "message": "Expected artifact path is outside evidenceRoot and allowed write roots.",
+    "classification": "safety_or_security_policy_failure"
+  }
+}

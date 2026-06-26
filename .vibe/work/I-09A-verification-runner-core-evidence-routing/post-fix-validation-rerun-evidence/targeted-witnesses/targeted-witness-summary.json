@@ -1,0 +1,550 @@
+{
+  "ok": false,
+  "verdict": "NEEDS-FIX",
+  "runnerVersion": "0.1.0",
+  "caseCount": 28,
+  "cases": [
+    {
+      "id": "approved-plan-validation",
+      "ok": true
+    },
+    {
+      "id": "secret/secret-argv-deny",
+      "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/secret/secret-argv-deny",
+      "status": "blocked",
+      "packetCount": 16,
+      "validationOk": true,
+      "failures": [
+        {
+          "code": "ADVISORY_FINDING",
+          "message": "Runner exited with code 9.",
+          "classification": "advisory_finding"
+        },
+        {
+          "code": "COMMAND_POLICY_DENIED",
+          "message": "scalarArgs entry does not match a safe typed scalar argv value.",
+          "classification": "safety_or_security_policy_failure"
+        }
+      ]
+    },
+    {
+      "id": "secret/secret-output-redaction",
+      "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/secret/secret-output-redaction",
+      "status": "advisory_warning",
+      "packetCount": 16,
+      "validationOk": true,
+      "failures": [
+        {
+          "code": "ADVISORY_FINDING",
+          "message": "Runner exited with code 9.",
+          "classification": "advisory_finding"
+        }
+      ]
+    },
+    {
+      "id": "secret/validator-internal-redaction",
+      "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/secret/validator-internal-redaction",
+      "status": "failed",
+      "packetCount": 16,
+      "validationOk": true,
+      "failures": [
+        {
+          "code": "ADVISORY_FINDING",
+          "message": "Runner exited with code 9.",
+          "classification": "advisory_finding"
+        },
+        {
+          "code": "RUNNER_INTERNAL_ERROR",
+          "message": "Intentional validator internal error with token=<redacted>",
+          "classification": "runner_internal_error"
+        }
+      ]
+    },
+    {
+      "id": "command-policy/node-eval",
+      "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/command-policy/node-eval",
+      "status": "blocked",
+      "packetCount": 16,
+      "validationOk": true,
+      "failures": [
+        {
+          "code": "ADVISORY_FINDING",
+          "message": "Runner exited with code 9.",
+          "classification": "advisory_finding"
+        },
+        {
+          "code": "COMMAND_POLICY_DENIED",
+          "message": "publicArgs entry does not match a safe exact argv value.",
+          "classification": "safety_or_security_policy_failure"
+        }
+      ]
+    },
+    {
+      "id": "command-policy/node-long-eval",
+      "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/command-policy/node-long-eval",
+      "status": "blocked",
+      "packetCount": 16,
+      "validationOk": true,
+      "failures": [
+        {
+          "code": "ADVISORY_FINDING",
+          "message": "Runner exited with code 9.",
+          "classification": "advisory_finding"
+        },
+        {
+          "code": "COMMAND_POLICY_DENIED",
+          "message": "Node inline eval/print argv is denied before spawn.",
+          "classification": "safety_or_security_policy_failure"
+        }
+      ]
+    },
+    {
+      "id": "command-policy/no-typed-runner-path",
+      "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/command-policy/no-typed-runner-path",
+      "status": "blocked",
+      "packetCount": 16,
+      "validationOk": true,
+      "failures": [
+        {
+          "code": "ADVISORY_FINDING",
+          "message": "Runner exited with code 9.",
+          "classification": "advisory_finding"
+        },
+        {
+          "code": "COMMAND_POLICY_DENIED",
+          "message": "Every command argv value must be declared as a typed path, public literal, or narrow non-secret scalar.",
+          "classification": "safety_or_security_policy_failure"
+        }
+      ]
+    },
+    {
+      "id": "command-policy/shell-string-command",
+      "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/command-policy/shell-string-command",
+      "status": "blocked",
+      "packetCount": 16,
+      "validationOk": true,
+      "failures": [
+        {
+          "code": "ADVISORY_FINDING",
+          "message": "Runner exited with code 9.",
+          "classification": "advisory_finding"
+        },
+        {
+          "code": "COMMAND_POLICY_DENIED",
+          "message": "Shell-string command syntax is denied.",
+          "classification": "safety_or_security_policy_failure"
+        }
+      ]
+    },
+    {
+      "id": "command-policy/shell-true",
+      "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/command-policy/shell-true",
+      "status": "blocked",
+      "packetCount": 16,
+      "validationOk": true,
+      "failures": [
+        {
+          "code": "ADVISORY_FINDING",
+          "message": "Runner exited with code 9.",
+          "classification": "advisory_finding"
+        },
+        {
+          "code": "COMMAND_POLICY_DENIED",
+          "message": "shell:true is denied.",
+          "classification": "safety_or_security_policy_failure"
+        }
+      ]
+    },
+    {
+      "id": "command-policy/unsafe-command-path",
+      "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/command-policy/unsafe-command-path",
+      "status": "blocked",
+      "packetCount": 16,
+      "validationOk": true,
+      "failures": [
+        {
+          "code": "ADVISORY_FINDING",
+          "message": "Runner exited with code 9.",
+          "classification": "advisory_finding"
+        },
+        {
+          "code": "UNSAFE_PATH",
+          "message": "Command executable path escapes projectRoot.",
+          "classification": "safety_or_security_policy_failure"
+        }
+      ]
+    },
+    {
+      "id": "command-policy/unsafe-cwd",
+      "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/command-policy/unsafe-cwd",
+      "status": "blocked",
+      "packetCount": 16,
+      "validationOk": true,
+      "failures": [
+        {
+          "code": "ADVISORY_FINDING",
+          "message": "Runner exited with code 9.",
+          "classification": "advisory_finding"
+        },
+        {
+          "code": "UNSAFE_CWD",
+          "message": "Command cwd escapes projectRoot.",
+          "classification": "safety_or_security_policy_failure"
+        }
+      ]
+    },
+    {
+      "id": "command-policy/env-pass-through",
+      "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/command-policy/env-pass-through",
+      "status": "blocked",
+      "packetCount": 16,
+      "validationOk": true,
+      "failures": [
+        {
+          "code": "ADVISORY_FINDING",
+          "message": "Runner exited with code 9.",
+          "classification": "advisory_finding"
+        },
+        {
+          "code": "ENVIRONMENT_POLICY_DENIED",
+          "message": "Raw process.env pass-through is denied.",
+          "classification": "safety_or_security_policy_failure"
+        }
+      ]
+    },
+    {
+      "id": "command-policy/env-secret-key",
+      "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/command-policy/env-secret-key",
+      "status": "blocked",
+      "packetCount": 16,
+      "validationOk": true,
+      "failures": [
+        {
+          "code": "ADVISORY_FINDING",
+          "message": "Runner exited with code 9.",
+          "classification": "advisory_finding"
+        },
+        {
+          "code": "ENVIRONMENT_POLICY_DENIED",
+          "message": "Environment key <redacted> is secret-like and denied.",
+          "classification": "safety_or_security_policy_failure"
+        }
+      ]
+    },
+    {
+      "id": "command-policy/unknown-side-effect-touch",
+      "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/command-policy/unknown-side-effect-touch",
+      "status": "advisory_warning",
+      "packetCount": 16,
+      "validationOk": true,
+      "failures": [
+        {
+          "code": "ADVISORY_FINDING",
+          "message": "Runner exited with code 9.",
+          "classification": "advisory_finding"
+        }
+      ]
+    },
+    {
+      "id": "path-safety/symlink-escape",
+      "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/path-safety/symlink-escape",
+      "status": "blocked",
+      "packetCount": 16,
+      "validationOk": true,
+      "failures": [
+        {
+          "code": "ADVISORY_FINDING",
+          "message": "Runner exited with code 9.",
+          "classification": "advisory_finding"
+        },
+        {
+          "code": "UNSAFE_PATH",
+          "message": "Expected artifact path is outside evidenceRoot and allowed write roots.",
+          "classification": "safety_or_security_policy_failure"
+        }
+      ]
+    },
+    {
+      "id": "path-safety/traversal-escape",
+      "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/path-safety/traversal-escape",
+      "status": "blocked",
+      "packetCount": 16,
+      "validationOk": true,
+      "failures": [
+        {
+          "code": "ADVISORY_FINDING",
+          "message": "Runner exited with code 9.",
+          "classification": "advisory_finding"
+        },
+        {
+          "code": "UNSAFE_PATH",
+          "message": "Typed arg path escapes declared root.",
+          "classification": "safety_or_security_policy_failure"
+        }
+      ]
+    },
+    {
+      "id": "path-safety/absolute-out-of-case-root",
+      "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/path-safety/absolute-out-of-case-root",
+      "status": "blocked",
+      "packetCount": 16,
+      "validationOk": true,
+      "failures": [
+        {
+          "code": "ADVISORY_FINDING",
+          "message": "Runner exited with code 9.",
+          "classification": "advisory_finding"
+        },
+        {
+          "code": "UNSAFE_PATH",
+          "message": "Expected artifact path is outside evidenceRoot and allowed write roots.",
+          "classification": "safety_or_security_policy_failure"
+        }
+      ]
+    },
+    {
+      "id": "path-safety/protected-package-path",
+      "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/path-safety/protected-package-path",
+      "status": "blocked",
+      "packetCount": 16,
+      "validationOk": true,
+      "failures": [
+        {
+          "code": "ADVISORY_FINDING",
+          "message": "Runner exited with code 9.",
+          "classification": "advisory_finding"
+        },
+        {
+          "code": "UNSAFE_PATH",
+          "message": "Expected artifact path is outside evidenceRoot and allowed write roots.",
+          "classification": "safety_or_security_policy_failure"
+        }
+      ]
+    },
+    {
+      "id": "path-safety/path-like-arg-escape",
+      "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/path-safety/path-like-arg-escape",
+      "status": "blocked",
+      "packetCount": 16,
+      "validationOk": true,
+      "failures": [
+        {
+          "code": "ADVISORY_FINDING",
+          "message": "Runner exited with code 9.",
+          "classification": "advisory_finding"
+        },
+        {
+          "code": "UNSAFE_PATH",
+          "message": "Typed arg path escapes declared root.",
+          "classification": "safety_or_security_policy_failure"
+        }
+      ]
+    },
+    {
+      "id": "resources/missing-caps",
+      "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/resources/missing-caps",
+      "status": "blocked",
+      "packetCount": 16,
+      "validationOk": true,
+      "failures": [
+        {
+          "code": "ADVISORY_FINDING",
+          "message": "Runner exited with code 9.",
+          "classification": "advisory_finding"
+        },
+        {
+          "code": "RESOURCE_CAP_MISSING",
+          "message": "Command timeout/output caps must be finite positive numbers.",
+          "classification": "safety_or_security_policy_failure"
+        }
+      ]
+    },
+    {
+      "id": "resources/malformed-caps",
+      "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/resources/malformed-caps",
+      "status": "blocked",
+      "packetCount": 16,
+      "validationOk": true,
+      "failures": [
+        {
+          "code": "ADVISORY_FINDING",
+          "message": "Runner exited with code 9.",
+          "classification": "advisory_finding"
+        },
+        {
+          "code": "RESOURCE_CAP_MISSING",
+          "message": "Command timeout/output caps must be finite positive numbers.",
+          "classification": "safety_or_security_policy_failure"
+        }
+      ]
+    },
+    {
+      "id": "resources/overlarge-caps",
+      "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/resources/overlarge-caps",
+      "status": "blocked",
+      "packetCount": 16,
+      "validationOk": true,
+      "failures": [
+        {
+          "code": "ADVISORY_FINDING",
+          "message": "Runner exited with code 9.",
+          "classification": "advisory_finding"
+        },
+        {
+          "code": "RESOURCE_CAP_EXCEEDED",
+          "message": "Command timeout/output caps exceed implementation-owned maxima.",
+          "classification": "safety_or_security_policy_failure"
+        }
+      ]
+    },
+    {
+      "id": "resources/timeout",
+      "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/resources/timeout",
+      "status": "blocked",
+      "packetCount": 16,
+      "validationOk": true,
+      "failures": [
+        {
+          "code": "ADVISORY_FINDING",
+          "message": "Runner exited with code 9.",
+          "classification": "advisory_finding"
+        },
+        {
+          "code": "COMMAND_TIMEOUT",
+          "message": "Command timed out and was terminated.",
+          "classification": "safety_or_security_policy_failure"
+        }
+      ]
+    },
+    {
+      "id": "resources/stdout-cap",
+      "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/resources/stdout-cap",
+      "status": "blocked",
+      "packetCount": 16,
+      "validationOk": true,
+      "failures": [
+        {
+          "code": "ADVISORY_FINDING",
+          "message": "Runner exited with code 9.",
+          "classification": "advisory_finding"
+        },
+        {
+          "code": "STDOUT_LIMIT_EXCEEDED",
+          "message": "Command output exceeded configured byte caps.",
+          "classification": "safety_or_security_policy_failure"
+        }
+      ]
+    },
+    {
+      "id": "resources/stderr-cap",
+      "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/resources/stderr-cap",
+      "status": "blocked",
+      "packetCount": 16,
+      "validationOk": true,
+      "failures": [
+        {
+          "code": "ADVISORY_FINDING",
+          "message": "Runner exited with code 9.",
+          "classification": "advisory_finding"
+        },
+        {
+          "code": "STDERR_LIMIT_EXCEEDED",
+          "message": "Command output exceeded configured byte caps.",
+          "classification": "safety_or_security_policy_failure"
+        }
+      ]
+    },
+    {
+      "id": "resources/aggregate-output-cap",
+      "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/resources/aggregate-output-cap",
+      "status": "advisory_warning",
+      "packetCount": 16,
+      "validationOk": true,
+      "failures": [
+        {
+          "code": "ADVISORY_FINDING",
+          "message": "Runner exited with code 9.",
+          "classification": "advisory_finding"
+        }
+      ]
+    },
+    {
+      "id": "resources/artifact-cap",
+      "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/resources/artifact-cap",
+      "status": "blocked",
+      "packetCount": 16,
+      "validationOk": true,
+      "failures": [
+        {
+          "code": "ADVISORY_FINDING",
+          "message": "Runner exited with code 9.",
+          "classification": "advisory_finding"
+        },
+        {
+          "code": "ARTIFACT_LIMIT_EXCEEDED",
+          "message": "Expected artifact exceeded maxOutputBytes.",
+          "classification": "safety_or_security_policy_failure"
+        }
+      ]
+    },
+    {
+      "id": "real-boundaries/w-rb1-positive",
+      "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/real-boundaries/w-rb1-positive",
+      "status": "advisory_warning",
+      "packetCount": 16,
+      "validationOk": true,
+      "failures": [
+        {
+          "code": "ADVISORY_FINDING",
+          "message": "Runner exited with code 9.",
+          "classification": "advisory_finding"
+        }
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "id": "UNKNOWN-SIDE-EFFECT-COMMAND-SPAWNED",
+      "severity": "critical",
+      "summary": "Unknown side-effect command was not denied before spawn.",
+      "evidence": {
+        "status": "advisory_warning",
+        "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/command-policy/unknown-side-effect-touch",
+        "sentinelExists": true,
+        "failures": [
+          {
+            "code": "ADVISORY_FINDING",
+            "message": "Runner exited with code 9.",
+            "classification": "advisory_finding"
+          }
+        ]
+      }
+    },
+    {
+      "id": "UNKNOWN-SIDE-EFFECT-SENTINEL",
+      "severity": "critical",
+      "summary": "Unknown side-effect command created sentinel, proving unsafe spawn.",
+      "evidence": {
+        "sentinel": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/command-policy/unknown-side-effect-touch/unknown-touch-sentinel"
+      }
+    },
+    {
+      "id": "AGGREGATE-OUTPUT-CAP-NOT-ENFORCED",
+      "severity": "major-local",
+      "summary": "Combined stdout+stderr exceeded maxOutputBytes but no OUTPUT_LIMIT_EXCEEDED blocked packet was recorded.",
+      "evidence": {
+        "status": "advisory_warning",
+        "dir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses/resources/aggregate-output-cap",
+        "failures": [
+          {
+            "code": "ADVISORY_FINDING",
+            "message": "Runner exited with code 9.",
+            "classification": "advisory_finding"
+          }
+        ]
+      }
+    }
+  ],
+  "packetCount": 432,
+  "witnessRoot": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-rerun-evidence/targeted-witnesses"
+}

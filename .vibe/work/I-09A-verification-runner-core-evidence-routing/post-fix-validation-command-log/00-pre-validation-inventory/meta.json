@@ -1,0 +1,18 @@
+{
+  "id": "00-pre-validation-inventory",
+  "cwd": "/Users/lizavasilyeva/work/vibe-engineer",
+  "command": "bash -lc \"set -euo pipefail\\nprintf \\\"## pwd\\\\n\\\"; pwd\\nprintf \\\"\\\\n## git status --short\\\\n\\\"; git status --short\\nprintf \\\"\\\\n## scoped status\\\\n\\\"; git status --short -- packages/verification packages/cli packages/artifacts packages/orchestration package.json pnpm-workspace.yaml pnpm-lock.yaml tsconfig.json docs .github scripts || true\\nprintf \\\"\\\\n## workroot inventory depth<=3\\\\n\\\"; find .vibe/work/I-09A-verification-runner-core-evidence-routing -maxdepth 3 -type f | sort\\nprintf \\\"\\\\n## validation-owned roots inventory\\\\n\\\"; find .vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-evidence .vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-command-log -type f 2>/dev/null | sort\\n\"",
+  "argv": [
+    "bash",
+    "-lc",
+    "set -euo pipefail\nprintf \"## pwd\\n\"; pwd\nprintf \"\\n## git status --short\\n\"; git status --short\nprintf \"\\n## scoped status\\n\"; git status --short -- packages/verification packages/cli packages/artifacts packages/orchestration package.json pnpm-workspace.yaml pnpm-lock.yaml tsconfig.json docs .github scripts || true\nprintf \"\\n## workroot inventory depth<=3\\n\"; find .vibe/work/I-09A-verification-runner-core-evidence-routing -maxdepth 3 -type f | sort\nprintf \"\\n## validation-owned roots inventory\\n\"; find .vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-evidence .vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-command-log -type f 2>/dev/null | sort\n"
+  ],
+  "startedAt": "2026-06-25T14:01:04.845Z",
+  "endedAt": "2026-06-25T14:01:04.905Z",
+  "exitCode": 0,
+  "signal": null,
+  "error": null,
+  "stdoutPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-command-log/00-pre-validation-inventory/stdout.txt",
+  "stderrPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-command-log/00-pre-validation-inventory/stderr.txt",
+  "summaryPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/post-fix-validation-command-log/00-pre-validation-inventory/summary.md"
+}
