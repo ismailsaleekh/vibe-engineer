@@ -1,0 +1,323 @@
+{
+  "schemaVersion": "pi-runtime-fixture/v1",
+  "mode": "runtime-fixture",
+  "adapterId": "pi",
+  "adapterCapabilityVersion": "pi-adapter-capability-matrix/v1",
+  "generatedFileManifestVersion": "pi-generated-file-manifest/v1",
+  "runtimeExecutionClaim": "pending-live",
+  "downstreamLiveRuntimeBlock": "pending-live/BLOCKED",
+  "assets": [
+    {
+      "kind": "skill",
+      "familyId": "pi-skill-files",
+      "path": ".pi/skills/brainstorm/SKILL.md",
+      "metadata": {
+        "generatedBy": "I-14B-pi-adapter-runtime-skill-consumption",
+        "runtimeExecutionClaim": "pending-live",
+        "skillProtocol": {
+          "skillId": "brainstorm",
+          "protocolKind": "work-brief-producer",
+          "inputArtifact": "raw-intent",
+          "outputArtifact": "work-brief",
+          "forbiddenArtifacts": [
+            "implementation-plan",
+            "build-result",
+            "ship-packet",
+            "push",
+            "pull-request"
+          ],
+          "summary": "Explore unclear raw intent and persist one Work Brief for plan intake."
+        }
+      }
+    },
+    {
+      "kind": "skill",
+      "familyId": "pi-skill-files",
+      "path": ".pi/skills/grill-me/SKILL.md",
+      "metadata": {
+        "generatedBy": "I-14B-pi-adapter-runtime-skill-consumption",
+        "runtimeExecutionClaim": "pending-live",
+        "skillProtocol": {
+          "skillId": "grill-me",
+          "protocolKind": "work-brief-producer",
+          "inputArtifact": "raw-intent",
+          "outputArtifact": "work-brief",
+          "forbiddenArtifacts": [
+            "implementation-plan",
+            "build-result",
+            "ship-packet",
+            "push",
+            "pull-request"
+          ],
+          "summary": "Pressure-test assumptions and persist one Work Brief for plan intake."
+        }
+      }
+    },
+    {
+      "kind": "skill",
+      "familyId": "pi-skill-files",
+      "path": ".pi/skills/task/SKILL.md",
+      "metadata": {
+        "generatedBy": "I-14B-pi-adapter-runtime-skill-consumption",
+        "runtimeExecutionClaim": "pending-live",
+        "skillProtocol": {
+          "skillId": "task",
+          "protocolKind": "work-brief-producer",
+          "inputArtifact": "raw-intent",
+          "outputArtifact": "work-brief",
+          "forbiddenArtifacts": [
+            "implementation-plan",
+            "build-result",
+            "ship-packet",
+            "push",
+            "pull-request"
+          ],
+          "summary": "Normalize a concrete request and persist one Work Brief for plan intake."
+        }
+      }
+    },
+    {
+      "kind": "skill",
+      "familyId": "pi-skill-files",
+      "path": ".pi/skills/plan/SKILL.md",
+      "metadata": {
+        "generatedBy": "I-14B-pi-adapter-runtime-skill-consumption",
+        "runtimeExecutionClaim": "pending-live",
+        "skillProtocol": {
+          "skillId": "plan",
+          "protocolKind": "implementation-plan-producer",
+          "inputArtifact": "work-brief",
+          "outputArtifact": "implementation-plan-with-verification-delta",
+          "forbiddenArtifacts": [
+            "build-result",
+            "ship-packet",
+            "push",
+            "pull-request"
+          ],
+          "summary": "Consume exactly one Work Brief and produce an Implementation Plan with Verification Delta."
+        }
+      }
+    },
+    {
+      "kind": "skill",
+      "familyId": "pi-skill-files",
+      "path": ".pi/skills/build/SKILL.md",
+      "metadata": {
+        "generatedBy": "I-14B-pi-adapter-runtime-skill-consumption",
+        "runtimeExecutionClaim": "pending-live",
+        "skillProtocol": {
+          "skillId": "build",
+          "protocolKind": "build-result-producer",
+          "inputArtifact": "approved-implementation-plan",
+          "outputArtifact": "build-result",
+          "forbiddenArtifacts": [
+            "ship-packet",
+            "push",
+            "pull-request"
+          ],
+          "summary": "Consume an approved Implementation Plan and produce a Build Result after implementation and verification evidence."
+        }
+      }
+    },
+    {
+      "kind": "skill",
+      "familyId": "pi-skill-files",
+      "path": ".pi/skills/ship/SKILL.md",
+      "metadata": {
+        "generatedBy": "I-14B-pi-adapter-runtime-skill-consumption",
+        "runtimeExecutionClaim": "pending-live",
+        "skillProtocol": {
+          "skillId": "ship",
+          "protocolKind": "ship-packet-producer",
+          "inputArtifact": "build-result",
+          "outputArtifact": "ship-packet",
+          "forbiddenArtifacts": [
+            "push",
+            "pull-request"
+          ],
+          "summary": "Consume a Build Result and produce a Ship Packet; push or PR creation requires explicit approval."
+        }
+      }
+    },
+    {
+      "kind": "prompt-template",
+      "familyId": "pi-prompt-templates",
+      "path": ".pi/prompts/vibe-brainstorm.md",
+      "metadata": {
+        "generatedBy": "I-14B-pi-adapter-runtime-skill-consumption",
+        "runtimeExecutionClaim": "pending-live",
+        "promptContract": {
+          "templateName": "vibe-brainstorm",
+          "description": "Invoke the generated brainstorm skill protocol with a persisted artifact handoff requirement.",
+          "argumentHint": "<artifact-or-request-ref>",
+          "argumentContract": [
+            "$1 must be a durable artifact path, work reference, or raw user request appropriate for the skill protocol.",
+            "$@ may contain additional constraints; it must not contain secrets or production credentials."
+          ],
+          "skillId": "brainstorm"
+        }
+      }
+    },
+    {
+      "kind": "prompt-template",
+      "familyId": "pi-prompt-templates",
+      "path": ".pi/prompts/vibe-grill-me.md",
+      "metadata": {
+        "generatedBy": "I-14B-pi-adapter-runtime-skill-consumption",
+        "runtimeExecutionClaim": "pending-live",
+        "promptContract": {
+          "templateName": "vibe-grill-me",
+          "description": "Invoke the generated grill-me skill protocol with a persisted artifact handoff requirement.",
+          "argumentHint": "<artifact-or-request-ref>",
+          "argumentContract": [
+            "$1 must be a durable artifact path, work reference, or raw user request appropriate for the skill protocol.",
+            "$@ may contain additional constraints; it must not contain secrets or production credentials."
+          ],
+          "skillId": "grill-me"
+        }
+      }
+    },
+    {
+      "kind": "prompt-template",
+      "familyId": "pi-prompt-templates",
+      "path": ".pi/prompts/vibe-task.md",
+      "metadata": {
+        "generatedBy": "I-14B-pi-adapter-runtime-skill-consumption",
+        "runtimeExecutionClaim": "pending-live",
+        "promptContract": {
+          "templateName": "vibe-task",
+          "description": "Invoke the generated task skill protocol with a persisted artifact handoff requirement.",
+          "argumentHint": "<artifact-or-request-ref>",
+          "argumentContract": [
+            "$1 must be a durable artifact path, work reference, or raw user request appropriate for the skill protocol.",
+            "$@ may contain additional constraints; it must not contain secrets or production credentials."
+          ],
+          "skillId": "task"
+        }
+      }
+    },
+    {
+      "kind": "prompt-template",
+      "familyId": "pi-prompt-templates",
+      "path": ".pi/prompts/vibe-plan.md",
+      "metadata": {
+        "generatedBy": "I-14B-pi-adapter-runtime-skill-consumption",
+        "runtimeExecutionClaim": "pending-live",
+        "promptContract": {
+          "templateName": "vibe-plan",
+          "description": "Invoke the generated plan skill protocol with a persisted artifact handoff requirement.",
+          "argumentHint": "<artifact-or-request-ref>",
+          "argumentContract": [
+            "$1 must be a durable artifact path, work reference, or raw user request appropriate for the skill protocol.",
+            "$@ may contain additional constraints; it must not contain secrets or production credentials."
+          ],
+          "skillId": "plan"
+        }
+      }
+    },
+    {
+      "kind": "prompt-template",
+      "familyId": "pi-prompt-templates",
+      "path": ".pi/prompts/vibe-build.md",
+      "metadata": {
+        "generatedBy": "I-14B-pi-adapter-runtime-skill-consumption",
+        "runtimeExecutionClaim": "pending-live",
+        "promptContract": {
+          "templateName": "vibe-build",
+          "description": "Invoke the generated build skill protocol with a persisted artifact handoff requirement.",
+          "argumentHint": "<artifact-or-request-ref>",
+          "argumentContract": [
+            "$1 must be a durable artifact path, work reference, or raw user request appropriate for the skill protocol.",
+            "$@ may contain additional constraints; it must not contain secrets or production credentials."
+          ],
+          "skillId": "build"
+        }
+      }
+    },
+    {
+      "kind": "prompt-template",
+      "familyId": "pi-prompt-templates",
+      "path": ".pi/prompts/vibe-ship.md",
+      "metadata": {
+        "generatedBy": "I-14B-pi-adapter-runtime-skill-consumption",
+        "runtimeExecutionClaim": "pending-live",
+        "promptContract": {
+          "templateName": "vibe-ship",
+          "description": "Invoke the generated ship skill protocol with a persisted artifact handoff requirement.",
+          "argumentHint": "<artifact-or-request-ref>",
+          "argumentContract": [
+            "$1 must be a durable artifact path, work reference, or raw user request appropriate for the skill protocol.",
+            "$@ may contain additional constraints; it must not contain secrets or production credentials."
+          ],
+          "skillId": "ship"
+        }
+      }
+    },
+    {
+      "kind": "extension",
+      "familyId": "pi-extensions",
+      "path": ".pi/extensions/i14b-runtime-policy.ts",
+      "metadata": {
+        "generatedBy": "I-14B-pi-adapter-runtime-skill-consumption",
+        "runtimeExecutionClaim": "pending-live",
+        "extensionPolicy": {
+          "defaultDeny": true,
+          "requiresCredentialsByDefault": false,
+          "permitsDestructiveOperationsByDefault": false,
+          "permitsExternalMutationByDefault": false,
+          "claimsSandboxing": "not_provided",
+          "runtimeExecutionClaim": "pending-live",
+          "trustBoundary": "Project-local TypeScript extension executes only after pi project trust; this fixture registers no tools, performs no I/O, and claims no sandbox isolation."
+        }
+      }
+    },
+    {
+      "kind": "package-manifest",
+      "familyId": "pi-package-manifest",
+      "path": "package.json",
+      "metadata": {
+        "generatedBy": "I-14B-pi-adapter-runtime-skill-consumption",
+        "runtimeExecutionClaim": "pending-live"
+      }
+    },
+    {
+      "kind": "context",
+      "familyId": "context-files",
+      "path": "AGENTS.md",
+      "metadata": {
+        "generatedBy": "I-14B-pi-adapter-runtime-skill-consumption",
+        "runtimeExecutionClaim": "pending-live",
+        "contextPolicy": {
+          "domainNeutral": true,
+          "secretsAllowed": false,
+          "businessDomainAssumptionsAllowed": false,
+          "liveRuntimeTruthGreenClaimAllowed": false
+        }
+      }
+    },
+    {
+      "kind": "context",
+      "familyId": "context-files",
+      "path": "CLAUDE.md",
+      "metadata": {
+        "generatedBy": "I-14B-pi-adapter-runtime-skill-consumption",
+        "runtimeExecutionClaim": "pending-live",
+        "contextPolicy": {
+          "domainNeutral": true,
+          "secretsAllowed": false,
+          "businessDomainAssumptionsAllowed": false,
+          "liveRuntimeTruthGreenClaimAllowed": false
+        }
+      }
+    },
+    {
+      "kind": "harness-config",
+      "familyId": "harness-config",
+      "path": ".vibe/harness/pi-runtime.json",
+      "metadata": {
+        "generatedBy": "I-14B-pi-adapter-runtime-skill-consumption",
+        "runtimeExecutionClaim": "pending-live"
+      }
+    }
+  ]
+}

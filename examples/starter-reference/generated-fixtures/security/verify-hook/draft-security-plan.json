@@ -1,0 +1,485 @@
+{
+  "schemaVersion": "1.0.0",
+  "artifactKind": "implementation_plan",
+  "artifactId": "i18b-security-draft-plan",
+  "title": "I-18B security verify hook approved fixture plan",
+  "createdAt": "2026-06-26T00:00:00.000Z",
+  "updatedAt": "2026-06-26T00:00:00.000Z",
+  "producer": {
+    "kind": "agent",
+    "id": "i18b-fixture-producer",
+    "name": "I-18B fixture producer",
+    "version": "1.0.0",
+    "runId": "i18b-security-verify-hook"
+  },
+  "status": "draft",
+  "ownership": {
+    "ownerLane": "I-18B-security-cli-command-and-verify-hook",
+    "ownedWritePaths": [
+      "examples/starter-reference/generated-fixtures/security/**"
+    ],
+    "readOnlyPaths": [
+      "packages/verification/**",
+      "packages/cli/src/commands/verify/**"
+    ],
+    "untouchablePaths": [
+      ".git/**"
+    ],
+    "concurrencyNotes": "Lane-owned fixture consumed by actual verification runner."
+  },
+  "links": [
+    {
+      "rel": "derived_from",
+      "artifactKind": "work_brief",
+      "artifactId": "i18b-security-work-brief",
+      "path": ".vibe/work/I-18-security-safety-hooks-policy/I-18B-security-cli-command-and-verify-hook/I-18B-implementation-report.md",
+      "required": true,
+      "statusAtLinkTime": "ready"
+    }
+  ],
+  "extensions": {
+    "dev.vibe.fixture": {
+      "schemaVersion": "1.0.0",
+      "note": "domain-neutral fixture extension"
+    }
+  },
+  "tags": [
+    "domain-neutral"
+  ],
+  "workBriefRef": {
+    "rel": "derived_from",
+    "artifactKind": "work_brief",
+    "artifactId": "i18b-security-work-brief",
+    "path": ".vibe/work/I-18-security-safety-hooks-policy/I-18B-security-cli-command-and-verify-hook/I-18B-implementation-report.md",
+    "required": true,
+    "statusAtLinkTime": "ready"
+  },
+  "objective": "Exercise the security safety hook through the verification runner.",
+  "scope": [
+    "examples/starter-reference/generated-fixtures/security"
+  ],
+  "nonScope": [
+    "packages/verification",
+    "packages/cli/src/commands/verify",
+    "packages/cli/src/entry"
+  ],
+  "contextClosure": [
+    {
+      "rel": "context_for",
+      "artifactKind": "implementation_plan",
+      "artifactId": "i18b-security-verify-hook-plan",
+      "path": "examples/starter-reference/generated-fixtures/security/verify-hook/approved-security-plan.json",
+      "required": true,
+      "statusAtLinkTime": "approved"
+    }
+  ],
+  "affectedAreas": [
+    {
+      "kind": "package",
+      "path": "examples/starter-reference/generated-fixtures/security",
+      "reason": "Security hook reference fixture"
+    }
+  ],
+  "schematics": [],
+  "implementationSteps": [
+    {
+      "id": "step-security-hook",
+      "description": "Run the security hook fixture through verification.",
+      "dependsOn": [],
+      "expectedTouchedAreas": [
+        {
+          "kind": "package",
+          "path": "examples/starter-reference/generated-fixtures/security",
+          "reason": "Security hook reference fixture"
+        }
+      ],
+      "acceptanceLinks": [
+        "accept-security-hook"
+      ]
+    }
+  ],
+  "acceptanceCriteria": [
+    {
+      "id": "accept-security-hook",
+      "description": "Security hook Evidence Packet is produced and redacted."
+    }
+  ],
+  "definitionOfDone": [
+    {
+      "id": "dod-security-hook",
+      "description": "Security hook verification evidence is present.",
+      "blocking": true
+    }
+  ],
+  "risks": [],
+  "openBlockers": [],
+  "verificationDelta": {
+    "schemaVersion": "1.0.0",
+    "artifactKind": "verification_delta",
+    "artifactId": "i18b-security-verify-hook-delta",
+    "title": "I-18B security verify hook Verification Delta",
+    "createdAt": "2026-06-26T00:00:00.000Z",
+    "updatedAt": "2026-06-26T00:00:00.000Z",
+    "producer": {
+      "kind": "agent",
+      "id": "i18b-fixture-producer",
+      "name": "I-18B fixture producer",
+      "version": "1.0.0",
+      "runId": "i18b-security-verify-hook"
+    },
+    "status": "complete",
+    "ownership": {
+      "ownerLane": "I-18B-security-cli-command-and-verify-hook",
+      "ownedWritePaths": [
+        "examples/starter-reference/generated-fixtures/security/**"
+      ],
+      "readOnlyPaths": [
+        "packages/verification/**",
+        "packages/cli/src/commands/verify/**"
+      ],
+      "untouchablePaths": [
+        ".git/**"
+      ],
+      "concurrencyNotes": "Lane-owned fixture consumed by actual verification runner."
+    },
+    "links": [
+      {
+        "rel": "verification_delta_of",
+        "artifactKind": "implementation_plan",
+        "artifactId": "i18b-security-draft-plan",
+        "path": "examples/starter-reference/generated-fixtures/security/verify-hook/approved-security-plan.json",
+        "required": true,
+        "statusAtLinkTime": "approved"
+      }
+    ],
+    "extensions": {
+      "dev.vibe.fixture": {
+        "schemaVersion": "1.0.0",
+        "note": "domain-neutral fixture extension"
+      }
+    },
+    "tags": [
+      "domain-neutral"
+    ],
+    "summary": "All Verification Delta catalog items are represented; safety_hooks executes a real security gate runner and siblings are recorded not applicable for this witness fixture.",
+    "implementationPlanRef": {
+      "rel": "verification_delta_of",
+      "artifactKind": "implementation_plan",
+      "artifactId": "i18b-security-draft-plan",
+      "path": "examples/starter-reference/generated-fixtures/security/verify-hook/approved-security-plan.json",
+      "required": true,
+      "statusAtLinkTime": "approved"
+    },
+    "sensitiveAreas": [
+      "security",
+      "verification"
+    ],
+    "catalogVersion": "1.0.0",
+    "requiredItems": [
+      {
+        "id": "safety-hooks",
+        "layer": "safety_hooks",
+        "action": "add",
+        "rationale": "The I-18B security hook must invoke the actual @vibe-engineer/security gate via the verification runner.",
+        "expectedArtifacts": [
+          "examples/starter-reference/generated-fixtures/security/verify-hook/security-hook-result.json"
+        ],
+        "blocking": true,
+        "validationOwner": "validator",
+        "fixerOwner": "fixer",
+        "evidenceRequired": [
+          {
+            "kind": "evidence_packet",
+            "description": "Security hook Evidence Packet",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "typecheck",
+        "layer": "typecheck",
+        "action": "not_applicable",
+        "rationale": "typecheck is explicitly not applicable to this narrow security-hook real-boundary fixture.",
+        "expectedArtifacts": [
+          ".vibe/work/I-18-security-safety-hooks-policy/I-18B-security-cli-command-and-verify-hook/evidence/not-applicable/typecheck.txt"
+        ],
+        "blocking": true,
+        "validationOwner": "validator",
+        "fixerOwner": "fixer",
+        "evidenceRequired": [
+          {
+            "kind": "evidence_packet",
+            "description": "typecheck not-applicable Evidence Packet",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "lint-format",
+        "layer": "lint_format",
+        "action": "not_applicable",
+        "rationale": "lint_format is explicitly not applicable to this narrow security-hook real-boundary fixture.",
+        "expectedArtifacts": [
+          ".vibe/work/I-18-security-safety-hooks-policy/I-18B-security-cli-command-and-verify-hook/evidence/not-applicable/lint_format.txt"
+        ],
+        "blocking": true,
+        "validationOwner": "validator",
+        "fixerOwner": "fixer",
+        "evidenceRequired": [
+          {
+            "kind": "evidence_packet",
+            "description": "lint_format not-applicable Evidence Packet",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "mechanical-gate",
+        "layer": "mechanical_gate",
+        "action": "not_applicable",
+        "rationale": "mechanical_gate is explicitly not applicable to this narrow security-hook real-boundary fixture.",
+        "expectedArtifacts": [
+          ".vibe/work/I-18-security-safety-hooks-policy/I-18B-security-cli-command-and-verify-hook/evidence/not-applicable/mechanical_gate.txt"
+        ],
+        "blocking": true,
+        "validationOwner": "validator",
+        "fixerOwner": "fixer",
+        "evidenceRequired": [
+          {
+            "kind": "evidence_packet",
+            "description": "mechanical_gate not-applicable Evidence Packet",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "unit",
+        "layer": "unit",
+        "action": "not_applicable",
+        "rationale": "unit is explicitly not applicable to this narrow security-hook real-boundary fixture.",
+        "expectedArtifacts": [
+          ".vibe/work/I-18-security-safety-hooks-policy/I-18B-security-cli-command-and-verify-hook/evidence/not-applicable/unit.txt"
+        ],
+        "blocking": true,
+        "validationOwner": "validator",
+        "fixerOwner": "fixer",
+        "evidenceRequired": [
+          {
+            "kind": "evidence_packet",
+            "description": "unit not-applicable Evidence Packet",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "integration",
+        "layer": "integration",
+        "action": "not_applicable",
+        "rationale": "integration is explicitly not applicable to this narrow security-hook real-boundary fixture.",
+        "expectedArtifacts": [
+          ".vibe/work/I-18-security-safety-hooks-policy/I-18B-security-cli-command-and-verify-hook/evidence/not-applicable/integration.txt"
+        ],
+        "blocking": true,
+        "validationOwner": "validator",
+        "fixerOwner": "fixer",
+        "evidenceRequired": [
+          {
+            "kind": "evidence_packet",
+            "description": "integration not-applicable Evidence Packet",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "contract-adapter",
+        "layer": "contract_adapter",
+        "action": "not_applicable",
+        "rationale": "contract_adapter is explicitly not applicable to this narrow security-hook real-boundary fixture.",
+        "expectedArtifacts": [
+          ".vibe/work/I-18-security-safety-hooks-policy/I-18B-security-cli-command-and-verify-hook/evidence/not-applicable/contract_adapter.txt"
+        ],
+        "blocking": true,
+        "validationOwner": "validator",
+        "fixerOwner": "fixer",
+        "evidenceRequired": [
+          {
+            "kind": "evidence_packet",
+            "description": "contract_adapter not-applicable Evidence Packet",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "e2e",
+        "layer": "e2e",
+        "action": "not_applicable",
+        "rationale": "e2e is explicitly not applicable to this narrow security-hook real-boundary fixture.",
+        "expectedArtifacts": [
+          ".vibe/work/I-18-security-safety-hooks-policy/I-18B-security-cli-command-and-verify-hook/evidence/not-applicable/e2e.txt"
+        ],
+        "blocking": true,
+        "validationOwner": "validator",
+        "fixerOwner": "fixer",
+        "evidenceRequired": [
+          {
+            "kind": "evidence_packet",
+            "description": "e2e not-applicable Evidence Packet",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "ui-verification",
+        "layer": "ui_verification",
+        "action": "not_applicable",
+        "rationale": "ui_verification is explicitly not applicable to this narrow security-hook real-boundary fixture.",
+        "expectedArtifacts": [
+          ".vibe/work/I-18-security-safety-hooks-policy/I-18B-security-cli-command-and-verify-hook/evidence/not-applicable/ui_verification.txt"
+        ],
+        "blocking": true,
+        "validationOwner": "validator",
+        "fixerOwner": "fixer",
+        "evidenceRequired": [
+          {
+            "kind": "evidence_packet",
+            "description": "ui_verification not-applicable Evidence Packet",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "ai-eval",
+        "layer": "ai_eval",
+        "action": "not_applicable",
+        "rationale": "ai_eval is explicitly not applicable to this narrow security-hook real-boundary fixture.",
+        "expectedArtifacts": [
+          ".vibe/work/I-18-security-safety-hooks-policy/I-18B-security-cli-command-and-verify-hook/evidence/not-applicable/ai_eval.txt"
+        ],
+        "blocking": true,
+        "validationOwner": "validator",
+        "fixerOwner": "fixer",
+        "evidenceRequired": [
+          {
+            "kind": "evidence_packet",
+            "description": "ai_eval not-applicable Evidence Packet",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "build-package",
+        "layer": "build_package",
+        "action": "not_applicable",
+        "rationale": "build_package is explicitly not applicable to this narrow security-hook real-boundary fixture.",
+        "expectedArtifacts": [
+          ".vibe/work/I-18-security-safety-hooks-policy/I-18B-security-cli-command-and-verify-hook/evidence/not-applicable/build_package.txt"
+        ],
+        "blocking": true,
+        "validationOwner": "validator",
+        "fixerOwner": "fixer",
+        "evidenceRequired": [
+          {
+            "kind": "evidence_packet",
+            "description": "build_package not-applicable Evidence Packet",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "context-drift",
+        "layer": "context_drift",
+        "action": "not_applicable",
+        "rationale": "context_drift is explicitly not applicable to this narrow security-hook real-boundary fixture.",
+        "expectedArtifacts": [
+          ".vibe/work/I-18-security-safety-hooks-policy/I-18B-security-cli-command-and-verify-hook/evidence/not-applicable/context_drift.txt"
+        ],
+        "blocking": true,
+        "validationOwner": "validator",
+        "fixerOwner": "fixer",
+        "evidenceRequired": [
+          {
+            "kind": "evidence_packet",
+            "description": "context_drift not-applicable Evidence Packet",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "observability",
+        "layer": "observability",
+        "action": "not_applicable",
+        "rationale": "observability is explicitly not applicable to this narrow security-hook real-boundary fixture.",
+        "expectedArtifacts": [
+          ".vibe/work/I-18-security-safety-hooks-policy/I-18B-security-cli-command-and-verify-hook/evidence/not-applicable/observability.txt"
+        ],
+        "blocking": true,
+        "validationOwner": "validator",
+        "fixerOwner": "fixer",
+        "evidenceRequired": [
+          {
+            "kind": "evidence_packet",
+            "description": "observability not-applicable Evidence Packet",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "advisory-review",
+        "layer": "advisory_review",
+        "action": "not_applicable",
+        "rationale": "advisory_review is explicitly not applicable to this narrow security-hook real-boundary fixture.",
+        "expectedArtifacts": [
+          ".vibe/work/I-18-security-safety-hooks-policy/I-18B-security-cli-command-and-verify-hook/evidence/not-applicable/advisory_review.txt"
+        ],
+        "blocking": true,
+        "validationOwner": "validator",
+        "fixerOwner": "fixer",
+        "evidenceRequired": [
+          {
+            "kind": "evidence_packet",
+            "description": "advisory_review not-applicable Evidence Packet",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "final-dod",
+        "layer": "final_dod",
+        "action": "not_applicable",
+        "rationale": "final_dod is explicitly not applicable to this narrow security-hook real-boundary fixture.",
+        "expectedArtifacts": [
+          ".vibe/work/I-18-security-safety-hooks-policy/I-18B-security-cli-command-and-verify-hook/evidence/not-applicable/final_dod.txt"
+        ],
+        "blocking": true,
+        "validationOwner": "validator",
+        "fixerOwner": "fixer",
+        "evidenceRequired": [
+          {
+            "kind": "evidence_packet",
+            "description": "final_dod not-applicable Evidence Packet",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "schema-validation",
+        "layer": "schema_validation",
+        "action": "not_applicable",
+        "rationale": "schema_validation is explicitly not applicable to this narrow security-hook real-boundary fixture.",
+        "expectedArtifacts": [
+          ".vibe/work/I-18-security-safety-hooks-policy/I-18B-security-cli-command-and-verify-hook/evidence/not-applicable/schema_validation.txt"
+        ],
+        "blocking": true,
+        "validationOwner": "validator",
+        "fixerOwner": "fixer",
+        "evidenceRequired": [
+          {
+            "kind": "evidence_packet",
+            "description": "schema_validation not-applicable Evidence Packet",
+            "blocking": true
+          }
+        ]
+      }
+    ]
+  }
+}

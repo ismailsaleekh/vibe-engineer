@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "security-policy.v1",
+  "defaultDecision": "allow",
+  "allowedCommandClassifications": [
+    "read_only",
+    "destructive_local_operation"
+  ],
+  "protectedPathPrefixes": [
+    ".git"
+  ],
+  "allowProductionCredentials": true,
+  "allowedExternalIntegrationModes": [
+    "enabled"
+  ],
+  "allowedSandboxCapabilityStatuses": [
+    "blocked/pending-live"
+  ],
+  "advisoryClassifications": [
+    "advisory_notice"
+  ],
+  "unexpectedPolicyField": "blocked"
+}

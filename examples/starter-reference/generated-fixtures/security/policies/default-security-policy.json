@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "security-policy.v1",
+  "defaultDecision": "block",
+  "allowedCommandClassifications": [
+    "read_only",
+    "local_deterministic_write"
+  ],
+  "protectedPathPrefixes": [
+    "/",
+    "~",
+    ".git",
+    "../",
+    "..",
+    "package.json",
+    "package-lock.json",
+    "pnpm-lock.yaml",
+    "pnpm-workspace.yaml",
+    "yarn.lock",
+    "turbo.json",
+    ".npmrc",
+    ".gitignore",
+    "eslint.config.mjs",
+    "prettier.config.mjs",
+    "tsconfig.base.json",
+    "tsconfig.json",
+    "packages/cli/package.json",
+    "packages/security/package.json",
+    "packages/cli/src/entry",
+    "packages/cli/src/command-loader",
+    "packages/cli/src/envelope",
+    "packages/cli/src/errors",
+    "packages/cli/src/testing"
+  ],
+  "allowProductionCredentials": false,
+  "allowedExternalIntegrationModes": [
+    "disabled",
+    "dry_run",
+    "read_only",
+    "local_fixture"
+  ],
+  "allowedSandboxCapabilityStatuses": [
+    "proven",
+    "not_provided",
+    "unknown"
+  ],
+  "advisoryClassifications": [
+    "advisory_notice"
+  ]
+}

@@ -1,0 +1,316 @@
+{
+  "schemaVersion": "pi-generated-file-manifest/v1",
+  "adapterId": "pi",
+  "adapterCapabilityVersion": "pi-adapter-capability-matrix/v1",
+  "producedByLane": "I-14A-pi-adapter-capability-generated-file-manifest",
+  "families": [
+    {
+      "familyId": "pi-skill-files",
+      "description": "Agent Skills-compatible files for the six locked vibe-engineer skills.",
+      "pathPatterns": [
+        ".pi/skills/<skill>/SKILL.md",
+        ".agents/skills/<skill>/SKILL.md"
+      ],
+      "owner": {
+        "ownerKind": "lane",
+        "ownerId": "I-14B-pi-adapter-runtime-skill-consumption",
+        "writePathScope": [
+          ".pi/skills/<skill>/SKILL.md",
+          ".agents/skills/<skill>/SKILL.md"
+        ],
+        "allowedOperations": [
+          "generate-in-later-lane",
+          "validate"
+        ]
+      },
+      "producedByLane": "I-14B-pi-adapter-runtime-skill-consumption",
+      "consumedByLanes": [
+        "I-14B-pi-adapter-runtime-skill-consumption",
+        "I-15A-create-import-cli-ux-selected-harness",
+        "I-21-build-skill-orchestration"
+      ],
+      "trustSecurity": {
+        "classification": "project-instruction",
+        "trustBoundary": "Project-local instructions are loaded by pi after project trust; content must remain domain-neutral and cannot embed secrets.",
+        "projectTrustRequired": true,
+        "executesCode": false,
+        "commandPolicy": "not-applicable",
+        "sandboxCapability": "not_provided",
+        "credentialPolicy": "no-credentials-required",
+        "externalIntegration": "disabled-by-default",
+        "destructiveOperationPolicy": "forbidden",
+        "evidence": {
+          "state": "known",
+          "source": "DL-06-agentic-harness-integrations.md + DL-22-security-safety-model.md",
+          "notes": "Generated-file family carries explicit trust, sandbox, credential, command, external-integration, and destructive-operation semantics."
+        }
+      },
+      "version": {
+        "formatName": "Agent Skills SKILL.md",
+        "formatVersion": "v1",
+        "schemaVersion": "pi-generated-file-manifest/v1",
+        "adapterCapabilityVersion": "pi-adapter-capability-matrix/v1"
+      },
+      "readiness": {
+        "state": "ready",
+        "reason": "Manifest family is declared and validated by I-14A; actual file generation/runtime proof belongs to I-14B/I-15A."
+      }
+    },
+    {
+      "familyId": "pi-prompt-templates",
+      "description": "Reusable pi slash-command prompt templates for generated skill workflows.",
+      "pathPatterns": [
+        ".pi/prompts/<name>.md"
+      ],
+      "owner": {
+        "ownerKind": "lane",
+        "ownerId": "I-14B-pi-adapter-runtime-skill-consumption",
+        "writePathScope": [
+          ".pi/prompts/<name>.md"
+        ],
+        "allowedOperations": [
+          "generate-in-later-lane",
+          "validate"
+        ]
+      },
+      "producedByLane": "I-14B-pi-adapter-runtime-skill-consumption",
+      "consumedByLanes": [
+        "I-14B-pi-adapter-runtime-skill-consumption",
+        "I-15A-create-import-cli-ux-selected-harness"
+      ],
+      "trustSecurity": {
+        "classification": "project-instruction",
+        "trustBoundary": "Project-local instructions are loaded by pi after project trust; content must remain domain-neutral and cannot embed secrets.",
+        "projectTrustRequired": true,
+        "executesCode": false,
+        "commandPolicy": "not-applicable",
+        "sandboxCapability": "not_provided",
+        "credentialPolicy": "no-credentials-required",
+        "externalIntegration": "disabled-by-default",
+        "destructiveOperationPolicy": "forbidden",
+        "evidence": {
+          "state": "known",
+          "source": "DL-06-agentic-harness-integrations.md + DL-22-security-safety-model.md",
+          "notes": "Generated-file family carries explicit trust, sandbox, credential, command, external-integration, and destructive-operation semantics."
+        }
+      },
+      "version": {
+        "formatName": "Pi prompt template markdown",
+        "formatVersion": "v1",
+        "schemaVersion": "pi-generated-file-manifest/v1",
+        "adapterCapabilityVersion": "pi-adapter-capability-matrix/v1"
+      },
+      "readiness": {
+        "state": "ready",
+        "reason": "Templates are an allowed family only when downstream lanes validate manifest metadata and avoid silent unsupported behavior."
+      }
+    },
+    {
+      "familyId": "pi-extensions",
+      "description": "Optional TypeScript extensions for commands, tools, hooks, permission/path gates, subagent or plan-mode-like behavior, and dynamic resources.",
+      "pathPatterns": [
+        ".pi/extensions/<name>.ts",
+        ".pi/extensions/<name>/index.ts"
+      ],
+      "owner": {
+        "ownerKind": "lane",
+        "ownerId": "I-14B-pi-adapter-runtime-skill-consumption",
+        "writePathScope": [
+          ".pi/extensions/<name>.ts",
+          ".pi/extensions/<name>/index.ts"
+        ],
+        "allowedOperations": [
+          "generate-in-later-lane",
+          "validate"
+        ]
+      },
+      "producedByLane": "I-14B-pi-adapter-runtime-skill-consumption",
+      "consumedByLanes": [
+        "I-14B-pi-adapter-runtime-skill-consumption",
+        "I-18-security-safety-hooks-policy",
+        "I-21-build-skill-orchestration"
+      ],
+      "trustSecurity": {
+        "classification": "executable-extension",
+        "trustBoundary": "TypeScript extension code executes with pi/package permissions after project trust; no sandbox isolation is claimed by I-14A.",
+        "projectTrustRequired": true,
+        "executesCode": true,
+        "commandPolicy": "default-deny",
+        "sandboxCapability": "not_provided",
+        "credentialPolicy": "operator-supplied-only",
+        "externalIntegration": "disabled-by-default",
+        "destructiveOperationPolicy": "approval-required",
+        "evidence": {
+          "state": "known",
+          "source": "DL-06-agentic-harness-integrations.md + DL-22-security-safety-model.md",
+          "notes": "Generated-file family carries explicit trust, sandbox, credential, command, external-integration, and destructive-operation semantics."
+        }
+      },
+      "version": {
+        "formatName": "Pi TypeScript extension",
+        "formatVersion": "v1",
+        "schemaVersion": "pi-generated-file-manifest/v1",
+        "adapterCapabilityVersion": "pi-adapter-capability-matrix/v1"
+      },
+      "readiness": {
+        "state": "blocked",
+        "reason": "Executable extension generation and live loading are intentionally blocked until I-14B/I-18 prove the actual runtime/security boundary."
+      }
+    },
+    {
+      "familyId": "pi-package-manifest",
+      "description": "Optional package.json `pi` key for shareable resources.",
+      "pathPatterns": [
+        "package.json#pi"
+      ],
+      "owner": {
+        "ownerKind": "lane",
+        "ownerId": "I-14B-pi-adapter-runtime-skill-consumption",
+        "writePathScope": [
+          "package.json#pi"
+        ],
+        "allowedOperations": [
+          "generate-in-later-lane",
+          "validate"
+        ]
+      },
+      "producedByLane": "I-14B-pi-adapter-runtime-skill-consumption",
+      "consumedByLanes": [
+        "I-14B-pi-adapter-runtime-skill-consumption",
+        "I-15B-starter-template-harness-consumption"
+      ],
+      "trustSecurity": {
+        "classification": "package-manifest",
+        "trustBoundary": "Pi package install/update/trust behavior must be explicit before a package manifest is generated or consumed.",
+        "projectTrustRequired": true,
+        "executesCode": true,
+        "commandPolicy": "default-deny",
+        "sandboxCapability": "not_provided",
+        "credentialPolicy": "operator-supplied-only",
+        "externalIntegration": "disabled-by-default",
+        "destructiveOperationPolicy": "approval-required",
+        "evidence": {
+          "state": "known",
+          "source": "DL-06-agentic-harness-integrations.md + DL-22-security-safety-model.md",
+          "notes": "Generated-file family carries explicit trust, sandbox, credential, command, external-integration, and destructive-operation semantics."
+        }
+      },
+      "version": {
+        "formatName": "Pi package manifest key",
+        "formatVersion": "v1",
+        "schemaVersion": "pi-generated-file-manifest/v1",
+        "adapterCapabilityVersion": "pi-adapter-capability-matrix/v1"
+      },
+      "readiness": {
+        "state": "deferred",
+        "reason": "Optional package distribution is declared for compatibility but not generated by I-14A."
+      }
+    },
+    {
+      "familyId": "context-files",
+      "description": "Project context/instruction files loaded by pi and optional cross-harness compatibility context.",
+      "pathPatterns": [
+        "AGENTS.md",
+        "CLAUDE.md"
+      ],
+      "owner": {
+        "ownerKind": "lane",
+        "ownerId": "I-15A-create-import-cli-ux-selected-harness",
+        "writePathScope": [
+          "AGENTS.md",
+          "CLAUDE.md"
+        ],
+        "allowedOperations": [
+          "generate-in-later-lane",
+          "validate"
+        ]
+      },
+      "producedByLane": "I-15A-create-import-cli-ux-selected-harness",
+      "consumedByLanes": [
+        "I-15A-create-import-cli-ux-selected-harness",
+        "I-08-context-graph-index-drift",
+        "I-21-build-skill-orchestration"
+      ],
+      "trustSecurity": {
+        "classification": "project-instruction",
+        "trustBoundary": "Project-local instructions are loaded by pi after project trust; content must remain domain-neutral and cannot embed secrets.",
+        "projectTrustRequired": true,
+        "executesCode": false,
+        "commandPolicy": "not-applicable",
+        "sandboxCapability": "not_provided",
+        "credentialPolicy": "no-credentials-required",
+        "externalIntegration": "disabled-by-default",
+        "destructiveOperationPolicy": "forbidden",
+        "evidence": {
+          "state": "known",
+          "source": "DL-06-agentic-harness-integrations.md + DL-22-security-safety-model.md",
+          "notes": "Generated-file family carries explicit trust, sandbox, credential, command, external-integration, and destructive-operation semantics."
+        }
+      },
+      "version": {
+        "formatName": "Pi context file",
+        "formatVersion": "v1",
+        "schemaVersion": "pi-generated-file-manifest/v1",
+        "adapterCapabilityVersion": "pi-adapter-capability-matrix/v1"
+      },
+      "readiness": {
+        "state": "ready",
+        "reason": "Context file family is ready as manifest data; actual starter/create writes belong to I-15A."
+      }
+    },
+    {
+      "familyId": "harness-config",
+      "description": "Generated harness config fields recording `agenticHarness: pi` and adapter capability/version metadata.",
+      "pathPatterns": [
+        "generated harness config field: agenticHarness=pi",
+        "generated harness config field: adapterCapabilityVersion",
+        "generated harness config field: generatedFileManifestVersion"
+      ],
+      "owner": {
+        "ownerKind": "lane",
+        "ownerId": "I-15A-create-import-cli-ux-selected-harness",
+        "writePathScope": [
+          "generated harness config field: agenticHarness=pi",
+          "generated harness config field: adapterCapabilityVersion",
+          "generated harness config field: generatedFileManifestVersion"
+        ],
+        "allowedOperations": [
+          "generate-in-later-lane",
+          "validate"
+        ]
+      },
+      "producedByLane": "I-15A-create-import-cli-ux-selected-harness",
+      "consumedByLanes": [
+        "I-15A-create-import-cli-ux-selected-harness",
+        "I-15B-starter-template-harness-consumption",
+        "I-21-build-skill-orchestration"
+      ],
+      "trustSecurity": {
+        "classification": "configuration",
+        "trustBoundary": "Configuration selects the typed pi adapter manifest only; it must not silently enable unsupported non-pi harnesses or runtime claims.",
+        "projectTrustRequired": false,
+        "executesCode": false,
+        "commandPolicy": "not-applicable",
+        "sandboxCapability": "not_provided",
+        "credentialPolicy": "no-credentials-required",
+        "externalIntegration": "disabled-by-default",
+        "destructiveOperationPolicy": "forbidden",
+        "evidence": {
+          "state": "known",
+          "source": "DL-06-agentic-harness-integrations.md + DL-22-security-safety-model.md",
+          "notes": "Generated-file family carries explicit trust, sandbox, credential, command, external-integration, and destructive-operation semantics."
+        }
+      },
+      "version": {
+        "formatName": "vibe-engineer harness adapter config",
+        "formatVersion": "v1",
+        "schemaVersion": "pi-generated-file-manifest/v1",
+        "adapterCapabilityVersion": "pi-adapter-capability-matrix/v1"
+      },
+      "readiness": {
+        "state": "ready",
+        "reason": "Config metadata is ready for downstream consumption after this manifest validates; create/import behavior remains I-15A-owned."
+      }
+    }
+  ]
+}
