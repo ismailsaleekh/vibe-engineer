@@ -1,0 +1,45 @@
+### prohibited production references in I-10B source
+### fixture-only/probe references (context)
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/witness.mjs:153:    noPackagesCoreAssumption: !JSON.stringify({ aggregateEvidence: aggregate.evidence }).includes("packages/core"),
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/witness.mjs:154:    noTestingProductionDependency: !JSON.stringify({ aggregateEvidence: aggregate.evidence }).includes("@vibe-engineer/testing"),
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/witness.mjs:157:  assert(regressionEvidence.noPackagesCoreAssumption, "aggregate evidence contains forbidden packages/core assumption", regressionEvidence);
+### forbidden dirs after validation probes
+### package manifests/scripts still I-10A only
+{
+  "exports": [
+    "./p0/governed-surface",
+    "./p0/config-guards",
+    "./p0/boundaries"
+  ],
+  "scripts": {
+    "typecheck": "node fixtures/p0/surface-config-boundaries/witness.mjs --typecheck",
+    "test": "node fixtures/p0/surface-config-boundaries/witness.mjs",
+    "test:p0": "node fixtures/p0/surface-config-boundaries/witness.mjs"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
+### final scoped status
+?? .npmrc
+?? .vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/
+?? docs/decisions/
+?? eslint.config.mjs
+?? package.json
+?? packages/artifacts/
+?? packages/cli/
+?? packages/config/
+?? packages/context/
+?? packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/
+?? packages/mechanical-gates/package.json
+?? packages/mechanical-gates/src/aggregate/
+?? packages/mechanical-gates/src/p0/allowlist/
+?? packages/mechanical-gates/src/p0/domain-purity/
+?? packages/orchestration/
+?? packages/registry/
+?? packages/testing/
+?? pnpm-lock.yaml
+?? pnpm-workspace.yaml
+?? prettier.config.mjs
+?? tsconfig.base.json
+?? turbo.json
+### final scoped tracked diff names

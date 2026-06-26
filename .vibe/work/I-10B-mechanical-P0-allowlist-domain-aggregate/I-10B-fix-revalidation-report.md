@@ -1,0 +1,162 @@
+# I-10B Fix Revalidation Report
+
+## Checkpoint 0 — Report created
+- Status/verdict: in progress; no source/diff/command witness inspection performed yet.
+- Severity classification: pending.
+- Files inspected: none.
+- Files changed by this validator: this report only.
+- Commands run: none.
+- Evidence paths: none yet.
+- Dirty-tree/ownership notes: validation license acknowledged; target product files are read-only; allowed writes limited to this report and revalidation evidence under the task evidence directory.
+- Blockers/residual risks: none yet.
+- Next step: read required ground-truth prompts/reports/docs before classification.
+
+## Checkpoint 1 — Ground truth read
+- Status/verdict: in progress; ground-truth reading completed; no source/diff/witness commands run yet.
+- Severity classification: pending.
+- Files inspected:
+  - `/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/prompts/quality-bar.md`
+  - `/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/status.md`
+  - `/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/implementation-briefs/i-10b-fix-brief-generated.md`
+  - `/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/reports/i-10b-fix-brief-validation.md`
+  - `/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/prompts/i-10b-fix-execute.md`
+  - `/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/reports/i-10b-fix-wrapper-validation.md`
+  - `/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/I-10B-validation-report.md`
+  - `/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/I-10B-fix-report.md`
+  - `/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/I-10B-implementation-report.md`
+  - `/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/implementation-briefs/ta-i-10b-brief-generated.md`
+  - `/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/reports/ta-i-10b-brief-validation.md`
+  - `/Users/lizavasilyeva/work/harness-starter/docs/mechanical-verification-gates.md`
+  - `/Users/lizavasilyeva/work/harness-starter/docs/verification-layer.md`
+  - `/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/evidence/adversarial-probes.mjs`
+  - `/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/evidence/post-fix-adversarial-probes-output.json`
+- Files changed by this validator: this report only.
+- Commands run: none.
+- Evidence paths: prior/post-fix evidence inspected as read-only; no new evidence files yet.
+- Salient ground truth:
+  - Prior independent validation was `NEEDS-FIX`/critical for three false-greens: unrelated `as unknown` validate call, removable default `as-any` hard ban, and malformed domain `forbiddenTerms` permissiveness.
+  - Fix report claims root-cause changes in allowlist/domain declarations/fixtures, package witness `negativeWitnesses:34`, adversarial probes `ok:true`/`probeCount:10`/`failedCount:0`, and no manifest/root mutation.
+  - Docs require deterministic hard blockers, evidence over assertion, no unreviewed escapes, runtime validation at boundaries, domain-neutral core, and no self-validation.
+- Dirty-tree/ownership notes: only report write so far; target source remains read-only for this validator.
+- Blockers/residual risks: none yet; implementer claims still require independent actual-file/diff/command verification.
+- Next step: inspect actual I-10B product files, fixture workspaces, declarations, and scoped dirty-tree/diff sentinels read-only.
+
+## Checkpoint 2 — Actual source/fixture/diff inspection
+- Status/verdict: in progress; actual I-10B source, declarations, aggregate, witness, selected fixture workspaces, and scoped status/diff sentinels inspected.
+- Severity classification: pending; possible declaration/runtime mismatch noted for follow-up (`DomainPurityPolicy.forbiddenTerms` is required in `.d.ts` while runtime accepts omission and uses locked defaults).
+- Files inspected:
+  - `packages/mechanical-gates/src/p0/allowlist/validate-escape-allowlist.js`
+  - `packages/mechanical-gates/src/p0/allowlist/index.js`
+  - `packages/mechanical-gates/src/p0/allowlist/index.d.ts`
+  - `packages/mechanical-gates/src/p0/domain-purity/validate-domain-purity.js`
+  - `packages/mechanical-gates/src/p0/domain-purity/index.js`
+  - `packages/mechanical-gates/src/p0/domain-purity/index.d.ts`
+  - `packages/mechanical-gates/src/aggregate/index.js`
+  - `packages/mechanical-gates/src/aggregate/index.d.ts`
+  - `packages/mechanical-gates/src/aggregate/run-p0-aggregate.js`
+  - `packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/witness.mjs`
+  - `packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/type-consumer.ts`
+  - Selected fixture sources/policies for `as-unknown-unrelated-validate`, `as-unknown-schema-narrowed`, `hard-ban-weakening-as-any`, `malformed-hard-banned-policy`, `unallowlisted-non-null`, `broad-model-types`, `ts-comment-escapes`, `domain-malformed-forbidden-number`, `domain-empty-forbidden-terms`, `domain-partial-malformed-forbidden-terms`, `domain-locked-terms-core-extension`, `domain-valid-policy-cannot-remove-locked-terms`, `valid-aggregate`, and `sample-leakage-core`.
+- Files changed by this validator:
+  - This report.
+  - Evidence files under `.vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/evidence/revalidation/`: `scoped-status-diff.txt`, `root-package-sentinel.txt`, `source-fixture-inventory.txt`, `selected-fixture-files.txt`, `source-line-evidence.txt`, `forbidden-reference-sweep.txt`.
+- Commands run:
+  - `git status --short -- packages/mechanical-gates/src/p0/allowlist packages/mechanical-gates/src/p0/domain-purity packages/mechanical-gates/src/aggregate packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate .vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate` — exit 0; output shows only these I-10B/work dirs untracked.
+  - `git diff -- packages/mechanical-gates/src/p0/allowlist packages/mechanical-gates/src/p0/domain-purity packages/mechanical-gates/src/aggregate packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate` — exit 0; no tracked diff output.
+  - `git status --short -- package.json pnpm-lock.yaml pnpm-workspace.yaml turbo.json packages/mechanical-gates/package.json packages/testing packages/mechanical-gates/src/p0/testing-boundary packages/mechanical-gates/fixtures/p0/testing-boundary` — exit 0; output shows untracked root/package/testing baseline (`package.json`, `pnpm-lock.yaml`, `pnpm-workspace.yaml`, `turbo.json`, `packages/mechanical-gates/package.json`, `packages/testing/`).
+  - `git diff --name-only -- package.json pnpm-lock.yaml pnpm-workspace.yaml turbo.json packages/mechanical-gates/package.json packages/testing packages/mechanical-gates/src/p0/testing-boundary packages/mechanical-gates/fixtures/p0/testing-boundary` — exit 0; no tracked diff names.
+  - `shasum -a 256 package.json pnpm-lock.yaml pnpm-workspace.yaml turbo.json packages/mechanical-gates/package.json` — exit 0; package manifest hash `24306f2307c7ee93b843632618ba1616586dba224fc2f88752fa87d927116116`, matching prior independent validation evidence.
+  - `node -e` mechanical-gates manifest summary — exit 0; exports/scripts remain I-10A-only; no dependencies/devDependencies.
+  - `find ... allowlist-domain-aggregate ...` and `find ... src/p0/allowlist src/p0/domain-purity src/aggregate ...` inventories — exit 0.
+  - `rg -n ...` source/declaration/aggregate line evidence — exit 0 for expected source patterns.
+  - Forbidden reference `rg` over I-10B source — exit 1 with no matches; no production references to `@vibe-engineer/testing`, `packages/testing`, `packages/core`, testing-boundary, P1, or P2.
+- Static evidence:
+  - Allowlist `as unknown` no longer uses unrelated next-statement name-only proof: source requires direct call-argument consumption or same variable consumed by the next runtime-narrower call (`sameExpressionConsumedByRuntimeNarrower`, `runtimeNarrowerConsumesIdentifier`, `isImmediatelyNarrowedAsUnknown`).
+  - Allowlist hard bans start from `DEFAULT_HARD_BANNED = ["as-any"]`; valid policy entries are unioned, not replacements; malformed `hardBannedEscapes` emits `allowlist.policy-schema`; hard-banned rows and source emit `allowlist.hard-banned`.
+  - Domain-purity starts from locked `DEFAULT_FORBIDDEN = ["ecommerce", "inventory", "Billz", "Telegram"]`; malformed/empty/partial `forbiddenTerms` emits `domain-purity.policy-schema` while locked defaults remain in `config.forbiddenTerms` for scanning; core/extension surfaces block, sample-demo/fixture surfaces are allowed.
+  - Aggregate implements all five P0 families, preserves `subresults`, detects omitted families, and converts validator exceptions to `aggregate.validator-exception` typed findings.
+  - Type consumer imports/uses policy interfaces and exact proofMode literals; follow-up required on optionality of domain `forbiddenTerms`.
+- Dirty-tree/ownership notes:
+  - I-10B source/fixture/work dirs are untracked/owned-scope additions; `git diff` cannot show untracked contents, so actual file reads/inventory were used.
+  - Root/package/lock/workspace/turbo and `packages/testing/` are untracked baseline per current sentinels and prior independent reports; current mechanical-gates package manifest hash matches prior independent evidence and has no tracked diff.
+  - No clean-tree request, no stash/reset/clean/checkout/restore, no product edits by this validator.
+- Blockers/residual risks: no blocker yet; possible `.d.ts` mismatch needs an independent targeted type-contract probe before final severity.
+- Next step: run required real-boundary witnesses and targeted revalidation probes through actual entrypoints/consumers.
+
+## Checkpoint 3 — Required witness execution
+- Status/verdict: in progress; required direct I-10B/I-10A/adversarial/package-filter witnesses executed.
+- Severity classification: pending; direct runtime witnesses are green, but declaration optionality concern remains for targeted contract probe.
+- Files inspected: witness outputs in evidence files below.
+- Files changed by this validator:
+  - This report.
+  - `.vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/evidence/revalidation/direct-witnesses.txt`
+  - `.vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/evidence/revalidation/adversarial-probes.txt`
+  - `.vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/evidence/revalidation/package-filter-witnesses.txt`
+  - `.vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/evidence/adversarial-workspaces/**` rewritten by the required adversarial probe script.
+- Commands run:
+  - `cd /Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates && node fixtures/p0/allowlist-domain-aggregate/witness.mjs` — exit 0; output `ok:true`, aggregate summary includes all five P0 families (`p0.governed-surface`, `p0.config-guards`, `p0.boundaries`, `p0.allowlist`, `p0.domain-purity`), `negativeWitnesses:34`, positive allowlist/domain evidence carries required proofMode strings.
+  - `cd /Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates && node fixtures/p0/allowlist-domain-aggregate/witness.mjs --typecheck` — exit 0; output `ok:true`, `checkedFiles:7`, declaration consumer/type API shape passed.
+  - `cd /Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates && node fixtures/p0/surface-config-boundaries/witness.mjs` — exit 0; output `ok:true`, I-10A `negativeWitnesses:54`.
+  - `cd /Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates && node fixtures/p0/surface-config-boundaries/witness.mjs --typecheck` — exit 0; output `ok:true`, `checkedFiles:8`.
+  - `cd /Users/lizavasilyeva/work/vibe-engineer && node .vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/evidence/adversarial-probes.mjs` — exit 0; output `ok:true`, `probeCount:10`, `failedCount:0`; original critical false-greens now fail correctly with typed findings.
+  - `cd /Users/lizavasilyeva/work/vibe-engineer && pnpm --filter @vibe-engineer/mechanical-gates typecheck` — exit 0; package script runs I-10A `surface-config-boundaries --typecheck`, not I-10B coverage.
+  - `cd /Users/lizavasilyeva/work/vibe-engineer && pnpm --filter @vibe-engineer/mechanical-gates test:p0` — exit 0; package script runs I-10A witness, not I-10B coverage.
+- Evidence paths:
+  - Direct witnesses: `.vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/evidence/revalidation/direct-witnesses.txt`
+  - Adversarial probes: `.vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/evidence/revalidation/adversarial-probes.txt`
+  - Package-filter commands: `.vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/evidence/revalidation/package-filter-witnesses.txt`
+- Dirty-tree/ownership notes: witness commands used existing package state only; no install/add/update; adversarial script writes only under licensed `.vibe/work/.../evidence/adversarial-workspaces`.
+- Blockers/residual risks: no runtime witness blocker; remaining possible major-local declaration/runtime mismatch for omitted domain `forbiddenTerms` must be resolved/classified.
+- Next step: run a revalidation-only declaration/runtime contract probe for domain default forbiddenTerms optionality and final blast-radius/status sweep.
+
+## Checkpoint 4 — Contract probe and final sweep
+- Status/verdict: NEEDS-FIX.
+- Severity classification: major-local.
+- Files inspected:
+  - Runtime probe output in `.vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/evidence/revalidation/domain-policy-contract-probe.txt`.
+  - Final dirty-tree/blast-radius sweep in `.vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/evidence/revalidation/final-sweep.txt`.
+- Files changed by this validator:
+  - This report.
+  - `.vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/evidence/revalidation/domain-policy-omitted-forbidden-terms-consumer.ts`
+  - `.vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/evidence/revalidation/domain-policy-default-runtime-probe.mjs`
+  - `.vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/evidence/revalidation/domain-policy-default-runtime-workspace/**`
+  - `.vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/evidence/revalidation/domain-policy-contract-probe.txt`
+  - `.vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/evidence/revalidation/final-sweep.txt`
+- Commands run:
+  - `node .vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/evidence/revalidation/domain-policy-default-runtime-probe.mjs` — exit 0; actual runtime accepted a policy omitting `forbiddenTerms`, enforced locked defaults, and failed core `ecommerce` with `domain-purity.core-domain-leak` only (no `domain-purity.policy-schema`). Runtime evidence reported `forbiddenTerms:["ecommerce","inventory","Billz","Telegram"]`.
+  - `node_modules/.bin/tsc --noEmit --target ES2022 --module NodeNext --moduleResolution NodeNext --strict --skipLibCheck false .vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/evidence/revalidation/domain-policy-omitted-forbidden-terms-consumer.ts` — exit 2; TypeScript error TS2741: `Property 'forbiddenTerms' is missing ... but required in type 'DomainPurityPolicy'.`
+  - Final scoped `git status --short` for I-10B/source/fixture/work paths — exit 0; same owned-scope untracked dirs.
+  - Final scoped `git diff --name-only` for I-10B/source/fixture/work paths — exit 0; no tracked diff names.
+  - Final root/package/testing sentinel `git status --short` — exit 0; same untracked dirty baseline for root/package/testing paths.
+  - Final root/package/testing sentinel `git diff --name-only` — exit 0; no tracked diff names.
+  - Final evidence inventory `find .vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/evidence/revalidation -maxdepth 2 -type f | sort` — exit 0.
+- Evidence paths:
+  - `.vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/evidence/revalidation/domain-policy-contract-probe.txt`
+  - `.vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/evidence/revalidation/final-sweep.txt`
+- Finding F-MAJOR-REVAL-01 — Domain-purity declaration/runtime policy mismatch:
+  - Severity: major-local.
+  - Runtime contract from `validate-domain-purity.js`: `forbiddenTerms` is optional (`if ("forbiddenTerms" in policy)`); omitted field uses locked defaults and still scans/enforces `ecommerce`, `inventory`, `Billz`, and `Telegram`.
+  - Declaration contract from `src/p0/domain-purity/index.d.ts`: `DomainPurityPolicy.forbiddenTerms: string[]` is required.
+  - Independent type consumer with an actually valid runtime/default policy omitting `forbiddenTerms` fails TypeScript with TS2741.
+  - This violates the required declaration/runtime contract closure that `.d.ts` policy interfaces match runtime policy schema. It is not a remaining runtime false-green, but it is an explicit declaration/runtime mismatch.
+  - Required fix: make the domain-purity declaration match runtime/default policy semantics, e.g. `forbiddenTerms?: string[]`, and add/extend type-consumer coverage for the omitted-default policy shape.
+- Clean closure evidence for prior criticals:
+  - Broad unrelated `as unknown` now fails through both package witness and adversarial probe with `allowlist.unallowlisted-escape`, kind `as-unknown`, carrier `typescript-ast`.
+  - Immediate runtime schema narrowing of `as unknown` passes.
+  - `hardBannedEscapes: []` plus allowlist row for `as-any` fails with source and row `allowlist.hard-banned` findings.
+  - Malformed `hardBannedEscapes` fails `allowlist.policy-schema`.
+  - Malformed/empty/partial domain `forbiddenTerms` fail `domain-purity.policy-schema`; locked terms remain enforced in core/extension surfaces; sample-demo terms pass only under typed sample surface and fail in core.
+  - Aggregate real-boundary result includes all five P0 families and preserves typed subresults/findings; validator exceptions become blocking typed aggregate findings.
+- Dirty-tree/ownership notes:
+  - Validator writes remained inside licensed report/evidence paths.
+  - Product source/fixtures/manifests/package state were read-only for this validator.
+  - No `git stash/reset/clean/checkout/restore`, no install/add/update.
+  - No tracked root/package/manifest/lockfile diff; mechanical-gates package manifest hash matches prior independent evidence and remains I-10A-only.
+  - No forbidden I-10B source references to `@vibe-engineer/testing`, `packages/testing`, `packages/core`, testing-boundary, P1, or P2.
+- Blockers/residual risks: no BLOCKED condition; root/package untracked state is accepted dirty baseline, not attributable to this validator or the I-10B fix based on scoped diff/hash/prior independent baseline evidence.
+- Next step: fix F-MAJOR-REVAL-01, then rerun independent revalidation/typecheck witnesses.
+
+## Final classification
+- Verdict: NEEDS-FIX.
+- Highest severity: major-local.
+- Summary: Runtime critical false-greens are closed and required witnesses are green, but `DomainPurityPolicy` declaration still rejects a runtime-valid default policy shape where `forbiddenTerms` is omitted.

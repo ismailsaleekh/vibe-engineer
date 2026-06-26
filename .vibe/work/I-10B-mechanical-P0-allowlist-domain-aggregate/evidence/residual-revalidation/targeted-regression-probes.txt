@@ -1,0 +1,206 @@
+## command: node .vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/evidence/residual-revalidation/targeted-regression-probes.mjs
+### stdout
+{
+  "ok": true,
+  "records": [
+    {
+      "kind": "domain",
+      "name": "domain-malformed-forbidden-number",
+      "ok": false,
+      "ruleIds": [
+        "domain-purity.policy-schema",
+        "domain-purity.core-domain-leak"
+      ],
+      "forbiddenTerms": [
+        "ecommerce",
+        "inventory",
+        "Billz",
+        "Telegram"
+      ]
+    },
+    {
+      "kind": "domain",
+      "name": "domain-empty-forbidden-terms",
+      "ok": false,
+      "ruleIds": [
+        "domain-purity.policy-schema",
+        "domain-purity.core-domain-leak"
+      ],
+      "forbiddenTerms": [
+        "ecommerce",
+        "inventory",
+        "Billz",
+        "Telegram"
+      ]
+    },
+    {
+      "kind": "domain",
+      "name": "domain-partial-malformed-forbidden-terms",
+      "ok": false,
+      "ruleIds": [
+        "domain-purity.policy-schema",
+        "domain-purity.core-domain-leak",
+        "domain-purity.core-domain-leak",
+        "domain-purity.core-domain-leak"
+      ],
+      "forbiddenTerms": [
+        "ecommerce",
+        "inventory",
+        "Billz",
+        "Telegram"
+      ]
+    },
+    {
+      "kind": "domain",
+      "name": "domain-valid-policy-cannot-remove-locked-terms",
+      "ok": false,
+      "ruleIds": [
+        "domain-purity.core-domain-leak"
+      ],
+      "forbiddenTerms": [
+        "ecommerce",
+        "inventory",
+        "Billz",
+        "Telegram",
+        "customOnly"
+      ]
+    },
+    {
+      "kind": "domain",
+      "name": "sample-leakage-core",
+      "ok": false,
+      "ruleIds": [
+        "domain-purity.core-domain-leak",
+        "domain-purity.core-domain-leak",
+        "domain-purity.core-domain-leak",
+        "domain-purity.core-domain-leak"
+      ],
+      "forbiddenTerms": [
+        "ecommerce",
+        "inventory",
+        "Billz",
+        "Telegram"
+      ]
+    },
+    {
+      "kind": "domain",
+      "name": "valid-aggregate",
+      "ok": true,
+      "ruleIds": [],
+      "forbiddenTerms": [
+        "ecommerce",
+        "inventory",
+        "Billz",
+        "Telegram"
+      ]
+    },
+    {
+      "kind": "allowlist",
+      "name": "as-unknown-unrelated-validate",
+      "ok": false,
+      "ruleIds": [
+        "allowlist.unallowlisted-escape"
+      ],
+      "hardBannedEscapes": [
+        "as-any"
+      ]
+    },
+    {
+      "kind": "allowlist",
+      "name": "hard-ban-weakening-as-any",
+      "ok": false,
+      "ruleIds": [
+        "allowlist.hard-banned",
+        "allowlist.hard-banned"
+      ],
+      "hardBannedEscapes": [
+        "as-any"
+      ]
+    },
+    {
+      "kind": "allowlist",
+      "name": "malformed-hard-banned-policy",
+      "ok": false,
+      "ruleIds": [
+        "allowlist.policy-schema"
+      ]
+    },
+    {
+      "kind": "allowlist",
+      "name": "broad-model-types",
+      "ok": false,
+      "ruleIds": [
+        "allowlist.unallowlisted-escape",
+        "allowlist.unallowlisted-escape",
+        "allowlist.unallowlisted-escape"
+      ],
+      "hardBannedEscapes": [
+        "as-any"
+      ]
+    },
+    {
+      "kind": "allowlist",
+      "name": "ts-comment-escapes",
+      "ok": false,
+      "ruleIds": [
+        "allowlist.unallowlisted-escape",
+        "allowlist.unallowlisted-escape"
+      ],
+      "hardBannedEscapes": [
+        "as-any"
+      ]
+    },
+    {
+      "kind": "aggregate",
+      "name": "valid-aggregate",
+      "ok": true,
+      "families": [
+        "p0.governed-surface",
+        "p0.config-guards",
+        "p0.boundaries",
+        "p0.allowlist",
+        "p0.domain-purity"
+      ],
+      "summary": {
+        "p0.governed-surface": {
+          "ok": true,
+          "findingCount": 0
+        },
+        "p0.config-guards": {
+          "ok": true,
+          "findingCount": 0
+        },
+        "p0.boundaries": {
+          "ok": true,
+          "findingCount": 0
+        },
+        "p0.allowlist": {
+          "ok": true,
+          "findingCount": 0
+        },
+        "p0.domain-purity": {
+          "ok": true,
+          "findingCount": 0
+        }
+      }
+    },
+    {
+      "kind": "aggregate",
+      "name": "omitted-domain-purity",
+      "ok": false,
+      "ruleIds": [
+        "aggregate.omitted-family"
+      ]
+    },
+    {
+      "kind": "aggregate",
+      "name": "validator-exception",
+      "ok": false,
+      "ruleIds": [
+        "aggregate.validator-exception"
+      ]
+    }
+  ]
+}
+### stderr
+### exit: 0

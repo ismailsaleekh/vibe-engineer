@@ -1,0 +1,255 @@
+{
+  "ok": false,
+  "probeCount": 10,
+  "failedCount": 3,
+  "probes": [
+    {
+      "name": "allowlist rejects broad as unknown not narrowed by same named runtime schema",
+      "expectedOk": false,
+      "actualOk": true,
+      "expectedRuleIds": [
+        "allowlist.unallowlisted-escape"
+      ],
+      "actualRuleIds": [],
+      "matched": false,
+      "findings": []
+    },
+    {
+      "name": "allowlist permits immediate named runtime schema narrowing of as unknown",
+      "expectedOk": true,
+      "actualOk": true,
+      "expectedRuleIds": [],
+      "actualRuleIds": [],
+      "matched": true,
+      "findings": []
+    },
+    {
+      "name": "allowlist rejects unallowlisted non-null assertion",
+      "expectedOk": false,
+      "actualOk": false,
+      "expectedRuleIds": [
+        "allowlist.unallowlisted-escape"
+      ],
+      "actualRuleIds": [
+        "allowlist.unallowlisted-escape"
+      ],
+      "matched": true,
+      "findings": [
+        {
+          "family": "p0.allowlist",
+          "ruleId": "allowlist.unallowlisted-escape",
+          "severity": "error",
+          "blocking": true,
+          "path": "src/index.ts",
+          "message": "Detected escape is not covered by a current reviewed allowlist entry.",
+          "evidence": {
+            "kind": "non-null-assertion",
+            "carrier": "typescript-ast",
+            "line": 2,
+            "column": 23,
+            "excerpt": "value!"
+          }
+        }
+      ]
+    },
+    {
+      "name": "allowlist rejects broad Function/Object/empty-object model types",
+      "expectedOk": false,
+      "actualOk": false,
+      "expectedRuleIds": [
+        "allowlist.unallowlisted-escape"
+      ],
+      "actualRuleIds": [
+        "allowlist.unallowlisted-escape",
+        "allowlist.unallowlisted-escape",
+        "allowlist.unallowlisted-escape"
+      ],
+      "matched": true,
+      "findings": [
+        {
+          "family": "p0.allowlist",
+          "ruleId": "allowlist.unallowlisted-escape",
+          "severity": "error",
+          "blocking": true,
+          "path": "src/index.ts",
+          "message": "Detected escape is not covered by a current reviewed allowlist entry.",
+          "evidence": {
+            "kind": "broad-type",
+            "carrier": "typescript-ast",
+            "syntaxKind": "TypeReference",
+            "line": 1,
+            "column": 14,
+            "excerpt": "Function"
+          }
+        },
+        {
+          "family": "p0.allowlist",
+          "ruleId": "allowlist.unallowlisted-escape",
+          "severity": "error",
+          "blocking": true,
+          "path": "src/index.ts",
+          "message": "Detected escape is not covered by a current reviewed allowlist entry.",
+          "evidence": {
+            "kind": "broad-type",
+            "carrier": "typescript-ast",
+            "syntaxKind": "TypeReference",
+            "line": 2,
+            "column": 12,
+            "excerpt": "Object"
+          }
+        },
+        {
+          "family": "p0.allowlist",
+          "ruleId": "allowlist.unallowlisted-escape",
+          "severity": "error",
+          "blocking": true,
+          "path": "src/index.ts",
+          "message": "Detected escape is not covered by a current reviewed allowlist entry.",
+          "evidence": {
+            "kind": "broad-type",
+            "carrier": "typescript-ast",
+            "syntaxKind": "TypeLiteral",
+            "line": 3,
+            "column": 10,
+            "excerpt": "{}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "allowlist rejects ts-expect-error and ts-nocheck comments",
+      "expectedOk": false,
+      "actualOk": false,
+      "expectedRuleIds": [
+        "allowlist.unallowlisted-escape"
+      ],
+      "actualRuleIds": [
+        "allowlist.unallowlisted-escape",
+        "allowlist.unallowlisted-escape"
+      ],
+      "matched": true,
+      "findings": [
+        {
+          "family": "p0.allowlist",
+          "ruleId": "allowlist.unallowlisted-escape",
+          "severity": "error",
+          "blocking": true,
+          "path": "src/index.ts",
+          "message": "Detected escape is not covered by a current reviewed allowlist entry.",
+          "evidence": {
+            "kind": "ts-nocheck",
+            "carrier": "typescript-comment-scanner",
+            "line": 1,
+            "column": 1,
+            "excerpt": "// @ts-nocheck"
+          }
+        },
+        {
+          "family": "p0.allowlist",
+          "ruleId": "allowlist.unallowlisted-escape",
+          "severity": "error",
+          "blocking": true,
+          "path": "src/index.ts",
+          "message": "Detected escape is not covered by a current reviewed allowlist entry.",
+          "evidence": {
+            "kind": "ts-expect-error",
+            "carrier": "typescript-comment-scanner",
+            "line": 2,
+            "column": 1,
+            "excerpt": "// @ts-expect-error intentional probe"
+          }
+        }
+      ]
+    },
+    {
+      "name": "allowlist rejects policy path traversal",
+      "expectedOk": false,
+      "actualOk": false,
+      "expectedRuleIds": [
+        "allowlist.policy-unreadable"
+      ],
+      "actualRuleIds": [
+        "allowlist.policy-unreadable"
+      ],
+      "matched": true,
+      "findings": [
+        {
+          "family": "p0.allowlist",
+          "ruleId": "allowlist.policy-unreadable",
+          "severity": "error",
+          "blocking": true,
+          "path": "../outside-policy.json",
+          "message": "Allowlist policy is missing, unreadable, or malformed; fail closed when escapes exist.",
+          "evidence": {
+            "error": "Path escapes validation root: ../outside-policy.json",
+            "detectedEscapeCount": 0
+          }
+        }
+      ]
+    },
+    {
+      "name": "allowlist does not allow policy to weaken default hard ban for as any",
+      "expectedOk": false,
+      "actualOk": true,
+      "expectedRuleIds": [
+        "allowlist.hard-banned"
+      ],
+      "actualRuleIds": [],
+      "matched": false,
+      "findings": []
+    },
+    {
+      "name": "domain-purity rejects core ecommerce term with valid policy",
+      "expectedOk": false,
+      "actualOk": false,
+      "expectedRuleIds": [
+        "domain-purity.core-domain-leak"
+      ],
+      "actualRuleIds": [
+        "domain-purity.core-domain-leak"
+      ],
+      "matched": true,
+      "findings": [
+        {
+          "family": "p0.domain-purity",
+          "ruleId": "domain-purity.core-domain-leak",
+          "severity": "error",
+          "blocking": true,
+          "path": "src/index.ts",
+          "message": "Forbidden project/business-domain token leaked into core or extension surface.",
+          "evidence": {
+            "term": "ecommerce",
+            "surfaceKind": "core",
+            "carrierKind": "string-literal",
+            "line": 1,
+            "column": 21,
+            "token": "ecommerce",
+            "excerpt": "ecommerce"
+          }
+        }
+      ]
+    },
+    {
+      "name": "domain-purity allows terms only in typed sample-demo surface",
+      "expectedOk": true,
+      "actualOk": true,
+      "expectedRuleIds": [],
+      "actualRuleIds": [],
+      "matched": true,
+      "findings": []
+    },
+    {
+      "name": "domain-purity rejects malformed forbiddenTerms policy instead of default-green",
+      "expectedOk": false,
+      "actualOk": true,
+      "expectedRuleIds": [
+        "domain-purity.policy-schema",
+        "domain-purity.core-domain-leak"
+      ],
+      "actualRuleIds": [],
+      "matched": false,
+      "findings": []
+    }
+  ]
+}
+EXIT:1

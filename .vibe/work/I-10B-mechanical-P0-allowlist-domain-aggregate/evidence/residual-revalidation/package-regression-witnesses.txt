@@ -1,0 +1,392 @@
+## cwd: /Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates
+## command: node fixtures/p0/allowlist-domain-aggregate/witness.mjs
+### stdout
+{"ok":true,"mode":"p0-allowlist-domain-aggregate","fixtureRoot":"fixtures/p0/allowlist-domain-aggregate","positive":{"allowlistEvidence":{"policyPath":"mechanical-escape-allowlist.json","scannedFileCount":6,"detectedEscapeCount":1,"allowlistEntryCount":1,"hardBannedEscapes":["as-any"],"parser":"typescript","proofMode":"typescript-ast-and-comment-scanner"},"domainEvidence":{"policyPath":"mechanical-domain-purity.json","scannedFileCount":6,"surfaceCount":4,"forbiddenTerms":["ecommerce","inventory","Billz","Telegram"],"parser":"typescript","proofMode":"typescript-ast-string-comment-path-carriers"},"aggregateSummary":{"p0.governed-surface":{"ok":true,"findingCount":0},"p0.config-guards":{"ok":true,"findingCount":0},"p0.boundaries":{"ok":true,"findingCount":0},"p0.allowlist":{"ok":true,"findingCount":0},"p0.domain-purity":{"ok":true,"findingCount":0}}},"negativeWitnesses":34,"regressionEvidence":{"noPackagesCoreAssumption":true,"noTestingProductionDependency":true,"noP1P2TestingBoundaryCreated":true}}
+### stderr
+### exit: 0
+
+## cwd: /Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates
+## command: node fixtures/p0/allowlist-domain-aggregate/witness.mjs --typecheck
+### stdout
+{"ok":true,"mode":"typecheck","checkedFiles":7,"declarationConsumer":"typescript","apiShape":{"validateEscapeAllowlist":"function","validateDomainPurity":"function","runP0Aggregate":"function","assertTypedFindings":"function"}}
+### stderr
+### exit: 0
+
+## cwd: /Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates
+## command: node fixtures/p0/surface-config-boundaries/witness.mjs
+### stdout
+{"ok":true,"mode":"p0-surface-config-boundaries","fixtureRoot":"fixtures/p0/surface-config-boundaries","positive":{"governedEvidence":{"configPath":"mechanical-surface.json","governedSurfaceCount":10,"governableFileCount":11,"requiredPathCount":7,"excludedPathCount":2},"configEvidence":{"tsconfigPath":"tsconfig.json","packageJsonPath":"package.json","mechanicalSurfacePath":"mechanical-surface.json","requiredTrueFlags":["strict","noImplicitAny","strictNullChecks","strictFunctionTypes","strictBindCallApply","strictPropertyInitialization","noImplicitThis","alwaysStrict","exactOptionalPropertyTypes","noUncheckedIndexedAccess","noImplicitOverride","noImplicitReturns","noPropertyAccessFromIndexSignature","useUnknownInCatchVariables","noFallthroughCasesInSwitch","noUnusedLocals","noUnusedParameters","isolatedModules","verbatimModuleSyntax","forceConsistentCasingInFileNames","noEmitOnError"],"requiredFalseFlags":["allowUnreachableCode","allowUnusedLabels"],"requiredPrettierDefaults":{"printWidth":100,"semi":true,"singleQuote":false,"trailingComma":"all","arrowParens":"always","bracketSpacing":true,"endOfLine":"lf"},"requiredEslintRules":["@typescript-eslint/no-explicit-any","@typescript-eslint/no-non-null-assertion","@typescript-eslint/no-unnecessary-type-assertion","@typescript-eslint/consistent-type-imports","@typescript-eslint/no-confusing-void-expression","@typescript-eslint/no-unsafe-assignment","@typescript-eslint/no-unsafe-argument","@typescript-eslint/no-unsafe-call","@typescript-eslint/no-unsafe-member-access","@typescript-eslint/no-unsafe-return","@typescript-eslint/restrict-template-expressions","@typescript-eslint/switch-exhaustiveness-check","no-empty","no-fallthrough","no-implicit-coercion"],"eslintConfig":"eslint.config.mjs","prettierConfig":"prettier.config.mjs"},"boundaryEvidence":{"configPath":"mechanical-boundaries.json","parser":"typescript","proofMode":"typescript-ast","packageCount":3,"sourceFileCount":4,"importCount":3,"graph":{"@mini/shared":[],"@mini/domain":["@mini/shared"],"@mini/app":["@mini/domain","@mini/shared"]}}},"negativeWitnesses":54,"regressionEvidence":{"noPackagesCoreAssumption":true,"productName":"vibe-engineer","sixSkillsInvariantNotContradicted":true,"artifactFlowInvariantNotContradicted":true,"domainNeutralHarnessCoreNotContradicted":true,"fixedStarterStackNotContradicted":true}}
+### stderr
+### exit: 0
+
+## cwd: /Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates
+## command: node fixtures/p0/surface-config-boundaries/witness.mjs --typecheck
+### stdout
+{"ok":true,"mode":"typecheck","checkedFiles":8,"publicApiConsumer":"typescript","apiShape":{"validateGovernedSurface":"function","validateStrictConfig":"function","validatePackageBoundaries":"function","assertTypedFindings":"function"}}
+### stderr
+### exit: 0
+
+## cwd: /Users/lizavasilyeva/work/vibe-engineer
+## command: node .vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/evidence/adversarial-probes.mjs
+### stdout
+{
+  "ok": true,
+  "probeCount": 10,
+  "failedCount": 0,
+  "probes": [
+    {
+      "name": "allowlist rejects broad as unknown not narrowed by same named runtime schema",
+      "expectedOk": false,
+      "actualOk": false,
+      "expectedRuleIds": [
+        "allowlist.unallowlisted-escape"
+      ],
+      "actualRuleIds": [
+        "allowlist.unallowlisted-escape"
+      ],
+      "matched": true,
+      "findings": [
+        {
+          "family": "p0.allowlist",
+          "ruleId": "allowlist.unallowlisted-escape",
+          "severity": "error",
+          "blocking": true,
+          "path": "src/index.ts",
+          "message": "Detected escape is not covered by a current reviewed allowlist entry.",
+          "evidence": {
+            "kind": "as-unknown",
+            "carrier": "typescript-ast",
+            "typeKind": "UnknownKeyword",
+            "immediateRuntimeNarrowing": false,
+            "line": 2,
+            "column": 17,
+            "excerpt": "input as unknown"
+          }
+        }
+      ]
+    },
+    {
+      "name": "allowlist permits immediate named runtime schema narrowing of as unknown",
+      "expectedOk": true,
+      "actualOk": true,
+      "expectedRuleIds": [],
+      "actualRuleIds": [],
+      "matched": true,
+      "findings": []
+    },
+    {
+      "name": "allowlist rejects unallowlisted non-null assertion",
+      "expectedOk": false,
+      "actualOk": false,
+      "expectedRuleIds": [
+        "allowlist.unallowlisted-escape"
+      ],
+      "actualRuleIds": [
+        "allowlist.unallowlisted-escape"
+      ],
+      "matched": true,
+      "findings": [
+        {
+          "family": "p0.allowlist",
+          "ruleId": "allowlist.unallowlisted-escape",
+          "severity": "error",
+          "blocking": true,
+          "path": "src/index.ts",
+          "message": "Detected escape is not covered by a current reviewed allowlist entry.",
+          "evidence": {
+            "kind": "non-null-assertion",
+            "carrier": "typescript-ast",
+            "line": 2,
+            "column": 23,
+            "excerpt": "value!"
+          }
+        }
+      ]
+    },
+    {
+      "name": "allowlist rejects broad Function/Object/empty-object model types",
+      "expectedOk": false,
+      "actualOk": false,
+      "expectedRuleIds": [
+        "allowlist.unallowlisted-escape"
+      ],
+      "actualRuleIds": [
+        "allowlist.unallowlisted-escape",
+        "allowlist.unallowlisted-escape",
+        "allowlist.unallowlisted-escape"
+      ],
+      "matched": true,
+      "findings": [
+        {
+          "family": "p0.allowlist",
+          "ruleId": "allowlist.unallowlisted-escape",
+          "severity": "error",
+          "blocking": true,
+          "path": "src/index.ts",
+          "message": "Detected escape is not covered by a current reviewed allowlist entry.",
+          "evidence": {
+            "kind": "broad-type",
+            "carrier": "typescript-ast",
+            "syntaxKind": "TypeReference",
+            "line": 1,
+            "column": 14,
+            "excerpt": "Function"
+          }
+        },
+        {
+          "family": "p0.allowlist",
+          "ruleId": "allowlist.unallowlisted-escape",
+          "severity": "error",
+          "blocking": true,
+          "path": "src/index.ts",
+          "message": "Detected escape is not covered by a current reviewed allowlist entry.",
+          "evidence": {
+            "kind": "broad-type",
+            "carrier": "typescript-ast",
+            "syntaxKind": "TypeReference",
+            "line": 2,
+            "column": 12,
+            "excerpt": "Object"
+          }
+        },
+        {
+          "family": "p0.allowlist",
+          "ruleId": "allowlist.unallowlisted-escape",
+          "severity": "error",
+          "blocking": true,
+          "path": "src/index.ts",
+          "message": "Detected escape is not covered by a current reviewed allowlist entry.",
+          "evidence": {
+            "kind": "broad-type",
+            "carrier": "typescript-ast",
+            "syntaxKind": "TypeLiteral",
+            "line": 3,
+            "column": 10,
+            "excerpt": "{}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "allowlist rejects ts-expect-error and ts-nocheck comments",
+      "expectedOk": false,
+      "actualOk": false,
+      "expectedRuleIds": [
+        "allowlist.unallowlisted-escape"
+      ],
+      "actualRuleIds": [
+        "allowlist.unallowlisted-escape",
+        "allowlist.unallowlisted-escape"
+      ],
+      "matched": true,
+      "findings": [
+        {
+          "family": "p0.allowlist",
+          "ruleId": "allowlist.unallowlisted-escape",
+          "severity": "error",
+          "blocking": true,
+          "path": "src/index.ts",
+          "message": "Detected escape is not covered by a current reviewed allowlist entry.",
+          "evidence": {
+            "kind": "ts-nocheck",
+            "carrier": "typescript-comment-scanner",
+            "line": 1,
+            "column": 1,
+            "excerpt": "// @ts-nocheck"
+          }
+        },
+        {
+          "family": "p0.allowlist",
+          "ruleId": "allowlist.unallowlisted-escape",
+          "severity": "error",
+          "blocking": true,
+          "path": "src/index.ts",
+          "message": "Detected escape is not covered by a current reviewed allowlist entry.",
+          "evidence": {
+            "kind": "ts-expect-error",
+            "carrier": "typescript-comment-scanner",
+            "line": 2,
+            "column": 1,
+            "excerpt": "// @ts-expect-error intentional probe"
+          }
+        }
+      ]
+    },
+    {
+      "name": "allowlist rejects policy path traversal",
+      "expectedOk": false,
+      "actualOk": false,
+      "expectedRuleIds": [
+        "allowlist.policy-unreadable"
+      ],
+      "actualRuleIds": [
+        "allowlist.policy-unreadable"
+      ],
+      "matched": true,
+      "findings": [
+        {
+          "family": "p0.allowlist",
+          "ruleId": "allowlist.policy-unreadable",
+          "severity": "error",
+          "blocking": true,
+          "path": "../outside-policy.json",
+          "message": "Allowlist policy is missing, unreadable, or malformed; fail closed when escapes exist.",
+          "evidence": {
+            "error": "Path escapes validation root: ../outside-policy.json",
+            "detectedEscapeCount": 0
+          }
+        }
+      ]
+    },
+    {
+      "name": "allowlist does not allow policy to weaken default hard ban for as any",
+      "expectedOk": false,
+      "actualOk": false,
+      "expectedRuleIds": [
+        "allowlist.hard-banned"
+      ],
+      "actualRuleIds": [
+        "allowlist.hard-banned",
+        "allowlist.hard-banned"
+      ],
+      "matched": true,
+      "findings": [
+        {
+          "family": "p0.allowlist",
+          "ruleId": "allowlist.hard-banned",
+          "severity": "error",
+          "blocking": true,
+          "path": "mechanical-escape-allowlist.json#/entries/0",
+          "message": "Allowlist entry attempts to approve a hard-banned escape kind.",
+          "evidence": {
+            "kind": "as-any",
+            "targetKey": "src/index.ts:as-any:source as any"
+          }
+        },
+        {
+          "family": "p0.allowlist",
+          "ruleId": "allowlist.hard-banned",
+          "severity": "error",
+          "blocking": true,
+          "path": "src/index.ts",
+          "message": "Hard-banned escape detected in source.",
+          "evidence": {
+            "kind": "as-any",
+            "carrier": "typescript-ast",
+            "typeKind": "AnyKeyword",
+            "line": 2,
+            "column": 24,
+            "excerpt": "source as any"
+          }
+        }
+      ]
+    },
+    {
+      "name": "domain-purity rejects core ecommerce term with valid policy",
+      "expectedOk": false,
+      "actualOk": false,
+      "expectedRuleIds": [
+        "domain-purity.core-domain-leak"
+      ],
+      "actualRuleIds": [
+        "domain-purity.core-domain-leak"
+      ],
+      "matched": true,
+      "findings": [
+        {
+          "family": "p0.domain-purity",
+          "ruleId": "domain-purity.core-domain-leak",
+          "severity": "error",
+          "blocking": true,
+          "path": "src/index.ts",
+          "message": "Forbidden project/business-domain token leaked into core or extension surface.",
+          "evidence": {
+            "term": "ecommerce",
+            "surfaceKind": "core",
+            "carrierKind": "string-literal",
+            "line": 1,
+            "column": 21,
+            "token": "ecommerce",
+            "excerpt": "ecommerce"
+          }
+        }
+      ]
+    },
+    {
+      "name": "domain-purity allows terms only in typed sample-demo surface",
+      "expectedOk": true,
+      "actualOk": true,
+      "expectedRuleIds": [],
+      "actualRuleIds": [],
+      "matched": true,
+      "findings": []
+    },
+    {
+      "name": "domain-purity rejects malformed forbiddenTerms policy instead of default-green",
+      "expectedOk": false,
+      "actualOk": false,
+      "expectedRuleIds": [
+        "domain-purity.policy-schema",
+        "domain-purity.core-domain-leak"
+      ],
+      "actualRuleIds": [
+        "domain-purity.core-domain-leak",
+        "domain-purity.policy-schema"
+      ],
+      "matched": true,
+      "findings": [
+        {
+          "family": "p0.domain-purity",
+          "ruleId": "domain-purity.policy-schema",
+          "severity": "error",
+          "blocking": true,
+          "path": "mechanical-domain-purity.json#/forbiddenTerms",
+          "message": "forbiddenTerms must be a non-empty array of non-empty strings; locked defaults remain enforced when policy data is malformed.",
+          "evidence": {}
+        },
+        {
+          "family": "p0.domain-purity",
+          "ruleId": "domain-purity.core-domain-leak",
+          "severity": "error",
+          "blocking": true,
+          "path": "src/index.ts",
+          "message": "Forbidden project/business-domain token leaked into core or extension surface.",
+          "evidence": {
+            "term": "ecommerce",
+            "surfaceKind": "core",
+            "carrierKind": "string-literal",
+            "line": 1,
+            "column": 21,
+            "token": "ecommerce",
+            "excerpt": "ecommerce"
+          }
+        }
+      ]
+    }
+  ]
+}
+### stderr
+### exit: 0
+
+## cwd: /Users/lizavasilyeva/work/vibe-engineer
+## command: pnpm --filter @vibe-engineer/mechanical-gates typecheck
+### stdout
+
+> @vibe-engineer/mechanical-gates@0.0.0 typecheck /Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates
+> node fixtures/p0/surface-config-boundaries/witness.mjs --typecheck
+
+{"ok":true,"mode":"typecheck","checkedFiles":8,"publicApiConsumer":"typescript","apiShape":{"validateGovernedSurface":"function","validateStrictConfig":"function","validatePackageBoundaries":"function","assertTypedFindings":"function"}}
+### stderr
+### exit: 0
+
+## cwd: /Users/lizavasilyeva/work/vibe-engineer
+## command: pnpm --filter @vibe-engineer/mechanical-gates test:p0
+### stdout
+
+> @vibe-engineer/mechanical-gates@0.0.0 test:p0 /Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates
+> node fixtures/p0/surface-config-boundaries/witness.mjs
+
+{"ok":true,"mode":"p0-surface-config-boundaries","fixtureRoot":"fixtures/p0/surface-config-boundaries","positive":{"governedEvidence":{"configPath":"mechanical-surface.json","governedSurfaceCount":10,"governableFileCount":11,"requiredPathCount":7,"excludedPathCount":2},"configEvidence":{"tsconfigPath":"tsconfig.json","packageJsonPath":"package.json","mechanicalSurfacePath":"mechanical-surface.json","requiredTrueFlags":["strict","noImplicitAny","strictNullChecks","strictFunctionTypes","strictBindCallApply","strictPropertyInitialization","noImplicitThis","alwaysStrict","exactOptionalPropertyTypes","noUncheckedIndexedAccess","noImplicitOverride","noImplicitReturns","noPropertyAccessFromIndexSignature","useUnknownInCatchVariables","noFallthroughCasesInSwitch","noUnusedLocals","noUnusedParameters","isolatedModules","verbatimModuleSyntax","forceConsistentCasingInFileNames","noEmitOnError"],"requiredFalseFlags":["allowUnreachableCode","allowUnusedLabels"],"requiredPrettierDefaults":{"printWidth":100,"semi":true,"singleQuote":false,"trailingComma":"all","arrowParens":"always","bracketSpacing":true,"endOfLine":"lf"},"requiredEslintRules":["@typescript-eslint/no-explicit-any","@typescript-eslint/no-non-null-assertion","@typescript-eslint/no-unnecessary-type-assertion","@typescript-eslint/consistent-type-imports","@typescript-eslint/no-confusing-void-expression","@typescript-eslint/no-unsafe-assignment","@typescript-eslint/no-unsafe-argument","@typescript-eslint/no-unsafe-call","@typescript-eslint/no-unsafe-member-access","@typescript-eslint/no-unsafe-return","@typescript-eslint/restrict-template-expressions","@typescript-eslint/switch-exhaustiveness-check","no-empty","no-fallthrough","no-implicit-coercion"],"eslintConfig":"eslint.config.mjs","prettierConfig":"prettier.config.mjs"},"boundaryEvidence":{"configPath":"mechanical-boundaries.json","parser":"typescript","proofMode":"typescript-ast","packageCount":3,"sourceFileCount":4,"importCount":3,"graph":{"@mini/shared":[],"@mini/domain":["@mini/shared"],"@mini/app":["@mini/domain","@mini/shared"]}}},"negativeWitnesses":54,"regressionEvidence":{"noPackagesCoreAssumption":true,"productName":"vibe-engineer","sixSkillsInvariantNotContradicted":true,"artifactFlowInvariantNotContradicted":true,"domainNeutralHarnessCoreNotContradicted":true,"fixedStarterStackNotContradicted":true}}
+### stderr
+### exit: 0
+

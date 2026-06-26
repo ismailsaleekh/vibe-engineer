@@ -1,0 +1,41 @@
+### line evidence for allowlist as-unknown narrowing/hard-banned/schema
+packages/mechanical-gates/src/p0/allowlist/index.d.ts:20:  reviewedOn: string;
+packages/mechanical-gates/src/p0/allowlist/index.d.ts:31:  hardBannedEscapes?: string[];
+packages/mechanical-gates/src/p0/allowlist/validate-escape-allowlist.js:101:function isNamedRuntimeSchemaCall(node) {
+packages/mechanical-gates/src/p0/allowlist/validate-escape-allowlist.js:112:function isImmediatelyNarrowedAsUnknown(node) {
+packages/mechanical-gates/src/p0/allowlist/validate-escape-allowlist.js:170:  if ("proofMode" in policy && policy.proofMode !== "typescript-ast-and-comment-scanner") {
+packages/mechanical-gates/src/p0/allowlist/validate-escape-allowlist.js:171:    findings.push(finding("allowlist.regex-only-proof-rejected", `${policyPath}#/proofMode`, "Allowlist proof must use the TypeScript AST and comment scanner, not regex or narrative proof.", { expected: "typescript-ast-and-comment-scanner", actual: policy.proofMode }));
+packages/mechanical-gates/src/p0/allowlist/validate-escape-allowlist.js:202:  const hardBanned = new Set(Array.isArray(policy.hardBannedEscapes) ? policy.hardBannedEscapes.filter((value) => typeof value === "string") : DEFAULT_HARD_BANNED);
+packages/mechanical-gates/src/p0/allowlist/validate-escape-allowlist.js:203:  return { include, exclude, generatedVendor, entries: policy.entries, hardBanned, maxFileBytes: policy.scan.maxFileBytes };
+packages/mechanical-gates/src/p0/allowlist/validate-escape-allowlist.js:217:function validateEntries(projectRoot, entries, policyPath, hardBanned, detectedByPath, findings) {
+packages/mechanical-gates/src/p0/allowlist/validate-escape-allowlist.js:246:    if (typeof entry.reviewedOn !== "string" || entry.reviewedOn.trim().length === 0) {
+packages/mechanical-gates/src/p0/allowlist/validate-escape-allowlist.js:247:      findings.push(finding("allowlist.missing-review-date", rowPath, "Allowlist entry must include reviewedOn freshness marker."));
+packages/mechanical-gates/src/p0/allowlist/validate-escape-allowlist.js:249:    if (hardBanned.has(entry.kind)) {
+packages/mechanical-gates/src/p0/allowlist/validate-escape-allowlist.js:307:  const validEntries = validateEntries(projectRoot, config.entries, policyPath, config.hardBanned, detectedByPath, findings);
+packages/mechanical-gates/src/p0/allowlist/validate-escape-allowlist.js:311:      if (config.hardBanned.has(escape.kind)) {
+packages/mechanical-gates/src/p0/allowlist/validate-escape-allowlist.js:329:      hardBannedEscapes: [...config.hardBanned].sort(),
+packages/mechanical-gates/src/p0/allowlist/validate-escape-allowlist.js:331:      proofMode: "typescript-ast-and-comment-scanner"
+### line evidence for domain policy schema/forbiddenTerms/proofMode
+packages/mechanical-gates/src/p0/domain-purity/index.d.ts:15:  forbiddenTerms: string[];
+packages/mechanical-gates/src/p0/domain-purity/validate-domain-purity.js:15:const DEFAULT_FORBIDDEN = ["ecommerce", "inventory", "Billz", "Telegram"];
+packages/mechanical-gates/src/p0/domain-purity/validate-domain-purity.js:122:function validatePolicyShape(projectRoot, policy, policyPath, findings) {
+packages/mechanical-gates/src/p0/domain-purity/validate-domain-purity.js:127:  if ("proofMode" in policy && policy.proofMode !== "typescript-ast-string-comment-path-carriers") {
+packages/mechanical-gates/src/p0/domain-purity/validate-domain-purity.js:128:    findings.push(finding("domain-purity.regex-only-proof-rejected", `${policyPath}#/proofMode`, "Domain-purity proof must use structured AST/string/comment/path carriers, not regex or narrative proof.", { expected: "typescript-ast-string-comment-path-carriers", actual: policy.proofMode }));
+packages/mechanical-gates/src/p0/domain-purity/validate-domain-purity.js:154:  const forbiddenTerms = Array.isArray(policy.forbiddenTerms) && policy.forbiddenTerms.length > 0
+packages/mechanical-gates/src/p0/domain-purity/validate-domain-purity.js:155:    ? policy.forbiddenTerms.filter((value) => typeof value === "string" && value.length > 0)
+packages/mechanical-gates/src/p0/domain-purity/validate-domain-purity.js:156:    : DEFAULT_FORBIDDEN;
+packages/mechanical-gates/src/p0/domain-purity/validate-domain-purity.js:157:  return { include, surfaces, forbiddenTerms, maxFileBytes: policy.scan.maxFileBytes };
+packages/mechanical-gates/src/p0/domain-purity/validate-domain-purity.js:172:      for (const term of DEFAULT_FORBIDDEN) {
+packages/mechanical-gates/src/p0/domain-purity/validate-domain-purity.js:193:  const config = validatePolicyShape(projectRoot, policy, policyPath, findings);
+packages/mechanical-gates/src/p0/domain-purity/validate-domain-purity.js:208:      for (const term of config.forbiddenTerms) {
+packages/mechanical-gates/src/p0/domain-purity/validate-domain-purity.js:235:      forbiddenTerms: config.forbiddenTerms,
+packages/mechanical-gates/src/p0/domain-purity/validate-domain-purity.js:237:      proofMode: "typescript-ast-string-comment-path-carriers"
+### line evidence for package witness missing rows
+112:  const allowlistFailures = [
+115:    ["hard banned as any", "hard-banned-as-any", ["allowlist.hard-banned"]],
+121:    ["malformed allowlist policy", "malformed-allowlist-policy", ["allowlist.policy-unreadable"]],
+125:  for (const [label, fixtureName, expected] of allowlistFailures) {
+129:  const domainFailures = [
+132:    ["malformed domain policy", "malformed-domain-policy", ["domain-purity.policy-unreadable"]],
+136:  for (const [label, fixtureName, expected] of domainFailures) {
+169:    negativeWitnesses: allowlistFailures.length + domainFailures.length + allFamilies.length + 2,

@@ -1,0 +1,50 @@
+## command: node_modules/.bin/tsc --noEmit --target ES2022 --module NodeNext --moduleResolution NodeNext --strict --skipLibCheck false .vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/evidence/residual-revalidation/domain-policy-positive-consumer.ts
+### stdout
+### stderr
+### exit: 0
+
+## command: node_modules/.bin/tsc --noEmit --target ES2022 --module NodeNext --moduleResolution NodeNext --strict --skipLibCheck false .vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/evidence/residual-revalidation/domain-policy-negative-consumer.ts
+### stdout
+.vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/evidence/residual-revalidation/domain-policy-negative-consumer.ts(7,20): error TS2322: Type 'number' is not assignable to type 'string'.
+### stderr
+### exit: 2
+
+## command: node .vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/evidence/residual-revalidation/domain-policy-default-runtime-probe.mjs
+### stdout
+{
+  "ok": true,
+  "resultOk": false,
+  "ruleIds": [
+    "domain-purity.core-domain-leak"
+  ],
+  "forbiddenTerms": [
+    "ecommerce",
+    "inventory",
+    "Billz",
+    "Telegram"
+  ],
+  "policySchemaFindingPresent": false,
+  "coreLeakFindingPresent": true,
+  "findings": [
+    {
+      "family": "p0.domain-purity",
+      "ruleId": "domain-purity.core-domain-leak",
+      "severity": "error",
+      "blocking": true,
+      "path": "src/index.ts",
+      "message": "Forbidden project/business-domain token leaked into core or extension surface.",
+      "evidence": {
+        "term": "ecommerce",
+        "surfaceKind": "core",
+        "carrierKind": "string-literal",
+        "line": 1,
+        "column": 23,
+        "token": "ecommerce",
+        "excerpt": "ecommerce"
+      }
+    }
+  ]
+}
+### stderr
+### exit: 0
+

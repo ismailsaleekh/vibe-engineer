@@ -1,0 +1,33 @@
+## command: shasum -a 256 package.json pnpm-lock.yaml pnpm-workspace.yaml turbo.json packages/mechanical-gates/package.json
+b3d1455aade0eb27f0775c3dbe2abefd89dada97caac9b10f041061abcb30306  package.json
+d262dafce50306b84dd88cc239255a0d785752a6997e0783a57645025e446b44  pnpm-lock.yaml
+aee47e9964f53e767a6d6a86a27c86b218a76cd59453c3401defad6907be5f21  pnpm-workspace.yaml
+918ad4e48eb39826c9a034611fd765c3c418c7ccfb890bc9c469ba33d2261d7b  turbo.json
+24306f2307c7ee93b843632618ba1616586dba224fc2f88752fa87d927116116  packages/mechanical-gates/package.json
+EXIT:0
+## command: node -e package manifest summary
+{
+  "name": "@vibe-engineer/mechanical-gates",
+  "exports": {
+    "./p0/governed-surface": {
+      "types": "./src/p0/governed-surface/index.d.ts",
+      "import": "./src/p0/governed-surface/index.js"
+    },
+    "./p0/config-guards": {
+      "types": "./src/p0/config-guards/index.d.ts",
+      "import": "./src/p0/config-guards/index.js"
+    },
+    "./p0/boundaries": {
+      "types": "./src/p0/boundaries/index.d.ts",
+      "import": "./src/p0/boundaries/index.js"
+    }
+  },
+  "scripts": {
+    "typecheck": "node fixtures/p0/surface-config-boundaries/witness.mjs --typecheck",
+    "test": "node fixtures/p0/surface-config-boundaries/witness.mjs",
+    "test:p0": "node fixtures/p0/surface-config-boundaries/witness.mjs"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
+EXIT:0

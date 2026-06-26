@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "proofMode": "typescript-ast-string-comment-path-carriers",
+  "scan": {
+    "include": [
+      "src"
+    ],
+    "maxFileBytes": 200000
+  },
+  "forbiddenTerms": [
+    "ecommerce",
+    "inventory",
+    "Billz",
+    "Telegram"
+  ],
+  "surfaces": [
+    {
+      "kind": "core",
+      "path": "src",
+      "match": "prefix"
+    }
+  ]
+}

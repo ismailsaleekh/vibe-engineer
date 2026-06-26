@@ -1,0 +1,43 @@
+## command: node .vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/evidence/revalidation/domain-policy-default-runtime-probe.mjs
+{
+  "ok": false,
+  "ruleIds": [
+    "domain-purity.core-domain-leak"
+  ],
+  "evidence": {
+    "policyPath": "mechanical-domain-purity.json",
+    "scannedFileCount": 1,
+    "surfaceCount": 1,
+    "forbiddenTerms": [
+      "ecommerce",
+      "inventory",
+      "Billz",
+      "Telegram"
+    ],
+    "parser": "typescript",
+    "proofMode": "typescript-ast-string-comment-path-carriers"
+  },
+  "findings": [
+    {
+      "family": "p0.domain-purity",
+      "ruleId": "domain-purity.core-domain-leak",
+      "severity": "error",
+      "blocking": true,
+      "path": "src/index.ts",
+      "message": "Forbidden project/business-domain token leaked into core or extension surface.",
+      "evidence": {
+        "term": "ecommerce",
+        "surfaceKind": "core",
+        "carrierKind": "string-literal",
+        "line": 1,
+        "column": 21,
+        "token": "ecommerce",
+        "excerpt": "ecommerce"
+      }
+    }
+  ]
+}
+EXIT:0
+## command: node_modules/.bin/tsc --noEmit --target ES2022 --module NodeNext --moduleResolution NodeNext --strict --skipLibCheck false .vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/evidence/revalidation/domain-policy-omitted-forbidden-terms-consumer.ts
+.vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/evidence/revalidation/domain-policy-omitted-forbidden-terms-consumer.ts(3,7): error TS2741: Property 'forbiddenTerms' is missing in type '{ version: 1; proofMode: "typescript-ast-string-comment-path-carriers"; scan: { include: string[]; }; surfaces: { kind: "core"; path: string; match: "prefix"; }[]; }' but required in type 'DomainPurityPolicy'.
+EXIT:2

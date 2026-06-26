@@ -1,0 +1,42 @@
+## command: git status --short -- packages/mechanical-gates/src/p0/domain-purity/index.d.ts packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/type-consumer.ts packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/witness.mjs .vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/evidence/residual .vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/I-10B-residual-fix-report.md
+?? .vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/I-10B-residual-fix-report.md
+?? .vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/evidence/residual/
+?? packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/type-consumer.ts
+?? packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/witness.mjs
+?? packages/mechanical-gates/src/p0/domain-purity/index.d.ts
+EXIT:0
+## command: git diff --name-only -- packages/mechanical-gates/src/p0/domain-purity/index.d.ts packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/type-consumer.ts packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/witness.mjs package.json pnpm-lock.yaml pnpm-workspace.yaml turbo.json packages/mechanical-gates/package.json packages/testing packages/mechanical-gates/src/p0/testing-boundary packages/mechanical-gates/fixtures/p0/testing-boundary
+EXIT:0
+## command: git status --short -- package.json pnpm-lock.yaml pnpm-workspace.yaml turbo.json packages/mechanical-gates/package.json packages/testing packages/mechanical-gates/src/p0/testing-boundary packages/mechanical-gates/fixtures/p0/testing-boundary
+?? package.json
+?? packages/mechanical-gates/package.json
+?? packages/testing/
+?? pnpm-lock.yaml
+?? pnpm-workspace.yaml
+?? turbo.json
+EXIT:0
+## command: shasum -a 256 package.json pnpm-lock.yaml pnpm-workspace.yaml turbo.json packages/mechanical-gates/package.json
+b3d1455aade0eb27f0775c3dbe2abefd89dada97caac9b10f041061abcb30306  package.json
+0259217fb38660de9e7298c4d6e363c7810a436479c189ce7ca088dd06576fff  pnpm-lock.yaml
+aee47e9964f53e767a6d6a86a27c86b218a76cd59453c3401defad6907be5f21  pnpm-workspace.yaml
+918ad4e48eb39826c9a034611fd765c3c418c7ccfb890bc9c469ba33d2261d7b  turbo.json
+b87923b67a5cf139ae67f6062c71d23393b307af153d1b874ccaf3e639e2f221  packages/mechanical-gates/package.json
+EXIT:0
+## command: rg forbidden production references in I-10B source/declaration/type-consumer
+EXIT:0
+## command: find residual evidence files
+.vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/evidence/residual/domain-policy-default-runtime-probe.mjs
+.vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/evidence/residual/domain-policy-default-runtime-workspace/mechanical-domain-purity.json
+.vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/evidence/residual/domain-policy-default-runtime-workspace/src/index.ts
+.vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/evidence/residual/domain-policy-malformed-forbidden-terms-consumer.ts
+.vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/evidence/residual/domain-policy-omitted-forbidden-terms-consumer.ts
+.vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/evidence/residual/final-sweep.txt
+.vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/evidence/residual/package-real-boundary-witnesses-exact.txt
+.vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/evidence/residual/required-witnesses.txt
+.vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/evidence/residual/residual-seam-witnesses.txt
+EXIT:0
+## command: grep declaration and consumer lines
+packages/mechanical-gates/src/p0/domain-purity/index.d.ts:16:  forbiddenTerms?: string[];
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/type-consumer.ts:19:  forbiddenTerms: ["ecommerce", "inventory", "Billz", "Telegram"],
+.vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/evidence/residual/domain-policy-malformed-forbidden-terms-consumer.ts:7:  forbiddenTerms: [42],
+EXIT:0

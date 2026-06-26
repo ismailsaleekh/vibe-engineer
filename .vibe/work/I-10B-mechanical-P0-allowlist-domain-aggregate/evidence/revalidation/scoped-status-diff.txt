@@ -1,0 +1,19 @@
+## command: git status --short -- packages/mechanical-gates/src/p0/allowlist packages/mechanical-gates/src/p0/domain-purity packages/mechanical-gates/src/aggregate packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate .vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate
+?? .vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/
+?? packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/
+?? packages/mechanical-gates/src/aggregate/
+?? packages/mechanical-gates/src/p0/allowlist/
+?? packages/mechanical-gates/src/p0/domain-purity/
+EXIT:0
+## command: git diff -- packages/mechanical-gates/src/p0/allowlist packages/mechanical-gates/src/p0/domain-purity packages/mechanical-gates/src/aggregate packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate
+EXIT:0
+## command: git status --short -- package.json pnpm-lock.yaml pnpm-workspace.yaml turbo.json packages/mechanical-gates/package.json packages/testing packages/mechanical-gates/src/p0/testing-boundary packages/mechanical-gates/fixtures/p0/testing-boundary
+?? package.json
+?? packages/mechanical-gates/package.json
+?? packages/testing/
+?? pnpm-lock.yaml
+?? pnpm-workspace.yaml
+?? turbo.json
+EXIT:0
+## command: git diff --name-only -- package.json pnpm-lock.yaml pnpm-workspace.yaml turbo.json packages/mechanical-gates/package.json packages/testing packages/mechanical-gates/src/p0/testing-boundary packages/mechanical-gates/fixtures/p0/testing-boundary
+EXIT:0

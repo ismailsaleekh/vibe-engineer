@@ -1,0 +1,35 @@
+## command: git status --short -- packages/mechanical-gates/src/p0/allowlist packages/mechanical-gates/src/p0/domain-purity packages/mechanical-gates/src/aggregate packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate .vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate
+?? .vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/
+?? packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/
+?? packages/mechanical-gates/src/aggregate/
+?? packages/mechanical-gates/src/p0/allowlist/
+?? packages/mechanical-gates/src/p0/domain-purity/
+EXIT:0
+## command: git diff --name-only -- packages/mechanical-gates/src/p0/allowlist packages/mechanical-gates/src/p0/domain-purity packages/mechanical-gates/src/aggregate packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate .vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate
+EXIT:0
+## command: git status --short -- package.json pnpm-lock.yaml pnpm-workspace.yaml turbo.json packages/mechanical-gates/package.json packages/testing packages/mechanical-gates/src/p0/testing-boundary packages/mechanical-gates/fixtures/p0/testing-boundary
+?? package.json
+?? packages/mechanical-gates/package.json
+?? packages/testing/
+?? pnpm-lock.yaml
+?? pnpm-workspace.yaml
+?? turbo.json
+EXIT:0
+## command: git diff --name-only -- package.json pnpm-lock.yaml pnpm-workspace.yaml turbo.json packages/mechanical-gates/package.json packages/testing packages/mechanical-gates/src/p0/testing-boundary packages/mechanical-gates/fixtures/p0/testing-boundary
+EXIT:0
+## command: find .vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/evidence/revalidation -maxdepth 2 -type f | sort
+.vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/evidence/revalidation/adversarial-probes.txt
+.vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/evidence/revalidation/direct-witnesses.txt
+.vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/evidence/revalidation/domain-policy-contract-probe.txt
+.vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/evidence/revalidation/domain-policy-default-runtime-probe.mjs
+.vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/evidence/revalidation/domain-policy-default-runtime-workspace/mechanical-domain-purity.json
+.vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/evidence/revalidation/domain-policy-omitted-forbidden-terms-consumer.ts
+.vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/evidence/revalidation/final-sweep.txt
+.vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/evidence/revalidation/forbidden-reference-sweep.txt
+.vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/evidence/revalidation/package-filter-witnesses.txt
+.vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/evidence/revalidation/root-package-sentinel.txt
+.vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/evidence/revalidation/scoped-status-diff.txt
+.vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/evidence/revalidation/selected-fixture-files.txt
+.vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/evidence/revalidation/source-fixture-inventory.txt
+.vibe/work/I-10B-mechanical-P0-allowlist-domain-aggregate/evidence/revalidation/source-line-evidence.txt
+EXIT:0

@@ -1,0 +1,85 @@
+## allowlist line evidence
+17:const DEFAULT_HARD_BANNED = ["as-any"];
+112:function sameExpressionConsumedByRuntimeNarrower(node) {
+125:function runtimeNarrowerConsumesIdentifier(statement, variableName) {
+155:function isImmediatelyNarrowedAsUnknown(node) {
+156:  if (sameExpressionConsumedByRuntimeNarrower(node)) return true;
+161:  return Boolean(next && runtimeNarrowerConsumesIdentifier(next, variable.variableName));
+206:    findings.push(finding("allowlist.policy-schema", policyPath, "Allowlist policy must be an object with version: 1.", { policyPath }));
+214:    findings.push(finding("allowlist.policy-schema", `${policyPath}#/scan`, "Allowlist policy must define scan.include as a non-empty array."));
+234:    findings.push(finding("allowlist.policy-schema", `${policyPath}#/scan`, "Allowlist scan paths must be in-root non-empty project paths.", { error: error instanceof Error ? error.message : String(error) }));
+238:    findings.push(finding("allowlist.policy-schema", `${policyPath}#/entries`, "Allowlist policy must define entries as an array."));
+241:  const hardBanned = new Set(DEFAULT_HARD_BANNED);
+242:  if ("hardBannedEscapes" in policy) {
+243:    if (!Array.isArray(policy.hardBannedEscapes)
+244:      || policy.hardBannedEscapes.some((value) => typeof value !== "string" || value.trim().length === 0)) {
+245:      findings.push(finding("allowlist.policy-schema", `${policyPath}#/hardBannedEscapes`, "hardBannedEscapes must be an array of non-empty escape-kind strings; default hard bans cannot be weakened."));
+248:    for (const value of policy.hardBannedEscapes) hardBanned.add(value);
+297:      findings.push(finding("allowlist.hard-banned", rowPath, "Allowlist entry attempts to approve a hard-banned escape kind.", { kind: entry.kind, targetKey: key }));
+359:        findings.push(finding("allowlist.hard-banned", filePath, "Hard-banned escape detected in source.", { kind: escape.kind, ...escape.evidence }));
+376:      hardBannedEscapes: [...config.hardBanned].sort(),
+EXIT_ALLOWLIST_RG:0
+## domain line evidence
+15:const DEFAULT_FORBIDDEN = ["ecommerce", "inventory", "Billz", "Telegram"];
+16:const BLOCKING_SURFACES = new Set(["core", "extension"]);
+17:const ALLOWED_SAMPLE_SURFACES = new Set(["sample-demo", "fixture"]);
+124:    findings.push(finding("domain-purity.policy-schema", policyPath, "Domain-purity policy must be an object with version: 1."));
+132:    findings.push(finding("domain-purity.policy-schema", `${policyPath}#/scan`, "Domain-purity policy must define scan.include as a non-empty array."));
+136:    findings.push(finding("domain-purity.policy-schema", `${policyPath}#/surfaces`, "Domain-purity policy must define at least one typed surface row."));
+149:        findings.push(finding("domain-purity.policy-schema", `${policyPath}#/surfaces/${index}`, "Surface row must define kind, non-empty path, and exact/prefix match."));
+156:    findings.push(finding("domain-purity.policy-schema", policyPath, "Policy paths must be in-root non-empty project paths.", { error: error instanceof Error ? error.message : String(error) }));
+160:  const forbiddenTerms = new Set(DEFAULT_FORBIDDEN);
+161:  if ("forbiddenTerms" in policy) {
+162:    if (!Array.isArray(policy.forbiddenTerms)
+163:      || policy.forbiddenTerms.length === 0
+164:      || policy.forbiddenTerms.some((value) => typeof value !== "string" || value.trim().length === 0)) {
+165:      findings.push(finding("domain-purity.policy-schema", `${policyPath}#/forbiddenTerms`, "forbiddenTerms must be a non-empty array of non-empty strings; locked defaults remain enforced when policy data is malformed."));
+167:      for (const value of policy.forbiddenTerms) forbiddenTerms.add(value);
+170:  return { include, surfaces, forbiddenTerms: [...forbiddenTerms], maxFileBytes: policy.scan.maxFileBytes };
+185:      for (const term of DEFAULT_FORBIDDEN) {
+221:      for (const term of config.forbiddenTerms) {
+223:        if (BLOCKING_SURFACES.has(surfaceKind)) {
+224:          findings.push(finding("domain-purity.core-domain-leak", filePath, "Forbidden project/business-domain token leaked into core or extension surface.", {
+233:        } else if (!ALLOWED_SAMPLE_SURFACES.has(surfaceKind)) {
+248:      forbiddenTerms: config.forbiddenTerms,
+EXIT_DOMAIN_RG:0
+## declaration proof modes
+packages/mechanical-gates/src/p0/domain-purity/index.d.ts:9:export interface DomainPurityPolicy {
+packages/mechanical-gates/src/p0/domain-purity/index.d.ts:11:  proofMode: "typescript-ast-string-comment-path-carriers";
+packages/mechanical-gates/src/p0/domain-purity/index.d.ts:16:  forbiddenTerms: string[];
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/type-consumer.ts:2:import { validateEscapeAllowlist, type EscapeAllowlistOptions, type EscapeAllowlistPolicy } from "../../../src/p0/allowlist/index.js";
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/type-consumer.ts:3:import { validateDomainPurity, type DomainPurityOptions, type DomainPurityPolicy } from "../../../src/p0/domain-purity/index.js";
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/type-consumer.ts:8:const allowlistPolicy: EscapeAllowlistPolicy = {
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/type-consumer.ts:10:  proofMode: "typescript-ast-and-comment-scanner",
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/type-consumer.ts:12:  hardBannedEscapes: ["as-any"],
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/type-consumer.ts:15:const domainPolicy: DomainPurityPolicy = {
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/type-consumer.ts:17:  proofMode: "typescript-ast-string-comment-path-carriers",
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/type-consumer.ts:19:  forbiddenTerms: ["ecommerce", "inventory", "Billz", "Telegram"],
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/type-consumer.ts:28:  if (allowlistPolicy.proofMode !== "typescript-ast-and-comment-scanner" || domainPolicy.proofMode !== "typescript-ast-string-comment-path-carriers") throw new Error("typed policy proofMode missing");
+packages/mechanical-gates/src/p0/allowlist/index.d.ts:23:export interface EscapeAllowlistPolicy {
+packages/mechanical-gates/src/p0/allowlist/index.d.ts:25:  proofMode: "typescript-ast-and-comment-scanner";
+packages/mechanical-gates/src/p0/allowlist/index.d.ts:32:  hardBannedEscapes?: string[];
+EXIT_DTS_RG:0
+## aggregate families
+packages/mechanical-gates/src/aggregate/index.d.ts:7:  | "p0.allowlist"
+packages/mechanical-gates/src/aggregate/index.d.ts:8:  | "p0.domain-purity";
+packages/mechanical-gates/src/aggregate/index.d.ts:24:    subresults: P0ValidatorResult[];
+packages/mechanical-gates/src/aggregate/run-p0-aggregate.js:13:const IMPLEMENTED_FAMILIES = Object.freeze([
+packages/mechanical-gates/src/aggregate/run-p0-aggregate.js:17:  "p0.allowlist",
+packages/mechanical-gates/src/aggregate/run-p0-aggregate.js:18:  "p0.domain-purity"
+packages/mechanical-gates/src/aggregate/run-p0-aggregate.js:36:  if (family === "p0.allowlist") return validateEscapeAllowlist(projectRoot, options.allowlist ?? {});
+packages/mechanical-gates/src/aggregate/run-p0-aggregate.js:37:  if (family === "p0.domain-purity") return validateDomainPurity(projectRoot, options.domainPurity ?? {});
+packages/mechanical-gates/src/aggregate/run-p0-aggregate.js:42:  const requestedFamilies = options.families ?? [...IMPLEMENTED_FAMILIES];
+packages/mechanical-gates/src/aggregate/run-p0-aggregate.js:44:  const subresults = [];
+packages/mechanical-gates/src/aggregate/run-p0-aggregate.js:47:    if (!IMPLEMENTED_FAMILIES.includes(family)) {
+packages/mechanical-gates/src/aggregate/run-p0-aggregate.js:52:  for (const family of IMPLEMENTED_FAMILIES) {
+packages/mechanical-gates/src/aggregate/run-p0-aggregate.js:54:      findings.push(finding("aggregate.omitted-family", ".", "Aggregate run omitted an implemented P0 gate family.", {
+packages/mechanical-gates/src/aggregate/run-p0-aggregate.js:56:        implementedFamilies: [...IMPLEMENTED_FAMILIES],
+packages/mechanical-gates/src/aggregate/run-p0-aggregate.js:63:    if (!IMPLEMENTED_FAMILIES.includes(family)) continue;
+packages/mechanical-gates/src/aggregate/run-p0-aggregate.js:67:      subresults.push(result);
+packages/mechanical-gates/src/aggregate/run-p0-aggregate.js:70:      findings.push(finding("aggregate.validator-exception", ".", "P0 aggregate validator raised instead of returning a typed result; aggregate fails closed.", {
+packages/mechanical-gates/src/aggregate/run-p0-aggregate.js:79:  const summary = Object.fromEntries(IMPLEMENTED_FAMILIES.map((family) => {
+packages/mechanical-gates/src/aggregate/run-p0-aggregate.js:80:    const result = subresults.find((candidate) => candidate.family === family);
+packages/mechanical-gates/src/aggregate/run-p0-aggregate.js:89:      implementedFamilies: [...IMPLEMENTED_FAMILIES],
+packages/mechanical-gates/src/aggregate/run-p0-aggregate.js:91:      subresults,
+EXIT_AGG_RG:0

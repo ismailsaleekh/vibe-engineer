@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "proofMode": "typescript-ast-and-comment-scanner",
+  "scan": {
+    "include": [
+      "src"
+    ],
+    "generatedVendor": [
+      "generated",
+      "vendor",
+      "node_modules"
+    ],
+    "maxFileBytes": 200000
+  },
+  "hardBannedEscapes": [
+    "as-any"
+  ],
+  "entries": []
+}
