@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "1.0.0",
+  "standardId": "typed-boundary-contracts",
+  "title": "Typed boundary contracts",
+  "summary": "External carriers enter through named runtime contracts before package consumption.",
+  "rationale": "Boundary validation keeps artifacts and schemas fail-closed.",
+  "category": "contracts",
+  "level": "required",
+  "neutrality": "core",
+  "appliesTo": ["artifacts", "schemas", "verification"],
+  "requirements": [
+    {
+      "id": "named-runtime-contract",
+      "statement": "Every load-bearing carrier has a named structural contract.",
+      "verification": "Run positive and negative fixtures through the public validator."
+    }
+  ],
+  "references": [
+    {
+      "label": "DL-15 mechanical engine",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-15-mechanical-engine.md"
+    }
+  ],
+  "tags": ["contracts", "fail-closed"]
+}

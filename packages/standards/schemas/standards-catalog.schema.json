@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.vibe-engineer.dev/standards/v1/standards-catalog.schema.json",
+  "title": "VibeEngineerStandardsCatalogV1",
+  "description": "Canonical standards catalog schema for @vibe-engineer/standards.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "minLength": 1,
+      "const": "1.0.0",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "catalogId": {
+      "type": "string",
+      "minLength": 1,
+      "const": "vibe-engineer-core-standards"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "neutrality": {
+      "type": "string",
+      "minLength": 1,
+      "const": "core",
+      "enum": [
+        "core"
+      ]
+    },
+    "standardIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "^[a-z0-9][a-z0-9-]*$"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "standards": {
+      "type": "array",
+      "items": {
+        "$ref": "https://schemas.vibe-engineer.dev/standards/v1/standard-definition.schema.json"
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "catalogId",
+    "title",
+    "summary",
+    "neutrality",
+    "standardIds",
+    "standards"
+  ]
+}

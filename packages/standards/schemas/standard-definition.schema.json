@@ -1,0 +1,172 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.vibe-engineer.dev/standards/v1/standard-definition.schema.json",
+  "title": "VibeEngineerStandardDefinitionV1",
+  "description": "Canonical domain-neutral standard definition schema for @vibe-engineer/standards.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "minLength": 1,
+      "const": "1.0.0",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "standardId": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[a-z0-9][a-z0-9-]*$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "rationale": {
+      "type": "string",
+      "minLength": 1
+    },
+    "category": {
+      "type": "string",
+      "minLength": 1,
+      "enum": [
+        "contracts",
+        "documentation",
+        "domain-neutrality",
+        "evidence",
+        "orchestration",
+        "package-boundaries",
+        "schematics",
+        "security",
+        "testing",
+        "typescript",
+        "verification"
+      ]
+    },
+    "level": {
+      "type": "string",
+      "minLength": 1,
+      "enum": [
+        "required",
+        "recommended",
+        "advisory"
+      ]
+    },
+    "neutrality": {
+      "type": "string",
+      "minLength": 1,
+      "enum": [
+        "core",
+        "extension",
+        "sample-demo",
+        "negative-fixture"
+      ]
+    },
+    "appliesTo": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "enum": [
+          "agents",
+          "artifacts",
+          "commands",
+          "config",
+          "context",
+          "docs",
+          "evidence",
+          "fixtures",
+          "packages",
+          "prompts",
+          "schemas",
+          "schematics",
+          "skills",
+          "standards",
+          "verification"
+        ]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "requirements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[a-z0-9][a-z0-9-]*$"
+          },
+          "statement": {
+            "type": "string",
+            "minLength": 1
+          },
+          "verification": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "id",
+          "statement",
+          "verification"
+        ]
+      },
+      "minItems": 1
+    },
+    "references": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "label": {
+            "type": "string",
+            "minLength": 1
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "section": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "label",
+          "path"
+        ]
+      },
+      "minItems": 1
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "^[a-z0-9][a-z0-9-]*$"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "standardId",
+    "title",
+    "summary",
+    "rationale",
+    "category",
+    "level",
+    "neutrality",
+    "appliesTo",
+    "requirements",
+    "references"
+  ]
+}

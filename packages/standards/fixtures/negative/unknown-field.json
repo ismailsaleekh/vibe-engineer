@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "1.0.0",
+  "standardId": "typed-boundary-contracts",
+  "title": "Unknown field fixture",
+  "summary": "This fixture has an extra field.",
+  "rationale": "The validator must enforce additionalProperties false behavior.",
+  "category": "contracts",
+  "level": "required",
+  "neutrality": "core",
+  "appliesTo": ["schemas"],
+  "requirements": [
+    {
+      "id": "unknown-field-case",
+      "statement": "Unknown fields fail.",
+      "verification": "The validator returns a typed unknown-field error."
+    }
+  ],
+  "references": [
+    {
+      "label": "negative fixture",
+      "path": "packages/standards/fixtures/negative/unknown-field.json"
+    }
+  ],
+  "unexpectedField": true
+}

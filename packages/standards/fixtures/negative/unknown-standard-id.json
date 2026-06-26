@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "1.0.0",
+  "standardId": "unknown-standard",
+  "title": "Unknown standard id",
+  "summary": "This fixture uses an identifier outside the supported catalog.",
+  "rationale": "The validator must reject definitions not registered in the catalog.",
+  "category": "contracts",
+  "level": "required",
+  "neutrality": "core",
+  "appliesTo": ["schemas"],
+  "requirements": [
+    {
+      "id": "unknown-id-case",
+      "statement": "Unknown identifiers fail.",
+      "verification": "The validator returns a typed unknown-id error."
+    }
+  ],
+  "references": [
+    {
+      "label": "negative fixture",
+      "path": "packages/standards/fixtures/negative/unknown-standard-id.json"
+    }
+  ]
+}

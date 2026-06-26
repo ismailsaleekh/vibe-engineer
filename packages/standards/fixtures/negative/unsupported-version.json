@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "2.0.0",
+  "standardId": "typed-boundary-contracts",
+  "title": "Unsupported version fixture",
+  "summary": "This fixture uses a future schema version.",
+  "rationale": "The validator must reject unsupported schema versions.",
+  "category": "contracts",
+  "level": "required",
+  "neutrality": "core",
+  "appliesTo": ["schemas"],
+  "requirements": [
+    {
+      "id": "unsupported-version-case",
+      "statement": "Unsupported versions fail.",
+      "verification": "The validator returns a typed unsupported-version error."
+    }
+  ],
+  "references": [
+    {
+      "label": "negative fixture",
+      "path": "packages/standards/fixtures/negative/unsupported-version.json"
+    }
+  ]
+}

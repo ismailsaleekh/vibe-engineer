@@ -1,0 +1,27 @@
+{
+  "name": "@vibe-engineer/standards",
+  "version": "0.0.0",
+  "license": "MIT",
+  "type": "module",
+  "description": "Domain-neutral standards catalog, schemas, and fail-closed validators for vibe-engineer harness packages.",
+  "private": true,
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "import": "./src/index.js"
+    },
+    "./schemas": "./src/schema-registry.js",
+    "./schemas/*": "./schemas/*"
+  },
+  "scripts": {
+    "check:syntax": "node --check src/index.js && node --check src/schema-registry.js && node --check src/errors.js && node --check src/catalog-data.js && node --check src/validation.js && node --check fixtures/run-witnesses.mjs",
+    "test": "node fixtures/run-witnesses.mjs",
+    "witness": "node fixtures/run-witnesses.mjs"
+  },
+  "vibeEngineer": {
+    "implementationUnit": "I-07C-standards-package",
+    "implementationStatus": "implemented",
+    "packageRole": "internal-workspace-package",
+    "sourceStatus": "package-owned-source-created"
+  }
+}

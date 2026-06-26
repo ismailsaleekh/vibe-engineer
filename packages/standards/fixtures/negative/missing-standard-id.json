@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "1.0.0",
+  "title": "Missing standard id",
+  "summary": "This fixture omits the required identifier.",
+  "rationale": "The validator must fail closed when a required identifier is missing.",
+  "category": "contracts",
+  "level": "required",
+  "neutrality": "core",
+  "appliesTo": ["schemas"],
+  "requirements": [
+    {
+      "id": "missing-id-case",
+      "statement": "Missing identifiers fail.",
+      "verification": "The validator returns a typed required-field error."
+    }
+  ],
+  "references": [
+    {
+      "label": "negative fixture",
+      "path": "packages/standards/fixtures/negative/missing-standard-id.json"
+    }
+  ]
+}

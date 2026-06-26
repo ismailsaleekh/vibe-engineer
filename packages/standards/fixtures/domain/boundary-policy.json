@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "proofMode": "typescript-ast-string-comment-path-carriers",
+  "scan": {
+    "include": ["fixtures/domain/core-domain-leak.js", "fixtures/domain/sample-demo-allowed.js"],
+    "maxFileBytes": 262144
+  },
+  "forbiddenTerms": ["ecommerce", "inventory", "Billz", "Telegram"],
+  "surfaces": [
+    { "kind": "core", "path": "fixtures/domain/core-domain-leak.js", "match": "exact" },
+    { "kind": "sample-demo", "path": "fixtures/domain/sample-demo-allowed.js", "match": "exact" }
+  ]
+}

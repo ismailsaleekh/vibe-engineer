@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "proofMode": "typescript-ast-string-comment-path-carriers",
+  "scan": {
+    "include": ["package.json", "schemas", "src"],
+    "maxFileBytes": 262144
+  },
+  "forbiddenTerms": ["ecommerce", "inventory", "fashion", "Billz", "Telegram", "Instagram", "ProductCatalog", "ShoppingCart", "CustomerOrder", "CheckoutFlow", "WarehouseStock", "FashionDrop", "BillzInvoice", "TelegramBotBusinessRule", "InstagramEngagementModel"],
+  "surfaces": [
+    { "kind": "core", "path": "package.json", "match": "exact" },
+    { "kind": "core", "path": "schemas", "match": "prefix" },
+    { "kind": "core", "path": "src", "match": "prefix" },
+    { "kind": "fixture", "path": "fixtures", "match": "prefix" }
+  ]
+}
