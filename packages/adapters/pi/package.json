@@ -1,0 +1,31 @@
+{
+  "name": "@vibe-engineer/adapter-pi",
+  "version": "0.0.0",
+  "license": "MIT",
+  "type": "module",
+  "description": "Typed pi adapter capability matrix and generated-file manifest contract for vibe-engineer.",
+  "private": true,
+  "exports": {
+    "./capabilities": {
+      "types": "./src/capabilities/index.ts",
+      "import": "./src/capabilities/index.ts"
+    },
+    "./generated-file-manifest": {
+      "types": "./src/generated-file-manifest/index.ts",
+      "import": "./src/generated-file-manifest/index.ts"
+    },
+    "./schema": {
+      "types": "./src/schema/index.ts",
+      "import": "./src/schema/index.ts"
+    }
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit --allowImportingTsExtensions --module NodeNext --moduleResolution NodeNext --target ES2022 --lib ES2022 --strict --noImplicitAny --strictNullChecks --strictFunctionTypes --strictBindCallApply --strictPropertyInitialization --noImplicitThis --alwaysStrict --exactOptionalPropertyTypes --noUncheckedIndexedAccess --noImplicitOverride --noImplicitReturns --noPropertyAccessFromIndexSignature --useUnknownInCatchVariables --noFallthroughCasesInSwitch --noUnusedLocals --noUnusedParameters --allowUnreachableCode false --allowUnusedLabels false --isolatedModules --verbatimModuleSyntax --forceConsistentCasingInFileNames --skipLibCheck src/capabilities/index.ts src/generated-file-manifest/index.ts src/schema/index.ts"
+  },
+  "vibeEngineer": {
+    "implementationUnit": "I-14A-pi-adapter-capability-generated-file-manifest",
+    "implementationStatus": "typed-manifest-contract",
+    "packageRole": "private-pi-adapter-workspace-package",
+    "sourceStatus": "typescript-source-of-truth"
+  }
+}

@@ -1,0 +1,1168 @@
+{
+  "schemaVersion": "pi-adapter-capability-matrix/v1",
+  "producedByLane": "I-14A-pi-adapter-capability-generated-file-manifest",
+  "adapterPackage": "@vibe-engineer/adapter-pi",
+  "adapters": [
+    {
+      "adapterId": "pi",
+      "displayName": "Pi Coding Agent",
+      "evidenceStatus": {
+        "state": "known",
+        "source": "DL-06-agentic-harness-integrations.md",
+        "notes": "Pi is the only v1 live adapter target; this row declares the typed manifest contract and does not claim live runtime execution."
+      },
+      "versionCompatibility": {
+        "harnessName": "pi",
+        "harnessVersionRange": "unknown until I-14B/live runtime records installed pi version",
+        "resourceFormatVersion": "Agent Skills standard plus pi-specific prompt/template/extension/package resource formats",
+        "runtimeRequirements": [
+          "Node/TypeScript extension runtime",
+          "project trust for project-local .pi resources",
+          "DL-22 default-deny command policy"
+        ],
+        "compatibilityEvidence": {
+          "state": "known",
+          "source": "DL-06 pi mechanisms and explicit limitations",
+          "notes": "Design evidence is known; live runtime compatibility remains I-14B pending-live."
+        }
+      },
+      "skillsCommandsSurface": {
+        "evidence": {
+          "state": "known",
+          "source": "DL-03 + DL-06",
+          "notes": "All six locked skills map to pi Agent Skills slash commands."
+        },
+        "support": "ready",
+        "details": "Generate `.pi/skills/<skill>/SKILL.md` and/or `.agents/skills/<skill>/SKILL.md` assets exposing `/skill:<skill>`.",
+        "downstreamConsequence": "Downstream lanes may consume the typed mapping, but I-14B owns actual file generation/runtime loading.",
+        "nativeFormat": "Agent Skills SKILL.md",
+        "autoloadDiscovery": [
+          ".pi/skills/<skill>/SKILL.md",
+          ".agents/skills/<skill>/SKILL.md"
+        ],
+        "skills": [
+          {
+            "skillId": "brainstorm",
+            "nativeCommand": "/skill:brainstorm",
+            "resourceFamily": "pi-skill-files",
+            "evidence": {
+              "state": "known",
+              "source": "DL-03 skill protocols + DL-06 pi skills decision",
+              "notes": "The six locked skills are generated as Agent Skills-compatible SKILL.md resources."
+            },
+            "readiness": "ready",
+            "protocolSource": "DL-03-skill-protocols.md"
+          },
+          {
+            "skillId": "grill-me",
+            "nativeCommand": "/skill:grill-me",
+            "resourceFamily": "pi-skill-files",
+            "evidence": {
+              "state": "known",
+              "source": "DL-03 skill protocols + DL-06 pi skills decision",
+              "notes": "The six locked skills are generated as Agent Skills-compatible SKILL.md resources."
+            },
+            "readiness": "ready",
+            "protocolSource": "DL-03-skill-protocols.md"
+          },
+          {
+            "skillId": "task",
+            "nativeCommand": "/skill:task",
+            "resourceFamily": "pi-skill-files",
+            "evidence": {
+              "state": "known",
+              "source": "DL-03 skill protocols + DL-06 pi skills decision",
+              "notes": "The six locked skills are generated as Agent Skills-compatible SKILL.md resources."
+            },
+            "readiness": "ready",
+            "protocolSource": "DL-03-skill-protocols.md"
+          },
+          {
+            "skillId": "plan",
+            "nativeCommand": "/skill:plan",
+            "resourceFamily": "pi-skill-files",
+            "evidence": {
+              "state": "known",
+              "source": "DL-03 skill protocols + DL-06 pi skills decision",
+              "notes": "The six locked skills are generated as Agent Skills-compatible SKILL.md resources."
+            },
+            "readiness": "ready",
+            "protocolSource": "DL-03-skill-protocols.md"
+          },
+          {
+            "skillId": "build",
+            "nativeCommand": "/skill:build",
+            "resourceFamily": "pi-skill-files",
+            "evidence": {
+              "state": "known",
+              "source": "DL-03 skill protocols + DL-06 pi skills decision",
+              "notes": "The six locked skills are generated as Agent Skills-compatible SKILL.md resources."
+            },
+            "readiness": "ready",
+            "protocolSource": "DL-03-skill-protocols.md"
+          },
+          {
+            "skillId": "ship",
+            "nativeCommand": "/skill:ship",
+            "resourceFamily": "pi-skill-files",
+            "evidence": {
+              "state": "known",
+              "source": "DL-03 skill protocols + DL-06 pi skills decision",
+              "notes": "The six locked skills are generated as Agent Skills-compatible SKILL.md resources."
+            },
+            "readiness": "ready",
+            "protocolSource": "DL-03-skill-protocols.md"
+          }
+        ]
+      },
+      "promptTemplateSurface": {
+        "evidence": {
+          "state": "known",
+          "source": "DL-06 pi prompt templates",
+          "notes": "Pi prompt templates are `.pi/prompts/*.md` markdown files with filename-derived slash commands and frontmatter/arguments."
+        },
+        "support": "ready",
+        "details": "Reusable slash-command prompt templates may be declared in `.pi/prompts/<name>.md`.",
+        "downstreamConsequence": "Downstream generation must validate template family metadata before writing files."
+      },
+      "hookEventSupport": {
+        "evidence": {
+          "state": "known",
+          "source": "DL-06 pi extensions",
+          "notes": "Pi TypeScript extensions can register commands/tools and subscribe to events; deterministic gates must not be advisory-only."
+        },
+        "support": "ready",
+        "details": "Optional `.pi/extensions/**` TypeScript extensions can provide commands, tools, hooks/events, permission gates, and dynamic resources.",
+        "downstreamConsequence": "Executable extension files require DL-22 trust/security metadata and later runtime proof."
+      },
+      "subagentCapability": {
+        "evidence": {
+          "state": "known",
+          "source": "DL-06 explicit pi limitations",
+          "notes": "Pi does not ship built-in subagents; subagent behavior is extension/package-built only."
+        },
+        "support": "blocked",
+        "details": "No built-in subagent claim is made in I-14A.",
+        "downstreamConsequence": "Any subagent-dependent lane must wait for generated extension/package implementation and live proof.",
+        "implementationKind": "extension-built",
+        "requiresGeneratedExtension": true
+      },
+      "planModeCapability": {
+        "evidence": {
+          "state": "known",
+          "source": "DL-06 explicit pi limitations",
+          "notes": "Pi does not ship built-in plan mode; plan-mode-like behavior is extension/package-built only."
+        },
+        "support": "blocked",
+        "details": "No built-in plan-mode claim is made in I-14A.",
+        "downstreamConsequence": "Any plan-mode-dependent lane must wait for generated extension/package implementation and live proof.",
+        "implementationKind": "extension-built",
+        "requiresGeneratedExtension": true
+      },
+      "contextFileConventions": {
+        "evidence": {
+          "state": "known",
+          "source": "DL-06 context files",
+          "notes": "Pi loads AGENTS.md and optional CLAUDE.md context files subject to trust and load timing."
+        },
+        "support": "ready",
+        "details": "Context file families are `AGENTS.md` and optional `CLAUDE.md`, with generated content preserving project-owned instructions.",
+        "downstreamConsequence": "Downstream writers must use the generated-file manifest and DL-22 trust fields before emitting context files."
+      },
+      "commandInvocationModel": {
+        "interactive": {
+          "evidence": {
+            "state": "known",
+            "source": "DL-06 CLI modes",
+            "notes": "Interactive mode is user-facing operation."
+          },
+          "support": "ready",
+          "details": "User operation through `pi` interactive mode.",
+          "downstreamConsequence": "No automation may infer machine success from prose."
+        },
+        "printMode": {
+          "evidence": {
+            "state": "known",
+            "source": "DL-06 CLI modes",
+            "notes": "`pi -p`/`--print` is available for one-shot prompts."
+          },
+          "support": "ready",
+          "details": "One-shot prompt mode can be used by future runtime witnesses where safe.",
+          "downstreamConsequence": "Future runtime lanes must validate machine-readable outputs where they rely on automation."
+        },
+        "jsonMode": {
+          "evidence": {
+            "state": "known",
+            "source": "DL-06 JSON mode",
+            "notes": "`--mode json` provides event-stream observation."
+          },
+          "support": "ready",
+          "details": "JSON mode is the preferred observation surface for event-stream runtime proof.",
+          "downstreamConsequence": "I-14A does not execute live pi runtime; I-14B owns it."
+        },
+        "rpcMode": {
+          "evidence": {
+            "state": "known",
+            "source": "DL-06 RPC",
+            "notes": "RPC `get_commands` can observe generated commands."
+          },
+          "support": "ready",
+          "details": "RPC command listing is a preferred real-boundary observation point.",
+          "downstreamConsequence": "I-14A proves manifest API consumption only; live pi RPC is pending I-14B."
+        },
+        "sdk": {
+          "evidence": {
+            "state": "known",
+            "source": "DL-06 SDK",
+            "notes": "SDK/ResourceLoader APIs can observe generated resources."
+          },
+          "support": "ready",
+          "details": "SDK resource loading can be used by future live witnesses.",
+          "downstreamConsequence": "I-14A does not claim SDK runtime loading."
+        },
+        "shellCommandPolicy": "default-deny"
+      },
+      "generatedFiles": {
+        "evidence": {
+          "state": "known",
+          "source": "DL-06 pi generated-file families",
+          "notes": "The generated-file manifest enumerates every permitted pi family and its owner/trust/version/consumer fields."
+        },
+        "manifestSchemaVersion": "pi-generated-file-manifest/v1",
+        "families": [
+          "pi-skill-files",
+          "pi-prompt-templates",
+          "pi-extensions",
+          "pi-package-manifest",
+          "context-files",
+          "harness-config"
+        ],
+        "downstreamConsequence": "Downstream lanes must validate the manifest before generating pi files; malformed or missing family metadata blocks."
+      },
+      "packageDistribution": {
+        "evidence": {
+          "state": "known",
+          "source": "DL-06 pi packages",
+          "notes": "Pi packages may declare resources through a package.json `pi` key; trust/update behavior must be explicit."
+        },
+        "support": "ready",
+        "details": "Primary v1 generation uses project-local files; optional package distribution is declared but not generated in I-14A.",
+        "downstreamConsequence": "Package distribution requires explicit generated-file manifest metadata and later lane implementation.",
+        "distributionKinds": [
+          "project-local-files",
+          "pi-package"
+        ],
+        "trustUpdatePolicy": "Project-local files require project trust; package install/update/trust behavior must be explicit before use."
+      },
+      "securityTrust": {
+        "evidence": {
+          "state": "known",
+          "source": "DL-22 + DL-06",
+          "notes": "Adapter declares project trust, executable extension, command policy, sandbox non-claims, credential, destructive-operation, and external-integration defaults."
+        },
+        "projectTrustRequired": true,
+        "extensionExecution": "typescript-extension",
+        "commandPolicy": "default-deny",
+        "sandboxCapability": "not_provided",
+        "credentialPolicy": "no-credentials-required",
+        "destructiveOperations": "forbidden",
+        "externalIntegration": "disabled-by-default",
+        "trustBoundary": "Project-local pi resources and TypeScript extensions run only after trust; I-14A claims no OS/network/process sandbox beyond policy declarations."
+      },
+      "capabilityFlags": {
+        "skills": true,
+        "prompts": true,
+        "hooks": true,
+        "extensions": true,
+        "subagents": false,
+        "planMode": false,
+        "contextFiles": true,
+        "rpc": true,
+        "sdk": true,
+        "jsonMode": true,
+        "packages": true,
+        "ui": false,
+        "unsupportedFeaturePolicy": "block"
+      },
+      "realBoundaryWitness": {
+        "evidence": {
+          "state": "known",
+          "source": "I-14A implementer witness",
+          "notes": "Actual package API is consumed by fixture generator/validator and persisted downstream summary; live pi runtime remains out of lane."
+        },
+        "boundaryStatus": "implemented",
+        "producer": "@vibe-engineer/adapter-pi subpath APIs under packages/adapters/pi/src/{capabilities,generated-file-manifest,schema}",
+        "carrier": "packages/adapters/pi/fixtures/manifest and examples/harness-integrations/pi/manifest-fixtures JSON carriers",
+        "consumer": ".vibe/work/I-14A-pi-adapter-capability-generated-file-manifest/witnesses/manifest-api-consumer.mjs",
+        "evidencePath": ".vibe/work/I-14A-pi-adapter-capability-generated-file-manifest/downstream-summary.json",
+        "runtimeExecutionClaim": "not-claimed"
+      },
+      "selection": {
+        "manifestSelectable": true,
+        "createImportSelectable": false,
+        "readiness": "ready",
+        "reason": "Ready only as a typed manifest/API contract for downstream consumers; create/import selected-harness behavior belongs to I-15A."
+      }
+    },
+    {
+      "adapterId": "claude-code",
+      "displayName": "Claude Code",
+      "evidenceStatus": {
+        "state": "deferred",
+        "source": "DL-06 other harness disposition",
+        "notes": "No local authoritative Claude Code harness generated-resource docs were provided for v1."
+      },
+      "versionCompatibility": {
+        "harnessName": "Claude Code",
+        "harnessVersionRange": "unknown",
+        "resourceFormatVersion": "unknown",
+        "runtimeRequirements": [
+          "future evidence-backed decision required"
+        ],
+        "compatibilityEvidence": {
+          "state": "deferred",
+          "source": "DL-06 other harness disposition",
+          "notes": "No local authoritative Claude Code harness generated-resource docs were provided for v1."
+        }
+      },
+      "skillsCommandsSurface": {
+        "evidence": {
+          "state": "deferred",
+          "source": "DL-06 other harness disposition",
+          "notes": "No local authoritative Claude Code harness generated-resource docs were provided for v1."
+        },
+        "support": "deferred",
+        "details": "No v1 native generated-resource contract is authorized for this harness.",
+        "downstreamConsequence": "Any dependent selection or generation for this harness must block until a future adapter decision supplies evidence.",
+        "nativeFormat": "unknown",
+        "autoloadDiscovery": [
+          "unknown"
+        ],
+        "skills": []
+      },
+      "promptTemplateSurface": {
+        "evidence": {
+          "state": "deferred",
+          "source": "DL-06 other harness disposition",
+          "notes": "No local authoritative Claude Code harness generated-resource docs were provided for v1."
+        },
+        "support": "deferred",
+        "details": "Prompt template semantics are not evidenced for v1.",
+        "downstreamConsequence": "Prompt generation must block for this harness."
+      },
+      "hookEventSupport": {
+        "evidence": {
+          "state": "deferred",
+          "source": "DL-06 other harness disposition",
+          "notes": "No local authoritative Claude Code harness generated-resource docs were provided for v1."
+        },
+        "support": "deferred",
+        "details": "Hook/event semantics are not evidenced for v1.",
+        "downstreamConsequence": "Hook, tool, event, UI, plan-mode, or subagent generation must block."
+      },
+      "subagentCapability": {
+        "evidence": {
+          "state": "deferred",
+          "source": "DL-06 other harness disposition",
+          "notes": "No local authoritative Claude Code harness generated-resource docs were provided for v1."
+        },
+        "support": "deferred",
+        "details": "Subagent capability is not evidenced for v1.",
+        "downstreamConsequence": "Subagent-dependent behavior must block.",
+        "implementationKind": "unsupported",
+        "requiresGeneratedExtension": false
+      },
+      "planModeCapability": {
+        "evidence": {
+          "state": "deferred",
+          "source": "DL-06 other harness disposition",
+          "notes": "No local authoritative Claude Code harness generated-resource docs were provided for v1."
+        },
+        "support": "deferred",
+        "details": "Plan-mode capability is not evidenced for v1.",
+        "downstreamConsequence": "Plan-mode-dependent behavior must block.",
+        "implementationKind": "unsupported",
+        "requiresGeneratedExtension": false
+      },
+      "contextFileConventions": {
+        "evidence": {
+          "state": "deferred",
+          "source": "DL-06 other harness disposition",
+          "notes": "No local authoritative Claude Code harness generated-resource docs were provided for v1."
+        },
+        "support": "deferred",
+        "details": "Context-file conventions are not evidenced for v1.",
+        "downstreamConsequence": "Context file generation must block for this harness."
+      },
+      "commandInvocationModel": {
+        "interactive": {
+          "evidence": {
+            "state": "deferred",
+            "source": "DL-06 other harness disposition",
+            "notes": "No local authoritative Claude Code harness generated-resource docs were provided for v1."
+          },
+          "support": "unknown",
+          "details": "Unknown invocation model.",
+          "downstreamConsequence": "Invocation must block."
+        },
+        "printMode": {
+          "evidence": {
+            "state": "deferred",
+            "source": "DL-06 other harness disposition",
+            "notes": "No local authoritative Claude Code harness generated-resource docs were provided for v1."
+          },
+          "support": "unknown",
+          "details": "Unknown print/non-interactive model.",
+          "downstreamConsequence": "Invocation must block."
+        },
+        "jsonMode": {
+          "evidence": {
+            "state": "deferred",
+            "source": "DL-06 other harness disposition",
+            "notes": "No local authoritative Claude Code harness generated-resource docs were provided for v1."
+          },
+          "support": "unknown",
+          "details": "Unknown machine-readable event model.",
+          "downstreamConsequence": "Automation must block."
+        },
+        "rpcMode": {
+          "evidence": {
+            "state": "deferred",
+            "source": "DL-06 other harness disposition",
+            "notes": "No local authoritative Claude Code harness generated-resource docs were provided for v1."
+          },
+          "support": "unknown",
+          "details": "Unknown RPC model.",
+          "downstreamConsequence": "Automation must block."
+        },
+        "sdk": {
+          "evidence": {
+            "state": "deferred",
+            "source": "DL-06 other harness disposition",
+            "notes": "No local authoritative Claude Code harness generated-resource docs were provided for v1."
+          },
+          "support": "unknown",
+          "details": "Unknown SDK model.",
+          "downstreamConsequence": "Automation must block."
+        },
+        "shellCommandPolicy": "blocked"
+      },
+      "generatedFiles": {
+        "evidence": {
+          "state": "deferred",
+          "source": "DL-06 other harness disposition",
+          "notes": "No local authoritative Claude Code harness generated-resource docs were provided for v1."
+        },
+        "manifestSchemaVersion": "pi-generated-file-manifest/v1",
+        "families": [],
+        "downstreamConsequence": "No non-pi generated files may be emitted by v1 lanes."
+      },
+      "packageDistribution": {
+        "evidence": {
+          "state": "deferred",
+          "source": "DL-06 other harness disposition",
+          "notes": "No local authoritative Claude Code harness generated-resource docs were provided for v1."
+        },
+        "support": "deferred",
+        "details": "Package distribution semantics are not evidenced for v1.",
+        "downstreamConsequence": "Package generation or install claims must block.",
+        "distributionKinds": [],
+        "trustUpdatePolicy": "blocked until future adapter evidence exists"
+      },
+      "securityTrust": {
+        "evidence": {
+          "state": "deferred",
+          "source": "DL-06 other harness disposition",
+          "notes": "No local authoritative Claude Code harness generated-resource docs were provided for v1."
+        },
+        "projectTrustRequired": false,
+        "extensionExecution": "none",
+        "commandPolicy": "default-deny",
+        "sandboxCapability": "unknown",
+        "credentialPolicy": "unknown-blocked",
+        "destructiveOperations": "forbidden",
+        "externalIntegration": "unknown-blocked",
+        "trustBoundary": "No v1 trust boundary is declared; non-pi rows are non-selectable."
+      },
+      "capabilityFlags": {
+        "skills": false,
+        "prompts": false,
+        "hooks": false,
+        "extensions": false,
+        "subagents": false,
+        "planMode": false,
+        "contextFiles": false,
+        "rpc": false,
+        "sdk": false,
+        "jsonMode": false,
+        "packages": false,
+        "ui": false,
+        "unsupportedFeaturePolicy": "block"
+      },
+      "realBoundaryWitness": {
+        "evidence": {
+          "state": "deferred",
+          "source": "DL-06 other harness disposition",
+          "notes": "No local authoritative Claude Code harness generated-resource docs were provided for v1."
+        },
+        "boundaryStatus": "deferred",
+        "producer": "future adapter lane",
+        "carrier": "future generated-resource manifest",
+        "consumer": "future harness runtime/API consumer",
+        "evidencePath": "future evidence-backed decision required",
+        "runtimeExecutionClaim": "not-claimed"
+      },
+      "selection": {
+        "manifestSelectable": false,
+        "createImportSelectable": false,
+        "readiness": "deferred",
+        "reason": "Non-pi harnesses are explicit future/deferred/unknown rows and are never ready or selectable in v1."
+      }
+    },
+    {
+      "adapterId": "codex",
+      "displayName": "Codex",
+      "evidenceStatus": {
+        "state": "deferred",
+        "source": "DL-06 other harness disposition",
+        "notes": "No local authoritative Codex harness generated-resource docs were provided for v1."
+      },
+      "versionCompatibility": {
+        "harnessName": "Codex",
+        "harnessVersionRange": "unknown",
+        "resourceFormatVersion": "unknown",
+        "runtimeRequirements": [
+          "future evidence-backed decision required"
+        ],
+        "compatibilityEvidence": {
+          "state": "deferred",
+          "source": "DL-06 other harness disposition",
+          "notes": "No local authoritative Codex harness generated-resource docs were provided for v1."
+        }
+      },
+      "skillsCommandsSurface": {
+        "evidence": {
+          "state": "deferred",
+          "source": "DL-06 other harness disposition",
+          "notes": "No local authoritative Codex harness generated-resource docs were provided for v1."
+        },
+        "support": "deferred",
+        "details": "No v1 native generated-resource contract is authorized for this harness.",
+        "downstreamConsequence": "Any dependent selection or generation for this harness must block until a future adapter decision supplies evidence.",
+        "nativeFormat": "unknown",
+        "autoloadDiscovery": [
+          "unknown"
+        ],
+        "skills": []
+      },
+      "promptTemplateSurface": {
+        "evidence": {
+          "state": "deferred",
+          "source": "DL-06 other harness disposition",
+          "notes": "No local authoritative Codex harness generated-resource docs were provided for v1."
+        },
+        "support": "deferred",
+        "details": "Prompt template semantics are not evidenced for v1.",
+        "downstreamConsequence": "Prompt generation must block for this harness."
+      },
+      "hookEventSupport": {
+        "evidence": {
+          "state": "deferred",
+          "source": "DL-06 other harness disposition",
+          "notes": "No local authoritative Codex harness generated-resource docs were provided for v1."
+        },
+        "support": "deferred",
+        "details": "Hook/event semantics are not evidenced for v1.",
+        "downstreamConsequence": "Hook, tool, event, UI, plan-mode, or subagent generation must block."
+      },
+      "subagentCapability": {
+        "evidence": {
+          "state": "deferred",
+          "source": "DL-06 other harness disposition",
+          "notes": "No local authoritative Codex harness generated-resource docs were provided for v1."
+        },
+        "support": "deferred",
+        "details": "Subagent capability is not evidenced for v1.",
+        "downstreamConsequence": "Subagent-dependent behavior must block.",
+        "implementationKind": "unsupported",
+        "requiresGeneratedExtension": false
+      },
+      "planModeCapability": {
+        "evidence": {
+          "state": "deferred",
+          "source": "DL-06 other harness disposition",
+          "notes": "No local authoritative Codex harness generated-resource docs were provided for v1."
+        },
+        "support": "deferred",
+        "details": "Plan-mode capability is not evidenced for v1.",
+        "downstreamConsequence": "Plan-mode-dependent behavior must block.",
+        "implementationKind": "unsupported",
+        "requiresGeneratedExtension": false
+      },
+      "contextFileConventions": {
+        "evidence": {
+          "state": "deferred",
+          "source": "DL-06 other harness disposition",
+          "notes": "No local authoritative Codex harness generated-resource docs were provided for v1."
+        },
+        "support": "deferred",
+        "details": "Context-file conventions are not evidenced for v1.",
+        "downstreamConsequence": "Context file generation must block for this harness."
+      },
+      "commandInvocationModel": {
+        "interactive": {
+          "evidence": {
+            "state": "deferred",
+            "source": "DL-06 other harness disposition",
+            "notes": "No local authoritative Codex harness generated-resource docs were provided for v1."
+          },
+          "support": "unknown",
+          "details": "Unknown invocation model.",
+          "downstreamConsequence": "Invocation must block."
+        },
+        "printMode": {
+          "evidence": {
+            "state": "deferred",
+            "source": "DL-06 other harness disposition",
+            "notes": "No local authoritative Codex harness generated-resource docs were provided for v1."
+          },
+          "support": "unknown",
+          "details": "Unknown print/non-interactive model.",
+          "downstreamConsequence": "Invocation must block."
+        },
+        "jsonMode": {
+          "evidence": {
+            "state": "deferred",
+            "source": "DL-06 other harness disposition",
+            "notes": "No local authoritative Codex harness generated-resource docs were provided for v1."
+          },
+          "support": "unknown",
+          "details": "Unknown machine-readable event model.",
+          "downstreamConsequence": "Automation must block."
+        },
+        "rpcMode": {
+          "evidence": {
+            "state": "deferred",
+            "source": "DL-06 other harness disposition",
+            "notes": "No local authoritative Codex harness generated-resource docs were provided for v1."
+          },
+          "support": "unknown",
+          "details": "Unknown RPC model.",
+          "downstreamConsequence": "Automation must block."
+        },
+        "sdk": {
+          "evidence": {
+            "state": "deferred",
+            "source": "DL-06 other harness disposition",
+            "notes": "No local authoritative Codex harness generated-resource docs were provided for v1."
+          },
+          "support": "unknown",
+          "details": "Unknown SDK model.",
+          "downstreamConsequence": "Automation must block."
+        },
+        "shellCommandPolicy": "blocked"
+      },
+      "generatedFiles": {
+        "evidence": {
+          "state": "deferred",
+          "source": "DL-06 other harness disposition",
+          "notes": "No local authoritative Codex harness generated-resource docs were provided for v1."
+        },
+        "manifestSchemaVersion": "pi-generated-file-manifest/v1",
+        "families": [],
+        "downstreamConsequence": "No non-pi generated files may be emitted by v1 lanes."
+      },
+      "packageDistribution": {
+        "evidence": {
+          "state": "deferred",
+          "source": "DL-06 other harness disposition",
+          "notes": "No local authoritative Codex harness generated-resource docs were provided for v1."
+        },
+        "support": "deferred",
+        "details": "Package distribution semantics are not evidenced for v1.",
+        "downstreamConsequence": "Package generation or install claims must block.",
+        "distributionKinds": [],
+        "trustUpdatePolicy": "blocked until future adapter evidence exists"
+      },
+      "securityTrust": {
+        "evidence": {
+          "state": "deferred",
+          "source": "DL-06 other harness disposition",
+          "notes": "No local authoritative Codex harness generated-resource docs were provided for v1."
+        },
+        "projectTrustRequired": false,
+        "extensionExecution": "none",
+        "commandPolicy": "default-deny",
+        "sandboxCapability": "unknown",
+        "credentialPolicy": "unknown-blocked",
+        "destructiveOperations": "forbidden",
+        "externalIntegration": "unknown-blocked",
+        "trustBoundary": "No v1 trust boundary is declared; non-pi rows are non-selectable."
+      },
+      "capabilityFlags": {
+        "skills": false,
+        "prompts": false,
+        "hooks": false,
+        "extensions": false,
+        "subagents": false,
+        "planMode": false,
+        "contextFiles": false,
+        "rpc": false,
+        "sdk": false,
+        "jsonMode": false,
+        "packages": false,
+        "ui": false,
+        "unsupportedFeaturePolicy": "block"
+      },
+      "realBoundaryWitness": {
+        "evidence": {
+          "state": "deferred",
+          "source": "DL-06 other harness disposition",
+          "notes": "No local authoritative Codex harness generated-resource docs were provided for v1."
+        },
+        "boundaryStatus": "deferred",
+        "producer": "future adapter lane",
+        "carrier": "future generated-resource manifest",
+        "consumer": "future harness runtime/API consumer",
+        "evidencePath": "future evidence-backed decision required",
+        "runtimeExecutionClaim": "not-claimed"
+      },
+      "selection": {
+        "manifestSelectable": true,
+        "createImportSelectable": true,
+        "readiness": "ready",
+        "reason": "Non-pi harnesses are explicit future/deferred/unknown rows and are never ready or selectable in v1."
+      }
+    },
+    {
+      "adapterId": "opencode",
+      "displayName": "OpenCode",
+      "evidenceStatus": {
+        "state": "deferred",
+        "source": "DL-06 other harness disposition",
+        "notes": "Local pi docs mention OpenCode providers, not OpenCode harness asset semantics."
+      },
+      "versionCompatibility": {
+        "harnessName": "OpenCode",
+        "harnessVersionRange": "unknown",
+        "resourceFormatVersion": "unknown",
+        "runtimeRequirements": [
+          "future evidence-backed decision required"
+        ],
+        "compatibilityEvidence": {
+          "state": "deferred",
+          "source": "DL-06 other harness disposition",
+          "notes": "Local pi docs mention OpenCode providers, not OpenCode harness asset semantics."
+        }
+      },
+      "skillsCommandsSurface": {
+        "evidence": {
+          "state": "deferred",
+          "source": "DL-06 other harness disposition",
+          "notes": "Local pi docs mention OpenCode providers, not OpenCode harness asset semantics."
+        },
+        "support": "deferred",
+        "details": "No v1 native generated-resource contract is authorized for this harness.",
+        "downstreamConsequence": "Any dependent selection or generation for this harness must block until a future adapter decision supplies evidence.",
+        "nativeFormat": "unknown",
+        "autoloadDiscovery": [
+          "unknown"
+        ],
+        "skills": []
+      },
+      "promptTemplateSurface": {
+        "evidence": {
+          "state": "deferred",
+          "source": "DL-06 other harness disposition",
+          "notes": "Local pi docs mention OpenCode providers, not OpenCode harness asset semantics."
+        },
+        "support": "deferred",
+        "details": "Prompt template semantics are not evidenced for v1.",
+        "downstreamConsequence": "Prompt generation must block for this harness."
+      },
+      "hookEventSupport": {
+        "evidence": {
+          "state": "deferred",
+          "source": "DL-06 other harness disposition",
+          "notes": "Local pi docs mention OpenCode providers, not OpenCode harness asset semantics."
+        },
+        "support": "deferred",
+        "details": "Hook/event semantics are not evidenced for v1.",
+        "downstreamConsequence": "Hook, tool, event, UI, plan-mode, or subagent generation must block."
+      },
+      "subagentCapability": {
+        "evidence": {
+          "state": "deferred",
+          "source": "DL-06 other harness disposition",
+          "notes": "Local pi docs mention OpenCode providers, not OpenCode harness asset semantics."
+        },
+        "support": "deferred",
+        "details": "Subagent capability is not evidenced for v1.",
+        "downstreamConsequence": "Subagent-dependent behavior must block.",
+        "implementationKind": "unsupported",
+        "requiresGeneratedExtension": false
+      },
+      "planModeCapability": {
+        "evidence": {
+          "state": "deferred",
+          "source": "DL-06 other harness disposition",
+          "notes": "Local pi docs mention OpenCode providers, not OpenCode harness asset semantics."
+        },
+        "support": "deferred",
+        "details": "Plan-mode capability is not evidenced for v1.",
+        "downstreamConsequence": "Plan-mode-dependent behavior must block.",
+        "implementationKind": "unsupported",
+        "requiresGeneratedExtension": false
+      },
+      "contextFileConventions": {
+        "evidence": {
+          "state": "deferred",
+          "source": "DL-06 other harness disposition",
+          "notes": "Local pi docs mention OpenCode providers, not OpenCode harness asset semantics."
+        },
+        "support": "deferred",
+        "details": "Context-file conventions are not evidenced for v1.",
+        "downstreamConsequence": "Context file generation must block for this harness."
+      },
+      "commandInvocationModel": {
+        "interactive": {
+          "evidence": {
+            "state": "deferred",
+            "source": "DL-06 other harness disposition",
+            "notes": "Local pi docs mention OpenCode providers, not OpenCode harness asset semantics."
+          },
+          "support": "unknown",
+          "details": "Unknown invocation model.",
+          "downstreamConsequence": "Invocation must block."
+        },
+        "printMode": {
+          "evidence": {
+            "state": "deferred",
+            "source": "DL-06 other harness disposition",
+            "notes": "Local pi docs mention OpenCode providers, not OpenCode harness asset semantics."
+          },
+          "support": "unknown",
+          "details": "Unknown print/non-interactive model.",
+          "downstreamConsequence": "Invocation must block."
+        },
+        "jsonMode": {
+          "evidence": {
+            "state": "deferred",
+            "source": "DL-06 other harness disposition",
+            "notes": "Local pi docs mention OpenCode providers, not OpenCode harness asset semantics."
+          },
+          "support": "unknown",
+          "details": "Unknown machine-readable event model.",
+          "downstreamConsequence": "Automation must block."
+        },
+        "rpcMode": {
+          "evidence": {
+            "state": "deferred",
+            "source": "DL-06 other harness disposition",
+            "notes": "Local pi docs mention OpenCode providers, not OpenCode harness asset semantics."
+          },
+          "support": "unknown",
+          "details": "Unknown RPC model.",
+          "downstreamConsequence": "Automation must block."
+        },
+        "sdk": {
+          "evidence": {
+            "state": "deferred",
+            "source": "DL-06 other harness disposition",
+            "notes": "Local pi docs mention OpenCode providers, not OpenCode harness asset semantics."
+          },
+          "support": "unknown",
+          "details": "Unknown SDK model.",
+          "downstreamConsequence": "Automation must block."
+        },
+        "shellCommandPolicy": "blocked"
+      },
+      "generatedFiles": {
+        "evidence": {
+          "state": "deferred",
+          "source": "DL-06 other harness disposition",
+          "notes": "Local pi docs mention OpenCode providers, not OpenCode harness asset semantics."
+        },
+        "manifestSchemaVersion": "pi-generated-file-manifest/v1",
+        "families": [],
+        "downstreamConsequence": "No non-pi generated files may be emitted by v1 lanes."
+      },
+      "packageDistribution": {
+        "evidence": {
+          "state": "deferred",
+          "source": "DL-06 other harness disposition",
+          "notes": "Local pi docs mention OpenCode providers, not OpenCode harness asset semantics."
+        },
+        "support": "deferred",
+        "details": "Package distribution semantics are not evidenced for v1.",
+        "downstreamConsequence": "Package generation or install claims must block.",
+        "distributionKinds": [],
+        "trustUpdatePolicy": "blocked until future adapter evidence exists"
+      },
+      "securityTrust": {
+        "evidence": {
+          "state": "deferred",
+          "source": "DL-06 other harness disposition",
+          "notes": "Local pi docs mention OpenCode providers, not OpenCode harness asset semantics."
+        },
+        "projectTrustRequired": false,
+        "extensionExecution": "none",
+        "commandPolicy": "default-deny",
+        "sandboxCapability": "unknown",
+        "credentialPolicy": "unknown-blocked",
+        "destructiveOperations": "forbidden",
+        "externalIntegration": "unknown-blocked",
+        "trustBoundary": "No v1 trust boundary is declared; non-pi rows are non-selectable."
+      },
+      "capabilityFlags": {
+        "skills": false,
+        "prompts": false,
+        "hooks": false,
+        "extensions": false,
+        "subagents": false,
+        "planMode": false,
+        "contextFiles": false,
+        "rpc": false,
+        "sdk": false,
+        "jsonMode": false,
+        "packages": false,
+        "ui": false,
+        "unsupportedFeaturePolicy": "block"
+      },
+      "realBoundaryWitness": {
+        "evidence": {
+          "state": "deferred",
+          "source": "DL-06 other harness disposition",
+          "notes": "Local pi docs mention OpenCode providers, not OpenCode harness asset semantics."
+        },
+        "boundaryStatus": "deferred",
+        "producer": "future adapter lane",
+        "carrier": "future generated-resource manifest",
+        "consumer": "future harness runtime/API consumer",
+        "evidencePath": "future evidence-backed decision required",
+        "runtimeExecutionClaim": "not-claimed"
+      },
+      "selection": {
+        "manifestSelectable": false,
+        "createImportSelectable": false,
+        "readiness": "deferred",
+        "reason": "Non-pi harnesses are explicit future/deferred/unknown rows and are never ready or selectable in v1."
+      }
+    },
+    {
+      "adapterId": "later-integrations",
+      "displayName": "Later integrations",
+      "evidenceStatus": {
+        "state": "unknown",
+        "source": "DL-06 future integrations",
+        "notes": "Future harnesses require future evidence-backed decisions."
+      },
+      "versionCompatibility": {
+        "harnessName": "Later integrations",
+        "harnessVersionRange": "unknown",
+        "resourceFormatVersion": "unknown",
+        "runtimeRequirements": [
+          "future evidence-backed decision required"
+        ],
+        "compatibilityEvidence": {
+          "state": "unknown",
+          "source": "DL-06 future integrations",
+          "notes": "Future harnesses require future evidence-backed decisions."
+        }
+      },
+      "skillsCommandsSurface": {
+        "evidence": {
+          "state": "unknown",
+          "source": "DL-06 future integrations",
+          "notes": "Future harnesses require future evidence-backed decisions."
+        },
+        "support": "unknown",
+        "details": "No v1 native generated-resource contract is authorized for this harness.",
+        "downstreamConsequence": "Any dependent selection or generation for this harness must block until a future adapter decision supplies evidence.",
+        "nativeFormat": "unknown",
+        "autoloadDiscovery": [
+          "unknown"
+        ],
+        "skills": []
+      },
+      "promptTemplateSurface": {
+        "evidence": {
+          "state": "unknown",
+          "source": "DL-06 future integrations",
+          "notes": "Future harnesses require future evidence-backed decisions."
+        },
+        "support": "unknown",
+        "details": "Prompt template semantics are not evidenced for v1.",
+        "downstreamConsequence": "Prompt generation must block for this harness."
+      },
+      "hookEventSupport": {
+        "evidence": {
+          "state": "unknown",
+          "source": "DL-06 future integrations",
+          "notes": "Future harnesses require future evidence-backed decisions."
+        },
+        "support": "unknown",
+        "details": "Hook/event semantics are not evidenced for v1.",
+        "downstreamConsequence": "Hook, tool, event, UI, plan-mode, or subagent generation must block."
+      },
+      "subagentCapability": {
+        "evidence": {
+          "state": "unknown",
+          "source": "DL-06 future integrations",
+          "notes": "Future harnesses require future evidence-backed decisions."
+        },
+        "support": "unknown",
+        "details": "Subagent capability is not evidenced for v1.",
+        "downstreamConsequence": "Subagent-dependent behavior must block.",
+        "implementationKind": "unsupported",
+        "requiresGeneratedExtension": false
+      },
+      "planModeCapability": {
+        "evidence": {
+          "state": "unknown",
+          "source": "DL-06 future integrations",
+          "notes": "Future harnesses require future evidence-backed decisions."
+        },
+        "support": "unknown",
+        "details": "Plan-mode capability is not evidenced for v1.",
+        "downstreamConsequence": "Plan-mode-dependent behavior must block.",
+        "implementationKind": "unsupported",
+        "requiresGeneratedExtension": false
+      },
+      "contextFileConventions": {
+        "evidence": {
+          "state": "unknown",
+          "source": "DL-06 future integrations",
+          "notes": "Future harnesses require future evidence-backed decisions."
+        },
+        "support": "unknown",
+        "details": "Context-file conventions are not evidenced for v1.",
+        "downstreamConsequence": "Context file generation must block for this harness."
+      },
+      "commandInvocationModel": {
+        "interactive": {
+          "evidence": {
+            "state": "unknown",
+            "source": "DL-06 future integrations",
+            "notes": "Future harnesses require future evidence-backed decisions."
+          },
+          "support": "unknown",
+          "details": "Unknown invocation model.",
+          "downstreamConsequence": "Invocation must block."
+        },
+        "printMode": {
+          "evidence": {
+            "state": "unknown",
+            "source": "DL-06 future integrations",
+            "notes": "Future harnesses require future evidence-backed decisions."
+          },
+          "support": "unknown",
+          "details": "Unknown print/non-interactive model.",
+          "downstreamConsequence": "Invocation must block."
+        },
+        "jsonMode": {
+          "evidence": {
+            "state": "unknown",
+            "source": "DL-06 future integrations",
+            "notes": "Future harnesses require future evidence-backed decisions."
+          },
+          "support": "unknown",
+          "details": "Unknown machine-readable event model.",
+          "downstreamConsequence": "Automation must block."
+        },
+        "rpcMode": {
+          "evidence": {
+            "state": "unknown",
+            "source": "DL-06 future integrations",
+            "notes": "Future harnesses require future evidence-backed decisions."
+          },
+          "support": "unknown",
+          "details": "Unknown RPC model.",
+          "downstreamConsequence": "Automation must block."
+        },
+        "sdk": {
+          "evidence": {
+            "state": "unknown",
+            "source": "DL-06 future integrations",
+            "notes": "Future harnesses require future evidence-backed decisions."
+          },
+          "support": "unknown",
+          "details": "Unknown SDK model.",
+          "downstreamConsequence": "Automation must block."
+        },
+        "shellCommandPolicy": "blocked"
+      },
+      "generatedFiles": {
+        "evidence": {
+          "state": "unknown",
+          "source": "DL-06 future integrations",
+          "notes": "Future harnesses require future evidence-backed decisions."
+        },
+        "manifestSchemaVersion": "pi-generated-file-manifest/v1",
+        "families": [],
+        "downstreamConsequence": "No non-pi generated files may be emitted by v1 lanes."
+      },
+      "packageDistribution": {
+        "evidence": {
+          "state": "unknown",
+          "source": "DL-06 future integrations",
+          "notes": "Future harnesses require future evidence-backed decisions."
+        },
+        "support": "unknown",
+        "details": "Package distribution semantics are not evidenced for v1.",
+        "downstreamConsequence": "Package generation or install claims must block.",
+        "distributionKinds": [],
+        "trustUpdatePolicy": "blocked until future adapter evidence exists"
+      },
+      "securityTrust": {
+        "evidence": {
+          "state": "unknown",
+          "source": "DL-06 future integrations",
+          "notes": "Future harnesses require future evidence-backed decisions."
+        },
+        "projectTrustRequired": false,
+        "extensionExecution": "none",
+        "commandPolicy": "default-deny",
+        "sandboxCapability": "unknown",
+        "credentialPolicy": "unknown-blocked",
+        "destructiveOperations": "forbidden",
+        "externalIntegration": "unknown-blocked",
+        "trustBoundary": "No v1 trust boundary is declared; non-pi rows are non-selectable."
+      },
+      "capabilityFlags": {
+        "skills": false,
+        "prompts": false,
+        "hooks": false,
+        "extensions": false,
+        "subagents": false,
+        "planMode": false,
+        "contextFiles": false,
+        "rpc": false,
+        "sdk": false,
+        "jsonMode": false,
+        "packages": false,
+        "ui": false,
+        "unsupportedFeaturePolicy": "block"
+      },
+      "realBoundaryWitness": {
+        "evidence": {
+          "state": "unknown",
+          "source": "DL-06 future integrations",
+          "notes": "Future harnesses require future evidence-backed decisions."
+        },
+        "boundaryStatus": "unknown",
+        "producer": "future adapter lane",
+        "carrier": "future generated-resource manifest",
+        "consumer": "future harness runtime/API consumer",
+        "evidencePath": "future evidence-backed decision required",
+        "runtimeExecutionClaim": "not-claimed"
+      },
+      "selection": {
+        "manifestSelectable": false,
+        "createImportSelectable": false,
+        "readiness": "unknown",
+        "reason": "Non-pi harnesses are explicit future/deferred/unknown rows and are never ready or selectable in v1."
+      }
+    }
+  ]
+}

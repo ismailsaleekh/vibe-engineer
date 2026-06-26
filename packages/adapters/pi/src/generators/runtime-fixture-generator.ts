@@ -1,0 +1,371 @@
+import { getPiAdapterCapabilityMatrix } from "../capabilities/index.ts";
+import { getPiGeneratedFileManifest } from "../generated-file-manifest/index.ts";
+import {
+  SKILL_IDS,
+  validateCapabilityMatrix,
+  validateGeneratedFileManifest,
+  type GeneratedFileFamily,
+  type GeneratedFileFamilyId,
+  type GeneratedFileManifest,
+  type SkillId,
+} from "../schema/index.ts";
+import { assertPiRuntimeFixtureValid, validatePiRuntimeFixtureAgainstI14A } from "../runtime/validation.ts";
+import type {
+  PiRuntimeAsset,
+  PiRuntimeAssetMetadata,
+  PiRuntimeExtensionPolicy,
+  PiRuntimeFixture,
+  PiRuntimePromptContract,
+  PiRuntimeSkillProtocol,
+  PiRuntimeValidationIssue,
+} from "../runtime/types.ts";
+import { PiRuntimeContractError } from "../runtime/types.ts";
+
+const GENERATED_BY = "I-14B-pi-adapter-runtime-skill-consumption" as const;
+const RUNTIME_EXECUTION_CLAIM = "pending-live" as const;
+
+const fail = (path: string, code: string, message: string): never => {
+  const issues: readonly PiRuntimeValidationIssue[] = [{ path, code, message, severity: "error" }];
+  throw new PiRuntimeContractError(message, issues);
+};
+
+const familyById = (manifest: GeneratedFileManifest, familyId: GeneratedFileFamilyId): GeneratedFileFamily => {
+  const family = manifest.families.find((candidate) => candidate.familyId === familyId);
+  if (family !== undefined) {
+    return family;
+  }
+  return fail("i14a.generatedFileManifest.families", "missing_generated_file_family", `I-14A generated-file manifest does not contain ${familyId}.`);
+};
+
+const baseMetadata = (): Pick<PiRuntimeAssetMetadata, "generatedBy" | "runtimeExecutionClaim"> => ({
+  generatedBy: GENERATED_BY,
+  runtimeExecutionClaim: RUNTIME_EXECUTION_CLAIM,
+});
+
+const skillSummary = (skillId: SkillId): string => {
+  switch (skillId) {
+    case "brainstorm":
+      return "Explore unclear raw intent and persist one Work Brief for plan intake.";
+    case "grill-me":
+      return "Pressure-test assumptions and persist one Work Brief for plan intake.";
+    case "task":
+      return "Normalize a concrete request and persist one Work Brief for plan intake.";
+    case "plan":
+      return "Consume exactly one Work Brief and produce an Implementation Plan with Verification Delta.";
+    case "build":
+      return "Consume an approved Implementation Plan and produce a Build Result after implementation and verification evidence.";
+    case "ship":
+      return "Consume a Build Result and produce a Ship Packet; push or PR creation requires explicit approval.";
+  }
+};
+
+const skillProtocol = (skillId: SkillId): PiRuntimeSkillProtocol => {
+  switch (skillId) {
+    case "brainstorm":
+    case "grill-me":
+    case "task":
+      return {
+        skillId,
+        protocolKind: "work-brief-producer",
+        inputArtifact: "raw-intent",
+        outputArtifact: "work-brief",
+        forbiddenArtifacts: ["implementation-plan", "build-result", "ship-packet", "push", "pull-request"],
+        summary: skillSummary(skillId),
+      };
+    case "plan":
+      return {
+        skillId,
+        protocolKind: "implementation-plan-producer",
+        inputArtifact: "work-brief",
+        outputArtifact: "implementation-plan-with-verification-delta",
+        forbiddenArtifacts: ["build-result", "ship-packet", "push", "pull-request"],
+        summary: skillSummary(skillId),
+      };
+    case "build":
+      return {
+        skillId,
+        protocolKind: "build-result-producer",
+        inputArtifact: "approved-implementation-plan",
+        outputArtifact: "build-result",
+        forbiddenArtifacts: ["ship-packet", "push", "pull-request"],
+        summary: skillSummary(skillId),
+      };
+    case "ship":
+      return {
+        skillId,
+        protocolKind: "ship-packet-producer",
+        inputArtifact: "build-result",
+        outputArtifact: "ship-packet",
+        forbiddenArtifacts: ["push", "pull-request"],
+        summary: skillSummary(skillId),
+      };
+  }
+};
+
+const markdownSkill = (protocol: PiRuntimeSkillProtocol): string => `---
+name: ${protocol.skillId}
+description: ${protocol.summary} Use through /skill:${protocol.skillId} when the locked DL-03 ${protocol.skillId} protocol is needed.
+vibe-protocol: ${protocol.protocolKind}
+vibe-input-artifact: ${protocol.inputArtifact}
+vibe-output-artifact: ${protocol.outputArtifact}
+runtimeExecutionClaim: ${RUNTIME_EXECUTION_CLAIM}
+---
+
+# ${protocol.skillId}
+
+This generated pi skill is a domain-neutral adapter asset for the vibe-engineer locked skill protocol.
+
+## Protocol chain
+
+- Input artifact: ${protocol.inputArtifact}.
+- Output artifact: ${protocol.outputArtifact}.
+- The skill must persist its output through the harness artifact carrier; chat history alone is not a carrier.
+- Runtime execution claim: ${RUNTIME_EXECUTION_CLAIM}; live pi loading/execution is not claimed by this fixture.
+
+## Required behavior
+
+${protocol.summary}
+
+## Forbidden behavior
+
+${protocol.forbiddenArtifacts.map((artifact) => `- Do not produce or execute ${artifact} from this skill.`).join("\n")}
+- Do not embed secrets, credentials, project-specific business assumptions, destructive commands, or external mutations.
+- Do not claim selected pi runtime truth-green without a recorded real loader/executor witness.
+`;
+
+const promptContract = (skillId: SkillId): PiRuntimePromptContract => ({
+  templateName: `vibe-${skillId}`,
+  description: `Invoke the generated ${skillId} skill protocol with a persisted artifact handoff requirement.`,
+  argumentHint: "<artifact-or-request-ref>",
+  argumentContract: ["$1 must be a durable artifact path, work reference, or raw user request appropriate for the skill protocol.", "$@ may contain additional constraints; it must not contain secrets or production credentials."],
+  skillId,
+});
+
+const markdownPrompt = (contract: PiRuntimePromptContract): string => `---
+description: ${contract.description}
+argument-hint: "${contract.argumentHint}"
+vibe-template-kind: skill-workflow
+vibe-skill: ${contract.skillId}
+runtimeExecutionClaim: ${RUNTIME_EXECUTION_CLAIM}
+---
+Load and follow /skill:${contract.skillId}.
+
+Argument contract:
+- ${contract.argumentContract.join("\n- ")}
+
+Input reference: $1
+Additional constraints: ${"$@"}
+
+Do not proceed if the required artifact carrier is missing, malformed, or outside the current owned path scope.
+`;
+
+const extensionPolicy = (): PiRuntimeExtensionPolicy => ({
+  defaultDeny: true,
+  requiresCredentialsByDefault: false,
+  permitsDestructiveOperationsByDefault: false,
+  permitsExternalMutationByDefault: false,
+  claimsSandboxing: "not_provided",
+  runtimeExecutionClaim: RUNTIME_EXECUTION_CLAIM,
+  trustBoundary: "Project-local TypeScript extension executes only after pi project trust; this fixture registers no tools, performs no I/O, and claims no sandbox isolation.",
+});
+
+const extensionContent = (): string => `export const I14B_PI_RUNTIME_EXTENSION_POLICY = {
+  defaultDeny: true,
+  requiresCredentialsByDefault: false,
+  permitsDestructiveOperationsByDefault: false,
+  permitsExternalMutationByDefault: false,
+  claimsSandboxing: "not_provided",
+  runtimeExecutionClaim: "${RUNTIME_EXECUTION_CLAIM}",
+  trustBoundary: "Project-local TypeScript extension executes only after pi project trust; no sandbox isolation is claimed.",
+} as const;
+
+export default function i14bPiRuntimePolicyExtension(): void {
+  // Default-deny fixture: registers no tools, executes no commands, needs no credentials,
+  // performs no network or filesystem mutation, and makes no live runtime proof claim.
+}
+`;
+
+const packageManifestContent = (): string => `${JSON.stringify({
+  name: "vibe-engineer-pi-runtime-fixture",
+  private: true,
+  version: "0.0.0",
+  license: "MIT",
+  description: "Fixture-local pi resource manifest generated by I-14B; no package install or live runtime claim is implied.",
+  keywords: ["pi-package"],
+  pi: {
+    skills: ["./.pi/skills"],
+    prompts: ["./.pi/prompts"],
+    extensions: ["./.pi/extensions/i14b-runtime-policy.ts"],
+  },
+}, null, 2)}
+`;
+
+const contextContent = (fileName: "AGENTS.md" | "CLAUDE.md"): string => `# ${fileName === "AGENTS.md" ? "Agent" : "Cross-harness"} instructions for the vibe-engineer pi runtime fixture
+
+- Use the generated pi skills for the locked domain-neutral harness workflow only.
+- Preserve the artifact chain: Work Brief -> Implementation Plan with Verification Delta -> Build Result -> Ship Packet.
+- Treat live pi runtime loading as ${RUNTIME_EXECUTION_CLAIM}/BLOCKED until a real pi loader or executor witness records otherwise.
+- Do not embed secrets, credentials, production endpoints, project-specific business assumptions, destructive commands, pushes, releases, deploys, or pull-request creation without explicit approval.
+`;
+
+const harnessConfigContent = (): string => `${JSON.stringify({
+  schemaVersion: "vibe-engineer-pi-runtime-fixture-config/v1",
+  agenticHarness: "pi",
+  adapterCapabilityVersion: "pi-adapter-capability-matrix/v1",
+  generatedFileManifestVersion: "pi-generated-file-manifest/v1",
+  runtimeExecutionClaim: RUNTIME_EXECUTION_CLAIM,
+  downstreamLiveRuntimeBlock: "pending-live/BLOCKED",
+}, null, 2)}
+`;
+
+const skillAssets = (family: GeneratedFileFamily): readonly PiRuntimeAsset[] => {
+  const selectedPathPattern = family.pathPatterns.find((pattern) => pattern === ".pi/skills/<skill>/SKILL.md") ?? family.pathPatterns[0];
+  const pathPattern = selectedPathPattern === undefined
+    ? fail("i14a.generatedFileManifest.families.pi-skill-files.pathPatterns", "missing_required_path_pattern", "No pi skill path pattern is available.")
+    : selectedPathPattern;
+  return SKILL_IDS.map((skillId) => {
+    const protocol = skillProtocol(skillId);
+    return {
+      kind: "skill",
+      familyId: family.familyId,
+      path: pathPattern.replace("<skill>", skillId),
+      content: markdownSkill(protocol),
+      metadata: {
+        ...baseMetadata(),
+        skillProtocol: protocol,
+      },
+    } satisfies PiRuntimeAsset;
+  });
+};
+
+const promptAssets = (family: GeneratedFileFamily): readonly PiRuntimeAsset[] => {
+  const selectedPathPattern = family.pathPatterns.find((pattern) => pattern === ".pi/prompts/<name>.md") ?? family.pathPatterns[0];
+  const pathPattern = selectedPathPattern === undefined
+    ? fail("i14a.generatedFileManifest.families.pi-prompt-templates.pathPatterns", "missing_required_path_pattern", "No pi prompt template path pattern is available.")
+    : selectedPathPattern;
+  return SKILL_IDS.map((skillId) => {
+    const contract = promptContract(skillId);
+    return {
+      kind: "prompt-template",
+      familyId: family.familyId,
+      path: pathPattern.replace("<name>", contract.templateName),
+      content: markdownPrompt(contract),
+      metadata: {
+        ...baseMetadata(),
+        promptContract: contract,
+      },
+    } satisfies PiRuntimeAsset;
+  });
+};
+
+const extensionAssets = (family: GeneratedFileFamily): readonly PiRuntimeAsset[] => [{
+  kind: "extension",
+  familyId: family.familyId,
+  path: ".pi/extensions/i14b-runtime-policy.ts",
+  content: extensionContent(),
+  metadata: {
+    ...baseMetadata(),
+    extensionPolicy: extensionPolicy(),
+  },
+}];
+
+const packageManifestAsset = (family: GeneratedFileFamily): PiRuntimeAsset => ({
+  kind: "package-manifest",
+  familyId: family.familyId,
+  path: "package.json",
+  content: packageManifestContent(),
+  metadata: baseMetadata(),
+});
+
+const contextAssets = (family: GeneratedFileFamily): readonly PiRuntimeAsset[] => (["AGENTS.md", "CLAUDE.md"] as const).map((fileName) => ({
+  kind: "context",
+  familyId: family.familyId,
+  path: fileName,
+  content: contextContent(fileName),
+  metadata: {
+    ...baseMetadata(),
+    contextPolicy: {
+      domainNeutral: true,
+      secretsAllowed: false,
+      businessDomainAssumptionsAllowed: false,
+      liveRuntimeTruthGreenClaimAllowed: false,
+    },
+  },
+} satisfies PiRuntimeAsset));
+
+const harnessConfigAsset = (family: GeneratedFileFamily): PiRuntimeAsset => ({
+  kind: "harness-config",
+  familyId: family.familyId,
+  path: ".vibe/harness/pi-runtime.json",
+  content: harnessConfigContent(),
+  metadata: baseMetadata(),
+});
+
+export const generatePiRuntimeFixture = (): PiRuntimeFixture => {
+  const capabilityMatrix = getPiAdapterCapabilityMatrix();
+  const generatedFileManifest = getPiGeneratedFileManifest();
+  const capabilityValidation = validateCapabilityMatrix(capabilityMatrix);
+  if (!capabilityValidation.valid) {
+    throw new PiRuntimeContractError("I-14A capability matrix is not valid.", capabilityValidation.issues.map((capabilityIssue) => ({ ...capabilityIssue, severity: "error" as const })));
+  }
+  const manifestValidation = validateGeneratedFileManifest(generatedFileManifest);
+  if (!manifestValidation.valid) {
+    throw new PiRuntimeContractError("I-14A generated-file manifest is not valid.", manifestValidation.issues.map((manifestIssue) => ({ ...manifestIssue, severity: "error" as const })));
+  }
+
+  const assets: PiRuntimeAsset[] = [];
+  assets.push(...skillAssets(familyById(generatedFileManifest, "pi-skill-files")));
+  assets.push(...promptAssets(familyById(generatedFileManifest, "pi-prompt-templates")));
+  assets.push(...extensionAssets(familyById(generatedFileManifest, "pi-extensions")));
+  assets.push(packageManifestAsset(familyById(generatedFileManifest, "pi-package-manifest")));
+  assets.push(...contextAssets(familyById(generatedFileManifest, "context-files")));
+  assets.push(harnessConfigAsset(familyById(generatedFileManifest, "harness-config")));
+
+  const fixture: PiRuntimeFixture = {
+    schemaVersion: "pi-runtime-fixture/v1",
+    mode: "runtime-fixture",
+    adapterId: "pi",
+    adapterCapabilityVersion: "pi-adapter-capability-matrix/v1",
+    generatedFileManifestVersion: "pi-generated-file-manifest/v1",
+    runtimeExecutionClaim: RUNTIME_EXECUTION_CLAIM,
+    downstreamLiveRuntimeBlock: "pending-live/BLOCKED",
+    assets,
+  };
+
+  const validation = validatePiRuntimeFixtureAgainstI14A(fixture, capabilityMatrix, generatedFileManifest);
+  if (!validation.valid) {
+    throw new PiRuntimeContractError("Generated pi runtime fixture failed I-14B validation.", validation.issues);
+  }
+  return assertPiRuntimeFixtureValid(fixture);
+};
+
+export const serializePiRuntimeFixtureManifest = (fixture: PiRuntimeFixture): string => `${JSON.stringify({
+  schemaVersion: fixture.schemaVersion,
+  mode: fixture.mode,
+  adapterId: fixture.adapterId,
+  adapterCapabilityVersion: fixture.adapterCapabilityVersion,
+  generatedFileManifestVersion: fixture.generatedFileManifestVersion,
+  runtimeExecutionClaim: fixture.runtimeExecutionClaim,
+  downstreamLiveRuntimeBlock: fixture.downstreamLiveRuntimeBlock,
+  assets: fixture.assets.map((asset) => ({
+    kind: asset.kind,
+    familyId: asset.familyId,
+    path: asset.path,
+    metadata: asset.metadata,
+  })),
+}, null, 2)}
+`;
+
+export const generatePiRuntimeFixtureAssetsWithManifest = (): readonly PiRuntimeAsset[] => {
+  const fixture = generatePiRuntimeFixture();
+  return [
+    ...fixture.assets,
+    {
+      kind: "harness-config",
+      familyId: "harness-config",
+      path: ".vibe/harness/pi-runtime-assets.json",
+      content: serializePiRuntimeFixtureManifest(fixture),
+      metadata: baseMetadata(),
+    },
+  ];
+};
