@@ -1,0 +1,928 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.vibe-engineer.dev/artifacts/v1/skill-manifest.schema.json",
+  "title": "SkillManifestV1",
+  "description": "Canonical DL-02 SkillManifestV1 artifact schema.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "minLength": 1,
+      "const": "1.0.0",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "artifactKind": {
+      "type": "string",
+      "minLength": 1,
+      "const": "skill_manifest",
+      "enum": [
+        "skill_manifest"
+      ]
+    },
+    "artifactId": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[a-z0-9][a-z0-9._:-]*$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "createdAt": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$|^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
+    },
+    "updatedAt": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$|^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
+    },
+    "producer": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "type": "string",
+          "minLength": 1,
+          "enum": [
+            "skill",
+            "agent",
+            "cli",
+            "schematic",
+            "verification_runner",
+            "human_operator",
+            "system"
+          ]
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[a-z0-9][a-z0-9._:-]*$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "runId": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[a-z0-9][a-z0-9._:-]*$"
+        }
+      },
+      "required": [
+        "kind",
+        "id",
+        "name"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "minLength": 1,
+      "enum": [
+        "active",
+        "deprecated",
+        "experimental",
+        "disabled"
+      ]
+    },
+    "ownership": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "ownerLane": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ownedWritePaths": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^.+$"
+          },
+          "minItems": 1
+        },
+        "readOnlyPaths": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^.+$"
+          }
+        },
+        "untouchablePaths": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^.+$"
+          }
+        },
+        "concurrencyNotes": {
+          "type": "string",
+          "minLength": 1
+        },
+        "handoffPolicy": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "ownerLane",
+        "ownedWritePaths",
+        "readOnlyPaths",
+        "untouchablePaths",
+        "concurrencyNotes"
+      ]
+    },
+    "links": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "rel": {
+            "type": "string",
+            "minLength": 1,
+            "enum": [
+              "raw_intent",
+              "derived_from",
+              "supersedes",
+              "superseded_by",
+              "implements",
+              "verifies",
+              "evidence_for",
+              "consumed_by",
+              "produced_by",
+              "context_for",
+              "registry_entry_for",
+              "manifest_for",
+              "verification_delta_of",
+              "build_result_of",
+              "ship_packet_of"
+            ]
+          },
+          "artifactKind": {
+            "type": "string",
+            "minLength": 1,
+            "enum": [
+              "work_brief",
+              "implementation_plan",
+              "verification_delta",
+              "build_result",
+              "ship_packet",
+              "evidence_packet",
+              "agent_registry_entry",
+              "context_file_header",
+              "schematic_manifest",
+              "skill_manifest"
+            ]
+          },
+          "artifactId": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[a-z0-9][a-z0-9._:-]*$"
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^.+$"
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "statusAtLinkTime": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "rel",
+          "artifactKind",
+          "artifactId",
+          "path",
+          "required",
+          "statusAtLinkTime"
+        ]
+      },
+      "minItems": 1
+    },
+    "extensions": {
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^[a-z][a-z0-9]*(\\.[a-z0-9][a-z0-9-]*)+$|^@[a-z0-9][a-z0-9-]*/[a-z0-9][a-z0-9-]*$"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "schemaVersion"
+        ],
+        "properties": {
+          "schemaVersion": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^\\d+\\.\\d+\\.\\d+$"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "description": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "sourceRefs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "kind": {
+            "type": "string",
+            "minLength": 1,
+            "enum": [
+              "source_doc",
+              "prompt",
+              "issue",
+              "url",
+              "artifact",
+              "raw_intent"
+            ]
+          },
+          "ref": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "kind",
+          "ref"
+        ]
+      }
+    },
+    "approvedBy": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "producer": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "type": "string",
+              "minLength": 1,
+              "enum": [
+                "skill",
+                "agent",
+                "cli",
+                "schematic",
+                "verification_runner",
+                "human_operator",
+                "system"
+              ]
+            },
+            "id": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^[a-z0-9][a-z0-9._:-]*$"
+            },
+            "name": {
+              "type": "string",
+              "minLength": 1
+            },
+            "version": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^\\d+\\.\\d+\\.\\d+$"
+            },
+            "runId": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^[a-z0-9][a-z0-9._:-]*$"
+            }
+          },
+          "required": [
+            "kind",
+            "id",
+            "name"
+          ]
+        },
+        "approvedAt": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$|^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
+        }
+      },
+      "required": [
+        "producer",
+        "approvedAt"
+      ]
+    },
+    "supersessionReason": {
+      "type": "string"
+    },
+    "retention": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "policy": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "policy",
+        "reason"
+      ]
+    },
+    "skillId": {
+      "type": "string",
+      "minLength": 1,
+      "enum": [
+        "brainstorm",
+        "grill-me",
+        "task",
+        "plan",
+        "build",
+        "ship"
+      ]
+    },
+    "skillVersion": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 1
+    },
+    "inputArtifactSchemas": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "schemaId": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^https://schemas\\.vibe-engineer\\.dev/.+\\.schema\\.json$"
+          },
+          "schemaVersion": {
+            "type": "string",
+            "minLength": 1,
+            "const": "1.0.0",
+            "pattern": "^\\d+\\.\\d+\\.\\d+$"
+          },
+          "artifactKind": {
+            "type": "string",
+            "minLength": 1,
+            "enum": [
+              "work_brief",
+              "implementation_plan",
+              "verification_delta",
+              "build_result",
+              "ship_packet",
+              "evidence_packet",
+              "agent_registry_entry",
+              "context_file_header",
+              "schematic_manifest",
+              "skill_manifest"
+            ]
+          }
+        },
+        "required": [
+          "schemaId",
+          "schemaVersion",
+          "artifactKind"
+        ]
+      }
+    },
+    "outputArtifactSchemas": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "schemaId": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^https://schemas\\.vibe-engineer\\.dev/.+\\.schema\\.json$"
+          },
+          "schemaVersion": {
+            "type": "string",
+            "minLength": 1,
+            "const": "1.0.0",
+            "pattern": "^\\d+\\.\\d+\\.\\d+$"
+          },
+          "artifactKind": {
+            "type": "string",
+            "minLength": 1,
+            "enum": [
+              "work_brief",
+              "implementation_plan",
+              "verification_delta",
+              "build_result",
+              "ship_packet",
+              "evidence_packet",
+              "agent_registry_entry",
+              "context_file_header",
+              "schematic_manifest",
+              "skill_manifest"
+            ]
+          }
+        },
+        "required": [
+          "schemaId",
+          "schemaVersion",
+          "artifactKind"
+        ]
+      },
+      "minItems": 1
+    },
+    "allowedActions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    },
+    "forbiddenActions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    },
+    "clarifyingQuestionPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "mayAsk": {
+          "type": "boolean"
+        },
+        "conditions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "required": [
+        "mayAsk",
+        "conditions"
+      ]
+    },
+    "blockingPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "blockWhen": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "evidenceRequired": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "blockWhen",
+        "evidenceRequired"
+      ]
+    },
+    "subagentRelationships": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "agentRef": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "rel": {
+                "type": "string",
+                "minLength": 1,
+                "enum": [
+                  "raw_intent",
+                  "derived_from",
+                  "supersedes",
+                  "superseded_by",
+                  "implements",
+                  "verifies",
+                  "evidence_for",
+                  "consumed_by",
+                  "produced_by",
+                  "context_for",
+                  "registry_entry_for",
+                  "manifest_for",
+                  "verification_delta_of",
+                  "build_result_of",
+                  "ship_packet_of"
+                ]
+              },
+              "artifactKind": {
+                "type": "string",
+                "minLength": 1,
+                "enum": [
+                  "work_brief",
+                  "implementation_plan",
+                  "verification_delta",
+                  "build_result",
+                  "ship_packet",
+                  "evidence_packet",
+                  "agent_registry_entry",
+                  "context_file_header",
+                  "schematic_manifest",
+                  "skill_manifest"
+                ]
+              },
+              "artifactId": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "^[a-z0-9][a-z0-9._:-]*$"
+              },
+              "path": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "^.+$"
+              },
+              "required": {
+                "type": "boolean"
+              },
+              "statusAtLinkTime": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "rel",
+              "artifactKind",
+              "artifactId",
+              "path",
+              "required",
+              "statusAtLinkTime"
+            ]
+          },
+          "role": {
+            "type": "string",
+            "minLength": 1,
+            "enum": [
+              "orchestrator",
+              "specialist",
+              "validator",
+              "fixer",
+              "reviewer",
+              "meta"
+            ]
+          }
+        },
+        "required": [
+          "agentRef",
+          "role"
+        ]
+      }
+    },
+    "validatorFixerPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "maxIterations": {
+          "type": "integer"
+        },
+        "independentValidationRequired": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "maxIterations",
+        "independentValidationRequired"
+      ]
+    },
+    "storageHandoffContract": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "artifactRefs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "rel": {
+                "type": "string",
+                "minLength": 1,
+                "enum": [
+                  "raw_intent",
+                  "derived_from",
+                  "supersedes",
+                  "superseded_by",
+                  "implements",
+                  "verifies",
+                  "evidence_for",
+                  "consumed_by",
+                  "produced_by",
+                  "context_for",
+                  "registry_entry_for",
+                  "manifest_for",
+                  "verification_delta_of",
+                  "build_result_of",
+                  "ship_packet_of"
+                ]
+              },
+              "artifactKind": {
+                "type": "string",
+                "minLength": 1,
+                "enum": [
+                  "work_brief",
+                  "implementation_plan",
+                  "verification_delta",
+                  "build_result",
+                  "ship_packet",
+                  "evidence_packet",
+                  "agent_registry_entry",
+                  "context_file_header",
+                  "schematic_manifest",
+                  "skill_manifest"
+                ]
+              },
+              "artifactId": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "^[a-z0-9][a-z0-9._:-]*$"
+              },
+              "path": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "^.+$"
+              },
+              "required": {
+                "type": "boolean"
+              },
+              "statusAtLinkTime": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "rel",
+              "artifactKind",
+              "artifactId",
+              "path",
+              "required",
+              "statusAtLinkTime"
+            ]
+          }
+        },
+        "delegatedWritePaths": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^.+$"
+          }
+        },
+        "nextSkillHandoffConstraints": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "required": [
+        "artifactRefs",
+        "delegatedWritePaths",
+        "nextSkillHandoffConstraints"
+      ]
+    },
+    "selectedHarnessIntegrationHooks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "rel": {
+            "type": "string",
+            "minLength": 1,
+            "enum": [
+              "raw_intent",
+              "derived_from",
+              "supersedes",
+              "superseded_by",
+              "implements",
+              "verifies",
+              "evidence_for",
+              "consumed_by",
+              "produced_by",
+              "context_for",
+              "registry_entry_for",
+              "manifest_for",
+              "verification_delta_of",
+              "build_result_of",
+              "ship_packet_of"
+            ]
+          },
+          "artifactKind": {
+            "type": "string",
+            "minLength": 1,
+            "enum": [
+              "work_brief",
+              "implementation_plan",
+              "verification_delta",
+              "build_result",
+              "ship_packet",
+              "evidence_packet",
+              "agent_registry_entry",
+              "context_file_header",
+              "schematic_manifest",
+              "skill_manifest"
+            ]
+          },
+          "artifactId": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[a-z0-9][a-z0-9._:-]*$"
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^.+$"
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "statusAtLinkTime": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "rel",
+          "artifactKind",
+          "artifactId",
+          "path",
+          "required",
+          "statusAtLinkTime"
+        ]
+      }
+    },
+    "owner": {
+      "type": "string",
+      "minLength": 1
+    },
+    "examples": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "evals": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "rel": {
+            "type": "string",
+            "minLength": 1,
+            "enum": [
+              "raw_intent",
+              "derived_from",
+              "supersedes",
+              "superseded_by",
+              "implements",
+              "verifies",
+              "evidence_for",
+              "consumed_by",
+              "produced_by",
+              "context_for",
+              "registry_entry_for",
+              "manifest_for",
+              "verification_delta_of",
+              "build_result_of",
+              "ship_packet_of"
+            ]
+          },
+          "artifactKind": {
+            "type": "string",
+            "minLength": 1,
+            "enum": [
+              "work_brief",
+              "implementation_plan",
+              "verification_delta",
+              "build_result",
+              "ship_packet",
+              "evidence_packet",
+              "agent_registry_entry",
+              "context_file_header",
+              "schematic_manifest",
+              "skill_manifest"
+            ]
+          },
+          "artifactId": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[a-z0-9][a-z0-9._:-]*$"
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^.+$"
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "statusAtLinkTime": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "rel",
+          "artifactKind",
+          "artifactId",
+          "path",
+          "required",
+          "statusAtLinkTime"
+        ]
+      }
+    },
+    "changelog": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "deprecation": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": true
+    },
+    "securityNotes": {
+      "type": "string",
+      "minLength": 1
+    },
+    "contextRequirements": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "artifactKind",
+    "artifactId",
+    "title",
+    "createdAt",
+    "updatedAt",
+    "producer",
+    "status",
+    "ownership",
+    "links",
+    "extensions",
+    "skillId",
+    "skillVersion",
+    "purpose",
+    "inputArtifactSchemas",
+    "outputArtifactSchemas",
+    "allowedActions",
+    "forbiddenActions",
+    "clarifyingQuestionPolicy",
+    "blockingPolicy",
+    "subagentRelationships",
+    "validatorFixerPolicy",
+    "storageHandoffContract",
+    "selectedHarnessIntegrationHooks",
+    "owner"
+  ]
+}

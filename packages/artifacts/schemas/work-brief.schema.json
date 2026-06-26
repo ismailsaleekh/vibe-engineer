@@ -1,0 +1,644 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.vibe-engineer.dev/artifacts/v1/work-brief.schema.json",
+  "title": "WorkBriefV1",
+  "description": "Canonical DL-02 WorkBriefV1 artifact schema.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "minLength": 1,
+      "const": "1.0.0",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "artifactKind": {
+      "type": "string",
+      "minLength": 1,
+      "const": "work_brief",
+      "enum": [
+        "work_brief"
+      ]
+    },
+    "artifactId": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[a-z0-9][a-z0-9._:-]*$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "createdAt": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$|^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
+    },
+    "updatedAt": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$|^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
+    },
+    "producer": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "type": "string",
+          "minLength": 1,
+          "enum": [
+            "skill",
+            "agent",
+            "cli",
+            "schematic",
+            "verification_runner",
+            "human_operator",
+            "system"
+          ]
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[a-z0-9][a-z0-9._:-]*$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^\\d+\\.\\d+\\.\\d+$"
+        },
+        "runId": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[a-z0-9][a-z0-9._:-]*$"
+        }
+      },
+      "required": [
+        "kind",
+        "id",
+        "name"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "minLength": 1,
+      "enum": [
+        "draft",
+        "ready",
+        "blocked",
+        "superseded"
+      ]
+    },
+    "ownership": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "ownerLane": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ownedWritePaths": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^.+$"
+          },
+          "minItems": 1
+        },
+        "readOnlyPaths": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^.+$"
+          }
+        },
+        "untouchablePaths": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^.+$"
+          }
+        },
+        "concurrencyNotes": {
+          "type": "string",
+          "minLength": 1
+        },
+        "handoffPolicy": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "ownerLane",
+        "ownedWritePaths",
+        "readOnlyPaths",
+        "untouchablePaths",
+        "concurrencyNotes"
+      ]
+    },
+    "links": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "rel": {
+            "type": "string",
+            "minLength": 1,
+            "enum": [
+              "raw_intent",
+              "derived_from",
+              "supersedes",
+              "superseded_by",
+              "implements",
+              "verifies",
+              "evidence_for",
+              "consumed_by",
+              "produced_by",
+              "context_for",
+              "registry_entry_for",
+              "manifest_for",
+              "verification_delta_of",
+              "build_result_of",
+              "ship_packet_of"
+            ]
+          },
+          "artifactKind": {
+            "type": "string",
+            "minLength": 1,
+            "enum": [
+              "work_brief",
+              "implementation_plan",
+              "verification_delta",
+              "build_result",
+              "ship_packet",
+              "evidence_packet",
+              "agent_registry_entry",
+              "context_file_header",
+              "schematic_manifest",
+              "skill_manifest"
+            ]
+          },
+          "artifactId": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[a-z0-9][a-z0-9._:-]*$"
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^.+$"
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "statusAtLinkTime": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "rel",
+          "artifactKind",
+          "artifactId",
+          "path",
+          "required",
+          "statusAtLinkTime"
+        ]
+      },
+      "minItems": 1
+    },
+    "extensions": {
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^[a-z][a-z0-9]*(\\.[a-z0-9][a-z0-9-]*)+$|^@[a-z0-9][a-z0-9-]*/[a-z0-9][a-z0-9-]*$"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "schemaVersion"
+        ],
+        "properties": {
+          "schemaVersion": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^\\d+\\.\\d+\\.\\d+$"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "description": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "sourceRefs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "kind": {
+            "type": "string",
+            "minLength": 1,
+            "enum": [
+              "source_doc",
+              "prompt",
+              "issue",
+              "url",
+              "artifact",
+              "raw_intent"
+            ]
+          },
+          "ref": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "kind",
+          "ref"
+        ]
+      }
+    },
+    "approvedBy": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "producer": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "type": "string",
+              "minLength": 1,
+              "enum": [
+                "skill",
+                "agent",
+                "cli",
+                "schematic",
+                "verification_runner",
+                "human_operator",
+                "system"
+              ]
+            },
+            "id": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^[a-z0-9][a-z0-9._:-]*$"
+            },
+            "name": {
+              "type": "string",
+              "minLength": 1
+            },
+            "version": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^\\d+\\.\\d+\\.\\d+$"
+            },
+            "runId": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^[a-z0-9][a-z0-9._:-]*$"
+            }
+          },
+          "required": [
+            "kind",
+            "id",
+            "name"
+          ]
+        },
+        "approvedAt": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$|^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
+        }
+      },
+      "required": [
+        "producer",
+        "approvedAt"
+      ]
+    },
+    "supersessionReason": {
+      "type": "string"
+    },
+    "retention": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "policy": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "policy",
+        "reason"
+      ]
+    },
+    "sourceSkill": {
+      "type": "string",
+      "minLength": 1,
+      "enum": [
+        "brainstorm",
+        "grill-me",
+        "task"
+      ]
+    },
+    "workType": {
+      "type": "string",
+      "minLength": 1,
+      "enum": [
+        "feature",
+        "bug",
+        "chore",
+        "refactor",
+        "research",
+        "decision"
+      ]
+    },
+    "background": {
+      "type": "string",
+      "minLength": 1
+    },
+    "problemOrOpportunity": {
+      "type": "string",
+      "minLength": 1
+    },
+    "desiredOutcome": {
+      "type": "string",
+      "minLength": 1
+    },
+    "constraints": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "userVisibleBehavior": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "nonGoals": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "risksAndUnknowns": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "acceptanceNotes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[a-z0-9][a-z0-9._:-]*$"
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1
+          },
+          "candidateScenarioRefs": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "required": [
+          "id",
+          "description"
+        ]
+      },
+      "minItems": 1
+    },
+    "sourceMetadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "rawIntentRefs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "conversationRefs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "operatorRefs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "inputTimestamp": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$|^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
+        }
+      },
+      "required": [
+        "rawIntentRefs",
+        "conversationRefs",
+        "operatorRefs"
+      ]
+    },
+    "observedBehavior": {
+      "type": "string"
+    },
+    "expectedBehavior": {
+      "type": "string"
+    },
+    "reproductionSteps": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "logsOrErrors": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "affectedSurface": {
+      "type": "string"
+    },
+    "suspectedCause": {
+      "type": "string"
+    },
+    "urgency": {
+      "type": "string",
+      "minLength": 1,
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "urgent"
+      ]
+    },
+    "candidateE2ECases": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "candidateUIStates": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "openQuestions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "assumptions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "relatedArtifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "rel": {
+            "type": "string",
+            "minLength": 1,
+            "enum": [
+              "raw_intent",
+              "derived_from",
+              "supersedes",
+              "superseded_by",
+              "implements",
+              "verifies",
+              "evidence_for",
+              "consumed_by",
+              "produced_by",
+              "context_for",
+              "registry_entry_for",
+              "manifest_for",
+              "verification_delta_of",
+              "build_result_of",
+              "ship_packet_of"
+            ]
+          },
+          "artifactKind": {
+            "type": "string",
+            "minLength": 1,
+            "enum": [
+              "work_brief",
+              "implementation_plan",
+              "verification_delta",
+              "build_result",
+              "ship_packet",
+              "evidence_packet",
+              "agent_registry_entry",
+              "context_file_header",
+              "schematic_manifest",
+              "skill_manifest"
+            ]
+          },
+          "artifactId": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[a-z0-9][a-z0-9._:-]*$"
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^.+$"
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "statusAtLinkTime": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "rel",
+          "artifactKind",
+          "artifactId",
+          "path",
+          "required",
+          "statusAtLinkTime"
+        ]
+      }
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "artifactKind",
+    "artifactId",
+    "title",
+    "createdAt",
+    "updatedAt",
+    "producer",
+    "status",
+    "ownership",
+    "links",
+    "extensions",
+    "sourceSkill",
+    "workType",
+    "background",
+    "problemOrOpportunity",
+    "desiredOutcome",
+    "constraints",
+    "userVisibleBehavior",
+    "nonGoals",
+    "risksAndUnknowns",
+    "acceptanceNotes",
+    "sourceMetadata"
+  ]
+}

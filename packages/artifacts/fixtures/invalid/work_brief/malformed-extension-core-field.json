@@ -1,0 +1,82 @@
+{
+  "schemaVersion": "1.0.0",
+  "artifactKind": "work_brief",
+  "artifactId": "artifact-work_brief-001",
+  "title": "Work Brief valid fixture",
+  "createdAt": "2026-06-23T00:00:00.000Z",
+  "updatedAt": "2026-06-23T00:00:00.000Z",
+  "producer": {
+    "kind": "skill",
+    "id": "skill-task",
+    "name": "task",
+    "version": "1.0.0",
+    "runId": "run-001"
+  },
+  "status": "ready",
+  "ownership": {
+    "ownerLane": "I-01A-artifact-schemas",
+    "ownedWritePaths": [
+      "packages/artifacts/**"
+    ],
+    "readOnlyPaths": [
+      "docs/decisions/**"
+    ],
+    "untouchablePaths": [
+      ".git/**"
+    ],
+    "concurrencyNotes": "owned fixture"
+  },
+  "links": [
+    {
+      "rel": "raw_intent",
+      "artifactKind": "work_brief",
+      "artifactId": "artifact-work_brief-001",
+      "path": "fixtures/valid/work_brief.json",
+      "required": true,
+      "statusAtLinkTime": "captured"
+    }
+  ],
+  "extensions": {
+    "dev.vibe.fixture": {
+      "schemaVersion": "1.0.0",
+      "note": "domain-neutral fixture extension",
+      "title": "extension redefines a core field"
+    }
+  },
+  "tags": [
+    "domain-neutral"
+  ],
+  "sourceSkill": "task",
+  "workType": "feature",
+  "background": "A generic harness workflow needs a strict artifact contract.",
+  "problemOrOpportunity": "Consumers need typed JSON handoffs.",
+  "desiredOutcome": "Validators accept only canonical artifacts.",
+  "constraints": [
+    "Use JSON carriers"
+  ],
+  "userVisibleBehavior": [
+    "Validation errors are structured"
+  ],
+  "nonGoals": [
+    "No business-domain defaults"
+  ],
+  "risksAndUnknowns": [
+    "Schema drift"
+  ],
+  "acceptanceNotes": [
+    {
+      "id": "accept-schema",
+      "description": "Valid artifacts pass and invalid artifacts fail."
+    }
+  ],
+  "sourceMetadata": {
+    "rawIntentRefs": [
+      "intent-001"
+    ],
+    "conversationRefs": [],
+    "operatorRefs": [
+      "operator-001"
+    ],
+    "inputTimestamp": "2026-06-23T00:00:00.000Z"
+  }
+}

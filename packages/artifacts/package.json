@@ -1,0 +1,32 @@
+{
+  "name": "@vibe-engineer/artifacts",
+  "version": "0.0.0",
+  "license": "MIT",
+  "type": "module",
+  "description": "Canonical JSON schemas, generated types, and fail-closed validators for vibe-engineer artifacts.",
+  "private": true,
+  "exports": {
+    ".": {
+      "types": "./src/generated/types.d.ts",
+      "import": "./src/index.js"
+    },
+    "./schemas": "./src/schema-registry.js",
+    "./schemas/*": "./schemas/*"
+  },
+  "scripts": {
+    "generate:types": "node scripts/generate-types.mjs",
+    "check:types": "node scripts/check-generated-types.mjs",
+    "typecheck": "node scripts/check-generated-types.mjs && node scripts/typecheck-public-entrypoint.mjs",
+    "test": "node tests/run-tests.mjs",
+    "build": "node scripts/check-generated-types.mjs && node tests/run-tests.mjs"
+  },
+  "vibeEngineer": {
+    "implementationUnit": "I-01A-artifact-schemas",
+    "implementationStatus": "implemented",
+    "packageRole": "internal-workspace-package",
+    "sourceStatus": "package-owned-source-created"
+  },
+  "dependencies": {
+    "ajv": "8.17.1"
+  }
+}

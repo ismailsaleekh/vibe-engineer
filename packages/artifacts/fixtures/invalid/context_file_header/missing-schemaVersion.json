@@ -1,0 +1,109 @@
+{
+  "artifactKind": "context_file_header",
+  "artifactId": "artifact-context_file_header-001",
+  "title": "Context Header valid fixture",
+  "createdAt": "2026-06-23T00:00:00.000Z",
+  "updatedAt": "2026-06-23T00:00:00.000Z",
+  "producer": {
+    "kind": "skill",
+    "id": "skill-task",
+    "name": "task",
+    "version": "1.0.0",
+    "runId": "run-001"
+  },
+  "status": "current",
+  "ownership": {
+    "ownerLane": "I-01A-artifact-schemas",
+    "ownedWritePaths": [
+      "packages/artifacts/**"
+    ],
+    "readOnlyPaths": [
+      "docs/decisions/**"
+    ],
+    "untouchablePaths": [
+      ".git/**"
+    ],
+    "concurrencyNotes": "owned fixture"
+  },
+  "links": [
+    {
+      "rel": "produced_by",
+      "artifactKind": "context_file_header",
+      "artifactId": "artifact-context_file_header-001",
+      "path": "fixtures/valid/context_file_header.json",
+      "required": true,
+      "statusAtLinkTime": "current"
+    }
+  ],
+  "extensions": {
+    "dev.vibe.fixture": {
+      "schemaVersion": "1.0.0",
+      "note": "domain-neutral fixture extension"
+    }
+  },
+  "tags": [
+    "domain-neutral"
+  ],
+  "contextId": "context-artifacts",
+  "scope": {
+    "kind": "package",
+    "paths": [
+      "packages/artifacts"
+    ],
+    "description": "Artifact package context."
+  },
+  "owner": "context-owner",
+  "dependencies": [],
+  "dependents": [],
+  "relatedDecisions": [
+    "DL-02"
+  ],
+  "relatedPlansArtifacts": [
+    {
+      "rel": "context_for",
+      "artifactKind": "implementation_plan",
+      "artifactId": "artifact-implementation_plan-001",
+      "path": "fixtures/valid/implementation_plan.json",
+      "required": true,
+      "statusAtLinkTime": "approved"
+    }
+  ],
+  "verificationMetadata": {
+    "lastValidationEvidenceRefs": [
+      {
+        "rel": "evidence_for",
+        "artifactKind": "evidence_packet",
+        "artifactId": "artifact-evidence_packet-001",
+        "path": "fixtures/valid/evidence_packet.json",
+        "required": true,
+        "statusAtLinkTime": "passed"
+      }
+    ],
+    "status": "valid"
+  },
+  "updateMetadata": {
+    "lastReviewedAt": "2026-06-23T00:00:00.000Z",
+    "lastUpdatedBy": {
+      "kind": "skill",
+      "id": "skill-task",
+      "name": "task",
+      "version": "1.0.0",
+      "runId": "run-001"
+    },
+    "updateReason": "Initial context header fixture."
+  },
+  "driftMetadata": {
+    "driftStatus": "clean",
+    "lastDriftCheckAt": "2026-06-23T00:00:00.000Z",
+    "evidenceRefs": [
+      {
+        "rel": "evidence_for",
+        "artifactKind": "evidence_packet",
+        "artifactId": "artifact-evidence_packet-001",
+        "path": "fixtures/valid/evidence_packet.json",
+        "required": true,
+        "statusAtLinkTime": "passed"
+      }
+    ]
+  }
+}
