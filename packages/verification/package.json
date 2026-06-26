@@ -1,0 +1,21 @@
+{
+  "name": "@vibe-engineer/verification",
+  "version": "0.0.0",
+  "license": "MIT",
+  "type": "module",
+  "description": "Skeleton manifest for @vibe-engineer/verification; implementation is owned by a later validated lane.",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "dependencies": {
+    "@vibe-engineer/artifacts": "workspace:*",
+    "@vibe-engineer/orchestration": "workspace:*"
+  },
+  "vibeEngineer": {
+    "implementationUnit": "I-00A-workspace-package-skeleton",
+    "implementationStatus": "skeleton-only",
+    "packageRole": "internal-workspace-package",
+    "sourceStatus": "not-created-in-I-00A"
+  },
+  "private": true
+}
