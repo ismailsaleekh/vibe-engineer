@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.vibe-engineer.dev/context/v1/context-summary.schema.json",
+  "title": "ContextSummaryV1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "artifactKind", "summaryId", "title", "areaId", "level", "mandatory", "summary", "sourceRefs", "derivedFromNodeIds", "updateMetadata", "driftMetadata", "expandableToSourceRefs", "schemaRef"],
+  "properties": {
+    "schemaVersion": { "const": "1.0.0" },
+    "artifactKind": { "const": "context_summary" },
+    "summaryId": { "$ref": "#/$defs/nonEmptyString" },
+    "title": { "$ref": "#/$defs/nonEmptyString" },
+    "areaId": { "$ref": "#/$defs/nonEmptyString" },
+    "level": { "$ref": "#/$defs/level" },
+    "mandatory": { "type": "boolean" },
+    "summary": { "$ref": "#/$defs/nonEmptyString" },
+    "sourceRefs": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/nonEmptyString" } },
+    "derivedFromNodeIds": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/nonEmptyString" } },
+    "updateMetadata": { "$ref": "#/$defs/updateMetadata" },
+    "driftMetadata": { "$ref": "#/$defs/driftMetadata" },
+    "expandableToSourceRefs": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/nonEmptyString" } },
+    "schemaRef": { "const": "https://schemas.vibe-engineer.dev/context/v1/context-summary.schema.json" }
+  },
+  "$defs": {
+    "nonEmptyString": { "type": "string", "minLength": 1 },
+    "level": { "type": "integer", "minimum": 0, "maximum": 4 },
+    "updateMetadata": { "type": "object", "additionalProperties": false, "required": ["invalidationStatus"], "properties": { "invalidationStatus": { "$ref": "#/$defs/nonEmptyString" } } },
+    "driftMetadata": { "type": "object", "additionalProperties": false, "required": ["driftStatus", "sourceRefs"], "properties": { "driftStatus": { "$ref": "#/$defs/nonEmptyString" }, "sourceRefs": { "type": "array", "items": { "$ref": "#/$defs/nonEmptyString" } } } }
+  }
+}

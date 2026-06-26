@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.vibe-engineer.dev/context/v1/context-graph.schema.json",
+  "title": "ContextGraphV1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "artifactKind", "graphId", "indexVersion", "producer", "generatedAt", "schemaRefs", "sources", "nodes", "edges", "links", "retrievalPolicy"],
+  "properties": {
+    "schemaVersion": { "const": "1.0.0" },
+    "artifactKind": { "const": "context_graph" },
+    "graphId": { "$ref": "#/$defs/nonEmptyString" },
+    "indexVersion": { "const": "1.0.0" },
+    "producer": { "$ref": "#/$defs/producer" },
+    "generatedAt": { "$ref": "#/$defs/nonEmptyString" },
+    "schemaRefs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["graph", "index", "area", "summary", "retrievalClosure"],
+      "properties": {
+        "graph": { "const": "https://schemas.vibe-engineer.dev/context/v1/context-graph.schema.json" },
+        "index": { "const": "https://schemas.vibe-engineer.dev/context/v1/context-index.schema.json" },
+        "area": { "const": "https://schemas.vibe-engineer.dev/context/v1/context-area.schema.json" },
+        "summary": { "const": "https://schemas.vibe-engineer.dev/context/v1/context-summary.schema.json" },
+        "retrievalClosure": { "const": "https://schemas.vibe-engineer.dev/context/v1/retrieval-closure.schema.json" }
+      }
+    },
+    "sources": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/source" } },
+    "nodes": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/node" } },
+    "edges": { "type": "array", "items": { "$ref": "#/$defs/edge" } },
+    "links": { "type": "array", "items": { "$ref": "#/$defs/link" } },
+    "retrievalPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["requireTaskScope", "mandatoryLevel", "allowedLevels"],
+      "properties": {
+        "requireTaskScope": { "const": true },
+        "mandatoryLevel": { "const": 1 },
+        "allowedLevels": { "type": "array", "prefixItems": [{ "const": 0 }, { "const": 1 }, { "const": 2 }, { "const": 3 }, { "const": 4 }], "items": false, "minItems": 5, "maxItems": 5 }
+      }
+    }
+  },
+  "$defs": {
+    "nonEmptyString": { "type": "string", "minLength": 1 },
+    "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "versionRef": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+    "producer": { "type": "object", "additionalProperties": false, "required": ["kind", "id", "name", "version", "runId"], "properties": { "kind": { "$ref": "#/$defs/nonEmptyString" }, "id": { "$ref": "#/$defs/nonEmptyString" }, "name": { "$ref": "#/$defs/nonEmptyString" }, "version": { "$ref": "#/$defs/nonEmptyString" }, "runId": { "$ref": "#/$defs/nonEmptyString" } } },
+    "fingerprint": { "type": "object", "additionalProperties": false, "required": ["algorithm", "value"], "properties": { "algorithm": { "const": "sha256" }, "value": { "$ref": "#/$defs/sha256" } } },
+    "scope": { "type": "object", "additionalProperties": false, "required": ["kind", "paths", "description"], "properties": { "kind": { "$ref": "#/$defs/nonEmptyString" }, "paths": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/nonEmptyString" } }, "description": { "$ref": "#/$defs/nonEmptyString" } } },
+    "artifactRef": { "type": "object", "additionalProperties": false, "required": ["artifactKind", "artifactId", "path", "required"], "properties": { "artifactKind": { "$ref": "#/$defs/nonEmptyString" }, "artifactId": { "$ref": "#/$defs/nonEmptyString" }, "path": { "$ref": "#/$defs/nonEmptyString" }, "required": { "type": "boolean" } } },
+    "citation": { "type": "object", "additionalProperties": false, "required": ["citationId", "sourceId", "path", "fingerprint"], "properties": { "citationId": { "$ref": "#/$defs/nonEmptyString" }, "sourceId": { "$ref": "#/$defs/nonEmptyString" }, "path": { "$ref": "#/$defs/nonEmptyString" }, "fingerprint": { "$ref": "#/$defs/fingerprint" }, "versionRef": { "$ref": "#/$defs/versionRef" } } },
+    "source": { "type": "object", "additionalProperties": false, "required": ["sourceId", "kind", "path", "fingerprint", "versionRef", "trust", "required", "level", "scope", "artifactRef", "citations"], "properties": { "sourceId": { "$ref": "#/$defs/nonEmptyString" }, "kind": { "enum": ["source_doc", "artifact", "decision", "work_item", "evidence", "standard"] }, "path": { "$ref": "#/$defs/nonEmptyString" }, "fingerprint": { "$ref": "#/$defs/fingerprint" }, "versionRef": { "$ref": "#/$defs/versionRef" }, "trust": { "const": "trusted" }, "required": { "type": "boolean" }, "level": { "$ref": "#/$defs/level" }, "scope": { "$ref": "#/$defs/scope" }, "artifactRef": { "$ref": "#/$defs/artifactRef" }, "citations": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/citation" } } } },
+    "level": { "type": "integer", "minimum": 0, "maximum": 4 },
+    "headerRef": { "type": "object", "additionalProperties": false, "required": ["artifactId", "path"], "properties": { "artifactId": { "$ref": "#/$defs/nonEmptyString" }, "path": { "$ref": "#/$defs/nonEmptyString" } } },
+    "node": { "type": "object", "additionalProperties": false, "required": ["contextId", "kind", "areaId", "title", "level", "mandatory", "trust", "scope", "owner", "headerRef", "sourceRefs", "artifactPath"], "properties": { "contextId": { "$ref": "#/$defs/nonEmptyString" }, "kind": { "enum": ["area", "summary", "decision", "work_item", "source", "standard"] }, "areaId": { "$ref": "#/$defs/nonEmptyString" }, "title": { "$ref": "#/$defs/nonEmptyString" }, "level": { "$ref": "#/$defs/level" }, "mandatory": { "type": "boolean" }, "trust": { "const": "trusted" }, "scope": { "$ref": "#/$defs/scope" }, "owner": { "$ref": "#/$defs/nonEmptyString" }, "headerRef": { "$ref": "#/$defs/headerRef" }, "sourceRefs": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/nonEmptyString" } }, "artifactPath": { "$ref": "#/$defs/nonEmptyString" }, "derivedFromNodeIds": { "type": "array", "items": { "$ref": "#/$defs/nonEmptyString" } } } },
+    "edge": { "type": "object", "additionalProperties": false, "required": ["from", "to", "rel"], "properties": { "from": { "$ref": "#/$defs/nonEmptyString" }, "to": { "$ref": "#/$defs/nonEmptyString" }, "rel": { "enum": ["derived_from", "depends_on", "summarizes", "cites", "supersedes", "context_for"] } } },
+    "linkRef": { "type": "object", "additionalProperties": false, "required": ["artifactKind", "artifactId", "path"], "properties": { "artifactKind": { "$ref": "#/$defs/nonEmptyString" }, "artifactId": { "$ref": "#/$defs/nonEmptyString" }, "path": { "$ref": "#/$defs/nonEmptyString" } } },
+    "link": { "type": "object", "additionalProperties": false, "required": ["linkId", "kind", "ref", "required", "statusAtLinkTime"], "properties": { "linkId": { "$ref": "#/$defs/nonEmptyString" }, "kind": { "enum": ["source", "work", "evidence", "decision"] }, "ref": { "$ref": "#/$defs/linkRef" }, "required": { "type": "boolean" }, "statusAtLinkTime": { "$ref": "#/$defs/nonEmptyString" } } }
+  }
+}

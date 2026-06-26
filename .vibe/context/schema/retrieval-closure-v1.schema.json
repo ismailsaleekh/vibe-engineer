@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.vibe-engineer.dev/context/v1/retrieval-closure.schema.json",
+  "title": "ContextRetrievalClosureV1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["ok", "blocked", "status", "schemaVersion", "artifactKind", "levels", "citations", "omittedOptionalContext", "diagnostics", "findings"],
+  "properties": {
+    "ok": { "type": "boolean" },
+    "blocked": { "type": "boolean" },
+    "status": { "enum": ["clean", "blocked"] },
+    "schemaVersion": { "const": "1.0.0" },
+    "artifactKind": { "const": "context_retrieval_closure" },
+    "closureId": { "$ref": "#/$defs/nonEmptyString" },
+    "task": { "$ref": "#/$defs/task" },
+    "levels": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["0", "1", "2", "3", "4"],
+      "properties": {
+        "0": { "type": "array", "items": { "$ref": "#/$defs/closureItem" } },
+        "1": { "type": "array", "items": { "$ref": "#/$defs/closureItem" } },
+        "2": { "type": "array", "items": { "$ref": "#/$defs/closureItem" } },
+        "3": { "type": "array", "items": { "$ref": "#/$defs/closureItem" } },
+        "4": { "type": "array", "items": { "$ref": "#/$defs/closureItem" } }
+      }
+    },
+    "citations": { "type": "array", "items": { "$ref": "#/$defs/closureCitation" } },
+    "omittedOptionalContext": { "type": "array", "items": { "$ref": "#/$defs/omittedOptionalContext" } },
+    "diagnostics": { "type": "array", "items": { "$ref": "#/$defs/finding" } },
+    "findings": { "type": "array", "items": { "$ref": "#/$defs/finding" } },
+    "schemaRef": { "const": "https://schemas.vibe-engineer.dev/context/v1/retrieval-closure.schema.json" }
+  },
+  "$defs": {
+    "nonEmptyString": { "type": "string", "minLength": 1 },
+    "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "level": { "type": "integer", "minimum": 0, "maximum": 4 },
+    "task": { "type": "object", "additionalProperties": false, "required": ["taskId", "role", "affectedAreas"], "properties": { "taskId": { "$ref": "#/$defs/nonEmptyString" }, "role": { "$ref": "#/$defs/nonEmptyString" }, "affectedAreas": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/nonEmptyString" } }, "purpose": { "$ref": "#/$defs/nonEmptyString" } } },
+    "closureItem": { "type": "object", "additionalProperties": false, "required": ["contextId", "title", "level", "mandatory", "areaId", "sourceRefs", "artifactPath"], "properties": { "contextId": { "$ref": "#/$defs/nonEmptyString" }, "title": { "$ref": "#/$defs/nonEmptyString" }, "level": { "$ref": "#/$defs/level" }, "mandatory": { "type": "boolean" }, "areaId": { "$ref": "#/$defs/nonEmptyString" }, "sourceRefs": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/nonEmptyString" } }, "citationRefs": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/nonEmptyString" } }, "artifactPath": { "$ref": "#/$defs/nonEmptyString" } } },
+    "fingerprint": { "type": "object", "additionalProperties": false, "required": ["algorithm", "value"], "properties": { "algorithm": { "const": "sha256" }, "value": { "$ref": "#/$defs/sha256" } } },
+    "closureCitation": { "type": "object", "additionalProperties": false, "required": ["citationId", "sourceId", "path", "fingerprint", "contextId"], "properties": { "citationId": { "$ref": "#/$defs/nonEmptyString" }, "sourceId": { "$ref": "#/$defs/nonEmptyString" }, "path": { "$ref": "#/$defs/nonEmptyString" }, "fingerprint": { "$ref": "#/$defs/fingerprint" }, "versionRef": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" }, "contextId": { "$ref": "#/$defs/nonEmptyString" } } },
+    "omittedOptionalContext": { "type": "object", "additionalProperties": false, "required": ["contextId", "level", "rationale"], "properties": { "contextId": { "$ref": "#/$defs/nonEmptyString" }, "level": { "$ref": "#/$defs/level" }, "rationale": { "$ref": "#/$defs/nonEmptyString" } } },
+    "finding": { "type": "object", "additionalProperties": false, "required": ["severity", "code", "pointer", "message", "blocking"], "properties": { "severity": { "$ref": "#/$defs/nonEmptyString" }, "code": { "$ref": "#/$defs/nonEmptyString" }, "pointer": { "type": "string" }, "message": { "$ref": "#/$defs/nonEmptyString" }, "blocking": { "type": "boolean" }, "filePath": { "$ref": "#/$defs/nonEmptyString" }, "artifactKind": { "$ref": "#/$defs/nonEmptyString" }, "providerCode": { "$ref": "#/$defs/nonEmptyString" }, "expected": { "anyOf": [{ "type": "string" }, { "type": "number" }, { "type": "integer" }, { "type": "boolean" }] }, "actual": { "anyOf": [{ "type": "string" }, { "type": "number" }, { "type": "integer" }, { "type": "boolean" }] } } }
+  }
+}

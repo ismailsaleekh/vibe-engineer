@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.vibe-engineer.dev/context/v1/context-index.schema.json",
+  "title": "ContextIndexV1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "artifactKind", "indexId", "indexVersion", "producer", "generatedAt", "graphRef", "headerRef", "nodeRefs", "sourceRefs", "schemaRef"],
+  "properties": {
+    "schemaVersion": { "const": "1.0.0" },
+    "artifactKind": { "const": "context_index" },
+    "indexId": { "$ref": "#/$defs/nonEmptyString" },
+    "indexVersion": { "const": "1.0.0" },
+    "producer": { "$ref": "#/$defs/producer" },
+    "generatedAt": { "$ref": "#/$defs/nonEmptyString" },
+    "graphRef": { "$ref": "#/$defs/graphRef" },
+    "headerRef": { "$ref": "#/$defs/headerRef" },
+    "nodeRefs": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/nodeRef" } },
+    "sourceRefs": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/sourceRef" } },
+    "schemaRef": { "const": "https://schemas.vibe-engineer.dev/context/v1/context-index.schema.json" }
+  },
+  "$defs": {
+    "nonEmptyString": { "type": "string", "minLength": 1 },
+    "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "level": { "type": "integer", "minimum": 0, "maximum": 4 },
+    "producer": { "type": "object", "additionalProperties": false, "required": ["kind", "id", "name", "version", "runId"], "properties": { "kind": { "$ref": "#/$defs/nonEmptyString" }, "id": { "$ref": "#/$defs/nonEmptyString" }, "name": { "$ref": "#/$defs/nonEmptyString" }, "version": { "$ref": "#/$defs/nonEmptyString" }, "runId": { "$ref": "#/$defs/nonEmptyString" } } },
+    "fingerprint": { "type": "object", "additionalProperties": false, "required": ["algorithm", "value"], "properties": { "algorithm": { "const": "sha256" }, "value": { "$ref": "#/$defs/sha256" } } },
+    "graphRef": { "type": "object", "additionalProperties": false, "required": ["graphId", "path", "headerPath"], "properties": { "graphId": { "$ref": "#/$defs/nonEmptyString" }, "path": { "$ref": "#/$defs/nonEmptyString" }, "headerPath": { "$ref": "#/$defs/nonEmptyString" } } },
+    "headerRef": { "type": "object", "additionalProperties": false, "required": ["artifactId", "path"], "properties": { "artifactId": { "$ref": "#/$defs/nonEmptyString" }, "path": { "$ref": "#/$defs/nonEmptyString" } } },
+    "nodeRef": { "type": "object", "additionalProperties": false, "required": ["contextId", "areaId", "level", "mandatory", "path", "headerPath", "sourceRefs"], "properties": { "contextId": { "$ref": "#/$defs/nonEmptyString" }, "areaId": { "$ref": "#/$defs/nonEmptyString" }, "level": { "$ref": "#/$defs/level" }, "mandatory": { "type": "boolean" }, "path": { "$ref": "#/$defs/nonEmptyString" }, "headerPath": { "$ref": "#/$defs/nonEmptyString" }, "sourceRefs": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/nonEmptyString" } } } },
+    "sourceRef": { "type": "object", "additionalProperties": false, "required": ["sourceId", "path", "fingerprint"], "properties": { "sourceId": { "$ref": "#/$defs/nonEmptyString" }, "path": { "$ref": "#/$defs/nonEmptyString" }, "fingerprint": { "$ref": "#/$defs/fingerprint" } } }
+  }
+}
