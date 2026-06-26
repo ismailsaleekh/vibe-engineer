@@ -1,0 +1,78 @@
+GIT STATUS SHORT
+?? .gitignore
+?? .npmrc
+?? .vibe/
+?? CHANGELOG.md
+?? CODE_OF_CONDUCT.md
+?? CONTRIBUTING.md
+?? LICENSE
+?? README.md
+?? SECURITY.md
+?? docs/
+?? eslint.config.mjs
+?? package.json
+?? packages/
+?? pnpm-lock.yaml
+?? pnpm-workspace.yaml
+?? prettier.config.mjs
+?? tsconfig.base.json
+?? turbo.json
+OWNED PRODUCT FILES
+packages/cli/src/commands/config/index.js
+packages/cli/src/commands/doctor/index.js
+LANE WORK TOP FILES
+.vibe/work/I-02B-cli-doctor-config-primitives/evidence/final-inventory.txt
+.vibe/work/I-02B-cli-doctor-config-primitives/evidence/node-check.txt
+.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run.stderr
+.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run.stdout
+.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/malformed-envelope-suite.json
+.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/malformed-envelope-suite.stderr.txt
+.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/malformed-envelope-suite.stdout.txt
+.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/redaction-sweep.json
+.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/summary.json
+.vibe/work/I-02B-cli-doctor-config-primitives/I-02B-implementation-report.md
+.vibe/work/I-02B-cli-doctor-config-primitives/I-02B-validation-report.md
+.vibe/work/I-02B-cli-doctor-config-primitives/validation-evidence/final-sweep.txt
+.vibe/work/I-02B-cli-doctor-config-primitives/validation-evidence/independent-witness.mjs
+.vibe/work/I-02B-cli-doctor-config-primitives/validation-evidence/independent-witness.stderr
+.vibe/work/I-02B-cli-doctor-config-primitives/validation-evidence/independent-witness.stdout
+.vibe/work/I-02B-cli-doctor-config-primitives/validation-evidence/node-check.txt
+.vibe/work/I-02B-cli-doctor-config-primitives/validation-evidence/run/malformed-envelope-rejection.json
+.vibe/work/I-02B-cli-doctor-config-primitives/validation-evidence/run/redaction-sweep.json
+.vibe/work/I-02B-cli-doctor-config-primitives/validation-evidence/run/summary.json
+.vibe/work/I-02B-cli-doctor-config-primitives/validation-evidence/validation-dispatch.mjs
+.vibe/work/I-02B-cli-doctor-config-primitives/witness/consumer.mjs
+.vibe/work/I-02B-cli-doctor-config-primitives/witness/dispatch.mjs
+.vibe/work/I-02B-cli-doctor-config-primitives/witness/run-i02b-witnesses.mjs
+COMMAND DIRS
+packages/cli/src/commands/config
+packages/cli/src/commands/doctor
+packages/cli/src/commands/schematic
+SHARED HASHES
+b3d1455aade0eb27f0775c3dbe2abefd89dada97caac9b10f041061abcb30306  package.json
+0259217fb38660de9e7298c4d6e363c7810a436479c189ce7ca088dd06576fff  pnpm-lock.yaml
+aee47e9964f53e767a6d6a86a27c86b218a76cd59453c3401defad6907be5f21  pnpm-workspace.yaml
+918ad4e48eb39826c9a034611fd765c3c418c7ccfb890bc9c469ba33d2261d7b  turbo.json
+51ac1ec1417137a3644403ba94482797398ab06dfcc7d76420505cfb74d3a637  packages/cli/package.json
+1b09e96f1a31bc9700e67d7069d9dc3fa522dfa4846c86b5c3e1bdfb13c0186f  packages/cli/src/entry/vibe-engineer.js
+b7c70e6ee119a53bf328f5a0f4f3adfd6226997bcb3952a73e5910f0913783f3  packages/cli/src/envelope/result-envelope.js
+ef5f2f4b26908f3a04741c096ec68d62733d013e22ad84d242a534971dbe613e  packages/cli/src/command-loader/loader.js
+c17fae9463ac90e33c9415c509ab74f33115ef8dee1a411ce51a826429b7d8c5  packages/cli/src/errors/codes.js
+dc70f8b9eb242979911fa605d72bb70312fba83026e37c9c992aabb53043fbaa  packages/cli/src/errors/sanitization.js
+f31bb0f0fa6ed9e4f6585eaaa1f488822b10db874067b459031b4f80e7f7de18  packages/cli/src/testing/run-witnesses.mjs
+d9792cb00be16a1d65ad46dcf09a5e617ce12288db6b216e62353dba1c15b5a2  packages/config/src/index.js
+13c7c9b8271e4587d4004493351ac3c8946eb99539db011b545b7b8b4e5e9e1c  packages/artifacts/src/index.js
+SHARED SURFACE FILE COUNTS
+packages/cli/src/entry        1
+packages/cli/src/envelope        1
+packages/cli/src/command-loader        1
+packages/cli/src/errors        2
+packages/cli/src/testing        1
+packages/config       27
+packages/artifacts       86
+docs/decisions       24
+ROOT SCRIPT CI INVENTORY
+./package.json
+./pnpm-lock.yaml
+./pnpm-workspace.yaml
+./turbo.json

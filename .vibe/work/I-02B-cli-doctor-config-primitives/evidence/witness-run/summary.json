@@ -1,0 +1,227 @@
+{
+  "ok": true,
+  "cases": [
+    {
+      "name": "doctor-healthy",
+      "exit": 0,
+      "status": "success",
+      "kind": "doctor_result",
+      "stdoutPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/doctor-healthy/stdout.json",
+      "stderrPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/doctor-healthy/stderr.txt",
+      "consumerOut": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/doctor-healthy/consumer.json",
+      "resultFile": null
+    },
+    {
+      "name": "config-inspect-valid-full",
+      "exit": 0,
+      "status": "success",
+      "kind": "config_inspect_result",
+      "stdoutPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/config-inspect-valid-full/stdout.json",
+      "stderrPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/config-inspect-valid-full/stderr.txt",
+      "consumerOut": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/config-inspect-valid-full/consumer.json",
+      "resultFile": null
+    },
+    {
+      "name": "config-validate-valid-minimal",
+      "exit": 0,
+      "status": "success",
+      "kind": "config_validation_result",
+      "stdoutPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/config-validate-valid-minimal/stdout.json",
+      "stderrPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/config-validate-valid-minimal/stderr.txt",
+      "consumerOut": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/config-validate-valid-minimal/consumer.json",
+      "resultFile": null
+    },
+    {
+      "name": "result-file-equivalence",
+      "exit": 0,
+      "status": "success",
+      "kind": "config_inspect_result",
+      "stdoutPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/result-file-equivalence/stdout.json",
+      "stderrPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/result-file-equivalence/stderr.txt",
+      "consumerOut": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/result-file-equivalence/consumer.json",
+      "resultFile": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/result-file/config-inspect-result.json"
+    },
+    {
+      "name": "malformed-json",
+      "exit": 3,
+      "status": "blocked",
+      "kind": "config_load_result",
+      "stdoutPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/malformed-json/stdout.json",
+      "stderrPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/malformed-json/stderr.txt",
+      "consumerOut": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/malformed-json/consumer.json",
+      "resultFile": null
+    },
+    {
+      "name": "missing-config",
+      "exit": 3,
+      "status": "blocked",
+      "kind": "config_load_result",
+      "stdoutPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/missing-config/stdout.json",
+      "stderrPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/missing-config/stderr.txt",
+      "consumerOut": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/missing-config/consumer.json",
+      "resultFile": null
+    },
+    {
+      "name": "unsupported-invalid-unsupported-harness-arbitrary",
+      "exit": 3,
+      "status": "blocked",
+      "kind": "config_load_result",
+      "stdoutPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/unsupported-invalid-unsupported-harness-arbitrary/stdout.json",
+      "stderrPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/unsupported-invalid-unsupported-harness-arbitrary/stderr.txt",
+      "consumerOut": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/unsupported-invalid-unsupported-harness-arbitrary/consumer.json",
+      "resultFile": null
+    },
+    {
+      "name": "unsupported-invalid-unsupported-harness-claude-code",
+      "exit": 3,
+      "status": "blocked",
+      "kind": "config_load_result",
+      "stdoutPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/unsupported-invalid-unsupported-harness-claude-code/stdout.json",
+      "stderrPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/unsupported-invalid-unsupported-harness-claude-code/stderr.txt",
+      "consumerOut": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/unsupported-invalid-unsupported-harness-claude-code/consumer.json",
+      "resultFile": null
+    },
+    {
+      "name": "unsupported-invalid-unsupported-harness-codex",
+      "exit": 3,
+      "status": "blocked",
+      "kind": "config_load_result",
+      "stdoutPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/unsupported-invalid-unsupported-harness-codex/stdout.json",
+      "stderrPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/unsupported-invalid-unsupported-harness-codex/stderr.txt",
+      "consumerOut": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/unsupported-invalid-unsupported-harness-codex/consumer.json",
+      "resultFile": null
+    },
+    {
+      "name": "unsupported-invalid-unsupported-harness-opencode",
+      "exit": 3,
+      "status": "blocked",
+      "kind": "config_load_result",
+      "stdoutPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/unsupported-invalid-unsupported-harness-opencode/stdout.json",
+      "stderrPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/unsupported-invalid-unsupported-harness-opencode/stderr.txt",
+      "consumerOut": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/unsupported-invalid-unsupported-harness-opencode/consumer.json",
+      "resultFile": null
+    },
+    {
+      "name": "secret-like-config",
+      "exit": 3,
+      "status": "blocked",
+      "kind": "config_load_result",
+      "stdoutPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/secret-like-config/stdout.json",
+      "stderrPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/secret-like-config/stderr.txt",
+      "consumerOut": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/secret-like-config/consumer.json",
+      "resultFile": null
+    },
+    {
+      "name": "secret-like-flag",
+      "exit": 2,
+      "status": "blocked",
+      "kind": "cli_invocation_error",
+      "stdoutPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/secret-like-flag/stdout.json",
+      "stderrPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/secret-like-flag/stderr.txt",
+      "consumerOut": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/secret-like-flag/consumer.json",
+      "resultFile": null
+    },
+    {
+      "name": "doctor-invalid-config",
+      "exit": 3,
+      "status": "blocked",
+      "kind": "config_load_result",
+      "stdoutPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/doctor-invalid-config/stdout.json",
+      "stderrPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/doctor-invalid-config/stderr.txt",
+      "consumerOut": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/doctor-invalid-config/consumer.json",
+      "resultFile": null
+    },
+    {
+      "name": "config-unknown-subcommand",
+      "exit": 2,
+      "status": "blocked",
+      "kind": "cli_invocation_error",
+      "stdoutPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/config-unknown-subcommand/stdout.json",
+      "stderrPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/config-unknown-subcommand/stderr.txt",
+      "consumerOut": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/config-unknown-subcommand/consumer.json",
+      "resultFile": null
+    },
+    {
+      "name": "config-unknown-flag",
+      "exit": 2,
+      "status": "blocked",
+      "kind": "cli_invocation_error",
+      "stdoutPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/config-unknown-flag/stdout.json",
+      "stderrPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/config-unknown-flag/stderr.txt",
+      "consumerOut": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/config-unknown-flag/consumer.json",
+      "resultFile": null
+    },
+    {
+      "name": "config-unexpected-positional",
+      "exit": 2,
+      "status": "blocked",
+      "kind": "cli_invocation_error",
+      "stdoutPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/config-unexpected-positional/stdout.json",
+      "stderrPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/config-unexpected-positional/stderr.txt",
+      "consumerOut": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/config-unexpected-positional/consumer.json",
+      "resultFile": null
+    },
+    {
+      "name": "config-missing-flag-value",
+      "exit": 2,
+      "status": "blocked",
+      "kind": "cli_invocation_error",
+      "stdoutPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/config-missing-flag-value/stdout.json",
+      "stderrPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/config-missing-flag-value/stderr.txt",
+      "consumerOut": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/config-missing-flag-value/consumer.json",
+      "resultFile": null
+    },
+    {
+      "name": "doctor-unknown-flag",
+      "exit": 2,
+      "status": "blocked",
+      "kind": "cli_invocation_error",
+      "stdoutPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/doctor-unknown-flag/stdout.json",
+      "stderrPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/doctor-unknown-flag/stderr.txt",
+      "consumerOut": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/doctor-unknown-flag/consumer.json",
+      "resultFile": null
+    },
+    {
+      "name": "doctor-unexpected-positional",
+      "exit": 2,
+      "status": "blocked",
+      "kind": "cli_invocation_error",
+      "stdoutPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/doctor-unexpected-positional/stdout.json",
+      "stderrPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/doctor-unexpected-positional/stderr.txt",
+      "consumerOut": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/doctor-unexpected-positional/consumer.json",
+      "resultFile": null
+    },
+    {
+      "name": "doctor-missing-flag-value",
+      "exit": 2,
+      "status": "blocked",
+      "kind": "cli_invocation_error",
+      "stdoutPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/doctor-missing-flag-value/stdout.json",
+      "stderrPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/doctor-missing-flag-value/stderr.txt",
+      "consumerOut": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/doctor-missing-flag-value/consumer.json",
+      "resultFile": null
+    },
+    {
+      "name": "result-file-missing-parent",
+      "exit": 5,
+      "status": "blocked",
+      "kind": "result_file_error",
+      "stdoutPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/result-file-missing-parent/stdout.json",
+      "stderrPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/result-file-missing-parent/stderr.txt",
+      "consumerOut": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/result-file-missing-parent/consumer.json",
+      "resultFile": null
+    },
+    {
+      "name": "doctor-partial-non-green",
+      "exit": 8,
+      "status": "partial",
+      "kind": "doctor_result",
+      "stdoutPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/doctor-partial-non-green/stdout.json",
+      "stderrPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/doctor-partial-non-green/stderr.txt",
+      "consumerOut": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/cases/doctor-partial-non-green/consumer.json",
+      "resultFile": null
+    }
+  ],
+  "malformedEnvelopeSuite": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/malformed-envelope-suite.json",
+  "redactionSweep": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-02B-cli-doctor-config-primitives/evidence/witness-run/redaction-sweep.json"
+}
