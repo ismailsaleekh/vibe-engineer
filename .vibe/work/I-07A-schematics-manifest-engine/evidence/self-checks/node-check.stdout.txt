@@ -1,0 +1,21 @@
+cwd=/Users/lizavasilyeva/work/vibe-engineer
+node --check packages/cli/src/commands/schematic/artifacts-adapter.js
+exit=0 file=packages/cli/src/commands/schematic/artifacts-adapter.js
+node --check packages/cli/src/commands/schematic/index.js
+exit=0 file=packages/cli/src/commands/schematic/index.js
+node --check packages/cli/src/commands/schematic/run-cli-witnesses.mjs
+exit=0 file=packages/cli/src/commands/schematic/run-cli-witnesses.mjs
+node --check packages/schematics/fixtures/engine/run-engine-witnesses.mjs
+exit=0 file=packages/schematics/fixtures/engine/run-engine-witnesses.mjs
+node --check packages/schematics/src/engine/index.js
+exit=0 file=packages/schematics/src/engine/index.js
+node --check packages/schematics/src/engine/markers.js
+exit=0 file=packages/schematics/src/engine/markers.js
+node --check packages/schematics/src/manifest/loader.js
+exit=0 file=packages/schematics/src/manifest/loader.js
+node --check packages/schematics/src/template/input.js
+exit=0 file=packages/schematics/src/template/input.js
+node --check packages/schematics/src/template/path-safety.js
+exit=0 file=packages/schematics/src/template/path-safety.js
+node --check packages/schematics/src/template/renderer.js
+exit=0 file=packages/schematics/src/template/renderer.js

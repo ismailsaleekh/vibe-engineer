@@ -1,0 +1,8 @@
+{{> generatedNotice}}
+import { create{{pascalName}}Record } from "../src/{{pathSegment}}.js";
+
+export function verify{{pascalName}}Record() {
+  const record = create{{pascalName}}Record("sample");
+  if (record.kind !== "{{kebabName}}") throw new Error("expected stable kind");
+  if (record.title !== "{{humanTitle}}") throw new Error("expected stable title");
+}

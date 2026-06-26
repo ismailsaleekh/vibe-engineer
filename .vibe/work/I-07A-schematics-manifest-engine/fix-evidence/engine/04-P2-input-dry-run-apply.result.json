@@ -1,0 +1,62 @@
+{
+  "witness": "P2",
+  "normalized": {
+    "name": "Example Module",
+    "kebabName": "example-module",
+    "camelName": "exampleModule",
+    "pascalName": "ExampleModule",
+    "constantName": "EXAMPLE_MODULE",
+    "pathSegment": "example-module",
+    "humanTitle": "Example Module"
+  },
+  "planFingerprint": "sha256:fe6743e376149460b4a7d3cfcc70d6ec1ea9db9b0819a6f03f8d03c3830e2cff",
+  "preconditionsPresent": true,
+  "embeddedSectionPreserved": true,
+  "operations": [
+    {
+      "id": "90-stale-report",
+      "action": "report_only",
+      "path": ""
+    },
+    {
+      "id": "03-context-dir",
+      "action": "noop",
+      "path": "context"
+    },
+    {
+      "id": "30-context",
+      "action": "noop",
+      "path": "context/example-module.context.md"
+    },
+    {
+      "id": "04-docs-dir",
+      "action": "noop",
+      "path": "docs"
+    },
+    {
+      "id": "40-docs",
+      "action": "noop",
+      "path": "docs/example-module.md"
+    },
+    {
+      "id": "01-src-dir",
+      "action": "noop",
+      "path": "src"
+    },
+    {
+      "id": "10-code",
+      "action": "noop",
+      "path": "src/example-module.js"
+    },
+    {
+      "id": "02-test-dir",
+      "action": "noop",
+      "path": "tests"
+    },
+    {
+      "id": "20-test",
+      "action": "noop",
+      "path": "tests/example-module.test.js"
+    }
+  ]
+}

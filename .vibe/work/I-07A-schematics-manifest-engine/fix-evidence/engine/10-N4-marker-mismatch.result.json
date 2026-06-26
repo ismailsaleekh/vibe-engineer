@@ -1,0 +1,41 @@
+{
+  "witness": "N4",
+  "status": "conflicts",
+  "conflicts": [
+    {
+      "path": "src/example-module.js",
+      "reason": "generated_marker_mismatch",
+      "severity": "hard_fail"
+    }
+  ],
+  "sameMarkerEditedBody": [
+    {
+      "path": "src/example-module.js",
+      "reason": "generated_body_mismatch",
+      "severity": "hard_fail"
+    }
+  ],
+  "sectionConflicts": {
+    "missing": [
+      {
+        "path": "docs/example-module.md",
+        "reason": "generated_marker_missing",
+        "severity": "hard_fail"
+      }
+    ],
+    "multiple": [
+      {
+        "path": "docs/example-module.md",
+        "reason": "multiple_generated_markers",
+        "severity": "hard_fail"
+      }
+    ],
+    "edited": [
+      {
+        "path": "docs/example-module.md",
+        "reason": "generated_body_mismatch",
+        "severity": "hard_fail"
+      }
+    ]
+  }
+}

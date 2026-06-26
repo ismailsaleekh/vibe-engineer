@@ -1,0 +1,41 @@
+{
+  "witness": "N6",
+  "results": [
+    {
+      "file": "manifest-variants/n6-outside/manifest.json",
+      "diagnostics": [
+        {
+          "code": "unsafe_path",
+          "message": "Generated path must stay inside target root.",
+          "details": {
+            "path": "../escape.js"
+          }
+        }
+      ]
+    },
+    {
+      "file": "manifest-variants/n6-undeclared/manifest.json",
+      "diagnostics": [
+        {
+          "code": "unsafe_path",
+          "message": "Generated path is not declared by manifest touchedPathPatterns.",
+          "details": {
+            "path": "other/example.js"
+          }
+        }
+      ]
+    },
+    {
+      "file": "manifest-variants/n6-forbidden/manifest.json",
+      "diagnostics": [
+        {
+          "code": "unsafe_path",
+          "message": "Generated path is not declared by manifest touchedPathPatterns.",
+          "details": {
+            "path": "package.json"
+          }
+        }
+      ]
+    }
+  ]
+}

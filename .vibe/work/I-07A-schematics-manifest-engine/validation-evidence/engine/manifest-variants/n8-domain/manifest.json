@@ -1,0 +1,249 @@
+{
+  "schemaVersion": "1.0.0",
+  "artifactKind": "schematic_manifest",
+  "artifactId": "i-07a-engine-fixture-manifest",
+  "title": "I-07A engine fixture schematic",
+  "createdAt": "2026-06-24T00:00:00.000Z",
+  "updatedAt": "2026-06-24T00:00:00.000Z",
+  "producer": {
+    "kind": "schematic",
+    "id": "i-07a-engine-fixture",
+    "name": "I-07A Engine Fixture",
+    "version": "1.0.0",
+    "runId": "i-07a-fixture"
+  },
+  "status": "active",
+  "ownership": {
+    "ownerLane": "I-07A-schematics-manifest-engine",
+    "ownedWritePaths": [
+      "packages/schematics/fixtures/engine/**"
+    ],
+    "readOnlyPaths": [
+      "packages/artifacts/**",
+      "packages/cli/src/envelope/**"
+    ],
+    "untouchablePaths": [
+      ".git/**",
+      "packages/schematics/src/builtins/**"
+    ],
+    "concurrencyNotes": "lane-owned domain-neutral engine proof fixture"
+  },
+  "links": [
+    {
+      "rel": "produced_by",
+      "artifactKind": "schematic_manifest",
+      "artifactId": "i-07a-engine-fixture-manifest",
+      "path": "packages/schematics/fixtures/engine/schematic/manifest.json",
+      "required": true,
+      "statusAtLinkTime": "active"
+    }
+  ],
+  "extensions": {
+    "dev.vibe-engineer.schematics.dl08": {
+      "schemaVersion": "1.0.0",
+      "templateRoot": "templates",
+      "partials": {
+        "generatedNotice": "partials/generated-notice.mustache"
+      },
+      "nameField": "name",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[A-Za-z][A-Za-z0-9 _.-]*$"
+          }
+        }
+      },
+      "touchedPathPatterns": [
+        "src/**",
+        "tests/**",
+        "context/**",
+        "docs/**"
+      ],
+      "forbiddenPathPatterns": [
+        ".git/**",
+        "node_modules/**",
+        "package.json",
+        "pnpm-lock.yaml"
+      ],
+      "operations": [
+        {
+          "id": "01-src-dir",
+          "kind": "create_directory",
+          "pathTemplate": "src"
+        },
+        {
+          "id": "02-test-dir",
+          "kind": "create_directory",
+          "pathTemplate": "tests"
+        },
+        {
+          "id": "03-context-dir",
+          "kind": "create_directory",
+          "pathTemplate": "context"
+        },
+        {
+          "id": "04-docs-dir",
+          "kind": "create_directory",
+          "pathTemplate": "docs"
+        },
+        {
+          "id": "10-code",
+          "kind": "replace_generated_file",
+          "pathTemplate": "src/{{pathSegment}}.js",
+          "template": "domain.mustache",
+          "artifactType": "code",
+          "blockId": "code"
+        },
+        {
+          "id": "20-test",
+          "kind": "replace_generated_file",
+          "pathTemplate": "tests/{{pathSegment}}.test.js",
+          "template": "test.mustache",
+          "artifactType": "test",
+          "blockId": "test"
+        },
+        {
+          "id": "30-context",
+          "kind": "replace_generated_file",
+          "pathTemplate": "context/{{pathSegment}}.context.md",
+          "template": "context.mustache",
+          "artifactType": "context",
+          "blockId": "context"
+        },
+        {
+          "id": "40-docs",
+          "kind": "replace_marked_section",
+          "pathTemplate": "docs/{{pathSegment}}.md",
+          "template": "docs.mustache",
+          "artifactType": "docs",
+          "blockId": "docs"
+        },
+        {
+          "id": "90-stale-report",
+          "kind": "report_stale_generated",
+          "pathTemplate": "",
+          "artifactType": "report"
+        }
+      ],
+      "generatedArtifactTypes": [
+        "code",
+        "test",
+        "context",
+        "docs"
+      ],
+      "generatedMarkerRequiredForUpdates": true,
+      "overwriteAllowedByDefault": false,
+      "semanticMergeAllowedInV1": false,
+      "projectOwned": false,
+      "coreDefault": true,
+      "requiresExplicitRegistration": true,
+      "securitySafety": {
+        "noNetwork": true,
+        "noShell": true,
+        "deterministicOnly": true
+      }
+    }
+  },
+  "tags": [
+    "domain-neutral",
+    "engine-fixture"
+  ],
+  "schematicId": "fixture.generic-structure",
+  "schematicVersion": "1.0.0",
+  "purpose": "Generate a generic code, test, context, and docs structure for the engine proof.",
+  "inputs": [
+    {
+      "name": "name",
+      "schema": {
+        "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/schematic-manifest.schema.json",
+        "schemaVersion": "1.0.0",
+        "artifactKind": "schematic_manifest"
+      },
+      "required": true,
+      "defaultsPolicy": "user_supplied_only",
+      "domainNeutralityClassification": "core_generic"
+    }
+  ],
+  "generatedPaths": [
+    {
+      "pathTemplate": "src/{{pathSegment}}.js",
+      "ownership": "generated",
+      "conflictPolicy": "fail",
+      "classification": "generated"
+    },
+    {
+      "pathTemplate": "tests/{{pathSegment}}.test.js",
+      "ownership": "generated",
+      "conflictPolicy": "fail",
+      "classification": "generated"
+    },
+    {
+      "pathTemplate": "context/{{pathSegment}}.context.md",
+      "ownership": "generated",
+      "conflictPolicy": "fail",
+      "classification": "generated"
+    },
+    {
+      "pathTemplate": "docs/{{pathSegment}}.md",
+      "ownership": "generated",
+      "conflictPolicy": "fail",
+      "classification": "generated"
+    }
+  ],
+  "idempotency": {
+    "strategy": "noop_when_same_input_templates_and_existing_generated_content",
+    "stableIdentifiers": [
+      "schematicId",
+      "schematicVersion",
+      "blockId",
+      "inputFingerprint",
+      "templateFingerprint"
+    ],
+    "rerunBehavior": "create_missing_noop_same_replace_owned_generated_report_stale"
+  },
+  "conflictBehavior": "fail",
+  "dryRunBehavior": {
+    "reportsPlannedChanges": true,
+    "writesFiles": false
+  },
+  "requiredTests": [
+    {
+      "evidencePacketRef": {
+        "rel": "evidence_for",
+        "artifactKind": "evidence_packet",
+        "artifactId": "i-07a-engine-fixture-evidence",
+        "path": ".vibe/work/I-07A-schematics-manifest-engine/evidence/engine/summary.json",
+        "required": true,
+        "statusAtLinkTime": "passed"
+      },
+      "summary": "Engine fixture witness evidence.",
+      "result": "pass",
+      "blocking": true
+    }
+  ],
+  "contextUpdates": [],
+  "domainNeutrality": {
+    "coreSurface": true,
+    "allowedGenericTerms": [
+      "module",
+      "contract",
+      "test",
+      "context",
+      "docs",
+      "fixture",
+      "record"
+    ],
+    "extensionBoundaries": [
+      "project_extension",
+      "sample_demo"
+    ]
+  },
+  "owner": "I-07A-schematics-manifest-engine"
+}

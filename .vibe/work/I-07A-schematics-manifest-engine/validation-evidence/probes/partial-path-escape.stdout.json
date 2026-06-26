@@ -1,0 +1,12 @@
+{
+  "probe": "partial_path_escape",
+  "expected": {
+    "shouldRejectPartialPathOutsideTemplateRoot": true
+  },
+  "actual": {
+    "status": "ok",
+    "diagnostics": [],
+    "operationStatus": "report_only",
+    "leakedContentInPlanHashOnly": true
+  }
+}

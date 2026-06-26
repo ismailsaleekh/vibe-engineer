@@ -1,0 +1,44 @@
+{
+  "witness": "N1",
+  "results": [
+    {
+      "name": "invalid-unknown.json",
+      "status": "invalid_input",
+      "diagnostics": [
+        {
+          "code": "invalid_input",
+          "message": "Unknown input field extra.",
+          "details": {
+            "field": "extra"
+          }
+        }
+      ]
+    },
+    {
+      "name": "invalid-missing.json",
+      "status": "invalid_input",
+      "diagnostics": [
+        {
+          "code": "invalid_input",
+          "message": "Missing required input field name.",
+          "details": {
+            "field": "name"
+          }
+        }
+      ]
+    },
+    {
+      "name": "invalid-type.json",
+      "status": "invalid_input",
+      "diagnostics": [
+        {
+          "code": "invalid_input",
+          "message": "Input name must be a string.",
+          "details": {
+            "field": "name"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+/* vibe-engineer-generated:start {"schematicId":"fixture.generic-structure","schematicVersion":"1.0.0","blockId":"test","inputFingerprint":"sha256:f43cd26f724356a82c055ad8af01674e0c24e51b4a41ae9dbfe85ffab23518c8","templateFingerprint":"sha256:99433842615ce13cca80b3905d6dd3f668626441cb1a8c99da9ff0fff7efdca5"} */
+LEAKED OUTSIDE TEMPLATE ROOT
+
+import { createExampleModuleRecord } from "../src/example-module.js";
+
+export function verifyExampleModuleRecord() {
+  const record = createExampleModuleRecord("sample");
+  if (record.kind !== "example-module") throw new Error("expected stable kind");
+  if (record.title !== "Example Module") throw new Error("expected stable title");
+}
+/* vibe-engineer-generated:end */

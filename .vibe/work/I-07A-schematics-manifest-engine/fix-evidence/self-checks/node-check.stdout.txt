@@ -1,0 +1,20 @@
+$ node --check packages/cli/src/commands/schematic/artifacts-adapter.js
+PASS packages/cli/src/commands/schematic/artifacts-adapter.js
+$ node --check packages/cli/src/commands/schematic/index.js
+PASS packages/cli/src/commands/schematic/index.js
+$ node --check packages/cli/src/commands/schematic/run-cli-witnesses.mjs
+PASS packages/cli/src/commands/schematic/run-cli-witnesses.mjs
+$ node --check packages/schematics/fixtures/engine/run-engine-witnesses.mjs
+PASS packages/schematics/fixtures/engine/run-engine-witnesses.mjs
+$ node --check packages/schematics/src/engine/index.js
+PASS packages/schematics/src/engine/index.js
+$ node --check packages/schematics/src/engine/markers.js
+PASS packages/schematics/src/engine/markers.js
+$ node --check packages/schematics/src/manifest/loader.js
+PASS packages/schematics/src/manifest/loader.js
+$ node --check packages/schematics/src/template/input.js
+PASS packages/schematics/src/template/input.js
+$ node --check packages/schematics/src/template/path-safety.js
+PASS packages/schematics/src/template/path-safety.js
+$ node --check packages/schematics/src/template/renderer.js
+PASS packages/schematics/src/template/renderer.js

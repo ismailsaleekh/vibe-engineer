@@ -1,0 +1,12 @@
+{
+  "probe": "partial_path_escape_apply",
+  "expected": {
+    "shouldRejectPartialPathOutsideTemplateRoot": true,
+    "shouldNotReadOrEmitOutsidePartial": true
+  },
+  "actual": {
+    "status": "ok",
+    "diagnostics": [],
+    "generatedContainsEscapedPartialContent": true
+  }
+}
