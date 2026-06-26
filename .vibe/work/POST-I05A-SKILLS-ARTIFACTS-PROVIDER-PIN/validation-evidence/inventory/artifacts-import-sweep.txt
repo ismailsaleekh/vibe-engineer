@@ -1,0 +1,96 @@
+packages/context/package.json:26:    "@vibe-engineer/artifacts": "workspace:*",
+packages/orchestration/src/index.ts:3:import { validateArtifactFile } from '@vibe-engineer/artifacts';
+packages/orchestration/src/index.ts:4:import type { ArtifactKind, ArtifactValidationError } from '@vibe-engineer/artifacts';
+packages/orchestration/src/index.ts:799:      const validation = validateArtifactFile(output.path, { kind: output.artifactKind });
+packages/orchestration/src/index.ts:840:        const validation = validateArtifactFile(output.path, { kind: output.artifactKind });
+packages/orchestration/src/index.ts:847:      const validation = fs.existsSync(badOutput.path) ? validateArtifactFile(badOutput.path, { kind: badOutput.artifactKind }) : undefined;
+packages/context/src/index.js:5:import { validateArtifactFile } from '@vibe-engineer/artifacts';
+packages/context/src/index.js:561:  const result = validateArtifactFile(headerPath, { kind: 'context_file_header' });
+packages/context/src/index.js:564:      findings.push(finding('error', 'INVALID_CONTEXT_HEADER', pointer, `ContextFileHeaderV1 validation failed through @vibe-engineer/artifacts: ${error.message}`, { filePath: headerPath, providerCode: error.code }));
+packages/context/src/index.js:606:function validateArtifactRef(value, pointer, findings, filePath, code = 'PATH_ONLY_REFERENCE') {
+packages/context/src/index.js:716:    validateArtifactRef(source.artifactRef, `${pointer}/artifactRef`, findings, String(projectRoot));
+packages/context/src/index.js:1158:  artifactsValidateArtifactFileType: typeof validateArtifactFile
+packages/artifacts/src/schema-registry.js:6:export const ARTIFACT_KINDS = [
+packages/artifacts/src/schema-registry.js:39:export function loadSchema(kind) {
+packages/artifacts/src/schema-registry.js:46:  return Object.fromEntries(ARTIFACT_KINDS.map((kind) => [kind, loadSchema(kind)]));
+packages/context/tests/real-boundary-witness.mjs:4:import { validateArtifactFile } from '@vibe-engineer/artifacts';
+packages/context/tests/real-boundary-witness.mjs:30:assert(typeof validateArtifactFile === 'function', 'public artifacts validateArtifactFile seam is unavailable');
+packages/context/tests/real-boundary-witness.mjs:61:const providerHeaderResult = validateArtifactFile(path.join(projectRoot, '.vibe/context/areas/core-contracts.header.json'), { kind: 'context_file_header' });
+packages/context/tests/real-boundary-witness.mjs:98:  providerSeam: 'public @vibe-engineer/artifacts validateArtifactFile used for on-disk ContextFileHeaderV1',
+packages/context/tests/negative-witness.mjs:4:import { validateArtifactFile } from '@vibe-engineer/artifacts';
+packages/context/tests/negative-witness.mjs:198:  const providerResult = validateArtifactFile(headerPath, { kind: 'context_file_header' });
+packages/cli/package.json:27:    "@vibe-engineer/artifacts": "workspace:*",
+packages/artifacts/src/validation.js:4:import { ARTIFACT_KINDS, SUPPORTED_SCHEMA_VERSION, loadAllSchemas, loadSchema } from './schema-registry.js';
+packages/artifacts/src/validation.js:94:  for (const kind of ARTIFACT_KINDS) {
+packages/artifacts/src/validation.js:123:  if (!ARTIFACT_KINDS.includes(data.artifactKind)) {
+packages/artifacts/src/validation.js:299:export function validateArtifactKind(kind, data, options = {}) {
+packages/artifacts/src/validation.js:300:  const schema = loadSchema(kind);
+packages/artifacts/src/validation.js:315:export function validateArtifact(data, options = {}) {
+packages/artifacts/src/validation.js:321:  if (!ARTIFACT_KINDS.includes(kind)) {
+packages/artifacts/src/validation.js:325:  return validateArtifactKind(kind, data, options);
+packages/artifacts/src/validation.js:328:export function validateArtifactFile(filePath, options = {}) {
+packages/artifacts/src/validation.js:339:  return options.kind ? validateArtifactKind(options.kind, parsed, { artifactPath }) : validateArtifact(parsed, { artifactPath });
+packages/cli/src/envelope/result-envelope.js:243:function validateArtifacts(items, errors) {
+packages/cli/src/envelope/result-envelope.js:323:  validateArtifacts(envelope.artifacts, errors);
+packages/verification/package.json:11:    "@vibe-engineer/artifacts": "workspace:*",
+packages/cli/src/testing/run-witnesses.mjs:6:import { validateArtifactFile } from "@vibe-engineer/artifacts";
+packages/cli/src/testing/run-witnesses.mjs:102:assert.equal(typeof validateArtifactFile, "function");
+packages/artifacts/src/index.js:1:export { ARTIFACT_KINDS, SCHEMA_FILES, SUPPORTED_SCHEMA_VERSION, loadAllSchemas, loadSchema, schemaPathForKind } from './schema-registry.js';
+packages/artifacts/src/index.js:3:export { compileAllArtifactSchemas, validateArtifact, validateArtifactFile, validateArtifactKind } from './validation.js';
+packages/cli/src/commands/schematic/artifacts-adapter.js:1:import { validateArtifactKind, validateArtifactFile } from "@vibe-engineer/artifacts";
+packages/cli/src/commands/schematic/artifacts-adapter.js:4:  return validateArtifactKind("schematic_manifest", data, options);
+packages/cli/src/commands/schematic/artifacts-adapter.js:8:  return validateArtifactFile(filePath, { kind: "schematic_manifest" });
+packages/orchestration/package.json:28:    "@vibe-engineer/artifacts": "workspace:*"
+packages/artifacts/src/generated/types.d.ts:1386:export const ARTIFACT_KINDS: readonly ArtifactKind[];
+packages/artifacts/src/generated/types.d.ts:1390:export function loadSchema(kind: ArtifactKind): unknown;
+packages/artifacts/src/generated/types.d.ts:1393:export function validateArtifact(data: unknown, options?: { artifactPath?: string }): ArtifactValidationResult<AnyArtifactV1>;
+packages/artifacts/src/generated/types.d.ts:1394:export function validateArtifactKind(kind: ArtifactKind, data: unknown, options?: { artifactPath?: string }): ArtifactValidationResult<AnyArtifactV1>;
+packages/artifacts/src/generated/types.d.ts:1395:export function validateArtifactFile(filePath: string, options?: { artifactPath?: string; kind?: ArtifactKind }): ArtifactValidationResult<AnyArtifactV1>;
+packages/orchestration/tests/real-boundary-witness.mjs:5:import { validateArtifactFile } from '@vibe-engineer/artifacts';
+packages/orchestration/tests/real-boundary-witness.mjs:24:const publicImportResult = validateArtifactFile('fixtures/artifacts/valid/evidence_packet.json', { kind: 'evidence_packet' });
+packages/orchestration/tests/real-boundary-witness.mjs:26:fs.writeFileSync(path.join(evidenceRoot, 'artifact-public-import.txt'), `public @vibe-engineer/artifacts validateArtifactFile ok=${publicImportResult.ok}\n`, 'utf8');
+packages/orchestration/tests/run-tests.mjs:5:import { loadSchema, validateArtifactFile } from '@vibe-engineer/artifacts';
+packages/orchestration/tests/run-tests.mjs:57:const publicArtifact = validateArtifactFile('fixtures/artifacts/valid/evidence_packet.json', { kind: 'evidence_packet' });
+packages/orchestration/tests/run-tests.mjs:58:assert.equal(publicArtifact.ok, true, 'public @vibe-engineer/artifacts validates canonical fixture');
+packages/orchestration/tests/run-tests.mjs:59:const invalidPublicArtifact = validateArtifactFile('fixtures/artifacts/invalid/evidence_packet-missing-schemaVersion.json', { kind: 'evidence_packet' });
+packages/orchestration/tests/run-tests.mjs:60:assert.equal(invalidPublicArtifact.ok, false, 'public @vibe-engineer/artifacts rejects invalid fixture');
+packages/orchestration/tests/run-tests.mjs:186:const skillManifestSchemaText = JSON.stringify(loadSchema('skill_manifest'));
+packages/orchestration/tests/run-tests.mjs:191:  assert.equal(validateArtifactFile(`../artifacts/fixtures/valid/${kind}.json`, { kind }).ok, true, `artifact flow kind ${kind} remains canonical through public validator`);
+packages/schematics/src/manifest/loader.js:84:export async function loadSchematicManifest(manifestPath, { validateSchematicManifest }) {
+packages/skills/package.json:15:    "@vibe-engineer/artifacts": "workspace:*"
+packages/registry/src/index.d.ts:1:import type { AgentRegistryEntryV1, ArtifactKind } from '@vibe-engineer/artifacts';
+packages/schematics/src/engine/index.js:4:import { loadSchematicManifest } from "../manifest/loader.js";
+packages/schematics/src/engine/index.js:261:export async function loadSchematicDefinition(manifestPath, deps) {
+packages/schematics/src/engine/index.js:262:  const loaded = await loadSchematicManifest(manifestPath, deps);
+packages/schematics/src/engine/index.js:281:    const definition = await loadSchematicDefinition(manifestPath, deps);
+packages/registry/src/index.js:4:import { ARTIFACT_KINDS, loadSchema, validateArtifactFile } from '@vibe-engineer/artifacts';
+packages/registry/src/index.js:43:const SCHEMA_IDS_BY_KIND = Object.freeze(Object.fromEntries(ARTIFACT_KINDS.map((kind) => [kind, loadSchema(kind).$id])));
+packages/registry/src/index.js:245:  const evidenceResult = validateArtifactFile(evidencePath, { kind: 'evidence_packet' });
+packages/registry/src/index.js:674:    const schemaResult = validateArtifactFile(filePath, { kind: 'agent_registry_entry' });
+packages/artifacts/scripts/check-generated-types.mjs:22:  console.error('Generated TypeScript types drift from canonical schemas. Run pnpm --filter @vibe-engineer/artifacts generate:types and commit the result.');
+packages/artifacts/scripts/typecheck-public-entrypoint.mjs:24:fs.writeFileSync(path.join(tmp, 'consumer.ts'), `import { ARTIFACT_KINDS, validateArtifact, type AnyArtifactV1, type ArtifactKind } from '@vibe-engineer/artifacts';\n\nconst kind: ArtifactKind = ARTIFACT_KINDS[0];\nconst candidate: unknown = { schemaVersion: '1.0.0', artifactKind: kind };\nconst result = validateArtifact(candidate);\nif (result.ok) {\n  const artifact: AnyArtifactV1 = result.artifact;\n  console.log(artifact.artifactKind);\n}\n`);
+packages/artifacts/scripts/generate-types.mjs:42:body.push(`export const ARTIFACT_KINDS: readonly ArtifactKind[];`);
+packages/artifacts/scripts/generate-types.mjs:46:body.push(`export function loadSchema(kind: ArtifactKind): unknown;`);
+packages/artifacts/scripts/generate-types.mjs:49:body.push(`export function validateArtifact(data: unknown, options?: { artifactPath?: string }): ArtifactValidationResult<AnyArtifactV1>;`);
+packages/artifacts/scripts/generate-types.mjs:50:body.push(`export function validateArtifactKind(kind: ArtifactKind, data: unknown, options?: { artifactPath?: string }): ArtifactValidationResult<AnyArtifactV1>;`);
+packages/artifacts/scripts/generate-types.mjs:51:body.push(`export function validateArtifactFile(filePath: string, options?: { artifactPath?: string; kind?: ArtifactKind }): ArtifactValidationResult<AnyArtifactV1>;`);
+packages/artifacts/package.json:2:  "name": "@vibe-engineer/artifacts",
+packages/artifacts/README.md:1:# @vibe-engineer/artifacts
+packages/registry/package.json:21:    "@vibe-engineer/artifacts": "workspace:*"
+packages/schematics/fixtures/engine/run-engine-witnesses.mjs:8:import { executeSchematic, loadSchematicDefinition } from "../../src/engine/index.js";
+packages/schematics/fixtures/engine/run-engine-witnesses.mjs:114:  const definition = await loadSchematicDefinition(manifestPath, { validateSchematicManifest: validateSchematicManifestWithArtifacts });
+packages/schematics/fixtures/engine/run-engine-witnesses.mjs:128:  const definition = await loadSchematicDefinition(manifestPath, { validateSchematicManifest: validateSchematicManifestWithArtifacts });
+packages/artifacts/tests/run-tests.mjs:6:import { ARTIFACT_KINDS, compileAllArtifactSchemas, loadAllSchemas, schemaPathForKind, validateArtifact, validateArtifactFile, validateArtifactKind, ValidationErrorCode } from '../src/index.js';
+packages/artifacts/tests/run-tests.mjs:25:for (const kind of ARTIFACT_KINDS) {
+packages/artifacts/tests/run-tests.mjs:34:for (const kind of ARTIFACT_KINDS) {
+packages/artifacts/tests/run-tests.mjs:36:  const fileResult = validateArtifactFile(filePath, { kind });
+packages/artifacts/tests/run-tests.mjs:39:  const objectResult = validateArtifact(data);
+packages/artifacts/tests/run-tests.mjs:41:  const kindResult = validateArtifactKind(kind, data, { artifactPath: filePath });
+packages/artifacts/tests/run-tests.mjs:46:for (const kind of ARTIFACT_KINDS) {
+packages/artifacts/tests/run-tests.mjs:51:    const result = validateArtifactFile(path.join(dir, file), { kind });
+packages/artifacts/tests/run-tests.mjs:61:let result = validateArtifactKind('work_brief', wb, { artifactPath: 'memory' });
+packages/artifacts/tests/run-tests.mjs:64:result = validateArtifactKind('work_brief', wb, { artifactPath: 'memory' });
+packages/artifacts/tests/run-tests.mjs:68:  const carrier = validateArtifactFile(path.join(carrierDir, file));
+packages/artifacts/tests/run-tests.mjs:86:  const result = validateArtifactFile(path.join(invalidDir, relative), { kind });
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-schema-narrowed/packages/app/src/as-unknown-schema.ts:2:const PayloadSchema = { parse(value: unknown): unknown { return value; } };
+packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/as-unknown-schema-narrowed/packages/app/src/as-unknown-schema.ts:3:export const parsed = PayloadSchema.parse(input as unknown);

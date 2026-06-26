@@ -1,0 +1,63 @@
+{
+  "ok": true,
+  "failures": [],
+  "rootExpectedNonConsumerState": true,
+  "runs": [
+    {
+      "label": "cli-direct",
+      "cwd": "/Users/lizavasilyeva/work/vibe-engineer/packages/cli",
+      "command": "/Users/lizavasilyeva/.nvm/versions/node/v24.16.0/bin/node --input-type=module -e import { validateArtifactFile } from '@vibe-engineer/artifacts'; console.log(typeof validateArtifactFile);",
+      "exit": 0,
+      "stdout": "function",
+      "stderr": ""
+    },
+    {
+      "label": "cli-filter",
+      "cwd": "/Users/lizavasilyeva/work/vibe-engineer",
+      "command": "pnpm --filter vibe-engineer exec node --input-type=module -e import { validateArtifactFile } from '@vibe-engineer/artifacts'; console.log(typeof validateArtifactFile);",
+      "exit": 0,
+      "stdout": "function",
+      "stderr": ""
+    },
+    {
+      "label": "context-direct",
+      "cwd": "/Users/lizavasilyeva/work/vibe-engineer/packages/context",
+      "command": "/Users/lizavasilyeva/.nvm/versions/node/v24.16.0/bin/node --input-type=module -e import { validateArtifactFile } from '@vibe-engineer/artifacts'; console.log(typeof validateArtifactFile);",
+      "exit": 0,
+      "stdout": "function",
+      "stderr": ""
+    },
+    {
+      "label": "context-filter",
+      "cwd": "/Users/lizavasilyeva/work/vibe-engineer",
+      "command": "pnpm --filter @vibe-engineer/context exec node --input-type=module -e import { validateArtifactFile } from '@vibe-engineer/artifacts'; console.log(typeof validateArtifactFile);",
+      "exit": 0,
+      "stdout": "function",
+      "stderr": ""
+    },
+    {
+      "label": "orchestration-direct",
+      "cwd": "/Users/lizavasilyeva/work/vibe-engineer/packages/orchestration",
+      "command": "/Users/lizavasilyeva/.nvm/versions/node/v24.16.0/bin/node --input-type=module -e import { validateArtifactFile } from '@vibe-engineer/artifacts'; console.log(typeof validateArtifactFile);",
+      "exit": 0,
+      "stdout": "function",
+      "stderr": ""
+    },
+    {
+      "label": "orchestration-filter",
+      "cwd": "/Users/lizavasilyeva/work/vibe-engineer",
+      "command": "pnpm --filter @vibe-engineer/orchestration exec node --input-type=module -e import { validateArtifactFile } from '@vibe-engineer/artifacts'; console.log(typeof validateArtifactFile);",
+      "exit": 0,
+      "stdout": "function",
+      "stderr": ""
+    },
+    {
+      "label": "root-bare-non-consumer",
+      "cwd": "/Users/lizavasilyeva/work/vibe-engineer",
+      "command": "/Users/lizavasilyeva/.nvm/versions/node/v24.16.0/bin/node --input-type=module -e import { validateArtifactFile } from '@vibe-engineer/artifacts'; console.log(typeof validateArtifactFile);",
+      "exit": 1,
+      "stdout": "",
+      "stderr": "node:internal/modules/package_json_reader:301\n  throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);\n        ^\n\nError [ERR_MODULE_NOT_FOUND]: Cannot find package '@vibe-engineer/artifacts' imported from /Users/lizavasilyeva/work/vibe-engineer/[eval1]\n    at Object.getPackageJSONURL (node:internal/modules/package_json_reader:301:9)\n    at packageResolve (node:internal/modules/esm/resolve:768:81)\n    at moduleResolve (node:internal/modules/esm/resolve:859:18)\n    at defaultResolve (node:internal/modules/esm/resolve:992:11)\n    at #cachedDefaultResolve (node:internal/modules/esm/loader:691:20)\n    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:708:38)\n    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:740:52)\n    at #resolve (node:internal/modules/esm/loader:673:17)\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:593:35)\n    at ModuleJob.syncLink (node:internal/modules/esm/module_job:163:33) {\n  code: 'ERR_MODULE_NOT_FOUND'\n}\n\nNode.js v24.16.0"
+    }
+  ]
+}

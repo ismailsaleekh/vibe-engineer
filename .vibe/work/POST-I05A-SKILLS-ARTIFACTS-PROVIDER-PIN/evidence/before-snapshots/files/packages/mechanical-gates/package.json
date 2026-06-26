@@ -1,0 +1,45 @@
+{
+  "name": "@vibe-engineer/mechanical-gates",
+  "version": "0.0.0",
+  "license": "MIT",
+  "type": "module",
+  "description": "Typed P0 governed-surface, strict-config, and package-boundary mechanical validators.",
+  "private": true,
+  "exports": {
+    "./aggregate": {
+      "types": "./src/aggregate/index.d.ts",
+      "import": "./src/aggregate/index.js"
+    },
+    "./p0/allowlist": {
+      "types": "./src/p0/allowlist/index.d.ts",
+      "import": "./src/p0/allowlist/index.js"
+    },
+    "./p0/domain-purity": {
+      "types": "./src/p0/domain-purity/index.d.ts",
+      "import": "./src/p0/domain-purity/index.js"
+    },
+    "./p0/governed-surface": {
+      "types": "./src/p0/governed-surface/index.d.ts",
+      "import": "./src/p0/governed-surface/index.js"
+    },
+    "./p0/config-guards": {
+      "types": "./src/p0/config-guards/index.d.ts",
+      "import": "./src/p0/config-guards/index.js"
+    },
+    "./p0/boundaries": {
+      "types": "./src/p0/boundaries/index.d.ts",
+      "import": "./src/p0/boundaries/index.js"
+    }
+  },
+  "scripts": {
+    "typecheck": "node fixtures/p0/surface-config-boundaries/witness.mjs --typecheck",
+    "test": "node fixtures/p0/surface-config-boundaries/witness.mjs",
+    "test:p0": "node fixtures/p0/surface-config-boundaries/witness.mjs"
+  },
+  "vibeEngineer": {
+    "implementationUnit": "I-10A-mechanical-P0-surface-config-boundaries",
+    "implementationStatus": "implemented",
+    "packageRole": "internal-workspace-package",
+    "sourceStatus": "package-owned-p0-source-created"
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "ok": true,
+  "failures": [],
+  "manifestConsumers": [
+    "packages/cli",
+    "packages/context",
+    "packages/orchestration",
+    "packages/registry",
+    "packages/skills",
+    "packages/verification"
+  ],
+  "intendedConsumers": [
+    "packages/cli",
+    "packages/context",
+    "packages/orchestration",
+    "packages/registry",
+    "packages/skills"
+  ],
+  "additionalActualConsumers": [
+    {
+      "importer": "packages/verification",
+      "classification": "legitimate pre-existing I-09S serialized package handoff consumer; dependency and lockfile edge already present before this I-05A handoff and not edited here"
+    }
+  ],
+  "publicImportFiles": [
+    "packages/cli/src/commands/schematic/artifacts-adapter.js",
+    "packages/cli/src/testing/run-witnesses.mjs",
+    "packages/context/src/index.js",
+    "packages/context/tests/negative-witness.mjs",
+    "packages/context/tests/real-boundary-witness.mjs",
+    "packages/orchestration/dist/src/index.d.ts",
+    "packages/orchestration/dist/src/index.js",
+    "packages/orchestration/src/index.ts",
+    "packages/orchestration/tests/real-boundary-witness.mjs",
+    "packages/orchestration/tests/run-tests.mjs",
+    "packages/registry/src/index.d.ts",
+    "packages/registry/src/index.js"
+  ],
+  "publicImportPackages": [
+    "packages/cli",
+    "packages/context",
+    "packages/orchestration",
+    "packages/registry"
+  ],
+  "relativeReachIns": [],
+  "duplicationSuspects": [],
+  "workspaceManifests": [
+    {
+      "name": "@vibe-engineer/adapter-pi",
+      "importer": "packages/adapters/pi"
+    },
+    {
+      "name": "@vibe-engineer/artifacts",
+      "importer": "packages/artifacts"
+    },
+    {
+      "name": "vibe-engineer",
+      "importer": "packages/cli"
+    },
+    {
+      "name": "@vibe-engineer/config",
+      "importer": "packages/config"
+    },
+    {
+      "name": "@vibe-engineer/context",
+      "importer": "packages/context"
+    },
+    {
+      "name": "@vibe-engineer/contracts",
+      "importer": "packages/contracts"
+    },
+    {
+      "name": "@vibe-engineer/mechanical-gates",
+      "importer": "packages/mechanical-gates"
+    },
+    {
+      "name": "@vibe-engineer/observability",
+      "importer": "packages/observability"
+    },
+    {
+      "name": "@vibe-engineer/orchestration",
+      "importer": "packages/orchestration"
+    },
+    {
+      "name": "@vibe-engineer/preset-nest-react-rn",
+      "importer": "packages/presets/nest-react-rn"
+    },
+    {
+      "name": "@vibe-engineer/preset-typescript",
+      "importer": "packages/presets/typescript"
+    },
+    {
+      "name": "@vibe-engineer/registry",
+      "importer": "packages/registry"
+    },
+    {
+      "name": "@vibe-engineer/schematics",
+      "importer": "packages/schematics"
+    },
+    {
+      "name": "@vibe-engineer/security",
+      "importer": "packages/security"
+    },
+    {
+      "name": "@vibe-engineer/skills",
+      "importer": "packages/skills"
+    },
+    {
+      "name": "@vibe-engineer/standards",
+      "importer": "packages/standards"
+    },
+    {
+      "name": "@vibe-engineer/testing",
+      "importer": "packages/testing"
+    },
+    {
+      "name": "@vibe-engineer/verification",
+      "importer": "packages/verification"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+--- /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/POST-I05A-SKILLS-ARTIFACTS-PROVIDER-PIN/evidence/before-snapshots/files/packages/registry/package.json	2026-06-25 04:43:48
++++ /Users/lizavasilyeva/work/vibe-engineer/packages/registry/package.json	2026-06-25 04:44:21
+@@ -17,6 +17,9 @@
+     "test:fixtures": "node tests/fixture-witness.mjs",
+     "build": "node scripts/build-smoke.mjs"
+   },
++  "dependencies": {
++    "@vibe-engineer/artifacts": "workspace:*"
++  },
+   "vibeEngineer": {
+     "implementationUnit": "I-04-agent-registry-validation",
+     "implementationStatus": "implemented",

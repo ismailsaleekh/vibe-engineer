@@ -1,0 +1,11 @@
+--- /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/POST-I05A-SKILLS-ARTIFACTS-PROVIDER-PIN/evidence/before-snapshots/files/packages/registry/src/index.js	2026-06-25 04:43:48
++++ /Users/lizavasilyeva/work/vibe-engineer/packages/registry/src/index.js	2026-06-25 04:44:24
+@@ -1,7 +1,7 @@
+ import fs from 'node:fs';
+ import path from 'node:path';
+ import { fileURLToPath } from 'node:url';
+-import { ARTIFACT_KINDS, loadSchema, validateArtifactFile } from '../../artifacts/src/index.js';
++import { ARTIFACT_KINDS, loadSchema, validateArtifactFile } from '@vibe-engineer/artifacts';
+ 
+ export const RegistrySeverity = Object.freeze({
+   CRITICAL: 'critical',

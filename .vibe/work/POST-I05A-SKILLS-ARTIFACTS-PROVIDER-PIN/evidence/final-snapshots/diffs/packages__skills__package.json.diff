@@ -1,0 +1,12 @@
+--- /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/POST-I05A-SKILLS-ARTIFACTS-PROVIDER-PIN/evidence/before-snapshots/files/packages/skills/package.json	2026-06-25 04:43:48
++++ /Users/lizavasilyeva/work/vibe-engineer/packages/skills/package.json	2026-06-25 04:44:15
+@@ -10,5 +10,8 @@
+     "packageRole": "internal-workspace-package",
+     "sourceStatus": "not-created-in-I-00A"
+   },
+-  "private": true
++  "private": true,
++  "dependencies": {
++    "@vibe-engineer/artifacts": "workspace:*"
++  }
+ }

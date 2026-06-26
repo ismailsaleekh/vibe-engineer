@@ -1,0 +1,26 @@
+--- /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/POST-I05A-SKILLS-ARTIFACTS-PROVIDER-PIN/evidence/before-snapshots/files/pnpm-lock.yaml	2026-06-25 04:43:48
++++ /Users/lizavasilyeva/work/vibe-engineer/pnpm-lock.yaml	2026-06-25 04:44:50
+@@ -74,13 +74,21 @@
+ 
+   packages/presets/typescript: {}
+ 
+-  packages/registry: {}
++  packages/registry:
++    dependencies:
++      '@vibe-engineer/artifacts':
++        specifier: workspace:*
++        version: link:../artifacts
+ 
+   packages/schematics: {}
+ 
+   packages/security: {}
+ 
+-  packages/skills: {}
++  packages/skills:
++    dependencies:
++      '@vibe-engineer/artifacts':
++        specifier: workspace:*
++        version: link:../artifacts
+ 
+   packages/standards: {}
+ 

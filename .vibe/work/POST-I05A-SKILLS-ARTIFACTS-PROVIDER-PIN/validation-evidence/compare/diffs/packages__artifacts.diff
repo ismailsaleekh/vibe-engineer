@@ -1,0 +1,28 @@
+--- before/packages/artifacts
++++ current/packages/artifacts
+@@ -1,6 +1,4 @@
+-cd47ea1325fc39614c2ed83241729ec60fd01f44061539e59d3cb7a58f005bed  /Users/lizavasilyeva/work/vibe-engineer/packages/artifacts/fixtures/invalid-carriers/chat-transcript.txt
+-6e64f6c343fb1bb60bf1cf05c042a9811236f4f16527836e53b043add7b18352  /Users/lizavasilyeva/work/vibe-engineer/packages/artifacts/fixtures/invalid-carriers/implementation-plan.yaml
+-46a5aeec7eeff71bfa2b3e94977ce023a2192a023db47e9b091f68c828bf7835  /Users/lizavasilyeva/work/vibe-engineer/packages/artifacts/fixtures/invalid-carriers/work-brief.md
++a132584884b44a38e51f6fe53f0517cd121802f04508bb7970f815af345a7470  /Users/lizavasilyeva/work/vibe-engineer/packages/artifacts/README.md
+ 24f0e373a0048dbb36accad79d7a75b919282f1bc65ec1917f4ae99db4d82e0a  /Users/lizavasilyeva/work/vibe-engineer/packages/artifacts/fixtures/invalid/agent_registry_entry/missing-schema-refs.json
+ 4799851e922a36c5ecba0cfc34459b118588eb619ea3ce4f21d6c67a32f32b98  /Users/lizavasilyeva/work/vibe-engineer/packages/artifacts/fixtures/invalid/agent_registry_entry/missing-schemaVersion.json
+ 7b05ea1b8635f48bb634f4d39816cadb44b01be8e241894133dea26f247b0d86  /Users/lizavasilyeva/work/vibe-engineer/packages/artifacts/fixtures/invalid/agent_registry_entry/unknown-field.json
+@@ -53,6 +51,9 @@
+ 183a3eae4b32c3ee30e32ad708acf654c8883fd8690663966b093a592b0c9a83  /Users/lizavasilyeva/work/vibe-engineer/packages/artifacts/fixtures/invalid/work_brief/unknown-field.json
+ 25ab646101908d2a6d5da57c450e1eed0ab5cc23c5e27113f097d3b9ffbdd1b4  /Users/lizavasilyeva/work/vibe-engineer/packages/artifacts/fixtures/invalid/work_brief/unsupported-version.json
+ caa4fddf93f11c46971e313bfe6a1eda49c14839c87007439d2bb106e150f9eb  /Users/lizavasilyeva/work/vibe-engineer/packages/artifacts/fixtures/invalid/work_brief/wrong-artifactKind.json
++cd47ea1325fc39614c2ed83241729ec60fd01f44061539e59d3cb7a58f005bed  /Users/lizavasilyeva/work/vibe-engineer/packages/artifacts/fixtures/invalid-carriers/chat-transcript.txt
++6e64f6c343fb1bb60bf1cf05c042a9811236f4f16527836e53b043add7b18352  /Users/lizavasilyeva/work/vibe-engineer/packages/artifacts/fixtures/invalid-carriers/implementation-plan.yaml
++46a5aeec7eeff71bfa2b3e94977ce023a2192a023db47e9b091f68c828bf7835  /Users/lizavasilyeva/work/vibe-engineer/packages/artifacts/fixtures/invalid-carriers/work-brief.md
+ b6e6426d002c95ec16941ab97056adf4120fb318ad5587066bad34c455849182  /Users/lizavasilyeva/work/vibe-engineer/packages/artifacts/fixtures/valid/agent_registry_entry.json
+ 96f832bbc62833effbb85e56e8151dc37a76517356d5a23cb906799f7579dac7  /Users/lizavasilyeva/work/vibe-engineer/packages/artifacts/fixtures/valid/build_result.json
+ 16457d637cf076a2030f36db367bf9ee936b3d8883fd0f5ed4878060a8c7c20e  /Users/lizavasilyeva/work/vibe-engineer/packages/artifacts/fixtures/valid/context_file_header.json
+@@ -64,7 +65,6 @@
+ be35608214f118c4e4930470225124221ca1c795b2b3527a6a64b7de95f75eda  /Users/lizavasilyeva/work/vibe-engineer/packages/artifacts/fixtures/valid/verification_delta.json
+ ce50a53a1940b2ef55b7bf3273730700a9729045cfcf9b53270e7aac2023972c  /Users/lizavasilyeva/work/vibe-engineer/packages/artifacts/fixtures/valid/work_brief.json
+ 1ace06c206300412035f1954b08d6ed97a2e244265ef70a7789f4488cede7498  /Users/lizavasilyeva/work/vibe-engineer/packages/artifacts/package.json
+-a132584884b44a38e51f6fe53f0517cd121802f04508bb7970f815af345a7470  /Users/lizavasilyeva/work/vibe-engineer/packages/artifacts/README.md
+ cd4511e6e4e480ca42ce49b63681926e1bbd7eca77cd961fdde68bc8773bd72e  /Users/lizavasilyeva/work/vibe-engineer/packages/artifacts/schemas/agent-registry-entry.schema.json
+ b7a29627cd098ca6ec2263fd31f8273d18c85023c3e53eceec39f08f71f11b53  /Users/lizavasilyeva/work/vibe-engineer/packages/artifacts/schemas/build-result.schema.json
+ 7da528b2f75de52fbf90a99c65a1c0d33c118ac98f1b746a0565cd47dffc0461  /Users/lizavasilyeva/work/vibe-engineer/packages/artifacts/schemas/context-file-header.schema.json

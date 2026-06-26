@@ -1,0 +1,8 @@
+skills_dep workspace:*
+registry_dep workspace:*
+registry_exports {'.': {'types': './src/index.d.ts', 'import': './src/index.js'}}
+registry_scripts {'typecheck': 'tsc --noEmit -p tsconfig.json', 'test': 'node tests/run-tests.mjs', 'test:fixtures': 'node tests/fixture-witness.mjs', 'build': 'node scripts/build-smoke.mjs'}
+runtime_public_import True
+runtime_relative_absent True
+type_public_import True
+type_relative_absent True

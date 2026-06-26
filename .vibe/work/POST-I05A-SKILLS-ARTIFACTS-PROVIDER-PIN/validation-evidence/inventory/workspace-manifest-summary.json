@@ -1,0 +1,342 @@
+[
+  {
+    "dependencies": {
+      "ajv": "8.17.1"
+    },
+    "devDependencies": {},
+    "exports": {
+      ".": {
+        "import": "./src/index.js",
+        "types": "./src/generated/types.d.ts"
+      },
+      "./schemas": "./src/schema-registry.js",
+      "./schemas/*": "./schemas/*"
+    },
+    "name": "@vibe-engineer/artifacts",
+    "path": "packages/artifacts/package.json",
+    "scripts": {
+      "build": "node scripts/check-generated-types.mjs && node tests/run-tests.mjs",
+      "check:types": "node scripts/check-generated-types.mjs",
+      "generate:types": "node scripts/generate-types.mjs",
+      "test": "node tests/run-tests.mjs",
+      "typecheck": "node scripts/check-generated-types.mjs && node scripts/typecheck-public-entrypoint.mjs"
+    },
+    "vibeEngineer": {
+      "implementationStatus": "implemented",
+      "implementationUnit": "I-01A-artifact-schemas",
+      "packageRole": "internal-workspace-package",
+      "sourceStatus": "package-owned-source-created"
+    }
+  },
+  {
+    "dependencies": {
+      "@vibe-engineer/artifacts": "workspace:*",
+      "@vibe-engineer/config": "workspace:*",
+      "@vibe-engineer/verification": "workspace:*"
+    },
+    "devDependencies": {},
+    "exports": {
+      ".": "./src/entry/vibe-engineer.js",
+      "./command-loader": "./src/command-loader/loader.js",
+      "./envelope": "./src/envelope/result-envelope.js"
+    },
+    "name": "vibe-engineer",
+    "path": "packages/cli/package.json",
+    "scripts": {
+      "test": "node src/testing/run-witnesses.mjs"
+    },
+    "vibeEngineer": {
+      "binStatus": "vibe-engineer-bin-entry-owned-by-I-02A",
+      "implementationStatus": "foundation-implemented",
+      "implementationUnit": "I-02A-cli-loader-envelope",
+      "packageRole": "public-cli-package",
+      "sourceStatus": "i-02a-foundation-created"
+    }
+  },
+  {
+    "dependencies": {},
+    "devDependencies": {},
+    "exports": {
+      ".": {
+        "import": "./src/index.js",
+        "types": "./src/generated/types.d.ts"
+      }
+    },
+    "name": "@vibe-engineer/config",
+    "path": "packages/config/package.json",
+    "scripts": {
+      "build": "tsc --noEmit -p tsconfig.json && node tests/run-tests.mjs",
+      "lint": "eslint .",
+      "test": "node tests/run-tests.mjs",
+      "typecheck": "tsc --noEmit -p tsconfig.json"
+    },
+    "vibeEngineer": {
+      "implementationStatus": "implemented",
+      "implementationUnit": "I-01B-config-loader",
+      "packageRole": "internal-workspace-package",
+      "sourceStatus": "package-owned-source-created"
+    }
+  },
+  {
+    "dependencies": {
+      "@vibe-engineer/artifacts": "workspace:*",
+      "@vibe-engineer/config": "workspace:*"
+    },
+    "devDependencies": {},
+    "exports": {
+      ".": {
+        "import": "./src/index.js",
+        "types": "./src/index.d.ts"
+      }
+    },
+    "name": "@vibe-engineer/context",
+    "path": "packages/context/package.json",
+    "scripts": {
+      "build": "node --check src/index.js && node --check tests/real-boundary-witness.mjs && node --check tests/negative-witness.mjs && node --check tests/schema-strictness-witness.mjs && node tests/real-boundary-witness.mjs && node tests/negative-witness.mjs && node tests/schema-strictness-witness.mjs",
+      "test": "node tests/real-boundary-witness.mjs && node tests/negative-witness.mjs && node tests/schema-strictness-witness.mjs",
+      "typecheck": "node --check src/index.js && node --check tests/real-boundary-witness.mjs && node --check tests/negative-witness.mjs && node --check tests/schema-strictness-witness.mjs"
+    },
+    "vibeEngineer": {
+      "implementationStatus": "implemented",
+      "implementationUnit": "I-08-context-graph-index-drift",
+      "packageRole": "internal-workspace-package",
+      "sourceStatus": "package-owned-source-created"
+    }
+  },
+  {
+    "dependencies": {},
+    "devDependencies": {},
+    "exports": null,
+    "name": "@vibe-engineer/contracts",
+    "path": "packages/contracts/package.json",
+    "scripts": {},
+    "vibeEngineer": {
+      "implementationStatus": "skeleton-only",
+      "implementationUnit": "I-00A-workspace-package-skeleton",
+      "packageRole": "internal-workspace-package",
+      "sourceStatus": "not-created-in-I-00A"
+    }
+  },
+  {
+    "dependencies": {},
+    "devDependencies": {},
+    "exports": {
+      "./aggregate": {
+        "import": "./src/aggregate/index.js",
+        "types": "./src/aggregate/index.d.ts"
+      },
+      "./p0/allowlist": {
+        "import": "./src/p0/allowlist/index.js",
+        "types": "./src/p0/allowlist/index.d.ts"
+      },
+      "./p0/boundaries": {
+        "import": "./src/p0/boundaries/index.js",
+        "types": "./src/p0/boundaries/index.d.ts"
+      },
+      "./p0/config-guards": {
+        "import": "./src/p0/config-guards/index.js",
+        "types": "./src/p0/config-guards/index.d.ts"
+      },
+      "./p0/domain-purity": {
+        "import": "./src/p0/domain-purity/index.js",
+        "types": "./src/p0/domain-purity/index.d.ts"
+      },
+      "./p0/governed-surface": {
+        "import": "./src/p0/governed-surface/index.js",
+        "types": "./src/p0/governed-surface/index.d.ts"
+      }
+    },
+    "name": "@vibe-engineer/mechanical-gates",
+    "path": "packages/mechanical-gates/package.json",
+    "scripts": {
+      "test": "node fixtures/p0/surface-config-boundaries/witness.mjs",
+      "test:p0": "node fixtures/p0/surface-config-boundaries/witness.mjs",
+      "typecheck": "node fixtures/p0/surface-config-boundaries/witness.mjs --typecheck"
+    },
+    "vibeEngineer": {
+      "implementationStatus": "implemented",
+      "implementationUnit": "I-10A-mechanical-P0-surface-config-boundaries",
+      "packageRole": "internal-workspace-package",
+      "sourceStatus": "package-owned-p0-source-created"
+    }
+  },
+  {
+    "dependencies": {},
+    "devDependencies": {},
+    "exports": null,
+    "name": "@vibe-engineer/observability",
+    "path": "packages/observability/package.json",
+    "scripts": {},
+    "vibeEngineer": {
+      "implementationStatus": "skeleton-only",
+      "implementationUnit": "I-00A-workspace-package-skeleton",
+      "packageRole": "internal-workspace-package",
+      "sourceStatus": "not-created-in-I-00A"
+    }
+  },
+  {
+    "dependencies": {
+      "@vibe-engineer/artifacts": "workspace:*"
+    },
+    "devDependencies": {},
+    "exports": {
+      ".": {
+        "import": "./dist/src/index.js",
+        "types": "./dist/src/index.d.ts"
+      }
+    },
+    "name": "@vibe-engineer/orchestration",
+    "path": "packages/orchestration/package.json",
+    "scripts": {
+      "build": "tsc -p tsconfig.json",
+      "lint": "eslint src tests/typecheck.ts",
+      "test": "tsc -p tsconfig.json && node tests/run-tests.mjs",
+      "typecheck": "tsc --noEmit -p tsconfig.json",
+      "witness:real-boundary": "tsc -p tsconfig.json && node tests/real-boundary-witness.mjs"
+    },
+    "vibeEngineer": {
+      "implementationStatus": "implemented",
+      "implementationUnit": "I-03-orchestration-runtime",
+      "packageRole": "internal-workspace-package",
+      "sourceStatus": "package-owned-source-created"
+    }
+  },
+  {
+    "dependencies": {
+      "@vibe-engineer/artifacts": "workspace:*"
+    },
+    "devDependencies": {},
+    "exports": {
+      ".": {
+        "import": "./src/index.js",
+        "types": "./src/index.d.ts"
+      }
+    },
+    "name": "@vibe-engineer/registry",
+    "path": "packages/registry/package.json",
+    "scripts": {
+      "build": "node scripts/build-smoke.mjs",
+      "test": "node tests/run-tests.mjs",
+      "test:fixtures": "node tests/fixture-witness.mjs",
+      "typecheck": "tsc --noEmit -p tsconfig.json"
+    },
+    "vibeEngineer": {
+      "implementationStatus": "implemented",
+      "implementationUnit": "I-04-agent-registry-validation",
+      "packageRole": "internal-workspace-package",
+      "sourceStatus": "package-owned-source-created"
+    }
+  },
+  {
+    "dependencies": {},
+    "devDependencies": {},
+    "exports": null,
+    "name": "@vibe-engineer/schematics",
+    "path": "packages/schematics/package.json",
+    "scripts": {},
+    "vibeEngineer": {
+      "implementationStatus": "skeleton-only",
+      "implementationUnit": "I-00A-workspace-package-skeleton",
+      "packageRole": "internal-workspace-package",
+      "sourceStatus": "not-created-in-I-00A"
+    }
+  },
+  {
+    "dependencies": {},
+    "devDependencies": {},
+    "exports": null,
+    "name": "@vibe-engineer/security",
+    "path": "packages/security/package.json",
+    "scripts": {},
+    "vibeEngineer": {
+      "implementationStatus": "skeleton-only",
+      "implementationUnit": "I-00A-workspace-package-skeleton",
+      "packageRole": "internal-workspace-package",
+      "sourceStatus": "not-created-in-I-00A"
+    }
+  },
+  {
+    "dependencies": {
+      "@vibe-engineer/artifacts": "workspace:*"
+    },
+    "devDependencies": {},
+    "exports": null,
+    "name": "@vibe-engineer/skills",
+    "path": "packages/skills/package.json",
+    "scripts": {},
+    "vibeEngineer": {
+      "implementationStatus": "skeleton-only",
+      "implementationUnit": "I-00A-workspace-package-skeleton",
+      "packageRole": "internal-workspace-package",
+      "sourceStatus": "not-created-in-I-00A"
+    }
+  },
+  {
+    "dependencies": {},
+    "devDependencies": {},
+    "exports": {
+      ".": {
+        "import": "./src/index.js",
+        "types": "./src/index.d.ts"
+      },
+      "./schemas": "./src/schema-registry.js",
+      "./schemas/*": "./schemas/*"
+    },
+    "name": "@vibe-engineer/standards",
+    "path": "packages/standards/package.json",
+    "scripts": {
+      "check:syntax": "node --check src/index.js && node --check src/schema-registry.js && node --check src/errors.js && node --check src/catalog-data.js && node --check src/validation.js && node --check fixtures/run-witnesses.mjs",
+      "test": "node fixtures/run-witnesses.mjs",
+      "witness": "node fixtures/run-witnesses.mjs"
+    },
+    "vibeEngineer": {
+      "implementationStatus": "implemented",
+      "implementationUnit": "I-07C-standards-package",
+      "packageRole": "internal-workspace-package",
+      "sourceStatus": "package-owned-source-created"
+    }
+  },
+  {
+    "dependencies": {},
+    "devDependencies": {},
+    "exports": {
+      ".": {
+        "import": "./src/index.js",
+        "types": "./src/index.d.ts"
+      }
+    },
+    "name": "@vibe-engineer/testing",
+    "path": "packages/testing/package.json",
+    "scripts": {
+      "test": "node fixtures/helper-consumer.mjs",
+      "typecheck": "node --check src/index.js && node --check fixtures/helper-consumer.mjs"
+    },
+    "vibeEngineer": {
+      "implementationStatus": "implemented",
+      "implementationUnit": "I-10C-testing-helper-boundary-package",
+      "packageRole": "test-only-workspace-package",
+      "productionDependencyAllowed": false,
+      "sourceStatus": "package-owned-source-created",
+      "testOnly": true
+    }
+  },
+  {
+    "dependencies": {
+      "@vibe-engineer/artifacts": "workspace:*",
+      "@vibe-engineer/orchestration": "workspace:*"
+    },
+    "devDependencies": {},
+    "exports": {
+      ".": "./src/index.js"
+    },
+    "name": "@vibe-engineer/verification",
+    "path": "packages/verification/package.json",
+    "scripts": {},
+    "vibeEngineer": {
+      "implementationStatus": "skeleton-only",
+      "implementationUnit": "I-00A-workspace-package-skeleton",
+      "packageRole": "internal-workspace-package",
+      "sourceStatus": "not-created-in-I-00A"
+    }
+  }
+]

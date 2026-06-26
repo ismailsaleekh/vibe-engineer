@@ -1,0 +1,76 @@
+--- packages/skills: ---
+  packages/skills:
+    dependencies:
+      '@vibe-engineer/artifacts':
+        specifier: workspace:*
+        version: link:../artifacts
+
+  packages/standards: {}
+
+  packages/testing: {}
+
+--- packages/registry: ---
+  packages/registry:
+    dependencies:
+      '@vibe-engineer/artifacts':
+        specifier: workspace:*
+        version: link:../artifacts
+
+  packages/schematics: {}
+
+  packages/security: {}
+
+--- packages/cli: ---
+  packages/cli:
+    dependencies:
+      '@vibe-engineer/artifacts':
+        specifier: workspace:*
+        version: link:../artifacts
+      '@vibe-engineer/config':
+        specifier: workspace:*
+        version: link:../config
+      '@vibe-engineer/verification':
+        specifier: workspace:*
+        version: link:../verification
+
+  packages/config: {}
+
+--- packages/context: ---
+  packages/context:
+    dependencies:
+      '@vibe-engineer/artifacts':
+        specifier: workspace:*
+        version: link:../artifacts
+      '@vibe-engineer/config':
+        specifier: workspace:*
+        version: link:../config
+
+  packages/contracts: {}
+
+  packages/mechanical-gates: {}
+
+  packages/observability: {}
+
+--- packages/orchestration: ---
+  packages/orchestration:
+    dependencies:
+      '@vibe-engineer/artifacts':
+        specifier: workspace:*
+        version: link:../artifacts
+
+  packages/presets/nest-react-rn: {}
+
+  packages/presets/typescript: {}
+
+--- packages/verification: ---
+  packages/verification:
+    dependencies:
+      '@vibe-engineer/artifacts':
+        specifier: workspace:*
+        version: link:../artifacts
+      '@vibe-engineer/orchestration':
+        specifier: workspace:*
+        version: link:../orchestration
+
+packages:
+

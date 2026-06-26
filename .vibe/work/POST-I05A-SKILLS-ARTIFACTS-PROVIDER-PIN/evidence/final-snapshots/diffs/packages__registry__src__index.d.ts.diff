@@ -1,0 +1,8 @@
+--- /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/POST-I05A-SKILLS-ARTIFACTS-PROVIDER-PIN/evidence/before-snapshots/files/packages/registry/src/index.d.ts	2026-06-25 04:43:48
++++ /Users/lizavasilyeva/work/vibe-engineer/packages/registry/src/index.d.ts	2026-06-25 04:44:27
+@@ -1,4 +1,4 @@
+-import type { AgentRegistryEntryV1, ArtifactKind } from '../../artifacts/src/generated/types.d.ts';
++import type { AgentRegistryEntryV1, ArtifactKind } from '@vibe-engineer/artifacts';
+ 
+ export type RegistrySeverity = 'critical' | 'major-local' | 'minor-local';
+ 

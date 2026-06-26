@@ -1,0 +1,40 @@
+{
+  "ok": true,
+  "exit": 0,
+  "signal": null,
+  "parsed": {
+    "cwd": "/Users/lizavasilyeva/work/vibe-engineer/packages/skills",
+    "moduleFunctions": {
+      "validateArtifact": "function",
+      "validateArtifactKind": "function",
+      "validateArtifactFile": "function"
+    },
+    "canonical": {
+      "ok": true,
+      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/work-brief.schema.json",
+      "errorCodes": []
+    },
+    "negative": {
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/POST-I05A-SKILLS-ARTIFACTS-PROVIDER-PIN/evidence/witness-results/skills-consumer/malformed-work-brief-missing-raw-intent.json",
+      "ok": false,
+      "errors": [
+        {
+          "code": "MIN_ITEMS",
+          "pointer": "/links",
+          "message": "must NOT have fewer than 1 items"
+        },
+        {
+          "code": "REQUIRED",
+          "pointer": "/sourceMetadata/rawIntentRefs",
+          "message": "must have required property 'rawIntentRefs'"
+        },
+        {
+          "code": "BAD_LINK",
+          "pointer": "/links",
+          "message": "Work Brief must include a required raw_intent link."
+        }
+      ]
+    }
+  },
+  "stderr": ""
+}

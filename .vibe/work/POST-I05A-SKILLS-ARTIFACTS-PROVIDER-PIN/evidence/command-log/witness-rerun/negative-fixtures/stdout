@@ -1,0 +1,78 @@
+{
+  "ok": true,
+  "baseErrors": [],
+  "cases": [
+    {
+      "name": "missing-skills-dep",
+      "errors": [
+        "missing-skills-artifacts-dependency"
+      ],
+      "expectedError": "missing-skills-artifacts-dependency",
+      "ok": true
+    },
+    {
+      "name": "missing-registry-dep",
+      "errors": [
+        "missing-registry-artifacts-dependency"
+      ],
+      "expectedError": "missing-registry-artifacts-dependency",
+      "ok": true
+    },
+    {
+      "name": "missing-skills-lock-edge",
+      "errors": [
+        "missing-skills-lockfile-edge"
+      ],
+      "expectedError": "missing-skills-lockfile-edge",
+      "ok": true
+    },
+    {
+      "name": "missing-registry-lock-edge",
+      "errors": [
+        "missing-registry-lockfile-edge"
+      ],
+      "expectedError": "missing-registry-lockfile-edge",
+      "ok": true
+    },
+    {
+      "name": "runtime-relative-reach-in",
+      "errors": [
+        "registry-runtime-relative-reach-in"
+      ],
+      "expectedError": "registry-runtime-relative-reach-in",
+      "ok": true
+    },
+    {
+      "name": "type-relative-reach-in",
+      "errors": [
+        "registry-type-relative-reach-in"
+      ],
+      "expectedError": "registry-type-relative-reach-in",
+      "ok": true
+    },
+    {
+      "name": "root-artifacts-workaround",
+      "errors": [
+        "root-artifacts-dependency-workaround"
+      ],
+      "expectedError": "root-artifacts-dependency-workaround",
+      "ok": true
+    },
+    {
+      "name": "prod-testing-dependency",
+      "errors": [
+        "production-testing-dependency:packages/skills/package.json"
+      ],
+      "expectedError": "production-testing-dependency:packages/skills/package.json",
+      "ok": true
+    },
+    {
+      "name": "mock-relative-validator-proof",
+      "errors": [
+        "invalid-artifacts-proof-not-public-package-import"
+      ],
+      "expectedError": "invalid-artifacts-proof-not-public-package-import",
+      "ok": true
+    }
+  ]
+}

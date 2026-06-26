@@ -1,0 +1,378 @@
+{
+  "ok": true,
+  "checks": [
+    {
+      "name": "skills manifest dependency and skeleton preservation",
+      "ok": true,
+      "dependencies": {
+        "@vibe-engineer/artifacts": "workspace:*"
+      }
+    },
+    {
+      "name": "registry manifest dependency and metadata preservation",
+      "ok": true,
+      "dependencies": {
+        "@vibe-engineer/artifacts": "workspace:*"
+      }
+    },
+    {
+      "name": "registry runtime import uses public artifacts package only",
+      "ok": true
+    },
+    {
+      "name": "registry declaration imports public artifacts types only",
+      "ok": true
+    },
+    {
+      "name": "lockfile skills and registry importer edges",
+      "ok": true,
+      "skillsBlock": "  packages/skills:\n    dependencies:\n      '@vibe-engineer/artifacts':\n        specifier: workspace:*\n        version: link:../artifacts\n\n  packages/standards: {}\n\n  packages/testing: {}\n",
+      "registryBlock": "  packages/registry:\n    dependencies:\n      '@vibe-engineer/artifacts':\n        specifier: workspace:*\n        version: link:../artifacts\n\n  packages/schematics: {}\n\n  packages/security: {}\n"
+    },
+    {
+      "name": "package-local artifacts links resolve to artifacts package",
+      "ok": true,
+      "links": [
+        {
+          "path": "packages/skills/node_modules/@vibe-engineer/artifacts",
+          "readlink": "../../../artifacts",
+          "realpath": "/Users/lizavasilyeva/work/vibe-engineer/packages/artifacts"
+        },
+        {
+          "path": "packages/registry/node_modules/@vibe-engineer/artifacts",
+          "readlink": "../../../artifacts",
+          "realpath": "/Users/lizavasilyeva/work/vibe-engineer/packages/artifacts"
+        }
+      ]
+    },
+    {
+      "name": "root has no artifacts dependency or hoist workaround",
+      "ok": true,
+      "rootName": "@vibe-engineer/workspace"
+    },
+    {
+      "name": "workspace has no relative artifacts source reach-in outside artifacts package",
+      "ok": true
+    },
+    {
+      "name": "source artifacts imports have manifest dependencies and lockfile edges",
+      "ok": true,
+      "checked": [
+        {
+          "pkgPath": "packages/cli",
+          "packageName": "vibe-engineer",
+          "files": [
+            "packages/cli/src/commands/schematic/artifacts-adapter.js",
+            "packages/cli/src/testing/run-witnesses.mjs"
+          ]
+        },
+        {
+          "pkgPath": "packages/context",
+          "packageName": "@vibe-engineer/context",
+          "files": [
+            "packages/context/src/index.js",
+            "packages/context/tests/negative-witness.mjs",
+            "packages/context/tests/real-boundary-witness.mjs"
+          ]
+        },
+        {
+          "pkgPath": "packages/orchestration",
+          "packageName": "@vibe-engineer/orchestration",
+          "files": [
+            "packages/orchestration/dist/src/index.d.ts",
+            "packages/orchestration/dist/src/index.js",
+            "packages/orchestration/src/index.ts",
+            "packages/orchestration/tests/real-boundary-witness.mjs",
+            "packages/orchestration/tests/run-tests.mjs"
+          ]
+        },
+        {
+          "pkgPath": "packages/registry",
+          "packageName": "@vibe-engineer/registry",
+          "files": [
+            "packages/registry/src/index.d.ts",
+            "packages/registry/src/index.js"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "no production package depends on @vibe-engineer/testing in dependencies",
+      "ok": true
+    },
+    {
+      "name": "no copied artifact validator/schema implementation outside artifacts",
+      "ok": true
+    }
+  ],
+  "commandResults": [
+    {
+      "label": "skills package-context public artifacts import and validator behavior",
+      "cwd": "/Users/lizavasilyeva/work/vibe-engineer/packages/skills",
+      "command": "node",
+      "args": [
+        "--input-type=module",
+        "-e",
+        "\n  import assert from 'node:assert/strict';\n  const mod = await import('@vibe-engineer/artifacts');\n  assert.equal(typeof mod.validateArtifact, 'function');\n  assert.equal(typeof mod.validateArtifactKind, 'function');\n  assert.equal(typeof mod.validateArtifactFile, 'function');\n  const valid = mod.validateArtifactFile('/Users/lizavasilyeva/work/vibe-engineer/packages/artifacts/fixtures/valid/work_brief.json', { kind: 'work_brief' });\n  assert.equal(valid.ok, true, JSON.stringify(valid.errors));\n  const invalid = mod.validateArtifactFile('/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/POST-I05A-SKILLS-ARTIFACTS-PROVIDER-PIN/validation-evidence/validator-owned-fixtures/malformed-work-brief-missing-raw-intent.json', { kind: 'work_brief' });\n  assert.equal(invalid.ok, false, 'missing raw_intent malformed Work Brief must reject');\n  assert.equal(Array.isArray(invalid.errors), true);\n  assert.ok(invalid.errors.some((error) => typeof error.pointer === 'string' && typeof error.code === 'string' && typeof error.message === 'string'));\n  console.log(JSON.stringify({ publicImport: true, validOk: valid.ok, invalidOk: invalid.ok, invalidErrors: invalid.errors.map((e) => ({ pointer: e.pointer, code: e.code, message: e.message })) }));\n"
+      ],
+      "status": 0,
+      "signal": null,
+      "stdout": "{\"publicImport\":true,\"validOk\":true,\"invalidOk\":false,\"invalidErrors\":[{\"pointer\":\"/links\",\"code\":\"MIN_ITEMS\",\"message\":\"must NOT have fewer than 1 items\"},{\"pointer\":\"/sourceMetadata/rawIntentRefs\",\"code\":\"MIN_ITEMS\",\"message\":\"must NOT have fewer than 1 items\"},{\"pointer\":\"/links\",\"code\":\"BAD_LINK\",\"message\":\"Work Brief must include a required raw_intent link.\"}]}\n",
+      "stderr": "",
+      "expected": 0
+    },
+    {
+      "label": "registry package-context public registry/artifacts import and fixture validation",
+      "cwd": "/Users/lizavasilyeva/work/vibe-engineer/packages/registry",
+      "command": "node",
+      "args": [
+        "--input-type=module",
+        "-e",
+        "\n  import assert from 'node:assert/strict';\n  const artifacts = await import('@vibe-engineer/artifacts');\n  assert.ok(Array.isArray(artifacts.ARTIFACT_KINDS));\n  assert.equal(typeof artifacts.loadSchema, 'function');\n  assert.equal(typeof artifacts.validateArtifactFile, 'function');\n  const registry = await import('@vibe-engineer/registry');\n  assert.equal(typeof registry.canonicalSchemaIdsByKind, 'function');\n  assert.equal(typeof registry.loadRegistry, 'function');\n  const ids = registry.canonicalSchemaIdsByKind();\n  assert.ok(ids.work_brief.endsWith('/work-brief.schema.json'));\n  assert.ok(ids.agent_registry_entry.endsWith('/agent-registry-entry.schema.json'));\n  const fixture = registry.loadRegistry('/Users/lizavasilyeva/work/vibe-engineer/packages/registry/fixtures/valid/core-set');\n  assert.equal(fixture.ok, true, fixture.errors.map((error) => error.message).join('; '));\n  console.log(JSON.stringify({ artifactKinds: artifacts.ARTIFACT_KINDS.length, schemaIds: Object.keys(ids).length, registryFixtureEntries: fixture.entries.length }));\n"
+      ],
+      "status": 0,
+      "signal": null,
+      "stdout": "{\"artifactKinds\":10,\"schemaIds\":10,\"registryFixtureEntries\":7}\n",
+      "stderr": "",
+      "expected": 0
+    },
+    {
+      "label": "cli direct package-context artifacts import",
+      "cwd": "/Users/lizavasilyeva/work/vibe-engineer/packages/cli",
+      "command": "node",
+      "args": [
+        "--input-type=module",
+        "-e",
+        "\n    import assert from 'node:assert/strict';\n    const mod = await import('@vibe-engineer/artifacts');\n    assert.equal(typeof mod.validateArtifactFile, 'function');\n    console.log('cli:ok');\n  "
+      ],
+      "status": 0,
+      "signal": null,
+      "stdout": "cli:ok\n",
+      "stderr": "",
+      "expected": 0
+    },
+    {
+      "label": "cli pnpm-filter artifacts import",
+      "cwd": "/Users/lizavasilyeva/work/vibe-engineer",
+      "command": "pnpm",
+      "args": [
+        "--filter",
+        "vibe-engineer",
+        "exec",
+        "node",
+        "--input-type=module",
+        "-e",
+        "import { validateArtifactFile } from '@vibe-engineer/artifacts'; console.log(typeof validateArtifactFile);"
+      ],
+      "status": 0,
+      "signal": null,
+      "stdout": "function\n",
+      "stderr": "",
+      "expected": 0
+    },
+    {
+      "label": "context direct package-context artifacts import",
+      "cwd": "/Users/lizavasilyeva/work/vibe-engineer/packages/context",
+      "command": "node",
+      "args": [
+        "--input-type=module",
+        "-e",
+        "\n    import assert from 'node:assert/strict';\n    const mod = await import('@vibe-engineer/artifacts');\n    assert.equal(typeof mod.validateArtifactFile, 'function');\n    console.log('context:ok');\n  "
+      ],
+      "status": 0,
+      "signal": null,
+      "stdout": "context:ok\n",
+      "stderr": "",
+      "expected": 0
+    },
+    {
+      "label": "context pnpm-filter artifacts import",
+      "cwd": "/Users/lizavasilyeva/work/vibe-engineer",
+      "command": "pnpm",
+      "args": [
+        "--filter",
+        "@vibe-engineer/context",
+        "exec",
+        "node",
+        "--input-type=module",
+        "-e",
+        "import { validateArtifactFile } from '@vibe-engineer/artifacts'; console.log(typeof validateArtifactFile);"
+      ],
+      "status": 0,
+      "signal": null,
+      "stdout": "function\n",
+      "stderr": "",
+      "expected": 0
+    },
+    {
+      "label": "orchestration direct package-context artifacts import",
+      "cwd": "/Users/lizavasilyeva/work/vibe-engineer/packages/orchestration",
+      "command": "node",
+      "args": [
+        "--input-type=module",
+        "-e",
+        "\n    import assert from 'node:assert/strict';\n    const mod = await import('@vibe-engineer/artifacts');\n    assert.equal(typeof mod.validateArtifactFile, 'function');\n    console.log('orchestration:ok');\n  "
+      ],
+      "status": 0,
+      "signal": null,
+      "stdout": "orchestration:ok\n",
+      "stderr": "",
+      "expected": 0
+    },
+    {
+      "label": "orchestration pnpm-filter artifacts import",
+      "cwd": "/Users/lizavasilyeva/work/vibe-engineer",
+      "command": "pnpm",
+      "args": [
+        "--filter",
+        "@vibe-engineer/orchestration",
+        "exec",
+        "node",
+        "--input-type=module",
+        "-e",
+        "import { validateArtifactFile } from '@vibe-engineer/artifacts'; console.log(typeof validateArtifactFile);"
+      ],
+      "status": 0,
+      "signal": null,
+      "stdout": "function\n",
+      "stderr": "",
+      "expected": 0
+    },
+    {
+      "label": "verification direct package-context artifacts import",
+      "cwd": "/Users/lizavasilyeva/work/vibe-engineer/packages/verification",
+      "command": "node",
+      "args": [
+        "--input-type=module",
+        "-e",
+        "\n    import assert from 'node:assert/strict';\n    const mod = await import('@vibe-engineer/artifacts');\n    assert.equal(typeof mod.validateArtifactFile, 'function');\n    console.log('verification:ok');\n  "
+      ],
+      "status": 0,
+      "signal": null,
+      "stdout": "verification:ok\n",
+      "stderr": "",
+      "expected": 0
+    },
+    {
+      "label": "verification pnpm-filter artifacts import",
+      "cwd": "/Users/lizavasilyeva/work/vibe-engineer",
+      "command": "pnpm",
+      "args": [
+        "--filter",
+        "@vibe-engineer/verification",
+        "exec",
+        "node",
+        "--input-type=module",
+        "-e",
+        "import { validateArtifactFile } from '@vibe-engineer/artifacts'; console.log(typeof validateArtifactFile);"
+      ],
+      "status": 0,
+      "signal": null,
+      "stdout": "function\n",
+      "stderr": "",
+      "expected": 0
+    },
+    {
+      "label": "root bare artifacts import non-consumer probe",
+      "cwd": "/Users/lizavasilyeva/work/vibe-engineer",
+      "command": "node",
+      "args": [
+        "--input-type=module",
+        "-e",
+        "\n  import { validateArtifactFile } from '@vibe-engineer/artifacts';\n  console.log(typeof validateArtifactFile);\n"
+      ],
+      "status": 1,
+      "signal": null,
+      "stdout": "",
+      "stderr": "node:internal/modules/package_json_reader:301\n  throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);\n        ^\n\nError [ERR_MODULE_NOT_FOUND]: Cannot find package '@vibe-engineer/artifacts' imported from /Users/lizavasilyeva/work/vibe-engineer/[eval1]\n    at Object.getPackageJSONURL (node:internal/modules/package_json_reader:301:9)\n    at packageResolve (node:internal/modules/esm/resolve:768:81)\n    at moduleResolve (node:internal/modules/esm/resolve:859:18)\n    at defaultResolve (node:internal/modules/esm/resolve:992:11)\n    at #cachedDefaultResolve (node:internal/modules/esm/loader:691:20)\n    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:708:38)\n    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:740:52)\n    at #resolve (node:internal/modules/esm/loader:673:17)\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:593:35)\n    at ModuleJob.syncLink (node:internal/modules/esm/module_job:163:33) {\n  code: 'ERR_MODULE_NOT_FOUND'\n}\n\nNode.js v24.16.0\n"
+    }
+  ],
+  "negativeChecks": [
+    {
+      "name": "missing skills artifacts dependency",
+      "failedClosed": true,
+      "message": "Expected values to be strictly equal:\n+ actual - expected\n\n+ undefined\n- 'workspace:*'\n"
+    },
+    {
+      "name": "missing registry artifacts dependency",
+      "failedClosed": true,
+      "message": "Expected values to be strictly equal:\n+ actual - expected\n\n+ undefined\n- 'workspace:*'\n"
+    },
+    {
+      "name": "missing packages/skills lockfile importer edge",
+      "failedClosed": true,
+      "message": "Expected values to be strictly equal:\n\nfalse !== true\n"
+    },
+    {
+      "name": "missing packages/registry lockfile importer edge",
+      "failedClosed": true,
+      "message": "Expected values to be strictly equal:\n\nfalse !== true\n"
+    },
+    {
+      "name": "registry runtime relative artifacts reach-in",
+      "failedClosed": true,
+      "message": "Expected values to be strictly equal:\n\ntrue !== false\n"
+    },
+    {
+      "name": "registry type relative artifacts reach-in",
+      "failedClosed": true,
+      "message": "Expected values to be strictly equal:\n\ntrue !== false\n"
+    },
+    {
+      "name": "root package artifacts dependency workaround",
+      "failedClosed": true,
+      "message": "Expected values to be strictly equal:\n+ actual - expected\n\n+ 'workspace:*'\n- undefined\n"
+    },
+    {
+      "name": "production @vibe-engineer/testing dependency",
+      "failedClosed": true,
+      "message": "Expected values to be strictly equal:\n+ actual - expected\n\n+ 'workspace:*'\n- undefined\n"
+    },
+    {
+      "name": "mock/relative validator accepted as proof",
+      "failedClosed": true,
+      "message": "Expected values to be strictly equal:\n+ actual - expected\n\n+ '../../artifacts/src/index.js'\n- '@vibe-engineer/artifacts'\n"
+    }
+  ],
+  "malformedFixture": ".vibe/work/POST-I05A-SKILLS-ARTIFACTS-PROVIDER-PIN/validation-evidence/validator-owned-fixtures/malformed-work-brief-missing-raw-intent.json",
+  "siblingConsumers": [
+    {
+      "label": "cli",
+      "directExit": 0,
+      "filterExit": 0,
+      "filter": "vibe-engineer"
+    },
+    {
+      "label": "context",
+      "directExit": 0,
+      "filterExit": 0,
+      "filter": "@vibe-engineer/context"
+    },
+    {
+      "label": "orchestration",
+      "directExit": 0,
+      "filterExit": 0,
+      "filter": "@vibe-engineer/orchestration"
+    },
+    {
+      "label": "verification",
+      "directExit": 0,
+      "filterExit": 0,
+      "filter": "@vibe-engineer/verification"
+    }
+  ],
+  "rootBareImport": {
+    "label": "root bare artifacts import non-consumer probe",
+    "cwd": "/Users/lizavasilyeva/work/vibe-engineer",
+    "command": "node",
+    "args": [
+      "--input-type=module",
+      "-e",
+      "\n  import { validateArtifactFile } from '@vibe-engineer/artifacts';\n  console.log(typeof validateArtifactFile);\n"
+    ],
+    "status": 1,
+    "signal": null,
+    "stdout": "",
+    "stderr": "node:internal/modules/package_json_reader:301\n  throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);\n        ^\n\nError [ERR_MODULE_NOT_FOUND]: Cannot find package '@vibe-engineer/artifacts' imported from /Users/lizavasilyeva/work/vibe-engineer/[eval1]\n    at Object.getPackageJSONURL (node:internal/modules/package_json_reader:301:9)\n    at packageResolve (node:internal/modules/esm/resolve:768:81)\n    at moduleResolve (node:internal/modules/esm/resolve:859:18)\n    at defaultResolve (node:internal/modules/esm/resolve:992:11)\n    at #cachedDefaultResolve (node:internal/modules/esm/loader:691:20)\n    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:708:38)\n    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:740:52)\n    at #resolve (node:internal/modules/esm/loader:673:17)\n    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:593:35)\n    at ModuleJob.syncLink (node:internal/modules/esm/module_job:163:33) {\n  code: 'ERR_MODULE_NOT_FOUND'\n}\n\nNode.js v24.16.0\n"
+  }
+}

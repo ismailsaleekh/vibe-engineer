@@ -1,0 +1,1 @@
+pnpm --filter @vibe-engineer/registry exec node --input-type=module -e import\ \{\ ARTIFACT_KINDS\,\ loadSchema\,\ validateArtifactFile\ \}\ from\ \'@vibe-engineer/artifacts\'\;\ console.log\(ARTIFACT_KINDS.length\,\ typeof\ loadSchema\,\ typeof\ validateArtifactFile\)\; 
