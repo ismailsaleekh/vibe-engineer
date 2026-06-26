@@ -1,0 +1,4 @@
+$ cd /Users/lizavasilyeva/work/vibe-engineer/packages/orchestration
+$ node -e "import('@vibe-engineer/artifacts/not-exported').then(()=>{ throw new Error('unexpected private subpath success') }).catch(e=>{ if (e.code !== 'ERR_PACKAGE_PATH_NOT_EXPORTED') { console.error(e.code || e.message); process.exit(1); } console.log('private subpath blocked') })"
+private subpath blocked
+__EXIT_CODE=0

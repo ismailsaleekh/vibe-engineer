@@ -1,0 +1,4 @@
+$ cd /Users/lizavasilyeva/work/vibe-engineer
+$ pnpm --filter @vibe-engineer/orchestration exec node -e "import('@vibe-engineer/artifacts').then(m=>{ if (typeof m.validateArtifactFile !== 'function') throw new Error('missing validateArtifactFile'); console.log('pnpm filter artifact import ok') })"
+pnpm filter artifact import ok
+__EXIT_CODE=0

@@ -1,0 +1,4 @@
+$ cd /Users/lizavasilyeva/work/vibe-engineer/packages/orchestration
+$ node -e "import('@vibe-engineer/artifacts').then(m=>{ if (typeof m.validateArtifactFile !== 'function') throw new Error('missing validateArtifactFile'); console.log('artifact import ok') })"
+artifact import ok
+__EXIT_CODE=0

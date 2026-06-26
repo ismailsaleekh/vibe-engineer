@@ -1,0 +1,38 @@
+$ cd /Users/lizavasilyeva/work/vibe-engineer
+$ git status --short --untracked-files=all -- packages/orchestration/package.json pnpm-lock.yaml packages/orchestration/node_modules node_modules packages/artifacts/package.json packages/config/package.json packages/registry/package.json packages/mechanical-gates/package.json .vibe/work/Q05-root-dependency-unit
+?? .vibe/work/Q05-root-dependency-unit/implementation-report.md
+?? .vibe/work/Q05-root-dependency-unit/validation-evidence/final-dirty-tree-sentinel.txt
+?? .vibe/work/Q05-root-dependency-unit/validation-evidence/frozen-lockfile-parity.txt
+?? .vibe/work/Q05-root-dependency-unit/validation-evidence/negative-private-subpath.txt
+?? .vibe/work/Q05-root-dependency-unit/validation-evidence/positive-node-import-orchestration.txt
+?? .vibe/work/Q05-root-dependency-unit/validation-evidence/positive-pnpm-filter-import.txt
+?? .vibe/work/Q05-root-dependency-unit/validation-evidence/positive-pnpm-list.txt
+?? .vibe/work/Q05-root-dependency-unit/validation-evidence/positive-workspace-graph.txt
+?? .vibe/work/Q05-root-dependency-unit/validation-evidence/positive-workspace-surface.txt
+?? .vibe/work/Q05-root-dependency-unit/validation-report.md
+?? packages/artifacts/package.json
+?? packages/config/package.json
+?? packages/mechanical-gates/package.json
+?? packages/orchestration/package.json
+?? packages/registry/package.json
+?? pnpm-lock.yaml
+$ git diff --name-only -- packages/orchestration/package.json pnpm-lock.yaml package.json pnpm-workspace.yaml turbo.json tsconfig.base.json .npmrc eslint.config.mjs prettier.config.mjs packages/artifacts/package.json packages/config/package.json packages/registry/package.json packages/mechanical-gates/package.json
+$ shasum -a 256 owned/root/sibling sentinels
+425b282a7c6b249e23cadf59c70cf1f209087cc45be1a3166e82f7dd917edf9f  packages/orchestration/package.json
+d262dafce50306b84dd88cc239255a0d785752a6997e0783a57645025e446b44  pnpm-lock.yaml
+b3d1455aade0eb27f0775c3dbe2abefd89dada97caac9b10f041061abcb30306  package.json
+aee47e9964f53e767a6d6a86a27c86b218a76cd59453c3401defad6907be5f21  pnpm-workspace.yaml
+1ace06c206300412035f1954b08d6ed97a2e244265ef70a7789f4488cede7498  packages/artifacts/package.json
+9e8fbe90ac613ebefb6a5ad036560a03fc6b843ce041976e56af548bb0bbed4a  packages/config/package.json
+5e59cece64a816ac11450815b22f7cf8fd5b913af578de1348e24bbf0ed4d072  packages/registry/package.json
+24306f2307c7ee93b843632618ba1616586dba224fc2f88752fa87d927116116  packages/mechanical-gates/package.json
+$ node lstat/readlink link sentinel
+{
+  "path": "packages/orchestration/node_modules/@vibe-engineer/artifacts",
+  "isSymbolicLink": true,
+  "size": 18,
+  "mtimeMs": 1782247733830.964,
+  "readlink": "../../../artifacts",
+  "realpath": "/Users/lizavasilyeva/work/vibe-engineer/packages/artifacts"
+}
+__EXIT_CODE=0
