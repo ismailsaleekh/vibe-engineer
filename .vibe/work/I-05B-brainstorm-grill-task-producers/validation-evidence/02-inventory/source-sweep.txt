@@ -1,0 +1,26 @@
+## I-05B imports
+/Users/lizavasilyeva/work/vibe-engineer/packages/skills/src/input/task/produce-work-brief.js:1:import { blocked, ok } from '../../shared/result.js';
+/Users/lizavasilyeva/work/vibe-engineer/packages/skills/src/input/task/produce-work-brief.js:2:import { normalizeCommonWorkBriefInput, persistProducerWorkBrief } from '../brainstorm/producer-common.js';
+/Users/lizavasilyeva/work/vibe-engineer/packages/skills/src/plan/intake/work-brief-intake.js:1:import fs from 'node:fs/promises';
+/Users/lizavasilyeva/work/vibe-engineer/packages/skills/src/plan/intake/work-brief-intake.js:2:import path from 'node:path';
+/Users/lizavasilyeva/work/vibe-engineer/packages/skills/src/plan/intake/work-brief-intake.js:3:import { blocked, ok, validationBlocked } from '../../shared/result.js';
+/Users/lizavasilyeva/work/vibe-engineer/packages/skills/src/plan/intake/work-brief-intake.js:4:import { consumeWorkBriefFile } from '../../input/common/work-brief-consumer.js';
+/Users/lizavasilyeva/work/vibe-engineer/packages/skills/src/input/brainstorm/produce-work-brief.js:1:import { blocked, ok } from '../../shared/result.js';
+/Users/lizavasilyeva/work/vibe-engineer/packages/skills/src/input/brainstorm/produce-work-brief.js:2:import { nonEmptySignal, normalizeCommonWorkBriefInput, persistProducerWorkBrief } from './producer-common.js';
+/Users/lizavasilyeva/work/vibe-engineer/packages/skills/src/input/grill-me/produce-work-brief.js:1:import { blocked, ok } from '../../shared/result.js';
+/Users/lizavasilyeva/work/vibe-engineer/packages/skills/src/input/grill-me/produce-work-brief.js:2:import { nonEmptySignal, normalizeCommonWorkBriefInput, persistProducerWorkBrief } from '../brainstorm/producer-common.js';
+/Users/lizavasilyeva/work/vibe-engineer/packages/skills/src/input/brainstorm/producer-common.js:1:import fs from 'node:fs/promises';
+/Users/lizavasilyeva/work/vibe-engineer/packages/skills/src/input/brainstorm/producer-common.js:2:import path from 'node:path';
+/Users/lizavasilyeva/work/vibe-engineer/packages/skills/src/input/brainstorm/producer-common.js:3:import { blocked, ok } from '../../shared/result.js';
+/Users/lizavasilyeva/work/vibe-engineer/packages/skills/src/input/brainstorm/producer-common.js:4:import { WORK_TYPES, writeWorkBrief } from '../common/work-brief-writer.js';
+## forbidden artifacts reach-in or copied schema/validator indicators
+/Users/lizavasilyeva/work/vibe-engineer/packages/skills/src/plan/intake/work-brief-intake.js:74:  if (artifact.artifactKind !== 'work_brief') {
+/Users/lizavasilyeva/work/vibe-engineer/packages/skills/src/plan/intake/work-brief-intake.js:75:    return validationBlocked('plan_intake_kind', [{ field: 'artifactKind', code: 'ARTIFACT_KIND_MISMATCH', message: 'plan intake consumes Work Brief artifacts only.' }]);
+/Users/lizavasilyeva/work/vibe-engineer/packages/skills/src/plan/intake/work-brief-intake.js:77:  if (artifact.schemaVersion !== '1.0.0') {
+/Users/lizavasilyeva/work/vibe-engineer/packages/skills/src/plan/intake/work-brief-intake.js:78:    return validationBlocked('plan_intake_version', [{ field: 'schemaVersion', code: 'UNSUPPORTED_VERSION', message: 'plan intake supports Work Brief schemaVersion 1.0.0 only.' }]);
+/Users/lizavasilyeva/work/vibe-engineer/packages/skills/src/input/brainstorm/producer-common.js:82:    artifactKind: 'work_brief',
+/Users/lizavasilyeva/work/vibe-engineer/packages/skills/src/input/brainstorm/producer-common.js:201:        'packages/artifacts/**',
+/Users/lizavasilyeva/work/vibe-engineer/packages/skills/src/input/brainstorm/producer-common.js:209:        schemaVersion: '1.0.0',
+## domain-specific terms
+## downstream/I-06/I-14A indicators in I-05B source
+/Users/lizavasilyeva/work/vibe-engineer/packages/skills/src/input/brainstorm/producer-common.js:189:    ownership: {

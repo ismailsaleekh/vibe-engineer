@@ -1,0 +1,71 @@
+{
+  "fixtureFiles": [
+    "negative-input/bug-task-missing-reproduction.json",
+    "negative-input/invalid-source-skill.json",
+    "negative-input/invalid-work-type.json",
+    "negative-input/missing-common-field.json",
+    "negative-input/missing-producer-specific-field.json",
+    "negative-input/non-json-output-carrier.json",
+    "negative-input/unsafe-output-path.json",
+    "negative-plan-intake/malformed-artifact-shape.json",
+    "negative-plan-intake/malformed-json.json",
+    "negative-plan-intake/raw-direct-request.json",
+    "positive-input/brainstorm.json",
+    "positive-input/grill-me.json",
+    "positive-input/task.json",
+    "positive-output/brainstorm.work-brief.json",
+    "positive-output/grill-me.work-brief.json",
+    "positive-output/task.work-brief.json",
+    "regression/shared-work-brief-class.json"
+  ],
+  "dirs": [
+    "negative-input",
+    "negative-plan-intake",
+    "positive-input",
+    "positive-output",
+    "regression"
+  ],
+  "sourceSkillEnum": [
+    "brainstorm",
+    "grill-me",
+    "task"
+  ],
+  "workTypeEnum": [
+    "feature",
+    "bug",
+    "chore",
+    "refactor",
+    "research",
+    "decision"
+  ],
+  "required": [
+    "schemaVersion",
+    "artifactKind",
+    "artifactId",
+    "title",
+    "createdAt",
+    "updatedAt",
+    "producer",
+    "status",
+    "ownership",
+    "links",
+    "extensions",
+    "sourceSkill",
+    "workType",
+    "background",
+    "problemOrOpportunity",
+    "desiredOutcome",
+    "constraints",
+    "userVisibleBehavior",
+    "nonGoals",
+    "risksAndUnknowns",
+    "acceptanceNotes",
+    "sourceMetadata"
+  ],
+  "dl03ExactSixSkillSentencePresent": true,
+  "hasPositiveInputs": true,
+  "hasPositiveOutputs": true,
+  "hasNegativeInputFixtures": 7,
+  "hasNegativePlanIntakeFixtures": 3,
+  "hasRegressionFixture": true
+}

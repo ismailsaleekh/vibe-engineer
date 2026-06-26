@@ -1,0 +1,386 @@
+{
+  "ok": true,
+  "results": [
+    {
+      "file": "/Users/lizavasilyeva/work/vibe-engineer/packages/skills/fixtures/work-brief/producers/positive-output/brainstorm.work-brief.json",
+      "result": {
+        "ok": true,
+        "artifact": {
+          "acceptanceNotes": [
+            {
+              "description": "Produced brainstorm Work Brief validates through the artifacts package",
+              "id": "accept-1"
+            },
+            {
+              "description": "Plan intake consumes the produced Work Brief only after it is persisted",
+              "id": "accept-2"
+            }
+          ],
+          "artifactId": "work-brief-brainstorm-producer-fixture",
+          "artifactKind": "work_brief",
+          "background": "Input skills should preserve user intent as durable structured data.\n\nBrainstorm context: A domain-neutral harness needs an exploratory intake path that still produces a typed artifact.",
+          "candidateE2ECases": [
+            "brainstorm to plan-intake Work Brief handoff",
+            "A planner consumes the produced Work Brief without reading raw chat"
+          ],
+          "constraints": [
+            "Use canonical JSON",
+            "Preserve downstream plan ownership"
+          ],
+          "createdAt": "2026-06-25T00:00:00.000Z",
+          "desiredOutcome": "The brainstorm producer writes a validator-accepted Work Brief through the common writer.",
+          "extensions": {
+            "dev.vibe.skill-producers": {
+              "producerSignals": {
+                "candidateScenarios": [
+                  "A planner consumes the produced Work Brief without reading raw chat"
+                ],
+                "ideaContext": "A domain-neutral harness needs an exploratory intake path that still produces a typed artifact.",
+                "openQuestions": [],
+                "options": [
+                  "Persist one canonical Work Brief JSON carrier",
+                  "Keep exploratory alternatives as candidate signals"
+                ],
+                "tradeoffs": [
+                  "Exploration notes must not become final planner-owned risk classification"
+                ]
+              },
+              "schemaVersion": "1.0.0",
+              "sourceSkill": "brainstorm"
+            }
+          },
+          "links": [
+            {
+              "artifactId": "raw-intent-brainstorm-producer-fixture",
+              "artifactKind": "work_brief",
+              "path": "raw/brainstorm-producer.json",
+              "rel": "raw_intent",
+              "required": true,
+              "statusAtLinkTime": "captured"
+            }
+          ],
+          "nonGoals": [
+            "Do not produce an Implementation Plan"
+          ],
+          "openQuestions": [],
+          "ownership": {
+            "concurrencyNotes": "I-05B producer-owned Work Brief output; final planning/risk analysis is downstream.",
+            "ownedWritePaths": [
+              "packages/skills/src/input/brainstorm/**",
+              "packages/skills/src/input/grill-me/**",
+              "packages/skills/src/input/task/**",
+              "packages/skills/src/plan/intake/**",
+              "packages/skills/fixtures/work-brief/producers/**"
+            ],
+            "ownerLane": "I-05B-brainstorm-grill-task-producers",
+            "readOnlyPaths": [
+              "packages/skills/src/shared/**",
+              "packages/skills/src/input/common/**",
+              "packages/artifacts/**",
+              "docs/decisions/**"
+            ],
+            "untouchablePaths": [
+              ".git/**",
+              "packages/skills/package.json",
+              "pnpm-lock.yaml",
+              "package.json"
+            ]
+          },
+          "problemOrOpportunity": "Exploratory work can otherwise remain trapped in chat history.",
+          "producer": {
+            "id": "skill-brainstorm",
+            "kind": "skill",
+            "name": "brainstorm",
+            "runId": "run-i05b-brainstorm-fixture",
+            "version": "1.0.0"
+          },
+          "risksAndUnknowns": [
+            "Candidate signals may need refinement by plan",
+            "Exploration notes must not become final planner-owned risk classification"
+          ],
+          "schemaVersion": "1.0.0",
+          "sourceMetadata": {
+            "conversationRefs": [],
+            "inputTimestamp": "2026-06-25T00:00:00.000Z",
+            "operatorRefs": [
+              "operator-fixture"
+            ],
+            "rawIntentRefs": [
+              "raw-intent-brainstorm-producer-fixture"
+            ]
+          },
+          "sourceSkill": "brainstorm",
+          "status": "ready",
+          "tags": [
+            "domain-neutral",
+            "brainstorm"
+          ],
+          "title": "Explore typed intake artifact flow",
+          "updatedAt": "2026-06-25T00:00:00.000Z",
+          "userVisibleBehavior": [
+            "Users can start with an unclear idea and still get a plan-ready Work Brief"
+          ],
+          "workType": "feature"
+        },
+        "kind": "work_brief",
+        "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/work-brief.schema.json",
+        "schemaVersion": "1.0.0"
+      }
+    },
+    {
+      "file": "/Users/lizavasilyeva/work/vibe-engineer/packages/skills/fixtures/work-brief/producers/positive-output/grill-me.work-brief.json",
+      "result": {
+        "ok": true,
+        "artifact": {
+          "acceptanceNotes": [
+            {
+              "description": "Produced grill-me Work Brief validates through the artifacts package",
+              "id": "accept-1"
+            },
+            {
+              "description": "Plan intake consumes the produced Work Brief as ready input",
+              "id": "accept-2"
+            }
+          ],
+          "artifactId": "work-brief-grill-me-producer-fixture",
+          "artifactKind": "work_brief",
+          "assumptions": [
+            "A raw request is sufficient for planning",
+            "One producer can define its own divergent schema"
+          ],
+          "background": "Adversarial intake captures gaps before planning starts.\n\nGrill-me challenge context: A domain-neutral harness should not treat adversarial intake notes as final planning conclusions.",
+          "constraints": [
+            "Use the shared Work Brief class",
+            "Do not finalize risk classification"
+          ],
+          "createdAt": "2026-06-25T00:00:00.000Z",
+          "desiredOutcome": "The grill-me producer writes a validator-accepted Work Brief through the common writer.",
+          "extensions": {
+            "dev.vibe.skill-producers": {
+              "producerSignals": {
+                "acceptanceGaps": [
+                  "Need proof that raw chat is rejected by plan intake"
+                ],
+                "challengeContext": "A domain-neutral harness should not treat adversarial intake notes as final planning conclusions.",
+                "challengedAssumptions": [
+                  "A raw request is sufficient for planning",
+                  "One producer can define its own divergent schema"
+                ],
+                "edgeCases": [
+                  "Malformed Work Brief carrier reaches plan intake",
+                  "Producer source skill does not match the callable producer"
+                ],
+                "riskCandidates": [
+                  "False green if the seam validates shape without actual artifact validator"
+                ]
+              },
+              "schemaVersion": "1.0.0",
+              "sourceSkill": "grill-me"
+            }
+          },
+          "links": [
+            {
+              "artifactId": "raw-intent-grill-me-producer-fixture",
+              "artifactKind": "work_brief",
+              "path": "raw/grill-me-producer.json",
+              "rel": "raw_intent",
+              "required": true,
+              "statusAtLinkTime": "captured"
+            }
+          ],
+          "nonGoals": [
+            "Do not emit Verification Delta"
+          ],
+          "openQuestions": [
+            "Need proof that raw chat is rejected by plan intake"
+          ],
+          "ownership": {
+            "concurrencyNotes": "I-05B producer-owned Work Brief output; final planning/risk analysis is downstream.",
+            "ownedWritePaths": [
+              "packages/skills/src/input/brainstorm/**",
+              "packages/skills/src/input/grill-me/**",
+              "packages/skills/src/input/task/**",
+              "packages/skills/src/plan/intake/**",
+              "packages/skills/fixtures/work-brief/producers/**"
+            ],
+            "ownerLane": "I-05B-brainstorm-grill-task-producers",
+            "readOnlyPaths": [
+              "packages/skills/src/shared/**",
+              "packages/skills/src/input/common/**",
+              "packages/artifacts/**",
+              "docs/decisions/**"
+            ],
+            "untouchablePaths": [
+              ".git/**",
+              "packages/skills/package.json",
+              "pnpm-lock.yaml",
+              "package.json"
+            ]
+          },
+          "problemOrOpportunity": "Pressure-testing can reveal missing Work Brief evidence before plan consumes it.",
+          "producer": {
+            "id": "skill-grill-me",
+            "kind": "skill",
+            "name": "grill-me",
+            "runId": "run-i05b-grill-me-fixture",
+            "version": "1.0.0"
+          },
+          "risksAndUnknowns": [
+            "Candidate risk wording must remain planner input only",
+            "False green if the seam validates shape without actual artifact validator",
+            "Malformed Work Brief carrier reaches plan intake",
+            "Producer source skill does not match the callable producer"
+          ],
+          "schemaVersion": "1.0.0",
+          "sourceMetadata": {
+            "conversationRefs": [],
+            "inputTimestamp": "2026-06-25T00:00:00.000Z",
+            "operatorRefs": [
+              "operator-fixture"
+            ],
+            "rawIntentRefs": [
+              "raw-intent-grill-me-producer-fixture"
+            ]
+          },
+          "sourceSkill": "grill-me",
+          "status": "ready",
+          "tags": [
+            "domain-neutral",
+            "grill-me"
+          ],
+          "title": "Pressure-test typed intake artifact flow",
+          "updatedAt": "2026-06-25T00:00:00.000Z",
+          "userVisibleBehavior": [
+            "Users can challenge assumptions and still hand off a normal Work Brief"
+          ],
+          "workType": "decision"
+        },
+        "kind": "work_brief",
+        "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/work-brief.schema.json",
+        "schemaVersion": "1.0.0"
+      }
+    },
+    {
+      "file": "/Users/lizavasilyeva/work/vibe-engineer/packages/skills/fixtures/work-brief/producers/positive-output/task.work-brief.json",
+      "result": {
+        "ok": true,
+        "artifact": {
+          "acceptanceNotes": [
+            {
+              "description": "Produced task Work Brief validates through the artifacts package",
+              "id": "accept-1"
+            },
+            {
+              "description": "Bug-shaped task without reproduction basis fails closed",
+              "id": "accept-2"
+            }
+          ],
+          "affectedSurface": "Work Brief intake seam",
+          "artifactId": "work-brief-task-producer-fixture",
+          "artifactKind": "work_brief",
+          "background": "Direct task intake should preserve enough bug evidence for planning.",
+          "constraints": [
+            "Require bug evidence before persistence",
+            "Use the shared Work Brief artifact class"
+          ],
+          "createdAt": "2026-06-25T00:00:00.000Z",
+          "desiredOutcome": "The task producer writes a validator-accepted bug Work Brief through the common writer.",
+          "expectedBehavior": "Plan intake rejects the carrier with a typed validation result and no downstream plan output.",
+          "extensions": {
+            "dev.vibe.skill-producers": {
+              "producerSignals": {
+                "bugEvidenceCaptured": true,
+                "objective": "Capture a direct bug request as a typed Work Brief for planning.",
+                "request": "A generated artifact handoff fails when a malformed carrier is supplied."
+              },
+              "schemaVersion": "1.0.0",
+              "sourceSkill": "task"
+            }
+          },
+          "links": [
+            {
+              "artifactId": "raw-intent-task-producer-fixture",
+              "artifactKind": "work_brief",
+              "path": "raw/task-producer.json",
+              "rel": "raw_intent",
+              "required": true,
+              "statusAtLinkTime": "captured"
+            }
+          ],
+          "logsOrErrors": [
+            "JSON_PARSE_ERROR from the artifact validator"
+          ],
+          "nonGoals": [
+            "Do not run the bug fix"
+          ],
+          "observedBehavior": "Plan intake reports a malformed carrier when the file is not valid JSON.",
+          "ownership": {
+            "concurrencyNotes": "I-05B producer-owned Work Brief output; final planning/risk analysis is downstream.",
+            "ownedWritePaths": [
+              "packages/skills/src/input/brainstorm/**",
+              "packages/skills/src/input/grill-me/**",
+              "packages/skills/src/input/task/**",
+              "packages/skills/src/plan/intake/**",
+              "packages/skills/fixtures/work-brief/producers/**"
+            ],
+            "ownerLane": "I-05B-brainstorm-grill-task-producers",
+            "readOnlyPaths": [
+              "packages/skills/src/shared/**",
+              "packages/skills/src/input/common/**",
+              "packages/artifacts/**",
+              "docs/decisions/**"
+            ],
+            "untouchablePaths": [
+              ".git/**",
+              "packages/skills/package.json",
+              "pnpm-lock.yaml",
+              "package.json"
+            ]
+          },
+          "problemOrOpportunity": "Bug-shaped work is unsafe to plan without observed behavior, expected behavior, and reproduction basis.\n\nTask objective: Capture a direct bug request as a typed Work Brief for planning.",
+          "producer": {
+            "id": "skill-task",
+            "kind": "skill",
+            "name": "task",
+            "runId": "run-i05b-task-fixture",
+            "version": "1.0.0"
+          },
+          "reproductionSteps": [
+            "Write a non-JSON file in an allowed intake root",
+            "Call plan intake with that relative artifact name"
+          ],
+          "risksAndUnknowns": [
+            "Reproduction details may need expansion during planning"
+          ],
+          "schemaVersion": "1.0.0",
+          "sourceMetadata": {
+            "conversationRefs": [],
+            "inputTimestamp": "2026-06-25T00:00:00.000Z",
+            "operatorRefs": [
+              "operator-fixture"
+            ],
+            "rawIntentRefs": [
+              "raw-intent-task-producer-fixture"
+            ]
+          },
+          "sourceSkill": "task",
+          "status": "ready",
+          "tags": [
+            "domain-neutral",
+            "task"
+          ],
+          "title": "Normalize a direct bug request into Work Brief",
+          "updatedAt": "2026-06-25T00:00:00.000Z",
+          "urgency": "medium",
+          "userVisibleBehavior": [
+            "Users can submit a direct bug request without bypassing Work Brief persistence"
+          ],
+          "workType": "bug"
+        },
+        "kind": "work_brief",
+        "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/work-brief.schema.json",
+        "schemaVersion": "1.0.0"
+      }
+    }
+  ]
+}

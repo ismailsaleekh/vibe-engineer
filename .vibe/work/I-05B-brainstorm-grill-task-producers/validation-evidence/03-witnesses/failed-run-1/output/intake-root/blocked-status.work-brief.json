@@ -1,0 +1,117 @@
+{
+  "acceptanceNotes": [
+    {
+      "description": "Produced brainstorm Work Brief validates through the artifacts package",
+      "id": "accept-1"
+    },
+    {
+      "description": "Plan intake consumes the produced Work Brief only after it is persisted",
+      "id": "accept-2"
+    }
+  ],
+  "artifactId": "work-brief-blocked-for-plan-intake",
+  "artifactKind": "work_brief",
+  "background": "Input skills should preserve user intent as durable structured data.\n\nBrainstorm context: A domain-neutral harness needs an exploratory intake path that still produces a typed artifact.",
+  "candidateE2ECases": [
+    "brainstorm to plan-intake Work Brief handoff",
+    "A planner consumes the produced Work Brief without reading raw chat"
+  ],
+  "constraints": [
+    "Use canonical JSON",
+    "Preserve downstream plan ownership"
+  ],
+  "createdAt": "2026-06-25T00:00:00.000Z",
+  "desiredOutcome": "The brainstorm producer writes a validator-accepted Work Brief through the common writer.",
+  "extensions": {
+    "dev.vibe.skill-producers": {
+      "producerSignals": {
+        "candidateScenarios": [
+          "A planner consumes the produced Work Brief without reading raw chat"
+        ],
+        "ideaContext": "A domain-neutral harness needs an exploratory intake path that still produces a typed artifact.",
+        "openQuestions": [],
+        "options": [
+          "Persist one canonical Work Brief JSON carrier",
+          "Keep exploratory alternatives as candidate signals"
+        ],
+        "tradeoffs": [
+          "Exploration notes must not become final planner-owned risk classification"
+        ]
+      },
+      "schemaVersion": "1.0.0",
+      "sourceSkill": "brainstorm"
+    }
+  },
+  "links": [
+    {
+      "artifactId": "raw-intent-brainstorm-producer-fixture",
+      "artifactKind": "work_brief",
+      "path": "raw/brainstorm-producer.json",
+      "rel": "raw_intent",
+      "required": true,
+      "statusAtLinkTime": "captured"
+    }
+  ],
+  "nonGoals": [
+    "Do not produce an Implementation Plan"
+  ],
+  "openQuestions": [],
+  "ownership": {
+    "concurrencyNotes": "I-05B producer-owned Work Brief output; final planning/risk analysis is downstream.",
+    "ownedWritePaths": [
+      "packages/skills/src/input/brainstorm/**",
+      "packages/skills/src/input/grill-me/**",
+      "packages/skills/src/input/task/**",
+      "packages/skills/src/plan/intake/**",
+      "packages/skills/fixtures/work-brief/producers/**"
+    ],
+    "ownerLane": "I-05B-brainstorm-grill-task-producers",
+    "readOnlyPaths": [
+      "packages/skills/src/shared/**",
+      "packages/skills/src/input/common/**",
+      "packages/artifacts/**",
+      "docs/decisions/**"
+    ],
+    "untouchablePaths": [
+      ".git/**",
+      "packages/skills/package.json",
+      "pnpm-lock.yaml",
+      "package.json"
+    ]
+  },
+  "problemOrOpportunity": "Exploratory work can otherwise remain trapped in chat history.",
+  "producer": {
+    "id": "skill-brainstorm",
+    "kind": "skill",
+    "name": "brainstorm",
+    "runId": "run-i05b-brainstorm-fixture",
+    "version": "1.0.0"
+  },
+  "risksAndUnknowns": [
+    "Candidate signals may need refinement by plan",
+    "Exploration notes must not become final planner-owned risk classification"
+  ],
+  "schemaVersion": "1.0.0",
+  "sourceMetadata": {
+    "conversationRefs": [],
+    "inputTimestamp": "2026-06-25T00:00:00.000Z",
+    "operatorRefs": [
+      "operator-fixture"
+    ],
+    "rawIntentRefs": [
+      "raw-intent-brainstorm-producer-fixture"
+    ]
+  },
+  "sourceSkill": "brainstorm",
+  "status": "blocked",
+  "tags": [
+    "domain-neutral",
+    "brainstorm"
+  ],
+  "title": "Explore typed intake artifact flow",
+  "updatedAt": "2026-06-25T00:00:00.000Z",
+  "userVisibleBehavior": [
+    "Users can start with an unclear idea and still get a plan-ready Work Brief"
+  ],
+  "workType": "feature"
+}

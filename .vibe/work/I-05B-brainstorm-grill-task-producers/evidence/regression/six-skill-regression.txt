@@ -1,0 +1,8 @@
+six locked skills from DL-03:
+31:The six normal user-facing skills are exactly `brainstorm`, `grill-me`, `task`, `plan`, `build`, and `ship`. They form the locked artifact chain: raw intent → Work Brief → Implementation Plan with machine-readable Verification Delta → Build Result → Ship Packet.
+33:`brainstorm`, `grill-me`, and `task` are input-producing skills and must all write the same Work Brief artifact class. `plan` consumes Work Brief only and owns final risk/sensitive-area analysis and Verification Delta design. `build` consumes an approved Implementation Plan only and writes a Build Result after implementation, verification asset construction, automatic verification, evidence capture, and context update. `ship` consumes Build Result only, runs final verification/context checks, writes a Ship Packet, and may prepare commit/PR material but must not push or open a PR without explicit user approval.
+377:1. **User-facing skills vs CLI primitives.** Normal users operate through exactly six user-facing skills: `brainstorm`, `grill-me`, `task`, `plan`, `build`, `ship`. Low-level CLI commands are deterministic primitives for agents, skills, CI, or advanced debugging. DL-03 does not define exact CLI command syntax or output contracts; DL-07 owns those details.
+625:  - six skills remain exactly `brainstorm`, `grill-me`, `task`, `plan`, `build`, `ship`.
+760:- Six skills remain exactly `brainstorm`, `grill-me`, `task`, `plan`, `build`, `ship`.
+producer source skills observed in generated outputs:
+["brainstorm","grill-me","task"]

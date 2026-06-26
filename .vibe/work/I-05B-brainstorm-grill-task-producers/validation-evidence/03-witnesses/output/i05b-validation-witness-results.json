@@ -1,0 +1,972 @@
+{
+  "ok": true,
+  "checkCount": 93,
+  "failedCount": 0,
+  "outputRoot": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05B-brainstorm-grill-task-producers/validation-evidence/03-witnesses/output",
+  "positiveRoot": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05B-brainstorm-grill-task-producers/validation-evidence/03-witnesses/output/positive-root",
+  "negativeRoot": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05B-brainstorm-grill-task-producers/validation-evidence/03-witnesses/output/negative-root",
+  "intakeRoot": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05B-brainstorm-grill-task-producers/validation-evidence/03-witnesses/output/intake-root",
+  "checks": [
+    {
+      "name": "positive brainstorm: producer returns ok",
+      "ok": true
+    },
+    {
+      "name": "positive brainstorm: persisted file exists",
+      "ok": true,
+      "filePath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05B-brainstorm-grill-task-producers/validation-evidence/03-witnesses/output/positive-root/produced/brainstorm.work-brief.json"
+    },
+    {
+      "name": "positive brainstorm: producer reports I-05A file validation ok",
+      "ok": true,
+      "filePath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05B-brainstorm-grill-task-producers/validation-evidence/03-witnesses/output/positive-root/produced/brainstorm.work-brief.json"
+    },
+    {
+      "name": "positive brainstorm: canonical artifact kind",
+      "ok": true,
+      "artifactKind": "work_brief"
+    },
+    {
+      "name": "positive brainstorm: canonical schema version",
+      "ok": true,
+      "schemaVersion": "1.0.0"
+    },
+    {
+      "name": "positive brainstorm: source skill",
+      "ok": true,
+      "sourceSkill": "brainstorm"
+    },
+    {
+      "name": "positive brainstorm: ready status",
+      "ok": true,
+      "status": "ready"
+    },
+    {
+      "name": "positive brainstorm: raw_intent link present",
+      "ok": true,
+      "links": [
+        {
+          "artifactId": "raw-intent-brainstorm-producer-fixture",
+          "artifactKind": "work_brief",
+          "path": "raw/brainstorm-producer.json",
+          "rel": "raw_intent",
+          "required": true,
+          "statusAtLinkTime": "captured"
+        }
+      ]
+    },
+    {
+      "name": "positive brainstorm: public work brief artifact validator accepts",
+      "ok": true
+    },
+    {
+      "name": "positive brainstorm: public work brief file validator accepts",
+      "ok": true
+    },
+    {
+      "name": "positive brainstorm: public any-artifact file validator accepts",
+      "ok": true
+    },
+    {
+      "name": "positive brainstorm: plan intake consumes same persisted file",
+      "ok": true,
+      "artifactId": "work-brief-brainstorm-producer-fixture"
+    },
+    {
+      "name": "positive grill-me: producer returns ok",
+      "ok": true
+    },
+    {
+      "name": "positive grill-me: persisted file exists",
+      "ok": true,
+      "filePath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05B-brainstorm-grill-task-producers/validation-evidence/03-witnesses/output/positive-root/produced/grill-me.work-brief.json"
+    },
+    {
+      "name": "positive grill-me: producer reports I-05A file validation ok",
+      "ok": true,
+      "filePath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05B-brainstorm-grill-task-producers/validation-evidence/03-witnesses/output/positive-root/produced/grill-me.work-brief.json"
+    },
+    {
+      "name": "positive grill-me: canonical artifact kind",
+      "ok": true,
+      "artifactKind": "work_brief"
+    },
+    {
+      "name": "positive grill-me: canonical schema version",
+      "ok": true,
+      "schemaVersion": "1.0.0"
+    },
+    {
+      "name": "positive grill-me: source skill",
+      "ok": true,
+      "sourceSkill": "grill-me"
+    },
+    {
+      "name": "positive grill-me: ready status",
+      "ok": true,
+      "status": "ready"
+    },
+    {
+      "name": "positive grill-me: raw_intent link present",
+      "ok": true,
+      "links": [
+        {
+          "artifactId": "raw-intent-grill-me-producer-fixture",
+          "artifactKind": "work_brief",
+          "path": "raw/grill-me-producer.json",
+          "rel": "raw_intent",
+          "required": true,
+          "statusAtLinkTime": "captured"
+        }
+      ]
+    },
+    {
+      "name": "positive grill-me: public work brief artifact validator accepts",
+      "ok": true
+    },
+    {
+      "name": "positive grill-me: public work brief file validator accepts",
+      "ok": true
+    },
+    {
+      "name": "positive grill-me: public any-artifact file validator accepts",
+      "ok": true
+    },
+    {
+      "name": "positive grill-me: plan intake consumes same persisted file",
+      "ok": true,
+      "artifactId": "work-brief-grill-me-producer-fixture"
+    },
+    {
+      "name": "positive task: producer returns ok",
+      "ok": true
+    },
+    {
+      "name": "positive task: persisted file exists",
+      "ok": true,
+      "filePath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05B-brainstorm-grill-task-producers/validation-evidence/03-witnesses/output/positive-root/produced/task.work-brief.json"
+    },
+    {
+      "name": "positive task: producer reports I-05A file validation ok",
+      "ok": true,
+      "filePath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05B-brainstorm-grill-task-producers/validation-evidence/03-witnesses/output/positive-root/produced/task.work-brief.json"
+    },
+    {
+      "name": "positive task: canonical artifact kind",
+      "ok": true,
+      "artifactKind": "work_brief"
+    },
+    {
+      "name": "positive task: canonical schema version",
+      "ok": true,
+      "schemaVersion": "1.0.0"
+    },
+    {
+      "name": "positive task: source skill",
+      "ok": true,
+      "sourceSkill": "task"
+    },
+    {
+      "name": "positive task: ready status",
+      "ok": true,
+      "status": "ready"
+    },
+    {
+      "name": "positive task: raw_intent link present",
+      "ok": true,
+      "links": [
+        {
+          "artifactId": "raw-intent-task-producer-fixture",
+          "artifactKind": "work_brief",
+          "path": "raw/task-producer.json",
+          "rel": "raw_intent",
+          "required": true,
+          "statusAtLinkTime": "captured"
+        }
+      ]
+    },
+    {
+      "name": "positive task: public work brief artifact validator accepts",
+      "ok": true
+    },
+    {
+      "name": "positive task: public work brief file validator accepts",
+      "ok": true
+    },
+    {
+      "name": "positive task: public any-artifact file validator accepts",
+      "ok": true
+    },
+    {
+      "name": "positive task: plan intake consumes same persisted file",
+      "ok": true,
+      "artifactId": "work-brief-task-producer-fixture"
+    },
+    {
+      "name": "negative producer non-object/raw text: blocked",
+      "ok": true,
+      "reason": "invalid_object",
+      "errors": [
+        {
+          "field": "input",
+          "code": "INVALID_INPUT",
+          "message": "brainstorm input must be a structured object."
+        }
+      ]
+    },
+    {
+      "name": "negative producer non-object/raw text: no invalid artifact persisted",
+      "ok": true,
+      "filePath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05B-brainstorm-grill-task-producers/validation-evidence/03-witnesses/output/negative-root/non-object.work-brief.json"
+    },
+    {
+      "name": "negative missing common Work Brief field: blocked",
+      "ok": true,
+      "reason": "invalid_producer_input",
+      "errors": [
+        {
+          "field": "desiredOutcome",
+          "code": "INVALID_INPUT",
+          "message": "desiredOutcome must be a non-empty string."
+        }
+      ]
+    },
+    {
+      "name": "negative missing common Work Brief field: no invalid artifact persisted",
+      "ok": true,
+      "filePath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05B-brainstorm-grill-task-producers/validation-evidence/03-witnesses/output/negative-root/missing-common.work-brief.json"
+    },
+    {
+      "name": "negative missing producer-specific required field: blocked",
+      "ok": true,
+      "reason": "invalid_brainstorm_input",
+      "errors": [
+        {
+          "field": "ideaContext",
+          "code": "MISSING_BRAINSTORM_CONTEXT",
+          "message": "brainstorm requires a non-empty exploratory ideaContext."
+        }
+      ]
+    },
+    {
+      "name": "negative missing producer-specific required field: no invalid artifact persisted",
+      "ok": true,
+      "filePath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05B-brainstorm-grill-task-producers/validation-evidence/03-witnesses/output/negative-root/missing-producer-specific.work-brief.json"
+    },
+    {
+      "name": "negative invalid sourceSkill / producer mismatch: blocked",
+      "ok": true,
+      "reason": "invalid_producer_input",
+      "errors": [
+        {
+          "field": "sourceSkill",
+          "code": "SOURCE_SKILL_MISMATCH",
+          "message": "sourceSkill must not contradict enforced producer brainstorm."
+        },
+        {
+          "field": "rawIntent.sourceSkill",
+          "code": "SOURCE_SKILL_MISMATCH",
+          "message": "rawIntent.sourceSkill must match brainstorm."
+        }
+      ]
+    },
+    {
+      "name": "negative invalid sourceSkill / producer mismatch: no invalid artifact persisted",
+      "ok": true,
+      "filePath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05B-brainstorm-grill-task-producers/validation-evidence/03-witnesses/output/negative-root/source-mismatch.work-brief.json"
+    },
+    {
+      "name": "negative invalid workType enum: blocked",
+      "ok": true,
+      "reason": "invalid_producer_input",
+      "errors": [
+        {
+          "field": "workType",
+          "code": "INVALID_ENUM",
+          "message": "workType must be one of: feature, bug, chore, refactor, research, decision."
+        }
+      ]
+    },
+    {
+      "name": "negative invalid workType enum: no invalid artifact persisted",
+      "ok": true,
+      "filePath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05B-brainstorm-grill-task-producers/validation-evidence/03-witnesses/output/negative-root/invalid-work-type.work-brief.json"
+    },
+    {
+      "name": "negative brainstorm without exploration signal: blocked",
+      "ok": true,
+      "reason": "invalid_brainstorm_input",
+      "errors": [
+        {
+          "field": "explorationSignals",
+          "code": "MISSING_BRAINSTORM_SIGNAL",
+          "message": "brainstorm requires at least one option, tradeoff, open question, or candidate scenario."
+        }
+      ]
+    },
+    {
+      "name": "negative brainstorm without exploration signal: no invalid artifact persisted",
+      "ok": true,
+      "filePath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05B-brainstorm-grill-task-producers/validation-evidence/03-witnesses/output/negative-root/brainstorm-no-signal.work-brief.json"
+    },
+    {
+      "name": "negative grill-me without challenge signal: blocked",
+      "ok": true,
+      "reason": "invalid_grill_me_input",
+      "errors": [
+        {
+          "field": "challengeSignals",
+          "code": "MISSING_GRILL_SIGNAL",
+          "message": "grill-me requires at least one challenged assumption, edge case, acceptance gap, or risk/unknown candidate."
+        }
+      ]
+    },
+    {
+      "name": "negative grill-me without challenge signal: no invalid artifact persisted",
+      "ok": true,
+      "filePath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05B-brainstorm-grill-task-producers/validation-evidence/03-witnesses/output/negative-root/grill-no-signal.work-brief.json"
+    },
+    {
+      "name": "negative task with neither objective nor request: blocked",
+      "ok": true,
+      "reason": "invalid_task_input",
+      "errors": [
+        {
+          "field": "objective",
+          "code": "MISSING_TASK_OBJECTIVE",
+          "message": "task requires a direct objective or request."
+        }
+      ]
+    },
+    {
+      "name": "negative task with neither objective nor request: no invalid artifact persisted",
+      "ok": true,
+      "filePath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05B-brainstorm-grill-task-producers/validation-evidence/03-witnesses/output/negative-root/task-no-objective.work-brief.json"
+    },
+    {
+      "name": "negative bug task missing observed behavior: blocked",
+      "ok": true,
+      "reason": "invalid_task_input",
+      "errors": [
+        {
+          "field": "observedBehavior",
+          "code": "MISSING_BUG_OBSERVED_BEHAVIOR",
+          "message": "bug task requires observedBehavior."
+        }
+      ]
+    },
+    {
+      "name": "negative bug task missing observed behavior: no invalid artifact persisted",
+      "ok": true,
+      "filePath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05B-brainstorm-grill-task-producers/validation-evidence/03-witnesses/output/negative-root/observedBehavior-missing.work-brief.json"
+    },
+    {
+      "name": "negative bug task missing expected behavior: blocked",
+      "ok": true,
+      "reason": "invalid_task_input",
+      "errors": [
+        {
+          "field": "expectedBehavior",
+          "code": "MISSING_BUG_EXPECTED_BEHAVIOR",
+          "message": "bug task requires expectedBehavior."
+        }
+      ]
+    },
+    {
+      "name": "negative bug task missing expected behavior: no invalid artifact persisted",
+      "ok": true,
+      "filePath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05B-brainstorm-grill-task-producers/validation-evidence/03-witnesses/output/negative-root/expectedBehavior-missing.work-brief.json"
+    },
+    {
+      "name": "negative bug task missing reproduction basis: blocked",
+      "ok": true,
+      "reason": "invalid_task_input",
+      "errors": [
+        {
+          "field": "reproductionSteps",
+          "code": "MISSING_BUG_REPRODUCTION",
+          "message": "bug task requires at least one reproduction step."
+        }
+      ]
+    },
+    {
+      "name": "negative bug task missing reproduction basis: no invalid artifact persisted",
+      "ok": true,
+      "filePath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05B-brainstorm-grill-task-producers/validation-evidence/03-witnesses/output/negative-root/reproductionSteps-missing.work-brief.json"
+    },
+    {
+      "name": "negative unsafe output path traversal: blocked",
+      "ok": true,
+      "reason": "unsafe_path",
+      "errors": [
+        {
+          "field": "artifactName",
+          "code": "PATH_TRAVERSAL_REJECTED",
+          "message": "artifactName must stay inside /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05B-brainstorm-grill-task-producers/validation-evidence/03-witnesses/output/negative-root after path normalization."
+        }
+      ]
+    },
+    {
+      "name": "negative unsafe output path traversal: no invalid artifact persisted",
+      "ok": true,
+      "filePath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05B-brainstorm-grill-task-producers/validation-evidence/03-witnesses/output/escape/escaped.work-brief.json"
+    },
+    {
+      "name": "negative absolute output artifact name: blocked",
+      "ok": true,
+      "reason": "unsafe_path",
+      "errors": [
+        {
+          "field": "artifactName",
+          "code": "ABSOLUTE_PATH_REJECTED",
+          "message": "artifactName must be a relative artifact name, not an absolute path."
+        }
+      ]
+    },
+    {
+      "name": "negative absolute output artifact name: no invalid artifact persisted",
+      "ok": true,
+      "filePath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05B-brainstorm-grill-task-producers/validation-evidence/03-witnesses/output/absolute.work-brief.json"
+    },
+    {
+      "name": "negative empty output artifact name: blocked",
+      "ok": true,
+      "reason": "invalid_path_descriptor",
+      "errors": [
+        {
+          "field": "artifactName",
+          "code": "INVALID_INPUT",
+          "message": "artifactName must be a non-empty string."
+        }
+      ]
+    },
+    {
+      "name": "negative directory output target: blocked",
+      "ok": true,
+      "reason": "directory_target",
+      "errors": [
+        {
+          "field": "artifactName",
+          "code": "INVALID_INPUT",
+          "message": "artifactName resolves to a directory."
+        }
+      ]
+    },
+    {
+      "name": "negative non-json output carrier .md: blocked",
+      "ok": true,
+      "reason": "carrier_not_json",
+      "errors": [
+        {
+          "field": "artifactName",
+          "code": "CARRIER_NOT_JSON",
+          "message": "Work Brief artifacts must use a .json carrier."
+        }
+      ]
+    },
+    {
+      "name": "negative non-json output carrier .md: no invalid artifact persisted",
+      "ok": true,
+      "filePath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05B-brainstorm-grill-task-producers/validation-evidence/03-witnesses/output/negative-root/non-json-output.md"
+    },
+    {
+      "name": "negative non-json output carrier .yaml: blocked",
+      "ok": true,
+      "reason": "carrier_not_json",
+      "errors": [
+        {
+          "field": "artifactName",
+          "code": "CARRIER_NOT_JSON",
+          "message": "Work Brief artifacts must use a .json carrier."
+        }
+      ]
+    },
+    {
+      "name": "negative non-json output carrier .yaml: no invalid artifact persisted",
+      "ok": true,
+      "filePath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05B-brainstorm-grill-task-producers/validation-evidence/03-witnesses/output/negative-root/non-json-output.yaml"
+    },
+    {
+      "name": "negative non-json output carrier .txt: blocked",
+      "ok": true,
+      "reason": "carrier_not_json",
+      "errors": [
+        {
+          "field": "artifactName",
+          "code": "CARRIER_NOT_JSON",
+          "message": "Work Brief artifacts must use a .json carrier."
+        }
+      ]
+    },
+    {
+      "name": "negative non-json output carrier .txt: no invalid artifact persisted",
+      "ok": true,
+      "filePath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05B-brainstorm-grill-task-producers/validation-evidence/03-witnesses/output/negative-root/non-json-output.txt"
+    },
+    {
+      "name": "negative raw direct request object to plan intake: blocked",
+      "ok": true,
+      "reason": "invalid_intake_descriptor",
+      "errors": [
+        {
+          "field": "inputRoot",
+          "code": "INVALID_INPUT",
+          "message": "inputRoot must be a non-empty string."
+        },
+        {
+          "field": "artifactName",
+          "code": "INVALID_INPUT",
+          "message": "artifactName must be a non-empty string."
+        }
+      ]
+    },
+    {
+      "name": "negative raw chat string to plan intake: blocked",
+      "ok": true,
+      "reason": "invalid_intake_descriptor",
+      "errors": [
+        {
+          "field": "descriptor",
+          "code": "INVALID_INPUT",
+          "message": "plan intake requires an object with inputRoot and artifactName, not raw intent text or chat."
+        }
+      ]
+    },
+    {
+      "name": "negative missing file: blocked",
+      "ok": true,
+      "reason": "missing_work_brief",
+      "errors": [
+        {
+          "field": "artifactName",
+          "code": "MISSING_FILE",
+          "message": "No Work Brief artifact exists at missing.work-brief.json."
+        }
+      ]
+    },
+    {
+      "name": "negative unsafe input path traversal: blocked",
+      "ok": true,
+      "reason": "unsafe_path",
+      "errors": [
+        {
+          "field": "artifactName",
+          "code": "PATH_TRAVERSAL_REJECTED",
+          "message": "artifactName must stay inside inputRoot after path normalization."
+        }
+      ]
+    },
+    {
+      "name": "negative absolute input artifact name: blocked",
+      "ok": true,
+      "reason": "unsafe_path",
+      "errors": [
+        {
+          "field": "artifactName",
+          "code": "ABSOLUTE_PATH_REJECTED",
+          "message": "artifactName must be relative to inputRoot, not absolute."
+        }
+      ]
+    },
+    {
+      "name": "negative empty input artifact name: blocked",
+      "ok": true,
+      "reason": "invalid_intake_descriptor",
+      "errors": [
+        {
+          "field": "artifactName",
+          "code": "INVALID_INPUT",
+          "message": "artifactName must be a non-empty string."
+        }
+      ]
+    },
+    {
+      "name": "negative directory input target: blocked",
+      "ok": true,
+      "reason": "directory_target",
+      "errors": [
+        {
+          "field": "artifactName",
+          "code": "INVALID_INPUT",
+          "message": "artifactName resolves to a directory."
+        }
+      ]
+    },
+    {
+      "name": "negative non-json input carrier .md: blocked",
+      "ok": true,
+      "reason": "carrier_not_json",
+      "errors": [
+        {
+          "field": "artifactName",
+          "code": "CARRIER_NOT_JSON",
+          "message": "plan intake consumes canonical .json Work Brief artifacts only."
+        }
+      ]
+    },
+    {
+      "name": "negative non-json input carrier .yaml: blocked",
+      "ok": true,
+      "reason": "carrier_not_json",
+      "errors": [
+        {
+          "field": "artifactName",
+          "code": "CARRIER_NOT_JSON",
+          "message": "plan intake consumes canonical .json Work Brief artifacts only."
+        }
+      ]
+    },
+    {
+      "name": "negative non-json input carrier .txt: blocked",
+      "ok": true,
+      "reason": "carrier_not_json",
+      "errors": [
+        {
+          "field": "artifactName",
+          "code": "CARRIER_NOT_JSON",
+          "message": "plan intake consumes canonical .json Work Brief artifacts only."
+        }
+      ]
+    },
+    {
+      "name": "negative malformed JSON: public file validator rejects",
+      "ok": true,
+      "errors": [
+        {
+          "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05B-brainstorm-grill-task-producers/validation-evidence/03-witnesses/output/intake-root/malformed-json.work-brief.json",
+          "artifactKind": "work_brief",
+          "schemaId": null,
+          "schemaVersion": null,
+          "pointer": "",
+          "code": "JSON_PARSE_ERROR",
+          "message": "Invalid JSON artifact: Expected property name or '}' in JSON at position 2 (line 1 column 3)"
+        }
+      ]
+    },
+    {
+      "name": "negative malformed JSON through plan intake: blocked",
+      "ok": true,
+      "reason": "validation_failed",
+      "stage": "consumer_revalidate",
+      "errors": [
+        {
+          "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05B-brainstorm-grill-task-producers/validation-evidence/03-witnesses/output/intake-root/malformed-json.work-brief.json",
+          "artifactKind": "work_brief",
+          "schemaId": null,
+          "schemaVersion": null,
+          "pointer": "",
+          "code": "JSON_PARSE_ERROR",
+          "message": "Invalid JSON artifact: Expected property name or '}' in JSON at position 2 (line 1 column 3)"
+        }
+      ]
+    },
+    {
+      "name": "negative wrong artifactKind through plan intake: blocked",
+      "ok": true,
+      "reason": "validation_failed",
+      "stage": "consumer_revalidate",
+      "errors": [
+        {
+          "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05B-brainstorm-grill-task-producers/validation-evidence/03-witnesses/output/intake-root/wrong-kind.work-brief.json",
+          "artifactKind": "implementation_plan",
+          "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/work-brief.schema.json",
+          "schemaVersion": "1.0.0",
+          "pointer": "/artifactKind",
+          "code": "ARTIFACT_KIND_MISMATCH",
+          "message": "Expected artifactKind work_brief."
+        },
+        {
+          "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05B-brainstorm-grill-task-producers/validation-evidence/03-witnesses/output/intake-root/wrong-kind.work-brief.json",
+          "artifactKind": "implementation_plan",
+          "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/work-brief.schema.json",
+          "schemaVersion": "1.0.0",
+          "pointer": "/artifactKind",
+          "code": "CONST",
+          "message": "must be equal to constant"
+        },
+        {
+          "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05B-brainstorm-grill-task-producers/validation-evidence/03-witnesses/output/intake-root/wrong-kind.work-brief.json",
+          "artifactKind": "implementation_plan",
+          "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/work-brief.schema.json",
+          "schemaVersion": "1.0.0",
+          "pointer": "/artifactKind",
+          "code": "ENUM",
+          "message": "must be equal to one of the allowed values"
+        }
+      ]
+    },
+    {
+      "name": "negative wrong schema version through plan intake: blocked",
+      "ok": true,
+      "reason": "validation_failed",
+      "stage": "consumer_revalidate",
+      "errors": [
+        {
+          "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05B-brainstorm-grill-task-producers/validation-evidence/03-witnesses/output/intake-root/wrong-schema-version.work-brief.json",
+          "artifactKind": "work_brief",
+          "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/work-brief.schema.json",
+          "schemaVersion": "2.0.0",
+          "pointer": "/schemaVersion",
+          "code": "UNSUPPORTED_VERSION",
+          "message": "Unsupported artifact schemaVersion 2.0.0."
+        },
+        {
+          "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05B-brainstorm-grill-task-producers/validation-evidence/03-witnesses/output/intake-root/wrong-schema-version.work-brief.json",
+          "artifactKind": "work_brief",
+          "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/work-brief.schema.json",
+          "schemaVersion": "2.0.0",
+          "pointer": "/schemaVersion",
+          "code": "CONST",
+          "message": "must be equal to constant"
+        }
+      ]
+    },
+    {
+      "name": "negative wrong source skill through plan intake: blocked",
+      "ok": true,
+      "reason": "validation_failed",
+      "stage": "consumer_revalidate",
+      "errors": [
+        {
+          "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05B-brainstorm-grill-task-producers/validation-evidence/03-witnesses/output/intake-root/wrong-source-skill.work-brief.json",
+          "artifactKind": "work_brief",
+          "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/work-brief.schema.json",
+          "schemaVersion": "1.0.0",
+          "pointer": "/sourceSkill",
+          "code": "ENUM",
+          "message": "must be equal to one of the allowed values"
+        }
+      ]
+    },
+    {
+      "name": "negative malformed artifact shape through plan intake: blocked",
+      "ok": true,
+      "reason": "validation_failed",
+      "stage": "consumer_revalidate",
+      "errors": [
+        {
+          "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05B-brainstorm-grill-task-producers/validation-evidence/03-witnesses/output/intake-root/malformed-shape.work-brief.json",
+          "artifactKind": "work_brief",
+          "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/work-brief.schema.json",
+          "schemaVersion": "1.0.0",
+          "pointer": "/title",
+          "code": "REQUIRED",
+          "message": "must have required property 'title'"
+        },
+        {
+          "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05B-brainstorm-grill-task-producers/validation-evidence/03-witnesses/output/intake-root/malformed-shape.work-brief.json",
+          "artifactKind": "work_brief",
+          "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/work-brief.schema.json",
+          "schemaVersion": "1.0.0",
+          "pointer": "/createdAt",
+          "code": "REQUIRED",
+          "message": "must have required property 'createdAt'"
+        },
+        {
+          "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05B-brainstorm-grill-task-producers/validation-evidence/03-witnesses/output/intake-root/malformed-shape.work-brief.json",
+          "artifactKind": "work_brief",
+          "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/work-brief.schema.json",
+          "schemaVersion": "1.0.0",
+          "pointer": "/updatedAt",
+          "code": "REQUIRED",
+          "message": "must have required property 'updatedAt'"
+        },
+        {
+          "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05B-brainstorm-grill-task-producers/validation-evidence/03-witnesses/output/intake-root/malformed-shape.work-brief.json",
+          "artifactKind": "work_brief",
+          "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/work-brief.schema.json",
+          "schemaVersion": "1.0.0",
+          "pointer": "/producer",
+          "code": "REQUIRED",
+          "message": "must have required property 'producer'"
+        },
+        {
+          "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05B-brainstorm-grill-task-producers/validation-evidence/03-witnesses/output/intake-root/malformed-shape.work-brief.json",
+          "artifactKind": "work_brief",
+          "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/work-brief.schema.json",
+          "schemaVersion": "1.0.0",
+          "pointer": "/status",
+          "code": "REQUIRED",
+          "message": "must have required property 'status'"
+        },
+        {
+          "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05B-brainstorm-grill-task-producers/validation-evidence/03-witnesses/output/intake-root/malformed-shape.work-brief.json",
+          "artifactKind": "work_brief",
+          "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/work-brief.schema.json",
+          "schemaVersion": "1.0.0",
+          "pointer": "/ownership",
+          "code": "REQUIRED",
+          "message": "must have required property 'ownership'"
+        },
+        {
+          "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05B-brainstorm-grill-task-producers/validation-evidence/03-witnesses/output/intake-root/malformed-shape.work-brief.json",
+          "artifactKind": "work_brief",
+          "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/work-brief.schema.json",
+          "schemaVersion": "1.0.0",
+          "pointer": "/links",
+          "code": "REQUIRED",
+          "message": "must have required property 'links'"
+        },
+        {
+          "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05B-brainstorm-grill-task-producers/validation-evidence/03-witnesses/output/intake-root/malformed-shape.work-brief.json",
+          "artifactKind": "work_brief",
+          "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/work-brief.schema.json",
+          "schemaVersion": "1.0.0",
+          "pointer": "/extensions",
+          "code": "REQUIRED",
+          "message": "must have required property 'extensions'"
+        },
+        {
+          "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05B-brainstorm-grill-task-producers/validation-evidence/03-witnesses/output/intake-root/malformed-shape.work-brief.json",
+          "artifactKind": "work_brief",
+          "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/work-brief.schema.json",
+          "schemaVersion": "1.0.0",
+          "pointer": "/sourceSkill",
+          "code": "REQUIRED",
+          "message": "must have required property 'sourceSkill'"
+        },
+        {
+          "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05B-brainstorm-grill-task-producers/validation-evidence/03-witnesses/output/intake-root/malformed-shape.work-brief.json",
+          "artifactKind": "work_brief",
+          "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/work-brief.schema.json",
+          "schemaVersion": "1.0.0",
+          "pointer": "/workType",
+          "code": "REQUIRED",
+          "message": "must have required property 'workType'"
+        },
+        {
+          "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05B-brainstorm-grill-task-producers/validation-evidence/03-witnesses/output/intake-root/malformed-shape.work-brief.json",
+          "artifactKind": "work_brief",
+          "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/work-brief.schema.json",
+          "schemaVersion": "1.0.0",
+          "pointer": "/background",
+          "code": "REQUIRED",
+          "message": "must have required property 'background'"
+        },
+        {
+          "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05B-brainstorm-grill-task-producers/validation-evidence/03-witnesses/output/intake-root/malformed-shape.work-brief.json",
+          "artifactKind": "work_brief",
+          "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/work-brief.schema.json",
+          "schemaVersion": "1.0.0",
+          "pointer": "/problemOrOpportunity",
+          "code": "REQUIRED",
+          "message": "must have required property 'problemOrOpportunity'"
+        },
+        {
+          "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05B-brainstorm-grill-task-producers/validation-evidence/03-witnesses/output/intake-root/malformed-shape.work-brief.json",
+          "artifactKind": "work_brief",
+          "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/work-brief.schema.json",
+          "schemaVersion": "1.0.0",
+          "pointer": "/desiredOutcome",
+          "code": "REQUIRED",
+          "message": "must have required property 'desiredOutcome'"
+        },
+        {
+          "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05B-brainstorm-grill-task-producers/validation-evidence/03-witnesses/output/intake-root/malformed-shape.work-brief.json",
+          "artifactKind": "work_brief",
+          "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/work-brief.schema.json",
+          "schemaVersion": "1.0.0",
+          "pointer": "/constraints",
+          "code": "REQUIRED",
+          "message": "must have required property 'constraints'"
+        },
+        {
+          "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05B-brainstorm-grill-task-producers/validation-evidence/03-witnesses/output/intake-root/malformed-shape.work-brief.json",
+          "artifactKind": "work_brief",
+          "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/work-brief.schema.json",
+          "schemaVersion": "1.0.0",
+          "pointer": "/userVisibleBehavior",
+          "code": "REQUIRED",
+          "message": "must have required property 'userVisibleBehavior'"
+        },
+        {
+          "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05B-brainstorm-grill-task-producers/validation-evidence/03-witnesses/output/intake-root/malformed-shape.work-brief.json",
+          "artifactKind": "work_brief",
+          "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/work-brief.schema.json",
+          "schemaVersion": "1.0.0",
+          "pointer": "/nonGoals",
+          "code": "REQUIRED",
+          "message": "must have required property 'nonGoals'"
+        },
+        {
+          "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05B-brainstorm-grill-task-producers/validation-evidence/03-witnesses/output/intake-root/malformed-shape.work-brief.json",
+          "artifactKind": "work_brief",
+          "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/work-brief.schema.json",
+          "schemaVersion": "1.0.0",
+          "pointer": "/risksAndUnknowns",
+          "code": "REQUIRED",
+          "message": "must have required property 'risksAndUnknowns'"
+        },
+        {
+          "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05B-brainstorm-grill-task-producers/validation-evidence/03-witnesses/output/intake-root/malformed-shape.work-brief.json",
+          "artifactKind": "work_brief",
+          "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/work-brief.schema.json",
+          "schemaVersion": "1.0.0",
+          "pointer": "/acceptanceNotes",
+          "code": "REQUIRED",
+          "message": "must have required property 'acceptanceNotes'"
+        },
+        {
+          "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05B-brainstorm-grill-task-producers/validation-evidence/03-witnesses/output/intake-root/malformed-shape.work-brief.json",
+          "artifactKind": "work_brief",
+          "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/work-brief.schema.json",
+          "schemaVersion": "1.0.0",
+          "pointer": "/sourceMetadata",
+          "code": "REQUIRED",
+          "message": "must have required property 'sourceMetadata'"
+        },
+        {
+          "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-05B-brainstorm-grill-task-producers/validation-evidence/03-witnesses/output/intake-root/malformed-shape.work-brief.json",
+          "artifactKind": "work_brief",
+          "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/work-brief.schema.json",
+          "schemaVersion": "1.0.0",
+          "pointer": "/links",
+          "code": "BAD_LINK",
+          "message": "Work Brief must include a required raw_intent link."
+        }
+      ]
+    },
+    {
+      "name": "negative blocked Work Brief: public file validator accepts schema/status",
+      "ok": true
+    },
+    {
+      "name": "negative blocked Work Brief not green-consumable by plan intake: blocked",
+      "ok": true,
+      "reason": "work_brief_blocked"
+    },
+    {
+      "name": "regression DL-03 six user-facing skills exactly preserved",
+      "ok": true
+    },
+    {
+      "name": "regression Work Brief sourceSkill enum exactly producers",
+      "ok": true,
+      "enum": [
+        "brainstorm",
+        "grill-me",
+        "task"
+      ]
+    },
+    {
+      "name": "regression Work Brief workType enum contains required values",
+      "ok": true,
+      "enum": [
+        "feature",
+        "bug",
+        "chore",
+        "refactor",
+        "research",
+        "decision"
+      ]
+    },
+    {
+      "name": "regression producers share same artifact class",
+      "ok": true
+    },
+    {
+      "name": "regression plan intake remains intake-only success shape",
+      "ok": true
+    }
+  ]
+}
