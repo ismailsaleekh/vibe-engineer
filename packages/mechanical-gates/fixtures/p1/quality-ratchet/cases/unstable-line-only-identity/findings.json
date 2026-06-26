@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "quality-ratchet.findings/1",
+  "family": "p1.quality-ratchet",
+  "surfaceFingerprint": "9f0284bdb28774cdc24746e8eaf1aff4563eabc087d6cad1c5d87f7f788061e9",
+  "sourceFingerprintPath": "surface-fingerprint.json",
+  "runnerEvidencePath": "runner-evidence.json",
+  "findings": [
+    {
+      "tool": "example-mechanical-tool",
+      "ruleId": "example.rule",
+      "severity": "error",
+      "path": "src/sample.ts",
+      "message": "Line-only identity should fail.",
+      "identity": {
+        "tool": "example-mechanical-tool",
+        "ruleId": "example.rule",
+        "path": "src/sample.ts",
+        "line": 3
+      },
+      "evidence": {
+        "sourcePath": "src/sample.ts",
+        "sourceExcerpt": "export function exampleFunction(value) {\n  return value + 1;\n}"
+      }
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "i12.test-anti-pattern/1",
+  "proofMode": "typescript-ast",
+  "testRoots": ["tests"],
+  "allowSkippedWithMetadata": true,
+  "requiredSkipMetadata": ["owner", "date", "reason"],
+  "normalizedSnapshotHelpers": ["normalizeVolatileOutput"],
+  "requiredSetupFiles": ["resources/required-resource.txt"],
+  "setupSentinels": [{ "file": "resources/setup-sentinel.txt", "contains": "ready:true" }],
+  "requiredSetupAssertionCalls": ["assertRequiredFixtureResource"],
+  "riskyBehaviors": [{ "id": "risky-parser", "requiredNegativeTestNameIncludes": "rejects malformed risky input" }],
+  "exactCountRequired": true,
+  "requiredRegressionFailureShape": true
+}

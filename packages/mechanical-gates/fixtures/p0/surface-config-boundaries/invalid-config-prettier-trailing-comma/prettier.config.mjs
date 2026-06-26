@@ -1,0 +1,9 @@
+export default {
+  "printWidth": 100,
+  "semi": true,
+  "singleQuote": false,
+  "trailingComma": "none",
+  "arrowParens": "always",
+  "bracketSpacing": true,
+  "endOfLine": "lf"
+};

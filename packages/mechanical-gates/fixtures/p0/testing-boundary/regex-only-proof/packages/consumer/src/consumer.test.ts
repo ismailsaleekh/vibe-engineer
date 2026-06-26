@@ -1,0 +1,1 @@
+import '@vibe-engineer/testing';

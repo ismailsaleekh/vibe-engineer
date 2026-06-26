@@ -1,0 +1,471 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vibe-engineer.local/schemas/p0/build-export-contract.schema.json",
+  "title": "Vibe Engineer TS build/export migration contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schemaVersion",
+    "contractId",
+    "status",
+    "exceptionClasses",
+    "rootScripts",
+    "turboTasks",
+    "strictCompilerOptions",
+    "packageTsconfigConvention",
+    "packageExportConvention",
+    "generatedDistPolicy",
+    "sourceJsDebtPolicy",
+    "ts09vDeferral",
+    "witnessPolicy"
+  ],
+  "properties": {
+    "$schema": { "const": "./build-export-contract.schema.json" },
+    "schemaVersion": { "const": "build-export-contract/1.0.0" },
+    "contractId": { "const": "TS-ROOT-build-export-contract" },
+    "status": { "const": "active" },
+    "exceptionClasses": { "$ref": "#/$defs/exceptionClasses" },
+    "rootScripts": { "$ref": "#/$defs/rootScripts" },
+    "turboTasks": { "$ref": "#/$defs/turboTasks" },
+    "strictCompilerOptions": { "$ref": "#/$defs/strictCompilerOptions" },
+    "packageTsconfigConvention": { "$ref": "#/$defs/packageTsconfigConvention" },
+    "packageExportConvention": { "$ref": "#/$defs/packageExportConvention" },
+    "generatedDistPolicy": { "$ref": "#/$defs/generatedDistPolicy" },
+    "sourceJsDebtPolicy": { "$ref": "#/$defs/sourceJsDebtPolicy" },
+    "ts09vDeferral": { "$ref": "#/$defs/ts09vDeferral" },
+    "witnessPolicy": { "$ref": "#/$defs/witnessPolicy" }
+  },
+  "$defs": {
+    "exceptionClasses": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "prefixItems": [
+        { "$ref": "#/$defs/workspaceSurfaceException" },
+        { "$ref": "#/$defs/auditedProductionJsException" },
+        { "$ref": "#/$defs/ts09vException" },
+        { "$ref": "#/$defs/transientBuildOutputException" }
+      ],
+      "items": false
+    },
+    "workspaceSurfaceException": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "category", "subject", "allowedUse", "forbiddenUses", "productionRuntimeOrExportSource", "finalStateAllowed"],
+      "properties": {
+        "id": { "const": "workspace-surface-witness-evidence-only" },
+        "category": { "const": "evidence-only-root-script" },
+        "subject": { "const": ".vibe/work/I-00A-workspace-package-skeleton/witnesses/workspace-surface-witness.mjs" },
+        "allowedUse": { "const": "root workspace:surface evidence witness" },
+        "forbiddenUses": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "prefixItems": [
+            { "const": "production-runtime-source" },
+            { "const": "package-export-source" },
+            { "const": "package-bin-source" }
+          ],
+          "items": false
+        },
+        "productionRuntimeOrExportSource": { "const": false },
+        "finalStateAllowed": { "const": false }
+      }
+    },
+    "auditedProductionJsException": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "category", "auditedProductionJsMjsCount", "classification", "finalAllowlist", "migrationOwner"],
+      "properties": {
+        "id": { "const": "audited-production-js-mjs-migration-debt" },
+        "category": { "const": "migration-debt" },
+        "auditedProductionJsMjsCount": { "const": 43 },
+        "classification": { "const": "audited production JS/MJS remains debt until package TS migration lanes replace it with TypeScript source and generated dist/declarations" },
+        "finalAllowlist": { "const": false },
+        "migrationOwner": { "const": "later package TypeScript migration lanes" }
+      }
+    },
+    "ts09vException": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "category", "deferralId", "subject", "requiredIndependentPasses", "forbiddenUntilReady", "finalStateAllowed"],
+      "properties": {
+        "id": { "const": "ts09v-verification-source-js-export-deferred" },
+        "category": { "const": "deferred-verification-source-js-export-debt" },
+        "deferralId": { "const": "TS-09V" },
+        "subject": { "const": "packages/verification/package.json#/exports/." },
+        "requiredIndependentPasses": { "$ref": "#/$defs/i09RequiredPasses" },
+        "forbiddenUntilReady": { "$ref": "#/$defs/verificationForbiddenUntilReady" },
+        "finalStateAllowed": { "const": false }
+      }
+    },
+    "transientBuildOutputException": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "category", "allowedRoot", "forbiddenProductRoots", "productDistMutationAllowed", "finalStateAllowed"],
+      "properties": {
+        "id": { "const": "transient-build-outputs-ts-root-evidence-only" },
+        "category": { "const": "owned-transient-evidence-output" },
+        "allowedRoot": { "const": ".vibe/work/TS-ROOT-build-export-contract/**" },
+        "forbiddenProductRoots": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1,
+          "prefixItems": [{ "const": "packages/**/dist/**" }],
+          "items": false
+        },
+        "productDistMutationAllowed": { "const": false },
+        "finalStateAllowed": { "const": false }
+      }
+    },
+    "rootScripts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["build", "typecheck", "test", "preserved"],
+      "properties": {
+        "build": { "$ref": "#/$defs/rootBuildScript" },
+        "typecheck": { "$ref": "#/$defs/rootTypecheckScript" },
+        "test": { "$ref": "#/$defs/rootTestScript" },
+        "preserved": { "$ref": "#/$defs/preservedRootScripts" }
+      }
+    },
+    "rootBuildScript": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["command", "delegatesToTurbo", "usesWorkspaceExecution"],
+      "properties": {
+        "command": { "const": "pnpm exec turbo run build" },
+        "delegatesToTurbo": { "const": true },
+        "usesWorkspaceExecution": { "const": true }
+      }
+    },
+    "rootTypecheckScript": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["command", "delegatesToTurbo", "usesWorkspaceExecution"],
+      "properties": {
+        "command": { "const": "pnpm exec turbo run typecheck" },
+        "delegatesToTurbo": { "const": true },
+        "usesWorkspaceExecution": { "const": true }
+      }
+    },
+    "rootTestScript": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["command", "delegatesToTurbo", "usesWorkspaceExecution"],
+      "properties": {
+        "command": { "const": "pnpm exec turbo run test" },
+        "delegatesToTurbo": { "const": true },
+        "usesWorkspaceExecution": { "const": true }
+      }
+    },
+    "preservedRootScripts": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "uniqueItems": true,
+      "items": { "enum": ["workspace:graph", "workspace:surface"] },
+      "allOf": [
+        { "contains": { "const": "workspace:graph" } },
+        { "contains": { "const": "workspace:surface" } }
+      ]
+    },
+    "turboTasks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["build", "typecheck", "test"],
+      "properties": {
+        "build": { "$ref": "#/$defs/turboBuildTask" },
+        "typecheck": { "$ref": "#/$defs/turboTypecheckTask" },
+        "test": { "$ref": "#/$defs/turboTestTask" }
+      }
+    },
+    "turboBuildTask": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["required", "dependsOn", "outputs"],
+      "properties": {
+        "required": { "const": true },
+        "dependsOn": { "type": "array", "minItems": 1, "maxItems": 1, "prefixItems": [{ "const": "^build" }], "items": false },
+        "outputs": { "type": "array", "minItems": 1, "maxItems": 1, "prefixItems": [{ "const": "dist/**" }], "items": false }
+      }
+    },
+    "turboTypecheckTask": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["required", "dependsOn", "outputs"],
+      "properties": {
+        "required": { "const": true },
+        "dependsOn": { "type": "array", "minItems": 1, "maxItems": 1, "prefixItems": [{ "const": "^build" }], "items": false },
+        "outputs": { "type": "array", "maxItems": 0 }
+      }
+    },
+    "turboTestTask": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["required", "dependsOn", "outputs"],
+      "properties": {
+        "required": { "const": true },
+        "dependsOn": { "type": "array", "minItems": 2, "maxItems": 2, "prefixItems": [{ "const": "build" }, { "const": "^build" }], "items": false },
+        "outputs": { "type": "array", "maxItems": 0 }
+      }
+    },
+    "strictCompilerOptions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["requiredTrue", "requiredFalse", "forbidden"],
+      "properties": {
+        "requiredTrue": { "$ref": "#/$defs/requiredTrueStrictOptions" },
+        "requiredFalse": { "$ref": "#/$defs/requiredFalseStrictOptions" },
+        "forbidden": { "type": "array", "minItems": 1, "maxItems": 1, "prefixItems": [{ "const": "allowJs" }], "items": false }
+      }
+    },
+    "requiredTrueStrictOptions": {
+      "type": "array",
+      "minItems": 25,
+      "maxItems": 25,
+      "prefixItems": [
+        { "const": "strict" },
+        { "const": "noImplicitAny" },
+        { "const": "strictNullChecks" },
+        { "const": "strictFunctionTypes" },
+        { "const": "strictBindCallApply" },
+        { "const": "strictPropertyInitialization" },
+        { "const": "noImplicitThis" },
+        { "const": "alwaysStrict" },
+        { "const": "exactOptionalPropertyTypes" },
+        { "const": "noUncheckedIndexedAccess" },
+        { "const": "noImplicitOverride" },
+        { "const": "noImplicitReturns" },
+        { "const": "noPropertyAccessFromIndexSignature" },
+        { "const": "useUnknownInCatchVariables" },
+        { "const": "noFallthroughCasesInSwitch" },
+        { "const": "noUnusedLocals" },
+        { "const": "noUnusedParameters" },
+        { "const": "isolatedModules" },
+        { "const": "verbatimModuleSyntax" },
+        { "const": "forceConsistentCasingInFileNames" },
+        { "const": "resolveJsonModule" },
+        { "const": "declaration" },
+        { "const": "declarationMap" },
+        { "const": "sourceMap" },
+        { "const": "noEmitOnError" }
+      ],
+      "items": false
+    },
+    "requiredFalseStrictOptions": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "prefixItems": [
+        { "const": "allowUnreachableCode" },
+        { "const": "allowUnusedLabels" },
+        { "const": "skipLibCheck" }
+      ],
+      "items": false
+    },
+    "packageTsconfigConvention": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["policyId", "appliesTo", "allowedExtends", "requiredBuildShape", "forbiddenCompilerOptions", "inheritedCompilerOptions", "runtimeImportWitnessRequired"],
+      "properties": {
+        "policyId": { "const": "package-tsconfig-convention" },
+        "appliesTo": { "const": "migrated TypeScript workspace packages" },
+        "allowedExtends": { "type": "array", "minItems": 2, "maxItems": 2, "prefixItems": [{ "const": "../../tsconfig.base.json" }, { "const": "../../../tsconfig.base.json" }], "items": false },
+        "requiredBuildShape": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["rootDirOwnedByPackage", "outDir", "declaration", "declarationMap", "noEmitOnError"],
+          "properties": {
+            "rootDirOwnedByPackage": { "const": true },
+            "outDir": { "const": "dist" },
+            "declaration": { "const": true },
+            "declarationMap": { "const": true },
+            "noEmitOnError": { "const": true }
+          }
+        },
+        "forbiddenCompilerOptions": { "type": "array", "minItems": 1, "maxItems": 1, "prefixItems": [{ "const": "allowJs" }], "items": false },
+        "inheritedCompilerOptions": { "type": "array", "minItems": 2, "maxItems": 2, "prefixItems": [{ "const": "module:NodeNext" }, { "const": "moduleResolution:NodeNext" }], "items": false },
+        "runtimeImportWitnessRequired": { "const": true }
+      }
+    },
+    "packageExportConvention": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["policyId", "runtimeExports", "typesExports", "binEntries", "currentSourceJsDebt"],
+      "properties": {
+        "policyId": { "const": "package-export-types-bin-convention" },
+        "runtimeExports": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["requiredTargetKind", "requiredTargetPattern", "forbiddenFinalTargetKinds", "sourceJsAllowedFinalState"],
+          "properties": {
+            "requiredTargetKind": { "const": "generated-dist-js" },
+            "requiredTargetPattern": { "const": "dist/**/*.js" },
+            "forbiddenFinalTargetKinds": { "type": "array", "minItems": 2, "maxItems": 2, "prefixItems": [{ "const": "src-js" }, { "const": "src-mjs" }], "items": false },
+            "sourceJsAllowedFinalState": { "const": false }
+          }
+        },
+        "typesExports": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["requiredTargetKind", "requiredTargetPattern"],
+          "properties": {
+            "requiredTargetKind": { "const": "generated-dist-dts" },
+            "requiredTargetPattern": { "const": "dist/**/*.d.ts" }
+          }
+        },
+        "binEntries": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["requiredWhenPresent", "requiredTargetKind", "sourceJsAllowedFinalState", "spawnWitnessRequired"],
+          "properties": {
+            "requiredWhenPresent": { "const": true },
+            "requiredTargetKind": { "const": "generated-dist-executable-js" },
+            "sourceJsAllowedFinalState": { "const": false },
+            "spawnWitnessRequired": { "const": true }
+          }
+        },
+        "currentSourceJsDebt": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["auditedAsMigrationDebt", "finalAllowlist", "owner"],
+          "properties": {
+            "auditedAsMigrationDebt": { "const": true },
+            "finalAllowlist": { "const": false },
+            "owner": { "const": "later package TypeScript migration lanes" }
+          }
+        }
+      }
+    },
+    "generatedDistPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["policyId", "allowedOnlyWhen", "forbiddenUses", "tsRootWitnessOutputs"],
+      "properties": {
+        "policyId": { "const": "generated-dist-policy" },
+        "allowedOnlyWhen": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["matchingTypeScriptSource", "matchingDeclarationOutput", "producedByBuild"],
+          "properties": {
+            "matchingTypeScriptSource": { "const": true },
+            "matchingDeclarationOutput": { "const": true },
+            "producedByBuild": { "const": true }
+          }
+        },
+        "forbiddenUses": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["handWrittenDistAllowed", "hidesSourceJsDebtAllowed"],
+          "properties": {
+            "handWrittenDistAllowed": { "const": false },
+            "hidesSourceJsDebtAllowed": { "const": false }
+          }
+        },
+        "tsRootWitnessOutputs": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["allowedRoot", "productDistWriteAllowed", "forbiddenProductRoots"],
+          "properties": {
+            "allowedRoot": { "const": ".vibe/work/TS-ROOT-build-export-contract/**" },
+            "productDistWriteAllowed": { "const": false },
+            "forbiddenProductRoots": { "type": "array", "minItems": 1, "maxItems": 1, "prefixItems": [{ "const": "packages/**/dist/**" }], "items": false }
+          }
+        }
+      }
+    },
+    "sourceJsDebtPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["productionJsIsDebt", "auditedProductionJsCount", "workspaceSurfaceWitness", "currentSourceJsExportsAndBins"],
+      "properties": {
+        "productionJsIsDebt": { "const": true },
+        "auditedProductionJsCount": { "const": 43 },
+        "workspaceSurfaceWitness": { "$ref": "#/$defs/debtEntry" },
+        "currentSourceJsExportsAndBins": { "type": "array", "minItems": 2, "maxItems": 2, "items": { "$ref": "#/$defs/debtEntry" } }
+      }
+    },
+    "debtEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "classification", "finalStateAllowed"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "classification": { "type": "string", "minLength": 1 },
+        "finalStateAllowed": { "const": false }
+      }
+    },
+    "ts09vDeferral": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["deferred", "requiredIndependentPasses", "forbiddenUntilReady"],
+      "properties": {
+        "deferred": { "const": true },
+        "requiredIndependentPasses": { "$ref": "#/$defs/i09RequiredPasses" },
+        "forbiddenUntilReady": { "$ref": "#/$defs/verificationForbiddenUntilReady" }
+      }
+    },
+    "i09RequiredPasses": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "uniqueItems": true,
+      "items": { "enum": ["I-09S", "I-09A"] },
+      "allOf": [
+        { "contains": { "const": "I-09S" } },
+        { "contains": { "const": "I-09A" } }
+      ]
+    },
+    "verificationForbiddenUntilReady": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "prefixItems": [
+        { "const": "packages/verification/**" },
+        { "const": "packages/verification/package.json#/exports" },
+        { "const": "packages/verification/package.json#/types" },
+        { "const": "packages/verification/dist/**" }
+      ],
+      "items": false
+    },
+    "witnessPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["structuredContractWitness", "realBoundaryWitness", "negativeWitnesses", "regressionWitnesses"],
+      "properties": {
+        "structuredContractWitness": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["parsesActualJsonFiles", "regexOrProseSufficient", "files"],
+          "properties": {
+            "parsesActualJsonFiles": { "const": true },
+            "regexOrProseSufficient": { "const": false },
+            "files": { "type": "array", "minItems": 6, "items": { "type": "string", "minLength": 1 } }
+          }
+        },
+        "realBoundaryWitness": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["actualRootScriptToTurboToPackageBuild", "transientWorkspaceOnly", "packageExportImportRequired"],
+          "properties": {
+            "actualRootScriptToTurboToPackageBuild": { "const": true },
+            "transientWorkspaceOnly": { "const": true },
+            "packageExportImportRequired": { "const": true }
+          }
+        },
+        "negativeWitnesses": {
+          "type": "array",
+          "minItems": 7,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "regressionWitnesses": {
+          "type": "array",
+          "minItems": 4,
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "quality-ratchet.findings/1",
+  "family": "p1.quality-ratchet",
+  "surfaceFingerprint": "29be8d0fd0019a6e63396a42c70fbd19f566e6b6f1e8b17014b366ce261752e3",
+  "sourceFingerprintPath": "surface-fingerprint.json",
+  "runnerEvidencePath": "runner-evidence.json",
+  "findings": [
+    {
+      "tool": "example-mechanical-tool",
+      "ruleId": "example.rule",
+      "severity": "error",
+      "path": "src/sample.ts",
+      "message": "Example mechanical debt for ratchet witness.",
+      "identity": {
+        "tool": "example-mechanical-tool",
+        "ruleId": "example.rule",
+        "path": "src/sample.ts",
+        "symbol": "exampleFunction",
+        "structuralSignature": "function:exampleFunction:example-rule",
+        "contentHash": "7f8a19e4c6c630f8d9e535bdae60225291bbdf941f7f47ee3ae781fdb17f59d2",
+        "line": 30
+      },
+      "evidence": {
+        "sourcePath": "src/sample.ts",
+        "sourceExcerpt": "export function exampleFunction(value) {\n  return value + 1;\n}"
+      }
+    }
+  ]
+}

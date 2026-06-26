@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "proofMode": "typescript-ast-and-comment-scanner",
+  "scan": {
+    "include": [
+      "packages"
+    ],
+    "generatedVendor": [
+      "generated",
+      "vendor",
+      "node_modules"
+    ],
+    "maxFileBytes": 200000
+  },
+  "hardBannedEscapes": [],
+  "entries": [
+    {
+      "path": "packages/app/src/reviewed-escapes.ts",
+      "kind": "non-null-assertion",
+      "locator": {
+        "line": 2,
+        "textIncludes": "maybeName!"
+      },
+      "justification": "Reviewed non-null assertion for a deterministic fixture-only invariant.",
+      "whyUnavoidable": "The fixture intentionally proves reviewed escape tracking without weakening production contracts.",
+      "reviewer": "mechanical-gates-reviewer",
+      "reviewedOn": "2026-06-24"
+    },
+    {
+      "path": "packages/app/src/hard-ban-weakening.ts",
+      "kind": "as-any",
+      "locator": {
+        "line": 2,
+        "textIncludes": "source as any"
+      },
+      "justification": "Probe attempts to approve hard-banned any.",
+      "whyUnavoidable": "It is not unavoidable; default hard ban must remain active.",
+      "reviewer": "mechanical-gates-reviewer",
+      "reviewedOn": "2026-06-24"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "proofMode": "typescript-ast-string-comment-path-carriers",
+  "scan": {
+    "include": [
+      "packages"
+    ],
+    "maxFileBytes": 200000
+  },
+  "forbiddenTerms": [
+    "ecommerce",
+    "",
+    "Telegram"
+  ],
+  "surfaces": [
+    {
+      "kind": "core",
+      "path": "packages/app/src",
+      "match": "prefix"
+    },
+    {
+      "kind": "core",
+      "path": "packages/domain/src",
+      "match": "prefix"
+    },
+    {
+      "kind": "core",
+      "path": "packages/shared/src",
+      "match": "prefix"
+    },
+    {
+      "kind": "sample-demo",
+      "path": "packages/app/src/sample-demo",
+      "match": "prefix"
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "surfaces": [
+    {
+      "path": "package.json",
+      "kind": "exact",
+      "tools": [
+        "package-manager"
+      ]
+    },
+    {
+      "path": "tsconfig.json",
+      "kind": "exact",
+      "tools": [
+        "typescript"
+      ]
+    },
+    {
+      "path": "eslint.config.mjs",
+      "kind": "exact",
+      "tools": [
+        "eslint"
+      ]
+    },
+    {
+      "path": "prettier.config.mjs",
+      "kind": "exact",
+      "tools": [
+        "prettier"
+      ]
+    },
+    {
+      "path": "README.md",
+      "kind": "exact",
+      "tools": [
+        "docs"
+      ]
+    },
+    {
+      "path": "test.mjs",
+      "kind": "exact",
+      "tools": [
+        "test"
+      ]
+    },
+    {
+      "path": "mechanical-boundaries.json",
+      "kind": "exact",
+      "tools": [
+        "mechanical-gates"
+      ]
+    },
+    {
+      "path": "packages/shared/src",
+      "kind": "prefix",
+      "tools": [
+        "typescript",
+        "boundary-graph"
+      ]
+    },
+    {
+      "path": "packages/domain/src",
+      "kind": "prefix",
+      "tools": [
+        "typescript",
+        "boundary-graph"
+      ]
+    },
+    {
+      "path": "packages/app/src",
+      "kind": "prefix",
+      "tools": [
+        "typescript",
+        "boundary-graph"
+      ]
+    },
+    {
+      "path": "mechanical-escape-allowlist.json",
+      "kind": "exact",
+      "tools": [
+        "mechanical-gates"
+      ]
+    },
+    {
+      "path": "mechanical-domain-purity.json",
+      "kind": "exact",
+      "tools": [
+        "mechanical-gates"
+      ]
+    }
+  ],
+  "requiredPaths": [
+    "package.json",
+    "tsconfig.json",
+    "eslint.config.mjs",
+    "prettier.config.mjs",
+    "packages/shared/src/index.ts",
+    "packages/domain/src/index.ts",
+    "packages/app/src/index.ts",
+    "mechanical-escape-allowlist.json",
+    "mechanical-domain-purity.json"
+  ],
+  "excludedPaths": [
+    "generated",
+    "vendor"
+  ]
+}

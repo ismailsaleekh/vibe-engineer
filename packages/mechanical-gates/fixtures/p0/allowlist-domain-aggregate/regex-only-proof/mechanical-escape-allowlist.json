@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "proofMode": "regex-only",
+  "scan": {
+    "include": [
+      "packages"
+    ],
+    "generatedVendor": [
+      "generated",
+      "vendor",
+      "node_modules"
+    ],
+    "maxFileBytes": 200000
+  },
+  "hardBannedEscapes": [
+    "as-any"
+  ],
+  "entries": [
+    {
+      "path": "packages/app/src/reviewed-escapes.ts",
+      "kind": "non-null-assertion",
+      "locator": {
+        "line": 2,
+        "textIncludes": "maybeName!"
+      },
+      "justification": "Reviewed non-null assertion for a deterministic fixture-only invariant.",
+      "whyUnavoidable": "The fixture intentionally proves reviewed escape tracking without weakening production contracts.",
+      "reviewer": "mechanical-gates-reviewer",
+      "reviewedOn": "2026-06-24"
+    }
+  ]
+}

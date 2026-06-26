@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "i12.test-anti-pattern/1",
+  "proofMode": "typescript-ast",
+  "testRoots": ["tests"],
+  "allowSkippedWithMetadata": true,
+  "requiredSkipMetadata": ["owner", "date", "reason"],
+  "normalizedSnapshotHelpers": ["normalizeVolatileOutput"],
+  "requiredSetupFiles": ["resources/required-resource.txt"],
+  "setupSentinels": [{ "file": "resources/setup-sentinel.txt", "contains": "ready:true" }],
+  "requiredSetupAssertionCalls": ["assertRequiredFixtureResource"],
+  "publicClaims": [{ "id": "documented-behavior", "claimPath": "README.md", "requiredTestNameIncludes": "public claim: validates documented behavior", "requiredClaimText": "documented behavior" }],
+  "exactCountRequired": true,
+  "requiredRegressionFailureShape": true
+}
