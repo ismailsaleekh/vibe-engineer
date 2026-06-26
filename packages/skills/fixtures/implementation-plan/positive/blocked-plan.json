@@ -1,0 +1,647 @@
+{
+  "schemaVersion": "1.0.0",
+  "artifactKind": "implementation_plan",
+  "artifactId": "implementation-plan-blocked-fixture",
+  "title": "Implementation Plan for Pressure-test typed intake artifact flow",
+  "createdAt": "2026-06-25T00:00:00.000Z",
+  "updatedAt": "2026-06-25T00:00:00.000Z",
+  "producer": {
+    "kind": "skill",
+    "id": "skill-plan",
+    "name": "plan",
+    "version": "1.0.0",
+    "runId": "run-i06-blocked-fixture"
+  },
+  "status": "blocked",
+  "ownership": {
+    "ownerLane": "I-06-plan-skill-verification-delta",
+    "ownedWritePaths": [
+      "packages/skills/src/plan/orchestrator/**",
+      "packages/skills/src/plan/verification-delta/**",
+      "packages/skills/fixtures/implementation-plan/**",
+      ".vibe/work/I-06-plan-skill-verification-delta/**"
+    ],
+    "readOnlyPaths": [
+      "packages/skills/src/plan/intake/**",
+      "packages/skills/src/shared/**",
+      "packages/skills/src/input/**",
+      "packages/artifacts/**"
+    ],
+    "untouchablePaths": [
+      ".git/**",
+      "package.json",
+      "pnpm-lock.yaml",
+      "packages/skills/package.json",
+      "packages/skills/src/build/**",
+      "packages/skills/src/ship/**"
+    ],
+    "concurrencyNotes": "Plan skill consumes only persisted Work Brief carriers through the I-05B/I-05A plan-intake seam; build and ship remain downstream.",
+    "handoffPolicy": "Implementation Plan artifacts require independent validation before downstream build intake."
+  },
+  "links": [
+    {
+      "rel": "derived_from",
+      "artifactKind": "work_brief",
+      "artifactId": "work-brief-grill-me-producer-fixture",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/skills/fixtures/work-brief/producers/positive-output/grill-me.work-brief.json",
+      "required": true,
+      "statusAtLinkTime": "ready"
+    },
+    {
+      "rel": "verification_delta_of",
+      "artifactKind": "verification_delta",
+      "artifactId": "implementation-plan-blocked-fixture-verification-delta",
+      "path": "implementation-plan-blocked-fixture-verification-delta.json",
+      "required": true,
+      "statusAtLinkTime": "blocked"
+    }
+  ],
+  "extensions": {
+    "dev.vibe.plan-skill": {
+      "schemaVersion": "1.0.0",
+      "sourceSkill": "grill-me",
+      "workType": "decision",
+      "intakeRelativePath": "grill-me.work-brief.json"
+    }
+  },
+  "workBriefRef": {
+    "rel": "derived_from",
+    "artifactKind": "work_brief",
+    "artifactId": "work-brief-grill-me-producer-fixture",
+    "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/skills/fixtures/work-brief/producers/positive-output/grill-me.work-brief.json",
+    "required": true,
+    "statusAtLinkTime": "ready"
+  },
+  "objective": "The grill-me producer writes a validator-accepted Work Brief through the common writer.",
+  "scope": [
+    "Pressure-testing can reveal missing Work Brief evidence before plan consumes it.",
+    "The grill-me producer writes a validator-accepted Work Brief through the common writer."
+  ],
+  "nonScope": [
+    "Do not emit Verification Delta"
+  ],
+  "contextClosure": [
+    {
+      "rel": "derived_from",
+      "artifactKind": "work_brief",
+      "artifactId": "work-brief-grill-me-producer-fixture",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/skills/fixtures/work-brief/producers/positive-output/grill-me.work-brief.json",
+      "required": true,
+      "statusAtLinkTime": "ready"
+    }
+  ],
+  "affectedAreas": [
+    {
+      "kind": "skill",
+      "path": "packages/skills/src/plan/**",
+      "reason": "Plan derives implementation scope from grill-me Work Brief work-brief-grill-me-producer-fixture."
+    }
+  ],
+  "schematics": [],
+  "implementationSteps": [
+    {
+      "id": "step-read-work-brief",
+      "description": "Consume Work Brief work-brief-grill-me-producer-fixture through plan intake and preserve typed artifact handoff.",
+      "expectedTouchedAreas": [
+        {
+          "kind": "skill",
+          "path": "packages/skills/src/plan/**",
+          "reason": "Plan derives implementation scope from grill-me Work Brief work-brief-grill-me-producer-fixture."
+        }
+      ],
+      "acceptanceLinks": [
+        "ac-accept-1",
+        "ac-accept-2"
+      ]
+    },
+    {
+      "id": "step-implement-scope",
+      "description": "Implement the approved scope: The grill-me producer writes a validator-accepted Work Brief through the common writer.",
+      "dependsOn": [
+        "step-read-work-brief"
+      ],
+      "expectedTouchedAreas": [
+        {
+          "kind": "skill",
+          "path": "packages/skills/src/plan/**",
+          "reason": "Plan derives implementation scope from grill-me Work Brief work-brief-grill-me-producer-fixture."
+        }
+      ],
+      "acceptanceLinks": [
+        "ac-accept-1",
+        "ac-accept-2"
+      ]
+    },
+    {
+      "id": "step-verify-delta",
+      "description": "Execute all required Verification Delta layers or keep the plan blocked with explicit unblock metadata.",
+      "dependsOn": [
+        "step-implement-scope"
+      ],
+      "expectedTouchedAreas": [
+        {
+          "kind": "test",
+          "path": ".vibe/work/**",
+          "reason": "Verification evidence must be captured as durable artifacts or command logs."
+        }
+      ],
+      "acceptanceLinks": [
+        "ac-accept-1",
+        "ac-accept-2"
+      ]
+    }
+  ],
+  "acceptanceCriteria": [
+    {
+      "id": "ac-accept-1",
+      "description": "Produced grill-me Work Brief validates through the artifacts package"
+    },
+    {
+      "id": "ac-accept-2",
+      "description": "Plan intake consumes the produced Work Brief as ready input"
+    }
+  ],
+  "definitionOfDone": [
+    {
+      "id": "dod-public-schema-validation",
+      "description": "Implementation Plan and embedded Verification Delta validate through the public @vibe-engineer/artifacts validator before and after persistence.",
+      "blocking": true
+    },
+    {
+      "id": "dod-all-delta-layers-classified",
+      "description": "All 16 Verification Delta catalog layers are present with required evidence expectations.",
+      "blocking": true
+    },
+    {
+      "id": "dod-independent-validation",
+      "description": "An independent validator must inspect the changed files and real producer→consumer seams.",
+      "blocking": true
+    }
+  ],
+  "risks": [
+    {
+      "id": "risk-work-brief-1",
+      "description": "Candidate risk wording must remain planner input only",
+      "sensitiveArea": "work_brief.risksAndUnknowns",
+      "mitigation": "Planner must convert candidate risk into explicit Verification Delta evidence or an open blocker."
+    },
+    {
+      "id": "risk-work-brief-2",
+      "description": "False green if the seam validates shape without actual artifact validator",
+      "sensitiveArea": "work_brief.risksAndUnknowns",
+      "mitigation": "Planner must convert candidate risk into explicit Verification Delta evidence or an open blocker."
+    },
+    {
+      "id": "risk-work-brief-3",
+      "description": "Malformed Work Brief carrier reaches plan intake",
+      "sensitiveArea": "work_brief.risksAndUnknowns",
+      "mitigation": "Planner must convert candidate risk into explicit Verification Delta evidence or an open blocker."
+    },
+    {
+      "id": "risk-work-brief-4",
+      "description": "Producer source skill does not match the callable producer",
+      "sensitiveArea": "work_brief.risksAndUnknowns",
+      "mitigation": "Planner must convert candidate risk into explicit Verification Delta evidence or an open blocker."
+    },
+    {
+      "id": "risk-sensitive-1",
+      "description": "Planner cannot approve without producer-to-consumer evidence.",
+      "sensitiveArea": "real_boundary",
+      "mitigation": "Independent validation must inspect this sensitive area before closure."
+    }
+  ],
+  "openBlockers": [
+    {
+      "id": "blocker-real-boundary",
+      "description": "Integration witness has not run yet.",
+      "blocking": true,
+      "owner": "implementation-agent"
+    },
+    {
+      "id": "blocker-integration",
+      "description": "integration verification blocked by missing-real-boundary-witness; Run producer-to-plan integration witness through persisted carriers.",
+      "blocking": true,
+      "owner": "implementation-agent"
+    }
+  ],
+  "verificationDelta": {
+    "schemaVersion": "1.0.0",
+    "artifactKind": "verification_delta",
+    "artifactId": "implementation-plan-blocked-fixture-verification-delta",
+    "title": "Verification Delta for Pressure-test typed intake artifact flow",
+    "createdAt": "2026-06-25T00:00:00.000Z",
+    "updatedAt": "2026-06-25T00:00:00.000Z",
+    "producer": {
+      "kind": "skill",
+      "id": "skill-plan",
+      "name": "plan",
+      "version": "1.0.0",
+      "runId": "run-i06-blocked-fixture"
+    },
+    "status": "blocked",
+    "ownership": {
+      "ownerLane": "I-06-plan-skill-verification-delta",
+      "ownedWritePaths": [
+        "packages/skills/src/plan/orchestrator/**",
+        "packages/skills/src/plan/verification-delta/**",
+        "packages/skills/fixtures/implementation-plan/**",
+        ".vibe/work/I-06-plan-skill-verification-delta/**"
+      ],
+      "readOnlyPaths": [
+        "packages/skills/src/plan/intake/**",
+        "packages/skills/src/shared/**",
+        "packages/skills/src/input/**",
+        "packages/artifacts/**"
+      ],
+      "untouchablePaths": [
+        ".git/**",
+        "package.json",
+        "pnpm-lock.yaml",
+        "packages/skills/package.json",
+        "packages/skills/src/build/**",
+        "packages/skills/src/ship/**"
+      ],
+      "concurrencyNotes": "Plan skill consumes only persisted Work Brief carriers through the I-05B/I-05A plan-intake seam; build and ship remain downstream.",
+      "handoffPolicy": "Implementation Plan artifacts require independent validation before downstream build intake."
+    },
+    "links": [
+      {
+        "rel": "verification_delta_of",
+        "artifactKind": "implementation_plan",
+        "artifactId": "implementation-plan-blocked-fixture",
+        "path": "implementation-plan-blocked-fixture.json",
+        "required": true,
+        "statusAtLinkTime": "blocked"
+      }
+    ],
+    "extensions": {
+      "dev.vibe.plan-skill": {
+        "schemaVersion": "1.0.0",
+        "sourceWorkBriefId": "work-brief-grill-me-producer-fixture",
+        "sourceSkill": "grill-me"
+      }
+    },
+    "summary": "Verification Delta covers 16 locked layers for work-brief-grill-me-producer-fixture.",
+    "implementationPlanRef": {
+      "rel": "verification_delta_of",
+      "artifactKind": "implementation_plan",
+      "artifactId": "implementation-plan-blocked-fixture",
+      "path": "implementation-plan-blocked-fixture.json",
+      "required": true,
+      "statusAtLinkTime": "blocked"
+    },
+    "sensitiveAreas": [
+      "real_boundary: Planner cannot approve without producer-to-consumer evidence.",
+      "work_type:decision: Work type influences required verification scope.",
+      "constraints: Work Brief constraints require planner-owned verification treatment.",
+      "risks_and_unknowns: Work Brief candidate risks require planner-owned mitigation."
+    ],
+    "catalogVersion": "1.0.0",
+    "requiredItems": [
+      {
+        "id": "vd-safety_hooks",
+        "layer": "safety_hooks",
+        "action": "add",
+        "rationale": "Confirm guarded execution, forbidden-action handling, and operator-safety hooks before closure. Required for this decision implementation plan.",
+        "expectedArtifacts": [
+          "implementation-plan-blocked-fixture/verification/safety_hooks"
+        ],
+        "blocking": true,
+        "validationOwner": "independent-validator",
+        "fixerOwner": "implementation-agent",
+        "evidenceRequired": [
+          {
+            "kind": "command_log",
+            "description": "Evidence proving safety_hooks verification outcome for implementation-plan-blocked-fixture.",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "vd-typecheck",
+        "layer": "typecheck",
+        "action": "add",
+        "rationale": "Run package-appropriate type or syntax checks for changed source and witness code. Required for this decision implementation plan.",
+        "expectedArtifacts": [
+          "implementation-plan-blocked-fixture/verification/typecheck"
+        ],
+        "blocking": true,
+        "validationOwner": "independent-validator",
+        "fixerOwner": "implementation-agent",
+        "evidenceRequired": [
+          {
+            "kind": "command_log",
+            "description": "Evidence proving typecheck verification outcome for implementation-plan-blocked-fixture.",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "vd-lint_format",
+        "layer": "lint_format",
+        "action": "add",
+        "rationale": "Run package-appropriate lint and formatting integrity checks without broad rewrites. Required for this decision implementation plan.",
+        "expectedArtifacts": [
+          "implementation-plan-blocked-fixture/verification/lint_format"
+        ],
+        "blocking": true,
+        "validationOwner": "independent-validator",
+        "fixerOwner": "implementation-agent",
+        "evidenceRequired": [
+          {
+            "kind": "command_log",
+            "description": "Evidence proving lint_format verification outcome for implementation-plan-blocked-fixture.",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "vd-mechanical_gate",
+        "layer": "mechanical_gate",
+        "action": "add",
+        "rationale": "Evaluate strict config, governed surfaces, escape allowlists, schema/contract strictness, ratchets, wiring integrity, smell checks, and test anti-pattern risk. Required for this decision implementation plan.",
+        "expectedArtifacts": [
+          "implementation-plan-blocked-fixture/verification/mechanical_gate"
+        ],
+        "blocking": true,
+        "validationOwner": "independent-validator",
+        "fixerOwner": "implementation-agent",
+        "evidenceRequired": [
+          {
+            "kind": "test_report",
+            "description": "Evidence proving mechanical_gate verification outcome for implementation-plan-blocked-fixture.",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "vd-unit",
+        "layer": "unit",
+        "action": "add",
+        "rationale": "Exercise isolated deterministic behavior for changed planner and verification-delta logic. Required for this decision implementation plan.",
+        "expectedArtifacts": [
+          "implementation-plan-blocked-fixture/verification/unit"
+        ],
+        "blocking": true,
+        "validationOwner": "independent-validator",
+        "fixerOwner": "implementation-agent",
+        "evidenceRequired": [
+          {
+            "kind": "test_report",
+            "description": "Evidence proving unit verification outcome for implementation-plan-blocked-fixture.",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "vd-integration",
+        "layer": "integration",
+        "action": "blocked",
+        "rationale": "Exercise producer-to-intake-to-plan orchestration using real artifacts and carriers. This required verification is currently blocked and prevents green approval.",
+        "expectedArtifacts": [
+          "implementation-plan-blocked-fixture/verification/integration"
+        ],
+        "blocking": true,
+        "validationOwner": "independent-validator",
+        "fixerOwner": "implementation-agent",
+        "evidenceRequired": [
+          {
+            "kind": "test_report",
+            "description": "Evidence proving integration verification outcome for implementation-plan-blocked-fixture.",
+            "blocking": true
+          }
+        ],
+        "blockedBy": "missing-real-boundary-witness",
+        "unblockCondition": "Run producer-to-plan integration witness through persisted carriers."
+      },
+      {
+        "id": "vd-contract_adapter",
+        "layer": "contract_adapter",
+        "action": "add",
+        "rationale": "Verify public artifact schema contracts and adapter boundaries used by the plan seam. Required for this decision implementation plan.",
+        "expectedArtifacts": [
+          "implementation-plan-blocked-fixture/verification/contract_adapter"
+        ],
+        "blocking": true,
+        "validationOwner": "independent-validator",
+        "fixerOwner": "implementation-agent",
+        "evidenceRequired": [
+          {
+            "kind": "evidence_packet",
+            "description": "Evidence proving contract_adapter verification outcome for implementation-plan-blocked-fixture.",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "vd-e2e",
+        "layer": "e2e",
+        "action": "add",
+        "rationale": "Prove the intended user-facing planning flow through a durable artifact carrier where available. Required for this decision implementation plan.",
+        "expectedArtifacts": [
+          "implementation-plan-blocked-fixture/verification/e2e"
+        ],
+        "blocking": true,
+        "validationOwner": "independent-validator",
+        "fixerOwner": "implementation-agent",
+        "evidenceRequired": [
+          {
+            "kind": "trace",
+            "description": "Evidence proving e2e verification outcome for implementation-plan-blocked-fixture.",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "vd-ui_verification",
+        "layer": "ui_verification",
+        "action": "add",
+        "rationale": "Classify user-interface verification need for this plan scope with explicit rationale. Required for this decision implementation plan.",
+        "expectedArtifacts": [
+          "implementation-plan-blocked-fixture/verification/ui_verification"
+        ],
+        "blocking": true,
+        "validationOwner": "independent-validator",
+        "fixerOwner": "implementation-agent",
+        "evidenceRequired": [
+          {
+            "kind": "screenshot",
+            "description": "Evidence proving ui_verification verification outcome for implementation-plan-blocked-fixture.",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "vd-ai_eval",
+        "layer": "ai_eval",
+        "action": "add",
+        "rationale": "Classify AI-evaluation need for any model-mediated behavior with explicit rationale. Required for this decision implementation plan.",
+        "expectedArtifacts": [
+          "implementation-plan-blocked-fixture/verification/ai_eval"
+        ],
+        "blocking": true,
+        "validationOwner": "independent-validator",
+        "fixerOwner": "implementation-agent",
+        "evidenceRequired": [
+          {
+            "kind": "metric",
+            "description": "Evidence proving ai_eval verification outcome for implementation-plan-blocked-fixture.",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "vd-build_package",
+        "layer": "build_package",
+        "action": "add",
+        "rationale": "Run package build or package-local integrity checks needed by the touched surface. Required for this decision implementation plan.",
+        "expectedArtifacts": [
+          "implementation-plan-blocked-fixture/verification/build_package"
+        ],
+        "blocking": true,
+        "validationOwner": "independent-validator",
+        "fixerOwner": "implementation-agent",
+        "evidenceRequired": [
+          {
+            "kind": "command_log",
+            "description": "Evidence proving build_package verification outcome for implementation-plan-blocked-fixture.",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "vd-context_drift",
+        "layer": "context_drift",
+        "action": "add",
+        "rationale": "Check context, docs, prompts, schemas, and handoff drift for the changed surface. Required for this decision implementation plan.",
+        "expectedArtifacts": [
+          "implementation-plan-blocked-fixture/verification/context_drift"
+        ],
+        "blocking": true,
+        "validationOwner": "independent-validator",
+        "fixerOwner": "implementation-agent",
+        "evidenceRequired": [
+          {
+            "kind": "context_header",
+            "description": "Evidence proving context_drift verification outcome for implementation-plan-blocked-fixture.",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "vd-observability",
+        "layer": "observability",
+        "action": "add",
+        "rationale": "Verify logs, evidence paths, metrics, or traces needed to inspect the change. Required for this decision implementation plan.",
+        "expectedArtifacts": [
+          "implementation-plan-blocked-fixture/verification/observability"
+        ],
+        "blocking": true,
+        "validationOwner": "independent-validator",
+        "fixerOwner": "implementation-agent",
+        "evidenceRequired": [
+          {
+            "kind": "trace",
+            "description": "Evidence proving observability verification outcome for implementation-plan-blocked-fixture.",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "vd-advisory_review",
+        "layer": "advisory_review",
+        "action": "add",
+        "rationale": "Record advisory review needs separately from deterministic validation gates. Required for this decision implementation plan.",
+        "expectedArtifacts": [
+          "implementation-plan-blocked-fixture/verification/advisory_review"
+        ],
+        "blocking": true,
+        "validationOwner": "independent-validator",
+        "fixerOwner": "implementation-agent",
+        "evidenceRequired": [
+          {
+            "kind": "evidence_packet",
+            "description": "Evidence proving advisory_review verification outcome for implementation-plan-blocked-fixture.",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "vd-final_dod",
+        "layer": "final_dod",
+        "action": "add",
+        "rationale": "Confirm final definition-of-done evidence and independent validation handoff. Required for this decision implementation plan.",
+        "expectedArtifacts": [
+          "implementation-plan-blocked-fixture/verification/final_dod"
+        ],
+        "blocking": true,
+        "validationOwner": "independent-validator",
+        "fixerOwner": "implementation-agent",
+        "evidenceRequired": [
+          {
+            "kind": "evidence_packet",
+            "description": "Evidence proving final_dod verification outcome for implementation-plan-blocked-fixture.",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "vd-schema_validation",
+        "layer": "schema_validation",
+        "action": "add",
+        "rationale": "Validate every produced canonical artifact through the public artifact validator before and after persistence. Required for this decision implementation plan.",
+        "expectedArtifacts": [
+          "implementation-plan-blocked-fixture/verification/schema_validation"
+        ],
+        "blocking": true,
+        "validationOwner": "independent-validator",
+        "fixerOwner": "implementation-agent",
+        "evidenceRequired": [
+          {
+            "kind": "command_log",
+            "description": "Evidence proving schema_validation verification outcome for implementation-plan-blocked-fixture.",
+            "blocking": true
+          }
+        ]
+      }
+    ],
+    "mechanicalGateImpacts": [
+      "strict_config: considered for this plan.",
+      "governed_surface: considered for this plan.",
+      "escape_allowlist: considered for this plan.",
+      "schema_contract_strictness: considered for this plan.",
+      "ratchet: considered for this plan.",
+      "wiring_integrity: considered for this plan.",
+      "smell: considered for this plan.",
+      "test_anti_pattern: considered for this plan."
+    ],
+    "advisoryReviewItems": [
+      "Independent validation must classify deterministic blockers before any advisory review can be treated as closure."
+    ],
+    "rerunHints": [
+      "Re-run public artifact validation after every plan or carrier mutation."
+    ],
+    "riskLinks": [
+      {
+        "rel": "derived_from",
+        "artifactKind": "work_brief",
+        "artifactId": "work-brief-grill-me-producer-fixture",
+        "path": "work-brief-grill-me-producer-fixture.json",
+        "required": true,
+        "statusAtLinkTime": "ready"
+      }
+    ]
+  },
+  "workDecompositionHints": [
+    "Keep implementation work packages within the validated orchestration size bound."
+  ],
+  "parallelismHints": [
+    "Parallel work is allowed only across disjoint owned paths and after dependency gates pass."
+  ],
+  "docsContextUpdatesExpected": [
+    "Update context or handoff artifacts only when owned by the executing lane."
+  ],
+  "reviewNotes": [
+    "Plan remains blocked until every blocking Verification Delta item and open blocker is resolved."
+  ]
+}

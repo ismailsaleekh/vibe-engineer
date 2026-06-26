@@ -1,0 +1,60 @@
+{
+  "artifactId": "work-brief-brainstorm-producer-fixture",
+  "title": "Explore typed intake artifact flow",
+  "workType": "feature",
+  "sourceSkill": "brainstorm",
+  "ideaContext": "A domain-neutral harness needs an exploratory intake path that still produces a typed artifact.",
+  "options": [
+    "Persist one canonical Work Brief JSON carrier",
+    "Keep exploratory alternatives as candidate signals"
+  ],
+  "tradeoffs": [
+    "Exploration notes must not become final planner-owned risk classification"
+  ],
+  "candidateScenarios": [
+    "A planner consumes the produced Work Brief without reading raw chat"
+  ],
+  "background": "Input skills should preserve user intent as durable structured data.",
+  "problemOrOpportunity": "Exploratory work can otherwise remain trapped in chat history.",
+  "desiredOutcome": "The brainstorm producer writes a validator-accepted Work Brief through the common writer.",
+  "constraints": [
+    "Use canonical JSON",
+    "Preserve downstream plan ownership"
+  ],
+  "userVisibleBehavior": [
+    "Users can start with an unclear idea and still get a plan-ready Work Brief"
+  ],
+  "nonGoals": [
+    "Do not produce an Implementation Plan"
+  ],
+  "risksAndUnknowns": [
+    "Candidate signals may need refinement by plan"
+  ],
+  "acceptanceNotes": [
+    "Produced brainstorm Work Brief validates through the artifacts package",
+    "Plan intake consumes the produced Work Brief only after it is persisted"
+  ],
+  "candidateE2ECases": [
+    "brainstorm to plan-intake Work Brief handoff"
+  ],
+  "sourceMetadata": {
+    "rawIntentRefs": [
+      "raw-intent-brainstorm-producer-fixture"
+    ],
+    "conversationRefs": [],
+    "operatorRefs": [
+      "operator-fixture"
+    ],
+    "inputTimestamp": "2026-06-25T00:00:00.000Z"
+  },
+  "rawIntent": {
+    "artifactId": "raw-intent-brainstorm-producer-fixture",
+    "path": "raw/brainstorm-producer.json",
+    "sourceSkill": "brainstorm",
+    "statusAtLinkTime": "captured"
+  },
+  "createdAt": "2026-06-25T00:00:00.000Z",
+  "updatedAt": "2026-06-25T00:00:00.000Z",
+  "producerVersion": "1.0.0",
+  "runId": "run-i05b-brainstorm-fixture"
+}

@@ -1,0 +1,29 @@
+{
+  "title": "Mismatched producer identity",
+  "workType": "feature",
+  "sourceSkill": "task",
+  "ideaContext": "A brainstorm callable receives a conflicting source skill.",
+  "options": [
+    "Reject the mismatch"
+  ],
+  "background": "This fixture is intentionally invalid.",
+  "problemOrOpportunity": "Caller-supplied producer identity must not be trusted.",
+  "desiredOutcome": "The brainstorm producer rejects sourceSkill mismatch.",
+  "constraints": [],
+  "userVisibleBehavior": [],
+  "nonGoals": [],
+  "risksAndUnknowns": [],
+  "acceptanceNotes": [
+    "The producer must fail closed"
+  ],
+  "sourceMetadata": {
+    "rawIntentRefs": ["raw-intent-source-mismatch"],
+    "conversationRefs": [],
+    "operatorRefs": []
+  },
+  "rawIntent": {
+    "artifactId": "raw-intent-source-mismatch",
+    "path": "raw/source-mismatch.json",
+    "sourceSkill": "task"
+  }
+}

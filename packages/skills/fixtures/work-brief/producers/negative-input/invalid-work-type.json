@@ -1,0 +1,26 @@
+{
+  "title": "Invalid Work Brief enum",
+  "workType": "maintenance",
+  "sourceSkill": "task",
+  "objective": "Exercise fail-closed enum validation.",
+  "background": "This fixture is intentionally invalid.",
+  "problemOrOpportunity": "Invalid enum-like values must not persist.",
+  "desiredOutcome": "The task producer rejects invalid workType.",
+  "constraints": [],
+  "userVisibleBehavior": [],
+  "nonGoals": [],
+  "risksAndUnknowns": [],
+  "acceptanceNotes": [
+    "The producer must fail closed"
+  ],
+  "sourceMetadata": {
+    "rawIntentRefs": ["raw-intent-invalid-work-type"],
+    "conversationRefs": [],
+    "operatorRefs": []
+  },
+  "rawIntent": {
+    "artifactId": "raw-intent-invalid-work-type",
+    "path": "raw/invalid-work-type.json",
+    "sourceSkill": "task"
+  }
+}

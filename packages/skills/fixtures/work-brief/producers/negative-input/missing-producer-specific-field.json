@@ -1,0 +1,26 @@
+{
+  "title": "Missing brainstorm exploration signal",
+  "workType": "feature",
+  "sourceSkill": "brainstorm",
+  "ideaContext": "A malformed brainstorm input without any exploration signal.",
+  "background": "This fixture is intentionally invalid.",
+  "problemOrOpportunity": "Producer-specific fields are absent.",
+  "desiredOutcome": "The producer rejects this before persistence.",
+  "constraints": [],
+  "userVisibleBehavior": [],
+  "nonGoals": [],
+  "risksAndUnknowns": [],
+  "acceptanceNotes": [
+    "The producer must fail closed"
+  ],
+  "sourceMetadata": {
+    "rawIntentRefs": ["raw-intent-missing-producer-specific"],
+    "conversationRefs": [],
+    "operatorRefs": []
+  },
+  "rawIntent": {
+    "artifactId": "raw-intent-missing-producer-specific",
+    "path": "raw/missing-producer-specific.json",
+    "sourceSkill": "brainstorm"
+  }
+}

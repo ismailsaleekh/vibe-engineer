@@ -1,0 +1,85 @@
+{
+  "acceptanceNotes": [
+    {
+      "description": "A valid common input produces a validator-accepted Work Brief.",
+      "id": "accept-common-writer"
+    }
+  ],
+  "artifactId": "work-brief-invalid-enums",
+  "background": "A domain-neutral harness workflow needs a durable typed intake artifact.",
+  "constraints": [
+    "Preserve typed JSON artifact boundaries",
+    "Avoid producer-specific behavior in the common writer"
+  ],
+  "createdAt": "2026-06-25T00:00:00.000Z",
+  "desiredOutcome": "The shared common writer emits a canonical Work Brief accepted by the artifacts validator.",
+  "extensions": {
+    "dev.vibe.skill-common": {
+      "fixture": "common-work-brief",
+      "schemaVersion": "1.0.0"
+    }
+  },
+  "nonGoals": [
+    "Do not implement plan intake",
+    "Do not implement producer-specific skill prompts"
+  ],
+  "ownership": {
+    "concurrencyNotes": "I-05A common writer fixture; producer-specific skill behavior is out of scope.",
+    "ownedWritePaths": [
+      "packages/skills/src/shared/**",
+      "packages/skills/src/input/common/**",
+      "packages/skills/fixtures/work-brief/common/**"
+    ],
+    "ownerLane": "I-05A-input-skill-common-work-brief-writer",
+    "readOnlyPaths": [
+      "packages/artifacts/**",
+      "packages/config/**",
+      "packages/cli/**",
+      "docs/decisions/**"
+    ],
+    "untouchablePaths": [
+      ".git/**",
+      "packages/skills/package.json",
+      "packages/skills/src/plan/**",
+      "packages/skills/src/input/brainstorm/**",
+      "packages/skills/src/input/grill-me/**",
+      "packages/skills/src/input/task/**"
+    ]
+  },
+  "problemOrOpportunity": "Planning must consume validated Work Brief JSON instead of raw chat.",
+  "producerVersion": "1.0.0",
+  "rawIntentLink": {
+    "artifactId": "raw-intent-invalid-enums",
+    "artifactKind": "work_brief",
+    "path": "raw/invalid-enums.json",
+    "required": true,
+    "statusAtLinkTime": "captured"
+  },
+  "risksAndUnknowns": [
+    "Package dependency wiring must remain explicit"
+  ],
+  "runId": "run-i05a-common-fixture",
+  "schemaFixtureVersion": "1.0.0",
+  "sourceMetadata": {
+    "conversationRefs": [],
+    "inputTimestamp": "2026-06-25T00:00:00.000Z",
+    "operatorRefs": [
+      "operator-fixture"
+    ],
+    "rawIntentRefs": [
+      "raw-intent-common-fixture"
+    ]
+  },
+  "sourceSkill": "unknown-skill",
+  "status": "finished",
+  "tags": [
+    "domain-neutral",
+    "common-writer"
+  ],
+  "title": "Invalid enum negative",
+  "updatedAt": "2026-06-25T00:00:00.000Z",
+  "userVisibleBehavior": [
+    "Agents can pass the same Work Brief class between skills"
+  ],
+  "workType": "delivery"
+}

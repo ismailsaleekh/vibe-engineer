@@ -1,0 +1,28 @@
+{
+  "title": "Bug task without reproduction basis",
+  "workType": "bug",
+  "sourceSkill": "task",
+  "objective": "Reject insufficient bug intake.",
+  "observedBehavior": "A malformed carrier is observed.",
+  "expectedBehavior": "A typed validation failure should be recorded.",
+  "background": "This fixture is intentionally invalid.",
+  "problemOrOpportunity": "Bug tasks need a reproduction basis.",
+  "desiredOutcome": "The task producer blocks insufficient bug intake.",
+  "constraints": [],
+  "userVisibleBehavior": [],
+  "nonGoals": [],
+  "risksAndUnknowns": [],
+  "acceptanceNotes": [
+    "The producer must fail closed"
+  ],
+  "sourceMetadata": {
+    "rawIntentRefs": ["raw-intent-bug-no-repro"],
+    "conversationRefs": [],
+    "operatorRefs": []
+  },
+  "rawIntent": {
+    "artifactId": "raw-intent-bug-no-repro",
+    "path": "raw/bug-no-repro.json",
+    "sourceSkill": "task"
+  }
+}

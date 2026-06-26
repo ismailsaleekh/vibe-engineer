@@ -1,0 +1,61 @@
+{
+  "artifactId": "work-brief-grill-me-producer-fixture",
+  "title": "Pressure-test typed intake artifact flow",
+  "workType": "decision",
+  "sourceSkill": "grill-me",
+  "challengeContext": "A domain-neutral harness should not treat adversarial intake notes as final planning conclusions.",
+  "challengedAssumptions": [
+    "A raw request is sufficient for planning",
+    "One producer can define its own divergent schema"
+  ],
+  "edgeCases": [
+    "Malformed Work Brief carrier reaches plan intake",
+    "Producer source skill does not match the callable producer"
+  ],
+  "acceptanceGaps": [
+    "Need proof that raw chat is rejected by plan intake"
+  ],
+  "riskCandidates": [
+    "False green if the seam validates shape without actual artifact validator"
+  ],
+  "background": "Adversarial intake captures gaps before planning starts.",
+  "problemOrOpportunity": "Pressure-testing can reveal missing Work Brief evidence before plan consumes it.",
+  "desiredOutcome": "The grill-me producer writes a validator-accepted Work Brief through the common writer.",
+  "constraints": [
+    "Use the shared Work Brief class",
+    "Do not finalize risk classification"
+  ],
+  "userVisibleBehavior": [
+    "Users can challenge assumptions and still hand off a normal Work Brief"
+  ],
+  "nonGoals": [
+    "Do not emit Verification Delta"
+  ],
+  "risksAndUnknowns": [
+    "Candidate risk wording must remain planner input only"
+  ],
+  "acceptanceNotes": [
+    "Produced grill-me Work Brief validates through the artifacts package",
+    "Plan intake consumes the produced Work Brief as ready input"
+  ],
+  "sourceMetadata": {
+    "rawIntentRefs": [
+      "raw-intent-grill-me-producer-fixture"
+    ],
+    "conversationRefs": [],
+    "operatorRefs": [
+      "operator-fixture"
+    ],
+    "inputTimestamp": "2026-06-25T00:00:00.000Z"
+  },
+  "rawIntent": {
+    "artifactId": "raw-intent-grill-me-producer-fixture",
+    "path": "raw/grill-me-producer.json",
+    "sourceSkill": "grill-me",
+    "statusAtLinkTime": "captured"
+  },
+  "createdAt": "2026-06-25T00:00:00.000Z",
+  "updatedAt": "2026-06-25T00:00:00.000Z",
+  "producerVersion": "1.0.0",
+  "runId": "run-i05b-grill-me-fixture"
+}

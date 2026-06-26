@@ -1,0 +1,631 @@
+{
+  "schemaVersion": "1.0.0",
+  "artifactKind": "implementation_plan",
+  "artifactId": "implementation-plan-negative-invalid-action",
+  "title": "Implementation Plan for Explore typed intake artifact flow",
+  "createdAt": "2026-06-25T00:00:00.000Z",
+  "updatedAt": "2026-06-25T00:00:00.000Z",
+  "producer": {
+    "kind": "skill",
+    "id": "skill-plan",
+    "name": "plan",
+    "version": "1.0.0",
+    "runId": "run-i06-approved-fixture"
+  },
+  "status": "approved",
+  "ownership": {
+    "ownerLane": "I-06-plan-skill-verification-delta",
+    "ownedWritePaths": [
+      "packages/skills/src/plan/orchestrator/**",
+      "packages/skills/src/plan/verification-delta/**",
+      "packages/skills/fixtures/implementation-plan/**",
+      ".vibe/work/I-06-plan-skill-verification-delta/**"
+    ],
+    "readOnlyPaths": [
+      "packages/skills/src/plan/intake/**",
+      "packages/skills/src/shared/**",
+      "packages/skills/src/input/**",
+      "packages/artifacts/**"
+    ],
+    "untouchablePaths": [
+      ".git/**",
+      "package.json",
+      "pnpm-lock.yaml",
+      "packages/skills/package.json",
+      "packages/skills/src/build/**",
+      "packages/skills/src/ship/**"
+    ],
+    "concurrencyNotes": "Plan skill consumes only persisted Work Brief carriers through the I-05B/I-05A plan-intake seam; build and ship remain downstream.",
+    "handoffPolicy": "Implementation Plan artifacts require independent validation before downstream build intake."
+  },
+  "links": [
+    {
+      "rel": "derived_from",
+      "artifactKind": "work_brief",
+      "artifactId": "work-brief-brainstorm-producer-fixture",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/skills/fixtures/work-brief/producers/positive-output/brainstorm.work-brief.json",
+      "required": true,
+      "statusAtLinkTime": "ready"
+    },
+    {
+      "rel": "verification_delta_of",
+      "artifactKind": "verification_delta",
+      "artifactId": "implementation-plan-approved-fixture-verification-delta",
+      "path": "implementation-plan-approved-fixture-verification-delta.json",
+      "required": true,
+      "statusAtLinkTime": "complete"
+    }
+  ],
+  "extensions": {
+    "dev.vibe.plan-skill": {
+      "schemaVersion": "1.0.0",
+      "sourceSkill": "brainstorm",
+      "workType": "feature",
+      "intakeRelativePath": "brainstorm.work-brief.json"
+    }
+  },
+  "workBriefRef": {
+    "rel": "derived_from",
+    "artifactKind": "work_brief",
+    "artifactId": "work-brief-brainstorm-producer-fixture",
+    "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/skills/fixtures/work-brief/producers/positive-output/brainstorm.work-brief.json",
+    "required": true,
+    "statusAtLinkTime": "ready"
+  },
+  "objective": "The brainstorm producer writes a validator-accepted Work Brief through the common writer.",
+  "scope": [
+    "Exploratory work can otherwise remain trapped in chat history.",
+    "The brainstorm producer writes a validator-accepted Work Brief through the common writer."
+  ],
+  "nonScope": [
+    "Do not produce an Implementation Plan"
+  ],
+  "contextClosure": [
+    {
+      "rel": "derived_from",
+      "artifactKind": "work_brief",
+      "artifactId": "work-brief-brainstorm-producer-fixture",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/skills/fixtures/work-brief/producers/positive-output/brainstorm.work-brief.json",
+      "required": true,
+      "statusAtLinkTime": "ready"
+    }
+  ],
+  "affectedAreas": [
+    {
+      "kind": "skill",
+      "path": "packages/skills/src/plan/orchestrator/**",
+      "reason": "Plan orchestrator owns implementation-plan production."
+    }
+  ],
+  "schematics": [],
+  "implementationSteps": [
+    {
+      "id": "step-read-work-brief",
+      "description": "Consume Work Brief work-brief-brainstorm-producer-fixture through plan intake and preserve typed artifact handoff.",
+      "expectedTouchedAreas": [
+        {
+          "kind": "skill",
+          "path": "packages/skills/src/plan/orchestrator/**",
+          "reason": "Plan orchestrator owns implementation-plan production."
+        }
+      ],
+      "acceptanceLinks": [
+        "ac-accept-1",
+        "ac-accept-2"
+      ]
+    },
+    {
+      "id": "step-implement-scope",
+      "description": "Implement the approved scope: The brainstorm producer writes a validator-accepted Work Brief through the common writer.",
+      "dependsOn": [
+        "step-read-work-brief"
+      ],
+      "expectedTouchedAreas": [
+        {
+          "kind": "skill",
+          "path": "packages/skills/src/plan/orchestrator/**",
+          "reason": "Plan orchestrator owns implementation-plan production."
+        }
+      ],
+      "acceptanceLinks": [
+        "ac-accept-1",
+        "ac-accept-2"
+      ]
+    },
+    {
+      "id": "step-verify-delta",
+      "description": "Execute all required Verification Delta layers or keep the plan blocked with explicit unblock metadata.",
+      "dependsOn": [
+        "step-implement-scope"
+      ],
+      "expectedTouchedAreas": [
+        {
+          "kind": "test",
+          "path": ".vibe/work/**",
+          "reason": "Verification evidence must be captured as durable artifacts or command logs."
+        }
+      ],
+      "acceptanceLinks": [
+        "ac-accept-1",
+        "ac-accept-2"
+      ]
+    }
+  ],
+  "acceptanceCriteria": [
+    {
+      "id": "ac-accept-1",
+      "description": "Produced brainstorm Work Brief validates through the artifacts package"
+    },
+    {
+      "id": "ac-accept-2",
+      "description": "Plan intake consumes the produced Work Brief only after it is persisted"
+    }
+  ],
+  "definitionOfDone": [
+    {
+      "id": "dod-public-schema-validation",
+      "description": "Implementation Plan and embedded Verification Delta validate through the public @vibe-engineer/artifacts validator before and after persistence.",
+      "blocking": true
+    },
+    {
+      "id": "dod-all-delta-layers-classified",
+      "description": "All 16 Verification Delta catalog layers are present with required evidence expectations.",
+      "blocking": true
+    },
+    {
+      "id": "dod-independent-validation",
+      "description": "An independent validator must inspect the changed files and real producer→consumer seams.",
+      "blocking": true
+    }
+  ],
+  "risks": [
+    {
+      "id": "risk-work-brief-1",
+      "description": "Candidate signals may need refinement by plan",
+      "sensitiveArea": "work_brief.risksAndUnknowns",
+      "mitigation": "Planner must convert candidate risk into explicit Verification Delta evidence or an open blocker."
+    },
+    {
+      "id": "risk-work-brief-2",
+      "description": "Exploration notes must not become final planner-owned risk classification",
+      "sensitiveArea": "work_brief.risksAndUnknowns",
+      "mitigation": "Planner must convert candidate risk into explicit Verification Delta evidence or an open blocker."
+    },
+    {
+      "id": "risk-sensitive-1",
+      "description": "Implementation Plan must remain aligned with public artifact schemas.",
+      "sensitiveArea": "artifact_contract",
+      "mitigation": "Independent validation must inspect this sensitive area before closure."
+    }
+  ],
+  "openBlockers": [],
+  "verificationDelta": {
+    "schemaVersion": "1.0.0",
+    "artifactKind": "verification_delta",
+    "artifactId": "implementation-plan-negative-invalid-action-verification-delta",
+    "title": "Verification Delta for Explore typed intake artifact flow",
+    "createdAt": "2026-06-25T00:00:00.000Z",
+    "updatedAt": "2026-06-25T00:00:00.000Z",
+    "producer": {
+      "kind": "skill",
+      "id": "skill-plan",
+      "name": "plan",
+      "version": "1.0.0",
+      "runId": "run-i06-approved-fixture"
+    },
+    "status": "complete",
+    "ownership": {
+      "ownerLane": "I-06-plan-skill-verification-delta",
+      "ownedWritePaths": [
+        "packages/skills/src/plan/orchestrator/**",
+        "packages/skills/src/plan/verification-delta/**",
+        "packages/skills/fixtures/implementation-plan/**",
+        ".vibe/work/I-06-plan-skill-verification-delta/**"
+      ],
+      "readOnlyPaths": [
+        "packages/skills/src/plan/intake/**",
+        "packages/skills/src/shared/**",
+        "packages/skills/src/input/**",
+        "packages/artifacts/**"
+      ],
+      "untouchablePaths": [
+        ".git/**",
+        "package.json",
+        "pnpm-lock.yaml",
+        "packages/skills/package.json",
+        "packages/skills/src/build/**",
+        "packages/skills/src/ship/**"
+      ],
+      "concurrencyNotes": "Plan skill consumes only persisted Work Brief carriers through the I-05B/I-05A plan-intake seam; build and ship remain downstream.",
+      "handoffPolicy": "Implementation Plan artifacts require independent validation before downstream build intake."
+    },
+    "links": [
+      {
+        "rel": "verification_delta_of",
+        "artifactKind": "implementation_plan",
+        "artifactId": "implementation-plan-approved-fixture",
+        "path": "implementation-plan-approved-fixture.json",
+        "required": true,
+        "statusAtLinkTime": "approved"
+      }
+    ],
+    "extensions": {
+      "dev.vibe.plan-skill": {
+        "schemaVersion": "1.0.0",
+        "sourceWorkBriefId": "work-brief-brainstorm-producer-fixture",
+        "sourceSkill": "brainstorm"
+      }
+    },
+    "summary": "Verification Delta covers 16 locked layers for work-brief-brainstorm-producer-fixture.",
+    "implementationPlanRef": {
+      "rel": "verification_delta_of",
+      "artifactKind": "implementation_plan",
+      "artifactId": "implementation-plan-approved-fixture",
+      "path": "implementation-plan-approved-fixture.json",
+      "required": true,
+      "statusAtLinkTime": "approved"
+    },
+    "sensitiveAreas": [
+      "artifact_contract: Implementation Plan must remain aligned with public artifact schemas.",
+      "work_type:feature: Work type influences required verification scope.",
+      "constraints: Work Brief constraints require planner-owned verification treatment.",
+      "risks_and_unknowns: Work Brief candidate risks require planner-owned mitigation."
+    ],
+    "catalogVersion": "1.0.0",
+    "requiredItems": [
+      {
+        "id": "vd-safety_hooks",
+        "layer": "safety_hooks",
+        "action": "skip",
+        "rationale": "Confirm guarded execution, forbidden-action handling, and operator-safety hooks before closure. Required for this feature implementation plan.",
+        "expectedArtifacts": [
+          "implementation-plan-approved-fixture/verification/safety_hooks"
+        ],
+        "blocking": true,
+        "validationOwner": "independent-validator",
+        "fixerOwner": "implementation-agent",
+        "evidenceRequired": [
+          {
+            "kind": "command_log",
+            "description": "Evidence proving safety_hooks verification outcome for implementation-plan-approved-fixture.",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "vd-typecheck",
+        "layer": "typecheck",
+        "action": "add",
+        "rationale": "Run package-appropriate type or syntax checks for changed source and witness code. Required for this feature implementation plan.",
+        "expectedArtifacts": [
+          "implementation-plan-approved-fixture/verification/typecheck"
+        ],
+        "blocking": true,
+        "validationOwner": "independent-validator",
+        "fixerOwner": "implementation-agent",
+        "evidenceRequired": [
+          {
+            "kind": "command_log",
+            "description": "Evidence proving typecheck verification outcome for implementation-plan-approved-fixture.",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "vd-lint_format",
+        "layer": "lint_format",
+        "action": "add",
+        "rationale": "Run package-appropriate lint and formatting integrity checks without broad rewrites. Required for this feature implementation plan.",
+        "expectedArtifacts": [
+          "implementation-plan-approved-fixture/verification/lint_format"
+        ],
+        "blocking": true,
+        "validationOwner": "independent-validator",
+        "fixerOwner": "implementation-agent",
+        "evidenceRequired": [
+          {
+            "kind": "command_log",
+            "description": "Evidence proving lint_format verification outcome for implementation-plan-approved-fixture.",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "vd-mechanical_gate",
+        "layer": "mechanical_gate",
+        "action": "add",
+        "rationale": "Evaluate strict config, governed surfaces, escape allowlists, schema/contract strictness, ratchets, wiring integrity, smell checks, and test anti-pattern risk. Required for this feature implementation plan.",
+        "expectedArtifacts": [
+          "implementation-plan-approved-fixture/verification/mechanical_gate"
+        ],
+        "blocking": true,
+        "validationOwner": "independent-validator",
+        "fixerOwner": "implementation-agent",
+        "evidenceRequired": [
+          {
+            "kind": "test_report",
+            "description": "Evidence proving mechanical_gate verification outcome for implementation-plan-approved-fixture.",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "vd-unit",
+        "layer": "unit",
+        "action": "add",
+        "rationale": "Exercise isolated deterministic behavior for changed planner and verification-delta logic. Required for this feature implementation plan.",
+        "expectedArtifacts": [
+          "implementation-plan-approved-fixture/verification/unit"
+        ],
+        "blocking": true,
+        "validationOwner": "independent-validator",
+        "fixerOwner": "implementation-agent",
+        "evidenceRequired": [
+          {
+            "kind": "test_report",
+            "description": "Evidence proving unit verification outcome for implementation-plan-approved-fixture.",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "vd-integration",
+        "layer": "integration",
+        "action": "add",
+        "rationale": "Exercise producer-to-intake-to-plan orchestration using real artifacts and carriers. Required for this feature implementation plan.",
+        "expectedArtifacts": [
+          "implementation-plan-approved-fixture/verification/integration"
+        ],
+        "blocking": true,
+        "validationOwner": "independent-validator",
+        "fixerOwner": "implementation-agent",
+        "evidenceRequired": [
+          {
+            "kind": "test_report",
+            "description": "Evidence proving integration verification outcome for implementation-plan-approved-fixture.",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "vd-contract_adapter",
+        "layer": "contract_adapter",
+        "action": "add",
+        "rationale": "Verify public artifact schema contracts and adapter boundaries used by the plan seam. Required for this feature implementation plan.",
+        "expectedArtifacts": [
+          "implementation-plan-approved-fixture/verification/contract_adapter"
+        ],
+        "blocking": true,
+        "validationOwner": "independent-validator",
+        "fixerOwner": "implementation-agent",
+        "evidenceRequired": [
+          {
+            "kind": "evidence_packet",
+            "description": "Evidence proving contract_adapter verification outcome for implementation-plan-approved-fixture.",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "vd-e2e",
+        "layer": "e2e",
+        "action": "add",
+        "rationale": "Prove the intended user-facing planning flow through a durable artifact carrier where available. Required for this feature implementation plan.",
+        "expectedArtifacts": [
+          "implementation-plan-approved-fixture/verification/e2e"
+        ],
+        "blocking": true,
+        "validationOwner": "independent-validator",
+        "fixerOwner": "implementation-agent",
+        "evidenceRequired": [
+          {
+            "kind": "trace",
+            "description": "Evidence proving e2e verification outcome for implementation-plan-approved-fixture.",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "vd-ui_verification",
+        "layer": "ui_verification",
+        "action": "add",
+        "rationale": "Classify user-interface verification need for this plan scope with explicit rationale. Required for this feature implementation plan.",
+        "expectedArtifacts": [
+          "implementation-plan-approved-fixture/verification/ui_verification"
+        ],
+        "blocking": true,
+        "validationOwner": "independent-validator",
+        "fixerOwner": "implementation-agent",
+        "evidenceRequired": [
+          {
+            "kind": "screenshot",
+            "description": "Evidence proving ui_verification verification outcome for implementation-plan-approved-fixture.",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "vd-ai_eval",
+        "layer": "ai_eval",
+        "action": "add",
+        "rationale": "Classify AI-evaluation need for any model-mediated behavior with explicit rationale. Required for this feature implementation plan.",
+        "expectedArtifacts": [
+          "implementation-plan-approved-fixture/verification/ai_eval"
+        ],
+        "blocking": true,
+        "validationOwner": "independent-validator",
+        "fixerOwner": "implementation-agent",
+        "evidenceRequired": [
+          {
+            "kind": "metric",
+            "description": "Evidence proving ai_eval verification outcome for implementation-plan-approved-fixture.",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "vd-build_package",
+        "layer": "build_package",
+        "action": "add",
+        "rationale": "Run package build or package-local integrity checks needed by the touched surface. Required for this feature implementation plan.",
+        "expectedArtifacts": [
+          "implementation-plan-approved-fixture/verification/build_package"
+        ],
+        "blocking": true,
+        "validationOwner": "independent-validator",
+        "fixerOwner": "implementation-agent",
+        "evidenceRequired": [
+          {
+            "kind": "command_log",
+            "description": "Evidence proving build_package verification outcome for implementation-plan-approved-fixture.",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "vd-context_drift",
+        "layer": "context_drift",
+        "action": "add",
+        "rationale": "Check context, docs, prompts, schemas, and handoff drift for the changed surface. Required for this feature implementation plan.",
+        "expectedArtifacts": [
+          "implementation-plan-approved-fixture/verification/context_drift"
+        ],
+        "blocking": true,
+        "validationOwner": "independent-validator",
+        "fixerOwner": "implementation-agent",
+        "evidenceRequired": [
+          {
+            "kind": "context_header",
+            "description": "Evidence proving context_drift verification outcome for implementation-plan-approved-fixture.",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "vd-observability",
+        "layer": "observability",
+        "action": "add",
+        "rationale": "Verify logs, evidence paths, metrics, or traces needed to inspect the change. Required for this feature implementation plan.",
+        "expectedArtifacts": [
+          "implementation-plan-approved-fixture/verification/observability"
+        ],
+        "blocking": true,
+        "validationOwner": "independent-validator",
+        "fixerOwner": "implementation-agent",
+        "evidenceRequired": [
+          {
+            "kind": "trace",
+            "description": "Evidence proving observability verification outcome for implementation-plan-approved-fixture.",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "vd-advisory_review",
+        "layer": "advisory_review",
+        "action": "add",
+        "rationale": "Record advisory review needs separately from deterministic validation gates. Required for this feature implementation plan.",
+        "expectedArtifacts": [
+          "implementation-plan-approved-fixture/verification/advisory_review"
+        ],
+        "blocking": true,
+        "validationOwner": "independent-validator",
+        "fixerOwner": "implementation-agent",
+        "evidenceRequired": [
+          {
+            "kind": "evidence_packet",
+            "description": "Evidence proving advisory_review verification outcome for implementation-plan-approved-fixture.",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "vd-final_dod",
+        "layer": "final_dod",
+        "action": "add",
+        "rationale": "Confirm final definition-of-done evidence and independent validation handoff. Required for this feature implementation plan.",
+        "expectedArtifacts": [
+          "implementation-plan-approved-fixture/verification/final_dod"
+        ],
+        "blocking": true,
+        "validationOwner": "independent-validator",
+        "fixerOwner": "implementation-agent",
+        "evidenceRequired": [
+          {
+            "kind": "evidence_packet",
+            "description": "Evidence proving final_dod verification outcome for implementation-plan-approved-fixture.",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "vd-schema_validation",
+        "layer": "schema_validation",
+        "action": "add",
+        "rationale": "Validate every produced canonical artifact through the public artifact validator before and after persistence. Required for this feature implementation plan.",
+        "expectedArtifacts": [
+          "implementation-plan-approved-fixture/verification/schema_validation"
+        ],
+        "blocking": true,
+        "validationOwner": "independent-validator",
+        "fixerOwner": "implementation-agent",
+        "evidenceRequired": [
+          {
+            "kind": "command_log",
+            "description": "Evidence proving schema_validation verification outcome for implementation-plan-approved-fixture.",
+            "blocking": true
+          }
+        ]
+      }
+    ],
+    "mechanicalGateImpacts": [
+      "strict_config: considered for this plan.",
+      "governed_surface: considered for this plan.",
+      "escape_allowlist: considered for this plan.",
+      "schema_contract_strictness: considered for this plan.",
+      "ratchet: considered for this plan.",
+      "wiring_integrity: considered for this plan.",
+      "smell: considered for this plan.",
+      "test_anti_pattern: considered for this plan."
+    ],
+    "advisoryReviewItems": [
+      "Independent validation must classify deterministic blockers before any advisory review can be treated as closure."
+    ],
+    "rerunHints": [
+      "Re-run public artifact validation after every plan or carrier mutation."
+    ],
+    "riskLinks": [
+      {
+        "rel": "derived_from",
+        "artifactKind": "work_brief",
+        "artifactId": "work-brief-brainstorm-producer-fixture",
+        "path": "work-brief-brainstorm-producer-fixture.json",
+        "required": true,
+        "statusAtLinkTime": "ready"
+      }
+    ]
+  },
+  "workDecompositionHints": [
+    "Keep implementation work packages within the validated orchestration size bound."
+  ],
+  "parallelismHints": [
+    "Parallel work is allowed only across disjoint owned paths and after dependency gates pass."
+  ],
+  "docsContextUpdatesExpected": [
+    "Update context or handoff artifacts only when owned by the executing lane."
+  ],
+  "approval": {
+    "approvedBy": {
+      "kind": "skill",
+      "id": "skill-plan",
+      "name": "plan",
+      "version": "1.0.0",
+      "runId": "run-i06-approved-fixture"
+    },
+    "approvedAt": "2026-06-25T00:00:00.000Z",
+    "notes": "Approved by plan skill because no blocking Verification Delta item or open blocker remains."
+  },
+  "reviewNotes": [
+    "Plan is ready for independent validation and downstream build intake."
+  ]
+}
