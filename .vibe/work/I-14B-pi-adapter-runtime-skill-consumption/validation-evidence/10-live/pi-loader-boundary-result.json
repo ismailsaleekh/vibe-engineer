@@ -1,0 +1,376 @@
+{
+  "ok": true,
+  "livePiLoaderProof": "proven",
+  "command": "pi --mode rpc --no-session --approve --offline --no-extensions",
+  "stdinJsonl": "{\"id\":\"i14b-get-commands\",\"type\":\"get_commands\"}\n",
+  "runs": [
+    {
+      "name": "validator-rerun",
+      "cwd": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-14B-pi-adapter-runtime-skill-consumption/validation-evidence/07-positive/runtime-fixture-rerun",
+      "command": "pi",
+      "args": [
+        "--mode",
+        "rpc",
+        "--no-session",
+        "--approve",
+        "--offline",
+        "--no-extensions"
+      ],
+      "stdinJsonl": "{\"id\":\"i14b-get-commands\",\"type\":\"get_commands\"}\n",
+      "stdout": "{\"id\":\"i14b-get-commands\",\"type\":\"response\",\"command\":\"get_commands\",\"success\":true,\"data\":{\"commands\":[{\"name\":\"vibe-brainstorm\",\"description\":\"Invoke the generated brainstorm skill protocol with a persisted artifact handoff requirement.\",\"source\":\"prompt\",\"sourceInfo\":{\"path\":\"/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-14B-pi-adapter-runtime-skill-consumption/validation-evidence/07-positive/runtime-fixture-rerun/.pi/prompts/vibe-brainstorm.md\",\"source\":\"auto\",\"scope\":\"project\",\"origin\":\"top-level\",\"baseDir\":\"/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-14B-pi-adapter-runtime-skill-consumption/validation-evidence/07-positive/runtime-fixture-rerun/.pi\"}},{\"name\":\"vibe-build\",\"description\":\"Invoke the generated build skill protocol with a persisted artifact handoff requirement.\",\"source\":\"prompt\",\"sourceInfo\":{\"path\":\"/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-14B-pi-adapter-runtime-skill-consumption/validation-evidence/07-positive/runtime-fixture-rerun/.pi/prompts/vibe-build.md\",\"source\":\"auto\",\"scope\":\"project\",\"origin\":\"top-level\",\"baseDir\":\"/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-14B-pi-adapter-runtime-skill-consumption/validation-evidence/07-positive/runtime-fixture-rerun/.pi\"}},{\"name\":\"vibe-grill-me\",\"description\":\"Invoke the generated grill-me skill protocol with a persisted artifact handoff requirement.\",\"source\":\"prompt\",\"sourceInfo\":{\"path\":\"/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-14B-pi-adapter-runtime-skill-consumption/validation-evidence/07-positive/runtime-fixture-rerun/.pi/prompts/vibe-grill-me.md\",\"source\":\"auto\",\"scope\":\"project\",\"origin\":\"top-level\",\"baseDir\":\"/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-14B-pi-adapter-runtime-skill-consumption/validation-evidence/07-positive/runtime-fixture-rerun/.pi\"}},{\"name\":\"vibe-plan\",\"description\":\"Invoke the generated plan skill protocol with a persisted artifact handoff requirement.\",\"source\":\"prompt\",\"sourceInfo\":{\"path\":\"/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-14B-pi-adapter-runtime-skill-consumption/validation-evidence/07-positive/runtime-fixture-rerun/.pi/prompts/vibe-plan.md\",\"source\":\"auto\",\"scope\":\"project\",\"origin\":\"top-level\",\"baseDir\":\"/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-14B-pi-adapter-runtime-skill-consumption/validation-evidence/07-positive/runtime-fixture-rerun/.pi\"}},{\"name\":\"vibe-ship\",\"description\":\"Invoke the generated ship skill protocol with a persisted artifact handoff requirement.\",\"source\":\"prompt\",\"sourceInfo\":{\"path\":\"/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-14B-pi-adapter-runtime-skill-consumption/validation-evidence/07-positive/runtime-fixture-rerun/.pi/prompts/vibe-ship.md\",\"source\":\"auto\",\"scope\":\"project\",\"origin\":\"top-level\",\"baseDir\":\"/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-14B-pi-adapter-runtime-skill-consumption/validation-evidence/07-positive/runtime-fixture-rerun/.pi\"}},{\"name\":\"vibe-task\",\"description\":\"Invoke the generated task skill protocol with a persisted artifact handoff requirement.\",\"source\":\"prompt\",\"sourceInfo\":{\"path\":\"/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-14B-pi-adapter-runtime-skill-consumption/validation-evidence/07-positive/runtime-fixture-rerun/.pi/prompts/vibe-task.md\",\"source\":\"auto\",\"scope\":\"project\",\"origin\":\"top-level\",\"baseDir\":\"/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-14B-pi-adapter-runtime-skill-consumption/validation-evidence/07-positive/runtime-fixture-rerun/.pi\"}},{\"name\":\"skill:brainstorm\",\"description\":\"Explore unclear raw intent and persist one Work Brief for plan intake. Use through /skill:brainstorm when the locked DL-03 brainstorm protocol is needed.\",\"source\":\"skill\",\"sourceInfo\":{\"path\":\"/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-14B-pi-adapter-runtime-skill-consumption/validation-evidence/07-positive/runtime-fixture-rerun/.pi/skills/brainstorm/SKILL.md\",\"source\":\"auto\",\"scope\":\"project\",\"origin\":\"top-level\",\"baseDir\":\"/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-14B-pi-adapter-runtime-skill-consumption/validation-evidence/07-positive/runtime-fixture-rerun/.pi\"}},{\"name\":\"skill:build\",\"description\":\"Consume an approved Implementation Plan and produce a Build Result after implementation and verification evidence. Use through /skill:build when the locked DL-03 build protocol is needed.\",\"source\":\"skill\",\"sourceInfo\":{\"path\":\"/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-14B-pi-adapter-runtime-skill-consumption/validation-evidence/07-positive/runtime-fixture-rerun/.pi/skills/build/SKILL.md\",\"source\":\"auto\",\"scope\":\"project\",\"origin\":\"top-level\",\"baseDir\":\"/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-14B-pi-adapter-runtime-skill-consumption/validation-evidence/07-positive/runtime-fixture-rerun/.pi\"}},{\"name\":\"skill:grill-me\",\"description\":\"Pressure-test assumptions and persist one Work Brief for plan intake. Use through /skill:grill-me when the locked DL-03 grill-me protocol is needed.\",\"source\":\"skill\",\"sourceInfo\":{\"path\":\"/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-14B-pi-adapter-runtime-skill-consumption/validation-evidence/07-positive/runtime-fixture-rerun/.pi/skills/grill-me/SKILL.md\",\"source\":\"auto\",\"scope\":\"project\",\"origin\":\"top-level\",\"baseDir\":\"/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-14B-pi-adapter-runtime-skill-consumption/validation-evidence/07-positive/runtime-fixture-rerun/.pi\"}},{\"name\":\"skill:plan\",\"description\":\"Consume exactly one Work Brief and produce an Implementation Plan with Verification Delta. Use through /skill:plan when the locked DL-03 plan protocol is needed.\",\"source\":\"skill\",\"sourceInfo\":{\"path\":\"/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-14B-pi-adapter-runtime-skill-consumption/validation-evidence/07-positive/runtime-fixture-rerun/.pi/skills/plan/SKILL.md\",\"source\":\"auto\",\"scope\":\"project\",\"origin\":\"top-level\",\"baseDir\":\"/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-14B-pi-adapter-runtime-skill-consumption/validation-evidence/07-positive/runtime-fixture-rerun/.pi\"}},{\"name\":\"skill:ship\",\"description\":\"Consume a Build Result and produce a Ship Packet; push or PR creation requires explicit approval. Use through /skill:ship when the locked DL-03 ship protocol is needed.\",\"source\":\"skill\",\"sourceInfo\":{\"path\":\"/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-14B-pi-adapter-runtime-skill-consumption/validation-evidence/07-positive/runtime-fixture-rerun/.pi/skills/ship/SKILL.md\",\"source\":\"auto\",\"scope\":\"project\",\"origin\":\"top-level\",\"baseDir\":\"/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-14B-pi-adapter-runtime-skill-consumption/validation-evidence/07-positive/runtime-fixture-rerun/.pi\"}},{\"name\":\"skill:task\",\"description\":\"Normalize a concrete request and persist one Work Brief for plan intake. Use through /skill:task when the locked DL-03 task protocol is needed.\",\"source\":\"skill\",\"sourceInfo\":{\"path\":\"/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-14B-pi-adapter-runtime-skill-consumption/validation-evidence/07-positive/runtime-fixture-rerun/.pi/skills/task/SKILL.md\",\"source\":\"auto\",\"scope\":\"project\",\"origin\":\"top-level\",\"baseDir\":\"/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-14B-pi-adapter-runtime-skill-consumption/validation-evidence/07-positive/runtime-fixture-rerun/.pi\"}}]}}\n",
+      "stderr": "",
+      "parsedResponse": {
+        "type": "response",
+        "command": "get_commands",
+        "success": true,
+        "data": {
+          "commands": [
+            {
+              "name": "vibe-brainstorm",
+              "source": "prompt",
+              "description": "Invoke the generated brainstorm skill protocol with a persisted artifact handoff requirement."
+            },
+            {
+              "name": "vibe-build",
+              "source": "prompt",
+              "description": "Invoke the generated build skill protocol with a persisted artifact handoff requirement."
+            },
+            {
+              "name": "vibe-grill-me",
+              "source": "prompt",
+              "description": "Invoke the generated grill-me skill protocol with a persisted artifact handoff requirement."
+            },
+            {
+              "name": "vibe-plan",
+              "source": "prompt",
+              "description": "Invoke the generated plan skill protocol with a persisted artifact handoff requirement."
+            },
+            {
+              "name": "vibe-ship",
+              "source": "prompt",
+              "description": "Invoke the generated ship skill protocol with a persisted artifact handoff requirement."
+            },
+            {
+              "name": "vibe-task",
+              "source": "prompt",
+              "description": "Invoke the generated task skill protocol with a persisted artifact handoff requirement."
+            },
+            {
+              "name": "skill:brainstorm",
+              "source": "skill",
+              "description": "Explore unclear raw intent and persist one Work Brief for plan intake. Use through /skill:brainstorm when the locked DL-03 brainstorm protocol is needed."
+            },
+            {
+              "name": "skill:build",
+              "source": "skill",
+              "description": "Consume an approved Implementation Plan and produce a Build Result after implementation and verification evidence. Use through /skill:build when the locked DL-03 build protocol is needed."
+            },
+            {
+              "name": "skill:grill-me",
+              "source": "skill",
+              "description": "Pressure-test assumptions and persist one Work Brief for plan intake. Use through /skill:grill-me when the locked DL-03 grill-me protocol is needed."
+            },
+            {
+              "name": "skill:plan",
+              "source": "skill",
+              "description": "Consume exactly one Work Brief and produce an Implementation Plan with Verification Delta. Use through /skill:plan when the locked DL-03 plan protocol is needed."
+            },
+            {
+              "name": "skill:ship",
+              "source": "skill",
+              "description": "Consume a Build Result and produce a Ship Packet; push or PR creation requires explicit approval. Use through /skill:ship when the locked DL-03 ship protocol is needed."
+            },
+            {
+              "name": "skill:task",
+              "source": "skill",
+              "description": "Normalize a concrete request and persist one Work Brief for plan intake. Use through /skill:task when the locked DL-03 task protocol is needed."
+            }
+          ]
+        },
+        "id": "i14b-get-commands"
+      },
+      "finishReason": "response",
+      "evaluation": {
+        "status": "proven",
+        "observedCommands": [
+          {
+            "name": "vibe-brainstorm",
+            "source": "prompt",
+            "description": "Invoke the generated brainstorm skill protocol with a persisted artifact handoff requirement."
+          },
+          {
+            "name": "vibe-build",
+            "source": "prompt",
+            "description": "Invoke the generated build skill protocol with a persisted artifact handoff requirement."
+          },
+          {
+            "name": "vibe-grill-me",
+            "source": "prompt",
+            "description": "Invoke the generated grill-me skill protocol with a persisted artifact handoff requirement."
+          },
+          {
+            "name": "vibe-plan",
+            "source": "prompt",
+            "description": "Invoke the generated plan skill protocol with a persisted artifact handoff requirement."
+          },
+          {
+            "name": "vibe-ship",
+            "source": "prompt",
+            "description": "Invoke the generated ship skill protocol with a persisted artifact handoff requirement."
+          },
+          {
+            "name": "vibe-task",
+            "source": "prompt",
+            "description": "Invoke the generated task skill protocol with a persisted artifact handoff requirement."
+          },
+          {
+            "name": "skill:brainstorm",
+            "source": "skill",
+            "description": "Explore unclear raw intent and persist one Work Brief for plan intake. Use through /skill:brainstorm when the locked DL-03 brainstorm protocol is needed."
+          },
+          {
+            "name": "skill:build",
+            "source": "skill",
+            "description": "Consume an approved Implementation Plan and produce a Build Result after implementation and verification evidence. Use through /skill:build when the locked DL-03 build protocol is needed."
+          },
+          {
+            "name": "skill:grill-me",
+            "source": "skill",
+            "description": "Pressure-test assumptions and persist one Work Brief for plan intake. Use through /skill:grill-me when the locked DL-03 grill-me protocol is needed."
+          },
+          {
+            "name": "skill:plan",
+            "source": "skill",
+            "description": "Consume exactly one Work Brief and produce an Implementation Plan with Verification Delta. Use through /skill:plan when the locked DL-03 plan protocol is needed."
+          },
+          {
+            "name": "skill:ship",
+            "source": "skill",
+            "description": "Consume a Build Result and produce a Ship Packet; push or PR creation requires explicit approval. Use through /skill:ship when the locked DL-03 ship protocol is needed."
+          },
+          {
+            "name": "skill:task",
+            "source": "skill",
+            "description": "Normalize a concrete request and persist one Work Brief for plan intake. Use through /skill:task when the locked DL-03 task protocol is needed."
+          }
+        ],
+        "missingCommands": [],
+        "validationIssues": []
+      },
+      "requiredCommands": [
+        "skill:brainstorm",
+        "skill:grill-me",
+        "skill:task",
+        "skill:plan",
+        "skill:build",
+        "skill:ship",
+        "vibe-brainstorm",
+        "vibe-grill-me",
+        "vibe-task",
+        "vibe-plan",
+        "vibe-build",
+        "vibe-ship"
+      ],
+      "observedRequired": [
+        "skill:brainstorm",
+        "skill:build",
+        "skill:grill-me",
+        "skill:plan",
+        "skill:ship",
+        "skill:task",
+        "vibe-brainstorm",
+        "vibe-build",
+        "vibe-grill-me",
+        "vibe-plan",
+        "vibe-ship",
+        "vibe-task"
+      ],
+      "extensionExecutionLiveProven": false,
+      "extensionExecutionNote": "Witness used --no-extensions to avoid executing project/user extension code; extension asset policy is statically validated only."
+    },
+    {
+      "name": "product-fixture",
+      "cwd": "/Users/lizavasilyeva/work/vibe-engineer/examples/harness-integrations/pi/runtime-fixtures",
+      "command": "pi",
+      "args": [
+        "--mode",
+        "rpc",
+        "--no-session",
+        "--approve",
+        "--offline",
+        "--no-extensions"
+      ],
+      "stdinJsonl": "{\"id\":\"i14b-get-commands\",\"type\":\"get_commands\"}\n",
+      "stdout": "{\"id\":\"i14b-get-commands\",\"type\":\"response\",\"command\":\"get_commands\",\"success\":true,\"data\":{\"commands\":[{\"name\":\"vibe-brainstorm\",\"description\":\"Invoke the generated brainstorm skill protocol with a persisted artifact handoff requirement.\",\"source\":\"prompt\",\"sourceInfo\":{\"path\":\"/Users/lizavasilyeva/work/vibe-engineer/examples/harness-integrations/pi/runtime-fixtures/.pi/prompts/vibe-brainstorm.md\",\"source\":\"auto\",\"scope\":\"project\",\"origin\":\"top-level\",\"baseDir\":\"/Users/lizavasilyeva/work/vibe-engineer/examples/harness-integrations/pi/runtime-fixtures/.pi\"}},{\"name\":\"vibe-build\",\"description\":\"Invoke the generated build skill protocol with a persisted artifact handoff requirement.\",\"source\":\"prompt\",\"sourceInfo\":{\"path\":\"/Users/lizavasilyeva/work/vibe-engineer/examples/harness-integrations/pi/runtime-fixtures/.pi/prompts/vibe-build.md\",\"source\":\"auto\",\"scope\":\"project\",\"origin\":\"top-level\",\"baseDir\":\"/Users/lizavasilyeva/work/vibe-engineer/examples/harness-integrations/pi/runtime-fixtures/.pi\"}},{\"name\":\"vibe-grill-me\",\"description\":\"Invoke the generated grill-me skill protocol with a persisted artifact handoff requirement.\",\"source\":\"prompt\",\"sourceInfo\":{\"path\":\"/Users/lizavasilyeva/work/vibe-engineer/examples/harness-integrations/pi/runtime-fixtures/.pi/prompts/vibe-grill-me.md\",\"source\":\"auto\",\"scope\":\"project\",\"origin\":\"top-level\",\"baseDir\":\"/Users/lizavasilyeva/work/vibe-engineer/examples/harness-integrations/pi/runtime-fixtures/.pi\"}},{\"name\":\"vibe-plan\",\"description\":\"Invoke the generated plan skill protocol with a persisted artifact handoff requirement.\",\"source\":\"prompt\",\"sourceInfo\":{\"path\":\"/Users/lizavasilyeva/work/vibe-engineer/examples/harness-integrations/pi/runtime-fixtures/.pi/prompts/vibe-plan.md\",\"source\":\"auto\",\"scope\":\"project\",\"origin\":\"top-level\",\"baseDir\":\"/Users/lizavasilyeva/work/vibe-engineer/examples/harness-integrations/pi/runtime-fixtures/.pi\"}},{\"name\":\"vibe-ship\",\"description\":\"Invoke the generated ship skill protocol with a persisted artifact handoff requirement.\",\"source\":\"prompt\",\"sourceInfo\":{\"path\":\"/Users/lizavasilyeva/work/vibe-engineer/examples/harness-integrations/pi/runtime-fixtures/.pi/prompts/vibe-ship.md\",\"source\":\"auto\",\"scope\":\"project\",\"origin\":\"top-level\",\"baseDir\":\"/Users/lizavasilyeva/work/vibe-engineer/examples/harness-integrations/pi/runtime-fixtures/.pi\"}},{\"name\":\"vibe-task\",\"description\":\"Invoke the generated task skill protocol with a persisted artifact handoff requirement.\",\"source\":\"prompt\",\"sourceInfo\":{\"path\":\"/Users/lizavasilyeva/work/vibe-engineer/examples/harness-integrations/pi/runtime-fixtures/.pi/prompts/vibe-task.md\",\"source\":\"auto\",\"scope\":\"project\",\"origin\":\"top-level\",\"baseDir\":\"/Users/lizavasilyeva/work/vibe-engineer/examples/harness-integrations/pi/runtime-fixtures/.pi\"}},{\"name\":\"skill:brainstorm\",\"description\":\"Explore unclear raw intent and persist one Work Brief for plan intake. Use through /skill:brainstorm when the locked DL-03 brainstorm protocol is needed.\",\"source\":\"skill\",\"sourceInfo\":{\"path\":\"/Users/lizavasilyeva/work/vibe-engineer/examples/harness-integrations/pi/runtime-fixtures/.pi/skills/brainstorm/SKILL.md\",\"source\":\"auto\",\"scope\":\"project\",\"origin\":\"top-level\",\"baseDir\":\"/Users/lizavasilyeva/work/vibe-engineer/examples/harness-integrations/pi/runtime-fixtures/.pi\"}},{\"name\":\"skill:build\",\"description\":\"Consume an approved Implementation Plan and produce a Build Result after implementation and verification evidence. Use through /skill:build when the locked DL-03 build protocol is needed.\",\"source\":\"skill\",\"sourceInfo\":{\"path\":\"/Users/lizavasilyeva/work/vibe-engineer/examples/harness-integrations/pi/runtime-fixtures/.pi/skills/build/SKILL.md\",\"source\":\"auto\",\"scope\":\"project\",\"origin\":\"top-level\",\"baseDir\":\"/Users/lizavasilyeva/work/vibe-engineer/examples/harness-integrations/pi/runtime-fixtures/.pi\"}},{\"name\":\"skill:grill-me\",\"description\":\"Pressure-test assumptions and persist one Work Brief for plan intake. Use through /skill:grill-me when the locked DL-03 grill-me protocol is needed.\",\"source\":\"skill\",\"sourceInfo\":{\"path\":\"/Users/lizavasilyeva/work/vibe-engineer/examples/harness-integrations/pi/runtime-fixtures/.pi/skills/grill-me/SKILL.md\",\"source\":\"auto\",\"scope\":\"project\",\"origin\":\"top-level\",\"baseDir\":\"/Users/lizavasilyeva/work/vibe-engineer/examples/harness-integrations/pi/runtime-fixtures/.pi\"}},{\"name\":\"skill:plan\",\"description\":\"Consume exactly one Work Brief and produce an Implementation Plan with Verification Delta. Use through /skill:plan when the locked DL-03 plan protocol is needed.\",\"source\":\"skill\",\"sourceInfo\":{\"path\":\"/Users/lizavasilyeva/work/vibe-engineer/examples/harness-integrations/pi/runtime-fixtures/.pi/skills/plan/SKILL.md\",\"source\":\"auto\",\"scope\":\"project\",\"origin\":\"top-level\",\"baseDir\":\"/Users/lizavasilyeva/work/vibe-engineer/examples/harness-integrations/pi/runtime-fixtures/.pi\"}},{\"name\":\"skill:ship\",\"description\":\"Consume a Build Result and produce a Ship Packet; push or PR creation requires explicit approval. Use through /skill:ship when the locked DL-03 ship protocol is needed.\",\"source\":\"skill\",\"sourceInfo\":{\"path\":\"/Users/lizavasilyeva/work/vibe-engineer/examples/harness-integrations/pi/runtime-fixtures/.pi/skills/ship/SKILL.md\",\"source\":\"auto\",\"scope\":\"project\",\"origin\":\"top-level\",\"baseDir\":\"/Users/lizavasilyeva/work/vibe-engineer/examples/harness-integrations/pi/runtime-fixtures/.pi\"}},{\"name\":\"skill:task\",\"description\":\"Normalize a concrete request and persist one Work Brief for plan intake. Use through /skill:task when the locked DL-03 task protocol is needed.\",\"source\":\"skill\",\"sourceInfo\":{\"path\":\"/Users/lizavasilyeva/work/vibe-engineer/examples/harness-integrations/pi/runtime-fixtures/.pi/skills/task/SKILL.md\",\"source\":\"auto\",\"scope\":\"project\",\"origin\":\"top-level\",\"baseDir\":\"/Users/lizavasilyeva/work/vibe-engineer/examples/harness-integrations/pi/runtime-fixtures/.pi\"}}]}}\n",
+      "stderr": "",
+      "parsedResponse": {
+        "type": "response",
+        "command": "get_commands",
+        "success": true,
+        "data": {
+          "commands": [
+            {
+              "name": "vibe-brainstorm",
+              "source": "prompt",
+              "description": "Invoke the generated brainstorm skill protocol with a persisted artifact handoff requirement."
+            },
+            {
+              "name": "vibe-build",
+              "source": "prompt",
+              "description": "Invoke the generated build skill protocol with a persisted artifact handoff requirement."
+            },
+            {
+              "name": "vibe-grill-me",
+              "source": "prompt",
+              "description": "Invoke the generated grill-me skill protocol with a persisted artifact handoff requirement."
+            },
+            {
+              "name": "vibe-plan",
+              "source": "prompt",
+              "description": "Invoke the generated plan skill protocol with a persisted artifact handoff requirement."
+            },
+            {
+              "name": "vibe-ship",
+              "source": "prompt",
+              "description": "Invoke the generated ship skill protocol with a persisted artifact handoff requirement."
+            },
+            {
+              "name": "vibe-task",
+              "source": "prompt",
+              "description": "Invoke the generated task skill protocol with a persisted artifact handoff requirement."
+            },
+            {
+              "name": "skill:brainstorm",
+              "source": "skill",
+              "description": "Explore unclear raw intent and persist one Work Brief for plan intake. Use through /skill:brainstorm when the locked DL-03 brainstorm protocol is needed."
+            },
+            {
+              "name": "skill:build",
+              "source": "skill",
+              "description": "Consume an approved Implementation Plan and produce a Build Result after implementation and verification evidence. Use through /skill:build when the locked DL-03 build protocol is needed."
+            },
+            {
+              "name": "skill:grill-me",
+              "source": "skill",
+              "description": "Pressure-test assumptions and persist one Work Brief for plan intake. Use through /skill:grill-me when the locked DL-03 grill-me protocol is needed."
+            },
+            {
+              "name": "skill:plan",
+              "source": "skill",
+              "description": "Consume exactly one Work Brief and produce an Implementation Plan with Verification Delta. Use through /skill:plan when the locked DL-03 plan protocol is needed."
+            },
+            {
+              "name": "skill:ship",
+              "source": "skill",
+              "description": "Consume a Build Result and produce a Ship Packet; push or PR creation requires explicit approval. Use through /skill:ship when the locked DL-03 ship protocol is needed."
+            },
+            {
+              "name": "skill:task",
+              "source": "skill",
+              "description": "Normalize a concrete request and persist one Work Brief for plan intake. Use through /skill:task when the locked DL-03 task protocol is needed."
+            }
+          ]
+        },
+        "id": "i14b-get-commands"
+      },
+      "finishReason": "response",
+      "evaluation": {
+        "status": "proven",
+        "observedCommands": [
+          {
+            "name": "vibe-brainstorm",
+            "source": "prompt",
+            "description": "Invoke the generated brainstorm skill protocol with a persisted artifact handoff requirement."
+          },
+          {
+            "name": "vibe-build",
+            "source": "prompt",
+            "description": "Invoke the generated build skill protocol with a persisted artifact handoff requirement."
+          },
+          {
+            "name": "vibe-grill-me",
+            "source": "prompt",
+            "description": "Invoke the generated grill-me skill protocol with a persisted artifact handoff requirement."
+          },
+          {
+            "name": "vibe-plan",
+            "source": "prompt",
+            "description": "Invoke the generated plan skill protocol with a persisted artifact handoff requirement."
+          },
+          {
+            "name": "vibe-ship",
+            "source": "prompt",
+            "description": "Invoke the generated ship skill protocol with a persisted artifact handoff requirement."
+          },
+          {
+            "name": "vibe-task",
+            "source": "prompt",
+            "description": "Invoke the generated task skill protocol with a persisted artifact handoff requirement."
+          },
+          {
+            "name": "skill:brainstorm",
+            "source": "skill",
+            "description": "Explore unclear raw intent and persist one Work Brief for plan intake. Use through /skill:brainstorm when the locked DL-03 brainstorm protocol is needed."
+          },
+          {
+            "name": "skill:build",
+            "source": "skill",
+            "description": "Consume an approved Implementation Plan and produce a Build Result after implementation and verification evidence. Use through /skill:build when the locked DL-03 build protocol is needed."
+          },
+          {
+            "name": "skill:grill-me",
+            "source": "skill",
+            "description": "Pressure-test assumptions and persist one Work Brief for plan intake. Use through /skill:grill-me when the locked DL-03 grill-me protocol is needed."
+          },
+          {
+            "name": "skill:plan",
+            "source": "skill",
+            "description": "Consume exactly one Work Brief and produce an Implementation Plan with Verification Delta. Use through /skill:plan when the locked DL-03 plan protocol is needed."
+          },
+          {
+            "name": "skill:ship",
+            "source": "skill",
+            "description": "Consume a Build Result and produce a Ship Packet; push or PR creation requires explicit approval. Use through /skill:ship when the locked DL-03 ship protocol is needed."
+          },
+          {
+            "name": "skill:task",
+            "source": "skill",
+            "description": "Normalize a concrete request and persist one Work Brief for plan intake. Use through /skill:task when the locked DL-03 task protocol is needed."
+          }
+        ],
+        "missingCommands": [],
+        "validationIssues": []
+      },
+      "requiredCommands": [
+        "skill:brainstorm",
+        "skill:grill-me",
+        "skill:task",
+        "skill:plan",
+        "skill:build",
+        "skill:ship",
+        "vibe-brainstorm",
+        "vibe-grill-me",
+        "vibe-task",
+        "vibe-plan",
+        "vibe-build",
+        "vibe-ship"
+      ],
+      "observedRequired": [
+        "skill:brainstorm",
+        "skill:build",
+        "skill:grill-me",
+        "skill:plan",
+        "skill:ship",
+        "skill:task",
+        "vibe-brainstorm",
+        "vibe-build",
+        "vibe-grill-me",
+        "vibe-plan",
+        "vibe-ship",
+        "vibe-task"
+      ],
+      "extensionExecutionLiveProven": false,
+      "extensionExecutionNote": "Witness used --no-extensions to avoid executing project/user extension code; extension asset policy is statically validated only."
+    }
+  ]
+}

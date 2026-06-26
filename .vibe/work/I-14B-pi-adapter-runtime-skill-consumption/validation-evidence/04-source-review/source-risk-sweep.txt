@@ -1,0 +1,15 @@
+# command: rg duplicate/prose fixture/API scrape risks
+packages/adapters/pi/src/generators/runtime-fixture-generator.ts:2:import { getPiGeneratedFileManifest } from "../generated-file-manifest/index.ts";
+packages/adapters/pi/src/generators/runtime-fixture-generator.ts:37:  return fail("i14a.generatedFileManifest.families", "missing_generated_file_family", `I-14A generated-file manifest does not contain ${familyId}.`);
+packages/adapters/pi/src/generators/runtime-fixture-generator.ts:215:  generatedFileManifestVersion: "pi-generated-file-manifest/v1",
+packages/adapters/pi/src/generators/runtime-fixture-generator.ts:313:    throw new PiRuntimeContractError("I-14A generated-file manifest is not valid.", manifestValidation.issues.map((manifestIssue) => ({ ...manifestIssue, severity: "error" as const })));
+packages/adapters/pi/src/generators/runtime-fixture-generator.ts:329:    generatedFileManifestVersion: "pi-generated-file-manifest/v1",
+packages/adapters/pi/src/runtime/validation.ts:228:    parsed = JSON.parse(asset.content) as unknown;
+packages/adapters/pi/src/runtime/validation.ts:283:    parsed = JSON.parse(asset.content) as unknown;
+packages/adapters/pi/src/runtime/validation.ts:298:  if (parsed["generatedFileManifestVersion"] !== "pi-generated-file-manifest/v1") {
+packages/adapters/pi/src/runtime/validation.ts:299:    issue(issues, `$.assets[${index}].content.generatedFileManifestVersion`, "missing_generated_file_manifest_version", "Harness config must record the generated-file manifest version.");
+packages/adapters/pi/src/runtime/validation.ts:307:    issue(issues, `$.assets[${index}].familyId`, "unknown_generated_file_family", "Generated runtime asset uses an unknown generated-file family.");
+packages/adapters/pi/src/runtime/validation.ts:322:    issue(issues, `$.assets[${index}].kind`, "mismatched_asset_family_kind", "Runtime asset kind must match its generated-file family.");
+packages/adapters/pi/src/runtime/validation.ts:361:  if (fixture.generatedFileManifestVersion !== "pi-generated-file-manifest/v1") {
+packages/adapters/pi/src/runtime/validation.ts:362:    issue(issues, "$.generatedFileManifestVersion", "missing_generated_file_manifest_version", "Runtime fixture must record generated-file manifest version.");
+packages/adapters/pi/src/runtime/types.ts:70:  readonly generatedFileManifestVersion: "pi-generated-file-manifest/v1";

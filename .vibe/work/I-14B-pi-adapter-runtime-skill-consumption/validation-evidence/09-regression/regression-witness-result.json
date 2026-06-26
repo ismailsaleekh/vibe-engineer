@@ -1,0 +1,197 @@
+{
+  "ok": true,
+  "errors": [],
+  "i14a": {
+    "capabilityValidation": true,
+    "manifestValidation": true,
+    "capabilitySchemaVersion": "pi-adapter-capability-matrix/v1",
+    "generatedManifestSchemaVersion": "pi-generated-file-manifest/v1",
+    "skillIds": [
+      "brainstorm",
+      "grill-me",
+      "task",
+      "plan",
+      "build",
+      "ship"
+    ],
+    "familyIds": [
+      "pi-skill-files",
+      "pi-prompt-templates",
+      "pi-extensions",
+      "pi-package-manifest",
+      "context-files",
+      "harness-config"
+    ],
+    "piRuntimeClaimInI14A": "not-claimed",
+    "nonPiAdapters": [
+      {
+        "adapterId": "claude-code",
+        "manifestSelectable": false,
+        "createImportSelectable": false,
+        "readiness": "deferred",
+        "evidenceState": "deferred",
+        "enabledFlags": []
+      },
+      {
+        "adapterId": "codex",
+        "manifestSelectable": false,
+        "createImportSelectable": false,
+        "readiness": "deferred",
+        "evidenceState": "deferred",
+        "enabledFlags": []
+      },
+      {
+        "adapterId": "opencode",
+        "manifestSelectable": false,
+        "createImportSelectable": false,
+        "readiness": "deferred",
+        "evidenceState": "deferred",
+        "enabledFlags": []
+      },
+      {
+        "adapterId": "later-integrations",
+        "manifestSelectable": false,
+        "createImportSelectable": false,
+        "readiness": "unknown",
+        "evidenceState": "unknown",
+        "enabledFlags": []
+      }
+    ],
+    "familyContracts": [
+      {
+        "familyId": "pi-skill-files",
+        "pathPatterns": [
+          ".pi/skills/<skill>/SKILL.md",
+          ".agents/skills/<skill>/SKILL.md"
+        ],
+        "producedByLane": "I-14B-pi-adapter-runtime-skill-consumption",
+        "consumedByLanes": [
+          "I-14B-pi-adapter-runtime-skill-consumption",
+          "I-15A-create-import-cli-ux-selected-harness",
+          "I-21-build-skill-orchestration"
+        ],
+        "classification": "project-instruction",
+        "commandPolicy": "not-applicable",
+        "sandboxCapability": "not_provided",
+        "credentialPolicy": "no-credentials-required",
+        "externalIntegration": "disabled-by-default",
+        "destructiveOperationPolicy": "forbidden",
+        "readiness": "ready"
+      },
+      {
+        "familyId": "pi-prompt-templates",
+        "pathPatterns": [
+          ".pi/prompts/<name>.md"
+        ],
+        "producedByLane": "I-14B-pi-adapter-runtime-skill-consumption",
+        "consumedByLanes": [
+          "I-14B-pi-adapter-runtime-skill-consumption",
+          "I-15A-create-import-cli-ux-selected-harness"
+        ],
+        "classification": "project-instruction",
+        "commandPolicy": "not-applicable",
+        "sandboxCapability": "not_provided",
+        "credentialPolicy": "no-credentials-required",
+        "externalIntegration": "disabled-by-default",
+        "destructiveOperationPolicy": "forbidden",
+        "readiness": "ready"
+      },
+      {
+        "familyId": "pi-extensions",
+        "pathPatterns": [
+          ".pi/extensions/<name>.ts",
+          ".pi/extensions/<name>/index.ts"
+        ],
+        "producedByLane": "I-14B-pi-adapter-runtime-skill-consumption",
+        "consumedByLanes": [
+          "I-14B-pi-adapter-runtime-skill-consumption",
+          "I-18-security-safety-hooks-policy",
+          "I-21-build-skill-orchestration"
+        ],
+        "classification": "executable-extension",
+        "commandPolicy": "default-deny",
+        "sandboxCapability": "not_provided",
+        "credentialPolicy": "operator-supplied-only",
+        "externalIntegration": "disabled-by-default",
+        "destructiveOperationPolicy": "approval-required",
+        "readiness": "blocked"
+      },
+      {
+        "familyId": "pi-package-manifest",
+        "pathPatterns": [
+          "package.json#pi"
+        ],
+        "producedByLane": "I-14B-pi-adapter-runtime-skill-consumption",
+        "consumedByLanes": [
+          "I-14B-pi-adapter-runtime-skill-consumption",
+          "I-15B-starter-template-harness-consumption"
+        ],
+        "classification": "package-manifest",
+        "commandPolicy": "default-deny",
+        "sandboxCapability": "not_provided",
+        "credentialPolicy": "operator-supplied-only",
+        "externalIntegration": "disabled-by-default",
+        "destructiveOperationPolicy": "approval-required",
+        "readiness": "deferred"
+      },
+      {
+        "familyId": "context-files",
+        "pathPatterns": [
+          "AGENTS.md",
+          "CLAUDE.md"
+        ],
+        "producedByLane": "I-15A-create-import-cli-ux-selected-harness",
+        "consumedByLanes": [
+          "I-15A-create-import-cli-ux-selected-harness",
+          "I-08-context-graph-index-drift",
+          "I-21-build-skill-orchestration"
+        ],
+        "classification": "project-instruction",
+        "commandPolicy": "not-applicable",
+        "sandboxCapability": "not_provided",
+        "credentialPolicy": "no-credentials-required",
+        "externalIntegration": "disabled-by-default",
+        "destructiveOperationPolicy": "forbidden",
+        "readiness": "ready"
+      },
+      {
+        "familyId": "harness-config",
+        "pathPatterns": [
+          "generated harness config field: agenticHarness=pi",
+          "generated harness config field: adapterCapabilityVersion",
+          "generated harness config field: generatedFileManifestVersion"
+        ],
+        "producedByLane": "I-15A-create-import-cli-ux-selected-harness",
+        "consumedByLanes": [
+          "I-15A-create-import-cli-ux-selected-harness",
+          "I-15B-starter-template-harness-consumption",
+          "I-21-build-skill-orchestration"
+        ],
+        "classification": "configuration",
+        "commandPolicy": "not-applicable",
+        "sandboxCapability": "not_provided",
+        "credentialPolicy": "no-credentials-required",
+        "externalIntegration": "disabled-by-default",
+        "destructiveOperationPolicy": "forbidden",
+        "readiness": "ready"
+      }
+    ],
+    "hashes": {
+      "packages/adapters/pi/src/capabilities/index.ts": "6e425710a5cede273eb1b9058078bc85bebd42f0a6f97d14ed44e3a08f233f86",
+      "packages/adapters/pi/src/generated-file-manifest/index.ts": "9ebb61e0b5e05aee94bc6fc70a4a6ceeb876b024d93d438c4203131603226e76",
+      "packages/adapters/pi/src/schema/index.ts": "3bf6f61cb0f31d0e71ba4692da4e3cc9c29c140e94e5629c071031fcdc604e55"
+    }
+  },
+  "protectedNeighborHashes": {
+    "package.json": "d71428e1b35540d330890b4e286a7dae6b54fef16eb3757dd268e56c7471b6e2",
+    "pnpm-lock.yaml": "7e97bffa29ba0aa4c4e2657cf5fd30ccfe3e61a8ce243e2b3e7a44147cb9d981",
+    "pnpm-workspace.yaml": "aee47e9964f53e767a6d6a86a27c86b218a76cd59453c3401defad6907be5f21",
+    "turbo.json": "16e6293cf07e9befc3463ef1c2fea50302a04ada97f0ac18cca5400a9079e9a5",
+    "tsconfig.base.json": "2d343641168235bfa33dcb973b1dc4802b732be7bbca9bcd9ec391a2c9efe667",
+    "packages/adapters/pi/package.json": "6f5b7d10b9aba255cd5dbfd476f37762a58c26d19e1de833a9c421b3c4fa6140"
+  },
+  "fixtureScan": {
+    "fileCount": 18,
+    "fixtureMatches": []
+  }
+}

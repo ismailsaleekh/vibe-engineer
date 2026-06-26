@@ -1,0 +1,42 @@
+# command: rg import packages/adapters/pi/src/{runtime,generators,loader-witness}
+packages/adapters/pi/src/runtime/write-plan.ts:1:import { validatePiRuntimeFixture } from "./validation.ts";
+packages/adapters/pi/src/runtime/write-plan.ts:2:import type { PiRuntimeFixture, PiRuntimeValidationIssue, PiRuntimeValidationResult } from "./types.ts";
+packages/adapters/pi/src/loader-witness/index.ts:1:import { SKILL_IDS, type SkillId } from "../schema/index.ts";
+packages/adapters/pi/src/loader-witness/index.ts:2:import type { PiRuntimeFixture, PiRuntimeValidationIssue } from "../runtime/types.ts";
+packages/adapters/pi/src/loader-witness/index.ts:3:import { validatePiRuntimeFixture } from "../runtime/validation.ts";
+packages/adapters/pi/src/loader-witness/index.ts:75:    ...SKILL_IDS.map((skillId) => commandNameForSkill(skillId)),
+packages/adapters/pi/src/loader-witness/index.ts:76:    ...SKILL_IDS.map((skillId) => commandNameForPrompt(skillId)),
+packages/adapters/pi/src/loader-witness/index.ts:163:    ...SKILL_IDS.map((skillId) => commandNameForSkill(skillId)),
+packages/adapters/pi/src/loader-witness/index.ts:164:    ...SKILL_IDS.map((skillId) => commandNameForPrompt(skillId)),
+packages/adapters/pi/src/generators/runtime-fixture-generator.ts:1:import { getPiAdapterCapabilityMatrix } from "../capabilities/index.ts";
+packages/adapters/pi/src/generators/runtime-fixture-generator.ts:2:import { getPiGeneratedFileManifest } from "../generated-file-manifest/index.ts";
+packages/adapters/pi/src/generators/runtime-fixture-generator.ts:3:import {
+packages/adapters/pi/src/generators/runtime-fixture-generator.ts:4:  SKILL_IDS,
+packages/adapters/pi/src/generators/runtime-fixture-generator.ts:5:  validateCapabilityMatrix,
+packages/adapters/pi/src/generators/runtime-fixture-generator.ts:6:  validateGeneratedFileManifest,
+packages/adapters/pi/src/generators/runtime-fixture-generator.ts:11:} from "../schema/index.ts";
+packages/adapters/pi/src/generators/runtime-fixture-generator.ts:12:import { assertPiRuntimeFixtureValid, validatePiRuntimeFixtureAgainstI14A } from "../runtime/validation.ts";
+packages/adapters/pi/src/generators/runtime-fixture-generator.ts:13:import type {
+packages/adapters/pi/src/generators/runtime-fixture-generator.ts:21:} from "../runtime/types.ts";
+packages/adapters/pi/src/generators/runtime-fixture-generator.ts:22:import { PiRuntimeContractError } from "../runtime/types.ts";
+packages/adapters/pi/src/generators/runtime-fixture-generator.ts:226:  return SKILL_IDS.map((skillId) => {
+packages/adapters/pi/src/generators/runtime-fixture-generator.ts:246:  return SKILL_IDS.map((skillId) => {
+packages/adapters/pi/src/generators/runtime-fixture-generator.ts:305:  const capabilityMatrix = getPiAdapterCapabilityMatrix();
+packages/adapters/pi/src/generators/runtime-fixture-generator.ts:306:  const generatedFileManifest = getPiGeneratedFileManifest();
+packages/adapters/pi/src/generators/runtime-fixture-generator.ts:307:  const capabilityValidation = validateCapabilityMatrix(capabilityMatrix);
+packages/adapters/pi/src/generators/runtime-fixture-generator.ts:311:  const manifestValidation = validateGeneratedFileManifest(generatedFileManifest);
+packages/adapters/pi/src/runtime/types.ts:1:import type {
+packages/adapters/pi/src/runtime/types.ts:6:} from "../schema/index.ts";
+packages/adapters/pi/src/runtime/validation.ts:1:import {
+packages/adapters/pi/src/runtime/validation.ts:2:  GENERATED_FILE_FAMILY_IDS,
+packages/adapters/pi/src/runtime/validation.ts:5:  SKILL_IDS,
+packages/adapters/pi/src/runtime/validation.ts:6:  validateCapabilityMatrix,
+packages/adapters/pi/src/runtime/validation.ts:7:  validateGeneratedFileManifest,
+packages/adapters/pi/src/runtime/validation.ts:13:} from "../schema/index.ts";
+packages/adapters/pi/src/runtime/validation.ts:14:import {
+packages/adapters/pi/src/runtime/validation.ts:40:const isKnownSkillId = (value: string): value is SkillId => SKILL_IDS.includes(value as SkillId);
+packages/adapters/pi/src/runtime/validation.ts:41:const isKnownFamilyId = (value: string): value is GeneratedFileFamilyId => GENERATED_FILE_FAMILY_IDS.includes(value as GeneratedFileFamilyId);
+packages/adapters/pi/src/runtime/validation.ts:382:  for (const expectedSkill of SKILL_IDS) {
+packages/adapters/pi/src/runtime/validation.ts:391:  for (const familyId of GENERATED_FILE_FAMILY_IDS) {
+packages/adapters/pi/src/runtime/validation.ts:409:  const capabilityValidation = validateCapabilityMatrix(capabilityMatrix);
+packages/adapters/pi/src/runtime/validation.ts:415:  const manifestValidation = validateGeneratedFileManifest(generatedFileManifest);

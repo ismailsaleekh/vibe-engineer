@@ -1,0 +1,122 @@
+# command: rg typed error codes in I-14B source
+packages/adapters/pi/src/runtime/write-plan.ts:4:export type PiRuntimeExistingPathKind = "missing" | "file" | "directory" | "symlink";
+packages/adapters/pi/src/runtime/write-plan.ts:5:export type PiRuntimeWriteConflictPolicy = "fail-on-conflict" | "allow-identical-overwrite";
+packages/adapters/pi/src/runtime/write-plan.ts:25:  issues.push({ path, code, message, severity: "error" });
+packages/adapters/pi/src/runtime/write-plan.ts:29:  path.length > 0 && !path.startsWith("/") && !path.startsWith("~") && !path.includes(":\\") && !path.split("/").some((segment) => segment === "" || segment === "..");
+packages/adapters/pi/src/runtime/write-plan.ts:45:      issue(issues, `$.assets[${index}]`, "missing_asset", "Write plan cannot process a missing asset.");
+packages/adapters/pi/src/runtime/write-plan.ts:49:      issue(issues, `$.assets[${index}].path`, "unsafe_write_path", "Write target must be a relative non-traversing fixture path.");
+packages/adapters/pi/src/runtime/write-plan.ts:52:    if (existing === undefined || existing.kind === "missing") {
+packages/adapters/pi/src/runtime/write-plan.ts:55:    if (existing.kind === "symlink") {
+packages/adapters/pi/src/runtime/write-plan.ts:56:      issue(issues, `existingPaths.${asset.path}`, "symlink_write_escape", "Write plan refuses symlink targets because they may escape the fixture root.");
+packages/adapters/pi/src/runtime/write-plan.ts:59:    if (existing.kind === "directory") {
+packages/adapters/pi/src/runtime/write-plan.ts:60:      issue(issues, `existingPaths.${asset.path}`, "unsafe_overwrite_conflict", "Write plan refuses to overwrite a directory with file content.");
+packages/adapters/pi/src/runtime/write-plan.ts:63:    if (conflictPolicy === "fail-on-conflict") {
+packages/adapters/pi/src/runtime/write-plan.ts:64:      issue(issues, `existingPaths.${asset.path}`, "unsafe_overwrite_conflict", "Write plan refuses to overwrite existing files under fail-on-conflict policy.");
+packages/adapters/pi/src/runtime/write-plan.ts:68:      issue(issues, `existingPaths.${asset.path}`, "unsafe_overwrite_conflict", "Write plan only permits identical-content overwrites under allow-identical-overwrite policy.");
+packages/adapters/pi/src/runtime/validation.ts:27:const SECRET_MARKERS = ["BEGIN PRIVATE KEY", "AKIA", "xoxb-", "ghp_", "sk-", "password=", "api_key=", "apiKey:"] as const;
+packages/adapters/pi/src/runtime/validation.ts:28:const BUSINESS_DOMAIN_MARKERS = ["ecommerce", "fashion", "inventory", "tenant", "checkout", "telegram", "instagram", "billz"] as const;
+packages/adapters/pi/src/runtime/validation.ts:29:const LIVE_RUNTIME_GREEN_MARKERS = ["truth-green", "live-proven", "runtime-proven", "runtime proven", "loaded by pi", "executed by pi"] as const;
+packages/adapters/pi/src/runtime/validation.ts:32:  issues.push({ path, code, message, severity: "error" });
+packages/adapters/pi/src/runtime/validation.ts:36:  typeof value === "object" && value !== null && !Array.isArray(value);
+packages/adapters/pi/src/runtime/validation.ts:44:  if (typeof value === "string" && I14A_OUT_OF_SCOPE_RUNTIME_EXECUTION_CLAIMS.includes(value as (typeof I14A_OUT_OF_SCOPE_RUNTIME_EXECUTION_CLAIMS)[number])) {
+packages/adapters/pi/src/runtime/validation.ts:45:    issue(issues, path, "runtime_execution_claim_requires_live_evidence", "Live/proven/loaded/executed runtime claims require actual live pi loader/executor evidence and are not accepted by the static runtime asset validator.");
+packages/adapters/pi/src/runtime/validation.ts:48:  if (typeof value !== "string" || !I14A_RUNTIME_EXECUTION_CLAIMS.includes(value as I14ARuntimeExecutionClaim)) {
+packages/adapters/pi/src/runtime/validation.ts:49:    issue(issues, path, "unsupported_runtime_execution_claim", "Runtime execution claim must use the typed I-14A non-live claim set.");
+packages/adapters/pi/src/runtime/validation.ts:57:    issue(issues, issuePath, "empty_path", "Generated asset path must be non-empty.");
+packages/adapters/pi/src/runtime/validation.ts:59:  if (path.startsWith("/") || path.startsWith("~") || path.includes(":\\")) {
+packages/adapters/pi/src/runtime/validation.ts:60:    issue(issues, issuePath, "absolute_path", "Generated asset path must be relative to the fixture root.");
+packages/adapters/pi/src/runtime/validation.ts:62:  if (path.split("/").some((segment) => segment === ".." || segment === "")) {
+packages/adapters/pi/src/runtime/validation.ts:63:    issue(issues, issuePath, "path_traversal", "Generated asset path must not contain traversal, empty segments, or symlink-style escape syntax.");
+packages/adapters/pi/src/runtime/validation.ts:69:    issue(issues, path, "missing_frontmatter", "Markdown asset must start with frontmatter.");
+packages/adapters/pi/src/runtime/validation.ts:74:    issue(issues, path, "unterminated_frontmatter", "Markdown frontmatter must be terminated.");
+packages/adapters/pi/src/runtime/validation.ts:83:      issue(issues, `${path}.frontmatter[${index}]`, "invalid_frontmatter_field", "Frontmatter fields must use `key: value` syntax.");
+packages/adapters/pi/src/runtime/validation.ts:89:      issue(issues, `${path}.frontmatter.${key}`, "duplicate_frontmatter_field", "Duplicate frontmatter fields are rejected.");
+packages/adapters/pi/src/runtime/validation.ts:114:  if (name.includes("/")) {
+packages/adapters/pi/src/runtime/validation.ts:125:  return (suffix.endsWith(".ts") && !suffix.includes("/")) || (suffix.endsWith("/index.ts") && suffix.split("/").length === 2);
+packages/adapters/pi/src/runtime/validation.ts:136:    issue(issues, `$.assets[${index}].path`, "mismatched_skill_resource_path", "Skill assets must be at `.pi/skills/<skill>/SKILL.md` or `.agents/skills/<skill>/SKILL.md`.");
+packages/adapters/pi/src/runtime/validation.ts:140:    issue(issues, `$.assets[${index}].path`, "unknown_skill_id", "Skill resource path contains an unknown skill id.");
+packages/adapters/pi/src/runtime/validation.ts:145:    issue(issues, `$.assets[${index}].metadata.skillProtocol`, "missing_skill_protocol", "Skill assets require typed DL-03 protocol metadata.");
+packages/adapters/pi/src/runtime/validation.ts:149:    issue(issues, `$.assets[${index}].metadata.skillProtocol.skillId`, "mismatched_skill_command_resource_path", "Skill metadata, command name, and resource path must identify the same skill.");
+packages/adapters/pi/src/runtime/validation.ts:152:  const name = frontmatter.get("name");
+packages/adapters/pi/src/runtime/validation.ts:153:  const description = frontmatter.get("description");
+packages/adapters/pi/src/runtime/validation.ts:155:    issue(issues, `$.assets[${index}].frontmatter.name`, "missing_skill_name", "Skill frontmatter must include name.");
+packages/adapters/pi/src/runtime/validation.ts:157:    issue(issues, `$.assets[${index}].frontmatter.name`, "invalid_skill_name", "Skill name must follow pi Agent Skills name rules.");
+packages/adapters/pi/src/runtime/validation.ts:159:    issue(issues, `$.assets[${index}].frontmatter.name`, "mismatched_skill_name", "Skill name must match the typed skill id.");
+packages/adapters/pi/src/runtime/validation.ts:162:    issue(issues, `$.assets[${index}].frontmatter.description`, "missing_skill_description", "Skill frontmatter must include description because pi will not load skills missing it.");
+packages/adapters/pi/src/runtime/validation.ts:164:  if (frontmatter.get("vibe-protocol") !== protocol.protocolKind) {
+packages/adapters/pi/src/runtime/validation.ts:165:    issue(issues, `$.assets[${index}].frontmatter.vibe-protocol`, "dl03_protocol_contradiction", "Skill frontmatter protocol kind must match the locked DL-03 chain.");
+packages/adapters/pi/src/runtime/validation.ts:167:  if (frontmatter.get("vibe-output-artifact") !== protocol.outputArtifact) {
+packages/adapters/pi/src/runtime/validation.ts:168:    issue(issues, `$.assets[${index}].frontmatter.vibe-output-artifact`, "dl03_output_contradiction", "Skill output artifact must match the locked DL-03 chain.");
+packages/adapters/pi/src/runtime/validation.ts:175:    issue(issues, `$.assets[${index}].path`, "prompt_template_not_discoverable", "Prompt templates must be direct `.pi/prompts/*.md` files unless explicitly configured; generated fixtures do not use nested prompt settings.");
+packages/adapters/pi/src/runtime/validation.ts:179:    issue(issues, `$.assets[${index}].path`, "invalid_prompt_template_name", "Prompt template filename must be a stable lowercase slash-command name.");
+packages/adapters/pi/src/runtime/validation.ts:183:    issue(issues, `$.assets[${index}].metadata.promptContract`, "missing_prompt_argument_contract", "Generated prompt templates require typed description and argument contract metadata.");
+packages/adapters/pi/src/runtime/validation.ts:187:    issue(issues, `$.assets[${index}].metadata.promptContract.templateName`, "mismatched_prompt_template_name", "Prompt metadata must match filename-derived command name.");
+packages/adapters/pi/src/runtime/validation.ts:190:  if ((frontmatter.get("description") ?? "").length === 0) {
+packages/adapters/pi/src/runtime/validation.ts:191:    issue(issues, `$.assets[${index}].frontmatter.description`, "missing_prompt_description", "Prompt template description is required by the generated template contract.");
+packages/adapters/pi/src/runtime/validation.ts:193:  if ((frontmatter.get("argument-hint") ?? "").length === 0 || contract.argumentContract.length === 0) {
+packages/adapters/pi/src/runtime/validation.ts:194:    issue(issues, `$.assets[${index}].frontmatter.argument-hint`, "missing_prompt_argument_contract", "Prompt template argument contract is required.");
+packages/adapters/pi/src/runtime/validation.ts:200:    issue(issues, path, "missing_extension_policy", "Extension assets require typed DL-22 policy metadata.");
+packages/adapters/pi/src/runtime/validation.ts:204:    issue(issues, `${path}.defaultDeny`, "extension_weakens_default_deny", "Generated extensions must be default-deny.");
+packages/adapters/pi/src/runtime/validation.ts:207:    issue(issues, `${path}.requiresCredentialsByDefault`, "extension_requires_credentials_by_default", "Generated extensions must not require credentials by default.");
+packages/adapters/pi/src/runtime/validation.ts:210:    issue(issues, `${path}.permitsDestructiveOperationsByDefault`, "extension_allows_destructive_by_default", "Generated extensions must not permit destructive operations by default.");
+packages/adapters/pi/src/runtime/validation.ts:213:    issue(issues, `${path}.permitsExternalMutationByDefault`, "extension_allows_external_mutation_by_default", "Generated extensions must not mutate external systems by default.");
+packages/adapters/pi/src/runtime/validation.ts:215:  if (policy.claimsSandboxing === "not_provided") {
+packages/adapters/pi/src/runtime/validation.ts:218:  issue(issues, `${path}.claimsSandboxing`, "extension_claims_unsupported_sandboxing", "Generated extensions must not claim unsupported sandboxing.");
+packages/adapters/pi/src/runtime/validation.ts:223:    issue(issues, `$.assets[${index}].path`, "invalid_package_manifest_path", "Fixture-local pi package manifest must be `package.json` under the fixture root.");
+packages/adapters/pi/src/runtime/validation.ts:230:    issue(issues, `$.assets[${index}].content`, "invalid_package_manifest_json", "Package manifest content must be valid JSON.");
+packages/adapters/pi/src/runtime/validation.ts:233:  if (!isRecord(parsed) || !isRecord(parsed["pi"])) {
+packages/adapters/pi/src/runtime/validation.ts:234:    issue(issues, `$.assets[${index}].content.pi`, "missing_pi_package_resources", "Package manifest must declare pi resources.");
+packages/adapters/pi/src/runtime/validation.ts:237:  const piResources = parsed["pi"];
+packages/adapters/pi/src/runtime/validation.ts:238:  const resourceKeys = ["skills", "prompts", "extensions"] as const;
+packages/adapters/pi/src/runtime/validation.ts:242:      issue(issues, `$.assets[${index}].content.pi.${key}`, "missing_pi_package_resources", "Package manifest pi resource declarations must be non-empty.");
+packages/adapters/pi/src/runtime/validation.ts:247:      if (typeof resource !== "string") {
+packages/adapters/pi/src/runtime/validation.ts:248:        issue(issues, `$.assets[${index}].content.pi.${key}[${resourceIndex}]`, "invalid_pi_resource_path", "Pi resource declarations must be relative strings.");
+packages/adapters/pi/src/runtime/validation.ts:255:        issue(issues, `$.assets[${index}].content.pi.${key}[${resourceIndex}]`, "pi_resource_path_missing_asset", "Pi package resource path must point inside the generated fixture asset set.");
+packages/adapters/pi/src/runtime/validation.ts:263:    issue(issues, `$.assets[${index}].path`, "invalid_context_asset_path", "Context assets are limited to AGENTS.md and CLAUDE.md in the runtime fixture root.");
+packages/adapters/pi/src/runtime/validation.ts:267:    issue(issues, `$.assets[${index}].metadata.contextPolicy`, "invalid_context_policy", "Context assets require domain-neutral no-secret/no-live-proof policy metadata.");
+packages/adapters/pi/src/runtime/validation.ts:270:    issue(issues, `$.assets[${index}].content`, "context_embeds_secret_or_credential", "Context asset contains a credential-like marker.");
+packages/adapters/pi/src/runtime/validation.ts:273:    issue(issues, `$.assets[${index}].content`, "context_embeds_business_domain_assumption", "Context asset contains a project/business-domain assumption.");
+packages/adapters/pi/src/runtime/validation.ts:276:    issue(issues, `$.assets[${index}].content`, "context_claims_live_runtime_truth_green", "Context asset must not claim live pi runtime truth-green.");
+packages/adapters/pi/src/runtime/validation.ts:285:    issue(issues, `$.assets[${index}].content`, "invalid_harness_config_json", "Harness config fixture must be JSON.");
+packages/adapters/pi/src/runtime/validation.ts:289:    issue(issues, `$.assets[${index}].content`, "invalid_harness_config_json", "Harness config fixture must be a JSON object.");
+packages/adapters/pi/src/runtime/validation.ts:292:  if (parsed["agenticHarness"] !== "pi") {
+packages/adapters/pi/src/runtime/validation.ts:293:    issue(issues, `$.assets[${index}].content.agenticHarness`, "unsupported_non_pi_adapter_selection", "Runtime fixture config may only select the pi adapter.");
+packages/adapters/pi/src/runtime/validation.ts:295:  if (parsed["adapterCapabilityVersion"] !== "pi-adapter-capability-matrix/v1") {
+packages/adapters/pi/src/runtime/validation.ts:296:    issue(issues, `$.assets[${index}].content.adapterCapabilityVersion`, "missing_adapter_capability_version", "Harness config must record the adapter capability version.");
+packages/adapters/pi/src/runtime/validation.ts:298:  if (parsed["generatedFileManifestVersion"] !== "pi-generated-file-manifest/v1") {
+packages/adapters/pi/src/runtime/validation.ts:299:    issue(issues, `$.assets[${index}].content.generatedFileManifestVersion`, "missing_generated_file_manifest_version", "Harness config must record the generated-file manifest version.");
+packages/adapters/pi/src/runtime/validation.ts:307:    issue(issues, `$.assets[${index}].familyId`, "unknown_generated_file_family", "Generated runtime asset uses an unknown generated-file family.");
+packages/adapters/pi/src/runtime/validation.ts:311:    issue(issues, `$.assets[${index}].metadata.generatedBy`, "unsupported_generated_by_lane", "Runtime assets must be generated by the I-14B lane.");
+packages/adapters/pi/src/runtime/validation.ts:314:    "pi-skill-files": ["skill"],
+packages/adapters/pi/src/runtime/validation.ts:315:    "pi-prompt-templates": ["prompt-template"],
+packages/adapters/pi/src/runtime/validation.ts:316:    "pi-extensions": ["extension"],
+packages/adapters/pi/src/runtime/validation.ts:317:    "pi-package-manifest": ["package-manifest"],
+packages/adapters/pi/src/runtime/validation.ts:318:    "context-files": ["context"],
+packages/adapters/pi/src/runtime/validation.ts:319:    "harness-config": ["harness-config"],
+packages/adapters/pi/src/runtime/validation.ts:322:    issue(issues, `$.assets[${index}].kind`, "mismatched_asset_family_kind", "Runtime asset kind must match its generated-file family.");
+packages/adapters/pi/src/runtime/validation.ts:324:  if (asset.kind === "skill") {
+packages/adapters/pi/src/runtime/validation.ts:327:  if (asset.kind === "prompt-template") {
+packages/adapters/pi/src/runtime/validation.ts:330:  if (asset.kind === "extension") {
+packages/adapters/pi/src/runtime/validation.ts:332:      issue(issues, `$.assets[${index}].path`, "extension_path_not_discoverable", "Extension assets must be `.pi/extensions/<name>.ts` or `.pi/extensions/<name>/index.ts`.");
+packages/adapters/pi/src/runtime/validation.ts:336:      issue(issues, `$.assets[${index}].content`, "extension_weakens_dl22_policy", "Extension content contains destructive, credential, external mutation, or unsupported sandbox markers.");
+packages/adapters/pi/src/runtime/validation.ts:339:  if (asset.kind === "package-manifest") {
+packages/adapters/pi/src/runtime/validation.ts:342:  if (asset.kind === "context") {
+packages/adapters/pi/src/runtime/validation.ts:345:  if (asset.kind === "harness-config") {
+packages/adapters/pi/src/runtime/validation.ts:352:  if (fixture.schemaVersion !== "pi-runtime-fixture/v1") {
+packages/adapters/pi/src/runtime/validation.ts:353:    issue(issues, "$.schemaVersion", "unsupported_runtime_fixture_schema", "Runtime fixture schema version must be pi-runtime-fixture/v1.");
+packages/adapters/pi/src/runtime/validation.ts:355:  if (fixture.adapterId !== "pi") {
+packages/adapters/pi/src/runtime/validation.ts:356:    issue(issues, "$.adapterId", "unsupported_non_pi_adapter_selection", "I-14B runtime generation supports only the pi adapter.");
+packages/adapters/pi/src/runtime/validation.ts:358:  if (fixture.adapterCapabilityVersion !== "pi-adapter-capability-matrix/v1") {
+packages/adapters/pi/src/runtime/validation.ts:359:    issue(issues, "$.adapterCapabilityVersion", "missing_adapter_capability_version", "Runtime fixture must record adapter capability version.");
+packages/adapters/pi/src/runtime/validation.ts:361:  if (fixture.generatedFileManifestVersion !== "pi-generated-file-manifest/v1") {
+packages/adapters/pi/src/runtime/validation.ts:362:    issue(issues, "$.generatedFileManifestVersion", "missing_generated_file_manifest_version", "Runtime fixture must record generated-file manifest version.");
+packages/adapters/pi/src/runtime/validation.ts:367:    issue(issues, "$.assets", "duplicate_asset_path", "Runtime fixture contains duplicate asset paths.");
+packages/adapters/pi/src/runtime/validation.ts:372:      issue(issues, `$.assets[${index}]`, "missing_asset", "Runtime fixture asset is missing.");
+packages/adapters/pi/src/runtime/validation.ts:379:    .filter((asset) => asset.kind === "skill")
+packages/adapters/pi/src/runtime/validation.ts:384:      issue(issues, "$.assets", "missing_required_skill", `Missing required skill asset '${expectedSkill}'.`);
+packages/adapters/pi/src/runtime/validation.ts:388:    issue(issues, "$.assets", "duplicate_skill_id", `Duplicate generated skill id '${duplicate}'.`);
+packages/adapters/pi/src/runtime/validation.ts:393:      issue(issues, "$.assets", "missing_generated_file_family", `Runtime fixture does not include family '${familyId}'.`);
+packages/adapters/pi/src/runtime/validation.ts:421:  const piAdapter = capabilityMatrix.adapters.find((adapter) => adapter.adapterId === "pi");
+packages/adapters/pi/src/runtime/validation.ts:423:    issue(issues, "i14a.capabilityMatrix.adapters", "pi_manifest_not_selectable", "I-14B requires I-14A pi manifest-selectable typed API.");
+packages/adapters/pi/src/runtime/validation.ts:426:    if (adapter.adapterId !== "pi" && (adapter.selection.manifestSelectable || adapter.selection.createImportSelectable || adapter.selection.readiness === "ready")) {
+packages/adapters/pi/src/runtime/validation.ts:427:      issue(issues, `i14a.capabilityMatrix.adapters.${adapter.adapterId}`, "unsupported_non_pi_adapter_selection", "Non-pi adapters must remain non-selectable/deferred/blocked.");

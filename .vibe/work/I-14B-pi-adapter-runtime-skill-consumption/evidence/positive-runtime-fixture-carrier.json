@@ -1,0 +1,340 @@
+{
+  "schemaVersion": "pi-runtime-fixture/v1",
+  "mode": "runtime-fixture",
+  "adapterId": "pi",
+  "adapterCapabilityVersion": "pi-adapter-capability-matrix/v1",
+  "generatedFileManifestVersion": "pi-generated-file-manifest/v1",
+  "runtimeExecutionClaim": "pending-live",
+  "downstreamLiveRuntimeBlock": "pending-live/BLOCKED",
+  "assets": [
+    {
+      "kind": "skill",
+      "familyId": "pi-skill-files",
+      "path": ".pi/skills/brainstorm/SKILL.md",
+      "content": "---\nname: brainstorm\ndescription: Explore unclear raw intent and persist one Work Brief for plan intake. Use through /skill:brainstorm when the locked DL-03 brainstorm protocol is needed.\nvibe-protocol: work-brief-producer\nvibe-input-artifact: raw-intent\nvibe-output-artifact: work-brief\nruntimeExecutionClaim: pending-live\n---\n\n# brainstorm\n\nThis generated pi skill is a domain-neutral adapter asset for the vibe-engineer locked skill protocol.\n\n## Protocol chain\n\n- Input artifact: raw-intent.\n- Output artifact: work-brief.\n- The skill must persist its output through the harness artifact carrier; chat history alone is not a carrier.\n- Runtime execution claim: pending-live; live pi loading/execution is not claimed by this fixture.\n\n## Required behavior\n\nExplore unclear raw intent and persist one Work Brief for plan intake.\n\n## Forbidden behavior\n\n- Do not produce or execute implementation-plan from this skill.\n- Do not produce or execute build-result from this skill.\n- Do not produce or execute ship-packet from this skill.\n- Do not produce or execute push from this skill.\n- Do not produce or execute pull-request from this skill.\n- Do not embed secrets, credentials, project-specific business assumptions, destructive commands, or external mutations.\n- Do not claim selected pi runtime truth-green without a recorded real loader/executor witness.\n",
+      "metadata": {
+        "generatedBy": "I-14B-pi-adapter-runtime-skill-consumption",
+        "runtimeExecutionClaim": "pending-live",
+        "skillProtocol": {
+          "skillId": "brainstorm",
+          "protocolKind": "work-brief-producer",
+          "inputArtifact": "raw-intent",
+          "outputArtifact": "work-brief",
+          "forbiddenArtifacts": [
+            "implementation-plan",
+            "build-result",
+            "ship-packet",
+            "push",
+            "pull-request"
+          ],
+          "summary": "Explore unclear raw intent and persist one Work Brief for plan intake."
+        }
+      }
+    },
+    {
+      "kind": "skill",
+      "familyId": "pi-skill-files",
+      "path": ".pi/skills/grill-me/SKILL.md",
+      "content": "---\nname: grill-me\ndescription: Pressure-test assumptions and persist one Work Brief for plan intake. Use through /skill:grill-me when the locked DL-03 grill-me protocol is needed.\nvibe-protocol: work-brief-producer\nvibe-input-artifact: raw-intent\nvibe-output-artifact: work-brief\nruntimeExecutionClaim: pending-live\n---\n\n# grill-me\n\nThis generated pi skill is a domain-neutral adapter asset for the vibe-engineer locked skill protocol.\n\n## Protocol chain\n\n- Input artifact: raw-intent.\n- Output artifact: work-brief.\n- The skill must persist its output through the harness artifact carrier; chat history alone is not a carrier.\n- Runtime execution claim: pending-live; live pi loading/execution is not claimed by this fixture.\n\n## Required behavior\n\nPressure-test assumptions and persist one Work Brief for plan intake.\n\n## Forbidden behavior\n\n- Do not produce or execute implementation-plan from this skill.\n- Do not produce or execute build-result from this skill.\n- Do not produce or execute ship-packet from this skill.\n- Do not produce or execute push from this skill.\n- Do not produce or execute pull-request from this skill.\n- Do not embed secrets, credentials, project-specific business assumptions, destructive commands, or external mutations.\n- Do not claim selected pi runtime truth-green without a recorded real loader/executor witness.\n",
+      "metadata": {
+        "generatedBy": "I-14B-pi-adapter-runtime-skill-consumption",
+        "runtimeExecutionClaim": "pending-live",
+        "skillProtocol": {
+          "skillId": "grill-me",
+          "protocolKind": "work-brief-producer",
+          "inputArtifact": "raw-intent",
+          "outputArtifact": "work-brief",
+          "forbiddenArtifacts": [
+            "implementation-plan",
+            "build-result",
+            "ship-packet",
+            "push",
+            "pull-request"
+          ],
+          "summary": "Pressure-test assumptions and persist one Work Brief for plan intake."
+        }
+      }
+    },
+    {
+      "kind": "skill",
+      "familyId": "pi-skill-files",
+      "path": ".pi/skills/task/SKILL.md",
+      "content": "---\nname: task\ndescription: Normalize a concrete request and persist one Work Brief for plan intake. Use through /skill:task when the locked DL-03 task protocol is needed.\nvibe-protocol: work-brief-producer\nvibe-input-artifact: raw-intent\nvibe-output-artifact: work-brief\nruntimeExecutionClaim: pending-live\n---\n\n# task\n\nThis generated pi skill is a domain-neutral adapter asset for the vibe-engineer locked skill protocol.\n\n## Protocol chain\n\n- Input artifact: raw-intent.\n- Output artifact: work-brief.\n- The skill must persist its output through the harness artifact carrier; chat history alone is not a carrier.\n- Runtime execution claim: pending-live; live pi loading/execution is not claimed by this fixture.\n\n## Required behavior\n\nNormalize a concrete request and persist one Work Brief for plan intake.\n\n## Forbidden behavior\n\n- Do not produce or execute implementation-plan from this skill.\n- Do not produce or execute build-result from this skill.\n- Do not produce or execute ship-packet from this skill.\n- Do not produce or execute push from this skill.\n- Do not produce or execute pull-request from this skill.\n- Do not embed secrets, credentials, project-specific business assumptions, destructive commands, or external mutations.\n- Do not claim selected pi runtime truth-green without a recorded real loader/executor witness.\n",
+      "metadata": {
+        "generatedBy": "I-14B-pi-adapter-runtime-skill-consumption",
+        "runtimeExecutionClaim": "pending-live",
+        "skillProtocol": {
+          "skillId": "task",
+          "protocolKind": "work-brief-producer",
+          "inputArtifact": "raw-intent",
+          "outputArtifact": "work-brief",
+          "forbiddenArtifacts": [
+            "implementation-plan",
+            "build-result",
+            "ship-packet",
+            "push",
+            "pull-request"
+          ],
+          "summary": "Normalize a concrete request and persist one Work Brief for plan intake."
+        }
+      }
+    },
+    {
+      "kind": "skill",
+      "familyId": "pi-skill-files",
+      "path": ".pi/skills/plan/SKILL.md",
+      "content": "---\nname: plan\ndescription: Consume exactly one Work Brief and produce an Implementation Plan with Verification Delta. Use through /skill:plan when the locked DL-03 plan protocol is needed.\nvibe-protocol: implementation-plan-producer\nvibe-input-artifact: work-brief\nvibe-output-artifact: implementation-plan-with-verification-delta\nruntimeExecutionClaim: pending-live\n---\n\n# plan\n\nThis generated pi skill is a domain-neutral adapter asset for the vibe-engineer locked skill protocol.\n\n## Protocol chain\n\n- Input artifact: work-brief.\n- Output artifact: implementation-plan-with-verification-delta.\n- The skill must persist its output through the harness artifact carrier; chat history alone is not a carrier.\n- Runtime execution claim: pending-live; live pi loading/execution is not claimed by this fixture.\n\n## Required behavior\n\nConsume exactly one Work Brief and produce an Implementation Plan with Verification Delta.\n\n## Forbidden behavior\n\n- Do not produce or execute build-result from this skill.\n- Do not produce or execute ship-packet from this skill.\n- Do not produce or execute push from this skill.\n- Do not produce or execute pull-request from this skill.\n- Do not embed secrets, credentials, project-specific business assumptions, destructive commands, or external mutations.\n- Do not claim selected pi runtime truth-green without a recorded real loader/executor witness.\n",
+      "metadata": {
+        "generatedBy": "I-14B-pi-adapter-runtime-skill-consumption",
+        "runtimeExecutionClaim": "pending-live",
+        "skillProtocol": {
+          "skillId": "plan",
+          "protocolKind": "implementation-plan-producer",
+          "inputArtifact": "work-brief",
+          "outputArtifact": "implementation-plan-with-verification-delta",
+          "forbiddenArtifacts": [
+            "build-result",
+            "ship-packet",
+            "push",
+            "pull-request"
+          ],
+          "summary": "Consume exactly one Work Brief and produce an Implementation Plan with Verification Delta."
+        }
+      }
+    },
+    {
+      "kind": "skill",
+      "familyId": "pi-skill-files",
+      "path": ".pi/skills/build/SKILL.md",
+      "content": "---\nname: build\ndescription: Consume an approved Implementation Plan and produce a Build Result after implementation and verification evidence. Use through /skill:build when the locked DL-03 build protocol is needed.\nvibe-protocol: build-result-producer\nvibe-input-artifact: approved-implementation-plan\nvibe-output-artifact: build-result\nruntimeExecutionClaim: pending-live\n---\n\n# build\n\nThis generated pi skill is a domain-neutral adapter asset for the vibe-engineer locked skill protocol.\n\n## Protocol chain\n\n- Input artifact: approved-implementation-plan.\n- Output artifact: build-result.\n- The skill must persist its output through the harness artifact carrier; chat history alone is not a carrier.\n- Runtime execution claim: pending-live; live pi loading/execution is not claimed by this fixture.\n\n## Required behavior\n\nConsume an approved Implementation Plan and produce a Build Result after implementation and verification evidence.\n\n## Forbidden behavior\n\n- Do not produce or execute ship-packet from this skill.\n- Do not produce or execute push from this skill.\n- Do not produce or execute pull-request from this skill.\n- Do not embed secrets, credentials, project-specific business assumptions, destructive commands, or external mutations.\n- Do not claim selected pi runtime truth-green without a recorded real loader/executor witness.\n",
+      "metadata": {
+        "generatedBy": "I-14B-pi-adapter-runtime-skill-consumption",
+        "runtimeExecutionClaim": "pending-live",
+        "skillProtocol": {
+          "skillId": "build",
+          "protocolKind": "build-result-producer",
+          "inputArtifact": "approved-implementation-plan",
+          "outputArtifact": "build-result",
+          "forbiddenArtifacts": [
+            "ship-packet",
+            "push",
+            "pull-request"
+          ],
+          "summary": "Consume an approved Implementation Plan and produce a Build Result after implementation and verification evidence."
+        }
+      }
+    },
+    {
+      "kind": "skill",
+      "familyId": "pi-skill-files",
+      "path": ".pi/skills/ship/SKILL.md",
+      "content": "---\nname: ship\ndescription: Consume a Build Result and produce a Ship Packet; push or PR creation requires explicit approval. Use through /skill:ship when the locked DL-03 ship protocol is needed.\nvibe-protocol: ship-packet-producer\nvibe-input-artifact: build-result\nvibe-output-artifact: ship-packet\nruntimeExecutionClaim: pending-live\n---\n\n# ship\n\nThis generated pi skill is a domain-neutral adapter asset for the vibe-engineer locked skill protocol.\n\n## Protocol chain\n\n- Input artifact: build-result.\n- Output artifact: ship-packet.\n- The skill must persist its output through the harness artifact carrier; chat history alone is not a carrier.\n- Runtime execution claim: pending-live; live pi loading/execution is not claimed by this fixture.\n\n## Required behavior\n\nConsume a Build Result and produce a Ship Packet; push or PR creation requires explicit approval.\n\n## Forbidden behavior\n\n- Do not produce or execute push from this skill.\n- Do not produce or execute pull-request from this skill.\n- Do not embed secrets, credentials, project-specific business assumptions, destructive commands, or external mutations.\n- Do not claim selected pi runtime truth-green without a recorded real loader/executor witness.\n",
+      "metadata": {
+        "generatedBy": "I-14B-pi-adapter-runtime-skill-consumption",
+        "runtimeExecutionClaim": "pending-live",
+        "skillProtocol": {
+          "skillId": "ship",
+          "protocolKind": "ship-packet-producer",
+          "inputArtifact": "build-result",
+          "outputArtifact": "ship-packet",
+          "forbiddenArtifacts": [
+            "push",
+            "pull-request"
+          ],
+          "summary": "Consume a Build Result and produce a Ship Packet; push or PR creation requires explicit approval."
+        }
+      }
+    },
+    {
+      "kind": "prompt-template",
+      "familyId": "pi-prompt-templates",
+      "path": ".pi/prompts/vibe-brainstorm.md",
+      "content": "---\ndescription: Invoke the generated brainstorm skill protocol with a persisted artifact handoff requirement.\nargument-hint: \"<artifact-or-request-ref>\"\nvibe-template-kind: skill-workflow\nvibe-skill: brainstorm\nruntimeExecutionClaim: pending-live\n---\nLoad and follow /skill:brainstorm.\n\nArgument contract:\n- $1 must be a durable artifact path, work reference, or raw user request appropriate for the skill protocol.\n- $@ may contain additional constraints; it must not contain secrets or production credentials.\n\nInput reference: $1\nAdditional constraints: $@\n\nDo not proceed if the required artifact carrier is missing, malformed, or outside the current owned path scope.\n",
+      "metadata": {
+        "generatedBy": "I-14B-pi-adapter-runtime-skill-consumption",
+        "runtimeExecutionClaim": "pending-live",
+        "promptContract": {
+          "templateName": "vibe-brainstorm",
+          "description": "Invoke the generated brainstorm skill protocol with a persisted artifact handoff requirement.",
+          "argumentHint": "<artifact-or-request-ref>",
+          "argumentContract": [
+            "$1 must be a durable artifact path, work reference, or raw user request appropriate for the skill protocol.",
+            "$@ may contain additional constraints; it must not contain secrets or production credentials."
+          ],
+          "skillId": "brainstorm"
+        }
+      }
+    },
+    {
+      "kind": "prompt-template",
+      "familyId": "pi-prompt-templates",
+      "path": ".pi/prompts/vibe-grill-me.md",
+      "content": "---\ndescription: Invoke the generated grill-me skill protocol with a persisted artifact handoff requirement.\nargument-hint: \"<artifact-or-request-ref>\"\nvibe-template-kind: skill-workflow\nvibe-skill: grill-me\nruntimeExecutionClaim: pending-live\n---\nLoad and follow /skill:grill-me.\n\nArgument contract:\n- $1 must be a durable artifact path, work reference, or raw user request appropriate for the skill protocol.\n- $@ may contain additional constraints; it must not contain secrets or production credentials.\n\nInput reference: $1\nAdditional constraints: $@\n\nDo not proceed if the required artifact carrier is missing, malformed, or outside the current owned path scope.\n",
+      "metadata": {
+        "generatedBy": "I-14B-pi-adapter-runtime-skill-consumption",
+        "runtimeExecutionClaim": "pending-live",
+        "promptContract": {
+          "templateName": "vibe-grill-me",
+          "description": "Invoke the generated grill-me skill protocol with a persisted artifact handoff requirement.",
+          "argumentHint": "<artifact-or-request-ref>",
+          "argumentContract": [
+            "$1 must be a durable artifact path, work reference, or raw user request appropriate for the skill protocol.",
+            "$@ may contain additional constraints; it must not contain secrets or production credentials."
+          ],
+          "skillId": "grill-me"
+        }
+      }
+    },
+    {
+      "kind": "prompt-template",
+      "familyId": "pi-prompt-templates",
+      "path": ".pi/prompts/vibe-task.md",
+      "content": "---\ndescription: Invoke the generated task skill protocol with a persisted artifact handoff requirement.\nargument-hint: \"<artifact-or-request-ref>\"\nvibe-template-kind: skill-workflow\nvibe-skill: task\nruntimeExecutionClaim: pending-live\n---\nLoad and follow /skill:task.\n\nArgument contract:\n- $1 must be a durable artifact path, work reference, or raw user request appropriate for the skill protocol.\n- $@ may contain additional constraints; it must not contain secrets or production credentials.\n\nInput reference: $1\nAdditional constraints: $@\n\nDo not proceed if the required artifact carrier is missing, malformed, or outside the current owned path scope.\n",
+      "metadata": {
+        "generatedBy": "I-14B-pi-adapter-runtime-skill-consumption",
+        "runtimeExecutionClaim": "pending-live",
+        "promptContract": {
+          "templateName": "vibe-task",
+          "description": "Invoke the generated task skill protocol with a persisted artifact handoff requirement.",
+          "argumentHint": "<artifact-or-request-ref>",
+          "argumentContract": [
+            "$1 must be a durable artifact path, work reference, or raw user request appropriate for the skill protocol.",
+            "$@ may contain additional constraints; it must not contain secrets or production credentials."
+          ],
+          "skillId": "task"
+        }
+      }
+    },
+    {
+      "kind": "prompt-template",
+      "familyId": "pi-prompt-templates",
+      "path": ".pi/prompts/vibe-plan.md",
+      "content": "---\ndescription: Invoke the generated plan skill protocol with a persisted artifact handoff requirement.\nargument-hint: \"<artifact-or-request-ref>\"\nvibe-template-kind: skill-workflow\nvibe-skill: plan\nruntimeExecutionClaim: pending-live\n---\nLoad and follow /skill:plan.\n\nArgument contract:\n- $1 must be a durable artifact path, work reference, or raw user request appropriate for the skill protocol.\n- $@ may contain additional constraints; it must not contain secrets or production credentials.\n\nInput reference: $1\nAdditional constraints: $@\n\nDo not proceed if the required artifact carrier is missing, malformed, or outside the current owned path scope.\n",
+      "metadata": {
+        "generatedBy": "I-14B-pi-adapter-runtime-skill-consumption",
+        "runtimeExecutionClaim": "pending-live",
+        "promptContract": {
+          "templateName": "vibe-plan",
+          "description": "Invoke the generated plan skill protocol with a persisted artifact handoff requirement.",
+          "argumentHint": "<artifact-or-request-ref>",
+          "argumentContract": [
+            "$1 must be a durable artifact path, work reference, or raw user request appropriate for the skill protocol.",
+            "$@ may contain additional constraints; it must not contain secrets or production credentials."
+          ],
+          "skillId": "plan"
+        }
+      }
+    },
+    {
+      "kind": "prompt-template",
+      "familyId": "pi-prompt-templates",
+      "path": ".pi/prompts/vibe-build.md",
+      "content": "---\ndescription: Invoke the generated build skill protocol with a persisted artifact handoff requirement.\nargument-hint: \"<artifact-or-request-ref>\"\nvibe-template-kind: skill-workflow\nvibe-skill: build\nruntimeExecutionClaim: pending-live\n---\nLoad and follow /skill:build.\n\nArgument contract:\n- $1 must be a durable artifact path, work reference, or raw user request appropriate for the skill protocol.\n- $@ may contain additional constraints; it must not contain secrets or production credentials.\n\nInput reference: $1\nAdditional constraints: $@\n\nDo not proceed if the required artifact carrier is missing, malformed, or outside the current owned path scope.\n",
+      "metadata": {
+        "generatedBy": "I-14B-pi-adapter-runtime-skill-consumption",
+        "runtimeExecutionClaim": "pending-live",
+        "promptContract": {
+          "templateName": "vibe-build",
+          "description": "Invoke the generated build skill protocol with a persisted artifact handoff requirement.",
+          "argumentHint": "<artifact-or-request-ref>",
+          "argumentContract": [
+            "$1 must be a durable artifact path, work reference, or raw user request appropriate for the skill protocol.",
+            "$@ may contain additional constraints; it must not contain secrets or production credentials."
+          ],
+          "skillId": "build"
+        }
+      }
+    },
+    {
+      "kind": "prompt-template",
+      "familyId": "pi-prompt-templates",
+      "path": ".pi/prompts/vibe-ship.md",
+      "content": "---\ndescription: Invoke the generated ship skill protocol with a persisted artifact handoff requirement.\nargument-hint: \"<artifact-or-request-ref>\"\nvibe-template-kind: skill-workflow\nvibe-skill: ship\nruntimeExecutionClaim: pending-live\n---\nLoad and follow /skill:ship.\n\nArgument contract:\n- $1 must be a durable artifact path, work reference, or raw user request appropriate for the skill protocol.\n- $@ may contain additional constraints; it must not contain secrets or production credentials.\n\nInput reference: $1\nAdditional constraints: $@\n\nDo not proceed if the required artifact carrier is missing, malformed, or outside the current owned path scope.\n",
+      "metadata": {
+        "generatedBy": "I-14B-pi-adapter-runtime-skill-consumption",
+        "runtimeExecutionClaim": "pending-live",
+        "promptContract": {
+          "templateName": "vibe-ship",
+          "description": "Invoke the generated ship skill protocol with a persisted artifact handoff requirement.",
+          "argumentHint": "<artifact-or-request-ref>",
+          "argumentContract": [
+            "$1 must be a durable artifact path, work reference, or raw user request appropriate for the skill protocol.",
+            "$@ may contain additional constraints; it must not contain secrets or production credentials."
+          ],
+          "skillId": "ship"
+        }
+      }
+    },
+    {
+      "kind": "extension",
+      "familyId": "pi-extensions",
+      "path": ".pi/extensions/i14b-runtime-policy.ts",
+      "content": "export const I14B_PI_RUNTIME_EXTENSION_POLICY = {\n  defaultDeny: true,\n  requiresCredentialsByDefault: false,\n  permitsDestructiveOperationsByDefault: false,\n  permitsExternalMutationByDefault: false,\n  claimsSandboxing: \"not_provided\",\n  runtimeExecutionClaim: \"pending-live\",\n  trustBoundary: \"Project-local TypeScript extension executes only after pi project trust; no sandbox isolation is claimed.\",\n} as const;\n\nexport default function i14bPiRuntimePolicyExtension(): void {\n  // Default-deny fixture: registers no tools, executes no commands, needs no credentials,\n  // performs no network or filesystem mutation, and makes no live runtime proof claim.\n}\n",
+      "metadata": {
+        "generatedBy": "I-14B-pi-adapter-runtime-skill-consumption",
+        "runtimeExecutionClaim": "pending-live",
+        "extensionPolicy": {
+          "defaultDeny": true,
+          "requiresCredentialsByDefault": false,
+          "permitsDestructiveOperationsByDefault": false,
+          "permitsExternalMutationByDefault": false,
+          "claimsSandboxing": "not_provided",
+          "runtimeExecutionClaim": "pending-live",
+          "trustBoundary": "Project-local TypeScript extension executes only after pi project trust; this fixture registers no tools, performs no I/O, and claims no sandbox isolation."
+        }
+      }
+    },
+    {
+      "kind": "package-manifest",
+      "familyId": "pi-package-manifest",
+      "path": "package.json",
+      "content": "{\n  \"name\": \"vibe-engineer-pi-runtime-fixture\",\n  \"private\": true,\n  \"version\": \"0.0.0\",\n  \"license\": \"MIT\",\n  \"description\": \"Fixture-local pi resource manifest generated by I-14B; no package install or live runtime claim is implied.\",\n  \"keywords\": [\n    \"pi-package\"\n  ],\n  \"pi\": {\n    \"skills\": [\n      \"./.pi/skills\"\n    ],\n    \"prompts\": [\n      \"./.pi/prompts\"\n    ],\n    \"extensions\": [\n      \"./.pi/extensions/i14b-runtime-policy.ts\"\n    ]\n  }\n}\n",
+      "metadata": {
+        "generatedBy": "I-14B-pi-adapter-runtime-skill-consumption",
+        "runtimeExecutionClaim": "pending-live"
+      }
+    },
+    {
+      "kind": "context",
+      "familyId": "context-files",
+      "path": "AGENTS.md",
+      "content": "# Agent instructions for the vibe-engineer pi runtime fixture\n\n- Use the generated pi skills for the locked domain-neutral harness workflow only.\n- Preserve the artifact chain: Work Brief -> Implementation Plan with Verification Delta -> Build Result -> Ship Packet.\n- Treat live pi runtime loading as pending-live/BLOCKED until a real pi loader or executor witness records otherwise.\n- Do not embed secrets, credentials, production endpoints, project-specific business assumptions, destructive commands, pushes, releases, deploys, or pull-request creation without explicit approval.\n",
+      "metadata": {
+        "generatedBy": "I-14B-pi-adapter-runtime-skill-consumption",
+        "runtimeExecutionClaim": "pending-live",
+        "contextPolicy": {
+          "domainNeutral": true,
+          "secretsAllowed": false,
+          "businessDomainAssumptionsAllowed": false,
+          "liveRuntimeTruthGreenClaimAllowed": false
+        }
+      }
+    },
+    {
+      "kind": "context",
+      "familyId": "context-files",
+      "path": "CLAUDE.md",
+      "content": "# Cross-harness instructions for the vibe-engineer pi runtime fixture\n\n- Use the generated pi skills for the locked domain-neutral harness workflow only.\n- Preserve the artifact chain: Work Brief -> Implementation Plan with Verification Delta -> Build Result -> Ship Packet.\n- Treat live pi runtime loading as pending-live/BLOCKED until a real pi loader or executor witness records otherwise.\n- Do not embed secrets, credentials, production endpoints, project-specific business assumptions, destructive commands, pushes, releases, deploys, or pull-request creation without explicit approval.\n",
+      "metadata": {
+        "generatedBy": "I-14B-pi-adapter-runtime-skill-consumption",
+        "runtimeExecutionClaim": "pending-live",
+        "contextPolicy": {
+          "domainNeutral": true,
+          "secretsAllowed": false,
+          "businessDomainAssumptionsAllowed": false,
+          "liveRuntimeTruthGreenClaimAllowed": false
+        }
+      }
+    },
+    {
+      "kind": "harness-config",
+      "familyId": "harness-config",
+      "path": ".vibe/harness/pi-runtime.json",
+      "content": "{\n  \"schemaVersion\": \"vibe-engineer-pi-runtime-fixture-config/v1\",\n  \"agenticHarness\": \"pi\",\n  \"adapterCapabilityVersion\": \"pi-adapter-capability-matrix/v1\",\n  \"generatedFileManifestVersion\": \"pi-generated-file-manifest/v1\",\n  \"runtimeExecutionClaim\": \"pending-live\",\n  \"downstreamLiveRuntimeBlock\": \"pending-live/BLOCKED\"\n}\n",
+      "metadata": {
+        "generatedBy": "I-14B-pi-adapter-runtime-skill-consumption",
+        "runtimeExecutionClaim": "pending-live"
+      }
+    }
+  ]
+}

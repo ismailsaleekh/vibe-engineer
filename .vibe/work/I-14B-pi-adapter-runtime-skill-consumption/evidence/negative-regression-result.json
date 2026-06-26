@@ -1,0 +1,697 @@
+{
+  "ok": true,
+  "positive": {
+    "valid": true,
+    "issues": []
+  },
+  "negativeCases": [
+    {
+      "name": "missing-one-required-skill",
+      "ok": true,
+      "valid": false,
+      "expectedCodes": [
+        "missing_required_skill"
+      ],
+      "codes": [
+        "missing_required_skill"
+      ],
+      "issues": [
+        {
+          "path": "$.assets",
+          "code": "missing_required_skill",
+          "message": "Missing required skill asset 'ship'.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "duplicate-skill-id",
+      "ok": true,
+      "valid": false,
+      "expectedCodes": [
+        "duplicate_skill_id"
+      ],
+      "codes": [
+        "duplicate_skill_id",
+        "unknown_skill_id"
+      ],
+      "issues": [
+        {
+          "path": "$.assets[17].path",
+          "code": "unknown_skill_id",
+          "message": "Skill resource path contains an unknown skill id.",
+          "severity": "error"
+        },
+        {
+          "path": "$.assets",
+          "code": "duplicate_skill_id",
+          "message": "Duplicate generated skill id 'task'.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "unknown-skill-id",
+      "ok": true,
+      "valid": false,
+      "expectedCodes": [
+        "unknown_skill_id"
+      ],
+      "codes": [
+        "unknown_skill_id"
+      ],
+      "issues": [
+        {
+          "path": "$.assets[2].path",
+          "code": "unknown_skill_id",
+          "message": "Skill resource path contains an unknown skill id.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "mismatched-skill-command-resource-path",
+      "ok": true,
+      "valid": false,
+      "expectedCodes": [
+        "mismatched_skill_command_resource_path"
+      ],
+      "codes": [
+        "duplicate_asset_path",
+        "mismatched_skill_command_resource_path"
+      ],
+      "issues": [
+        {
+          "path": "$.assets",
+          "code": "duplicate_asset_path",
+          "message": "Runtime fixture contains duplicate asset paths.",
+          "severity": "error"
+        },
+        {
+          "path": "$.assets[2].metadata.skillProtocol.skillId",
+          "code": "mismatched_skill_command_resource_path",
+          "message": "Skill metadata, command name, and resource path must identify the same skill.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "skill-missing-name",
+      "ok": true,
+      "valid": false,
+      "expectedCodes": [
+        "missing_skill_name"
+      ],
+      "codes": [
+        "missing_skill_name"
+      ],
+      "issues": [
+        {
+          "path": "$.assets[0].frontmatter.name",
+          "code": "missing_skill_name",
+          "message": "Skill frontmatter must include name.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "skill-missing-description",
+      "ok": true,
+      "valid": false,
+      "expectedCodes": [
+        "missing_skill_description"
+      ],
+      "codes": [
+        "missing_skill_description"
+      ],
+      "issues": [
+        {
+          "path": "$.assets[0].frontmatter.description",
+          "code": "missing_skill_description",
+          "message": "Skill frontmatter must include description because pi will not load skills missing it.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "invalid-skill-name",
+      "ok": true,
+      "valid": false,
+      "expectedCodes": [
+        "invalid_skill_name"
+      ],
+      "codes": [
+        "invalid_skill_name"
+      ],
+      "issues": [
+        {
+          "path": "$.assets[0].frontmatter.name",
+          "code": "invalid_skill_name",
+          "message": "Skill name must follow pi Agent Skills name rules.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "dl03-contradicting-output",
+      "ok": true,
+      "valid": false,
+      "expectedCodes": [
+        "dl03_output_contradiction"
+      ],
+      "codes": [
+        "dl03_output_contradiction"
+      ],
+      "issues": [
+        {
+          "path": "$.assets[0].frontmatter.vibe-output-artifact",
+          "code": "dl03_output_contradiction",
+          "message": "Skill output artifact must match the locked DL-03 chain.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "prompt-missing-description",
+      "ok": true,
+      "valid": false,
+      "expectedCodes": [
+        "missing_prompt_description"
+      ],
+      "codes": [
+        "missing_prompt_description"
+      ],
+      "issues": [
+        {
+          "path": "$.assets[9].frontmatter.description",
+          "code": "missing_prompt_description",
+          "message": "Prompt template description is required by the generated template contract.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "prompt-missing-argument-contract",
+      "ok": true,
+      "valid": false,
+      "expectedCodes": [
+        "missing_prompt_argument_contract"
+      ],
+      "codes": [
+        "missing_prompt_argument_contract"
+      ],
+      "issues": [
+        {
+          "path": "$.assets[9].frontmatter.argument-hint",
+          "code": "missing_prompt_argument_contract",
+          "message": "Prompt template argument contract is required.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "prompt-outside-pi-prompts",
+      "ok": true,
+      "valid": false,
+      "expectedCodes": [
+        "prompt_template_not_discoverable"
+      ],
+      "codes": [
+        "prompt_template_not_discoverable"
+      ],
+      "issues": [
+        {
+          "path": "$.assets[9].path",
+          "code": "prompt_template_not_discoverable",
+          "message": "Prompt templates must be direct `.pi/prompts/*.md` files unless explicitly configured; generated fixtures do not use nested prompt settings.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "nested-prompt-not-discoverable",
+      "ok": true,
+      "valid": false,
+      "expectedCodes": [
+        "prompt_template_not_discoverable"
+      ],
+      "codes": [
+        "prompt_template_not_discoverable"
+      ],
+      "issues": [
+        {
+          "path": "$.assets[9].path",
+          "code": "prompt_template_not_discoverable",
+          "message": "Prompt templates must be direct `.pi/prompts/*.md` files unless explicitly configured; generated fixtures do not use nested prompt settings.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "extension-outside-allowed-path",
+      "ok": true,
+      "valid": false,
+      "expectedCodes": [
+        "extension_path_not_discoverable"
+      ],
+      "codes": [
+        "extension_path_not_discoverable",
+        "pi_resource_path_missing_asset"
+      ],
+      "issues": [
+        {
+          "path": "$.assets[12].path",
+          "code": "extension_path_not_discoverable",
+          "message": "Extension assets must be `.pi/extensions/<name>.ts` or `.pi/extensions/<name>/index.ts`.",
+          "severity": "error"
+        },
+        {
+          "path": "$.assets[13].content.pi.extensions[0]",
+          "code": "pi_resource_path_missing_asset",
+          "message": "Pi package resource path must point inside the generated fixture asset set.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "extension-claims-sandboxing",
+      "ok": true,
+      "valid": false,
+      "expectedCodes": [
+        "extension_claims_unsupported_sandboxing"
+      ],
+      "codes": [
+        "extension_claims_unsupported_sandboxing"
+      ],
+      "issues": [
+        {
+          "path": "$.assets[12].metadata.extensionPolicy.claimsSandboxing",
+          "code": "extension_claims_unsupported_sandboxing",
+          "message": "Generated extensions must not claim unsupported sandboxing.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "extension-allows-destructive",
+      "ok": true,
+      "valid": false,
+      "expectedCodes": [
+        "extension_allows_destructive_by_default"
+      ],
+      "codes": [
+        "extension_allows_destructive_by_default"
+      ],
+      "issues": [
+        {
+          "path": "$.assets[12].metadata.extensionPolicy.permitsDestructiveOperationsByDefault",
+          "code": "extension_allows_destructive_by_default",
+          "message": "Generated extensions must not permit destructive operations by default.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "extension-allows-external-mutation",
+      "ok": true,
+      "valid": false,
+      "expectedCodes": [
+        "extension_allows_external_mutation_by_default"
+      ],
+      "codes": [
+        "extension_allows_external_mutation_by_default"
+      ],
+      "issues": [
+        {
+          "path": "$.assets[12].metadata.extensionPolicy.permitsExternalMutationByDefault",
+          "code": "extension_allows_external_mutation_by_default",
+          "message": "Generated extensions must not mutate external systems by default.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "extension-requires-credentials",
+      "ok": true,
+      "valid": false,
+      "expectedCodes": [
+        "extension_requires_credentials_by_default"
+      ],
+      "codes": [
+        "extension_requires_credentials_by_default"
+      ],
+      "issues": [
+        {
+          "path": "$.assets[12].metadata.extensionPolicy.requiresCredentialsByDefault",
+          "code": "extension_requires_credentials_by_default",
+          "message": "Generated extensions must not require credentials by default.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "extension-weakens-content-policy",
+      "ok": true,
+      "valid": false,
+      "expectedCodes": [
+        "extension_weakens_dl22_policy"
+      ],
+      "codes": [
+        "extension_weakens_dl22_policy"
+      ],
+      "issues": [
+        {
+          "path": "$.assets[12].content",
+          "code": "extension_weakens_dl22_policy",
+          "message": "Extension content contains destructive, credential, external mutation, or unsupported sandbox markers.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "context-embeds-secret",
+      "ok": true,
+      "valid": false,
+      "expectedCodes": [
+        "context_embeds_secret_or_credential"
+      ],
+      "codes": [
+        "context_embeds_secret_or_credential"
+      ],
+      "issues": [
+        {
+          "path": "$.assets[14].content",
+          "code": "context_embeds_secret_or_credential",
+          "message": "Context asset contains a credential-like marker.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "context-embeds-domain-assumption",
+      "ok": true,
+      "valid": false,
+      "expectedCodes": [
+        "context_embeds_business_domain_assumption"
+      ],
+      "codes": [
+        "context_embeds_business_domain_assumption"
+      ],
+      "issues": [
+        {
+          "path": "$.assets[14].content",
+          "code": "context_embeds_business_domain_assumption",
+          "message": "Context asset contains a project/business-domain assumption.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "context-claims-live-runtime-green",
+      "ok": true,
+      "valid": false,
+      "expectedCodes": [
+        "context_claims_live_runtime_truth_green"
+      ],
+      "codes": [
+        "context_claims_live_runtime_truth_green"
+      ],
+      "issues": [
+        {
+          "path": "$.assets[14].content",
+          "code": "context_claims_live_runtime_truth_green",
+          "message": "Context asset must not claim live pi runtime truth-green.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "package-missing-pi-resources",
+      "ok": true,
+      "valid": false,
+      "expectedCodes": [
+        "missing_pi_package_resources"
+      ],
+      "codes": [
+        "missing_pi_package_resources"
+      ],
+      "issues": [
+        {
+          "path": "$.assets[13].content.pi",
+          "code": "missing_pi_package_resources",
+          "message": "Package manifest must declare pi resources.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "package-invalid-resource-path",
+      "ok": true,
+      "valid": false,
+      "expectedCodes": [
+        "path_traversal",
+        "pi_resource_path_missing_asset"
+      ],
+      "codes": [
+        "path_traversal",
+        "pi_resource_path_missing_asset"
+      ],
+      "issues": [
+        {
+          "path": "$.assets[13].content.pi.skills[0]",
+          "code": "path_traversal",
+          "message": "Generated asset path must not contain traversal, empty segments, or symlink-style escape syntax.",
+          "severity": "error"
+        },
+        {
+          "path": "$.assets[13].content.pi.skills[0]",
+          "code": "pi_resource_path_missing_asset",
+          "message": "Pi package resource path must point inside the generated fixture asset set.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "package-resource-outside-fixture",
+      "ok": true,
+      "valid": false,
+      "expectedCodes": [
+        "pi_resource_path_missing_asset"
+      ],
+      "codes": [
+        "pi_resource_path_missing_asset"
+      ],
+      "issues": [
+        {
+          "path": "$.assets[13].content.pi.prompts[0]",
+          "code": "pi_resource_path_missing_asset",
+          "message": "Pi package resource path must point inside the generated fixture asset set.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "unknown-generated-file-family",
+      "ok": true,
+      "valid": false,
+      "expectedCodes": [
+        "unknown_generated_file_family"
+      ],
+      "codes": [
+        "unknown_generated_file_family"
+      ],
+      "issues": [
+        {
+          "path": "$.assets[0].familyId",
+          "code": "unknown_generated_file_family",
+          "message": "Generated runtime asset uses an unknown generated-file family.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "unsupported-non-pi-config-selection",
+      "ok": true,
+      "valid": false,
+      "expectedCodes": [
+        "unsupported_non_pi_adapter_selection"
+      ],
+      "codes": [
+        "unsupported_non_pi_adapter_selection"
+      ],
+      "issues": [
+        {
+          "path": "$.assets[16].content.agenticHarness",
+          "code": "unsupported_non_pi_adapter_selection",
+          "message": "Runtime fixture config may only select the pi adapter.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "path-traversal-asset",
+      "ok": true,
+      "valid": false,
+      "expectedCodes": [
+        "path_traversal"
+      ],
+      "codes": [
+        "mismatched_skill_resource_path",
+        "path_traversal"
+      ],
+      "issues": [
+        {
+          "path": "$.assets[0].path",
+          "code": "path_traversal",
+          "message": "Generated asset path must not contain traversal, empty segments, or symlink-style escape syntax.",
+          "severity": "error"
+        },
+        {
+          "path": "$.assets[0].path",
+          "code": "mismatched_skill_resource_path",
+          "message": "Skill assets must be at `.pi/skills/<skill>/SKILL.md` or `.agents/skills/<skill>/SKILL.md`.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "absolute-path-asset",
+      "ok": true,
+      "valid": false,
+      "expectedCodes": [
+        "absolute_path"
+      ],
+      "codes": [
+        "absolute_path",
+        "mismatched_skill_resource_path",
+        "path_traversal"
+      ],
+      "issues": [
+        {
+          "path": "$.assets[0].path",
+          "code": "absolute_path",
+          "message": "Generated asset path must be relative to the fixture root.",
+          "severity": "error"
+        },
+        {
+          "path": "$.assets[0].path",
+          "code": "path_traversal",
+          "message": "Generated asset path must not contain traversal, empty segments, or symlink-style escape syntax.",
+          "severity": "error"
+        },
+        {
+          "path": "$.assets[0].path",
+          "code": "mismatched_skill_resource_path",
+          "message": "Skill assets must be at `.pi/skills/<skill>/SKILL.md` or `.agents/skills/<skill>/SKILL.md`.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "runtime-proven-claim-rejected",
+      "ok": true,
+      "valid": false,
+      "expectedCodes": [
+        "runtime_execution_claim_requires_live_evidence"
+      ],
+      "codes": [
+        "runtime_execution_claim_requires_live_evidence"
+      ],
+      "issues": [
+        {
+          "path": "$.runtimeExecutionClaim",
+          "code": "runtime_execution_claim_requires_live_evidence",
+          "message": "Live/proven/loaded/executed runtime claims require actual live pi loader/executor evidence and are not accepted by the static runtime asset validator.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "asset-runtime-loaded-claim-rejected",
+      "ok": true,
+      "valid": false,
+      "expectedCodes": [
+        "runtime_execution_claim_requires_live_evidence"
+      ],
+      "codes": [
+        "runtime_execution_claim_requires_live_evidence"
+      ],
+      "issues": [
+        {
+          "path": "$.assets[0].metadata.runtimeExecutionClaim",
+          "code": "runtime_execution_claim_requires_live_evidence",
+          "message": "Live/proven/loaded/executed runtime claims require actual live pi loader/executor evidence and are not accepted by the static runtime asset validator.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "write-plan-rejects-symlink-target",
+      "ok": true,
+      "valid": false,
+      "expectedCodes": [
+        "symlink_write_escape"
+      ],
+      "codes": [
+        "symlink_write_escape"
+      ],
+      "issues": [
+        {
+          "path": "existingPaths..pi/skills/brainstorm/SKILL.md",
+          "code": "symlink_write_escape",
+          "message": "Write plan refuses symlink targets because they may escape the fixture root.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "write-plan-rejects-unsafe-overwrite-conflict",
+      "ok": true,
+      "valid": false,
+      "expectedCodes": [
+        "unsafe_overwrite_conflict"
+      ],
+      "codes": [
+        "unsafe_overwrite_conflict"
+      ],
+      "issues": [
+        {
+          "path": "existingPaths..pi/skills/brainstorm/SKILL.md",
+          "code": "unsafe_overwrite_conflict",
+          "message": "Write plan only permits identical-content overwrites under allow-identical-overwrite policy.",
+          "severity": "error"
+        }
+      ]
+    }
+  ],
+  "regression": {
+    "capabilityValidationValid": true,
+    "manifestValidationValid": true,
+    "summaryRuntimeExecutionClaim": "not-claimed",
+    "summarySkills": [
+      "brainstorm",
+      "grill-me",
+      "task",
+      "plan",
+      "build",
+      "ship"
+    ],
+    "summaryFamilies": [
+      "pi-skill-files",
+      "pi-prompt-templates",
+      "pi-extensions",
+      "pi-package-manifest",
+      "context-files",
+      "harness-config"
+    ],
+    "allSixSkillsAligned": true,
+    "allFamiliesAligned": true,
+    "piManifestSelectable": true,
+    "nonPiSelectable": []
+  },
+  "i14aHashes": {
+    "packages/adapters/pi/src/capabilities/index.ts": "6e425710a5cede273eb1b9058078bc85bebd42f0a6f97d14ed44e3a08f233f86",
+    "packages/adapters/pi/src/generated-file-manifest/index.ts": "9ebb61e0b5e05aee94bc6fc70a4a6ceeb876b024d93d438c4203131603226e76",
+    "packages/adapters/pi/src/schema/index.ts": "3bf6f61cb0f31d0e71ba4692da4e3cc9c29c140e94e5629c071031fcdc604e55"
+  }
+}

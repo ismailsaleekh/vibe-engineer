@@ -1,0 +1,887 @@
+{
+  "ok": true,
+  "caseCount": 37,
+  "failedCount": 0,
+  "failed": [],
+  "cases": [
+    {
+      "name": "missing required skill",
+      "kind": "fixture",
+      "passed": true,
+      "valid": false,
+      "expectedCodes": [
+        "missing_required_skill"
+      ],
+      "actualCodes": [
+        "missing_required_skill"
+      ],
+      "missingExpected": [],
+      "issueCount": 1,
+      "issues": [
+        {
+          "path": "$.assets",
+          "code": "missing_required_skill",
+          "message": "Missing required skill asset 'ship'.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "duplicate skill id",
+      "kind": "fixture",
+      "passed": true,
+      "valid": false,
+      "expectedCodes": [
+        "duplicate_skill_id"
+      ],
+      "actualCodes": [
+        "duplicate_skill_id"
+      ],
+      "missingExpected": [],
+      "issueCount": 1,
+      "issues": [
+        {
+          "path": "$.assets",
+          "code": "duplicate_skill_id",
+          "message": "Duplicate generated skill id 'brainstorm'.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "unknown skill id",
+      "kind": "fixture",
+      "passed": true,
+      "valid": false,
+      "expectedCodes": [
+        "unknown_skill_id"
+      ],
+      "actualCodes": [
+        "missing_required_skill",
+        "unknown_skill_id"
+      ],
+      "missingExpected": [],
+      "issueCount": 2,
+      "issues": [
+        {
+          "path": "$.assets[0].path",
+          "code": "unknown_skill_id",
+          "message": "Skill resource path contains an unknown skill id.",
+          "severity": "error"
+        },
+        {
+          "path": "$.assets",
+          "code": "missing_required_skill",
+          "message": "Missing required skill asset 'brainstorm'.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "mismatched skill command/resource path",
+      "kind": "fixture",
+      "passed": true,
+      "valid": false,
+      "expectedCodes": [
+        "mismatched_skill_command_resource_path"
+      ],
+      "actualCodes": [
+        "duplicate_asset_path",
+        "mismatched_skill_command_resource_path"
+      ],
+      "missingExpected": [],
+      "issueCount": 2,
+      "issues": [
+        {
+          "path": "$.assets",
+          "code": "duplicate_asset_path",
+          "message": "Runtime fixture contains duplicate asset paths.",
+          "severity": "error"
+        },
+        {
+          "path": "$.assets[0].metadata.skillProtocol.skillId",
+          "code": "mismatched_skill_command_resource_path",
+          "message": "Skill metadata, command name, and resource path must identify the same skill.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "missing skill name frontmatter",
+      "kind": "fixture",
+      "passed": true,
+      "valid": false,
+      "expectedCodes": [
+        "missing_skill_name"
+      ],
+      "actualCodes": [
+        "missing_skill_name"
+      ],
+      "missingExpected": [],
+      "issueCount": 1,
+      "issues": [
+        {
+          "path": "$.assets[0].frontmatter.name",
+          "code": "missing_skill_name",
+          "message": "Skill frontmatter must include name.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "missing skill description frontmatter",
+      "kind": "fixture",
+      "passed": true,
+      "valid": false,
+      "expectedCodes": [
+        "missing_skill_description"
+      ],
+      "actualCodes": [
+        "missing_skill_description"
+      ],
+      "missingExpected": [],
+      "issueCount": 1,
+      "issues": [
+        {
+          "path": "$.assets[0].frontmatter.description",
+          "code": "missing_skill_description",
+          "message": "Skill frontmatter must include description because pi will not load skills missing it.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "invalid skill name",
+      "kind": "fixture",
+      "passed": true,
+      "valid": false,
+      "expectedCodes": [
+        "invalid_skill_name"
+      ],
+      "actualCodes": [
+        "invalid_skill_name"
+      ],
+      "missingExpected": [],
+      "issueCount": 1,
+      "issues": [
+        {
+          "path": "$.assets[0].frontmatter.name",
+          "code": "invalid_skill_name",
+          "message": "Skill name must follow pi Agent Skills name rules.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "DL-03 protocol and output contradiction",
+      "kind": "fixture",
+      "passed": true,
+      "valid": false,
+      "expectedCodes": [
+        "dl03_protocol_contradiction",
+        "dl03_output_contradiction"
+      ],
+      "actualCodes": [
+        "dl03_output_contradiction",
+        "dl03_protocol_contradiction"
+      ],
+      "missingExpected": [],
+      "issueCount": 2,
+      "issues": [
+        {
+          "path": "$.assets[3].frontmatter.vibe-protocol",
+          "code": "dl03_protocol_contradiction",
+          "message": "Skill frontmatter protocol kind must match the locked DL-03 chain.",
+          "severity": "error"
+        },
+        {
+          "path": "$.assets[3].frontmatter.vibe-output-artifact",
+          "code": "dl03_output_contradiction",
+          "message": "Skill output artifact must match the locked DL-03 chain.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "prompt missing description",
+      "kind": "fixture",
+      "passed": true,
+      "valid": false,
+      "expectedCodes": [
+        "missing_prompt_description"
+      ],
+      "actualCodes": [
+        "missing_prompt_description"
+      ],
+      "missingExpected": [],
+      "issueCount": 1,
+      "issues": [
+        {
+          "path": "$.assets[6].frontmatter.description",
+          "code": "missing_prompt_description",
+          "message": "Prompt template description is required by the generated template contract.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "prompt missing argument contract",
+      "kind": "fixture",
+      "passed": true,
+      "valid": false,
+      "expectedCodes": [
+        "missing_prompt_argument_contract"
+      ],
+      "actualCodes": [
+        "missing_prompt_argument_contract"
+      ],
+      "missingExpected": [],
+      "issueCount": 1,
+      "issues": [
+        {
+          "path": "$.assets[6].frontmatter.argument-hint",
+          "code": "missing_prompt_argument_contract",
+          "message": "Prompt template argument contract is required.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "prompt outside discoverable path",
+      "kind": "fixture",
+      "passed": true,
+      "valid": false,
+      "expectedCodes": [
+        "prompt_template_not_discoverable"
+      ],
+      "actualCodes": [
+        "prompt_template_not_discoverable"
+      ],
+      "missingExpected": [],
+      "issueCount": 1,
+      "issues": [
+        {
+          "path": "$.assets[6].path",
+          "code": "prompt_template_not_discoverable",
+          "message": "Prompt templates must be direct `.pi/prompts/*.md` files unless explicitly configured; generated fixtures do not use nested prompt settings.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "nested prompt path",
+      "kind": "fixture",
+      "passed": true,
+      "valid": false,
+      "expectedCodes": [
+        "prompt_template_not_discoverable"
+      ],
+      "actualCodes": [
+        "prompt_template_not_discoverable"
+      ],
+      "missingExpected": [],
+      "issueCount": 1,
+      "issues": [
+        {
+          "path": "$.assets[6].path",
+          "code": "prompt_template_not_discoverable",
+          "message": "Prompt templates must be direct `.pi/prompts/*.md` files unless explicitly configured; generated fixtures do not use nested prompt settings.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "extension outside allowed path",
+      "kind": "fixture",
+      "passed": true,
+      "valid": false,
+      "expectedCodes": [
+        "extension_path_not_discoverable"
+      ],
+      "actualCodes": [
+        "extension_path_not_discoverable",
+        "pi_resource_path_missing_asset"
+      ],
+      "missingExpected": [],
+      "issueCount": 2,
+      "issues": [
+        {
+          "path": "$.assets[12].path",
+          "code": "extension_path_not_discoverable",
+          "message": "Extension assets must be `.pi/extensions/<name>.ts` or `.pi/extensions/<name>/index.ts`.",
+          "severity": "error"
+        },
+        {
+          "path": "$.assets[13].content.pi.extensions[0]",
+          "code": "pi_resource_path_missing_asset",
+          "message": "Pi package resource path must point inside the generated fixture asset set.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "extension claims unsupported sandboxing",
+      "kind": "fixture",
+      "passed": true,
+      "valid": false,
+      "expectedCodes": [
+        "extension_claims_unsupported_sandboxing"
+      ],
+      "actualCodes": [
+        "extension_claims_unsupported_sandboxing"
+      ],
+      "missingExpected": [],
+      "issueCount": 1,
+      "issues": [
+        {
+          "path": "$.assets[12].metadata.extensionPolicy.claimsSandboxing",
+          "code": "extension_claims_unsupported_sandboxing",
+          "message": "Generated extensions must not claim unsupported sandboxing.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "extension weakens default deny",
+      "kind": "fixture",
+      "passed": true,
+      "valid": false,
+      "expectedCodes": [
+        "extension_weakens_default_deny"
+      ],
+      "actualCodes": [
+        "extension_weakens_default_deny"
+      ],
+      "missingExpected": [],
+      "issueCount": 1,
+      "issues": [
+        {
+          "path": "$.assets[12].metadata.extensionPolicy.defaultDeny",
+          "code": "extension_weakens_default_deny",
+          "message": "Generated extensions must be default-deny.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "extension allows destructive operations by default",
+      "kind": "fixture",
+      "passed": true,
+      "valid": false,
+      "expectedCodes": [
+        "extension_allows_destructive_by_default"
+      ],
+      "actualCodes": [
+        "extension_allows_destructive_by_default"
+      ],
+      "missingExpected": [],
+      "issueCount": 1,
+      "issues": [
+        {
+          "path": "$.assets[12].metadata.extensionPolicy.permitsDestructiveOperationsByDefault",
+          "code": "extension_allows_destructive_by_default",
+          "message": "Generated extensions must not permit destructive operations by default.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "extension allows external mutation by default",
+      "kind": "fixture",
+      "passed": true,
+      "valid": false,
+      "expectedCodes": [
+        "extension_allows_external_mutation_by_default"
+      ],
+      "actualCodes": [
+        "extension_allows_external_mutation_by_default"
+      ],
+      "missingExpected": [],
+      "issueCount": 1,
+      "issues": [
+        {
+          "path": "$.assets[12].metadata.extensionPolicy.permitsExternalMutationByDefault",
+          "code": "extension_allows_external_mutation_by_default",
+          "message": "Generated extensions must not mutate external systems by default.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "extension requires credentials by default",
+      "kind": "fixture",
+      "passed": true,
+      "valid": false,
+      "expectedCodes": [
+        "extension_requires_credentials_by_default"
+      ],
+      "actualCodes": [
+        "extension_requires_credentials_by_default"
+      ],
+      "missingExpected": [],
+      "issueCount": 1,
+      "issues": [
+        {
+          "path": "$.assets[12].metadata.extensionPolicy.requiresCredentialsByDefault",
+          "code": "extension_requires_credentials_by_default",
+          "message": "Generated extensions must not require credentials by default.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "extension content weakens DL-22 policy",
+      "kind": "fixture",
+      "passed": true,
+      "valid": false,
+      "expectedCodes": [
+        "extension_weakens_dl22_policy"
+      ],
+      "actualCodes": [
+        "extension_weakens_dl22_policy"
+      ],
+      "missingExpected": [],
+      "issueCount": 1,
+      "issues": [
+        {
+          "path": "$.assets[12].content",
+          "code": "extension_weakens_dl22_policy",
+          "message": "Extension content contains destructive, credential, external mutation, or unsupported sandbox markers.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "context embeds secret marker",
+      "kind": "fixture",
+      "passed": true,
+      "valid": false,
+      "expectedCodes": [
+        "context_embeds_secret_or_credential"
+      ],
+      "actualCodes": [
+        "context_embeds_secret_or_credential"
+      ],
+      "missingExpected": [],
+      "issueCount": 1,
+      "issues": [
+        {
+          "path": "$.assets[14].content",
+          "code": "context_embeds_secret_or_credential",
+          "message": "Context asset contains a credential-like marker.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "context embeds business domain assumption",
+      "kind": "fixture",
+      "passed": true,
+      "valid": false,
+      "expectedCodes": [
+        "context_embeds_business_domain_assumption"
+      ],
+      "actualCodes": [
+        "context_embeds_business_domain_assumption"
+      ],
+      "missingExpected": [],
+      "issueCount": 1,
+      "issues": [
+        {
+          "path": "$.assets[14].content",
+          "code": "context_embeds_business_domain_assumption",
+          "message": "Context asset contains a project/business-domain assumption.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "context claims live runtime truth-green",
+      "kind": "fixture",
+      "passed": true,
+      "valid": false,
+      "expectedCodes": [
+        "context_claims_live_runtime_truth_green"
+      ],
+      "actualCodes": [
+        "context_claims_live_runtime_truth_green"
+      ],
+      "missingExpected": [],
+      "issueCount": 1,
+      "issues": [
+        {
+          "path": "$.assets[14].content",
+          "code": "context_claims_live_runtime_truth_green",
+          "message": "Context asset must not claim live pi runtime truth-green.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "package manifest missing pi resources",
+      "kind": "fixture",
+      "passed": true,
+      "valid": false,
+      "expectedCodes": [
+        "missing_pi_package_resources"
+      ],
+      "actualCodes": [
+        "missing_pi_package_resources"
+      ],
+      "missingExpected": [],
+      "issueCount": 1,
+      "issues": [
+        {
+          "path": "$.assets[13].content.pi",
+          "code": "missing_pi_package_resources",
+          "message": "Package manifest must declare pi resources.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "package manifest traversing resource path",
+      "kind": "fixture",
+      "passed": true,
+      "valid": false,
+      "expectedCodes": [
+        "path_traversal"
+      ],
+      "actualCodes": [
+        "path_traversal",
+        "pi_resource_path_missing_asset"
+      ],
+      "missingExpected": [],
+      "issueCount": 2,
+      "issues": [
+        {
+          "path": "$.assets[13].content.pi.skills[0]",
+          "code": "path_traversal",
+          "message": "Generated asset path must not contain traversal, empty segments, or symlink-style escape syntax.",
+          "severity": "error"
+        },
+        {
+          "path": "$.assets[13].content.pi.skills[0]",
+          "code": "pi_resource_path_missing_asset",
+          "message": "Pi package resource path must point inside the generated fixture asset set.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "package manifest outside missing resource path",
+      "kind": "fixture",
+      "passed": true,
+      "valid": false,
+      "expectedCodes": [
+        "pi_resource_path_missing_asset"
+      ],
+      "actualCodes": [
+        "pi_resource_path_missing_asset"
+      ],
+      "missingExpected": [],
+      "issueCount": 1,
+      "issues": [
+        {
+          "path": "$.assets[13].content.pi.prompts[0]",
+          "code": "pi_resource_path_missing_asset",
+          "message": "Pi package resource path must point inside the generated fixture asset set.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "unknown generated-file family",
+      "kind": "fixture",
+      "passed": true,
+      "valid": false,
+      "expectedCodes": [
+        "unknown_generated_file_family"
+      ],
+      "actualCodes": [
+        "unknown_generated_file_family"
+      ],
+      "missingExpected": [],
+      "issueCount": 1,
+      "issues": [
+        {
+          "path": "$.assets[0].familyId",
+          "code": "unknown_generated_file_family",
+          "message": "Generated runtime asset uses an unknown generated-file family.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "unsupported non-pi adapter selection",
+      "kind": "joined-i14a",
+      "passed": true,
+      "valid": false,
+      "expectedCodes": [
+        "non_pi_selectable",
+        "unsupported_non_pi_adapter_selection"
+      ],
+      "actualCodes": [
+        "non_pi_selectable",
+        "unsupported_non_pi_adapter_selection"
+      ],
+      "missingExpected": [],
+      "issueCount": 2,
+      "issues": [
+        {
+          "path": "i14a.capabilityMatrix.adapters[2].selection",
+          "code": "non_pi_selectable",
+          "message": "Non-pi adapter rows must never be selectable or ready.",
+          "severity": "error"
+        },
+        {
+          "path": "i14a.capabilityMatrix.adapters.codex",
+          "code": "unsupported_non_pi_adapter_selection",
+          "message": "Non-pi adapters must remain non-selectable/deferred/blocked.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "asset path traversal",
+      "kind": "fixture",
+      "passed": true,
+      "valid": false,
+      "expectedCodes": [
+        "path_traversal"
+      ],
+      "actualCodes": [
+        "path_traversal",
+        "unknown_skill_id"
+      ],
+      "missingExpected": [],
+      "issueCount": 2,
+      "issues": [
+        {
+          "path": "$.assets[0].path",
+          "code": "path_traversal",
+          "message": "Generated asset path must not contain traversal, empty segments, or symlink-style escape syntax.",
+          "severity": "error"
+        },
+        {
+          "path": "$.assets[0].path",
+          "code": "unknown_skill_id",
+          "message": "Skill resource path contains an unknown skill id.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "absolute asset path write",
+      "kind": "fixture",
+      "passed": true,
+      "valid": false,
+      "expectedCodes": [
+        "absolute_path"
+      ],
+      "actualCodes": [
+        "absolute_path",
+        "mismatched_skill_resource_path",
+        "path_traversal"
+      ],
+      "missingExpected": [],
+      "issueCount": 3,
+      "issues": [
+        {
+          "path": "$.assets[0].path",
+          "code": "absolute_path",
+          "message": "Generated asset path must be relative to the fixture root.",
+          "severity": "error"
+        },
+        {
+          "path": "$.assets[0].path",
+          "code": "path_traversal",
+          "message": "Generated asset path must not contain traversal, empty segments, or symlink-style escape syntax.",
+          "severity": "error"
+        },
+        {
+          "path": "$.assets[0].path",
+          "code": "mismatched_skill_resource_path",
+          "message": "Skill assets must be at `.pi/skills/<skill>/SKILL.md` or `.agents/skills/<skill>/SKILL.md`.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "runtime claim proven without live evidence",
+      "kind": "fixture",
+      "passed": true,
+      "valid": false,
+      "expectedCodes": [
+        "runtime_execution_claim_requires_live_evidence"
+      ],
+      "actualCodes": [
+        "runtime_execution_claim_requires_live_evidence"
+      ],
+      "missingExpected": [],
+      "issueCount": 1,
+      "issues": [
+        {
+          "path": "$.runtimeExecutionClaim",
+          "code": "runtime_execution_claim_requires_live_evidence",
+          "message": "Live/proven/loaded/executed runtime claims require actual live pi loader/executor evidence and are not accepted by the static runtime asset validator.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "runtime claim live-proven without live evidence",
+      "kind": "fixture",
+      "passed": true,
+      "valid": false,
+      "expectedCodes": [
+        "runtime_execution_claim_requires_live_evidence"
+      ],
+      "actualCodes": [
+        "runtime_execution_claim_requires_live_evidence"
+      ],
+      "missingExpected": [],
+      "issueCount": 1,
+      "issues": [
+        {
+          "path": "$.runtimeExecutionClaim",
+          "code": "runtime_execution_claim_requires_live_evidence",
+          "message": "Live/proven/loaded/executed runtime claims require actual live pi loader/executor evidence and are not accepted by the static runtime asset validator.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "runtime claim runtime-proven without live evidence",
+      "kind": "fixture",
+      "passed": true,
+      "valid": false,
+      "expectedCodes": [
+        "runtime_execution_claim_requires_live_evidence"
+      ],
+      "actualCodes": [
+        "runtime_execution_claim_requires_live_evidence"
+      ],
+      "missingExpected": [],
+      "issueCount": 1,
+      "issues": [
+        {
+          "path": "$.runtimeExecutionClaim",
+          "code": "runtime_execution_claim_requires_live_evidence",
+          "message": "Live/proven/loaded/executed runtime claims require actual live pi loader/executor evidence and are not accepted by the static runtime asset validator.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "runtime claim loaded without live evidence",
+      "kind": "fixture",
+      "passed": true,
+      "valid": false,
+      "expectedCodes": [
+        "runtime_execution_claim_requires_live_evidence"
+      ],
+      "actualCodes": [
+        "runtime_execution_claim_requires_live_evidence"
+      ],
+      "missingExpected": [],
+      "issueCount": 1,
+      "issues": [
+        {
+          "path": "$.runtimeExecutionClaim",
+          "code": "runtime_execution_claim_requires_live_evidence",
+          "message": "Live/proven/loaded/executed runtime claims require actual live pi loader/executor evidence and are not accepted by the static runtime asset validator.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "runtime claim executed without live evidence",
+      "kind": "fixture",
+      "passed": true,
+      "valid": false,
+      "expectedCodes": [
+        "runtime_execution_claim_requires_live_evidence"
+      ],
+      "actualCodes": [
+        "runtime_execution_claim_requires_live_evidence"
+      ],
+      "missingExpected": [],
+      "issueCount": 1,
+      "issues": [
+        {
+          "path": "$.runtimeExecutionClaim",
+          "code": "runtime_execution_claim_requires_live_evidence",
+          "message": "Live/proven/loaded/executed runtime claims require actual live pi loader/executor evidence and are not accepted by the static runtime asset validator.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "write-plan symlink escape",
+      "kind": "write-plan",
+      "passed": true,
+      "valid": false,
+      "expectedCodes": [
+        "symlink_write_escape"
+      ],
+      "actualCodes": [
+        "symlink_write_escape"
+      ],
+      "missingExpected": [],
+      "issueCount": 1,
+      "issues": [
+        {
+          "path": "existingPaths..pi/skills/brainstorm/SKILL.md",
+          "code": "symlink_write_escape",
+          "message": "Write plan refuses symlink targets because they may escape the fixture root.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "unsafe overwrite conflict",
+      "kind": "write-plan",
+      "passed": true,
+      "valid": false,
+      "expectedCodes": [
+        "unsafe_overwrite_conflict"
+      ],
+      "actualCodes": [
+        "unsafe_overwrite_conflict"
+      ],
+      "missingExpected": [],
+      "issueCount": 1,
+      "issues": [
+        {
+          "path": "existingPaths..pi/skills/brainstorm/SKILL.md",
+          "code": "unsafe_overwrite_conflict",
+          "message": "Write plan refuses to overwrite existing files under fail-on-conflict policy.",
+          "severity": "error"
+        }
+      ]
+    },
+    {
+      "name": "silent unsupported-feature no-op is rejected",
+      "kind": "joined-i14a",
+      "passed": true,
+      "valid": false,
+      "expectedCodes": [
+        "unsupported_feature_policy_not_blocking"
+      ],
+      "actualCodes": [
+        "unsupported_feature_policy_not_blocking"
+      ],
+      "missingExpected": [],
+      "issueCount": 1,
+      "issues": [
+        {
+          "path": "i14a.capabilityMatrix.adapters[0].capabilityFlags.unsupportedFeaturePolicy",
+          "code": "unsupported_feature_policy_not_blocking",
+          "message": "Unsupported features must block instead of silently no-oping.",
+          "severity": "error"
+        }
+      ]
+    }
+  ]
+}

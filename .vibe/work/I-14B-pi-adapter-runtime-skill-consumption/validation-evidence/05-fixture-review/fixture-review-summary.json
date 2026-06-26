@@ -1,0 +1,136 @@
+{
+  "assetManifestAssetCount": 17,
+  "domainMatches": [],
+  "extensionFiles": [
+    ".pi/extensions/i14b-runtime-policy.ts"
+  ],
+  "harnessConfig": {
+    "adapterCapabilityVersion": "pi-adapter-capability-matrix/v1",
+    "agenticHarness": "pi",
+    "downstreamLiveRuntimeBlock": "pending-live/BLOCKED",
+    "generatedFileManifestVersion": "pi-generated-file-manifest/v1",
+    "runtimeExecutionClaim": "pending-live",
+    "schemaVersion": "vibe-engineer-pi-runtime-fixture-config/v1"
+  },
+  "hashes": {
+    ".pi/extensions/i14b-runtime-policy.ts": "243624e7b6ecb7d2f5ac488626b2d7b81508cdb2bc614e0de596ce31e0a1fcf8",
+    ".pi/prompts/vibe-brainstorm.md": "306e78e1b2c809a46834e7b3c22398bc0aa0331a63e86e4852eacaf76be819c5",
+    ".pi/prompts/vibe-build.md": "98666a2a6ed06100962ef7094998cd1e962724647db7638d13257bbb40ea72a5",
+    ".pi/prompts/vibe-grill-me.md": "5557b07826ba7ff688a5b02ea2343f0e586fa8e7a8bd66d37ef9e4fa9372bc38",
+    ".pi/prompts/vibe-plan.md": "9865f7fb00942323a465178dba1d1a2cf736b6f8ad510d6fce465dc298c6465a",
+    ".pi/prompts/vibe-ship.md": "f44242fddb413c0e0f076a8a337431ec36f2ed17dd4cfe05aa2a48fccf35ef51",
+    ".pi/prompts/vibe-task.md": "f55933c414cf1c0c27593be308dbc6f4c0e7f2077a78d0fca937ef99c39ec11a",
+    ".pi/skills/brainstorm/SKILL.md": "49bf07ad98e38bfc30c8ef799496e831eebca88ceaa9415416f66de214d74366",
+    ".pi/skills/build/SKILL.md": "a7f10416ae124181dbe737eca337306adc6e08a2295e19f0b799902174bdd726",
+    ".pi/skills/grill-me/SKILL.md": "5833ed5be328dcf82ccca1eee81bc5549d57fe6580b94f5c204d66de71909284",
+    ".pi/skills/plan/SKILL.md": "c343a55d73d5ac303416f0756f58344b89e9986754b7860247fc043c498b1e12",
+    ".pi/skills/ship/SKILL.md": "53487f53b880d27ae05e8d619abe7eaa7285e219cbfc53e7a01ec7108d035689",
+    ".pi/skills/task/SKILL.md": "9f0da89dc1c582fc8dd4203addac3f06fa7ec318f0748d90ec2b709469074c07",
+    ".vibe/harness/pi-runtime-assets.json": "e273edad8eda50c85c70d6b236c3129cac2f6593bb2f291c5d72c8b88373f8dc",
+    ".vibe/harness/pi-runtime.json": "909450a7b3862c940d096458e9a6aca651bdd229418c014ea7608c715350f27c",
+    "AGENTS.md": "40e51ce7c6932a37b44e5bcd176dc6809fde9d987503af14274c6ce1a764b823",
+    "CLAUDE.md": "ca1b9ff0860ed3101e11c37c46547eb474c02dea4a9c4da0e7855e823866a42d",
+    "package.json": "63f8d9236bc6c27353b64732544a60146b9941e88f393fe80571b415dc9f0598"
+  },
+  "nestedPromptFiles": [],
+  "packageHasPi": true,
+  "packagePi": {
+    "extensions": [
+      "./.pi/extensions/i14b-runtime-policy.ts"
+    ],
+    "prompts": [
+      "./.pi/prompts"
+    ],
+    "skills": [
+      "./.pi/skills"
+    ]
+  },
+  "promptCount": 6,
+  "promptFiles": [
+    ".pi/prompts/vibe-brainstorm.md",
+    ".pi/prompts/vibe-build.md",
+    ".pi/prompts/vibe-grill-me.md",
+    ".pi/prompts/vibe-plan.md",
+    ".pi/prompts/vibe-ship.md",
+    ".pi/prompts/vibe-task.md"
+  ],
+  "promptFrontmatter": {
+    ".pi/prompts/vibe-brainstorm.md": {
+      "argument-hint": "<artifact-or-request-ref>",
+      "description": "Invoke the generated brainstorm skill protocol with a persisted artifact handoff requirement.",
+      "runtimeExecutionClaim": "pending-live",
+      "vibe-skill": "brainstorm",
+      "vibe-template-kind": "skill-workflow"
+    },
+    ".pi/prompts/vibe-build.md": {
+      "argument-hint": "<artifact-or-request-ref>",
+      "description": "Invoke the generated build skill protocol with a persisted artifact handoff requirement.",
+      "runtimeExecutionClaim": "pending-live",
+      "vibe-skill": "build",
+      "vibe-template-kind": "skill-workflow"
+    },
+    ".pi/prompts/vibe-grill-me.md": {
+      "argument-hint": "<artifact-or-request-ref>",
+      "description": "Invoke the generated grill-me skill protocol with a persisted artifact handoff requirement.",
+      "runtimeExecutionClaim": "pending-live",
+      "vibe-skill": "grill-me",
+      "vibe-template-kind": "skill-workflow"
+    },
+    ".pi/prompts/vibe-plan.md": {
+      "argument-hint": "<artifact-or-request-ref>",
+      "description": "Invoke the generated plan skill protocol with a persisted artifact handoff requirement.",
+      "runtimeExecutionClaim": "pending-live",
+      "vibe-skill": "plan",
+      "vibe-template-kind": "skill-workflow"
+    },
+    ".pi/prompts/vibe-ship.md": {
+      "argument-hint": "<artifact-or-request-ref>",
+      "description": "Invoke the generated ship skill protocol with a persisted artifact handoff requirement.",
+      "runtimeExecutionClaim": "pending-live",
+      "vibe-skill": "ship",
+      "vibe-template-kind": "skill-workflow"
+    },
+    ".pi/prompts/vibe-task.md": {
+      "argument-hint": "<artifact-or-request-ref>",
+      "description": "Invoke the generated task skill protocol with a persisted artifact handoff requirement.",
+      "runtimeExecutionClaim": "pending-live",
+      "vibe-skill": "task",
+      "vibe-template-kind": "skill-workflow"
+    }
+  },
+  "secretMatches": [],
+  "skillCount": 6,
+  "skillFiles": [
+    ".pi/skills/brainstorm/SKILL.md",
+    ".pi/skills/build/SKILL.md",
+    ".pi/skills/grill-me/SKILL.md",
+    ".pi/skills/plan/SKILL.md",
+    ".pi/skills/ship/SKILL.md",
+    ".pi/skills/task/SKILL.md"
+  ],
+  "skillNames": [
+    "brainstorm",
+    "build",
+    "grill-me",
+    "plan",
+    "ship",
+    "task"
+  ],
+  "skillOutputs": {
+    "brainstorm": "work-brief",
+    "build": "build-result",
+    "grill-me": "work-brief",
+    "plan": "implementation-plan-with-verification-delta",
+    "ship": "ship-packet",
+    "task": "work-brief"
+  },
+  "skillProtocols": {
+    "brainstorm": "work-brief-producer",
+    "build": "build-result-producer",
+    "grill-me": "work-brief-producer",
+    "plan": "implementation-plan-producer",
+    "ship": "ship-packet-producer",
+    "task": "work-brief-producer"
+  },
+  "unsupportedLiveMatches": []
+}

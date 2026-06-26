@@ -1,0 +1,181 @@
+{
+  "ok": true,
+  "verdictIfNoExternalChanges": "PASS",
+  "severityIfNoExternalChanges": "clean",
+  "errors": [],
+  "livePiProof": {
+    "status": "proven",
+    "command": "pi --mode rpc --no-session --approve --offline --no-extensions",
+    "stdinJsonl": "{\"id\":\"i14b-get-commands\",\"type\":\"get_commands\"}\n",
+    "runs": [
+      {
+        "name": "validator-rerun",
+        "cwd": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-14B-pi-adapter-runtime-skill-consumption/validation-evidence/07-positive/runtime-fixture-rerun",
+        "commandCount": 12,
+        "requiredObserved": [
+          "skill:brainstorm",
+          "skill:build",
+          "skill:grill-me",
+          "skill:plan",
+          "skill:ship",
+          "skill:task",
+          "vibe-brainstorm",
+          "vibe-build",
+          "vibe-grill-me",
+          "vibe-plan",
+          "vibe-ship",
+          "vibe-task"
+        ],
+        "checkedRelativePaths": [
+          ".pi/prompts/vibe-brainstorm.md",
+          ".pi/prompts/vibe-build.md",
+          ".pi/prompts/vibe-grill-me.md",
+          ".pi/prompts/vibe-plan.md",
+          ".pi/prompts/vibe-ship.md",
+          ".pi/prompts/vibe-task.md",
+          ".pi/skills/brainstorm/SKILL.md",
+          ".pi/skills/build/SKILL.md",
+          ".pi/skills/grill-me/SKILL.md",
+          ".pi/skills/plan/SKILL.md",
+          ".pi/skills/ship/SKILL.md",
+          ".pi/skills/task/SKILL.md"
+        ]
+      },
+      {
+        "name": "product-fixture",
+        "cwd": "/Users/lizavasilyeva/work/vibe-engineer/examples/harness-integrations/pi/runtime-fixtures",
+        "commandCount": 12,
+        "requiredObserved": [
+          "skill:brainstorm",
+          "skill:build",
+          "skill:grill-me",
+          "skill:plan",
+          "skill:ship",
+          "skill:task",
+          "vibe-brainstorm",
+          "vibe-build",
+          "vibe-grill-me",
+          "vibe-plan",
+          "vibe-ship",
+          "vibe-task"
+        ],
+        "checkedRelativePaths": [
+          ".pi/prompts/vibe-brainstorm.md",
+          ".pi/prompts/vibe-build.md",
+          ".pi/prompts/vibe-grill-me.md",
+          ".pi/prompts/vibe-plan.md",
+          ".pi/prompts/vibe-ship.md",
+          ".pi/prompts/vibe-task.md",
+          ".pi/skills/brainstorm/SKILL.md",
+          ".pi/skills/build/SKILL.md",
+          ".pi/skills/grill-me/SKILL.md",
+          ".pi/skills/plan/SKILL.md",
+          ".pi/skills/ship/SKILL.md",
+          ".pi/skills/task/SKILL.md"
+        ]
+      }
+    ]
+  },
+  "evidence": {
+    "staticResult": {
+      "productionJsExit": 0,
+      "productionJsFiles": [],
+      "tscExit": 0
+    },
+    "positiveSummary": {
+      "ok": true,
+      "assetCount": 17,
+      "assetsWithManifestCount": 18,
+      "comparisonCount": 18
+    },
+    "negativeSummary": {
+      "ok": true,
+      "caseCount": 37,
+      "failedCount": 0
+    },
+    "regressionSummary": {
+      "ok": true,
+      "i14aCapabilityValidation": true,
+      "i14aManifestValidation": true,
+      "piRuntimeClaimInI14A": "not-claimed"
+    },
+    "fixtureSummary": {
+      "skillCount": 6,
+      "promptCount": 6,
+      "extensionFiles": [
+        ".pi/extensions/i14b-runtime-policy.ts"
+      ],
+      "packagePi": {
+        "extensions": [
+          "./.pi/extensions/i14b-runtime-policy.ts"
+        ],
+        "prompts": [
+          "./.pi/prompts"
+        ],
+        "skills": [
+          "./.pi/skills"
+        ]
+      }
+    }
+  },
+  "currentChecks": {
+    "productionJsFiles": [],
+    "productSkillFiles": [
+      ".pi/skills/brainstorm/SKILL.md",
+      ".pi/skills/build/SKILL.md",
+      ".pi/skills/grill-me/SKILL.md",
+      ".pi/skills/plan/SKILL.md",
+      ".pi/skills/ship/SKILL.md",
+      ".pi/skills/task/SKILL.md"
+    ],
+    "productPromptFiles": [
+      ".pi/prompts/vibe-brainstorm.md",
+      ".pi/prompts/vibe-build.md",
+      ".pi/prompts/vibe-grill-me.md",
+      ".pi/prompts/vibe-plan.md",
+      ".pi/prompts/vibe-ship.md",
+      ".pi/prompts/vibe-task.md"
+    ],
+    "currentProductHashes": {
+      ".pi/skills/brainstorm/SKILL.md": "49bf07ad98e38bfc30c8ef799496e831eebca88ceaa9415416f66de214d74366",
+      ".pi/skills/grill-me/SKILL.md": "5833ed5be328dcf82ccca1eee81bc5549d57fe6580b94f5c204d66de71909284",
+      ".pi/skills/task/SKILL.md": "9f0da89dc1c582fc8dd4203addac3f06fa7ec318f0748d90ec2b709469074c07",
+      ".pi/skills/plan/SKILL.md": "c343a55d73d5ac303416f0756f58344b89e9986754b7860247fc043c498b1e12",
+      ".pi/skills/build/SKILL.md": "a7f10416ae124181dbe737eca337306adc6e08a2295e19f0b799902174bdd726",
+      ".pi/skills/ship/SKILL.md": "53487f53b880d27ae05e8d619abe7eaa7285e219cbfc53e7a01ec7108d035689",
+      ".pi/prompts/vibe-brainstorm.md": "306e78e1b2c809a46834e7b3c22398bc0aa0331a63e86e4852eacaf76be819c5",
+      ".pi/prompts/vibe-grill-me.md": "5557b07826ba7ff688a5b02ea2343f0e586fa8e7a8bd66d37ef9e4fa9372bc38",
+      ".pi/prompts/vibe-task.md": "f55933c414cf1c0c27593be308dbc6f4c0e7f2077a78d0fca937ef99c39ec11a",
+      ".pi/prompts/vibe-plan.md": "9865f7fb00942323a465178dba1d1a2cf736b6f8ad510d6fce465dc298c6465a",
+      ".pi/prompts/vibe-build.md": "98666a2a6ed06100962ef7094998cd1e962724647db7638d13257bbb40ea72a5",
+      ".pi/prompts/vibe-ship.md": "f44242fddb413c0e0f076a8a337431ec36f2ed17dd4cfe05aa2a48fccf35ef51",
+      ".pi/extensions/i14b-runtime-policy.ts": "243624e7b6ecb7d2f5ac488626b2d7b81508cdb2bc614e0de596ce31e0a1fcf8",
+      "package.json": "63f8d9236bc6c27353b64732544a60146b9941e88f393fe80571b415dc9f0598",
+      "AGENTS.md": "40e51ce7c6932a37b44e5bcd176dc6809fde9d987503af14274c6ce1a764b823",
+      "CLAUDE.md": "ca1b9ff0860ed3101e11c37c46547eb474c02dea4a9c4da0e7855e823866a42d",
+      ".vibe/harness/pi-runtime.json": "909450a7b3862c940d096458e9a6aca651bdd229418c014ea7608c715350f27c",
+      ".vibe/harness/pi-runtime-assets.json": "e273edad8eda50c85c70d6b236c3129cac2f6593bb2f291c5d72c8b88373f8dc"
+    },
+    "currentI14aHashes": {
+      "packages/adapters/pi/src/capabilities/index.ts": "6e425710a5cede273eb1b9058078bc85bebd42f0a6f97d14ed44e3a08f233f86",
+      "packages/adapters/pi/src/generated-file-manifest/index.ts": "9ebb61e0b5e05aee94bc6fc70a4a6ceeb876b024d93d438c4203131603226e76",
+      "packages/adapters/pi/src/schema/index.ts": "3bf6f61cb0f31d0e71ba4692da4e3cc9c29c140e94e5629c071031fcdc604e55"
+    },
+    "currentProtectedHashes": {
+      "package.json": "d71428e1b35540d330890b4e286a7dae6b54fef16eb3757dd268e56c7471b6e2",
+      "pnpm-lock.yaml": "7e97bffa29ba0aa4c4e2657cf5fd30ccfe3e61a8ce243e2b3e7a44147cb9d981",
+      "pnpm-workspace.yaml": "aee47e9964f53e767a6d6a86a27c86b218a76cd59453c3401defad6907be5f21",
+      "turbo.json": "16e6293cf07e9befc3463ef1c2fea50302a04ada97f0ac18cca5400a9079e9a5",
+      "tsconfig.base.json": "2d343641168235bfa33dcb973b1dc4802b732be7bbca9bcd9ec391a2c9efe667",
+      "packages/adapters/pi/package.json": "6f5b7d10b9aba255cd5dbfd476f37762a58c26d19e1de833a9c421b3c4fa6140"
+    }
+  },
+  "dirtyTreeSafety": {
+    "conclusion": "no concrete ownership violation detected; no product edits were made by finisher; repo status remains no-HEAD/untracked-baseline attributable only by scoped inventories/hashes",
+    "scopedStatus": {
+      "gitStatusExit": 0,
+      "gitStatusStderr": "",
+      "gitStatusStdout": "?? .vibe/work/I-14B-pi-adapter-runtime-skill-consumption/\n?? examples/harness-integrations/pi/runtime-fixtures/\n?? package.json\n?? packages/adapters/pi/package.json\n?? packages/adapters/pi/src/capabilities/\n?? packages/adapters/pi/src/generated-file-manifest/\n?? packages/adapters/pi/src/generators/\n?? packages/adapters/pi/src/loader-witness/\n?? packages/adapters/pi/src/runtime/\n?? packages/adapters/pi/src/schema/\n?? pnpm-lock.yaml\n?? pnpm-workspace.yaml\n?? tsconfig.base.json\n?? turbo.json\n"
+    }
+  }
+}
