@@ -1,0 +1,378 @@
+## /Users/lizavasilyeva/work/harness-starter/README.md
+- term 'vibe-engineer': 14 hit(s)
+  L16: - [`docs/mechanical-verification-gates.md`](./docs/mechanical-verification-gates.md) — locked linter-like mechanical verification gates to include in `vibe-engineer`.
+  L23: The product/package/CLI name is **`vibe-engineer`**.
+  L68: The harness product and CLI are named **`vibe-engineer`**.
+- term 'domain-neutral': 4 hit(s)
+  L8: 2. **Harness Repo** — an open-source, domain-neutral agent-native development harness.
+  L89: ### 3.1 Domain-neutral core
+  L418: - Schematics are domain-neutral.
+- term 'NestJS': 4 hit(s)
+  L52: - **NestJS** API
+  L493:     nest-react-rn/      # NestJS + React + React Native preset
+  L509:   api/                  # NestJS backend
+- term 'React Native': 5 hit(s)
+  L54: - **React Native** mobile app
+  L511:   mobile/               # React Native app
+- term 'PostgreSQL': 1 hit(s)
+  L57: - **PostgreSQL + Prisma** default backend persistence
+- term 'Prisma': 1 hit(s)
+- term 'ts-rest': 0 hit(s)
+- term 'Zod': 0 hit(s)
+- term 'Playwright': 1 hit(s)
+  L611: - web E2E: **Playwright**;
+- term 'Maestro': 1 hit(s)
+  L612: - mobile E2E for React Native: **Maestro + Detox**.
+- term 'Detox': 1 hit(s)
+- term 'low-level schematics': 0 hit(s)
+- term 'schematics': 22 hit(s)
+  L30: - schematics generate consistent structure;
+  L36: > **Schematics + governance + memory for AI-driven software development.**
+  L40: > An agent-native development harness for serious TypeScript monorepos. It combines starter scaffolding, schematics, standards, verification loops, context management, and AI-agent workflows so projects continue evolving in a consistent, re
+
+## /Users/lizavasilyeva/work/harness-starter/docs/locked-decisions.md
+- term 'vibe-engineer': 8 hit(s)
+  L14: vibe-engineer
+  L17: `vibe-engineer` is the primary CLI/package name.
+  L21: > `vibe-engineer` is not “vibe coding.” It is intent-driven engineering with structure, verification, orchestration, and preserved context.
+- term 'maxParallelAgents': 2 hit(s)
+  L116: maxParallelAgents: 8
+  L123: - `maxParallelAgents` is not prompted in the create flow;
+- term 'maxValidationFixIterations': 1 hit(s)
+  L117: maxValidationFixIterations: 3
+- term 'agenticWorkPackageTargetHours': 1 hit(s)
+  L118: agenticWorkPackageTargetHours: 6
+- term 'NestJS': 1 hit(s)
+  L46: - NestJS API;
+- term 'React Native': 4 hit(s)
+  L48: - React Native mobile app;
+  L190: ### Mobile E2E for React Native
+  L201: - **Detox** is also supported/locked for deeper React Native synchronization/internals-heavy E2E needs.
+- term 'PostgreSQL': 1 hit(s)
+  L51: - PostgreSQL + Prisma by default;
+- term 'Prisma': 1 hit(s)
+- term 'ts-rest': 0 hit(s)
+- term 'Zod': 0 hit(s)
+- term 'Playwright': 2 hit(s)
+  L185: Playwright
+  L188: Playwright is the default web E2E runner.
+- term 'Maestro': 4 hit(s)
+  L195: Maestro + Detox
+  L200: - **Maestro** is the default mobile E2E flow-testing layer.
+  L205: - Maestro is simpler, readable, black-box, and agent-friendly for generated user-flow tests.
+- term 'Detox': 4 hit(s)
+  L206: - Detox is stronger when tests need deeper React Native synchronization and app-internal control.
+
+## /Users/lizavasilyeva/work/harness-starter/docs/verification-layer.md
+- term 'evidence over assertion': 1 hit(s)
+  L51: ### 1.4 Evidence over assertion
+- term 'self-validates': 0 hit(s)
+- term 'Verification Delta': 7 hit(s)
+  L149: ### Required output: Verification Delta
+  L151: Every Implementation Plan must include a **Verification Delta**.
+  L153: The Verification Delta answers:
+- term 'hard blocker': 3 hit(s)
+  L77: - deterministic checks are hard blockers;
+  L78: - LLM/advisory reviews are surfaced but not sole hard blockers;
+  L642: - they are not the sole hard blocker unless converted into deterministic checks or accepted as task-specific blocking criteria.
+- term 'real': 0 hit(s)
+- term 'domain-neutral': 3 hit(s)
+  L82: ### 1.6 Verification is domain-neutral
+  L637: - domain-neutrality of harness code.
+  L971: - domain-neutrality validation for core harness agents;
+
+## /Users/lizavasilyeva/work/harness-starter/docs/mechanical-verification-gates.md
+- term 'strict': 17 hit(s)
+  L22: - strict TypeScript is mandatory;
+  L64: ## 3. Strict configuration guards
+  L70: Generated repos must enforce strict TypeScript settings including:
+- term 'governed': 8 hit(s)
+  L31: ## 2. Governed quality surface
+  L33: `vibe-engineer` must maintain a canonical **governed surface registry**.
+  L55: - required governed path is missing;
+- term 'allowlist': 9 hit(s)
+  L134: ## 4. Escape and suppression allowlist gate
+  L151: Allowed escapes must be listed in a dedicated allowlist with at least:
+  L164: - unallowlisted escape;
+- term 'schema': 11 hit(s)
+  L148: - raw `JSON.parse` where schema validation is required;
+  L184: ## 5. Schema and contract strictness gate
+  L191: - payloads are narrowed through named runtime schemas;
+- term 'contract': 10 hit(s)
+  L186: `vibe-engineer` must enforce strict boundary contracts.
+  L192: - no bare object/list/dict contract shapes are used for important boundaries;
+- term 'domain-neutral': 0 hit(s)
+- term 'deterministic': 2 hit(s)
+  L19: - deterministic checks are hard blockers;
+  L114: Generated repos must lock deterministic formatting defaults:
+
+## /Users/lizavasilyeva/work/harness-starter/docs/planning-research-backlog.md
+- term 'Repository': 1 hit(s)
+  L11: ## 1. Repository and package structure
+- term 'Package': 15 hit(s)
+  L16: - whether the harness repo is one monorepo or split packages from day one;
+  L17: - package scope/publishing structure around `vibe-engineer`;
+- term 'Domain-neutrality': 3 hit(s)
+  L142: - How do we validate domain-neutrality for core agents?
+  L488: ## 20. Domain-neutrality enforcement
+  L498: - review agents for domain-neutrality;
+- term 'Output': 3 hit(s)
+  L71: - output artifact(s);
+  L201: - What output format is required for agents to parse reliably?
+  L546: ## 24. Planning-phase output requirement
+- term 'maxParallelAgents': 1 hit(s)
+  L110: maxParallelAgents: 8
+- term 'agentic': 2 hit(s)
+  L112: agenticWorkPackageTargetHours: 6
+  L147: ## 6. Agentic harness integrations
+
+## /Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/implementation-strategy/post-d1-strategy-final.md
+- term 'I-00A': 31 hit(s)
+  L14: | N1 | minor-local | DAG notation used shorthand/full names inconsistently and first-wave arrows were visually ambiguous. | Added an explicit DAG-notation rule: each short ID (for example `I-14A`) uniquely denotes its full slugged node (for
+  L75: DAG notation rule: a short ID such as `I-07C`, `I-14A`, or `I-15A` uniquely denotes the corresponding full slugged node introduced on a right-hand side or in the ownership table. Dependency expressions use short IDs only for readability; th
+  L80: POST-D1-GATE → I-00A-workspace-package-skeleton
+- term '@vibe-engineer/workspace': 1 hit(s)
+  L46: | `DL-01` repo/package | Root private package `@vibe-engineer/workspace`; pnpm + Turborepo; public package/bin `vibe-engineer` in `packages/cli`; private `@vibe-engineer/*` workspace packages; no `packages/core`; explicit required package s
+- term 'packages/core': 3 hit(s)
+  L160: | `I-00A` | `package.json`, `pnpm-lock.yaml`, `pnpm-workspace.yaml`, `turbo.json`, `tsconfig.base.json`, `eslint.config.mjs`, `prettier.config.mjs`, `.gitignore`, `.npmrc`, package directory skeletons and package manifests only for all DL-0
+  L236: | `I-00A` | Workspace graph resolves; package manifests match all DL-01 names including `standards`, `preset-typescript`, and `testing`; missing/renamed package fails; root strict config present; no `packages/core`; no decision docs touched
+- term 'maxParallelAgents': 2 hit(s)
+  L49: | `DL-04` orchestration runtime | Durable DAG scheduler/resumer, path ownership conflict checks, result joins, failure routing hooks, `maxParallelAgents: 8`, `maxValidationFixIterations: 3`, `agenticWorkPackageTargetHours: 6`. |
+  L239: | `I-01B` | Config schema/defaults validate; create defaults include `agenticHarness`, `maxParallelAgents: 8`, `maxValidationFixIterations: 3`, `agenticWorkPackageTargetHours: 6`; unknown/unsafe config rejected. |
+- term 'maxValidationFixIterations': 2 hit(s)
+- term 'agenticWorkPackageTargetHours': 2 hit(s)
+- term 'pnpm': 5 hit(s)
+  L20: Build the open-source, domain-neutral `vibe-engineer` harness as a strict TypeScript pnpm/Turborepo monorepo that provides:
+  L28: - generated/reference starter fixtures demonstrating NestJS + React + React Native + pnpm/Turborepo + PostgreSQL/Prisma + ts-rest/Zod + Playwright + Maestro/Detox while consuming the harness package instead of copying harness logic.
+- term 'Turborepo': 3 hit(s)
+- term '@vibe-engineer/testing': 6 hit(s)
+  L37: - Do not let production packages depend on `@vibe-engineer/testing`.
+  L179: | `I-10C` | `packages/testing/package.json` after `I-00A` handoff, `packages/testing/src/**`, `packages/testing/fixtures/**`, `packages/mechanical-gates/src/p0/testing-boundary/**`, `packages/mechanical-gates/fixtures/p0/testing-boundary/**
+  L252: | `I-10C` | `packages/testing` exposes test-only helpers; production package dependency on `@vibe-engineer/testing` fails via mechanical boundary gate; test-only dependency passes; package is never publishable initially; actual package grap
+- term 'real-boundary': 8 hit(s)
+  L12: | F1 | critical | DL-01 package surfaces `packages/standards/**`, `packages/presets/typescript/**`, and `packages/testing/**` were not assigned implementation lanes beyond root skeleton creation. | Added explicit lanes `I-07C-standards-pack
+  L13: | F2 | critical | Create/import could run in parallel with pi adapter implementation and did not depend on the DL-06 adapter capability matrix/generated-file manifest before treating selected `pi` as usable. | Split `I-14` into `I-14A-pi-ad
+  L121: I-14A + I-14B + I-15A + I-15B + I-16B + I-17A + I-17B + I-18 + I-19 + I-21 + I-22 → I-23-end-to-end-real-boundary-witness
+
+## /Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/implementation-strategy/post-d1-strategy-revalidation.md
+- term 'Verdict': 4 hit(s)
+  L3: ## 1. Verdict
+  L5: Verdict: **PASS**.
+  L31: - Audit evidence: DL-20B verdict PASS with 0 critical and 0 major-local findings; DL-24B verdict PASS with no critical/major-local findings.
+- term 'PASS': 17 hit(s)
+  L7: The fixed strategy resolves the two prior critical findings and the minor DAG-notation issue. It is safe to use for implementation prompt construction. This PASS does **not** authorize product/code implementation without the per-lane Triad-
+- term 'I-00A': 2 hit(s)
+  L42: | N1 — shorthand/full DAG notation ambiguity | minor-local | Clarify node IDs and first-wave parallelism. | Fixed strategy adds a DAG notation rule mapping short IDs to full slugged nodes; W1 says `I-00A` and `I-00B` both depend directly on
+  L58: | Immediate ready queue | PASS | After this PASS, implementation prompt construction may begin with `TA-I-00A` and `TA-I-00B`; foundation briefs are prompt-construction only until `I-00A` green; package-gap and `I-14A` prompts are prefetcha
+- term 'package graph': 3 hit(s)
+  L40: | F1 — missing locked DL-01 package surfaces | critical | Add explicit lanes/ownership/dependencies/verification/real-boundary witnesses/closure criteria for `packages/standards/**`, `packages/presets/typescript/**`, and `packages/testing/*
+  L53: | Early real-boundary witnesses | PASS | Strategy requires early actual producer/carrier/consumer proofs for package graph, schemas, CLI, registry, standards, preset, testing boundary, adapter manifest, selected-pi create/import join, start
+  L71: - Real-boundary plan requires actual schematic/docs consumer, create/schematic/CI fixture consumer, and package graph/gate proof.
+- term 'DL-20B': 4 hit(s)
+  L23: - Audit reports `DL-20B-audit-report.md` and `DL-24B-audit-report.md`.
+  L54: | Domain-neutrality | PASS | Source/DL-20B evidence is clean. Fixed strategy preserves core/extension/sample-demo boundaries, non-pi deferrals, starter sample/demo/reference constraints, domain-purity checks, and no business-domain defaults
+- term 'DL-24B': 3 hit(s)
+  L100: - No implementation-before-decision path is authorized; `POST-D1-GATE` includes D1 decisions, DL-20B PASS, DL-24B PASS, and fixed-strategy revalidation green.
+
+## /Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/implementation-briefs/impl-q01-brief-generated.md
+- term '@vibe-engineer/workspace': 3 hit(s)
+  L137:    - `package.json`: private root named `@vibe-engineer/workspace`; package manager/workspace metadata; MIT license metadata; no fake publish behavior; scripts only if they execute real deterministic commands.
+  L173:   - root package is private `@vibe-engineer/workspace`;
+  L192: - Root workspace name remains `@vibe-engineer/workspace`.
+- term 'packages/core': 5 hit(s)
+  L85: Do not create `packages/core`. Do not create future non-pi adapter packages (`packages/adapters/claude-code`, `packages/adapters/codex`, `packages/adapters/opencode`) unless a later validated lane explicitly owns them.
+  L120: - `packages/core/**`
+  L176:   - `packages/core` does not exist;
+- term 'pnpm -r list': 1 hit(s)
+  L171: - Actual package-manager workspace graph resolves all packages in §4. Example command from repo root: `pnpm -r list --depth -1 --json`.
+- term 'Required negative witnesses': 1 hit(s)
+  L182: Required negative witnesses:
+- term 'vibe-engineer': 57 hit(s)
+  L18: - Goal: create the initial `vibe-engineer` pnpm/Turborepo workspace skeleton, root strict config files, all required lane-aligned package directories/manifests, and ownership/evidence records needed for later implementation lanes.
+  L35: - `/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/implementation-strategy/post-d1-strategy-final.md`
+  L36: - `/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/implementation-strategy/post-d1-strategy-revalidation.md`
+- term '@vibe-engineer/testing': 4 hit(s)
+  L83: | `packages/testing` | `@vibe-engineer/testing` | private test-only workspace package; never a production dependency |
+  L178:   - no package has a production dependency on `@vibe-engineer/testing`;
+  L186: - A production dependency on `@vibe-engineer/testing` fails.
+- term 'Owned write paths': 2 hit(s)
+  L7: You are operating inside a dirty-tree, multi-orchestrator environment. Never ask for a clean tree. Never use git stash/reset/clean/restore/checkout. Edit only explicitly owned write paths. Treat all unspecified paths as untouchable. If you 
+  L87: ## 5. Owned write paths for eventual implementation
+
+## /Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/implementation-briefs/impl-q01-brief-validation.md
+- term 'Verdict': 1 hit(s)
+  L3: ## Verdict
+- term 'PASS': 11 hit(s)
+  L5: PASS.
+  L7: The generated implementation brief at `/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/implementation-briefs/impl-q01-brief-generated.md` is complete, safe, and ready to feed a later Triad-B implementation launch for `I-00A-
+  L29: PASS.
+- term 'Package surface': 1 hit(s)
+  L74: ## Package surface and file-ownership safety
+- term 'Verification strength': 2 hit(s)
+  L122: ## Verification strength
+  L149: | F-0 | clean | Correct queue item, safe ownership, STOP boundary, real-boundary witness, source/strategy consistency, verification strength, no implementation leakage. | None. |
+- term 'No implementation leakage': 2 hit(s)
+  L136: ## No implementation leakage
+
+## /Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-01-repo-package-structure.md
+- term '@vibe-engineer/workspace': 4 hit(s)
+  L39: 3. The root package is private and named `@vibe-engineer/workspace`; the root is never published.
+  L181: - Harness root private workspace package name: `@vibe-engineer/workspace`.
+  L206: - Root package: private, name `@vibe-engineer/workspace`, no npm publication.
+- term 'vibe-engineer': 109 hit(s)
+  L9: - artifact_path: `/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-01-repo-package-structure.md`
+  L10: - report_path: `/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/DL-01-repo-package-structure/DL-01-execution-report.md`
+  L14: - `/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/master-strategy/strategy-final.md` — §3 `Locked decisions implementation must preserve`; §4.1 `Harness repo package hypothesis`; §4.2 `Generated starter kit hypothesis`; §5.
+- term 'pnpm': 10 hit(s)
+  L29: The harness repository is the single open-source monorepo named `vibe-engineer`. The generated/reference starter repository is named `vibe-engineer-starter`. The harness monorepo uses pnpm workspaces and Turborepo from day one, with a minim
+  L153:     - /Users/lizavasilyeva/work/vibe-engineer/pnpm-workspace.yaml
+  L200: Decision: `vibe-engineer` is a pnpm/Turborepo monorepo from day one.
+- term 'Turborepo': 6 hit(s)
+  L205: - Task graph direction: Turborepo.
+- term 'packages/core': 2 hit(s)
+  L228: - There is no `packages/core`; each lane owns a named package or subpath from the table below.
+  L462: - Reject reintroducing a broad `packages/core` god package without a later decision.
+- term '@vibe-engineer/testing': 2 hit(s)
+  L254: | `packages/testing` | `@vibe-engineer/testing` | private test-only workspace package | never published initially | harness fixtures/helpers/tests only | relevant package implementation lanes | may depend on harness packages for tests; no p
+  L343:   - production package depending on `@vibe-engineer/testing` fails.
+- term 'packages/standards': 1 hit(s)
+  L247: | `packages/standards` | `@vibe-engineer/standards` | private internal workspace package; future public content package candidate | not independently published initially | schematics, docs/reference, generated standards | `I-24` with inputs
+- term 'preset-typescript': 3 hit(s)
+  L248: | `packages/presets/typescript` | `@vibe-engineer/preset-typescript` | private preset workspace package; future public preset package | not independently published initially | schematics/create/import, generated TS/pnpm/turbo/lint/test defa
+  L249: | `packages/presets/nest-react-rn` | `@vibe-engineer/preset-nest-react-rn` | private preset workspace package; future public preset package | not independently published initially | starter generation for locked v1 stack | `I-15`, `I-16`, `
+  L275:   - `@vibe-engineer/preset-typescript` at `packages/presets/typescript`;
+
+## /Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-20A-domain-neutrality-foundation.md
+- term 'domain-neutral': 53 hit(s)
+  L1: # DL-20A — Domain-Neutrality Foundation
+  L9: - artifact_path: `/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-20A-domain-neutrality-foundation.md`
+  L10: - report_path: `/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/DL-20A-domain-neutrality-foundation/DL-20A-execution-report.md`
+- term 'business': 17 hit(s)
+  L38: 2. Core harness surfaces must not encode project/business domains such as ecommerce, inventory, fashion, Billz, Telegram, Instagram, checkout/product/customer-order style business models, or any other consuming-project product concept.
+  L185: Consuming projects may define their own business vocabulary, rules, standards, agents, schematics, verification policies, and context once they are clearly outside harness core. Extensions must be registered/configured through extension poi
+  L198: The generated/reference starter may demonstrate a golden module, but strategy §4.2 says it is domain-neutral/sample-only. Business vocabulary in generated starter examples must be minimal, labeled, and replaceable by consuming-project conte
+- term 'core': 78 hit(s)
+  L19: - `/Users/lizavasilyeva/work/harness-starter/README.md` — §3.1 `Domain-neutral core`; §8 `Schematics`; §9 `Verification model`; §15 `Success criteria`; §16 `Locked decisions and planning backlog`.
+  L22: - `/Users/lizavasilyeva/work/harness-starter/docs/mechanical-verification-gates.md` — §1 `Core verification doctrine`; §5 `Schema and contract strictness gate`; §7 `Quality wiring-integrity gate`; §§11–13 verification fit, implementation pr
+  L29: `vibe-engineer` harness core is permanently domain-neutral. Core packages, prompts, rules, validators, standards, schematics, docs, examples, generated starter mechanics, agent registry entries, and decision artifacts must use generic harne
+- term 'extension': 23 hit(s)
+  L33: The locked DL-20A decision is that domain-neutrality is a hard prerequisite for all later decision artifacts and core implementation. The normative foundation rules are stated in `Decision details`, the core/extension/sample-demo boundary, 
+  L39: 3. Project-specific vocabulary belongs only in consuming-project extensions or generated starter sample/demo fixtures that are clearly labeled as sample/demo and never imported as harness core logic.
+- term 'sample': 33 hit(s)
+- term 'forbidden': 15 hit(s)
+  L55: - rationale: README §3.1 gives concrete forbidden examples, but backlog §20 also requires extension boundaries, examples/core separation, review agents, and generic-behavior tests. A denylist alone misses new project-specific concepts and c
+  L101:       relying_on: Decision-artifact checklist, allowed/forbidden vocabulary policy, and core/extension/sample-demo boundary.
+- term 'ecommerce': 5 hit(s)
+  L236: - README §3.1 examples: ecommerce, inventory, fashion, Billz, Telegram, Instagram;
+  L254: 5. Confirm no core package/prompt/rule/schematic/doc/example is allowed to depend on ecommerce/inventory/fashion/Billz/Telegram/Instagram-like business concepts or any equivalent project-specific model.
+- term 'Billz': 6 hit(s)
+  L237: - synthetic placeholder examples marked here as forbidden core leakage: `ProductCatalog`, `ShoppingCart`, `CustomerOrder`, `CheckoutFlow`, `WarehouseStock`, `FashionDrop`, `BillzInvoice`, `TelegramBotBusinessRule`, `InstagramEngagementModel
+
+## /Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-24A-planning-output-discipline.md
+- term 'dirty-tree': 15 hit(s)
+  L17: - `/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/master-strategy/strategy-final.md` — §3 `Locked decisions implementation must preserve`; §5.1 `Mandatory output discipline for all decision artifacts`; §5.2 `Decision-lock t
+  L25: - `/Users/lizavasilyeva/work/harness-starter/guides/high-level-orchestrator-playbook.md` — §§5.2 and 10 for Triad-A/Triad-B evidence-bound quality, report discipline, dirty-tree safety, and triad validation expectations.
+  L26: - `/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/prompts/quality-bar.md` — full quality bar for perfect solution, report-first checkpointing, triad discipline, real-boundary truth, and dirty-tree safety.
+- term 'real-boundary': 13 hit(s)
+  L18: - `/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/master-strategy/strategy-revalidation.md` — §1 `Verdict`; §4 `Final source-doc coverage check`; §5 `DAG and ready-queue safety check`; §7 `Verification and real-boundary wit
+- term 'evidence': 22 hit(s)
+  L30: All future `DL-*` planning/decision artifacts in this workstream must be explicit, dependency-aware, evidence-backed, dirty-tree-safe, and independently validatable. No future decision may close green by relying on undocumented tribal knowl
+- term 'owned': 15 hit(s)
+  L36: 3. Every future decision artifact must declare dependencies, blocked dependents, required sequencing, deferrals, owned write paths, read-only paths, untouchable paths, witness consequences, evidence, validation plan, severity policy, dirty-
+  L40: 7. Independent Triad-B validation must inspect the actual changed/owned files and any available diff, run positive/negative/regression witnesses appropriate to the decision, sweep sibling/blast radius, check source docs and prior decisions,
+  L156: - owned_write_paths: <paths>
+- term 'BLOCKED': 25 hit(s)
+  L19: - `/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/next/ready-queue.md` — §2 `First ready queue items`; §5 `Explicitly blocked items and blockers`.
+  L37: 4. A decision that is not complete must be `DEFERRED` or `BLOCKED`; it must not be presented as `LOCKED` through vague follow-up language.
+- term 'severity': 9 hit(s)
+- term 'validation': 7 hit(s)
+
+## /Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-15-mechanical-engine.md
+- term 'strict': 21 hit(s)
+  L15: - `/Users/lizavasilyeva/work/harness-starter/docs/mechanical-verification-gates.md` — §§1–13, especially governed surface, config guards, allowlists, schema/contract strictness, ratchet, wiring integrity, smells, test anti-patterns, priorit
+  L31: `vibe-engineer` mechanical verification is a hybrid engine: ESLint/custom ESLint rules handle AST-local TypeScript/import/test rules; typed standalone validators handle repository-wide contracts, config, governed surface, dependency graph, 
+  L51: - rationale: ESLint is appropriate for AST-local rules, import restrictions, and many test anti-patterns, but cannot alone prove repo-wide surface completeness, config inheritance, CI wiring, baselines, generated-client freshness, contract-
+- term 'mechanical': 42 hit(s)
+  L1: # DL-15 — Mechanical Engine
+  L9: - artifact_path: `/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-15-mechanical-engine.md`
+  L10: - report_path: `/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/DL-15-mechanical-engine/DL-15-execution-report.md`
+- term 'allowlist': 16 hit(s)
+  L38: 2. The engine must expose a typed finding schema, typed allowlist/baseline schemas, a governed-surface registry, and aggregate runner semantics consumable by DL-10 verification evidence.
+  L43: 7. Projects may extend mechanical rules only through typed extension manifests/config, governed surfaces, and allowlist/baseline policies. Project-specific business rules must not become core defaults.
+- term 'domain': 24 hit(s)
+  L23: - `/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-20A-domain-neutrality-foundation.md` — core/extension/sample-demo boundary, vocabulary policy, decision checklist, implementation enforcement plan, witness consequences.
+  L24: - `/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/DL-20A-domain-neutrality-foundation/DL-20A-validation-report.md` — `Verdict`, `Domain-neutrality-specific audit`, `Recommendation`.
+- term 'schema': 33 hit(s)
+  L33: Deterministic P0/P1 mechanical gates are hard blockers or ratcheted blockers as specified below. Advisory review is supplementary only. Low-confidence structural smell detectors may begin advisory/ratcheted, but the smell framework, finding
+- term 'contract': 29 hit(s)
+  L26: - `/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-14-api-contract-mechanism.md` — read for coordination; validation report observed `IN-PROGRESS`, so DL-15 treats exact API mechanism as not green until independently validated.
+- term 'aggregate': 18 hit(s)
+  L41: 5. The aggregate runner is the single local quality entrypoint for mechanical gates. I-20 must prove CI invokes the same semantic runner path; CI-only or local-only bespoke scripts are fake green.
+
+## /Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-19-open-source-governance.md
+- term 'MIT': 30 hit(s)
+  L30: The `vibe-engineer` harness repo uses an MIT-licensed, permissive, domain-neutral open-source governance baseline. Future implementation must create standard root governance artifacts, package metadata license fields, README references, cha
+  L34: - license: `MIT` SPDX identifier;
+  L35: - contribution model: public issues and pull requests, maintainer-reviewed merges only, no CLA, DCO 1.1 sign-off required for all external pull-request commits;
+- term 'DCO': 4 hit(s)
+  L266: - CLA/DCO/no-CLA decision:
+  L268:   - DCO 1.1 sign-off is required for all external pull-request commits using `Signed-off-by:` commit trailers or an equivalent PR attestation documented in `CONTRIBUTING.md`.
+- term 'Contributor Covenant': 5 hit(s)
+  L36: - code of conduct: Contributor Covenant Code of Conduct v2.1 adapted with project maintainers/contact placeholders filled by the implementation owner before external contributor solicitation;
+  L82: - decision: accepted Contributor Covenant Code of Conduct v2.1.
+  L278: - chosen baseline: Contributor Covenant Code of Conduct v2.1.
+- term 'SemVer': 20 hit(s)
+  L38: - release/versioning: SemVer for packages and CLI, with documented pre-1.0 semantics and prerelease channels;
+  L39: - changelog: Keep a Changelog style `CHANGELOG.md` with `Unreleased` and SemVer release sections;
+  L41: - backwards compatibility: public contracts break only under the SemVer/deprecation policy, with explicit migration notes; no silent fallbacks, hidden legacy shims, or fake-green compatibility.
+- term 'Keep a Changelog': 4 hit(s)
+  L112: - decision: accepted Keep a Changelog style.
+  L337: - format: Keep a Changelog style Markdown.
+- term 'vibe-engineer': 40 hit(s)
+  L9: - artifact_path: `/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-19-open-source-governance.md`
+  L10: - report_path: `/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/DL-19-open-source-governance/DL-19-execution-report.md`
+  L14: - `/Users/lizavasilyeva/work/harness-starter/.pi/hlo/vibe-engineer/master-strategy/strategy-final.md` — §3 `Locked decisions implementation must preserve`; §4.1 `Harness repo package hypothesis`; §5.1 `Mandatory output discipline for all de
+
+## /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-00A-workspace-package-skeleton/implementation-report.md
+- term 'Checkpoint 8': 1 hit(s)
+  L87: ## Checkpoint 8 — final implementer closure
+- term 'pnpm -r list': 2 hit(s)
+  L78: - `pnpm -r list --depth -1 --json > .../evidence/pnpm-workspace-graph.json`: exit 0; actual package-manager graph includes root plus 18 workspace packages.
+  L105: - Actual `pnpm -r list --depth -1 --json` resolved root plus all 18 required workspace packages.
+- term 'Negative witnesses': 2 hit(s)
+  L100: - Negative witnesses: `.vibe/work/I-00A-workspace-package-skeleton/evidence/workspace-surface-negative-missing-package.json`, `workspace-surface-negative-packages-core.json`, `workspace-surface-negative-testing-prod-dependency.json`, `works
+  L108: Negative witnesses recorded:
+- term 'Blockers': 10 hit(s)
+  L10: Blockers: none yet.
+  L20: Blockers: none yet.
+  L30: Blockers: none yet.
+- term 'DONE': 2 hit(s)
+  L89: Status: DONE for implementation execution; independent Triad-B validation still required.
+  L126: Status: DONE for implementation execution.
+- term 'node_modules': 8 hit(s)
+  L56: Files inspected: pnpm lockfile/node_modules sentinels.
+  L57: Files changed: none from first lockfile attempt; `pnpm-lock.yaml` absent and `node_modules/` absent after timeout.
+  L66: Files inspected: `pnpm-lock.yaml` and `node_modules` sentinels.
+
+## /Users/lizavasilyeva/work/harness-starter/.pi/tasks/session-81315-81315/b2c00394f.output
+- term 'pnpm': 20 hit(s)
+  L34: → bash command -v pnpm >/dev/null 2>&1 && pnpm --version || true
+  L35: → bash pnpm view typescript version && pnpm view eslint version && pnpm view @eslint/j…
+  L38: I see that the network works, and I'm looking at strict version matches: eslint 10.5.0 and @eslint/js 10.0.1. I'm wondering if they should normally be the same version. Pnpm shows 10.0.1, but maybe typescript-eslint 8.62 with eslint 10 coul
+- term 'DONE': 5 hit(s)
+  L186: I’m glad there are no node_modules. I think I need to prepare the final report that includes the files changed, evidence gathered, any blockers, and the current status. A high-level summary will also be helpful. I'm considering stating, "Fi
+  L199: DONE
+  L208: DONE
+- term 'summary': 5 hit(s)
+  L84: I need to ensure I’m outputting a JSON summary properly. If something fails, it should output the JSON to stderr or stdout and exit with code 1. Actually, I think it's better to always output JSON to stdout, marking it with `ok:false` and t
+  L202: summary: Workspace skeleton implemented; pnpm graph proof ran successfully.
+- term 'graph': 8 hit(s)
+  L42: I think using `pnpm -r list` in the fixture root should work fine without writing anything, as long as I have the `pnpm-workspace.yaml` set up and no node_modules present. This way, I don't need YAML parsing since it can handle package.json
+  L124: I'm considering whether I should have avoided dependencies altogether. If something times out, could it be blocked? Should I remove development dependencies? But then, if the command is still running, I'm unsure. Can I edit the root to remo
+  L155: … **Checking graph evidence**
+- term 'timeout': 1 hit(s)
+  L205: I need to respond to a background notification. We inspected the status earlier and noted a retry success. However, the current notification implies I should react and check the logs again. Since this relates to the final contract, I wonder
+- term 'retry': 4 hit(s)
+  L142: I'm thinking about running an update on the report. After a command stage, I should ensure there's a mandatory report documenting any failures. It looks like there was a lockfile issue, which needs to be recorded. But there's also a retry t
+  L210: summary: First pnpm lockfile task timed out as recorded; retry b2c133703 completed exit 0 and lockfile/graph proof succeeded.
+

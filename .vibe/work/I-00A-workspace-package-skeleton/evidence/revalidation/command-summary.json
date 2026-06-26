@@ -1,0 +1,156 @@
+[
+  {
+    "cmd": "node .vibe/work/I-00A-workspace-package-skeleton/witnesses/workspace-surface-witness.mjs --root . --mode skeleton-snapshot",
+    "exit": 1,
+    "failureCodes": [
+      "PACKAGE_SOURCE_CREATED"
+    ],
+    "mode": "skeleton-snapshot",
+    "okField": false,
+    "stem": "current-root-skeleton-snapshot"
+  },
+  {
+    "cmd": "node .vibe/work/I-00A-workspace-package-skeleton/witnesses/workspace-surface-witness.mjs --root .vibe/work/I-00A-workspace-package-skeleton/fixtures/valid-workspace",
+    "exit": 0,
+    "failureCodes": [],
+    "mode": "current-surface",
+    "okField": true,
+    "stem": "current-surface-valid-fixture"
+  },
+  {
+    "cmd": "node .vibe/work/I-00A-workspace-package-skeleton/witnesses/workspace-surface-witness.mjs --root .",
+    "exit": 0,
+    "failureCodes": [],
+    "mode": "current-surface",
+    "okField": true,
+    "stem": "direct-current-surface"
+  },
+  {
+    "cmd": "pnpm install --lockfile-only --ignore-scripts --frozen-lockfile",
+    "exit": 0,
+    "failureCodes": [],
+    "mode": null,
+    "okField": null,
+    "stem": "frozen-lockfile"
+  },
+  {
+    "cmd": "node .vibe/work/I-00A-workspace-package-skeleton/witnesses/workspace-surface-witness.mjs --root .vibe/work/I-00A-workspace-package-skeleton/fixtures/fake-cli-bin",
+    "exit": 1,
+    "failureCodes": [
+      "FAKE_CLI_BIN"
+    ],
+    "mode": "current-surface",
+    "okField": false,
+    "stem": "negative-fake-cli-bin"
+  },
+  {
+    "cmd": "node .vibe/work/I-00A-workspace-package-skeleton/witnesses/workspace-surface-witness.mjs --root .vibe/work/I-00A-workspace-package-skeleton/fixtures/future-non-pi-adapter",
+    "exit": 1,
+    "failureCodes": [
+      "FORBIDDEN_FUTURE_ADAPTER"
+    ],
+    "mode": "current-surface",
+    "okField": false,
+    "stem": "negative-future-non-pi-adapter"
+  },
+  {
+    "cmd": "node .vibe/work/I-00A-workspace-package-skeleton/witnesses/workspace-surface-witness.mjs --root .vibe/work/I-00A-workspace-package-skeleton/fixtures/missing-package",
+    "exit": 1,
+    "failureCodes": [
+      "PACKAGE_MANIFEST_MISSING"
+    ],
+    "mode": "current-surface",
+    "okField": false,
+    "stem": "negative-missing-package"
+  },
+  {
+    "cmd": "node .vibe/work/I-00A-workspace-package-skeleton/witnesses/workspace-surface-witness.mjs --root .vibe/work/I-00A-workspace-package-skeleton/fixtures/non-private-root",
+    "exit": 1,
+    "failureCodes": [
+      "ROOT_PACKAGE_PRIVATE"
+    ],
+    "mode": "current-surface",
+    "okField": false,
+    "stem": "negative-non-private-root"
+  },
+  {
+    "cmd": "node .vibe/work/I-00A-workspace-package-skeleton/witnesses/workspace-surface-witness.mjs --root .vibe/work/I-00A-workspace-package-skeleton/fixtures/packages-core",
+    "exit": 1,
+    "failureCodes": [
+      "FORBIDDEN_CORE_PACKAGE"
+    ],
+    "mode": "current-surface",
+    "okField": false,
+    "stem": "negative-packages-core"
+  },
+  {
+    "cmd": "node .vibe/work/I-00A-workspace-package-skeleton/witnesses/workspace-surface-witness.mjs --root .vibe/work/I-00A-workspace-package-skeleton/fixtures/testing-prod-dependency",
+    "exit": 1,
+    "failureCodes": [
+      "TESTING_PRODUCTION_DEPENDENCY"
+    ],
+    "mode": "current-surface",
+    "okField": false,
+    "stem": "negative-testing-prod-dependency"
+  },
+  {
+    "cmd": "node .vibe/work/I-00A-workspace-package-skeleton/witnesses/workspace-surface-witness.mjs --root .vibe/work/I-00A-workspace-package-skeleton/fixtures/wrong-root-name",
+    "exit": 1,
+    "failureCodes": [
+      "ROOT_PACKAGE_NAME"
+    ],
+    "mode": "current-surface",
+    "okField": false,
+    "stem": "negative-wrong-root-name"
+  },
+  {
+    "cmd": "pnpm --version",
+    "exit": 0,
+    "failureCodes": [],
+    "mode": null,
+    "okField": null,
+    "stem": "pnpm-version"
+  },
+  {
+    "cmd": "pnpm -r list --depth -1 --json",
+    "exit": 0,
+    "failureCodes": [],
+    "mode": null,
+    "okField": null,
+    "stem": "pnpm-workspace-graph-direct"
+  },
+  {
+    "cmd": "node .vibe/work/I-00A-workspace-package-skeleton/witnesses/workspace-surface-witness.mjs --root .vibe/work/I-00A-workspace-package-skeleton/fixtures/valid-workspace-with-artifacts-source",
+    "exit": 0,
+    "failureCodes": [],
+    "mode": "current-surface",
+    "okField": true,
+    "stem": "regression-artifacts-source-current"
+  },
+  {
+    "cmd": "node .vibe/work/I-00A-workspace-package-skeleton/witnesses/workspace-surface-witness.mjs --root .vibe/work/I-00A-workspace-package-skeleton/fixtures/valid-workspace-with-artifacts-source --mode skeleton-snapshot",
+    "exit": 1,
+    "failureCodes": [
+      "PACKAGE_SOURCE_CREATED"
+    ],
+    "mode": "skeleton-snapshot",
+    "okField": false,
+    "stem": "regression-artifacts-source-snapshot"
+  },
+  {
+    "cmd": "pnpm run workspace:graph",
+    "exit": 0,
+    "failureCodes": [],
+    "mode": null,
+    "okField": null,
+    "stem": "root-script-workspace-graph"
+  },
+  {
+    "cmd": "pnpm run workspace:surface",
+    "exit": 0,
+    "failureCodes": [],
+    "mode": "current-surface",
+    "okField": true,
+    "stem": "root-script-workspace-surface"
+  }
+]

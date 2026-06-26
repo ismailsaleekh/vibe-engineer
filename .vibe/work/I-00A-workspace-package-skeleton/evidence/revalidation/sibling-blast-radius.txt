@@ -1,0 +1,605 @@
+# Sibling/blast-radius revalidation sweep
+## I-00B verdict
+3:## Verdict
+5:PASS
+172:print(f'LINK_CHECK_PASSED files={len(files)} relative_links_checked={checked}')
+176:Output: `LINK_CHECK_PASSED files=7 relative_links_checked=25`.
+267:- Result: real docs boundary passed; `LINK_CHECK_PASSED files=7 relative_links_checked=25` plus required content marker/negative sweeps.
+289:PASS. `I-00B-governance-baseline` can be marked implementation-green. Dependents may consume the governance baseline subject to the explicitly recorded public-release/contact/package-metadata blockers and normal downstream Triad gates.
+
+## I-01A verdict/status
+107:## Final validation summary
+109:- Final verdict: NEEDS-FIX.
+111:  - critical: 1 — runtime validator/dependency choice violates DL-02/brief strict JSON Schema validator requirement.
+112:  - major-local: 2 — load-bearing schema semantics accept invalid verification/evidence handoffs; I-00A dependency launch created a process/handoff risk that blocks downstream use until resolved.
+204:- Severity: critical.
+216:- Severity: major-local, functionally blocking for schema dependents.
+229:- Severity: major-local, blocks downstream build/ship/evidence consumers.
+240:- Severity: major-local process/dependency risk.
+
+## packages/artifacts entries
+packages/artifacts/fixtures
+packages/artifacts/fixtures/invalid
+packages/artifacts/fixtures/invalid-carriers
+packages/artifacts/fixtures/valid
+packages/artifacts/package.json
+packages/artifacts/README.md
+packages/artifacts/schemas
+packages/artifacts/schemas/agent-registry-entry.schema.json
+packages/artifacts/schemas/build-result.schema.json
+packages/artifacts/schemas/context-file-header.schema.json
+packages/artifacts/schemas/evidence-packet.schema.json
+packages/artifacts/schemas/implementation-plan.schema.json
+packages/artifacts/schemas/schematic-manifest.schema.json
+packages/artifacts/schemas/ship-packet.schema.json
+packages/artifacts/schemas/skill-manifest.schema.json
+packages/artifacts/schemas/verification-delta.schema.json
+packages/artifacts/schemas/work-brief.schema.json
+packages/artifacts/scripts
+packages/artifacts/scripts/check-generated-types.mjs
+packages/artifacts/scripts/generate-types.mjs
+packages/artifacts/src
+packages/artifacts/src/errors.js
+packages/artifacts/src/generated
+packages/artifacts/src/index.js
+packages/artifacts/src/schema-registry.js
+packages/artifacts/src/validation.js
+packages/artifacts/tests
+packages/artifacts/tests/run-tests.mjs
+
+## packages outside artifacts
+packages/adapters/pi/package.json
+packages/cli/package.json
+packages/config/package.json
+packages/context/package.json
+packages/contracts/package.json
+packages/mechanical-gates/package.json
+packages/observability/package.json
+packages/orchestration/package.json
+packages/presets/nest-react-rn/package.json
+packages/presets/typescript/package.json
+packages/registry/package.json
+packages/schematics/package.json
+packages/security/package.json
+packages/skills/package.json
+packages/standards/package.json
+packages/testing/package.json
+packages/verification/package.json
+
+## forbidden path sentinels
+ABSENT packages/core
+ABSENT packages/adapters/claude-code
+ABSENT packages/adapters/codex
+ABSENT packages/adapters/opencode
+ABSENT apps
+ABSENT examples
+ABSENT .github
+ABSENT scripts
+ABSENT node_modules
+
+## path-scoped status I-00B/I-01A/I-00A-owned roots
+?? .gitignore
+?? .npmrc
+?? .vibe/ownership/I-00A-workspace-package-skeleton.md
+?? .vibe/work/I-00A-workspace-package-skeleton/I-00A-fix-report.md
+?? .vibe/work/I-00A-workspace-package-skeleton/I-00A-revalidation-report.md
+?? .vibe/work/I-00A-workspace-package-skeleton/I-00A-validation-report.md
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/fix/command-summary.json
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/fix/direct-current-surface.cmd.txt
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/fix/direct-current-surface.exit
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/fix/direct-current-surface.stderr
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/fix/direct-current-surface.stdout
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/fix/fixture-artifacts-source-current.cmd.txt
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/fix/fixture-artifacts-source-current.exit
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/fix/fixture-artifacts-source-current.stderr
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/fix/fixture-artifacts-source-current.stdout
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/fix/fixture-artifacts-source-skeleton-snapshot.cmd.txt
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/fix/fixture-artifacts-source-skeleton-snapshot.exit
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/fix/fixture-artifacts-source-skeleton-snapshot.stderr
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/fix/fixture-artifacts-source-skeleton-snapshot.stdout
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/fix/fixture-valid-workspace-current.cmd.txt
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/fix/fixture-valid-workspace-current.exit
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/fix/fixture-valid-workspace-current.stderr
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/fix/fixture-valid-workspace-current.stdout
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/fix/graph-summary.json
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/fix/negative-fake-cli-bin.cmd.txt
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/fix/negative-fake-cli-bin.exit
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/fix/negative-fake-cli-bin.stderr
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/fix/negative-fake-cli-bin.stdout
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/fix/negative-future-non-pi-adapter.cmd.txt
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/fix/negative-future-non-pi-adapter.exit
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/fix/negative-future-non-pi-adapter.stderr
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/fix/negative-future-non-pi-adapter.stdout
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/fix/negative-missing-package.cmd.txt
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/fix/negative-missing-package.exit
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/fix/negative-missing-package.stderr
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/fix/negative-missing-package.stdout
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/fix/negative-non-private-root.cmd.txt
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/fix/negative-non-private-root.exit
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/fix/negative-non-private-root.stderr
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/fix/negative-non-private-root.stdout
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/fix/negative-packages-core.cmd.txt
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/fix/negative-packages-core.exit
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/fix/negative-packages-core.stderr
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/fix/negative-packages-core.stdout
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/fix/negative-testing-prod-dependency.cmd.txt
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/fix/negative-testing-prod-dependency.exit
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/fix/negative-testing-prod-dependency.stderr
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/fix/negative-testing-prod-dependency.stdout
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/fix/negative-wrong-root-name.cmd.txt
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/fix/negative-wrong-root-name.exit
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/fix/negative-wrong-root-name.stderr
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/fix/negative-wrong-root-name.stdout
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/fix/owned-fix-inventory.txt
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/fix/path-scoped-status.txt
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/fix/pnpm-workspace-graph-direct.cmd.txt
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/fix/pnpm-workspace-graph-direct.exit
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/fix/pnpm-workspace-graph-direct.stderr
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/fix/pnpm-workspace-graph-direct.stdout
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/fix/root-script-workspace-graph.cmd.txt
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/fix/root-script-workspace-graph.exit
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/fix/root-script-workspace-graph.stderr
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/fix/root-script-workspace-graph.stdout
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/fix/root-script-workspace-surface.cmd.txt
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/fix/root-script-workspace-surface.exit
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/fix/root-script-workspace-surface.stderr
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/fix/root-script-workspace-surface.stdout
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/fix/sibling-blast-radius.txt
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/owned-files-inventory.txt
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/pnpm-workspace-graph.json
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/command-summary.json
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/current-root-skeleton-snapshot.cmd.txt
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/current-root-skeleton-snapshot.exit
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/current-root-skeleton-snapshot.stderr
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/current-root-skeleton-snapshot.stdout
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/current-surface-valid-fixture.cmd.txt
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/current-surface-valid-fixture.exit
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/current-surface-valid-fixture.stderr
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/current-surface-valid-fixture.stdout
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/direct-current-surface.cmd.txt
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/direct-current-surface.exit
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/direct-current-surface.stderr
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/direct-current-surface.stdout
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/domain-neutrality-scan.txt
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/frozen-lockfile.cmd.txt
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/frozen-lockfile.exit
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/frozen-lockfile.stderr
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/frozen-lockfile.stdout
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/inventory-status.txt
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/negative-fake-cli-bin.cmd.txt
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/negative-fake-cli-bin.exit
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/negative-fake-cli-bin.stderr
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/negative-fake-cli-bin.stdout
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/negative-future-non-pi-adapter.cmd.txt
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/negative-future-non-pi-adapter.exit
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/negative-future-non-pi-adapter.stderr
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/negative-future-non-pi-adapter.stdout
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/negative-missing-package.cmd.txt
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/negative-missing-package.exit
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/negative-missing-package.stderr
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/negative-missing-package.stdout
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/negative-non-private-root.cmd.txt
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/negative-non-private-root.exit
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/negative-non-private-root.stderr
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/negative-non-private-root.stdout
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/negative-packages-core.cmd.txt
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/negative-packages-core.exit
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/negative-packages-core.stderr
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/negative-packages-core.stdout
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/negative-testing-prod-dependency.cmd.txt
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/negative-testing-prod-dependency.exit
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/negative-testing-prod-dependency.stderr
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/negative-testing-prod-dependency.stdout
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/negative-wrong-root-name.cmd.txt
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/negative-wrong-root-name.exit
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/negative-wrong-root-name.stderr
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/negative-wrong-root-name.stdout
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/package-discovery-summary.json
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/pnpm-version.cmd.txt
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/pnpm-version.exit
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/pnpm-version.stderr
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/pnpm-version.stdout
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/pnpm-workspace-graph-direct.cmd.txt
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/pnpm-workspace-graph-direct.exit
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/pnpm-workspace-graph-direct.stderr
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/pnpm-workspace-graph-direct.stdout
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/regression-artifacts-source-current.cmd.txt
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/regression-artifacts-source-current.exit
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/regression-artifacts-source-current.stderr
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/regression-artifacts-source-current.stdout
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/regression-artifacts-source-snapshot.cmd.txt
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/regression-artifacts-source-snapshot.exit
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/regression-artifacts-source-snapshot.stderr
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/regression-artifacts-source-snapshot.stdout
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/root-script-workspace-graph.cmd.txt
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/root-script-workspace-graph.exit
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/root-script-workspace-graph.stderr
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/root-script-workspace-graph.stdout
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/root-script-workspace-surface.cmd.txt
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/root-script-workspace-surface.exit
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/root-script-workspace-surface.stderr
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/root-script-workspace-surface.stdout
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/revalidation/sibling-blast-radius.txt
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/target-inventory.txt
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/validation/domain-neutrality-scan.txt
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/validation/graph-summary.txt
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/validation/package-config-summary.json
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/validation/pnpm-frozen-lockfile.cmd.txt
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/validation/pnpm-frozen-lockfile.exit
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/validation/pnpm-frozen-lockfile.stderr
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/validation/pnpm-frozen-lockfile.stdout
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/validation/pnpm-workspace-graph-direct.cmd.txt
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/validation/pnpm-workspace-graph-direct.exit
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/validation/pnpm-workspace-graph-direct.stderr
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/validation/pnpm-workspace-graph-direct.stdout
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/validation/root-script-workspace-graph.cmd.txt
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/validation/root-script-workspace-graph.exit
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/validation/root-script-workspace-graph.stderr
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/validation/root-script-workspace-graph.stdout
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/validation/root-script-workspace-surface.cmd.txt
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/validation/root-script-workspace-surface.exit
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/validation/root-script-workspace-surface.stderr
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/validation/root-script-workspace-surface.stdout
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/validation/source-ground-truth-sentinels.txt
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/validation/status-and-blast-radius.txt
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/validation/witness-negative-fake-cli-bin.cmd.txt
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/validation/witness-negative-fake-cli-bin.exit
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/validation/witness-negative-fake-cli-bin.stderr
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/validation/witness-negative-fake-cli-bin.stdout
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/validation/witness-negative-missing-package.cmd.txt
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/validation/witness-negative-missing-package.exit
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/validation/witness-negative-missing-package.stderr
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/validation/witness-negative-missing-package.stdout
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/validation/witness-negative-packages-core.cmd.txt
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/validation/witness-negative-packages-core.exit
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/validation/witness-negative-packages-core.stderr
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/validation/witness-negative-packages-core.stdout
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/validation/witness-negative-testing-prod-dependency.cmd.txt
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/validation/witness-negative-testing-prod-dependency.exit
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/validation/witness-negative-testing-prod-dependency.stderr
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/validation/witness-negative-testing-prod-dependency.stdout
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/validation/witness-valid-fixture.cmd.txt
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/validation/witness-valid-fixture.exit
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/validation/witness-valid-fixture.stderr
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/validation/witness-valid-fixture.stdout
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/workspace-surface-fixture-valid.json
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/workspace-surface-negative-fake-cli-bin.json
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/workspace-surface-negative-missing-package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/workspace-surface-negative-packages-core.json
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/workspace-surface-negative-testing-prod-dependency.json
+?? .vibe/work/I-00A-workspace-package-skeleton/evidence/workspace-surface-positive.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/README.md
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/fake-cli-bin/.gitignore
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/fake-cli-bin/.npmrc
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/fake-cli-bin/eslint.config.mjs
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/fake-cli-bin/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/fake-cli-bin/packages/adapters/pi/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/fake-cli-bin/packages/artifacts/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/fake-cli-bin/packages/cli/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/fake-cli-bin/packages/config/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/fake-cli-bin/packages/context/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/fake-cli-bin/packages/contracts/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/fake-cli-bin/packages/mechanical-gates/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/fake-cli-bin/packages/observability/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/fake-cli-bin/packages/orchestration/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/fake-cli-bin/packages/presets/nest-react-rn/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/fake-cli-bin/packages/presets/typescript/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/fake-cli-bin/packages/registry/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/fake-cli-bin/packages/schematics/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/fake-cli-bin/packages/security/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/fake-cli-bin/packages/skills/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/fake-cli-bin/packages/standards/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/fake-cli-bin/packages/testing/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/fake-cli-bin/packages/verification/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/fake-cli-bin/pnpm-workspace.yaml
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/fake-cli-bin/prettier.config.mjs
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/fake-cli-bin/tsconfig.base.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/fake-cli-bin/turbo.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/future-non-pi-adapter/.gitignore
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/future-non-pi-adapter/.npmrc
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/future-non-pi-adapter/eslint.config.mjs
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/future-non-pi-adapter/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/future-non-pi-adapter/packages/adapters/codex/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/future-non-pi-adapter/packages/adapters/pi/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/future-non-pi-adapter/packages/artifacts/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/future-non-pi-adapter/packages/cli/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/future-non-pi-adapter/packages/config/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/future-non-pi-adapter/packages/context/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/future-non-pi-adapter/packages/contracts/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/future-non-pi-adapter/packages/mechanical-gates/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/future-non-pi-adapter/packages/observability/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/future-non-pi-adapter/packages/orchestration/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/future-non-pi-adapter/packages/presets/nest-react-rn/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/future-non-pi-adapter/packages/presets/typescript/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/future-non-pi-adapter/packages/registry/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/future-non-pi-adapter/packages/schematics/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/future-non-pi-adapter/packages/security/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/future-non-pi-adapter/packages/skills/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/future-non-pi-adapter/packages/standards/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/future-non-pi-adapter/packages/testing/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/future-non-pi-adapter/packages/verification/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/future-non-pi-adapter/pnpm-workspace.yaml
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/future-non-pi-adapter/prettier.config.mjs
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/future-non-pi-adapter/tsconfig.base.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/future-non-pi-adapter/turbo.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/missing-package/.gitignore
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/missing-package/.npmrc
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/missing-package/eslint.config.mjs
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/missing-package/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/missing-package/packages/adapters/pi/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/missing-package/packages/artifacts/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/missing-package/packages/cli/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/missing-package/packages/config/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/missing-package/packages/context/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/missing-package/packages/contracts/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/missing-package/packages/mechanical-gates/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/missing-package/packages/observability/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/missing-package/packages/orchestration/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/missing-package/packages/presets/nest-react-rn/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/missing-package/packages/presets/typescript/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/missing-package/packages/schematics/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/missing-package/packages/security/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/missing-package/packages/skills/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/missing-package/packages/standards/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/missing-package/packages/testing/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/missing-package/packages/verification/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/missing-package/pnpm-workspace.yaml
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/missing-package/prettier.config.mjs
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/missing-package/tsconfig.base.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/missing-package/turbo.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/non-private-root/.gitignore
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/non-private-root/.npmrc
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/non-private-root/eslint.config.mjs
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/non-private-root/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/non-private-root/packages/adapters/pi/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/non-private-root/packages/artifacts/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/non-private-root/packages/cli/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/non-private-root/packages/config/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/non-private-root/packages/context/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/non-private-root/packages/contracts/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/non-private-root/packages/mechanical-gates/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/non-private-root/packages/observability/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/non-private-root/packages/orchestration/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/non-private-root/packages/presets/nest-react-rn/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/non-private-root/packages/presets/typescript/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/non-private-root/packages/registry/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/non-private-root/packages/schematics/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/non-private-root/packages/security/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/non-private-root/packages/skills/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/non-private-root/packages/standards/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/non-private-root/packages/testing/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/non-private-root/packages/verification/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/non-private-root/pnpm-workspace.yaml
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/non-private-root/prettier.config.mjs
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/non-private-root/tsconfig.base.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/non-private-root/turbo.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/packages-core/.gitignore
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/packages-core/.npmrc
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/packages-core/eslint.config.mjs
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/packages-core/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/packages-core/packages/adapters/pi/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/packages-core/packages/artifacts/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/packages-core/packages/cli/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/packages-core/packages/config/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/packages-core/packages/context/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/packages-core/packages/contracts/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/packages-core/packages/core/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/packages-core/packages/mechanical-gates/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/packages-core/packages/observability/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/packages-core/packages/orchestration/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/packages-core/packages/presets/nest-react-rn/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/packages-core/packages/presets/typescript/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/packages-core/packages/registry/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/packages-core/packages/schematics/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/packages-core/packages/security/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/packages-core/packages/skills/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/packages-core/packages/standards/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/packages-core/packages/testing/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/packages-core/packages/verification/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/packages-core/pnpm-workspace.yaml
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/packages-core/prettier.config.mjs
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/packages-core/tsconfig.base.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/packages-core/turbo.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/testing-prod-dependency/.gitignore
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/testing-prod-dependency/.npmrc
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/testing-prod-dependency/eslint.config.mjs
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/testing-prod-dependency/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/testing-prod-dependency/packages/adapters/pi/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/testing-prod-dependency/packages/artifacts/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/testing-prod-dependency/packages/cli/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/testing-prod-dependency/packages/config/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/testing-prod-dependency/packages/context/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/testing-prod-dependency/packages/contracts/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/testing-prod-dependency/packages/mechanical-gates/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/testing-prod-dependency/packages/observability/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/testing-prod-dependency/packages/orchestration/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/testing-prod-dependency/packages/presets/nest-react-rn/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/testing-prod-dependency/packages/presets/typescript/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/testing-prod-dependency/packages/registry/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/testing-prod-dependency/packages/schematics/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/testing-prod-dependency/packages/security/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/testing-prod-dependency/packages/skills/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/testing-prod-dependency/packages/standards/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/testing-prod-dependency/packages/testing/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/testing-prod-dependency/packages/verification/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/testing-prod-dependency/pnpm-workspace.yaml
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/testing-prod-dependency/prettier.config.mjs
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/testing-prod-dependency/tsconfig.base.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/testing-prod-dependency/turbo.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/valid-workspace-with-artifacts-source/.gitignore
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/valid-workspace-with-artifacts-source/.npmrc
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/valid-workspace-with-artifacts-source/eslint.config.mjs
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/valid-workspace-with-artifacts-source/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/valid-workspace-with-artifacts-source/packages/adapters/pi/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/valid-workspace-with-artifacts-source/packages/artifacts/README.md
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/valid-workspace-with-artifacts-source/packages/artifacts/fixtures/example.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/valid-workspace-with-artifacts-source/packages/artifacts/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/valid-workspace-with-artifacts-source/packages/artifacts/schemas/example.schema.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/valid-workspace-with-artifacts-source/packages/artifacts/src/index.js
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/valid-workspace-with-artifacts-source/packages/cli/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/valid-workspace-with-artifacts-source/packages/config/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/valid-workspace-with-artifacts-source/packages/context/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/valid-workspace-with-artifacts-source/packages/contracts/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/valid-workspace-with-artifacts-source/packages/mechanical-gates/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/valid-workspace-with-artifacts-source/packages/observability/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/valid-workspace-with-artifacts-source/packages/orchestration/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/valid-workspace-with-artifacts-source/packages/presets/nest-react-rn/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/valid-workspace-with-artifacts-source/packages/presets/typescript/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/valid-workspace-with-artifacts-source/packages/registry/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/valid-workspace-with-artifacts-source/packages/schematics/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/valid-workspace-with-artifacts-source/packages/security/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/valid-workspace-with-artifacts-source/packages/skills/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/valid-workspace-with-artifacts-source/packages/standards/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/valid-workspace-with-artifacts-source/packages/testing/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/valid-workspace-with-artifacts-source/packages/verification/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/valid-workspace-with-artifacts-source/pnpm-workspace.yaml
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/valid-workspace-with-artifacts-source/prettier.config.mjs
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/valid-workspace-with-artifacts-source/tsconfig.base.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/valid-workspace-with-artifacts-source/turbo.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/valid-workspace/.gitignore
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/valid-workspace/.npmrc
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/valid-workspace/eslint.config.mjs
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/valid-workspace/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/valid-workspace/packages/adapters/pi/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/valid-workspace/packages/artifacts/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/valid-workspace/packages/cli/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/valid-workspace/packages/config/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/valid-workspace/packages/context/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/valid-workspace/packages/contracts/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/valid-workspace/packages/mechanical-gates/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/valid-workspace/packages/observability/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/valid-workspace/packages/orchestration/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/valid-workspace/packages/presets/nest-react-rn/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/valid-workspace/packages/presets/typescript/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/valid-workspace/packages/registry/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/valid-workspace/packages/schematics/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/valid-workspace/packages/security/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/valid-workspace/packages/skills/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/valid-workspace/packages/standards/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/valid-workspace/packages/testing/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/valid-workspace/packages/verification/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/valid-workspace/pnpm-workspace.yaml
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/valid-workspace/prettier.config.mjs
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/valid-workspace/tsconfig.base.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/valid-workspace/turbo.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/wrong-root-name/.gitignore
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/wrong-root-name/.npmrc
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/wrong-root-name/eslint.config.mjs
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/wrong-root-name/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/wrong-root-name/packages/adapters/pi/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/wrong-root-name/packages/artifacts/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/wrong-root-name/packages/cli/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/wrong-root-name/packages/config/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/wrong-root-name/packages/context/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/wrong-root-name/packages/contracts/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/wrong-root-name/packages/mechanical-gates/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/wrong-root-name/packages/observability/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/wrong-root-name/packages/orchestration/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/wrong-root-name/packages/presets/nest-react-rn/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/wrong-root-name/packages/presets/typescript/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/wrong-root-name/packages/registry/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/wrong-root-name/packages/schematics/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/wrong-root-name/packages/security/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/wrong-root-name/packages/skills/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/wrong-root-name/packages/standards/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/wrong-root-name/packages/testing/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/wrong-root-name/packages/verification/package.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/wrong-root-name/pnpm-workspace.yaml
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/wrong-root-name/prettier.config.mjs
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/wrong-root-name/tsconfig.base.json
+?? .vibe/work/I-00A-workspace-package-skeleton/fixtures/wrong-root-name/turbo.json
+?? .vibe/work/I-00A-workspace-package-skeleton/implementation-report.md
+?? .vibe/work/I-00A-workspace-package-skeleton/witnesses/workspace-surface-witness.mjs
+?? CHANGELOG.md
+?? CODE_OF_CONDUCT.md
+?? CONTRIBUTING.md
+?? LICENSE
+?? README.md
+?? SECURITY.md
+?? docs/README.md
+?? docs/architecture/index.md
+?? eslint.config.mjs
+?? package.json
+?? packages/artifacts/README.md
+?? packages/artifacts/fixtures/invalid-carriers/chat-transcript.txt
+?? packages/artifacts/fixtures/invalid-carriers/implementation-plan.yaml
+?? packages/artifacts/fixtures/invalid-carriers/work-brief.md
+?? packages/artifacts/fixtures/invalid/agent_registry_entry/missing-schema-refs.json
+?? packages/artifacts/fixtures/invalid/agent_registry_entry/missing-schemaVersion.json
+?? packages/artifacts/fixtures/invalid/agent_registry_entry/unknown-field.json
+?? packages/artifacts/fixtures/invalid/agent_registry_entry/wrong-artifactKind.json
+?? packages/artifacts/fixtures/invalid/build_result/bad-plan-status-handoff.json
+?? packages/artifacts/fixtures/invalid/build_result/missing-evidence-refs.json
+?? packages/artifacts/fixtures/invalid/build_result/missing-schemaVersion.json
+?? packages/artifacts/fixtures/invalid/build_result/unknown-field.json
+?? packages/artifacts/fixtures/invalid/build_result/wrong-artifactKind.json
+?? packages/artifacts/fixtures/invalid/context_file_header/missing-drift-metadata.json
+?? packages/artifacts/fixtures/invalid/context_file_header/missing-schemaVersion.json
+?? packages/artifacts/fixtures/invalid/context_file_header/unknown-field.json
+?? packages/artifacts/fixtures/invalid/context_file_header/wrong-artifactKind.json
+?? packages/artifacts/fixtures/invalid/evidence_packet/advisory-as-deterministic-blocker.json
+?? packages/artifacts/fixtures/invalid/evidence_packet/missing-schemaVersion.json
+?? packages/artifacts/fixtures/invalid/evidence_packet/unknown-field.json
+?? packages/artifacts/fixtures/invalid/evidence_packet/wrong-artifactKind.json
+?? packages/artifacts/fixtures/invalid/implementation_plan/missing-schemaVersion.json
+?? packages/artifacts/fixtures/invalid/implementation_plan/unknown-field.json
+?? packages/artifacts/fixtures/invalid/implementation_plan/wrong-artifactKind.json
+?? packages/artifacts/fixtures/invalid/schematic_manifest/missing-input-schema-refs.json
+?? packages/artifacts/fixtures/invalid/schematic_manifest/missing-schemaVersion.json
+?? packages/artifacts/fixtures/invalid/schematic_manifest/unknown-field.json
+?? packages/artifacts/fixtures/invalid/schematic_manifest/wrong-artifactKind.json
+?? packages/artifacts/fixtures/invalid/ship_packet/failed-build-handoff.json
+?? packages/artifacts/fixtures/invalid/ship_packet/missing-schemaVersion.json
+?? packages/artifacts/fixtures/invalid/ship_packet/push-without-approval.json
+?? packages/artifacts/fixtures/invalid/ship_packet/unknown-field.json
+?? packages/artifacts/fixtures/invalid/ship_packet/wrong-artifactKind.json
+?? packages/artifacts/fixtures/invalid/skill_manifest/missing-forbidden-actions.json
+?? packages/artifacts/fixtures/invalid/skill_manifest/missing-schemaVersion.json
+?? packages/artifacts/fixtures/invalid/skill_manifest/unknown-field.json
+?? packages/artifacts/fixtures/invalid/skill_manifest/wrong-artifactKind.json
+?? packages/artifacts/fixtures/invalid/verification_delta/missing-requiredItems.json
+?? packages/artifacts/fixtures/invalid/verification_delta/missing-schemaVersion.json
+?? packages/artifacts/fixtures/invalid/verification_delta/unknown-field.json
+?? packages/artifacts/fixtures/invalid/verification_delta/wrong-artifactKind.json
+?? packages/artifacts/fixtures/invalid/work_brief/malformed-extension-core-field.json
+?? packages/artifacts/fixtures/invalid/work_brief/missing-schemaVersion.json
+?? packages/artifacts/fixtures/invalid/work_brief/unknown-field.json
+?? packages/artifacts/fixtures/invalid/work_brief/unsupported-version.json
+?? packages/artifacts/fixtures/invalid/work_brief/wrong-artifactKind.json
+?? packages/artifacts/fixtures/valid/agent_registry_entry.json
+?? packages/artifacts/fixtures/valid/build_result.json
+?? packages/artifacts/fixtures/valid/context_file_header.json
+?? packages/artifacts/fixtures/valid/evidence_packet.json
+?? packages/artifacts/fixtures/valid/implementation_plan.json
+?? packages/artifacts/fixtures/valid/schematic_manifest.json
+?? packages/artifacts/fixtures/valid/ship_packet.json
+?? packages/artifacts/fixtures/valid/skill_manifest.json
+?? packages/artifacts/fixtures/valid/verification_delta.json
+?? packages/artifacts/fixtures/valid/work_brief.json
+?? packages/artifacts/package.json
+?? packages/artifacts/schemas/agent-registry-entry.schema.json
+?? packages/artifacts/schemas/build-result.schema.json
+?? packages/artifacts/schemas/context-file-header.schema.json
+?? packages/artifacts/schemas/evidence-packet.schema.json
+?? packages/artifacts/schemas/implementation-plan.schema.json
+?? packages/artifacts/schemas/schematic-manifest.schema.json
+?? packages/artifacts/schemas/ship-packet.schema.json
+?? packages/artifacts/schemas/skill-manifest.schema.json
+?? packages/artifacts/schemas/verification-delta.schema.json
+?? packages/artifacts/schemas/work-brief.schema.json
+?? packages/artifacts/scripts/check-generated-types.mjs
+?? packages/artifacts/scripts/generate-types.mjs
+?? packages/artifacts/src/errors.js
+?? packages/artifacts/src/generated/types.d.ts
+?? packages/artifacts/src/index.js
+?? packages/artifacts/src/schema-registry.js
+?? packages/artifacts/src/validation.js
+?? packages/artifacts/tests/run-tests.mjs
+?? pnpm-lock.yaml
+?? pnpm-workspace.yaml
+?? prettier.config.mjs
+?? tsconfig.base.json
+?? turbo.json
+
+## post-command node_modules sentinel
+ABSENT node_modules

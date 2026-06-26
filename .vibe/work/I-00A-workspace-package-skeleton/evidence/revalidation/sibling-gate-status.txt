@@ -1,0 +1,36 @@
+# I-00B smoke and I-01A gate status for I-00A revalidation
+## I-00B required file presence
+PRESENT README.md
+PRESENT LICENSE
+PRESENT CONTRIBUTING.md
+PRESENT CODE_OF_CONDUCT.md
+PRESENT SECURITY.md
+PRESENT CHANGELOG.md
+PRESENT docs/README.md
+PRESENT docs/architecture/index.md
+
+## I-00B validation verdict excerpt
+# I-00B Governance Baseline Validation Report
+
+## Verdict
+
+PASS
+
+Recommendation: mark `I-00B-governance-baseline` implementation-green. No fix/revalidation lane is required for I-00B. Public release/package publication/external contributor solicitation remain blocked by the intentionally explicit operational placeholders.
+
+## Files and artifacts inspected
+
+Primary inputs:
+
+
+## I-00B relative link smoke
+LINK_CHECK_PASSED files=7 relative_links_checked=25
+
+## I-01A validation final verdict excerpt
+107:## Final validation summary
+109:- Final verdict: NEEDS-FIX.
+111:  - critical: 1 — runtime validator/dependency choice violates DL-02/brief strict JSON Schema validator requirement.
+112:  - major-local: 2 — load-bearing schema semantics accept invalid verification/evidence handoffs; I-00A dependency launch created a process/handoff risk that blocks downstream use until resolved.
+
+## Gate implications
+I-00A PASS would clear the I-00A-only prerequisite for Q04/I-01B and Q07/I-10A; Q05/I-03 and Q06/I-04 remain blocked by I-01A NEEDS-FIX.

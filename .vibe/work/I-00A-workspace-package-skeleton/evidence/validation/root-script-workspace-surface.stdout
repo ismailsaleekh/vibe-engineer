@@ -1,0 +1,29 @@
+
+> @vibe-engineer/workspace@0.0.0 workspace:surface /Users/lizavasilyeva/work/vibe-engineer
+> node .vibe/work/I-00A-workspace-package-skeleton/witnesses/workspace-surface-witness.mjs --root .
+
+{
+  "ok": false,
+  "root": "/Users/lizavasilyeva/work/vibe-engineer",
+  "checkedAt": "2026-06-23T12:45:24.648Z",
+  "requiredPackageCount": 18,
+  "failures": [
+    {
+      "ok": false,
+      "code": "PACKAGE_SOURCE_CREATED",
+      "message": "I-00A package skeleton must contain only package.json: packages/artifacts",
+      "details": {
+        "entries": [
+          "README.md",
+          "fixtures",
+          "schemas",
+          "scripts",
+          "src",
+          "tests"
+        ]
+      }
+    }
+  ]
+}
+ ELIFECYCLE  Command failed with exit code 1.
+ WARN   Local package.json exists, but node_modules missing, did you mean to install?

@@ -1,0 +1,22 @@
+{
+  "ok": false,
+  "root": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-00A-workspace-package-skeleton/fixtures/testing-prod-dependency",
+  "mode": "current-surface",
+  "checkedAt": "2026-06-23T13:44:00.443Z",
+  "requiredPackageCount": 18,
+  "failures": [
+    {
+      "ok": false,
+      "code": "TESTING_PRODUCTION_DEPENDENCY",
+      "message": "packages/cli has a production dependency on @vibe-engineer/testing",
+      "details": {
+        "prodDeps": [
+          [
+            "dependencies",
+            "@vibe-engineer/testing"
+          ]
+        ]
+      }
+    }
+  ]
+}

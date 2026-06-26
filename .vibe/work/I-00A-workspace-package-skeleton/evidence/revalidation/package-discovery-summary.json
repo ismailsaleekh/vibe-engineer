@@ -1,0 +1,282 @@
+{
+  "artifactPackageSourceEntries": [
+    "README.md",
+    "fixtures",
+    "schemas",
+    "scripts",
+    "src",
+    "tests"
+  ],
+  "forbiddenPathPresence": {
+    ".github": false,
+    "apps": false,
+    "examples": false,
+    "node_modules": false,
+    "packages/adapters/claude-code": false,
+    "packages/adapters/codex": false,
+    "packages/adapters/opencode": false,
+    "packages/core": false,
+    "scripts": false
+  },
+  "packageFilesOutsideArtifacts": [],
+  "pnpmGraph": {
+    "entryCount": 19,
+    "names": [
+      "@vibe-engineer/adapter-pi",
+      "@vibe-engineer/artifacts",
+      "@vibe-engineer/config",
+      "@vibe-engineer/context",
+      "@vibe-engineer/contracts",
+      "@vibe-engineer/mechanical-gates",
+      "@vibe-engineer/observability",
+      "@vibe-engineer/orchestration",
+      "@vibe-engineer/preset-nest-react-rn",
+      "@vibe-engineer/preset-typescript",
+      "@vibe-engineer/registry",
+      "@vibe-engineer/schematics",
+      "@vibe-engineer/security",
+      "@vibe-engineer/skills",
+      "@vibe-engineer/standards",
+      "@vibe-engineer/testing",
+      "@vibe-engineer/verification",
+      "@vibe-engineer/workspace",
+      "vibe-engineer"
+    ],
+    "rootPlusRequiredCountOk": true
+  },
+  "requiredPackages": [
+    {
+      "actualName": "vibe-engineer",
+      "actualPrivate": false,
+      "dir": "packages/cli",
+      "expectedName": "vibe-engineer",
+      "expectedPrivate": false,
+      "hasBin": false,
+      "implementationUnit": "I-00A-workspace-package-skeleton",
+      "nonManifestEntries": [],
+      "sourceStatus": "not-created-in-I-00A",
+      "testingProdDependencySections": []
+    },
+    {
+      "actualName": "@vibe-engineer/artifacts",
+      "actualPrivate": true,
+      "dir": "packages/artifacts",
+      "expectedName": "@vibe-engineer/artifacts",
+      "expectedPrivate": true,
+      "hasBin": false,
+      "implementationUnit": "I-01A-artifact-schemas",
+      "nonManifestEntries": [
+        "README.md",
+        "fixtures",
+        "schemas",
+        "scripts",
+        "src",
+        "tests"
+      ],
+      "sourceStatus": "package-owned-source-created",
+      "testingProdDependencySections": []
+    },
+    {
+      "actualName": "@vibe-engineer/config",
+      "actualPrivate": true,
+      "dir": "packages/config",
+      "expectedName": "@vibe-engineer/config",
+      "expectedPrivate": true,
+      "hasBin": false,
+      "implementationUnit": "I-00A-workspace-package-skeleton",
+      "nonManifestEntries": [],
+      "sourceStatus": "not-created-in-I-00A",
+      "testingProdDependencySections": []
+    },
+    {
+      "actualName": "@vibe-engineer/orchestration",
+      "actualPrivate": true,
+      "dir": "packages/orchestration",
+      "expectedName": "@vibe-engineer/orchestration",
+      "expectedPrivate": true,
+      "hasBin": false,
+      "implementationUnit": "I-00A-workspace-package-skeleton",
+      "nonManifestEntries": [],
+      "sourceStatus": "not-created-in-I-00A",
+      "testingProdDependencySections": []
+    },
+    {
+      "actualName": "@vibe-engineer/registry",
+      "actualPrivate": true,
+      "dir": "packages/registry",
+      "expectedName": "@vibe-engineer/registry",
+      "expectedPrivate": true,
+      "hasBin": false,
+      "implementationUnit": "I-00A-workspace-package-skeleton",
+      "nonManifestEntries": [],
+      "sourceStatus": "not-created-in-I-00A",
+      "testingProdDependencySections": []
+    },
+    {
+      "actualName": "@vibe-engineer/skills",
+      "actualPrivate": true,
+      "dir": "packages/skills",
+      "expectedName": "@vibe-engineer/skills",
+      "expectedPrivate": true,
+      "hasBin": false,
+      "implementationUnit": "I-00A-workspace-package-skeleton",
+      "nonManifestEntries": [],
+      "sourceStatus": "not-created-in-I-00A",
+      "testingProdDependencySections": []
+    },
+    {
+      "actualName": "@vibe-engineer/schematics",
+      "actualPrivate": true,
+      "dir": "packages/schematics",
+      "expectedName": "@vibe-engineer/schematics",
+      "expectedPrivate": true,
+      "hasBin": false,
+      "implementationUnit": "I-00A-workspace-package-skeleton",
+      "nonManifestEntries": [],
+      "sourceStatus": "not-created-in-I-00A",
+      "testingProdDependencySections": []
+    },
+    {
+      "actualName": "@vibe-engineer/context",
+      "actualPrivate": true,
+      "dir": "packages/context",
+      "expectedName": "@vibe-engineer/context",
+      "expectedPrivate": true,
+      "hasBin": false,
+      "implementationUnit": "I-00A-workspace-package-skeleton",
+      "nonManifestEntries": [],
+      "sourceStatus": "not-created-in-I-00A",
+      "testingProdDependencySections": []
+    },
+    {
+      "actualName": "@vibe-engineer/verification",
+      "actualPrivate": true,
+      "dir": "packages/verification",
+      "expectedName": "@vibe-engineer/verification",
+      "expectedPrivate": true,
+      "hasBin": false,
+      "implementationUnit": "I-00A-workspace-package-skeleton",
+      "nonManifestEntries": [],
+      "sourceStatus": "not-created-in-I-00A",
+      "testingProdDependencySections": []
+    },
+    {
+      "actualName": "@vibe-engineer/mechanical-gates",
+      "actualPrivate": true,
+      "dir": "packages/mechanical-gates",
+      "expectedName": "@vibe-engineer/mechanical-gates",
+      "expectedPrivate": true,
+      "hasBin": false,
+      "implementationUnit": "I-00A-workspace-package-skeleton",
+      "nonManifestEntries": [],
+      "sourceStatus": "not-created-in-I-00A",
+      "testingProdDependencySections": []
+    },
+    {
+      "actualName": "@vibe-engineer/contracts",
+      "actualPrivate": true,
+      "dir": "packages/contracts",
+      "expectedName": "@vibe-engineer/contracts",
+      "expectedPrivate": true,
+      "hasBin": false,
+      "implementationUnit": "I-00A-workspace-package-skeleton",
+      "nonManifestEntries": [],
+      "sourceStatus": "not-created-in-I-00A",
+      "testingProdDependencySections": []
+    },
+    {
+      "actualName": "@vibe-engineer/security",
+      "actualPrivate": true,
+      "dir": "packages/security",
+      "expectedName": "@vibe-engineer/security",
+      "expectedPrivate": true,
+      "hasBin": false,
+      "implementationUnit": "I-00A-workspace-package-skeleton",
+      "nonManifestEntries": [],
+      "sourceStatus": "not-created-in-I-00A",
+      "testingProdDependencySections": []
+    },
+    {
+      "actualName": "@vibe-engineer/observability",
+      "actualPrivate": true,
+      "dir": "packages/observability",
+      "expectedName": "@vibe-engineer/observability",
+      "expectedPrivate": true,
+      "hasBin": false,
+      "implementationUnit": "I-00A-workspace-package-skeleton",
+      "nonManifestEntries": [],
+      "sourceStatus": "not-created-in-I-00A",
+      "testingProdDependencySections": []
+    },
+    {
+      "actualName": "@vibe-engineer/standards",
+      "actualPrivate": true,
+      "dir": "packages/standards",
+      "expectedName": "@vibe-engineer/standards",
+      "expectedPrivate": true,
+      "hasBin": false,
+      "implementationUnit": "I-00A-workspace-package-skeleton",
+      "nonManifestEntries": [],
+      "sourceStatus": "not-created-in-I-00A",
+      "testingProdDependencySections": []
+    },
+    {
+      "actualName": "@vibe-engineer/preset-typescript",
+      "actualPrivate": true,
+      "dir": "packages/presets/typescript",
+      "expectedName": "@vibe-engineer/preset-typescript",
+      "expectedPrivate": true,
+      "hasBin": false,
+      "implementationUnit": "I-00A-workspace-package-skeleton",
+      "nonManifestEntries": [],
+      "sourceStatus": "not-created-in-I-00A",
+      "testingProdDependencySections": []
+    },
+    {
+      "actualName": "@vibe-engineer/preset-nest-react-rn",
+      "actualPrivate": true,
+      "dir": "packages/presets/nest-react-rn",
+      "expectedName": "@vibe-engineer/preset-nest-react-rn",
+      "expectedPrivate": true,
+      "hasBin": false,
+      "implementationUnit": "I-00A-workspace-package-skeleton",
+      "nonManifestEntries": [],
+      "sourceStatus": "not-created-in-I-00A",
+      "testingProdDependencySections": []
+    },
+    {
+      "actualName": "@vibe-engineer/adapter-pi",
+      "actualPrivate": true,
+      "dir": "packages/adapters/pi",
+      "expectedName": "@vibe-engineer/adapter-pi",
+      "expectedPrivate": true,
+      "hasBin": false,
+      "implementationUnit": "I-00A-workspace-package-skeleton",
+      "nonManifestEntries": [],
+      "sourceStatus": "not-created-in-I-00A",
+      "testingProdDependencySections": []
+    },
+    {
+      "actualName": "@vibe-engineer/testing",
+      "actualPrivate": true,
+      "dir": "packages/testing",
+      "expectedName": "@vibe-engineer/testing",
+      "expectedPrivate": true,
+      "hasBin": false,
+      "implementationUnit": "I-00A-workspace-package-skeleton",
+      "nonManifestEntries": [],
+      "sourceStatus": "not-created-in-I-00A",
+      "testingProdDependencySections": []
+    }
+  ],
+  "root": {
+    "license": "MIT",
+    "name": "@vibe-engineer/workspace",
+    "packageManager": "pnpm@10.33.0",
+    "private": true,
+    "scripts": {
+      "workspace:graph": "pnpm -r list --depth -1 --json",
+      "workspace:surface": "node .vibe/work/I-00A-workspace-package-skeleton/witnesses/workspace-surface-witness.mjs --root ."
+    }
+  }
+}

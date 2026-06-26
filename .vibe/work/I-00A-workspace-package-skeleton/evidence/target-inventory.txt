@@ -1,0 +1,66 @@
+# I-00A Target Inventory Witness
+timestamp: 2026-06-23T11:43:03Z
+
+## Top-level non-git entries
+./.gitignore
+./.npmrc
+./.vibe
+./CHANGELOG.md
+./CODE_OF_CONDUCT.md
+./CONTRIBUTING.md
+./docs
+./eslint.config.mjs
+./LICENSE
+./package.json
+./packages
+./pnpm-lock.yaml
+./pnpm-workspace.yaml
+./prettier.config.mjs
+./README.md
+./SECURITY.md
+./tsconfig.base.json
+./turbo.json
+
+## Package files under packages (expected package.json only)
+packages/adapters/pi/package.json
+packages/artifacts/package.json
+packages/cli/package.json
+packages/config/package.json
+packages/context/package.json
+packages/contracts/package.json
+packages/mechanical-gates/package.json
+packages/observability/package.json
+packages/orchestration/package.json
+packages/presets/nest-react-rn/package.json
+packages/presets/typescript/package.json
+packages/registry/package.json
+packages/schematics/package.json
+packages/security/package.json
+packages/skills/package.json
+packages/standards/package.json
+packages/testing/package.json
+packages/verification/package.json
+
+## Forbidden path sentinels
+absent packages/core
+absent packages/adapters/claude-code
+absent packages/adapters/codex
+absent packages/adapters/opencode
+absent apps
+absent examples
+absent .github
+absent scripts
+
+## I-00B/decision read-only paths currently present (not owned by I-00A)
+present README.md
+present LICENSE
+present CONTRIBUTING.md
+present CODE_OF_CONDUCT.md
+present SECURITY.md
+present CHANGELOG.md
+present docs/README.md
+present docs/architecture/index.md
+present docs/decisions
+
+## node_modules sentinel
+absent node_modules

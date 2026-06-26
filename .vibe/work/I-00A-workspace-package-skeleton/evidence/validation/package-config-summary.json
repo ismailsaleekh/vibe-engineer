@@ -1,0 +1,451 @@
+{
+  "root": {
+    "name": "@vibe-engineer/workspace",
+    "private": true,
+    "license": "MIT",
+    "packageManager": "pnpm@10.33.0",
+    "scripts": {
+      "workspace:graph": "pnpm -r list --depth -1 --json",
+      "workspace:surface": "node .vibe/work/I-00A-workspace-package-skeleton/witnesses/workspace-surface-witness.mjs --root ."
+    },
+    "devDependencyNames": [
+      "@eslint/js",
+      "eslint",
+      "prettier",
+      "turbo",
+      "typescript",
+      "typescript-eslint"
+    ]
+  },
+  "workspaceYaml": [
+    "packages:",
+    "  - 'packages/*'",
+    "  - 'packages/presets/*'",
+    "  - 'packages/adapters/*'"
+  ],
+  "forbiddenPaths": {
+    "packages/core": false,
+    "packages/adapters/claude-code": false,
+    "packages/adapters/codex": false,
+    "packages/adapters/opencode": false,
+    "apps": false,
+    "examples": false,
+    ".github": false,
+    "scripts": false,
+    "node_modules": false
+  },
+  "packages": [
+    {
+      "dir": "packages/cli",
+      "expectedName": "vibe-engineer",
+      "name": "vibe-engineer",
+      "private": false,
+      "bin": null,
+      "vibeEngineer": {
+        "implementationUnit": "I-00A-workspace-package-skeleton",
+        "implementationStatus": "skeleton-only",
+        "packageRole": "public-cli-package",
+        "sourceStatus": "not-created-in-I-00A",
+        "binStatus": "intentionally-absent-until-I-02A"
+      },
+      "prodDependencyNames": [],
+      "devDependencyNames": [],
+      "fileCount": 1,
+      "files": [
+        "package.json"
+      ],
+      "filesTruncated": false
+    },
+    {
+      "dir": "packages/artifacts",
+      "expectedName": "@vibe-engineer/artifacts",
+      "name": "@vibe-engineer/artifacts",
+      "private": true,
+      "bin": null,
+      "vibeEngineer": {
+        "implementationUnit": "I-01A-artifact-schemas",
+        "implementationStatus": "implemented",
+        "packageRole": "internal-workspace-package",
+        "sourceStatus": "package-owned-source-created"
+      },
+      "prodDependencyNames": [],
+      "devDependencyNames": [],
+      "fileCount": 75,
+      "files": [
+        "README.md",
+        "fixtures/invalid-carriers/chat-transcript.txt",
+        "fixtures/invalid-carriers/implementation-plan.yaml",
+        "fixtures/invalid-carriers/work-brief.md",
+        "fixtures/invalid/agent_registry_entry/missing-schema-refs.json",
+        "fixtures/invalid/agent_registry_entry/missing-schemaVersion.json",
+        "fixtures/invalid/agent_registry_entry/unknown-field.json",
+        "fixtures/invalid/agent_registry_entry/wrong-artifactKind.json",
+        "fixtures/invalid/build_result/bad-plan-status-handoff.json",
+        "fixtures/invalid/build_result/missing-evidence-refs.json",
+        "fixtures/invalid/build_result/missing-schemaVersion.json",
+        "fixtures/invalid/build_result/unknown-field.json",
+        "fixtures/invalid/build_result/wrong-artifactKind.json",
+        "fixtures/invalid/context_file_header/missing-drift-metadata.json",
+        "fixtures/invalid/context_file_header/missing-schemaVersion.json",
+        "fixtures/invalid/context_file_header/unknown-field.json",
+        "fixtures/invalid/context_file_header/wrong-artifactKind.json",
+        "fixtures/invalid/evidence_packet/advisory-as-deterministic-blocker.json",
+        "fixtures/invalid/evidence_packet/missing-schemaVersion.json",
+        "fixtures/invalid/evidence_packet/unknown-field.json",
+        "fixtures/invalid/evidence_packet/wrong-artifactKind.json",
+        "fixtures/invalid/implementation_plan/missing-schemaVersion.json",
+        "fixtures/invalid/implementation_plan/unknown-field.json",
+        "fixtures/invalid/implementation_plan/wrong-artifactKind.json",
+        "fixtures/invalid/schematic_manifest/missing-input-schema-refs.json",
+        "fixtures/invalid/schematic_manifest/missing-schemaVersion.json",
+        "fixtures/invalid/schematic_manifest/unknown-field.json",
+        "fixtures/invalid/schematic_manifest/wrong-artifactKind.json",
+        "fixtures/invalid/ship_packet/failed-build-handoff.json",
+        "fixtures/invalid/ship_packet/missing-schemaVersion.json",
+        "fixtures/invalid/ship_packet/push-without-approval.json",
+        "fixtures/invalid/ship_packet/unknown-field.json",
+        "fixtures/invalid/ship_packet/wrong-artifactKind.json",
+        "fixtures/invalid/skill_manifest/missing-forbidden-actions.json",
+        "fixtures/invalid/skill_manifest/missing-schemaVersion.json",
+        "fixtures/invalid/skill_manifest/unknown-field.json",
+        "fixtures/invalid/skill_manifest/wrong-artifactKind.json",
+        "fixtures/invalid/verification_delta/missing-requiredItems.json",
+        "fixtures/invalid/verification_delta/missing-schemaVersion.json",
+        "fixtures/invalid/verification_delta/unknown-field.json",
+        "fixtures/invalid/verification_delta/wrong-artifactKind.json",
+        "fixtures/invalid/work_brief/malformed-extension-core-field.json",
+        "fixtures/invalid/work_brief/missing-schemaVersion.json",
+        "fixtures/invalid/work_brief/unknown-field.json",
+        "fixtures/invalid/work_brief/unsupported-version.json",
+        "fixtures/invalid/work_brief/wrong-artifactKind.json",
+        "fixtures/valid/agent_registry_entry.json",
+        "fixtures/valid/build_result.json",
+        "fixtures/valid/context_file_header.json",
+        "fixtures/valid/evidence_packet.json"
+      ],
+      "filesTruncated": true
+    },
+    {
+      "dir": "packages/config",
+      "expectedName": "@vibe-engineer/config",
+      "name": "@vibe-engineer/config",
+      "private": true,
+      "bin": null,
+      "vibeEngineer": {
+        "implementationUnit": "I-00A-workspace-package-skeleton",
+        "implementationStatus": "skeleton-only",
+        "packageRole": "internal-workspace-package",
+        "sourceStatus": "not-created-in-I-00A"
+      },
+      "prodDependencyNames": [],
+      "devDependencyNames": [],
+      "fileCount": 1,
+      "files": [
+        "package.json"
+      ],
+      "filesTruncated": false
+    },
+    {
+      "dir": "packages/orchestration",
+      "expectedName": "@vibe-engineer/orchestration",
+      "name": "@vibe-engineer/orchestration",
+      "private": true,
+      "bin": null,
+      "vibeEngineer": {
+        "implementationUnit": "I-00A-workspace-package-skeleton",
+        "implementationStatus": "skeleton-only",
+        "packageRole": "internal-workspace-package",
+        "sourceStatus": "not-created-in-I-00A"
+      },
+      "prodDependencyNames": [],
+      "devDependencyNames": [],
+      "fileCount": 1,
+      "files": [
+        "package.json"
+      ],
+      "filesTruncated": false
+    },
+    {
+      "dir": "packages/registry",
+      "expectedName": "@vibe-engineer/registry",
+      "name": "@vibe-engineer/registry",
+      "private": true,
+      "bin": null,
+      "vibeEngineer": {
+        "implementationUnit": "I-00A-workspace-package-skeleton",
+        "implementationStatus": "skeleton-only",
+        "packageRole": "internal-workspace-package",
+        "sourceStatus": "not-created-in-I-00A"
+      },
+      "prodDependencyNames": [],
+      "devDependencyNames": [],
+      "fileCount": 1,
+      "files": [
+        "package.json"
+      ],
+      "filesTruncated": false
+    },
+    {
+      "dir": "packages/skills",
+      "expectedName": "@vibe-engineer/skills",
+      "name": "@vibe-engineer/skills",
+      "private": true,
+      "bin": null,
+      "vibeEngineer": {
+        "implementationUnit": "I-00A-workspace-package-skeleton",
+        "implementationStatus": "skeleton-only",
+        "packageRole": "internal-workspace-package",
+        "sourceStatus": "not-created-in-I-00A"
+      },
+      "prodDependencyNames": [],
+      "devDependencyNames": [],
+      "fileCount": 1,
+      "files": [
+        "package.json"
+      ],
+      "filesTruncated": false
+    },
+    {
+      "dir": "packages/schematics",
+      "expectedName": "@vibe-engineer/schematics",
+      "name": "@vibe-engineer/schematics",
+      "private": true,
+      "bin": null,
+      "vibeEngineer": {
+        "implementationUnit": "I-00A-workspace-package-skeleton",
+        "implementationStatus": "skeleton-only",
+        "packageRole": "internal-workspace-package",
+        "sourceStatus": "not-created-in-I-00A"
+      },
+      "prodDependencyNames": [],
+      "devDependencyNames": [],
+      "fileCount": 1,
+      "files": [
+        "package.json"
+      ],
+      "filesTruncated": false
+    },
+    {
+      "dir": "packages/context",
+      "expectedName": "@vibe-engineer/context",
+      "name": "@vibe-engineer/context",
+      "private": true,
+      "bin": null,
+      "vibeEngineer": {
+        "implementationUnit": "I-00A-workspace-package-skeleton",
+        "implementationStatus": "skeleton-only",
+        "packageRole": "internal-workspace-package",
+        "sourceStatus": "not-created-in-I-00A"
+      },
+      "prodDependencyNames": [],
+      "devDependencyNames": [],
+      "fileCount": 1,
+      "files": [
+        "package.json"
+      ],
+      "filesTruncated": false
+    },
+    {
+      "dir": "packages/verification",
+      "expectedName": "@vibe-engineer/verification",
+      "name": "@vibe-engineer/verification",
+      "private": true,
+      "bin": null,
+      "vibeEngineer": {
+        "implementationUnit": "I-00A-workspace-package-skeleton",
+        "implementationStatus": "skeleton-only",
+        "packageRole": "internal-workspace-package",
+        "sourceStatus": "not-created-in-I-00A"
+      },
+      "prodDependencyNames": [],
+      "devDependencyNames": [],
+      "fileCount": 1,
+      "files": [
+        "package.json"
+      ],
+      "filesTruncated": false
+    },
+    {
+      "dir": "packages/mechanical-gates",
+      "expectedName": "@vibe-engineer/mechanical-gates",
+      "name": "@vibe-engineer/mechanical-gates",
+      "private": true,
+      "bin": null,
+      "vibeEngineer": {
+        "implementationUnit": "I-00A-workspace-package-skeleton",
+        "implementationStatus": "skeleton-only",
+        "packageRole": "internal-workspace-package",
+        "sourceStatus": "not-created-in-I-00A"
+      },
+      "prodDependencyNames": [],
+      "devDependencyNames": [],
+      "fileCount": 1,
+      "files": [
+        "package.json"
+      ],
+      "filesTruncated": false
+    },
+    {
+      "dir": "packages/contracts",
+      "expectedName": "@vibe-engineer/contracts",
+      "name": "@vibe-engineer/contracts",
+      "private": true,
+      "bin": null,
+      "vibeEngineer": {
+        "implementationUnit": "I-00A-workspace-package-skeleton",
+        "implementationStatus": "skeleton-only",
+        "packageRole": "internal-workspace-package",
+        "sourceStatus": "not-created-in-I-00A"
+      },
+      "prodDependencyNames": [],
+      "devDependencyNames": [],
+      "fileCount": 1,
+      "files": [
+        "package.json"
+      ],
+      "filesTruncated": false
+    },
+    {
+      "dir": "packages/security",
+      "expectedName": "@vibe-engineer/security",
+      "name": "@vibe-engineer/security",
+      "private": true,
+      "bin": null,
+      "vibeEngineer": {
+        "implementationUnit": "I-00A-workspace-package-skeleton",
+        "implementationStatus": "skeleton-only",
+        "packageRole": "internal-workspace-package",
+        "sourceStatus": "not-created-in-I-00A"
+      },
+      "prodDependencyNames": [],
+      "devDependencyNames": [],
+      "fileCount": 1,
+      "files": [
+        "package.json"
+      ],
+      "filesTruncated": false
+    },
+    {
+      "dir": "packages/observability",
+      "expectedName": "@vibe-engineer/observability",
+      "name": "@vibe-engineer/observability",
+      "private": true,
+      "bin": null,
+      "vibeEngineer": {
+        "implementationUnit": "I-00A-workspace-package-skeleton",
+        "implementationStatus": "skeleton-only",
+        "packageRole": "internal-workspace-package",
+        "sourceStatus": "not-created-in-I-00A"
+      },
+      "prodDependencyNames": [],
+      "devDependencyNames": [],
+      "fileCount": 1,
+      "files": [
+        "package.json"
+      ],
+      "filesTruncated": false
+    },
+    {
+      "dir": "packages/standards",
+      "expectedName": "@vibe-engineer/standards",
+      "name": "@vibe-engineer/standards",
+      "private": true,
+      "bin": null,
+      "vibeEngineer": {
+        "implementationUnit": "I-00A-workspace-package-skeleton",
+        "implementationStatus": "skeleton-only",
+        "packageRole": "internal-workspace-package",
+        "sourceStatus": "not-created-in-I-00A"
+      },
+      "prodDependencyNames": [],
+      "devDependencyNames": [],
+      "fileCount": 1,
+      "files": [
+        "package.json"
+      ],
+      "filesTruncated": false
+    },
+    {
+      "dir": "packages/presets/typescript",
+      "expectedName": "@vibe-engineer/preset-typescript",
+      "name": "@vibe-engineer/preset-typescript",
+      "private": true,
+      "bin": null,
+      "vibeEngineer": {
+        "implementationUnit": "I-00A-workspace-package-skeleton",
+        "implementationStatus": "skeleton-only",
+        "packageRole": "private-preset-workspace-package",
+        "sourceStatus": "not-created-in-I-00A"
+      },
+      "prodDependencyNames": [],
+      "devDependencyNames": [],
+      "fileCount": 1,
+      "files": [
+        "package.json"
+      ],
+      "filesTruncated": false
+    },
+    {
+      "dir": "packages/presets/nest-react-rn",
+      "expectedName": "@vibe-engineer/preset-nest-react-rn",
+      "name": "@vibe-engineer/preset-nest-react-rn",
+      "private": true,
+      "bin": null,
+      "vibeEngineer": {
+        "implementationUnit": "I-00A-workspace-package-skeleton",
+        "implementationStatus": "skeleton-only",
+        "packageRole": "private-preset-workspace-package",
+        "sourceStatus": "not-created-in-I-00A"
+      },
+      "prodDependencyNames": [],
+      "devDependencyNames": [],
+      "fileCount": 1,
+      "files": [
+        "package.json"
+      ],
+      "filesTruncated": false
+    },
+    {
+      "dir": "packages/adapters/pi",
+      "expectedName": "@vibe-engineer/adapter-pi",
+      "name": "@vibe-engineer/adapter-pi",
+      "private": true,
+      "bin": null,
+      "vibeEngineer": {
+        "implementationUnit": "I-00A-workspace-package-skeleton",
+        "implementationStatus": "skeleton-only",
+        "packageRole": "private-pi-adapter-workspace-package",
+        "sourceStatus": "not-created-in-I-00A"
+      },
+      "prodDependencyNames": [],
+      "devDependencyNames": [],
+      "fileCount": 1,
+      "files": [
+        "package.json"
+      ],
+      "filesTruncated": false
+    },
+    {
+      "dir": "packages/testing",
+      "expectedName": "@vibe-engineer/testing",
+      "name": "@vibe-engineer/testing",
+      "private": true,
+      "bin": null,
+      "vibeEngineer": {
+        "implementationUnit": "I-00A-workspace-package-skeleton",
+        "implementationStatus": "skeleton-only",
+        "packageRole": "test-only-workspace-package",
+        "sourceStatus": "not-created-in-I-00A",
+        "testOnly": true,
+        "productionDependencyAllowed": false
+      },
+      "prodDependencyNames": [],
+      "devDependencyNames": [],
+      "fileCount": 1,
+      "files": [
+        "package.json"
+      ],
+      "filesTruncated": false
+    }
+  ]
+}

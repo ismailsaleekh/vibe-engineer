@@ -1,0 +1,100 @@
+[
+  {
+    "name": "pnpm-workspace-graph-direct",
+    "command": "pnpm -r list --depth -1 --json",
+    "exit": 0,
+    "expectedExit": 0,
+    "metExpectedExit": true
+  },
+  {
+    "name": "root-script-workspace-graph",
+    "command": "pnpm run workspace:graph",
+    "exit": 0,
+    "expectedExit": 0,
+    "metExpectedExit": true
+  },
+  {
+    "name": "root-script-workspace-surface",
+    "command": "pnpm run workspace:surface",
+    "exit": 0,
+    "expectedExit": 0,
+    "metExpectedExit": true
+  },
+  {
+    "name": "direct-current-surface",
+    "command": "node .vibe/work/I-00A-workspace-package-skeleton/witnesses/workspace-surface-witness.mjs --root .",
+    "exit": 0,
+    "expectedExit": 0,
+    "metExpectedExit": true
+  },
+  {
+    "name": "fixture-valid-workspace-current",
+    "command": "node .vibe/work/I-00A-workspace-package-skeleton/witnesses/workspace-surface-witness.mjs --root .vibe/work/I-00A-workspace-package-skeleton/fixtures/valid-workspace",
+    "exit": 0,
+    "expectedExit": 0,
+    "metExpectedExit": true
+  },
+  {
+    "name": "fixture-artifacts-source-current",
+    "command": "node .vibe/work/I-00A-workspace-package-skeleton/witnesses/workspace-surface-witness.mjs --root .vibe/work/I-00A-workspace-package-skeleton/fixtures/valid-workspace-with-artifacts-source",
+    "exit": 0,
+    "expectedExit": 0,
+    "metExpectedExit": true
+  },
+  {
+    "name": "fixture-artifacts-source-skeleton-snapshot",
+    "command": "node .vibe/work/I-00A-workspace-package-skeleton/witnesses/workspace-surface-witness.mjs --root .vibe/work/I-00A-workspace-package-skeleton/fixtures/valid-workspace-with-artifacts-source --mode skeleton-snapshot",
+    "exit": 1,
+    "expectedExit": 1,
+    "metExpectedExit": true
+  },
+  {
+    "name": "negative-missing-package",
+    "command": "node .vibe/work/I-00A-workspace-package-skeleton/witnesses/workspace-surface-witness.mjs --root .vibe/work/I-00A-workspace-package-skeleton/fixtures/missing-package",
+    "exit": 1,
+    "expectedExit": 1,
+    "metExpectedExit": true
+  },
+  {
+    "name": "negative-packages-core",
+    "command": "node .vibe/work/I-00A-workspace-package-skeleton/witnesses/workspace-surface-witness.mjs --root .vibe/work/I-00A-workspace-package-skeleton/fixtures/packages-core",
+    "exit": 1,
+    "expectedExit": 1,
+    "metExpectedExit": true
+  },
+  {
+    "name": "negative-testing-prod-dependency",
+    "command": "node .vibe/work/I-00A-workspace-package-skeleton/witnesses/workspace-surface-witness.mjs --root .vibe/work/I-00A-workspace-package-skeleton/fixtures/testing-prod-dependency",
+    "exit": 1,
+    "expectedExit": 1,
+    "metExpectedExit": true
+  },
+  {
+    "name": "negative-fake-cli-bin",
+    "command": "node .vibe/work/I-00A-workspace-package-skeleton/witnesses/workspace-surface-witness.mjs --root .vibe/work/I-00A-workspace-package-skeleton/fixtures/fake-cli-bin",
+    "exit": 1,
+    "expectedExit": 1,
+    "metExpectedExit": true
+  },
+  {
+    "name": "negative-future-non-pi-adapter",
+    "command": "node .vibe/work/I-00A-workspace-package-skeleton/witnesses/workspace-surface-witness.mjs --root .vibe/work/I-00A-workspace-package-skeleton/fixtures/future-non-pi-adapter",
+    "exit": 1,
+    "expectedExit": 1,
+    "metExpectedExit": true
+  },
+  {
+    "name": "negative-wrong-root-name",
+    "command": "node .vibe/work/I-00A-workspace-package-skeleton/witnesses/workspace-surface-witness.mjs --root .vibe/work/I-00A-workspace-package-skeleton/fixtures/wrong-root-name",
+    "exit": 1,
+    "expectedExit": 1,
+    "metExpectedExit": true
+  },
+  {
+    "name": "negative-non-private-root",
+    "command": "node .vibe/work/I-00A-workspace-package-skeleton/witnesses/workspace-surface-witness.mjs --root .vibe/work/I-00A-workspace-package-skeleton/fixtures/non-private-root",
+    "exit": 1,
+    "expectedExit": 1,
+    "metExpectedExit": true
+  }
+]
