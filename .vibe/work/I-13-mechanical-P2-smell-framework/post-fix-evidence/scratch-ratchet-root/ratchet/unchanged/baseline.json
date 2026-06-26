@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "quality-ratchet.baseline/1",
+  "family": "p1.quality-ratchet",
+  "surfaceFingerprint": "b6b065a1b4f89826f5f50ddb721070b91d6013e3e3306b6e78889e544152e192",
+  "debt": [
+    {
+      "identity": {
+        "tool": "p2.code-smell",
+        "ruleId": "deep-control-flow-nesting",
+        "path": "src/smells.ts",
+        "symbol": "function:deeplyNested",
+        "structuralSignature": "deep-control-flow-nesting|function:deeplyNested|control-flow-depth:6|kind:FunctionDeclaration",
+        "contentHash": "c40895b8b51a53c79020294c60e144db426770476fdf4abde000cba784b3dc9f"
+      },
+      "message": "Function contains deeply nested control flow.",
+      "firstSeen": "2026-06-26",
+      "evidence": {
+        "sourcePath": "src/smells.ts"
+      }
+    }
+  ]
+}

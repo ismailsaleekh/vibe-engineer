@@ -1,0 +1,550 @@
+{
+  "family": "p2.code-smell",
+  "ok": false,
+  "projectRoot": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-13-mechanical-P2-smell-framework/validation-evidence/scratch-projects/detectors",
+  "findings": [
+    {
+      "family": "p2.code-smell",
+      "ruleId": "deep-control-flow-nesting",
+      "detectorId": "deep-control-flow-nesting",
+      "severity": "error",
+      "blocking": true,
+      "path": "src/detectors.ts",
+      "message": "Function contains deeply nested control flow.",
+      "evidence": {
+        "schemaVersion": "p2.code-smell.finding/1",
+        "tool": "p2.code-smell",
+        "detectorId": "deep-control-flow-nesting",
+        "identity": {
+          "tool": "p2.code-smell",
+          "ruleId": "deep-control-flow-nesting",
+          "path": "src/detectors.ts",
+          "symbol": "function:hardNested",
+          "structuralSignature": "deep-control-flow-nesting|function:hardNested|control-flow-depth:5|kind:FunctionDeclaration",
+          "contentHash": "f3fe1f224e6e3146e0c5a69d51be05c1cc995f5c592ca5a4d2cf29957101dafc"
+        },
+        "sourcePath": "src/detectors.ts",
+        "sourceExcerpt": "export function hardNested(input: number): number {\n  if (input > 0) {\n    for (let index = 0; index < input; index += 1) {\n      while (index < input * 2) {\n        try {\n          if (index % 2 === 0) {\n            return index;\n          }\n        } catch (error) {\n          throw error;\n        }\n      }\n    }\n  }\n  return 0;\n}",
+        "sourceHash": "f3fe1f224e6e3146e0c5a69d51be05c1cc995f5c592ca5a4d2cf29957101dafc",
+        "line": 2,
+        "structuralSignature": "deep-control-flow-nesting|function:hardNested|control-flow-depth:5|kind:FunctionDeclaration",
+        "calibration": {
+          "confidence": 0.95,
+          "mode": "hard",
+          "threshold": {
+            "metric": "control-flow-depth",
+            "observed": 5,
+            "advisory": 4,
+            "ratcheted": 4,
+            "hard": 5
+          },
+          "blockingReason": "Observed structural risk meets the calibrated hard threshold."
+        },
+        "details": [
+          "if@3:depth-1",
+          "for@4:depth-2",
+          "while@5:depth-3",
+          "try@6:depth-4",
+          "if@7:depth-5",
+          "catch@10:depth-5"
+        ]
+      },
+      "identity": {
+        "tool": "p2.code-smell",
+        "ruleId": "deep-control-flow-nesting",
+        "path": "src/detectors.ts",
+        "symbol": "function:hardNested",
+        "structuralSignature": "deep-control-flow-nesting|function:hardNested|control-flow-depth:5|kind:FunctionDeclaration",
+        "contentHash": "f3fe1f224e6e3146e0c5a69d51be05c1cc995f5c592ca5a4d2cf29957101dafc"
+      },
+      "confidence": 0.95,
+      "mode": "hard",
+      "threshold": {
+        "metric": "control-flow-depth",
+        "observed": 5,
+        "advisory": 4,
+        "ratcheted": 4,
+        "hard": 5
+      }
+    },
+    {
+      "family": "p2.code-smell",
+      "ruleId": "combinatorial-path-explosion",
+      "detectorId": "combinatorial-path-explosion",
+      "severity": "warning",
+      "blocking": false,
+      "path": "src/detectors.ts",
+      "message": "Function owns many branch or loop decision points.",
+      "evidence": {
+        "schemaVersion": "p2.code-smell.finding/1",
+        "tool": "p2.code-smell",
+        "detectorId": "combinatorial-path-explosion",
+        "identity": {
+          "tool": "p2.code-smell",
+          "ruleId": "combinatorial-path-explosion",
+          "path": "src/detectors.ts",
+          "symbol": "function:advisoryDecisionPoints",
+          "structuralSignature": "combinatorial-path-explosion|function:advisoryDecisionPoints|decision-points:7|kind:FunctionDeclaration",
+          "contentHash": "912a704bfd2485bc670d4a28b8523e3f8251dfd913e9e8adc3454aec983e0c65"
+        },
+        "sourcePath": "src/detectors.ts",
+        "sourceExcerpt": "export function advisoryDecisionPoints(value: number): number {\n  let score = 0;\n  if (value > 0) score += 1;\n  if (value > 1) score += 1;\n  if (value > 2) score += 1;\n  if (value > 3) score += 1;\n  if (value > 4) score += 1;\n  if (value > 5) score += 1;\n  if (value > 6) score += 1;\n  return score;\n}",
+        "sourceHash": "912a704bfd2485bc670d4a28b8523e3f8251dfd913e9e8adc3454aec983e0c65",
+        "line": 19,
+        "structuralSignature": "combinatorial-path-explosion|function:advisoryDecisionPoints|decision-points:7|kind:FunctionDeclaration",
+        "calibration": {
+          "confidence": 0.72,
+          "mode": "advisory",
+          "threshold": {
+            "metric": "decision-points",
+            "observed": 7,
+            "advisory": 7,
+            "ratcheted": 8,
+            "hard": 12
+          },
+          "blockingReason": "Observed structural risk is advisory and does not block until ratcheted or recalibrated."
+        },
+        "details": [
+          "if@21",
+          "if@22",
+          "if@23",
+          "if@24",
+          "if@25",
+          "if@26",
+          "if@27",
+          "estimatedPathUpperBound:128"
+        ]
+      },
+      "identity": {
+        "tool": "p2.code-smell",
+        "ruleId": "combinatorial-path-explosion",
+        "path": "src/detectors.ts",
+        "symbol": "function:advisoryDecisionPoints",
+        "structuralSignature": "combinatorial-path-explosion|function:advisoryDecisionPoints|decision-points:7|kind:FunctionDeclaration",
+        "contentHash": "912a704bfd2485bc670d4a28b8523e3f8251dfd913e9e8adc3454aec983e0c65"
+      },
+      "confidence": 0.72,
+      "mode": "advisory",
+      "threshold": {
+        "metric": "decision-points",
+        "observed": 7,
+        "advisory": 7,
+        "ratcheted": 8,
+        "hard": 12
+      }
+    },
+    {
+      "family": "p2.code-smell",
+      "ruleId": "combinatorial-path-explosion",
+      "detectorId": "combinatorial-path-explosion",
+      "severity": "warning",
+      "blocking": false,
+      "path": "src/detectors.ts",
+      "message": "Function owns many branch or loop decision points.",
+      "evidence": {
+        "schemaVersion": "p2.code-smell.finding/1",
+        "tool": "p2.code-smell",
+        "detectorId": "combinatorial-path-explosion",
+        "identity": {
+          "tool": "p2.code-smell",
+          "ruleId": "combinatorial-path-explosion",
+          "path": "src/detectors.ts",
+          "symbol": "function:ratchetedDecisionPoints",
+          "structuralSignature": "combinatorial-path-explosion|function:ratchetedDecisionPoints|decision-points:8|kind:FunctionDeclaration",
+          "contentHash": "6a7077eddc1702b1b1d5cd9f70a57ccadd769feff6b6df6b16dd4c4bb76c4dee"
+        },
+        "sourcePath": "src/detectors.ts",
+        "sourceExcerpt": "export function ratchetedDecisionPoints(value: number): number {\n  let score = 0;\n  if (value > 0) score += 1;\n  if (value > 1) score += 1;\n  if (value > 2) score += 1;\n  if (value > 3) score += 1;\n  if (value > 4) score += 1;\n  if (value > 5) score += 1;\n  if (value > 6) score += 1;\n  if (value > 7) score += 1;\n  return score;\n}",
+        "sourceHash": "6a7077eddc1702b1b1d5cd9f70a57ccadd769feff6b6df6b16dd4c4bb76c4dee",
+        "line": 31,
+        "structuralSignature": "combinatorial-path-explosion|function:ratchetedDecisionPoints|decision-points:8|kind:FunctionDeclaration",
+        "calibration": {
+          "confidence": 0.72,
+          "mode": "ratcheted",
+          "threshold": {
+            "metric": "decision-points",
+            "observed": 8,
+            "advisory": 7,
+            "ratcheted": 8,
+            "hard": 12
+          },
+          "blockingReason": "Observed structural risk is ratcheted and does not block until ratcheted or recalibrated."
+        },
+        "details": [
+          "if@33",
+          "if@34",
+          "if@35",
+          "if@36",
+          "if@37",
+          "if@38",
+          "if@39",
+          "if@40",
+          "estimatedPathUpperBound:256"
+        ]
+      },
+      "identity": {
+        "tool": "p2.code-smell",
+        "ruleId": "combinatorial-path-explosion",
+        "path": "src/detectors.ts",
+        "symbol": "function:ratchetedDecisionPoints",
+        "structuralSignature": "combinatorial-path-explosion|function:ratchetedDecisionPoints|decision-points:8|kind:FunctionDeclaration",
+        "contentHash": "6a7077eddc1702b1b1d5cd9f70a57ccadd769feff6b6df6b16dd4c4bb76c4dee"
+      },
+      "confidence": 0.72,
+      "mode": "ratcheted",
+      "threshold": {
+        "metric": "decision-points",
+        "observed": 8,
+        "advisory": 7,
+        "ratcheted": 8,
+        "hard": 12
+      }
+    },
+    {
+      "family": "p2.code-smell",
+      "ruleId": "combinatorial-path-explosion",
+      "detectorId": "combinatorial-path-explosion",
+      "severity": "error",
+      "blocking": true,
+      "path": "src/detectors.ts",
+      "message": "Function owns many branch or loop decision points.",
+      "evidence": {
+        "schemaVersion": "p2.code-smell.finding/1",
+        "tool": "p2.code-smell",
+        "detectorId": "combinatorial-path-explosion",
+        "identity": {
+          "tool": "p2.code-smell",
+          "ruleId": "combinatorial-path-explosion",
+          "path": "src/detectors.ts",
+          "symbol": "function:hardDecisionPoints",
+          "structuralSignature": "combinatorial-path-explosion|function:hardDecisionPoints|decision-points:12|kind:FunctionDeclaration",
+          "contentHash": "cb3e03ae29e9eded1a9451a9b07147eefcbcc568c9251a4c726350a21af17693"
+        },
+        "sourcePath": "src/detectors.ts",
+        "sourceExcerpt": "export function hardDecisionPoints(value: number, flags: readonly boolean[]): number {\n  let score = 0;\n  if (value > 0) score += 1;\n  if (value > 1) score += 1;\n  if (value > 2) score += 1;\n  if (value > 3) score += 1;\n  if (value > 4) score += 1;\n  if (value > 5) score += 1;\n  if (value > 6) score += 1;\n  if (value > 7) score += 1;\n  if (flags[0]) score += 1;\n  if (flags[1]) score += 1;\n  if (flags[2]) score += 1;\n  if (flags[3]) score += 1;\n  return score;\n}",
+        "sourceHash": "cb3e03ae29e9eded1a9451a9b07147eefcbcc568c9251a4c726350a21af17693",
+        "line": 44,
+        "structuralSignature": "combinatorial-path-explosion|function:hardDecisionPoints|decision-points:12|kind:FunctionDeclaration",
+        "calibration": {
+          "confidence": 0.91,
+          "mode": "hard",
+          "threshold": {
+            "metric": "decision-points",
+            "observed": 12,
+            "advisory": 7,
+            "ratcheted": 8,
+            "hard": 12
+          },
+          "blockingReason": "Observed structural risk meets the calibrated hard threshold."
+        },
+        "details": [
+          "if@46",
+          "if@47",
+          "if@48",
+          "if@49",
+          "if@50",
+          "if@51",
+          "if@52",
+          "if@53",
+          "if@54",
+          "if@55",
+          "if@56",
+          "if@57",
+          "estimatedPathUpperBound:4096"
+        ]
+      },
+      "identity": {
+        "tool": "p2.code-smell",
+        "ruleId": "combinatorial-path-explosion",
+        "path": "src/detectors.ts",
+        "symbol": "function:hardDecisionPoints",
+        "structuralSignature": "combinatorial-path-explosion|function:hardDecisionPoints|decision-points:12|kind:FunctionDeclaration",
+        "contentHash": "cb3e03ae29e9eded1a9451a9b07147eefcbcc568c9251a4c726350a21af17693"
+      },
+      "confidence": 0.91,
+      "mode": "hard",
+      "threshold": {
+        "metric": "decision-points",
+        "observed": 12,
+        "advisory": 7,
+        "ratcheted": 8,
+        "hard": 12
+      }
+    },
+    {
+      "family": "p2.code-smell",
+      "ruleId": "catch-log-continue",
+      "detectorId": "catch-log-continue",
+      "severity": "error",
+      "blocking": true,
+      "path": "src/detectors.ts",
+      "message": "Catch block records the failure and can continue without typed recovery.",
+      "evidence": {
+        "schemaVersion": "p2.code-smell.finding/1",
+        "tool": "p2.code-smell",
+        "detectorId": "catch-log-continue",
+        "identity": {
+          "tool": "p2.code-smell",
+          "ruleId": "catch-log-continue",
+          "path": "src/detectors.ts",
+          "symbol": "function:logAndContinue:catch",
+          "structuralSignature": "catch-log-continue|function:logAndContinue:catch|catch-log-without-abrupt-recovery:1|kind:FunctionDeclaration",
+          "contentHash": "92bf9a620e527052d535342f0a61a9953b35aa04900dd30fdcfbe4d60b85f8ae"
+        },
+        "sourcePath": "src/detectors.ts",
+        "sourceExcerpt": "catch (error) {\n    console.error(error);\n  }",
+        "sourceHash": "92bf9a620e527052d535342f0a61a9953b35aa04900dd30fdcfbe4d60b85f8ae",
+        "line": 65,
+        "structuralSignature": "catch-log-continue|function:logAndContinue:catch|catch-log-without-abrupt-recovery:1|kind:FunctionDeclaration",
+        "calibration": {
+          "confidence": 0.93,
+          "mode": "hard",
+          "threshold": {
+            "metric": "catch-log-without-abrupt-recovery",
+            "observed": 1,
+            "advisory": 1,
+            "ratcheted": 1,
+            "hard": 1
+          },
+          "blockingReason": "Observed structural risk meets the calibrated hard threshold."
+        },
+        "details": [
+          "logging-call:true",
+          "abrupt-or-failure-return:false"
+        ]
+      },
+      "identity": {
+        "tool": "p2.code-smell",
+        "ruleId": "catch-log-continue",
+        "path": "src/detectors.ts",
+        "symbol": "function:logAndContinue:catch",
+        "structuralSignature": "catch-log-continue|function:logAndContinue:catch|catch-log-without-abrupt-recovery:1|kind:FunctionDeclaration",
+        "contentHash": "92bf9a620e527052d535342f0a61a9953b35aa04900dd30fdcfbe4d60b85f8ae"
+      },
+      "confidence": 0.93,
+      "mode": "hard",
+      "threshold": {
+        "metric": "catch-log-without-abrupt-recovery",
+        "observed": 1,
+        "advisory": 1,
+        "ratcheted": 1,
+        "hard": 1
+      }
+    },
+    {
+      "family": "p2.code-smell",
+      "ruleId": "silent-no-op-dispatcher",
+      "detectorId": "silent-no-op-dispatcher",
+      "severity": "error",
+      "blocking": true,
+      "path": "src/detectors.ts",
+      "message": "Dispatcher default branch silently succeeds or performs no operation.",
+      "evidence": {
+        "schemaVersion": "p2.code-smell.finding/1",
+        "tool": "p2.code-smell",
+        "detectorId": "silent-no-op-dispatcher",
+        "identity": {
+          "tool": "p2.code-smell",
+          "ruleId": "silent-no-op-dispatcher",
+          "path": "src/detectors.ts",
+          "symbol": "function:noOpSwitch",
+          "structuralSignature": "silent-no-op-dispatcher|function:noOpSwitch|silent-default-dispatch:1|kind:FunctionDeclaration",
+          "contentHash": "4e70ff9440c069a748d4913e58726f9c2610173d82ea82be0dca9d52f4917d12"
+        },
+        "sourcePath": "src/detectors.ts",
+        "sourceExcerpt": "export function noOpSwitch(type: string): { ok: boolean } {\n  switch (type) {\n    case \"known\":\n      return { ok: true };\n    default:\n      return { ok: true };\n  }\n}",
+        "sourceHash": "4e70ff9440c069a748d4913e58726f9c2610173d82ea82be0dca9d52f4917d12",
+        "line": 71,
+        "structuralSignature": "silent-no-op-dispatcher|function:noOpSwitch|silent-default-dispatch:1|kind:FunctionDeclaration",
+        "calibration": {
+          "confidence": 0.9,
+          "mode": "hard",
+          "threshold": {
+            "metric": "silent-default-dispatch",
+            "observed": 1,
+            "advisory": 1,
+            "ratcheted": 1,
+            "hard": 1
+          },
+          "blockingReason": "Observed structural risk meets the calibrated hard threshold."
+        },
+        "details": [
+          "selector:type",
+          "defaultLine:75"
+        ]
+      },
+      "identity": {
+        "tool": "p2.code-smell",
+        "ruleId": "silent-no-op-dispatcher",
+        "path": "src/detectors.ts",
+        "symbol": "function:noOpSwitch",
+        "structuralSignature": "silent-no-op-dispatcher|function:noOpSwitch|silent-default-dispatch:1|kind:FunctionDeclaration",
+        "contentHash": "4e70ff9440c069a748d4913e58726f9c2610173d82ea82be0dca9d52f4917d12"
+      },
+      "confidence": 0.9,
+      "mode": "hard",
+      "threshold": {
+        "metric": "silent-default-dispatch",
+        "observed": 1,
+        "advisory": 1,
+        "ratcheted": 1,
+        "hard": 1
+      }
+    },
+    {
+      "family": "p2.code-smell",
+      "ruleId": "silent-no-op-dispatcher",
+      "detectorId": "silent-no-op-dispatcher",
+      "severity": "error",
+      "blocking": true,
+      "path": "src/detectors.ts",
+      "message": "Dispatcher fallback branch silently succeeds or performs no operation.",
+      "evidence": {
+        "schemaVersion": "p2.code-smell.finding/1",
+        "tool": "p2.code-smell",
+        "detectorId": "silent-no-op-dispatcher",
+        "identity": {
+          "tool": "p2.code-smell",
+          "ruleId": "silent-no-op-dispatcher",
+          "path": "src/detectors.ts",
+          "symbol": "function:noOpIfElse",
+          "structuralSignature": "silent-no-op-dispatcher|function:noOpIfElse|silent-else-dispatch:1|kind:FunctionDeclaration",
+          "contentHash": "e8053caaba7663c0a048acf32db7068f914658fb8b679446d1de9c53b0f15ccc"
+        },
+        "sourcePath": "src/detectors.ts",
+        "sourceExcerpt": "export function noOpIfElse(action: string): readonly string[] {\n  if (action === \"known\") {\n    return [\"handled\"];\n  } else {\n    return [];\n  }\n}",
+        "sourceHash": "e8053caaba7663c0a048acf32db7068f914658fb8b679446d1de9c53b0f15ccc",
+        "line": 80,
+        "structuralSignature": "silent-no-op-dispatcher|function:noOpIfElse|silent-else-dispatch:1|kind:FunctionDeclaration",
+        "calibration": {
+          "confidence": 0.84,
+          "mode": "hard",
+          "threshold": {
+            "metric": "silent-else-dispatch",
+            "observed": 1,
+            "advisory": 1,
+            "ratcheted": 1,
+            "hard": 1
+          },
+          "blockingReason": "Observed structural risk meets the calibrated hard threshold."
+        },
+        "details": [
+          "fallbackLine:83"
+        ]
+      },
+      "identity": {
+        "tool": "p2.code-smell",
+        "ruleId": "silent-no-op-dispatcher",
+        "path": "src/detectors.ts",
+        "symbol": "function:noOpIfElse",
+        "structuralSignature": "silent-no-op-dispatcher|function:noOpIfElse|silent-else-dispatch:1|kind:FunctionDeclaration",
+        "contentHash": "e8053caaba7663c0a048acf32db7068f914658fb8b679446d1de9c53b0f15ccc"
+      },
+      "confidence": 0.84,
+      "mode": "hard",
+      "threshold": {
+        "metric": "silent-else-dispatch",
+        "observed": 1,
+        "advisory": 1,
+        "ratcheted": 1,
+        "hard": 1
+      }
+    },
+    {
+      "family": "p2.code-smell",
+      "ruleId": "serialized-json-assembled-as-strings",
+      "detectorId": "serialized-json-assembled-as-strings",
+      "severity": "warning",
+      "blocking": false,
+      "path": "src/detectors.ts",
+      "message": "JSON-shaped output is assembled through string syntax instead of a structured value boundary.",
+      "evidence": {
+        "schemaVersion": "p2.code-smell.finding/1",
+        "tool": "p2.code-smell",
+        "detectorId": "serialized-json-assembled-as-strings",
+        "identity": {
+          "tool": "p2.code-smell",
+          "ruleId": "serialized-json-assembled-as-strings",
+          "path": "src/detectors.ts",
+          "symbol": "function:jsonConcat:json-string-assembly",
+          "structuralSignature": "serialized-json-assembled-as-strings|function:jsonConcat:json-string-assembly|json-string-assembly:1|kind:FunctionDeclaration",
+          "contentHash": "f0f4811aeab84b83924e5d16422ce923e863d2725955ed08195ac02df615e8cc"
+        },
+        "sourcePath": "src/detectors.ts",
+        "sourceExcerpt": "'{\"value\":\"' + value + '\"}'",
+        "sourceHash": "f0f4811aeab84b83924e5d16422ce923e863d2725955ed08195ac02df615e8cc",
+        "line": 89,
+        "structuralSignature": "serialized-json-assembled-as-strings|function:jsonConcat:json-string-assembly|json-string-assembly:1|kind:FunctionDeclaration",
+        "calibration": {
+          "confidence": 0.66,
+          "mode": "advisory",
+          "threshold": {
+            "metric": "json-string-assembly",
+            "observed": 1,
+            "advisory": 1,
+            "ratcheted": 2,
+            "hard": 99
+          },
+          "blockingReason": "Observed structural risk is advisory and does not block until ratcheted or recalibrated."
+        },
+        "details": [
+          "expressionKind:BinaryExpression",
+          "line:89"
+        ]
+      },
+      "identity": {
+        "tool": "p2.code-smell",
+        "ruleId": "serialized-json-assembled-as-strings",
+        "path": "src/detectors.ts",
+        "symbol": "function:jsonConcat:json-string-assembly",
+        "structuralSignature": "serialized-json-assembled-as-strings|function:jsonConcat:json-string-assembly|json-string-assembly:1|kind:FunctionDeclaration",
+        "contentHash": "f0f4811aeab84b83924e5d16422ce923e863d2725955ed08195ac02df615e8cc"
+      },
+      "confidence": 0.66,
+      "mode": "advisory",
+      "threshold": {
+        "metric": "json-string-assembly",
+        "observed": 1,
+        "advisory": 1,
+        "ratcheted": 2,
+        "hard": 99
+      }
+    }
+  ],
+  "evidence": {
+    "schemaVersion": "p2.code-smell.result/1",
+    "tool": "p2.code-smell",
+    "allowlist": "not-implemented",
+    "detectors": [
+      "deep-control-flow-nesting",
+      "combinatorial-path-explosion",
+      "catch-log-continue",
+      "silent-no-op-dispatcher",
+      "serialized-json-assembled-as-strings"
+    ],
+    "includePaths": [
+      "src"
+    ],
+    "excludeDirectoryNames": [
+      "node_modules",
+      ".git",
+      "dist",
+      "build",
+      ".turbo",
+      ".vibe"
+    ],
+    "fileSuffixes": [
+      ".ts",
+      ".tsx",
+      ".mts",
+      ".cts"
+    ],
+    "maxFileBytes": 262144,
+    "inspectedFiles": [
+      "src/detectors.ts"
+    ],
+    "parsedFiles": 1,
+    "failClosed": false,
+    "defaultPolicyUsed": false
+  }
+}

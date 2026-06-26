@@ -1,0 +1,12 @@
+## cwd
+/Users/lizavasilyeva/work/vibe-engineer
+## production source inventory
+packages/mechanical-gates/src/p2/code-smell/index.ts
+packages/mechanical-gates/src/p2/code-smell/node-shims.d.ts
+## production JS drift inventory
+## banned TS escape sweep
+## exact fixed parser line
+226:function readStringArray(value: unknown, field: string, errors: CodeSmellFinding[]): readonly string[] | undefined {
+227:  if (!Array.isArray(value) || value.length === 0 || !value.every((entry) => typeof entry === "string" && entry.length > 0)) {
+228:    errors.push(systemFinding("input.invalid-option", ".", `${field} must be a non-empty string array when provided.`, [`field:${field}`]));
+235:  if (!Array.isArray(value) || value.length === 0) {

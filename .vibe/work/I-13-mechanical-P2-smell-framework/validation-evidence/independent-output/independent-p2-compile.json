@@ -1,0 +1,30 @@
+{
+  "label": "independent p2 compile",
+  "command": "pnpm",
+  "args": [
+    "exec",
+    "tsc",
+    "--outDir",
+    ".vibe/work/I-13-mechanical-P2-smell-framework/validation-evidence/compiled-p2-independent",
+    "--rootDir",
+    "packages/mechanical-gates/src/p2/code-smell",
+    "--target",
+    "ES2022",
+    "--module",
+    "NodeNext",
+    "--moduleResolution",
+    "NodeNext",
+    "--strict",
+    "--skipLibCheck",
+    "false",
+    "--lib",
+    "ES2022",
+    "packages/mechanical-gates/src/p2/code-smell/node-shims.d.ts",
+    "packages/mechanical-gates/src/p2/code-smell/index.ts"
+  ],
+  "cwd": "/Users/lizavasilyeva/work/vibe-engineer",
+  "status": 0,
+  "signal": null,
+  "stdout": "",
+  "stderr": ""
+}

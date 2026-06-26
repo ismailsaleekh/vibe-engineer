@@ -1,0 +1,167 @@
+{
+  "unchanged": {
+    "family": "p1.quality-ratchet",
+    "ok": true,
+    "projectRoot": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-13-mechanical-P2-smell-framework/validation-evidence/ratchet-project",
+    "findings": [],
+    "evidence": {
+      "schemaVersion": "quality-ratchet.result/1",
+      "family": "p1.quality-ratchet",
+      "artifactPaths": {
+        "baselinePath": "ratchet-fixture/unchanged/baseline.json",
+        "findingCarrierPath": "ratchet-fixture/unchanged/findings.json",
+        "approvalPath": "ratchet-fixture/unchanged/approvals.json",
+        "surfaceFingerprintPath": "ratchet-fixture/unchanged/surface.json",
+        "runnerEvidencePath": "ratchet-fixture/unchanged/runner-evidence.json"
+      },
+      "surfaceFingerprint": {
+        "baseline": "df5ae740956455962003cee869f380a67cedf7d347a68d9a60402e46a603a556",
+        "carrier": "df5ae740956455962003cee869f380a67cedf7d347a68d9a60402e46a603a556",
+        "declared": "df5ae740956455962003cee869f380a67cedf7d347a68d9a60402e46a603a556",
+        "computed": "df5ae740956455962003cee869f380a67cedf7d347a68d9a60402e46a603a556"
+      },
+      "runnerEvidence": {
+        "runnerId": "independent-p2-code-smell-witness",
+        "command": "node .vibe/work/I-13-mechanical-P2-smell-framework/validation-evidence/independent-p2-witness.mjs",
+        "sourceFiles": [
+          "projects/smelly/src/smells.ts"
+        ]
+      },
+      "counts": {
+        "baselineDebt": 1,
+        "currentFindings": 1,
+        "approvals": 0,
+        "previousBaselineDebt": null
+      },
+      "unchangedDebt": [
+        {
+          "identityId": "6e0439a73c7f5ef868ac63390b5eb5bdfa978cef82301847a5bd30bc0ffd0b20",
+          "path": "projects/smelly/src/smells.ts",
+          "ruleId": "deep-control-flow-nesting"
+        }
+      ],
+      "newDebt": [],
+      "staleDebt": [],
+      "removedDebt": [],
+      "baselineGrowth": [],
+      "stableIdentityAlgorithm": "sha256(tool,ruleId,path,symbol-or-structuralSignature,contentHash); line excluded"
+    }
+  },
+  "newDebt": {
+    "family": "p1.quality-ratchet",
+    "ok": false,
+    "projectRoot": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-13-mechanical-P2-smell-framework/validation-evidence/ratchet-project",
+    "findings": [
+      {
+        "family": "p1.quality-ratchet",
+        "ruleId": "debt.new-finding",
+        "severity": "error",
+        "blocking": true,
+        "path": "projects/smelly/src/smells.ts",
+        "message": "Current finding is not present in the quality ratchet baseline.",
+        "evidence": {
+          "identityId": "6e0439a73c7f5ef868ac63390b5eb5bdfa978cef82301847a5bd30bc0ffd0b20",
+          "tool": "p2.code-smell",
+          "ruleId": "deep-control-flow-nesting"
+        }
+      }
+    ],
+    "evidence": {
+      "schemaVersion": "quality-ratchet.result/1",
+      "family": "p1.quality-ratchet",
+      "artifactPaths": {
+        "baselinePath": "ratchet-fixture/new-debt/baseline.json",
+        "findingCarrierPath": "ratchet-fixture/new-debt/findings.json",
+        "approvalPath": "ratchet-fixture/new-debt/approvals.json",
+        "surfaceFingerprintPath": "ratchet-fixture/new-debt/surface.json",
+        "runnerEvidencePath": "ratchet-fixture/new-debt/runner-evidence.json"
+      },
+      "surfaceFingerprint": {
+        "baseline": "df5ae740956455962003cee869f380a67cedf7d347a68d9a60402e46a603a556",
+        "carrier": "df5ae740956455962003cee869f380a67cedf7d347a68d9a60402e46a603a556",
+        "declared": "df5ae740956455962003cee869f380a67cedf7d347a68d9a60402e46a603a556",
+        "computed": "df5ae740956455962003cee869f380a67cedf7d347a68d9a60402e46a603a556"
+      },
+      "runnerEvidence": {
+        "runnerId": "independent-p2-code-smell-witness",
+        "command": "node .vibe/work/I-13-mechanical-P2-smell-framework/validation-evidence/independent-p2-witness.mjs",
+        "sourceFiles": [
+          "projects/smelly/src/smells.ts"
+        ]
+      },
+      "counts": {
+        "baselineDebt": 0,
+        "currentFindings": 1,
+        "approvals": 0,
+        "previousBaselineDebt": null
+      },
+      "unchangedDebt": [],
+      "newDebt": [
+        {
+          "identityId": "6e0439a73c7f5ef868ac63390b5eb5bdfa978cef82301847a5bd30bc0ffd0b20",
+          "path": "projects/smelly/src/smells.ts",
+          "ruleId": "deep-control-flow-nesting"
+        }
+      ],
+      "staleDebt": [],
+      "removedDebt": [],
+      "baselineGrowth": [],
+      "stableIdentityAlgorithm": "sha256(tool,ruleId,path,symbol-or-structuralSignature,contentHash); line excluded"
+    }
+  },
+  "malformed": {
+    "family": "p1.quality-ratchet",
+    "ok": false,
+    "projectRoot": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-13-mechanical-P2-smell-framework/validation-evidence/ratchet-project",
+    "findings": [
+      {
+        "family": "p1.quality-ratchet",
+        "ruleId": "surface.schema-invalid",
+        "severity": "error",
+        "blocking": true,
+        "path": "ratchet-fixture/malformed/surface.json",
+        "message": "Quality ratchet surface fingerprint is missing, unreadable, malformed, or outside the validation root.",
+        "evidence": {
+          "errorMessage": "Required file is unreadable: ratchet-fixture/malformed/surface.json",
+          "errorCode": "QUALITY_RATCHET_FILE_UNREADABLE",
+          "path": "ratchet-fixture/malformed/surface.json"
+        }
+      },
+      {
+        "family": "p1.quality-ratchet",
+        "ruleId": "evidence.missing-runner",
+        "severity": "error",
+        "blocking": true,
+        "path": "ratchet-fixture/malformed/runner-evidence.json",
+        "message": "Quality ratchet runner evidence is missing, unreadable, malformed, or outside the validation root.",
+        "evidence": {
+          "errorMessage": "Required file is unreadable: ratchet-fixture/malformed/runner-evidence.json",
+          "errorCode": "QUALITY_RATCHET_FILE_UNREADABLE",
+          "path": "ratchet-fixture/malformed/runner-evidence.json"
+        }
+      }
+    ],
+    "evidence": {
+      "failClosed": true
+    }
+  },
+  "carrierEntry": {
+    "tool": "p2.code-smell",
+    "ruleId": "deep-control-flow-nesting",
+    "severity": "error",
+    "path": "projects/smelly/src/smells.ts",
+    "message": "Function contains deeply nested control flow.",
+    "identity": {
+      "tool": "p2.code-smell",
+      "ruleId": "deep-control-flow-nesting",
+      "path": "projects/smelly/src/smells.ts",
+      "symbol": "function:deeplyNested",
+      "structuralSignature": "deep-control-flow-nesting|function:deeplyNested|control-flow-depth:6|kind:FunctionDeclaration",
+      "contentHash": "c40895b8b51a53c79020294c60e144db426770476fdf4abde000cba784b3dc9f"
+    },
+    "evidence": {
+      "sourcePath": "projects/smelly/src/smells.ts",
+      "sourceExcerpt": "export function deeplyNested(input: number): number {\n  if (input > 0) {\n    for (let index = 0; index < input; index += 1) {\n      while (index < input * 2) {\n        try {\n          if (index % 2 === 0) {\n            switch (input) {\n              case 1:\n                return index;\n              default:\n                return input;\n            }\n          }\n        } catch (error) {\n          throw error;\n        }\n        break;\n      }\n    }\n  }\n  return 0;\n}"
+    }
+  }
+}

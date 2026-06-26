@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "quality-ratchet.findings/1",
+  "family": "p1.quality-ratchet",
+  "surfaceFingerprint": "b6b065a1b4f89826f5f50ddb721070b91d6013e3e3306b6e78889e544152e192",
+  "sourceFingerprintPath": "ratchet/new-debt/surface.json",
+  "runnerEvidencePath": "ratchet/new-debt/runner-evidence.json",
+  "findings": [
+    {
+      "tool": "p2.code-smell",
+      "ruleId": "deep-control-flow-nesting",
+      "severity": "error",
+      "path": "src/smells.ts",
+      "message": "Function contains deeply nested control flow.",
+      "identity": {
+        "tool": "p2.code-smell",
+        "ruleId": "deep-control-flow-nesting",
+        "path": "src/smells.ts",
+        "symbol": "function:deeplyNested",
+        "structuralSignature": "deep-control-flow-nesting|function:deeplyNested|control-flow-depth:6|kind:FunctionDeclaration",
+        "contentHash": "c40895b8b51a53c79020294c60e144db426770476fdf4abde000cba784b3dc9f"
+      },
+      "evidence": {
+        "sourcePath": "src/smells.ts",
+        "sourceExcerpt": "export function deeplyNested(input: number): number {\n  if (input > 0) {\n    for (let index = 0; index < input; index += 1) {\n      while (index < input * 2) {\n        try {\n          if (index % 2 === 0) {\n            switch (input) {\n              case 1:\n                return index;\n              default:\n                return input;\n            }\n          }\n        } catch (error) {\n          throw error;\n        }\n        break;\n      }\n    }\n  }\n  return 0;\n}"
+      }
+    }
+  ]
+}

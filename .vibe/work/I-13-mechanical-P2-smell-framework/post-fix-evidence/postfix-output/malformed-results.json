@@ -1,0 +1,1008 @@
+{
+  "nonObjectOptions": {
+    "family": "p2.code-smell",
+    "ok": false,
+    "projectRoot": "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/fixtures/p2/code-smell/projects/clean",
+    "findings": [
+      {
+        "family": "p2.code-smell",
+        "ruleId": "input.invalid-option",
+        "detectorId": "p2.code-smell.input-boundary",
+        "severity": "error",
+        "blocking": true,
+        "path": ".",
+        "message": "Code-smell options must be a strict object when provided.",
+        "evidence": {
+          "schemaVersion": "p2.code-smell.finding/1",
+          "tool": "p2.code-smell",
+          "detectorId": "p2.code-smell.input-boundary",
+          "identity": {
+            "tool": "p2.code-smell",
+            "ruleId": "input.invalid-option",
+            "path": ".",
+            "symbol": "system:input.invalid-option",
+            "structuralSignature": "system:input.invalid-option:.",
+            "contentHash": "cacbb03cbe97e42aa3a58ef29ff2e0ca19ffe37ca4b91b812e1fb32da84e1c1f"
+          },
+          "sourcePath": ".",
+          "sourceExcerpt": "Code-smell options must be a strict object when provided.\noptions:not-object",
+          "sourceHash": "cacbb03cbe97e42aa3a58ef29ff2e0ca19ffe37ca4b91b812e1fb32da84e1c1f",
+          "line": 1,
+          "structuralSignature": "system:input.invalid-option:.",
+          "calibration": {
+            "confidence": 1,
+            "mode": "hard",
+            "threshold": {
+              "metric": "input-validation",
+              "observed": 1,
+              "advisory": 1,
+              "ratcheted": 1,
+              "hard": 1
+            },
+            "blockingReason": "Input, policy, or source-boundary failures fail closed."
+          },
+          "details": [
+            "options:not-object"
+          ]
+        },
+        "identity": {
+          "tool": "p2.code-smell",
+          "ruleId": "input.invalid-option",
+          "path": ".",
+          "symbol": "system:input.invalid-option",
+          "structuralSignature": "system:input.invalid-option:.",
+          "contentHash": "cacbb03cbe97e42aa3a58ef29ff2e0ca19ffe37ca4b91b812e1fb32da84e1c1f"
+        },
+        "confidence": 1,
+        "mode": "hard",
+        "threshold": {
+          "metric": "input-validation",
+          "observed": 1,
+          "advisory": 1,
+          "ratcheted": 1,
+          "hard": 1
+        }
+      }
+    ],
+    "evidence": {
+      "schemaVersion": "p2.code-smell.result/1",
+      "tool": "p2.code-smell",
+      "allowlist": "not-implemented",
+      "detectors": [
+        "deep-control-flow-nesting",
+        "combinatorial-path-explosion",
+        "catch-log-continue",
+        "silent-no-op-dispatcher",
+        "serialized-json-assembled-as-strings"
+      ],
+      "includePaths": [
+        "."
+      ],
+      "excludeDirectoryNames": [
+        "node_modules",
+        ".git",
+        "dist",
+        "build",
+        ".turbo",
+        ".vibe"
+      ],
+      "fileSuffixes": [
+        ".ts",
+        ".tsx",
+        ".mts",
+        ".cts"
+      ],
+      "maxFileBytes": 262144,
+      "inspectedFiles": [],
+      "parsedFiles": 0,
+      "failClosed": true,
+      "defaultPolicyUsed": true
+    }
+  },
+  "unknownOption": {
+    "family": "p2.code-smell",
+    "ok": false,
+    "projectRoot": "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/fixtures/p2/code-smell/projects/clean",
+    "findings": [
+      {
+        "family": "p2.code-smell",
+        "ruleId": "input.unknown-option",
+        "detectorId": "p2.code-smell.input-boundary",
+        "severity": "error",
+        "blocking": true,
+        "path": ".",
+        "message": "Unknown code-smell option fails closed.",
+        "evidence": {
+          "schemaVersion": "p2.code-smell.finding/1",
+          "tool": "p2.code-smell",
+          "detectorId": "p2.code-smell.input-boundary",
+          "identity": {
+            "tool": "p2.code-smell",
+            "ruleId": "input.unknown-option",
+            "path": ".",
+            "symbol": "system:input.unknown-option",
+            "structuralSignature": "system:input.unknown-option:.",
+            "contentHash": "fada2ce65f130191d7093f6925efeead606500dc2f5a959e206664bcd42ffffc"
+          },
+          "sourcePath": ".",
+          "sourceExcerpt": "Unknown code-smell option fails closed.\noption:unexpected",
+          "sourceHash": "fada2ce65f130191d7093f6925efeead606500dc2f5a959e206664bcd42ffffc",
+          "line": 1,
+          "structuralSignature": "system:input.unknown-option:.",
+          "calibration": {
+            "confidence": 1,
+            "mode": "hard",
+            "threshold": {
+              "metric": "input-validation",
+              "observed": 1,
+              "advisory": 1,
+              "ratcheted": 1,
+              "hard": 1
+            },
+            "blockingReason": "Input, policy, or source-boundary failures fail closed."
+          },
+          "details": [
+            "option:unexpected"
+          ]
+        },
+        "identity": {
+          "tool": "p2.code-smell",
+          "ruleId": "input.unknown-option",
+          "path": ".",
+          "symbol": "system:input.unknown-option",
+          "structuralSignature": "system:input.unknown-option:.",
+          "contentHash": "fada2ce65f130191d7093f6925efeead606500dc2f5a959e206664bcd42ffffc"
+        },
+        "confidence": 1,
+        "mode": "hard",
+        "threshold": {
+          "metric": "input-validation",
+          "observed": 1,
+          "advisory": 1,
+          "ratcheted": 1,
+          "hard": 1
+        }
+      }
+    ],
+    "evidence": {
+      "schemaVersion": "p2.code-smell.result/1",
+      "tool": "p2.code-smell",
+      "allowlist": "not-implemented",
+      "detectors": [
+        "deep-control-flow-nesting",
+        "combinatorial-path-explosion",
+        "catch-log-continue",
+        "silent-no-op-dispatcher",
+        "serialized-json-assembled-as-strings"
+      ],
+      "includePaths": [
+        "."
+      ],
+      "excludeDirectoryNames": [
+        "node_modules",
+        ".git",
+        "dist",
+        "build",
+        ".turbo",
+        ".vibe"
+      ],
+      "fileSuffixes": [
+        ".ts",
+        ".tsx",
+        ".mts",
+        ".cts"
+      ],
+      "maxFileBytes": 262144,
+      "inspectedFiles": [],
+      "parsedFiles": 0,
+      "failClosed": true,
+      "defaultPolicyUsed": true
+    }
+  },
+  "unsupportedDetector": {
+    "family": "p2.code-smell",
+    "ok": false,
+    "projectRoot": "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/fixtures/p2/code-smell/projects/clean",
+    "findings": [
+      {
+        "family": "p2.code-smell",
+        "ruleId": "input.invalid-option",
+        "detectorId": "p2.code-smell.input-boundary",
+        "severity": "error",
+        "blocking": true,
+        "path": ".",
+        "message": "detectors contains an unsupported detector id.",
+        "evidence": {
+          "schemaVersion": "p2.code-smell.finding/1",
+          "tool": "p2.code-smell",
+          "detectorId": "p2.code-smell.input-boundary",
+          "identity": {
+            "tool": "p2.code-smell",
+            "ruleId": "input.invalid-option",
+            "path": ".",
+            "symbol": "system:input.invalid-option",
+            "structuralSignature": "system:input.invalid-option:.",
+            "contentHash": "f2323aa6be53e237f07706b418ca5b7f614609b33f3735e419fdfabbf79d01f5"
+          },
+          "sourcePath": ".",
+          "sourceExcerpt": "detectors contains an unsupported detector id.\ndetector:not-a-detector",
+          "sourceHash": "f2323aa6be53e237f07706b418ca5b7f614609b33f3735e419fdfabbf79d01f5",
+          "line": 1,
+          "structuralSignature": "system:input.invalid-option:.",
+          "calibration": {
+            "confidence": 1,
+            "mode": "hard",
+            "threshold": {
+              "metric": "input-validation",
+              "observed": 1,
+              "advisory": 1,
+              "ratcheted": 1,
+              "hard": 1
+            },
+            "blockingReason": "Input, policy, or source-boundary failures fail closed."
+          },
+          "details": [
+            "detector:not-a-detector"
+          ]
+        },
+        "identity": {
+          "tool": "p2.code-smell",
+          "ruleId": "input.invalid-option",
+          "path": ".",
+          "symbol": "system:input.invalid-option",
+          "structuralSignature": "system:input.invalid-option:.",
+          "contentHash": "f2323aa6be53e237f07706b418ca5b7f614609b33f3735e419fdfabbf79d01f5"
+        },
+        "confidence": 1,
+        "mode": "hard",
+        "threshold": {
+          "metric": "input-validation",
+          "observed": 1,
+          "advisory": 1,
+          "ratcheted": 1,
+          "hard": 1
+        }
+      }
+    ],
+    "evidence": {
+      "schemaVersion": "p2.code-smell.result/1",
+      "tool": "p2.code-smell",
+      "allowlist": "not-implemented",
+      "detectors": [
+        "deep-control-flow-nesting",
+        "combinatorial-path-explosion",
+        "catch-log-continue",
+        "silent-no-op-dispatcher",
+        "serialized-json-assembled-as-strings"
+      ],
+      "includePaths": [
+        "."
+      ],
+      "excludeDirectoryNames": [
+        "node_modules",
+        ".git",
+        "dist",
+        "build",
+        ".turbo",
+        ".vibe"
+      ],
+      "fileSuffixes": [
+        ".ts",
+        ".tsx",
+        ".mts",
+        ".cts"
+      ],
+      "maxFileBytes": 262144,
+      "inspectedFiles": [],
+      "parsedFiles": 0,
+      "failClosed": true,
+      "defaultPolicyUsed": true
+    }
+  },
+  "traversalInclude": {
+    "family": "p2.code-smell",
+    "ok": false,
+    "projectRoot": "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/fixtures/p2/code-smell/projects/clean",
+    "findings": [
+      {
+        "family": "p2.code-smell",
+        "ruleId": "input.path-traversal",
+        "detectorId": "p2.code-smell.input-boundary",
+        "severity": "error",
+        "blocking": true,
+        "path": "../outside",
+        "message": "Path traversal outside the validation root is rejected.",
+        "evidence": {
+          "schemaVersion": "p2.code-smell.finding/1",
+          "tool": "p2.code-smell",
+          "detectorId": "p2.code-smell.input-boundary",
+          "identity": {
+            "tool": "p2.code-smell",
+            "ruleId": "input.path-traversal",
+            "path": "../outside",
+            "symbol": "system:input.path-traversal",
+            "structuralSignature": "system:input.path-traversal:../outside",
+            "contentHash": "d72b6edfb3f892258a35d183d503f1619ea000d8d54ff26d6e165bc39bba6646"
+          },
+          "sourcePath": "../outside",
+          "sourceExcerpt": "Path traversal outside the validation root is rejected.\npath:../outside",
+          "sourceHash": "d72b6edfb3f892258a35d183d503f1619ea000d8d54ff26d6e165bc39bba6646",
+          "line": 1,
+          "structuralSignature": "system:input.path-traversal:../outside",
+          "calibration": {
+            "confidence": 1,
+            "mode": "hard",
+            "threshold": {
+              "metric": "input-validation",
+              "observed": 1,
+              "advisory": 1,
+              "ratcheted": 1,
+              "hard": 1
+            },
+            "blockingReason": "Input, policy, or source-boundary failures fail closed."
+          },
+          "details": [
+            "path:../outside"
+          ]
+        },
+        "identity": {
+          "tool": "p2.code-smell",
+          "ruleId": "input.path-traversal",
+          "path": "../outside",
+          "symbol": "system:input.path-traversal",
+          "structuralSignature": "system:input.path-traversal:../outside",
+          "contentHash": "d72b6edfb3f892258a35d183d503f1619ea000d8d54ff26d6e165bc39bba6646"
+        },
+        "confidence": 1,
+        "mode": "hard",
+        "threshold": {
+          "metric": "input-validation",
+          "observed": 1,
+          "advisory": 1,
+          "ratcheted": 1,
+          "hard": 1
+        }
+      }
+    ],
+    "evidence": {
+      "schemaVersion": "p2.code-smell.result/1",
+      "tool": "p2.code-smell",
+      "allowlist": "not-implemented",
+      "detectors": [
+        "deep-control-flow-nesting",
+        "combinatorial-path-explosion",
+        "catch-log-continue",
+        "silent-no-op-dispatcher",
+        "serialized-json-assembled-as-strings"
+      ],
+      "includePaths": [
+        "."
+      ],
+      "excludeDirectoryNames": [
+        "node_modules",
+        ".git",
+        "dist",
+        "build",
+        ".turbo",
+        ".vibe"
+      ],
+      "fileSuffixes": [
+        ".ts",
+        ".tsx",
+        ".mts",
+        ".cts"
+      ],
+      "maxFileBytes": 262144,
+      "inspectedFiles": [],
+      "parsedFiles": 0,
+      "failClosed": true,
+      "defaultPolicyUsed": true
+    }
+  },
+  "absoluteInclude": {
+    "family": "p2.code-smell",
+    "ok": false,
+    "projectRoot": "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/fixtures/p2/code-smell/projects/clean",
+    "findings": [
+      {
+        "family": "p2.code-smell",
+        "ruleId": "input.absolute-path",
+        "detectorId": "p2.code-smell.input-boundary",
+        "severity": "error",
+        "blocking": true,
+        "path": "/Users/lizavasilyeva/work/vibe-engineer",
+        "message": "Absolute paths are rejected.",
+        "evidence": {
+          "schemaVersion": "p2.code-smell.finding/1",
+          "tool": "p2.code-smell",
+          "detectorId": "p2.code-smell.input-boundary",
+          "identity": {
+            "tool": "p2.code-smell",
+            "ruleId": "input.absolute-path",
+            "path": "/Users/lizavasilyeva/work/vibe-engineer",
+            "symbol": "system:input.absolute-path",
+            "structuralSignature": "system:input.absolute-path:/Users/lizavasilyeva/work/vibe-engineer",
+            "contentHash": "c704b49a180abeb901cdcb87f633c421425d29faeb2c21edba626bd4b60a10af"
+          },
+          "sourcePath": "/Users/lizavasilyeva/work/vibe-engineer",
+          "sourceExcerpt": "Absolute paths are rejected.\npath:/Users/lizavasilyeva/work/vibe-engineer",
+          "sourceHash": "c704b49a180abeb901cdcb87f633c421425d29faeb2c21edba626bd4b60a10af",
+          "line": 1,
+          "structuralSignature": "system:input.absolute-path:/Users/lizavasilyeva/work/vibe-engineer",
+          "calibration": {
+            "confidence": 1,
+            "mode": "hard",
+            "threshold": {
+              "metric": "input-validation",
+              "observed": 1,
+              "advisory": 1,
+              "ratcheted": 1,
+              "hard": 1
+            },
+            "blockingReason": "Input, policy, or source-boundary failures fail closed."
+          },
+          "details": [
+            "path:/Users/lizavasilyeva/work/vibe-engineer"
+          ]
+        },
+        "identity": {
+          "tool": "p2.code-smell",
+          "ruleId": "input.absolute-path",
+          "path": "/Users/lizavasilyeva/work/vibe-engineer",
+          "symbol": "system:input.absolute-path",
+          "structuralSignature": "system:input.absolute-path:/Users/lizavasilyeva/work/vibe-engineer",
+          "contentHash": "c704b49a180abeb901cdcb87f633c421425d29faeb2c21edba626bd4b60a10af"
+        },
+        "confidence": 1,
+        "mode": "hard",
+        "threshold": {
+          "metric": "input-validation",
+          "observed": 1,
+          "advisory": 1,
+          "ratcheted": 1,
+          "hard": 1
+        }
+      }
+    ],
+    "evidence": {
+      "schemaVersion": "p2.code-smell.result/1",
+      "tool": "p2.code-smell",
+      "allowlist": "not-implemented",
+      "detectors": [
+        "deep-control-flow-nesting",
+        "combinatorial-path-explosion",
+        "catch-log-continue",
+        "silent-no-op-dispatcher",
+        "serialized-json-assembled-as-strings"
+      ],
+      "includePaths": [
+        "."
+      ],
+      "excludeDirectoryNames": [
+        "node_modules",
+        ".git",
+        "dist",
+        "build",
+        ".turbo",
+        ".vibe"
+      ],
+      "fileSuffixes": [
+        ".ts",
+        ".tsx",
+        ".mts",
+        ".cts"
+      ],
+      "maxFileBytes": 262144,
+      "inspectedFiles": [],
+      "parsedFiles": 0,
+      "failClosed": true,
+      "defaultPolicyUsed": true
+    }
+  },
+  "badSuffix": {
+    "family": "p2.code-smell",
+    "ok": false,
+    "projectRoot": "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/fixtures/p2/code-smell/projects/clean",
+    "findings": [
+      {
+        "family": "p2.code-smell",
+        "ruleId": "input.invalid-option",
+        "detectorId": "p2.code-smell.input-boundary",
+        "severity": "error",
+        "blocking": true,
+        "path": ".",
+        "message": "fileSuffixes entries must start with a dot and name a concrete source suffix.",
+        "evidence": {
+          "schemaVersion": "p2.code-smell.finding/1",
+          "tool": "p2.code-smell",
+          "detectorId": "p2.code-smell.input-boundary",
+          "identity": {
+            "tool": "p2.code-smell",
+            "ruleId": "input.invalid-option",
+            "path": ".",
+            "symbol": "system:input.invalid-option",
+            "structuralSignature": "system:input.invalid-option:.",
+            "contentHash": "274cca6d815a8f6e4beb4ac45d75385a30d73a1fc732fea9494d03424b92049c"
+          },
+          "sourcePath": ".",
+          "sourceExcerpt": "fileSuffixes entries must start with a dot and name a concrete source suffix.\nts",
+          "sourceHash": "274cca6d815a8f6e4beb4ac45d75385a30d73a1fc732fea9494d03424b92049c",
+          "line": 1,
+          "structuralSignature": "system:input.invalid-option:.",
+          "calibration": {
+            "confidence": 1,
+            "mode": "hard",
+            "threshold": {
+              "metric": "input-validation",
+              "observed": 1,
+              "advisory": 1,
+              "ratcheted": 1,
+              "hard": 1
+            },
+            "blockingReason": "Input, policy, or source-boundary failures fail closed."
+          },
+          "details": [
+            "ts"
+          ]
+        },
+        "identity": {
+          "tool": "p2.code-smell",
+          "ruleId": "input.invalid-option",
+          "path": ".",
+          "symbol": "system:input.invalid-option",
+          "structuralSignature": "system:input.invalid-option:.",
+          "contentHash": "274cca6d815a8f6e4beb4ac45d75385a30d73a1fc732fea9494d03424b92049c"
+        },
+        "confidence": 1,
+        "mode": "hard",
+        "threshold": {
+          "metric": "input-validation",
+          "observed": 1,
+          "advisory": 1,
+          "ratcheted": 1,
+          "hard": 1
+        }
+      }
+    ],
+    "evidence": {
+      "schemaVersion": "p2.code-smell.result/1",
+      "tool": "p2.code-smell",
+      "allowlist": "not-implemented",
+      "detectors": [
+        "deep-control-flow-nesting",
+        "combinatorial-path-explosion",
+        "catch-log-continue",
+        "silent-no-op-dispatcher",
+        "serialized-json-assembled-as-strings"
+      ],
+      "includePaths": [
+        "."
+      ],
+      "excludeDirectoryNames": [
+        "node_modules",
+        ".git",
+        "dist",
+        "build",
+        ".turbo",
+        ".vibe"
+      ],
+      "fileSuffixes": [
+        ".ts",
+        ".tsx",
+        ".mts",
+        ".cts"
+      ],
+      "maxFileBytes": 262144,
+      "inspectedFiles": [],
+      "parsedFiles": 0,
+      "failClosed": true,
+      "defaultPolicyUsed": true
+    }
+  },
+  "missingRoot": {
+    "family": "p2.code-smell",
+    "ok": false,
+    "projectRoot": "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/fixtures/p2/code-smell/projects/missing-root",
+    "findings": [
+      {
+        "family": "p2.code-smell",
+        "ruleId": "input.source-root-unreadable",
+        "detectorId": "p2.code-smell.input-boundary",
+        "severity": "error",
+        "blocking": true,
+        "path": ".",
+        "message": "Project root must be a readable directory.",
+        "evidence": {
+          "schemaVersion": "p2.code-smell.finding/1",
+          "tool": "p2.code-smell",
+          "detectorId": "p2.code-smell.input-boundary",
+          "identity": {
+            "tool": "p2.code-smell",
+            "ruleId": "input.source-root-unreadable",
+            "path": ".",
+            "symbol": "system:input.source-root-unreadable",
+            "structuralSignature": "system:input.source-root-unreadable:.",
+            "contentHash": "172be71e8028e4b2d81d8151065c1c1ad3e97fd119474701b44cbb1296d0f524"
+          },
+          "sourcePath": ".",
+          "sourceExcerpt": "Project root must be a readable directory.\nENOENT: no such file or directory, stat '/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/fixtures/p2/code-smell/projects/missing-root'",
+          "sourceHash": "172be71e8028e4b2d81d8151065c1c1ad3e97fd119474701b44cbb1296d0f524",
+          "line": 1,
+          "structuralSignature": "system:input.source-root-unreadable:.",
+          "calibration": {
+            "confidence": 1,
+            "mode": "hard",
+            "threshold": {
+              "metric": "input-validation",
+              "observed": 1,
+              "advisory": 1,
+              "ratcheted": 1,
+              "hard": 1
+            },
+            "blockingReason": "Input, policy, or source-boundary failures fail closed."
+          },
+          "details": [
+            "ENOENT: no such file or directory, stat '/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/fixtures/p2/code-smell/projects/missing-root'"
+          ]
+        },
+        "identity": {
+          "tool": "p2.code-smell",
+          "ruleId": "input.source-root-unreadable",
+          "path": ".",
+          "symbol": "system:input.source-root-unreadable",
+          "structuralSignature": "system:input.source-root-unreadable:.",
+          "contentHash": "172be71e8028e4b2d81d8151065c1c1ad3e97fd119474701b44cbb1296d0f524"
+        },
+        "confidence": 1,
+        "mode": "hard",
+        "threshold": {
+          "metric": "input-validation",
+          "observed": 1,
+          "advisory": 1,
+          "ratcheted": 1,
+          "hard": 1
+        }
+      }
+    ],
+    "evidence": {
+      "schemaVersion": "p2.code-smell.result/1",
+      "tool": "p2.code-smell",
+      "allowlist": "not-implemented",
+      "detectors": [
+        "deep-control-flow-nesting",
+        "combinatorial-path-explosion",
+        "catch-log-continue",
+        "silent-no-op-dispatcher",
+        "serialized-json-assembled-as-strings"
+      ],
+      "includePaths": [
+        "."
+      ],
+      "excludeDirectoryNames": [
+        "node_modules",
+        ".git",
+        "dist",
+        "build",
+        ".turbo",
+        ".vibe"
+      ],
+      "fileSuffixes": [
+        ".ts",
+        ".tsx",
+        ".mts",
+        ".cts"
+      ],
+      "maxFileBytes": 262144,
+      "inspectedFiles": [],
+      "parsedFiles": 0,
+      "failClosed": true,
+      "defaultPolicyUsed": true
+    }
+  },
+  "oversizedFileCap": {
+    "family": "p2.code-smell",
+    "ok": false,
+    "projectRoot": "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/fixtures/p2/code-smell/projects/clean",
+    "findings": [
+      {
+        "family": "p2.code-smell",
+        "ruleId": "input.file-too-large",
+        "detectorId": "p2.code-smell.input-boundary",
+        "severity": "error",
+        "blocking": true,
+        "path": "src/clean.ts",
+        "message": "Source file exceeds the configured bounded read cap.",
+        "evidence": {
+          "schemaVersion": "p2.code-smell.finding/1",
+          "tool": "p2.code-smell",
+          "detectorId": "p2.code-smell.input-boundary",
+          "identity": {
+            "tool": "p2.code-smell",
+            "ruleId": "input.file-too-large",
+            "path": "src/clean.ts",
+            "symbol": "system:input.file-too-large",
+            "structuralSignature": "system:input.file-too-large:src/clean.ts",
+            "contentHash": "3054a92a024eee566ffa6e514dc64886928e5c39cca741a319fbe68ccf635837"
+          },
+          "sourcePath": "src/clean.ts",
+          "sourceExcerpt": "Source file exceeds the configured bounded read cap.\nsize:841\nmaxFileBytes:1",
+          "sourceHash": "3054a92a024eee566ffa6e514dc64886928e5c39cca741a319fbe68ccf635837",
+          "line": 1,
+          "structuralSignature": "system:input.file-too-large:src/clean.ts",
+          "calibration": {
+            "confidence": 1,
+            "mode": "hard",
+            "threshold": {
+              "metric": "input-validation",
+              "observed": 1,
+              "advisory": 1,
+              "ratcheted": 1,
+              "hard": 1
+            },
+            "blockingReason": "Input, policy, or source-boundary failures fail closed."
+          },
+          "details": [
+            "size:841",
+            "maxFileBytes:1"
+          ]
+        },
+        "identity": {
+          "tool": "p2.code-smell",
+          "ruleId": "input.file-too-large",
+          "path": "src/clean.ts",
+          "symbol": "system:input.file-too-large",
+          "structuralSignature": "system:input.file-too-large:src/clean.ts",
+          "contentHash": "3054a92a024eee566ffa6e514dc64886928e5c39cca741a319fbe68ccf635837"
+        },
+        "confidence": 1,
+        "mode": "hard",
+        "threshold": {
+          "metric": "input-validation",
+          "observed": 1,
+          "advisory": 1,
+          "ratcheted": 1,
+          "hard": 1
+        }
+      }
+    ],
+    "evidence": {
+      "schemaVersion": "p2.code-smell.result/1",
+      "tool": "p2.code-smell",
+      "allowlist": "not-implemented",
+      "detectors": [
+        "deep-control-flow-nesting",
+        "combinatorial-path-explosion",
+        "catch-log-continue",
+        "silent-no-op-dispatcher",
+        "serialized-json-assembled-as-strings"
+      ],
+      "includePaths": [
+        "src/clean.ts"
+      ],
+      "excludeDirectoryNames": [
+        "node_modules",
+        ".git",
+        "dist",
+        "build",
+        ".turbo",
+        ".vibe"
+      ],
+      "fileSuffixes": [
+        ".ts",
+        ".tsx",
+        ".mts",
+        ".cts"
+      ],
+      "maxFileBytes": 1,
+      "inspectedFiles": [
+        "src/clean.ts"
+      ],
+      "parsedFiles": 0,
+      "failClosed": true,
+      "defaultPolicyUsed": false
+    }
+  },
+  "parseFailure": {
+    "family": "p2.code-smell",
+    "ok": false,
+    "projectRoot": "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/fixtures/p2/code-smell/projects/parse-failure",
+    "findings": [
+      {
+        "family": "p2.code-smell",
+        "ruleId": "parse.syntax-error",
+        "detectorId": "p2.code-smell.input-boundary",
+        "severity": "error",
+        "blocking": true,
+        "path": "src/broken.ts",
+        "message": "TypeScript parser reported a syntax error; code-smell analysis fails closed for this file.",
+        "evidence": {
+          "schemaVersion": "p2.code-smell.finding/1",
+          "tool": "p2.code-smell",
+          "detectorId": "p2.code-smell.input-boundary",
+          "identity": {
+            "tool": "p2.code-smell",
+            "ruleId": "parse.syntax-error",
+            "path": "src/broken.ts",
+            "symbol": "system:parse.syntax-error",
+            "structuralSignature": "system:parse.syntax-error:src/broken.ts",
+            "contentHash": "102460905fe376ff152d28725e79091600b50f7a41d488f7956e8a4cec3599e8"
+          },
+          "sourcePath": "src/broken.ts",
+          "sourceExcerpt": "TypeScript parser reported a syntax error; code-smell analysis fails closed for this file.\nline:6\ndiagnostic:'}' expected.",
+          "sourceHash": "102460905fe376ff152d28725e79091600b50f7a41d488f7956e8a4cec3599e8",
+          "line": 1,
+          "structuralSignature": "system:parse.syntax-error:src/broken.ts",
+          "calibration": {
+            "confidence": 1,
+            "mode": "hard",
+            "threshold": {
+              "metric": "input-validation",
+              "observed": 1,
+              "advisory": 1,
+              "ratcheted": 1,
+              "hard": 1
+            },
+            "blockingReason": "Input, policy, or source-boundary failures fail closed."
+          },
+          "details": [
+            "line:6",
+            "diagnostic:'}' expected."
+          ]
+        },
+        "identity": {
+          "tool": "p2.code-smell",
+          "ruleId": "parse.syntax-error",
+          "path": "src/broken.ts",
+          "symbol": "system:parse.syntax-error",
+          "structuralSignature": "system:parse.syntax-error:src/broken.ts",
+          "contentHash": "102460905fe376ff152d28725e79091600b50f7a41d488f7956e8a4cec3599e8"
+        },
+        "confidence": 1,
+        "mode": "hard",
+        "threshold": {
+          "metric": "input-validation",
+          "observed": 1,
+          "advisory": 1,
+          "ratcheted": 1,
+          "hard": 1
+        }
+      }
+    ],
+    "evidence": {
+      "schemaVersion": "p2.code-smell.result/1",
+      "tool": "p2.code-smell",
+      "allowlist": "not-implemented",
+      "detectors": [
+        "deep-control-flow-nesting",
+        "combinatorial-path-explosion",
+        "catch-log-continue",
+        "silent-no-op-dispatcher",
+        "serialized-json-assembled-as-strings"
+      ],
+      "includePaths": [
+        "src"
+      ],
+      "excludeDirectoryNames": [
+        "node_modules",
+        ".git",
+        "dist",
+        "build",
+        ".turbo",
+        ".vibe"
+      ],
+      "fileSuffixes": [
+        ".ts",
+        ".tsx",
+        ".mts",
+        ".cts"
+      ],
+      "maxFileBytes": 262144,
+      "inspectedFiles": [
+        "src/broken.ts"
+      ],
+      "parsedFiles": 0,
+      "failClosed": true,
+      "defaultPolicyUsed": false
+    }
+  },
+  "unknownAllowlistOption": {
+    "family": "p2.code-smell",
+    "ok": false,
+    "projectRoot": "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/fixtures/p2/code-smell/projects/clean",
+    "findings": [
+      {
+        "family": "p2.code-smell",
+        "ruleId": "input.unknown-option",
+        "detectorId": "p2.code-smell.input-boundary",
+        "severity": "error",
+        "blocking": true,
+        "path": ".",
+        "message": "Unknown code-smell option fails closed.",
+        "evidence": {
+          "schemaVersion": "p2.code-smell.finding/1",
+          "tool": "p2.code-smell",
+          "detectorId": "p2.code-smell.input-boundary",
+          "identity": {
+            "tool": "p2.code-smell",
+            "ruleId": "input.unknown-option",
+            "path": ".",
+            "symbol": "system:input.unknown-option",
+            "structuralSignature": "system:input.unknown-option:.",
+            "contentHash": "20c7c48c64be3679ab233d8d7300ecda482ad85cebe6276da4fddf9304892855"
+          },
+          "sourcePath": ".",
+          "sourceExcerpt": "Unknown code-smell option fails closed.\noption:allowlist",
+          "sourceHash": "20c7c48c64be3679ab233d8d7300ecda482ad85cebe6276da4fddf9304892855",
+          "line": 1,
+          "structuralSignature": "system:input.unknown-option:.",
+          "calibration": {
+            "confidence": 1,
+            "mode": "hard",
+            "threshold": {
+              "metric": "input-validation",
+              "observed": 1,
+              "advisory": 1,
+              "ratcheted": 1,
+              "hard": 1
+            },
+            "blockingReason": "Input, policy, or source-boundary failures fail closed."
+          },
+          "details": [
+            "option:allowlist"
+          ]
+        },
+        "identity": {
+          "tool": "p2.code-smell",
+          "ruleId": "input.unknown-option",
+          "path": ".",
+          "symbol": "system:input.unknown-option",
+          "structuralSignature": "system:input.unknown-option:.",
+          "contentHash": "20c7c48c64be3679ab233d8d7300ecda482ad85cebe6276da4fddf9304892855"
+        },
+        "confidence": 1,
+        "mode": "hard",
+        "threshold": {
+          "metric": "input-validation",
+          "observed": 1,
+          "advisory": 1,
+          "ratcheted": 1,
+          "hard": 1
+        }
+      }
+    ],
+    "evidence": {
+      "schemaVersion": "p2.code-smell.result/1",
+      "tool": "p2.code-smell",
+      "allowlist": "not-implemented",
+      "detectors": [
+        "deep-control-flow-nesting",
+        "combinatorial-path-explosion",
+        "catch-log-continue",
+        "silent-no-op-dispatcher",
+        "serialized-json-assembled-as-strings"
+      ],
+      "includePaths": [
+        "."
+      ],
+      "excludeDirectoryNames": [
+        "node_modules",
+        ".git",
+        "dist",
+        "build",
+        ".turbo",
+        ".vibe"
+      ],
+      "fileSuffixes": [
+        ".ts",
+        ".tsx",
+        ".mts",
+        ".cts"
+      ],
+      "maxFileBytes": 262144,
+      "inspectedFiles": [],
+      "parsedFiles": 0,
+      "failClosed": true,
+      "defaultPolicyUsed": true
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "family": "p2.code-smell",
+  "ok": true,
+  "projectRoot": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-13-mechanical-P2-smell-framework/validation-evidence/scratch-projects/clean",
+  "findings": [],
+  "evidence": {
+    "schemaVersion": "p2.code-smell.result/1",
+    "tool": "p2.code-smell",
+    "allowlist": "not-implemented",
+    "detectors": [
+      "deep-control-flow-nesting",
+      "combinatorial-path-explosion",
+      "catch-log-continue",
+      "silent-no-op-dispatcher",
+      "serialized-json-assembled-as-strings"
+    ],
+    "includePaths": [
+      "src"
+    ],
+    "excludeDirectoryNames": [
+      "node_modules",
+      ".git",
+      "dist",
+      "build",
+      ".turbo",
+      ".vibe"
+    ],
+    "fileSuffixes": [
+      ".ts",
+      ".tsx",
+      ".mts",
+      ".cts"
+    ],
+    "maxFileBytes": 262144,
+    "inspectedFiles": [
+      "src/clean.ts"
+    ],
+    "parsedFiles": 1,
+    "failClosed": false,
+    "defaultPolicyUsed": false
+  }
+}

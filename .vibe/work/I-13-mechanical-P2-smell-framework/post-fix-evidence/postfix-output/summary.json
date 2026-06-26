@@ -1,0 +1,92 @@
+{
+  "ok": true,
+  "compiledApi": ".vibe/work/I-13-mechanical-P2-smell-framework/post-fix-evidence/compiled-p2-postfix/index.js",
+  "emptyInclude": {
+    "ok": false,
+    "failClosed": true,
+    "blockingFindings": 1
+  },
+  "emptySuffixes": {
+    "ok": false,
+    "failClosed": true,
+    "blockingFindings": 1
+  },
+  "defaults": {
+    "smellyOk": false,
+    "smellyParsed": 1,
+    "cleanOk": true,
+    "cleanParsed": 1
+  },
+  "explicit": {
+    "includeOk": false,
+    "includeParsed": 1,
+    "suffixOk": false,
+    "suffixParsed": 1
+  },
+  "malformedCases": [
+    "nonObjectOptions",
+    "unknownOption",
+    "unsupportedDetector",
+    "traversalInclude",
+    "absoluteInclude",
+    "badSuffix",
+    "missingRoot",
+    "oversizedFileCap",
+    "parseFailure",
+    "unknownAllowlistOption"
+  ],
+  "detectors": {
+    "smellyFindings": 8,
+    "cleanFindings": 0
+  },
+  "stable": {
+    "before": {
+      "tool": "p2.code-smell",
+      "ruleId": "deep-control-flow-nesting",
+      "path": "src/stable.ts",
+      "symbol": "function:stableNested",
+      "structuralSignature": "deep-control-flow-nesting|function:stableNested|control-flow-depth:4|kind:FunctionDeclaration",
+      "contentHash": "c8097afe702ca2837421c0bd3cd520e8f29f6b17de157a411bcd1a1bab77d4bc"
+    },
+    "after": {
+      "tool": "p2.code-smell",
+      "ruleId": "deep-control-flow-nesting",
+      "path": "src/stable.ts",
+      "symbol": "function:stableNested",
+      "structuralSignature": "deep-control-flow-nesting|function:stableNested|control-flow-depth:4|kind:FunctionDeclaration",
+      "contentHash": "c8097afe702ca2837421c0bd3cd520e8f29f6b17de157a411bcd1a1bab77d4bc"
+    },
+    "beforeLine": 3,
+    "afterLine": 4
+  },
+  "ratchet": {
+    "unchangedOk": true,
+    "newDebtOk": false,
+    "malformedOk": false
+  },
+  "siblings": {
+    "executed": [
+      {
+        "label": "p0-allowlist-domain-aggregate",
+        "status": 0,
+        "cwd": "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates"
+      },
+      {
+        "label": "p0-surface-config-boundaries",
+        "status": 0,
+        "cwd": "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates"
+      },
+      {
+        "label": "p0-testing-boundary",
+        "status": 0,
+        "cwd": "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates"
+      }
+    ],
+    "skipped": [
+      {
+        "label": "p1-aggregate-witness",
+        "reason": "existing witness writes under .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/** outside I-13 post-fix write license; P2-to-P1 ratchet seam is covered separately in this script"
+      }
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+cwd=/Users/lizavasilyeva/work/vibe-engineer
+command=rg regex/string heuristic risk in P2 production source
+packages/mechanical-gates/src/p2/code-smell/index.ts:194:  return text.replaceAll("\r\n", "\n").replaceAll("\r", "\n");
+packages/mechanical-gates/src/p2/code-smell/index.ts:211:  if (relative === "" || relative === ".." || relative.startsWith("../") || path.isAbsolute(relative)) {
+packages/mechanical-gates/src/p2/code-smell/index.ts:223:  return suffixes.some((suffix) => filePath.endsWith(suffix));
+packages/mechanical-gates/src/p2/code-smell/index.ts:293:  if (fileSuffixes && !fileSuffixes.every((entry) => entry.startsWith(".") && entry.length > 1)) {
+packages/mechanical-gates/src/p2/code-smell/index.ts:408:  const normalizedRuleId: CodeSmellRuleId = isDetectorId(ruleId) || ruleId.startsWith("input.") || ruleId.startsWith("parse.") ? ruleId : "input.invalid-option";
+packages/mechanical-gates/src/p2/code-smell/index.ts:846:  return text.includes("{") && text.includes("}") && text.includes(":") && text.includes('"');
+packages/mechanical-gates/src/p2/code-smell/index.ts:853:    if (options.detectors.includes("deep-control-flow-nesting")) findings.push(...detectDeepControlFlowNesting(context));
+packages/mechanical-gates/src/p2/code-smell/index.ts:854:    if (options.detectors.includes("combinatorial-path-explosion")) findings.push(...detectCombinatorialPathExplosion(context));
+packages/mechanical-gates/src/p2/code-smell/index.ts:855:    if (options.detectors.includes("catch-log-continue")) findings.push(...detectCatchLogContinue(context));
+packages/mechanical-gates/src/p2/code-smell/index.ts:856:    if (options.detectors.includes("silent-no-op-dispatcher")) findings.push(...detectSilentNoOpDispatcher(context));
+packages/mechanical-gates/src/p2/code-smell/index.ts:857:    if (options.detectors.includes("serialized-json-assembled-as-strings")) findings.push(...detectSerializedJsonAsStrings(context));
+packages/mechanical-gates/src/p2/code-smell/index.ts:863:  const scriptKind = relativePath.endsWith(".tsx") ? ts.ScriptKind.TSX : ts.ScriptKind.TS;
+packages/mechanical-gates/src/p2/code-smell/index.ts:937:    failClosed: findings.some((finding) => finding.ruleId.startsWith("input.") || finding.ruleId.startsWith("parse.")),
+exit=0

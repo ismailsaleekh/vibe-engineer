@@ -1,0 +1,149 @@
+{
+  "unchanged": {
+    "family": "p1.quality-ratchet",
+    "ok": true,
+    "projectRoot": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-13-mechanical-P2-smell-framework/post-fix-evidence/scratch-ratchet-root",
+    "findings": [],
+    "evidence": {
+      "schemaVersion": "quality-ratchet.result/1",
+      "family": "p1.quality-ratchet",
+      "artifactPaths": {
+        "baselinePath": "ratchet/unchanged/baseline.json",
+        "findingCarrierPath": "ratchet/unchanged/findings.json",
+        "approvalPath": "ratchet/unchanged/approvals.json",
+        "surfaceFingerprintPath": "ratchet/unchanged/surface.json",
+        "runnerEvidencePath": "ratchet/unchanged/runner-evidence.json"
+      },
+      "surfaceFingerprint": {
+        "baseline": "b6b065a1b4f89826f5f50ddb721070b91d6013e3e3306b6e78889e544152e192",
+        "carrier": "b6b065a1b4f89826f5f50ddb721070b91d6013e3e3306b6e78889e544152e192",
+        "declared": "b6b065a1b4f89826f5f50ddb721070b91d6013e3e3306b6e78889e544152e192",
+        "computed": "b6b065a1b4f89826f5f50ddb721070b91d6013e3e3306b6e78889e544152e192"
+      },
+      "runnerEvidence": {
+        "runnerId": "postfix-p2-regression-witness",
+        "command": "node postfix-p2-regression-witness.mjs",
+        "sourceFiles": [
+          "src/smells.ts"
+        ]
+      },
+      "counts": {
+        "baselineDebt": 1,
+        "currentFindings": 1,
+        "approvals": 0,
+        "previousBaselineDebt": null
+      },
+      "unchangedDebt": [
+        {
+          "identityId": "a9760af197222236e749b9bdc36079283d5a71b56560e220b44e7cbb39e7e4ab",
+          "path": "src/smells.ts",
+          "ruleId": "deep-control-flow-nesting"
+        }
+      ],
+      "newDebt": [],
+      "staleDebt": [],
+      "removedDebt": [],
+      "baselineGrowth": [],
+      "stableIdentityAlgorithm": "sha256(tool,ruleId,path,symbol-or-structuralSignature,contentHash); line excluded"
+    }
+  },
+  "newDebt": {
+    "family": "p1.quality-ratchet",
+    "ok": false,
+    "projectRoot": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-13-mechanical-P2-smell-framework/post-fix-evidence/scratch-ratchet-root",
+    "findings": [
+      {
+        "family": "p1.quality-ratchet",
+        "ruleId": "debt.new-finding",
+        "severity": "error",
+        "blocking": true,
+        "path": "src/smells.ts",
+        "message": "Current finding is not present in the quality ratchet baseline.",
+        "evidence": {
+          "identityId": "a9760af197222236e749b9bdc36079283d5a71b56560e220b44e7cbb39e7e4ab",
+          "tool": "p2.code-smell",
+          "ruleId": "deep-control-flow-nesting"
+        }
+      }
+    ],
+    "evidence": {
+      "schemaVersion": "quality-ratchet.result/1",
+      "family": "p1.quality-ratchet",
+      "artifactPaths": {
+        "baselinePath": "ratchet/new-debt/baseline.json",
+        "findingCarrierPath": "ratchet/new-debt/findings.json",
+        "approvalPath": "ratchet/new-debt/approvals.json",
+        "surfaceFingerprintPath": "ratchet/new-debt/surface.json",
+        "runnerEvidencePath": "ratchet/new-debt/runner-evidence.json"
+      },
+      "surfaceFingerprint": {
+        "baseline": "b6b065a1b4f89826f5f50ddb721070b91d6013e3e3306b6e78889e544152e192",
+        "carrier": "b6b065a1b4f89826f5f50ddb721070b91d6013e3e3306b6e78889e544152e192",
+        "declared": "b6b065a1b4f89826f5f50ddb721070b91d6013e3e3306b6e78889e544152e192",
+        "computed": "b6b065a1b4f89826f5f50ddb721070b91d6013e3e3306b6e78889e544152e192"
+      },
+      "runnerEvidence": {
+        "runnerId": "postfix-p2-regression-witness",
+        "command": "node postfix-p2-regression-witness.mjs",
+        "sourceFiles": [
+          "src/smells.ts"
+        ]
+      },
+      "counts": {
+        "baselineDebt": 0,
+        "currentFindings": 1,
+        "approvals": 0,
+        "previousBaselineDebt": null
+      },
+      "unchangedDebt": [],
+      "newDebt": [
+        {
+          "identityId": "a9760af197222236e749b9bdc36079283d5a71b56560e220b44e7cbb39e7e4ab",
+          "path": "src/smells.ts",
+          "ruleId": "deep-control-flow-nesting"
+        }
+      ],
+      "staleDebt": [],
+      "removedDebt": [],
+      "baselineGrowth": [],
+      "stableIdentityAlgorithm": "sha256(tool,ruleId,path,symbol-or-structuralSignature,contentHash); line excluded"
+    }
+  },
+  "malformed": {
+    "family": "p1.quality-ratchet",
+    "ok": false,
+    "projectRoot": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-13-mechanical-P2-smell-framework/post-fix-evidence/scratch-ratchet-root",
+    "findings": [
+      {
+        "family": "p1.quality-ratchet",
+        "ruleId": "surface.schema-invalid",
+        "severity": "error",
+        "blocking": true,
+        "path": "ratchet/malformed/surface.json",
+        "message": "Quality ratchet surface fingerprint is missing, unreadable, malformed, or outside the validation root.",
+        "evidence": {
+          "errorMessage": "Required file is unreadable: ratchet/malformed/surface.json",
+          "errorCode": "QUALITY_RATCHET_FILE_UNREADABLE",
+          "path": "ratchet/malformed/surface.json"
+        }
+      },
+      {
+        "family": "p1.quality-ratchet",
+        "ruleId": "evidence.missing-runner",
+        "severity": "error",
+        "blocking": true,
+        "path": "ratchet/malformed/runner-evidence.json",
+        "message": "Quality ratchet runner evidence is missing, unreadable, malformed, or outside the validation root.",
+        "evidence": {
+          "errorMessage": "Required file is unreadable: ratchet/malformed/runner-evidence.json",
+          "errorCode": "QUALITY_RATCHET_FILE_UNREADABLE",
+          "path": "ratchet/malformed/runner-evidence.json"
+        }
+      }
+    ],
+    "evidence": {
+      "failClosed": true
+    }
+  },
+  "realBoundary": "actual validateCodeSmells compiled API carrier consumed by actual validateQualityRatchet from P1"
+}

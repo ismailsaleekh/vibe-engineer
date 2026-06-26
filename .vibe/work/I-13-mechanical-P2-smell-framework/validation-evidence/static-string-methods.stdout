@@ -1,0 +1,13 @@
+packages/mechanical-gates/src/p2/code-smell/index.ts:  return text.replaceAll("\r\n", "\n").replaceAll("\r", "\n");
+packages/mechanical-gates/src/p2/code-smell/index.ts:  if (relative === "" || relative === ".." || relative.startsWith("../") || path.isAbsolute(relative)) {
+packages/mechanical-gates/src/p2/code-smell/index.ts:  return suffixes.some((suffix) => filePath.endsWith(suffix));
+packages/mechanical-gates/src/p2/code-smell/index.ts:  if (fileSuffixes && !fileSuffixes.every((entry) => entry.startsWith(".") && entry.length > 1)) {
+packages/mechanical-gates/src/p2/code-smell/index.ts:  const normalizedRuleId: CodeSmellRuleId = isDetectorId(ruleId) || ruleId.startsWith("input.") || ruleId.startsWith("parse.") ? ruleId : "input.invalid-option";
+packages/mechanical-gates/src/p2/code-smell/index.ts:  return text.includes("{") && text.includes("}") && text.includes(":") && text.includes('"');
+packages/mechanical-gates/src/p2/code-smell/index.ts:    if (options.detectors.includes("deep-control-flow-nesting")) findings.push(...detectDeepControlFlowNesting(context));
+packages/mechanical-gates/src/p2/code-smell/index.ts:    if (options.detectors.includes("combinatorial-path-explosion")) findings.push(...detectCombinatorialPathExplosion(context));
+packages/mechanical-gates/src/p2/code-smell/index.ts:    if (options.detectors.includes("catch-log-continue")) findings.push(...detectCatchLogContinue(context));
+packages/mechanical-gates/src/p2/code-smell/index.ts:    if (options.detectors.includes("silent-no-op-dispatcher")) findings.push(...detectSilentNoOpDispatcher(context));
+packages/mechanical-gates/src/p2/code-smell/index.ts:    if (options.detectors.includes("serialized-json-assembled-as-strings")) findings.push(...detectSerializedJsonAsStrings(context));
+packages/mechanical-gates/src/p2/code-smell/index.ts:  const scriptKind = relativePath.endsWith(".tsx") ? ts.ScriptKind.TSX : ts.ScriptKind.TS;
+packages/mechanical-gates/src/p2/code-smell/index.ts:    failClosed: findings.some((finding) => finding.ruleId.startsWith("input.") || finding.ruleId.startsWith("parse.")),

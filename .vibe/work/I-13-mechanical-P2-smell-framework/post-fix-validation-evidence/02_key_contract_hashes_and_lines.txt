@@ -1,0 +1,36 @@
+cwd=/Users/lizavasilyeva/work/vibe-engineer
+command=python3 inspect key product contracts
+## packages/mechanical-gates/src/p2/code-smell/index.ts
+size=41381 sha256=8f12bff36630789e1bd129c86c0142139ba959a31e2358db54a1f3e2aeda384e
+6:export const CODE_SMELL_FAMILY = "p2.code-smell" as const;
+7:export const CODE_SMELL_TOOL = "p2.code-smell" as const;
+10:export const CODE_SMELL_RATCHET_CARRIER_VERSION = "quality-ratchet.findings/1" as const;
+21:export type CodeSmellFamily = typeof CODE_SMELL_FAMILY;
+22:export type CodeSmellTool = typeof CODE_SMELL_TOOL;
+226:function readStringArray(value: unknown, field: string, errors: CodeSmellFinding[]): readonly string[] | undefined {
+227:  if (!Array.isArray(value) || value.length === 0 || !value.every((entry) => typeof entry === "string" && entry.length > 0)) {
+235:  if (!Array.isArray(value) || value.length === 0) {
+386:    family: CODE_SMELL_FAMILY,
+392:      tool: CODE_SMELL_TOOL,
+412:    tool: CODE_SMELL_TOOL,
+421:    tool: CODE_SMELL_TOOL,
+438:    family: CODE_SMELL_FAMILY,
+463:    tool: CODE_SMELL_TOOL,
+473:    tool: CODE_SMELL_TOOL,
+490:    family: CODE_SMELL_FAMILY,
+## packages/mechanical-gates/src/p2/code-smell/node-shims.d.ts
+size=1023 sha256=7f06678cb54837a123e12da74e28341a2bcbb56d60d16066b70cca6de28a7fb2
+## packages/mechanical-gates/fixtures/p2/code-smell/witness.mjs
+size=18762 sha256=aa6756a8c5e5b6e78919e370d897d3be303c9e45ffa9c0a5adbba80267ed86c9
+## packages/mechanical-gates/fixtures/p2/code-smell/typecheck-consumer.ts
+size=1016 sha256=5b675771d5c1d789bae53d78b722ef5168caf31c94885a5f279854e9f83bb38d
+## packages/mechanical-gates/package.json
+size=1538 sha256=b87923b67a5cf139ae67f6062c71d23393b307af153d1b874ccaf3e639e2f221
+mentions_p2_code_smell= False
+## packages/mechanical-gates/src/aggregate/index.js
+size=159 sha256=6d8a7a44b224e320569201001708906d2121846c1e4605530151b237e211e583
+mentions_p2_code_smell= False
+## packages/mechanical-gates/src/aggregate/p1/run-p1-aggregate.js
+size=21903 sha256=1cde9ecf9be5e09cace6ae6f1e178e2bad5721a10e95d8392eb7e131236352a1
+mentions_p2_code_smell= False
+exit=0
