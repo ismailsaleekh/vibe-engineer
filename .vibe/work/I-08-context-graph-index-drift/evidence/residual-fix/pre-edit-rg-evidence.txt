@@ -1,0 +1,19 @@
+packages/context/tests/negative-witness.mjs:4:import { validateArtifactFile } from '@vibe-engineer/artifacts';
+packages/context/tests/negative-witness.mjs:170:  const providerResult = validateArtifactFile(headerPath, { kind: 'context_file_header' });
+packages/artifacts/src/validation.js:328:export function validateArtifactFile(filePath, options = {}) {
+packages/context/src/index.js:5:import { validateArtifactFile } from '@vibe-engineer/artifacts';
+packages/context/src/index.js:41:const CONTEXT_ITEM_KEYS = new Set(['contextId', 'level', 'mandatory', 'text', 'content', 'sourceRefs', 'citationRefs']);
+packages/context/src/index.js:500:      citationRefs: [`${sources[0].sourceId}:sha256`]
+packages/context/src/index.js:561:  const result = validateArtifactFile(headerPath, { kind: 'context_file_header' });
+packages/context/src/index.js:564:      findings.push(finding('error', 'INVALID_CONTEXT_HEADER', pointer, `ContextFileHeaderV1 validation failed through @vibe-engineer/artifacts: ${error.message}`, { filePath: headerPath, providerCode: error.code }));
+packages/context/src/index.js:836:function validateContextItem(item, pointer, sourceIds, areaSourceRefs, findings, filePath) {
+packages/context/src/index.js:854:  if (item.citationRefs !== undefined) validateStringArray(item.citationRefs, `${pointer}/citationRefs`, 'INVALID_AREA_CONTEXT_ITEM', `${filePath}: citationRefs must be stable citation ids.`, findings);
+packages/context/src/index.js:872:    for (const [index, item] of carrier.context.entries()) validateContextItem(item, `/context/${index}`, sourceIds, areaSourceRefs, findings, carrierPath);
+packages/context/src/index.js:1094:  artifactsValidateArtifactFileType: typeof validateArtifactFile
+packages/artifacts/src/index.js:3:export { compileAllArtifactSchemas, validateArtifact, validateArtifactFile, validateArtifactKind } from './validation.js';
+packages/context/tests/real-boundary-witness.mjs:4:import { validateArtifactFile } from '@vibe-engineer/artifacts';
+packages/context/tests/real-boundary-witness.mjs:26:assert(typeof validateArtifactFile === 'function', 'public artifacts validateArtifactFile seam is unavailable');
+packages/context/tests/real-boundary-witness.mjs:57:const providerHeaderResult = validateArtifactFile(path.join(projectRoot, '.vibe/context/areas/core-contracts.header.json'), { kind: 'context_file_header' });
+packages/context/tests/real-boundary-witness.mjs:86:  providerSeam: 'public @vibe-engineer/artifacts validateArtifactFile used for on-disk ContextFileHeaderV1',
+.vibe/context/schema/context-area-v1.schema.json:28:    "contextItem": { "type": "object", "additionalProperties": false, "required": ["contextId", "level", "mandatory", "sourceRefs"], "anyOf": [{ "required": ["text"], "properties": { "text": { "$ref": "#/$defs/nonEmptyString" } } }, { "required": ["content"], "properties": { "content": { "$ref": "#/$defs/typedContent" } } }], "properties": { "contextId": { "$ref": "#/$defs/nonEmptyString" }, "level": { "$ref": "#/$defs/level" }, "mandatory": { "type": "boolean" }, "text": { "$ref": "#/$defs/nonEmptyString" }, "content": { "$ref": "#/$defs/typedContent" }, "sourceRefs": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/nonEmptyString" } }, "citationRefs": { "type": "array", "items": { "$ref": "#/$defs/nonEmptyString" } } } },
+packages/artifacts/src/generated/types.d.ts:1395:export function validateArtifactFile(filePath: string, options?: { artifactPath?: string; kind?: ArtifactKind }): ArtifactValidationResult<AnyArtifactV1>;

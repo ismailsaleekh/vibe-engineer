@@ -1,0 +1,50 @@
+--- I-08 owned write set sentinel ---
+Owned changed/written roots observed this session: packages/context/**, .vibe/context/schema/**, .vibe/work/I-08-context-graph-index-drift/** only (plus pre-existing pnpm-generated provider node_modules under packages/context from root/provider unit).
+--- root immutable hashes ---
+b3d1455aade0eb27f0775c3dbe2abefd89dada97caac9b10f041061abcb30306  package.json
+aee47e9964f53e767a6d6a86a27c86b218a76cd59453c3401defad6907be5f21  pnpm-workspace.yaml
+0259217fb38660de9e7298c4d6e363c7810a436479c189ce7ca088dd06576fff  pnpm-lock.yaml
+--- provider manifest hashes ---
+1ace06c206300412035f1954b08d6ed97a2e244265ef70a7789f4488cede7498  packages/artifacts/package.json
+9e8fbe90ac613ebefb6a5ad036560a03fc6b843ce041976e56af548bb0bbed4a  packages/config/package.json
+--- product and cli name ---
+{
+  "workspaceName": "@vibe-engineer/workspace",
+  "cliPackageName": "vibe-engineer",
+  "cliBin": null
+}
+--- registry locked skills/artifact flow/plan verification delta sentinel ---
+{
+  "LOCKED_SKILLS": [
+    "brainstorm",
+    "grill-me",
+    "task",
+    "plan",
+    "build",
+    "ship"
+  ],
+  "ARTIFACT_FLOW": [
+    "raw_intent",
+    "work_brief",
+    "implementation_plan",
+    "build_result",
+    "ship_packet"
+  ],
+  "planOwnsVerificationDelta": true,
+  "contextOnlyProvidesClosureMachinery": true
+}
+registry-sentinel-exit=0
+--- root context forbidden carrier check ---
+.vibe/context/index absent
+.vibe/context/areas absent
+.vibe/context/summaries absent
+--- owned source files ---
+.vibe/context/schema/context-area-v1.schema.json
+.vibe/context/schema/context-graph-v1.schema.json
+.vibe/context/schema/context-index-v1.schema.json
+.vibe/context/schema/context-summary-v1.schema.json
+.vibe/context/schema/retrieval-closure-v1.schema.json
+packages/context/src/index.d.ts
+packages/context/src/index.js
+packages/context/tests/negative-witness.mjs
+packages/context/tests/real-boundary-witness.mjs

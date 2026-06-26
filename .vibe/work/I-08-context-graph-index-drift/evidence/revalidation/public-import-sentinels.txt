@@ -1,0 +1,12 @@
+## command: cd /Users/lizavasilyeva/work/vibe-engineer/packages/context && node -e "import('@vibe-engineer/artifacts').then((m)=>{ if (typeof m.validateArtifactFile !== 'function') throw new Error('missing validateArtifactFile'); console.log('artifacts provider ok') })"
+artifacts provider ok
+exit=0
+## command: cd /Users/lizavasilyeva/work/vibe-engineer/packages/context && node -e "import('@vibe-engineer/context').then((m)=>{ for (const k of ['writeContextProject','validateContextProject','checkContextDrift','retrieveContextClosure']) if (typeof m[k] !== 'function') throw new Error('missing '+k); console.log('context public API ok') })"
+context public API ok
+exit=0
+## command: cd /Users/lizavasilyeva/work/vibe-engineer && pnpm --filter @vibe-engineer/context exec node -e "import('@vibe-engineer/artifacts').then((m)=>{ if (typeof m.validateArtifactFile !== 'function') throw new Error('missing validateArtifactFile'); console.log('pnpm artifacts provider ok') })"
+pnpm artifacts provider ok
+exit=0
+## command: cd /Users/lizavasilyeva/work/vibe-engineer/packages/context && node -e "import('@vibe-engineer/config').then((m)=>{ for (const k of ['parseVibeConfig','loadVibeConfigFile','loadVibeConfigFromProjectRoot']) if (typeof m[k] !== 'function') throw new Error('missing '+k); console.log('config provider ok (not load-bearing for context runtime)') })"
+config provider ok (not load-bearing for context runtime)
+exit=0

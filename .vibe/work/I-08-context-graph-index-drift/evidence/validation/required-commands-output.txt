@@ -1,0 +1,29 @@
+# I-08 validation required commands
+Timestamp: 2026-06-24T10:07:36Z
+## node --check packages/context/src/index.js
+exit=0
+## pnpm --filter @vibe-engineer/context typecheck
+
+> @vibe-engineer/context@0.0.0 typecheck /Users/lizavasilyeva/work/vibe-engineer/packages/context
+> node --check src/index.js
+
+exit=0
+## direct public import from packages/context cwd
+context public API ok
+exit=0
+## direct provider import from packages/context cwd
+artifacts provider import ok
+exit=0
+## pnpm-filter provider import
+artifacts provider pnpm import ok
+exit=0
+## pnpm --filter @vibe-engineer/context test
+NOT RUN: package test script writes fixed implementation evidence/fixtures outside validator-owned evidence/validation/** (tests/real-boundary-witness.mjs and tests/negative-witness.mjs use .vibe/work/I-08-context-graph-index-drift/evidence and fixtures directly). Running would violate validator write license.
+exit=NOT_RUN_LICENSE
+## pnpm --filter @vibe-engineer/context build
+NOT RUN: build script invokes the same writeful tests and would write outside validator-owned paths.
+exit=NOT_RUN_LICENSE
+## validator-created independent real-boundary positive/negative witness via stdin from packages/context cwd
+independent witness found failures: stale-source-version-ref, malformed-source-citation-object, wrong-shaped-area-context-array
+/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/validation/independent-real-boundary-witness-result.json
+exit=1

@@ -1,0 +1,62 @@
+{
+  "ok": false,
+  "strictCompile": {
+    "graph": {
+      "ok": true
+    },
+    "index": {
+      "ok": true
+    },
+    "area": {
+      "ok": true
+    },
+    "summary": {
+      "ok": true
+    },
+    "closure": {
+      "ok": false,
+      "message": "strict mode: required property \"0\" is not defined at \"https://schemas.vibe-engineer.dev/context/v1/retrieval-closure.schema.json#/properties/levels\" (strictRequired)"
+    }
+  },
+  "strictFailures": [
+    {
+      "name": "closure",
+      "ok": false,
+      "message": "strict mode: required property \"0\" is not defined at \"https://schemas.vibe-engineer.dev/context/v1/retrieval-closure.schema.json#/properties/levels\" (strictRequired)"
+    }
+  ],
+  "malformedButAccepted": [
+    "graph accepts source/node/link objects with no stable ids, citations, fingerprints, header refs, or link refs",
+    "index accepts empty graphRef/headerRef/nodeRefs/sourceRefs objects",
+    "area accepts context array items with no contextId/level/mandatory/text and empty metadata objects",
+    "summary accepts empty update/drift metadata and expandable refs without item shape",
+    "retrieval closure accepts empty task object, arbitrary level item shape, malformed citation/diagnostic objects"
+  ],
+  "permissiveValidationResults": [
+    {
+      "name": "graph accepts source/node/link objects with no stable ids, citations, fingerprints, header refs, or link refs",
+      "ok": true,
+      "errors": []
+    },
+    {
+      "name": "index accepts empty graphRef/headerRef/nodeRefs/sourceRefs objects",
+      "ok": true,
+      "errors": []
+    },
+    {
+      "name": "area accepts context array items with no contextId/level/mandatory/text and empty metadata objects",
+      "ok": true,
+      "errors": []
+    },
+    {
+      "name": "summary accepts empty update/drift metadata and expandable refs without item shape",
+      "ok": true,
+      "errors": []
+    },
+    {
+      "name": "retrieval closure accepts empty task object, arbitrary level item shape, malformed citation/diagnostic objects",
+      "ok": true,
+      "errors": []
+    }
+  ]
+}

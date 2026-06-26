@@ -1,0 +1,30 @@
+--- node checks ---
+node-check-src-exit=0
+node-check-real-exit=0
+node-check-negative-exit=0
+--- public self import package-local ---
+context public self import ok
+self-import-exit=0
+--- public self import pnpm-filter ---
+context public pnpm import ok
+pnpm-import-exit=0
+--- package scripts ---
+
+> @vibe-engineer/context@0.0.0 typecheck /Users/lizavasilyeva/work/vibe-engineer/packages/context
+> node --check src/index.js
+
+pnpm-typecheck-exit=0
+
+> @vibe-engineer/context@0.0.0 test /Users/lizavasilyeva/work/vibe-engineer/packages/context
+> node tests/real-boundary-witness.mjs && node tests/negative-witness.mjs
+
+real-boundary witness ok: /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/real-boundary-witness-result.json
+negative witness ok: /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/negative-witness-result.json
+pnpm-test-exit=0
+
+> @vibe-engineer/context@0.0.0 build /Users/lizavasilyeva/work/vibe-engineer/packages/context
+> node --check src/index.js && node tests/real-boundary-witness.mjs && node tests/negative-witness.mjs
+
+real-boundary witness ok: /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/real-boundary-witness-result.json
+negative witness ok: /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/negative-witness-result.json
+pnpm-build-exit=0

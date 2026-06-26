@@ -1,0 +1,354 @@
+{
+  "ok": true,
+  "runRoot": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/fixtures/fix/negative",
+  "evidencePath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/fix/negative-witness-result.json",
+  "negativeWitnesses": [
+    {
+      "name": "stale-source-fingerprint",
+      "ok": false,
+      "expectedCodes": [
+        "STALE_SOURCE_FINGERPRINT",
+        "STALE_SOURCE_VERSION_REF",
+        "INVALID_SOURCE_CITATION"
+      ],
+      "actualCodes": [
+        "INVALID_SOURCE_CITATION",
+        "STALE_SOURCE_FINGERPRINT",
+        "STALE_SOURCE_VERSION_REF"
+      ]
+    },
+    {
+      "name": "stale-source-version-ref-matching-content-fingerprint",
+      "ok": false,
+      "expectedCodes": [
+        "STALE_SOURCE_VERSION_REF"
+      ],
+      "actualCodes": [
+        "STALE_SOURCE_VERSION_REF"
+      ]
+    },
+    {
+      "name": "missing-source-version-ref",
+      "ok": false,
+      "expectedCodes": [
+        "INVALID_SOURCE_VERSION_REF"
+      ],
+      "actualCodes": [
+        "INVALID_SOURCE_VERSION_REF"
+      ]
+    },
+    {
+      "name": "invalid-source-version-ref-shape",
+      "ok": false,
+      "expectedCodes": [
+        "INVALID_SOURCE_VERSION_REF"
+      ],
+      "actualCodes": [
+        "INVALID_SOURCE_VERSION_REF"
+      ]
+    },
+    {
+      "name": "malformed-source-citation-object",
+      "ok": false,
+      "expectedCodes": [
+        "INVALID_SOURCE_CITATION"
+      ],
+      "actualCodes": [
+        "INVALID_SOURCE_CITATION"
+      ]
+    },
+    {
+      "name": "citation-fingerprint-mismatch",
+      "ok": false,
+      "expectedCodes": [
+        "INVALID_SOURCE_CITATION"
+      ],
+      "actualCodes": [
+        "INVALID_SOURCE_CITATION"
+      ]
+    },
+    {
+      "name": "citation-source-path-mismatch",
+      "ok": false,
+      "expectedCodes": [
+        "INVALID_SOURCE_CITATION"
+      ],
+      "actualCodes": [
+        "INVALID_SOURCE_CITATION"
+      ]
+    },
+    {
+      "name": "wrong-shaped-area-context-non-array",
+      "ok": false,
+      "expectedCodes": [
+        "INVALID_AREA_CONTEXT"
+      ],
+      "actualCodes": [
+        "INVALID_AREA_CONTEXT"
+      ]
+    },
+    {
+      "name": "wrong-shaped-area-context-empty-object",
+      "ok": false,
+      "expectedCodes": [
+        "INVALID_AREA_CONTEXT_ITEM"
+      ],
+      "actualCodes": [
+        "INVALID_AREA_CONTEXT_ITEM"
+      ]
+    },
+    {
+      "name": "area-context-missing-context-id",
+      "ok": false,
+      "expectedCodes": [
+        "INVALID_AREA_CONTEXT_ITEM"
+      ],
+      "actualCodes": [
+        "INVALID_AREA_CONTEXT_ITEM"
+      ]
+    },
+    {
+      "name": "area-context-missing-level",
+      "ok": false,
+      "expectedCodes": [
+        "INVALID_AREA_CONTEXT_ITEM"
+      ],
+      "actualCodes": [
+        "INVALID_AREA_CONTEXT_ITEM"
+      ]
+    },
+    {
+      "name": "area-context-missing-mandatory",
+      "ok": false,
+      "expectedCodes": [
+        "INVALID_AREA_CONTEXT_ITEM"
+      ],
+      "actualCodes": [
+        "INVALID_AREA_CONTEXT_ITEM"
+      ]
+    },
+    {
+      "name": "area-context-missing-text",
+      "ok": false,
+      "expectedCodes": [
+        "INVALID_AREA_CONTEXT_ITEM"
+      ],
+      "actualCodes": [
+        "INVALID_AREA_CONTEXT_ITEM"
+      ]
+    },
+    {
+      "name": "area-context-missing-source-refs",
+      "ok": false,
+      "expectedCodes": [
+        "INVALID_AREA_CONTEXT_ITEM"
+      ],
+      "actualCodes": [
+        "INVALID_AREA_CONTEXT_ITEM"
+      ]
+    },
+    {
+      "name": "unsupported-context-version",
+      "ok": false,
+      "expectedCodes": [
+        "UNSUPPORTED_CONTEXT_VERSION"
+      ],
+      "actualCodes": [
+        "UNSUPPORTED_CONTEXT_VERSION"
+      ]
+    },
+    {
+      "name": "unsupported-index-version",
+      "ok": false,
+      "expectedCodes": [
+        "UNSUPPORTED_INDEX_VERSION"
+      ],
+      "actualCodes": [
+        "UNSUPPORTED_INDEX_VERSION"
+      ]
+    },
+    {
+      "name": "missing-source-citation",
+      "ok": false,
+      "expectedCodes": [
+        "MISSING_SOURCE_CITATION"
+      ],
+      "actualCodes": [
+        "MISSING_SOURCE_CITATION"
+      ]
+    },
+    {
+      "name": "missing-source-file",
+      "ok": false,
+      "expectedCodes": [
+        "MISSING_SOURCE_FILE"
+      ],
+      "actualCodes": [
+        "MISSING_SOURCE_FILE"
+      ]
+    },
+    {
+      "name": "broken-evidence-link",
+      "ok": false,
+      "expectedCodes": [
+        "BROKEN_CONTEXT_LINK"
+      ],
+      "actualCodes": [
+        "BROKEN_CONTEXT_LINK"
+      ]
+    },
+    {
+      "name": "broken-decision-link",
+      "ok": false,
+      "expectedCodes": [
+        "BROKEN_CONTEXT_LINK"
+      ],
+      "actualCodes": [
+        "BROKEN_CONTEXT_LINK"
+      ]
+    },
+    {
+      "name": "mislinked-work-path",
+      "ok": false,
+      "expectedCodes": [
+        "MISLINKED_ARTIFACT_PATH",
+        "BROKEN_CONTEXT_LINK"
+      ],
+      "actualCodes": [
+        "BROKEN_CONTEXT_LINK",
+        "MISLINKED_ARTIFACT_PATH"
+      ]
+    },
+    {
+      "name": "malformed-graph-json",
+      "ok": false,
+      "expectedCodes": [
+        "MALFORMED_JSON"
+      ],
+      "actualCodes": [
+        "MALFORMED_JSON"
+      ]
+    },
+    {
+      "name": "malformed-index-json",
+      "ok": false,
+      "expectedCodes": [
+        "MALFORMED_JSON"
+      ],
+      "actualCodes": [
+        "MALFORMED_JSON"
+      ]
+    },
+    {
+      "name": "malformed-context-header-json",
+      "ok": false,
+      "expectedCodes": [
+        "INVALID_CONTEXT_HEADER"
+      ],
+      "actualCodes": [
+        "INVALID_CONTEXT_HEADER"
+      ]
+    },
+    {
+      "name": "invalid-context-header",
+      "ok": false,
+      "expectedCodes": [
+        "INVALID_CONTEXT_HEADER"
+      ],
+      "actualCodes": [
+        "INVALID_CONTEXT_HEADER"
+      ]
+    },
+    {
+      "name": "summary-without-source-refs",
+      "ok": false,
+      "expectedCodes": [
+        "SUMMARY_WITHOUT_SOURCE_REFS",
+        "SUMMARY_ONLY_LOAD_BEARING_TRUTH"
+      ],
+      "actualCodes": [
+        "INVALID_CONTEXT_SUMMARY",
+        "SUMMARY_ONLY_LOAD_BEARING_TRUTH",
+        "SUMMARY_WITHOUT_SOURCE_REFS"
+      ]
+    },
+    {
+      "name": "stale-summary-ref",
+      "ok": false,
+      "expectedCodes": [
+        "STALE_SUMMARY_SOURCE_REF"
+      ],
+      "actualCodes": [
+        "STALE_SUMMARY_SOURCE_REF"
+      ]
+    },
+    {
+      "name": "missing-mandatory-level-one",
+      "ok": false,
+      "expectedCodes": [
+        "MISSING_MANDATORY_LEVEL_1"
+      ],
+      "actualCodes": [
+        "BROKEN_CONTEXT_EDGE",
+        "INVALID_NODE_REFS",
+        "MISSING_MANDATORY_LEVEL_1",
+        "SUMMARY_NOT_EXPANDABLE"
+      ]
+    },
+    {
+      "name": "path-only-source-ref",
+      "ok": false,
+      "expectedCodes": [
+        "PATH_ONLY_REFERENCE"
+      ],
+      "actualCodes": [
+        "PATH_ONLY_REFERENCE"
+      ]
+    },
+    {
+      "name": "path-only-link-ref",
+      "ok": false,
+      "expectedCodes": [
+        "PATH_ONLY_REFERENCE"
+      ],
+      "actualCodes": [
+        "PATH_ONLY_REFERENCE"
+      ]
+    },
+    {
+      "name": "load-everything-request",
+      "ok": false,
+      "expectedCodes": [
+        "LOAD_EVERYTHING_REQUEST",
+        "MISSING_TASK_SCOPE"
+      ],
+      "actualCodes": [
+        "LOAD_EVERYTHING_REQUEST",
+        "MISSING_TASK_SCOPE"
+      ]
+    },
+    {
+      "name": "unsafe-domain-request",
+      "ok": false,
+      "expectedCodes": [
+        "UNSAFE_INFERRED_DOMAIN_CONTEXT"
+      ],
+      "actualCodes": [
+        "UNSAFE_INFERRED_DOMAIN_CONTEXT"
+      ]
+    },
+    {
+      "name": "retriever-missing-level-one",
+      "ok": false,
+      "expectedCodes": [
+        "MISSING_MANDATORY_LEVEL_1"
+      ],
+      "actualCodes": [
+        "MISSING_MANDATORY_LEVEL_1",
+        "INVALID_NODE_REFS",
+        "BROKEN_CONTEXT_EDGE",
+        "SUMMARY_NOT_EXPANDABLE"
+      ]
+    }
+  ]
+}

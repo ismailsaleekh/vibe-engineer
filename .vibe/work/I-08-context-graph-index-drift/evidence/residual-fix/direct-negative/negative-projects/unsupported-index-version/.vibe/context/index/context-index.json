@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "1.0.0",
+  "artifactKind": "context_index",
+  "indexId": "context-index-main",
+  "indexVersion": "9.0.0",
+  "producer": {
+    "kind": "agent",
+    "id": "i-08-context-writer",
+    "name": "@vibe-engineer/context",
+    "version": "1.0.0",
+    "runId": "i-08-context-witness"
+  },
+  "generatedAt": "2026-06-24T00:00:00.000Z",
+  "graphRef": {
+    "graphId": "context-graph-main",
+    "path": ".vibe/context/index/context-graph.json",
+    "headerPath": ".vibe/context/index/context-graph.header.json"
+  },
+  "headerRef": {
+    "artifactId": "ctx-index-main",
+    "path": ".vibe/context/index/context-index.header.json"
+  },
+  "nodeRefs": [
+    {
+      "contextId": "ctx:core-contracts",
+      "areaId": "core-contracts",
+      "level": 1,
+      "mandatory": true,
+      "path": ".vibe/context/areas/core-contracts.context.json",
+      "headerPath": ".vibe/context/areas/core-contracts.header.json",
+      "sourceRefs": [
+        "src:task-contract"
+      ]
+    },
+    {
+      "contextId": "ctx-summary:core-contracts-summary",
+      "areaId": "core-contracts",
+      "level": 2,
+      "mandatory": false,
+      "path": ".vibe/context/summaries/core-contracts-summary.summary.json",
+      "headerPath": ".vibe/context/summaries/core-contracts-summary.header.json",
+      "sourceRefs": [
+        "src:task-contract"
+      ]
+    }
+  ],
+  "sourceRefs": [
+    {
+      "sourceId": "src:task-contract",
+      "path": "sources/task-contract.md",
+      "fingerprint": {
+        "algorithm": "sha256",
+        "value": "069005bb09ffa6b162576137d3baecd3344f752d887cc01c6c979925afcb124e"
+      }
+    },
+    {
+      "sourceId": "src:verification-contract",
+      "path": "sources/verification-contract.md",
+      "fingerprint": {
+        "algorithm": "sha256",
+        "value": "07f95c4b1bdbd4640a8b8c23aee1f8a71c4f664294ae1521a749e2e533cfbac6"
+      }
+    }
+  ],
+  "schemaRef": "https://schemas.vibe-engineer.dev/context/v1/context-index.schema.json"
+}

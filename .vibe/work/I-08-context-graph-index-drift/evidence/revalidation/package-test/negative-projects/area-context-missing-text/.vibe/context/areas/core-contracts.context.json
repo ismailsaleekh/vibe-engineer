@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "1.0.0",
+  "artifactKind": "context_area",
+  "areaId": "core-contracts",
+  "title": "Core Context Contracts",
+  "owner": "vibe-engineer-context",
+  "level": 1,
+  "mandatory": true,
+  "sourceRefs": [
+    "src:task-contract"
+  ],
+  "context": [
+    {
+      "contextId": "ctx:core-contracts:level1",
+      "level": 1,
+      "mandatory": true,
+      "sourceRefs": [
+        "src:task-contract"
+      ],
+      "citationRefs": [
+        "src:task-contract:sha256"
+      ]
+    }
+  ],
+  "scope": {
+    "kind": "repo",
+    "paths": [
+      "packages/context"
+    ],
+    "description": "Context package core contract implementation."
+  },
+  "updateMetadata": {
+    "invalidationStatus": "current"
+  },
+  "driftMetadata": {
+    "driftStatus": "clean",
+    "sourceRefs": [
+      "src:task-contract"
+    ]
+  },
+  "schemaRef": "https://schemas.vibe-engineer.dev/context/v1/context-area.schema.json"
+}

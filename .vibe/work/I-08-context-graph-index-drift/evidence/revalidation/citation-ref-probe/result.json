@@ -1,0 +1,78 @@
+{
+  "ok": false,
+  "expectation": "Area context items must include citationRefs resolving to known source citations; validation and retrieval must fail closed when citation refs are missing, wrong-shaped, or unresolved.",
+  "runRoot": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/revalidation/citation-ref-probe",
+  "cases": [
+    {
+      "name": "missing-area-citation-refs",
+      "projectRoot": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/revalidation/citation-ref-probe/missing-area-citation-refs",
+      "areaPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/revalidation/citation-ref-probe/missing-area-citation-refs/.vibe/context/areas/core-contracts.context.json",
+      "validationOk": true,
+      "validationStatus": "clean",
+      "validationCodes": [],
+      "retrievalOk": true,
+      "retrievalBlocked": false,
+      "retrievalStatus": "clean",
+      "retrievalCodes": []
+    },
+    {
+      "name": "unresolved-area-citation-refs",
+      "projectRoot": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/revalidation/citation-ref-probe/unresolved-area-citation-refs",
+      "areaPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/revalidation/citation-ref-probe/unresolved-area-citation-refs/.vibe/context/areas/core-contracts.context.json",
+      "validationOk": true,
+      "validationStatus": "clean",
+      "validationCodes": [],
+      "retrievalOk": true,
+      "retrievalBlocked": false,
+      "retrievalStatus": "clean",
+      "retrievalCodes": []
+    },
+    {
+      "name": "non-array-area-citation-refs",
+      "projectRoot": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/revalidation/citation-ref-probe/non-array-area-citation-refs",
+      "areaPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/revalidation/citation-ref-probe/non-array-area-citation-refs/.vibe/context/areas/core-contracts.context.json",
+      "validationOk": false,
+      "validationStatus": "blocked",
+      "validationCodes": [
+        "INVALID_AREA_CONTEXT_ITEM"
+      ],
+      "retrievalOk": false,
+      "retrievalBlocked": true,
+      "retrievalStatus": "blocked",
+      "retrievalCodes": [
+        "INVALID_AREA_CONTEXT_ITEM"
+      ]
+    }
+  ],
+  "schemaCases": [
+    {
+      "name": "missing-area-citation-refs",
+      "schemaOk": true,
+      "schemaErrors": []
+    },
+    {
+      "name": "unresolved-area-citation-refs",
+      "schemaOk": true,
+      "schemaErrors": []
+    },
+    {
+      "name": "non-array-area-citation-refs",
+      "schemaOk": false,
+      "schemaErrors": [
+        {
+          "instancePath": "/context/0/citationRefs",
+          "keyword": "type",
+          "message": "must be array"
+        }
+      ]
+    }
+  ],
+  "runtimeFalseGreens": [
+    "missing-area-citation-refs",
+    "unresolved-area-citation-refs"
+  ],
+  "schemaFalseGreens": [
+    "missing-area-citation-refs",
+    "unresolved-area-citation-refs"
+  ]
+}

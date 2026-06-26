@@ -1,0 +1,36 @@
+{
+  "ok": true,
+  "evidenceRoot": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/residual-revalidation/adversarial-citation",
+  "evidencePath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/residual-revalidation/adversarial-citation/result.json",
+  "cases": [
+    {
+      "name": "ambiguous-duplicate-citation-id-across-sources",
+      "projectRoot": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/residual-revalidation/adversarial-citation/negative-projects/ambiguous-duplicate-citation-id-across-sources",
+      "expectedCodes": [
+        "INVALID_SOURCE_CITATION"
+      ],
+      "validationCodes": [
+        "INVALID_SOURCE_CITATION"
+      ],
+      "retrievalCodes": [
+        "INVALID_SOURCE_CITATION"
+      ]
+    },
+    {
+      "name": "untrusted-item-source-citation-ref",
+      "projectRoot": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/residual-revalidation/adversarial-citation/negative-projects/untrusted-item-source-citation-ref",
+      "expectedCodes": [
+        "UNTRUSTED_CONTEXT",
+        "INVALID_SOURCE_CITATION"
+      ],
+      "validationCodes": [
+        "INVALID_SOURCE_CITATION",
+        "UNTRUSTED_CONTEXT"
+      ],
+      "retrievalCodes": [
+        "INVALID_SOURCE_CITATION",
+        "UNTRUSTED_CONTEXT"
+      ]
+    }
+  ]
+}

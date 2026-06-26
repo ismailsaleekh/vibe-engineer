@@ -1,0 +1,43 @@
+## public import sentinels
+node:internal/modules/package_json_reader:301
+  throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+        ^
+
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package '@vibe-engineer/context' imported from /Users/lizavasilyeva/work/vibe-engineer/[eval1]
+    at Object.getPackageJSONURL (node:internal/modules/package_json_reader:301:9)
+    at packageResolve (node:internal/modules/esm/resolve:768:81)
+    at moduleResolve (node:internal/modules/esm/resolve:859:18)
+    at defaultResolve (node:internal/modules/esm/resolve:992:11)
+    at #cachedDefaultResolve (node:internal/modules/esm/loader:691:20)
+    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:708:38)
+    at ModuleLoader.resolveSync (node:internal/modules/esm/loader:740:52)
+    at #resolve (node:internal/modules/esm/loader:673:17)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:593:35)
+    at node:internal/modules/esm/loader:622:32 {
+  code: 'ERR_MODULE_NOT_FOUND'
+}
+
+Node.js v24.16.0
+artifacts package-local import ok
+artifacts pnpm-filter import ok
+## package typecheck
+
+> @vibe-engineer/context@0.0.0 typecheck /Users/lizavasilyeva/work/vibe-engineer/packages/context
+> node --check src/index.js && node --check tests/real-boundary-witness.mjs && node --check tests/negative-witness.mjs && node --check tests/schema-strictness-witness.mjs
+
+## package test
+
+> @vibe-engineer/context@0.0.0 test /Users/lizavasilyeva/work/vibe-engineer/packages/context
+> node tests/real-boundary-witness.mjs && node tests/negative-witness.mjs && node tests/schema-strictness-witness.mjs
+
+real-boundary witness ok: /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/residual-fix/package-test/evidence/real-boundary-witness-result.json
+negative witness ok: /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/residual-fix/package-test/evidence/negative-witness-result.json
+schema strictness witness ok: /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/residual-fix/package-test/evidence/schema-strictness-witness-result.json
+## package build
+
+> @vibe-engineer/context@0.0.0 build /Users/lizavasilyeva/work/vibe-engineer/packages/context
+> node --check src/index.js && node --check tests/real-boundary-witness.mjs && node --check tests/negative-witness.mjs && node --check tests/schema-strictness-witness.mjs && node tests/real-boundary-witness.mjs && node tests/negative-witness.mjs && node tests/schema-strictness-witness.mjs
+
+real-boundary witness ok: /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/residual-fix/package-build/evidence/real-boundary-witness-result.json
+negative witness ok: /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/residual-fix/package-build/evidence/negative-witness-result.json
+schema strictness witness ok: /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/residual-fix/package-build/evidence/schema-strictness-witness-result.json

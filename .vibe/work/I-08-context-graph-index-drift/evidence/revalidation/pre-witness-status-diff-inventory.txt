@@ -1,0 +1,78 @@
+## command: git status --short -- packages/context .vibe/context/schema .vibe/work/I-08-context-graph-index-drift package.json pnpm-lock.yaml pnpm-workspace.yaml turbo.json packages/artifacts packages/config packages/cli packages/mechanical-gates packages/skills packages/adapters packages/verification examples .github scripts docs/decisions
+?? .vibe/context/schema/
+?? .vibe/work/I-08-context-graph-index-drift/
+?? docs/decisions/
+?? package.json
+?? packages/adapters/
+?? packages/artifacts/
+?? packages/cli/
+?? packages/config/
+?? packages/context/
+?? packages/mechanical-gates/
+?? packages/skills/
+?? packages/verification/
+?? pnpm-lock.yaml
+?? pnpm-workspace.yaml
+?? turbo.json
+exit=0
+## command: git diff -- packages/context .vibe/context/schema package.json pnpm-lock.yaml pnpm-workspace.yaml turbo.json packages/artifacts packages/config
+exit=0
+## command: find packages/context .vibe/context/schema -type f | sort
+.vibe/context/schema/context-area-v1.schema.json
+.vibe/context/schema/context-graph-v1.schema.json
+.vibe/context/schema/context-index-v1.schema.json
+.vibe/context/schema/context-summary-v1.schema.json
+.vibe/context/schema/retrieval-closure-v1.schema.json
+packages/context/package.json
+packages/context/src/index.d.ts
+packages/context/src/index.js
+packages/context/tests/negative-witness.mjs
+packages/context/tests/real-boundary-witness.mjs
+packages/context/tests/schema-strictness-witness.mjs
+exit=0
+## command: find .vibe/work/I-08-context-graph-index-drift/evidence/fix -maxdepth 3 -type f | sort || true
+.vibe/work/I-08-context-graph-index-drift/evidence/fix/final-blast-radius-sentinels.txt
+.vibe/work/I-08-context-graph-index-drift/evidence/fix/negative-witness-result.json
+.vibe/work/I-08-context-graph-index-drift/evidence/fix/public-import-witnesses.txt
+.vibe/work/I-08-context-graph-index-drift/evidence/fix/real-boundary-witness-result.json
+.vibe/work/I-08-context-graph-index-drift/evidence/fix/schema-strictness-witness-result.json
+exit=0
+## command: find .vibe/work/I-08-context-graph-index-drift -maxdepth 3 -type f | sort
+.vibe/work/I-08-context-graph-index-drift/evidence/blast-radius-summary-2026-06-24.txt
+.vibe/work/I-08-context-graph-index-drift/evidence/final-inventory-and-sentinels.txt
+.vibe/work/I-08-context-graph-index-drift/evidence/final-regression-sentinels-2026-06-24.txt
+.vibe/work/I-08-context-graph-index-drift/evidence/fix/final-blast-radius-sentinels.txt
+.vibe/work/I-08-context-graph-index-drift/evidence/fix/negative-witness-result.json
+.vibe/work/I-08-context-graph-index-drift/evidence/fix/public-import-witnesses.txt
+.vibe/work/I-08-context-graph-index-drift/evidence/fix/real-boundary-witness-result.json
+.vibe/work/I-08-context-graph-index-drift/evidence/fix/schema-strictness-witness-result.json
+.vibe/work/I-08-context-graph-index-drift/evidence/negative-witness-result.json
+.vibe/work/I-08-context-graph-index-drift/evidence/package-build-final-2026-06-24.txt
+.vibe/work/I-08-context-graph-index-drift/evidence/package-test-rerun-2026-06-24.txt
+.vibe/work/I-08-context-graph-index-drift/evidence/package-witnesses-2026-06-24.txt
+.vibe/work/I-08-context-graph-index-drift/evidence/provider-import-sentinels-2026-06-24.txt
+.vibe/work/I-08-context-graph-index-drift/evidence/provider-seam-import-probe.txt
+.vibe/work/I-08-context-graph-index-drift/evidence/real-boundary-witness-result.json
+.vibe/work/I-08-context-graph-index-drift/evidence/revalidation/pre-witness-status-diff-inventory.txt
+.vibe/work/I-08-context-graph-index-drift/evidence/validation/final-blast-radius-sentinels.txt
+.vibe/work/I-08-context-graph-index-drift/evidence/validation/independent-real-boundary-witness-result.json
+.vibe/work/I-08-context-graph-index-drift/evidence/validation/independent-real-boundary-witness.mjs
+.vibe/work/I-08-context-graph-index-drift/evidence/validation/ledger-i08-current-entries.txt
+.vibe/work/I-08-context-graph-index-drift/evidence/validation/pretest-inventory-and-hashes.txt
+.vibe/work/I-08-context-graph-index-drift/evidence/validation/required-commands-output.txt
+.vibe/work/I-08-context-graph-index-drift/evidence/validation/schema-strictness-command-output.txt
+.vibe/work/I-08-context-graph-index-drift/evidence/validation/schema-strictness-witness-result.json
+.vibe/work/I-08-context-graph-index-drift/evidence/validation/schema-strictness-witness.mjs
+.vibe/work/I-08-context-graph-index-drift/I-08-fix-report.md
+.vibe/work/I-08-context-graph-index-drift/I-08-implementation-report.md
+.vibe/work/I-08-context-graph-index-drift/I-08-revalidation-report.md
+.vibe/work/I-08-context-graph-index-drift/I-08-validation-report.md
+exit=0
+## command: shasum -a 256 package.json pnpm-workspace.yaml pnpm-lock.yaml packages/context/package.json packages/artifacts/package.json packages/config/package.json
+b3d1455aade0eb27f0775c3dbe2abefd89dada97caac9b10f041061abcb30306  package.json
+aee47e9964f53e767a6d6a86a27c86b218a76cd59453c3401defad6907be5f21  pnpm-workspace.yaml
+0259217fb38660de9e7298c4d6e363c7810a436479c189ce7ca088dd06576fff  pnpm-lock.yaml
+e112b0ce738413cc59e174fdd29acf74ab82408bc88f5c7d6a77d6b44f1bde3f  packages/context/package.json
+1ace06c206300412035f1954b08d6ed97a2e244265ef70a7789f4488cede7498  packages/artifacts/package.json
+9e8fbe90ac613ebefb6a5ad036560a03fc6b843ce041976e56af548bb0bbed4a  packages/config/package.json
+exit=0

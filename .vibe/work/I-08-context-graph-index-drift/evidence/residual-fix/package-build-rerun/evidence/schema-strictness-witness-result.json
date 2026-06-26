@@ -1,0 +1,470 @@
+{
+  "ok": true,
+  "ajvMode": "Ajv2020 strict true",
+  "runRoot": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/residual-fix/package-build-rerun",
+  "evidencePath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/residual-fix/package-build-rerun/evidence/schema-strictness-witness-result.json",
+  "compiledSchemas": [
+    "graph",
+    "index",
+    "area",
+    "summary",
+    "retrieval"
+  ],
+  "validCases": [
+    "graph",
+    "index",
+    "area",
+    "summary",
+    "retrieval"
+  ],
+  "rejectedMalformedCases": [
+    {
+      "name": "graph-malformed-source-empty-object",
+      "schemaKey": "graph",
+      "errors": [
+        {
+          "instancePath": "/sources/0",
+          "keyword": "required",
+          "message": "must have required property 'sourceId'"
+        },
+        {
+          "instancePath": "/sources/0",
+          "keyword": "required",
+          "message": "must have required property 'kind'"
+        },
+        {
+          "instancePath": "/sources/0",
+          "keyword": "required",
+          "message": "must have required property 'path'"
+        },
+        {
+          "instancePath": "/sources/0",
+          "keyword": "required",
+          "message": "must have required property 'fingerprint'"
+        },
+        {
+          "instancePath": "/sources/0",
+          "keyword": "required",
+          "message": "must have required property 'versionRef'"
+        },
+        {
+          "instancePath": "/sources/0",
+          "keyword": "required",
+          "message": "must have required property 'trust'"
+        },
+        {
+          "instancePath": "/sources/0",
+          "keyword": "required",
+          "message": "must have required property 'required'"
+        },
+        {
+          "instancePath": "/sources/0",
+          "keyword": "required",
+          "message": "must have required property 'level'"
+        },
+        {
+          "instancePath": "/sources/0",
+          "keyword": "required",
+          "message": "must have required property 'scope'"
+        },
+        {
+          "instancePath": "/sources/0",
+          "keyword": "required",
+          "message": "must have required property 'artifactRef'"
+        },
+        {
+          "instancePath": "/sources/0",
+          "keyword": "required",
+          "message": "must have required property 'citations'"
+        }
+      ]
+    },
+    {
+      "name": "graph-source-unknown-field",
+      "schemaKey": "graph",
+      "errors": [
+        {
+          "instancePath": "/sources/0",
+          "keyword": "additionalProperties",
+          "message": "must NOT have additional properties"
+        }
+      ]
+    },
+    {
+      "name": "graph-malformed-node-empty-object",
+      "schemaKey": "graph",
+      "errors": [
+        {
+          "instancePath": "/nodes/0",
+          "keyword": "required",
+          "message": "must have required property 'contextId'"
+        },
+        {
+          "instancePath": "/nodes/0",
+          "keyword": "required",
+          "message": "must have required property 'kind'"
+        },
+        {
+          "instancePath": "/nodes/0",
+          "keyword": "required",
+          "message": "must have required property 'areaId'"
+        },
+        {
+          "instancePath": "/nodes/0",
+          "keyword": "required",
+          "message": "must have required property 'title'"
+        },
+        {
+          "instancePath": "/nodes/0",
+          "keyword": "required",
+          "message": "must have required property 'level'"
+        },
+        {
+          "instancePath": "/nodes/0",
+          "keyword": "required",
+          "message": "must have required property 'mandatory'"
+        },
+        {
+          "instancePath": "/nodes/0",
+          "keyword": "required",
+          "message": "must have required property 'trust'"
+        },
+        {
+          "instancePath": "/nodes/0",
+          "keyword": "required",
+          "message": "must have required property 'scope'"
+        },
+        {
+          "instancePath": "/nodes/0",
+          "keyword": "required",
+          "message": "must have required property 'owner'"
+        },
+        {
+          "instancePath": "/nodes/0",
+          "keyword": "required",
+          "message": "must have required property 'headerRef'"
+        },
+        {
+          "instancePath": "/nodes/0",
+          "keyword": "required",
+          "message": "must have required property 'sourceRefs'"
+        },
+        {
+          "instancePath": "/nodes/0",
+          "keyword": "required",
+          "message": "must have required property 'artifactPath'"
+        }
+      ]
+    },
+    {
+      "name": "graph-malformed-link-empty-object",
+      "schemaKey": "graph",
+      "errors": [
+        {
+          "instancePath": "/links/0",
+          "keyword": "required",
+          "message": "must have required property 'linkId'"
+        },
+        {
+          "instancePath": "/links/0",
+          "keyword": "required",
+          "message": "must have required property 'kind'"
+        },
+        {
+          "instancePath": "/links/0",
+          "keyword": "required",
+          "message": "must have required property 'ref'"
+        },
+        {
+          "instancePath": "/links/0",
+          "keyword": "required",
+          "message": "must have required property 'required'"
+        },
+        {
+          "instancePath": "/links/0",
+          "keyword": "required",
+          "message": "must have required property 'statusAtLinkTime'"
+        }
+      ]
+    },
+    {
+      "name": "index-malformed-node-ref-empty-object",
+      "schemaKey": "index",
+      "errors": [
+        {
+          "instancePath": "/nodeRefs/0",
+          "keyword": "required",
+          "message": "must have required property 'contextId'"
+        },
+        {
+          "instancePath": "/nodeRefs/0",
+          "keyword": "required",
+          "message": "must have required property 'areaId'"
+        },
+        {
+          "instancePath": "/nodeRefs/0",
+          "keyword": "required",
+          "message": "must have required property 'level'"
+        },
+        {
+          "instancePath": "/nodeRefs/0",
+          "keyword": "required",
+          "message": "must have required property 'mandatory'"
+        },
+        {
+          "instancePath": "/nodeRefs/0",
+          "keyword": "required",
+          "message": "must have required property 'path'"
+        },
+        {
+          "instancePath": "/nodeRefs/0",
+          "keyword": "required",
+          "message": "must have required property 'headerPath'"
+        },
+        {
+          "instancePath": "/nodeRefs/0",
+          "keyword": "required",
+          "message": "must have required property 'sourceRefs'"
+        }
+      ]
+    },
+    {
+      "name": "index-malformed-source-ref-empty-object",
+      "schemaKey": "index",
+      "errors": [
+        {
+          "instancePath": "/sourceRefs/0",
+          "keyword": "required",
+          "message": "must have required property 'sourceId'"
+        },
+        {
+          "instancePath": "/sourceRefs/0",
+          "keyword": "required",
+          "message": "must have required property 'path'"
+        },
+        {
+          "instancePath": "/sourceRefs/0",
+          "keyword": "required",
+          "message": "must have required property 'fingerprint'"
+        }
+      ]
+    },
+    {
+      "name": "area-context-non-array",
+      "schemaKey": "area",
+      "errors": [
+        {
+          "instancePath": "/context",
+          "keyword": "type",
+          "message": "must be array"
+        }
+      ]
+    },
+    {
+      "name": "area-context-item-empty-object",
+      "schemaKey": "area",
+      "errors": [
+        {
+          "instancePath": "/context/0",
+          "keyword": "required",
+          "message": "must have required property 'text'"
+        },
+        {
+          "instancePath": "/context/0",
+          "keyword": "required",
+          "message": "must have required property 'content'"
+        },
+        {
+          "instancePath": "/context/0",
+          "keyword": "anyOf",
+          "message": "must match a schema in anyOf"
+        },
+        {
+          "instancePath": "/context/0",
+          "keyword": "required",
+          "message": "must have required property 'contextId'"
+        },
+        {
+          "instancePath": "/context/0",
+          "keyword": "required",
+          "message": "must have required property 'level'"
+        },
+        {
+          "instancePath": "/context/0",
+          "keyword": "required",
+          "message": "must have required property 'mandatory'"
+        },
+        {
+          "instancePath": "/context/0",
+          "keyword": "required",
+          "message": "must have required property 'sourceRefs'"
+        },
+        {
+          "instancePath": "/context/0",
+          "keyword": "required",
+          "message": "must have required property 'citationRefs'"
+        }
+      ]
+    },
+    {
+      "name": "area-context-missing-citation-refs",
+      "schemaKey": "area",
+      "errors": [
+        {
+          "instancePath": "/context/0",
+          "keyword": "required",
+          "message": "must have required property 'citationRefs'"
+        }
+      ]
+    },
+    {
+      "name": "area-context-empty-citation-refs",
+      "schemaKey": "area",
+      "errors": [
+        {
+          "instancePath": "/context/0/citationRefs",
+          "keyword": "minItems",
+          "message": "must NOT have fewer than 1 items"
+        }
+      ]
+    },
+    {
+      "name": "area-context-non-array-citation-refs",
+      "schemaKey": "area",
+      "errors": [
+        {
+          "instancePath": "/context/0/citationRefs",
+          "keyword": "type",
+          "message": "must be array"
+        }
+      ]
+    },
+    {
+      "name": "area-context-non-string-citation-ref-entry",
+      "schemaKey": "area",
+      "errors": [
+        {
+          "instancePath": "/context/0/citationRefs/0",
+          "keyword": "type",
+          "message": "must be string"
+        }
+      ]
+    },
+    {
+      "name": "area-context-empty-string-citation-ref-entry",
+      "schemaKey": "area",
+      "errors": [
+        {
+          "instancePath": "/context/0/citationRefs/0",
+          "keyword": "minLength",
+          "message": "must NOT have fewer than 1 characters"
+        }
+      ]
+    },
+    {
+      "name": "summary-missing-source-ref",
+      "schemaKey": "summary",
+      "errors": [
+        {
+          "instancePath": "/sourceRefs",
+          "keyword": "minItems",
+          "message": "must NOT have fewer than 1 items"
+        }
+      ]
+    },
+    {
+      "name": "summary-unknown-metadata",
+      "schemaKey": "summary",
+      "errors": [
+        {
+          "instancePath": "/updateMetadata",
+          "keyword": "additionalProperties",
+          "message": "must NOT have additional properties"
+        }
+      ]
+    },
+    {
+      "name": "retrieval-levels-missing-required-key",
+      "schemaKey": "retrieval",
+      "errors": [
+        {
+          "instancePath": "/levels",
+          "keyword": "required",
+          "message": "must have required property '4'"
+        }
+      ]
+    },
+    {
+      "name": "retrieval-malformed-citation-empty-object",
+      "schemaKey": "retrieval",
+      "errors": [
+        {
+          "instancePath": "/citations/0",
+          "keyword": "required",
+          "message": "must have required property 'citationId'"
+        },
+        {
+          "instancePath": "/citations/0",
+          "keyword": "required",
+          "message": "must have required property 'sourceId'"
+        },
+        {
+          "instancePath": "/citations/0",
+          "keyword": "required",
+          "message": "must have required property 'path'"
+        },
+        {
+          "instancePath": "/citations/0",
+          "keyword": "required",
+          "message": "must have required property 'fingerprint'"
+        },
+        {
+          "instancePath": "/citations/0",
+          "keyword": "required",
+          "message": "must have required property 'contextId'"
+        }
+      ]
+    },
+    {
+      "name": "retrieval-malformed-level-item-empty-object",
+      "schemaKey": "retrieval",
+      "errors": [
+        {
+          "instancePath": "/levels/1/0",
+          "keyword": "required",
+          "message": "must have required property 'contextId'"
+        },
+        {
+          "instancePath": "/levels/1/0",
+          "keyword": "required",
+          "message": "must have required property 'title'"
+        },
+        {
+          "instancePath": "/levels/1/0",
+          "keyword": "required",
+          "message": "must have required property 'level'"
+        },
+        {
+          "instancePath": "/levels/1/0",
+          "keyword": "required",
+          "message": "must have required property 'mandatory'"
+        },
+        {
+          "instancePath": "/levels/1/0",
+          "keyword": "required",
+          "message": "must have required property 'areaId'"
+        },
+        {
+          "instancePath": "/levels/1/0",
+          "keyword": "required",
+          "message": "must have required property 'sourceRefs'"
+        },
+        {
+          "instancePath": "/levels/1/0",
+          "keyword": "required",
+          "message": "must have required property 'artifactPath'"
+        }
+      ]
+    }
+  ]
+}

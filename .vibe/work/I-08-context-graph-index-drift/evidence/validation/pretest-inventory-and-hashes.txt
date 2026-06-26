@@ -1,0 +1,1384 @@
+# I-08 pretest inventory and hashes
+## Timestamp
+2026-06-24T10:03:30Z
+## git status scoped
+?? .vibe/context/schema/context-area-v1.schema.json
+?? .vibe/context/schema/context-graph-v1.schema.json
+?? .vibe/context/schema/context-index-v1.schema.json
+?? .vibe/context/schema/context-summary-v1.schema.json
+?? .vibe/context/schema/retrieval-closure-v1.schema.json
+?? .vibe/work/I-08-context-graph-index-drift/I-08-implementation-report.md
+?? .vibe/work/I-08-context-graph-index-drift/I-08-validation-report.md
+?? .vibe/work/I-08-context-graph-index-drift/evidence/blast-radius-summary-2026-06-24.txt
+?? .vibe/work/I-08-context-graph-index-drift/evidence/final-inventory-and-sentinels.txt
+?? .vibe/work/I-08-context-graph-index-drift/evidence/final-regression-sentinels-2026-06-24.txt
+?? .vibe/work/I-08-context-graph-index-drift/evidence/negative-witness-result.json
+?? .vibe/work/I-08-context-graph-index-drift/evidence/package-build-final-2026-06-24.txt
+?? .vibe/work/I-08-context-graph-index-drift/evidence/package-test-rerun-2026-06-24.txt
+?? .vibe/work/I-08-context-graph-index-drift/evidence/package-witnesses-2026-06-24.txt
+?? .vibe/work/I-08-context-graph-index-drift/evidence/provider-import-sentinels-2026-06-24.txt
+?? .vibe/work/I-08-context-graph-index-drift/evidence/provider-seam-import-probe.txt
+?? .vibe/work/I-08-context-graph-index-drift/evidence/real-boundary-witness-result.json
+?? .vibe/work/I-08-context-graph-index-drift/evidence/validation/pretest-inventory-and-hashes.txt
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/context-project/.vibe/context/areas/core-contracts.context.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/context-project/.vibe/context/areas/core-contracts.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/context-project/.vibe/context/index/context-graph.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/context-project/.vibe/context/index/context-graph.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/context-project/.vibe/context/index/context-index.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/context-project/.vibe/context/index/context-index.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/context-project/.vibe/context/schema/schema-manifest.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/context-project/.vibe/context/summaries/core-contracts-summary.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/context-project/.vibe/context/summaries/core-contracts-summary.summary.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/context-project/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/context-project/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/context-project/docs/decisions/DL-09-context-memory-drift.md
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/context-project/sources/task-contract.md
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/context-project/sources/verification-contract.md
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-decision-link/.vibe/context/areas/core-contracts.context.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-decision-link/.vibe/context/areas/core-contracts.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-decision-link/.vibe/context/index/context-graph.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-decision-link/.vibe/context/index/context-graph.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-decision-link/.vibe/context/index/context-index.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-decision-link/.vibe/context/index/context-index.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-decision-link/.vibe/context/schema/schema-manifest.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-decision-link/.vibe/context/summaries/core-contracts-summary.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-decision-link/.vibe/context/summaries/core-contracts-summary.summary.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-decision-link/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-decision-link/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-decision-link/docs/decisions/DL-09-context-memory-drift.md
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-decision-link/sources/task-contract.md
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-decision-link/sources/verification-contract.md
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-evidence-link/.vibe/context/areas/core-contracts.context.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-evidence-link/.vibe/context/areas/core-contracts.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-evidence-link/.vibe/context/index/context-graph.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-evidence-link/.vibe/context/index/context-graph.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-evidence-link/.vibe/context/index/context-index.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-evidence-link/.vibe/context/index/context-index.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-evidence-link/.vibe/context/schema/schema-manifest.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-evidence-link/.vibe/context/summaries/core-contracts-summary.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-evidence-link/.vibe/context/summaries/core-contracts-summary.summary.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-evidence-link/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-evidence-link/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-evidence-link/docs/decisions/DL-09-context-memory-drift.md
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-evidence-link/sources/task-contract.md
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-evidence-link/sources/verification-contract.md
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/invalid-context-header/.vibe/context/areas/core-contracts.context.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/invalid-context-header/.vibe/context/areas/core-contracts.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/invalid-context-header/.vibe/context/index/context-graph.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/invalid-context-header/.vibe/context/index/context-graph.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/invalid-context-header/.vibe/context/index/context-index.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/invalid-context-header/.vibe/context/index/context-index.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/invalid-context-header/.vibe/context/schema/schema-manifest.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/invalid-context-header/.vibe/context/summaries/core-contracts-summary.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/invalid-context-header/.vibe/context/summaries/core-contracts-summary.summary.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/invalid-context-header/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/invalid-context-header/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/invalid-context-header/docs/decisions/DL-09-context-memory-drift.md
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/invalid-context-header/sources/task-contract.md
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/invalid-context-header/sources/verification-contract.md
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/load-everything-request/.vibe/context/areas/core-contracts.context.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/load-everything-request/.vibe/context/areas/core-contracts.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/load-everything-request/.vibe/context/index/context-graph.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/load-everything-request/.vibe/context/index/context-graph.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/load-everything-request/.vibe/context/index/context-index.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/load-everything-request/.vibe/context/index/context-index.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/load-everything-request/.vibe/context/schema/schema-manifest.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/load-everything-request/.vibe/context/summaries/core-contracts-summary.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/load-everything-request/.vibe/context/summaries/core-contracts-summary.summary.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/load-everything-request/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/load-everything-request/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/load-everything-request/docs/decisions/DL-09-context-memory-drift.md
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/load-everything-request/sources/task-contract.md
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/load-everything-request/sources/verification-contract.md
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-context-header-json/.vibe/context/areas/core-contracts.context.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-context-header-json/.vibe/context/areas/core-contracts.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-context-header-json/.vibe/context/index/context-graph.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-context-header-json/.vibe/context/index/context-graph.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-context-header-json/.vibe/context/index/context-index.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-context-header-json/.vibe/context/index/context-index.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-context-header-json/.vibe/context/schema/schema-manifest.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-context-header-json/.vibe/context/summaries/core-contracts-summary.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-context-header-json/.vibe/context/summaries/core-contracts-summary.summary.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-context-header-json/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-context-header-json/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-context-header-json/docs/decisions/DL-09-context-memory-drift.md
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-context-header-json/sources/task-contract.md
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-context-header-json/sources/verification-contract.md
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-graph-json/.vibe/context/areas/core-contracts.context.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-graph-json/.vibe/context/areas/core-contracts.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-graph-json/.vibe/context/index/context-graph.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-graph-json/.vibe/context/index/context-graph.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-graph-json/.vibe/context/index/context-index.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-graph-json/.vibe/context/index/context-index.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-graph-json/.vibe/context/schema/schema-manifest.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-graph-json/.vibe/context/summaries/core-contracts-summary.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-graph-json/.vibe/context/summaries/core-contracts-summary.summary.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-graph-json/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-graph-json/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-graph-json/docs/decisions/DL-09-context-memory-drift.md
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-graph-json/sources/task-contract.md
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-graph-json/sources/verification-contract.md
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-index-json/.vibe/context/areas/core-contracts.context.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-index-json/.vibe/context/areas/core-contracts.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-index-json/.vibe/context/index/context-graph.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-index-json/.vibe/context/index/context-graph.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-index-json/.vibe/context/index/context-index.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-index-json/.vibe/context/index/context-index.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-index-json/.vibe/context/schema/schema-manifest.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-index-json/.vibe/context/summaries/core-contracts-summary.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-index-json/.vibe/context/summaries/core-contracts-summary.summary.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-index-json/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-index-json/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-index-json/docs/decisions/DL-09-context-memory-drift.md
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-index-json/sources/task-contract.md
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-index-json/sources/verification-contract.md
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/mislinked-work-path/.vibe/context/areas/core-contracts.context.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/mislinked-work-path/.vibe/context/areas/core-contracts.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/mislinked-work-path/.vibe/context/index/context-graph.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/mislinked-work-path/.vibe/context/index/context-graph.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/mislinked-work-path/.vibe/context/index/context-index.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/mislinked-work-path/.vibe/context/index/context-index.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/mislinked-work-path/.vibe/context/schema/schema-manifest.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/mislinked-work-path/.vibe/context/summaries/core-contracts-summary.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/mislinked-work-path/.vibe/context/summaries/core-contracts-summary.summary.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/mislinked-work-path/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/mislinked-work-path/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/mislinked-work-path/docs/decisions/DL-09-context-memory-drift.md
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/mislinked-work-path/sources/task-contract.md
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/mislinked-work-path/sources/verification-contract.md
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-mandatory-level-one/.vibe/context/areas/core-contracts.context.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-mandatory-level-one/.vibe/context/areas/core-contracts.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-mandatory-level-one/.vibe/context/index/context-graph.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-mandatory-level-one/.vibe/context/index/context-graph.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-mandatory-level-one/.vibe/context/index/context-index.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-mandatory-level-one/.vibe/context/index/context-index.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-mandatory-level-one/.vibe/context/schema/schema-manifest.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-mandatory-level-one/.vibe/context/summaries/core-contracts-summary.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-mandatory-level-one/.vibe/context/summaries/core-contracts-summary.summary.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-mandatory-level-one/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-mandatory-level-one/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-mandatory-level-one/docs/decisions/DL-09-context-memory-drift.md
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-mandatory-level-one/sources/task-contract.md
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-mandatory-level-one/sources/verification-contract.md
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-citation/.vibe/context/areas/core-contracts.context.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-citation/.vibe/context/areas/core-contracts.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-citation/.vibe/context/index/context-graph.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-citation/.vibe/context/index/context-graph.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-citation/.vibe/context/index/context-index.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-citation/.vibe/context/index/context-index.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-citation/.vibe/context/schema/schema-manifest.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-citation/.vibe/context/summaries/core-contracts-summary.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-citation/.vibe/context/summaries/core-contracts-summary.summary.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-citation/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-citation/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-citation/docs/decisions/DL-09-context-memory-drift.md
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-citation/sources/task-contract.md
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-citation/sources/verification-contract.md
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-file/.vibe/context/areas/core-contracts.context.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-file/.vibe/context/areas/core-contracts.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-file/.vibe/context/index/context-graph.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-file/.vibe/context/index/context-graph.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-file/.vibe/context/index/context-index.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-file/.vibe/context/index/context-index.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-file/.vibe/context/schema/schema-manifest.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-file/.vibe/context/summaries/core-contracts-summary.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-file/.vibe/context/summaries/core-contracts-summary.summary.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-file/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-file/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-file/docs/decisions/DL-09-context-memory-drift.md
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-file/sources/verification-contract.md
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-link-ref/.vibe/context/areas/core-contracts.context.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-link-ref/.vibe/context/areas/core-contracts.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-link-ref/.vibe/context/index/context-graph.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-link-ref/.vibe/context/index/context-graph.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-link-ref/.vibe/context/index/context-index.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-link-ref/.vibe/context/index/context-index.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-link-ref/.vibe/context/schema/schema-manifest.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-link-ref/.vibe/context/summaries/core-contracts-summary.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-link-ref/.vibe/context/summaries/core-contracts-summary.summary.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-link-ref/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-link-ref/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-link-ref/docs/decisions/DL-09-context-memory-drift.md
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-link-ref/sources/task-contract.md
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-link-ref/sources/verification-contract.md
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-source-ref/.vibe/context/areas/core-contracts.context.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-source-ref/.vibe/context/areas/core-contracts.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-source-ref/.vibe/context/index/context-graph.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-source-ref/.vibe/context/index/context-graph.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-source-ref/.vibe/context/index/context-index.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-source-ref/.vibe/context/index/context-index.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-source-ref/.vibe/context/schema/schema-manifest.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-source-ref/.vibe/context/summaries/core-contracts-summary.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-source-ref/.vibe/context/summaries/core-contracts-summary.summary.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-source-ref/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-source-ref/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-source-ref/docs/decisions/DL-09-context-memory-drift.md
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-source-ref/sources/task-contract.md
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-source-ref/sources/verification-contract.md
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/retriever-missing-level-one/.vibe/context/areas/core-contracts.context.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/retriever-missing-level-one/.vibe/context/areas/core-contracts.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/retriever-missing-level-one/.vibe/context/index/context-graph.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/retriever-missing-level-one/.vibe/context/index/context-graph.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/retriever-missing-level-one/.vibe/context/index/context-index.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/retriever-missing-level-one/.vibe/context/index/context-index.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/retriever-missing-level-one/.vibe/context/schema/schema-manifest.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/retriever-missing-level-one/.vibe/context/summaries/core-contracts-summary.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/retriever-missing-level-one/.vibe/context/summaries/core-contracts-summary.summary.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/retriever-missing-level-one/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/retriever-missing-level-one/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/retriever-missing-level-one/docs/decisions/DL-09-context-memory-drift.md
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/retriever-missing-level-one/sources/task-contract.md
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/retriever-missing-level-one/sources/verification-contract.md
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-source-fingerprint/.vibe/context/areas/core-contracts.context.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-source-fingerprint/.vibe/context/areas/core-contracts.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-source-fingerprint/.vibe/context/index/context-graph.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-source-fingerprint/.vibe/context/index/context-graph.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-source-fingerprint/.vibe/context/index/context-index.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-source-fingerprint/.vibe/context/index/context-index.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-source-fingerprint/.vibe/context/schema/schema-manifest.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-source-fingerprint/.vibe/context/summaries/core-contracts-summary.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-source-fingerprint/.vibe/context/summaries/core-contracts-summary.summary.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-source-fingerprint/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-source-fingerprint/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-source-fingerprint/docs/decisions/DL-09-context-memory-drift.md
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-source-fingerprint/sources/task-contract.md
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-source-fingerprint/sources/verification-contract.md
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-summary-ref/.vibe/context/areas/core-contracts.context.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-summary-ref/.vibe/context/areas/core-contracts.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-summary-ref/.vibe/context/index/context-graph.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-summary-ref/.vibe/context/index/context-graph.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-summary-ref/.vibe/context/index/context-index.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-summary-ref/.vibe/context/index/context-index.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-summary-ref/.vibe/context/schema/schema-manifest.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-summary-ref/.vibe/context/summaries/core-contracts-summary.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-summary-ref/.vibe/context/summaries/core-contracts-summary.summary.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-summary-ref/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-summary-ref/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-summary-ref/docs/decisions/DL-09-context-memory-drift.md
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-summary-ref/sources/task-contract.md
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-summary-ref/sources/verification-contract.md
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/summary-without-source-refs/.vibe/context/areas/core-contracts.context.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/summary-without-source-refs/.vibe/context/areas/core-contracts.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/summary-without-source-refs/.vibe/context/index/context-graph.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/summary-without-source-refs/.vibe/context/index/context-graph.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/summary-without-source-refs/.vibe/context/index/context-index.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/summary-without-source-refs/.vibe/context/index/context-index.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/summary-without-source-refs/.vibe/context/schema/schema-manifest.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/summary-without-source-refs/.vibe/context/summaries/core-contracts-summary.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/summary-without-source-refs/.vibe/context/summaries/core-contracts-summary.summary.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/summary-without-source-refs/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/summary-without-source-refs/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/summary-without-source-refs/docs/decisions/DL-09-context-memory-drift.md
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/summary-without-source-refs/sources/task-contract.md
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/summary-without-source-refs/sources/verification-contract.md
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsafe-domain-request/.vibe/context/areas/core-contracts.context.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsafe-domain-request/.vibe/context/areas/core-contracts.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsafe-domain-request/.vibe/context/index/context-graph.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsafe-domain-request/.vibe/context/index/context-graph.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsafe-domain-request/.vibe/context/index/context-index.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsafe-domain-request/.vibe/context/index/context-index.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsafe-domain-request/.vibe/context/schema/schema-manifest.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsafe-domain-request/.vibe/context/summaries/core-contracts-summary.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsafe-domain-request/.vibe/context/summaries/core-contracts-summary.summary.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsafe-domain-request/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsafe-domain-request/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsafe-domain-request/docs/decisions/DL-09-context-memory-drift.md
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsafe-domain-request/sources/task-contract.md
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsafe-domain-request/sources/verification-contract.md
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-context-version/.vibe/context/areas/core-contracts.context.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-context-version/.vibe/context/areas/core-contracts.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-context-version/.vibe/context/index/context-graph.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-context-version/.vibe/context/index/context-graph.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-context-version/.vibe/context/index/context-index.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-context-version/.vibe/context/index/context-index.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-context-version/.vibe/context/schema/schema-manifest.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-context-version/.vibe/context/summaries/core-contracts-summary.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-context-version/.vibe/context/summaries/core-contracts-summary.summary.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-context-version/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-context-version/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-context-version/docs/decisions/DL-09-context-memory-drift.md
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-context-version/sources/task-contract.md
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-context-version/sources/verification-contract.md
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-index-version/.vibe/context/areas/core-contracts.context.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-index-version/.vibe/context/areas/core-contracts.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-index-version/.vibe/context/index/context-graph.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-index-version/.vibe/context/index/context-graph.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-index-version/.vibe/context/index/context-index.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-index-version/.vibe/context/index/context-index.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-index-version/.vibe/context/schema/schema-manifest.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-index-version/.vibe/context/summaries/core-contracts-summary.header.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-index-version/.vibe/context/summaries/core-contracts-summary.summary.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-index-version/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-index-version/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-index-version/docs/decisions/DL-09-context-memory-drift.md
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-index-version/sources/task-contract.md
+?? .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-index-version/sources/verification-contract.md
+?? package.json
+?? packages/artifacts/README.md
+?? packages/artifacts/fixtures/invalid-carriers/chat-transcript.txt
+?? packages/artifacts/fixtures/invalid-carriers/implementation-plan.yaml
+?? packages/artifacts/fixtures/invalid-carriers/work-brief.md
+?? packages/artifacts/fixtures/invalid/agent_registry_entry/missing-schema-refs.json
+?? packages/artifacts/fixtures/invalid/agent_registry_entry/missing-schemaVersion.json
+?? packages/artifacts/fixtures/invalid/agent_registry_entry/unknown-field.json
+?? packages/artifacts/fixtures/invalid/agent_registry_entry/wrong-artifactKind.json
+?? packages/artifacts/fixtures/invalid/build_result/bad-plan-status-handoff.json
+?? packages/artifacts/fixtures/invalid/build_result/missing-evidence-refs.json
+?? packages/artifacts/fixtures/invalid/build_result/missing-schemaVersion.json
+?? packages/artifacts/fixtures/invalid/build_result/narrative-verification-without-evidence-ref.json
+?? packages/artifacts/fixtures/invalid/build_result/unknown-field.json
+?? packages/artifacts/fixtures/invalid/build_result/verification-ref-non-evidence.json
+?? packages/artifacts/fixtures/invalid/build_result/verification-ref-wrong-relation.json
+?? packages/artifacts/fixtures/invalid/build_result/wrong-artifactKind.json
+?? packages/artifacts/fixtures/invalid/context_file_header/missing-drift-metadata.json
+?? packages/artifacts/fixtures/invalid/context_file_header/missing-schemaVersion.json
+?? packages/artifacts/fixtures/invalid/context_file_header/unknown-field.json
+?? packages/artifacts/fixtures/invalid/context_file_header/wrong-artifactKind.json
+?? packages/artifacts/fixtures/invalid/evidence_packet/advisory-as-deterministic-blocker.json
+?? packages/artifacts/fixtures/invalid/evidence_packet/missing-evidence-for-link.json
+?? packages/artifacts/fixtures/invalid/evidence_packet/missing-schemaVersion.json
+?? packages/artifacts/fixtures/invalid/evidence_packet/unknown-field.json
+?? packages/artifacts/fixtures/invalid/evidence_packet/wrong-artifactKind.json
+?? packages/artifacts/fixtures/invalid/implementation_plan/incomplete-verification-delta.json
+?? packages/artifacts/fixtures/invalid/implementation_plan/missing-schemaVersion.json
+?? packages/artifacts/fixtures/invalid/implementation_plan/unknown-field.json
+?? packages/artifacts/fixtures/invalid/implementation_plan/wrong-artifactKind.json
+?? packages/artifacts/fixtures/invalid/schematic_manifest/missing-input-schema-refs.json
+?? packages/artifacts/fixtures/invalid/schematic_manifest/missing-schemaVersion.json
+?? packages/artifacts/fixtures/invalid/schematic_manifest/unknown-field.json
+?? packages/artifacts/fixtures/invalid/schematic_manifest/wrong-artifactKind.json
+?? packages/artifacts/fixtures/invalid/ship_packet/failed-build-handoff.json
+?? packages/artifacts/fixtures/invalid/ship_packet/final-verification-ref-non-evidence.json
+?? packages/artifacts/fixtures/invalid/ship_packet/final-verification-ref-wrong-relation.json
+?? packages/artifacts/fixtures/invalid/ship_packet/missing-schemaVersion.json
+?? packages/artifacts/fixtures/invalid/ship_packet/push-without-approval.json
+?? packages/artifacts/fixtures/invalid/ship_packet/unknown-field.json
+?? packages/artifacts/fixtures/invalid/ship_packet/wrong-artifactKind.json
+?? packages/artifacts/fixtures/invalid/skill_manifest/missing-forbidden-actions.json
+?? packages/artifacts/fixtures/invalid/skill_manifest/missing-schemaVersion.json
+?? packages/artifacts/fixtures/invalid/skill_manifest/unknown-field.json
+?? packages/artifacts/fixtures/invalid/skill_manifest/wrong-artifactKind.json
+?? packages/artifacts/fixtures/invalid/verification_delta/blocked-missing-metadata.json
+?? packages/artifacts/fixtures/invalid/verification_delta/missing-catalog-category.json
+?? packages/artifacts/fixtures/invalid/verification_delta/missing-requiredItems.json
+?? packages/artifacts/fixtures/invalid/verification_delta/missing-schemaVersion.json
+?? packages/artifacts/fixtures/invalid/verification_delta/not-applicable-missing-rationale.json
+?? packages/artifacts/fixtures/invalid/verification_delta/unknown-field.json
+?? packages/artifacts/fixtures/invalid/verification_delta/wrong-artifactKind.json
+?? packages/artifacts/fixtures/invalid/work_brief/malformed-extension-core-field.json
+?? packages/artifacts/fixtures/invalid/work_brief/missing-schemaVersion.json
+?? packages/artifacts/fixtures/invalid/work_brief/unknown-field.json
+?? packages/artifacts/fixtures/invalid/work_brief/unsupported-version.json
+?? packages/artifacts/fixtures/invalid/work_brief/wrong-artifactKind.json
+?? packages/artifacts/fixtures/valid/agent_registry_entry.json
+?? packages/artifacts/fixtures/valid/build_result.json
+?? packages/artifacts/fixtures/valid/context_file_header.json
+?? packages/artifacts/fixtures/valid/evidence_packet.json
+?? packages/artifacts/fixtures/valid/implementation_plan.json
+?? packages/artifacts/fixtures/valid/schematic_manifest.json
+?? packages/artifacts/fixtures/valid/ship_packet.json
+?? packages/artifacts/fixtures/valid/skill_manifest.json
+?? packages/artifacts/fixtures/valid/verification_delta.json
+?? packages/artifacts/fixtures/valid/work_brief.json
+?? packages/artifacts/package.json
+?? packages/artifacts/schemas/agent-registry-entry.schema.json
+?? packages/artifacts/schemas/build-result.schema.json
+?? packages/artifacts/schemas/context-file-header.schema.json
+?? packages/artifacts/schemas/evidence-packet.schema.json
+?? packages/artifacts/schemas/implementation-plan.schema.json
+?? packages/artifacts/schemas/schematic-manifest.schema.json
+?? packages/artifacts/schemas/ship-packet.schema.json
+?? packages/artifacts/schemas/skill-manifest.schema.json
+?? packages/artifacts/schemas/verification-delta.schema.json
+?? packages/artifacts/schemas/work-brief.schema.json
+?? packages/artifacts/scripts/check-generated-types.mjs
+?? packages/artifacts/scripts/generate-types.mjs
+?? packages/artifacts/scripts/typecheck-public-entrypoint.mjs
+?? packages/artifacts/src/errors.js
+?? packages/artifacts/src/generated/types.d.ts
+?? packages/artifacts/src/index.js
+?? packages/artifacts/src/schema-registry.js
+?? packages/artifacts/src/validation.js
+?? packages/artifacts/tests/run-tests.mjs
+?? packages/config/eslint.config.mjs
+?? packages/config/fixtures/projects/executable-format-only/vibe-engineer.config.toml
+?? packages/config/fixtures/projects/executable-format-only/vibe-engineer.config.ts
+?? packages/config/fixtures/projects/executable-format-only/vibe-engineer.config.yaml
+?? packages/config/fixtures/projects/invalid-fix-iterations-high/vibe-engineer.config.json
+?? packages/config/fixtures/projects/invalid-fix-iterations-low/vibe-engineer.config.json
+?? packages/config/fixtures/projects/invalid-hours-high/vibe-engineer.config.json
+?? packages/config/fixtures/projects/invalid-hours-zero/vibe-engineer.config.json
+?? packages/config/fixtures/projects/invalid-nested-key/vibe-engineer.config.json
+?? packages/config/fixtures/projects/invalid-range-high/vibe-engineer.config.json
+?? packages/config/fixtures/projects/invalid-range-low/vibe-engineer.config.json
+?? packages/config/fixtures/projects/invalid-secret-like-key/vibe-engineer.config.json
+?? packages/config/fixtures/projects/invalid-type/vibe-engineer.config.json
+?? packages/config/fixtures/projects/invalid-unknown-key/vibe-engineer.config.json
+?? packages/config/fixtures/projects/invalid-unsupported-harness-arbitrary/vibe-engineer.config.json
+?? packages/config/fixtures/projects/invalid-unsupported-harness-claude-code/vibe-engineer.config.json
+?? packages/config/fixtures/projects/invalid-unsupported-harness-codex/vibe-engineer.config.json
+?? packages/config/fixtures/projects/invalid-unsupported-harness-opencode/vibe-engineer.config.json
+?? packages/config/fixtures/projects/malformed-json/vibe-engineer.config.json
+?? packages/config/fixtures/projects/valid-full/vibe-engineer.config.json
+?? packages/config/fixtures/projects/valid-minimal/vibe-engineer.config.json
+?? packages/config/package.json
+?? packages/config/src/generated/types.d.ts
+?? packages/config/src/index.js
+?? packages/config/tests/public-api-consumer.ts
+?? packages/config/tests/run-tests.mjs
+?? packages/config/tsconfig.json
+?? packages/context/package.json
+?? packages/context/src/index.d.ts
+?? packages/context/src/index.js
+?? packages/context/tests/negative-witness.mjs
+?? packages/context/tests/real-boundary-witness.mjs
+?? pnpm-lock.yaml
+?? pnpm-workspace.yaml
+## packages/context inventory
+packages/context/node_modules
+packages/context/node_modules/@vibe-engineer
+packages/context/node_modules/@vibe-engineer/artifacts
+packages/context/node_modules/@vibe-engineer/config
+packages/context/package.json
+packages/context/src
+packages/context/src/index.d.ts
+packages/context/src/index.js
+packages/context/tests
+packages/context/tests/negative-witness.mjs
+packages/context/tests/real-boundary-witness.mjs
+## .vibe/context/schema inventory
+.vibe/context/schema/context-area-v1.schema.json
+.vibe/context/schema/context-graph-v1.schema.json
+.vibe/context/schema/context-index-v1.schema.json
+.vibe/context/schema/context-summary-v1.schema.json
+.vibe/context/schema/retrieval-closure-v1.schema.json
+## I-08 work inventory excluding validator evidence
+.vibe/work/I-08-context-graph-index-drift/evidence
+.vibe/work/I-08-context-graph-index-drift/evidence/blast-radius-summary-2026-06-24.txt
+.vibe/work/I-08-context-graph-index-drift/evidence/final-inventory-and-sentinels.txt
+.vibe/work/I-08-context-graph-index-drift/evidence/final-regression-sentinels-2026-06-24.txt
+.vibe/work/I-08-context-graph-index-drift/evidence/negative-witness-result.json
+.vibe/work/I-08-context-graph-index-drift/evidence/package-build-final-2026-06-24.txt
+.vibe/work/I-08-context-graph-index-drift/evidence/package-test-rerun-2026-06-24.txt
+.vibe/work/I-08-context-graph-index-drift/evidence/package-witnesses-2026-06-24.txt
+.vibe/work/I-08-context-graph-index-drift/evidence/provider-import-sentinels-2026-06-24.txt
+.vibe/work/I-08-context-graph-index-drift/evidence/provider-seam-import-probe.txt
+.vibe/work/I-08-context-graph-index-drift/evidence/real-boundary-witness-result.json
+.vibe/work/I-08-context-graph-index-drift/fixtures
+.vibe/work/I-08-context-graph-index-drift/fixtures/context-project
+.vibe/work/I-08-context-graph-index-drift/fixtures/context-project/.vibe
+.vibe/work/I-08-context-graph-index-drift/fixtures/context-project/.vibe/context
+.vibe/work/I-08-context-graph-index-drift/fixtures/context-project/.vibe/context/areas
+.vibe/work/I-08-context-graph-index-drift/fixtures/context-project/.vibe/context/areas/core-contracts.context.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/context-project/.vibe/context/areas/core-contracts.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/context-project/.vibe/context/index
+.vibe/work/I-08-context-graph-index-drift/fixtures/context-project/.vibe/context/index/context-graph.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/context-project/.vibe/context/index/context-graph.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/context-project/.vibe/context/index/context-index.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/context-project/.vibe/context/index/context-index.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/context-project/.vibe/context/schema
+.vibe/work/I-08-context-graph-index-drift/fixtures/context-project/.vibe/context/schema/schema-manifest.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/context-project/.vibe/context/summaries
+.vibe/work/I-08-context-graph-index-drift/fixtures/context-project/.vibe/context/summaries/core-contracts-summary.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/context-project/.vibe/context/summaries/core-contracts-summary.summary.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/context-project/.vibe/evidence
+.vibe/work/I-08-context-graph-index-drift/fixtures/context-project/.vibe/evidence/I-08-context-graph-index-drift
+.vibe/work/I-08-context-graph-index-drift/fixtures/context-project/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/context-project/.vibe/work
+.vibe/work/I-08-context-graph-index-drift/fixtures/context-project/.vibe/work/I-08-context-graph-index-drift
+.vibe/work/I-08-context-graph-index-drift/fixtures/context-project/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/context-project/docs
+.vibe/work/I-08-context-graph-index-drift/fixtures/context-project/docs/decisions
+.vibe/work/I-08-context-graph-index-drift/fixtures/context-project/docs/decisions/DL-09-context-memory-drift.md
+.vibe/work/I-08-context-graph-index-drift/fixtures/context-project/sources
+.vibe/work/I-08-context-graph-index-drift/fixtures/context-project/sources/task-contract.md
+.vibe/work/I-08-context-graph-index-drift/fixtures/context-project/sources/verification-contract.md
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-decision-link
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-decision-link/.vibe
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-decision-link/.vibe/context
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-decision-link/.vibe/context/areas
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-decision-link/.vibe/context/areas/core-contracts.context.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-decision-link/.vibe/context/areas/core-contracts.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-decision-link/.vibe/context/index
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-decision-link/.vibe/context/index/context-graph.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-decision-link/.vibe/context/index/context-graph.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-decision-link/.vibe/context/index/context-index.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-decision-link/.vibe/context/index/context-index.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-decision-link/.vibe/context/schema
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-decision-link/.vibe/context/schema/schema-manifest.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-decision-link/.vibe/context/summaries
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-decision-link/.vibe/context/summaries/core-contracts-summary.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-decision-link/.vibe/context/summaries/core-contracts-summary.summary.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-decision-link/.vibe/evidence
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-decision-link/.vibe/evidence/I-08-context-graph-index-drift
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-decision-link/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-decision-link/.vibe/work
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-decision-link/.vibe/work/I-08-context-graph-index-drift
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-decision-link/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-decision-link/docs
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-decision-link/docs/decisions
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-decision-link/docs/decisions/DL-09-context-memory-drift.md
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-decision-link/sources
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-decision-link/sources/task-contract.md
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-decision-link/sources/verification-contract.md
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-evidence-link
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-evidence-link/.vibe
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-evidence-link/.vibe/context
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-evidence-link/.vibe/context/areas
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-evidence-link/.vibe/context/areas/core-contracts.context.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-evidence-link/.vibe/context/areas/core-contracts.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-evidence-link/.vibe/context/index
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-evidence-link/.vibe/context/index/context-graph.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-evidence-link/.vibe/context/index/context-graph.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-evidence-link/.vibe/context/index/context-index.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-evidence-link/.vibe/context/index/context-index.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-evidence-link/.vibe/context/schema
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-evidence-link/.vibe/context/schema/schema-manifest.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-evidence-link/.vibe/context/summaries
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-evidence-link/.vibe/context/summaries/core-contracts-summary.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-evidence-link/.vibe/context/summaries/core-contracts-summary.summary.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-evidence-link/.vibe/evidence
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-evidence-link/.vibe/evidence/I-08-context-graph-index-drift
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-evidence-link/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-evidence-link/.vibe/work
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-evidence-link/.vibe/work/I-08-context-graph-index-drift
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-evidence-link/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-evidence-link/docs
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-evidence-link/docs/decisions
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-evidence-link/docs/decisions/DL-09-context-memory-drift.md
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-evidence-link/sources
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-evidence-link/sources/task-contract.md
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-evidence-link/sources/verification-contract.md
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/invalid-context-header
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/invalid-context-header/.vibe
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/invalid-context-header/.vibe/context
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/invalid-context-header/.vibe/context/areas
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/invalid-context-header/.vibe/context/areas/core-contracts.context.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/invalid-context-header/.vibe/context/areas/core-contracts.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/invalid-context-header/.vibe/context/index
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/invalid-context-header/.vibe/context/index/context-graph.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/invalid-context-header/.vibe/context/index/context-graph.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/invalid-context-header/.vibe/context/index/context-index.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/invalid-context-header/.vibe/context/index/context-index.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/invalid-context-header/.vibe/context/schema
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/invalid-context-header/.vibe/context/schema/schema-manifest.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/invalid-context-header/.vibe/context/summaries
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/invalid-context-header/.vibe/context/summaries/core-contracts-summary.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/invalid-context-header/.vibe/context/summaries/core-contracts-summary.summary.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/invalid-context-header/.vibe/evidence
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/invalid-context-header/.vibe/evidence/I-08-context-graph-index-drift
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/invalid-context-header/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/invalid-context-header/.vibe/work
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/invalid-context-header/.vibe/work/I-08-context-graph-index-drift
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/invalid-context-header/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/invalid-context-header/docs
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/invalid-context-header/docs/decisions
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/invalid-context-header/docs/decisions/DL-09-context-memory-drift.md
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/invalid-context-header/sources
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/invalid-context-header/sources/task-contract.md
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/invalid-context-header/sources/verification-contract.md
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/load-everything-request
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/load-everything-request/.vibe
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/load-everything-request/.vibe/context
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/load-everything-request/.vibe/context/areas
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/load-everything-request/.vibe/context/areas/core-contracts.context.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/load-everything-request/.vibe/context/areas/core-contracts.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/load-everything-request/.vibe/context/index
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/load-everything-request/.vibe/context/index/context-graph.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/load-everything-request/.vibe/context/index/context-graph.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/load-everything-request/.vibe/context/index/context-index.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/load-everything-request/.vibe/context/index/context-index.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/load-everything-request/.vibe/context/schema
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/load-everything-request/.vibe/context/schema/schema-manifest.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/load-everything-request/.vibe/context/summaries
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/load-everything-request/.vibe/context/summaries/core-contracts-summary.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/load-everything-request/.vibe/context/summaries/core-contracts-summary.summary.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/load-everything-request/.vibe/evidence
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/load-everything-request/.vibe/evidence/I-08-context-graph-index-drift
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/load-everything-request/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/load-everything-request/.vibe/work
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/load-everything-request/.vibe/work/I-08-context-graph-index-drift
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/load-everything-request/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/load-everything-request/docs
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/load-everything-request/docs/decisions
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/load-everything-request/docs/decisions/DL-09-context-memory-drift.md
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/load-everything-request/sources
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/load-everything-request/sources/task-contract.md
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/load-everything-request/sources/verification-contract.md
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-context-header-json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-context-header-json/.vibe
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-context-header-json/.vibe/context
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-context-header-json/.vibe/context/areas
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-context-header-json/.vibe/context/areas/core-contracts.context.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-context-header-json/.vibe/context/areas/core-contracts.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-context-header-json/.vibe/context/index
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-context-header-json/.vibe/context/index/context-graph.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-context-header-json/.vibe/context/index/context-graph.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-context-header-json/.vibe/context/index/context-index.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-context-header-json/.vibe/context/index/context-index.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-context-header-json/.vibe/context/schema
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-context-header-json/.vibe/context/schema/schema-manifest.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-context-header-json/.vibe/context/summaries
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-context-header-json/.vibe/context/summaries/core-contracts-summary.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-context-header-json/.vibe/context/summaries/core-contracts-summary.summary.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-context-header-json/.vibe/evidence
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-context-header-json/.vibe/evidence/I-08-context-graph-index-drift
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-context-header-json/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-context-header-json/.vibe/work
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-context-header-json/.vibe/work/I-08-context-graph-index-drift
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-context-header-json/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-context-header-json/docs
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-context-header-json/docs/decisions
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-context-header-json/docs/decisions/DL-09-context-memory-drift.md
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-context-header-json/sources
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-context-header-json/sources/task-contract.md
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-context-header-json/sources/verification-contract.md
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-graph-json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-graph-json/.vibe
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-graph-json/.vibe/context
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-graph-json/.vibe/context/areas
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-graph-json/.vibe/context/areas/core-contracts.context.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-graph-json/.vibe/context/areas/core-contracts.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-graph-json/.vibe/context/index
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-graph-json/.vibe/context/index/context-graph.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-graph-json/.vibe/context/index/context-graph.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-graph-json/.vibe/context/index/context-index.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-graph-json/.vibe/context/index/context-index.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-graph-json/.vibe/context/schema
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-graph-json/.vibe/context/schema/schema-manifest.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-graph-json/.vibe/context/summaries
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-graph-json/.vibe/context/summaries/core-contracts-summary.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-graph-json/.vibe/context/summaries/core-contracts-summary.summary.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-graph-json/.vibe/evidence
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-graph-json/.vibe/evidence/I-08-context-graph-index-drift
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-graph-json/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-graph-json/.vibe/work
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-graph-json/.vibe/work/I-08-context-graph-index-drift
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-graph-json/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-graph-json/docs
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-graph-json/docs/decisions
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-graph-json/docs/decisions/DL-09-context-memory-drift.md
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-graph-json/sources
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-graph-json/sources/task-contract.md
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-graph-json/sources/verification-contract.md
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-index-json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-index-json/.vibe
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-index-json/.vibe/context
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-index-json/.vibe/context/areas
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-index-json/.vibe/context/areas/core-contracts.context.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-index-json/.vibe/context/areas/core-contracts.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-index-json/.vibe/context/index
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-index-json/.vibe/context/index/context-graph.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-index-json/.vibe/context/index/context-graph.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-index-json/.vibe/context/index/context-index.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-index-json/.vibe/context/index/context-index.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-index-json/.vibe/context/schema
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-index-json/.vibe/context/schema/schema-manifest.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-index-json/.vibe/context/summaries
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-index-json/.vibe/context/summaries/core-contracts-summary.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-index-json/.vibe/context/summaries/core-contracts-summary.summary.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-index-json/.vibe/evidence
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-index-json/.vibe/evidence/I-08-context-graph-index-drift
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-index-json/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-index-json/.vibe/work
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-index-json/.vibe/work/I-08-context-graph-index-drift
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-index-json/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-index-json/docs
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-index-json/docs/decisions
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-index-json/docs/decisions/DL-09-context-memory-drift.md
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-index-json/sources
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-index-json/sources/task-contract.md
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-index-json/sources/verification-contract.md
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/mislinked-work-path
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/mislinked-work-path/.vibe
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/mislinked-work-path/.vibe/context
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/mislinked-work-path/.vibe/context/areas
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/mislinked-work-path/.vibe/context/areas/core-contracts.context.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/mislinked-work-path/.vibe/context/areas/core-contracts.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/mislinked-work-path/.vibe/context/index
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/mislinked-work-path/.vibe/context/index/context-graph.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/mislinked-work-path/.vibe/context/index/context-graph.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/mislinked-work-path/.vibe/context/index/context-index.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/mislinked-work-path/.vibe/context/index/context-index.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/mislinked-work-path/.vibe/context/schema
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/mislinked-work-path/.vibe/context/schema/schema-manifest.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/mislinked-work-path/.vibe/context/summaries
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/mislinked-work-path/.vibe/context/summaries/core-contracts-summary.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/mislinked-work-path/.vibe/context/summaries/core-contracts-summary.summary.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/mislinked-work-path/.vibe/evidence
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/mislinked-work-path/.vibe/evidence/I-08-context-graph-index-drift
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/mislinked-work-path/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/mislinked-work-path/.vibe/work
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/mislinked-work-path/.vibe/work/I-08-context-graph-index-drift
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/mislinked-work-path/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/mislinked-work-path/docs
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/mislinked-work-path/docs/decisions
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/mislinked-work-path/docs/decisions/DL-09-context-memory-drift.md
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/mislinked-work-path/sources
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/mislinked-work-path/sources/task-contract.md
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/mislinked-work-path/sources/verification-contract.md
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-mandatory-level-one
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-mandatory-level-one/.vibe
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-mandatory-level-one/.vibe/context
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-mandatory-level-one/.vibe/context/areas
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-mandatory-level-one/.vibe/context/areas/core-contracts.context.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-mandatory-level-one/.vibe/context/areas/core-contracts.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-mandatory-level-one/.vibe/context/index
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-mandatory-level-one/.vibe/context/index/context-graph.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-mandatory-level-one/.vibe/context/index/context-graph.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-mandatory-level-one/.vibe/context/index/context-index.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-mandatory-level-one/.vibe/context/index/context-index.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-mandatory-level-one/.vibe/context/schema
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-mandatory-level-one/.vibe/context/schema/schema-manifest.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-mandatory-level-one/.vibe/context/summaries
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-mandatory-level-one/.vibe/context/summaries/core-contracts-summary.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-mandatory-level-one/.vibe/context/summaries/core-contracts-summary.summary.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-mandatory-level-one/.vibe/evidence
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-mandatory-level-one/.vibe/evidence/I-08-context-graph-index-drift
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-mandatory-level-one/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-mandatory-level-one/.vibe/work
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-mandatory-level-one/.vibe/work/I-08-context-graph-index-drift
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-mandatory-level-one/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-mandatory-level-one/docs
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-mandatory-level-one/docs/decisions
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-mandatory-level-one/docs/decisions/DL-09-context-memory-drift.md
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-mandatory-level-one/sources
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-mandatory-level-one/sources/task-contract.md
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-mandatory-level-one/sources/verification-contract.md
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-citation
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-citation/.vibe
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-citation/.vibe/context
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-citation/.vibe/context/areas
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-citation/.vibe/context/areas/core-contracts.context.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-citation/.vibe/context/areas/core-contracts.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-citation/.vibe/context/index
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-citation/.vibe/context/index/context-graph.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-citation/.vibe/context/index/context-graph.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-citation/.vibe/context/index/context-index.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-citation/.vibe/context/index/context-index.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-citation/.vibe/context/schema
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-citation/.vibe/context/schema/schema-manifest.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-citation/.vibe/context/summaries
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-citation/.vibe/context/summaries/core-contracts-summary.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-citation/.vibe/context/summaries/core-contracts-summary.summary.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-citation/.vibe/evidence
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-citation/.vibe/evidence/I-08-context-graph-index-drift
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-citation/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-citation/.vibe/work
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-citation/.vibe/work/I-08-context-graph-index-drift
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-citation/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-citation/docs
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-citation/docs/decisions
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-citation/docs/decisions/DL-09-context-memory-drift.md
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-citation/sources
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-citation/sources/task-contract.md
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-citation/sources/verification-contract.md
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-file
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-file/.vibe
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-file/.vibe/context
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-file/.vibe/context/areas
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-file/.vibe/context/areas/core-contracts.context.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-file/.vibe/context/areas/core-contracts.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-file/.vibe/context/index
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-file/.vibe/context/index/context-graph.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-file/.vibe/context/index/context-graph.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-file/.vibe/context/index/context-index.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-file/.vibe/context/index/context-index.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-file/.vibe/context/schema
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-file/.vibe/context/schema/schema-manifest.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-file/.vibe/context/summaries
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-file/.vibe/context/summaries/core-contracts-summary.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-file/.vibe/context/summaries/core-contracts-summary.summary.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-file/.vibe/evidence
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-file/.vibe/evidence/I-08-context-graph-index-drift
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-file/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-file/.vibe/work
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-file/.vibe/work/I-08-context-graph-index-drift
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-file/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-file/docs
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-file/docs/decisions
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-file/docs/decisions/DL-09-context-memory-drift.md
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-file/sources
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-file/sources/verification-contract.md
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-link-ref
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-link-ref/.vibe
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-link-ref/.vibe/context
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-link-ref/.vibe/context/areas
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-link-ref/.vibe/context/areas/core-contracts.context.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-link-ref/.vibe/context/areas/core-contracts.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-link-ref/.vibe/context/index
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-link-ref/.vibe/context/index/context-graph.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-link-ref/.vibe/context/index/context-graph.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-link-ref/.vibe/context/index/context-index.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-link-ref/.vibe/context/index/context-index.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-link-ref/.vibe/context/schema
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-link-ref/.vibe/context/schema/schema-manifest.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-link-ref/.vibe/context/summaries
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-link-ref/.vibe/context/summaries/core-contracts-summary.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-link-ref/.vibe/context/summaries/core-contracts-summary.summary.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-link-ref/.vibe/evidence
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-link-ref/.vibe/evidence/I-08-context-graph-index-drift
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-link-ref/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-link-ref/.vibe/work
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-link-ref/.vibe/work/I-08-context-graph-index-drift
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-link-ref/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-link-ref/docs
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-link-ref/docs/decisions
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-link-ref/docs/decisions/DL-09-context-memory-drift.md
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-link-ref/sources
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-link-ref/sources/task-contract.md
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-link-ref/sources/verification-contract.md
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-source-ref
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-source-ref/.vibe
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-source-ref/.vibe/context
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-source-ref/.vibe/context/areas
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-source-ref/.vibe/context/areas/core-contracts.context.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-source-ref/.vibe/context/areas/core-contracts.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-source-ref/.vibe/context/index
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-source-ref/.vibe/context/index/context-graph.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-source-ref/.vibe/context/index/context-graph.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-source-ref/.vibe/context/index/context-index.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-source-ref/.vibe/context/index/context-index.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-source-ref/.vibe/context/schema
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-source-ref/.vibe/context/schema/schema-manifest.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-source-ref/.vibe/context/summaries
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-source-ref/.vibe/context/summaries/core-contracts-summary.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-source-ref/.vibe/context/summaries/core-contracts-summary.summary.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-source-ref/.vibe/evidence
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-source-ref/.vibe/evidence/I-08-context-graph-index-drift
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-source-ref/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-source-ref/.vibe/work
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-source-ref/.vibe/work/I-08-context-graph-index-drift
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-source-ref/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-source-ref/docs
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-source-ref/docs/decisions
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-source-ref/docs/decisions/DL-09-context-memory-drift.md
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-source-ref/sources
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-source-ref/sources/task-contract.md
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-source-ref/sources/verification-contract.md
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/retriever-missing-level-one
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/retriever-missing-level-one/.vibe
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/retriever-missing-level-one/.vibe/context
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/retriever-missing-level-one/.vibe/context/areas
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/retriever-missing-level-one/.vibe/context/areas/core-contracts.context.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/retriever-missing-level-one/.vibe/context/areas/core-contracts.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/retriever-missing-level-one/.vibe/context/index
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/retriever-missing-level-one/.vibe/context/index/context-graph.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/retriever-missing-level-one/.vibe/context/index/context-graph.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/retriever-missing-level-one/.vibe/context/index/context-index.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/retriever-missing-level-one/.vibe/context/index/context-index.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/retriever-missing-level-one/.vibe/context/schema
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/retriever-missing-level-one/.vibe/context/schema/schema-manifest.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/retriever-missing-level-one/.vibe/context/summaries
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/retriever-missing-level-one/.vibe/context/summaries/core-contracts-summary.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/retriever-missing-level-one/.vibe/context/summaries/core-contracts-summary.summary.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/retriever-missing-level-one/.vibe/evidence
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/retriever-missing-level-one/.vibe/evidence/I-08-context-graph-index-drift
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/retriever-missing-level-one/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/retriever-missing-level-one/.vibe/work
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/retriever-missing-level-one/.vibe/work/I-08-context-graph-index-drift
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/retriever-missing-level-one/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/retriever-missing-level-one/docs
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/retriever-missing-level-one/docs/decisions
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/retriever-missing-level-one/docs/decisions/DL-09-context-memory-drift.md
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/retriever-missing-level-one/sources
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/retriever-missing-level-one/sources/task-contract.md
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/retriever-missing-level-one/sources/verification-contract.md
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-source-fingerprint
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-source-fingerprint/.vibe
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-source-fingerprint/.vibe/context
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-source-fingerprint/.vibe/context/areas
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-source-fingerprint/.vibe/context/areas/core-contracts.context.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-source-fingerprint/.vibe/context/areas/core-contracts.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-source-fingerprint/.vibe/context/index
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-source-fingerprint/.vibe/context/index/context-graph.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-source-fingerprint/.vibe/context/index/context-graph.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-source-fingerprint/.vibe/context/index/context-index.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-source-fingerprint/.vibe/context/index/context-index.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-source-fingerprint/.vibe/context/schema
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-source-fingerprint/.vibe/context/schema/schema-manifest.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-source-fingerprint/.vibe/context/summaries
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-source-fingerprint/.vibe/context/summaries/core-contracts-summary.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-source-fingerprint/.vibe/context/summaries/core-contracts-summary.summary.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-source-fingerprint/.vibe/evidence
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-source-fingerprint/.vibe/evidence/I-08-context-graph-index-drift
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-source-fingerprint/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-source-fingerprint/.vibe/work
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-source-fingerprint/.vibe/work/I-08-context-graph-index-drift
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-source-fingerprint/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-source-fingerprint/docs
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-source-fingerprint/docs/decisions
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-source-fingerprint/docs/decisions/DL-09-context-memory-drift.md
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-source-fingerprint/sources
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-source-fingerprint/sources/task-contract.md
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-source-fingerprint/sources/verification-contract.md
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-summary-ref
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-summary-ref/.vibe
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-summary-ref/.vibe/context
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-summary-ref/.vibe/context/areas
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-summary-ref/.vibe/context/areas/core-contracts.context.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-summary-ref/.vibe/context/areas/core-contracts.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-summary-ref/.vibe/context/index
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-summary-ref/.vibe/context/index/context-graph.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-summary-ref/.vibe/context/index/context-graph.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-summary-ref/.vibe/context/index/context-index.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-summary-ref/.vibe/context/index/context-index.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-summary-ref/.vibe/context/schema
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-summary-ref/.vibe/context/schema/schema-manifest.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-summary-ref/.vibe/context/summaries
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-summary-ref/.vibe/context/summaries/core-contracts-summary.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-summary-ref/.vibe/context/summaries/core-contracts-summary.summary.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-summary-ref/.vibe/evidence
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-summary-ref/.vibe/evidence/I-08-context-graph-index-drift
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-summary-ref/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-summary-ref/.vibe/work
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-summary-ref/.vibe/work/I-08-context-graph-index-drift
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-summary-ref/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-summary-ref/docs
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-summary-ref/docs/decisions
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-summary-ref/docs/decisions/DL-09-context-memory-drift.md
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-summary-ref/sources
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-summary-ref/sources/task-contract.md
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-summary-ref/sources/verification-contract.md
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/summary-without-source-refs
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/summary-without-source-refs/.vibe
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/summary-without-source-refs/.vibe/context
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/summary-without-source-refs/.vibe/context/areas
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/summary-without-source-refs/.vibe/context/areas/core-contracts.context.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/summary-without-source-refs/.vibe/context/areas/core-contracts.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/summary-without-source-refs/.vibe/context/index
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/summary-without-source-refs/.vibe/context/index/context-graph.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/summary-without-source-refs/.vibe/context/index/context-graph.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/summary-without-source-refs/.vibe/context/index/context-index.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/summary-without-source-refs/.vibe/context/index/context-index.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/summary-without-source-refs/.vibe/context/schema
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/summary-without-source-refs/.vibe/context/schema/schema-manifest.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/summary-without-source-refs/.vibe/context/summaries
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/summary-without-source-refs/.vibe/context/summaries/core-contracts-summary.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/summary-without-source-refs/.vibe/context/summaries/core-contracts-summary.summary.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/summary-without-source-refs/.vibe/evidence
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/summary-without-source-refs/.vibe/evidence/I-08-context-graph-index-drift
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/summary-without-source-refs/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/summary-without-source-refs/.vibe/work
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/summary-without-source-refs/.vibe/work/I-08-context-graph-index-drift
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/summary-without-source-refs/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/summary-without-source-refs/docs
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/summary-without-source-refs/docs/decisions
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/summary-without-source-refs/docs/decisions/DL-09-context-memory-drift.md
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/summary-without-source-refs/sources
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/summary-without-source-refs/sources/task-contract.md
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/summary-without-source-refs/sources/verification-contract.md
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsafe-domain-request
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsafe-domain-request/.vibe
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsafe-domain-request/.vibe/context
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsafe-domain-request/.vibe/context/areas
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsafe-domain-request/.vibe/context/areas/core-contracts.context.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsafe-domain-request/.vibe/context/areas/core-contracts.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsafe-domain-request/.vibe/context/index
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsafe-domain-request/.vibe/context/index/context-graph.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsafe-domain-request/.vibe/context/index/context-graph.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsafe-domain-request/.vibe/context/index/context-index.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsafe-domain-request/.vibe/context/index/context-index.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsafe-domain-request/.vibe/context/schema
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsafe-domain-request/.vibe/context/schema/schema-manifest.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsafe-domain-request/.vibe/context/summaries
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsafe-domain-request/.vibe/context/summaries/core-contracts-summary.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsafe-domain-request/.vibe/context/summaries/core-contracts-summary.summary.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsafe-domain-request/.vibe/evidence
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsafe-domain-request/.vibe/evidence/I-08-context-graph-index-drift
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsafe-domain-request/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsafe-domain-request/.vibe/work
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsafe-domain-request/.vibe/work/I-08-context-graph-index-drift
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsafe-domain-request/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsafe-domain-request/docs
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsafe-domain-request/docs/decisions
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsafe-domain-request/docs/decisions/DL-09-context-memory-drift.md
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsafe-domain-request/sources
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsafe-domain-request/sources/task-contract.md
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsafe-domain-request/sources/verification-contract.md
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-context-version
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-context-version/.vibe
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-context-version/.vibe/context
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-context-version/.vibe/context/areas
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-context-version/.vibe/context/areas/core-contracts.context.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-context-version/.vibe/context/areas/core-contracts.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-context-version/.vibe/context/index
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-context-version/.vibe/context/index/context-graph.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-context-version/.vibe/context/index/context-graph.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-context-version/.vibe/context/index/context-index.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-context-version/.vibe/context/index/context-index.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-context-version/.vibe/context/schema
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-context-version/.vibe/context/schema/schema-manifest.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-context-version/.vibe/context/summaries
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-context-version/.vibe/context/summaries/core-contracts-summary.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-context-version/.vibe/context/summaries/core-contracts-summary.summary.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-context-version/.vibe/evidence
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-context-version/.vibe/evidence/I-08-context-graph-index-drift
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-context-version/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-context-version/.vibe/work
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-context-version/.vibe/work/I-08-context-graph-index-drift
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-context-version/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-context-version/docs
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-context-version/docs/decisions
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-context-version/docs/decisions/DL-09-context-memory-drift.md
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-context-version/sources
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-context-version/sources/task-contract.md
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-context-version/sources/verification-contract.md
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-index-version
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-index-version/.vibe
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-index-version/.vibe/context
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-index-version/.vibe/context/areas
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-index-version/.vibe/context/areas/core-contracts.context.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-index-version/.vibe/context/areas/core-contracts.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-index-version/.vibe/context/index
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-index-version/.vibe/context/index/context-graph.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-index-version/.vibe/context/index/context-graph.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-index-version/.vibe/context/index/context-index.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-index-version/.vibe/context/index/context-index.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-index-version/.vibe/context/schema
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-index-version/.vibe/context/schema/schema-manifest.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-index-version/.vibe/context/summaries
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-index-version/.vibe/context/summaries/core-contracts-summary.header.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-index-version/.vibe/context/summaries/core-contracts-summary.summary.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-index-version/.vibe/evidence
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-index-version/.vibe/evidence/I-08-context-graph-index-drift
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-index-version/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-index-version/.vibe/work
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-index-version/.vibe/work/I-08-context-graph-index-drift
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-index-version/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-index-version/docs
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-index-version/docs/decisions
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-index-version/docs/decisions/DL-09-context-memory-drift.md
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-index-version/sources
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-index-version/sources/task-contract.md
+.vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-index-version/sources/verification-contract.md
+.vibe/work/I-08-context-graph-index-drift/I-08-implementation-report.md
+.vibe/work/I-08-context-graph-index-drift/I-08-validation-report.md
+## file hashes: packages/context
+65e53f4722ea3121c86d10785750e56c7927480a96adfe3c60e6472977acaa7f  packages/context/package.json
+ef3e74531733087349c25fa945560563baf642ff1d4d9b9c2e871ec5ddb810ab  packages/context/src/index.d.ts
+7dbbc5dc33116c2ef10bc333e75b4f89a97318bfbca36a5f31e4359ac93c8eee  packages/context/src/index.js
+fe27d7844dc2b6c85234854a6dfa619d0881273295fa08f6ca144c2084ce183a  packages/context/tests/negative-witness.mjs
+cae8b9a2b598916acb23929b0681c50d8097a9aa9b1af092f5b65df8cd790540  packages/context/tests/real-boundary-witness.mjs
+## file hashes: .vibe/context/schema
+4b3c769f4a5853ac7a200798d2e6f285c96b47317e03798ef84bc4d84edae462  .vibe/context/schema/context-area-v1.schema.json
+04be8421b741f3fb65df9017c1dccadb0b60e506274ec18f5741311ec53ca228  .vibe/context/schema/context-graph-v1.schema.json
+939fd215a61ba936bcb9a398def7076f1990a9ffdec1d688aa84b6c2b1fce9c4  .vibe/context/schema/context-index-v1.schema.json
+31d4219262633cfeb6b50c9b6397b25c695ea2b5988b9db123125d763fd9c488  .vibe/context/schema/context-summary-v1.schema.json
+fa0bfec676964f850338158da7cb841aeb5651245b5c9f96f410f175d9425181  .vibe/context/schema/retrieval-closure-v1.schema.json
+## file hashes: I-08 work excluding validation evidence
+0a329c27e15c542d49b439f6ec1ee115e8e86495c9d098489284e2209a9c535c  .vibe/work/I-08-context-graph-index-drift/evidence/blast-radius-summary-2026-06-24.txt
+42749ddc6868e487f6f1c667e7f6e4e76206a5da7dae29a22c32eaa94cd220d9  .vibe/work/I-08-context-graph-index-drift/evidence/final-inventory-and-sentinels.txt
+96810fe3cc4e898b60eb52e1f0e271050c251f85c3e56c9103244f5160216673  .vibe/work/I-08-context-graph-index-drift/evidence/final-regression-sentinels-2026-06-24.txt
+f3f4634677c87a0de74e0a3a65b2326653e283e651a09d134df71385485c0ad4  .vibe/work/I-08-context-graph-index-drift/evidence/negative-witness-result.json
+1bd62d91a318199f6511c34327a18792c5318309d78054eb36ad1996efa32109  .vibe/work/I-08-context-graph-index-drift/evidence/package-build-final-2026-06-24.txt
+b734fcfad1233b8f86729ab6277b280da39477c243a9a3ea64e2f518c8ecd1f0  .vibe/work/I-08-context-graph-index-drift/evidence/package-test-rerun-2026-06-24.txt
+0a1f9f4065bc5b5656c4f0f4c7ea7f3236b21deda4a922c20ebd61f3a5a8c2f9  .vibe/work/I-08-context-graph-index-drift/evidence/package-witnesses-2026-06-24.txt
+db44494d8392a689ae3341f9930c8162b4e80c6a6cd86d807285cdc405d28481  .vibe/work/I-08-context-graph-index-drift/evidence/provider-import-sentinels-2026-06-24.txt
+5457d041ac46566f2f86cbec5e0a621d4599071040341ecab38d8613dbb5177f  .vibe/work/I-08-context-graph-index-drift/evidence/provider-seam-import-probe.txt
+936e7332403b0125161a79a477023dddbb31665e77c235459a1e38327011cceb  .vibe/work/I-08-context-graph-index-drift/evidence/real-boundary-witness-result.json
+a9f057f742aa222f0e289dc64ba0e3e7b21f3ae86fa6375d793685c68ea32d58  .vibe/work/I-08-context-graph-index-drift/fixtures/context-project/.vibe/context/areas/core-contracts.context.json
+a9e38605fd3a15e813f301bea93545a7ab40bedfcf01a1fd809c043dcb6b87a2  .vibe/work/I-08-context-graph-index-drift/fixtures/context-project/.vibe/context/areas/core-contracts.header.json
+e3136903cc9b2ab5dd9c6a257a1a849158042a3700076b261569be446a88783a  .vibe/work/I-08-context-graph-index-drift/fixtures/context-project/.vibe/context/index/context-graph.header.json
+3bef30805d0313375de658b27e0dab0c7875876d636846a185f5500252dbba0a  .vibe/work/I-08-context-graph-index-drift/fixtures/context-project/.vibe/context/index/context-graph.json
+67a3df90d1a03b13dbf7a544f258900d7a6b07548c92acf5f53869c5f3e7c170  .vibe/work/I-08-context-graph-index-drift/fixtures/context-project/.vibe/context/index/context-index.header.json
+3202bfea1c2fc50ce479ed546be9d791a0ff0eaca87e66c57e0cef585adaa665  .vibe/work/I-08-context-graph-index-drift/fixtures/context-project/.vibe/context/index/context-index.json
+28a49c0e5fd847b56223ff39e7fb850dfc139cdf740afe9bb42620d730d008ba  .vibe/work/I-08-context-graph-index-drift/fixtures/context-project/.vibe/context/schema/schema-manifest.json
+e7c33627df6fecf8df0f022e6fbdeedd3ed5ee1bf49488774ba455cc9a3bca75  .vibe/work/I-08-context-graph-index-drift/fixtures/context-project/.vibe/context/summaries/core-contracts-summary.header.json
+750e4abd3fb47edac262cf98ef7c9e248459cee8a0ac0ce3df4f0c0e168f48af  .vibe/work/I-08-context-graph-index-drift/fixtures/context-project/.vibe/context/summaries/core-contracts-summary.summary.json
+407ea6f7f3ae3c3637122d88c381bb10452aa634af80b99d6237a7afcdf7c357  .vibe/work/I-08-context-graph-index-drift/fixtures/context-project/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+407ea6f7f3ae3c3637122d88c381bb10452aa634af80b99d6237a7afcdf7c357  .vibe/work/I-08-context-graph-index-drift/fixtures/context-project/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+8bda32d188216092a0ba780e51b2f3338f5eb98b0a9b6f5155dc7573b85e5f5d  .vibe/work/I-08-context-graph-index-drift/fixtures/context-project/docs/decisions/DL-09-context-memory-drift.md
+069005bb09ffa6b162576137d3baecd3344f752d887cc01c6c979925afcb124e  .vibe/work/I-08-context-graph-index-drift/fixtures/context-project/sources/task-contract.md
+07f95c4b1bdbd4640a8b8c23aee1f8a71c4f664294ae1521a749e2e533cfbac6  .vibe/work/I-08-context-graph-index-drift/fixtures/context-project/sources/verification-contract.md
+a9f057f742aa222f0e289dc64ba0e3e7b21f3ae86fa6375d793685c68ea32d58  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-decision-link/.vibe/context/areas/core-contracts.context.json
+a9e38605fd3a15e813f301bea93545a7ab40bedfcf01a1fd809c043dcb6b87a2  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-decision-link/.vibe/context/areas/core-contracts.header.json
+e3136903cc9b2ab5dd9c6a257a1a849158042a3700076b261569be446a88783a  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-decision-link/.vibe/context/index/context-graph.header.json
+943beca73d9adbf8f7abc4ec96f3aafffedba1977c79362f21e74e58f96246f0  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-decision-link/.vibe/context/index/context-graph.json
+67a3df90d1a03b13dbf7a544f258900d7a6b07548c92acf5f53869c5f3e7c170  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-decision-link/.vibe/context/index/context-index.header.json
+3202bfea1c2fc50ce479ed546be9d791a0ff0eaca87e66c57e0cef585adaa665  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-decision-link/.vibe/context/index/context-index.json
+28a49c0e5fd847b56223ff39e7fb850dfc139cdf740afe9bb42620d730d008ba  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-decision-link/.vibe/context/schema/schema-manifest.json
+e7c33627df6fecf8df0f022e6fbdeedd3ed5ee1bf49488774ba455cc9a3bca75  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-decision-link/.vibe/context/summaries/core-contracts-summary.header.json
+750e4abd3fb47edac262cf98ef7c9e248459cee8a0ac0ce3df4f0c0e168f48af  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-decision-link/.vibe/context/summaries/core-contracts-summary.summary.json
+407ea6f7f3ae3c3637122d88c381bb10452aa634af80b99d6237a7afcdf7c357  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-decision-link/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+407ea6f7f3ae3c3637122d88c381bb10452aa634af80b99d6237a7afcdf7c357  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-decision-link/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+8bda32d188216092a0ba780e51b2f3338f5eb98b0a9b6f5155dc7573b85e5f5d  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-decision-link/docs/decisions/DL-09-context-memory-drift.md
+069005bb09ffa6b162576137d3baecd3344f752d887cc01c6c979925afcb124e  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-decision-link/sources/task-contract.md
+07f95c4b1bdbd4640a8b8c23aee1f8a71c4f664294ae1521a749e2e533cfbac6  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-decision-link/sources/verification-contract.md
+a9f057f742aa222f0e289dc64ba0e3e7b21f3ae86fa6375d793685c68ea32d58  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-evidence-link/.vibe/context/areas/core-contracts.context.json
+a9e38605fd3a15e813f301bea93545a7ab40bedfcf01a1fd809c043dcb6b87a2  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-evidence-link/.vibe/context/areas/core-contracts.header.json
+e3136903cc9b2ab5dd9c6a257a1a849158042a3700076b261569be446a88783a  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-evidence-link/.vibe/context/index/context-graph.header.json
+36d2924cd64b61230dd995275419f2d876ffac021067035a09c14bcc317ed959  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-evidence-link/.vibe/context/index/context-graph.json
+67a3df90d1a03b13dbf7a544f258900d7a6b07548c92acf5f53869c5f3e7c170  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-evidence-link/.vibe/context/index/context-index.header.json
+3202bfea1c2fc50ce479ed546be9d791a0ff0eaca87e66c57e0cef585adaa665  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-evidence-link/.vibe/context/index/context-index.json
+28a49c0e5fd847b56223ff39e7fb850dfc139cdf740afe9bb42620d730d008ba  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-evidence-link/.vibe/context/schema/schema-manifest.json
+e7c33627df6fecf8df0f022e6fbdeedd3ed5ee1bf49488774ba455cc9a3bca75  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-evidence-link/.vibe/context/summaries/core-contracts-summary.header.json
+750e4abd3fb47edac262cf98ef7c9e248459cee8a0ac0ce3df4f0c0e168f48af  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-evidence-link/.vibe/context/summaries/core-contracts-summary.summary.json
+407ea6f7f3ae3c3637122d88c381bb10452aa634af80b99d6237a7afcdf7c357  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-evidence-link/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+407ea6f7f3ae3c3637122d88c381bb10452aa634af80b99d6237a7afcdf7c357  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-evidence-link/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+8bda32d188216092a0ba780e51b2f3338f5eb98b0a9b6f5155dc7573b85e5f5d  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-evidence-link/docs/decisions/DL-09-context-memory-drift.md
+069005bb09ffa6b162576137d3baecd3344f752d887cc01c6c979925afcb124e  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-evidence-link/sources/task-contract.md
+07f95c4b1bdbd4640a8b8c23aee1f8a71c4f664294ae1521a749e2e533cfbac6  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/broken-evidence-link/sources/verification-contract.md
+a9f057f742aa222f0e289dc64ba0e3e7b21f3ae86fa6375d793685c68ea32d58  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/invalid-context-header/.vibe/context/areas/core-contracts.context.json
+1527f46b13ffbb006f665438b6f2ad5daa32f02e0b923bd34696425e7fe50e1d  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/invalid-context-header/.vibe/context/areas/core-contracts.header.json
+e3136903cc9b2ab5dd9c6a257a1a849158042a3700076b261569be446a88783a  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/invalid-context-header/.vibe/context/index/context-graph.header.json
+3bef30805d0313375de658b27e0dab0c7875876d636846a185f5500252dbba0a  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/invalid-context-header/.vibe/context/index/context-graph.json
+67a3df90d1a03b13dbf7a544f258900d7a6b07548c92acf5f53869c5f3e7c170  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/invalid-context-header/.vibe/context/index/context-index.header.json
+3202bfea1c2fc50ce479ed546be9d791a0ff0eaca87e66c57e0cef585adaa665  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/invalid-context-header/.vibe/context/index/context-index.json
+28a49c0e5fd847b56223ff39e7fb850dfc139cdf740afe9bb42620d730d008ba  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/invalid-context-header/.vibe/context/schema/schema-manifest.json
+e7c33627df6fecf8df0f022e6fbdeedd3ed5ee1bf49488774ba455cc9a3bca75  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/invalid-context-header/.vibe/context/summaries/core-contracts-summary.header.json
+750e4abd3fb47edac262cf98ef7c9e248459cee8a0ac0ce3df4f0c0e168f48af  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/invalid-context-header/.vibe/context/summaries/core-contracts-summary.summary.json
+407ea6f7f3ae3c3637122d88c381bb10452aa634af80b99d6237a7afcdf7c357  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/invalid-context-header/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+407ea6f7f3ae3c3637122d88c381bb10452aa634af80b99d6237a7afcdf7c357  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/invalid-context-header/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+8bda32d188216092a0ba780e51b2f3338f5eb98b0a9b6f5155dc7573b85e5f5d  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/invalid-context-header/docs/decisions/DL-09-context-memory-drift.md
+069005bb09ffa6b162576137d3baecd3344f752d887cc01c6c979925afcb124e  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/invalid-context-header/sources/task-contract.md
+07f95c4b1bdbd4640a8b8c23aee1f8a71c4f664294ae1521a749e2e533cfbac6  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/invalid-context-header/sources/verification-contract.md
+a9f057f742aa222f0e289dc64ba0e3e7b21f3ae86fa6375d793685c68ea32d58  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/load-everything-request/.vibe/context/areas/core-contracts.context.json
+a9e38605fd3a15e813f301bea93545a7ab40bedfcf01a1fd809c043dcb6b87a2  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/load-everything-request/.vibe/context/areas/core-contracts.header.json
+e3136903cc9b2ab5dd9c6a257a1a849158042a3700076b261569be446a88783a  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/load-everything-request/.vibe/context/index/context-graph.header.json
+3bef30805d0313375de658b27e0dab0c7875876d636846a185f5500252dbba0a  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/load-everything-request/.vibe/context/index/context-graph.json
+67a3df90d1a03b13dbf7a544f258900d7a6b07548c92acf5f53869c5f3e7c170  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/load-everything-request/.vibe/context/index/context-index.header.json
+3202bfea1c2fc50ce479ed546be9d791a0ff0eaca87e66c57e0cef585adaa665  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/load-everything-request/.vibe/context/index/context-index.json
+28a49c0e5fd847b56223ff39e7fb850dfc139cdf740afe9bb42620d730d008ba  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/load-everything-request/.vibe/context/schema/schema-manifest.json
+e7c33627df6fecf8df0f022e6fbdeedd3ed5ee1bf49488774ba455cc9a3bca75  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/load-everything-request/.vibe/context/summaries/core-contracts-summary.header.json
+750e4abd3fb47edac262cf98ef7c9e248459cee8a0ac0ce3df4f0c0e168f48af  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/load-everything-request/.vibe/context/summaries/core-contracts-summary.summary.json
+407ea6f7f3ae3c3637122d88c381bb10452aa634af80b99d6237a7afcdf7c357  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/load-everything-request/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+407ea6f7f3ae3c3637122d88c381bb10452aa634af80b99d6237a7afcdf7c357  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/load-everything-request/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+8bda32d188216092a0ba780e51b2f3338f5eb98b0a9b6f5155dc7573b85e5f5d  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/load-everything-request/docs/decisions/DL-09-context-memory-drift.md
+069005bb09ffa6b162576137d3baecd3344f752d887cc01c6c979925afcb124e  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/load-everything-request/sources/task-contract.md
+07f95c4b1bdbd4640a8b8c23aee1f8a71c4f664294ae1521a749e2e533cfbac6  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/load-everything-request/sources/verification-contract.md
+a9f057f742aa222f0e289dc64ba0e3e7b21f3ae86fa6375d793685c68ea32d58  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-context-header-json/.vibe/context/areas/core-contracts.context.json
+8cae793be15e24fd639fe483d50c8f75a0858b4357b202e812b456626ccfb3cb  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-context-header-json/.vibe/context/areas/core-contracts.header.json
+e3136903cc9b2ab5dd9c6a257a1a849158042a3700076b261569be446a88783a  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-context-header-json/.vibe/context/index/context-graph.header.json
+3bef30805d0313375de658b27e0dab0c7875876d636846a185f5500252dbba0a  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-context-header-json/.vibe/context/index/context-graph.json
+67a3df90d1a03b13dbf7a544f258900d7a6b07548c92acf5f53869c5f3e7c170  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-context-header-json/.vibe/context/index/context-index.header.json
+3202bfea1c2fc50ce479ed546be9d791a0ff0eaca87e66c57e0cef585adaa665  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-context-header-json/.vibe/context/index/context-index.json
+28a49c0e5fd847b56223ff39e7fb850dfc139cdf740afe9bb42620d730d008ba  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-context-header-json/.vibe/context/schema/schema-manifest.json
+e7c33627df6fecf8df0f022e6fbdeedd3ed5ee1bf49488774ba455cc9a3bca75  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-context-header-json/.vibe/context/summaries/core-contracts-summary.header.json
+750e4abd3fb47edac262cf98ef7c9e248459cee8a0ac0ce3df4f0c0e168f48af  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-context-header-json/.vibe/context/summaries/core-contracts-summary.summary.json
+407ea6f7f3ae3c3637122d88c381bb10452aa634af80b99d6237a7afcdf7c357  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-context-header-json/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+407ea6f7f3ae3c3637122d88c381bb10452aa634af80b99d6237a7afcdf7c357  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-context-header-json/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+8bda32d188216092a0ba780e51b2f3338f5eb98b0a9b6f5155dc7573b85e5f5d  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-context-header-json/docs/decisions/DL-09-context-memory-drift.md
+069005bb09ffa6b162576137d3baecd3344f752d887cc01c6c979925afcb124e  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-context-header-json/sources/task-contract.md
+07f95c4b1bdbd4640a8b8c23aee1f8a71c4f664294ae1521a749e2e533cfbac6  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-context-header-json/sources/verification-contract.md
+a9f057f742aa222f0e289dc64ba0e3e7b21f3ae86fa6375d793685c68ea32d58  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-graph-json/.vibe/context/areas/core-contracts.context.json
+a9e38605fd3a15e813f301bea93545a7ab40bedfcf01a1fd809c043dcb6b87a2  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-graph-json/.vibe/context/areas/core-contracts.header.json
+e3136903cc9b2ab5dd9c6a257a1a849158042a3700076b261569be446a88783a  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-graph-json/.vibe/context/index/context-graph.header.json
+8cae793be15e24fd639fe483d50c8f75a0858b4357b202e812b456626ccfb3cb  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-graph-json/.vibe/context/index/context-graph.json
+67a3df90d1a03b13dbf7a544f258900d7a6b07548c92acf5f53869c5f3e7c170  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-graph-json/.vibe/context/index/context-index.header.json
+3202bfea1c2fc50ce479ed546be9d791a0ff0eaca87e66c57e0cef585adaa665  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-graph-json/.vibe/context/index/context-index.json
+28a49c0e5fd847b56223ff39e7fb850dfc139cdf740afe9bb42620d730d008ba  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-graph-json/.vibe/context/schema/schema-manifest.json
+e7c33627df6fecf8df0f022e6fbdeedd3ed5ee1bf49488774ba455cc9a3bca75  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-graph-json/.vibe/context/summaries/core-contracts-summary.header.json
+750e4abd3fb47edac262cf98ef7c9e248459cee8a0ac0ce3df4f0c0e168f48af  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-graph-json/.vibe/context/summaries/core-contracts-summary.summary.json
+407ea6f7f3ae3c3637122d88c381bb10452aa634af80b99d6237a7afcdf7c357  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-graph-json/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+407ea6f7f3ae3c3637122d88c381bb10452aa634af80b99d6237a7afcdf7c357  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-graph-json/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+8bda32d188216092a0ba780e51b2f3338f5eb98b0a9b6f5155dc7573b85e5f5d  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-graph-json/docs/decisions/DL-09-context-memory-drift.md
+069005bb09ffa6b162576137d3baecd3344f752d887cc01c6c979925afcb124e  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-graph-json/sources/task-contract.md
+07f95c4b1bdbd4640a8b8c23aee1f8a71c4f664294ae1521a749e2e533cfbac6  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-graph-json/sources/verification-contract.md
+a9f057f742aa222f0e289dc64ba0e3e7b21f3ae86fa6375d793685c68ea32d58  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-index-json/.vibe/context/areas/core-contracts.context.json
+a9e38605fd3a15e813f301bea93545a7ab40bedfcf01a1fd809c043dcb6b87a2  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-index-json/.vibe/context/areas/core-contracts.header.json
+e3136903cc9b2ab5dd9c6a257a1a849158042a3700076b261569be446a88783a  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-index-json/.vibe/context/index/context-graph.header.json
+3bef30805d0313375de658b27e0dab0c7875876d636846a185f5500252dbba0a  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-index-json/.vibe/context/index/context-graph.json
+67a3df90d1a03b13dbf7a544f258900d7a6b07548c92acf5f53869c5f3e7c170  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-index-json/.vibe/context/index/context-index.header.json
+8cae793be15e24fd639fe483d50c8f75a0858b4357b202e812b456626ccfb3cb  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-index-json/.vibe/context/index/context-index.json
+28a49c0e5fd847b56223ff39e7fb850dfc139cdf740afe9bb42620d730d008ba  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-index-json/.vibe/context/schema/schema-manifest.json
+e7c33627df6fecf8df0f022e6fbdeedd3ed5ee1bf49488774ba455cc9a3bca75  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-index-json/.vibe/context/summaries/core-contracts-summary.header.json
+750e4abd3fb47edac262cf98ef7c9e248459cee8a0ac0ce3df4f0c0e168f48af  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-index-json/.vibe/context/summaries/core-contracts-summary.summary.json
+407ea6f7f3ae3c3637122d88c381bb10452aa634af80b99d6237a7afcdf7c357  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-index-json/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+407ea6f7f3ae3c3637122d88c381bb10452aa634af80b99d6237a7afcdf7c357  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-index-json/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+8bda32d188216092a0ba780e51b2f3338f5eb98b0a9b6f5155dc7573b85e5f5d  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-index-json/docs/decisions/DL-09-context-memory-drift.md
+069005bb09ffa6b162576137d3baecd3344f752d887cc01c6c979925afcb124e  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-index-json/sources/task-contract.md
+07f95c4b1bdbd4640a8b8c23aee1f8a71c4f664294ae1521a749e2e533cfbac6  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/malformed-index-json/sources/verification-contract.md
+a9f057f742aa222f0e289dc64ba0e3e7b21f3ae86fa6375d793685c68ea32d58  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/mislinked-work-path/.vibe/context/areas/core-contracts.context.json
+a9e38605fd3a15e813f301bea93545a7ab40bedfcf01a1fd809c043dcb6b87a2  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/mislinked-work-path/.vibe/context/areas/core-contracts.header.json
+e3136903cc9b2ab5dd9c6a257a1a849158042a3700076b261569be446a88783a  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/mislinked-work-path/.vibe/context/index/context-graph.header.json
+0009677ec9c6cefad9b9a86e93e0ceb2551d870a2b3335b3c7887803b1d55907  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/mislinked-work-path/.vibe/context/index/context-graph.json
+67a3df90d1a03b13dbf7a544f258900d7a6b07548c92acf5f53869c5f3e7c170  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/mislinked-work-path/.vibe/context/index/context-index.header.json
+3202bfea1c2fc50ce479ed546be9d791a0ff0eaca87e66c57e0cef585adaa665  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/mislinked-work-path/.vibe/context/index/context-index.json
+28a49c0e5fd847b56223ff39e7fb850dfc139cdf740afe9bb42620d730d008ba  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/mislinked-work-path/.vibe/context/schema/schema-manifest.json
+e7c33627df6fecf8df0f022e6fbdeedd3ed5ee1bf49488774ba455cc9a3bca75  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/mislinked-work-path/.vibe/context/summaries/core-contracts-summary.header.json
+750e4abd3fb47edac262cf98ef7c9e248459cee8a0ac0ce3df4f0c0e168f48af  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/mislinked-work-path/.vibe/context/summaries/core-contracts-summary.summary.json
+407ea6f7f3ae3c3637122d88c381bb10452aa634af80b99d6237a7afcdf7c357  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/mislinked-work-path/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+407ea6f7f3ae3c3637122d88c381bb10452aa634af80b99d6237a7afcdf7c357  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/mislinked-work-path/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+8bda32d188216092a0ba780e51b2f3338f5eb98b0a9b6f5155dc7573b85e5f5d  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/mislinked-work-path/docs/decisions/DL-09-context-memory-drift.md
+069005bb09ffa6b162576137d3baecd3344f752d887cc01c6c979925afcb124e  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/mislinked-work-path/sources/task-contract.md
+07f95c4b1bdbd4640a8b8c23aee1f8a71c4f664294ae1521a749e2e533cfbac6  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/mislinked-work-path/sources/verification-contract.md
+a9f057f742aa222f0e289dc64ba0e3e7b21f3ae86fa6375d793685c68ea32d58  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-mandatory-level-one/.vibe/context/areas/core-contracts.context.json
+a9e38605fd3a15e813f301bea93545a7ab40bedfcf01a1fd809c043dcb6b87a2  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-mandatory-level-one/.vibe/context/areas/core-contracts.header.json
+e3136903cc9b2ab5dd9c6a257a1a849158042a3700076b261569be446a88783a  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-mandatory-level-one/.vibe/context/index/context-graph.header.json
+867a42877b2275122518efaac5bbc4c70897bd7518d8b4b8b4510b1dd7497647  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-mandatory-level-one/.vibe/context/index/context-graph.json
+67a3df90d1a03b13dbf7a544f258900d7a6b07548c92acf5f53869c5f3e7c170  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-mandatory-level-one/.vibe/context/index/context-index.header.json
+3202bfea1c2fc50ce479ed546be9d791a0ff0eaca87e66c57e0cef585adaa665  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-mandatory-level-one/.vibe/context/index/context-index.json
+28a49c0e5fd847b56223ff39e7fb850dfc139cdf740afe9bb42620d730d008ba  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-mandatory-level-one/.vibe/context/schema/schema-manifest.json
+e7c33627df6fecf8df0f022e6fbdeedd3ed5ee1bf49488774ba455cc9a3bca75  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-mandatory-level-one/.vibe/context/summaries/core-contracts-summary.header.json
+750e4abd3fb47edac262cf98ef7c9e248459cee8a0ac0ce3df4f0c0e168f48af  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-mandatory-level-one/.vibe/context/summaries/core-contracts-summary.summary.json
+407ea6f7f3ae3c3637122d88c381bb10452aa634af80b99d6237a7afcdf7c357  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-mandatory-level-one/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+407ea6f7f3ae3c3637122d88c381bb10452aa634af80b99d6237a7afcdf7c357  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-mandatory-level-one/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+8bda32d188216092a0ba780e51b2f3338f5eb98b0a9b6f5155dc7573b85e5f5d  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-mandatory-level-one/docs/decisions/DL-09-context-memory-drift.md
+069005bb09ffa6b162576137d3baecd3344f752d887cc01c6c979925afcb124e  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-mandatory-level-one/sources/task-contract.md
+07f95c4b1bdbd4640a8b8c23aee1f8a71c4f664294ae1521a749e2e533cfbac6  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-mandatory-level-one/sources/verification-contract.md
+a9f057f742aa222f0e289dc64ba0e3e7b21f3ae86fa6375d793685c68ea32d58  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-citation/.vibe/context/areas/core-contracts.context.json
+a9e38605fd3a15e813f301bea93545a7ab40bedfcf01a1fd809c043dcb6b87a2  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-citation/.vibe/context/areas/core-contracts.header.json
+e3136903cc9b2ab5dd9c6a257a1a849158042a3700076b261569be446a88783a  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-citation/.vibe/context/index/context-graph.header.json
+87be09172e9c7fd424e9b0f5aea6e86a5c76c1437c1f7a0cbaee0fa09ec99154  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-citation/.vibe/context/index/context-graph.json
+67a3df90d1a03b13dbf7a544f258900d7a6b07548c92acf5f53869c5f3e7c170  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-citation/.vibe/context/index/context-index.header.json
+3202bfea1c2fc50ce479ed546be9d791a0ff0eaca87e66c57e0cef585adaa665  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-citation/.vibe/context/index/context-index.json
+28a49c0e5fd847b56223ff39e7fb850dfc139cdf740afe9bb42620d730d008ba  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-citation/.vibe/context/schema/schema-manifest.json
+e7c33627df6fecf8df0f022e6fbdeedd3ed5ee1bf49488774ba455cc9a3bca75  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-citation/.vibe/context/summaries/core-contracts-summary.header.json
+750e4abd3fb47edac262cf98ef7c9e248459cee8a0ac0ce3df4f0c0e168f48af  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-citation/.vibe/context/summaries/core-contracts-summary.summary.json
+407ea6f7f3ae3c3637122d88c381bb10452aa634af80b99d6237a7afcdf7c357  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-citation/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+407ea6f7f3ae3c3637122d88c381bb10452aa634af80b99d6237a7afcdf7c357  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-citation/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+8bda32d188216092a0ba780e51b2f3338f5eb98b0a9b6f5155dc7573b85e5f5d  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-citation/docs/decisions/DL-09-context-memory-drift.md
+069005bb09ffa6b162576137d3baecd3344f752d887cc01c6c979925afcb124e  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-citation/sources/task-contract.md
+07f95c4b1bdbd4640a8b8c23aee1f8a71c4f664294ae1521a749e2e533cfbac6  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-citation/sources/verification-contract.md
+a9f057f742aa222f0e289dc64ba0e3e7b21f3ae86fa6375d793685c68ea32d58  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-file/.vibe/context/areas/core-contracts.context.json
+a9e38605fd3a15e813f301bea93545a7ab40bedfcf01a1fd809c043dcb6b87a2  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-file/.vibe/context/areas/core-contracts.header.json
+e3136903cc9b2ab5dd9c6a257a1a849158042a3700076b261569be446a88783a  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-file/.vibe/context/index/context-graph.header.json
+3bef30805d0313375de658b27e0dab0c7875876d636846a185f5500252dbba0a  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-file/.vibe/context/index/context-graph.json
+67a3df90d1a03b13dbf7a544f258900d7a6b07548c92acf5f53869c5f3e7c170  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-file/.vibe/context/index/context-index.header.json
+3202bfea1c2fc50ce479ed546be9d791a0ff0eaca87e66c57e0cef585adaa665  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-file/.vibe/context/index/context-index.json
+28a49c0e5fd847b56223ff39e7fb850dfc139cdf740afe9bb42620d730d008ba  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-file/.vibe/context/schema/schema-manifest.json
+e7c33627df6fecf8df0f022e6fbdeedd3ed5ee1bf49488774ba455cc9a3bca75  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-file/.vibe/context/summaries/core-contracts-summary.header.json
+750e4abd3fb47edac262cf98ef7c9e248459cee8a0ac0ce3df4f0c0e168f48af  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-file/.vibe/context/summaries/core-contracts-summary.summary.json
+407ea6f7f3ae3c3637122d88c381bb10452aa634af80b99d6237a7afcdf7c357  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-file/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+407ea6f7f3ae3c3637122d88c381bb10452aa634af80b99d6237a7afcdf7c357  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-file/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+8bda32d188216092a0ba780e51b2f3338f5eb98b0a9b6f5155dc7573b85e5f5d  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-file/docs/decisions/DL-09-context-memory-drift.md
+07f95c4b1bdbd4640a8b8c23aee1f8a71c4f664294ae1521a749e2e533cfbac6  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/missing-source-file/sources/verification-contract.md
+a9f057f742aa222f0e289dc64ba0e3e7b21f3ae86fa6375d793685c68ea32d58  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-link-ref/.vibe/context/areas/core-contracts.context.json
+a9e38605fd3a15e813f301bea93545a7ab40bedfcf01a1fd809c043dcb6b87a2  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-link-ref/.vibe/context/areas/core-contracts.header.json
+e3136903cc9b2ab5dd9c6a257a1a849158042a3700076b261569be446a88783a  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-link-ref/.vibe/context/index/context-graph.header.json
+ae03c4915fa9d3aa63a3525c322ac23135551d6eb3875a09640a56c276d49356  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-link-ref/.vibe/context/index/context-graph.json
+67a3df90d1a03b13dbf7a544f258900d7a6b07548c92acf5f53869c5f3e7c170  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-link-ref/.vibe/context/index/context-index.header.json
+3202bfea1c2fc50ce479ed546be9d791a0ff0eaca87e66c57e0cef585adaa665  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-link-ref/.vibe/context/index/context-index.json
+28a49c0e5fd847b56223ff39e7fb850dfc139cdf740afe9bb42620d730d008ba  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-link-ref/.vibe/context/schema/schema-manifest.json
+e7c33627df6fecf8df0f022e6fbdeedd3ed5ee1bf49488774ba455cc9a3bca75  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-link-ref/.vibe/context/summaries/core-contracts-summary.header.json
+750e4abd3fb47edac262cf98ef7c9e248459cee8a0ac0ce3df4f0c0e168f48af  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-link-ref/.vibe/context/summaries/core-contracts-summary.summary.json
+407ea6f7f3ae3c3637122d88c381bb10452aa634af80b99d6237a7afcdf7c357  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-link-ref/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+407ea6f7f3ae3c3637122d88c381bb10452aa634af80b99d6237a7afcdf7c357  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-link-ref/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+8bda32d188216092a0ba780e51b2f3338f5eb98b0a9b6f5155dc7573b85e5f5d  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-link-ref/docs/decisions/DL-09-context-memory-drift.md
+069005bb09ffa6b162576137d3baecd3344f752d887cc01c6c979925afcb124e  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-link-ref/sources/task-contract.md
+07f95c4b1bdbd4640a8b8c23aee1f8a71c4f664294ae1521a749e2e533cfbac6  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-link-ref/sources/verification-contract.md
+a9f057f742aa222f0e289dc64ba0e3e7b21f3ae86fa6375d793685c68ea32d58  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-source-ref/.vibe/context/areas/core-contracts.context.json
+a9e38605fd3a15e813f301bea93545a7ab40bedfcf01a1fd809c043dcb6b87a2  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-source-ref/.vibe/context/areas/core-contracts.header.json
+e3136903cc9b2ab5dd9c6a257a1a849158042a3700076b261569be446a88783a  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-source-ref/.vibe/context/index/context-graph.header.json
+578a39478a415abcbeb11b2b0090694d4de40c4a73ecb1b7532854ae2cbcf17e  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-source-ref/.vibe/context/index/context-graph.json
+67a3df90d1a03b13dbf7a544f258900d7a6b07548c92acf5f53869c5f3e7c170  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-source-ref/.vibe/context/index/context-index.header.json
+3202bfea1c2fc50ce479ed546be9d791a0ff0eaca87e66c57e0cef585adaa665  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-source-ref/.vibe/context/index/context-index.json
+28a49c0e5fd847b56223ff39e7fb850dfc139cdf740afe9bb42620d730d008ba  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-source-ref/.vibe/context/schema/schema-manifest.json
+e7c33627df6fecf8df0f022e6fbdeedd3ed5ee1bf49488774ba455cc9a3bca75  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-source-ref/.vibe/context/summaries/core-contracts-summary.header.json
+750e4abd3fb47edac262cf98ef7c9e248459cee8a0ac0ce3df4f0c0e168f48af  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-source-ref/.vibe/context/summaries/core-contracts-summary.summary.json
+407ea6f7f3ae3c3637122d88c381bb10452aa634af80b99d6237a7afcdf7c357  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-source-ref/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+407ea6f7f3ae3c3637122d88c381bb10452aa634af80b99d6237a7afcdf7c357  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-source-ref/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+8bda32d188216092a0ba780e51b2f3338f5eb98b0a9b6f5155dc7573b85e5f5d  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-source-ref/docs/decisions/DL-09-context-memory-drift.md
+069005bb09ffa6b162576137d3baecd3344f752d887cc01c6c979925afcb124e  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-source-ref/sources/task-contract.md
+07f95c4b1bdbd4640a8b8c23aee1f8a71c4f664294ae1521a749e2e533cfbac6  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/path-only-source-ref/sources/verification-contract.md
+a9f057f742aa222f0e289dc64ba0e3e7b21f3ae86fa6375d793685c68ea32d58  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/retriever-missing-level-one/.vibe/context/areas/core-contracts.context.json
+a9e38605fd3a15e813f301bea93545a7ab40bedfcf01a1fd809c043dcb6b87a2  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/retriever-missing-level-one/.vibe/context/areas/core-contracts.header.json
+e3136903cc9b2ab5dd9c6a257a1a849158042a3700076b261569be446a88783a  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/retriever-missing-level-one/.vibe/context/index/context-graph.header.json
+867a42877b2275122518efaac5bbc4c70897bd7518d8b4b8b4510b1dd7497647  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/retriever-missing-level-one/.vibe/context/index/context-graph.json
+67a3df90d1a03b13dbf7a544f258900d7a6b07548c92acf5f53869c5f3e7c170  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/retriever-missing-level-one/.vibe/context/index/context-index.header.json
+3202bfea1c2fc50ce479ed546be9d791a0ff0eaca87e66c57e0cef585adaa665  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/retriever-missing-level-one/.vibe/context/index/context-index.json
+28a49c0e5fd847b56223ff39e7fb850dfc139cdf740afe9bb42620d730d008ba  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/retriever-missing-level-one/.vibe/context/schema/schema-manifest.json
+e7c33627df6fecf8df0f022e6fbdeedd3ed5ee1bf49488774ba455cc9a3bca75  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/retriever-missing-level-one/.vibe/context/summaries/core-contracts-summary.header.json
+750e4abd3fb47edac262cf98ef7c9e248459cee8a0ac0ce3df4f0c0e168f48af  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/retriever-missing-level-one/.vibe/context/summaries/core-contracts-summary.summary.json
+407ea6f7f3ae3c3637122d88c381bb10452aa634af80b99d6237a7afcdf7c357  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/retriever-missing-level-one/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+407ea6f7f3ae3c3637122d88c381bb10452aa634af80b99d6237a7afcdf7c357  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/retriever-missing-level-one/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+8bda32d188216092a0ba780e51b2f3338f5eb98b0a9b6f5155dc7573b85e5f5d  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/retriever-missing-level-one/docs/decisions/DL-09-context-memory-drift.md
+069005bb09ffa6b162576137d3baecd3344f752d887cc01c6c979925afcb124e  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/retriever-missing-level-one/sources/task-contract.md
+07f95c4b1bdbd4640a8b8c23aee1f8a71c4f664294ae1521a749e2e533cfbac6  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/retriever-missing-level-one/sources/verification-contract.md
+a9f057f742aa222f0e289dc64ba0e3e7b21f3ae86fa6375d793685c68ea32d58  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-source-fingerprint/.vibe/context/areas/core-contracts.context.json
+a9e38605fd3a15e813f301bea93545a7ab40bedfcf01a1fd809c043dcb6b87a2  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-source-fingerprint/.vibe/context/areas/core-contracts.header.json
+e3136903cc9b2ab5dd9c6a257a1a849158042a3700076b261569be446a88783a  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-source-fingerprint/.vibe/context/index/context-graph.header.json
+3bef30805d0313375de658b27e0dab0c7875876d636846a185f5500252dbba0a  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-source-fingerprint/.vibe/context/index/context-graph.json
+67a3df90d1a03b13dbf7a544f258900d7a6b07548c92acf5f53869c5f3e7c170  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-source-fingerprint/.vibe/context/index/context-index.header.json
+3202bfea1c2fc50ce479ed546be9d791a0ff0eaca87e66c57e0cef585adaa665  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-source-fingerprint/.vibe/context/index/context-index.json
+28a49c0e5fd847b56223ff39e7fb850dfc139cdf740afe9bb42620d730d008ba  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-source-fingerprint/.vibe/context/schema/schema-manifest.json
+e7c33627df6fecf8df0f022e6fbdeedd3ed5ee1bf49488774ba455cc9a3bca75  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-source-fingerprint/.vibe/context/summaries/core-contracts-summary.header.json
+750e4abd3fb47edac262cf98ef7c9e248459cee8a0ac0ce3df4f0c0e168f48af  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-source-fingerprint/.vibe/context/summaries/core-contracts-summary.summary.json
+407ea6f7f3ae3c3637122d88c381bb10452aa634af80b99d6237a7afcdf7c357  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-source-fingerprint/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+407ea6f7f3ae3c3637122d88c381bb10452aa634af80b99d6237a7afcdf7c357  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-source-fingerprint/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+8bda32d188216092a0ba780e51b2f3338f5eb98b0a9b6f5155dc7573b85e5f5d  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-source-fingerprint/docs/decisions/DL-09-context-memory-drift.md
+d8308da45951d9092b93347ab57e7438ab7c015ce16a7e0a978e2113b57e2255  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-source-fingerprint/sources/task-contract.md
+07f95c4b1bdbd4640a8b8c23aee1f8a71c4f664294ae1521a749e2e533cfbac6  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-source-fingerprint/sources/verification-contract.md
+a9f057f742aa222f0e289dc64ba0e3e7b21f3ae86fa6375d793685c68ea32d58  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-summary-ref/.vibe/context/areas/core-contracts.context.json
+a9e38605fd3a15e813f301bea93545a7ab40bedfcf01a1fd809c043dcb6b87a2  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-summary-ref/.vibe/context/areas/core-contracts.header.json
+e3136903cc9b2ab5dd9c6a257a1a849158042a3700076b261569be446a88783a  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-summary-ref/.vibe/context/index/context-graph.header.json
+3bef30805d0313375de658b27e0dab0c7875876d636846a185f5500252dbba0a  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-summary-ref/.vibe/context/index/context-graph.json
+67a3df90d1a03b13dbf7a544f258900d7a6b07548c92acf5f53869c5f3e7c170  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-summary-ref/.vibe/context/index/context-index.header.json
+3202bfea1c2fc50ce479ed546be9d791a0ff0eaca87e66c57e0cef585adaa665  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-summary-ref/.vibe/context/index/context-index.json
+28a49c0e5fd847b56223ff39e7fb850dfc139cdf740afe9bb42620d730d008ba  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-summary-ref/.vibe/context/schema/schema-manifest.json
+e7c33627df6fecf8df0f022e6fbdeedd3ed5ee1bf49488774ba455cc9a3bca75  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-summary-ref/.vibe/context/summaries/core-contracts-summary.header.json
+db5a7167ceb951211d680ad40b6cb9a5d343f9059471b700c7d09bf71ba75b39  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-summary-ref/.vibe/context/summaries/core-contracts-summary.summary.json
+407ea6f7f3ae3c3637122d88c381bb10452aa634af80b99d6237a7afcdf7c357  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-summary-ref/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+407ea6f7f3ae3c3637122d88c381bb10452aa634af80b99d6237a7afcdf7c357  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-summary-ref/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+8bda32d188216092a0ba780e51b2f3338f5eb98b0a9b6f5155dc7573b85e5f5d  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-summary-ref/docs/decisions/DL-09-context-memory-drift.md
+069005bb09ffa6b162576137d3baecd3344f752d887cc01c6c979925afcb124e  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-summary-ref/sources/task-contract.md
+07f95c4b1bdbd4640a8b8c23aee1f8a71c4f664294ae1521a749e2e533cfbac6  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/stale-summary-ref/sources/verification-contract.md
+a9f057f742aa222f0e289dc64ba0e3e7b21f3ae86fa6375d793685c68ea32d58  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/summary-without-source-refs/.vibe/context/areas/core-contracts.context.json
+a9e38605fd3a15e813f301bea93545a7ab40bedfcf01a1fd809c043dcb6b87a2  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/summary-without-source-refs/.vibe/context/areas/core-contracts.header.json
+e3136903cc9b2ab5dd9c6a257a1a849158042a3700076b261569be446a88783a  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/summary-without-source-refs/.vibe/context/index/context-graph.header.json
+3bef30805d0313375de658b27e0dab0c7875876d636846a185f5500252dbba0a  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/summary-without-source-refs/.vibe/context/index/context-graph.json
+67a3df90d1a03b13dbf7a544f258900d7a6b07548c92acf5f53869c5f3e7c170  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/summary-without-source-refs/.vibe/context/index/context-index.header.json
+3202bfea1c2fc50ce479ed546be9d791a0ff0eaca87e66c57e0cef585adaa665  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/summary-without-source-refs/.vibe/context/index/context-index.json
+28a49c0e5fd847b56223ff39e7fb850dfc139cdf740afe9bb42620d730d008ba  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/summary-without-source-refs/.vibe/context/schema/schema-manifest.json
+e7c33627df6fecf8df0f022e6fbdeedd3ed5ee1bf49488774ba455cc9a3bca75  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/summary-without-source-refs/.vibe/context/summaries/core-contracts-summary.header.json
+49aabdccbfe8fac47a7d1ad3fcb27278c99536de4e0943395bb9a73f6cb40d60  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/summary-without-source-refs/.vibe/context/summaries/core-contracts-summary.summary.json
+407ea6f7f3ae3c3637122d88c381bb10452aa634af80b99d6237a7afcdf7c357  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/summary-without-source-refs/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+407ea6f7f3ae3c3637122d88c381bb10452aa634af80b99d6237a7afcdf7c357  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/summary-without-source-refs/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+8bda32d188216092a0ba780e51b2f3338f5eb98b0a9b6f5155dc7573b85e5f5d  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/summary-without-source-refs/docs/decisions/DL-09-context-memory-drift.md
+069005bb09ffa6b162576137d3baecd3344f752d887cc01c6c979925afcb124e  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/summary-without-source-refs/sources/task-contract.md
+07f95c4b1bdbd4640a8b8c23aee1f8a71c4f664294ae1521a749e2e533cfbac6  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/summary-without-source-refs/sources/verification-contract.md
+a9f057f742aa222f0e289dc64ba0e3e7b21f3ae86fa6375d793685c68ea32d58  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsafe-domain-request/.vibe/context/areas/core-contracts.context.json
+a9e38605fd3a15e813f301bea93545a7ab40bedfcf01a1fd809c043dcb6b87a2  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsafe-domain-request/.vibe/context/areas/core-contracts.header.json
+e3136903cc9b2ab5dd9c6a257a1a849158042a3700076b261569be446a88783a  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsafe-domain-request/.vibe/context/index/context-graph.header.json
+3bef30805d0313375de658b27e0dab0c7875876d636846a185f5500252dbba0a  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsafe-domain-request/.vibe/context/index/context-graph.json
+67a3df90d1a03b13dbf7a544f258900d7a6b07548c92acf5f53869c5f3e7c170  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsafe-domain-request/.vibe/context/index/context-index.header.json
+3202bfea1c2fc50ce479ed546be9d791a0ff0eaca87e66c57e0cef585adaa665  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsafe-domain-request/.vibe/context/index/context-index.json
+28a49c0e5fd847b56223ff39e7fb850dfc139cdf740afe9bb42620d730d008ba  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsafe-domain-request/.vibe/context/schema/schema-manifest.json
+e7c33627df6fecf8df0f022e6fbdeedd3ed5ee1bf49488774ba455cc9a3bca75  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsafe-domain-request/.vibe/context/summaries/core-contracts-summary.header.json
+750e4abd3fb47edac262cf98ef7c9e248459cee8a0ac0ce3df4f0c0e168f48af  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsafe-domain-request/.vibe/context/summaries/core-contracts-summary.summary.json
+407ea6f7f3ae3c3637122d88c381bb10452aa634af80b99d6237a7afcdf7c357  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsafe-domain-request/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+407ea6f7f3ae3c3637122d88c381bb10452aa634af80b99d6237a7afcdf7c357  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsafe-domain-request/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+8bda32d188216092a0ba780e51b2f3338f5eb98b0a9b6f5155dc7573b85e5f5d  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsafe-domain-request/docs/decisions/DL-09-context-memory-drift.md
+069005bb09ffa6b162576137d3baecd3344f752d887cc01c6c979925afcb124e  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsafe-domain-request/sources/task-contract.md
+07f95c4b1bdbd4640a8b8c23aee1f8a71c4f664294ae1521a749e2e533cfbac6  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsafe-domain-request/sources/verification-contract.md
+a9f057f742aa222f0e289dc64ba0e3e7b21f3ae86fa6375d793685c68ea32d58  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-context-version/.vibe/context/areas/core-contracts.context.json
+a9e38605fd3a15e813f301bea93545a7ab40bedfcf01a1fd809c043dcb6b87a2  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-context-version/.vibe/context/areas/core-contracts.header.json
+e3136903cc9b2ab5dd9c6a257a1a849158042a3700076b261569be446a88783a  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-context-version/.vibe/context/index/context-graph.header.json
+b9e2e27badfea0f82a49ae54dae1b2d559cde92c52165b9313822fa3c610c398  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-context-version/.vibe/context/index/context-graph.json
+67a3df90d1a03b13dbf7a544f258900d7a6b07548c92acf5f53869c5f3e7c170  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-context-version/.vibe/context/index/context-index.header.json
+3202bfea1c2fc50ce479ed546be9d791a0ff0eaca87e66c57e0cef585adaa665  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-context-version/.vibe/context/index/context-index.json
+28a49c0e5fd847b56223ff39e7fb850dfc139cdf740afe9bb42620d730d008ba  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-context-version/.vibe/context/schema/schema-manifest.json
+e7c33627df6fecf8df0f022e6fbdeedd3ed5ee1bf49488774ba455cc9a3bca75  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-context-version/.vibe/context/summaries/core-contracts-summary.header.json
+750e4abd3fb47edac262cf98ef7c9e248459cee8a0ac0ce3df4f0c0e168f48af  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-context-version/.vibe/context/summaries/core-contracts-summary.summary.json
+407ea6f7f3ae3c3637122d88c381bb10452aa634af80b99d6237a7afcdf7c357  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-context-version/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+407ea6f7f3ae3c3637122d88c381bb10452aa634af80b99d6237a7afcdf7c357  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-context-version/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+8bda32d188216092a0ba780e51b2f3338f5eb98b0a9b6f5155dc7573b85e5f5d  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-context-version/docs/decisions/DL-09-context-memory-drift.md
+069005bb09ffa6b162576137d3baecd3344f752d887cc01c6c979925afcb124e  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-context-version/sources/task-contract.md
+07f95c4b1bdbd4640a8b8c23aee1f8a71c4f664294ae1521a749e2e533cfbac6  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-context-version/sources/verification-contract.md
+a9f057f742aa222f0e289dc64ba0e3e7b21f3ae86fa6375d793685c68ea32d58  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-index-version/.vibe/context/areas/core-contracts.context.json
+a9e38605fd3a15e813f301bea93545a7ab40bedfcf01a1fd809c043dcb6b87a2  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-index-version/.vibe/context/areas/core-contracts.header.json
+e3136903cc9b2ab5dd9c6a257a1a849158042a3700076b261569be446a88783a  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-index-version/.vibe/context/index/context-graph.header.json
+3bef30805d0313375de658b27e0dab0c7875876d636846a185f5500252dbba0a  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-index-version/.vibe/context/index/context-graph.json
+67a3df90d1a03b13dbf7a544f258900d7a6b07548c92acf5f53869c5f3e7c170  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-index-version/.vibe/context/index/context-index.header.json
+3003d6e2e2e428777f0694778af48cbada02e75102cd298ad9782caf6dff64ce  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-index-version/.vibe/context/index/context-index.json
+28a49c0e5fd847b56223ff39e7fb850dfc139cdf740afe9bb42620d730d008ba  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-index-version/.vibe/context/schema/schema-manifest.json
+e7c33627df6fecf8df0f022e6fbdeedd3ed5ee1bf49488774ba455cc9a3bca75  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-index-version/.vibe/context/summaries/core-contracts-summary.header.json
+750e4abd3fb47edac262cf98ef7c9e248459cee8a0ac0ce3df4f0c0e168f48af  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-index-version/.vibe/context/summaries/core-contracts-summary.summary.json
+407ea6f7f3ae3c3637122d88c381bb10452aa634af80b99d6237a7afcdf7c357  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-index-version/.vibe/evidence/I-08-context-graph-index-drift/evidence.json
+407ea6f7f3ae3c3637122d88c381bb10452aa634af80b99d6237a7afcdf7c357  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-index-version/.vibe/work/I-08-context-graph-index-drift/implementation-plan.json
+8bda32d188216092a0ba780e51b2f3338f5eb98b0a9b6f5155dc7573b85e5f5d  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-index-version/docs/decisions/DL-09-context-memory-drift.md
+069005bb09ffa6b162576137d3baecd3344f752d887cc01c6c979925afcb124e  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-index-version/sources/task-contract.md
+07f95c4b1bdbd4640a8b8c23aee1f8a71c4f664294ae1521a749e2e533cfbac6  .vibe/work/I-08-context-graph-index-drift/fixtures/negative-projects/unsupported-index-version/sources/verification-contract.md
+ded43c97a4f61f6a539a2efdcd80b718caa653a3e6af54b79185f013c914ae49  .vibe/work/I-08-context-graph-index-drift/I-08-implementation-report.md
+224a91a2f733d79a537b5e9cf403eb705eb3bd2317aa76d9b4208a69311b50e9  .vibe/work/I-08-context-graph-index-drift/I-08-validation-report.md
+## root/provider sentinel hashes
+b3d1455aade0eb27f0775c3dbe2abefd89dada97caac9b10f041061abcb30306  package.json
+aee47e9964f53e767a6d6a86a27c86b218a76cd59453c3401defad6907be5f21  pnpm-workspace.yaml
+0259217fb38660de9e7298c4d6e363c7810a436479c189ce7ca088dd06576fff  pnpm-lock.yaml
+1ace06c206300412035f1954b08d6ed97a2e244265ef70a7789f4488cede7498  packages/artifacts/package.json
+13c7c9b8271e4587d4004493351ac3c8946eb99539db011b545b7b8b4e5e9e1c  packages/artifacts/src/index.js
+7da528b2f75de52fbf90a99c65a1c0d33c118ac98f1b746a0565cd47dffc0461  packages/artifacts/schemas/context-file-header.schema.json
+9e8fbe90ac613ebefb6a5ad036560a03fc6b843ce041976e56af548bb0bbed4a  packages/config/package.json
+d9792cb00be16a1d65ad46dcf09a5e617ce12288db6b216e62353dba1c15b5a2  packages/config/src/index.js

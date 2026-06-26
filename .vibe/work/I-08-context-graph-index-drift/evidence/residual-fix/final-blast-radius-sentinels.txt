@@ -1,0 +1,131 @@
+## final scoped status owned
+?? .vibe/context/schema/
+?? .vibe/work/I-08-context-graph-index-drift/I-08-residual-fix-report.md
+?? .vibe/work/I-08-context-graph-index-drift/evidence/residual-fix/
+?? packages/context/package.json
+?? packages/context/src/
+?? packages/context/tests/
+## final protected diff names
+## final protected hashes
+b3d1455aade0eb27f0775c3dbe2abefd89dada97caac9b10f041061abcb30306  package.json
+aee47e9964f53e767a6d6a86a27c86b218a76cd59453c3401defad6907be5f21  pnpm-workspace.yaml
+0259217fb38660de9e7298c4d6e363c7810a436479c189ce7ca088dd06576fff  pnpm-lock.yaml
+918ad4e48eb39826c9a034611fd765c3c418c7ccfb890bc9c469ba33d2261d7b  turbo.json
+1ace06c206300412035f1954b08d6ed97a2e244265ef70a7789f4488cede7498  packages/artifacts/package.json
+13c7c9b8271e4587d4004493351ac3c8946eb99539db011b545b7b8b4e5e9e1c  packages/artifacts/src/index.js
+0cc1fa1a06bbf6ec293e2b24f15b9bb62a7fbf3dde511135bbb1ee117daa28bd  packages/artifacts/src/validation.js
+9e8fbe90ac613ebefb6a5ad036560a03fc6b843ce041976e56af548bb0bbed4a  packages/config/package.json
+d9792cb00be16a1d65ad46dcf09a5e617ce12288db6b216e62353dba1c15b5a2  packages/config/src/index.js
+## final owned hashes
+533a0699c9ea04b9582d83a44be35d7556b468df09beb2734b47b0215cd5ab49  .vibe/context/schema/context-area-v1.schema.json
+c35a81034b0b55d8ab07a2e869d68d3cc8443371c828f9689a10cfcc629f72d4  .vibe/context/schema/context-graph-v1.schema.json
+27e03b9485dc88f736f1b5c6ff5baf2b066cef6500e284f13952aa9afc0b22fe  .vibe/context/schema/context-index-v1.schema.json
+fe634f348ccd19348ea00b52147d49ed25ab98b691a5e75628089b64687efdb6  .vibe/context/schema/context-summary-v1.schema.json
+0342f8342c819f0cfceb7e34747439fc20f89a8e21ad3b949df0224ce42e7d71  .vibe/context/schema/retrieval-closure-v1.schema.json
+ef3e74531733087349c25fa945560563baf642ff1d4d9b9c2e871ec5ddb810ab  packages/context/src/index.d.ts
+6536efe314c2ef4456c2a74c564f37573ae533185ccf1fa61390cb0c50c3a063  packages/context/src/index.js
+e283d89d8832c15163ecf3e1f9cf18bfac7d8cb4dd6d027fe09c8470a2a8b417  packages/context/tests/negative-witness.mjs
+6c16c0d0e30fad81311653c205c59459faa6792bc98559ac79f74364e0a97da7  packages/context/tests/real-boundary-witness.mjs
+d4719346f7b98265aaba901ac9c12b7cd297475fd21240fcda7f82e82590c59d  packages/context/tests/schema-strictness-witness.mjs
+e112b0ce738413cc59e174fdd29acf74ab82408bc88f5c7d6a77d6b44f1bde3f  packages/context/package.json
+## citationRefs implementation snippets
+.vibe/context/schema/retrieval-closure-v1.schema.json:39:    "closureItem": { "type": "object", "additionalProperties": false, "required": ["contextId", "title", "level", "mandatory", "areaId", "sourceRefs", "artifactPath"], "properties": { "contextId": { "$ref": "#/$defs/nonEmptyString" }, "title": { "$ref": "#/$defs/nonEmptyString" }, "level": { "$ref": "#/$defs/level" }, "mandatory": { "type": "boolean" }, "areaId": { "$ref": "#/$defs/nonEmptyString" }, "sourceRefs": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/nonEmptyString" } }, "citationRefs": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/nonEmptyString" } }, "artifactPath": { "$ref": "#/$defs/nonEmptyString" } } },
+.vibe/context/schema/context-area-v1.schema.json:28:    "contextItem": { "type": "object", "additionalProperties": false, "required": ["contextId", "level", "mandatory", "sourceRefs", "citationRefs"], "anyOf": [{ "required": ["text"], "properties": { "text": { "$ref": "#/$defs/nonEmptyString" } } }, { "required": ["content"], "properties": { "content": { "$ref": "#/$defs/typedContent" } } }], "properties": { "contextId": { "$ref": "#/$defs/nonEmptyString" }, "level": { "$ref": "#/$defs/level" }, "mandatory": { "type": "boolean" }, "text": { "$ref": "#/$defs/nonEmptyString" }, "content": { "$ref": "#/$defs/typedContent" }, "sourceRefs": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/nonEmptyString" } }, "citationRefs": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/nonEmptyString" } } } },
+packages/context/src/index.js:41:const CONTEXT_ITEM_KEYS = new Set(['contextId', 'level', 'mandatory', 'text', 'content', 'sourceRefs', 'citationRefs']);
+packages/context/src/index.js:500:      citationRefs: [`${sources[0].sourceId}:sha256`]
+packages/context/src/index.js:687:    findings.push(finding('error', 'INVALID_SOURCE_CITATION', pointer, 'Source citation must be a strict object.', { filePath }));
+packages/context/src/index.js:690:  assertNoUnknownKeys(citation, CITATION_KEYS, pointer, findings, filePath, 'INVALID_SOURCE_CITATION');
+packages/context/src/index.js:691:  validateRequiredString(citation.citationId, `${pointer}/citationId`, 'INVALID_SOURCE_CITATION', 'Source citation requires stable citationId.', findings);
+packages/context/src/index.js:692:  if (citation.sourceId !== source.sourceId) findings.push(finding('error', 'INVALID_SOURCE_CITATION', `${pointer}/sourceId`, 'Source citation sourceId must match its source.', { filePath }));
+packages/context/src/index.js:693:  if (citation.path !== source.path) findings.push(finding('error', 'INVALID_SOURCE_CITATION', `${pointer}/path`, 'Source citation path must match its source path.', { filePath }));
+packages/context/src/index.js:694:  const validFingerprint = validateFingerprint(citation.fingerprint, `${pointer}/fingerprint`, findings, filePath, 'INVALID_SOURCE_CITATION');
+packages/context/src/index.js:696:    if (citation.fingerprint.value !== source.fingerprint?.value) findings.push(finding('error', 'INVALID_SOURCE_CITATION', `${pointer}/fingerprint`, 'Source citation fingerprint must match source fingerprint.', { filePath }));
+packages/context/src/index.js:697:    if (isSha256Hex(actualFingerprint) && citation.fingerprint.value !== actualFingerprint) findings.push(finding('error', 'INVALID_SOURCE_CITATION', `${pointer}/fingerprint`, 'Source citation fingerprint must match current source content.', { filePath, expected: actualFingerprint, actual: citation.fingerprint.value }));
+packages/context/src/index.js:699:  if (citation.versionRef !== undefined && citation.versionRef !== source.versionRef) findings.push(finding('error', 'INVALID_SOURCE_CITATION', `${pointer}/versionRef`, 'Source citation versionRef must match source versionRef.', { filePath }));
+packages/context/src/index.js:854:  const validCitationRefs = validateStringArray(item.citationRefs, `${pointer}/citationRefs`, 'INVALID_AREA_CONTEXT_ITEM', `${filePath}: context item requires non-empty citationRefs with stable citation ids.`, findings, { minItems: 1 });
+packages/context/src/index.js:859:  for (const [citationIndex, citationRef] of item.citationRefs.entries()) {
+packages/context/src/index.js:861:    const citationPointer = `${pointer}/citationRefs/${citationIndex}`;
+packages/context/src/index.js:863:      findings.push(finding('error', 'INVALID_SOURCE_CITATION', citationPointer, `${filePath}: citationRef ${citationRef} does not resolve to a graph source citation.`, { filePath }));
+packages/context/src/index.js:867:      findings.push(finding('error', 'INVALID_SOURCE_CITATION', citationPointer, `${filePath}: citationRef ${citationRef} is ambiguous across graph sources.`, { filePath }));
+packages/context/src/index.js:872:      findings.push(finding('error', 'INVALID_SOURCE_CITATION', citationPointer, `${filePath}: citationRef ${citationRef} belongs to source ${citationSourceId}, which is not declared by this context item.`, { filePath }));
+packages/context/src/index.js:876:      findings.push(finding('error', 'INVALID_SOURCE_CITATION', citationPointer, `${filePath}: citationRef ${citationRef} does not belong to a known trusted area source.`, { filePath }));
+packages/context/src/index.js:883:      findings.push(finding('error', 'INVALID_SOURCE_CITATION', `${pointer}/citationRefs`, `${filePath}: citationRefs must cover sourceRef ${sourceRef}.`, { filePath }));
+packages/context/src/index.js:930:function buildSourceCitationIndex(graph) {
+packages/context/src/index.js:1019:  const sourceCitationIndex = buildSourceCitationIndex(graph);
+packages/context/src/index.js:1050:async function collectAreaCitationRefsForNode(projectRoot, node) {
+packages/context/src/index.js:1053:  const citationRefs = [];
+packages/context/src/index.js:1055:    if (Array.isArray(item.citationRefs)) citationRefs.push(...item.citationRefs.filter(isNonEmptyString));
+packages/context/src/index.js:1057:  return unique(citationRefs);
+packages/context/src/index.js:1102:    const citationRefs = await collectAreaCitationRefsForNode(projectRoot, node);
+packages/context/src/index.js:1103:    if (citationRefs.length > 0) closureItem.citationRefs = citationRefs;
+packages/context/tests/negative-witness.mjs:83:}, ['STALE_SOURCE_FINGERPRINT', 'STALE_SOURCE_VERSION_REF', 'INVALID_SOURCE_CITATION']));
+packages/context/tests/negative-witness.mjs:99:}, ['INVALID_SOURCE_CITATION']));
+packages/context/tests/negative-witness.mjs:103:}, ['INVALID_SOURCE_CITATION']));
+packages/context/tests/negative-witness.mjs:107:}, ['INVALID_SOURCE_CITATION']));
+packages/context/tests/negative-witness.mjs:120:  ['area-context-missing-citation-refs', (item) => { delete item.citationRefs; }],
+packages/context/tests/negative-witness.mjs:121:  ['area-context-empty-citation-refs', (item) => { item.citationRefs = []; }],
+packages/context/tests/negative-witness.mjs:122:  ['area-context-non-array-citation-refs', (item) => { item.citationRefs = 'src:task-contract:sha256'; }],
+packages/context/tests/negative-witness.mjs:123:  ['area-context-non-string-citation-ref-entry', (item) => { item.citationRefs = [42]; }],
+packages/context/tests/negative-witness.mjs:124:  ['area-context-empty-string-citation-ref-entry', (item) => { item.citationRefs = ['']; }]
+packages/context/tests/negative-witness.mjs:135:  await mutateArea(projectRoot, (area) => { area.context[0].citationRefs = ['missing-citation-id']; });
+packages/context/tests/negative-witness.mjs:136:}, ['INVALID_SOURCE_CITATION']));
+packages/context/tests/negative-witness.mjs:140:  await mutateArea(projectRoot, (area) => { area.context[0].citationRefs = [graph.sources[1].citations[0].citationId]; });
+packages/context/tests/negative-witness.mjs:141:}, ['INVALID_SOURCE_CITATION']));
+packages/context/tests/negative-witness.mjs:149:    area.context[0].citationRefs = [graph.sources[0].citations[0].citationId];
+packages/context/tests/negative-witness.mjs:151:}, ['INVALID_SOURCE_CITATION']));
+packages/context/tests/real-boundary-witness.mjs:67:const areaItemCitationRefs = area.context.flatMap((item) => item.citationRefs ?? []);
+packages/context/tests/real-boundary-witness.mjs:68:assert(areaItemCitationRefs.length > 0, 'writer did not emit item-level citationRefs');
+packages/context/tests/real-boundary-witness.mjs:87:assert(closure.levels['1'].some((item) => Array.isArray(item.citationRefs) && item.citationRefs.every((citationRef) => graphCitationIds.has(citationRef))), 'retriever did not preserve valid item-level citationRefs');
+packages/context/tests/real-boundary-witness.mjs:110:  closureItemCitationRefs: closure.levels['1'].flatMap((item) => item.citationRefs ?? []),
+packages/context/tests/schema-strictness-witness.mjs:71:  ['area-context-missing-citation-refs', 'area', () => { const copy = clone(area); delete copy.context[0].citationRefs; return copy; }],
+packages/context/tests/schema-strictness-witness.mjs:72:  ['area-context-empty-citation-refs', 'area', () => { const copy = clone(area); copy.context[0].citationRefs = []; return copy; }],
+packages/context/tests/schema-strictness-witness.mjs:73:  ['area-context-non-array-citation-refs', 'area', () => { const copy = clone(area); copy.context[0].citationRefs = 'src:task-contract:sha256'; return copy; }],
+packages/context/tests/schema-strictness-witness.mjs:74:  ['area-context-non-string-citation-ref-entry', 'area', () => { const copy = clone(area); copy.context[0].citationRefs = [42]; return copy; }],
+packages/context/tests/schema-strictness-witness.mjs:75:  ['area-context-empty-string-citation-ref-entry', 'area', () => { const copy = clone(area); copy.context[0].citationRefs = ['']; return copy; }],
+## root production context carrier count
+       0
+## package/product names
+package.json @vibe-engineer/workspace
+packages/cli/package.json vibe-engineer
+packages/context/package.json @vibe-engineer/context
+## skills inventory
+packages/skills/package.json
+## provider imports/config non-load-bearing
+packages/context/package.json:26:    "@vibe-engineer/artifacts": "workspace:*",
+packages/context/package.json:27:    "@vibe-engineer/config": "workspace:*"
+packages/context/tests/negative-witness.mjs:4:import { validateArtifactFile } from '@vibe-engineer/artifacts';
+packages/context/tests/negative-witness.mjs:198:  const providerResult = validateArtifactFile(headerPath, { kind: 'context_file_header' });
+packages/context/tests/real-boundary-witness.mjs:4:import { validateArtifactFile } from '@vibe-engineer/artifacts';
+packages/context/tests/real-boundary-witness.mjs:30:assert(typeof validateArtifactFile === 'function', 'public artifacts validateArtifactFile seam is unavailable');
+packages/context/tests/real-boundary-witness.mjs:61:const providerHeaderResult = validateArtifactFile(path.join(projectRoot, '.vibe/context/areas/core-contracts.header.json'), { kind: 'context_file_header' });
+packages/context/tests/real-boundary-witness.mjs:98:  providerSeam: 'public @vibe-engineer/artifacts validateArtifactFile used for on-disk ContextFileHeaderV1',
+packages/context/src/index.js:5:import { validateArtifactFile } from '@vibe-engineer/artifacts';
+packages/context/src/index.js:561:  const result = validateArtifactFile(headerPath, { kind: 'context_file_header' });
+packages/context/src/index.js:564:      findings.push(finding('error', 'INVALID_CONTEXT_HEADER', pointer, `ContextFileHeaderV1 validation failed through @vibe-engineer/artifacts: ${error.message}`, { filePath: headerPath, providerCode: error.code }));
+packages/context/src/index.js:1158:  artifactsValidateArtifactFileType: typeof validateArtifactFile
+## domain/out-of-scope vocabulary grep
+## evidence tree
+.vibe/work/I-08-context-graph-index-drift/evidence/residual-fix/direct-negative/result.json
+.vibe/work/I-08-context-graph-index-drift/evidence/residual-fix/direct-real-boundary/result.json
+.vibe/work/I-08-context-graph-index-drift/evidence/residual-fix/direct-schema/result.json
+.vibe/work/I-08-context-graph-index-drift/evidence/residual-fix/direct-witness-commands.txt
+.vibe/work/I-08-context-graph-index-drift/evidence/residual-fix/final-blast-radius-sentinels.txt
+.vibe/work/I-08-context-graph-index-drift/evidence/residual-fix/package-build-rerun/evidence/negative-witness-result.json
+.vibe/work/I-08-context-graph-index-drift/evidence/residual-fix/package-build-rerun/evidence/real-boundary-witness-result.json
+.vibe/work/I-08-context-graph-index-drift/evidence/residual-fix/package-build-rerun/evidence/schema-strictness-witness-result.json
+.vibe/work/I-08-context-graph-index-drift/evidence/residual-fix/package-build/evidence/negative-witness-result.json
+.vibe/work/I-08-context-graph-index-drift/evidence/residual-fix/package-build/evidence/real-boundary-witness-result.json
+.vibe/work/I-08-context-graph-index-drift/evidence/residual-fix/package-build/evidence/schema-strictness-witness-result.json
+.vibe/work/I-08-context-graph-index-drift/evidence/residual-fix/package-command-suite.txt
+.vibe/work/I-08-context-graph-index-drift/evidence/residual-fix/package-commands-rerun.txt
+.vibe/work/I-08-context-graph-index-drift/evidence/residual-fix/package-test-rerun/evidence/negative-witness-result.json
+.vibe/work/I-08-context-graph-index-drift/evidence/residual-fix/package-test-rerun/evidence/real-boundary-witness-result.json
+.vibe/work/I-08-context-graph-index-drift/evidence/residual-fix/package-test-rerun/evidence/schema-strictness-witness-result.json
+.vibe/work/I-08-context-graph-index-drift/evidence/residual-fix/package-test/evidence/negative-witness-result.json
+.vibe/work/I-08-context-graph-index-drift/evidence/residual-fix/package-test/evidence/real-boundary-witness-result.json
+.vibe/work/I-08-context-graph-index-drift/evidence/residual-fix/package-test/evidence/schema-strictness-witness-result.json
+.vibe/work/I-08-context-graph-index-drift/evidence/residual-fix/pre-edit-extend-inventory.txt
+.vibe/work/I-08-context-graph-index-drift/evidence/residual-fix/pre-edit-rg-evidence.txt
+.vibe/work/I-08-context-graph-index-drift/evidence/residual-fix/public-import-sentinels-corrected.txt
+## background task status note
+checked separately via bg_status

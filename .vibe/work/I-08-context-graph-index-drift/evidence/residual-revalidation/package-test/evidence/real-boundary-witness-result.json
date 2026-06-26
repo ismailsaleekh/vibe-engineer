@@ -1,0 +1,59 @@
+{
+  "ok": true,
+  "repoRoot": "/Users/lizavasilyeva/work/vibe-engineer",
+  "providerSeam": "public @vibe-engineer/artifacts validateArtifactFile used for on-disk ContextFileHeaderV1",
+  "runRoot": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/residual-revalidation/package-test",
+  "projectRoot": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/residual-revalidation/package-test/fixture-project",
+  "evidencePath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/residual-revalidation/package-test/evidence/real-boundary-witness-result.json",
+  "writtenPaths": [
+    ".vibe/context/areas/core-contracts.context.json",
+    ".vibe/context/areas/core-contracts.header.json",
+    ".vibe/context/index/context-graph.json",
+    ".vibe/context/index/context-graph.header.json",
+    ".vibe/context/index/context-index.json",
+    ".vibe/context/index/context-index.header.json",
+    ".vibe/context/summaries/core-contracts-summary.summary.json",
+    ".vibe/context/summaries/core-contracts-summary.header.json",
+    ".vibe/context/schema/schema-manifest.json",
+    "sources/task-contract.md",
+    ".vibe/work/I-08-context-graph-index-drift/implementation-plan.json",
+    ".vibe/evidence/I-08-context-graph-index-drift/evidence.json",
+    "docs/decisions/DL-09-context-memory-drift.md"
+  ],
+  "graphPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/residual-revalidation/package-test/fixture-project/.vibe/context/index/context-graph.json",
+  "indexPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/residual-revalidation/package-test/fixture-project/.vibe/context/index/context-index.json",
+  "validationStatus": "clean",
+  "driftStatus": "clean",
+  "closureStatus": "clean",
+  "closureLevels": {
+    "0": 0,
+    "1": 1,
+    "2": 1,
+    "3": 0,
+    "4": 0
+  },
+  "areaItemCitationRefs": [
+    "src:task-contract:sha256"
+  ],
+  "closureItemCitationRefs": [
+    "src:task-contract:sha256"
+  ],
+  "citations": [
+    {
+      "citationId": "src:task-contract:sha256",
+      "sourceId": "src:task-contract",
+      "contextId": "ctx:core-contracts"
+    },
+    {
+      "citationId": "src:task-contract:sha256",
+      "sourceId": "src:task-contract",
+      "contextId": "ctx-summary:core-contracts-summary"
+    }
+  ],
+  "summaryProjection": {
+    "contextId": "ctx-summary:core-contracts-summary",
+    "sourceRefs": [
+      "src:task-contract"
+    ]
+  }
+}

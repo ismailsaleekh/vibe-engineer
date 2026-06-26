@@ -1,0 +1,96 @@
+
+## node check context src
+cwd: /Users/lizavasilyeva/work/vibe-engineer
+command: node --check packages/context/src/index.js 
+exit: 0
+
+## node check real-boundary witness
+cwd: /Users/lizavasilyeva/work/vibe-engineer
+command: node --check packages/context/tests/real-boundary-witness.mjs 
+exit: 0
+
+## node check negative witness
+cwd: /Users/lizavasilyeva/work/vibe-engineer
+command: node --check packages/context/tests/negative-witness.mjs 
+exit: 0
+
+## node check schema witness
+cwd: /Users/lizavasilyeva/work/vibe-engineer
+command: node --check packages/context/tests/schema-strictness-witness.mjs 
+exit: 0
+
+## public context import package-local
+cwd: /Users/lizavasilyeva/work/vibe-engineer/packages/context
+command: node --input-type=module -e 'const m = await import("@vibe-engineer/context"); const names = ["writeContextProject","validateContextProject","checkContextDrift","retrieveContextClosure"]; for (const name of names) if (typeof m[name] !== "function") throw new Error(name); console.log("context public import ok", names.join(","));'
+context public import ok writeContextProject,validateContextProject,checkContextDrift,retrieveContextClosure
+exit: 0
+
+## public artifacts import package-local
+cwd: /Users/lizavasilyeva/work/vibe-engineer/packages/context
+command: node --input-type=module -e 'const m = await import("@vibe-engineer/artifacts"); if (typeof m.validateArtifactFile !== "function") throw new Error("validateArtifactFile missing"); console.log("artifacts public import ok");'
+artifacts public import ok
+exit: 0
+
+## public context import pnpm filter
+cwd: /Users/lizavasilyeva/work/vibe-engineer
+command: pnpm --filter @vibe-engineer/context exec node --input-type=module -e 'const m = await import("@vibe-engineer/context"); const names = ["writeContextProject","validateContextProject","checkContextDrift","retrieveContextClosure"]; for (const name of names) if (typeof m[name] !== "function") throw new Error(name); console.log("context pnpm import ok", names.join(","));'
+context pnpm import ok writeContextProject,validateContextProject,checkContextDrift,retrieveContextClosure
+exit: 0
+
+## public artifacts import pnpm filter
+cwd: /Users/lizavasilyeva/work/vibe-engineer
+command: pnpm --filter @vibe-engineer/context exec node --input-type=module -e 'const m = await import("@vibe-engineer/artifacts"); if (typeof m.validateArtifactFile !== "function") throw new Error("validateArtifactFile missing"); console.log("artifacts pnpm import ok");'
+artifacts pnpm import ok
+exit: 0
+
+## pnpm context typecheck
+cwd: /Users/lizavasilyeva/work/vibe-engineer
+command: pnpm --filter @vibe-engineer/context typecheck 
+
+> @vibe-engineer/context@0.0.0 typecheck /Users/lizavasilyeva/work/vibe-engineer/packages/context
+> node --check src/index.js && node --check tests/real-boundary-witness.mjs && node --check tests/negative-witness.mjs && node --check tests/schema-strictness-witness.mjs
+
+exit: 0
+
+## pnpm context test owned root
+cwd: /Users/lizavasilyeva/work/vibe-engineer
+command: VIBE_CONTEXT_WITNESS_ROOT="/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/residual-revalidation/package-test" pnpm --filter @vibe-engineer/context test
+
+> @vibe-engineer/context@0.0.0 test /Users/lizavasilyeva/work/vibe-engineer/packages/context
+> node tests/real-boundary-witness.mjs && node tests/negative-witness.mjs && node tests/schema-strictness-witness.mjs
+
+real-boundary witness ok: /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/residual-revalidation/package-test/evidence/real-boundary-witness-result.json
+negative witness ok: /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/residual-revalidation/package-test/evidence/negative-witness-result.json
+schema strictness witness ok: /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/residual-revalidation/package-test/evidence/schema-strictness-witness-result.json
+exit: 0
+
+## pnpm context build owned root
+cwd: /Users/lizavasilyeva/work/vibe-engineer
+command: VIBE_CONTEXT_WITNESS_ROOT="/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/residual-revalidation/package-build" pnpm --filter @vibe-engineer/context build
+
+> @vibe-engineer/context@0.0.0 build /Users/lizavasilyeva/work/vibe-engineer/packages/context
+> node --check src/index.js && node --check tests/real-boundary-witness.mjs && node --check tests/negative-witness.mjs && node --check tests/schema-strictness-witness.mjs && node tests/real-boundary-witness.mjs && node tests/negative-witness.mjs && node tests/schema-strictness-witness.mjs
+
+real-boundary witness ok: /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/residual-revalidation/package-build/evidence/real-boundary-witness-result.json
+negative witness ok: /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/residual-revalidation/package-build/evidence/negative-witness-result.json
+schema strictness witness ok: /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/residual-revalidation/package-build/evidence/schema-strictness-witness-result.json
+exit: 0
+
+## direct real-boundary witness
+cwd: /Users/lizavasilyeva/work/vibe-engineer/packages/context
+command: VIBE_CONTEXT_WITNESS_ROOT="/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/residual-revalidation/direct-real-boundary" VIBE_CONTEXT_EVIDENCE_PATH="/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/residual-revalidation/direct-real-boundary/result.json" node tests/real-boundary-witness.mjs
+real-boundary witness ok: /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/residual-revalidation/direct-real-boundary/result.json
+exit: 0
+
+## direct negative witness
+cwd: /Users/lizavasilyeva/work/vibe-engineer/packages/context
+command: VIBE_CONTEXT_WITNESS_ROOT="/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/residual-revalidation/direct-negative" VIBE_CONTEXT_EVIDENCE_PATH="/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/residual-revalidation/direct-negative/result.json" node tests/negative-witness.mjs
+negative witness ok: /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/residual-revalidation/direct-negative/result.json
+exit: 0
+
+## direct schema strictness witness
+cwd: /Users/lizavasilyeva/work/vibe-engineer/packages/context
+command: VIBE_CONTEXT_WITNESS_ROOT="/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/residual-revalidation/direct-schema" VIBE_CONTEXT_EVIDENCE_PATH="/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/residual-revalidation/direct-schema/result.json" node tests/schema-strictness-witness.mjs
+schema strictness witness ok: /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/residual-revalidation/direct-schema/result.json
+exit: 0
+witness suite passed

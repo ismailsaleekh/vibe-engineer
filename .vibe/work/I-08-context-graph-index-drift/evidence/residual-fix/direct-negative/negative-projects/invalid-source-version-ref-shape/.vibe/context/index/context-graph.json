@@ -1,0 +1,205 @@
+{
+  "schemaVersion": "1.0.0",
+  "artifactKind": "context_graph",
+  "graphId": "context-graph-main",
+  "indexVersion": "1.0.0",
+  "producer": {
+    "kind": "agent",
+    "id": "i-08-context-writer",
+    "name": "@vibe-engineer/context",
+    "version": "1.0.0",
+    "runId": "i-08-context-witness"
+  },
+  "generatedAt": "2026-06-24T00:00:00.000Z",
+  "schemaRefs": {
+    "graph": "https://schemas.vibe-engineer.dev/context/v1/context-graph.schema.json",
+    "index": "https://schemas.vibe-engineer.dev/context/v1/context-index.schema.json",
+    "area": "https://schemas.vibe-engineer.dev/context/v1/context-area.schema.json",
+    "summary": "https://schemas.vibe-engineer.dev/context/v1/context-summary.schema.json",
+    "retrievalClosure": "https://schemas.vibe-engineer.dev/context/v1/retrieval-closure.schema.json"
+  },
+  "sources": [
+    {
+      "sourceId": "src:task-contract",
+      "kind": "source_doc",
+      "path": "sources/task-contract.md",
+      "fingerprint": {
+        "algorithm": "sha256",
+        "value": "069005bb09ffa6b162576137d3baecd3344f752d887cc01c6c979925afcb124e"
+      },
+      "versionRef": "floating-main",
+      "trust": "trusted",
+      "required": true,
+      "level": 1,
+      "scope": {
+        "kind": "repo",
+        "paths": [
+          "sources/task-contract.md"
+        ],
+        "description": "Domain-neutral source context."
+      },
+      "artifactRef": {
+        "artifactKind": "work_brief",
+        "artifactId": "wb:task-contract",
+        "path": "sources/task-contract.md",
+        "required": true
+      },
+      "citations": [
+        {
+          "citationId": "src:task-contract:sha256",
+          "sourceId": "src:task-contract",
+          "path": "sources/task-contract.md",
+          "fingerprint": {
+            "algorithm": "sha256",
+            "value": "069005bb09ffa6b162576137d3baecd3344f752d887cc01c6c979925afcb124e"
+          }
+        }
+      ]
+    },
+    {
+      "sourceId": "src:verification-contract",
+      "kind": "source_doc",
+      "path": "sources/verification-contract.md",
+      "fingerprint": {
+        "algorithm": "sha256",
+        "value": "07f95c4b1bdbd4640a8b8c23aee1f8a71c4f664294ae1521a749e2e533cfbac6"
+      },
+      "versionRef": "sha256:07f95c4b1bdbd4640a8b8c23aee1f8a71c4f664294ae1521a749e2e533cfbac6",
+      "trust": "trusted",
+      "required": true,
+      "level": 2,
+      "scope": {
+        "kind": "repo",
+        "paths": [
+          "sources/verification-contract.md"
+        ],
+        "description": "Domain-neutral source context."
+      },
+      "artifactRef": {
+        "artifactKind": "verification_delta",
+        "artifactId": "vd:verification-contract",
+        "path": "sources/verification-contract.md",
+        "required": true
+      },
+      "citations": [
+        {
+          "citationId": "src:verification-contract:sha256",
+          "sourceId": "src:verification-contract",
+          "path": "sources/verification-contract.md",
+          "fingerprint": {
+            "algorithm": "sha256",
+            "value": "07f95c4b1bdbd4640a8b8c23aee1f8a71c4f664294ae1521a749e2e533cfbac6"
+          }
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "contextId": "ctx:core-contracts",
+      "kind": "area",
+      "areaId": "core-contracts",
+      "title": "Core Context Contracts",
+      "level": 1,
+      "mandatory": true,
+      "trust": "trusted",
+      "scope": {
+        "kind": "repo",
+        "paths": [
+          "packages/context"
+        ],
+        "description": "Context package core contract implementation."
+      },
+      "owner": "vibe-engineer-context",
+      "headerRef": {
+        "artifactId": "ctx-area-core-contracts",
+        "path": ".vibe/context/areas/core-contracts.header.json"
+      },
+      "sourceRefs": [
+        "src:task-contract"
+      ],
+      "artifactPath": ".vibe/context/areas/core-contracts.context.json"
+    },
+    {
+      "contextId": "ctx-summary:core-contracts-summary",
+      "kind": "summary",
+      "areaId": "core-contracts",
+      "title": "Core Contract Summary",
+      "level": 2,
+      "mandatory": false,
+      "trust": "trusted",
+      "scope": {
+        "kind": "repo",
+        "paths": [
+          "."
+        ],
+        "description": "Derived summary context."
+      },
+      "owner": "vibe-engineer-context",
+      "headerRef": {
+        "artifactId": "ctx-summary-core-contracts-summary",
+        "path": ".vibe/context/summaries/core-contracts-summary.header.json"
+      },
+      "sourceRefs": [
+        "src:task-contract"
+      ],
+      "artifactPath": ".vibe/context/summaries/core-contracts-summary.summary.json",
+      "derivedFromNodeIds": [
+        "ctx:core-contracts"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "ctx:core-contracts",
+      "to": "ctx-summary:core-contracts-summary",
+      "rel": "summarizes"
+    }
+  ],
+  "links": [
+    {
+      "linkId": "work:i08",
+      "kind": "work",
+      "ref": {
+        "artifactKind": "implementation_plan",
+        "artifactId": "ip:i08-context",
+        "path": ".vibe/work/I-08-context-graph-index-drift/implementation-plan.json"
+      },
+      "required": true,
+      "statusAtLinkTime": "current"
+    },
+    {
+      "linkId": "evidence:i08",
+      "kind": "evidence",
+      "ref": {
+        "artifactKind": "evidence_packet",
+        "artifactId": "ev:i08-context",
+        "path": ".vibe/evidence/I-08-context-graph-index-drift/evidence.json"
+      },
+      "required": true,
+      "statusAtLinkTime": "current"
+    },
+    {
+      "linkId": "decision:dl09",
+      "kind": "decision",
+      "ref": {
+        "artifactKind": "context_file_header",
+        "artifactId": "dl:09",
+        "path": "docs/decisions/DL-09-context-memory-drift.md"
+      },
+      "required": true,
+      "statusAtLinkTime": "current"
+    }
+  ],
+  "retrievalPolicy": {
+    "requireTaskScope": true,
+    "mandatoryLevel": 1,
+    "allowedLevels": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+--- provider sentinel: packages/context cwd artifacts ---
+artifacts package-local ok function
+exit=0
+--- provider sentinel: pnpm filter artifacts ---
+artifacts pnpm-filter ok function
+exit=0
+--- optional config sentinel: packages/context cwd config ---
+config package-local ok function function function
+exit=0
+--- optional config sentinel: pnpm filter config ---
+config pnpm-filter ok function function function
+exit=0

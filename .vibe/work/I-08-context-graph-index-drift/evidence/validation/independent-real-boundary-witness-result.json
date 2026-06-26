@@ -1,0 +1,430 @@
+{
+  "ok": false,
+  "publicApi": {
+    "writeContextProject": "function",
+    "validateContextProject": "function",
+    "checkContextDrift": "function",
+    "retrieveContextClosure": "function",
+    "buildContextIndex": "function",
+    "createContextHeader": "function"
+  },
+  "providerSeam": {
+    "artifactsValidateArtifactFile": "function",
+    "contextBoundProviderType": "function",
+    "headerProviderValidationOk": true
+  },
+  "positive": {
+    "fixtureRoot": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/validation/fixture-project",
+    "writeOk": true,
+    "writtenPaths": [
+      ".vibe/context/areas/core-contracts.context.json",
+      ".vibe/context/areas/core-contracts.header.json",
+      ".vibe/context/index/context-graph.json",
+      ".vibe/context/index/context-graph.header.json",
+      ".vibe/context/index/context-index.json",
+      ".vibe/context/index/context-index.header.json",
+      ".vibe/context/summaries/core-contracts-summary.summary.json",
+      ".vibe/context/summaries/core-contracts-summary.header.json",
+      ".vibe/context/schema/schema-manifest.json",
+      "sources/task-contract.md",
+      "sources/verification-contract.md",
+      ".vibe/work/I-08-context-graph-index-drift/implementation-plan.json",
+      ".vibe/evidence/I-08-context-graph-index-drift/evidence.json",
+      "docs/decisions/DL-09-context-memory-drift.md"
+    ],
+    "validationStatus": "clean",
+    "driftStatus": "clean",
+    "closureFull": {
+      "ok": true,
+      "blocked": false,
+      "levelCounts": {
+        "0": 0,
+        "1": 1,
+        "2": 1,
+        "3": 0,
+        "4": 0
+      },
+      "citationCount": 2,
+      "diagnostics": []
+    },
+    "closureLevelOne": {
+      "ok": true,
+      "blocked": false,
+      "omittedOptionalContext": [
+        {
+          "contextId": "ctx-summary:core-contracts-summary",
+          "level": 2,
+          "rationale": "Optional level 2 context omitted by maxLevel 1."
+        }
+      ]
+    }
+  },
+  "negatives": [
+    {
+      "name": "stale-source-fingerprint",
+      "expectedCodes": [
+        "STALE_SOURCE_FINGERPRINT"
+      ],
+      "actualCodes": [
+        "STALE_SOURCE_FINGERPRINT"
+      ],
+      "nonGreen": true,
+      "missingCodes": [],
+      "passed": true
+    },
+    {
+      "name": "stale-source-version-ref",
+      "expectedCodes": [
+        "STALE_SOURCE_VERSION_REF"
+      ],
+      "actualCodes": [],
+      "nonGreen": false,
+      "missingCodes": [
+        "STALE_SOURCE_VERSION_REF"
+      ],
+      "passed": false
+    },
+    {
+      "name": "unsupported-context-version",
+      "expectedCodes": [
+        "UNSUPPORTED_CONTEXT_VERSION"
+      ],
+      "actualCodes": [
+        "UNSUPPORTED_CONTEXT_VERSION"
+      ],
+      "nonGreen": true,
+      "missingCodes": [],
+      "passed": true
+    },
+    {
+      "name": "unsupported-index-version",
+      "expectedCodes": [
+        "UNSUPPORTED_INDEX_VERSION"
+      ],
+      "actualCodes": [
+        "UNSUPPORTED_INDEX_VERSION"
+      ],
+      "nonGreen": true,
+      "missingCodes": [],
+      "passed": true
+    },
+    {
+      "name": "missing-required-source-citation",
+      "expectedCodes": [
+        "MISSING_SOURCE_CITATION"
+      ],
+      "actualCodes": [
+        "MISSING_SOURCE_CITATION"
+      ],
+      "nonGreen": true,
+      "missingCodes": [],
+      "passed": true
+    },
+    {
+      "name": "malformed-source-citation-object",
+      "expectedCodes": [
+        "INVALID_SOURCE_CITATION"
+      ],
+      "actualCodes": [],
+      "nonGreen": false,
+      "missingCodes": [
+        "INVALID_SOURCE_CITATION"
+      ],
+      "passed": false
+    },
+    {
+      "name": "broken-source-file",
+      "expectedCodes": [
+        "MISSING_SOURCE_FILE"
+      ],
+      "actualCodes": [
+        "MISSING_SOURCE_FILE"
+      ],
+      "nonGreen": true,
+      "missingCodes": [],
+      "passed": true
+    },
+    {
+      "name": "broken-evidence-link",
+      "expectedCodes": [
+        "BROKEN_CONTEXT_LINK"
+      ],
+      "actualCodes": [
+        "BROKEN_CONTEXT_LINK"
+      ],
+      "nonGreen": true,
+      "missingCodes": [],
+      "passed": true
+    },
+    {
+      "name": "broken-decision-link",
+      "expectedCodes": [
+        "BROKEN_CONTEXT_LINK"
+      ],
+      "actualCodes": [
+        "BROKEN_CONTEXT_LINK"
+      ],
+      "nonGreen": true,
+      "missingCodes": [],
+      "passed": true
+    },
+    {
+      "name": "mislinked-work-path",
+      "expectedCodes": [
+        "MISLINKED_ARTIFACT_PATH",
+        "BROKEN_CONTEXT_LINK"
+      ],
+      "actualCodes": [
+        "BROKEN_CONTEXT_LINK",
+        "MISLINKED_ARTIFACT_PATH"
+      ],
+      "nonGreen": true,
+      "missingCodes": [],
+      "passed": true
+    },
+    {
+      "name": "malformed-graph-json",
+      "expectedCodes": [
+        "MALFORMED_JSON"
+      ],
+      "actualCodes": [
+        "MALFORMED_JSON"
+      ],
+      "nonGreen": true,
+      "missingCodes": [],
+      "passed": true
+    },
+    {
+      "name": "malformed-index-json",
+      "expectedCodes": [
+        "MALFORMED_JSON"
+      ],
+      "actualCodes": [
+        "MALFORMED_JSON"
+      ],
+      "nonGreen": true,
+      "missingCodes": [],
+      "passed": true
+    },
+    {
+      "name": "malformed-header-json-through-provider",
+      "expectedCodes": [
+        "INVALID_CONTEXT_HEADER"
+      ],
+      "actualCodes": [
+        "INVALID_CONTEXT_HEADER"
+      ],
+      "nonGreen": true,
+      "missingCodes": [],
+      "passed": true
+    },
+    {
+      "name": "invalid-context-header-through-provider",
+      "expectedCodes": [
+        "INVALID_CONTEXT_HEADER"
+      ],
+      "actualCodes": [
+        "INVALID_CONTEXT_HEADER"
+      ],
+      "nonGreen": true,
+      "missingCodes": [],
+      "passed": true
+    },
+    {
+      "name": "wrong-shaped-sources-array",
+      "expectedCodes": [
+        "MISSING_SOURCE_SET"
+      ],
+      "actualCodes": [
+        "BROKEN_SOURCE_REF",
+        "BROKEN_SOURCE_REF",
+        "MISSING_SOURCE_SET",
+        "STALE_SUMMARY_SOURCE_REF"
+      ],
+      "nonGreen": true,
+      "missingCodes": [],
+      "passed": true
+    },
+    {
+      "name": "wrong-shaped-nodes-array",
+      "expectedCodes": [
+        "MISSING_CONTEXT_NODES",
+        "MISSING_MANDATORY_LEVEL_1"
+      ],
+      "actualCodes": [
+        "BROKEN_CONTEXT_EDGE",
+        "MISSING_CONTEXT_NODES",
+        "MISSING_MANDATORY_LEVEL_1"
+      ],
+      "nonGreen": true,
+      "missingCodes": [],
+      "passed": true
+    },
+    {
+      "name": "wrong-shaped-area-context-array",
+      "expectedCodes": [
+        "INVALID_AREA_CONTEXT"
+      ],
+      "actualCodes": [],
+      "nonGreen": false,
+      "missingCodes": [
+        "INVALID_AREA_CONTEXT"
+      ],
+      "passed": false
+    },
+    {
+      "name": "summary-without-source-refs",
+      "expectedCodes": [
+        "SUMMARY_WITHOUT_SOURCE_REFS",
+        "SUMMARY_ONLY_LOAD_BEARING_TRUTH"
+      ],
+      "actualCodes": [
+        "SUMMARY_ONLY_LOAD_BEARING_TRUTH",
+        "SUMMARY_WITHOUT_SOURCE_REFS"
+      ],
+      "nonGreen": true,
+      "missingCodes": [],
+      "passed": true
+    },
+    {
+      "name": "stale-summary-ref",
+      "expectedCodes": [
+        "STALE_SUMMARY_SOURCE_REF"
+      ],
+      "actualCodes": [
+        "STALE_SUMMARY_SOURCE_REF"
+      ],
+      "nonGreen": true,
+      "missingCodes": [],
+      "passed": true
+    },
+    {
+      "name": "missing-mandatory-level-one-validator",
+      "expectedCodes": [
+        "MISSING_MANDATORY_LEVEL_1"
+      ],
+      "actualCodes": [
+        "BROKEN_CONTEXT_EDGE",
+        "MISSING_MANDATORY_LEVEL_1",
+        "SUMMARY_NOT_EXPANDABLE"
+      ],
+      "nonGreen": true,
+      "missingCodes": [],
+      "passed": true
+    },
+    {
+      "name": "missing-mandatory-level-one-retriever",
+      "expectedCodes": [
+        "MISSING_MANDATORY_LEVEL_1"
+      ],
+      "actualCodes": [
+        "BROKEN_CONTEXT_EDGE",
+        "MISSING_MANDATORY_LEVEL_1",
+        "SUMMARY_NOT_EXPANDABLE"
+      ],
+      "nonGreen": true,
+      "missingCodes": [],
+      "passed": true
+    },
+    {
+      "name": "path-only-source-ref",
+      "expectedCodes": [
+        "PATH_ONLY_REFERENCE"
+      ],
+      "actualCodes": [
+        "PATH_ONLY_REFERENCE"
+      ],
+      "nonGreen": true,
+      "missingCodes": [],
+      "passed": true
+    },
+    {
+      "name": "path-only-link-ref",
+      "expectedCodes": [
+        "PATH_ONLY_REFERENCE"
+      ],
+      "actualCodes": [
+        "PATH_ONLY_REFERENCE"
+      ],
+      "nonGreen": true,
+      "missingCodes": [],
+      "passed": true
+    },
+    {
+      "name": "untrusted-mandatory-source",
+      "expectedCodes": [
+        "UNTRUSTED_CONTEXT"
+      ],
+      "actualCodes": [
+        "UNTRUSTED_CONTEXT"
+      ],
+      "nonGreen": true,
+      "missingCodes": [],
+      "passed": true
+    },
+    {
+      "name": "load-everything-retrieval-request",
+      "expectedCodes": [
+        "LOAD_EVERYTHING_REQUEST",
+        "MISSING_TASK_SCOPE"
+      ],
+      "actualCodes": [
+        "LOAD_EVERYTHING_REQUEST",
+        "MISSING_TASK_SCOPE"
+      ],
+      "nonGreen": true,
+      "missingCodes": [],
+      "passed": true
+    },
+    {
+      "name": "unsafe-domain-request",
+      "expectedCodes": [
+        "UNSAFE_INFERRED_DOMAIN_CONTEXT"
+      ],
+      "actualCodes": [
+        "UNSAFE_INFERRED_DOMAIN_CONTEXT"
+      ],
+      "nonGreen": true,
+      "missingCodes": [],
+      "passed": true
+    }
+  ],
+  "failures": [
+    {
+      "name": "stale-source-version-ref",
+      "expectedCodes": [
+        "STALE_SOURCE_VERSION_REF"
+      ],
+      "actualCodes": [],
+      "nonGreen": false,
+      "missingCodes": [
+        "STALE_SOURCE_VERSION_REF"
+      ],
+      "passed": false
+    },
+    {
+      "name": "malformed-source-citation-object",
+      "expectedCodes": [
+        "INVALID_SOURCE_CITATION"
+      ],
+      "actualCodes": [],
+      "nonGreen": false,
+      "missingCodes": [
+        "INVALID_SOURCE_CITATION"
+      ],
+      "passed": false
+    },
+    {
+      "name": "wrong-shaped-area-context-array",
+      "expectedCodes": [
+        "INVALID_AREA_CONTEXT"
+      ],
+      "actualCodes": [],
+      "nonGreen": false,
+      "missingCodes": [
+        "INVALID_AREA_CONTEXT"
+      ],
+      "passed": false
+    }
+  ]
+}

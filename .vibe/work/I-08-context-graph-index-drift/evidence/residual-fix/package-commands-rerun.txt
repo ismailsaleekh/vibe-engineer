@@ -1,0 +1,21 @@
+## pnpm typecheck
+
+> @vibe-engineer/context@0.0.0 typecheck /Users/lizavasilyeva/work/vibe-engineer/packages/context
+> node --check src/index.js && node --check tests/real-boundary-witness.mjs && node --check tests/negative-witness.mjs && node --check tests/schema-strictness-witness.mjs
+
+## pnpm test
+
+> @vibe-engineer/context@0.0.0 test /Users/lizavasilyeva/work/vibe-engineer/packages/context
+> node tests/real-boundary-witness.mjs && node tests/negative-witness.mjs && node tests/schema-strictness-witness.mjs
+
+real-boundary witness ok: /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/residual-fix/package-test-rerun/evidence/real-boundary-witness-result.json
+negative witness ok: /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/residual-fix/package-test-rerun/evidence/negative-witness-result.json
+schema strictness witness ok: /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/residual-fix/package-test-rerun/evidence/schema-strictness-witness-result.json
+## pnpm build
+
+> @vibe-engineer/context@0.0.0 build /Users/lizavasilyeva/work/vibe-engineer/packages/context
+> node --check src/index.js && node --check tests/real-boundary-witness.mjs && node --check tests/negative-witness.mjs && node --check tests/schema-strictness-witness.mjs && node tests/real-boundary-witness.mjs && node tests/negative-witness.mjs && node tests/schema-strictness-witness.mjs
+
+real-boundary witness ok: /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/residual-fix/package-build-rerun/evidence/real-boundary-witness-result.json
+negative witness ok: /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/residual-fix/package-build-rerun/evidence/negative-witness-result.json
+schema strictness witness ok: /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/residual-fix/package-build-rerun/evidence/schema-strictness-witness-result.json

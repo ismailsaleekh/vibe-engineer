@@ -1,0 +1,100 @@
+## command: node --check packages/context/src/index.js
+exit=0
+## command: node --check packages/context/tests/real-boundary-witness.mjs
+exit=0
+## command: node --check packages/context/tests/negative-witness.mjs
+exit=0
+## command: node --check packages/context/tests/schema-strictness-witness.mjs
+exit=0
+## command: pnpm --filter @vibe-engineer/context typecheck
+
+> @vibe-engineer/context@0.0.0 typecheck /Users/lizavasilyeva/work/vibe-engineer/packages/context
+> node --check src/index.js && node --check tests/real-boundary-witness.mjs && node --check tests/negative-witness.mjs && node --check tests/schema-strictness-witness.mjs
+
+exit=0
+## command: cd packages/context && node -e "import('@vibe-engineer/artifacts').then((m)=>{ if (typeof m.validateArtifactFile !== 'function') throw new Error('missing validateArtifactFile'); console.log('artifacts provider ok') })"
+[eval]:1
+import(\x27@vibe-engineer/artifacts\x27).then((m)=>{ if (typeof m.validateArtifactFile !== \x27function\x27) throw new Error(\x27missing validateArtifactFile\x27); console.log(\x27artifacts provider ok\x27) })
+       ^
+Expected unicode escape
+
+SyntaxError: Invalid or unexpected token
+    at makeContextifyScript (node:internal/vm:194:14)
+    at compileScript (node:internal/process/execution:388:10)
+    at evalTypeScript (node:internal/process/execution:260:22)
+    at node:internal/main/eval_string:71:3
+
+Node.js v24.11.1
+exit=1
+## command: cd packages/context && node -e "import('@vibe-engineer/context').then((m)=>{ for (const k of ['writeContextProject','validateContextProject','checkContextDrift','retrieveContextClosure']) if (typeof m[k] !== 'function') throw new Error('missing '+k); console.log('context public API ok') })"
+[eval]:1
+import(\x27@vibe-engineer/context\x27).then((m)=>{ for (const k of [\x27writeContextProject\x27,\x27validateContextProject\x27,\x27checkContextDrift\x27,\x27retrieveContextClosure\x27]) if (typeof m[k] !== \x27function\x27) throw new Error(\x27missing \x27+k); console.log(\x27context public API ok\x27) })
+       ^
+Expected unicode escape
+
+SyntaxError: Invalid or unexpected token
+    at makeContextifyScript (node:internal/vm:194:14)
+    at compileScript (node:internal/process/execution:388:10)
+    at evalTypeScript (node:internal/process/execution:260:22)
+    at node:internal/main/eval_string:71:3
+
+Node.js v24.11.1
+exit=1
+## command: pnpm --filter @vibe-engineer/context exec node -e "import('@vibe-engineer/artifacts').then((m)=>{ if (typeof m.validateArtifactFile !== 'function') throw new Error('missing validateArtifactFile'); console.log('pnpm artifacts provider ok') })"
+[eval]:1
+import(\x27@vibe-engineer/artifacts\x27).then((m)=>{ if (typeof m.validateArtifactFile !== \x27function\x27) throw new Error(\x27missing validateArtifactFile\x27); console.log(\x27pnpm artifacts provider ok\x27) })
+       ^
+Expected unicode escape
+
+SyntaxError: Invalid or unexpected token
+    at makeContextifyScript (node:internal/vm:194:14)
+    at compileScript (node:internal/process/execution:388:10)
+    at evalTypeScript (node:internal/process/execution:260:22)
+    at node:internal/main/eval_string:71:3
+
+Node.js v24.11.1
+undefined
+/Users/lizavasilyeva/work/vibe-engineer/packages/context:
+ ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL  Command failed with exit code 1: node -e import(\x27@vibe-engineer/artifacts\x27).then((m)=>{ if (typeof m.validateArtifactFile !== \x27function\x27) throw new Error(\x27missing validateArtifactFile\x27); console.log(\x27pnpm artifacts provider ok\x27) })
+exit=1
+## command: cd packages/context && node -e "import('@vibe-engineer/config').then((m)=>{ for (const k of ['parseVibeConfig','loadVibeConfigFile','loadVibeConfigFromProjectRoot']) if (typeof m[k] !== 'function') throw new Error('missing '+k); console.log('config provider ok (not load-bearing for context runtime)') })"
+[eval]:1
+import(\x27@vibe-engineer/config\x27).then((m)=>{ for (const k of [\x27parseVibeConfig\x27,\x27loadVibeConfigFile\x27,\x27loadVibeConfigFromProjectRoot\x27]) if (typeof m[k] !== \x27function\x27) throw new Error(\x27missing \x27+k); console.log(\x27config provider ok (not load-bearing for context runtime)\x27) })
+       ^
+Expected unicode escape
+
+SyntaxError: Invalid or unexpected token
+    at makeContextifyScript (node:internal/vm:194:14)
+    at compileScript (node:internal/process/execution:388:10)
+    at evalTypeScript (node:internal/process/execution:260:22)
+    at node:internal/main/eval_string:71:3
+
+Node.js v24.11.1
+exit=1
+## command: VIBE_CONTEXT_WITNESS_ROOT=$ROOT/package-test pnpm --filter @vibe-engineer/context test
+
+> @vibe-engineer/context@0.0.0 test /Users/lizavasilyeva/work/vibe-engineer/packages/context
+> node tests/real-boundary-witness.mjs && node tests/negative-witness.mjs && node tests/schema-strictness-witness.mjs
+
+real-boundary witness ok: /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/revalidation/package-test/evidence/real-boundary-witness-result.json
+negative witness ok: /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/revalidation/package-test/evidence/negative-witness-result.json
+schema strictness witness ok: /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/revalidation/package-test/evidence/schema-strictness-witness-result.json
+exit=0
+## command: VIBE_CONTEXT_WITNESS_ROOT=$ROOT/package-build pnpm --filter @vibe-engineer/context build
+
+> @vibe-engineer/context@0.0.0 build /Users/lizavasilyeva/work/vibe-engineer/packages/context
+> node --check src/index.js && node --check tests/real-boundary-witness.mjs && node --check tests/negative-witness.mjs && node --check tests/schema-strictness-witness.mjs && node tests/real-boundary-witness.mjs && node tests/negative-witness.mjs && node tests/schema-strictness-witness.mjs
+
+real-boundary witness ok: /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/revalidation/package-build/evidence/real-boundary-witness-result.json
+negative witness ok: /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/revalidation/package-build/evidence/negative-witness-result.json
+schema strictness witness ok: /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/revalidation/package-build/evidence/schema-strictness-witness-result.json
+exit=0
+## command: direct real-boundary witness to evidence/revalidation/direct-real-boundary
+real-boundary witness ok: /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/revalidation/direct-real-boundary/result.json
+exit=0
+## command: direct negative witness to evidence/revalidation/direct-negative
+negative witness ok: /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/revalidation/direct-negative/result.json
+exit=0
+## command: direct schema strictness witness to evidence/revalidation/direct-schema
+schema strictness witness ok: /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-08-context-graph-index-drift/evidence/revalidation/direct-schema/result.json
+exit=0
