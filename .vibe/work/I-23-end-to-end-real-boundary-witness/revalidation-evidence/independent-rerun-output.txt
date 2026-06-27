@@ -1,0 +1,31 @@
+=== I-23 STAGE 1: core artifact chain ===
+[PASS] S1-core-chain/1a-work-brief-producer — /Users/lizavasilyeva/work/vibe-engineer/.vibe/evidence/I-23-end-to-end-real-boundary-witness/stage1-core-chain/work-briefs/i23-witness-brief.json
+[PASS] S1-core-chain/1b-plan-from-work-brief — status=approved
+[PASS] S1-core-chain/1b-plan-provenance-to-work-brief — derived_from work-brief-f1b2b5cde783915e
+[PASS] S1-core-chain/1c-build-from-plan — Build Result build-134cc42d97c2dce4, status=passed
+[PASS] S1-core-chain/1c-build-evidence-packets — 16 packet(s), all schema-valid
+[PASS] S1-core-chain/1c-build-context-update — /Users/lizavasilyeva/work/vibe-engineer/.vibe/evidence/I-23-end-to-end-real-boundary-witness/stage1-core-chain/build-evidence/build-work/context/.vibe/context/index/context-graph.json
+[PASS] S1-core-chain/1c-persist-build-result — /Users/lizavasilyeva/work/vibe-engineer/.vibe/evidence/I-23-end-to-end-real-boundary-witness/stage1-core-chain/build-134cc42d97c2dce4.json
+[PASS] S1-core-chain/1d-ship-intake-build-result — readyForShip=true
+[PASS] S1-core-chain/1e-ship-from-build-result — Ship Packet ship-a038b6299a733ba7
+[PASS] S1-core-chain/1e-persist-ship-packet — /Users/lizavasilyeva/work/vibe-engineer/.vibe/evidence/I-23-end-to-end-real-boundary-witness/stage1-core-chain/ship-a038b6299a733ba7.json
+[PASS] S1-core-chain/1e-no-push-invariant — noPush=true commit=false pr=false
+[PASS] S1-core-chain/1f-chain-provenance — Work Brief → Plan → Build Result → Ship Packet linked end-to-end
+=== I-23 STAGE 2: create → harness consumption ===
+[PASS] S2-create-harness/2a-create-selected-pi — status=success; harness=undefined
+[PASS] S2-create-harness/2b-generated-assets-present — 17 generated file(s); adapter manifest=created-starter/.vibe/context/schema/schema-manifest.json
+=== I-23 STAGE 3: verify command ===
+[PASS] S3-verify-command/3-verify-dispatch — verify success envelope + valid
+=== I-23 STAGES 4–8: corroboration ===
+[PASS] S-corroboration/4-contract-flow — exit=0 | [PASS] W-DOMAIN-NEUTRAL — 14 files: golden sample/demo/reference vocab only; @sample/@demo/@reference labeled; no business-domain leakage | [stage] W-REG-REGEN 
+[PASS] S-corroboration/5-observability — exit=0 |  [32m✓[39m packages/observability/test/metrics.test.mjs [2m([22m[2m6 tests[22m[2m)[22m[32m 4[2mms[22m[39m |  [32m✓[39m packages/observability/test
+[PASS] S-corroboration/6a-context-real — exit=0 | real-boundary witness ok: /var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/vibe-context-real-boundary-gawST8/evidence/real-boundary-witness-result.json
+[PASS] S-corroboration/6b-context-negative — exit=0 | negative witness ok: /var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/vibe-context-negative-9D9mRd/evidence/negative-witness-result.json
+[PASS] S-corroboration/7a-security-policy — exit=0 | {"ok":true,"positive":{"allowedLocal":{"status":"passed","decision":"allow"},"externalDryRun":{"status":"passed","decision":"allow"},"advisory":{"status":"advis
+[PASS] S-corroboration/7b-security-redaction — exit=0 | {"ok":true,"redactedSurfaces":["stdout","resultFiles","evidenceRefs","diagnostics","errors","logs","circularEvidence","bigintEvidence"]}
+[PASS] S-corroboration/7c-security-contracts — exit=0 | {"ok":true,"contractNegativeCount":16}
+[PASS] S-corroboration/8a-build-chain — exit=0 | [PASS] N2-failed-verification-blocks — verification_failed_blocks_build (status=failed) | [PASS] N4-malformed-build-result-intake — validation_failed (stage=shi
+[PASS] S-corroboration/8b-ship-chain — exit=0 | [PASS] N7b-commit-by-agent-const-rejected — commitPerformedByAgent=true must be schema-rejected (const) | [PASS] N10-no-internal-relative-imports — all imports 
+
+=== I-23 WITNESS SUMMARY: 24/24 PASS ===
+WITNESS_EXIT_CODE=0
