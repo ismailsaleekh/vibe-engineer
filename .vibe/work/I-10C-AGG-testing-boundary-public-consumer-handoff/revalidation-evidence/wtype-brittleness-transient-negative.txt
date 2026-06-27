@@ -1,0 +1,9 @@
+### wtype-brittleness-transient-negative.txt (2026-06-26T18:19:23Z)
+Transient non-destructive test (copy of package in /tmp, real-repo tsc binary).
+Baseline (copy intact): EXIT=0
+Negative A (remove 'p0.testing-boundary' union member): EXIT=2
+  TS2322: Type '"p0.testing-boundary"' is not assignable to type 'P0AggregateFamily' (x2)
+Negative B (remove testingBoundary? option): EXIT=2
+  TS2353: 'testingBoundary' does not exist in type 'P0AggregateOptions'
+Restore: EXIT=0
+=> PROVES W-TYPE genuinely compiles index.d.ts (truth-green, not shape-green).
