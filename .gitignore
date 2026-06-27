@@ -3,8 +3,10 @@ node_modules/
 .pnpm-store/
 
 # Build outputs
+# NOTE: this repo's build-output contract is dist/** (see turbo.json tasks.build.outputs).
+# The bare `build/` rule was removed because it only matched source dirs
+# (e.g. packages/cli/src/commands/build/, packages/skills/src/build/), not build artifacts.
 dist/
-build/
 coverage/
 .turbo/
 *.tsbuildinfo
