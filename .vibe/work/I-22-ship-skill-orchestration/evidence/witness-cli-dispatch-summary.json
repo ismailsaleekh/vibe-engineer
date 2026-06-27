@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "i22-cli-witness/v1",
+  "results": [
+    {
+      "name": "W6-loader-registers-ship",
+      "status": "PASS",
+      "note": "ship command registered"
+    },
+    {
+      "name": "W6-cli-declares-skills-and-ship-export",
+      "status": "PASS",
+      "note": "dep=true, ./ship export=true"
+    },
+    {
+      "name": "W6-seed-build-via-sibling",
+      "status": "PASS",
+      "note": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-22-ship-skill-orchestration/evidence/witness-cli-dispatch/seed-build/build-work/build-result.json"
+    },
+    {
+      "name": "W6-green-dispatch",
+      "status": "PASS",
+      "note": "status=success exit=0 envelopeValid=true shipPacket=true"
+    },
+    {
+      "name": "W6-green-ship-packet-carrier",
+      "status": "PASS",
+      "note": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-22-ship-skill-orchestration/evidence/witness-cli-dispatch/green-ship/ship-work/ship-packet.json"
+    },
+    {
+      "name": "R3-secret-redaction",
+      "status": "PASS",
+      "note": "secret-like input rejected + redacted from envelope"
+    },
+    {
+      "name": "N2-cli-non-passed-build-result",
+      "status": "PASS",
+      "note": "status=blocked exit=2 shipPacket=false"
+    },
+    {
+      "name": "N4-cli-failed-final-verify",
+      "status": "PASS",
+      "note": "status=failure exit=1 classification=deterministic_failure shipPacket=false"
+    },
+    {
+      "name": "N9-cli-missing-prerequisite-classified",
+      "status": "PASS",
+      "note": "status=failure exit=1 classification=deterministic_failure"
+    },
+    {
+      "name": "N8-cli-unknown-flag",
+      "status": "PASS",
+      "note": "status=blocked exit=2"
+    },
+    {
+      "name": "N8b-cli-missing-required-flag",
+      "status": "PASS",
+      "note": "status=blocked exit=2"
+    },
+    {
+      "name": "N1-cli-missing-build-result",
+      "status": "PASS",
+      "note": "status=blocked exit=2"
+    },
+    {
+      "name": "R2-sibling-coexist",
+      "status": "PASS",
+      "note": "ship=true build=true verify=true"
+    }
+  ]
+}

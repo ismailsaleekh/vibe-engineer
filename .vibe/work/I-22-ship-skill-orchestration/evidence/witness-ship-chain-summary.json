@@ -1,0 +1,125 @@
+{
+  "schemaVersion": "i22-witness/v1",
+  "results": [
+    {
+      "name": "seed-build-result",
+      "status": "PASS",
+      "note": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-22-ship-skill-orchestration/evidence/witness-ship-chain/seed-build/build-09fff8deefdceb08.json"
+    },
+    {
+      "name": "W1-intake-to-orchestrator",
+      "status": "PASS",
+      "note": "buildResultRef status=passed"
+    },
+    {
+      "name": "W2-orchestrator-final-verify",
+      "status": "PASS",
+      "note": "16 packets, status=passed, allValid=true"
+    },
+    {
+      "name": "W3-orchestrator-final-context",
+      "status": "PASS",
+      "note": "drift.ok=true, header=/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-22-ship-skill-orchestration/evidence/witness-ship-chain/ship-work/context/.vibe/context/index/context-graph.header.json, updateStatus=updated"
+    },
+    {
+      "name": "W4-ship-packet-schema",
+      "status": "PASS",
+      "note": "ship-995b1d7260379284"
+    },
+    {
+      "name": "W4b-persist-ship-packet",
+      "status": "PASS",
+      "note": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-22-ship-skill-orchestration/evidence/witness-ship-chain/ship-995b1d7260379284.json"
+    },
+    {
+      "name": "W5-no-push-invariant",
+      "status": "PASS",
+      "note": "noPush=true, commitByAgent=false, prByAgent=false"
+    },
+    {
+      "name": "W5-final-verification-and-drift-refs",
+      "status": "PASS",
+      "note": "finalVerification=16, driftRefs=1"
+    },
+    {
+      "name": "N1-missing-build-result",
+      "status": "PASS",
+      "note": "ship_intake_missing_build_result"
+    },
+    {
+      "name": "N2-non-passed-build-result",
+      "status": "PASS",
+      "note": "ship_intake_build_result_not_passed"
+    },
+    {
+      "name": "N3-blocking-warning-build-result",
+      "status": "PASS",
+      "note": "passed carrier cannot carry blocking warnings schema-validly (structural guarantee)"
+    },
+    {
+      "name": "N4-failed-final-verify-blocks",
+      "status": "PASS",
+      "note": "ship_final_verify_blocks (status=failed)"
+    },
+    {
+      "name": "N5-context-drift-blocks",
+      "status": "PASS",
+      "note": "ship_context_drift_blocks (driftStatus=blocked)"
+    },
+    {
+      "name": "N6-empty-final-verification-rejected",
+      "status": "PASS",
+      "note": "Ship Packet with empty finalVerification must be schema-rejected"
+    },
+    {
+      "name": "N7-no-push-const-violation-rejected",
+      "status": "PASS",
+      "note": "noPushWithoutApproval=false must be schema-rejected (const)"
+    },
+    {
+      "name": "N7b-commit-by-agent-const-rejected",
+      "status": "PASS",
+      "note": "commitPerformedByAgent=true must be schema-rejected (const)"
+    },
+    {
+      "name": "N10-no-internal-relative-imports",
+      "status": "PASS",
+      "note": "all imports via public @vibe-engineer/* exports"
+    },
+    {
+      "name": "R1-idempotent-rerun",
+      "status": "PASS",
+      "note": "deterministic artifactId ship-995b1d7260379284"
+    },
+    {
+      "name": "W7-static-no-push-no-remote",
+      "status": "PASS",
+      "note": "no git/remote/deploy mutation calls in I-22 source"
+    },
+    {
+      "name": "W7-dynamic-git-state-unchanged",
+      "status": "PASS",
+      "note": "HEAD+refs equal before/after ship run (no commit/push/tag performed)"
+    }
+  ],
+  "shipPacketArtifactId": "ship-995b1d7260379284",
+  "shipPacketPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-22-ship-skill-orchestration/evidence/witness-ship-chain/ship-995b1d7260379284.json",
+  "evidencePackets": [
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-22-ship-skill-orchestration/evidence/witness-ship-chain/ship-work/final-verify-evidence/evidence_i22-witness-green_safety-hooks_00.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-22-ship-skill-orchestration/evidence/witness-ship-chain/ship-work/final-verify-evidence/evidence_i22-witness-green_typecheck_01.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-22-ship-skill-orchestration/evidence/witness-ship-chain/ship-work/final-verify-evidence/evidence_i22-witness-green_lint-format_02.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-22-ship-skill-orchestration/evidence/witness-ship-chain/ship-work/final-verify-evidence/evidence_i22-witness-green_mechanical-gate_03.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-22-ship-skill-orchestration/evidence/witness-ship-chain/ship-work/final-verify-evidence/evidence_i22-witness-green_unit_04.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-22-ship-skill-orchestration/evidence/witness-ship-chain/ship-work/final-verify-evidence/evidence_i22-witness-green_integration_05.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-22-ship-skill-orchestration/evidence/witness-ship-chain/ship-work/final-verify-evidence/evidence_i22-witness-green_contract-adapter_06.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-22-ship-skill-orchestration/evidence/witness-ship-chain/ship-work/final-verify-evidence/evidence_i22-witness-green_e2e_07.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-22-ship-skill-orchestration/evidence/witness-ship-chain/ship-work/final-verify-evidence/evidence_i22-witness-green_ui-verification_08.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-22-ship-skill-orchestration/evidence/witness-ship-chain/ship-work/final-verify-evidence/evidence_i22-witness-green_ai-eval_09.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-22-ship-skill-orchestration/evidence/witness-ship-chain/ship-work/final-verify-evidence/evidence_i22-witness-green_build-package_10.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-22-ship-skill-orchestration/evidence/witness-ship-chain/ship-work/final-verify-evidence/evidence_i22-witness-green_context-drift_11.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-22-ship-skill-orchestration/evidence/witness-ship-chain/ship-work/final-verify-evidence/evidence_i22-witness-green_observability_12.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-22-ship-skill-orchestration/evidence/witness-ship-chain/ship-work/final-verify-evidence/evidence_i22-witness-green_advisory-review_13.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-22-ship-skill-orchestration/evidence/witness-ship-chain/ship-work/final-verify-evidence/evidence_i22-witness-green_final-dod_14.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-22-ship-skill-orchestration/evidence/witness-ship-chain/ship-work/final-verify-evidence/evidence_i22-witness-green_schema-validation_15.json"
+  ]
+}

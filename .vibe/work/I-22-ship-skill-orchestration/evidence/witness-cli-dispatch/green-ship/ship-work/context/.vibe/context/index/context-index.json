@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "1.0.0",
+  "artifactKind": "context_index",
+  "indexId": "context-index-main",
+  "indexVersion": "1.0.0",
+  "producer": {
+    "kind": "skill",
+    "id": "skill-ship",
+    "name": "ship",
+    "version": "1.0.0",
+    "runId": "i22-cli-green"
+  },
+  "generatedAt": "2026-06-27T03:54:09.296Z",
+  "graphRef": {
+    "graphId": "ship-context-i22-cli-green",
+    "path": ".vibe/context/index/context-graph.json",
+    "headerPath": ".vibe/context/index/context-graph.header.json"
+  },
+  "headerRef": {
+    "artifactId": "ctx-index-main",
+    "path": ".vibe/context/index/context-index.header.json"
+  },
+  "nodeRefs": [
+    {
+      "contextId": "ctx:ship-result",
+      "areaId": "ship-result",
+      "level": 1,
+      "mandatory": true,
+      "path": ".vibe/context/areas/ship-result.context.json",
+      "headerPath": ".vibe/context/areas/ship-result.header.json",
+      "sourceRefs": [
+        "src-ship-i22-cli-green"
+      ]
+    }
+  ],
+  "sourceRefs": [
+    {
+      "sourceId": "src-ship-i22-cli-green",
+      "path": "sources/src-ship-i22-cli-green.md",
+      "fingerprint": {
+        "algorithm": "sha256",
+        "value": "a2d88f5403f0e49c5c7703f44d3f31130d6b2e5cdb0c24d45a6ef77cd9936330"
+      }
+    }
+  ],
+  "schemaRef": "https://schemas.vibe-engineer.dev/context/v1/context-index.schema.json"
+}

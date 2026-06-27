@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "1.0.0",
+  "artifactKind": "context_index",
+  "indexId": "context-index-main",
+  "indexVersion": "1.0.0",
+  "producer": {
+    "kind": "skill",
+    "id": "skill-ship",
+    "name": "ship",
+    "version": "1.0.0",
+    "runId": "i22-n5-drift"
+  },
+  "generatedAt": "2026-06-27T00:00:00.000Z",
+  "graphRef": {
+    "graphId": "ship-context-n5",
+    "path": ".vibe/context/index/context-graph.json",
+    "headerPath": ".vibe/context/index/context-graph.header.json"
+  },
+  "headerRef": {
+    "artifactId": "ctx-index-main",
+    "path": ".vibe/context/index/context-index.header.json"
+  },
+  "nodeRefs": [
+    {
+      "contextId": "ctx:n5-area",
+      "areaId": "n5-area",
+      "level": 1,
+      "mandatory": true,
+      "path": ".vibe/context/areas/n5-area.context.json",
+      "headerPath": ".vibe/context/areas/n5-area.header.json",
+      "sourceRefs": [
+        "src-n5"
+      ]
+    }
+  ],
+  "sourceRefs": [
+    {
+      "sourceId": "src-n5",
+      "path": "sources/src-n5.md",
+      "fingerprint": {
+        "algorithm": "sha256",
+        "value": "7e14fcf927ae1e8a0c7ae5aba7c7188e6dab566d4c476b66df9af2b19338460d"
+      }
+    }
+  ],
+  "schemaRef": "https://schemas.vibe-engineer.dev/context/v1/context-index.schema.json"
+}

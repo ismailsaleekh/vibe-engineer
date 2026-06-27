@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "1.0.0",
+  "artifactKind": "context_area",
+  "areaId": "n5-area",
+  "title": "N5",
+  "owner": "vibe-engineer-ship",
+  "level": 1,
+  "mandatory": true,
+  "sourceRefs": [
+    "src-n5"
+  ],
+  "context": [
+    {
+      "contextId": "ctx-n5",
+      "level": 1,
+      "mandatory": true,
+      "text": "n5 context",
+      "sourceRefs": [
+        "src-n5"
+      ],
+      "citationRefs": [
+        "src-n5:sha256"
+      ]
+    }
+  ],
+  "scope": {
+    "kind": "repo",
+    "paths": [
+      "."
+    ],
+    "description": "n5"
+  },
+  "updateMetadata": {
+    "invalidationStatus": "current"
+  },
+  "driftMetadata": {
+    "driftStatus": "clean",
+    "sourceRefs": [
+      "src-n5"
+    ]
+  },
+  "schemaRef": "https://schemas.vibe-engineer.dev/context/v1/context-area.schema.json"
+}

@@ -1,0 +1,87 @@
+{
+  "schemaVersion": "1.0.0",
+  "artifactKind": "context_file_header",
+  "artifactId": "ctx-index-graph",
+  "title": "Context graph header",
+  "createdAt": "2026-06-27T05:26:56.646Z",
+  "updatedAt": "2026-06-27T05:26:56.646Z",
+  "producer": {
+    "kind": "skill",
+    "id": "skill-ship",
+    "name": "ship",
+    "version": "1.0.0",
+    "runId": "i22-w7-dynamic"
+  },
+  "status": "current",
+  "ownership": {
+    "ownerLane": "I-08-context-graph-index-drift",
+    "ownedWritePaths": [
+      "packages/context/**",
+      ".vibe/context/schema/**",
+      ".vibe/work/I-08-context-graph-index-drift/**"
+    ],
+    "readOnlyPaths": [
+      "packages/artifacts/**",
+      "packages/config/**"
+    ],
+    "untouchablePaths": [
+      ".git/**",
+      "pnpm-lock.yaml",
+      "package.json",
+      "pnpm-workspace.yaml"
+    ],
+    "concurrencyNotes": "Dirty-tree safe; only explicit I-08 carriers may be written.",
+    "handoffPolicy": "Consumers must use stable ids, citations, and drift findings before relying on context."
+  },
+  "links": [
+    {
+      "rel": "context_for",
+      "artifactKind": "context_file_header",
+      "artifactId": "ctx-index-graph",
+      "path": ".vibe/context/index/ctx-index-graph.json",
+      "required": true,
+      "statusAtLinkTime": "current"
+    }
+  ],
+  "extensions": {
+    "vibe.context": {
+      "schemaVersion": "1.0.0"
+    }
+  },
+  "sourceRefs": [],
+  "contextId": "ship-context-i22-w7-dynamic",
+  "scope": {
+    "kind": "repo",
+    "paths": [
+      "."
+    ],
+    "description": "Domain-neutral repository context."
+  },
+  "owner": "vibe-engineer-context",
+  "dependencies": [],
+  "dependents": [],
+  "relatedDecisions": [],
+  "relatedPlansArtifacts": [],
+  "verificationMetadata": {
+    "lastValidationEvidenceRefs": [],
+    "status": "unknown"
+  },
+  "updateMetadata": {
+    "lastReviewedAt": "2026-06-27T05:26:56.646Z",
+    "lastUpdatedBy": {
+      "kind": "skill",
+      "id": "skill-ship",
+      "name": "ship",
+      "version": "1.0.0",
+      "runId": "i22-w7-dynamic"
+    },
+    "updateReason": "context graph/index write"
+  },
+  "driftMetadata": {
+    "driftStatus": "unknown",
+    "lastDriftCheckAt": "2026-06-27T05:26:56.646Z",
+    "evidenceRefs": []
+  },
+  "retrievalHints": [],
+  "summary": "Context graph header"
+}

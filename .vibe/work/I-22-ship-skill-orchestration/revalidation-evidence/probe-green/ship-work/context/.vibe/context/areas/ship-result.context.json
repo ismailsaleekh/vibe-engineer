@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "1.0.0",
+  "artifactKind": "context_area",
+  "areaId": "ship-result",
+  "title": "Ship context for build-040477c785f8f7c3",
+  "owner": "vibe-engineer-ship",
+  "level": 1,
+  "mandatory": true,
+  "sourceRefs": [
+    "src-ship-i22-reval-green-probe"
+  ],
+  "context": [
+    {
+      "contextId": "ctx-ship-i22-reval-green-probe",
+      "level": 1,
+      "mandatory": true,
+      "text": "Ship skill validated Build Result build-040477c785f8f7c3 with a real final context-drift check before assembling a Ship Packet.",
+      "sourceRefs": [
+        "src-ship-i22-reval-green-probe"
+      ],
+      "citationRefs": [
+        "src-ship-i22-reval-green-probe:sha256"
+      ]
+    }
+  ],
+  "scope": {
+    "kind": "repo",
+    "paths": [
+      "packages/skills/src/ship"
+    ],
+    "description": "Ship skill context closure."
+  },
+  "updateMetadata": {
+    "invalidationStatus": "current"
+  },
+  "driftMetadata": {
+    "driftStatus": "clean",
+    "sourceRefs": [
+      "src-ship-i22-reval-green-probe"
+    ]
+  },
+  "schemaRef": "https://schemas.vibe-engineer.dev/context/v1/context-area.schema.json"
+}

@@ -1,0 +1,22 @@
+[PASS] seed-build-result — /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-22-ship-skill-orchestration/evidence/witness-ship-chain/seed-build/build-040477c785f8f7c3.json
+[PASS] W1-intake-to-orchestrator — buildResultRef status=passed
+[PASS] W2-orchestrator-final-verify — 16 packets, status=passed, allValid=true
+[PASS] W3-orchestrator-final-context — drift.ok=true, header=/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-22-ship-skill-orchestration/evidence/witness-ship-chain/ship-work/context/.vibe/context/index/context-graph.header.json, updateStatus=updated
+[PASS] W4-ship-packet-schema — ship-2afa844d483b5b5a
+[PASS] W4b-persist-ship-packet — /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-22-ship-skill-orchestration/evidence/witness-ship-chain/ship-2afa844d483b5b5a.json
+[PASS] W5-no-push-invariant — noPush=true, commitByAgent=false, prByAgent=false
+[PASS] W5-final-verification-and-drift-refs — finalVerification=16, driftRefs=1
+[PASS] N1-missing-build-result — ship_intake_missing_build_result
+[PASS] N2-non-passed-build-result — ship_intake_build_result_not_passed
+[PASS] N3-blocking-warning-build-result — passed carrier cannot carry blocking warnings schema-validly (structural guarantee)
+[PASS] N4-failed-final-verify-blocks — ship_final_verify_blocks (status=failed)
+[PASS] N5-context-drift-blocks — ship_context_drift_blocks (driftStatus=blocked)
+[PASS] N6-empty-final-verification-rejected — Ship Packet with empty finalVerification must be schema-rejected
+[PASS] N7-no-push-const-violation-rejected — noPushWithoutApproval=false must be schema-rejected (const)
+[PASS] N7b-commit-by-agent-const-rejected — commitPerformedByAgent=true must be schema-rejected (const)
+[PASS] N10-no-internal-relative-imports — all imports via public @vibe-engineer/* exports
+[PASS] R1-idempotent-rerun — deterministic artifactId ship-2afa844d483b5b5a
+[PASS] W7-static-no-push-no-remote — no git/remote/deploy mutation calls in I-22 source
+[PASS] W7-dynamic-git-state-unchanged — HEAD+refs equal before/after ship run (no commit/push/tag performed)
+
+=== SHIP WITNESS SUMMARY: 20/20 PASS ===

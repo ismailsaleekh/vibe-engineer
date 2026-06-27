@@ -1,0 +1,28 @@
+[
+  {
+    "kind": "validator",
+    "validator": "validateArtifactFile",
+    "targetPath": ".vibe/work/I-22-ship-skill-orchestration/evidence/witness-cli-dispatch/fail-target.json",
+    "artifactKind": "implementation_plan",
+    "id": "schema-validation",
+    "requiredItemIds": [
+      "schema-validation"
+    ],
+    "layer": "schema_validation",
+    "evidenceClass": "deterministic",
+    "blocking": true
+  },
+  {
+    "kind": "validator",
+    "validator": "validateArtifactFile",
+    "targetPath": "packages/verification/fixtures/plans/approved-plan.json",
+    "artifactKind": "implementation_plan",
+    "id": "advisory-review",
+    "requiredItemIds": [
+      "advisory-review"
+    ],
+    "layer": "advisory_review",
+    "evidenceClass": "advisory",
+    "blocking": false
+  }
+]

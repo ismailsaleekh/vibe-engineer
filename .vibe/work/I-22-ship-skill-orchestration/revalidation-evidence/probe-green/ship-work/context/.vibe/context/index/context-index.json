@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "1.0.0",
+  "artifactKind": "context_index",
+  "indexId": "context-index-main",
+  "indexVersion": "1.0.0",
+  "producer": {
+    "kind": "skill",
+    "id": "skill-ship",
+    "name": "ship",
+    "version": "1.0.0",
+    "runId": "i22-reval-green-probe"
+  },
+  "generatedAt": "2026-06-27T09:00:00.000Z",
+  "graphRef": {
+    "graphId": "ship-context-i22-reval-green-probe",
+    "path": ".vibe/context/index/context-graph.json",
+    "headerPath": ".vibe/context/index/context-graph.header.json"
+  },
+  "headerRef": {
+    "artifactId": "ctx-index-main",
+    "path": ".vibe/context/index/context-index.header.json"
+  },
+  "nodeRefs": [
+    {
+      "contextId": "ctx:ship-result",
+      "areaId": "ship-result",
+      "level": 1,
+      "mandatory": true,
+      "path": ".vibe/context/areas/ship-result.context.json",
+      "headerPath": ".vibe/context/areas/ship-result.header.json",
+      "sourceRefs": [
+        "src-ship-i22-reval-green-probe"
+      ]
+    }
+  ],
+  "sourceRefs": [
+    {
+      "sourceId": "src-ship-i22-reval-green-probe",
+      "path": "sources/src-ship-i22-reval-green-probe.md",
+      "fingerprint": {
+        "algorithm": "sha256",
+        "value": "77765b4cb51da0e82c5fc25d70deca81a51cf57c82a82e87cb18f33ab1844306"
+      }
+    }
+  ],
+  "schemaRef": "https://schemas.vibe-engineer.dev/context/v1/context-index.schema.json"
+}

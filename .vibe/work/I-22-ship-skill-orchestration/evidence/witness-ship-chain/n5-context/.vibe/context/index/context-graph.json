@@ -1,0 +1,100 @@
+{
+  "schemaVersion": "1.0.0",
+  "artifactKind": "context_graph",
+  "graphId": "ship-context-n5",
+  "indexVersion": "1.0.0",
+  "producer": {
+    "kind": "skill",
+    "id": "skill-ship",
+    "name": "ship",
+    "version": "1.0.0",
+    "runId": "i22-n5-drift"
+  },
+  "generatedAt": "2026-06-27T00:00:00.000Z",
+  "schemaRefs": {
+    "graph": "https://schemas.vibe-engineer.dev/context/v1/context-graph.schema.json",
+    "index": "https://schemas.vibe-engineer.dev/context/v1/context-index.schema.json",
+    "area": "https://schemas.vibe-engineer.dev/context/v1/context-area.schema.json",
+    "summary": "https://schemas.vibe-engineer.dev/context/v1/context-summary.schema.json",
+    "retrievalClosure": "https://schemas.vibe-engineer.dev/context/v1/retrieval-closure.schema.json"
+  },
+  "sources": [
+    {
+      "sourceId": "src-n5",
+      "kind": "artifact",
+      "path": "sources/src-n5.md",
+      "fingerprint": {
+        "algorithm": "sha256",
+        "value": "7e14fcf927ae1e8a0c7ae5aba7c7188e6dab566d4c476b66df9af2b19338460d"
+      },
+      "versionRef": "sha256:7e14fcf927ae1e8a0c7ae5aba7c7188e6dab566d4c476b66df9af2b19338460d",
+      "trust": "trusted",
+      "required": true,
+      "level": 1,
+      "scope": {
+        "kind": "repo",
+        "paths": [
+          "sources/src-n5.md"
+        ],
+        "description": "Domain-neutral source context."
+      },
+      "artifactRef": {
+        "artifactKind": "build_result",
+        "artifactId": "n5",
+        "path": "sources/src-n5.md",
+        "required": true
+      },
+      "citations": [
+        {
+          "citationId": "src-n5:sha256",
+          "sourceId": "src-n5",
+          "path": "sources/src-n5.md",
+          "fingerprint": {
+            "algorithm": "sha256",
+            "value": "7e14fcf927ae1e8a0c7ae5aba7c7188e6dab566d4c476b66df9af2b19338460d"
+          }
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "contextId": "ctx:n5-area",
+      "kind": "area",
+      "areaId": "n5-area",
+      "title": "N5",
+      "level": 1,
+      "mandatory": true,
+      "trust": "trusted",
+      "scope": {
+        "kind": "repo",
+        "paths": [
+          "."
+        ],
+        "description": "n5"
+      },
+      "owner": "vibe-engineer-ship",
+      "headerRef": {
+        "artifactId": "ctx-area-n5-area",
+        "path": ".vibe/context/areas/n5-area.header.json"
+      },
+      "sourceRefs": [
+        "src-n5"
+      ],
+      "artifactPath": ".vibe/context/areas/n5-area.context.json"
+    }
+  ],
+  "edges": [],
+  "links": [],
+  "retrievalPolicy": {
+    "requireTaskScope": true,
+    "mandatoryLevel": 1,
+    "allowedLevels": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  }
+}

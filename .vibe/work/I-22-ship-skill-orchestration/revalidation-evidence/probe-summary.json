@@ -1,0 +1,52 @@
+{
+  "total": 9,
+  "pass": 9,
+  "fail": 0,
+  "results": [
+    {
+      "name": "S0-green-validates",
+      "status": "PASS",
+      "detail": "real @vibe-engineer/artifacts accepts the green Ship Packet"
+    },
+    {
+      "name": "S1-noPushWithoutApproval-false-rejected",
+      "status": "PASS",
+      "detail": "const:true enforced — push-allowed packet is unvalidatable"
+    },
+    {
+      "name": "S2-commitPerformedByAgent-true-rejected",
+      "status": "PASS",
+      "detail": "const:false enforced — agent-commit packet is unvalidatable"
+    },
+    {
+      "name": "S3-prOpenedByAgent-true-rejected",
+      "status": "PASS",
+      "detail": "const:false enforced — agent-PR packet is unvalidatable"
+    },
+    {
+      "name": "S4-stray-push-field-rejected",
+      "status": "PASS",
+      "detail": "additionalProperties:false — no hidden push/commit/PR field can sneak in"
+    },
+    {
+      "name": "N4-failed-final-verify-blocks",
+      "status": "PASS",
+      "detail": "reason=ship_final_verify_blocks verificationStatus=failed — NO Ship Packet emitted"
+    },
+    {
+      "name": "N4-git-state-unchanged",
+      "status": "PASS",
+      "detail": "HEAD=001c76d7cf57 refs+status-count unchanged by the failing ship run"
+    },
+    {
+      "name": "GREEN-probe-packet-invariant",
+      "status": "PASS",
+      "detail": "green packet invariant held: noPush=true commitByAgent=false prByAgent=false status=ready_for_review"
+    },
+    {
+      "name": "GREEN-git-state-unchanged",
+      "status": "PASS",
+      "detail": "HEAD+refs unchanged by the green ship run (no commit/push/tag)"
+    }
+  ]
+}
