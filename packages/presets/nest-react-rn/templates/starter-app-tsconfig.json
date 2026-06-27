@@ -1,0 +1,13 @@
+{
+  "$comment": "DL-16 app/package tsconfig inheritor skeleton. Every apps/* and packages/* tsconfig must extend ../../tsconfig.base.json without overriding any strict base flag.",
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist",
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "noEmit": false
+  },
+  "include": ["src/**/*.ts"]
+}

@@ -1,0 +1,17 @@
+{
+  "$comment": "Locked DL-16 starter layout declaration owned by @vibe-engineer/preset-nest-react-rn. Strict defaults are DERIVED from @vibe-engineer/preset-typescript (consume, do not duplicate). This template is a machine-readable skeleton consumed by the I-15B-2 reference source-template.",
+  "scope": "@vibe-engineer-starter",
+  "workspaceName": "@vibe-engineer-starter/workspace",
+  "architectureDecision": "DL-16-starter-architecture",
+  "apps": ["api", "web", "mobile"],
+  "packages": ["domain", "contracts", "api-client", "config", "testing", "ui"],
+  "vibeAreas": ["context", "work", "evidence", "registry"],
+  "toolingAreas": ["scripts", "dev-services", "ci", "generated"],
+  "goldenModule": "golden-records",
+  "goldenModuleClassification": "sample/demo/reference",
+  "authStance": "no-auth",
+  "persistence": "PostgreSQL + Prisma",
+  "contractMechanism": "ts-rest + named Zod schemas",
+  "agenticHarness": "pi",
+  "consumedTypescriptPresetId": "vibe-engineer.typescript.strict"
+}

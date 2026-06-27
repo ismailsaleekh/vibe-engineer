@@ -1,0 +1,6 @@
+{
+  "$comment": "DL-16 starter Turborepo task skeleton. Tasks derived from @vibe-engineer/preset-typescript TURBO_TASK_DEFAULTS; the quick gate excludes full E2E, full mobile, full visual, and deploy defaults.",
+  "quickGateLabel": "quality:quick",
+  "tasks": ["typecheck", "lint", "format:check", "test:unit", "build", "quality:quick"],
+  "derivedFrom": "@vibe-engineer/preset-typescript#TURBO_TASK_DEFAULTS"
+}

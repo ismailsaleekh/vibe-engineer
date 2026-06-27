@@ -3,12 +3,25 @@
   "version": "0.0.0",
   "license": "MIT",
   "type": "module",
-  "description": "Skeleton manifest for @vibe-engineer/preset-nest-react-rn; implementation is owned by a later validated lane.",
-  "vibeEngineer": {
-    "implementationUnit": "I-00A-workspace-package-skeleton",
-    "implementationStatus": "skeleton-only",
-    "packageRole": "private-preset-workspace-package",
-    "sourceStatus": "not-created-in-I-00A"
+  "description": "NestJS / React / React Native reference starter preset: declares the locked DL-16 monorepo layout and derives strict TypeScript / pnpm / Turborepo / lint / test defaults from @vibe-engineer/preset-typescript.",
+  "private": true,
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "import": "./src/index.ts"
+    }
   },
-  "private": true
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "witness": "node fixtures/witnesses/run-nest-react-rn-preset-witness.mjs"
+  },
+  "dependencies": {
+    "@vibe-engineer/preset-typescript": "workspace:*"
+  },
+  "vibeEngineer": {
+    "implementationUnit": "I-15B-1-preset-package",
+    "implementationStatus": "implemented",
+    "packageRole": "private-preset-workspace-package",
+    "sourceStatus": "package-owned-typescript-source-created"
+  }
 }
