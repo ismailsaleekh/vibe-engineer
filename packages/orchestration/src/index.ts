@@ -201,7 +201,9 @@ const DIRTY_STATES = new Set<NonNullable<ArtifactOutputRef['dirtyState']>>([
 
 const FAILURE_ROUTE_STATUSES = new Set<FailureRouteStatus>(['none', 'routing-needed', 'routed', 'blocked']);
 
-const parseJsonDocument: (text: string) => unknown = JSON.parse;
+interface JsonDocumentParser { (text: string): unknown; }
+
+const parseJsonDocument: JsonDocumentParser = JSON.parse;
 
 function isRecord(value: unknown): value is UnknownRecord {
   return typeof value === 'object' && value !== null && !Array.isArray(value);
@@ -706,7 +708,9 @@ export function selectReadyNodes(plan: OrchestrationWorkPlan, state: DurableRunS
   return { scheduledNodeIds: selected, blockedNodeIds, reasons, activeCount: currentActiveCount, maxParallelAgents: plan.limits.maxParallelAgents };
 }
 
-function updateNode(nodes: readonly NodeRuntimeState[], nodeId: string, updater: (node: NodeRuntimeState) => NodeRuntimeState): readonly NodeRuntimeState[] {
+interface NodeStateUpdater { (node: NodeRuntimeState): NodeRuntimeState; }
+
+function updateNode(nodes: readonly NodeRuntimeState[], nodeId: string, updater: NodeStateUpdater): readonly NodeRuntimeState[] {
   const targetIndex = nodes.findIndex((node) => node.id === nodeId);
   if (targetIndex < 0) throw new OrchestrationContractError('Node not found in runtime state.', [{ code: 'NODE_NOT_FOUND', path: '/nodes', message: `Node ${nodeId} not found.` }]);
   return nodes.map((node) => node.id === nodeId ? updater(node) : node);
