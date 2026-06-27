@@ -18,7 +18,7 @@ export { STANDARD_IDS, STANDARDS_CATALOG } from './catalog-data.js';
 const STANDARD_MAP = new Map(STANDARD_DEFINITIONS.map((standard) => [standard.standardId, standard]));
 
 function clone(value) {
-  return JSON.parse(JSON.stringify(value));
+  return structuredClone(value);
 }
 
 function assertCatalogValid() {

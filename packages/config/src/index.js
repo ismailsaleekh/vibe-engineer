@@ -81,7 +81,7 @@ const UNSUPPORTED_CONFIG_FILES = Object.freeze([
 ]);
 
 function clone(value) {
-  return JSON.parse(JSON.stringify(value));
+  return structuredClone(value);
 }
 
 function isPlainObject(value) {
