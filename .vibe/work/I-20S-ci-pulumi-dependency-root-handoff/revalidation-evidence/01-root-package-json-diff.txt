@@ -1,0 +1,15 @@
+## git diff -- package.json (scripts-only proof)
+diff --git a/package.json b/package.json
+index 096423d..2382487 100644
+--- a/package.json
++++ b/package.json
+@@ -13,6 +13,7 @@
+     "build": "pnpm exec turbo run build",
+     "typecheck": "pnpm exec turbo run typecheck",
+     "test": "pnpm exec turbo run test",
++    "quality": "node scripts/quality/run-quality.mjs",
+     "workspace:graph": "pnpm -r list --depth -1 --json",
+     "workspace:surface": "node .vibe/work/I-00A-workspace-package-skeleton/witnesses/workspace-surface-witness.mjs --root ."
+   },
+
+## EXIT-SUMMARY: single '+' line in scripts block; NO deps/exports/other-field edits.

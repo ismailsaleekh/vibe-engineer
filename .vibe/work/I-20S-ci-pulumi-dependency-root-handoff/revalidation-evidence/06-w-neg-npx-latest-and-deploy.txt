@@ -1,0 +1,8 @@
+## W-NEG-NPX-LATEST: forbidden pattern grep (expect no matches)
+grep_exit=1 (1=clean)
+
+## W-NEG-DEPLOY-MUTATION-VIA-SCRIPTS (expect no matches)
+grep_exit=1 (1=clean)
+
+## @pulumi specifier in infra/pulumi/package.json (expect exact 3.248.0)
+10:    "@pulumi/pulumi": "3.248.0"

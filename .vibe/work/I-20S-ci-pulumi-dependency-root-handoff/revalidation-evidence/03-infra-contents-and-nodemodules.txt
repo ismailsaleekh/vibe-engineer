@@ -1,0 +1,30 @@
+## infra/ tracked+untracked files (excluding node_modules)
+infra/pulumi/package.json
+
+## git ls-files --others infra
+infra/pulumi/package.json
+
+## scripts/quality + .github/workflows existence (expect ABSENT)
+ls: scripts/quality: No such file or directory
+ls: .github/workflows: No such file or directory
+
+## infra/pulumi/package.json (full)
+{
+  "name": "@vibe-engineer/infra-pulumi",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "dependencies": {
+    "@pulumi/pulumi": "3.248.0"
+  }
+}
+
+## node_modules posture: infra/pulumi symlink + root hoist check
+total 0
+drwxr-xr-x@ 3 lizavasilyeva  staff   96 Jun 26 23:24 .
+drwxr-xr-x@ 4 lizavasilyeva  staff  128 Jun 26 23:24 ..
+lrwxr-xr-x@ 1 lizavasilyeva  staff   98 Jun 26 23:24 pulumi -> ../../../../node_modules/.pnpm/@pulumi+pulumi@3.248.0_typescript@5.9.3/node_modules/@pulumi/pulumi
+ls: node_modules/@pulumi/: No such file or directory

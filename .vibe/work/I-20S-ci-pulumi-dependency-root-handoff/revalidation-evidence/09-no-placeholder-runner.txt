@@ -1,0 +1,9 @@
+## NO-PLACEHOLDER-RUNNER: pnpm quality dispatch (must FAIL LOUD — runner is I-20A handoff)
+EXIT=1 (nonzero=expected loud fail; 0=stub TRAP)
+## stderr tail:
+    at node:internal/main/run_main_module:33:47 {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: []
+}
+
+Node.js v24.16.0

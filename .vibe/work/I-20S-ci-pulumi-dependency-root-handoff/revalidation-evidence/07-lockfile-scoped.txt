@@ -1,0 +1,48 @@
+## LOCKFILE importer-section scope: all +/- lines until 'packages:' top-level header
++  infra/pulumi:
++    dependencies:
++      '@pulumi/pulumi':
++        specifier: 3.248.0
++        version: 3.248.0(typescript@5.9.3)
++
+-        version: 4.1.9(@types/node@24.13.2)(@vitest/coverage-v8@4.1.9)
++        version: 4.1.9(@opentelemetry/api@1.9.1)(@types/node@24.13.2)(@vitest/coverage-v8@4.1.9)
+
+## ALL 5 removed lines in lockfile (annotation re-renders, no declared-dep removal)
+-        version: 4.1.9(@types/node@24.13.2)(@vitest/coverage-v8@4.1.9)
+-  tinybench@2.9.0:
+-    resolution: {integrity: sha512-0+DUvqWMValLmha6lr4kD8iAMK1HzV0/aKnCtWb9v9641TnP/MFb7Pc2bxoxQjTXAErryXVgUOfv2YqNllqGeg==}
+-      vitest: 4.1.9(@types/node@24.13.2)(@vitest/coverage-v8@4.1.9)
+-  vitest@4.1.9(@types/node@24.13.2)(@vitest/coverage-v8@4.1.9):
+
+## root '.' importer unchanged confirmation (root importer block context):
+diff --git a/pnpm-lock.yaml b/pnpm-lock.yaml
+index 858b170..fb1cfb8 100644
+--- a/pnpm-lock.yaml
++++ b/pnpm-lock.yaml
+@@ -27,6 +27,12 @@ importers:
+         specifier: 8.62.0
+         version: 8.62.0(eslint@9.39.1)(typescript@5.9.3)
+ 
++  infra/pulumi:
++    dependencies:
++      '@pulumi/pulumi':
++        specifier: 3.248.0
++        version: 3.248.0(typescript@5.9.3)
++
+   packages/adapters/pi: {}
+ 
+   packages/artifacts:
+@@ -96,7 +102,7 @@ importers:
+         version: 4.1.9(vitest@4.1.9)
+       vitest:
+         specifier: 4.1.9
+-        version: 4.1.9(@types/node@24.13.2)(@vitest/coverage-v8@4.1.9)
++        version: 4.1.9(@opentelemetry/api@1.9.1)(@types/node@24.13.2)(@vitest/coverage-v8@4.1.9)
+ 
+   packages/mechanical-gates: {}
+ 
+@@ -214,6 +220,19 @@ packages:
+     resolution: {integrity: sha512-43/qtrDUokr7LJqoF2c3+RInu/t4zfrpYdoSDfYyhg52rwLV6TnOvdG4fXm7IkSB3wErkcmJS9iEhjVtOSEjjA==}
+     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+ 
