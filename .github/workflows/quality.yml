@@ -15,10 +15,23 @@
 # §3.4 fail-closed / CI-parity caveat (handled): the blocking step invokes the I-20A
 # aggregate, whose fail-closed wiring-integrity gate requires expected ⊆ registered-and-
 # running for {p0,p1,p2} (scripts/quality/expected-families.manifest.json). I-13C is
-# truth-green and all three tiers are registered-and-running, so the gate PASSES on the
-# complete aggregate. The wiring gate is LIVE-BLOCKING in CI (correct — never weakened,
-# never made advisory); if any tier were unregistered at runtime, CI would fail-closed
-# (the safe behavior). No silent weakening, no P2 drop, no advisory-without-record.
+# truth-green and all three tiers are registered-and-running, so the WIRING gate passes
+# (verdict=pass; expected ⊆ registered-and-running for {p0,p1,p2}). The p0 CONTENT
+# aggregate, however, is currently RED on REAL product-source defects (NOT a wiring
+# defect): as of FINAL-BUGHUNT FIX, p0 reports ~170 blocking findings scoped to actual
+# product source — 141 unallowlisted type-escapes (allowlist), 26 forbidden domain-term
+# leaks in core source (domain-purity), 1 cli→schematics relative-path boundary reach-in
+# (boundaries), and 2 config-guards typecheck/test legs that assume single-package direct
+# tool invocation (this repo routes through turbo). The root governance carriers the p0
+# gates require (mechanical-surface.json, tsconfig.json, lint/format:check scripts, the
+# four mechanical-*.json policy carriers) ARE now authored, collapsing the prior ~3,680
+# fail-closed "policy-unreadable" findings to this honest scoped set; the residual is
+# serialized product-source work (see
+# .vibe/work/FINAL-BUGHUNT/serialized-product-source-handoff.md). Until that handoff
+# lands, `pnpm quality -- --profile=ci` exits 2 BY DESIGN (real findings, not suppressed).
+# The wiring gate is LIVE-BLOCKING in CI (correct — never weakened, never made advisory);
+# if any tier were unregistered at runtime, CI would fail-closed (the safe behavior). No
+# silent weakening, no P2 drop, no advisory-without-record.
 #
 # Permissions: contents: read only (least privilege). No pull_request_target. No deploy /
 # infra-mutation steps. All actions pinned by immutable commit SHA.
