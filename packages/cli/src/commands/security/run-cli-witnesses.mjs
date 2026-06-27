@@ -7,7 +7,7 @@ import { createCommandLoader } from '../../command-loader/loader.js';
 import { validateCliResultEnvelope } from '../../envelope/result-envelope.js';
 import { sanitizeArgvForMetadata } from '../../errors/sanitization.js';
 import { redactSecurityValue } from '@vibe-engineer/security';
-import securityCommand from './index.js';
+import securityCommand from './index.ts';
 
 const repoRoot = path.resolve('/Users/lizavasilyeva/work/vibe-engineer');
 const workRoot = path.join(repoRoot, '.vibe/work/I-18-security-safety-hooks-policy/I-18B-security-cli-command-and-verify-hook');
