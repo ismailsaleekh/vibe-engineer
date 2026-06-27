@@ -1,0 +1,20 @@
+# N6 fixture: deploy workflow contains `pulumi destroy` — forbidden by default.
+name: deploy-bad-destroy
+on:
+  workflow_dispatch:
+    inputs:
+      stack:
+        type: choice
+        options: [dev, prod]
+permissions:
+  contents: read
+jobs:
+  deploy:
+    environment: ${{ inputs.stack }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+      - run: |
+          pulumi login
+          pulumi stack select ${{ inputs.stack }}
+          pulumi destroy --yes

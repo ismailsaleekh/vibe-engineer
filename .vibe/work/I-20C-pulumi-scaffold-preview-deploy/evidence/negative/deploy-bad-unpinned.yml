@@ -1,0 +1,20 @@
+# N9 fixture: workflow uses an UNPINNED action ref (@v4 moving tag) — forbidden.
+name: deploy-bad-unpinned
+on:
+  workflow_dispatch:
+    inputs:
+      stack:
+        type: choice
+        options: [dev, prod]
+permissions:
+  contents: read
+jobs:
+  deploy:
+    environment: ${{ inputs.stack }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          pulumi login
+          pulumi stack select ${{ inputs.stack }}
+          pulumi up --yes

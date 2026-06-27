@@ -1,0 +1,23 @@
+## W-LIVE-PREVIEW — actual pulumi preview (dev/prod) via Pulumi Cloud
+
+Pulumi CLI: v3.248.0
+
+### pulumi whoami (Pulumi Cloud login state)
+error: read ".pulumi/meta.yaml": blob (key ".pulumi/meta.yaml") (code=Unknown): operation error S3: GetObject, resolve auth scheme: resolve endpoint: endpoint rule error, Invalid region: region was not a valid DNS name.
+whoami-exit=1
+
+### Attempt: pulumi preview (dev stack, working dir infra/pulumi)
+error: read ".pulumi/meta.yaml": blob (key ".pulumi/meta.yaml") (code=Unknown): operation error S3: GetObject, resolve auth scheme: resolve endpoint: endpoint rule error, Invalid region: region was not a valid DNS name.
+stack-select-exit=1
+error: read ".pulumi/meta.yaml": blob (key ".pulumi/meta.yaml") (code=Unknown): operation error S3: GetObject, resolve auth scheme: resolve endpoint: endpoint rule error, Invalid region: region was not a valid DNS name.
+preview-exit=1
+
+### Missing prerequisite (exact):
+- No Pulumi Cloud login session (pulumi whoami fails: S3/endpoint auth error →
+  local backend misconfigured, not logged into Pulumi Cloud).
+- PULUMI_ACCESS_TOKEN not set in this environment.
+- No Pulumi Cloud project/stacks (vibe-engineer-infra/dev, /prod) initialized.
+
+### VERDICT: pending-live/BLOCKED
+Live pulumi preview/deploy proof is owned by I-20D (ci-pulumi-real-boundary-validation).
+I-20C must NOT fake it with act/mocked Pulumi/synthetic fixtures.

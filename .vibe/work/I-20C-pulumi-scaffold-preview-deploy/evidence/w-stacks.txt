@@ -1,0 +1,12 @@
+## W-STACKS — dev/prod stack config parse + no-plaintext-secret (de-commented)
+
+- infra/pulumi/Pulumi.dev.yaml
+  parsed config: {"vibe-engineer":"provider-agnostic: true"}
+  de-commented plaintext-secret-smell: false
+  VERDICT: PASS
+- infra/pulumi/Pulumi.prod.yaml
+  parsed config: {"vibe-engineer":"provider-agnostic: true"}
+  de-commented plaintext-secret-smell: false
+  VERDICT: PASS
+
+OVERALL: PASS — both stacks parse, no plaintext secret

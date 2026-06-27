@@ -1,0 +1,21 @@
+# N8 fixture: workflow has BROAD permissions (contents: write) — forbidden.
+name: deploy-bad-perms
+on:
+  workflow_dispatch:
+    inputs:
+      stack:
+        type: choice
+        options: [dev, prod]
+permissions:
+  contents: write
+  packages: write
+jobs:
+  deploy:
+    environment: ${{ inputs.stack }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+      - run: |
+          pulumi login
+          pulumi stack select ${{ inputs.stack }}
+          pulumi up --yes

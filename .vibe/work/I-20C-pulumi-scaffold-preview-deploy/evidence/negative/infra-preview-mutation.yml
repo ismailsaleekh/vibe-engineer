@@ -1,0 +1,17 @@
+# N3 fixture: PR infra-preview workflow that MUTATES (pulumi up) — forbidden.
+name: infra-preview-bad
+on:
+  pull_request:
+    paths:
+      - "infra/pulumi/**"
+permissions:
+  contents: read
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+      - run: |
+          pulumi login
+          pulumi stack select dev
+          pulumi up --yes

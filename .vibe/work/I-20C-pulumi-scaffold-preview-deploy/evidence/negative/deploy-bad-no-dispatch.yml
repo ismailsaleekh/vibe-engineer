@@ -1,0 +1,17 @@
+# N5 fixture: deploy workflow LACKS workflow_dispatch (only push) — forbidden.
+name: deploy-bad-no-dispatch
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  deploy:
+    environment: prod
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+      - run: |
+          pulumi login
+          pulumi stack select prod
+          pulumi up --yes

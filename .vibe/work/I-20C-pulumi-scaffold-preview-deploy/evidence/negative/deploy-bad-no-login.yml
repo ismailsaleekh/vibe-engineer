@@ -1,0 +1,18 @@
+# N7 fixture: workflow runs `pulumi preview`/`pulumi up` WITHOUT `pulumi login`
+# (Pulumi Cloud backend not configured) — forbidden.
+name: deploy-bad-no-login
+on:
+  workflow_dispatch:
+    inputs:
+      stack:
+        type: choice
+        options: [dev, prod]
+permissions:
+  contents: read
+jobs:
+  deploy:
+    environment: ${{ inputs.stack }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+      - run: pulumi stack select ${{ inputs.stack }} && pulumi up --yes

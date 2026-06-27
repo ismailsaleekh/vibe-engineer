@@ -1,0 +1,22 @@
+# N4 fixture: deploy workflow with an auto-deploy trigger (push) — forbidden.
+name: deploy-bad-auto
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      stack:
+        type: choice
+        options: [dev, prod]
+permissions:
+  contents: read
+jobs:
+  deploy:
+    environment: ${{ inputs.stack }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+      - run: |
+          pulumi login
+          pulumi stack select dev
+          pulumi up --yes

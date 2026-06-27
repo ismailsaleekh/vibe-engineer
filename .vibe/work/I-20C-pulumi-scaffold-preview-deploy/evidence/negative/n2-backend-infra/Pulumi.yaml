@@ -1,0 +1,7 @@
+# N2 fixture: unapproved self-managed backend (file://), not Pulumi Cloud.
+name: fixture-n2-backend
+runtime:
+  name: nodejs
+main: index.ts
+backend:
+  url: file://./state
