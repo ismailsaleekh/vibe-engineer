@@ -397,6 +397,23 @@ function commandTargets(commands, toolName) {
   return commands.flatMap((commandTokens) => targetArgumentsFor(commandTokens, toolName));
 }
 
+// Recognizes standard monorepo orchestration of a named script leg: `turbo run <leg>`
+// (incl. `pnpm exec turbo run <leg>` / `pnpm turbo run <leg>`) and `pnpm -r run <leg>` /
+// `pnpm --recursive run <leg>`. These fan out to each workspace package's own `<leg>`
+// script, which is the real tool invocation (e.g. per-package `tsc --noEmit` / test runner).
+// Scoped to the exact leg name so an arbitrary orchestrator command cannot satisfy the
+// typecheck/test contract — only orchestration of the matching leg qualifies.
+function commandOrchestratesLeg(commands, leg) {
+  return commands.some((commandTokens) => {
+    const legPresent = commandTokens.includes(leg);
+    if (!legPresent) return false;
+    const hasRun = commandTokens.includes("run");
+    const hasTurbo = commandTokens.includes("turbo");
+    const hasRecursive = commandTokens.includes("-r") || commandTokens.includes("--recursive");
+    return (hasTurbo && hasRun) || (hasRecursive && hasRun);
+  });
+}
+
 function requiredScriptCoverage(mechanicalSurface) {
   const sourcePrefixes = [];
   const exactConfigFiles = [];
@@ -458,8 +475,12 @@ function validateScriptSurface(packageJsonPath, scripts, mechanicalSurface, find
   }
 
   const typecheck = parsedScripts.get("typecheck");
-  if (typecheck && (!commandInvokes(typecheck.commands, new Set(["tsc", "vue-tsc"])) || !commandHasToken(typecheck.commands, "--noEmit"))) {
-    findings.push(finding("config-guards.invalid-required-script", typecheck.scriptPath, "typecheck must invoke a real TypeScript no-emit check.", { scriptName: "typecheck", command: typecheck.command }));
+  if (typecheck) {
+    const directTypecheck = commandInvokes(typecheck.commands, new Set(["tsc", "vue-tsc"])) && commandHasToken(typecheck.commands, "--noEmit");
+    const orchestratedTypecheck = commandOrchestratesLeg(typecheck.commands, "typecheck");
+    if (!directTypecheck && !orchestratedTypecheck) {
+      findings.push(finding("config-guards.invalid-required-script", typecheck.scriptPath, "typecheck must invoke a real TypeScript no-emit check.", { scriptName: "typecheck", command: typecheck.command }));
+    }
   }
 
   const lint = parsedScripts.get("lint");
@@ -479,8 +500,12 @@ function validateScriptSurface(packageJsonPath, scripts, mechanicalSurface, find
   }
 
   const test = parsedScripts.get("test");
-  if (test && !commandInvokes(test.commands, TEST_COMMANDS)) {
-    findings.push(finding("config-guards.invalid-required-script", test.scriptPath, "test must invoke a real test or witness runner.", { scriptName: "test", command: test.command }));
+  if (test) {
+    const directTest = commandInvokes(test.commands, TEST_COMMANDS);
+    const orchestratedTest = commandOrchestratesLeg(test.commands, "test");
+    if (!directTest && !orchestratedTest) {
+      findings.push(finding("config-guards.invalid-required-script", test.scriptPath, "test must invoke a real test or witness runner.", { scriptName: "test", command: test.command }));
+    }
   }
 }
 
