@@ -1,0 +1,100 @@
+{
+  "schemaVersion": "1.0.0",
+  "artifactKind": "context_graph",
+  "graphId": "ship-context-i23-witness",
+  "indexVersion": "1.0.0",
+  "producer": {
+    "kind": "skill",
+    "id": "skill-ship",
+    "name": "ship",
+    "version": "1.0.0",
+    "runId": "i23-witness"
+  },
+  "generatedAt": "2026-06-27T05:26:54.749Z",
+  "schemaRefs": {
+    "graph": "https://schemas.vibe-engineer.dev/context/v1/context-graph.schema.json",
+    "index": "https://schemas.vibe-engineer.dev/context/v1/context-index.schema.json",
+    "area": "https://schemas.vibe-engineer.dev/context/v1/context-area.schema.json",
+    "summary": "https://schemas.vibe-engineer.dev/context/v1/context-summary.schema.json",
+    "retrievalClosure": "https://schemas.vibe-engineer.dev/context/v1/retrieval-closure.schema.json"
+  },
+  "sources": [
+    {
+      "sourceId": "src-ship-i23-witness",
+      "kind": "artifact",
+      "path": "sources/src-ship-i23-witness.md",
+      "fingerprint": {
+        "algorithm": "sha256",
+        "value": "4ab888f1144224d59a0a4f8bb4969b4c5f7d512ab027e0f260ab8366e6d33f34"
+      },
+      "versionRef": "sha256:4ab888f1144224d59a0a4f8bb4969b4c5f7d512ab027e0f260ab8366e6d33f34",
+      "trust": "trusted",
+      "required": true,
+      "level": 1,
+      "scope": {
+        "kind": "repo",
+        "paths": [
+          "sources/src-ship-i23-witness.md"
+        ],
+        "description": "Domain-neutral source context."
+      },
+      "artifactRef": {
+        "artifactKind": "build_result",
+        "artifactId": "build-134cc42d97c2dce4",
+        "path": "sources/src-ship-i23-witness.md",
+        "required": true
+      },
+      "citations": [
+        {
+          "citationId": "src-ship-i23-witness:sha256",
+          "sourceId": "src-ship-i23-witness",
+          "path": "sources/src-ship-i23-witness.md",
+          "fingerprint": {
+            "algorithm": "sha256",
+            "value": "4ab888f1144224d59a0a4f8bb4969b4c5f7d512ab027e0f260ab8366e6d33f34"
+          }
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "contextId": "ctx:ship-result",
+      "kind": "area",
+      "areaId": "ship-result",
+      "title": "Ship context for build-134cc42d97c2dce4",
+      "level": 1,
+      "mandatory": true,
+      "trust": "trusted",
+      "scope": {
+        "kind": "repo",
+        "paths": [
+          "packages/skills/src/ship"
+        ],
+        "description": "Ship skill context closure."
+      },
+      "owner": "vibe-engineer-ship",
+      "headerRef": {
+        "artifactId": "ctx-area-ship-result",
+        "path": ".vibe/context/areas/ship-result.header.json"
+      },
+      "sourceRefs": [
+        "src-ship-i23-witness"
+      ],
+      "artifactPath": ".vibe/context/areas/ship-result.context.json"
+    }
+  ],
+  "edges": [],
+  "links": [],
+  "retrievalPolicy": {
+    "requireTaskScope": true,
+    "mandatoryLevel": 1,
+    "allowedLevels": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  }
+}

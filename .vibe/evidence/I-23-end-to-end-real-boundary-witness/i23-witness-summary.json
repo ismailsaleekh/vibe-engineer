@@ -1,0 +1,177 @@
+{
+  "schemaVersion": "i23-witness/v1",
+  "generatedAt": "2026-06-27T05:26:56.678Z",
+  "results": [
+    {
+      "stage": "S1-core-chain",
+      "name": "1a-work-brief-producer",
+      "status": "PASS",
+      "note": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/evidence/I-23-end-to-end-real-boundary-witness/stage1-core-chain/work-briefs/i23-witness-brief.json"
+    },
+    {
+      "stage": "S1-core-chain",
+      "name": "1b-plan-from-work-brief",
+      "status": "PASS",
+      "note": "status=approved"
+    },
+    {
+      "stage": "S1-core-chain",
+      "name": "1b-plan-provenance-to-work-brief",
+      "status": "PASS",
+      "note": "derived_from work-brief-f1b2b5cde783915e"
+    },
+    {
+      "stage": "S1-core-chain",
+      "name": "1c-build-from-plan",
+      "status": "PASS",
+      "note": "Build Result build-134cc42d97c2dce4, status=passed"
+    },
+    {
+      "stage": "S1-core-chain",
+      "name": "1c-build-evidence-packets",
+      "status": "PASS",
+      "note": "16 packet(s), all schema-valid"
+    },
+    {
+      "stage": "S1-core-chain",
+      "name": "1c-build-context-update",
+      "status": "PASS",
+      "note": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/evidence/I-23-end-to-end-real-boundary-witness/stage1-core-chain/build-evidence/build-work/context/.vibe/context/index/context-graph.json"
+    },
+    {
+      "stage": "S1-core-chain",
+      "name": "1c-persist-build-result",
+      "status": "PASS",
+      "note": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/evidence/I-23-end-to-end-real-boundary-witness/stage1-core-chain/build-134cc42d97c2dce4.json"
+    },
+    {
+      "stage": "S1-core-chain",
+      "name": "1d-ship-intake-build-result",
+      "status": "PASS",
+      "note": "readyForShip=true"
+    },
+    {
+      "stage": "S1-core-chain",
+      "name": "1e-ship-from-build-result",
+      "status": "PASS",
+      "note": "Ship Packet ship-a038b6299a733ba7"
+    },
+    {
+      "stage": "S1-core-chain",
+      "name": "1e-persist-ship-packet",
+      "status": "PASS",
+      "note": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/evidence/I-23-end-to-end-real-boundary-witness/stage1-core-chain/ship-a038b6299a733ba7.json"
+    },
+    {
+      "stage": "S1-core-chain",
+      "name": "1e-no-push-invariant",
+      "status": "PASS",
+      "note": "noPush=true commit=false pr=false"
+    },
+    {
+      "stage": "S1-core-chain",
+      "name": "1f-chain-provenance",
+      "status": "PASS",
+      "note": "Work Brief → Plan → Build Result → Ship Packet linked end-to-end"
+    },
+    {
+      "stage": "S2-create-harness",
+      "name": "2a-create-selected-pi",
+      "status": "PASS",
+      "note": "status=success; harness=undefined"
+    },
+    {
+      "stage": "S2-create-harness",
+      "name": "2b-generated-assets-present",
+      "status": "PASS",
+      "note": "17 generated file(s); adapter manifest=created-starter/.vibe/context/schema/schema-manifest.json"
+    },
+    {
+      "stage": "S3-verify-command",
+      "name": "3-verify-dispatch",
+      "status": "PASS",
+      "note": "verify success envelope + valid"
+    },
+    {
+      "stage": "S-corroboration",
+      "name": "4-contract-flow",
+      "status": "PASS",
+      "note": "exit=0 | [PASS] W-DOMAIN-NEUTRAL — 14 files: golden sample/demo/reference vocab only; @sample/@demo/@reference labeled; no business-domain leakage | [stage] W-REG-REGEN "
+    },
+    {
+      "stage": "S-corroboration",
+      "name": "5-observability",
+      "status": "PASS",
+      "note": "exit=0 |  \u001b[32m✓\u001b[39m packages/observability/test/metrics.test.mjs \u001b[2m(\u001b[22m\u001b[2m6 tests\u001b[22m\u001b[2m)\u001b[22m\u001b[32m 4\u001b[2mms\u001b[22m\u001b[39m |  \u001b[32m✓\u001b[39m packages/observability/test"
+    },
+    {
+      "stage": "S-corroboration",
+      "name": "6a-context-real",
+      "status": "PASS",
+      "note": "exit=0 | real-boundary witness ok: /var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/vibe-context-real-boundary-gawST8/evidence/real-boundary-witness-result.json"
+    },
+    {
+      "stage": "S-corroboration",
+      "name": "6b-context-negative",
+      "status": "PASS",
+      "note": "exit=0 | negative witness ok: /var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/vibe-context-negative-9D9mRd/evidence/negative-witness-result.json"
+    },
+    {
+      "stage": "S-corroboration",
+      "name": "7a-security-policy",
+      "status": "PASS",
+      "note": "exit=0 | {\"ok\":true,\"positive\":{\"allowedLocal\":{\"status\":\"passed\",\"decision\":\"allow\"},\"externalDryRun\":{\"status\":\"passed\",\"decision\":\"allow\"},\"advisory\":{\"status\":\"advis"
+    },
+    {
+      "stage": "S-corroboration",
+      "name": "7b-security-redaction",
+      "status": "PASS",
+      "note": "exit=0 | {\"ok\":true,\"redactedSurfaces\":[\"stdout\",\"resultFiles\",\"evidenceRefs\",\"diagnostics\",\"errors\",\"logs\",\"circularEvidence\",\"bigintEvidence\"]}"
+    },
+    {
+      "stage": "S-corroboration",
+      "name": "7c-security-contracts",
+      "status": "PASS",
+      "note": "exit=0 | {\"ok\":true,\"contractNegativeCount\":16}"
+    },
+    {
+      "stage": "S-corroboration",
+      "name": "8a-build-chain",
+      "status": "PASS",
+      "note": "exit=0 | [PASS] N2-failed-verification-blocks — verification_failed_blocks_build (status=failed) | [PASS] N4-malformed-build-result-intake — validation_failed (stage=shi"
+    },
+    {
+      "stage": "S-corroboration",
+      "name": "8b-ship-chain",
+      "status": "PASS",
+      "note": "exit=0 | [PASS] N7b-commit-by-agent-const-rejected — commitPerformedByAgent=true must be schema-rejected (const) | [PASS] N10-no-internal-relative-imports — all imports "
+    }
+  ],
+  "pendingLive": [
+    {
+      "seam": "hosted CI (GitHub Actions quick gate)",
+      "status": "pending-live/BLOCKED",
+      "prerequisite": "I-20 hosted CI runner; deterministic local aggregate is the parity path and IS witnessed."
+    },
+    {
+      "seam": "Pulumi preview/deploy",
+      "status": "pending-live/BLOCKED",
+      "prerequisite": "Pulumi Cloud backend + provider target; I-20 scaffold is non-mutating on PR."
+    },
+    {
+      "seam": "Playwright browser-binary E2E/UI",
+      "status": "pending-live/BLOCKED",
+      "prerequisite": "browser install + served web app; I-17A fixture is shape-green."
+    },
+    {
+      "seam": "live mobile device E2E",
+      "status": "pending-live/BLOCKED",
+      "prerequisite": "simulator/device; I-17B metadata selects Maestro/Detox."
+    },
+    {
+      "seam": "live pi runtime skill execution",
+      "status": "pending-live/BLOCKED",
+      "prerequisite": "selected-harness live loader; I-14B + build F1 disclose honestly."
+    }
+  ]
+}

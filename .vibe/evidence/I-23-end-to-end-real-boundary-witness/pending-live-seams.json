@@ -1,0 +1,27 @@
+[
+  {
+    "seam": "hosted CI (GitHub Actions quick gate)",
+    "status": "pending-live/BLOCKED",
+    "prerequisite": "I-20 hosted CI runner; deterministic local aggregate is the parity path and IS witnessed."
+  },
+  {
+    "seam": "Pulumi preview/deploy",
+    "status": "pending-live/BLOCKED",
+    "prerequisite": "Pulumi Cloud backend + provider target; I-20 scaffold is non-mutating on PR."
+  },
+  {
+    "seam": "Playwright browser-binary E2E/UI",
+    "status": "pending-live/BLOCKED",
+    "prerequisite": "browser install + served web app; I-17A fixture is shape-green."
+  },
+  {
+    "seam": "live mobile device E2E",
+    "status": "pending-live/BLOCKED",
+    "prerequisite": "simulator/device; I-17B metadata selects Maestro/Detox."
+  },
+  {
+    "seam": "live pi runtime skill execution",
+    "status": "pending-live/BLOCKED",
+    "prerequisite": "selected-harness live loader; I-14B + build F1 disclose honestly."
+  }
+]

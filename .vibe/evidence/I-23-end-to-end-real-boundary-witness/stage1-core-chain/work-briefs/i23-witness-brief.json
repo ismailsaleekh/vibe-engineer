@@ -1,0 +1,93 @@
+{
+  "acceptanceNotes": [
+    {
+      "description": "Ship Packet validates and carries the no-push invariant.",
+      "id": "e2e"
+    }
+  ],
+  "artifactId": "work-brief-f1b2b5cde783915e",
+  "artifactKind": "work_brief",
+  "background": "All implementation lanes I-07B..I-22 are truth-green; I-23 validates the combined real-boundary chain.",
+  "constraints": [
+    "Validation-only; no product source edits; no push."
+  ],
+  "createdAt": "2026-06-27T05:26:54.710Z",
+  "desiredOutcome": "A schema-valid Ship Packet produced from a real Work Brief through real plan/build/ship skills.",
+  "extensions": {
+    "dev.vibe.skill-producers": {
+      "producerSignals": {
+        "bugEvidenceCaptured": false,
+        "objective": "End-to-end real-boundary witness: prove the Work Brief to Ship Packet chain through real public package seams.",
+        "request": null
+      },
+      "schemaVersion": "1.0.0",
+      "sourceSkill": "task"
+    }
+  },
+  "links": [
+    {
+      "artifactId": "raw-intent-i23-witness",
+      "artifactKind": "work_brief",
+      "path": ".vibe/work/I-23-end-to-end-real-boundary-witness/raw-intent.md",
+      "rel": "raw_intent",
+      "required": true,
+      "statusAtLinkTime": "captured"
+    }
+  ],
+  "nonGoals": [
+    "No live CI/Pulumi/Playwright/mobile/pi-runtime seams."
+  ],
+  "ownership": {
+    "concurrencyNotes": "I-05B producer-owned Work Brief output; final planning/risk analysis is downstream.",
+    "ownedWritePaths": [
+      "packages/skills/src/input/brainstorm/**",
+      "packages/skills/src/input/grill-me/**",
+      "packages/skills/src/input/task/**",
+      "packages/skills/src/plan/intake/**",
+      "packages/skills/fixtures/work-brief/producers/**"
+    ],
+    "ownerLane": "I-05B-brainstorm-grill-task-producers",
+    "readOnlyPaths": [
+      "packages/skills/src/shared/**",
+      "packages/skills/src/input/common/**",
+      "packages/artifacts/**",
+      "docs/decisions/**"
+    ],
+    "untouchablePaths": [
+      ".git/**",
+      "packages/skills/package.json",
+      "pnpm-lock.yaml",
+      "package.json"
+    ]
+  },
+  "problemOrOpportunity": "No single lane has chained producer to ship in one real flow.\n\nTask objective: End-to-end real-boundary witness: prove the Work Brief to Ship Packet chain through real public package seams.",
+  "producer": {
+    "id": "skill-task",
+    "kind": "skill",
+    "name": "task",
+    "version": "1.0.0"
+  },
+  "risksAndUnknowns": [
+    "Selected-harness live skill execution is pending-live/BLOCKED."
+  ],
+  "schemaVersion": "1.0.0",
+  "sourceMetadata": {
+    "conversationRefs": [],
+    "operatorRefs": [
+      "operator-i23"
+    ],
+    "rawIntentRefs": [
+      ".vibe/work/I-23-end-to-end-real-boundary-witness/raw-intent.md"
+    ]
+  },
+  "sourceSkill": "task",
+  "status": "ready",
+  "tags": [
+    "domain-neutral",
+    "task"
+  ],
+  "title": "I-23 end-to-end real-boundary witness",
+  "updatedAt": "2026-06-27T05:26:54.710Z",
+  "userVisibleBehavior": [],
+  "workType": "chore"
+}

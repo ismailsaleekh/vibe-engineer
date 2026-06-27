@@ -1,0 +1,94 @@
+{
+  "schemaVersion": "1.0.0",
+  "artifactKind": "evidence_packet",
+  "artifactId": "evidence:i23-witness:vd-advisory-review:13",
+  "title": "Verification evidence for vd-advisory_review",
+  "createdAt": "2026-06-27T05:26:54.734Z",
+  "updatedAt": "2026-06-27T05:26:54.734Z",
+  "producer": {
+    "kind": "verification_runner",
+    "id": "i-09a-runner-core",
+    "name": "@vibe-engineer/verification",
+    "version": "0.1.0",
+    "runId": "i23-witness"
+  },
+  "status": "not_run",
+  "ownership": {
+    "ownerLane": "I-09A-verification-runner-core-evidence-routing",
+    "ownedWritePaths": [
+      "packages/verification/src/**",
+      "packages/verification/fixtures/**",
+      "packages/verification/tests/**",
+      ".vibe/work/I-09A-verification-runner-core-evidence-routing/**"
+    ],
+    "readOnlyPaths": [
+      "packages/artifacts/**",
+      "packages/orchestration/**",
+      "packages/cli/**"
+    ],
+    "untouchablePaths": [
+      ".git/**",
+      "pnpm-lock.yaml",
+      "package.json",
+      "pnpm-workspace.yaml"
+    ],
+    "concurrencyNotes": "I-09A runner core evidence packet written atomically under evidenceRoot."
+  },
+  "links": [
+    {
+      "rel": "evidence_for",
+      "artifactKind": "implementation_plan",
+      "artifactId": "implementation-plan-beaee8281c19bb22",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/evidence/I-23-end-to-end-real-boundary-witness/stage1-core-chain/plans/i23-witness-plan.json",
+      "required": true,
+      "statusAtLinkTime": "approved"
+    }
+  ],
+  "extensions": {
+    "dev.vibe.verification": {
+      "schemaVersion": "1.0.0",
+      "requiredItemId": "vd-advisory_review",
+      "requiredItemAction": "not_applicable",
+      "runId": "i23-witness",
+      "runnerVersion": "0.1.0"
+    }
+  },
+  "evidenceClass": "informational",
+  "layer": "advisory_review",
+  "subjectRefs": [
+    {
+      "rel": "evidence_for",
+      "artifactKind": "implementation_plan",
+      "artifactId": "implementation-plan-beaee8281c19bb22",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/evidence/I-23-end-to-end-real-boundary-witness/stage1-core-chain/plans/i23-witness-plan.json",
+      "required": true,
+      "statusAtLinkTime": "approved"
+    },
+    {
+      "rel": "evidence_for",
+      "artifactKind": "verification_delta",
+      "artifactId": "implementation-plan-beaee8281c19bb22-verification-delta",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/evidence/I-23-end-to-end-real-boundary-witness/stage1-core-chain/plans/i23-witness-plan.json",
+      "required": true,
+      "statusAtLinkTime": "complete"
+    }
+  ],
+  "commandOrTool": {
+    "kind": "manual_operator",
+    "name": "delta-item-not_applicable",
+    "workingDirectory": "/Users/lizavasilyeva/work/vibe-engineer",
+    "environmentSummary": "no command executed"
+  },
+  "startedAt": "2026-06-27T05:26:54.734Z",
+  "endedAt": "2026-06-27T05:26:54.734Z",
+  "exitStatus": {
+    "kind": "not_applicable",
+    "status": "skipped"
+  },
+  "result": "skipped",
+  "blocking": false,
+  "artifacts": [],
+  "warnings": [
+    "Record advisory review needs separately from deterministic validation gates. Classified not applicable for chore scope with explicit planner review."
+  ]
+}

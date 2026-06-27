@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "1.0.0",
+  "artifactKind": "context_area",
+  "areaId": "build-result",
+  "title": "Build Result context for implementation-plan-beaee8281c19bb22",
+  "owner": "vibe-engineer-build",
+  "level": 1,
+  "mandatory": true,
+  "sourceRefs": [
+    "src-build-i23-witness"
+  ],
+  "context": [
+    {
+      "contextId": "ctx-build-i23-witness",
+      "level": 1,
+      "mandatory": true,
+      "text": "Build skill produced Build Result build-134cc42d97c2dce4 consuming approved Implementation Plan implementation-plan-beaee8281c19bb22.",
+      "sourceRefs": [
+        "src-build-i23-witness"
+      ],
+      "citationRefs": [
+        "src-build-i23-witness:sha256"
+      ]
+    }
+  ],
+  "scope": {
+    "kind": "repo",
+    "paths": [
+      "packages/skills/src/build"
+    ],
+    "description": "Build skill context closure."
+  },
+  "updateMetadata": {
+    "invalidationStatus": "current"
+  },
+  "driftMetadata": {
+    "driftStatus": "clean",
+    "sourceRefs": [
+      "src-build-i23-witness"
+    ]
+  },
+  "schemaRef": "https://schemas.vibe-engineer.dev/context/v1/context-area.schema.json"
+}
