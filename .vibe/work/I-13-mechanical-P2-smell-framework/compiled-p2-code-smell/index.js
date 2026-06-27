@@ -80,7 +80,7 @@ function hasAllowedSuffix(filePath, suffixes) {
     return suffixes.some((suffix) => filePath.endsWith(suffix));
 }
 function readStringArray(value, field, errors) {
-    if (!Array.isArray(value) || !value.every((entry) => typeof entry === "string" && entry.length > 0)) {
+    if (!Array.isArray(value) || value.length === 0 || !value.every((entry) => typeof entry === "string" && entry.length > 0)) {
         errors.push(systemFinding("input.invalid-option", ".", `${field} must be a non-empty string array when provided.`, [`field:${field}`]));
         return undefined;
     }
