@@ -1,0 +1,11 @@
+## W4 — Pulumi preview dev+prod (NON-MUTATING)
+
+pulumi version:
+v3.248.0
+
+PULUMI_ACCESS_TOKEN: unset
+
+pulumi whoami:
+error: read ".pulumi/meta.yaml": blob (key ".pulumi/meta.yaml") (code=Unknown): operation error S3: GetObject, resolve auth scheme: resolve endpoint: endpoint rule error, Invalid region: region was not a valid DNS name.
+
+NOTE: did NOT run pulumi preview / pulumi login / any mutating op. Backend misconfigured to S3 + no Pulumi Cloud token => real preview impossible. Recorded pending-live/BLOCKED, NOT substituted with local/S3/mock output as truth.

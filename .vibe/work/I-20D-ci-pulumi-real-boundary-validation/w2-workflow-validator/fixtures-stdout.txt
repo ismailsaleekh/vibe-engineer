@@ -1,0 +1,14 @@
+PASS     neg-01-agg-missing.yml       expect=AGG-MISSING  non-zero exit (1) + expected code [AGG-MISSING] fired
+PASS     neg-02-agg-partial.yml       expect=AGG-PARTIAL  non-zero exit (1) + expected code [AGG-PARTIAL] fired
+PASS     neg-03-perms-broad.yml       expect=PERMS-BROAD  non-zero exit (1) + expected code [PERMS-BROAD] fired
+PASS     neg-04-paths-unsafe.yml      expect=PATHS-UNSAFE  non-zero exit (1) + expected code [PATHS-UNSAFE] fired
+PASS     neg-05-upload-missing.yml    expect=UPLOAD-MISSING  non-zero exit (1) + expected code [UPLOAD-MISSING] fired
+PASS     neg-06-full-suite.yml        expect=FULL-SUITE  non-zero exit (1) + expected code [FULL-SUITE] fired
+PASS     neg-07-smoke-unbarred.yml    expect=SMOKE-UNBARRED  non-zero exit (1) + expected code [SMOKE-UNBARRED] fired
+PASS     neg-08-action-unpinned.yml   expect=ACTION-UNPINNED  non-zero exit (1) + expected code [ACTION-UNPINNED] fired
+PASS     neg-09-deploy-mutation.yml   expect=DEPLOY-MUTATION  non-zero exit (1) + expected code [DEPLOY-MUTATION] fired
+PASS     neg-10-secret-exposure.yml   expect=SECRET-EXPOSURE  non-zero exit (1) + expected code [SECRET-EXPOSURE] fired
+PASS     neg-11-budget-violation.yml  expect=BUDGET-VIOLATION  non-zero exit (1) + expected code [BUDGET-VIOLATION] fired
+PASS     pos-quality.yml              expect=OK  exit 0 (positive clean)
+
+12/12 fixtures matched expectation (11 negative, 1 positive).
