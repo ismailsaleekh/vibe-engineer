@@ -1,0 +1,50 @@
+{
+  "artifacts": [],
+  "diagnostics": [
+    {
+      "classification": "invalid_input",
+      "code": "VE_INVALID_INVOCATION",
+      "hint": null,
+      "message": "Secret-like security command input is not accepted.",
+      "path": null,
+      "severity": "error",
+      "span": null
+    }
+  ],
+  "errors": [
+    {
+      "blocking": true,
+      "classification": "invalid_input",
+      "code": "VE_INVALID_INVOCATION",
+      "details": {
+        "flag": "--api-key",
+        "value": "<redacted>"
+      },
+      "message": "Secret-like security command input is not accepted.",
+      "retryable": false
+    }
+  ],
+  "exitCode": 2,
+  "invocation": {
+    "argv": [
+      "security",
+      "--api-key",
+      "<redacted>"
+    ],
+    "command": "security",
+    "configPath": null,
+    "endedAt": "2026-06-26T00:00:01.000Z",
+    "id": "i18b-finisher-negative/secret-like-input",
+    "projectRoot": null,
+    "startedAt": "2026-06-26T00:00:00.000Z"
+  },
+  "payload": {
+    "data": {
+      "accepted": false
+    },
+    "kind": "cli_invocation_error",
+    "schemaVersion": "vibe-engineer.cli.payload.v1"
+  },
+  "schemaVersion": "vibe-engineer.cli.result.v1",
+  "status": "blocked"
+}

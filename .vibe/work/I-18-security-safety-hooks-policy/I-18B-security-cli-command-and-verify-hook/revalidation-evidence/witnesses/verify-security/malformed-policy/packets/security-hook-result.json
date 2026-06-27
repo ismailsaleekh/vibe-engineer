@@ -1,0 +1,23 @@
+{
+  "auditEvents": [],
+  "decision": "block",
+  "findingClassifications": [
+    "unknown_policy_field"
+  ],
+  "findings": [
+    {
+      "blocking": true,
+      "category": "policy_contract",
+      "classification": "unknown_policy_field",
+      "details": {
+        "field": "unexpectedPolicyField"
+      },
+      "location": "unexpectedPolicyField",
+      "message": "Unknown field is not supported: unexpectedPolicyField",
+      "schemaVersion": "vibe-engineer.security.finding.v1",
+      "severity": "critical"
+    }
+  ],
+  "ok": false,
+  "status": "blocked"
+}

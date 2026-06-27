@@ -1,0 +1,83 @@
+{
+  "artifacts": [],
+  "diagnostics": [
+    {
+      "classification": "safety_policy_block",
+      "code": "VE_INVALID_INVOCATION",
+      "hint": null,
+      "message": "Unknown field is not supported: unexpectedPolicyField",
+      "path": null,
+      "severity": "error",
+      "span": null
+    }
+  ],
+  "errors": [
+    {
+      "blocking": true,
+      "classification": "safety_policy_block",
+      "code": "VE_INVALID_INVOCATION",
+      "details": {
+        "category": "policy_contract",
+        "classification": "unknown_policy_field",
+        "source": {
+          "policyFile": "/Users/lizavasilyeva/work/vibe-engineer/examples/starter-reference/generated-fixtures/security/policies/malformed-policy.json",
+          "projectRoot": "/Users/lizavasilyeva/work/vibe-engineer",
+          "requestFile": "/Users/lizavasilyeva/work/vibe-engineer/examples/starter-reference/generated-fixtures/security/requests/safe-local-read-only-command.json"
+        }
+      },
+      "message": "Unknown field is not supported: unexpectedPolicyField",
+      "retryable": false
+    }
+  ],
+  "exitCode": 4,
+  "invocation": {
+    "argv": [
+      "security",
+      "--request-file",
+      "<value>",
+      "--policy-file",
+      "<value>",
+      "--project-root",
+      "<value>"
+    ],
+    "command": "security",
+    "configPath": null,
+    "endedAt": "2026-06-26T00:00:01.000Z",
+    "id": "i18b-finisher-negative/malformed-policy",
+    "projectRoot": null,
+    "startedAt": "2026-06-26T00:00:00.000Z"
+  },
+  "payload": {
+    "data": {
+      "auditEvents": [],
+      "blocking": true,
+      "decision": "block",
+      "findings": [
+        {
+          "blocking": true,
+          "category": "policy_contract",
+          "classification": "unknown_policy_field",
+          "details": {
+            "field": "unexpectedPolicyField"
+          },
+          "location": "unexpectedPolicyField",
+          "message": "Unknown field is not supported: unexpectedPolicyField",
+          "schemaVersion": "vibe-engineer.security.finding.v1",
+          "severity": "critical"
+        }
+      ],
+      "ok": false,
+      "redactions": [],
+      "securityStatus": "blocked",
+      "source": {
+        "policyFile": "/Users/lizavasilyeva/work/vibe-engineer/examples/starter-reference/generated-fixtures/security/policies/malformed-policy.json",
+        "projectRoot": "/Users/lizavasilyeva/work/vibe-engineer",
+        "requestFile": "/Users/lizavasilyeva/work/vibe-engineer/examples/starter-reference/generated-fixtures/security/requests/safe-local-read-only-command.json"
+      }
+    },
+    "kind": "security_gate_result",
+    "schemaVersion": "vibe-engineer.cli.payload.v1"
+  },
+  "schemaVersion": "vibe-engineer.cli.result.v1",
+  "status": "blocked"
+}

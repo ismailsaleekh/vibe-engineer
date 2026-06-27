@@ -1,0 +1,54 @@
+[
+  {
+    "argPaths": [
+      {
+        "index": 0,
+        "root": "projectRoot"
+      },
+      {
+        "index": 1,
+        "root": "projectRoot"
+      },
+      {
+        "index": 2,
+        "root": "evidenceRoot"
+      }
+    ],
+    "args": [
+      "/Users/lizavasilyeva/work/vibe-engineer/examples/starter-reference/generated-fixtures/security/runner/security-hook-runner.mjs",
+      "/Users/lizavasilyeva/work/vibe-engineer/examples/starter-reference/generated-fixtures/security/requests/blocked-prod-credential.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-18-security-safety-hooks-policy/I-18B-security-cli-command-and-verify-hook/finisher-evidence/witnesses/verify-security/blocked-security/packets/security-hook-result.json"
+    ],
+    "blocking": true,
+    "command": "/Users/lizavasilyeva/.nvm/versions/node/v24.16.0/bin/node",
+    "cwd": ".",
+    "evidenceClass": "deterministic",
+    "expectedArtifacts": [
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-18-security-safety-hooks-policy/I-18B-security-cli-command-and-verify-hook/finisher-evidence/witnesses/verify-security/blocked-security/packets/security-hook-result.json"
+    ],
+    "failureClassification": "safety_or_security_policy_failure",
+    "id": "safety-hooks",
+    "kind": "command",
+    "layer": "safety_hooks",
+    "requiredItemIds": [
+      "safety-hooks"
+    ],
+    "safety": {
+      "allowedReadRoots": [
+        "/Users/lizavasilyeva/work/vibe-engineer"
+      ],
+      "allowedWriteRoots": [
+        "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-18-security-safety-hooks-policy/I-18B-security-cli-command-and-verify-hook/finisher-evidence/witnesses/verify-security/blocked-security/packets"
+      ],
+      "classification": "local_deterministic_write",
+      "cwdContainedInProjectRoot": true,
+      "envAllowlist": [],
+      "expectedArtifactsContained": true,
+      "maxOutputBytes": 262144,
+      "maxStderrBytes": 65536,
+      "maxStdoutBytes": 65536,
+      "passThroughEnv": false,
+      "timeoutMs": 5000
+    }
+  }
+]

@@ -1,0 +1,52 @@
+{
+  "artifacts": [],
+  "diagnostics": [
+    {
+      "classification": "invalid_input",
+      "code": "VE_INVALID_INVOCATION",
+      "hint": null,
+      "message": "Security request file must be readable JSON.",
+      "path": null,
+      "severity": "error",
+      "span": null
+    }
+  ],
+  "errors": [
+    {
+      "blocking": true,
+      "classification": "invalid_input",
+      "code": "VE_INVALID_INVOCATION",
+      "details": {
+        "errorName": "SyntaxError",
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-18-security-safety-hooks-policy/I-18B-security-cli-command-and-verify-hook/revalidation-evidence/witnesses/cli-security/negative/malformed-request-source.json"
+      },
+      "message": "Security request file must be readable JSON.",
+      "retryable": false
+    }
+  ],
+  "exitCode": 2,
+  "invocation": {
+    "argv": [
+      "security",
+      "--request-file",
+      "<value>",
+      "--project-root",
+      "<value>"
+    ],
+    "command": "security",
+    "configPath": null,
+    "endedAt": "2026-06-26T00:00:01.000Z",
+    "id": "i18b-reval-negative/malformed-request",
+    "projectRoot": null,
+    "startedAt": "2026-06-26T00:00:00.000Z"
+  },
+  "payload": {
+    "data": {
+      "accepted": false
+    },
+    "kind": "cli_invocation_error",
+    "schemaVersion": "vibe-engineer.cli.payload.v1"
+  },
+  "schemaVersion": "vibe-engineer.cli.result.v1",
+  "status": "blocked"
+}

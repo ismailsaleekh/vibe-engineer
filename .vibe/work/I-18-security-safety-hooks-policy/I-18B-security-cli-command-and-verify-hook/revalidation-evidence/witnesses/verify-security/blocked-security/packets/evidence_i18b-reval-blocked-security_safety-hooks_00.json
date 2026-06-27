@@ -1,0 +1,110 @@
+{
+  "schemaVersion": "1.0.0",
+  "artifactKind": "evidence_packet",
+  "artifactId": "evidence:i18b-reval-blocked-security:safety-hooks:00",
+  "title": "Verification evidence for safety-hooks",
+  "createdAt": "2026-06-26T16:24:34.517Z",
+  "updatedAt": "2026-06-26T16:24:34.517Z",
+  "producer": {
+    "kind": "verification_runner",
+    "id": "i-09a-runner-core",
+    "name": "@vibe-engineer/verification",
+    "version": "0.1.0",
+    "runId": "i18b-reval-blocked-security"
+  },
+  "status": "failed",
+  "ownership": {
+    "ownerLane": "I-09A-verification-runner-core-evidence-routing",
+    "ownedWritePaths": [
+      "packages/verification/src/**",
+      "packages/verification/fixtures/**",
+      "packages/verification/tests/**",
+      ".vibe/work/I-09A-verification-runner-core-evidence-routing/**"
+    ],
+    "readOnlyPaths": [
+      "packages/artifacts/**",
+      "packages/orchestration/**",
+      "packages/cli/**"
+    ],
+    "untouchablePaths": [
+      ".git/**",
+      "pnpm-lock.yaml",
+      "package.json",
+      "pnpm-workspace.yaml"
+    ],
+    "concurrencyNotes": "I-09A runner core evidence packet written atomically under evidenceRoot."
+  },
+  "links": [
+    {
+      "rel": "evidence_for",
+      "artifactKind": "implementation_plan",
+      "artifactId": "i18b-security-verify-hook-plan",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/examples/starter-reference/generated-fixtures/security/verify-hook/approved-security-plan.json",
+      "required": true,
+      "statusAtLinkTime": "approved"
+    }
+  ],
+  "extensions": {
+    "dev.vibe.verification": {
+      "schemaVersion": "1.0.0",
+      "requiredItemId": "safety-hooks",
+      "requiredItemAction": "add",
+      "runId": "i18b-reval-blocked-security",
+      "runnerVersion": "0.1.0"
+    }
+  },
+  "evidenceClass": "deterministic",
+  "layer": "safety_hooks",
+  "subjectRefs": [
+    {
+      "rel": "evidence_for",
+      "artifactKind": "implementation_plan",
+      "artifactId": "i18b-security-verify-hook-plan",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/examples/starter-reference/generated-fixtures/security/verify-hook/approved-security-plan.json",
+      "required": true,
+      "statusAtLinkTime": "approved"
+    },
+    {
+      "rel": "evidence_for",
+      "artifactKind": "verification_delta",
+      "artifactId": "i18b-security-verify-hook-delta",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/examples/starter-reference/generated-fixtures/security/verify-hook/approved-security-plan.json",
+      "required": true,
+      "statusAtLinkTime": "complete"
+    }
+  ],
+  "commandOrTool": {
+    "kind": "command",
+    "name": "/Users/lizavasilyeva/.nvm/versions/node/v24.16.0/bin/node",
+    "argv": [
+      "/Users/lizavasilyeva/work/vibe-engineer/examples/starter-reference/generated-fixtures/security/runner/security-hook-runner.mjs",
+      "/Users/lizavasilyeva/work/vibe-engineer/examples/starter-reference/generated-fixtures/security/requests/blocked-prod-credential.json",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-18-security-safety-hooks-policy/I-18B-security-cli-command-and-verify-hook/revalidation-evidence/witnesses/verify-security/blocked-security/packets/security-hook-result.json"
+    ],
+    "workingDirectory": "/Users/lizavasilyeva/work/vibe-engineer",
+    "environmentSummary": "allowlist:empty; provided:none; raw-process-env:false"
+  },
+  "startedAt": "2026-06-26T16:24:34.487Z",
+  "endedAt": "2026-06-26T16:24:34.517Z",
+  "exitStatus": {
+    "kind": "exit_code",
+    "code": 4,
+    "status": "closed"
+  },
+  "result": "fail",
+  "blocking": true,
+  "artifacts": [
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-18-security-safety-hooks-policy/I-18B-security-cli-command-and-verify-hook/revalidation-evidence/witnesses/verify-security/blocked-security/packets/sidecars/i18b-reval-blocked-security-safety-hooks-00.stdout.log",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-18-security-safety-hooks-policy/I-18B-security-cli-command-and-verify-hook/revalidation-evidence/witnesses/verify-security/blocked-security/packets/sidecars/i18b-reval-blocked-security-safety-hooks-00.stderr.log",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-18-security-safety-hooks-policy/I-18B-security-cli-command-and-verify-hook/revalidation-evidence/witnesses/verify-security/blocked-security/packets/sidecars/i18b-reval-blocked-security-safety-hooks-00.runner.log"
+  ],
+  "warnings": [],
+  "failureDetails": {
+    "code": "RUNNER_NONZERO_EXIT",
+    "message": "Runner exited with code 4.",
+    "classification": "safety_or_security_policy_failure"
+  },
+  "stdoutRef": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-18-security-safety-hooks-policy/I-18B-security-cli-command-and-verify-hook/revalidation-evidence/witnesses/verify-security/blocked-security/packets/sidecars/i18b-reval-blocked-security-safety-hooks-00.stdout.log",
+  "stderrRef": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-18-security-safety-hooks-policy/I-18B-security-cli-command-and-verify-hook/revalidation-evidence/witnesses/verify-security/blocked-security/packets/sidecars/i18b-reval-blocked-security-safety-hooks-00.stderr.log",
+  "logsRef": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-18-security-safety-hooks-policy/I-18B-security-cli-command-and-verify-hook/revalidation-evidence/witnesses/verify-security/blocked-security/packets/sidecars/i18b-reval-blocked-security-safety-hooks-00.runner.log"
+}

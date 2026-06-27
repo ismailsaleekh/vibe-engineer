@@ -1,0 +1,99 @@
+{
+  "schemaVersion": "1.0.0",
+  "artifactKind": "evidence_packet",
+  "artifactId": "evidence:i18b-finisher-missing-security-evidence:safety-hooks:00",
+  "title": "Verification evidence for safety-hooks",
+  "createdAt": "2026-06-26T16:15:46.064Z",
+  "updatedAt": "2026-06-26T16:15:46.064Z",
+  "producer": {
+    "kind": "verification_runner",
+    "id": "i-09a-runner-core",
+    "name": "@vibe-engineer/verification",
+    "version": "0.1.0",
+    "runId": "i18b-finisher-missing-security-evidence"
+  },
+  "status": "blocked",
+  "ownership": {
+    "ownerLane": "I-09A-verification-runner-core-evidence-routing",
+    "ownedWritePaths": [
+      "packages/verification/src/**",
+      "packages/verification/fixtures/**",
+      "packages/verification/tests/**",
+      ".vibe/work/I-09A-verification-runner-core-evidence-routing/**"
+    ],
+    "readOnlyPaths": [
+      "packages/artifacts/**",
+      "packages/orchestration/**",
+      "packages/cli/**"
+    ],
+    "untouchablePaths": [
+      ".git/**",
+      "pnpm-lock.yaml",
+      "package.json",
+      "pnpm-workspace.yaml"
+    ],
+    "concurrencyNotes": "I-09A runner core evidence packet written atomically under evidenceRoot."
+  },
+  "links": [
+    {
+      "rel": "evidence_for",
+      "artifactKind": "implementation_plan",
+      "artifactId": "i18b-security-verify-hook-plan",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/examples/starter-reference/generated-fixtures/security/verify-hook/approved-security-plan.json",
+      "required": true,
+      "statusAtLinkTime": "approved"
+    }
+  ],
+  "extensions": {
+    "dev.vibe.verification": {
+      "schemaVersion": "1.0.0",
+      "requiredItemId": "safety-hooks",
+      "requiredItemAction": "add",
+      "runId": "i18b-finisher-missing-security-evidence",
+      "runnerVersion": "0.1.0"
+    }
+  },
+  "evidenceClass": "deterministic",
+  "layer": "safety_hooks",
+  "subjectRefs": [
+    {
+      "rel": "evidence_for",
+      "artifactKind": "implementation_plan",
+      "artifactId": "i18b-security-verify-hook-plan",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/examples/starter-reference/generated-fixtures/security/verify-hook/approved-security-plan.json",
+      "required": true,
+      "statusAtLinkTime": "approved"
+    },
+    {
+      "rel": "evidence_for",
+      "artifactKind": "verification_delta",
+      "artifactId": "i18b-security-verify-hook-delta",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/examples/starter-reference/generated-fixtures/security/verify-hook/approved-security-plan.json",
+      "required": true,
+      "statusAtLinkTime": "complete"
+    }
+  ],
+  "commandOrTool": {
+    "kind": "manual_operator",
+    "name": "delta-item-add",
+    "workingDirectory": "/Users/lizavasilyeva/work/vibe-engineer",
+    "environmentSummary": "no command executed"
+  },
+  "startedAt": "2026-06-26T16:15:46.064Z",
+  "endedAt": "2026-06-26T16:15:46.064Z",
+  "exitStatus": {
+    "kind": "not_applicable",
+    "status": "blocked"
+  },
+  "result": "blocked",
+  "blocking": true,
+  "artifacts": [],
+  "warnings": [
+    "The I-18B security hook must invoke the actual @vibe-engineer/security gate via the verification runner."
+  ],
+  "failureDetails": {
+    "code": "MISSING_RUNNER_OR_PREREQUISITE",
+    "message": "No runner spec resolved for required add/update Verification Delta item.",
+    "classification": "missing_runner_or_prerequisite"
+  }
+}

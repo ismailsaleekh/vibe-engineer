@@ -1,0 +1,143 @@
+{
+  "artifacts": [],
+  "diagnostics": [
+    {
+      "classification": "safety_policy_block",
+      "code": "VE_INVALID_INVOCATION",
+      "hint": null,
+      "message": "Evidence, diagnostic, result, or log payload contained secret-like, non-JSON-safe, cyclic, or over-cap data and was redacted.",
+      "path": null,
+      "severity": "error",
+      "span": null
+    }
+  ],
+  "errors": [
+    {
+      "blocking": true,
+      "classification": "safety_policy_block",
+      "code": "VE_INVALID_INVOCATION",
+      "details": {
+        "category": "evidence_integrity",
+        "classification": "evidence_secret_leak",
+        "source": {
+          "policyFile": null,
+          "projectRoot": "/Users/lizavasilyeva/work/vibe-engineer",
+          "requestFile": "/Users/lizavasilyeva/work/vibe-engineer/examples/starter-reference/generated-fixtures/security/requests/blocked-prod-credential.json"
+        }
+      },
+      "message": "Evidence, diagnostic, result, or log payload contained secret-like, non-JSON-safe, cyclic, or over-cap data and was redacted.",
+      "retryable": false
+    }
+  ],
+  "exitCode": 4,
+  "invocation": {
+    "argv": [
+      "security",
+      "--request-file",
+      "<value>",
+      "--project-root",
+      "<value>"
+    ],
+    "command": "security",
+    "configPath": null,
+    "endedAt": "2026-06-26T00:00:01.000Z",
+    "id": "i18b-reval-negative/unsafe-env-config-defaults",
+    "projectRoot": null,
+    "startedAt": "2026-06-26T00:00:00.000Z"
+  },
+  "payload": {
+    "data": {
+      "auditEvents": [
+        {
+          "details": {
+            "findingCount": 5
+          },
+          "eventId": "security:security_gate:b463689e",
+          "recordedAt": "deterministic-clock-not-used",
+          "schemaVersion": "vibe-engineer.security.audit-event.v1",
+          "subject": "security_gate"
+        }
+      ],
+      "blocking": true,
+      "decision": "block",
+      "findings": [
+        {
+          "blocking": true,
+          "category": "evidence_integrity",
+          "classification": "evidence_secret_leak",
+          "details": {
+            "diagnostic": "<redacted>=<redacted>"
+          },
+          "location": null,
+          "message": "Evidence, diagnostic, result, or log payload contained secret-like, non-JSON-safe, cyclic, or over-cap data and was redacted.",
+          "schemaVersion": "vibe-engineer.security.finding.v1",
+          "severity": "critical"
+        },
+        {
+          "blocking": true,
+          "category": "production_credential",
+          "classification": "production_credential_or_default",
+          "details": {
+            "key": "productionEndpoint",
+            "value": "https://service.example.invalid/api"
+          },
+          "location": "config.productionEndpoint",
+          "message": "Production-like env/config default is denied.",
+          "schemaVersion": "vibe-engineer.security.finding.v1",
+          "severity": "critical"
+        },
+        {
+          "blocking": true,
+          "category": "production_credential",
+          "classification": "production_credential_or_default",
+          "details": {
+            "key": "NODE_ENV",
+            "value": "production"
+          },
+          "location": "env.NODE_ENV",
+          "message": "Production-like env/config default is denied.",
+          "schemaVersion": "vibe-engineer.security.finding.v1",
+          "severity": "critical"
+        },
+        {
+          "blocking": true,
+          "category": "secret",
+          "classification": "secret_like_value",
+          "details": {
+            "key": "credentials",
+            "value": "<redacted>"
+          },
+          "location": "config.credentials",
+          "message": "Secret-like env/config value is denied.",
+          "schemaVersion": "vibe-engineer.security.finding.v1",
+          "severity": "critical"
+        },
+        {
+          "blocking": true,
+          "category": "secret",
+          "classification": "secret_like_value",
+          "details": {
+            "key": "<redacted>",
+            "value": "<redacted>"
+          },
+          "location": "env.<redacted>",
+          "message": "Secret-like env/config value is denied.",
+          "schemaVersion": "vibe-engineer.security.finding.v1",
+          "severity": "critical"
+        }
+      ],
+      "ok": false,
+      "redactions": [],
+      "securityStatus": "blocked",
+      "source": {
+        "policyFile": null,
+        "projectRoot": "/Users/lizavasilyeva/work/vibe-engineer",
+        "requestFile": "/Users/lizavasilyeva/work/vibe-engineer/examples/starter-reference/generated-fixtures/security/requests/blocked-prod-credential.json"
+      }
+    },
+    "kind": "security_gate_result",
+    "schemaVersion": "vibe-engineer.cli.payload.v1"
+  },
+  "schemaVersion": "vibe-engineer.cli.result.v1",
+  "status": "blocked"
+}

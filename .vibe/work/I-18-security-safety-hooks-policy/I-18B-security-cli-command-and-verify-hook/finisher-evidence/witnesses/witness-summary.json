@@ -1,0 +1,85 @@
+{
+  "buildFacingApiFixture": {
+    "exit": 0,
+    "futureJoin": "I-21"
+  },
+  "cliPositive": {
+    "resultFile": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-18-security-safety-hooks-policy/I-18B-security-cli-command-and-verify-hook/finisher-evidence/witnesses/cli-security/positive/safe-cli-result.json",
+    "securityStatus": "passed",
+    "status": "success"
+  },
+  "defaultEntryUnsupported": {
+    "classification": "unsupported_operation",
+    "exit": 2,
+    "probePresentInStdout": false
+  },
+  "foundationEnvelopeRegression": {
+    "exit": 0,
+    "status": "success"
+  },
+  "malformedPolicy": {
+    "classification": "safety_policy_block"
+  },
+  "malformedRequest": {
+    "classification": "invalid_input"
+  },
+  "nativeTsLoad": {
+    "flagUsed": false,
+    "securityId": "security",
+    "verifyId": "verify"
+  },
+  "pathEscape": {
+    "classification": "invalid_input"
+  },
+  "protectedResultFile": {
+    "classification": "invalid_input"
+  },
+  "redaction": {
+    "forbiddenProbeHits": 0,
+    "scanRanBeforeSummaryWrite": true,
+    "sentinelRef": "<redacted>",
+    "sentinelSha256": "86821ef0df6b9b730d097499e080f787e717b5ffba026939e69e36fa66333cec"
+  },
+  "secretLikeInput": "<redacted>",
+  "unexpectedPositional": {
+    "classification": "invalid_invocation"
+  },
+  "unknownFlag": {
+    "classification": "invalid_invocation"
+  },
+  "unsafe-destructive-command": {
+    "classification": "safety_policy_block",
+    "finding": "destructive_command"
+  },
+  "unsafe-env-config-defaults": {
+    "classification": "safety_policy_block",
+    "finding": "secret_like_value"
+  },
+  "unsafe-external-integration": {
+    "classification": "safety_policy_block",
+    "finding": "unsafe_env_default"
+  },
+  "verifyApprovedSafe": {
+    "packetCount": 16,
+    "status": "success"
+  },
+  "verifyBlockedSecurity": {
+    "classification": "safety_policy_block",
+    "status": "failure"
+  },
+  "verifyDraftPlanBlocked": {
+    "classification": "invalid_input"
+  },
+  "verifyMalformedEvidence": {
+    "classification": "invalid_input"
+  },
+  "verifyMalformedPolicy": {
+    "classification": "safety_policy_block"
+  },
+  "verifyMissingRequiredEvidence": {
+    "classification": "missing_prerequisite"
+  },
+  "verifyProtectedEvidenceRoot": {
+    "note": "protected verify evidence root is enforced by verify/index.ts resolveWithinProject allowProtected:false; security CLI protected-result-file + path-escape negatives above exercise the same containment primitive."
+  }
+}

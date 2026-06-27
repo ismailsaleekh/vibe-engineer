@@ -1,0 +1,48 @@
+{
+  "artifacts": [],
+  "diagnostics": [
+    {
+      "classification": "invalid_invocation",
+      "code": "VE_INVALID_FLAG",
+      "hint": null,
+      "message": "Unsupported security flag: --unknown-flag.",
+      "path": null,
+      "severity": "error",
+      "span": null
+    }
+  ],
+  "errors": [
+    {
+      "blocking": true,
+      "classification": "invalid_invocation",
+      "code": "VE_INVALID_FLAG",
+      "details": {
+        "flag": "--unknown-flag"
+      },
+      "message": "Unsupported security flag: --unknown-flag.",
+      "retryable": false
+    }
+  ],
+  "exitCode": 2,
+  "invocation": {
+    "argv": [
+      "security",
+      "--unknown-flag"
+    ],
+    "command": "security",
+    "configPath": null,
+    "endedAt": "2026-06-26T00:00:01.000Z",
+    "id": "i18b-reval-negative/unknown-flag",
+    "projectRoot": null,
+    "startedAt": "2026-06-26T00:00:00.000Z"
+  },
+  "payload": {
+    "data": {
+      "accepted": false
+    },
+    "kind": "cli_invocation_error",
+    "schemaVersion": "vibe-engineer.cli.payload.v1"
+  },
+  "schemaVersion": "vibe-engineer.cli.result.v1",
+  "status": "blocked"
+}
