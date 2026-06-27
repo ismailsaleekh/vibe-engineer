@@ -225,7 +225,7 @@ const validatePackageManifest = (asset: PiRuntimeAsset, index: number, allPaths:
   }
   let parsed: unknown;
   try {
-    parsed = JSON.parse(asset.content) as unknown;
+    parsed = JSON.parse(asset.content);
   } catch {
     issue(issues, `$.assets[${index}].content`, "invalid_package_manifest_json", "Package manifest content must be valid JSON.");
     return;
@@ -280,7 +280,7 @@ const validateContextAsset = (asset: PiRuntimeAsset, index: number, issues: PiRu
 const validateHarnessConfig = (asset: PiRuntimeAsset, index: number, issues: PiRuntimeValidationIssue[]): void => {
   let parsed: unknown;
   try {
-    parsed = JSON.parse(asset.content) as unknown;
+    parsed = JSON.parse(asset.content);
   } catch {
     issue(issues, `$.assets[${index}].content`, "invalid_harness_config_json", "Harness config fixture must be JSON.");
     return;

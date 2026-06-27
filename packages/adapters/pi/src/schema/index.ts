@@ -969,7 +969,7 @@ export const validateCapabilityMatrix = (value: unknown): ValidationResult<Adapt
   if (issues.length > 0) {
     return { valid: false, issues };
   }
-  return { valid: true, value: value as unknown as AdapterCapabilityMatrix, issues: [] };
+  return { valid: true, value: value as AdapterCapabilityMatrix, issues: [] };
 };
 
 export const validateGeneratedFileManifest = (value: unknown): ValidationResult<GeneratedFileManifest> => {
@@ -1105,7 +1105,7 @@ export const validateGeneratedFileManifest = (value: unknown): ValidationResult<
   if (issues.length > 0) {
     return { valid: false, issues };
   }
-  return { valid: true, value: value as unknown as GeneratedFileManifest, issues: [] };
+  return { valid: true, value: value as GeneratedFileManifest, issues: [] };
 };
 
 export const createDownstreamManifestSummary = (

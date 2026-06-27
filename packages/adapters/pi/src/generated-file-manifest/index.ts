@@ -13,6 +13,10 @@ import {
 } from "../schema/index.ts";
 import { getPiAdapterCapabilityMatrix } from "../capabilities/index.ts";
 
+// Node 17+ exposes `structuredClone` as a runtime global; the package's strict tsc
+// invocation (`--lib ES2022`) omits its typing, so declare the ambient minimal signature.
+declare const structuredClone: { <T>(value: T): T };
+
 export const PI_GENERATED_FILE_MANIFEST_SCHEMA_VERSION = "pi-generated-file-manifest/v1" as const;
 
 const version = (formatName: string, formatVersion: string): GeneratedFileVersion => ({
@@ -179,7 +183,7 @@ export const PI_GENERATED_FILE_MANIFEST: GeneratedFileManifest = {
 };
 
 export const getPiGeneratedFileManifest = (): GeneratedFileManifest =>
-  JSON.parse(JSON.stringify(PI_GENERATED_FILE_MANIFEST)) as GeneratedFileManifest;
+  structuredClone(PI_GENERATED_FILE_MANIFEST);
 
 export const validatePiGeneratedFileManifest = (value: unknown): ValidationResult<GeneratedFileManifest> => validateGeneratedFileManifest(value);
 

@@ -11,6 +11,10 @@ import {
   type ValidationResult,
 } from "../schema/index.ts";
 
+// Node 17+ exposes `structuredClone` as a runtime global; the package's strict tsc
+// invocation (`--lib ES2022`) omits its typing, so declare the ambient minimal signature.
+declare const structuredClone: { <T>(value: T): T };
+
 export const PI_ADAPTER_ID = "pi" as const;
 export const PI_ADAPTER_CAPABILITY_SCHEMA_VERSION = "pi-adapter-capability-matrix/v1" as const;
 export const VIBE_ENGINEER_SKILLS = [...SKILL_IDS];
@@ -233,7 +237,7 @@ export const PI_ADAPTER_CAPABILITY_MATRIX: AdapterCapabilityMatrix = {
 };
 
 export const getPiAdapterCapabilityMatrix = (): AdapterCapabilityMatrix =>
-  JSON.parse(JSON.stringify(PI_ADAPTER_CAPABILITY_MATRIX)) as AdapterCapabilityMatrix;
+  structuredClone(PI_ADAPTER_CAPABILITY_MATRIX);
 
 export const validatePiAdapterCapabilityMatrix = (value: unknown): ValidationResult<AdapterCapabilityMatrix> => validateCapabilityMatrix(value);
 
