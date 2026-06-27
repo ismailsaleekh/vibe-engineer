@@ -12,6 +12,14 @@
     "test": {
       "dependsOn": ["build", "^build"],
       "outputs": []
+    },
+    "quality": {
+      "dependsOn": ["^build"],
+      "outputs": []
+    },
+    "deploy": {
+      "dependsOn": ["^build"],
+      "outputs": []
     }
   }
 }
