@@ -14,6 +14,8 @@
     "typecheck": "pnpm exec turbo run typecheck",
     "test": "pnpm exec turbo run test",
     "quality": "node scripts/quality/run-quality.mjs",
+    "lint": "eslint .",
+    "format:check": "prettier --check .",
     "workspace:graph": "pnpm -r list --depth -1 --json",
     "workspace:surface": "node .vibe/work/I-00A-workspace-package-skeleton/witnesses/workspace-surface-witness.mjs --root ."
   },
