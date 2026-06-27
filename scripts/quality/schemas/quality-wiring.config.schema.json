@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vibe-engineer.dev/quality/v1/quality-wiring.config.schema.json",
+  "title": "QualityWiringConfigV1",
+  "description": "I-20A quality-wiring config: CI profile composition policy + declared/locked dependency allowlist + parity inputs. The fail-closed gate consumes this to prove local/CI parity, public-contract consumption, and no dynamic/latest dependencies.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "profiles", "declaredDependencies", "allowedImportSpecifiers", "parityBlockingCommand"],
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "quality.wiring-config/1" },
+    "parityBlockingCommand": { "type": "string", "minLength": 1 },
+    "allowedImportSpecifiers": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "declaredDependencies": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "spec", "locked"],
+        "properties": {
+          "name": { "type": "string", "minLength": 1 },
+          "spec": { "type": "string", "minLength": 1 },
+          "locked": { "type": "boolean" },
+          "evidence": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "profiles": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ci"],
+      "properties": {
+        "ci": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["composition", "excludes"],
+          "properties": {
+            "composition": {
+              "type": "array",
+              "minItems": 1,
+              "items": { "type": "string", "minLength": 1 }
+            },
+            "excludes": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["fullE2E", "fullMobileE2E", "fullVisualUi"],
+              "properties": {
+                "fullE2E": { "type": "boolean" },
+                "fullMobileE2E": { "type": "boolean" },
+                "fullVisualUi": { "type": "boolean" }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

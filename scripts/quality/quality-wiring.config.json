@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "quality.wiring-config/1",
+  "parityBlockingCommand": "pnpm quality -- --profile=ci --evidence-dir <dir> --summary-out <summary-json>",
+  "allowedImportSpecifiers": [
+    "@vibe-engineer/mechanical-gates/aggregate"
+  ],
+  "declaredDependencies": [
+    {
+      "name": "@vibe-engineer/mechanical-gates",
+      "spec": "workspace:*",
+      "locked": true,
+      "evidence": "root package.json devDependencies (I-20S Step-1 authorized single devDep); resolves from repo-root tooling as the PUBLIC aggregate export surface."
+    }
+  ],
+  "profiles": {
+    "ci": {
+      "composition": [
+        "p0.aggregate",
+        "p1.aggregate",
+        "p2.aggregate",
+        "fail-closed-wiring-integrity"
+      ],
+      "excludes": {
+        "fullE2E": true,
+        "fullMobileE2E": true,
+        "fullVisualUi": true
+      }
+    }
+  }
+}

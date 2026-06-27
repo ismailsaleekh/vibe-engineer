@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vibe-engineer.dev/quality/v1/expected-families.manifest.schema.json",
+  "title": "QualityExpectedFamiliesManifestV1",
+  "description": "I-20A canonical expected-family manifest. Declares the tier-level aggregate families the harness SUPPORTS and that the fail-closed wiring-integrity gate requires to be registered-and-running (expected ⊆ registered-and-running).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "expectedFamilies", "description"],
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "quality.expected-families/1" },
+    "expectedFamilies": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "pattern": "^p\\d+$" }
+    },
+    "description": { "type": "string", "minLength": 1 }
+  }
+}

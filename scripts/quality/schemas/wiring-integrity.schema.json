@@ -1,0 +1,138 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vibe-engineer.dev/quality/v1/wiring-integrity.schema.json",
+  "title": "QualityWiringIntegrityEvidenceV1",
+  "description": "Evidence emitted by the I-20A fail-closed wiring-integrity gate. Proves expected ⊆ registered-and-running (real runtime enumeration via PUBLIC aggregate API), public-contract consumption, declared/locked dependencies, and local/CI parity.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion", "gate", "profile", "expectedFamilies", "registeredAndRunningFamilies",
+    "missingFamilies", "verdict", "failClosedRule", "publicContractConsumption",
+    "declaredDependencyProof", "parityInputs", "runtimeEnumeration", "startedAt", "endedAt",
+    "exitCode", "diagnostic", "advisoryIgnored"
+  ],
+  "properties": {
+    "schemaVersion": { "type": "string", "const": "quality.wiring-integrity/1" },
+    "gate": { "type": "string", "const": "fail-closed-wiring-integrity" },
+    "profile": { "type": "string", "minLength": 1 },
+    "expectedFamilies": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^p\\d+$" }
+    },
+    "registeredAndRunningFamilies": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^p\\d+$" }
+    },
+    "missingFamilies": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^p\\d+$" }
+    },
+    "verdict": { "type": "string", "enum": ["pass", "fail"] },
+    "failClosedRule": { "type": "string", "const": "expected ⊆ registered-and-running" },
+    "diagnostic": {
+      "oneOf": [
+        { "type": "string", "minLength": 1 },
+        { "type": "null" }
+      ]
+    },
+    "publicContractConsumption": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "aggregateImportSpecifier", "aggregateResolvedModuleUrl", "aggregatePublicExports",
+        "publicSpecifierUsed", "noInternalRelativeImport", "testingBoundaryRegistered"
+      ],
+      "properties": {
+        "aggregateImportSpecifier": { "type": "string", "minLength": 1 },
+        "aggregateResolvedModuleUrl": { "type": "string", "minLength": 1 },
+        "aggregatePublicExports": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "publicSpecifierUsed": { "type": "boolean" },
+        "noInternalRelativeImport": { "type": "boolean" },
+        "testingBoundaryRegistered": { "type": "boolean" }
+      }
+    },
+    "declaredDependencyProof": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["declared", "noDynamicLatest", "noNpxRun", "noUndeclaredDependency"],
+      "properties": {
+        "declared": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["name", "spec", "locked"],
+            "properties": {
+              "name": { "type": "string", "minLength": 1 },
+              "spec": { "type": "string", "minLength": 1 },
+              "locked": { "type": "boolean" }
+            }
+          }
+        },
+        "noDynamicLatest": { "type": "boolean" },
+        "noNpxRun": { "type": "boolean" },
+        "noUndeclaredDependency": { "type": "boolean" },
+        "observedImportSpecifiers": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "parityInputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["blockingCommand", "profile", "localAndCiEquivalent", "excludesFullE2E", "excludesFullMobileE2E", "excludesFullVisualUi"],
+      "properties": {
+        "blockingCommand": { "type": "string", "minLength": 1 },
+        "profile": { "type": "string", "minLength": 1 },
+        "localAndCiEquivalent": { "type": "boolean" },
+        "excludesFullE2E": { "type": "boolean" },
+        "excludesFullMobileE2E": { "type": "boolean" },
+        "excludesFullVisualUi": { "type": "boolean" }
+      }
+    },
+    "runtimeEnumeration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["method", "probedExports", "perTier"],
+      "properties": {
+        "method": { "type": "string", "minLength": 1 },
+        "probedExports": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "perTier": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["family", "exportName", "exportPresent", "running", "carrierFamily"],
+            "properties": {
+              "family": { "type": "string", "pattern": "^p\\d+$" },
+              "exportName": { "type": "string", "pattern": "^runP\\d+Aggregate$" },
+              "exportPresent": { "type": "boolean" },
+              "running": { "type": "boolean" },
+              "carrierFamily": {
+                "oneOf": [
+                  { "type": "string", "minLength": 1 },
+                  { "type": "null" }
+                ]
+              },
+              "implementedFamilies": {
+                "type": "array",
+                "items": { "type": "string", "minLength": 1 }
+              }
+            }
+          }
+        }
+      }
+    },
+    "startedAt": { "type": "string", "minLength": 1 },
+    "endedAt": { "type": "string", "minLength": 1 },
+    "exitCode": { "type": "integer" },
+    "advisoryIgnored": { "type": "boolean" }
+  }
+}
