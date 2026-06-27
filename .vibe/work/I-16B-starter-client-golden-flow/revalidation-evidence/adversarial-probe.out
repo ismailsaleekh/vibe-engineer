@@ -1,0 +1,23 @@
+[PASS] A1 web-shared-client valid round-trip (echoed fields) — {"status":200,"normalizedTitle":"web-shared-client:betaprobe"}
+[PASS] A2 mobile-shared-client valid round-trip (same surface) — {"status":200,"normalizedTitle":"mobile-shared-client:betaprobe"}
+[PASS] A3 both-platforms identical-payload accepted (same surface, no fork) — {"web":200,"mobile":200}
+[PASS] B1 empty-body → rejected (status 400 surfaced via shared client) — {"status":400,"got200":false}
+[PASS] B2 missing-summary → rejected (status 400 surfaced via shared client) — {"status":400,"got200":false}
+[PASS] B3 wrong-type-sequence → rejected (status 400 surfaced via shared client) — {"status":400,"got200":false}
+[PASS] B4 bad-enum-status → rejected (status 400 surfaced via shared client) — {"status":400,"got200":false}
+[PASS] B5 STRICT-extra-field (decisive .strict()) → rejected (status 400 surfaced via shared client) — {"status":400,"got200":false}
+[PASS] B6 title-empty (min-length) → rejected (status 400 surfaced via shared client) — {"status":400,"got200":false}
+[PASS] B7 bad-path-param (gr_X uppercase) → rejected (status 400 surfaced via shared client) — {"status":400,"got200":false}
+[PASS] C1 missing-x-golden-client-header → 400 before logic — {"status":400,"ran":false}
+[PASS] C2 STRICT-extra-header → 400 before logic — {"status":400,"ran":false}
+[PASS] C3 forceInvalidProviderResponse → GoldenRecordsContractBoundaryError(response) — {"name":"GoldenRecordsContractBoundaryError"}
+[PASS] C4 bad-absence-kind → 400 before logic — {"status":400}
+[PASS] D1 bad-goldenRecordId-pattern → validating client REJECTS invalid response — {"name":"Error"}
+[PASS] D2 wrong-type-sequenceEcho → validating client REJECTS invalid response — {"name":"Error"}
+[PASS] D3 STRICT-extra-response-field → validating client REJECTS invalid response — {"name":"Error"}
+[PASS] D4 missing-normalizedTitle → validating client REJECTS invalid response — {"name":"Error"}
+[PASS] D5 bad-enum-statusEcho → validating client REJECTS invalid response — {"name":"Error"}
+[PASS] E1 imported success schema is real+strict (accepts valid, rejects .strict() extra) — {"okParse":true,"rejectExtra":true}
+
+=== adversarial probe: 20/20 PASS, 0 FAIL ===
+PROBE-EXIT=0

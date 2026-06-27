@@ -1,0 +1,20 @@
+[stage] W-RESOLVE — real @ts-rest/core + zod resolution from packages/contracts
+[PASS] W-RESOLVE — @ts-rest/core@3.52.1 + zod@3.25.76 resolved from packages/contracts (.pnpm store)
+[stage] W-BOTH-PLATFORMS-CONSUME / W-FLOW / W-NEG-REQ / W-CLIENT-INVALID-RESP — runtime real-boundary witness (.ts)
+[PASS] W-BOTH-PLATFORMS-CONSUME — web + mobile exercise the SAME shared client against the real provider (accepted)
+[PASS] W-FLOW — golden flow (classify → read → consume) succeeded end-to-end (both transports, response re-parsed)
+[PASS] W-NEG-REQ — invalid payload through shared client → 400 before application logic (probe unset)
+[PASS] W-CLIENT-INVALID-RESP — validating shared client rejected invalid network response
+[stage] W-SHARED-CLIENT-DERIVED — golden-client derives ONLY from the I-16A contract
+[PASS] W-SHARED-CLIENT-DERIVED — golden-client + golden-flow (12 files) define NO Zod schema / route contract; provenance contract path + SHA-256 match the I-16A contract
+[stage] W-NO-FORK — web + mobile transports + witnesses import the SAME shared client + contract
+[PASS] W-NO-FORK — web + mobile transports + consumption witnesses import the SAME shared client + SAME I-16A contract (no schema/route fork)
+[stage] W-DOMAIN-NEUTRAL — golden sample/demo/reference vocab; no business leakage
+[PASS] W-DOMAIN-NEUTRAL — 14 files: golden sample/demo/reference vocab only; @sample/@demo/@reference labeled; no business-domain leakage
+[stage] W-REG-REGEN — witness re-run idempotent
+[PASS] W-REG-REGEN — witness re-run idempotent (same six-boolean result, exit 0 both runs)
+[stage] W-INVARIANTS — dirty-tree scope + sibling/serialized-surface integrity
+[PASS] W-INVARIANTS — owned=3 fixture/work paths; 269 pre-existing baseline dirty paths; serialized surfaces + sibling fixtures intact
+
+=== I-16B golden-client/golden-flow real-boundary witness: PASS (green) (10 checks, 0 failed) ===
+RUNNER-EXIT=0
