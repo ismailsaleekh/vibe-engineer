@@ -86,6 +86,48 @@
       "tools": [
         "mechanical-gates"
       ]
+    },
+    {
+      "path": "mechanical-testing-boundary.json",
+      "kind": "exact",
+      "tools": [
+        "mechanical-gates"
+      ]
+    },
+    {
+      "path": "packages/testing/src",
+      "kind": "prefix",
+      "tools": [
+        "typescript"
+      ]
+    },
+    {
+      "path": "packages/testing/package.json",
+      "kind": "exact",
+      "tools": [
+        "package-manager"
+      ]
+    },
+    {
+      "path": "packages/consumer/src",
+      "kind": "prefix",
+      "tools": [
+        "typescript"
+      ]
+    },
+    {
+      "path": "packages/consumer/fixtures",
+      "kind": "prefix",
+      "tools": [
+        "test"
+      ]
+    },
+    {
+      "path": "packages/consumer/package.json",
+      "kind": "exact",
+      "tools": [
+        "package-manager"
+      ]
     }
   ],
   "requiredPaths": [
@@ -97,7 +139,12 @@
     "packages/domain/src/index.ts",
     "packages/app/src/index.ts",
     "mechanical-escape-allowlist.json",
-    "mechanical-domain-purity.json"
+    "mechanical-domain-purity.json",
+    "mechanical-testing-boundary.json",
+    "packages/testing/src/index.js",
+    "packages/testing/package.json",
+    "packages/consumer/src/index.ts",
+    "packages/consumer/package.json"
   ],
   "excludedPaths": [
     "generated",

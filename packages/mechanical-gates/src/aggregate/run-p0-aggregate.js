@@ -8,6 +8,7 @@ import {
 } from "../p0/boundaries/contracts.js";
 import { validateEscapeAllowlist } from "../p0/allowlist/index.js";
 import { validateDomainPurity } from "../p0/domain-purity/index.js";
+import { validateTestingBoundary } from "../p0/testing-boundary/index.js";
 
 const FAMILY = "p0.aggregate";
 const IMPLEMENTED_FAMILIES = Object.freeze([
@@ -15,7 +16,8 @@ const IMPLEMENTED_FAMILIES = Object.freeze([
   "p0.config-guards",
   "p0.boundaries",
   "p0.allowlist",
-  "p0.domain-purity"
+  "p0.domain-purity",
+  "p0.testing-boundary"
 ]);
 
 function finding(ruleId, findingPath, message, evidence = {}) {
@@ -35,6 +37,7 @@ async function runFamily(projectRoot, family, options) {
   if (family === "p0.boundaries") return validatePackageBoundaries(projectRoot, options.boundaries ?? {});
   if (family === "p0.allowlist") return validateEscapeAllowlist(projectRoot, options.allowlist ?? {});
   if (family === "p0.domain-purity") return validateDomainPurity(projectRoot, options.domainPurity ?? {});
+  if (family === "p0.testing-boundary") return validateTestingBoundary(projectRoot, options.testingBoundary ?? {});
   throw new Error(`Unknown P0 aggregate family: ${family}`);
 }
 

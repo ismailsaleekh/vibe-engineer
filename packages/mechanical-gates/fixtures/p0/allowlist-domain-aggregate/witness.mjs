@@ -10,7 +10,7 @@ import { runP0Aggregate } from "../../../src/aggregate/index.js";
 const fixtureRoot = dirname(fileURLToPath(import.meta.url));
 const packageRoot = join(fixtureRoot, "..", "..", "..");
 const typecheckOnly = process.argv.includes("--typecheck");
-const allFamilies = ["p0.governed-surface", "p0.config-guards", "p0.boundaries", "p0.allowlist", "p0.domain-purity"];
+const allFamilies = ["p0.governed-surface", "p0.config-guards", "p0.boundaries", "p0.allowlist", "p0.domain-purity", "p0.testing-boundary"];
 
 function workspace(name) {
   return join(fixtureRoot, name);
@@ -162,13 +162,17 @@ async function runFullWitness() {
   const aggregateNegative = await expectFail("aggregate preserves subvalidator findings", runP0Aggregate, "p0.aggregate", workspace("domain-leakage-core"), ["domain-purity.core-domain-leak"]);
   assert(aggregateNegative.findings.some((finding) => finding.family === "p0.domain-purity"), "aggregate must preserve original subvalidator finding families", { findings: aggregateNegative.findings });
 
+  const testingBoundarySubresult = aggregate.evidence.subresults.find((result) => result.family === "p0.testing-boundary");
+  assert(testingBoundarySubresult, "aggregate must include p0.testing-boundary subresult now that it is a registered family", { subFamilies: [...subFamilies], evidence: aggregate.evidence });
+  assert(testingBoundarySubresult.ok === true && testingBoundarySubresult.findings.length === 0, "p0.testing-boundary subresult must be clean (proves @vibe-engineer/testing is test-only, not a production dependency)", { testingBoundarySubresult });
+
   const regressionEvidence = {
     noPackagesCoreAssumption: !JSON.stringify({ aggregateEvidence: aggregate.evidence }).includes("packages/core"),
-    noTestingProductionDependency: !JSON.stringify({ aggregateEvidence: aggregate.evidence }).includes("@vibe-engineer/testing"),
+    noTestingProductionDependency: testingBoundarySubresult.ok === true && testingBoundarySubresult.findings.length === 0,
     noP1P2TestingBoundaryCreated: true
   };
   assert(regressionEvidence.noPackagesCoreAssumption, "aggregate evidence contains forbidden packages/core assumption", regressionEvidence);
-  assert(regressionEvidence.noTestingProductionDependency, "aggregate evidence contains forbidden production testing dependency", regressionEvidence);
+  assert(regressionEvidence.noTestingProductionDependency, "p0.testing-boundary subresult is not clean (production testing dependency leak)", regressionEvidence);
 
   console.log(JSON.stringify({
     ok: true,

@@ -142,7 +142,7 @@ function assertNoSharedMechanicalWiring() {
   const mechanicalPackage = JSON.parse(readFileSync(join(packageRoot, "package.json"), "utf8"));
   assert(!Object.prototype.hasOwnProperty.call(mechanicalPackage.exports, "./p0/testing-boundary"), "mechanical-gates package export was wired out of license", { exports: mechanicalPackage.exports });
   const aggregateSource = readFileSync(join(packageRoot, "src", "aggregate", "run-p0-aggregate.js"), "utf8");
-  assert(!aggregateSource.includes("p0.testing-boundary"), "aggregate runner unexpectedly includes testing-boundary family", {});
+  assert(aggregateSource.includes("p0.testing-boundary"), "aggregate runner must register p0.testing-boundary as an implemented family post-handoff", {});
 }
 
 async function runFullWitness() {
