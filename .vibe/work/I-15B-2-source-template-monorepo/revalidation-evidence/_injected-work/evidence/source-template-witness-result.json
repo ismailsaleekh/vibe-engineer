@@ -1,0 +1,139 @@
+{
+  "ok": false,
+  "blocked": false,
+  "lane": "I-15B-2-source-template-monorepo",
+  "materializedFileCount": 80,
+  "presetConsumedFileCount": 29,
+  "supplementaryFileCount": 51,
+  "checks": [
+    {
+      "name": "W-TEMPLATE-CONSUMES-PRESET",
+      "ok": true,
+      "summary": "29 preset-declared files present verbatim (derived, not duplicated)",
+      "detail": {
+        "mismatches": [],
+        "presetFileCount": 29
+      }
+    },
+    {
+      "name": "PRESET-SELF-VALIDATION",
+      "ok": true,
+      "summary": "preset validate(render()) ok=true, files=29, findings=0"
+    },
+    {
+      "name": "DL16-APP-PACKAGE-DIRS-PRESENT",
+      "ok": true,
+      "summary": "apps=[apps/api,apps/web,apps/mobile] packages=[packages/domain,packages/contracts,packages/api-client,packages/config,packages/testing,packages/ui]",
+      "detail": {
+        "missingAppDirs": [],
+        "missingPkgDirs": []
+      }
+    },
+    {
+      "name": "DL16-SCOPE-AND-PRIVATE",
+      "ok": true,
+      "summary": "all 10 manifests @vibe-engineer-starter/* + private",
+      "detail": {
+        "scopeFindings": []
+      }
+    },
+    {
+      "name": "DL16-HARNESS-CONFIG-DEFAULTS",
+      "ok": true,
+      "summary": "agenticHarness=pi, no-auth, PostgreSQL+Prisma, ts-rest+Zod, golden-records, DL-16",
+      "detail": {
+        "cfgFindings": [],
+        "layoutFindings": []
+      }
+    },
+    {
+      "name": "DL16-PER-PACKAGE-BOUNDARY-RULES",
+      "ok": false,
+      "summary": "6 package + 3 app boundary rules enforced",
+      "detail": {
+        "boundaryFindings": [
+          {
+            "rule": "domain",
+            "path": "packages/domain/src/golden-records/golden-record.ts",
+            "specifier": "@prisma/client",
+            "forbidden": "@prisma/client"
+          }
+        ]
+      }
+    },
+    {
+      "name": "W-NEG-OVER-INFERENCE",
+      "ok": true,
+      "summary": "no forbidden business-domain terms in any core (non-sample) file",
+      "detail": {
+        "overInferenceFindings": []
+      }
+    },
+    {
+      "name": "DL16-SINGLE-GOLDEN-MODULE-LABELED",
+      "ok": true,
+      "summary": "golden-records sample/demo/reference module present + labeled"
+    },
+    {
+      "name": "W-NEG-PRIVATE-SCOPED-IMPORT-AND-COPIED-LOGIC",
+      "ok": true,
+      "summary": "no private @vibe-engineer/* import, no relative harness import, no copied logic markers",
+      "detail": {
+        "harnessFindings": []
+      }
+    },
+    {
+      "name": "NODE-CHECK-PROBE",
+      "ok": true,
+      "summary": "37 entries checked, 0 syntax failures (JSX-only parses recorded as advisory)",
+      "detail": {
+        "failures": 0
+      }
+    },
+    {
+      "name": "W-REG-REGEN",
+      "ok": true,
+      "summary": "two consecutive materializations identical (80 path::sha256 entries)"
+    },
+    {
+      "name": "SIBLING-NO-REGRESSION:I-15B-1 preset witness",
+      "ok": true,
+      "summary": "exit 0",
+      "detail": {
+        "tail": "evidence/nest-react-rn-preset-witness-result.json\",\"phaseA\":\"green\",\"phaseB\":\"green\",\"contract\":{\"status\":\"green\",\"renderFileCount\":29,\"validationOk\":true,\"validationFindings\":[]},\"negativeCount\":11}\n"
+      }
+    },
+    {
+      "name": "SIBLING-NO-REGRESSION:I-07D typescript preset witness",
+      "ok": true,
+      "summary": "exit 0",
+      "detail": {
+        "tail": "{\"ok\":true,\"resultPath\":\"/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-07D-typescript-preset-package/evidence/typescript-preset-witness-result.json\",\"generatedFileCount\":12,\"negativeCount\":33}\n"
+      }
+    }
+  ],
+  "stages": [
+    "render preset via in-context self-reference spawn (cwd=presetRoot)",
+    "preset rendered: 29 files; layout scope=@vibe-engineer-starter",
+    "materialize .source-template/** (preset verbatim + DL-16 source skeleton)",
+    "materialized 80 files",
+    "run witness gauntlet",
+    "run node --check probe",
+    "run idempotent regen regression",
+    "run sibling no-regression (read-only)"
+  ],
+  "nodeCheckSummary": {
+    "checked": 37,
+    "failures": 0
+  },
+  "presetMetadata": {
+    "presetId": "vibe-engineer.nest-react-rn.starter",
+    "name": "Vibe Engineer NestJS / React / React Native Starter Preset",
+    "version": "1.0.0",
+    "packageName": "@vibe-engineer/preset-nest-react-rn",
+    "architectureDecision": "DL-16-starter-architecture",
+    "domainNeutral": true,
+    "consumedTypescriptPresetId": "vibe-engineer.typescript.strict",
+    "quickGateLabel": "quality:quick"
+  }
+}

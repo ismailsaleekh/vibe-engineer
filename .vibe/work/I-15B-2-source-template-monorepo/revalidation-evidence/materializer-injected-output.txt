@@ -1,0 +1,24 @@
+[stage] render preset via in-context self-reference spawn (cwd=presetRoot)
+[stage] preset rendered: 29 files; layout scope=@vibe-engineer-starter
+[stage] materialize .source-template/** (preset verbatim + DL-16 source skeleton)
+[stage] materialized 80 files
+[stage] run witness gauntlet
+[PASS] W-TEMPLATE-CONSUMES-PRESET — 29 preset-declared files present verbatim (derived, not duplicated)
+[PASS] PRESET-SELF-VALIDATION — preset validate(render()) ok=true, files=29, findings=0
+[PASS] DL16-APP-PACKAGE-DIRS-PRESENT — apps=[apps/api,apps/web,apps/mobile] packages=[packages/domain,packages/contracts,packages/api-client,packages/config,packages/testing,packages/ui]
+[PASS] DL16-SCOPE-AND-PRIVATE — all 10 manifests @vibe-engineer-starter/* + private
+[PASS] DL16-HARNESS-CONFIG-DEFAULTS — agenticHarness=pi, no-auth, PostgreSQL+Prisma, ts-rest+Zod, golden-records, DL-16
+[PASS] DL16-PER-PACKAGE-BOUNDARY-RULES — 6 package + 3 app boundary rules enforced
+[FAIL] W-NEG-OVER-INFERENCE — no forbidden business-domain terms in any core (non-sample) file
+[PASS] DL16-SINGLE-GOLDEN-MODULE-LABELED — golden-records sample/demo/reference module present + labeled
+[PASS] W-NEG-PRIVATE-SCOPED-IMPORT-AND-COPIED-LOGIC — no private @vibe-engineer/* import, no relative harness import, no copied logic markers
+[stage] run node --check probe
+[PASS] NODE-CHECK-PROBE — 37 entries checked, 0 syntax failures (JSX-only parses recorded as advisory)
+[stage] run idempotent regen regression
+[PASS] W-REG-REGEN — two consecutive materializations identical (80 path::sha256 entries)
+[stage] run sibling no-regression (read-only)
+[PASS] SIBLING-NO-REGRESSION:I-15B-1 preset witness — exit 0
+[PASS] SIBLING-NO-REGRESSION:I-07D typescript preset witness — exit 0
+
+=== I-15B-2 witness: FAIL (13 checks, 1 failed) ===
+  FAILED: W-NEG-OVER-INFERENCE — no forbidden business-domain terms in any core (non-sample) file
