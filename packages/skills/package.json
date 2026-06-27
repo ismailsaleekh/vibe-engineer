@@ -11,7 +11,16 @@
     "sourceStatus": "not-created-in-I-00A"
   },
   "private": true,
+  "exports": {
+    "./build": "./src/build/index.js",
+    "./ship": "./src/ship/orchestrator/index.js",
+    "./ship/intake": "./src/ship/intake/index.js"
+  },
   "dependencies": {
-    "@vibe-engineer/artifacts": "workspace:*"
+    "@vibe-engineer/adapter-pi": "workspace:*",
+    "@vibe-engineer/artifacts": "workspace:*",
+    "@vibe-engineer/context": "workspace:*",
+    "@vibe-engineer/orchestration": "workspace:*",
+    "@vibe-engineer/verification": "workspace:*"
   }
 }
