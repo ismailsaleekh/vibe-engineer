@@ -1,0 +1,21 @@
+# expect: UPLOAD-MISSING
+# I-20B negative fixture — expected rule code: UPLOAD-MISSING
+# Defect: aggregate runs but no evidence/summary artifact upload step.
+# Test-only synthetic fixture; NOT promoted to .github/workflows/**.
+name: neg-05-upload-missing
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+concurrency:
+  group: q-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+      - run: pnpm quality -- --profile=ci --evidence-dir .vibe/ci-evidence --summary-out .vibe/ci-evidence/quality-summary.json

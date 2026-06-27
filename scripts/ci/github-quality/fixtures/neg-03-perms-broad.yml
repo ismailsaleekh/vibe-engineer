@@ -1,0 +1,26 @@
+# expect: PERMS-BROAD
+# I-20B negative fixture — expected rule code: PERMS-BROAD
+# Defect: grants contents:write + pull-requests:write (not least-privilege).
+# Test-only synthetic fixture; NOT promoted to .github/workflows/**.
+name: neg-03-perms-broad
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: write
+  pull-requests: write
+concurrency:
+  group: q-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+      - run: pnpm quality -- --profile=ci --evidence-dir .vibe/ci-evidence --summary-out .vibe/ci-evidence/quality-summary.json
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: e
+          path: e

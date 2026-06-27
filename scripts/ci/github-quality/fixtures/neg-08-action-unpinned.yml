@@ -1,0 +1,27 @@
+# expect: ACTION-UNPINNED
+# I-20B negative fixture — expected rule code: ACTION-UNPINNED
+# Defect: a floating action ref (`actions/checkout@v4` — major-version tag, not a
+# 40-char SHA) + a dynamic tool install (`npm install -g`). Either trips the rule.
+# Test-only synthetic fixture; NOT promoted to .github/workflows/**.
+name: neg-08-action-unpinned
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+concurrency:
+  group: q-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm install -g some-cli
+      - run: pnpm quality -- --profile=ci --evidence-dir .vibe/ci-evidence --summary-out .vibe/ci-evidence/quality-summary.json
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: e
+          path: e

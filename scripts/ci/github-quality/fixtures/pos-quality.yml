@@ -1,0 +1,35 @@
+# expect: OK
+# I-20B positive fixture — expect: OK
+# A faithful minimal instance of the quick-gate contract (mirrors the real
+# `.github/workflows/quality.yml`). Used by the fixture runner as a self-test of
+# the positive path. Test-only synthetic fixture; NOT promoted to
+# .github/workflows/**.
+name: pos-quality
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+permissions:
+  contents: read
+concurrency:
+  group: quality-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  quality:
+    name: aggregate quality quick-gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '20.19.0'
+      - run: corepack enable
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm quality -- --profile=ci --evidence-dir .vibe/ci-evidence --summary-out .vibe/ci-evidence/quality-summary.json
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: quality-evidence
+          path: .vibe/ci-evidence
+          if-no-files-found: warn

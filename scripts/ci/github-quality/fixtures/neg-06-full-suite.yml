@@ -1,0 +1,27 @@
+# expect: FULL-SUITE
+# I-20B negative fixture — expected rule code: FULL-SUITE
+# Defect: a full default E2E step (`npx playwright test`, no smoke scope) in the
+# quick-gate, which structurally violates the <10min / no-full-E2E contract.
+# Test-only synthetic fixture; NOT promoted to .github/workflows/**.
+name: neg-06-full-suite
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+concurrency:
+  group: q-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+      - run: pnpm quality -- --profile=ci --evidence-dir .vibe/ci-evidence --summary-out .vibe/ci-evidence/quality-summary.json
+      - run: npx playwright test
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: e
+          path: e

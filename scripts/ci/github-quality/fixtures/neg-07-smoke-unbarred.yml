@@ -1,0 +1,34 @@
+# expect: SMOKE-UNBARRED
+# I-20B negative fixture — expected rule code: SMOKE-UNBARRED
+# Defect: a smoke-scoped E2E command (`npx playwright test --grep @smoke`) in a
+# job that is NOT labeled smoke (job key `e2e`, no smoke marker) — mislabeled
+# smoke. The aggregate is present in a separate non-smoke job so AGG passes; the
+# only defect is the unlabeled smoke.
+# Test-only synthetic fixture; NOT promoted to .github/workflows/**.
+name: neg-07-smoke-unbarred
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+concurrency:
+  group: q-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+      - run: pnpm quality -- --profile=ci --evidence-dir .vibe/ci-evidence --summary-out .vibe/ci-evidence/quality-summary.json
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: e
+          path: e
+  e2e:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+      - run: npx playwright test --grep @smoke

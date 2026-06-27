@@ -1,0 +1,29 @@
+# expect: AGG-MISSING
+# I-20B negative fixture — expected rule code: AGG-MISSING
+# Defect: no aggregate `pnpm quality` invocation anywhere (and no partial command).
+# Test-only synthetic fixture; NOT promoted to .github/workflows/**.
+name: neg-01-agg-missing
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+concurrency:
+  group: q-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '20.19.0'
+      - run: pnpm install --frozen-lockfile
+      - run: echo "building"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: e
+          path: e
