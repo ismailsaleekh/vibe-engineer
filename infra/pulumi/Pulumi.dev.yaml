@@ -1,0 +1,13 @@
+# Pulumi stack configuration — `dev` (vibe-engineer)
+#
+# DL-18B / locked-decisions §10 defaults:
+#   - Backend: Pulumi Cloud (default; configured via `pulumi login`, not here).
+#   - Provider-agnostic: NO default cloud/provider/region is set here.
+#   - NO secrets are committed in plaintext. Any secret is stored as a Pulumi
+#     secret (encrypted by the Pulumi Cloud secrets provider) via
+#     `pulumi config set --secret`; it never appears in this file as a value.
+#
+# This file contains only non-secret, provider-agnostic configuration.
+
+config:
+  vibe-engineer:provider-agnostic: true
