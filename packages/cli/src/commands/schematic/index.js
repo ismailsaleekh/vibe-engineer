@@ -1,6 +1,6 @@
 import fs from "node:fs/promises";
 import path from "node:path";
-import { executeSchematic } from "../../../../schematics/src/engine/index.js";
+import { executeSchematic } from "@vibe-engineer/schematics";
 import { createEnvelope, payload, validateCliResultEnvelope, writeResultFileAtomic, artifactDescriptor } from "../../envelope/result-envelope.js";
 import { cliError, diagnostic, CliClassification, CliErrorCode } from "../../errors/codes.js";
 import { validateSchematicManifestWithArtifacts } from "./artifacts-adapter.js";

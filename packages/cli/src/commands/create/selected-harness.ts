@@ -50,14 +50,15 @@ type GeneratedFileManifestApi = {
 
 type ValidationResultApi = { valid: boolean; errors?: unknown };
 
-// Casts: workspace deps are JS/TS siblings; the precedent casts JS siblings `as unknown as`.
-const getConfig = createDefaultVibeConfig as unknown as (options: UnknownRecord) => UnknownRecord;
-const writeContext = writeContextProject as unknown as (options: UnknownRecord) => Promise<UnknownRecord>;
-const getMatrix = getPiAdapterCapabilityMatrix as unknown as () => CapabilityMatrixApi;
-const getManifest = getPiGeneratedFileManifest as unknown as () => GeneratedFileManifestApi;
-const isManifestSelectable = isAdapterManifestSelectable as unknown as (matrix: CapabilityMatrixApi, adapterId: string) => boolean;
-const validateMatrix = validateCapabilityMatrix as unknown as (value: unknown) => ValidationResultApi;
-const validateManifest = validateGeneratedFileManifest as unknown as (value: unknown) => ValidationResultApi;
+// Typed wrappers: workspace deps are JS siblings; wrapping preserves exact call semantics while
+// giving the call sites explicit typed contracts (no `as unknown`, no FunctionType annotation).
+function getConfig(options: UnknownRecord): UnknownRecord { return createDefaultVibeConfig(options); }
+function writeContext(options: UnknownRecord): Promise<UnknownRecord> { return writeContextProject(options); }
+function getMatrix(): CapabilityMatrixApi { return getPiAdapterCapabilityMatrix(); }
+function getManifest(): GeneratedFileManifestApi { return getPiGeneratedFileManifest(); }
+function isManifestSelectable(matrix: CapabilityMatrixApi, adapterId: string): boolean { return isAdapterManifestSelectable(matrix, adapterId); }
+function validateMatrix(value: unknown): ValidationResultApi { return validateCapabilityMatrix(value); }
+function validateManifest(value: unknown): ValidationResultApi { return validateGeneratedFileManifest(value); }
 
 export const SELECTED_PI_HARNESS = "pi";
 export const I15A_LANE_ID = "I-15A-create-import-cli-ux-selected-harness";

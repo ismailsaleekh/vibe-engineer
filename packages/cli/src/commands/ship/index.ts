@@ -59,16 +59,16 @@ type EnvelopeFactoryInput = {
 
 type InvalidInvocationInput = { code?: string; classification?: string; message: string; details?: unknown };
 
-const makeArtifactDescriptor = artifactDescriptor as unknown as (input: { kind: string; path: string; schemaVersion?: string | null; role: string; sha256?: string | null }) => UnknownRecord;
-const makeCreateEnvelope = createEnvelope as unknown as (input: EnvelopeFactoryInput) => UnknownRecord;
-const makeInvalidInvocationEnvelope = invalidInvocationEnvelope as unknown as (invocation: CommandInvocation, input: InvalidInvocationInput) => UnknownRecord;
-const makePayload = payload as unknown as (kind: string, data?: UnknownRecord, schemaVersion?: string) => UnknownRecord;
-const makeValidateCliResultEnvelope = validateCliResultEnvelope as unknown as (envelope: UnknownRecord) => { ok: true; envelope: UnknownRecord } | { ok: false; errors: string[] };
-const makeWriteResultFileAtomic = writeResultFileAtomic as unknown as (resultFile: string, envelope: UnknownRecord) => Promise<void>;
-const makeCliError = cliError as unknown as (input: { code: string; classification: string; retryable?: boolean; blocking?: boolean; message: string; details?: UnknownRecord }) => UnknownRecord;
-const makeDiagnostic = diagnostic as unknown as (input: { severity?: string; code: string; classification: string; message: string; path?: string | null; span?: unknown; hint?: string | null }) => UnknownRecord;
-const runShip = runShipFromBuildResult as unknown as (options: UnknownRecord) => Promise<{ ok: true; shipPacket: UnknownRecord; shipPacketPath: string; evidencePackets: string[]; finalVerify: UnknownRecord } | { ok: false; reason: string; runnerCode?: string | null; verificationStatus?: string; driftStatus?: string; intakeReason?: string | null; buildStatus?: string | null }>;
-const persistPacket = persistShipPacket as unknown as (shipPacket: UnknownRecord, persistence: UnknownRecord) => Promise<{ ok: true; filePath: string } | { ok: false; reason: string }>;
+function makeArtifactDescriptor(input: { kind: string; path: string; schemaVersion?: string | null; role: string; sha256?: string | null }): UnknownRecord { return artifactDescriptor(input); }
+function makeCreateEnvelope(input: EnvelopeFactoryInput): UnknownRecord { return createEnvelope(input); }
+function makeInvalidInvocationEnvelope(invocation: CommandInvocation, input: InvalidInvocationInput): UnknownRecord { return invalidInvocationEnvelope(invocation, input); }
+function makePayload(kind: string, data?: UnknownRecord, schemaVersion?: string): UnknownRecord { return payload(kind, data, schemaVersion); }
+function makeValidateCliResultEnvelope(envelope: UnknownRecord): { ok: true; envelope: UnknownRecord } | { ok: false; errors: string[] } { return validateCliResultEnvelope(envelope); }
+function makeWriteResultFileAtomic(resultFile: string, envelope: UnknownRecord): Promise<void> { return writeResultFileAtomic(resultFile, envelope); }
+function makeCliError(input: { code: string; classification: string; retryable?: boolean; blocking?: boolean; message: string; details?: UnknownRecord }): UnknownRecord { return cliError(input); }
+function makeDiagnostic(input: { severity?: string; code: string; classification: string; message: string; path?: string | null; span?: unknown; hint?: string | null }): UnknownRecord { return diagnostic(input); }
+function runShip(options: UnknownRecord): Promise<{ ok: true; shipPacket: UnknownRecord; shipPacketPath: string; evidencePackets: string[]; finalVerify: UnknownRecord } | { ok: false; reason: string; runnerCode?: string | null; verificationStatus?: string; driftStatus?: string; intakeReason?: string | null; buildStatus?: string | null }> { return runShipFromBuildResult(options); }
+function persistPacket(shipPacket: UnknownRecord, persistence: UnknownRecord): Promise<{ ok: true; filePath: string } | { ok: false; reason: string }> { return persistShipPacket(shipPacket, persistence); }
 
 const VALUE_FLAGS = new Set([
   "--build-result",
