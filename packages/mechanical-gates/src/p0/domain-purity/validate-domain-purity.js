@@ -38,6 +38,56 @@ function pathMatches(row, filePath) {
   return includesPath(row.path, filePath);
 }
 
+function exemptionTargetKey(entry) {
+  return `${entry.path}:${entry.term}:${entry.locator?.token ?? ""}:${entry.locator?.line ?? ""}`;
+}
+
+function entryMatchesFinding(entry, filePath, term, token, line) {
+  if (entry.path !== filePath || entry.term !== term || entry.locator.token !== token) return false;
+  return typeof entry.locator.line !== "number" || entry.locator.line === line;
+}
+
+function validateExemptions(projectRoot, exemptions, policyPath, findings) {
+  const valid = [];
+  const seen = new Map();
+  if (!Array.isArray(exemptions)) return valid;
+  for (const [index, entry] of exemptions.entries()) {
+    const rowPath = `${policyPath}#/exemptions/${index}`;
+    if (!isPlainObject(entry)
+      || typeof entry.path !== "string" || entry.path.trim().length === 0
+      || typeof entry.term !== "string" || entry.term.trim().length === 0
+      || !isPlainObject(entry.locator) || typeof entry.locator.token !== "string" || entry.locator.token.length === 0) {
+      findings.push(finding("domain-purity.exemption-schema", rowPath, "Exemption entry must define non-empty path, term, and locator.token."));
+      continue;
+    }
+    let safePath;
+    try {
+      safePath = normalizeProjectPath(projectRoot, entry.path);
+    } catch (error) {
+      findings.push(finding("domain-purity.exemption-schema", rowPath, "Exemption path must stay inside project root.", { error: error instanceof Error ? error.message : String(error) }));
+      continue;
+    }
+    const normalized = { ...entry, path: safePath };
+    const key = exemptionTargetKey(normalized);
+    if (seen.has(key)) {
+      findings.push(finding("domain-purity.duplicate-exemption", rowPath, "Duplicate exemption row for the same stable target key.", { duplicateOf: seen.get(key), targetKey: key }));
+    } else {
+      seen.set(key, rowPath);
+    }
+    if (typeof entry.justification !== "string" || entry.justification.trim().length === 0 || typeof entry.whyUnavoidable !== "string" || entry.whyUnavoidable.trim().length === 0) {
+      findings.push(finding("domain-purity.exemption-missing-rationale", rowPath, "Exemption entry must include justification and whyUnavoidable."));
+    }
+    if (typeof entry.reviewer !== "string" || entry.reviewer.trim().length === 0) {
+      findings.push(finding("domain-purity.exemption-missing-reviewer", rowPath, "Exemption entry must include a reviewer."));
+    }
+    if (typeof entry.reviewedOn !== "string" || entry.reviewedOn.trim().length === 0) {
+      findings.push(finding("domain-purity.exemption-missing-review-date", rowPath, "Exemption entry must include reviewedOn freshness marker."));
+    }
+    valid.push({ rowPath, entry: normalized, key });
+  }
+  return valid;
+}
+
 function lineAndColumn(sourceFile, position) {
   const loc = sourceFile.getLineAndCharacterOfPosition(position);
   return { line: loc.line + 1, column: loc.character + 1 };
@@ -167,7 +217,11 @@ function validatePolicyShape(projectRoot, policy, policyPath, findings) {
       for (const value of policy.forbiddenTerms) forbiddenTerms.add(value);
     }
   }
-  return { include, surfaces, forbiddenTerms: [...forbiddenTerms], maxFileBytes: policy.scan.maxFileBytes };
+  let exemptions = [];
+  if ("exemptions" in policy) {
+    exemptions = validateExemptions(projectRoot, policy.exemptions, policyPath, findings);
+  }
+  return { include, surfaces, forbiddenTerms: [...forbiddenTerms], exemptions, maxFileBytes: policy.scan.maxFileBytes };
 }
 
 function classifyFile(surfaces, filePath) {
@@ -211,6 +265,7 @@ export async function validateDomainPurity(projectRoot, options = {}) {
   const files = (await walkProjectFiles(projectRoot)).filter(isSourceFile)
     .filter((filePath) => config.include.some((prefix) => includesPath(prefix, filePath)));
   let scannedFileCount = 0;
+  const matchedExemptionKeys = new Set();
   for (const filePath of files) {
     const surfaceKind = classifyFile(config.surfaces, filePath);
     if (IGNORED_SURFACES.has(surfaceKind)) continue;
@@ -220,6 +275,11 @@ export async function validateDomainPurity(projectRoot, options = {}) {
     for (const carrier of carriers) {
       for (const term of config.forbiddenTerms) {
         if (!tokenCarriesTerm(carrier.token, term)) continue;
+        const matchingExemption = config.exemptions.find(({ entry }) => entryMatchesFinding(entry, filePath, term, carrier.token, carrier.line));
+        if (matchingExemption) {
+          matchedExemptionKeys.add(matchingExemption.key);
+          continue;
+        }
         if (BLOCKING_SURFACES.has(surfaceKind)) {
           findings.push(finding("domain-purity.core-domain-leak", filePath, "Forbidden project/business-domain token leaked into core or extension surface.", {
             term,
@@ -236,6 +296,11 @@ export async function validateDomainPurity(projectRoot, options = {}) {
       }
     }
   }
+  for (const { rowPath, entry, key } of config.exemptions) {
+    if (!matchedExemptionKeys.has(key)) {
+      findings.push(finding("domain-purity.stale-exemption", rowPath, "Exemption entry does not match a current domain-token finding.", { path: entry.path, term: entry.term, token: entry.locator.token, line: entry.locator.line }));
+    }
+  }
 
   return createValidatorResult({
     family: FAMILY,
@@ -246,6 +311,7 @@ export async function validateDomainPurity(projectRoot, options = {}) {
       scannedFileCount,
       surfaceCount: config.surfaces.length,
       forbiddenTerms: config.forbiddenTerms,
+      exemptionCount: config.exemptions.length,
       parser: "typescript",
       proofMode: "typescript-ast-string-comment-path-carriers"
     }
