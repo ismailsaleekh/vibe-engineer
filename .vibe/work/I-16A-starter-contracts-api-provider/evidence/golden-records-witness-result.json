@@ -1,0 +1,167 @@
+{
+  "ok": true,
+  "blocked": false,
+  "lane": "I-16A-starter-contracts-api-provider",
+  "checkCount": 9,
+  "checks": [
+    {
+      "name": "W-RESOLVE",
+      "ok": true,
+      "summary": "@ts-rest/core@3.52.1 + zod@3.25.76 resolved from packages/contracts (.pnpm store)",
+      "detail": {
+        "failures": [],
+        "payload": {
+          "@ts-rest/core": {
+            "spec": "@ts-rest/core",
+            "resolvedPath": "/Users/lizavasilyeva/work/vibe-engineer/node_modules/.pnpm/@ts-rest+core@3.52.1_@types+node@24.13.2_zod@3.25.76/node_modules/@ts-rest/core/index.cjs.js",
+            "version": "3.52.1",
+            "name": "@ts-rest/core"
+          },
+          "zod": {
+            "spec": "zod",
+            "resolvedPath": "/Users/lizavasilyeva/work/vibe-engineer/node_modules/.pnpm/zod@3.25.76/node_modules/zod/index.cjs",
+            "version": "3.25.76",
+            "name": "zod"
+          }
+        }
+      }
+    },
+    {
+      "name": "W-PROVIDER",
+      "ok": true,
+      "summary": "valid request → provider logic ran, schema-valid 200",
+      "detail": {
+        "providerAccepted": true
+      }
+    },
+    {
+      "name": "W-NEG-REQ",
+      "ok": true,
+      "summary": "invalid payload → 400 before application logic (probe unset)",
+      "detail": {
+        "invalidRequestRejectedBeforeLogic": true
+      }
+    },
+    {
+      "name": "W-NEG-RESP",
+      "ok": true,
+      "summary": "forced invalid provider response rejected (never trusted)",
+      "detail": {
+        "invalidResponseRejected": true
+      }
+    },
+    {
+      "name": "W-CLIENT",
+      "ok": true,
+      "summary": "validating client rejected invalid network response",
+      "detail": {
+        "clientInvalidResponseRejected": true
+      }
+    },
+    {
+      "name": "W-NODUP",
+      "ok": true,
+      "summary": "consumer + generated client (2 files) define NO Zod schemas; client carries contract provenance",
+      "detail": {
+        "failures": []
+      }
+    },
+    {
+      "name": "W-DOMAIN-NEUTRAL",
+      "ok": true,
+      "summary": "9 files: golden sample/demo/reference vocab only; @sample/@demo/@reference labeled; no business-domain leakage",
+      "detail": {
+        "failures": []
+      }
+    },
+    {
+      "name": "W-REG-REGEN",
+      "ok": true,
+      "summary": "client regen idempotent (sha stable); provenance sourceSha256 matches fresh contract sha",
+      "detail": {
+        "failures": []
+      }
+    },
+    {
+      "name": "W-INVARIANTS",
+      "ok": true,
+      "summary": "owned=3 fixture/work paths; 253 pre-existing baseline dirty paths; siblings + golden fixtures intact",
+      "detail": {
+        "failures": [],
+        "ownedSample": [
+          "?? .vibe/work/I-16A-starter-contracts-api-provider/",
+          "?? examples/starter-reference/generated-fixtures/golden-api/",
+          "?? examples/starter-reference/generated-fixtures/golden-contracts/"
+        ]
+      }
+    }
+  ],
+  "runtime": {
+    "resolution": {
+      "@ts-rest/core": {
+        "spec": "@ts-rest/core",
+        "resolvedPath": "/Users/lizavasilyeva/work/vibe-engineer/node_modules/.pnpm/@ts-rest+core@3.52.1_@types+node@24.13.2_zod@3.25.76/node_modules/@ts-rest/core/index.cjs.js",
+        "version": "3.52.1",
+        "name": "@ts-rest/core"
+      },
+      "zod": {
+        "spec": "zod",
+        "resolvedPath": "/Users/lizavasilyeva/work/vibe-engineer/node_modules/.pnpm/zod@3.25.76/node_modules/zod/index.cjs",
+        "version": "3.25.76",
+        "name": "zod"
+      }
+    },
+    "witness": {
+      "providerAccepted": true,
+      "consumerAccepted": true,
+      "invalidRequestRejectedBeforeLogic": true,
+      "invalidResponseRejected": true,
+      "clientInvalidResponseRejected": true
+    }
+  },
+  "structural": {
+    "noDup": {
+      "scanned": [
+        "src/consumer/golden-records.consumer.ts",
+        "../golden-contracts/src/generated/golden-records-client.ts"
+      ],
+      "findings": []
+    },
+    "domainNeutral": {
+      "scanned": 9,
+      "failures": []
+    }
+  },
+  "regression": {
+    "beforeSha": "6f00175b1d89ef76b193993348d85531c5f4ca25ed09fd8182566127d575cfcf",
+    "afterSha": "6f00175b1d89ef76b193993348d85531c5f4ca25ed09fd8182566127d575cfcf",
+    "identical": true,
+    "freshContractSha": "cfe94880f6f1b4a7950a6ff15241b5795d2a1b77d4a0224a2f9bb7d9d573af1b",
+    "provenanceMatch": true
+  },
+  "invariant": {
+    "ownedCount": 3,
+    "baselineCount": 253,
+    "sensitiveHits": [],
+    "baselineSample": [
+      " M .vibe/work/I-07D-typescript-preset-package/evidence/typescript-preset-witness-result.json",
+      " M .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/witness-evidence/aggregate-witness.json",
+      " M .vibe/work/I-13-mechanical-P2-smell-framework/compiled-p2-code-smell/index.js",
+      " M .vibe/work/I-13-mechanical-P2-smell-framework/post-fix-evidence/postfix-output/commands/p0-allowlist-domain-aggregate.json",
+      " M .vibe/work/I-13-mechanical-P2-smell-framework/post-fix-evidence/postfix-output/commands/p0-testing-boundary.json",
+      " M .vibe/work/I-13-mechanical-P2-smell-framework/witness-evidence/p0-allowlist-domain-aggregate.json",
+      " M .vibe/work/I-13-mechanical-P2-smell-framework/witness-evidence/p0-testing-boundary.json",
+      " M .vibe/work/I-13-mechanical-P2-smell-framework/witness-evidence/p1-aggregate-witness.json",
+      " M .vibe/work/I-18-security-safety-hooks-policy/I-18B-security-cli-command-and-verify-hook/evidence/regression/default-entry-security-unsupported.json",
+      " M .vibe/work/I-18-security-safety-hooks-policy/I-18B-security-cli-command-and-verify-hook/evidence/regression/foundation-envelope.json"
+    ]
+  },
+  "stages": [
+    "W-RESOLVE — real @ts-rest/core + zod resolution from packages/contracts",
+    "W-PROVIDER / W-NEG-REQ / W-NEG-RESP / W-CLIENT — runtime real-boundary witness (.ts)",
+    "W-NODUP — no duplicated contract source; generated client provenance",
+    "W-DOMAIN-NEUTRAL — golden sample/demo/reference vocab; no business leakage",
+    "W-REG-REGEN — idempotent client regen + provenance sha match",
+    "W-INVARIANTS — dirty-tree scope + sibling/serialized-surface integrity"
+  ]
+}

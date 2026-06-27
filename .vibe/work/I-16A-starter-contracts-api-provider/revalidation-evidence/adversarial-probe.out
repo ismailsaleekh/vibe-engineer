@@ -1,0 +1,32 @@
+PASS valid_request_succeeds_200 — {"status":200,"logicRan":true}
+PASS valid_request_logic_ran — {}
+PASS invalid_empty_body_rejected_400 — {"status":400}
+PASS invalid_empty_body_logic_did_not_run — {"ran":false}
+PASS invalid_garbage_string_rejected_400 — {"status":400}
+PASS invalid_garbage_string_logic_did_not_run — {"ran":false}
+PASS invalid_missing_required_field_summary_rejected_400 — {"status":400}
+PASS invalid_missing_required_field_summary_logic_did_not_run — {"ran":false}
+PASS invalid_wrong_type_sequence_rejected_400 — {"status":400}
+PASS invalid_wrong_type_sequence_logic_did_not_run — {"ran":false}
+PASS invalid_bad_status_enum_rejected_400 — {"status":400}
+PASS invalid_bad_status_enum_logic_did_not_run — {"ran":false}
+PASS invalid_extra_unknown_field_strict_rejected_400 — {"status":400}
+PASS invalid_extra_unknown_field_strict_logic_did_not_run — {"ran":false}
+PASS invalid_empty_title_minlen_rejected_400 — {"status":400}
+PASS invalid_empty_title_minlen_logic_did_not_run — {"ran":false}
+PASS invalid_pathparam_bad_id_rejected_400 — {"status":400}
+PASS invalid_pathparam_logic_did_not_run — {}
+PASS invalid_missing_header_rejected_400 — {"status":400}
+PASS forced_invalid_response_throws — {}
+PASS forced_invalid_response_is_boundary_error — {"boundary":"response"}
+PASS forced_invalid_response_boundary_is_response — {"boundary":"response"}
+PASS client_rejects_invalid_network_response — {}
+PASS client_positive_roundtrip_200 — {"status":200,"accepted":true}
+
+=== ADVERSARIAL PROBE SUMMARY ===
+total=24 pass=24 fail=0
+{
+  "ok": true,
+  "total": 24,
+  "failed": []
+}
