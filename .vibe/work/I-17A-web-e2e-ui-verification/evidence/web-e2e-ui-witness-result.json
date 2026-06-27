@@ -1,0 +1,59 @@
+{
+  "lane": "I-17A-web-e2e-ui-verification",
+  "ok": false,
+  "blocked": true,
+  "verdict": "FAIL",
+  "depStatus": {
+    "react": {
+      "resolved": true,
+      "version": "19.1.0",
+      "pinned": "19.1.0",
+      "matches": true
+    },
+    "react-dom": {
+      "resolved": true,
+      "version": "19.1.0",
+      "pinned": "19.1.0",
+      "matches": true
+    },
+    "vite": {
+      "resolved": true,
+      "version": "7.1.0",
+      "pinned": "7.1.0",
+      "matches": true
+    },
+    "@playwright/test": {
+      "resolved": true,
+      "version": "1.54.0",
+      "pinned": "1.54.0",
+      "matches": true
+    },
+    "@axe-core/playwright": {
+      "resolved": true,
+      "version": "4.10.2",
+      "pinned": "4.10.2",
+      "matches": true
+    },
+    "pixelmatch": {
+      "resolved": true,
+      "version": "7.1.0",
+      "pinned": "7.1.0",
+      "matches": true
+    },
+    "pngjs": {
+      "resolved": true,
+      "version": "7.0.0",
+      "pinned": "7.0.0",
+      "matches": true
+    }
+  },
+  "run": {
+    "status": 1,
+    "tail": "port-desktop] › ui-verification/specialists/visual-regression.spec.ts:31:5 › @ui visual-regression › visual-regression — system-status \n    [viewport-wide] › e2e/golden-flow.positive.e2e.spec.ts:14:3 › golden-flow E2E (positive) › home renders + nav reaches golden-records + classified record renders \n    [viewport-wide] › e2e/golden-flow.positive.e2e.spec.ts:38:3 › golden-flow E2E (positive) › system-status route is reachable \n    [viewport-wide] › e2e/negative/broken-selector.negative.e2e.spec.ts:17:3 › golden-flow E2E (negative: broken selector) › a broken/aliased selector matches nothing (fail-closed) \n    [viewport-wide] › e2e/negative/provider-invalid.negative.e2e.spec.ts:13:3 › golden-flow E2E (negative: provider-invalid) › provider-invalid response renders the failure state, not a success \n    [viewport-wide] › ui-verification/specialists/accessibility.spec.ts:8:1 › @ui accessibility — golden-records-default \n    [viewport-wide] › ui-verification/specialists/color-contrast.spec.ts:16:1 › @ui color-contrast — golden-records-default \n    [viewport-wide] › ui-verification/specialists/overlap-clipping.spec.ts:13:3 › @ui overlap-clipping — golden-records-default @viewport \n    [viewport-wide] › ui-verification/specialists/responsive-layout.spec.ts:10:1 › @ui responsive-layout — golden-records-default \n    [viewport-wide] › ui-verification/specialists/spacing-alignment.spec.ts:6:1 › @ui spacing-alignment — golden-records-default \n    [viewport-wide] › ui-verification/specialists/truncation.spec.ts:6:1 › @ui truncation — golden-records-default \n    [viewport-wide] › ui-verification/specialists/visual-regression.spec.ts:31:5 › @ui visual-regression › visual-regression — default \n    [viewport-wide] › ui-verification/specialists/visual-regression.spec.ts:31:5 › @ui visual-regression › visual-regression — golden-records-default \n    [viewport-wide] › ui-verification/specialists/visual-regression.spec.ts:31:5 › @ui visual-regression › visual-regression — system-status \n"
+  },
+  "invariants": {
+    "ownedCount": 3,
+    "baselineCount": 277,
+    "failures": []
+  }
+}

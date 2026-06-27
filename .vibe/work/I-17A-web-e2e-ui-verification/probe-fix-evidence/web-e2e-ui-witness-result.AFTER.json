@@ -1,0 +1,59 @@
+{
+  "lane": "I-17A-web-e2e-ui-verification",
+  "ok": false,
+  "blocked": true,
+  "verdict": "FAIL",
+  "depStatus": {
+    "react": {
+      "resolved": true,
+      "version": "19.1.0",
+      "pinned": "19.1.0",
+      "matches": true
+    },
+    "react-dom": {
+      "resolved": true,
+      "version": "19.1.0",
+      "pinned": "19.1.0",
+      "matches": true
+    },
+    "vite": {
+      "resolved": true,
+      "version": "7.1.0",
+      "pinned": "7.1.0",
+      "matches": true
+    },
+    "@playwright/test": {
+      "resolved": true,
+      "version": "1.54.0",
+      "pinned": "1.54.0",
+      "matches": true
+    },
+    "@axe-core/playwright": {
+      "resolved": true,
+      "version": "4.10.2",
+      "pinned": "4.10.2",
+      "matches": true
+    },
+    "pixelmatch": {
+      "resolved": true,
+      "version": "7.1.0",
+      "pinned": "7.1.0",
+      "matches": true
+    },
+    "pngjs": {
+      "resolved": true,
+      "version": "7.0.0",
+      "pinned": "7.0.0",
+      "matches": true
+    }
+  },
+  "run": {
+    "status": 1,
+    "tail": "Error: test.info() can only be called while test is running\n\n   at ui-verification/specialists/overlap-clipping.spec.ts:13\n\n  11 |\n  12 | for (const state of STATES) {\n> 13 |   test(`@ui overlap-clipping — ${state.id} @${test.info().project.metadata?.viewportId ?? \"?\"}`, async ({ page }) => {\n     |                                                    ^\n  14 |     test.skip(!test.info().project.metadata?.viewportId, \"viewport matrix set via playwright projects\");\n  15 |     await page.goto(`/${state.hash}`);\n  16 |     await page.getByTestId(\"golden-records-section\").waitFor();\n    at /Users/lizavasilyeva/work/vibe-engineer/examples/starter-reference/generated-fixtures/e2e-ui/web/ui-verification/specialists/overlap-clipping.spec.ts:13:52\n\n"
+  },
+  "invariants": {
+    "ownedCount": 3,
+    "baselineCount": 277,
+    "failures": []
+  }
+}

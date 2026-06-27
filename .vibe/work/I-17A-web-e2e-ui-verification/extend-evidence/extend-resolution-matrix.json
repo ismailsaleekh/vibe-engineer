@@ -1,0 +1,55 @@
+{
+  "lane": "I-17A-web-e2e-ui-verification",
+  "op": "EXTEND-I-20S root-dep handoff (resume)",
+  "finisher": "Triad-B FINISHER (combined)",
+  "pnpm": "10.33.0",
+  "node": "v24.16.0",
+  "depsRequested": {
+    "react": "19.1.0", "react-dom": "19.1.0", "vite": "7.1.0",
+    "@playwright/test": "1.54.0", "@axe-core/playwright": "4.10.2",
+    "pixelmatch": "7.1.0", "pngjs": "7.0.0"
+  },
+  "resolutionMatrix": {
+    "react": { "installed": "19.1.0", "lockedRootImporter": true, "requireResolvePkgJson": "OK" },
+    "react-dom": { "installed": "19.1.0", "lockedRootImporter": true, "requireResolvePkgJson": "OK" },
+    "vite": { "installed": "7.1.0", "lockedRootImporter": true, "requireResolvePkgJson": "OK" },
+    "@playwright/test": { "installed": "1.54.0", "lockedRootImporter": true, "requireResolvePkgJson": "OK" },
+    "@axe-core/playwright": {
+      "installed": "4.10.2", "lockedRootImporter": true,
+      "requireResolvePkgJson": "FAIL: ERR_PACKAGE_PATH_NOT_EXPORTED",
+      "esmImportDotEntry": "OK (AxeBuilder function)",
+      "note": "package.json exports map {\".\":{import,require,types}} omits ./package.json subpath; Node enforces exports map. Dep IS installed+locked+resolving via its real '.' entry. The require.resolve(`${spec}/package.json`) probe in run-web-e2e-ui-witness.mjs is the wrong mechanism for exports-restricted packages."
+    },
+    "pixelmatch": { "installed": "7.1.0", "lockedRootImporter": true, "requireResolvePkgJson": "OK" },
+    "pngjs": { "installed": "7.0.0", "lockedRootImporter": true, "requireResolvePkgJson": "OK" }
+  },
+  "extendVerdict": "DONE + scoped + green (all 7 deps installed, declared+locked in root '.' importer, 7/7 resolve via real entry points; marquee EXTEND goal achieved)",
+  "lockfileDelta": {
+    "addedLines": 677, "removedLines": 0, "modifiedLines": 0,
+    "allHunksAreAppends": true,
+    "scope": "7 new root '.' importer devDep specifier/version edges + transitive package snapshots (@axe-core/playwright, @esbuild/*, lightningcss, playwright-core, scheduler, react, react-dom, vite, pixelmatch, pngjs)",
+    "unrelatedChurn": "none (no other importer block modified; no version re-resolution)"
+  },
+  "residualBlockers": {
+    "wRbPlaywright": "STILL BLOCKED, but NOT for the EXTEND reason",
+    "blocker1_i17aOwnedProbeDefect": {
+      "rootCause": "run-web-e2e-ui-witness.mjs depStatus() probes require.resolve(`${spec}/package.json`); @axe-core/playwright exports map omits ./package.json -> ERR_PACKAGE_PATH_NOT_EXPORTED -> false 'Missing'",
+      "owner": "I-17A (examples/starter-reference/generated-fixtures/e2e-ui/web/run-web-e2e-ui-witness.mjs) — OUTSIDE this finisher's write paths",
+      "fix": "use exports-safe resolution: resolve the package '.' entry (import.meta.resolve / require.resolve(spec) for non-restricted), then read package.json via fs from the resolved entry's package dir; or catch the subpath error and fall back to fs.stat on node_modules/spec/package.json",
+      "class": "witness-runner design issue (same class as I-15B-1 Step-0 -> Step-2 B3 handoff)"
+    },
+    "blocker2_browserBinaryAvailability": {
+      "rootCause": "no ms-playwright cache; chromium binary absent (playwright.executablePath() points to non-existent path)",
+      "owner": "operator-resource / environment-gated (NOT license-free per brief §3)",
+      "fix": "playwright install (~100-300MB network fetch) — operator-authorized only",
+      "posture": "pending-live/BLOCKED on browser-binary availability"
+    }
+  },
+  "deterministicWitnessesPostExtend": {
+    "W-STRUCTURAL": "PASS (7/7)",
+    "W-DOMAIN-NEUTRAL": "PASS",
+    "W-NO-CI-LEAK": "PASS",
+    "siblingRegression_I16B_golden-flow": "PASS (10/10)"
+  },
+  "fakeGreenPolicy": "none recorded; W-RB-PLAYWRIGHT honestly STOP-BLOCKED (probe defect + browser-binary), not faked"
+}
