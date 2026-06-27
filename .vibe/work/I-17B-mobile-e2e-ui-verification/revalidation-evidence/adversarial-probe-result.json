@@ -1,0 +1,63 @@
+{
+  "ok": true,
+  "totalChecks": 11,
+  "passed": 11,
+  "failed": 0,
+  "results": [
+    {
+      "name": "DL-12 control: REAL 4-scenario metadata PASSES",
+      "ok": true,
+      "note": "ok=true errors=0"
+    },
+    {
+      "name": "DL-12 mutation: GR-04 runner detox→maestro (Detox trigger present) → W-NEG-SEL-CONFLICT fail-closed",
+      "ok": true,
+      "note": "rejected=true selConflictFired=1 detail=Detox-required trigger(s) present but runner=maestro-only — DL-12 conflict: must be detox or both"
+    },
+    {
+      "name": "DL-12 mutation: GR-01 runner_selection_rationale blanked → W-NEG-MISSING-METADATA fail-closed",
+      "ok": true,
+      "note": "rejected=true missingFired=1"
+    },
+    {
+      "name": "DL-12 mutation: GR-02 live_proof_status=proven_by → W-NEG-FAKE-LIVE fail-closed",
+      "ok": true,
+      "note": "rejected=true fakeLiveFired=1"
+    },
+    {
+      "name": "DL-12 mutation: collection all-maestro (no Detox coverage) → W-NEG-MAESTRO-ONLY-POLICY fail-closed",
+      "ok": true,
+      "note": "rejected=true policyFired=1"
+    },
+    {
+      "name": "DL-13 control: REAL matrix+checks+baselines PASSES",
+      "ok": true,
+      "note": "ok=true errors=0"
+    },
+    {
+      "name": "DL-13 mutation: real row 'iphone-default' missing visual_diff → W-NEG-MISSING-ARTIFACT fail-closed",
+      "ok": true,
+      "note": "rejected=true missingArtFired=1"
+    },
+    {
+      "name": "DL-13 mutation: real governance auto_accept_allowed=true → W-NEG-SILENT-BASELINE fail-closed",
+      "ok": true,
+      "note": "rejected=true silentBaselineFired=1"
+    },
+    {
+      "name": "DL-13 mutation: real matrix closure_basis=e2e_pass → W-NEG-E2E-AS-UI fail-closed",
+      "ok": true,
+      "note": "rejected=true e2eAsUiFired=1"
+    },
+    {
+      "name": "DL-13 mutation: real row capture_status=captured-green → W-NEG-FAKE-LIVE fail-closed",
+      "ok": true,
+      "note": "rejected=true fakeLiveFired=1"
+    },
+    {
+      "name": "DL-13 mutation: add advisory+hard_block check on real set → W-NEG-ADVISORY-HARD-BLOCK fail-closed",
+      "ok": true,
+      "note": "rejected=true advisoryHardFired=1"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "lane": "I-17B-mobile-e2e-ui-verification",
+  "verdict": "DONE",
+  "deterministic_pass": true,
+  "live_device_seams": "pending-live/BLOCKED",
+  "pending_live_scope": "blocks I-23/final-closure live proof; does NOT block I-17B deterministic PASS",
+  "generated_fixtures": {
+    "golden-mobile": "examples/starter-reference/generated-fixtures/golden-mobile/**",
+    "e2e-ui-mobile": "examples/starter-reference/generated-fixtures/e2e-ui/mobile/**"
+  },
+  "witness_results": {
+    "golden-mobile": { "ok": true, "checks": 13, "failed": 0, "evidence_ref": ".vibe/work/I-17B-mobile-e2e-ui-verification/evidence/golden-mobile-witness-result.json" },
+    "e2e-ui-mobile": { "ok": true, "checks": 14, "failed": 0, "evidence_ref": ".vibe/work/I-17B-mobile-e2e-ui-verification/evidence/e2e-ui-mobile-witness-result.json" }
+  },
+  "validation_commands": [
+    { "cmd": "node --experimental-strip-types examples/starter-reference/generated-fixtures/golden-mobile/run-mobile-witness.mjs", "exit": 0 },
+    { "cmd": "node --experimental-strip-types examples/starter-reference/generated-fixtures/e2e-ui/mobile/run-ui-witness.mjs", "exit": 0 },
+    { "cmd": "... --neg=sel-conflict|missing-metadata|maestro-only-policy|detox-only-policy|fake-live (golden-mobile)", "exit": 0, "meaning": "validator fail-closed on each defect" },
+    { "cmd": "... --neg=missing-artifact|silent-baseline|e2e-as-ui|advisory-hard-block|fake-live (e2e-ui/mobile)", "exit": 0, "meaning": "validator fail-closed on each defect" }
+  ],
+  "env_probe": {
+    "iosSimulatorDeviceAvailable": false,
+    "androidEmulatorAvailable": false,
+    "maestroBinaryAvailable": false,
+    "detoxBinaryAvailable": false,
+    "rnBuildAvailable": false
+  },
+  "pending_live_blockers": [
+    "live device-driven Maestro/Detox mobile-E2E run (DL-12)",
+    "live mobile UI-verification capture: screenshots + RN/platform a11y/tree metadata + geometry + pixelmatch-class diffs vs approved baselines (DL-13)"
+  ],
+  "unblocking_prerequisites": [
+    "iOS Simulator runtime + booted phone profile (xcrun simctl)",
+    "Android SDK platform-tools + system image + emulator (avd)",
+    "Maestro CLI binary",
+    "Detox CLI + RN detox toolchain + built app binary",
+    "Metro bundle + iOS/Android app build/install"
+  ],
+  "dirty_tree_scope": {
+    "owned_prefixes": [
+      "examples/starter-reference/generated-fixtures/golden-mobile/",
+      "examples/starter-reference/generated-fixtures/e2e-ui/mobile/",
+      ".vibe/work/I-17B-mobile-e2e-ui-verification/"
+    ],
+    "i17a_sibling_disjoint": "e2e-ui/web/ + golden-web/ are the parallel I-17A lane (untracked baseline); this lane wrote ONLY e2e-ui/mobile/ (verified file-disjoint)",
+    "no_graph_edge": "fixture package.json use modeled/peer deps only (maestro/detox/react-native/pixelmatch/axe-core); NOT pnpm workspace members; no install/lockfile/manifest edit",
+    "no_fork": "golden-mobile RN consumption seam imports the I-16B shared client (useGoldenRecords + createMobileTransport + createGoldenRecordsSharedClient + contract type); defines NO Zod schema / route contract / DTO"
+  },
+  "negative_witnesses_fail_closed": [
+    "golden-mobile: W-NEG-SEL-CONFLICT, W-NEG-MISSING-METADATA, W-NEG-MAESTRO-ONLY-POLICY, W-NEG-DETOX-ONLY-POLICY, W-NEG-FAKE-LIVE",
+    "e2e-ui/mobile: W-NEG-MISSING-ARTIFACT, W-NEG-SILENT-BASELINE, W-NEG-E2E-AS-UI, W-NEG-ADVISORY-HARD-BLOCK, W-NEG-FAKE-LIVE"
+  ],
+  "deferred_debts": [],
+  "provenance": {
+    "implementationUnit": "I-17B-mobile-e2e-ui-verification",
+    "derived_from": ["I-16B golden-client/golden-flow (shared client + mobile transport + consumption seam)", "I-16A golden-contracts/golden-api (read-only)", "DL-12/DL-13/DL-11 (LOCKED)", ".source-template/apps/mobile slots (I-15B read-only pattern)"]
+  }
+}

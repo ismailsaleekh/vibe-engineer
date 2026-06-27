@@ -1,0 +1,308 @@
+{
+  "ok": true,
+  "blocked": false,
+  "pendingLive": true,
+  "lane": "I-17B-mobile-e2e-ui-verification",
+  "fixture": "golden-mobile",
+  "checkCount": 13,
+  "checks": [
+    {
+      "name": "W-MAESTRO-STRUCT",
+      "ok": true,
+      "summary": "3 Maestro flow(s) structurally valid",
+      "detail": {
+        "maestro": {
+          "count": 3,
+          "sha256": {
+            "gr-01-app-launch-smoke.yaml": "0dac0cd355c75dc8915fa74a1c4a1a85bf15e88dcb94e1d1f5b2d97913098f7e",
+            "gr-02-navigate-read-list.yaml": "7164080dcd56a029cc17481e57c62e0d8f5fe0d9a7d053d76fc85d9c289ec442",
+            "gr-03-reload-reread-maestro-half.yaml": "837b87d4be9d4ae943f2efcf13bee959a4f3224b23f18714b85f6abe266f8108"
+          },
+          "allStructurallyValid": true
+        }
+      }
+    },
+    {
+      "name": "W-DETOX-STRUCT",
+      "ok": true,
+      "summary": "2 Detox spec(s) structurally valid (real Detox API surface + DL-12 Detox-required category)",
+      "detail": {
+        "detox": {
+          "count": 2,
+          "sha256": {
+            "gr-03-resync-after-reload-detox-half.spec.ts": "af424312c351608cc5e15612d9fe5d708f79fb73069c7744fc7708edbaf8efbe",
+            "gr-04-deterministic-state-reset.spec.ts": "84cb8ca09d42ae020ede797e05742f6506c89719f26c35eb6801aec4189f8230"
+          },
+          "allStructurallyValid": true
+        }
+      }
+    },
+    {
+      "name": "W-SEL-METADATA",
+      "ok": true,
+      "summary": "all 4 scenarios carry complete DL-12 metadata, conflict-free",
+      "detail": {
+        "selectionMetadata": {
+          "count": 4,
+          "result": {
+            "ok": true,
+            "errors": []
+          }
+        }
+      }
+    },
+    {
+      "name": "W-NO-FORK",
+      "ok": true,
+      "summary": "RN consumption seam imports the I-16B shared client (useGoldenRecords + mobile transport); drove the REAL provider (accepted)",
+      "detail": {
+        "rnConsumptionSeam": {
+          "accepted": true,
+          "goldenRecordId": "gr_abc123",
+          "testIds": {
+            "screen": "golden-records-screen",
+            "list": "golden-record-list",
+            "homeGotoGoldenRecords": "home-goto-golden-records"
+          }
+        }
+      }
+    },
+    {
+      "name": "W-NEG-FAKE-LIVE",
+      "ok": true,
+      "summary": "live device-driven Maestro/Detox run honestly pending-live/BLOCKED (no fake green)",
+      "detail": {
+        "liveDeviceRun": {
+          "iosSimulatorDeviceAvailable": false,
+          "androidEmulatorAvailable": false,
+          "maestroBinaryAvailable": false,
+          "detoxBinaryAvailable": false,
+          "rnBuildAvailable": false,
+          "livePrereqsAbsent": true,
+          "noFakeLiveClaim": true,
+          "pendingLiveBLOCKED": true
+        }
+      }
+    },
+    {
+      "name": "W-NEG-SEL-CONFLICT",
+      "ok": true,
+      "summary": "validator fail-closed on 'sel-conflict' firing W-NEG-SEL-CONFLICT",
+      "detail": {
+        "parsed": {
+          "negId": "sel-conflict",
+          "validatorRejected": true,
+          "expectedRule": "W-NEG-SEL-CONFLICT",
+          "expectedRuleFired": true,
+          "firedErrors": [
+            {
+              "scenario_id": "GR-NEG-sel-conflict",
+              "rule": "W-NEG-SEL-CONFLICT",
+              "detail": "Detox-required trigger(s) present but runner=maestro-only — DL-12 conflict: must be detox or both"
+            }
+          ],
+          "ok": true
+        },
+        "stderr": ""
+      }
+    },
+    {
+      "name": "W-NEG-MISSING-METADATA",
+      "ok": true,
+      "summary": "validator fail-closed on 'missing-metadata' firing W-NEG-MISSING-METADATA",
+      "detail": {
+        "parsed": {
+          "negId": "missing-metadata",
+          "validatorRejected": true,
+          "expectedRule": "W-NEG-MISSING-METADATA",
+          "expectedRuleFired": true,
+          "firedErrors": [
+            {
+              "scenario_id": "GR-NEG-base",
+              "rule": "W-NEG-MISSING-METADATA",
+              "detail": "field 'runner_selection_rationale' missing/empty"
+            }
+          ],
+          "ok": true
+        },
+        "stderr": ""
+      }
+    },
+    {
+      "name": "W-NEG-MAESTRO-ONLY-POLICY",
+      "ok": true,
+      "summary": "validator fail-closed on 'maestro-only-policy' firing W-NEG-MAESTRO-ONLY-POLICY",
+      "detail": {
+        "parsed": {
+          "negId": "maestro-only-policy",
+          "validatorRejected": true,
+          "expectedRule": "W-NEG-MAESTRO-ONLY-POLICY",
+          "expectedRuleFired": true,
+          "firedErrors": [
+            {
+              "scenario_id": "<collection>",
+              "rule": "W-NEG-MAESTRO-ONLY-POLICY",
+              "detail": "collection downgrades Detox to advisory/absent: no detox/both scenario present (DL-12 locks both runners)"
+            }
+          ],
+          "ok": true
+        },
+        "stderr": ""
+      }
+    },
+    {
+      "name": "W-NEG-DETOX-ONLY-POLICY",
+      "ok": true,
+      "summary": "validator fail-closed on 'detox-only-policy' firing W-NEG-DETOX-ONLY-POLICY",
+      "detail": {
+        "parsed": {
+          "negId": "detox-only-policy",
+          "validatorRejected": true,
+          "expectedRule": "W-NEG-DETOX-ONLY-POLICY",
+          "expectedRuleFired": true,
+          "firedErrors": [
+            {
+              "scenario_id": "<collection>",
+              "rule": "W-NEG-DETOX-ONLY-POLICY",
+              "detail": "collection downgrades Maestro to advisory/absent: no maestro/both scenario present (DL-12 locks both runners)"
+            }
+          ],
+          "ok": true
+        },
+        "stderr": ""
+      }
+    },
+    {
+      "name": "W-NEG-FAKE-LIVE",
+      "ok": true,
+      "summary": "validator fail-closed on 'fake-live' firing W-NEG-FAKE-LIVE",
+      "detail": {
+        "parsed": {
+          "negId": "fake-live",
+          "validatorRejected": true,
+          "expectedRule": "W-NEG-FAKE-LIVE",
+          "expectedRuleFired": true,
+          "firedErrors": [
+            {
+              "scenario_id": "GR-NEG-fake-live",
+              "rule": "W-NEG-FAKE-LIVE",
+              "detail": "live_proof_status claims proven_by without real device evidence in a pending-live env"
+            }
+          ],
+          "ok": true
+        },
+        "stderr": ""
+      }
+    },
+    {
+      "name": "W-REG-DOMAIN-NEUTRAL",
+      "ok": true,
+      "summary": "17 files: golden sample/demo/reference vocab only; @sample/@demo/@reference labeled; no business leakage",
+      "detail": {
+        "failures": []
+      }
+    },
+    {
+      "name": "W-REG-LOCKED",
+      "ok": true,
+      "summary": "mobile-E2E=Maestro+Detox; UI-verification separate; I-15B slots intact (read-only)",
+      "detail": {
+        "failures": []
+      }
+    },
+    {
+      "name": "W-INVARIANTS",
+      "ok": true,
+      "summary": "owned paths under golden-mobile/+e2e-ui/mobile/+work root; serialized surfaces + I-17A sibling + read-only predecessors untouched",
+      "detail": {
+        "failures": []
+      }
+    }
+  ],
+  "envProbe": {
+    "iosSimulatorDeviceAvailable": false,
+    "androidEmulatorAvailable": false,
+    "maestroBinaryAvailable": false,
+    "detoxBinaryAvailable": false,
+    "rnBuildAvailable": false
+  },
+  "runtime": {
+    "witness": {
+      "maestro": {
+        "count": 3,
+        "sha256": {
+          "gr-01-app-launch-smoke.yaml": "0dac0cd355c75dc8915fa74a1c4a1a85bf15e88dcb94e1d1f5b2d97913098f7e",
+          "gr-02-navigate-read-list.yaml": "7164080dcd56a029cc17481e57c62e0d8f5fe0d9a7d053d76fc85d9c289ec442",
+          "gr-03-reload-reread-maestro-half.yaml": "837b87d4be9d4ae943f2efcf13bee959a4f3224b23f18714b85f6abe266f8108"
+        },
+        "allStructurallyValid": true
+      },
+      "detox": {
+        "count": 2,
+        "sha256": {
+          "gr-03-resync-after-reload-detox-half.spec.ts": "af424312c351608cc5e15612d9fe5d708f79fb73069c7744fc7708edbaf8efbe",
+          "gr-04-deterministic-state-reset.spec.ts": "84cb8ca09d42ae020ede797e05742f6506c89719f26c35eb6801aec4189f8230"
+        },
+        "allStructurallyValid": true
+      },
+      "selectionMetadata": {
+        "count": 4,
+        "result": {
+          "ok": true,
+          "errors": []
+        }
+      },
+      "bothSplitCoverage": {
+        "present": true
+      },
+      "rnConsumptionSeam": {
+        "accepted": true,
+        "goldenRecordId": "gr_abc123",
+        "testIds": {
+          "screen": "golden-records-screen",
+          "list": "golden-record-list",
+          "homeGotoGoldenRecords": "home-goto-golden-records"
+        }
+      },
+      "liveDeviceRun": {
+        "iosSimulatorDeviceAvailable": false,
+        "androidEmulatorAvailable": false,
+        "maestroBinaryAvailable": false,
+        "detoxBinaryAvailable": false,
+        "rnBuildAvailable": false,
+        "livePrereqsAbsent": true,
+        "noFakeLiveClaim": true,
+        "pendingLiveBLOCKED": true
+      }
+    }
+  },
+  "structural": {
+    "domainNeutral": {
+      "scanned": 17,
+      "failures": []
+    }
+  },
+  "regression": {
+    "locked": {
+      "failures": []
+    }
+  },
+  "invariant": {
+    "ownedSample": [
+      "?? .vibe/work/I-17B-mobile-e2e-ui-verification/",
+      "?? examples/starter-reference/generated-fixtures/golden-mobile/"
+    ],
+    "i17bOwnedSerialized": [],
+    "touchedI17a": [],
+    "touchedPredecessors": []
+  },
+  "stages": [
+    "Environment probe — honest pending-live inventory",
+    "Positive witness — W-MAESTRO-STRUCT / W-DETOX-STRUCT / W-SEL-METADATA / W-NO-FORK / W-NEG-FAKE-LIVE",
+    "Negative witnesses — W-NEG-SEL-CONFLICT / W-NEG-MISSING-METADATA / W-NEG-MAESTRO-ONLY-POLICY / W-NEG-DETOX-ONLY-POLICY / W-NEG-FAKE-LIVE",
+    "W-REG-DOMAIN-NEUTRAL — golden sample/demo/reference vocab only",
+    "W-REG-LOCKED — mobile-E2E=Maestro+Detox; UI-verification separate; slots intact",
+    "W-INVARIANTS — dirty-tree scope + serialized-surface + sibling integrity"
+  ],
+  "pendingLiveNote": "live device-driven Maestro/Detox run + live mobile UI capture are pending-live/BLOCKED (no iOS sim device / Android emu / Maestro / Detox / RN build in env). Blocks I-23/final-closure live proof, NOT I-17B deterministic PASS."
+}

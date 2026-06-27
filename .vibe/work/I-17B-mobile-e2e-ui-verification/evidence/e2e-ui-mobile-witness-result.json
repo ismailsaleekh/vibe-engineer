@@ -1,0 +1,265 @@
+{
+  "ok": true,
+  "blocked": false,
+  "pendingLive": true,
+  "lane": "I-17B-mobile-e2e-ui-verification",
+  "fixture": "e2e-ui/mobile",
+  "checkCount": 14,
+  "checks": [
+    {
+      "name": "W-UI-MATRIX",
+      "ok": true,
+      "summary": "≥1 iOS sim + ≥1 Android emu × required state set; all 12 row(s) declare artifacts",
+      "detail": {
+        "structure": {
+          "hasIos": true,
+          "hasAndroid": true,
+          "allRequiredStates": true,
+          "hasInteraction": true,
+          "rowCount": 12,
+          "everyRowDeclaresArtifacts": true,
+          "identityOk": true,
+          "approvalOk": true,
+          "forbiddenAutoAcceptOk": true,
+          "livePrereqsAbsent": true,
+          "noFakeLiveClaim": true
+        }
+      }
+    },
+    {
+      "name": "W-UI-CHECKS-CLASSIFIED",
+      "ok": true,
+      "summary": "visual-diff/accessibility/layout-geometry/interaction-state classified deterministic (advisory never sole hard block)",
+      "detail": {}
+    },
+    {
+      "name": "W-BASELINE-GOV",
+      "ok": true,
+      "summary": "baseline identity fields + proposal/update policy + forbidden-auto-accept encoded",
+      "detail": {}
+    },
+    {
+      "name": "W-NEG-MISSING-ARTIFACT",
+      "ok": true,
+      "summary": "missing-artifact fails-closed (every required row declares all artifact kinds)",
+      "detail": {}
+    },
+    {
+      "name": "W-NEG-ADVISORY-HARD-BLOCK",
+      "ok": true,
+      "summary": "advisory check never the sole hard block",
+      "detail": {}
+    },
+    {
+      "name": "W-NEG-FAKE-LIVE",
+      "ok": true,
+      "summary": "live mobile UI capture honestly pending-live/BLOCKED (no fake green)",
+      "detail": {
+        "live": {
+          "hasIos": true,
+          "hasAndroid": true,
+          "allRequiredStates": true,
+          "hasInteraction": true,
+          "rowCount": 12,
+          "everyRowDeclaresArtifacts": true,
+          "identityOk": true,
+          "approvalOk": true,
+          "forbiddenAutoAcceptOk": true,
+          "livePrereqsAbsent": true,
+          "noFakeLiveClaim": true
+        }
+      }
+    },
+    {
+      "name": "W-NEG-MISSING-ARTIFACT",
+      "ok": true,
+      "summary": "validator fail-closed on 'missing-artifact' firing W-NEG-MISSING-ARTIFACT",
+      "detail": {
+        "parsed": {
+          "negId": "missing-artifact",
+          "validatorRejected": true,
+          "expectedRule": "W-NEG-MISSING-ARTIFACT",
+          "expectedRuleFired": true,
+          "firedErrors": [
+            {
+              "scope": "matrix.rows.r1",
+              "rule": "W-NEG-MISSING-ARTIFACT",
+              "detail": "required artifact 'visual_diff' not declared (DL-13: missing artifact = hard failure)"
+            }
+          ],
+          "ok": true
+        },
+        "stderr": ""
+      }
+    },
+    {
+      "name": "W-NEG-SILENT-BASELINE",
+      "ok": true,
+      "summary": "validator fail-closed on 'silent-baseline' firing W-NEG-SILENT-BASELINE",
+      "detail": {
+        "parsed": {
+          "negId": "silent-baseline",
+          "validatorRejected": true,
+          "expectedRule": "W-NEG-SILENT-BASELINE",
+          "expectedRuleFired": true,
+          "firedErrors": [
+            {
+              "scope": "baselines.governance",
+              "rule": "W-NEG-SILENT-BASELINE",
+              "detail": "forbidden_auto_accept permits auto-accept/regenerate/silent-update (DL-13 forbids)"
+            }
+          ],
+          "ok": true
+        },
+        "stderr": ""
+      }
+    },
+    {
+      "name": "W-NEG-E2E-AS-UI",
+      "ok": true,
+      "summary": "validator fail-closed on 'e2e-as-ui' firing W-NEG-E2E-AS-UI",
+      "detail": {
+        "parsed": {
+          "negId": "e2e-as-ui",
+          "validatorRejected": true,
+          "expectedRule": "W-NEG-E2E-AS-UI",
+          "expectedRuleFired": true,
+          "firedErrors": [
+            {
+              "scope": "matrix",
+              "rule": "W-NEG-E2E-AS-UI",
+              "detail": "closure_basis='e2e_pass' — E2E-pass-alone does not close UI verification (DL-13 §5.8)"
+            }
+          ],
+          "ok": true
+        },
+        "stderr": ""
+      }
+    },
+    {
+      "name": "W-NEG-ADVISORY-HARD-BLOCK",
+      "ok": true,
+      "summary": "validator fail-closed on 'advisory-hard-block' firing W-NEG-ADVISORY-HARD-BLOCK",
+      "detail": {
+        "parsed": {
+          "negId": "advisory-hard-block",
+          "validatorRejected": true,
+          "expectedRule": "W-NEG-ADVISORY-HARD-BLOCK",
+          "expectedRuleFired": true,
+          "firedErrors": [
+            {
+              "scope": "checks.llm-vibe-check",
+              "rule": "W-NEG-ADVISORY-HARD-BLOCK",
+              "detail": "advisory check 'llm-vibe-check' claims hard_block=true — advisory may not be the sole hard block (DL-13)"
+            }
+          ],
+          "ok": true
+        },
+        "stderr": ""
+      }
+    },
+    {
+      "name": "W-NEG-FAKE-LIVE",
+      "ok": true,
+      "summary": "validator fail-closed on 'fake-live' firing W-NEG-FAKE-LIVE",
+      "detail": {
+        "parsed": {
+          "negId": "fake-live",
+          "validatorRejected": true,
+          "expectedRule": "W-NEG-FAKE-LIVE",
+          "expectedRuleFired": true,
+          "firedErrors": [
+            {
+              "scope": "matrix.rows.r1",
+              "rule": "W-NEG-FAKE-LIVE",
+              "detail": "capture_status='captured-green' claims live capture in a pending-live env (no device) — must be pending-live/BLOCKED"
+            }
+          ],
+          "ok": true
+        },
+        "stderr": ""
+      }
+    },
+    {
+      "name": "W-REG-DOMAIN-NEUTRAL",
+      "ok": true,
+      "summary": "15 files: golden sample/demo/reference vocab only; no business leakage",
+      "detail": {
+        "failures": []
+      }
+    },
+    {
+      "name": "W-REG-LOCKED",
+      "ok": true,
+      "summary": "UI verification separate from behavior E2E; Maestro+Detox mobile-E2E; web/Playwright boundary preserved",
+      "detail": {
+        "failures": []
+      }
+    },
+    {
+      "name": "W-INVARIANTS",
+      "ok": true,
+      "summary": "owned paths under e2e-ui/mobile/+golden-mobile/+work root; serialized surfaces + I-17A sibling + predecessors untouched",
+      "detail": {
+        "failures": []
+      }
+    }
+  ],
+  "envProbe": {
+    "iosSimulatorDeviceAvailable": false,
+    "androidEmulatorAvailable": false,
+    "maestroBinaryAvailable": false,
+    "detoxBinaryAvailable": false,
+    "rnBuildAvailable": false
+  },
+  "runtime": {
+    "witness": {
+      "uiCaptureValidation": {
+        "ok": true,
+        "errors": []
+      },
+      "structure": {
+        "hasIos": true,
+        "hasAndroid": true,
+        "allRequiredStates": true,
+        "hasInteraction": true,
+        "rowCount": 12,
+        "everyRowDeclaresArtifacts": true,
+        "identityOk": true,
+        "approvalOk": true,
+        "forbiddenAutoAcceptOk": true,
+        "livePrereqsAbsent": true,
+        "noFakeLiveClaim": true
+      }
+    }
+  },
+  "structural": {
+    "domainNeutral": {
+      "scanned": 15,
+      "failures": []
+    }
+  },
+  "regression": {
+    "locked": {
+      "failures": []
+    }
+  },
+  "invariant": {
+    "ownedSample": [
+      "?? .vibe/work/I-17B-mobile-e2e-ui-verification/",
+      "?? examples/starter-reference/generated-fixtures/golden-mobile/"
+    ],
+    "i17bOwnedSerialized": [],
+    "touchedI17a": [],
+    "touchedPredecessors": []
+  },
+  "stages": [
+    "Environment probe — honest pending-live inventory",
+    "Positive witness — W-UI-MATRIX / W-UI-CHECKS-CLASSIFIED / W-BASELINE-GOV / W-NEG-MISSING-ARTIFACT / W-NEG-ADVISORY-HARD-BLOCK / W-NEG-FAKE-LIVE",
+    "Negative witnesses — W-NEG-MISSING-ARTIFACT / W-NEG-SILENT-BASELINE / W-NEG-E2E-AS-UI / W-NEG-ADVISORY-HARD-BLOCK / W-NEG-FAKE-LIVE",
+    "W-REG-DOMAIN-NEUTRAL — golden sample/demo/reference vocab only",
+    "W-REG-LOCKED — UI verification separate from E2E; web/Playwright boundary preserved",
+    "W-INVARIANTS — dirty-tree scope + serialized-surface + sibling integrity"
+  ],
+  "pendingLiveNote": "live mobile UI capture is pending-live/BLOCKED (no iOS sim device / Android emu / Maestro / Detox / RN build). Blocks I-23/final-closure live proof, NOT I-17B deterministic PASS."
+}
