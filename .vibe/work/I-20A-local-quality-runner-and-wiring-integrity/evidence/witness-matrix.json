@@ -1,0 +1,99 @@
+{
+  "generatedAt": "2026-06-26T21:26:06.198Z",
+  "passed": 12,
+  "total": 13,
+  "allGreen": false,
+  "results": [
+    {
+      "name": "W-RUN",
+      "passed": true,
+      "exitCode": 2,
+      "expectation": "real spawn of {p0,p1,p2}, schema-valid evidence written, wiring PASS (exit reflects real P0 findings on dirty tree)",
+      "detail": "spawned=true evidence=true wiring=pass runnerExit=2; stdout=quality FAIL (profile=ci)\n  wiring: pass | aggregates ok: p0=fail(3353 blocking), p1=ok(0 blocking), p2=ok(0 blocking)\n  evidence dir: /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-20A-local-quality-runner-and-wiring-integrity/evidence/w-run\n  summary: /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-20A-local-quality-runner-and-wiring-integrity/evidence/w-run/summary.json"
+    },
+    {
+      "name": "W-FC-POS",
+      "passed": true,
+      "exitCode": 0,
+      "expectation": "canonical {p0,p1,p2} ⊆ registered-and-running → exit 0 PASS",
+      "detail": "wiring-integrity PASS: expected ⊆ registered-and-running ([\"p0\",\"p1\",\"p2\"]).\n  evidence: /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-20A-local-quality-runner-and-wiring-integrity/evidence/w-fc-pos/wiring-integrity.json"
+    },
+    {
+      "name": "W-FC-NEG",
+      "passed": true,
+      "exitCode": 2,
+      "expectation": "phantom p9 declared vs REAL aggregate → HARD fail exit 2 naming p9",
+      "detail": "FAIL-CLOSED wiring-integrity: expected families not registered-and-running: p9. expected=[\"p0\",\"p1\",\"p2\",\"p9\"] registered-and-running=[\"p0\",\"p1\",\"p2\"]. A declared-but-unregistered family is an incomplete/partial aggregate (mechanical §7 \"CI invokes partial gate instead of aggregate gate\"). hard failure (non-zero exit) per post-i18b §3.2.\n  evidence: /Users/lizavasilyeva/work/vibe-engineer/.vibe/wo…"
+    },
+    {
+      "name": "N1",
+      "passed": true,
+      "exitCode": null,
+      "expectation": "missing runner export → not registered-and-running → fail-closed",
+      "detail": "p0Probed=absent registered=p1,p2 missing=p0"
+    },
+    {
+      "name": "N2",
+      "passed": true,
+      "exitCode": 1,
+      "expectation": "unwritable/missing evidence dir → fail-closed non-zero",
+      "detail": "FAIL-CLOSED quality: internal error:\nError: ENOTDIR: not a directory, mkdir '/dev/null/not-a-dir/cannot-create'\n    at async mkdir (node:internal/fs/promises:859:10)\n    at async main (file:///Users/lizavasilyeva/work/vibe-engineer/scripts/quality/run-quality.mjs:95:3)"
+    },
+    {
+      "name": "N3",
+      "passed": true,
+      "exitCode": null,
+      "expectation": "tier with missing evidence/runError → skipped-category diagnostic, non-green",
+      "detail": "required tier(s) produced no evidence: p0"
+    },
+    {
+      "name": "N4",
+      "passed": true,
+      "exitCode": null,
+      "expectation": "internal relative import specifier → rejected (fail-closed)",
+      "detail": "public=false noInternal=false threw=true"
+    },
+    {
+      "name": "N5",
+      "passed": true,
+      "exitCode": null,
+      "expectation": "p0.testing-boundary absent from implementedFamilies → fail-closed",
+      "detail": "public-contract: testing-boundary public contract not registered at runtime (p0.testing-boundary absent from implementedFamilies=[\"p0.governed-surface\",\"p0.boundaries\"]) — missing testing-boundary public contract (N5)."
+    },
+    {
+      "name": "N6",
+      "passed": true,
+      "exitCode": null,
+      "expectation": "latest/* spec or undeclared import specifier → fail-closed",
+      "detail": "latest.threw=true *.threw=true importViolations=[\"npx-bogus\",\"@undeclared/pkg\"]"
+    },
+    {
+      "name": "N7",
+      "passed": true,
+      "exitCode": null,
+      "expectation": "non-empty missing set ALWAYS hard-fails (exit 2) even with advisory=true",
+      "detail": "hard=fail/2 advisory=fail/2 ignored=true"
+    },
+    {
+      "name": "N8",
+      "passed": true,
+      "exitCode": null,
+      "expectation": "ci profile must exclude fullE2E/mobile/visual (false → fail-closed)",
+      "detail": "fullE2E-false.threw=true fullMobile-false.threw=true canonical.threw=false"
+    },
+    {
+      "name": "R1",
+      "passed": true,
+      "exitCode": null,
+      "expectation": "same blocking command local+CI; deterministic quick-gate excludes",
+      "detail": "equiv=true cmdMatches=true"
+    },
+    {
+      "name": "R2",
+      "passed": false,
+      "exitCode": null,
+      "expectation": "I-20A delta ⊆ owned paths (scripts/quality, scripts/ci/quality, .vibe/work/I-20A-*); rest is pre-existing baseline",
+      "detail": "authoredOwned=true missing=0 scriptsOutside=[\"scripts/ci/github-quality/fixtures/neg-01-agg-missing.yml\",\"scripts/ci/github-quality/fixtures/neg-02-agg-partial.yml\",\"scripts/ci/github-quality/fixtures/neg-03-perms-broad.yml\",\"scripts/ci/github-quality/fixtures/neg-04-paths-unsafe.yml\",\"scripts/ci/github-quality/fixtures/neg-05-upload-missing.yml\",\"scripts/ci/github-quality/fixtures/neg-06-full-suite.yml\",\"scripts/ci/github-quality/fixtures/neg-07-smoke-unbarred.yml\",\"scripts/ci/github-quality/fixtures/neg-08-action-unpinned.yml\",\"scripts/ci/github-quality/fixtures/neg-09-deploy-mutation.yml\",\"scripts/ci/github-quality/fixtures/neg-10-secret-exposure.yml\",\"scripts/ci/github-quality/fixtures/neg-11-budget-violation.yml\",\"scripts/ci/github-quality/fixtures/pos-quality.yml\",\"scripts/ci/github-quality/lib/rules.mjs\",\"scripts/ci/github-quality/lib/yaml.mjs\",\"scripts/ci/github-quality/run-fixtures.mjs\",\"scripts/ci/github-quality/validate-workflow.mjs\",\"scripts/ci/pulumi/validate-pulumi-scaffold.mjs\"] i20aTrackedMods=0; baseline (other lanes) recorded in r2-git-status.txt"
+    }
+  ]
+}

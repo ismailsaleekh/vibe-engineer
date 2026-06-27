@@ -1,0 +1,79 @@
+{
+  "schemaVersion": "quality.summary/1",
+  "profile": "ci",
+  "generatedAt": "2026-06-26T21:25:33.131Z",
+  "projectRoot": "/Users/lizavasilyeva/work/vibe-engineer",
+  "evidenceDir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-20A-local-quality-runner-and-wiring-integrity/evidence/w-run",
+  "wiring": {
+    "verdict": "pass",
+    "expectedFamilies": [
+      "p0",
+      "p1",
+      "p2"
+    ],
+    "registeredAndRunningFamilies": [
+      "p0",
+      "p1",
+      "p2"
+    ],
+    "missingFamilies": [],
+    "evidenceFile": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-20A-local-quality-runner-and-wiring-integrity/evidence/w-run/wiring-integrity.json"
+  },
+  "tiers": [
+    {
+      "family": "p0",
+      "exportName": "runP0Aggregate",
+      "registered": true,
+      "running": true,
+      "carrierFamily": "p0.aggregate",
+      "ok": false,
+      "findingCount": 3353,
+      "blockingFindingCount": 3353,
+      "implementedFamilies": [
+        "p0.governed-surface",
+        "p0.config-guards",
+        "p0.boundaries",
+        "p0.allowlist",
+        "p0.domain-purity",
+        "p0.testing-boundary"
+      ],
+      "evidenceFile": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-20A-local-quality-runner-and-wiring-integrity/evidence/w-run/p0.aggregate.json",
+      "runError": null
+    },
+    {
+      "family": "p1",
+      "exportName": "runP1Aggregate",
+      "registered": true,
+      "running": true,
+      "carrierFamily": "p1.aggregate",
+      "ok": true,
+      "findingCount": 0,
+      "blockingFindingCount": 0,
+      "implementedFamilies": [
+        "p1.schema-contract-strictness",
+        "p1.quality-ratchet",
+        "p1.test-anti-pattern"
+      ],
+      "evidenceFile": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-20A-local-quality-runner-and-wiring-integrity/evidence/w-run/p1.aggregate.json",
+      "runError": null
+    },
+    {
+      "family": "p2",
+      "exportName": "runP2Aggregate",
+      "registered": true,
+      "running": true,
+      "carrierFamily": "p2.aggregate",
+      "ok": true,
+      "findingCount": 0,
+      "blockingFindingCount": 0,
+      "implementedFamilies": [
+        "p2.code-smell"
+      ],
+      "evidenceFile": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-20A-local-quality-runner-and-wiring-integrity/evidence/w-run/p2.aggregate.json",
+      "runError": null
+    }
+  ],
+  "overallOk": false,
+  "exitCode": 2,
+  "skippedCategoryDiagnostic": null
+}

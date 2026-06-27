@@ -1,0 +1,100 @@
+{
+  "generatedAt": "2026-06-26T21:31:17.013Z",
+  "runner": "/Users/lizavasilyeva/work/vibe-engineer/scripts/quality/run-quality.mjs",
+  "passed": 15,
+  "failed": 0,
+  "results": [
+    {
+      "name": "W-CI-PARITY/exact-yml-mixed (DECISIVE)",
+      "passed": true,
+      "detail": "accepted=true parseFailed=false exit=2 wiring=pass overallOk=false tierOk=p0=0,p1=1,p2=1",
+      "exitCode": 2,
+      "stderrHead": "",
+      "stdoutHead": "quality FAIL (profile=ci)\n  wiring: pass | aggregates ok: p0=fail(3362 blocking), p1=ok(0 blocking), p2=ok(0 blocking)\n "
+    },
+    {
+      "name": "W-CI-PARITY/exact-yml-mixed (no-sep)",
+      "passed": true,
+      "detail": "accepted=true exit=2 parity-with-sep=true",
+      "exitCode": 2
+    },
+    {
+      "name": "W-PARSE-BOTH/all-eq",
+      "passed": true,
+      "detail": "accepted=true exit=2 overallOk=false tierOk=p0=0,p1=1,p2=1 parity=true",
+      "exitCode": 2
+    },
+    {
+      "name": "W-PARSE-BOTH/all-space",
+      "passed": true,
+      "detail": "accepted=true exit=2 overallOk=false tierOk=p0=0,p1=1,p2=1 parity=true",
+      "exitCode": 2
+    },
+    {
+      "name": "W-PARSE-BOTH/mixed",
+      "passed": true,
+      "detail": "accepted=true exit=2 overallOk=false tierOk=p0=0,p1=1,p2=1 parity=true",
+      "exitCode": 2
+    },
+    {
+      "name": "W-PARSE-BOTH/flip-profile",
+      "passed": true,
+      "detail": "accepted=true exit=2 parity=true",
+      "exitCode": 2
+    },
+    {
+      "name": "W-PARSE-BOTH/flip-evidence-dir",
+      "passed": true,
+      "detail": "accepted=true exit=2 parity=true",
+      "exitCode": 2
+    },
+    {
+      "name": "W-PARSE-BOTH/flip-summary-out",
+      "passed": true,
+      "detail": "accepted=true exit=2 parity=true",
+      "exitCode": 2
+    },
+    {
+      "name": "W-NEG-UNKNOWN/eq-bogus",
+      "passed": true,
+      "detail": "exit=1 stderr=FAIL-CLOSED quality: unknown argument(s) [\"--bogus=1\"].",
+      "exitCode": 1
+    },
+    {
+      "name": "W-NEG-UNKNOWN/space-bogus",
+      "passed": true,
+      "detail": "exit=1 stderr=FAIL-CLOSED quality: unknown argument(s) [\"--bogus\",\"1\"].",
+      "exitCode": 1
+    },
+    {
+      "name": "W-NEG-UNKNOWN/missing-value(profile)",
+      "passed": true,
+      "detail": "exit=1 stderr=FAIL-CLOSED quality: unknown argument(s) [\"--profile\"].",
+      "exitCode": 1
+    },
+    {
+      "name": "W-NEG-UNKNOWN/missing-value(evidence-dir)",
+      "passed": true,
+      "detail": "exit=1 stderr=FAIL-CLOSED quality: unknown argument(s) [\"--evidence-dir\"].",
+      "exitCode": 1
+    },
+    {
+      "name": "W-NEG-UNKNOWN/empty-profile(eq)",
+      "passed": true,
+      "detail": "exit=1 stderr=FAIL-CLOSED quality: --profile=ci is required (got \"\").",
+      "exitCode": 1
+    },
+    {
+      "name": "W-NEG-UNKNOWN/space-missing-required(evidence-dir)",
+      "passed": true,
+      "detail": "exit=1 stderr=FAIL-CLOSED quality: --evidence-dir=<dir> is required.",
+      "exitCode": 1
+    },
+    {
+      "name": "W-EQ-WORKS/all-eq",
+      "passed": true,
+      "detail": "accepted=true exit=2 wiring=pass overallOk=false",
+      "exitCode": 2
+    }
+  ]
+}

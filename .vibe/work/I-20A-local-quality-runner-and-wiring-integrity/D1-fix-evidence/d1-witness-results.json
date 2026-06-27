@@ -1,0 +1,68 @@
+{
+  "generatedAt": "2026-06-26T21:18:13.102Z",
+  "runner": "/Users/lizavasilyeva/work/vibe-engineer/scripts/quality/run-quality.mjs",
+  "passed": 9,
+  "failed": 0,
+  "results": [
+    {
+      "name": "W-PARSE-BOTH/eq-form",
+      "passed": true,
+      "detail": "accepted=true parseFailed=false exit=2 overallOk=false tierOk=p0=0,p1=1,p2=1 parity=true",
+      "variant": "eq-form",
+      "exitCode": 2,
+      "stderrHead": ""
+    },
+    {
+      "name": "W-PARSE-BOTH/space-form",
+      "passed": true,
+      "detail": "accepted=true parseFailed=false exit=2 overallOk=false tierOk=p0=0,p1=1,p2=1 parity=true",
+      "variant": "space-form",
+      "exitCode": 2,
+      "stderrHead": ""
+    },
+    {
+      "name": "W-PARSE-BOTH/mixed-form",
+      "passed": true,
+      "detail": "accepted=true parseFailed=false exit=2 overallOk=false tierOk=p0=0,p1=1,p2=1 parity=true",
+      "variant": "mixed-form",
+      "exitCode": 2,
+      "stderrHead": ""
+    },
+    {
+      "name": "W-CI-PARITY/exact-yml(-form)",
+      "passed": true,
+      "detail": "accepted=true exit=2 overallOk=false",
+      "exitCode": 2
+    },
+    {
+      "name": "W-CI-PARITY/space-form",
+      "passed": true,
+      "detail": "accepted=true exit=2 overallOk=false parity-with-yml=true (D1 closure: previously-REJECTED form now accepted + identical)",
+      "exitCode": 2
+    },
+    {
+      "name": "W-NEG-UNKNOWN/eq-bogus",
+      "passed": true,
+      "detail": "exit=1 (must be non-zero; stderr=FAIL-CLOSED quality: unknown argument(s) [\"--bogus=1\"].)",
+      "exitCode": 1
+    },
+    {
+      "name": "W-NEG-UNKNOWN/space-bogus",
+      "passed": true,
+      "detail": "exit=1 (must be non-zero)",
+      "exitCode": 1
+    },
+    {
+      "name": "W-NEG-UNKNOWN/missing-value",
+      "passed": true,
+      "detail": "exit=1 (must be non-zero; malformed must not silently accept)",
+      "exitCode": 1
+    },
+    {
+      "name": "W-NEG-UNKNOWN/space-missing-required",
+      "passed": true,
+      "detail": "exit=1 (must be non-zero)",
+      "exitCode": 1
+    }
+  ]
+}

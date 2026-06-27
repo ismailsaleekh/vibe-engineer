@@ -1,0 +1,220 @@
+{
+  "family": "p1.aggregate",
+  "ok": true,
+  "projectRoot": "/Users/lizavasilyeva/work/vibe-engineer",
+  "findings": [],
+  "evidence": {
+    "schemaVersion": "p1.aggregate.result/1",
+    "family": "p1.aggregate",
+    "implementedFamilies": [
+      "p1.schema-contract-strictness",
+      "p1.quality-ratchet",
+      "p1.test-anti-pattern"
+    ],
+    "requestedFamilies": [
+      "p1.schema-contract-strictness",
+      "p1.quality-ratchet",
+      "p1.test-anti-pattern"
+    ],
+    "subresults": [
+      {
+        "family": "p1.schema-contract-strictness",
+        "ok": true,
+        "projectRoot": "/Users/lizavasilyeva/work/vibe-engineer",
+        "findings": [],
+        "evidence": {
+          "manifestPath": "packages/contracts/schema-contract-strictness.manifest.json",
+          "parser": "typescript",
+          "proofMode": "typescript-ast",
+          "family": "p1.schema-contract-strictness",
+          "sourceFileCount": 5,
+          "boundaryFileCount": 2,
+          "requiredNamedSchemas": [
+            "ReferenceIdentifierSchema",
+            "ReferencePathParamsSchema",
+            "ReferenceHeadersSchema",
+            "ReferenceRequestBodySchema",
+            "ReferenceSuccessResponseSchema",
+            "ReferenceErrorResponseSchema",
+            "ReferenceBoundaryRequestSchema"
+          ],
+          "generatedClientFile": "packages/contracts/src/generated/reference-flow-client.ts",
+          "canonicalContractFile": "packages/contracts/src/contracts/reference-flow.contract.ts"
+        }
+      },
+      {
+        "family": "p1.quality-ratchet",
+        "ok": true,
+        "projectRoot": "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/fixtures/p1/quality-ratchet/cases/unchanged-baseline",
+        "findings": [],
+        "evidence": {
+          "schemaVersion": "quality-ratchet.result/1",
+          "family": "p1.quality-ratchet",
+          "artifactPaths": {
+            "baselinePath": "baseline.json",
+            "findingCarrierPath": "findings.json",
+            "approvalPath": "approvals.json",
+            "surfaceFingerprintPath": "surface-fingerprint.json",
+            "runnerEvidencePath": "runner-evidence.json"
+          },
+          "surfaceFingerprint": {
+            "baseline": "9f0284bdb28774cdc24746e8eaf1aff4563eabc087d6cad1c5d87f7f788061e9",
+            "carrier": "9f0284bdb28774cdc24746e8eaf1aff4563eabc087d6cad1c5d87f7f788061e9",
+            "declared": "9f0284bdb28774cdc24746e8eaf1aff4563eabc087d6cad1c5d87f7f788061e9",
+            "computed": "9f0284bdb28774cdc24746e8eaf1aff4563eabc087d6cad1c5d87f7f788061e9"
+          },
+          "runnerEvidence": {
+            "runnerId": "example-quality-tool",
+            "command": "example-quality-tool --json quality-ratchet.findings.json",
+            "sourceFiles": [
+              "src/sample.ts"
+            ]
+          },
+          "counts": {
+            "baselineDebt": 1,
+            "currentFindings": 1,
+            "approvals": 0,
+            "previousBaselineDebt": null
+          },
+          "unchangedDebt": [
+            {
+              "identityId": "4d7bee41e451bf12e2d0f4c6b55cf6b082ab4e13d41358edeae1afdb639903fd",
+              "path": "src/sample.ts",
+              "ruleId": "example.rule"
+            }
+          ],
+          "newDebt": [],
+          "staleDebt": [],
+          "removedDebt": [],
+          "baselineGrowth": [],
+          "stableIdentityAlgorithm": "sha256(tool,ruleId,path,symbol-or-structuralSignature,contentHash); line excluded"
+        }
+      },
+      {
+        "family": "p1.test-anti-pattern",
+        "ok": true,
+        "projectRoot": "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/fixtures/p1/test-anti-pattern/workspaces/positive",
+        "findings": [],
+        "evidence": {
+          "policyPath": "test-anti-pattern.policy.json",
+          "parser": "typescript",
+          "proofMode": "typescript-ast",
+          "family": "p1.test-anti-pattern",
+          "discoveredTestFiles": [
+            "tests/meaningful.test.ts"
+          ],
+          "testCaseCount": 5,
+          "requiredSetupFiles": [
+            "resources/required-resource.txt"
+          ],
+          "requiredSetupAssertionCalls": [
+            "assertRequiredFixtureResource"
+          ],
+          "publicClaimCount": 1,
+          "riskyBehaviorCount": 1
+        }
+      }
+    ],
+    "stableFindings": [],
+    "i11Bridge": {
+      "carrierVersion": "p1.aggregate.i11-runner-bridge/1",
+      "bridgeFamily": "p1.aggregate",
+      "validatorFamilyExpected": "p1.schema-contract-strictness",
+      "sourceTsFilesUsed": [
+        "packages/mechanical-gates/src/p1/schema-contract-strictness/index.ts",
+        "packages/mechanical-gates/src/p1/schema-contract-strictness/validate-schema-contract-strictness.ts"
+      ],
+      "sourceRoot": "packages/mechanical-gates/src/p1/schema-contract-strictness",
+      "outputArtifactDirectory": ".vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-55095-1782509385413-c95879b0634828",
+      "outputArtifactFile": ".vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-55095-1782509385413-c95879b0634828/index.js",
+      "moduleRelativePath": "index.js",
+      "moduleUrl": "file:///Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-55095-1782509385413-c95879b0634828/index.js",
+      "exportedValidatorName": "validateSchemaContractStrictness",
+      "command": "pnpm",
+      "args": [
+        "--filter",
+        "@vibe-engineer/contracts",
+        "exec",
+        "tsc",
+        "--target",
+        "ES2022",
+        "--module",
+        "NodeNext",
+        "--moduleResolution",
+        "NodeNext",
+        "--strict",
+        "--noImplicitAny",
+        "--strictNullChecks",
+        "--exactOptionalPropertyTypes",
+        "--noUncheckedIndexedAccess",
+        "--noImplicitReturns",
+        "--noUnusedLocals",
+        "--noUnusedParameters",
+        "--forceConsistentCasingInFileNames",
+        "--noEmitOnError",
+        "--isolatedModules",
+        "--verbatimModuleSyntax",
+        "--lib",
+        "ES2022,DOM",
+        "--types",
+        "node",
+        "--outDir",
+        "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-55095-1782509385413-c95879b0634828",
+        "--rootDir",
+        "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/src/p1/schema-contract-strictness",
+        "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/src/p1/schema-contract-strictness/index.ts",
+        "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/src/p1/schema-contract-strictness/validate-schema-contract-strictness.ts"
+      ],
+      "cwd": "/Users/lizavasilyeva/work/vibe-engineer",
+      "status": 0,
+      "stdout": "",
+      "stderr": "",
+      "exportFound": true,
+      "validatorFamilyObserved": "p1.schema-contract-strictness",
+      "typedSubresultValidation": {
+        "ok": true,
+        "diagnostics": []
+      },
+      "signal": null
+    },
+    "sourceApiIdentities": {
+      "schemaContractStrictness": [
+        "packages/mechanical-gates/src/p1/schema-contract-strictness/index.ts",
+        "packages/mechanical-gates/src/p1/schema-contract-strictness/validate-schema-contract-strictness.ts"
+      ],
+      "qualityRatchet": "packages/mechanical-gates/src/p1/quality-ratchet/index.js#validateQualityRatchet",
+      "testAntiPattern": "packages/mechanical-gates/src/p1/test-anti-pattern/index.js#validateTestAntiPatterns"
+    },
+    "sourceFiles": {
+      "schemaContractStrictness": [
+        "packages/mechanical-gates/src/p1/schema-contract-strictness/index.ts",
+        "packages/mechanical-gates/src/p1/schema-contract-strictness/validate-schema-contract-strictness.ts"
+      ],
+      "qualityRatchet": [
+        "packages/mechanical-gates/src/p1/quality-ratchet/index.js"
+      ],
+      "testAntiPattern": [
+        "packages/mechanical-gates/src/p1/test-anti-pattern/index.js"
+      ]
+    },
+    "inputPaths": {
+      "schemaContractStrictness": "packages/contracts/schema-contract-strictness.manifest.json",
+      "qualityRatchet": "packages/mechanical-gates/fixtures/p1/quality-ratchet/cases/unchanged-baseline",
+      "testAntiPattern": "packages/mechanical-gates/fixtures/p1/test-anti-pattern/workspaces/positive"
+    },
+    "summary": {
+      "p1.schema-contract-strictness": {
+        "ok": true,
+        "findingCount": 0
+      },
+      "p1.quality-ratchet": {
+        "ok": true,
+        "findingCount": 0
+      },
+      "p1.test-anti-pattern": {
+        "ok": true,
+        "findingCount": 0
+      }
+    }
+  }
+}

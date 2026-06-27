@@ -1,0 +1,116 @@
+{
+  "schemaVersion": "quality.wiring-integrity/1",
+  "gate": "fail-closed-wiring-integrity",
+  "profile": "ci",
+  "expectedFamilies": [
+    "p0",
+    "p1",
+    "p2"
+  ],
+  "registeredAndRunningFamilies": [
+    "p0",
+    "p1",
+    "p2"
+  ],
+  "missingFamilies": [],
+  "verdict": "pass",
+  "failClosedRule": "expected ⊆ registered-and-running",
+  "diagnostic": null,
+  "publicContractConsumption": {
+    "aggregateImportSpecifier": "@vibe-engineer/mechanical-gates/aggregate",
+    "aggregateResolvedModuleUrl": "file:///Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/src/aggregate/index.js",
+    "aggregatePublicExports": [
+      "runP0Aggregate",
+      "runP1Aggregate",
+      "runP2Aggregate"
+    ],
+    "publicSpecifierUsed": true,
+    "noInternalRelativeImport": true,
+    "testingBoundaryRegistered": true
+  },
+  "declaredDependencyProof": {
+    "declared": [
+      {
+        "name": "@vibe-engineer/mechanical-gates",
+        "spec": "workspace:*",
+        "locked": true
+      }
+    ],
+    "noDynamicLatest": true,
+    "noNpxRun": true,
+    "noUndeclaredDependency": true,
+    "observedImportSpecifiers": [
+      "../../../quality/lib/schema-validator.mjs",
+      "../ci/quality/lib/context.mjs",
+      "./dependency-audit.mjs",
+      "./deterministic-failure.mjs",
+      "./lib/context.mjs",
+      "./profile-policy.mjs",
+      "./public-contract.mjs",
+      "@vibe-engineer/mechanical-gates/aggregate",
+      "node:fs/promises",
+      "node:module",
+      "node:path",
+      "node:url"
+    ]
+  },
+  "parityInputs": {
+    "blockingCommand": "pnpm quality -- --profile=ci --evidence-dir <dir> --summary-out <summary-json>",
+    "profile": "ci",
+    "localAndCiEquivalent": true,
+    "excludesFullE2E": true,
+    "excludesFullMobileE2E": true,
+    "excludesFullVisualUi": true
+  },
+  "runtimeEnumeration": {
+    "method": "public-export-surface /^runP(\\d+)Aggregate$/ + real invocation typed-carrier check (family === p{N}.aggregate)",
+    "probedExports": [
+      "runP0Aggregate",
+      "runP1Aggregate",
+      "runP2Aggregate"
+    ],
+    "perTier": [
+      {
+        "family": "p0",
+        "exportName": "runP0Aggregate",
+        "exportPresent": true,
+        "running": true,
+        "carrierFamily": "p0.aggregate",
+        "implementedFamilies": [
+          "p0.governed-surface",
+          "p0.config-guards",
+          "p0.boundaries",
+          "p0.allowlist",
+          "p0.domain-purity",
+          "p0.testing-boundary"
+        ]
+      },
+      {
+        "family": "p1",
+        "exportName": "runP1Aggregate",
+        "exportPresent": true,
+        "running": true,
+        "carrierFamily": "p1.aggregate",
+        "implementedFamilies": [
+          "p1.schema-contract-strictness",
+          "p1.quality-ratchet",
+          "p1.test-anti-pattern"
+        ]
+      },
+      {
+        "family": "p2",
+        "exportName": "runP2Aggregate",
+        "exportPresent": true,
+        "running": true,
+        "carrierFamily": "p2.aggregate",
+        "implementedFamilies": [
+          "p2.code-smell"
+        ]
+      }
+    ]
+  },
+  "startedAt": "2026-06-26T19:57:58.463Z",
+  "endedAt": "2026-06-26T19:58:12.419Z",
+  "exitCode": 0,
+  "advisoryIgnored": false
+}
