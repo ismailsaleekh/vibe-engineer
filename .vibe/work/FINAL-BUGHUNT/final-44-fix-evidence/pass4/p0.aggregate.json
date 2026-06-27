@@ -1,0 +1,280 @@
+{
+  "family": "p0.aggregate",
+  "ok": true,
+  "projectRoot": "/Users/lizavasilyeva/work/vibe-engineer",
+  "findings": [],
+  "evidence": {
+    "implementedFamilies": [
+      "p0.governed-surface",
+      "p0.config-guards",
+      "p0.boundaries",
+      "p0.allowlist",
+      "p0.domain-purity",
+      "p0.testing-boundary"
+    ],
+    "requestedFamilies": [
+      "p0.governed-surface",
+      "p0.config-guards",
+      "p0.boundaries",
+      "p0.allowlist",
+      "p0.domain-purity",
+      "p0.testing-boundary"
+    ],
+    "subresults": [
+      {
+        "family": "p0.governed-surface",
+        "ok": true,
+        "projectRoot": "/Users/lizavasilyeva/work/vibe-engineer",
+        "findings": [],
+        "evidence": {
+          "configPath": "mechanical-surface.json",
+          "governedSurfaceCount": 22,
+          "governableFileCount": 2436,
+          "requiredPathCount": 8,
+          "excludedPathCount": 5
+        }
+      },
+      {
+        "family": "p0.config-guards",
+        "ok": true,
+        "projectRoot": "/Users/lizavasilyeva/work/vibe-engineer",
+        "findings": [],
+        "evidence": {
+          "tsconfigPath": "tsconfig.json",
+          "packageJsonPath": "package.json",
+          "mechanicalSurfacePath": "mechanical-surface.json",
+          "requiredTrueFlags": [
+            "strict",
+            "noImplicitAny",
+            "strictNullChecks",
+            "strictFunctionTypes",
+            "strictBindCallApply",
+            "strictPropertyInitialization",
+            "noImplicitThis",
+            "alwaysStrict",
+            "exactOptionalPropertyTypes",
+            "noUncheckedIndexedAccess",
+            "noImplicitOverride",
+            "noImplicitReturns",
+            "noPropertyAccessFromIndexSignature",
+            "useUnknownInCatchVariables",
+            "noFallthroughCasesInSwitch",
+            "noUnusedLocals",
+            "noUnusedParameters",
+            "isolatedModules",
+            "verbatimModuleSyntax",
+            "forceConsistentCasingInFileNames",
+            "noEmitOnError"
+          ],
+          "requiredFalseFlags": [
+            "allowUnreachableCode",
+            "allowUnusedLabels"
+          ],
+          "requiredPrettierDefaults": {
+            "printWidth": 100,
+            "semi": true,
+            "singleQuote": false,
+            "trailingComma": "all",
+            "arrowParens": "always",
+            "bracketSpacing": true,
+            "endOfLine": "lf"
+          },
+          "requiredEslintRules": [
+            "@typescript-eslint/no-explicit-any",
+            "@typescript-eslint/no-non-null-assertion",
+            "@typescript-eslint/no-unnecessary-type-assertion",
+            "@typescript-eslint/consistent-type-imports",
+            "@typescript-eslint/no-confusing-void-expression",
+            "@typescript-eslint/no-unsafe-assignment",
+            "@typescript-eslint/no-unsafe-argument",
+            "@typescript-eslint/no-unsafe-call",
+            "@typescript-eslint/no-unsafe-member-access",
+            "@typescript-eslint/no-unsafe-return",
+            "@typescript-eslint/restrict-template-expressions",
+            "@typescript-eslint/switch-exhaustiveness-check",
+            "no-empty",
+            "no-fallthrough",
+            "no-implicit-coercion"
+          ],
+          "eslintConfig": "eslint.config.mjs",
+          "prettierConfig": "prettier.config.mjs"
+        }
+      },
+      {
+        "family": "p0.boundaries",
+        "ok": true,
+        "projectRoot": "/Users/lizavasilyeva/work/vibe-engineer",
+        "findings": [],
+        "evidence": {
+          "configPath": "mechanical-boundaries.json",
+          "parser": "typescript",
+          "proofMode": "typescript-ast",
+          "packageCount": 18,
+          "sourceFileCount": 125,
+          "importCount": 396,
+          "graph": {
+            "@vibe-engineer/preset-nest-react-rn": [
+              "@vibe-engineer/preset-typescript"
+            ],
+            "@vibe-engineer/preset-typescript": [],
+            "@vibe-engineer/mechanical-gates": [],
+            "@vibe-engineer/observability": [],
+            "@vibe-engineer/orchestration": [
+              "@vibe-engineer/artifacts"
+            ],
+            "@vibe-engineer/verification": [
+              "@vibe-engineer/artifacts"
+            ],
+            "@vibe-engineer/adapter-pi": [],
+            "@vibe-engineer/schematics": [],
+            "@vibe-engineer/artifacts": [],
+            "@vibe-engineer/contracts": [],
+            "@vibe-engineer/standards": [],
+            "@vibe-engineer/registry": [
+              "@vibe-engineer/artifacts"
+            ],
+            "@vibe-engineer/security": [],
+            "@vibe-engineer/context": [
+              "@vibe-engineer/artifacts"
+            ],
+            "@vibe-engineer/testing": [],
+            "@vibe-engineer/config": [],
+            "@vibe-engineer/skills": [
+              "@vibe-engineer/artifacts",
+              "@vibe-engineer/context",
+              "@vibe-engineer/verification"
+            ],
+            "vibe-engineer": [
+              "@vibe-engineer/adapter-pi",
+              "@vibe-engineer/artifacts",
+              "@vibe-engineer/config",
+              "@vibe-engineer/context",
+              "@vibe-engineer/schematics",
+              "@vibe-engineer/security",
+              "@vibe-engineer/skills",
+              "@vibe-engineer/verification"
+            ]
+          }
+        }
+      },
+      {
+        "family": "p0.allowlist",
+        "ok": true,
+        "projectRoot": "/Users/lizavasilyeva/work/vibe-engineer",
+        "findings": [],
+        "evidence": {
+          "policyPath": "mechanical-escape-allowlist.json",
+          "scannedFileCount": 128,
+          "detectedEscapeCount": 41,
+          "allowlistEntryCount": 39,
+          "hardBannedEscapes": [
+            "as-any"
+          ],
+          "parser": "typescript",
+          "proofMode": "typescript-ast-and-comment-scanner"
+        }
+      },
+      {
+        "family": "p0.domain-purity",
+        "ok": true,
+        "projectRoot": "/Users/lizavasilyeva/work/vibe-engineer",
+        "findings": [],
+        "evidence": {
+          "policyPath": "mechanical-domain-purity.json",
+          "scannedFileCount": 1797,
+          "surfaceCount": 20,
+          "forbiddenTerms": [
+            "ecommerce",
+            "inventory",
+            "Billz",
+            "Telegram"
+          ],
+          "exemptionCount": 26,
+          "parser": "typescript",
+          "proofMode": "typescript-ast-string-comment-path-carriers"
+        }
+      },
+      {
+        "family": "p0.testing-boundary",
+        "ok": true,
+        "projectRoot": "/Users/lizavasilyeva/work/vibe-engineer",
+        "findings": [],
+        "evidence": {
+          "policyPath": "mechanical-testing-boundary.json",
+          "parser": "typescript",
+          "proofMode": "typescript-ast",
+          "testOnlyPackageName": "@vibe-engineer/testing",
+          "packageCount": 19,
+          "sourceFileCount": 141,
+          "importCount": 428,
+          "productionImportCount": 0,
+          "dependencyEdges": [],
+          "testOnlyManifests": [
+            {
+              "manifestPath": "packages/testing/package.json",
+              "private": true,
+              "testOnly": true,
+              "productionDependencyAllowed": false
+            }
+          ],
+          "sourceImports": [],
+          "productionDependencySections": [
+            "dependencies",
+            "peerDependencies",
+            "optionalDependencies"
+          ],
+          "devDependencySection": "devDependencies",
+          "excludedDirectoryNames": [
+            "node_modules",
+            "dist",
+            "build",
+            "fixtures"
+          ],
+          "testSurface": {
+            "fileSuffixes": [
+              ".test.ts",
+              ".test.js",
+              ".test.mjs",
+              ".test.tsx",
+              "-test.js",
+              ".spec.ts",
+              ".spec.js"
+            ],
+            "directorySegments": [
+              "fixtures",
+              "__tests__",
+              "test",
+              "tests"
+            ]
+          }
+        }
+      }
+    ],
+    "summary": {
+      "p0.governed-surface": {
+        "ok": true,
+        "findingCount": 0
+      },
+      "p0.config-guards": {
+        "ok": true,
+        "findingCount": 0
+      },
+      "p0.boundaries": {
+        "ok": true,
+        "findingCount": 0
+      },
+      "p0.allowlist": {
+        "ok": true,
+        "findingCount": 0
+      },
+      "p0.domain-purity": {
+        "ok": true,
+        "findingCount": 0
+      },
+      "p0.testing-boundary": {
+        "ok": true,
+        "findingCount": 0
+      }
+    }
+  }
+}

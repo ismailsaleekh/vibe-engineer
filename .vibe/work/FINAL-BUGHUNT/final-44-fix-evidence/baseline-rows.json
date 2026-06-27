@@ -1,0 +1,310 @@
+[
+ {
+  "family": "p0.allowlist",
+  "kind": "raw-json-parse",
+  "path": "packages/adapters/pi/src/capabilities/index.ts",
+  "line": 236,
+  "excerpt": "JSON.parse(JSON.stringify(PI_ADAPTER_CAPABILITY_MATRIX))"
+ },
+ {
+  "family": "p0.allowlist",
+  "kind": "raw-json-parse",
+  "path": "packages/adapters/pi/src/generated-file-manifest/index.ts",
+  "line": 182,
+  "excerpt": "JSON.parse(JSON.stringify(PI_GENERATED_FILE_MANIFEST))"
+ },
+ {
+  "family": "p0.allowlist",
+  "kind": "raw-json-parse",
+  "path": "packages/adapters/pi/src/runtime/validation.ts",
+  "line": 228,
+  "excerpt": "JSON.parse(asset.content)"
+ },
+ {
+  "family": "p0.allowlist",
+  "kind": "raw-json-parse",
+  "path": "packages/adapters/pi/src/runtime/validation.ts",
+  "line": 283,
+  "excerpt": "JSON.parse(asset.content)"
+ },
+ {
+  "family": "p0.allowlist",
+  "kind": "raw-json-parse",
+  "path": "packages/artifacts/src/schema-registry.js",
+  "line": 42,
+  "excerpt": "JSON.parse(fs.readFileSync(schemaPath, 'utf8'))"
+ },
+ {
+  "family": "p0.allowlist",
+  "kind": "raw-json-parse",
+  "path": "packages/artifacts/src/validation.js",
+  "line": 335,
+  "excerpt": "JSON.parse(fs.readFileSync(filePath, 'utf8'))"
+ },
+ {
+  "family": "p0.allowlist",
+  "kind": "raw-json-parse",
+  "path": "packages/cli/src/command-loader/loader.js",
+  "line": 116,
+  "excerpt": "JSON.parse(await readFile(context.packageJsonPath, \"utf8\"))"
+ },
+ {
+  "family": "p0.allowlist",
+  "kind": "raw-json-parse",
+  "path": "packages/cli/src/commands/create/run-cli-witnesses.mjs",
+  "line": 121,
+  "excerpt": "JSON.parse(readText(resolve(r.targetRoot, \"vibe-engineer.config.json\")))"
+ },
+ {
+  "family": "p0.allowlist",
+  "kind": "raw-json-parse",
+  "path": "packages/cli/src/commands/create/run-cli-witnesses.mjs",
+  "line": 130,
+  "excerpt": "JSON.parse(readText(r.resultFile))"
+ },
+ {
+  "family": "p0.allowlist",
+  "kind": "raw-json-parse",
+  "path": "packages/cli/src/commands/create/run-cli-witnesses.mjs",
+  "line": 311,
+  "excerpt": "JSON.parse(readText(resolve(args.evidenceRoot, \"targets\", \"w-create-provided\", \"vibe-engineer.config.json\")))"
+ },
+ {
+  "family": "p0.boundaries",
+  "kind": "boundary",
+  "path": "packages/cli/src/commands/schematic/index.js",
+  "line": 3,
+  "excerpt": ""
+ },
+ {
+  "family": "p0.allowlist",
+  "kind": "raw-json-parse",
+  "path": "packages/cli/src/commands/schematic/index.js",
+  "line": 37,
+  "excerpt": "JSON.parse(planFileContent)"
+ },
+ {
+  "family": "p0.allowlist",
+  "kind": "raw-json-parse",
+  "path": "packages/cli/src/commands/schematic/index.js",
+  "line": 83,
+  "excerpt": "JSON.parse(await fs.readFile(path.resolve(options.inputFile), \"utf8\"))"
+ },
+ {
+  "family": "p0.allowlist",
+  "kind": "raw-json-parse",
+  "path": "packages/cli/src/commands/schematic/run-cli-witnesses.mjs",
+  "line": 62,
+  "excerpt": "JSON.parse(readFileSync(resultFile, \"utf8\"))"
+ },
+ {
+  "family": "p0.allowlist",
+  "kind": "raw-json-parse",
+  "path": "packages/cli/src/commands/security/index.ts",
+  "line": 291,
+  "excerpt": "JSON.parse(await readFile(filePath, \"utf8\"))"
+ },
+ {
+  "family": "p0.allowlist",
+  "kind": "raw-json-parse",
+  "path": "packages/cli/src/commands/security/run-cli-witnesses.mjs",
+  "line": 30,
+  "excerpt": "JSON.parse(fs.readFileSync(file, 'utf8'))"
+ },
+ {
+  "family": "p0.allowlist",
+  "kind": "raw-json-parse",
+  "path": "packages/cli/src/commands/security/run-cli-witnesses.mjs",
+  "line": 152,
+  "excerpt": "JSON.parse(defaultEntry.stdout)"
+ },
+ {
+  "family": "p0.allowlist",
+  "kind": "raw-json-parse",
+  "path": "packages/cli/src/commands/security/run-cli-witnesses.mjs",
+  "line": 160,
+  "excerpt": "JSON.parse(foundation.stdout)"
+ },
+ {
+  "family": "p0.allowlist",
+  "kind": "raw-json-parse",
+  "path": "packages/cli/src/commands/security/run-cli-witnesses.mjs",
+  "line": 161,
+  "excerpt": "JSON.parse(foundation.stdout)"
+ },
+ {
+  "family": "p0.allowlist",
+  "kind": "raw-json-parse",
+  "path": "packages/cli/src/commands/security/run-cli-witnesses.mjs",
+  "line": 166,
+  "excerpt": "JSON.parse(buildConsumer.stdout)"
+ },
+ {
+  "family": "p0.allowlist",
+  "kind": "raw-json-parse",
+  "path": "packages/cli/src/commands/security/run-verify-security-hook-witness.mjs",
+  "line": 32,
+  "excerpt": "JSON.parse(fs.readFileSync(file, 'utf8'))"
+ },
+ {
+  "family": "p0.allowlist",
+  "kind": "raw-json-parse",
+  "path": "packages/cli/src/commands/ship/index.ts",
+  "line": 307,
+  "excerpt": "JSON.parse(readFileSync(catalogPath, \"utf8\"))"
+ },
+ {
+  "family": "p0.allowlist",
+  "kind": "raw-json-parse",
+  "path": "packages/cli/src/commands/ship/run-cli-witness.mjs",
+  "line": 75,
+  "excerpt": "JSON.parse(await fsp.readFile(cliPackageJson, 'utf8'))"
+ },
+ {
+  "family": "p0.allowlist",
+  "kind": "raw-json-parse",
+  "path": "packages/cli/src/commands/ship/run-cli-witness.mjs",
+  "line": 76,
+  "excerpt": "JSON.parse(await fsp.readFile(path.join(repoRoot, 'packages/skills/package.json'), 'utf8'))"
+ },
+ {
+  "family": "p0.allowlist",
+  "kind": "raw-json-parse",
+  "path": "packages/cli/src/commands/ship/run-cli-witness.mjs",
+  "line": 139,
+  "excerpt": "JSON.parse(await fsp.readFile(buildResultPath, 'utf8'))"
+ },
+ {
+  "family": "p0.allowlist",
+  "kind": "raw-json-parse",
+  "path": "packages/cli/src/commands/verify/index.ts",
+  "line": 329,
+  "excerpt": "JSON.parse(await readFile(catalogPath, \"utf8\"))"
+ },
+ {
+  "family": "p0.allowlist",
+  "kind": "raw-json-parse",
+  "path": "packages/cli/src/testing/run-witnesses.mjs",
+  "line": 57,
+  "excerpt": "JSON.parse(result.stdout)"
+ },
+ {
+  "family": "p0.allowlist",
+  "kind": "raw-json-parse",
+  "path": "packages/cli/src/testing/run-witnesses.mjs",
+  "line": 122,
+  "excerpt": "JSON.parse(readFileSync(resultPath, \"utf8\"))"
+ },
+ {
+  "family": "p0.allowlist",
+  "kind": "raw-json-parse",
+  "path": "packages/config/src/index.js",
+  "line": 374,
+  "excerpt": "JSON.parse(content)"
+ },
+ {
+  "family": "p0.allowlist",
+  "kind": "raw-json-parse",
+  "path": "packages/context/src/index.js",
+  "line": 137,
+  "excerpt": "JSON.parse(raw)"
+ },
+ {
+  "family": "p0.allowlist",
+  "kind": "raw-json-parse",
+  "path": "packages/mechanical-gates/src/p0/boundaries/contracts.js",
+  "line": 70,
+  "excerpt": "JSON.parse(text)"
+ },
+ {
+  "family": "p0.allowlist",
+  "kind": "raw-json-parse",
+  "path": "packages/mechanical-gates/src/p1/quality-ratchet/index.js",
+  "line": 92,
+  "excerpt": "JSON.parse(text)"
+ },
+ {
+  "family": "p0.allowlist",
+  "kind": "raw-json-parse",
+  "path": "packages/mechanical-gates/src/p1/schema-contract-strictness/validate-schema-contract-strictness.ts",
+  "line": 110,
+  "excerpt": "JSON.parse(text)"
+ },
+ {
+  "family": "p0.allowlist",
+  "kind": "raw-json-parse",
+  "path": "packages/mechanical-gates/src/p1/test-anti-pattern/index.js",
+  "line": 80,
+  "excerpt": "JSON.parse(text)"
+ },
+ {
+  "family": "p0.allowlist",
+  "kind": "eslint-disable-next-line",
+  "path": "packages/observability/src/ids.js",
+  "line": 29,
+  "excerpt": "// eslint-disable-next-line @typescript-eslint/no-require-imports"
+ },
+ {
+  "family": "p0.allowlist",
+  "kind": "raw-json-parse",
+  "path": "packages/presets/nest-react-rn/src/index.ts",
+  "line": 922,
+  "excerpt": "JSON.parse(content)"
+ },
+ {
+  "family": "p0.allowlist",
+  "kind": "raw-json-parse",
+  "path": "packages/presets/typescript/src/index.ts",
+  "line": 708,
+  "excerpt": "JSON.parse(content)"
+ },
+ {
+  "family": "p0.allowlist",
+  "kind": "raw-json-parse",
+  "path": "packages/schematics/src/builtins/index.ts",
+  "line": 212,
+  "excerpt": "JSON.parse(manifestFile.content)"
+ },
+ {
+  "family": "p0.allowlist",
+  "kind": "raw-json-parse",
+  "path": "packages/schematics/src/builtins/index.ts",
+  "line": 276,
+  "excerpt": "JSON.parse(manifestText)"
+ },
+ {
+  "family": "p0.allowlist",
+  "kind": "raw-json-parse",
+  "path": "packages/schematics/src/engine/markers.js",
+  "line": 33,
+  "excerpt": "JSON.parse(jsonText)"
+ },
+ {
+  "family": "p0.allowlist",
+  "kind": "raw-json-parse",
+  "path": "packages/schematics/src/manifest/loader.js",
+  "line": 26,
+  "excerpt": "JSON.parse(text)"
+ },
+ {
+  "family": "p0.allowlist",
+  "kind": "raw-json-parse",
+  "path": "packages/skills/src/input/common/work-brief-writer.js",
+  "line": 98,
+  "excerpt": "JSON.parse(await fs.readFile(outputPath, 'utf8'))"
+ },
+ {
+  "family": "p0.allowlist",
+  "kind": "raw-json-parse",
+  "path": "packages/standards/src/schema-registry.js",
+  "line": 42,
+  "excerpt": "JSON.parse(fs.readFileSync(schemaPath, 'utf8'))"
+ },
+ {
+  "family": "p0.allowlist",
+  "kind": "raw-json-parse",
+  "path": "packages/testing/src/index.js",
+  "line": 45,
+  "excerpt": "JSON.parse(JSON.stringify(value, (_key, nested) => {\n    if (typeof nested === \"string\") {\n      return nested.replaceAll(\"\\\\\", \"/\").replace(/\\/private\\/var\\/fo"
+ }
+]

@@ -1,0 +1,435 @@
+{
+  "entries": [
+    {
+      "path": "packages/adapters/pi/src/runtime/validation.ts",
+      "kind": "raw-json-parse",
+      "locator": {
+        "textIncludes": "JSON.parse(asset.content)"
+      },
+      "justification": "Pi-runtime fixture validator parses package-manifest / harness-config asset content inside a try/catch that translates a JSON SyntaxError into a distinct typed validation issue (invalid_package_manifest_json / invalid_harness_config_json) before the isRecord shape check that follows.",
+      "whyUnavoidable": "Moving JSON.parse out of the try/catch (to make it the argument of a magic-named consumer) loses the SyntaxError->typed-issue translation; consuming it inside one magic-named validator would conflate JSON syntax errors with record-shape errors and regress the distinct issue codes/pointers the pi-runtime validation contract guarantees. The post-parse isRecord checks ARE the genuine validation; this is the sole JSON ingestion point.",
+      "reviewer": "triad-b-fix-glm-5.2",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/artifacts/src/schema-registry.js",
+      "kind": "raw-json-parse",
+      "locator": {
+        "textIncludes": "JSON.parse(fs.readFileSync(schemaPath, 'utf8'))"
+      },
+      "justification": "Loads an external JSON-Schema document from disk; the loaded schema IS the validation contract consumed by a downstream validator, not data to be re-narrowed at load time. The try/catch translates read/parse failure into SCHEMA_UNREADABLE / schema-not-found.",
+      "whyUnavoidable": "A magic-named wrapper around the load would validate a schema against itself (a tautology) \u2014 there is no consumer-side record shape to narrow to, because the document's shape is defined by it being a JSON Schema, validated later by the artifact/standards validators.",
+      "reviewer": "triad-b-fix-glm-5.2",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/artifacts/src/validation.js",
+      "kind": "raw-json-parse",
+      "locator": {
+        "textIncludes": "JSON.parse(fs.readFileSync(filePath, 'utf8'))"
+      },
+      "justification": "validateArtifactFile wraps JSON.parse in a try/catch that returns a dedicated JSON_PARSE_ERROR validation result before delegating the parsed value to validateArtifact / validateArtifactKind (the real validators, which receive `parsed`, not the JSON.parse).",
+      "whyUnavoidable": "Inlining JSON.parse as the argument of validateArtifactKind would route parse failures through the schema-validation error path, regressing the dedicated JSON_PARSE_ERROR code and message that callers depend on.",
+      "reviewer": "triad-b-fix-glm-5.2",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/cli/src/command-loader/loader.js",
+      "kind": "raw-json-parse",
+      "locator": {
+        "textIncludes": "JSON.parse(await readFile(context.packageJsonPath, \"utf8\"))"
+      },
+      "justification": "The `version` command reads the CLI's own package.json solely to surface pkg.name and pkg.version; the parsed value is consumed by two scalar field reads inside a command that echoes them.",
+      "whyUnavoidable": "No runtime schema exists for 'the CLI's own package.json' beyond these two fields; a magic-named narrow over a two-field echo would be a tautology, not genuine runtime validation.",
+      "reviewer": "triad-b-fix-glm-5.2",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/cli/src/commands/create/run-cli-witnesses.mjs",
+      "kind": "raw-json-parse",
+      "locator": {
+        "textIncludes": "JSON.parse(readText(r.resultFile))"
+      },
+      "justification": "Witness re-reads the just-written result-file envelope to assert.deep* byte-equivalence against the in-memory envelope already validated through validateCliResultEnvelope earlier in the same witness.",
+      "whyUnavoidable": "A magic-named validator wrapper would duplicate validation already performed upstream and be tautological for a deep-equal round-trip proof.",
+      "reviewer": "triad-b-fix-glm-5.2",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/cli/src/commands/create/run-cli-witnesses.mjs",
+      "kind": "raw-json-parse",
+      "locator": {
+        "textIncludes": "JSON.parse(readText(resolve(args.evidenceRoot, \"targets\", \"w-create-provided\", \"vibe-engineer.config.json\")))"
+      },
+      "justification": "Witness re-reads a previously generated config carrier to assert invariants (maxParallelAgents / agenticWorkPackageTargetHours) across the registration suite.",
+      "whyUnavoidable": "Witness-side scalar field asserts over a known generated carrier; a magic-named narrow would duplicate the create command's own config validation tautologically.",
+      "reviewer": "triad-b-fix-glm-5.2",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/cli/src/commands/create/run-cli-witnesses.mjs",
+      "kind": "raw-json-parse",
+      "locator": {
+        "textIncludes": "JSON.parse(readText(resolve(r.targetRoot, \"vibe-engineer.config.json\")))"
+      },
+      "justification": "Witness re-reads the generated vibe-engineer.config.json to assert two config fields against expected values produced by the create command under test.",
+      "whyUnavoidable": "The parsed config is consumed by scalar field asserts in a witness harness; a magic-named narrow would be a tautology over the two asserted fields.",
+      "reviewer": "triad-b-fix-glm-5.2",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/cli/src/commands/schematic/index.js",
+      "kind": "raw-json-parse",
+      "locator": {
+        "textIncludes": "JSON.parse(await fs.readFile(path.resolve(options.inputFile), \"utf8\"))"
+      },
+      "justification": "The schematic command reads user-provided schematic input JSON of intentionally dynamic shape (forwarded to executeSchematic, which validates it) inside a try/catch that translates parse failure into an invalid_invocation envelope.",
+      "whyUnavoidable": "Input shape is owned and validated by the schematics engine downstream; the CLI's try/catch only owes a parse-error->blocked-envelope translation. Inlining JSON.parse into an engine validator argument would bypass the CLI's own invocation-error envelope contract.",
+      "reviewer": "triad-b-fix-glm-5.2",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/cli/src/commands/schematic/index.js",
+      "kind": "raw-json-parse",
+      "locator": {
+        "textIncludes": "JSON.parse(planFileContent)"
+      },
+      "justification": "extractPlanData peeks into a result-envelope carrier with optional chaining to surface plan_fingerprint when present, returning the parsed value otherwise; there is intentionally no single static shape (envelope OR raw plan data).",
+      "whyUnavoidable": "The function is by design a shape-agnostic peek; a magic-named narrow would impose a single shape the function explicitly does not assume.",
+      "reviewer": "triad-b-fix-glm-5.2",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/cli/src/commands/schematic/run-cli-witnesses.mjs",
+      "kind": "raw-json-parse",
+      "locator": {
+        "textIncludes": "JSON.parse(readFileSync(resultFile, \"utf8\"))"
+      },
+      "justification": "Witness re-reads the result-file envelope to assert.deep* equivalence against the in-memory envelope that was already passed through validateCliResultEnvelope on the line above.",
+      "whyUnavoidable": "Re-validation wrapper would duplicate the validateCliResultEnvelope check performed immediately prior; tautological for the deep-equal round-trip proof.",
+      "reviewer": "triad-b-fix-glm-5.2",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/cli/src/commands/security/index.ts",
+      "kind": "raw-json-parse",
+      "locator": {
+        "textIncludes": "JSON.parse(await readFile(filePath, \"utf8\"))"
+      },
+      "justification": "Generic security-command JSON reader returning unknown inside a try/catch that yields a ReadJsonResult error on parse failure; callers perform their own shape handling.",
+      "whyUnavoidable": "The helper intentionally makes no shape assumption (it serves multiple security sub-paths); a magic-named narrow would impose a single shape the generic reader must not assume.",
+      "reviewer": "triad-b-fix-glm-5.2",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/cli/src/commands/security/run-cli-witnesses.mjs",
+      "kind": "raw-json-parse",
+      "locator": {
+        "textIncludes": "JSON.parse(buildConsumer.stdout)"
+      },
+      "justification": "Witness parses the real-boundary build-facing API consumer spawn stdout to assert .futureJoin.",
+      "whyUnavoidable": "Single-field assert over a spawn stdout in a witness harness; a magic-named narrow over one field read is a tautology.",
+      "reviewer": "triad-b-fix-glm-5.2",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/cli/src/commands/security/run-cli-witnesses.mjs",
+      "kind": "raw-json-parse",
+      "locator": {
+        "textIncludes": "JSON.parse(defaultEntry.stdout)"
+      },
+      "justification": "Witness parses CLI-spawned stdout to assert a specific classification field on the regression envelope.",
+      "whyUnavoidable": "Single-field assert over spawn stdout in a witness harness; a magic-named narrow over one field read is a tautology.",
+      "reviewer": "triad-b-fix-glm-5.2",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/cli/src/commands/security/run-cli-witnesses.mjs",
+      "kind": "raw-json-parse",
+      "locator": {
+        "textIncludes": "JSON.parse(foundation.stdout)"
+      },
+      "justification": "Witness parses CLI-spawned foundation envelope stdout to assert .status and record the regression summary.",
+      "whyUnavoidable": "Scalar field asserts over spawn stdout in a witness harness; a magic-named narrow over a .status read is a tautology.",
+      "reviewer": "triad-b-fix-glm-5.2",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/cli/src/commands/security/run-cli-witnesses.mjs",
+      "kind": "raw-json-parse",
+      "locator": {
+        "textIncludes": "JSON.parse(fs.readFileSync(file, 'utf8'))"
+      },
+      "justification": "Witness readJson helper reads recorded JSON envelopes that are immediately passed to assertEnvelope (validateCliResultEnvelope).",
+      "whyUnavoidable": "The envelope is validated by assertEnvelope one statement later; a magic-named wrapper would duplicate that validation tautologically.",
+      "reviewer": "triad-b-fix-glm-5.2",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/cli/src/commands/security/run-verify-security-hook-witness.mjs",
+      "kind": "raw-json-parse",
+      "locator": {
+        "textIncludes": "JSON.parse(fs.readFileSync(file, 'utf8'))"
+      },
+      "justification": "Witness readJson helper loads recorded hook envelopes passed to assertEnvelope (validateCliResultEnvelope).",
+      "whyUnavoidable": "Envelope validated by assertEnvelope immediately after; a magic-named wrapper would duplicate that validation tautologically.",
+      "reviewer": "triad-b-fix-glm-5.2",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/cli/src/commands/ship/index.ts",
+      "kind": "raw-json-parse",
+      "locator": {
+        "textIncludes": "JSON.parse(readFileSync(catalogPath, \"utf8\"))"
+      },
+      "justification": "readRunnerCatalog wraps JSON.parse in a try/catch returning {error:'Runner catalog must be a readable JSON file.'} before the Array.isArray+isRecord shape check (the genuine validation, which receives `parsed`).",
+      "whyUnavoidable": "Inlining JSON.parse into the shape-check's argument would conflate unreadable-file / JSON-syntax errors with structural-catalog errors, regressing the distinct error message callers switch on.",
+      "reviewer": "triad-b-fix-glm-5.2",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/cli/src/commands/ship/run-cli-witness.mjs",
+      "kind": "raw-json-parse",
+      "locator": {
+        "textIncludes": "JSON.parse(await fsp.readFile(buildResultPath, 'utf8'))"
+      },
+      "justification": "Witness reads a Build Result artifact, mutates its status, then re-validates it via validateArtifactKind (the real artifacts validator) on the following lines.",
+      "whyUnavoidable": "The parsed artifact is handed straight to validateArtifactKind; a second magic-named narrow in front of it would duplicate the artifacts validator tautologically.",
+      "reviewer": "triad-b-fix-glm-5.2",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/cli/src/commands/ship/run-cli-witness.mjs",
+      "kind": "raw-json-parse",
+      "locator": {
+        "textIncludes": "JSON.parse(await fsp.readFile(cliPackageJson, 'utf8'))"
+      },
+      "justification": "Witness reads the CLI package.json to assert the @vibe-engineer/skills workspace dep declaration.",
+      "whyUnavoidable": "Single scalar dep-field assert over a known manifest; a magic-named narrow over one field read is a tautology.",
+      "reviewer": "triad-b-fix-glm-5.2",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/cli/src/commands/ship/run-cli-witness.mjs",
+      "kind": "raw-json-parse",
+      "locator": {
+        "textIncludes": "JSON.parse(await fsp.readFile(path.join(repoRoot, 'packages/skills/package.json'), 'utf8'))"
+      },
+      "justification": "Witness reads the skills package.json to assert the ./ship export mapping.",
+      "whyUnavoidable": "Single scalar export-field assert over a known manifest; a magic-named narrow over one field read is a tautology.",
+      "reviewer": "triad-b-fix-glm-5.2",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/cli/src/commands/verify/index.ts",
+      "kind": "raw-json-parse",
+      "locator": {
+        "textIncludes": "JSON.parse(await readFile(catalogPath, \"utf8\"))"
+      },
+      "justification": "readRunnerCatalog wraps JSON.parse in a try/catch returning {error:'Runner catalog must be a readable JSON file.'} before the Array.isArray+isRecord shape check (the genuine validation, which receives `parsed`).",
+      "whyUnavoidable": "Inlining JSON.parse into the shape-check's argument would conflate unreadable-file / JSON-syntax errors with structural-catalog errors, regressing the distinct error message callers switch on.",
+      "reviewer": "triad-b-fix-glm-5.2",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/cli/src/testing/run-witnesses.mjs",
+      "kind": "raw-json-parse",
+      "locator": {
+        "textIncludes": "JSON.parse(readFileSync(resultPath, \"utf8\"))"
+      },
+      "justification": "Witness re-reads the result-file envelope to assert.deep* equivalence against the in-memory envelope that was already passed through assertEnvelope.",
+      "whyUnavoidable": "Re-validation wrapper would duplicate the assertEnvelope check performed immediately prior; tautological for the deep-equal round-trip proof.",
+      "reviewer": "triad-b-fix-glm-5.2",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/cli/src/testing/run-witnesses.mjs",
+      "kind": "raw-json-parse",
+      "locator": {
+        "textIncludes": "JSON.parse(result.stdout)"
+      },
+      "justification": "Witness parses CLI-spawned stdout into an envelope that is immediately passed to assertEnvelope (validateCliResultEnvelope).",
+      "whyUnavoidable": "Envelope validated by assertEnvelope one statement later; a magic-named wrapper would duplicate that validation tautologically.",
+      "reviewer": "triad-b-fix-glm-5.2",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/config/src/index.js",
+      "kind": "raw-json-parse",
+      "locator": {
+        "textIncludes": "JSON.parse(content)"
+      },
+      "justification": "readJsonFile wraps JSON.parse in a try/catch returning a MALFORMED_JSON / invalid_config issue before the multi-stage config validation pipeline that consumes `data`.",
+      "whyUnavoidable": "Inlining JSON.parse into a downstream config validator's argument would conflate JSON-syntax errors with config-schema errors, regressing the distinct MALFORMED_JSON issue code.",
+      "reviewer": "triad-b-fix-glm-5.2",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/context/src/index.js",
+      "kind": "raw-json-parse",
+      "locator": {
+        "textIncludes": "JSON.parse(raw)"
+      },
+      "justification": "Generic context-carrier JSON reader returning the parsed value to readJsonCarrier, which performs the real artifact-kind validation; the raw parse is intentionally shape-agnostic.",
+      "whyUnavoidable": "The reader serves multiple artifact kinds whose shapes are validated by readJsonCarrier / the artifacts validator downstream; a magic-named narrow here would impose a single shape the generic reader must not assume.",
+      "reviewer": "triad-b-fix-glm-5.2",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/mechanical-gates/src/p0/boundaries/contracts.js",
+      "kind": "raw-json-parse",
+      "locator": {
+        "textIncludes": "JSON.parse(text)"
+      },
+      "justification": "Gate-infrastructure bounded JSON reader loads a governance carrier / evidence file and wraps JSON.parse in a try/catch that throws a typed error (P0_INVALID_JSON) retaining the raw text for downstream inspection.",
+      "whyUnavoidable": "This code IS the validator/governance layer; it cannot delegate JSON ingestion to another magic-named validator without infinite recursion, and a wrapper here is definitionally a tautology over the gate's own carrier-loading primitive.",
+      "reviewer": "triad-b-fix-glm-5.2",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/mechanical-gates/src/p1/quality-ratchet/index.js",
+      "kind": "raw-json-parse",
+      "locator": {
+        "textIncludes": "JSON.parse(text)"
+      },
+      "justification": "Gate-infrastructure bounded JSON reader loads a governance carrier / evidence file and wraps JSON.parse in a try/catch that throws a typed error (QUALITY_RATCHET_INVALID_JSON) retaining the raw text for downstream inspection.",
+      "whyUnavoidable": "This code IS the validator/governance layer; it cannot delegate JSON ingestion to another magic-named validator without infinite recursion, and a wrapper here is definitionally a tautology over the gate's own carrier-loading primitive.",
+      "reviewer": "triad-b-fix-glm-5.2",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/mechanical-gates/src/p1/schema-contract-strictness/validate-schema-contract-strictness.ts",
+      "kind": "raw-json-parse",
+      "locator": {
+        "textIncludes": "JSON.parse(text)"
+      },
+      "justification": "Gate validator's parseJson helper wraps JSON.parse in a try/catch that throws an 'Invalid JSON in <path>' error with the jsonPath context before the schema-contract strictness checks consume the parsed value.",
+      "whyUnavoidable": "This is the gate's own JSON-loading primitive; delegating to another magic-named validator would recurse into the gate layer, and a wrapper is a tautology over the gate's carrier ingestion.",
+      "reviewer": "triad-b-fix-glm-5.2",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/mechanical-gates/src/p1/test-anti-pattern/index.js",
+      "kind": "raw-json-parse",
+      "locator": {
+        "textIncludes": "JSON.parse(text)"
+      },
+      "justification": "Gate-infrastructure bounded JSON reader loads a governance carrier / evidence file and wraps JSON.parse in a try/catch that throws a typed error (TEST_ANTI_PATTERN_INVALID_JSON) retaining the raw text for downstream inspection.",
+      "whyUnavoidable": "This code IS the validator/governance layer; it cannot delegate JSON ingestion to another magic-named validator without infinite recursion, and a wrapper here is definitionally a tautology over the gate's own carrier-loading primitive.",
+      "reviewer": "triad-b-fix-glm-5.2",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/observability/src/ids.js",
+      "kind": "eslint-disable-next-line",
+      "locator": {
+        "textIncludes": "// eslint-disable-next-line @typescript-eslint/no-require-imports"
+      },
+      "justification": "Synchronous CJS-interop require('node:crypto') under type:module for isometric UUID generation; resolveCrypto is a synchronous primitive consumed by every UUID caller.",
+      "whyUnavoidable": "Converting to an async dynamic import() would change resolveCrypto's synchronous contract and ripple asynchronously through all randomUUID callers. tseslint strictTypeChecked flags the legitimate Node ESM<->CJS interop path that this directive scoped-acknowledges.",
+      "reviewer": "triad-b-fix-glm-5.2",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/presets/nest-react-rn/src/index.ts",
+      "kind": "raw-json-parse",
+      "locator": {
+        "textIncludes": "JSON.parse(content)"
+      },
+      "justification": "parseJsonObject wraps JSON.parse in a try/catch that pushes a PRESET_MALFORMED_JSON finding before the isObject record check (the genuine narrow, which receives `parsed`).",
+      "whyUnavoidable": "Inlining JSON.parse into the isObject check's argument would conflate JSON-syntax errors with record-shape errors, regressing the distinct PRESET_MALFORMED_JSON finding semantics.",
+      "reviewer": "triad-b-fix-glm-5.2",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/presets/typescript/src/index.ts",
+      "kind": "raw-json-parse",
+      "locator": {
+        "textIncludes": "JSON.parse(content)"
+      },
+      "justification": "parseJsonObject wraps JSON.parse in a try/catch that pushes a PRESET_MALFORMED_JSON finding before the isObject record check (the genuine narrow, which receives `parsed`).",
+      "whyUnavoidable": "Inlining JSON.parse into the isObject check's argument would conflate JSON-syntax errors with record-shape errors, regressing the distinct PRESET_MALFORMED_JSON finding semantics.",
+      "reviewer": "triad-b-fix-glm-5.2",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/schematics/src/builtins/index.ts",
+      "kind": "raw-json-parse",
+      "locator": {
+        "textIncludes": "JSON.parse(manifestFile.content)"
+      },
+      "justification": "Parses a rendered TypeScript-preset manifest then immediately narrows via assertRecord (a genuine record guard) one statement later.",
+      "whyUnavoidable": "assertRecord is the genuine validator but its name is not in the gate's magic set (schema|parse|validate|narrow); renaming it + inlining across its many call sites changes error-surfacing timing and is out of proportion to a scoped, reviewed exemption.",
+      "reviewer": "triad-b-fix-glm-5.2",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/schematics/src/builtins/index.ts",
+      "kind": "raw-json-parse",
+      "locator": {
+        "textIncludes": "JSON.parse(manifestText)"
+      },
+      "justification": "Parses a loaded built-in schematic manifest stored for later narrowRecord/assertRecord validation when the catalog entries are consumed.",
+      "whyUnavoidable": "The manifest is validated downstream by assertRecord at consumption time; introducing a magic-named narrow here would either duplicate that check or shift its timing. Scoped exemption preferred over a cross-file rename of the genuine assertRecord guard.",
+      "reviewer": "triad-b-fix-glm-5.2",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/schematics/src/engine/markers.js",
+      "kind": "raw-json-parse",
+      "locator": {
+        "textIncludes": "JSON.parse(jsonText)"
+      },
+      "justification": "Parses an inline generated-block marker header inside a try/catch returning {ok:false,reason:'invalid_marker_json'} on failure, then validates the marker's required string fields.",
+      "whyUnavoidable": "Inlining JSON.parse into a field-validator's argument would conflate parse failure with the distinct missing_markers / invalid_marker_field / invalid_marker_field reasons the marker parser returns.",
+      "reviewer": "triad-b-fix-glm-5.2",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/schematics/src/manifest/loader.js",
+      "kind": "raw-json-parse",
+      "locator": {
+        "textIncludes": "JSON.parse(text)"
+      },
+      "justification": "parseJsonFile wraps JSON.parse in a try/catch that calls fail('manifest_json', ...) (a typed engine error) before the manifest is structurally validated by the engine.",
+      "whyUnavoidable": "Inlining JSON.parse into the engine's structural validator would conflate JSON-syntax errors with manifest-schema errors, regressing the distinct manifest_json error code.",
+      "reviewer": "triad-b-fix-glm-5.2",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/skills/src/input/common/work-brief-writer.js",
+      "kind": "raw-json-parse",
+      "locator": {
+        "textIncludes": "JSON.parse(await fs.readFile(outputPath, 'utf8'))"
+      },
+      "justification": "Re-reads the just-written Work Brief artifact to round-trip-prove persistence; the file was already validated by validateWorkBriefFile on the line immediately above.",
+      "whyUnavoidable": "A magic-named validator wrapper would duplicate the validateWorkBriefFile check performed one statement earlier; tautological for the persistence round-trip proof.",
+      "reviewer": "triad-b-fix-glm-5.2",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/standards/src/schema-registry.js",
+      "kind": "raw-json-parse",
+      "locator": {
+        "textIncludes": "JSON.parse(fs.readFileSync(schemaPath, 'utf8'))"
+      },
+      "justification": "Loads an external JSON-Schema document from disk; the loaded schema IS the validation contract consumed by a downstream validator, not data to be re-narrowed at load time. The try/catch translates read/parse failure into SCHEMA_UNREADABLE / schema-not-found.",
+      "whyUnavoidable": "A magic-named wrapper around the load would validate a schema against itself (a tautology) \u2014 there is no consumer-side record shape to narrow to, because the document's shape is defined by it being a JSON Schema, validated later by the artifact/standards validators.",
+      "reviewer": "triad-b-fix-glm-5.2",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/testing/src/index.js",
+      "kind": "raw-json-parse",
+      "locator": {
+        "textIncludes": "JSON.parse(JSON.stringify(value, (_key, nested) => {\n    if (typeof nested === \"string\") {\n      return nested.replaceAll(\"\\\\\", \"/\").replace(/\\/private\\/var\\/fo"
+      },
+      "justification": "normalizeForSnapshot deep-clones with a JSON replacer that transforms string values (backslash->slash, macOS temp-dir redaction) for deterministic snapshot comparison.",
+      "whyUnavoidable": "structuredClone cannot apply a replacer or transform string values, and no other primitive replicates JSON's replacer-based deep-serialize-and-reparse semantics. The replacer-driven string transform is the whole point of the clone.",
+      "reviewer": "triad-b-fix-glm-5.2",
+      "reviewedOn": "2026-06-27"
+    }
+  ],
+  "distinct_count": 39,
+  "escapes_covered": 41
+}

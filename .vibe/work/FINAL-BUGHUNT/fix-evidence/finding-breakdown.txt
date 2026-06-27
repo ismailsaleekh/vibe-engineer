@@ -1,0 +1,75 @@
+ALLOWLIST by kind:
+  raw-json-parse: 44
+  as-unknown: 47
+  broad-type: 49
+  eslint-disable-next-line: 1
+
+ALLOWLIST by path:
+  21  packages/cli/src/commands/ship/index.ts
+  17  packages/cli/src/commands/security/index.ts
+  17  packages/cli/src/commands/verify/index.ts
+  16  packages/cli/src/commands/create/index.ts
+  14  packages/cli/src/commands/create/selected-harness.ts
+  10  packages/schematics/src/builtins/index.ts
+  5  packages/cli/src/commands/security/run-cli-witnesses.mjs
+  4  packages/adapters/pi/src/runtime/validation.ts
+  3  packages/cli/src/commands/create/run-cli-witnesses.mjs
+  3  packages/cli/src/commands/ship/run-cli-witness.mjs
+  2  packages/adapters/pi/src/schema/index.ts
+  2  packages/cli/src/commands/schematic/index.js
+  2  packages/cli/src/testing/run-witnesses.mjs
+  2  packages/config/src/index.js
+  2  packages/orchestration/src/index.ts
+  1  packages/adapters/pi/src/capabilities/index.ts
+  1  packages/adapters/pi/src/generated-file-manifest/index.ts
+  1  packages/artifacts/src/schema-registry.js
+  1  packages/artifacts/src/validation.js
+  1  packages/cli/src/command-loader/loader.js
+  1  packages/cli/src/commands/schematic/run-cli-witnesses.mjs
+  1  packages/cli/src/commands/security/run-verify-security-hook-witness.mjs
+  1  packages/context/src/index.js
+  1  packages/mechanical-gates/src/p0/boundaries/contracts.js
+  1  packages/mechanical-gates/src/p1/quality-ratchet/index.js
+  1  packages/mechanical-gates/src/p1/schema-contract-strictness/validate-schema-contract-strictness.ts
+  1  packages/mechanical-gates/src/p1/test-anti-pattern/index.js
+  1  packages/observability/src/ids.js
+  1  packages/presets/nest-react-rn/src/index.ts
+  1  packages/presets/typescript/src/index.ts
+  1  packages/schematics/src/engine/markers.js
+  1  packages/schematics/src/manifest/loader.js
+  1  packages/skills/src/input/common/work-brief-writer.js
+  1  packages/standards/src/index.js
+  1  packages/standards/src/schema-registry.js
+  1  packages/testing/src/index.js
+
+DOMAIN-PURITY:
+  ecommerce  packages/adapters/pi/src/runtime/validation.ts:28  (string-literal=ecommerce)
+  inventory  packages/adapters/pi/src/runtime/validation.ts:28  (string-literal=inventory)
+  Telegram  packages/adapters/pi/src/runtime/validation.ts:28  (string-literal=telegram)
+  Billz  packages/adapters/pi/src/runtime/validation.ts:28  (string-literal=billz)
+  ecommerce  packages/mechanical-gates/src/p0/domain-purity/validate-domain-purity.js:15  (string-literal=ecommerce)
+  inventory  packages/mechanical-gates/src/p0/domain-purity/validate-domain-purity.js:15  (string-literal=inventory)
+  Billz  packages/mechanical-gates/src/p0/domain-purity/validate-domain-purity.js:15  (string-literal=Billz)
+  Telegram  packages/mechanical-gates/src/p0/domain-purity/validate-domain-purity.js:15  (string-literal=Telegram)
+  ecommerce  packages/presets/nest-react-rn/src/index.ts:370  (string-literal=ecommerce)
+  inventory  packages/presets/nest-react-rn/src/index.ts:371  (string-literal=inventory)
+  Billz  packages/presets/nest-react-rn/src/index.ts:373  (string-literal=Billz)
+  Telegram  packages/presets/nest-react-rn/src/index.ts:374  (string-literal=Telegram)
+  ecommerce  packages/presets/typescript/src/index.ts:262  (string-literal=ecommerce)
+  inventory  packages/presets/typescript/src/index.ts:263  (string-literal=inventory)
+  Billz  packages/presets/typescript/src/index.ts:265  (string-literal=Billz)
+  Telegram  packages/presets/typescript/src/index.ts:266  (string-literal=Telegram)
+  ecommerce  packages/registry/src/index.js:40  (string-literal=ecommerce)
+  inventory  packages/registry/src/index.js:40  (string-literal=inventory)
+  Billz  packages/registry/src/index.js:40  (string-literal=billz)
+  Telegram  packages/registry/src/index.js:40  (string-literal=telegram)
+  ecommerce  packages/schematics/src/engine/index.js:10  (string-literal=ecommerce)
+  inventory  packages/schematics/src/engine/index.js:10  (string-literal=inventory)
+  Billz  packages/schematics/src/engine/index.js:10  (string-literal=Billz)
+  Telegram  packages/schematics/src/engine/index.js:10  (string-literal=Telegram)
+  Billz  packages/schematics/src/engine/index.js:10  (string-literal=BillzInvoice)
+  Telegram  packages/schematics/src/engine/index.js:10  (string-literal=TelegramBotBusinessRule)
+
+BOUNDARY: packages/cli/src/commands/schematic/index.js  ../../../../schematics/src/engine/index.js  (vibe-engineer->@vibe-engineer/schematics)
+CONFIG-GUARD: package.json#/scripts/typecheck
+CONFIG-GUARD: package.json#/scripts/test
