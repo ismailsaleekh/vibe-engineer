@@ -1,0 +1,105 @@
+# PR infrastructure preview — preview/diff ONLY, NON-MUTATING.
+#
+# DL-18B / locked-decisions §10 / verification-layer §5.15:
+#   - PR CI may run a NON-MUTATING Pulumi preview/diff.
+#   - A PR workflow that deploys or mutates infrastructure is a HARD FAILURE.
+#
+# This workflow runs `pulumi preview` only. It performs NO `pulumi up`, NO
+# `pulumi refresh`, NO `pulumi destroy`, and cannot mutate any infrastructure.
+# It is gated to infra paths and uses least permissions (contents: read + the
+# read-only Pulumi access token). No `pull_request_target` (untrusted-code safe).
+# Backend is Pulumi Cloud via secret; no committed plaintext token.
+#
+# Pinned to immutable commit SHAs (resolved from the named tags via the GitHub
+# API at authoring time). The validator (scripts/ci/pulumi) rejects @latest/@main.
+name: infra-preview
+
+on:
+  pull_request:
+    paths:
+      - "infra/pulumi/**"
+      - ".github/workflows/infra-preview.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "infra/pulumi/**"
+      - ".github/workflows/infra-preview.yml"
+
+# Least permissions. contents: read for checkout; id-token only if a future
+# OIDC-backed Pulumi login is adopted (none by default). No write scopes.
+permissions:
+  contents: read
+
+concurrency:
+  group: infra-preview-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  preview:
+    name: pulumi preview (diff-only, non-mutating)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        # actions/checkout@v4.3.1
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+
+      - name: Setup pnpm
+        # pnpm/action-setup@v4.1.0
+        uses: pnpm/action-setup@a7487c7e89a18df4991f7f222e4898a00d66ddda
+
+      - name: Setup Node
+        # actions/setup-node@v4.4.0
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install Pulumi dependencies (frozen lockfile)
+        run: pnpm install --frozen-lockfile --filter @vibe-engineer/infra-pulumi...
+
+      - name: Install Pulumi CLI
+        # Pin the Pulumi CLI to the exact SDK version declared by I-20S
+        # (infra/pulumi/package.json: @pulumi/pulumi 3.248.0) for local/CI parity.
+        run: |
+          curl -fsSL https://get.pulumi.com | sh -s -- --version 3.248.0
+          echo "$HOME/.pulumi/bin" >> "$GITHUB_PATH"
+
+      - name: Login to Pulumi Cloud
+        env:
+          PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
+        run: pulumi login
+
+      - name: Select stack (preview defaults to dev)
+        working-directory: infra/pulumi
+        run: pulumi stack select dev
+
+      - name: pulumi preview (diff-only — DOES NOT MUTATE)
+        id: preview
+        working-directory: infra/pulumi
+        env:
+          PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
+        run: |
+          set -o pipefail
+          pulumi preview --diff --non-interactive --show-config | tee preview.txt
+          {
+            echo "## Pulumi preview (dev) — diff-only, non-mutating"
+            echo ""
+            echo "<details><summary>preview output</summary>"
+            echo ""
+            echo '```'
+            cat preview.txt
+            echo '```'
+            echo ""
+            echo "</details>"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload preview artifact
+        # actions/upload-artifact@v4.6.1
+        uses: actions/upload-artifact@4cec3d8aa04e39d1a68397de0c4cd6fb9dce8ec1
+        with:
+          name: pulumi-preview-${{ github.run_id }}
+          path: infra/pulumi/preview.txt
+          if-no-files-found: error
+          retention-days: 14

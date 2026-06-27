@@ -1,0 +1,80 @@
+# I-20B GitHub Actions quick-gate (default PR/push blocking CI).
+#
+# Local/CI parity: invokes the SAME aggregate quality runner as local/build/ship
+# (mechanical-verification-gates §7 "local scripts, agent commands, and CI all run
+# the same blocking path"; locked-decisions §10 "Local commands and GitHub Actions
+# must stay equivalent for blocking quality gates"). The blocking step shells out to
+# `pnpm quality -- --profile=ci --evidence-dir <dir> --summary-out <json>` verbatim —
+# the I-20A aggregate contract (NEVER a partial command).
+#
+# Budget: deterministic <10min quick-gate. The `ci` profile (quality-wiring.config.json)
+# excludes full E2E / full mobile E2E / full visual UI; only the fast p0/p1/p2
+# mechanical-gate aggregates + the fail-closed wiring-integrity gate run. `timeout-minutes`
+# is the hard cap. Hosted-run budget proof is owned by I-20D (pending-live).
+#
+# §3.4 fail-closed / CI-parity caveat (handled): the blocking step invokes the I-20A
+# aggregate, whose fail-closed wiring-integrity gate requires expected ⊆ registered-and-
+# running for {p0,p1,p2} (scripts/quality/expected-families.manifest.json). I-13C is
+# truth-green and all three tiers are registered-and-running, so the gate PASSES on the
+# complete aggregate. The wiring gate is LIVE-BLOCKING in CI (correct — never weakened,
+# never made advisory); if any tier were unregistered at runtime, CI would fail-closed
+# (the safe behavior). No silent weakening, no P2 drop, no advisory-without-record.
+#
+# Permissions: contents: read only (least privilege). No pull_request_target. No deploy /
+# infra-mutation steps. All actions pinned by immutable commit SHA.
+
+name: quality
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: quality-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    name: aggregate quality quick-gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+
+      - name: Setup Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '20.19.0'
+
+      - name: Enable pnpm (corepack; packageManager-pinned to pnpm@10.33.0)
+        run: corepack enable
+
+      - name: Cache pnpm store
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830
+        with:
+          path: |
+            ~/.local/share/pnpm
+          key: pnpm-store-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}
+          restore-keys: |
+            pnpm-store-${{ runner.os }}-
+
+      - name: Install dependencies (frozen lockfile)
+        run: pnpm install --frozen-lockfile
+
+      # Blocking step — the verbatim I-20A aggregate contract (local/CI parity).
+      # NEVER replace with a partial command (pnpm test / pnpm typecheck alone).
+      - name: Aggregate quality (local/CI parity quick-gate)
+        run: pnpm quality -- --profile=ci --evidence-dir .vibe/ci-evidence --summary-out .vibe/ci-evidence/quality-summary.json
+
+      - name: Upload quality evidence + summary
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: quality-evidence
+          path: .vibe/ci-evidence
+          if-no-files-found: warn

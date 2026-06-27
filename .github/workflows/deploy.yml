@@ -1,0 +1,111 @@
+# Deploy — MANUAL ONLY (`workflow_dispatch`), protected by GitHub Environment approval.
+#
+# DL-18B / locked-decisions §10 / verification-layer §5.15 / mechanical §7:
+#   - Release/deploy is MANUAL. `workflow_dispatch` only.
+#   - Deploy requires protected GitHub Environment approval for `dev`/`prod`.
+#   - NO auto-deploy from PR / push / merge / tag / schedule.
+#   - NO `pulumi destroy` by default (break-glass is a separate, future,
+#     explicitly-owned protected flow — absent here).
+#
+# There is deliberately NO `on: push|pull_request|schedule|workflow_call` trigger.
+# A repo operator must enable the protected GitHub Environments `dev` and `prod`
+# with required reviewers (see docs/deployment/pulumi.md). The job's
+# `environment:` binding enforces approval before `pulumi up` can run.
+#
+# Pinned to immutable commit SHAs (resolved from named tags via GitHub API).
+name: deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      stack:
+        description: "Target stack (environment)"
+        required: true
+        type: choice
+        default: dev
+        options:
+          - dev
+          - prod
+
+# Least permissions. The Pulumi token lives in the GitHub Environment secret
+# (dev/prod) and is therefore only exposed AFTER environment approval.
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-${{ inputs.stack }}
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: pulumi up (${{ inputs.stack }})
+    # Protected GitHub Environment. `dev` and `prod` must be configured in the
+    # repo with required reviewers; this binding blocks the job until approved.
+    environment: ${{ inputs.stack }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
+    steps:
+      - name: Checkout
+        # actions/checkout@v4.3.1
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+
+      - name: Setup pnpm
+        # pnpm/action-setup@v4.1.0
+        uses: pnpm/action-setup@a7487c7e89a18df4991f7f222e4898a00d66ddda
+
+      - name: Setup Node
+        # actions/setup-node@v4.4.0
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install Pulumi dependencies (frozen lockfile)
+        run: pnpm install --frozen-lockfile --filter @vibe-engineer/infra-pulumi...
+
+      - name: Install Pulumi CLI
+        # Pinned to the SDK version declared by I-20S (local/CI parity).
+        run: |
+          curl -fsSL https://get.pulumi.com | sh -s -- --version 3.248.0
+          echo "$HOME/.pulumi/bin" >> "$GITHUB_PATH"
+
+      - name: Login to Pulumi Cloud
+        run: pulumi login
+
+      - name: Select stack
+        working-directory: infra/pulumi
+        run: pulumi stack select ${{ inputs.stack }}
+
+      - name: pulumi preview (pre-deploy diff)
+        working-directory: infra/pulumi
+        run: pulumi preview --diff --non-interactive --show-config | tee pre-deploy-preview.txt
+
+      - name: pulumi up (APPLIES the stack)
+        id: up
+        working-directory: infra/pulumi
+        run: |
+          pulumi up --yes --non-interactive --skip-preview | tee up.txt
+          {
+            echo "## Pulumi deploy — \`${{ inputs.stack }}\`"
+            echo ""
+            echo "<details><summary>pulumi up output</summary>"
+            echo ""
+            echo '```'
+            cat up.txt
+            echo '```'
+            echo ""
+            echo "</details>"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload deploy artifact
+        # actions/upload-artifact@v4.6.1
+        uses: actions/upload-artifact@4cec3d8aa04e39d1a68397de0c4cd6fb9dce8ec1
+        with:
+          name: pulumi-deploy-${{ inputs.stack }}-${{ github.run_id }}
+          path: |
+            infra/pulumi/pre-deploy-preview.txt
+            infra/pulumi/up.txt
+          if-no-files-found: error
+          retention-days: 30
