@@ -1,0 +1,21 @@
+{
+  "agenticHarness": "pi",
+  "maxParallelAgents": 8,
+  "maxValidationFixIterations": 3,
+  "agenticWorkPackageTargetHours": 6,
+  "verification": {
+    "deterministicBlocks": true,
+    "advisoryReviewBlocks": false,
+    "webE2E": "playwright",
+    "mobileE2E": {
+      "default": "maestro",
+      "advanced": "detox"
+    }
+  },
+  "uiVerification": {
+    "enabled": true
+  },
+  "agentRegistry": {
+    "validationRequired": true
+  }
+}
