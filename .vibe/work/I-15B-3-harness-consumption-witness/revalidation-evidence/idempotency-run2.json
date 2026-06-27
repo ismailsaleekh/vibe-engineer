@@ -1,0 +1,287 @@
+{
+  "ok": true,
+  "blocked": false,
+  "lane": "I-15B-3-harness-consumption-witness",
+  "checkCount": 13,
+  "checks": [
+    {
+      "name": "W-HARNESS-IMPORT",
+      "ok": true,
+      "summary": "resolvedName=vibe-engineer; 3 public subpaths loaded real symbols from cwd=packages/cli (self-reference)",
+      "detail": {
+        "failures": [],
+        "payload": {
+          "subpaths": {
+            "vibe-engineer": {
+              "ok": true,
+              "keys": [
+                "runCli"
+              ],
+              "missing": [],
+              "symTypes": [
+                [
+                  "runCli",
+                  "function"
+                ]
+              ]
+            },
+            "vibe-engineer/envelope": {
+              "ok": true,
+              "keys": [
+                "CLI_RESULT_SCHEMA_VERSION",
+                "CLI_STATUSES",
+                "artifactDescriptor",
+                "configBlockedEnvelope",
+                "createEnvelope",
+                "envelopeBytes",
+                "exitCodeFor",
+                "foundationFailureEnvelope",
+                "internalErrorEnvelope",
+                "invalidInvocationEnvelope",
+                "partialEnvelope",
+                "payload",
+                "sha256Text",
+                "validateCliResultEnvelope",
+                "writeResultFileAtomic"
+              ],
+              "missing": [],
+              "symTypes": [
+                [
+                  "createEnvelope",
+                  "function"
+                ],
+                [
+                  "validateCliResultEnvelope",
+                  "function"
+                ],
+                [
+                  "CLI_STATUSES",
+                  "object"
+                ]
+              ]
+            },
+            "vibe-engineer/command-loader": {
+              "ok": true,
+              "keys": [
+                "CommandLoader",
+                "CommandLoaderDefinitionError",
+                "createCommandLoader"
+              ],
+              "missing": [],
+              "symTypes": [
+                [
+                  "CommandLoader",
+                  "function"
+                ],
+                [
+                  "createCommandLoader",
+                  "function"
+                ]
+              ]
+            }
+          },
+          "resolvedName": "vibe-engineer",
+          "exports": [
+            ".",
+            "./envelope",
+            "./command-loader"
+          ]
+        }
+      }
+    },
+    {
+      "name": "W-CONSUMER-MANIFEST-CONSISTENCY",
+      "ok": true,
+      "summary": "manifest validates (schema+pi); adapterId=pi; harness-config+context-files ready; consumedBy I-15B; runtimeExecutionClaim=not-claimed",
+      "detail": {
+        "failures": [],
+        "payload": {
+          "schemaVersion": "pi-generated-file-manifest/v1",
+          "capSchemaVersion": "pi-adapter-capability-matrix/v1",
+          "manifestTop": {
+            "adapterId": "pi",
+            "adapterCapabilityVersion": "pi-adapter-capability-matrix/v1",
+            "producedByLane": "I-14A-pi-adapter-capability-generated-file-manifest"
+          },
+          "validateGeneratedFileManifest_valid": true,
+          "validatePiGeneratedFileManifest_valid": true,
+          "summary": {
+            "adapterId": "pi",
+            "manifestReady": true,
+            "createImportReady": false,
+            "runtimeExecutionClaim": "not-claimed",
+            "blockedNonPiAdapters": [
+              "claude-code",
+              "codex",
+              "opencode",
+              "later-integrations"
+            ],
+            "generatedFamilies": [
+              "pi-skill-files",
+              "pi-prompt-templates",
+              "pi-extensions",
+              "pi-package-manifest",
+              "context-files",
+              "harness-config"
+            ]
+          },
+          "harnessConfigFamily": {
+            "readiness": {
+              "state": "ready",
+              "reason": "Config metadata is ready for downstream consumption after this manifest validates; create/import behavior remains I-15A-owned."
+            },
+            "producedByLane": "I-15A-create-import-cli-ux-selected-harness",
+            "consumedByLanes": [
+              "I-15A-create-import-cli-ux-selected-harness",
+              "I-15B-starter-template-harness-consumption",
+              "I-21-build-skill-orchestration"
+            ],
+            "pathPatterns": [
+              "generated harness config field: agenticHarness=pi",
+              "generated harness config field: adapterCapabilityVersion",
+              "generated harness config field: generatedFileManifestVersion"
+            ]
+          },
+          "contextFilesFamily": {
+            "readiness": {
+              "state": "ready",
+              "reason": "Context file family is ready as manifest data; actual starter/create writes belong to I-15A."
+            },
+            "producedByLane": "I-15A-create-import-cli-ux-selected-harness",
+            "pathPatterns": [
+              "AGENTS.md",
+              "CLAUDE.md"
+            ]
+          },
+          "capAdapterId": "@vibe-engineer/adapter-pi"
+        }
+      }
+    },
+    {
+      "name": "W-CONTEXT-PLACEHOLDERS-VALIDATE",
+      "ok": true,
+      "summary": "harness-config agenticHarness=pi + DL-16; context needs_user_context + golden sample/demo/reference; no over-inference",
+      "detail": {
+        "failures": []
+      }
+    },
+    {
+      "name": "W-NEG-COPIED-HARNESS-LOGIC",
+      "ok": true,
+      "summary": "copied-logic detector flags negative carrier, real consumer clean (non-vacuous)",
+      "detail": {
+        "negativeFlagged": true,
+        "realConsumerClean": true
+      }
+    },
+    {
+      "name": "W-NEG-PRIVATE-SCOPED-IMPORT",
+      "ok": true,
+      "summary": "private-scoped-import detector flags negative carrier, real consumer clean (non-vacuous)",
+      "detail": {
+        "negativeFlagged": true,
+        "realConsumerClean": true
+      }
+    },
+    {
+      "name": "FIXTURE-STATIC-CLEAN",
+      "ok": true,
+      "summary": "real fixture src/** (1 files) free of copied logic + private scoped imports",
+      "detail": {
+        "cleanFindings": [],
+        "scanned": [
+          "src/harness-consumer.mjs"
+        ]
+      }
+    },
+    {
+      "name": "W-NEG-NON-PI-HARNESS",
+      "ok": true,
+      "summary": "agenticHarness=claude-code flagged (non-pi rejected)",
+      "detail": {
+        "findings": [
+          {
+            "kind": "agenticHarness",
+            "got": "claude-code"
+          }
+        ]
+      }
+    },
+    {
+      "name": "W-NEG-MANIFEST-DRIFT",
+      "ok": true,
+      "summary": "adapterCapabilityVersion drift flagged (not silently coerced)",
+      "detail": {
+        "findings": [
+          {
+            "kind": "adapterCapabilityVersion drift",
+            "got": "stale-v0",
+            "expected": "pi-adapter-capability-matrix/v1"
+          }
+        ]
+      }
+    },
+    {
+      "name": "W-REG-REGEN",
+      "ok": true,
+      "summary": "fixture import-shape signature stable across two reads (idempotent)",
+      "detail": {
+        "first": "9b69bd13665ec20e21cf176f6bb324e19f82dddaeb269962295bd7723bbdc8c9",
+        "second": "9b69bd13665ec20e21cf176f6bb324e19f82dddaeb269962295bd7723bbdc8c9"
+      }
+    },
+    {
+      "name": "W-REG-INVARIANTS",
+      "ok": true,
+      "summary": "product/CLI name=vibe-engineer; 3 sibling fixtures intact; 249 pre-existing baseline dirty paths (not this lane)",
+      "detail": {
+        "failures": [],
+        "baselineCount": 249,
+        "baselineSample": [
+          " M .vibe/work/I-07D-typescript-preset-package/evidence/typescript-preset-witness-result.json",
+          " M .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/witness-evidence/aggregate-witness.json",
+          " M .vibe/work/I-13-mechanical-P2-smell-framework/compiled-p2-code-smell/index.js",
+          " M .vibe/work/I-13-mechanical-P2-smell-framework/post-fix-evidence/postfix-output/commands/p0-allowlist-domain-aggregate.json",
+          " M .vibe/work/I-13-mechanical-P2-smell-framework/post-fix-evidence/postfix-output/commands/p0-testing-boundary.json",
+          " M .vibe/work/I-13-mechanical-P2-smell-framework/witness-evidence/p0-allowlist-domain-aggregate.json",
+          " M .vibe/work/I-13-mechanical-P2-smell-framework/witness-evidence/p0-testing-boundary.json",
+          " M .vibe/work/I-13-mechanical-P2-smell-framework/witness-evidence/p1-aggregate-witness.json"
+        ]
+      }
+    },
+    {
+      "name": "SIBLING-NO-REGRESSION:I-15B-2 template witness",
+      "ok": true,
+      "summary": "exit 0",
+      "detail": {
+        "tail": "NG-NO-REGRESSION:I-15B-1 preset witness — exit 0\n[PASS] SIBLING-NO-REGRESSION:I-07D typescript preset witness — exit 0\n\n=== I-15B-2 witness: PASS (green) (13 checks, 0 failed) ===\n"
+      }
+    },
+    {
+      "name": "SIBLING-NO-REGRESSION:I-15B-1 preset witness",
+      "ok": true,
+      "summary": "exit 0",
+      "detail": {
+        "tail": "rn-preset-witness-result.json\",\"phaseA\":\"green\",\"phaseB\":\"green\",\"contract\":{\"status\":\"green\",\"renderFileCount\":29,\"validationOk\":true,\"validationFindings\":[]},\"negativeCount\":11}\n"
+      }
+    },
+    {
+      "name": "SIBLING-NO-REGRESSION:I-07D typescript preset witness",
+      "ok": true,
+      "summary": "exit 0",
+      "detail": {
+        "tail": "th\":\"/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-07D-typescript-preset-package/evidence/typescript-preset-witness-result.json\",\"generatedFileCount\":12,\"negativeCount\":33}\n"
+      }
+    }
+  ],
+  "stages": [
+    "W-HARNESS-IMPORT — real resolve+import of vibe-engineer public surface (cwd=packages/cli)",
+    "W-CONSUMER-MANIFEST-CONSISTENCY — consume real I-14A adapter manifest (cwd=packages/cli)",
+    "W-CONTEXT-PLACEHOLDERS-VALIDATE — on-disk generated config/context placeholders (DL-17)",
+    "negative carriers — copied-logic + private-scoped-import detectors (non-vacuous)",
+    "W-NEG-MANIFEST-DRIFT + W-NEG-NON-PI-HARNESS — drifted config flagged",
+    "W-REG-REGEN — idempotent fixture import-shape",
+    "W-REG-INVARIANTS — owned-scope + name + sibling integrity",
+    "sibling no-regression (read-only): I-15B-2 / I-15B-1 / I-07D"
+  ]
+}

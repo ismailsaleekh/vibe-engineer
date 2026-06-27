@@ -1,0 +1,206 @@
+{
+  "ts": "2026-06-27T00:44:23.136Z",
+  "contexts": [
+    {
+      "context": "C1-packages-cli",
+      "cwd": "/Users/lizavasilyeva/work/vibe-engineer/packages/cli",
+      "exit": 0,
+      "stderr": "",
+      "parseErr": null,
+      "payload": {
+        "subpaths": {
+          "vibe-engineer": {
+            "importOk": true,
+            "missing": [],
+            "types": {
+              "runCli": "function"
+            }
+          },
+          "vibe-engineer/envelope": {
+            "importOk": true,
+            "missing": [],
+            "types": {
+              "createEnvelope": "function",
+              "validateCliResultEnvelope": "function",
+              "CLI_STATUSES": "object"
+            }
+          },
+          "vibe-engineer/command-loader": {
+            "importOk": true,
+            "missing": [],
+            "types": {
+              "CommandLoader": "function",
+              "createCommandLoader": "function"
+            }
+          }
+        },
+        "resolvedPaths": {
+          "vibe-engineer": {
+            "ok": true,
+            "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/entry/vibe-engineer.js"
+          },
+          "vibe-engineer/envelope": {
+            "ok": true,
+            "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/envelope/result-envelope.js"
+          },
+          "vibe-engineer/command-loader": {
+            "ok": true,
+            "resolved": "/Users/lizavasilyeva/work/vibe-engineer/packages/cli/src/command-loader/loader.js"
+          }
+        }
+      }
+    },
+    {
+      "context": "C2-repo-root",
+      "cwd": "/Users/lizavasilyeva/work/vibe-engineer",
+      "exit": 0,
+      "stderr": "",
+      "parseErr": null,
+      "payload": {
+        "subpaths": {
+          "vibe-engineer": {
+            "importOk": false,
+            "code": "ERR_MODULE_NOT_FOUND",
+            "message": "Cannot find package 'vibe-engineer' imported from /Users/lizavasilyeva/work/vibe-engineer/[eval1]"
+          },
+          "vibe-engineer/envelope": {
+            "importOk": false,
+            "code": "ERR_MODULE_NOT_FOUND",
+            "message": "Cannot find package 'vibe-engineer' imported from /Users/lizavasilyeva/work/vibe-engineer/[eval1]"
+          },
+          "vibe-engineer/command-loader": {
+            "importOk": false,
+            "code": "ERR_MODULE_NOT_FOUND",
+            "message": "Cannot find package 'vibe-engineer' imported from /Users/lizavasilyeva/work/vibe-engineer/[eval1]"
+          }
+        },
+        "resolvedPaths": {
+          "vibe-engineer": {
+            "ok": false,
+            "code": "MODULE_NOT_FOUND",
+            "message": "Cannot find module 'vibe-engineer'\nRequire stack:\n- /Users/lizavasilyeva/work/vibe-engineer/[eval1]"
+          },
+          "vibe-engineer/envelope": {
+            "ok": false,
+            "code": "MODULE_NOT_FOUND",
+            "message": "Cannot find module 'vibe-engineer/envelope'\nRequire stack:\n- /Users/lizavasilyeva/work/vibe-engineer/[eval1]"
+          },
+          "vibe-engineer/command-loader": {
+            "ok": false,
+            "code": "MODULE_NOT_FOUND",
+            "message": "Cannot find module 'vibe-engineer/command-loader'\nRequire stack:\n- /Users/lizavasilyeva/work/vibe-engineer/[eval1]"
+          }
+        }
+      }
+    },
+    {
+      "context": "C4-adapters-pi",
+      "cwd": "/Users/lizavasilyeva/work/vibe-engineer/packages/adapters/pi",
+      "exit": 0,
+      "stderr": "",
+      "parseErr": null,
+      "payload": {
+        "subpaths": {
+          "vibe-engineer": {
+            "importOk": false,
+            "code": "ERR_MODULE_NOT_FOUND",
+            "message": "Cannot find package 'vibe-engineer' imported from /Users/lizavasilyeva/work/vibe-engineer/packages/adapters/pi/[eval1]"
+          },
+          "vibe-engineer/envelope": {
+            "importOk": false,
+            "code": "ERR_MODULE_NOT_FOUND",
+            "message": "Cannot find package 'vibe-engineer' imported from /Users/lizavasilyeva/work/vibe-engineer/packages/adapters/pi/[eval1]"
+          },
+          "vibe-engineer/command-loader": {
+            "importOk": false,
+            "code": "ERR_MODULE_NOT_FOUND",
+            "message": "Cannot find package 'vibe-engineer' imported from /Users/lizavasilyeva/work/vibe-engineer/packages/adapters/pi/[eval1]"
+          }
+        },
+        "resolvedPaths": {
+          "vibe-engineer": {
+            "ok": false,
+            "code": "MODULE_NOT_FOUND",
+            "message": "Cannot find module 'vibe-engineer'\nRequire stack:\n- /Users/lizavasilyeva/work/vibe-engineer/packages/adapters/pi/[eval1]"
+          },
+          "vibe-engineer/envelope": {
+            "ok": false,
+            "code": "MODULE_NOT_FOUND",
+            "message": "Cannot find module 'vibe-engineer/envelope'\nRequire stack:\n- /Users/lizavasilyeva/work/vibe-engineer/packages/adapters/pi/[eval1]"
+          },
+          "vibe-engineer/command-loader": {
+            "ok": false,
+            "code": "MODULE_NOT_FOUND",
+            "message": "Cannot find module 'vibe-engineer/command-loader'\nRequire stack:\n- /Users/lizavasilyeva/work/vibe-engineer/packages/adapters/pi/[eval1]"
+          }
+        }
+      }
+    },
+    {
+      "context": "C3-neutral-tmp",
+      "cwd": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/i15b3-contrast-IpcrgQ",
+      "exit": 0,
+      "stderr": "",
+      "parseErr": null,
+      "payload": {
+        "subpaths": {
+          "vibe-engineer": {
+            "importOk": false,
+            "code": "ERR_MODULE_NOT_FOUND",
+            "message": "Cannot find package 'vibe-engineer' imported from /private/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/i15b3-contrast-IpcrgQ/[eval1]"
+          },
+          "vibe-engineer/envelope": {
+            "importOk": false,
+            "code": "ERR_MODULE_NOT_FOUND",
+            "message": "Cannot find package 'vibe-engineer' imported from /private/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/i15b3-contrast-IpcrgQ/[eval1]"
+          },
+          "vibe-engineer/command-loader": {
+            "importOk": false,
+            "code": "ERR_MODULE_NOT_FOUND",
+            "message": "Cannot find package 'vibe-engineer' imported from /private/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/i15b3-contrast-IpcrgQ/[eval1]"
+          }
+        },
+        "resolvedPaths": {
+          "vibe-engineer": {
+            "ok": false,
+            "code": "MODULE_NOT_FOUND",
+            "message": "Cannot find module 'vibe-engineer'\nRequire stack:\n- /private/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/i15b3-contrast-IpcrgQ/[eval1]"
+          },
+          "vibe-engineer/envelope": {
+            "ok": false,
+            "code": "MODULE_NOT_FOUND",
+            "message": "Cannot find module 'vibe-engineer/envelope'\nRequire stack:\n- /private/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/i15b3-contrast-IpcrgQ/[eval1]"
+          },
+          "vibe-engineer/command-loader": {
+            "ok": false,
+            "code": "MODULE_NOT_FOUND",
+            "message": "Cannot find module 'vibe-engineer/command-loader'\nRequire stack:\n- /private/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/i15b3-contrast-IpcrgQ/[eval1]"
+          }
+        }
+      }
+    }
+  ],
+  "adapterProbe": {
+    "exit": 0,
+    "payload": {
+      "importOk": true,
+      "hasGetPiGeneratedFileManifest": true,
+      "hasCreatePiDownstreamManifestSummary": true,
+      "hasValidatePiGeneratedFileManifest": true,
+      "resolvedErr": "Package subpath './generated-file-manifest' is not defined by \"exports\" in /Users/lizavasilyeva/work/vibe-engineer/packages/cli/node_modules/@vibe-engineer/adap"
+    }
+  },
+  "linkInfo": {
+    "adapter-pi-link": {
+      "exists": true,
+      "readlink": "../../../adapters/pi",
+      "realpath": "/Users/lizavasilyeva/work/vibe-engineer/packages/adapters/pi"
+    },
+    "pnpm-self-link": {
+      "exists": true,
+      "readlink": "../../../packages/cli",
+      "realpath": "/Users/lizavasilyeva/work/vibe-engineer/packages/cli"
+    }
+  },
+  "repoRoot": "/Users/lizavasilyeva/work/vibe-engineer"
+}
