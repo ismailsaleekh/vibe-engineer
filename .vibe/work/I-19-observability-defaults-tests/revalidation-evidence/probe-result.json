@@ -1,0 +1,96 @@
+{
+  "ok": true,
+  "probeCount": 6,
+  "failed": 0,
+  "probes": [
+    {
+      "name": "P1-security-binding-real",
+      "ok": true,
+      "detail": {
+        "resolved": true,
+        "exportKeys": [
+          "CommandSafetyClassification",
+          "DEFAULT_SECURITY_POLICY",
+          "ExternalIntegrationMode",
+          "SECURITY_PACKAGE_VERSION",
+          "SECURITY_POLICY_VERSION",
+          "SandboxCapabilityStatus",
+          "SecurityCategory",
+          "SecurityClassification",
+          "SecurityDecision",
+          "SecurityGateStatus",
+          "SecuritySeverity",
+          "__i18aCliBoundarySmoke",
+          "createSecurityAuditEvent",
+          "createSecurityFinding",
+          "createSecurityGateResult",
+          "evaluateCommandSafety",
+          "evaluateEnvConfigSafety",
+          "evaluateEvidenceSafety",
+          "evaluateExternalIntegrationSafety",
+          "evaluateSandboxCapability",
+          "isSecretLikeValue",
+          "parseSecurityPolicy",
+          "redactSecurityText",
+          "redactSecurityValue",
+          "runSecurityGate"
+        ],
+        "redactSecurityValueType": "function",
+        "redactSecurityTextType": "function"
+      }
+    },
+    {
+      "name": "P2-sentinel-scrubbed",
+      "ok": true,
+      "detail": {
+        "redactionStatus": "applied",
+        "sentinelSurvivedIntoCarrier": false,
+        "leakCheckPasses": true,
+        "classificationSurvives": true
+      }
+    },
+    {
+      "name": "P3-pending-live-marker-exists",
+      "ok": true,
+      "detail": {
+        "redactionStatuses": [
+          "applied",
+          "not-required",
+          "blocked-pending-live"
+        ]
+      }
+    },
+    {
+      "name": "P4-uuid-v4-crypto-correct",
+      "ok": true,
+      "detail": {
+        "generated": 50000,
+        "allCanonical": true,
+        "versionNibbleIs4": true,
+        "variantNibbleOk": true,
+        "uniqueCount": 50000,
+        "collisions": 0
+      }
+    },
+    {
+      "name": "P5-w3c-propagation-roundtrip",
+      "ok": true,
+      "detail": {
+        "traceparentHeader": "00-00000000000000000000000000000000-1111111111111111-01",
+        "roundTripPreservesIds": true,
+        "invalidInboundRegeneratesAndNeverReturnsRaw": true,
+        "regeneratedCorrelation": true,
+        "newCorrelationIsCanonicalV4": true
+      }
+    },
+    {
+      "name": "P6-sink-enabled-sentinel-absent",
+      "ok": true,
+      "detail": {
+        "captureLength": 1,
+        "sentinelSurvived": false,
+        "redactionStatus": "applied"
+      }
+    }
+  ]
+}

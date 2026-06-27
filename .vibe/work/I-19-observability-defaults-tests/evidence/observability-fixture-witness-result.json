@@ -1,0 +1,250 @@
+{
+  "ok": true,
+  "blocked": false,
+  "lane": "I-19-observability-defaults-tests",
+  "fixture": "examples/starter-reference/generated-fixtures/observability",
+  "checkCount": 8,
+  "checks": [
+    {
+      "name": "W-RESOLVE",
+      "ok": true,
+      "summary": "observability@0.0.0 + pino@9.7.0 + otel/api@? + @ts-rest/core@3.52.1 + zod@3.25.76 resolved from real workspace anchors",
+      "detail": {
+        "failures": [],
+        "payload": {
+          "@vibe-engineer/observability": {
+            "spec": "@vibe-engineer/observability",
+            "resolvedPath": "/Users/lizavasilyeva/work/vibe-engineer/packages/observability/src/index.js",
+            "version": "0.0.0",
+            "name": "@vibe-engineer/observability",
+            "fromPnpm": true
+          },
+          "pino": {
+            "spec": "pino",
+            "resolvedPath": "/Users/lizavasilyeva/work/vibe-engineer/node_modules/.pnpm/pino@9.7.0/node_modules/pino/pino.js",
+            "version": "9.7.0",
+            "name": "pino",
+            "fromPnpm": true
+          },
+          "@opentelemetry/api": {
+            "spec": "@opentelemetry/api",
+            "resolvedPath": "/Users/lizavasilyeva/work/vibe-engineer/node_modules/.pnpm/@opentelemetry+api@1.9.1/node_modules/@opentelemetry/api/build/src/index.js",
+            "version": "?",
+            "name": "@opentelemetry/api",
+            "fromPnpm": true
+          },
+          "@ts-rest/core": {
+            "spec": "@ts-rest/core",
+            "resolvedPath": "/Users/lizavasilyeva/work/vibe-engineer/node_modules/.pnpm/@ts-rest+core@3.52.1_@types+node@24.13.2_zod@3.25.76/node_modules/@ts-rest/core/index.cjs.js",
+            "version": "3.52.1",
+            "name": "@ts-rest/core",
+            "fromPnpm": true
+          },
+          "zod": {
+            "spec": "zod",
+            "resolvedPath": "/Users/lizavasilyeva/work/vibe-engineer/node_modules/.pnpm/zod@3.25.76/node_modules/zod/index.cjs",
+            "version": "3.25.76",
+            "name": "zod",
+            "fromPnpm": true
+          }
+        }
+      }
+    },
+    {
+      "name": "W1-GOLDEN-PATH",
+      "ok": true,
+      "summary": "golden critical path emitted real log+metric+span+correlation; join matrix proven (client/api/log same id 04b71c20)",
+      "detail": {
+        "goldenPathEmitsAllSignals": true,
+        "join": {
+          "correlationId": "04b71c20-b969-4d3a-bd9d-b26919b4f19f",
+          "clientCallSpan": true,
+          "apiRequestSpan": true,
+          "successLog": true,
+          "operationMetric": true,
+          "evidenceAssertion": true
+        }
+      }
+    },
+    {
+      "name": "W2-ERROR-PATH",
+      "ok": true,
+      "summary": "error path: http 400; error span + error metric emitted; sensitive values absent/redacted",
+      "detail": {
+        "errorPathObservable": true,
+        "errorPathRedacted": true,
+        "errorHttpStatus": 400
+      }
+    },
+    {
+      "name": "W3-NEG-MISSING-SIGNAL",
+      "ok": true,
+      "summary": "missing correlationId / required log field / required span attribute each FAILS CLOSED (non-vacuous injection)",
+      "detail": {
+        "missingSignalFailsClosed": true,
+        "missingSignalCases": {
+          "missingCorrelationIdRejected": true,
+          "malformedCorrelationIdRejected": true,
+          "missingSpanAttributeRejected": true,
+          "spanShapedLogWithoutTraceIdRejected": true
+        }
+      }
+    },
+    {
+      "name": "W4-NEG-ANTI-DEGRADATION",
+      "ok": true,
+      "summary": "shape-only / hand-authored artifacts rejected as closure evidence",
+      "detail": {
+        "antiDegradationFailsClosed": true
+      }
+    },
+    {
+      "name": "W-PROBE-CONTRAST",
+      "ok": true,
+      "summary": "with the real capture sink DISABLED the consumer reads NOTHING (emitted artifacts come from the real instrumentation, not a mocked sink)",
+      "detail": {
+        "probeContrastRulesOutFalseGreen": true,
+        "probeContrast": {
+          "sinkDisabledSpansEmpty": true,
+          "sinkDisabledLogsEmpty": true,
+          "sinkEnabledSpansNonEmpty": true,
+          "sinkEnabledLogsNonEmpty": true
+        }
+      }
+    },
+    {
+      "name": "W5-REG-DOMAIN-NEUTRAL",
+      "ok": true,
+      "summary": "4 fixture src files: generic sample/demo/reference vocab; @sample/@demo/@reference labeled; no business-domain leakage",
+      "detail": {
+        "failures": []
+      }
+    },
+    {
+      "name": "W-INVARIANTS",
+      "ok": true,
+      "summary": "owned=5 paths (incl. 0 serialized lockfile via §7#1 self-executed handoff); 280 pre-existing baseline dirty paths",
+      "detail": {
+        "failures": [],
+        "ownedSample": [
+          " M packages/observability/package.json",
+          "?? .vibe/work/I-19-observability-defaults-tests/",
+          "?? examples/starter-reference/generated-fixtures/observability/",
+          "?? packages/observability/src/",
+          "?? packages/observability/test/"
+        ]
+      }
+    }
+  ],
+  "runtime": {
+    "resolution": {
+      "@vibe-engineer/observability": {
+        "spec": "@vibe-engineer/observability",
+        "resolvedPath": "/Users/lizavasilyeva/work/vibe-engineer/packages/observability/src/index.js",
+        "version": "0.0.0",
+        "name": "@vibe-engineer/observability",
+        "fromPnpm": true
+      },
+      "pino": {
+        "spec": "pino",
+        "resolvedPath": "/Users/lizavasilyeva/work/vibe-engineer/node_modules/.pnpm/pino@9.7.0/node_modules/pino/pino.js",
+        "version": "9.7.0",
+        "name": "pino",
+        "fromPnpm": true
+      },
+      "@opentelemetry/api": {
+        "spec": "@opentelemetry/api",
+        "resolvedPath": "/Users/lizavasilyeva/work/vibe-engineer/node_modules/.pnpm/@opentelemetry+api@1.9.1/node_modules/@opentelemetry/api/build/src/index.js",
+        "version": "?",
+        "name": "@opentelemetry/api",
+        "fromPnpm": true
+      },
+      "@ts-rest/core": {
+        "spec": "@ts-rest/core",
+        "resolvedPath": "/Users/lizavasilyeva/work/vibe-engineer/node_modules/.pnpm/@ts-rest+core@3.52.1_@types+node@24.13.2_zod@3.25.76/node_modules/@ts-rest/core/index.cjs.js",
+        "version": "3.52.1",
+        "name": "@ts-rest/core",
+        "fromPnpm": true
+      },
+      "zod": {
+        "spec": "zod",
+        "resolvedPath": "/Users/lizavasilyeva/work/vibe-engineer/node_modules/.pnpm/zod@3.25.76/node_modules/zod/index.cjs",
+        "version": "3.25.76",
+        "name": "zod",
+        "fromPnpm": true
+      }
+    },
+    "witness": {
+      "goldenPathEmitsAllSignals": true,
+      "goldenPathJoin": {
+        "correlationId": "04b71c20-b969-4d3a-bd9d-b26919b4f19f",
+        "clientCallSpan": true,
+        "apiRequestSpan": true,
+        "successLog": true,
+        "operationMetric": true,
+        "evidenceAssertion": true
+      },
+      "goldenPathHttpStatus": 200,
+      "goldenPathSpanNames": [
+        "api.request",
+        "client.call",
+        "verification.run"
+      ],
+      "errorPathObservable": true,
+      "errorPathRedacted": true,
+      "errorHttpStatus": 400,
+      "missingSignalFailsClosed": true,
+      "missingSignalCases": {
+        "missingCorrelationIdRejected": true,
+        "malformedCorrelationIdRejected": true,
+        "missingSpanAttributeRejected": true,
+        "spanShapedLogWithoutTraceIdRejected": true
+      },
+      "antiDegradationFailsClosed": true,
+      "probeContrastRulesOutFalseGreen": true,
+      "probeContrast": {
+        "sinkDisabledSpansEmpty": true,
+        "sinkDisabledLogsEmpty": true,
+        "sinkEnabledSpansNonEmpty": true,
+        "sinkEnabledLogsNonEmpty": true
+      }
+    }
+  },
+  "structural": {
+    "domainNeutral": {
+      "scanned": 4,
+      "failures": []
+    }
+  },
+  "regression": {},
+  "invariant": {
+    "ownedCount": 5,
+    "baselineCount": 280,
+    "ownedSample": [
+      " M packages/observability/package.json",
+      "?? .vibe/work/I-19-observability-defaults-tests/",
+      "?? examples/starter-reference/generated-fixtures/observability/",
+      "?? packages/observability/src/",
+      "?? packages/observability/test/"
+    ],
+    "baselineSample": [
+      " M .gitignore",
+      " M .vibe/work/I-07D-typescript-preset-package/evidence/typescript-preset-witness-result.json",
+      " M .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/witness-evidence/aggregate-witness.json",
+      " M .vibe/work/I-13-mechanical-P2-smell-framework/compiled-p2-code-smell/index.js",
+      " M .vibe/work/I-13-mechanical-P2-smell-framework/post-fix-evidence/postfix-output/commands/p0-allowlist-domain-aggregate.json",
+      " M .vibe/work/I-13-mechanical-P2-smell-framework/post-fix-evidence/postfix-output/commands/p0-testing-boundary.json",
+      " M .vibe/work/I-13-mechanical-P2-smell-framework/witness-evidence/p0-allowlist-domain-aggregate.json",
+      " M .vibe/work/I-13-mechanical-P2-smell-framework/witness-evidence/p0-testing-boundary.json",
+      " M .vibe/work/I-13-mechanical-P2-smell-framework/witness-evidence/p1-aggregate-witness.json",
+      " M .vibe/work/I-18-security-safety-hooks-policy/I-18B-security-cli-command-and-verify-hook/evidence/regression/default-entry-security-unsupported.json"
+    ],
+    "lockfileOwned": 0
+  },
+  "stages": [
+    "W-RESOLVE — real observability + pino + otel + @ts-rest/core + zod resolution",
+    "W1/W2/W3/W4/W-PROBE-CONTRAST — runtime real-boundary witness (.ts)",
+    "W5-REG-DOMAIN-NEUTRAL — generic sample/demo/reference vocab; no business leakage",
+    "W-INVARIANTS — dirty-tree scope + sibling/serialized-surface integrity"
+  ]
+}
