@@ -26,7 +26,24 @@ Every deterministic witness independently reproduced at the real boundary. D1 (C
 - **Reproduced evidence:** `revalidation-evidence/w1core-eq/{evidence/{p0,p1,p2}.aggregate.json, evidence/wiring-integrity.json, summary.json}`. `summary.json` wiring = `pass`, `expected/registered/missing = {p0,p1,p2}/{p0,p1,p2}/[]`; all three tiers spawned via the PUBLIC `@vibe-engineer/mechanical-gates/aggregate` export (`runP0Aggregate`/`runP1Aggregate`/`runP2Aggregate`, each `exportPresent:true, running:true`); p0 = `ok:false` with **3321 real blocking findings** (e.g. `aggregate.validator-exception` "P0 aggregate validator raised instead of returning a typed result"), p1/p2 `ok:true`.
 - **Exit 2 is honest aggregate quality-red on the dirty in-flight tree, NOT a wiring defect** (the wiring verdict is independently inspectable as `pass`), exactly as the packet §2 and I-20A's revalidation §1 characterize. Forcing exit 0 here would require suppressing real findings = false-green (critical), which the runner correctly refuses.
 - **Schema validity (independent, via the runner's own `assertValid`):** `wiring-integrity.json` → PASS (`wiring-integrity.schema.json`); `summary.json` → PASS (`quality-summary.schema.json`). Negative probe: summary + a rogue extra property → **rejected** (`additionalProperties:false` enforced). (`revalidation-evidence/` schema-run.)
-- **Note on p0 count drift (3321 here vs packet's 3317 vs I-20A reval's 3307):** the dirty in-flight tree is evolving across concurrent lanes (multi-orchestrator env; `git status` shows live edits to `packages/mechanical-gates/**`, `packages/cli/src/commands/security/**`, etc.), so the exact blocking count drifts per run. This is expected and benign — the load-bearing fact (real p0 findings = quality-red, not a wiring defect; wiring verdict `pass`) is stable across all three runs. Non-issue.
+- **CORRECTION (FINAL-BUGHUNT FIX, structural reclassification):** this artifact originally
+  framed the persistent p0 `ok:false` as transient/benign "dirty-tree drift" and carried it as
+  non-blocking. That framing was WRONG. The p0 red was STRUCTURAL and PERSISTENT: the real
+  workspace had NEVER carried the root governance contract its own p0 gates require (no root
+  `mechanical-surface.json`, no root `tsconfig.json`, no `lint`/`format:check` scripts, no
+  `mechanical-*.json` policy carriers), so every content gate failed-closed
+  (`aggregate.validator-exception` / `*.policy-unreadable`) into ~3,680 blocking findings —
+  almost entirely "policy unavailable" cascade, NOT real per-file defects and NOT transient
+  drift. FINAL-BUGHUNT FIX authored the missing carriers (in-license), collapsing p0 to ~170
+  HONEST scoped findings that are REAL product-source defects (141 type-escapes, 26 domain-term
+  leaks, 1 boundary reach-in) + a config-guards/turbo monorepo mismatch — serialized to source
+  owners (`.vibe/work/FINAL-BUGHUNT/serialized-product-source-handoff.md`). I-20D's WIRING-gate
+  scope remains genuinely green; the correction here is to the p0 CONTENT-red framing only.
+- **Note on p0 count drift (3321 here vs packet's 3317 vs I-20A reval's 3307):** the count drift
+  across runs was a symptom of the evolving dirty tree, but the RED ITSELF was structural and
+  persistent (root governance carriers absent), not transient multi-orchestrator drift. With
+  the carriers now authored, the residual red is a stable, scoped, real product-source set. The
+  load-bearing wiring fact (wiring verdict `pass`; p0 red = content, not wiring) remains stable.
 - **Verdict: packet claim W1-core PASS corroborated.** ✓
 
 ### F2 — clean — W-FC-NEG (phantom p9) reproduces, REAL boundary
