@@ -1,0 +1,62 @@
+{
+  "proofMode": "typescript-ast",
+  "testOnlyPackageName": "@vibe-engineer/testing",
+  "packageManifestRoots": [
+    "packages"
+  ],
+  "requiredPackageManifestPaths": [
+    "package.json"
+  ],
+  "sourceRoots": [
+    "packages/adapters/pi/src",
+    "packages/artifacts/src",
+    "packages/cli/src",
+    "packages/config/src",
+    "packages/context/src",
+    "packages/contracts/src",
+    "packages/mechanical-gates/src",
+    "packages/observability/src",
+    "packages/orchestration/src",
+    "packages/presets/nest-react-rn/src",
+    "packages/presets/typescript/src",
+    "packages/registry/src",
+    "packages/schematics/src",
+    "packages/security/src",
+    "packages/skills/src",
+    "packages/standards/src",
+    "packages/testing/src",
+    "packages/verification/src",
+    "scripts"
+  ],
+  "sourceExtensions": [
+    ".js",
+    ".mjs",
+    ".cjs",
+    ".ts",
+    ".tsx",
+    ".jsx"
+  ],
+  "excludedDirectoryNames": [
+    "node_modules",
+    "dist",
+    "build",
+    "fixtures"
+  ],
+  "testSurface": {
+    "fileSuffixes": [
+      ".test.ts",
+      ".test.js",
+      ".test.mjs",
+      ".test.tsx",
+      "-test.js",
+      ".spec.ts",
+      ".spec.js"
+    ],
+    "directorySegments": [
+      "fixtures",
+      "__tests__",
+      "test",
+      "tests"
+    ]
+  }
+}

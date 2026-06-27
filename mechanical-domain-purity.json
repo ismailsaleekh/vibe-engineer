@@ -1,0 +1,292 @@
+{
+  "version": 1,
+  "proofMode": "typescript-ast-string-comment-path-carriers",
+  "scan": {
+    "include": [
+      "packages/adapters/pi/src",
+      "packages/artifacts/src",
+      "packages/cli/src",
+      "packages/config/src",
+      "packages/context/src",
+      "packages/contracts/src",
+      "packages/mechanical-gates/src",
+      "packages/observability/src",
+      "packages/orchestration/src",
+      "packages/presets/nest-react-rn/src",
+      "packages/presets/typescript/src",
+      "packages/registry/src",
+      "packages/schematics/src",
+      "packages/security/src",
+      "packages/skills/src",
+      "packages/standards/src",
+      "packages/testing/src",
+      "packages/verification/src",
+      "packages/testing/fixtures",
+      "packages/mechanical-gates/fixtures"
+    ]
+  },
+  "surfaces": [
+    { "kind": "core", "match": "prefix", "path": "packages/adapters/pi/src" },
+    { "kind": "core", "match": "prefix", "path": "packages/artifacts/src" },
+    { "kind": "core", "match": "prefix", "path": "packages/cli/src" },
+    { "kind": "core", "match": "prefix", "path": "packages/config/src" },
+    { "kind": "core", "match": "prefix", "path": "packages/context/src" },
+    { "kind": "core", "match": "prefix", "path": "packages/contracts/src" },
+    { "kind": "core", "match": "prefix", "path": "packages/mechanical-gates/src" },
+    { "kind": "core", "match": "prefix", "path": "packages/observability/src" },
+    { "kind": "core", "match": "prefix", "path": "packages/orchestration/src" },
+    { "kind": "core", "match": "prefix", "path": "packages/presets/nest-react-rn/src" },
+    { "kind": "core", "match": "prefix", "path": "packages/presets/typescript/src" },
+    { "kind": "core", "match": "prefix", "path": "packages/registry/src" },
+    { "kind": "core", "match": "prefix", "path": "packages/schematics/src" },
+    { "kind": "core", "match": "prefix", "path": "packages/security/src" },
+    { "kind": "core", "match": "prefix", "path": "packages/skills/src" },
+    { "kind": "core", "match": "prefix", "path": "packages/standards/src" },
+    { "kind": "core", "match": "prefix", "path": "packages/testing/src" },
+    { "kind": "core", "match": "prefix", "path": "packages/verification/src" },
+    { "kind": "fixture", "match": "prefix", "path": "packages/testing/fixtures" },
+    { "kind": "fixture", "match": "prefix", "path": "packages/mechanical-gates/fixtures" }
+  ],
+  "forbiddenTerms": [
+    "ecommerce",
+    "inventory",
+    "Billz",
+    "Telegram"
+  ],
+  "exemptions": [
+    {
+      "path": "packages/mechanical-gates/src/p0/domain-purity/validate-domain-purity.js",
+      "term": "ecommerce",
+      "locator": { "token": "ecommerce", "line": 15 },
+      "justification": "Self-referential enforcement vocabulary: this literal is a member of DEFAULT_FORBIDDEN — the locked forbidden-term floor that THIS gate consumes at runtime to detect and reject the very term in scanned source. It is the gate scanning its own enforcement list, not a business-domain leak.",
+      "whyUnavoidable": "The term must appear verbatim for the gate to match real content carrying it; removing it disables enforcement of this term (behavior change). The central gate is authoritative enforcement; this default-floor literal is honestly exempted as scoped, reviewed, freshness-checked self-referential enforcement vocabulary (stale-detection emits a finding if the token ever moves/disappears).",
+      "reviewer": "FINAL-BUGHUNT combined fix",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/mechanical-gates/src/p0/domain-purity/validate-domain-purity.js",
+      "term": "inventory",
+      "locator": { "token": "inventory", "line": 15 },
+      "justification": "Self-referential enforcement vocabulary: member of DEFAULT_FORBIDDEN consumed at runtime by THIS gate to detect/reject the term in scanned source (gate scanning its own enforcement list).",
+      "whyUnavoidable": "Term must appear verbatim to match real content; removal disables enforcement (behavior change). Authoritative gate default floor; scoped/reviewed/freshness-checked exemption with stale-detection.",
+      "reviewer": "FINAL-BUGHUNT combined fix",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/mechanical-gates/src/p0/domain-purity/validate-domain-purity.js",
+      "term": "Billz",
+      "locator": { "token": "Billz", "line": 15 },
+      "justification": "Self-referential enforcement vocabulary: member of DEFAULT_FORBIDDEN consumed at runtime by THIS gate to detect/reject the term in scanned source (gate scanning its own enforcement list).",
+      "whyUnavoidable": "Term must appear verbatim to match real content; removal disables enforcement (behavior change). Authoritative gate default floor; scoped/reviewed/freshness-checked exemption with stale-detection.",
+      "reviewer": "FINAL-BUGHUNT combined fix",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/mechanical-gates/src/p0/domain-purity/validate-domain-purity.js",
+      "term": "Telegram",
+      "locator": { "token": "Telegram", "line": 15 },
+      "justification": "Self-referential enforcement vocabulary: member of DEFAULT_FORBIDDEN consumed at runtime by THIS gate to detect/reject the term in scanned source (gate scanning its own enforcement list).",
+      "whyUnavoidable": "Term must appear verbatim to match real content; removal disables enforcement (behavior change). Authoritative gate default floor; scoped/reviewed/freshness-checked exemption with stale-detection.",
+      "reviewer": "FINAL-BUGHUNT combined fix",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/adapters/pi/src/runtime/validation.ts",
+      "term": "ecommerce",
+      "locator": { "token": "ecommerce", "line": 28 },
+      "justification": "Self-referential enforcement vocabulary: member of BUSINESS_DOMAIN_MARKERS, consumed at runtime by hasAnyMarker(asset.content, BUSINESS_DOMAIN_MARKERS) to flag skill assets carrying business-domain markers. Defense-in-depth domain-neutrality enforcement, not a leak.",
+      "whyUnavoidable": "Term must appear verbatim to match real content; renaming weakens enforcement (behavior change). The central p0.domain-purity gate is authoritative; this product-side marker array is honestly exempted as scoped/reviewed/freshness-checked self-referential enforcement vocabulary with stale-detection.",
+      "reviewer": "FINAL-BUGHUNT combined fix",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/adapters/pi/src/runtime/validation.ts",
+      "term": "inventory",
+      "locator": { "token": "inventory", "line": 28 },
+      "justification": "Self-referential enforcement vocabulary: member of BUSINESS_DOMAIN_MARKERS consumed at runtime by hasAnyMarker to flag skill assets carrying business-domain markers.",
+      "whyUnavoidable": "Term must appear verbatim to match real content; renaming weakens enforcement (behavior change). Central gate authoritative; product-side marker array exempted as scoped/reviewed self-referential enforcement vocabulary with stale-detection.",
+      "reviewer": "FINAL-BUGHUNT combined fix",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/adapters/pi/src/runtime/validation.ts",
+      "term": "Billz",
+      "locator": { "token": "billz", "line": 28 },
+      "justification": "Self-referential enforcement vocabulary: member of BUSINESS_DOMAIN_MARKERS (case-normalized) consumed at runtime by hasAnyMarker to flag skill assets carrying business-domain markers.",
+      "whyUnavoidable": "Term must appear verbatim to match real content; renaming weakens enforcement (behavior change). Central gate authoritative; product-side marker array exempted as scoped/reviewed self-referential enforcement vocabulary with stale-detection.",
+      "reviewer": "FINAL-BUGHUNT combined fix",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/adapters/pi/src/runtime/validation.ts",
+      "term": "Telegram",
+      "locator": { "token": "telegram", "line": 28 },
+      "justification": "Self-referential enforcement vocabulary: member of BUSINESS_DOMAIN_MARKERS (case-normalized) consumed at runtime by hasAnyMarker to flag skill assets carrying business-domain markers.",
+      "whyUnavoidable": "Term must appear verbatim to match real content; renaming weakens enforcement (behavior change). Central gate authoritative; product-side marker array exempted as scoped/reviewed self-referential enforcement vocabulary with stale-detection.",
+      "reviewer": "FINAL-BUGHUNT combined fix",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/registry/src/index.js",
+      "term": "ecommerce",
+      "locator": { "token": "ecommerce", "line": 40 },
+      "justification": "Self-referential enforcement vocabulary: member of FORBIDDEN_CORE_TERMS consumed at runtime by FORBIDDEN_CORE_TERMS.filter((term) => haystack.includes(term)) to reject registry entries carrying the term.",
+      "whyUnavoidable": "Term must appear verbatim to match real content; renaming weakens enforcement (behavior change). Central gate authoritative; registry-side rejection list exempted as scoped/reviewed self-referential enforcement vocabulary with stale-detection.",
+      "reviewer": "FINAL-BUGHUNT combined fix",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/registry/src/index.js",
+      "term": "inventory",
+      "locator": { "token": "inventory", "line": 40 },
+      "justification": "Self-referential enforcement vocabulary: member of FORBIDDEN_CORE_TERMS consumed at runtime to reject registry entries carrying the term.",
+      "whyUnavoidable": "Term must appear verbatim to match real content; renaming weakens enforcement (behavior change). Central gate authoritative; registry-side rejection list exempted as scoped/reviewed self-referential enforcement vocabulary with stale-detection.",
+      "reviewer": "FINAL-BUGHUNT combined fix",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/registry/src/index.js",
+      "term": "Billz",
+      "locator": { "token": "billz", "line": 40 },
+      "justification": "Self-referential enforcement vocabulary: member of FORBIDDEN_CORE_TERMS (case-normalized) consumed at runtime to reject registry entries carrying the term.",
+      "whyUnavoidable": "Term must appear verbatim to match real content; renaming weakens enforcement (behavior change). Central gate authoritative; registry-side rejection list exempted as scoped/reviewed self-referential enforcement vocabulary with stale-detection.",
+      "reviewer": "FINAL-BUGHUNT combined fix",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/registry/src/index.js",
+      "term": "Telegram",
+      "locator": { "token": "telegram", "line": 40 },
+      "justification": "Self-referential enforcement vocabulary: member of FORBIDDEN_CORE_TERMS (case-normalized) consumed at runtime to reject registry entries carrying the term.",
+      "whyUnavoidable": "Term must appear verbatim to match real content; renaming weakens enforcement (behavior change). Central gate authoritative; registry-side rejection list exempted as scoped/reviewed self-referential enforcement vocabulary with stale-detection.",
+      "reviewer": "FINAL-BUGHUNT combined fix",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/schematics/src/engine/index.js",
+      "term": "ecommerce",
+      "locator": { "token": "ecommerce", "line": 10 },
+      "justification": "Self-referential enforcement vocabulary: member of DOMAIN_FORBIDDEN_TERMS consumed at runtime by content.includes(term) to reject generated content carrying the term; array is also a public export.",
+      "whyUnavoidable": "Term must appear verbatim to match real content; renaming weakens enforcement (behavior change). Central gate authoritative; schematics-side rejection list exempted as scoped/reviewed self-referential enforcement vocabulary with stale-detection.",
+      "reviewer": "FINAL-BUGHUNT combined fix",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/schematics/src/engine/index.js",
+      "term": "inventory",
+      "locator": { "token": "inventory", "line": 10 },
+      "justification": "Self-referential enforcement vocabulary: member of DOMAIN_FORBIDDEN_TERMS consumed at runtime by content.includes(term) to reject generated content carrying the term.",
+      "whyUnavoidable": "Term must appear verbatim to match real content; renaming weakens enforcement (behavior change). Central gate authoritative; schematics-side rejection list exempted as scoped/reviewed self-referential enforcement vocabulary with stale-detection.",
+      "reviewer": "FINAL-BUGHUNT combined fix",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/schematics/src/engine/index.js",
+      "term": "Billz",
+      "locator": { "token": "Billz", "line": 10 },
+      "justification": "Self-referential enforcement vocabulary: member of DOMAIN_FORBIDDEN_TERMS consumed at runtime by content.includes(term) to reject generated content carrying the term.",
+      "whyUnavoidable": "Term must appear verbatim to match real content; renaming weakens enforcement (behavior change). Central gate authoritative; schematics-side rejection list exempted as scoped/reviewed self-referential enforcement vocabulary with stale-detection.",
+      "reviewer": "FINAL-BUGHUNT combined fix",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/schematics/src/engine/index.js",
+      "term": "Billz",
+      "locator": { "token": "BillzInvoice", "line": 10 },
+      "justification": "Self-referential enforcement vocabulary: compound marker 'BillzInvoice' (carries the locked term 'Billz') member of DOMAIN_FORBIDDEN_TERMS consumed at runtime to reject generated content carrying the marker.",
+      "whyUnavoidable": "Compound marker must appear verbatim to match real content; renaming weakens enforcement (behavior change). Central gate authoritative; schematics-side rejection list exempted as scoped/reviewed self-referential enforcement vocabulary with stale-detection.",
+      "reviewer": "FINAL-BUGHUNT combined fix",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/schematics/src/engine/index.js",
+      "term": "Telegram",
+      "locator": { "token": "Telegram", "line": 10 },
+      "justification": "Self-referential enforcement vocabulary: member of DOMAIN_FORBIDDEN_TERMS consumed at runtime by content.includes(term) to reject generated content carrying the term.",
+      "whyUnavoidable": "Term must appear verbatim to match real content; renaming weakens enforcement (behavior change). Central gate authoritative; schematics-side rejection list exempted as scoped/reviewed self-referential enforcement vocabulary with stale-detection.",
+      "reviewer": "FINAL-BUGHUNT combined fix",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/schematics/src/engine/index.js",
+      "term": "Telegram",
+      "locator": { "token": "TelegramBotBusinessRule", "line": 10 },
+      "justification": "Self-referential enforcement vocabulary: compound marker 'TelegramBotBusinessRule' (carries the locked term 'Telegram') member of DOMAIN_FORBIDDEN_TERMS consumed at runtime to reject generated content carrying the marker.",
+      "whyUnavoidable": "Compound marker must appear verbatim to match real content; renaming weakens enforcement (behavior change). Central gate authoritative; schematics-side rejection list exempted as scoped/reviewed self-referential enforcement vocabulary with stale-detection.",
+      "reviewer": "FINAL-BUGHUNT combined fix",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/presets/typescript/src/index.ts",
+      "term": "ecommerce",
+      "locator": { "token": "ecommerce", "line": 262 },
+      "justification": "Self-referential enforcement vocabulary: member of FORBIDDEN_DOMAIN_TERMS consumed at runtime by the preset's domain-neutrality scan (for (const term of FORBIDDEN_DOMAIN_TERMS)) to flag generated content carrying the term.",
+      "whyUnavoidable": "Term must appear verbatim to match real content; renaming weakens enforcement (behavior change). Central gate authoritative; preset-side scan list exempted as scoped/reviewed self-referential enforcement vocabulary with stale-detection.",
+      "reviewer": "FINAL-BUGHUNT combined fix",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/presets/typescript/src/index.ts",
+      "term": "inventory",
+      "locator": { "token": "inventory", "line": 263 },
+      "justification": "Self-referential enforcement vocabulary: member of FORBIDDEN_DOMAIN_TERMS consumed at runtime by the preset's domain-neutrality scan to flag generated content carrying the term.",
+      "whyUnavoidable": "Term must appear verbatim to match real content; renaming weakens enforcement (behavior change). Central gate authoritative; preset-side scan list exempted as scoped/reviewed self-referential enforcement vocabulary with stale-detection.",
+      "reviewer": "FINAL-BUGHUNT combined fix",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/presets/typescript/src/index.ts",
+      "term": "Billz",
+      "locator": { "token": "Billz", "line": 265 },
+      "justification": "Self-referential enforcement vocabulary: member of FORBIDDEN_DOMAIN_TERMS consumed at runtime by the preset's domain-neutrality scan to flag generated content carrying the term.",
+      "whyUnavoidable": "Term must appear verbatim to match real content; renaming weakens enforcement (behavior change). Central gate authoritative; preset-side scan list exempted as scoped/reviewed self-referential enforcement vocabulary with stale-detection.",
+      "reviewer": "FINAL-BUGHUNT combined fix",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/presets/typescript/src/index.ts",
+      "term": "Telegram",
+      "locator": { "token": "Telegram", "line": 266 },
+      "justification": "Self-referential enforcement vocabulary: member of FORBIDDEN_DOMAIN_TERMS consumed at runtime by the preset's domain-neutrality scan to flag generated content carrying the term.",
+      "whyUnavoidable": "Term must appear verbatim to match real content; renaming weakens enforcement (behavior change). Central gate authoritative; preset-side scan list exempted as scoped/reviewed self-referential enforcement vocabulary with stale-detection.",
+      "reviewer": "FINAL-BUGHUNT combined fix",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/presets/nest-react-rn/src/index.ts",
+      "term": "ecommerce",
+      "locator": { "token": "ecommerce", "line": 370 },
+      "justification": "Self-referential enforcement vocabulary: member of FORBIDDEN_DOMAIN_TERMS consumed at runtime by FORBIDDEN_DOMAIN_TERMS.map(... word-boundary patterns ...) to enforce domain neutrality on generated content.",
+      "whyUnavoidable": "Term must appear verbatim to match real content; renaming weakens enforcement (behavior change). Central gate authoritative; preset-side enforcement list exempted as scoped/reviewed self-referential enforcement vocabulary with stale-detection.",
+      "reviewer": "FINAL-BUGHUNT combined fix",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/presets/nest-react-rn/src/index.ts",
+      "term": "inventory",
+      "locator": { "token": "inventory", "line": 371 },
+      "justification": "Self-referential enforcement vocabulary: member of FORBIDDEN_DOMAIN_TERMS consumed at runtime by the preset's word-boundary enforcement to enforce domain neutrality on generated content.",
+      "whyUnavoidable": "Term must appear verbatim to match real content; renaming weakens enforcement (behavior change). Central gate authoritative; preset-side enforcement list exempted as scoped/reviewed self-referential enforcement vocabulary with stale-detection.",
+      "reviewer": "FINAL-BUGHUNT combined fix",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/presets/nest-react-rn/src/index.ts",
+      "term": "Billz",
+      "locator": { "token": "Billz", "line": 373 },
+      "justification": "Self-referential enforcement vocabulary: member of FORBIDDEN_DOMAIN_TERMS consumed at runtime by the preset's word-boundary enforcement to enforce domain neutrality on generated content.",
+      "whyUnavoidable": "Term must appear verbatim to match real content; renaming weakens enforcement (behavior change). Central gate authoritative; preset-side enforcement list exempted as scoped/reviewed self-referential enforcement vocabulary with stale-detection.",
+      "reviewer": "FINAL-BUGHUNT combined fix",
+      "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/presets/nest-react-rn/src/index.ts",
+      "term": "Telegram",
+      "locator": { "token": "Telegram", "line": 374 },
+      "justification": "Self-referential enforcement vocabulary: member of FORBIDDEN_DOMAIN_TERMS consumed at runtime by the preset's word-boundary enforcement to enforce domain neutrality on generated content.",
+      "whyUnavoidable": "Term must appear verbatim to match real content; renaming weakens enforcement (behavior change). Central gate authoritative; preset-side enforcement list exempted as scoped/reviewed self-referential enforcement vocabulary with stale-detection.",
+      "reviewer": "FINAL-BUGHUNT combined fix",
+      "reviewedOn": "2026-06-27"
+    }
+  ]
+}

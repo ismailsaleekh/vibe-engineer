@@ -1,0 +1,44 @@
+{
+  "$comment": "Root governed-surface contract for the vibe-engineer workspace. Declares the REAL governed product surface (packages, scripts, docs, examples, infra, .github, root config/carrier files) and excludes multi-orchestrator scratch + agent-harness + build-cache trees (.vibe, .pi, .turbo, .vitepress) and the generated lockfile. Authored by FINAL-BUGHUNT FIX (Triad-B).",
+  "surfaces": [
+    { "kind": "prefix", "path": "packages", "tools": ["eslint", "prettier", "tsc", "vitest"] },
+    { "kind": "prefix", "path": "scripts", "tools": ["eslint", "prettier", "node"] },
+    { "kind": "prefix", "path": "docs", "tools": ["prettier", "markdownlint"] },
+    { "kind": "prefix", "path": "examples", "tools": ["eslint", "prettier", "tsc"] },
+    { "kind": "prefix", "path": "infra", "tools": ["prettier"] },
+    { "kind": "prefix", "path": ".github", "tools": ["prettier"] },
+    { "kind": "exact", "path": "eslint.config.mjs", "tools": ["eslint"] },
+    { "kind": "exact", "path": "prettier.config.mjs", "tools": ["prettier"] },
+    { "kind": "exact", "path": "package.json", "tools": ["pnpm"] },
+    { "kind": "exact", "path": "tsconfig.json", "tools": ["tsc"] },
+    { "kind": "exact", "path": "tsconfig.base.json", "tools": ["tsc"] },
+    { "kind": "exact", "path": "turbo.json", "tools": ["turbo"] },
+    { "kind": "exact", "path": "pnpm-workspace.yaml", "tools": ["pnpm"] },
+    { "kind": "exact", "path": "mechanical-boundaries.json", "tools": ["mechanical-gates"] },
+    { "kind": "exact", "path": "mechanical-escape-allowlist.json", "tools": ["mechanical-gates"] },
+    { "kind": "exact", "path": "mechanical-domain-purity.json", "tools": ["mechanical-gates"] },
+    { "kind": "exact", "path": "mechanical-testing-boundary.json", "tools": ["mechanical-gates"] },
+    { "kind": "exact", "path": "README.md", "tools": ["markdownlint"] },
+    { "kind": "exact", "path": "CHANGELOG.md", "tools": ["markdownlint"] },
+    { "kind": "exact", "path": "CODE_OF_CONDUCT.md", "tools": ["markdownlint"] },
+    { "kind": "exact", "path": "CONTRIBUTING.md", "tools": ["markdownlint"] },
+    { "kind": "exact", "path": "SECURITY.md", "tools": ["markdownlint"] }
+  ],
+  "excludedPaths": [
+    ".vibe",
+    ".pi",
+    ".turbo",
+    ".vitepress",
+    "pnpm-lock.yaml"
+  ],
+  "requiredPaths": [
+    "tsconfig.json",
+    "package.json",
+    "eslint.config.mjs",
+    "prettier.config.mjs",
+    "mechanical-boundaries.json",
+    "mechanical-escape-allowlist.json",
+    "mechanical-domain-purity.json",
+    "mechanical-testing-boundary.json"
+  ]
+}
