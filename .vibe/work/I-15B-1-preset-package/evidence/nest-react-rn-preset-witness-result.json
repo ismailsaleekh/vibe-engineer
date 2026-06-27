@@ -1,0 +1,328 @@
+{
+  "ok": true,
+  "blocked": false,
+  "blockReason": null,
+  "phaseA": {
+    "nodeCheckResults": [
+      {
+        "path": "src/index.ts",
+        "status": 0,
+        "stderr": ""
+      },
+      {
+        "path": "fixtures/consumer/public-api-consumer.ts",
+        "status": 0,
+        "stderr": ""
+      },
+      {
+        "path": "fixtures/witnesses/run-nest-react-rn-preset-witness.mjs",
+        "status": 0,
+        "stderr": ""
+      }
+    ],
+    "templateEvidence": [
+      {
+        "file": "starter-layout.json",
+        "keys": [
+          "$comment",
+          "agenticHarness",
+          "apps",
+          "architectureDecision",
+          "authStance",
+          "consumedTypescriptPresetId",
+          "contractMechanism",
+          "goldenModule",
+          "goldenModuleClassification",
+          "packages",
+          "persistence",
+          "scope",
+          "toolingAreas",
+          "vibeAreas",
+          "workspaceName"
+        ]
+      },
+      {
+        "file": "starter-tsconfig-base.json",
+        "keys": [
+          "$comment",
+          "derivedFrom",
+          "exactOptionalPropertyTypes",
+          "module",
+          "moduleResolution",
+          "noUncheckedIndexedAccess",
+          "strict",
+          "verbatimModuleSyntax"
+        ]
+      },
+      {
+        "file": "starter-app-tsconfig.json",
+        "keys": [
+          "$comment",
+          "compilerOptions",
+          "extends",
+          "include"
+        ]
+      },
+      {
+        "file": "starter-pnpm-workspace.json",
+        "keys": [
+          "$comment",
+          "derivedFrom",
+          "globs"
+        ]
+      },
+      {
+        "file": "starter-turbo-tasks.json",
+        "keys": [
+          "$comment",
+          "derivedFrom",
+          "quickGateLabel",
+          "tasks"
+        ]
+      },
+      {
+        "file": "starter-package-manifest.json",
+        "keys": [
+          "$comment",
+          "private",
+          "scriptsDerivedFrom",
+          "type"
+        ]
+      },
+      {
+        "file": "starter-harness-config.json",
+        "keys": [
+          "$comment",
+          "agenticHarness",
+          "fields"
+        ]
+      },
+      {
+        "file": "starter-context-placeholder.json",
+        "keys": [
+          "$comment",
+          "goldenModuleClassification",
+          "inferenceLimit",
+          "schemaStatus"
+        ]
+      }
+    ],
+    "packageManifest": {
+      "name": "@vibe-engineer/preset-nest-react-rn",
+      "private": true,
+      "declaredTypescriptPresetDep": "workspace:*",
+      "implementationStatus": "implemented",
+      "exportsImport": "./src/index.ts"
+    },
+    "sourceHygieneClean": true,
+    "consumesPublicBareSpecifier": true,
+    "noRelativeImportIntoTypescriptPreset": true
+  },
+  "phaseB": {
+    "resolveTsPresetCommand": {
+      "command": "node --input-type=module -e const m = await import('@vibe-engineer/preset-typescript'); console.log('TS_PRESET_OK', typeof m.renderTypeScriptPresetFiles, m.TYPESCRIPT_COMPILER_STRICT_OPTIONS.strict);",
+      "cwd": "/Users/lizavasilyeva/work/vibe-engineer/packages/presets/nest-react-rn",
+      "status": 0,
+      "stdout": "TS_PRESET_OK function true\n",
+      "stderr": ""
+    },
+    "compileCommand": {
+      "command": "/Users/lizavasilyeva/work/vibe-engineer/node_modules/.bin/tsc --noEmit -p packages/presets/nest-react-rn/tsconfig.json",
+      "cwd": "/Users/lizavasilyeva/work/vibe-engineer",
+      "status": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    "b3LoadEvidence": {
+      "status": "green",
+      "importMechanism": "in-context-self-reference",
+      "specifier": "@vibe-engineer/preset-nest-react-rn",
+      "exportedKeys": [
+        "CONSUMED_TYPESCRIPT_PRESET_ID",
+        "FORBIDDEN_DOMAIN_TERMS",
+        "NEST_REACT_RN_PRESET_FILE_MANIFEST",
+        "NEST_REACT_RN_PRESET_ID",
+        "NEST_REACT_RN_PRESET_METADATA",
+        "NEST_REACT_RN_PRESET_NAME",
+        "NEST_REACT_RN_PRESET_VERSION",
+        "NestReactRnPresetOptionsError",
+        "STARTER_APPS",
+        "STARTER_COMPILER_STRICT_OPTIONS",
+        "STARTER_ESLINT_POLICY",
+        "STARTER_LAYOUT",
+        "STARTER_PACKAGES",
+        "STARTER_PACKAGE_SCRIPT_DEFAULTS",
+        "STARTER_PNPM_DEFAULTS",
+        "STARTER_PRETTIER_DEFAULTS",
+        "STARTER_TEST_AND_TYPECHECK_DEFAULTS",
+        "STARTER_TOOLING_AREAS",
+        "STARTER_TURBO_TASK_DEFAULTS",
+        "STARTER_VIBE_AREAS",
+        "getNestReactRnPresetFileManifest",
+        "getNestReactRnPresetMetadata",
+        "getStarterLayoutDeclaration",
+        "renderNestReactRnPresetFiles",
+        "validateNestReactRnPresetFiles",
+        "validateNestReactRnPresetRenderOptions"
+      ],
+      "hasRender": true,
+      "hasValidate": true,
+      "hasLayout": true,
+      "hasManifest": true,
+      "hasMetadata": true,
+      "hasOptionsError": true
+    },
+    "runtimeEvidence": {
+      "status": "green",
+      "renderFileCount": 29,
+      "validationOk": true,
+      "validationFindings": []
+    },
+    "layoutEvidence": {
+      "status": "green",
+      "appCount": 3,
+      "packageCount": 6,
+      "scope": "@vibe-engineer-starter",
+      "goldenModule": "golden-records",
+      "authStance": "no-auth",
+      "persistence": "PostgreSQL + Prisma",
+      "contractMechanism": "ts-rest + named Zod schemas",
+      "agenticHarness": "pi",
+      "appsMatchDl16": true,
+      "packagesMatchDl16": true
+    },
+    "manifestEvidence": {
+      "status": "green",
+      "manifestLength": 29,
+      "renderedEqualsManifest": true,
+      "presetId": "vibe-engineer.nest-react-rn.starter",
+      "consumedTypescriptPresetId": "vibe-engineer.typescript.strict"
+    },
+    "negativeResults": [
+      {
+        "name": "W-NEG-OVER-INFERENCE: injected business-domain term in core file",
+        "ok": true,
+        "expectedCode": "PRESET_DOMAIN_SPECIFIC_CORE_TEXT",
+        "observedCodes": [
+          "PRESET_MALFORMED_JSON",
+          "PRESET_DOMAIN_SPECIFIC_CORE_TEXT"
+        ]
+      },
+      {
+        "name": "W-NEG-NON-PI-HARNESS: agenticHarness != pi",
+        "ok": true,
+        "expectedCode": "PRESET_NON_PI_HARNESS",
+        "observedCodes": [
+          "PRESET_NON_PI_HARNESS"
+        ]
+      },
+      {
+        "name": "W-NEG-COPIED-HARNESS-LOGIC: copied-logic marker in starter code",
+        "ok": true,
+        "expectedCode": "PRESET_COPIED_HARNESS_LOGIC",
+        "observedCodes": [
+          "PRESET_COPIED_HARNESS_LOGIC"
+        ]
+      },
+      {
+        "name": "W-NEG-PRIVATE-SCOPED-IMPORT: private @vibe-engineer/* harness import",
+        "ok": true,
+        "expectedCode": "PRESET_PRIVATE_SCOPED_IMPORT",
+        "observedCodes": [
+          "PRESET_PRIVATE_SCOPED_IMPORT"
+        ]
+      },
+      {
+        "name": "strict flag weakened in root tsconfig",
+        "ok": true,
+        "expectedCode": "PRESET_TS_DEFAULTS_DRIFT",
+        "observedCodes": [
+          "PRESET_TS_DEFAULTS_DRIFT"
+        ]
+      },
+      {
+        "name": "package tsconfig weakened (no extends base)",
+        "ok": true,
+        "expectedCode": "PRESET_PACKAGE_TSCONFIG_WEAKENED",
+        "observedCodes": [
+          "PRESET_PACKAGE_TSCONFIG_WEAKENED"
+        ]
+      },
+      {
+        "name": "missing required file",
+        "ok": true,
+        "expectedCode": "PRESET_MISSING_REQUIRED_FILE",
+        "observedCodes": [
+          "PRESET_MISSING_REQUIRED_FILE"
+        ]
+      },
+      {
+        "name": "malformed json",
+        "ok": true,
+        "expectedCode": "PRESET_MALFORMED_JSON",
+        "observedCodes": [
+          "PRESET_MALFORMED_JSON"
+        ]
+      },
+      {
+        "name": "unsafe path traversal",
+        "ok": true,
+        "expectedCode": "PRESET_UNSAFE_GENERATED_PATH",
+        "observedCodes": [
+          "PRESET_MANIFEST_CONTENT_MISMATCH",
+          "PRESET_UNSAFE_GENERATED_PATH",
+          "PRESET_MISSING_REQUIRED_FILE",
+          "PRESET_MISSING_REQUIRED_FILE"
+        ]
+      },
+      {
+        "name": "duplicate generated path",
+        "ok": true,
+        "expectedCode": "PRESET_DUPLICATE_GENERATED_PATH",
+        "observedCodes": [
+          "PRESET_MANIFEST_CONTENT_MISMATCH",
+          "PRESET_MANIFEST_CONTENT_MISMATCH",
+          "PRESET_DUPLICATE_GENERATED_PATH",
+          "PRESET_MISSING_REQUIRED_FILE",
+          "PRESET_MALFORMED_JSON"
+        ]
+      },
+      {
+        "name": "manifest content mismatch (wrong kind)",
+        "ok": true,
+        "expectedCode": "PRESET_MANIFEST_CONTENT_MISMATCH",
+        "observedCodes": [
+          "PRESET_MANIFEST_CONTENT_MISMATCH"
+        ]
+      }
+    ],
+    "rendererOptionsEvidence": [
+      {
+        "name": "unknown renderer option",
+        "ok": true,
+        "code": "PRESET_MALFORMED_RENDER_OPTIONS",
+        "message": "Unknown renderer option: unexpectedOption."
+      },
+      {
+        "name": "wrong includeSampleSource type",
+        "ok": true,
+        "code": "PRESET_MALFORMED_RENDER_OPTIONS",
+        "message": "includeSampleSource must be a boolean when provided."
+      },
+      {
+        "name": "null renderer options",
+        "ok": true,
+        "code": "PRESET_MALFORMED_RENDER_OPTIONS",
+        "message": "Renderer options must be an object when provided."
+      }
+    ],
+    "defensiveCopyEvidence": {
+      "status": "green",
+      "blockedMutation": true,
+      "stableLength": true
+    }
+  },
+  "repositoryRoot": "/Users/lizavasilyeva/work/vibe-engineer",
+  "evidenceRoot": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-15B-1-preset-package/evidence",
+  "step2EvidenceRoot": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-15B-1-preset-package/step2-evidence"
+}

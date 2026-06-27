@@ -1,0 +1,266 @@
+{
+  "loadMechanism": "real src/index.ts via absolute path (Node 24 type-stripping); load success itself proves the transitive @vibe-engineer/preset-typescript import resolved via the real workspace link from the source file's own context (top-level import would throw ERR_MODULE_NOT_FOUND otherwise)",
+  "transitiveTsPresetResolvedViaRealLink": true,
+  "probeA": {
+    "name": "(a) validate(renderNestReactRnPresetFiles())",
+    "ok": true,
+    "findingCount": 0,
+    "findingCodes": [],
+    "fileCount": 29
+  },
+  "probeB": [
+    {
+      "term": "ecommerce",
+      "failClosed": true,
+      "domainFound": [
+        {
+          "path": "tsconfig.base.json",
+          "evidence": [
+            "ecommerce"
+          ]
+        }
+      ],
+      "observedCodes": [
+        "PRESET_MALFORMED_JSON",
+        "PRESET_DOMAIN_SPECIFIC_CORE_TEXT"
+      ]
+    },
+    {
+      "term": "inventory",
+      "failClosed": true,
+      "domainFound": [
+        {
+          "path": "tsconfig.base.json",
+          "evidence": [
+            "inventory"
+          ]
+        }
+      ],
+      "observedCodes": [
+        "PRESET_MALFORMED_JSON",
+        "PRESET_DOMAIN_SPECIFIC_CORE_TEXT"
+      ]
+    },
+    {
+      "term": "order",
+      "failClosed": true,
+      "domainFound": [
+        {
+          "path": "tsconfig.base.json",
+          "evidence": [
+            "order"
+          ]
+        }
+      ],
+      "observedCodes": [
+        "PRESET_MALFORMED_JSON",
+        "PRESET_DOMAIN_SPECIFIC_CORE_TEXT"
+      ]
+    },
+    {
+      "term": "payment",
+      "failClosed": true,
+      "domainFound": [
+        {
+          "path": "tsconfig.base.json",
+          "evidence": [
+            "payment"
+          ]
+        }
+      ],
+      "observedCodes": [
+        "PRESET_MALFORMED_JSON",
+        "PRESET_DOMAIN_SPECIFIC_CORE_TEXT"
+      ]
+    },
+    {
+      "term": "customer",
+      "failClosed": true,
+      "domainFound": [
+        {
+          "path": "tsconfig.base.json",
+          "evidence": [
+            "customer"
+          ]
+        }
+      ],
+      "observedCodes": [
+        "PRESET_MALFORMED_JSON",
+        "PRESET_DOMAIN_SPECIFIC_CORE_TEXT"
+      ]
+    },
+    {
+      "term": "cart",
+      "failClosed": true,
+      "domainFound": [
+        {
+          "path": "tsconfig.base.json",
+          "evidence": [
+            "cart"
+          ]
+        }
+      ],
+      "observedCodes": [
+        "PRESET_MALFORMED_JSON",
+        "PRESET_DOMAIN_SPECIFIC_CORE_TEXT"
+      ]
+    },
+    {
+      "term": "checkout",
+      "failClosed": true,
+      "domainFound": [
+        {
+          "path": "tsconfig.base.json",
+          "evidence": [
+            "checkout"
+          ]
+        }
+      ],
+      "observedCodes": [
+        "PRESET_MALFORMED_JSON",
+        "PRESET_DOMAIN_SPECIFIC_CORE_TEXT"
+      ]
+    }
+  ],
+  "probeC": {
+    "products_plural": {
+      "expectation": "shouldNotFlag",
+      "flagged": false,
+      "domainFindings": [],
+      "observedCodes": [
+        "PRESET_MALFORMED_JSON"
+      ]
+    },
+    "production_legit": {
+      "expectation": "shouldNotFlag",
+      "flagged": false,
+      "domainFindings": [],
+      "observedCodes": [
+        "PRESET_MALFORMED_JSON"
+      ]
+    },
+    "product_whole": {
+      "expectation": "shouldFlag",
+      "flagged": true,
+      "domainFindings": [
+        {
+          "path": "tsconfig.base.json",
+          "evidence": [
+            "product"
+          ]
+        }
+      ],
+      "observedCodes": [
+        "PRESET_MALFORMED_JSON",
+        "PRESET_DOMAIN_SPECIFIC_CORE_TEXT"
+      ]
+    },
+    "Product_capital": {
+      "expectation": "shouldFlag",
+      "flagged": true,
+      "domainFindings": [
+        {
+          "path": "tsconfig.base.json",
+          "evidence": [
+            "product"
+          ]
+        }
+      ],
+      "observedCodes": [
+        "PRESET_MALFORMED_JSON",
+        "PRESET_DOMAIN_SPECIFIC_CORE_TEXT"
+      ]
+    },
+    "ordering_verb": {
+      "expectation": "shouldNotFlag",
+      "flagged": false,
+      "domainFindings": [],
+      "observedCodes": [
+        "PRESET_MALFORMED_JSON"
+      ]
+    },
+    "delivered_verb": {
+      "expectation": "shouldNotFlag",
+      "flagged": false,
+      "domainFindings": [],
+      "observedCodes": [
+        "PRESET_MALFORMED_JSON"
+      ]
+    }
+  },
+  "unitProbe": {
+    "forbiddenTerms": [
+      "ecommerce",
+      "inventory",
+      "fashion",
+      "Billz",
+      "Telegram",
+      "Instagram",
+      "checkout",
+      "product",
+      "customer",
+      "order",
+      "cart",
+      "payment",
+      "social-feed"
+    ],
+    "cases": {
+      "production_sentence": {
+        "text": "Test-only; no production package may depend on it.",
+        "matches": []
+      },
+      "products": {
+        "text": "// products",
+        "matches": []
+      },
+      "product_whole": {
+        "text": "// product",
+        "matches": [
+          "product"
+        ]
+      },
+      "Product_capital": {
+        "text": "// Product",
+        "matches": [
+          "product"
+        ]
+      },
+      "ordering_verb": {
+        "text": "// ordering",
+        "matches": []
+      },
+      "order_whole": {
+        "text": "// order",
+        "matches": [
+          "order"
+        ]
+      },
+      "checkout_whole": {
+        "text": "// checkout",
+        "matches": [
+          "checkout"
+        ]
+      },
+      "ecommerce_phrase": {
+        "text": "the ecommerce site",
+        "matches": [
+          "ecommerce"
+        ]
+      },
+      "inventory_hyphen": {
+        "text": "inventory-item count",
+        "matches": [
+          "inventory"
+        ]
+      },
+      "socialfeed_hyphen": {
+        "text": "social-feed widget",
+        "matches": [
+          "social-feed"
+        ]
+      }
+    }
+  },
+  "publicApiExportCount": 26,
+  "consumeBareSpecifier": "@vibe-engineer/preset-typescript (workspace:* link)"
+}
