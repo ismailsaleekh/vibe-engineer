@@ -34,7 +34,7 @@ export interface BuiltInSchematicCatalogOptions {
 }
 
 export interface BuiltInSchematicManifestReadOptions extends BuiltInSchematicCatalogOptions {
-  readonly readTextFile: (filePath: string) => string | Promise<string>;
+  readTextFile(filePath: string): string | Promise<string>;
 }
 
 export interface BuiltInSchematicCatalogEntry {
@@ -54,7 +54,7 @@ export interface StandardContract {
 }
 
 export interface StandardsApiContract {
-  readonly loadStandard: (id: string) => StandardContract;
+  loadStandard(id: string): StandardContract;
 }
 
 export interface TypeScriptPresetMetadataContract {
@@ -72,12 +72,12 @@ export interface GeneratedTypeScriptPresetFileContract {
 }
 
 export interface TypeScriptPresetApiContract {
-  readonly getTypeScriptPresetMetadata: () => TypeScriptPresetMetadataContract;
-  readonly getTypeScriptPresetFileManifest: () => readonly TypeScriptPresetFileManifestEntryContract[];
-  readonly renderTypeScriptPresetFiles: () => readonly GeneratedTypeScriptPresetFileContract[];
-  readonly validateTypeScriptPresetFiles: (
+  getTypeScriptPresetMetadata(): TypeScriptPresetMetadataContract;
+  getTypeScriptPresetFileManifest(): readonly TypeScriptPresetFileManifestEntryContract[];
+  renderTypeScriptPresetFiles(): readonly GeneratedTypeScriptPresetFileContract[];
+  validateTypeScriptPresetFiles(
     files: readonly GeneratedTypeScriptPresetFileContract[],
-  ) => { readonly ok: boolean };
+  ): { readonly ok: boolean };
 }
 
 export interface BuiltInContractApis {
@@ -209,7 +209,7 @@ function presetManifestDefaults(api: TypeScriptPresetApiContract): Readonly<{
   }
   const manifestFile = rendered.find((file) => file.path === ".vibe/generated/typescript-preset/manifest.json");
   if (!manifestFile) fail("builtins_contract", "Actual TypeScript preset manifest output is required.", {});
-  const parsed = JSON.parse(manifestFile.content) as unknown;
+  const parsed = JSON.parse(manifestFile.content);
   const manifest = assertRecord(parsed, "typescriptPresetManifest");
   const pnpmDefaults = readRecordField(manifest, "pnpmDefaults", "typescriptPresetManifest");
   const testAndTypecheckDefaults = readRecordField(
@@ -273,7 +273,7 @@ export async function readBuiltInSchematicManifests(
   const entries: BuiltInSchematicManifestEntry[] = [];
   for (const item of createBuiltInSchematicCatalog(options)) {
     const manifestText = await options.readTextFile(item.manifestPath);
-    const manifest = JSON.parse(manifestText) as unknown;
+    const manifest = JSON.parse(manifestText);
     entries.push(Object.freeze({ ...item, manifest }));
   }
   return Object.freeze(entries);

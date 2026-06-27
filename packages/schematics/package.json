@@ -4,6 +4,10 @@
   "license": "MIT",
   "type": "module",
   "description": "Skeleton manifest for @vibe-engineer/schematics; implementation is owned by a later validated lane.",
+  "exports": {
+    ".": "./src/engine/index.js"
+  },
+  "main": "./src/engine/index.js",
   "vibeEngineer": {
     "implementationUnit": "I-00A-workspace-package-skeleton",
     "implementationStatus": "skeleton-only",
