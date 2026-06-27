@@ -1,0 +1,168 @@
+{
+  "schemaVersion": "1.0.0",
+  "artifactKind": "context_graph",
+  "graphId": "build-context-i21-cli-green",
+  "indexVersion": "1.0.0",
+  "producer": {
+    "kind": "skill",
+    "id": "skill-build",
+    "name": "build",
+    "version": "1.0.0",
+    "runId": "i21-cli-green"
+  },
+  "generatedAt": "2026-06-27T03:08:36.960Z",
+  "schemaRefs": {
+    "graph": "https://schemas.vibe-engineer.dev/context/v1/context-graph.schema.json",
+    "index": "https://schemas.vibe-engineer.dev/context/v1/context-index.schema.json",
+    "area": "https://schemas.vibe-engineer.dev/context/v1/context-area.schema.json",
+    "summary": "https://schemas.vibe-engineer.dev/context/v1/context-summary.schema.json",
+    "retrievalClosure": "https://schemas.vibe-engineer.dev/context/v1/retrieval-closure.schema.json"
+  },
+  "sources": [
+    {
+      "sourceId": "src-build-i21-cli-green",
+      "kind": "artifact",
+      "path": "sources/src-build-i21-cli-green.md",
+      "fingerprint": {
+        "algorithm": "sha256",
+        "value": "3d786eaecc6afef7c0da9915b12ceee03341afbdef9559dca5a4bb48b7c609d8"
+      },
+      "versionRef": "sha256:3d786eaecc6afef7c0da9915b12ceee03341afbdef9559dca5a4bb48b7c609d8",
+      "trust": "trusted",
+      "required": true,
+      "level": 1,
+      "scope": {
+        "kind": "repo",
+        "paths": [
+          "sources/src-build-i21-cli-green.md"
+        ],
+        "description": "Domain-neutral source context."
+      },
+      "artifactRef": {
+        "artifactKind": "build_result",
+        "artifactId": "build-cc144d0789db2c58",
+        "path": "sources/src-build-i21-cli-green.md",
+        "required": true
+      },
+      "citations": [
+        {
+          "citationId": "src-build-i21-cli-green:sha256",
+          "sourceId": "src-build-i21-cli-green",
+          "path": "sources/src-build-i21-cli-green.md",
+          "fingerprint": {
+            "algorithm": "sha256",
+            "value": "3d786eaecc6afef7c0da9915b12ceee03341afbdef9559dca5a4bb48b7c609d8"
+          }
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "contextId": "ctx:build-result",
+      "kind": "area",
+      "areaId": "build-result",
+      "title": "Build Result context for i09a-plan-approved",
+      "level": 1,
+      "mandatory": true,
+      "trust": "trusted",
+      "scope": {
+        "kind": "repo",
+        "paths": [
+          "packages/skills/src/build"
+        ],
+        "description": "Build skill context closure."
+      },
+      "owner": "vibe-engineer-build",
+      "headerRef": {
+        "artifactId": "ctx-area-build-result",
+        "path": ".vibe/context/areas/build-result.header.json"
+      },
+      "sourceRefs": [
+        "src-build-i21-cli-green"
+      ],
+      "artifactPath": ".vibe/context/areas/build-result.context.json"
+    },
+    {
+      "contextId": "ctx-summary:core-contracts-summary",
+      "kind": "summary",
+      "areaId": "build-result",
+      "title": "Core Contract Summary",
+      "level": 2,
+      "mandatory": false,
+      "trust": "trusted",
+      "scope": {
+        "kind": "repo",
+        "paths": [
+          "."
+        ],
+        "description": "Derived summary context."
+      },
+      "owner": "vibe-engineer-context",
+      "headerRef": {
+        "artifactId": "ctx-summary-core-contracts-summary",
+        "path": ".vibe/context/summaries/core-contracts-summary.header.json"
+      },
+      "sourceRefs": [
+        "src-build-i21-cli-green"
+      ],
+      "artifactPath": ".vibe/context/summaries/core-contracts-summary.summary.json",
+      "derivedFromNodeIds": [
+        "ctx:build-result"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "ctx:build-result",
+      "to": "ctx-summary:core-contracts-summary",
+      "rel": "summarizes"
+    }
+  ],
+  "links": [
+    {
+      "linkId": "work:i08",
+      "kind": "work",
+      "ref": {
+        "artifactKind": "implementation_plan",
+        "artifactId": "ip:i08-context",
+        "path": ".vibe/work/I-08-context-graph-index-drift/implementation-plan.json"
+      },
+      "required": true,
+      "statusAtLinkTime": "current"
+    },
+    {
+      "linkId": "evidence:i08",
+      "kind": "evidence",
+      "ref": {
+        "artifactKind": "evidence_packet",
+        "artifactId": "ev:i08-context",
+        "path": ".vibe/evidence/I-08-context-graph-index-drift/evidence.json"
+      },
+      "required": true,
+      "statusAtLinkTime": "current"
+    },
+    {
+      "linkId": "decision:dl09",
+      "kind": "decision",
+      "ref": {
+        "artifactKind": "context_file_header",
+        "artifactId": "dl:09",
+        "path": "docs/decisions/DL-09-context-memory-drift.md"
+      },
+      "required": true,
+      "statusAtLinkTime": "current"
+    }
+  ],
+  "retrievalPolicy": {
+    "requireTaskScope": true,
+    "mandatoryLevel": 1,
+    "allowedLevels": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  }
+}

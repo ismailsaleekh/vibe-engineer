@@ -1,0 +1,75 @@
+{
+  "schemaVersion": "orchestration-runtime-state/1.0.0",
+  "runId": "rev-probe-b",
+  "workPlanPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-21-build-skill-orchestration/revalidation-evidence/probe-run/B-green/build-work/build-work-plan.json",
+  "limits": {
+    "maxParallelAgents": 8,
+    "maxValidationFixIterations": 3,
+    "agenticWorkPackageTargetHours": 6
+  },
+  "nodes": [
+    {
+      "id": "build-work-package",
+      "status": "passed",
+      "attempts": 0,
+      "validationFixIterations": 0,
+      "failureRouting": {
+        "status": "none",
+        "hookRef": "dl10-build-hook:build-work-package",
+        "owner": "I-21-build-skill-orchestration",
+        "classificationRef": "dl10-verification-blocks",
+        "evidenceRefs": []
+      },
+      "evidenceRefs": [
+        "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-21-build-skill-orchestration/revalidation-evidence/probe-run/B-green/evidence_rev-probe-b_safety-hooks_00.json",
+        "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-21-build-skill-orchestration/revalidation-evidence/probe-run/B-green/evidence_rev-probe-b_typecheck_01.json",
+        "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-21-build-skill-orchestration/revalidation-evidence/probe-run/B-green/evidence_rev-probe-b_lint-format_02.json",
+        "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-21-build-skill-orchestration/revalidation-evidence/probe-run/B-green/evidence_rev-probe-b_mechanical-gate_03.json",
+        "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-21-build-skill-orchestration/revalidation-evidence/probe-run/B-green/evidence_rev-probe-b_unit_04.json",
+        "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-21-build-skill-orchestration/revalidation-evidence/probe-run/B-green/evidence_rev-probe-b_integration_05.json",
+        "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-21-build-skill-orchestration/revalidation-evidence/probe-run/B-green/evidence_rev-probe-b_contract-adapter_06.json",
+        "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-21-build-skill-orchestration/revalidation-evidence/probe-run/B-green/evidence_rev-probe-b_e2e_07.json",
+        "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-21-build-skill-orchestration/revalidation-evidence/probe-run/B-green/evidence_rev-probe-b_ui-verification_08.json",
+        "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-21-build-skill-orchestration/revalidation-evidence/probe-run/B-green/evidence_rev-probe-b_ai-eval_09.json",
+        "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-21-build-skill-orchestration/revalidation-evidence/probe-run/B-green/evidence_rev-probe-b_build-package_10.json",
+        "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-21-build-skill-orchestration/revalidation-evidence/probe-run/B-green/evidence_rev-probe-b_context-drift_11.json",
+        "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-21-build-skill-orchestration/revalidation-evidence/probe-run/B-green/evidence_rev-probe-b_observability_12.json",
+        "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-21-build-skill-orchestration/revalidation-evidence/probe-run/B-green/evidence_rev-probe-b_advisory-review_13.json",
+        "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-21-build-skill-orchestration/revalidation-evidence/probe-run/B-green/evidence_rev-probe-b_final-dod_14.json",
+        "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-21-build-skill-orchestration/revalidation-evidence/probe-run/B-green/evidence_rev-probe-b_schema-validation_15.json"
+      ],
+      "outputRefs": [
+        {
+          "artifactId": "build-result-rev-probe-b",
+          "artifactKind": "build_result",
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-21-build-skill-orchestration/revalidation-evidence/probe-run/B-green/build-work/build-result.json",
+          "ownerNodeId": "build-work-package",
+          "status": "pending-live",
+          "dirtyState": "unknown",
+          "evidenceRefs": []
+        }
+      ],
+      "statusReason": "Verification status 'passed' is green; build work package passed.",
+      "endedAt": "2026-06-27T03:19:48.021Z"
+    }
+  ],
+  "activeClaims": [],
+  "joinRecords": [],
+  "failureRoutes": [],
+  "resume": {
+    "cursorNodeIds": [],
+    "completedNodeIds": [],
+    "retryNodeIds": [],
+    "blockedNodeIds": [],
+    "inspectedAt": "2026-06-27T03:19:47.996Z",
+    "reasons": [
+      "initial durable state written before scheduling"
+    ]
+  },
+  "checkpoints": [
+    "2026-06-27T03:19:47.996Z initial-state-written",
+    "2026-06-27T03:19:47.996Z transition build-work-package active",
+    "2026-06-27T03:19:48.021Z transition build-work-package passed"
+  ],
+  "updatedAt": "2026-06-27T03:19:48.021Z"
+}

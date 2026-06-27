@@ -1,0 +1,83 @@
+{
+  "schemaVersion": "orchestration-runtime-state/1.0.0",
+  "runId": "rev-dbg-single",
+  "workPlanPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-21-build-skill-orchestration/revalidation-evidence/dbg/build-work/build-work-plan.json",
+  "limits": {
+    "maxParallelAgents": 8,
+    "maxValidationFixIterations": 3,
+    "agenticWorkPackageTargetHours": 6
+  },
+  "nodes": [
+    {
+      "id": "build-work-package",
+      "status": "blocked",
+      "attempts": 0,
+      "validationFixIterations": 0,
+      "failureRouting": {
+        "status": "none",
+        "hookRef": "dl10-build-hook:build-work-package",
+        "owner": "I-21-build-skill-orchestration",
+        "classificationRef": "dl10-verification-blocks",
+        "evidenceRefs": []
+      },
+      "evidenceRefs": [
+        "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-21-build-skill-orchestration/revalidation-evidence/dbg/evidence_rev-dbg-single_safety-hooks_00.json",
+        "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-21-build-skill-orchestration/revalidation-evidence/dbg/evidence_rev-dbg-single_typecheck_01.json",
+        "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-21-build-skill-orchestration/revalidation-evidence/dbg/evidence_rev-dbg-single_lint-format_02.json",
+        "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-21-build-skill-orchestration/revalidation-evidence/dbg/evidence_rev-dbg-single_mechanical-gate_03.json",
+        "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-21-build-skill-orchestration/revalidation-evidence/dbg/evidence_rev-dbg-single_unit_04.json",
+        "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-21-build-skill-orchestration/revalidation-evidence/dbg/evidence_rev-dbg-single_integration_05.json",
+        "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-21-build-skill-orchestration/revalidation-evidence/dbg/evidence_rev-dbg-single_contract-adapter_06.json",
+        "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-21-build-skill-orchestration/revalidation-evidence/dbg/evidence_rev-dbg-single_e2e_07.json",
+        "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-21-build-skill-orchestration/revalidation-evidence/dbg/evidence_rev-dbg-single_ui-verification_08.json",
+        "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-21-build-skill-orchestration/revalidation-evidence/dbg/evidence_rev-dbg-single_ai-eval_09.json",
+        "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-21-build-skill-orchestration/revalidation-evidence/dbg/evidence_rev-dbg-single_build-package_10.json",
+        "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-21-build-skill-orchestration/revalidation-evidence/dbg/evidence_rev-dbg-single_context-drift_11.json",
+        "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-21-build-skill-orchestration/revalidation-evidence/dbg/evidence_rev-dbg-single_observability_12.json",
+        "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-21-build-skill-orchestration/revalidation-evidence/dbg/evidence_rev-dbg-single_advisory-review_13.json",
+        "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-21-build-skill-orchestration/revalidation-evidence/dbg/evidence_rev-dbg-single_final-dod_14.json",
+        "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-21-build-skill-orchestration/revalidation-evidence/dbg/evidence_rev-dbg-single_schema-validation_15.json"
+      ],
+      "outputRefs": [
+        {
+          "artifactId": "build-result-rev-dbg-single",
+          "artifactKind": "build_result",
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-21-build-skill-orchestration/revalidation-evidence/dbg/build-work/build-result.json",
+          "ownerNodeId": "build-work-package",
+          "status": "pending-live",
+          "dirtyState": "unknown",
+          "evidenceRefs": []
+        }
+      ],
+      "statusReason": "Verification status 'blocked' is non-green; build blocks (failed-verification-blocks, DL-10).",
+      "endedAt": "2026-06-27T03:10:49.354Z"
+    }
+  ],
+  "activeClaims": [],
+  "joinRecords": [],
+  "failureRoutes": [
+    {
+      "status": "none",
+      "hookRef": "dl10-build-hook:build-work-package",
+      "owner": "I-21-build-skill-orchestration",
+      "classificationRef": "dl10-verification-blocks",
+      "evidenceRefs": []
+    }
+  ],
+  "resume": {
+    "cursorNodeIds": [],
+    "completedNodeIds": [],
+    "retryNodeIds": [],
+    "blockedNodeIds": [],
+    "inspectedAt": "2026-06-27T03:10:49.327Z",
+    "reasons": [
+      "initial durable state written before scheduling"
+    ]
+  },
+  "checkpoints": [
+    "2026-06-27T03:10:49.327Z initial-state-written",
+    "2026-06-27T03:10:49.327Z transition build-work-package active",
+    "2026-06-27T03:10:49.354Z transition build-work-package blocked"
+  ],
+  "updatedAt": "2026-06-27T03:10:49.354Z"
+}

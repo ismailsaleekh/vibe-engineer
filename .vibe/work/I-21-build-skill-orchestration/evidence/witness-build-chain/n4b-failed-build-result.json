@@ -1,0 +1,319 @@
+{
+  "schemaVersion": "1.0.0",
+  "artifactKind": "build_result",
+  "artifactId": "build-96bb0417bdd888ea",
+  "title": "Build Result for i09a-plan-approved",
+  "createdAt": "2026-06-27T05:26:56.304Z",
+  "updatedAt": "2026-06-27T05:26:56.304Z",
+  "producer": {
+    "kind": "skill",
+    "id": "skill-build",
+    "name": "build",
+    "version": "1.0.0",
+    "runId": "i21-witness-green"
+  },
+  "status": "failed",
+  "ownership": {
+    "ownerLane": "I-21-build-skill-orchestration",
+    "ownedWritePaths": [
+      "packages/skills/src/build/**",
+      "packages/skills/src/ship/intake/**",
+      "packages/cli/src/commands/build/**",
+      ".vibe/work/I-21-build-skill-orchestration/**"
+    ],
+    "readOnlyPaths": [
+      "packages/artifacts/**",
+      "packages/orchestration/**",
+      "packages/context/**",
+      "packages/verification/**",
+      "packages/adapters/pi/**",
+      "packages/cli/src/{entry,envelope,command-loader,errors,testing}/**"
+    ],
+    "untouchablePaths": [
+      ".git/**",
+      "pnpm-lock.yaml",
+      "pnpm-workspace.yaml",
+      "package.json",
+      "packages/cli/package.json",
+      "packages/skills/package.json",
+      "packages/artifacts/schemas/**",
+      "packages/skills/src/ship/orchestrator/**",
+      "packages/cli/src/commands/ship/**"
+    ],
+    "concurrencyNotes": "Build skill owns build/**, ship/intake/**, cli build command, and its own work dir; ship orchestrator remains I-22.",
+    "handoffPolicy": "Build Result artifacts require independent validation before downstream ship intake (I-22)."
+  },
+  "links": [
+    {
+      "rel": "implements",
+      "artifactKind": "implementation_plan",
+      "artifactId": "i09a-plan-approved",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/verification/fixtures/plans/approved-plan.json",
+      "required": true,
+      "statusAtLinkTime": "approved"
+    }
+  ],
+  "extensions": {
+    "dev.vibe.build": {
+      "schemaVersion": "1.0.0",
+      "runId": "i21-witness-green",
+      "verificationStatus": "passed",
+      "hookCount": 3,
+      "harnessDeterministic": "manifest-read-and-validated"
+    }
+  },
+  "implementationPlanRef": {
+    "rel": "implements",
+    "artifactKind": "implementation_plan",
+    "artifactId": "i09a-plan-approved",
+    "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/verification/fixtures/plans/approved-plan.json",
+    "required": true,
+    "statusAtLinkTime": "approved"
+  },
+  "implementationSummary": "Build skill consumed approved Implementation Plan i09a-plan-approved, drove 3 implementation hooks, ran verification (status passed), and updated the context graph.",
+  "changedFilesSummary": [
+    {
+      "path": "packages/verification",
+      "changeKind": "unchanged_validated",
+      "ownerLane": "I-21-build-skill-orchestration",
+      "summary": "Build validated declared affected area: verification runner core fixture"
+    },
+    {
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-21-build-skill-orchestration/evidence/witness-build-chain/build-work/build-result.json",
+      "changeKind": "created",
+      "ownerLane": "I-21-build-skill-orchestration",
+      "summary": "Build skill produced this schema-valid Build Result artifact."
+    }
+  ],
+  "schematicsUsed": [],
+  "testsAndVerificationChanged": [],
+  "verificationRuns": [
+    {
+      "evidencePacketRef": {
+        "rel": "evidence_for",
+        "artifactKind": "evidence_packet",
+        "artifactId": "evidence:i21-witness-green:safety-hooks:00",
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-21-build-skill-orchestration/evidence/witness-build-chain/evidence_i21-witness-green_safety-hooks_00.json",
+        "required": true,
+        "statusAtLinkTime": "not_run"
+      },
+      "summary": "Verification evidence for safety-hooks",
+      "result": "skipped",
+      "blocking": false
+    },
+    {
+      "evidencePacketRef": {
+        "rel": "evidence_for",
+        "artifactKind": "evidence_packet",
+        "artifactId": "evidence:i21-witness-green:typecheck:01",
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-21-build-skill-orchestration/evidence/witness-build-chain/evidence_i21-witness-green_typecheck_01.json",
+        "required": true,
+        "statusAtLinkTime": "not_run"
+      },
+      "summary": "Verification evidence for typecheck",
+      "result": "skipped",
+      "blocking": false
+    },
+    {
+      "evidencePacketRef": {
+        "rel": "evidence_for",
+        "artifactKind": "evidence_packet",
+        "artifactId": "evidence:i21-witness-green:lint-format:02",
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-21-build-skill-orchestration/evidence/witness-build-chain/evidence_i21-witness-green_lint-format_02.json",
+        "required": true,
+        "statusAtLinkTime": "not_run"
+      },
+      "summary": "Verification evidence for lint-format",
+      "result": "skipped",
+      "blocking": false
+    },
+    {
+      "evidencePacketRef": {
+        "rel": "evidence_for",
+        "artifactKind": "evidence_packet",
+        "artifactId": "evidence:i21-witness-green:mechanical-gate:03",
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-21-build-skill-orchestration/evidence/witness-build-chain/evidence_i21-witness-green_mechanical-gate_03.json",
+        "required": true,
+        "statusAtLinkTime": "not_run"
+      },
+      "summary": "Verification evidence for mechanical-gate",
+      "result": "skipped",
+      "blocking": false
+    },
+    {
+      "evidencePacketRef": {
+        "rel": "evidence_for",
+        "artifactKind": "evidence_packet",
+        "artifactId": "evidence:i21-witness-green:unit:04",
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-21-build-skill-orchestration/evidence/witness-build-chain/evidence_i21-witness-green_unit_04.json",
+        "required": true,
+        "statusAtLinkTime": "not_run"
+      },
+      "summary": "Verification evidence for unit",
+      "result": "skipped",
+      "blocking": false
+    },
+    {
+      "evidencePacketRef": {
+        "rel": "evidence_for",
+        "artifactKind": "evidence_packet",
+        "artifactId": "evidence:i21-witness-green:integration:05",
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-21-build-skill-orchestration/evidence/witness-build-chain/evidence_i21-witness-green_integration_05.json",
+        "required": true,
+        "statusAtLinkTime": "not_run"
+      },
+      "summary": "Verification evidence for integration",
+      "result": "skipped",
+      "blocking": false
+    },
+    {
+      "evidencePacketRef": {
+        "rel": "evidence_for",
+        "artifactKind": "evidence_packet",
+        "artifactId": "evidence:i21-witness-green:contract-adapter:06",
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-21-build-skill-orchestration/evidence/witness-build-chain/evidence_i21-witness-green_contract-adapter_06.json",
+        "required": true,
+        "statusAtLinkTime": "not_run"
+      },
+      "summary": "Verification evidence for contract-adapter",
+      "result": "skipped",
+      "blocking": false
+    },
+    {
+      "evidencePacketRef": {
+        "rel": "evidence_for",
+        "artifactKind": "evidence_packet",
+        "artifactId": "evidence:i21-witness-green:e2e:07",
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-21-build-skill-orchestration/evidence/witness-build-chain/evidence_i21-witness-green_e2e_07.json",
+        "required": true,
+        "statusAtLinkTime": "not_run"
+      },
+      "summary": "Verification evidence for e2e",
+      "result": "skipped",
+      "blocking": false
+    },
+    {
+      "evidencePacketRef": {
+        "rel": "evidence_for",
+        "artifactKind": "evidence_packet",
+        "artifactId": "evidence:i21-witness-green:ui-verification:08",
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-21-build-skill-orchestration/evidence/witness-build-chain/evidence_i21-witness-green_ui-verification_08.json",
+        "required": true,
+        "statusAtLinkTime": "not_run"
+      },
+      "summary": "Verification evidence for ui-verification",
+      "result": "skipped",
+      "blocking": false
+    },
+    {
+      "evidencePacketRef": {
+        "rel": "evidence_for",
+        "artifactKind": "evidence_packet",
+        "artifactId": "evidence:i21-witness-green:ai-eval:09",
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-21-build-skill-orchestration/evidence/witness-build-chain/evidence_i21-witness-green_ai-eval_09.json",
+        "required": true,
+        "statusAtLinkTime": "not_run"
+      },
+      "summary": "Verification evidence for ai-eval",
+      "result": "skipped",
+      "blocking": false
+    },
+    {
+      "evidencePacketRef": {
+        "rel": "evidence_for",
+        "artifactKind": "evidence_packet",
+        "artifactId": "evidence:i21-witness-green:build-package:10",
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-21-build-skill-orchestration/evidence/witness-build-chain/evidence_i21-witness-green_build-package_10.json",
+        "required": true,
+        "statusAtLinkTime": "not_run"
+      },
+      "summary": "Verification evidence for build-package",
+      "result": "skipped",
+      "blocking": false
+    },
+    {
+      "evidencePacketRef": {
+        "rel": "evidence_for",
+        "artifactKind": "evidence_packet",
+        "artifactId": "evidence:i21-witness-green:context-drift:11",
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-21-build-skill-orchestration/evidence/witness-build-chain/evidence_i21-witness-green_context-drift_11.json",
+        "required": true,
+        "statusAtLinkTime": "not_run"
+      },
+      "summary": "Verification evidence for context-drift",
+      "result": "skipped",
+      "blocking": false
+    },
+    {
+      "evidencePacketRef": {
+        "rel": "evidence_for",
+        "artifactKind": "evidence_packet",
+        "artifactId": "evidence:i21-witness-green:observability:12",
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-21-build-skill-orchestration/evidence/witness-build-chain/evidence_i21-witness-green_observability_12.json",
+        "required": true,
+        "statusAtLinkTime": "not_run"
+      },
+      "summary": "Verification evidence for observability",
+      "result": "skipped",
+      "blocking": false
+    },
+    {
+      "evidencePacketRef": {
+        "rel": "evidence_for",
+        "artifactKind": "evidence_packet",
+        "artifactId": "evidence:i21-witness-green:advisory-review:13",
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-21-build-skill-orchestration/evidence/witness-build-chain/evidence_i21-witness-green_advisory-review_13.json",
+        "required": true,
+        "statusAtLinkTime": "passed"
+      },
+      "summary": "Verification evidence for advisory-review",
+      "result": "pass",
+      "blocking": false
+    },
+    {
+      "evidencePacketRef": {
+        "rel": "evidence_for",
+        "artifactKind": "evidence_packet",
+        "artifactId": "evidence:i21-witness-green:final-dod:14",
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-21-build-skill-orchestration/evidence/witness-build-chain/evidence_i21-witness-green_final-dod_14.json",
+        "required": true,
+        "statusAtLinkTime": "not_run"
+      },
+      "summary": "Verification evidence for final-dod",
+      "result": "skipped",
+      "blocking": false
+    },
+    {
+      "evidencePacketRef": {
+        "rel": "evidence_for",
+        "artifactKind": "evidence_packet",
+        "artifactId": "evidence:i21-witness-green:schema-validation:15",
+        "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-21-build-skill-orchestration/evidence/witness-build-chain/evidence_i21-witness-green_schema-validation_15.json",
+        "required": true,
+        "statusAtLinkTime": "passed"
+      },
+      "summary": "Verification evidence for schema-validation",
+      "result": "pass",
+      "blocking": true
+    }
+  ],
+  "warningsAndBlockers": [],
+  "contextDocsUpdates": [
+    {
+      "ref": {
+        "rel": "context_for",
+        "artifactKind": "context_file_header",
+        "artifactId": "ctx-index-graph",
+        "path": ".vibe/work/I-21-build-skill-orchestration/evidence/witness-build-chain/build-work/context/.vibe/context/index/context-graph.header.json",
+        "required": true,
+        "statusAtLinkTime": "current"
+      },
+      "updateStatus": "updated",
+      "summary": "Context graph /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-21-build-skill-orchestration/evidence/witness-build-chain/build-work/context/.vibe/context/index/context-graph.json updated via @vibe-engineer/context; context_file_header validated (ok)."
+    }
+  ],
+  "finalStatusReason": "Verification status 'passed' is green; build passed with 16 evidence packet(s).",
+  "advisoryFindings": [
+    "Selected-harness live-skill-execution seam (I-14B) is pending-live/BLOCKED: missing operator live-pi environment (a real pi runtime/adapter capable of executing selected skills live); none is present in this deterministic build environment."
+  ]
+}

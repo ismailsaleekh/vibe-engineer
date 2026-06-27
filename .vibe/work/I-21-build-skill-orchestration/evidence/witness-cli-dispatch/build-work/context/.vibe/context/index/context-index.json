@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "1.0.0",
+  "artifactKind": "context_index",
+  "indexId": "context-index-main",
+  "indexVersion": "1.0.0",
+  "producer": {
+    "kind": "skill",
+    "id": "skill-build",
+    "name": "build",
+    "version": "1.0.0",
+    "runId": "i21-cli-green"
+  },
+  "generatedAt": "2026-06-27T03:08:36.960Z",
+  "graphRef": {
+    "graphId": "build-context-i21-cli-green",
+    "path": ".vibe/context/index/context-graph.json",
+    "headerPath": ".vibe/context/index/context-graph.header.json"
+  },
+  "headerRef": {
+    "artifactId": "ctx-index-main",
+    "path": ".vibe/context/index/context-index.header.json"
+  },
+  "nodeRefs": [
+    {
+      "contextId": "ctx:build-result",
+      "areaId": "build-result",
+      "level": 1,
+      "mandatory": true,
+      "path": ".vibe/context/areas/build-result.context.json",
+      "headerPath": ".vibe/context/areas/build-result.header.json",
+      "sourceRefs": [
+        "src-build-i21-cli-green"
+      ]
+    },
+    {
+      "contextId": "ctx-summary:core-contracts-summary",
+      "areaId": "build-result",
+      "level": 2,
+      "mandatory": false,
+      "path": ".vibe/context/summaries/core-contracts-summary.summary.json",
+      "headerPath": ".vibe/context/summaries/core-contracts-summary.header.json",
+      "sourceRefs": [
+        "src-build-i21-cli-green"
+      ]
+    }
+  ],
+  "sourceRefs": [
+    {
+      "sourceId": "src-build-i21-cli-green",
+      "path": "sources/src-build-i21-cli-green.md",
+      "fingerprint": {
+        "algorithm": "sha256",
+        "value": "3d786eaecc6afef7c0da9915b12ceee03341afbdef9559dca5a4bb48b7c609d8"
+      }
+    }
+  ],
+  "schemaRef": "https://schemas.vibe-engineer.dev/context/v1/context-index.schema.json"
+}

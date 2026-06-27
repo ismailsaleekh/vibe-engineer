@@ -1,0 +1,29 @@
+{
+  "probeLog": [
+    {
+      "name": "A-failing-blocking-layer-blocks",
+      "pass": true,
+      "detail": "reason=verification_failed_blocks_build status=failed value=undefined"
+    },
+    {
+      "name": "B-intake-rejects-non-passed",
+      "pass": true,
+      "detail": "build_result_not_passed"
+    },
+    {
+      "name": "C-green-carrier-honest-status",
+      "pass": true,
+      "detail": "status=passed schemaValid=true"
+    },
+    {
+      "name": "D-f1-pending-live-honest",
+      "pass": true,
+      "detail": "status=pending-live/BLOCKED noExecClaim=true"
+    },
+    {
+      "name": "E-unapproved-plan-blocks",
+      "pass": true,
+      "detail": "plan_not_approved"
+    }
+  ]
+}

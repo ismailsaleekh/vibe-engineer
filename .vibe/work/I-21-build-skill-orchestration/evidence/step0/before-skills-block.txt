@@ -1,0 +1,24 @@
+  packages/skills:
+    dependencies:
+      '@vibe-engineer/artifacts':
+        specifier: workspace:*
+        version: link:../artifacts
+
+  packages/standards: {}
+
+  packages/testing: {}
+
+  packages/verification:
+    dependencies:
+      '@vibe-engineer/artifacts':
+        specifier: workspace:*
+        version: link:../artifacts
+      '@vibe-engineer/orchestration':
+        specifier: workspace:*
+        version: link:../orchestration
+
+packages:
+
+  '@babel/helper-string-parser@7.29.7':
+    resolution: {integrity: sha512-Pb5ijPrZ89GDH8223L4UP8i6QApWxs04RbPQJTeWDV0/keR2E36MeKnyr6LYmUUvqRRI+Iv87SuF1W6ErINzYw==}
+    engines: {node: '>=6.9.0'}

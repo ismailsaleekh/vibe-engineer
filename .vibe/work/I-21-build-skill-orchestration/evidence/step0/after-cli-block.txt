@@ -1,0 +1,20 @@
+  packages/cli:
+    dependencies:
+      '@vibe-engineer/adapter-pi':
+        specifier: workspace:*
+        version: link:../adapters/pi
+      '@vibe-engineer/artifacts':
+        specifier: workspace:*
+        version: link:../artifacts
+      '@vibe-engineer/config':
+        specifier: workspace:*
+        version: link:../config
+      '@vibe-engineer/context':
+        specifier: workspace:*
+        version: link:../context
+      '@vibe-engineer/security':
+        specifier: workspace:*
+        version: link:../security
+      '@vibe-engineer/skills':
+        specifier: workspace:*
+        version: link:../skills

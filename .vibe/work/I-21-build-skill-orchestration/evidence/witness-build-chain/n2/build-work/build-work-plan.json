@@ -1,0 +1,71 @@
+{
+  "limits": {
+    "agenticWorkPackageTargetHours": 6,
+    "maxParallelAgents": 8,
+    "maxValidationFixIterations": 3
+  },
+  "nodes": [
+    {
+      "dependsOn": [],
+      "estimate": {
+        "agenticHours": 6,
+        "split": false
+      },
+      "evidenceRefs": [],
+      "expectedOutputs": [
+        {
+          "artifactId": "build-result-i21-n2-verify-fails",
+          "artifactKind": "build_result",
+          "dirtyState": "unknown",
+          "evidenceRefs": [],
+          "ownerNodeId": "build-work-package",
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-21-build-skill-orchestration/evidence/witness-build-chain/n2/build-work/build-result.json",
+          "status": "pending-live"
+        }
+      ],
+      "failureRouting": {
+        "classificationRef": "dl10-verification-blocks",
+        "evidenceRefs": [],
+        "hookRef": "dl10-build-hook:build-work-package",
+        "owner": "I-21-build-skill-orchestration",
+        "status": "none"
+      },
+      "id": "build-work-package",
+      "ownershipClaims": [
+        {
+          "access": "write",
+          "ownerNodeId": "build-work-package",
+          "path": "packages/skills/src/build/**"
+        },
+        {
+          "access": "write",
+          "ownerNodeId": "build-work-package",
+          "path": "packages/skills/src/ship/intake/**"
+        },
+        {
+          "access": "write",
+          "ownerNodeId": "build-work-package",
+          "path": "packages/cli/src/commands/build/**"
+        },
+        {
+          "access": "write",
+          "ownerNodeId": "build-work-package",
+          "path": ".vibe/work/I-21-build-skill-orchestration/**"
+        }
+      ],
+      "title": "Build work package for i09a-plan-approved"
+    }
+  ],
+  "readOnlyPaths": [
+    "packages/artifacts/**",
+    "packages/orchestration/**"
+  ],
+  "runId": "i21-n2-verify-fails",
+  "schemaVersion": "orchestration-work-plan/1.0.0",
+  "untouchablePaths": [
+    ".git/**",
+    "pnpm-lock.yaml",
+    "pnpm-workspace.yaml",
+    "package.json"
+  ]
+}

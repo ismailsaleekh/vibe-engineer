@@ -1,0 +1,266 @@
+ M .vibe/work/I-07D-typescript-preset-package/evidence/typescript-preset-witness-result.json
+ M .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/witness-evidence/aggregate-witness.json
+ M .vibe/work/I-13-mechanical-P2-smell-framework/compiled-p2-code-smell/index.js
+ M .vibe/work/I-13-mechanical-P2-smell-framework/post-fix-evidence/postfix-output/commands/p0-allowlist-domain-aggregate.json
+ M .vibe/work/I-13-mechanical-P2-smell-framework/post-fix-evidence/postfix-output/commands/p0-testing-boundary.json
+ M .vibe/work/I-13-mechanical-P2-smell-framework/witness-evidence/p0-allowlist-domain-aggregate.json
+ M .vibe/work/I-13-mechanical-P2-smell-framework/witness-evidence/p0-testing-boundary.json
+ M .vibe/work/I-13-mechanical-P2-smell-framework/witness-evidence/p1-aggregate-witness.json
+ M .vibe/work/I-18-security-safety-hooks-policy/I-18B-security-cli-command-and-verify-hook/evidence/regression/default-entry-security-unsupported.json
+ M .vibe/work/I-18-security-safety-hooks-policy/I-18B-security-cli-command-and-verify-hook/evidence/regression/foundation-envelope.json
+ M package.json
+ M packages/cli/package.json
+ D packages/cli/src/commands/security/index.js
+ M packages/cli/src/commands/security/run-cli-witnesses.mjs
+ M packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/valid-aggregate/mechanical-surface.json
+ M packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/valid-aggregate/package.json
+ M packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/witness.mjs
+ M packages/mechanical-gates/fixtures/p0/testing-boundary/witness.mjs
+ M packages/mechanical-gates/src/aggregate/index.d.ts
+ M packages/mechanical-gates/src/aggregate/index.js
+ M packages/mechanical-gates/src/aggregate/run-p0-aggregate.js
+ M packages/presets/nest-react-rn/package.json
+ M packages/skills/package.json
+ M pnpm-lock.yaml
+ M pnpm-workspace.yaml
+ M turbo.json
+?? .github/
+?? .vibe/evidence/
+?? .vibe/work/DL-18P-pulumi-deployment-defaults-reconciliation/
+?? .vibe/work/I-02A-cli-loader-envelope/evidence/fix/package-test-20260626T222225665Z/
+?? .vibe/work/I-02A-cli-loader-envelope/evidence/fix/package-test-20260626T222254667Z/
+?? .vibe/work/I-02A-cli-loader-envelope/evidence/fix/package-test-20260626T222747538Z/
+?? .vibe/work/I-02A-cli-loader-envelope/evidence/fix/package-test-20260626T224348083Z/
+?? .vibe/work/I-02A-cli-loader-envelope/evidence/fix/package-test-20260626T224921851Z/
+?? .vibe/work/I-02A-cli-loader-envelope/evidence/fix/package-test-20260627T012934932Z/
+?? .vibe/work/I-02A-cli-loader-envelope/evidence/fix/package-test-20260627T013038683Z/
+?? .vibe/work/I-02A-cli-loader-envelope/evidence/fix/package-test-20260627T013210420Z/
+?? .vibe/work/I-02A-cli-loader-envelope/evidence/fix/package-test-20260627T031500694Z/
+?? .vibe/work/I-07A-schematics-manifest-engine/evidence/cli-baseline/
+?? .vibe/work/I-07D-typescript-preset-package/evidence/standards-regression/
+?? .vibe/work/I-09A-verification-runner-core-evidence-routing/evidence-reruns/
+?? .vibe/work/I-10C-AGG-testing-boundary-public-consumer-handoff/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-10484-1782503165460-3b57e2907c73e/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-10494-1782503116927-86337c7eafe9f/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-10494-1782503132525-5d4566bd145e2/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-11254-1782503149549-dcd383fa321c58/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-11643-1782503162758-6a3d46d8aba518/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-12225-1782503240077-dd0424ed0c609/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-12229-1782503199177-0fdbcb9211c358/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-12229-1782503210177-9dc69e2b77405/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-12399-1782503225023-c2a7bf83a82518/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-12521-1782503237744-364cb2c5b59ce8/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-13507-1782503294065-b40839f6086dd8/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-13507-1782503304769-8f796c76380e3/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-13907-1782503394848-34875015da56/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-13911-1782503352159-74f7c77977fad8/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-13911-1782503365447-3eaa9d5151377/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-14095-1782503380445-77bd01794c067/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-14210-1782503392298-0de6e138243088/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-14970-1782503520786-baec31e69e1238/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-14977-1782503482566-070d8af45ae208/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-14977-1782503497557-d629b106ce9418/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-15336-1782503506474-f8ae869ac81f3/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-15406-1782503517716-a71a8302756818/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-17383-1782503889484-52f59bf6923a/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-17602-1782503920332-fcec808b8a0418/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-17937-1782503950059-6f1563a9c223a/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-17937-1782503967026-7513959042acb/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-18451-1782504141779-28c6404f6e247/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-18457-1782504060117-45a5865d8361d8/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-18457-1782504102633-00e2e5a9563898/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-18875-1782504120300-6dfc5391b870e/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-18966-1782504138585-f5eeb2f4ed0f9/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-2073-1782502120631-c9eb8f2c3f96b8/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-43031-1782507331207-02aefb12c77408/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-43031-1782507342439-a4cf528b18b52/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-43329-1782507385954-453dba5f56b8c8/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-45307-1782507778126-8e790f23ffaac8/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-45308-1782507778126-ef2ae288f885f/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-45308-1782507797960-891c86acb71428/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-45515-1782507808671-b6bed1151828f/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-46773-1782493601171-c817321ae834/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-48516-1782508311829-6db687d3949738/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-48516-1782508323703-099a9f3c51aa38/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-48677-1782508336903-35477f37cacab/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-48677-1782508350911-2f567769881c78/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-48880-1782508364871-e0fd1a3c20863/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-48880-1782508387749-6d2dc61f20eae8/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-48926-1782493913660-413c81218a088/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-49219-1782508407761-e1c1b3a72689c/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-49219-1782508426915-7a8d99b05d64/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-49477-1782508445344-4116c9be8b6848/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-49477-1782508463464-a31e5b2ae89c88/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-49824-1782508504597-cbff141573c598/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-49824-1782508523707-e5ecc80e42853/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-50306-1782508584142-c4f213314410c/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-50306-1782508596908-5be585f123a628/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-50520-1782508610001-cfc8f5fa6d6188/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-50520-1782508619913-eb52b306386f6/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-50692-1782508632060-0feb14430831f/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-50692-1782508642207-34e2f5f8104c1/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-50982-1782508654932-ef5a276c6afc2/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-50982-1782508666766-54763ba8a959c/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-51226-1782508680459-84539921e0613/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-51226-1782508689610-21618d5d3ee9/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-51433-1782508748062-b5e189cad91378/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-51439-1782508708365-a3cb82106f5f28/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-51439-1782508720651-e12c5545bb6f78/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-51593-1782508731817-66a9b539bd6e4/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-51685-1782508745676-3a1d5a7fc14cb8/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-5246-1782502441737-0843a3f9f0cc88/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-53370-1782509162567-d60408d10e3ce8/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-53379-1782509118131-f97dd35f8b0f78/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-53379-1782509129222-a66020170f38c8/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-53662-1782509145357-70eeb6883c3f58/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-53761-1782509160456-15ef0ea3e4e888/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-53922-1782509182025-a4885c0b27c8e8/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-53922-1782509194279-6777ce35849db8/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-54100-1782509210128-71e065684c53/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-54100-1782509229137-4a09f0bd0b514/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-54389-1782509265411-6422305036313/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-54389-1782509276228-09e8022ccccfb/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-54543-1782509286576-dc53a7508b5f18/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-54543-1782509296664-afd57cf9eb248/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-54671-1782509306710-8dbf495d489388/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-54671-1782509316965-38272ce0f6e51/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-54812-1782509327069-c1074cd3145a88/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-54812-1782509337727-13984aafec7e7/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-54947-1782509348704-51782b2a817ca/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-54947-1782509361758-03a38397e46d9/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-55095-1782509374931-c8883975322de8/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-55095-1782509385413-c95879b0634828/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-55238-1782509396342-40d61e6b00e278/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-55238-1782509409060-726f8f1ff27d2/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-55387-1782509423702-888e10f2d405f8/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-55387-1782509438775-78b305335a9f3/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-55579-1782509456781-4188ec8ad3c54/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-55579-1782509474218-4f521d2e42ab3/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-6065-1782502587191-58d668c166b3b8/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-6307-1782502642572-09547e0fefc6c8/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-64706-1782497331574-d6694f8f584d48/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-64706-1782497333268-736bbc458af1d/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-64706-1782497337269-864ddba6b99e8/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-64706-1782497338151-d6eb486580396/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-64706-1782497339038-afe2a242f52948/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-64706-1782497339928-e3862351af9948/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-64706-1782497340812-82a645e2ebc4a/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-65214-1782497401466-f48d50040f75c/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-65214-1782497403182-23a5b1d8211e9/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-65214-1782497407250-1015ea9586a448/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-65214-1782497408140-8338937755415/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-65214-1782497409032-0f4b308e13d65/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-65214-1782497409917-28f8dedefb093/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-65214-1782497410808-d1e1a57144eab8/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-65499-1782497417194-b767898f92d05/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-65499-1782497418899-b7efe148e20ee8/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-65499-1782497422910-6b4a1492cf8fd8/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-65499-1782497423798-c72a5ae8088ab8/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-65499-1782497424677-9292a0c9db2698/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-65499-1782497425560-32c45b08f60b3/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-65499-1782497426454-e5f78382b951b/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-6569-1782502708915-3f271dc4fecf18/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-6569-1782502724898-ed8ba746714d7/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-66673-1782497669017-c8ab4dffd62d98/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-66673-1782497670710-98ae3d0fcd5b9/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-66673-1782497674694-c2f6476ea8354/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-66673-1782497675578-13669f155192c8/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-66673-1782497676465-1ad4a4c19395/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-66673-1782497677341-0a413dacc30c48/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-66673-1782497678250-189e07155bfe58/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-67454-1782497780735-1b7e512a6917d8/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-67454-1782497782427-db1ae3b42232b8/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-67454-1782497786405-fc05e1a5ec8e8/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-67454-1782497787293-441bfc32ae2c2/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-67454-1782497788182-04e628e316638/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-67454-1782497789068-de23fc2d1c7ab/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-67454-1782497789956-f7b8dd41384fd/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-67764-1782497794261-c600b11c4f63d/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-6793-1782502755100-dd6870102d5198/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-6793-1782502767479-a12981a9c85e7/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-68012-1782497799635-122b6cd79ffe1/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-68012-1782497801363-cdb4e2e257ec38/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-68012-1782497805331-a572bd6569f4c/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-68012-1782497806215-718d5d66fb89f/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-68012-1782497807109-0daec2383606e/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-68012-1782497807994-e66a6e2cca5e18/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-68012-1782497808876-4f82987dfcb7a/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-68728-1782497922483-540726bad76af/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-68728-1782497924186-904fed7817a1c/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-68728-1782497928187-221520bf9e5a1/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-68728-1782497929100-26e8065a529f28/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-68728-1782497929978-eb06b8a42292e/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-68728-1782497930861-c661159f16d1b/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-68728-1782497931750-55417c3c37b2f8/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-69017-1782497934603-44087d585aa9/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-69017-1782497936296-7c0a1289dcb1d8/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-69017-1782497940266-941cbd08149238/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-69017-1782497941163-1a7ba11c0ac668/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-69017-1782497942041-7d5e9c211dc22/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-69017-1782497942923-766e233d81bca/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-69017-1782497943810-3d93125b886cb8/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-69303-1782497948064-6b5eca14c13da/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-69544-1782497953395-414536003eda9/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-69544-1782497955100-7c62d9bed532c/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-69544-1782497959490-93db71e9dca3a8/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-69544-1782497960392-809b0365f09d4/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-69544-1782497961283-d785e605828a78/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-69544-1782497962161-4947c513b7ace8/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-69544-1782497963045-b357575068eff8/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-7735-1782502860725-aab0eb9eb1085/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-7861-1782502932420-e422ea2175f6b8/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-7863-1782502889201-c39eb64966883/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-7863-1782502894914-454b158d4009/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-7983-1782502912433-88d790c3fd92e/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-8139-1782502930256-a1bd5b3df4da08/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-8567-1782503017228-b684976219996/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-8575-1782502969171-aeeebc11a4c1f/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-8575-1782502984442-76839cca28b5a8/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-9345-1782502997362-ec51747dafd578/
+?? .vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-9678-1782503013186-f10710ab4da708/
+?? .vibe/work/I-13C-p2-aggregate-runner-bridge/
+?? .vibe/work/I-15A-create-import-cli-ux-selected-harness/
+?? .vibe/work/I-15B-1-preset-package/
+?? .vibe/work/I-15B-2-source-template-monorepo/
+?? .vibe/work/I-15B-3-harness-consumption-witness/
+?? .vibe/work/I-16A-starter-contracts-api-provider/
+?? .vibe/work/I-16B-starter-client-golden-flow/
+?? .vibe/work/I-18-security-safety-hooks-policy/I-18B-security-cli-command-and-verify-hook/I-18B-finisher-report.md
+?? .vibe/work/I-18-security-safety-hooks-policy/I-18B-security-cli-command-and-verify-hook/I-18B-fix-report.md
+?? .vibe/work/I-18-security-safety-hooks-policy/I-18B-security-cli-command-and-verify-hook/I-18B-post-finisher-revalidation-artifact.md
+?? .vibe/work/I-18-security-safety-hooks-policy/I-18B-security-cli-command-and-verify-hook/finisher-evidence/
+?? .vibe/work/I-18-security-safety-hooks-policy/I-18B-security-cli-command-and-verify-hook/fix-evidence/
+?? .vibe/work/I-18-security-safety-hooks-policy/I-18B-security-cli-command-and-verify-hook/revalidation-evidence/
+?? .vibe/work/I-20A-local-quality-runner-and-wiring-integrity/
+?? .vibe/work/I-20B-github-actions-quick-gate/
+?? .vibe/work/I-20C-pulumi-scaffold-preview-deploy/
+?? .vibe/work/I-20D-ci-pulumi-real-boundary-validation/
+?? .vibe/work/I-20S-ci-pulumi-dependency-root-handoff/
+?? .vibe/work/I-21-build-skill-orchestration/
+?? docs/decisions/DL-18B-pulumi-deployment-defaults.md
+?? docs/deployment/
+?? examples/starter-reference/.source-template/
+?? examples/starter-reference/generated-fixtures/create-ux/
+?? examples/starter-reference/generated-fixtures/golden-api/
+?? examples/starter-reference/generated-fixtures/golden-client/
+?? examples/starter-reference/generated-fixtures/golden-contracts/
+?? examples/starter-reference/generated-fixtures/golden-flow/
+?? examples/starter-reference/generated-fixtures/harness-consumption/
+?? examples/starter-reference/generated-fixtures/selected-harness/
+?? infra/
+?? packages/.vibe/
+?? packages/cli/src/commands/create/
+?? packages/cli/src/commands/import/
+?? packages/cli/src/commands/security/index.ts
+?? packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/valid-aggregate/mechanical-testing-boundary.json
+?? packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/valid-aggregate/packages/consumer/
+?? packages/mechanical-gates/fixtures/p0/allowlist-domain-aggregate/valid-aggregate/packages/testing/
+?? packages/mechanical-gates/fixtures/p0/testing-boundary-aggregate/
+?? packages/mechanical-gates/fixtures/p2/aggregate/
+?? packages/mechanical-gates/src/aggregate/p2/
+?? packages/presets/nest-react-rn/fixtures/
+?? packages/presets/nest-react-rn/src/
+?? packages/presets/nest-react-rn/templates/
+?? packages/presets/nest-react-rn/tsconfig.json
+?? packages/skills/src/ship/
+?? scripts/

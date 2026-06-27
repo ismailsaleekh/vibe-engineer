@@ -1,0 +1,19 @@
+  packages/skills:
+    dependencies:
+      '@vibe-engineer/adapter-pi':
+        specifier: workspace:*
+        version: link:../adapters/pi
+      '@vibe-engineer/artifacts':
+        specifier: workspace:*
+        version: link:../artifacts
+      '@vibe-engineer/context':
+        specifier: workspace:*
+        version: link:../context
+      '@vibe-engineer/orchestration':
+        specifier: workspace:*
+        version: link:../orchestration
+      '@vibe-engineer/verification':
+        specifier: workspace:*
+        version: link:../verification
+
+  packages/standards: {}

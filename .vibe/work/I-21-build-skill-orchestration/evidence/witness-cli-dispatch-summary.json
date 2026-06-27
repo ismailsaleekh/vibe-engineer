@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "i21-cli-witness/v1",
+  "results": [
+    {
+      "name": "W6-loader-registers-build",
+      "status": "PASS",
+      "note": "build command registered"
+    },
+    {
+      "name": "W6-cli-declares-skills-dep",
+      "status": "PASS",
+      "note": "workspace:*"
+    },
+    {
+      "name": "W6-green-dispatch",
+      "status": "PASS",
+      "note": "status=success exit=0 envelopeValid=true buildArtifact=true"
+    },
+    {
+      "name": "R3-secret-redaction",
+      "status": "PASS",
+      "note": "secret-like input rejected + redacted from envelope"
+    },
+    {
+      "name": "N2-cli-failed-verification-non-green",
+      "status": "PASS",
+      "note": "status=failure exit=1 buildArtifact=false"
+    },
+    {
+      "name": "N1-cli-plan-not-approved",
+      "status": "PASS",
+      "note": "status=blocked exit=2"
+    },
+    {
+      "name": "N5-cli-unknown-flag",
+      "status": "PASS",
+      "note": "status=blocked exit=2"
+    },
+    {
+      "name": "N5b-cli-missing-required-flag",
+      "status": "PASS",
+      "note": "status=blocked exit=2"
+    },
+    {
+      "name": "R2-sibling-coexist",
+      "status": "PASS",
+      "note": "build=true verify=true"
+    }
+  ]
+}
