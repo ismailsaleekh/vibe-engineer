@@ -1,0 +1,36 @@
+{
+  "scenario_id": "GR-04-deterministic-state-reset",
+  "scenario_title": "Deterministic RN state reset + synchronized golden-records list render",
+  "runner": "detox",
+  "runner_selection_rationale": "DL-12 Detox-REQUIRED category: trigger #2 (deterministic app state reset / seeded state / internal app control unavailable through black-box user actions) + trigger #4 (precise waiting on RN state to avoid flake). Maestro cannot provide deterministic state reset or RN-bridge synchronized waits, so Maestro-only is invalid per the DL-12 conflict policy. This is a pure Detox-required flow with NO separate black-box acceptance requirement, so Detox-only is correct here (not the high-risk-Detox-only-rejected case).",
+  "coverage_intent": "state_reset_or_fixture",
+  "target_platforms": ["ios_simulator", "android_emulator"],
+  "required_app_state": {
+    "kind": "installed_seeded_app",
+    "reset": "deterministic device.launchApp({delete:true}) + reloadReactNative per scenario (Detox internal control)",
+    "fixture_ref": "golden-records seeded list (≥5 rows)",
+    "owner": "I-16B shared-client / apps/mobile golden-records screen"
+  },
+  "device_assumptions": {
+    "runtime_family": ["ios", "android"],
+    "orientation": "portrait",
+    "locale": "en-US",
+    "text_scale": "default"
+  },
+  "app_build_ref": "apps/mobile built RN binary (pending-live: no build available in this env)",
+  "artifact_expectations": ["detox-runner.log", "screenshot:reset-render", "screenshot:terminate-relaunch-render", "device.log", "rn-tree-state.json"],
+  "flake_policy_ref": "DL-10/DL-12: deterministic failure hard-blocks; rerun is diagnostic only, never erases a prior failure",
+  "owner_lane": "I-17B-mobile-e2e-ui-verification",
+  "evidence_consumer": "verification runner / build / ship / I-23 end-to-end witness",
+  "live_proof_status": "pending-live/BLOCKED",
+  "maestro_default_criteria": {
+    "primarily_black_box_user_journey": false,
+    "setup_via_public_app_entry_no_rn_internals": false,
+    "assertions_user_observable": false,
+    "no_rn_sync_or_state_reset_required": false
+  },
+  "detox_required_triggers": ["deterministic_state_reset_or_fixture", "precise_wait_on_rn_state"],
+  "high_risk_user_visible": false,
+  "equivalent_black_box_proof_ref": null,
+  "//detox-only-justification": "Pure Detox-required flow (state reset + precise wait); no separate black-box acceptance requirement, so DL-12 'Detox-only insufficient for high-risk user-visible' does not apply (high_risk_user_visible=false)."
+}

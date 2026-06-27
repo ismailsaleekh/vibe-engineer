@@ -1,0 +1,14 @@
+{
+  "@sample @demo @reference": "DL-13 accessibility check (I-17B mobile UI verification).",
+  "check_id": "accessibility",
+  "classification": "deterministic",
+  "hard_block": true,
+  "carrier": "React Native / platform tree metadata via Detox synchronized capture, Maestro artifacts, or app-exposed test/debug accessibility snapshots",
+  "rules": [
+    { "rule_id": "a11y.label_for_interactive", "description": "interactive controls expose an accessible name/label via RN/platform tree metadata" },
+    { "rule_id": "a11y.role_state", "description": "disabled/pressed/selected state represented in deterministic attributes where the tree exposes them" },
+    { "rule_id": "a11y.touch_target", "description": "touch targets meet the configured minimum where geometry metadata is available" }
+  ],
+  "pending_live_rule": "When a required mobile a11y rule cannot be observed through a real RN/platform tree/provider (no device), that mobile a11y proof is pending-live/BLOCKED — screenshots alone do not close mobile accessibility (DL-13).",
+  "advisory_boundary": "subjective a11y opinion not backed by deterministic tree/role/name/state evidence is advisory-only."
+}

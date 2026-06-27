@@ -1,0 +1,29 @@
+# @sample @demo @reference — Maestro black-box flow: golden-records app-launch smoke (I-17B / DL-12).
+#
+# DL-12 Maestro-DEFAULT category: black-box user journey; setup via public app
+# entry; user-observable assertions; no RN internals / sync / state-reset needed.
+# Selection metadata: metadata/gr-01-app-launch-smoke.json (runner: maestro).
+#
+# Structurally valid against the Maestro flow schema (config block: appId/name/
+# tags; `---` document separator; steps: launchApp + assertVisible on testIDs).
+# NOT run live here — the device-driven run is pending-live/BLOCKED (see README).
+
+appId: com.vibeEngineerStarter.goldenMobile
+name: "Golden records app-launch smoke"
+tags:
+  - golden-records
+  - smoke
+  - maestro
+---
+# Launch the app with a clean state (black-box entry).
+- launchApp:
+    clearState: true
+# The golden-records screen must become visible.
+- assertVisible:
+    id: "golden-records-screen"
+# The seeded golden-record list container must render.
+- assertVisible:
+    id: "golden-record-list"
+# The first seeded golden-record row must be visible.
+- assertVisible:
+    id: "golden-record-item-0"

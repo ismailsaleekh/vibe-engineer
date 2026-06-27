@@ -1,0 +1,70 @@
+{
+  "@sample @demo @reference": "DL-13 mobile UI-verification capture matrix (I-17B).",
+  "//schema-note": "Exact Evidence Packet + matrix-row schema syntax is owned by DL-02/DL-10; this fixture encodes the DL-13 semantic fields + the missing-artifact-fails-closed rule (DL-13 §'A required matrix row missing a screenshot, report, or deterministic result is a hard failure').",
+  "verification_layer": "ui_verification",
+  "surface": "mobile",
+  "producer": "actual generated/reference React Native UI exercised through Maestro (black-box capture) + Detox (synchronized RN state/tree capture)",
+  "closure_basis": "ui_verification",
+  "capture_status_env": "pending-live/BLOCKED",
+  "//capture-status-env-note": "No usable iOS simulator device / Android emulator / Maestro / Detox / RN build in env (see report Stage 1). Live mobile UI capture is pending-live/BLOCKED — NOT green. Each row's capture_status reflects this; evidence_refs are null until a real device run.",
+  "device_profiles": [
+    {
+      "device_id": "iphone-15-pro-sim",
+      "platform": "ios_simulator",
+      "family": "ios",
+      "model": "iPhone 15 Pro",
+      "os_version": "iOS 17.5",
+      "dimensions": { "width": 393, "height": 852 },
+      "pixel_density": 3,
+      "orientation": "portrait"
+    },
+    {
+      "device_id": "pixel-8-emu",
+      "platform": "android_emulator",
+      "family": "android",
+      "model": "Pixel 8",
+      "os_version": "Android 14 (API 34)",
+      "dimensions": { "width": 412, "height": 915 },
+      "pixel_density": 2.625,
+      "orientation": "portrait"
+    }
+  ],
+  "state_profiles": [
+    { "state_id": "default", "description": "golden-records screen with seeded list rendered (success)" },
+    { "state_id": "loading", "description": "golden-records fetch in progress (spinner/skeleton)" },
+    { "state_id": "empty", "description": "golden-records fetch resolved with zero rows" },
+    { "state_id": "error", "description": "golden-records fetch failed (error state)" },
+    { "state_id": "long_content", "description": "golden-records list with overflow/long-content stress rows" },
+    { "state_id": "focused", "description": "first golden-record row focused (interaction state)" }
+  ],
+  "theme": "default",
+  "locale": "en-US",
+  "text_scale": "default",
+  "data_fixture_profile": "golden-records seeded fixture (≥5 rows; empty/error variants)",
+  "rows": [
+    { "row_id": "iphone-default", "device_id": "iphone-15-pro-sim", "state_id": "default", "capture_status": "pending-live/BLOCKED", "evidence_refs": null,
+      "expected_artifacts": { "screenshot": true, "baseline_ref": "baselines/proposal/iphone-default.json", "a11y_tree": true, "geometry": true, "visual_diff": true } },
+    { "row_id": "iphone-loading", "device_id": "iphone-15-pro-sim", "state_id": "loading", "capture_status": "pending-live/BLOCKED", "evidence_refs": null,
+      "expected_artifacts": { "screenshot": true, "baseline_ref": "baselines/proposal/iphone-loading.json", "a11y_tree": true, "geometry": true, "visual_diff": true } },
+    { "row_id": "iphone-empty", "device_id": "iphone-15-pro-sim", "state_id": "empty", "capture_status": "pending-live/BLOCKED", "evidence_refs": null,
+      "expected_artifacts": { "screenshot": true, "baseline_ref": "baselines/proposal/iphone-empty.json", "a11y_tree": true, "geometry": true, "visual_diff": true } },
+    { "row_id": "iphone-error", "device_id": "iphone-15-pro-sim", "state_id": "error", "capture_status": "pending-live/BLOCKED", "evidence_refs": null,
+      "expected_artifacts": { "screenshot": true, "baseline_ref": "baselines/proposal/iphone-error.json", "a11y_tree": true, "geometry": true, "visual_diff": true } },
+    { "row_id": "iphone-long_content", "device_id": "iphone-15-pro-sim", "state_id": "long_content", "capture_status": "pending-live/BLOCKED", "evidence_refs": null,
+      "expected_artifacts": { "screenshot": true, "baseline_ref": "baselines/proposal/iphone-long-content.json", "a11y_tree": true, "geometry": true, "visual_diff": true } },
+    { "row_id": "iphone-focused", "device_id": "iphone-15-pro-sim", "state_id": "focused", "capture_status": "pending-live/BLOCKED", "evidence_refs": null,
+      "expected_artifacts": { "screenshot": true, "baseline_ref": "baselines/proposal/iphone-focused.json", "a11y_tree": true, "geometry": true, "visual_diff": true } },
+    { "row_id": "pixel-default", "device_id": "pixel-8-emu", "state_id": "default", "capture_status": "pending-live/BLOCKED", "evidence_refs": null,
+      "expected_artifacts": { "screenshot": true, "baseline_ref": "baselines/proposal/pixel-default.json", "a11y_tree": true, "geometry": true, "visual_diff": true } },
+    { "row_id": "pixel-loading", "device_id": "pixel-8-emu", "state_id": "loading", "capture_status": "pending-live/BLOCKED", "evidence_refs": null,
+      "expected_artifacts": { "screenshot": true, "baseline_ref": "baselines/proposal/pixel-loading.json", "a11y_tree": true, "geometry": true, "visual_diff": true } },
+    { "row_id": "pixel-empty", "device_id": "pixel-8-emu", "state_id": "empty", "capture_status": "pending-live/BLOCKED", "evidence_refs": null,
+      "expected_artifacts": { "screenshot": true, "baseline_ref": "baselines/proposal/pixel-empty.json", "a11y_tree": true, "geometry": true, "visual_diff": true } },
+    { "row_id": "pixel-error", "device_id": "pixel-8-emu", "state_id": "error", "capture_status": "pending-live/BLOCKED", "evidence_refs": null,
+      "expected_artifacts": { "screenshot": true, "baseline_ref": "baselines/proposal/pixel-error.json", "a11y_tree": true, "geometry": true, "visual_diff": true } },
+    { "row_id": "pixel-long_content", "device_id": "pixel-8-emu", "state_id": "long_content", "capture_status": "pending-live/BLOCKED", "evidence_refs": null,
+      "expected_artifacts": { "screenshot": true, "baseline_ref": "baselines/proposal/pixel-long-content.json", "a11y_tree": true, "geometry": true, "visual_diff": true } },
+    { "row_id": "pixel-focused", "device_id": "pixel-8-emu", "state_id": "focused", "capture_status": "pending-live/BLOCKED", "evidence_refs": null,
+      "expected_artifacts": { "screenshot": true, "baseline_ref": "baselines/proposal/pixel-focused.json", "a11y_tree": true, "geometry": true, "visual_diff": true } }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "@vibe-engineer-starter/golden-api-fixture",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "I-16A golden-api fixture: a NestJS-style `ts-rest` provider that validates request+response against the canonical golden-records contract BEFORE application logic (fail-closed), a consumer flow that calls the generated client and re-parses the response, the real-boundary witness (5 booleans), and the runtime dep-resolver hook + witness runner. Domain-neutral sample/demo/reference (DL-14 / DL-16 / DL-20A). Mirrors the proven I-11 reference-flow pattern.",
+  "vibeEngineer": {
+    "implementationUnit": "I-16A-starter-contracts-api-provider",
+    "implementationStatus": "implemented",
+    "packageRole": "generated-starter-provider-consumer-witness-fixture",
+    "sourceStatus": "provider-plus-consumer-plus-real-boundary-witness",
+    "consumptionModel": "consumes contract-derived client/types only (no duplicated contract source)",
+    "boundaryRule": "provider validates request then response against the canonical contract (fail-closed, DL-14 §3); consumer/client never duplicate contract schemas (DL-14 §5)"
+  },
+  "//dependency-model": "Graph-neutral: this fixture path is NOT a pnpm workspace member (pnpm-workspace.yaml = packages/*, packages/presets/*, packages/adapters/*, infra/pulumi), so the modeled runtime deps below add ZERO edges to the real harness workspace graph and require no lockfile reconciliation. The REAL resolve+runtime of @ts-rest/core + zod is exercised by the witness runner via an ESM resolve loader hook (src/runtime/dep-resolver-hooks.mjs) anchored at the harness packages/contracts context (the validated I-15B-3 in-context resolution precedent) — NO install, NO manifest/lockfile edit, NO mock.",
+  "dependencies": {
+    "@ts-rest/core": "3.52.1",
+    "zod": "3.25.76"
+  },
+  "scripts": {
+    "witness": "node --import ./src/runtime/dep-resolver-register.mjs --experimental-strip-types ./run-golden-records-witness.mjs"
+  }
+}

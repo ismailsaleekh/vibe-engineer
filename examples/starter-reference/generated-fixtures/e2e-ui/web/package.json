@@ -1,0 +1,29 @@
+{
+  "name": "@vibe-engineer-starter/e2e-ui-web-fixture",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "I-17A web E2E + UI-verification suite (DL-13). Playwright E2E specs driving the REAL served golden-web app through the golden flow (seed/classify -> list -> render/read) with real selector assertions; UI-verification specialist suite (overlap/clipping, spacing/alignment, responsive-layout, truncation, color/contrast, accessibility, visual-regression) each emitting structured evidence; viewport/device matrix; visual baselines + baseline-management contract; real-boundary witness runner. LLM/subjective visual review is advisory only and never the blocking signal. Domain-neutral sample/demo/reference (DL-13 / DL-20A).",
+  "vibeEngineer": {
+    "implementationUnit": "I-17A-web-e2e-ui-verification",
+    "implementationStatus": "implemented-shape-green-pending-real-boundary",
+    "packageRole": "generated-starter-web-e2e-ui-verification-fixture",
+    "sourceStatus": "playwright-e2e-plus-ui-specialists-plus-collectors-plus-baselines-plus-real-boundary-runner",
+    "consumptionModel": "consumes the served golden-web app (I-17A) + I-16B shared client seam; deterministic specialists only; subjective review advisory",
+    "boundaryRule": "deterministic UI defects hard-block; subjective/LLM visual review advisory only (DL-13); full E2E/visual is local/orchestrator-run only, never default CI (DL-18; mechanical §7)"
+  },
+  "//dependency-model": "Graph-neutral: this fixture path is NOT a pnpm workspace member (pnpm-workspace.yaml = packages/*, packages/presets/*, packages/adapters/*, infra/pulumi), so the modeled runtime deps below add ZERO edges to the real harness workspace graph and require no lockfile reconciliation. The REAL resolve of @playwright/test + @axe-core/playwright + pixelmatch + pngjs requires a serialized EXTEND dep handoff (root manifest + pnpm-lock.yaml reconcile, I-20S-class) AND Playwright browser binaries (`playwright install`) — they are ABSENT from the entire repo (verified: 0 in lockfile, none in node_modules, no resolve-hook anchor context). NO install, NO manifest/lockfile edit, NO mock is performed in-license.",
+  "dependencies": {
+    "@playwright/test": "1.54.0",
+    "@axe-core/playwright": "4.10.2",
+    "pixelmatch": "7.1.0",
+    "pngjs": "7.0.0"
+  },
+  "scripts": {
+    "structural-validate": "node run-structural-validate.mjs",
+    "domain-neutral-check": "node run-domain-neutral-check.mjs",
+    "witness": "node run-web-e2e-ui-witness.mjs",
+    "e2e": "playwright test --config=playwright.config.ts --grep-invert=@ui",
+    "ui": "playwright test --config=playwright.config.ts --grep=@ui"
+  }
+}

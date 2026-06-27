@@ -1,0 +1,31 @@
+# @sample @demo @reference — Maestro black-box flow: navigate + read seeded golden-records list (I-17B / DL-12).
+#
+# DL-12 Maestro-DEFAULT category: cross-screen navigation acceptance + read/
+# render the seeded record list (user-observable). Selection metadata:
+# metadata/gr-02-navigate-read-list.json (runner: maestro).
+
+appId: com.vibeEngineerStarter.goldenMobile
+name: "Navigate to and read seeded golden-records list"
+tags:
+  - golden-records
+  - navigation
+  - acceptance
+  - maestro
+---
+# Launch the app.
+- launchApp:
+    clearState: true
+# From home, navigate to the golden-records screen (user-observable tap).
+- tapOn:
+    id: "home-goto-golden-records"
+# The golden-records screen header must be visible.
+- assertVisible:
+    id: "golden-records-screen"
+# The seeded list must render at least the first row.
+- assertVisible:
+    id: "golden-record-item-0"
+# Scroll the list to reveal a later seeded row (user-observable scroll).
+- scrollUntilVisible:
+    element:
+      id: "golden-record-item-4"
+    direction: DOWN

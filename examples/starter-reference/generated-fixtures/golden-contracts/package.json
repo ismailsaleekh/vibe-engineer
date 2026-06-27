@@ -1,0 +1,20 @@
+{
+  "name": "@vibe-engineer-starter/golden-contracts-fixture",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "I-16A golden-contracts fixture: the canonical `ts-rest` + named-Zod contract for a golden-records boundary (single source of truth) PLUS the generated/shared client derived ONLY from that contract (no hand-authored fetch DTOs) and a generation marker/provenance. Domain-neutral sample/demo/reference (DL-14 / DL-16 / DL-20A). Mirrors the proven I-11 reference-flow pattern.",
+  "vibeEngineer": {
+    "implementationUnit": "I-16A-starter-contracts-api-provider",
+    "implementationStatus": "implemented",
+    "packageRole": "generated-starter-contract-fixture",
+    "sourceStatus": "canonical-contract-plus-generated-client",
+    "consumptionModel": "contract-is-single-source-of-truth",
+    "boundaryRule": "the canonical contract is the only place golden-record Zod schemas / DTO shapes are defined (DL-14 §5); the generated client and the golden-api consumer import contract-derived types/client only"
+  },
+  "//dependency-model": "Graph-neutral: this fixture path is NOT a pnpm workspace member (pnpm-workspace.yaml = packages/*, packages/presets/*, packages/adapters/*, infra/pulumi), so the modeled runtime deps below add ZERO edges to the real harness workspace graph and require no lockfile reconciliation. The REAL resolve+runtime of @ts-rest/core + zod is exercised by the golden-api witness runner via an ESM resolve loader hook anchored at the harness packages/contracts context (the validated I-15B-3 in-context resolution precedent) — NO install, NO manifest/lockfile edit, NO mock.",
+  "dependencies": {
+    "@ts-rest/core": "3.52.1",
+    "zod": "3.25.76"
+  }
+}

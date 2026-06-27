@@ -1,0 +1,61 @@
+{
+  "schemaVersion": "i16a.schema-contract-strictness/1",
+  "proofMode": "typescript-runtime-real-boundary",
+  "canonicalContractFile": "examples/starter-reference/generated-fixtures/golden-contracts/src/golden-records.contract.ts",
+  "generatedClientFile": "examples/starter-reference/generated-fixtures/golden-contracts/src/generated/golden-records-client.ts",
+  "clientGeneratorFile": "examples/starter-reference/generated-fixtures/golden-contracts/src/generation/generate-golden-records-client.ts",
+  "providerFile": "examples/starter-reference/generated-fixtures/golden-api/src/provider/golden-records.provider.ts",
+  "consumerFile": "examples/starter-reference/generated-fixtures/golden-api/src/consumer/golden-records.consumer.ts",
+  "realBoundaryWitnessFile": "examples/starter-reference/generated-fixtures/golden-api/src/witness/golden-records.real-boundary.ts",
+  "witnessRunnerFile": "examples/starter-reference/generated-fixtures/golden-api/run-golden-records-witness.mjs",
+  "depResolverHookFile": "examples/starter-reference/generated-fixtures/golden-api/src/runtime/dep-resolver-hooks.mjs",
+  "sourceFiles": [
+    "examples/starter-reference/generated-fixtures/golden-contracts/src/golden-records.contract.ts",
+    "examples/starter-reference/generated-fixtures/golden-contracts/src/generated/golden-records-client.ts",
+    "examples/starter-reference/generated-fixtures/golden-api/src/provider/golden-records.provider.ts",
+    "examples/starter-reference/generated-fixtures/golden-api/src/consumer/golden-records.consumer.ts",
+    "examples/starter-reference/generated-fixtures/golden-api/src/witness/golden-records.real-boundary.ts"
+  ],
+  "boundaryFiles": [
+    "examples/starter-reference/generated-fixtures/golden-api/src/provider/golden-records.provider.ts",
+    "examples/starter-reference/generated-fixtures/golden-contracts/src/generated/golden-records-client.ts"
+  ],
+  "domainModelFiles": [
+    "examples/starter-reference/generated-fixtures/golden-contracts/src/golden-records.contract.ts",
+    "examples/starter-reference/generated-fixtures/golden-api/src/provider/golden-records.provider.ts",
+    "examples/starter-reference/generated-fixtures/golden-api/src/consumer/golden-records.consumer.ts",
+    "examples/starter-reference/generated-fixtures/golden-api/src/witness/golden-records.real-boundary.ts"
+  ],
+  "requiredNamedSchemas": [
+    "goldenRecordIdSchema",
+    "goldenRecordStatusSchema",
+    "goldenRecordPathParamsSchema",
+    "goldenRecordHeadersSchema",
+    "goldenRecordRequestBodySchema",
+    "goldenRecordSuccessResponseSchema",
+    "goldenRecordErrorResponseSchema",
+    "goldenRecordBoundaryRequestSchema"
+  ],
+  "requiredProviderSchemaCalls": [
+    "goldenRecordBoundaryRequestSchema",
+    "goldenRecordPathParamsSchema",
+    "goldenRecordHeadersSchema",
+    "goldenRecordRequestBodySchema",
+    "goldenRecordSuccessResponseSchema",
+    "goldenRecordErrorResponseSchema"
+  ],
+  "requiredConsumerImports": [
+    "examples/starter-reference/generated-fixtures/golden-contracts/src/generated/golden-records-client.js",
+    "examples/starter-reference/generated-fixtures/golden-contracts/src/golden-records.contract.js"
+  ],
+  "contractSourceOfTruth": "GoldenRecordsContract",
+  "noDuplicatedContractSourceRule": "The consumer and generated client import contract-derived types/client only; no Zod schema / DTO shape for golden payloads may be defined outside the canonical contract (DL-14 §5).",
+  "realResolution": {
+    "resolvedFromContext": "packages/contracts (harness)",
+    "packages": {
+      "@ts-rest/core": "3.52.1",
+      "zod": "3.25.76"
+    },
+    "mechanism": "ESM resolve loader hook (src/runtime/dep-resolver-hooks.mjs) maps bare specifiers to real pnpm-store paths; no mock, no node_modules, no manifest/lockfile edit."
+  }
+}

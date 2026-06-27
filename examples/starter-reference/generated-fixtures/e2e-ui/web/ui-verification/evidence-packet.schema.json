@@ -1,0 +1,101 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://vibe-engineer.local/schemas/ui-verification-evidence-packet.json",
+  "title": "UI-verification specialist evidence packet (I-17A / DL-13)",
+  "type": "object",
+  "required": [
+    "ui_run_id",
+    "verification_layer",
+    "specialist",
+    "app_target",
+    "route",
+    "state_id",
+    "viewport",
+    "deterministic_results",
+    "advisory_findings",
+    "overall",
+    "artifact_refs"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "ui_run_id": { "type": "string", "minLength": 1 },
+    "verification_layer": { "const": "ui_verification" },
+    "specialist": {
+      "type": "string",
+      "enum": [
+        "overlap-clipping",
+        "spacing-alignment",
+        "responsive-layout",
+        "truncation",
+        "color-contrast",
+        "accessibility",
+        "visual-regression"
+      ]
+    },
+    "app_target": { "const": "golden-web" },
+    "route": { "type": "string", "minLength": 1 },
+    "state_id": { "type": "string", "minLength": 1 },
+    "viewport": {
+      "type": "object",
+      "required": ["id", "width", "height"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "width": { "type": "integer", "minimum": 1 },
+        "height": { "type": "integer", "minimum": 1 },
+        "device": { "type": ["string", "null"] }
+      }
+    },
+    "deterministic_results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["rule_id", "passed", "blocking"],
+        "additionalProperties": false,
+        "properties": {
+          "rule_id": { "type": "string", "minLength": 1 },
+          "passed": { "type": "boolean" },
+          "blocking": { "type": "boolean" },
+          "actual": {},
+          "expected": {},
+          "evidence_ref": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "advisory_findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["issue_class", "classification"],
+        "additionalProperties": false,
+        "properties": {
+          "issue_class": { "type": "string", "minLength": 1 },
+          "classification": { "const": "advisory" },
+          "note": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "overall": {
+      "type": "object",
+      "required": ["passed", "blocking_failures"],
+      "additionalProperties": false,
+      "properties": {
+        "passed": { "type": "boolean" },
+        "blocking_failures": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "artifact_refs": {
+      "type": "object",
+      "required": [],
+      "additionalProperties": false,
+      "properties": {
+        "screenshot": { "type": ["string", "null"] },
+        "dom": { "type": ["string", "null"] },
+        "a11y": { "type": ["string", "null"] },
+        "geometry": { "type": ["string", "null"] },
+        "baseline": { "type": ["string", "null"] },
+        "diff": { "type": ["string", "null"] }
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+// Prisma schema for the @vibe-engineer-starter/api app (DL-16 database stance).
+// Domain-neutral golden-records model only; no auth/billing/tenant tables.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model GoldenRecord {
+  id        String   @id @default(cuid())
+  title     String
+  summary   String?
+  status    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

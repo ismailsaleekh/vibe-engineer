@@ -1,0 +1,25 @@
+{
+  "@sample @demo @reference": "DL-13 baseline PROPOSAL — iphone default state (I-17B mobile UI verification).",
+  "proposal_type": "first-baseline-proposal",
+  "row_id": "iphone-default",
+  "identity": {
+    "app": "apps/mobile golden-records screen",
+    "state_id": "default",
+    "device_profile": "iphone-15-pro-sim",
+    "theme": "default",
+    "locale": "en-US",
+    "text_scale": "default",
+    "data_fixture": "golden-records seeded fixture (≥5 rows)",
+    "screenshot_dimensions": { "width": 1179, "height": 2556 },
+    "comparator_version": "pixelmatch ^5.x",
+    "normalization_rules": ["volatile.timestamps", "volatile.random_ids", "volatile.animation_frames"],
+    "approved_source": "PENDING — awaiting reviewer/operator approval + independent validation (DL-13 initial-creation policy)"
+  },
+  "proposed_baseline_ref": "baselines/iphone-default.png",
+  "proposed_baseline_status": "pending-live/BLOCKED — no live device capture yet (PNG will be produced by the pending-live Maestro/Detox run)",
+  "screenshot_evidence_ref": "pending-live/BLOCKED",
+  "reviewer_approval": { "status": "not-yet-given", "reviewer": null, "approval_artifact_ref": null },
+  "independent_validation": { "status": "not-yet-run", "validator": null },
+  "rationale": "Initial baseline proposal for the golden-records default state on iPhone 15 Pro simulator. Per DL-13, this is NOT an automatic pass: it requires explicit reviewer/operator approval + independent validation once the pending-live device run produces the real screenshot.",
+  "//forbidden": "Auto-accepting this proposal as a baseline without approval+validation is a hard failure (W-NEG-SILENT-BASELINE)."
+}

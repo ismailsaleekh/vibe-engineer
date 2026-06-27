@@ -1,0 +1,19 @@
+{
+  "name": "@vibe-engineer-starter/harness-consumption-fixture",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "I-15B-3 harness-consumption witness fixture: a generated-starter fixture that DECLARES a dependency on local/packed vibe-engineer and consumes the harness package through its PUBLIC surface (not copied logic). Graph-neutral: this fixture path is NOT a pnpm workspace member (pnpm-workspace.yaml = packages/*, packages/presets/*, packages/adapters/*, infra/pulumi), so the modeled dependency below adds ZERO edges to the real harness workspace graph and requires no lockfile reconciliation. The real resolve+import of the vibe-engineer public surface is proven by the witness runner via the in-context self-reference spawn (cwd=packages/cli) — the validated I-15B-2 precedent.",
+  "vibeEngineer": {
+    "implementationUnit": "I-15B-3-harness-consumption-witness",
+    "implementationStatus": "implemented",
+    "packageRole": "generated-starter-harness-consumption-fixture",
+    "sourceStatus": "fixture-consumes-harness-public-surface",
+    "consumptionModel": "public-surface-import-only",
+    "boundaryRule": "consumes vibe-engineer (the public harness package) only; never imports @vibe-engineer/* harness internals, never copies harness logic (DL-16 §2)"
+  },
+  "//dependency-model": "The dependency below MODELS what a real generated starter would declare against a local/packed vibe-engineer (workspace:*/file:/link:). It is fixture-local modeling: this package is not installed and not a workspace member, so it has no graph/lockfile impact. The real resolve+import is exercised by the witness runner from the cli resolution context.",
+  "dependencies": {
+    "vibe-engineer": "workspace:*"
+  }
+}

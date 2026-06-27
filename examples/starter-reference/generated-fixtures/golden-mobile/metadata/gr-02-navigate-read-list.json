@@ -1,0 +1,35 @@
+{
+  "scenario_id": "GR-02-navigate-read-list",
+  "scenario_title": "Navigate to and read the seeded golden-records list",
+  "runner": "maestro",
+  "runner_selection_rationale": "DL-12 Maestro-default category: cross-screen navigation + read/render the seeded list is a black-box acceptance journey with user-observable assertions; no RN internals or deterministic state control required.",
+  "coverage_intent": "black_box_user_flow",
+  "target_platforms": ["ios_simulator", "android_emulator"],
+  "required_app_state": {
+    "kind": "installed_seeded_app",
+    "reset": "clearState on launch",
+    "fixture_ref": "golden-records seeded list (≥5 rows)",
+    "owner": "I-16B shared-client / apps/mobile golden-records screen"
+  },
+  "device_assumptions": {
+    "runtime_family": ["ios", "android"],
+    "orientation": "portrait",
+    "locale": "en-US",
+    "text_scale": "default"
+  },
+  "app_build_ref": "apps/mobile built RN binary (pending-live: no build available in this env)",
+  "artifact_expectations": ["screenshot:home", "screenshot:golden-records", "screenshot:list-scrolled", "maestro-runner.log", "device.log"],
+  "flake_policy_ref": "DL-10/DL-12: deterministic failure hard-blocks; rerun is diagnostic only, never erases a prior failure",
+  "owner_lane": "I-17B-mobile-e2e-ui-verification",
+  "evidence_consumer": "verification runner / build / ship / I-23 end-to-end witness",
+  "live_proof_status": "pending-live/BLOCKED",
+  "maestro_default_criteria": {
+    "primarily_black_box_user_journey": true,
+    "setup_via_public_app_entry_no_rn_internals": true,
+    "assertions_user_observable": true,
+    "no_rn_sync_or_state_reset_required": true
+  },
+  "detox_required_triggers": [],
+  "high_risk_user_visible": false,
+  "equivalent_black_box_proof_ref": null
+}

@@ -1,0 +1,14 @@
+{
+  "@sample @demo @reference": "DL-13 layout/geometry check (I-17B mobile UI verification).",
+  "check_id": "layout-geometry",
+  "classification": "deterministic",
+  "hard_block": true,
+  "carrier": "React Native frame / bounding-box metadata via Detox (onLayout/element frames) or platform layout snapshots",
+  "rules": [
+    { "rule_id": "layout.unintended_overlap", "description": "no unintended intersection of declared non-overlapping elements (frame/stacking metadata)" },
+    { "rule_id": "layout.clipping_or_truncation", "description": "no visible content cut off without an allowed truncation rule (scroll/overflow/text metrics)" },
+    { "rule_id": "layout.offscreen_essential", "description": "no essential element offscreen/outside viewport without a valid scroll affordance" },
+    { "rule_id": "layout.responsive_breakpoint", "description": "required elements do not disappear/reorder incompatibly or exceed viewport bounds per device profile" }
+  ],
+  "advisory_boundary": "screenshot-only or LLM-only spacing/alignment observations without deterministic geometry are advisory-only (DL-13)."
+}

@@ -1,0 +1,28 @@
+{
+  "name": "@vibe-engineer-starter/e2e-ui-mobile-fixture",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "I-17B e2e-ui/mobile fixture: the mobile UI-VERIFICATION carrier (DL-13) — the DL-13 v1 default capture matrix (≥1 iOS phone sim + ≥1 Android phone emu × default/loading/empty/error/long-content/interaction states), the deterministic check set (visual-diff via pixelmatch-class, accessibility, layout-geometry, interaction-state) with advisory checks explicitly classified advisory-only, baseline-governance artifacts (identity fields + proposal/update policy + the forbidden auto-accept/silent-regenerate rule), the evidence-packet semantic schema, and the DL-13 UI-verification metadata/missing-artifact validator that fail-closes on missing artifact / silent baseline / E2E-pass-as-UI-closure / advisory-hard-block / fake-live. UI verification is SEPARATE from behavior E2E (DL-13 §5.8). Domain-neutral sample/demo/reference (DL-13 / DL-20A).",
+  "vibeEngineer": {
+    "implementationUnit": "I-17B-mobile-e2e-ui-verification",
+    "implementationStatus": "implemented",
+    "packageRole": "generated-starter-mobile-ui-verification-carrier-fixture",
+    "sourceStatus": "capture-matrix-plus-deterministic-checks-plus-baseline-governance-plus-missing-artifact-validator",
+    "consumptionModel": "consumes Maestro+Detox capture artifacts conceptually (DL-13 mobile capture); does NOT duplicate the golden-client/contract (separate UI-verification layer)",
+    "boundaryRule": "UI verification separate from behavior E2E (DL-13 §5.8); live mobile UI capture pending-live/BLOCKED; deterministic scope = matrix + check classification + baseline governance + missing-artifact/negative witnesses"
+  },
+  "//dependency-model": "Graph-neutral: this fixture path is NOT a pnpm workspace member (pnpm-workspace.yaml = packages/*, packages/presets/*, packages/adapters/*, infra/pulumi), so the modeled/peer deps below add ZERO edges to the real harness workspace graph and require no lockfile reconciliation. pixelmatch/axe-core appear ONLY as modeled/peer declarations — never resolved/installed (no install, no manifest/lockfile edit). The validator runs real against the capture-matrix/checks/baseline structural artifacts WITHOUT resolving those packages. If truth-green required resolving a real comparator/device runtime, the lane halts BLOCKED — never synthesize screenshots.",
+  "//peerDependencies-note": "peerDependencies (not dependencies): the UI-verification toolchain is modeled/peer only here. It is intentionally NOT installed and NOT added to the workspace graph. Live capture is pending-live/BLOCKED.",
+  "peerDependencies": {
+    "pixelmatch": "*",
+    "axe-core": "*"
+  },
+  "peerDependenciesMeta": {
+    "pixelmatch": { "optional": true },
+    "axe-core": { "optional": true }
+  },
+  "scripts": {
+    "witness": "node --experimental-strip-types ./run-ui-witness.mjs"
+  }
+}

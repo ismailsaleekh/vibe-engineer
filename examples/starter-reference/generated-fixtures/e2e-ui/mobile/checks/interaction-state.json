@@ -1,0 +1,13 @@
+{
+  "@sample @demo @reference": "DL-13 interaction-state check (I-17B mobile UI verification).",
+  "check_id": "interaction-state",
+  "classification": "deterministic",
+  "hard_block": true,
+  "carrier": "RN/platform interaction metadata via Detox (focused/pressed/disabled element state)",
+  "rules": [
+    { "rule_id": "ix.focus_visible", "description": "keyboard/reachable focus has a visible focus indicator where deterministic metadata is available" },
+    { "rule_id": "ix.pressed_state", "description": "pressed/active state is represented deterministically when applicable" },
+    { "rule_id": "ix.disabled_state", "description": "disabled controls are represented in deterministic attributes/state" }
+  ],
+  "advisory_boundary": "subjective interaction critique not backed by deterministic interaction-state metadata is advisory-only."
+}

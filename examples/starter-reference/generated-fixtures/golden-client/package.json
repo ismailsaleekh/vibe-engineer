@@ -1,0 +1,20 @@
+{
+  "name": "@vibe-engineer-starter/golden-client-fixture",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "I-16B golden-client fixture: the GENERATED/SHARED client surface for the starter golden-records boundary — derived ONLY from the I-16A canonical contract (re-export/wrap of the I-16A generated client; no Zod schema / route-contract re-declaration / hand-authored fetch DTO), a framework-neutral consumer hook consumed by BOTH web and mobile, and per-platform transport adapters (web DOM-fetch-shape + mobile RN-fetch-shape) that feed the SAME shared client. Domain-neutral sample/demo/reference (DL-14 / DL-16 / DL-20A). Mirrors the proven I-16A pattern.",
+  "vibeEngineer": {
+    "implementationUnit": "I-16B-starter-client-golden-flow",
+    "implementationStatus": "implemented",
+    "packageRole": "generated-starter-shared-client-fixture",
+    "sourceStatus": "shared-client-plus-framework-neutral-hook-plus-platform-transports",
+    "consumptionModel": "consumes I-16A contract-derived client/types only (no duplicated contract source)",
+    "boundaryRule": "shared client derives ONLY from the I-16A canonical contract (DL-14 §5); per-platform transports differ only in fetch/baseURL/auth (DL-14 §60) and must NOT fork the route contract / schemas"
+  },
+  "//dependency-model": "Graph-neutral: this fixture path is NOT a pnpm workspace member (pnpm-workspace.yaml = packages/*, packages/presets/*, packages/adapters/*, infra/pulumi), so the modeled runtime deps below add ZERO edges to the real harness workspace graph and require no lockfile reconciliation. The REAL resolve+runtime of @ts-rest/core + zod is exercised by the golden-flow witness runner via an ESM resolve loader hook (golden-flow/src/runtime/dep-resolver-hooks.mjs) anchored at the harness packages/contracts context (the validated I-15B-3 in-context resolution precedent) — NO install, NO manifest/lockfile edit, NO mock.",
+  "dependencies": {
+    "@ts-rest/core": "3.52.1",
+    "zod": "3.25.76"
+  }
+}

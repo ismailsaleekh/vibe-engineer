@@ -1,0 +1,34 @@
+{
+  "@sample @demo @reference": "DL-13 UI-verification evidence-packet semantic schema (I-17B mobile).",
+  "//schema-ownership": "Exact schema syntax + versioning is owned by DL-02/DL-10. This encodes the DL-13 semantic evidence fields (§Evidence packet/report fields) as a structural reference consumed by the validator + future evidence collectors.",
+  "verification_layer": "ui_verification",
+  "surface": "mobile",
+  "required_semantic_fields": {
+    "ui_run_id": "stable run id",
+    "source_refs": "plan/build/ship/validation artifact refs",
+    "app_target": "apps/mobile golden-records screen",
+    "route_screen_component_state_id": "route/screen/component + state id",
+    "state_setup_artifact_refs": "fixture/setup refs",
+    "viewport_device_profile": "device profile + environment versions",
+    "screenshot_ref": "path + content hash",
+    "baseline_ref": "path + content hash (or first-baseline-proposal ref)",
+    "diff_ref": "diff image path + content hash",
+    "trace_video_log_refs": "Maestro/Detox trace/video/log paths where available",
+    "dom_tree_metadata_ref": "RN/platform tree metadata path + hash",
+    "accessibility_report_ref": "a11y report path + hash",
+    "geometry_ref": "frame/bounding-box metadata path + hash",
+    "specialist_report_ref": "specialist UI agent report path + hash where applicable",
+    "comparator_checker_names_versions": "pixelmatch-class version + checker versions",
+    "thresholds": "per-row thresholds",
+    "normalization_rules_masks_stabilization": "recorded normalization + masks + stabilization",
+    "deterministic_rule_results": "pass/fail/blocking classification per rule",
+    "advisory_findings": "non-blocking classification unless promoted under DL-13",
+    "missing_artifact_rows": "explicit deterministic failures for any missing row",
+    "failure_details": "issue class, rule id, state id, device id, evidence path, actual/expected, reproducibility, suggested owner/fixer class"
+  },
+  "classification_rules": {
+    "deterministic_hard_block": ["missing/invalid required artifact", "visual diff exceeds approved threshold", "deterministic a11y violation", "deterministic contrast/touch-target/focus/role/name/state failure", "geometry proof of overlap/clipping/offscreen/broken-responsive/z-index", "stale/invalid/unapproved/silently-updated baseline", "advisory-only check posing as deterministic hard block"],
+    "advisory_non_blocking": ["LLM visual review", "subjective aesthetic critique", "screenshot-only spacing/alignment without deterministic rule", "specialist review lacking structured deterministic evidence", "low-confidence computer-vision findings not backed by geometry/baseline/a11y evidence"]
+  },
+  "promotion_rules": "advisory may block only via (a) conversion to a deterministic rule, (b) approved plan/task criterion naming reviewer+evidence, or (c) operator approval gate with evidence paths + scope (DL-13 §Promoting advisory findings to blocking)."
+}

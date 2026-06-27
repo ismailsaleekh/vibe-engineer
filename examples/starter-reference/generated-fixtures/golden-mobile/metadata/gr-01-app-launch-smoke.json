@@ -1,0 +1,36 @@
+{
+  "scenario_id": "GR-01-app-launch-smoke",
+  "scenario_title": "Golden-records app-launch smoke",
+  "runner": "maestro",
+  "runner_selection_rationale": "DL-12 Maestro-default category: primarily a black-box user journey; setup via public app entry (clearState launch); assertions are user-observable (golden-records screen + seeded list visible); no RN internals/sync/state-reset needed.",
+  "coverage_intent": "black_box_user_flow",
+  "target_platforms": ["ios_simulator", "android_emulator"],
+  "required_app_state": {
+    "kind": "installed_seeded_app",
+    "reset": "clearState on launch",
+    "fixture_ref": "golden-records seeded list (≥5 rows)",
+    "owner": "I-16B shared-client / apps/mobile golden-records screen"
+  },
+  "device_assumptions": {
+    "runtime_family": ["ios", "android"],
+    "orientation": "portrait",
+    "locale": "en-US",
+    "text_scale": "default"
+  },
+  "app_build_ref": "apps/mobile built RN binary (pending-live: no build available in this env)",
+  "artifact_expectations": ["screenshot:launch", "screenshot:list-visible", "maestro-runner.log", "device.log"],
+  "flake_policy_ref": "DL-10/DL-12: deterministic failure hard-blocks; rerun is diagnostic only, never erases a prior failure",
+  "owner_lane": "I-17B-mobile-e2e-ui-verification",
+  "evidence_consumer": "verification runner / build / ship / I-23 end-to-end witness",
+  "live_proof_status": "pending-live/BLOCKED",
+  "//declarative-for-validator": "DL-12 selection-algorithm inputs (not DL-12 required fields, but consumed by src/validate/selection-metadata.ts to prove conflict-freedom structurally)",
+  "maestro_default_criteria": {
+    "primarily_black_box_user_journey": true,
+    "setup_via_public_app_entry_no_rn_internals": true,
+    "assertions_user_observable": true,
+    "no_rn_sync_or_state_reset_required": true
+  },
+  "detox_required_triggers": [],
+  "high_risk_user_visible": false,
+  "equivalent_black_box_proof_ref": null
+}

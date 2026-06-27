@@ -1,0 +1,31 @@
+# @sample @demo @reference — Maestro black-box flow: both-mode user-observable acceptance half (I-17B / DL-12).
+#
+# DL-12 BOTH mode — this is the Maestro half of a high-risk user-visible
+# scenario that ALSO has a Detox-required synchronization trigger. The Maestro
+# half proves the end-user flow + evidence readability (black_box_user_flow
+# coverage intent); the Detox half (gr-03-...-detox.spec.ts) proves
+# deterministic synchronization/control. Coverage intent is SPLIT, not a
+# duplicate shallow smoke. Selection metadata: metadata/gr-03-resync-after-reload.json
+# (runner: both, split coverage).
+
+appId: com.vibeEngineerStarter.goldenMobile
+name: "Golden records reload + re-read (Maestro black-box acceptance half)"
+tags:
+  - golden-records
+  - reload
+  - high-risk
+  - maestro
+  - both
+---
+# Launch the app and read the seeded list (acceptance baseline).
+- launchApp:
+    clearState: true
+- assertVisible:
+    id: "golden-record-list"
+- assertVisible:
+    id: "golden-record-item-0"
+# User-observable: after a foreground/background cycle, the list must still show
+# the seeded rows (the deterministic sync half is proven by the Detox spec).
+- runFlow: ./gr-01-app-launch-smoke.yaml
+- assertVisible:
+    id: "golden-record-item-0"

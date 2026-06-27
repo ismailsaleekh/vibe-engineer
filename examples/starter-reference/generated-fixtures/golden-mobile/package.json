@@ -1,0 +1,30 @@
+{
+  "name": "@vibe-engineer-starter/golden-mobile-fixture",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "I-17B golden-mobile fixture: the generated MOBILE behavior-E2E layer (DL-12) over the golden-records React Native surface — Maestro black-box flows (app-launch smoke, navigate, read seeded list) + Detox specs (deterministic RN state reset + synchronized wait; a both-mode split-coverage scenario), each carrying the 14 DL-12 semantic selection-metadata fields, plus the DL-12 runner-selection + conflict validator that fail-closes on missing/contradictory metadata, Maestro-only-for-Detox-required, Detox-only-for-high-risk-without-equivalent-proof, and fake-live. The RN consumption seam imports the SAME I-16B shared client (useGoldenRecords + createMobileTransport) — no forked client/contract/DTO (DL-14 §5; DL-16 §60). Domain-neutral sample/demo/reference (DL-12 / DL-20A).",
+  "vibeEngineer": {
+    "implementationUnit": "I-17B-mobile-e2e-ui-verification",
+    "implementationStatus": "implemented",
+    "packageRole": "generated-starter-mobile-e2e-fixture",
+    "sourceStatus": "maestro-flows-plus-detox-specs-plus-selection-metadata-plus-conflict-validator",
+    "consumptionModel": "consumes I-16B shared client (useGoldenRecords + createMobileTransport) — no duplicated client/contract/DTO source",
+    "boundaryRule": "live device-driven Maestro/Detox run is pending-live/BLOCKED (no iOS sim device / Android emu / Maestro / Detox / RN build in env); deterministic scope = generated flows + selection-metadata/conflict validator + structural/regression/negative witnesses"
+  },
+  "//dependency-model": "Graph-neutral: this fixture path is NOT a pnpm workspace member (pnpm-workspace.yaml = packages/*, packages/presets/*, packages/adapters/*, infra/pulumi), so the modeled/peer deps below add ZERO edges to the real harness workspace graph and require no lockfile reconciliation. Maestro/Detox/react-native appear ONLY as modeled/peer declarations — they are NEVER resolved/installed (no install, no manifest/lockfile edit, no graph edge). The validator runs real against the generated flows/metadata structural artifacts WITHOUT resolving those packages (mirrors the I-16A/I-16B graph-neutral fixture precedent). If truth-green required resolving a real Maestro/Detox/RN runtime, the lane halts BLOCKED — never mock a device run.",
+  "//peerDependencies-note": "peerDependencies (not dependencies): the mobile-E2E toolchain is modeled/peer only here. It is intentionally NOT installed and NOT added to the workspace graph. Live proof is pending-live/BLOCKED (see README + report).",
+  "peerDependencies": {
+    "maestro": "*",
+    "detox": "*",
+    "react-native": "*"
+  },
+  "peerDependenciesMeta": {
+    "maestro": { "optional": true },
+    "detox": { "optional": true },
+    "react-native": { "optional": true }
+  },
+  "scripts": {
+    "witness": "node --experimental-strip-types ./run-mobile-witness.mjs"
+  }
+}

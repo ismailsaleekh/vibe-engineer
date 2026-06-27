@@ -1,0 +1,10 @@
+# Runtime-generated artifacts (evidence packets, screenshots, diffs, proposed
+# baselines). The shipped contract is baseline-manifest.contract.json; actual
+# PNG baselines + per-run evidence are produced by the real-boundary witness.
+ui-verification/evidence/*.json
+ui-verification/artifacts/*
+!ui-verification/evidence/.gitkeep
+!ui-verification/artifacts/.gitkeep
+playwright-report/
+test-results/
+evidence/playwright-report.json

@@ -1,0 +1,69 @@
+{
+  "@sample @demo @reference": "I-17A visual-regression baseline manifest contract (DL-13).",
+  "app_target": "golden-web",
+  "comparator": {
+    "name": "pixelmatch",
+    "threshold": 0.0,
+    "version": "7.1.0"
+  },
+  "normalization_rules": ["timestamp", "random-id", "animation-frame"],
+  "baseline_mode": "first-baseline-proposal",
+  "required_baseline_identities": [
+    {
+      "state_id": "default",
+      "route": "/",
+      "viewport_id": "compact",
+      "screenshot_dimensions": { "width": 390, "height": 844 },
+      "baseline_path": "baselines/default--compact.png"
+    },
+    {
+      "state_id": "default",
+      "route": "/",
+      "viewport_id": "desktop",
+      "screenshot_dimensions": { "width": 1280, "height": 720 },
+      "baseline_path": "baselines/default--desktop.png"
+    },
+    {
+      "state_id": "golden-records-default",
+      "route": "/golden-records",
+      "viewport_id": "desktop",
+      "screenshot_dimensions": { "width": 1280, "height": 720 },
+      "baseline_path": "baselines/golden-records-default--desktop.png"
+    },
+    {
+      "state_id": "golden-records-default",
+      "route": "/golden-records",
+      "viewport_id": "compact",
+      "screenshot_dimensions": { "width": 390, "height": 844 },
+      "baseline_path": "baselines/golden-records-default--compact.png"
+    },
+    {
+      "state_id": "system-status",
+      "route": "/system-status",
+      "viewport_id": "desktop",
+      "screenshot_dimensions": { "width": 1280, "height": 720 },
+      "baseline_path": "baselines/system-status--desktop.png"
+    }
+  ],
+  "approval_policy": {
+    "initial_creation_requires": [
+      "explicit baseline proposal artifact",
+      "screenshot evidence",
+      "reviewer/operator approval",
+      "independent validation"
+    ],
+    "update_requires": [
+      "before/after screenshots",
+      "diff images + numeric metrics",
+      "rationale + linked Implementation Plan/Build Result",
+      "reviewer/operator approval",
+      "independent validation"
+    ],
+    "forbidden": [
+      "auto-accept current screenshot",
+      "silent baseline regeneration",
+      "CI auto-update of baselines"
+    ]
+  },
+  "pending_live_note": "Actual PNG baselines are NOT shipped in this fixture: the first real Playwright run (W-RB-PLAYWRIGHT, post-EXTEND + browser availability) PROPOSES them per DL-13 first-baseline-proposal. Until then the visual-regression specialist is honestly pending-live/BLOCKED on real capture, never faked."
+}

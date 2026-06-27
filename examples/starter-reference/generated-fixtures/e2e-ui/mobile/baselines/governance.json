@@ -1,0 +1,37 @@
+{
+  "@sample @demo @reference": "DL-13 baseline governance policy (I-17B mobile UI verification).",
+  "//policy-source": "DL-13 §Baseline storage, approval, update, normalization, and stale-baseline policy.",
+  "identity_fields_required": [
+    "app", "state_id", "device_profile", "theme", "locale", "text_scale",
+    "data_fixture", "screenshot_dimensions", "comparator_version",
+    "normalization_rules", "approved_source"
+  ],
+  "approval_policy": {
+    "initial_creation_requires": ["explicit baseline proposal artifact", "screenshot evidence", "reviewer/operator approval", "independent validation"],
+    "initial_creation_is_not_automatic_pass": true,
+    "update_requires": ["before_screenshot", "after_screenshot", "diff_image", "numeric_metrics", "rationale", "linked_plan_or_build_or_decision_ref", "reviewer/operator approval", "independent_validation"]
+  },
+  "forbidden_auto_accept": {
+    "rule": "CI and normal verification must NOT auto-update, auto-accept, or silently regenerate baselines (DL-13).",
+    "auto_accept_allowed": false,
+    "auto_regenerate_allowed": false,
+    "silent_update_allowed": false,
+    "validator_check": "any governance/runner path with auto_accept=true, auto_regenerate=true, or silent_update=true is a hard failure (W-NEG-SILENT-BASELINE)."
+  },
+  "stale_baseline_policy": {
+    "missing_baseline": "hard failure (unless the row is explicitly in first-baseline-proposal state)",
+    "stale_identity": "hard failure (identity fields changed without an approved update proposal)",
+    "invalid_schema": "hard failure",
+    "changed_normalization_without_approval": "hard failure",
+    "baseline_growth_without_approval": "hard failure"
+  },
+  "normalization_policy": {
+    "may_mask_only_declared_volatile": ["timestamps", "random_ids", "cursors", "animation_frames", "network_latency_indicators", "os_rendering_noise"],
+    "must_be_recorded": true,
+    "must_not_hide": ["semantic UI changes", "missing elements", "clipping", "overlap", "accessibility failures", "layout failures"],
+    "validator_check": "normalization rules that include any forbidden/semantic mask are a hard failure."
+  },
+  "baseline_storage_location": "implementation-lane-owned fixture/baseline paths (under e2e-ui/mobile/baselines/ here), linked by evidence packets — never under DL-13 paths.",
+  "live_capture_status": "pending-live/BLOCKED",
+  "//live-status-note": "No baseline PNGs are committed in this env (no live device capture). The governance + proposal STRUCTURE is the deterministic deliverable; baseline PNGs arrive with the pending-live device run."
+}

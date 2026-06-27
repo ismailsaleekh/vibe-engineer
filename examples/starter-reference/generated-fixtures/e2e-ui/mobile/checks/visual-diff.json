@@ -1,0 +1,31 @@
+{
+  "@sample @demo @reference": "DL-13 visual-diff check (I-17B mobile UI verification).",
+  "check_id": "visual-diff",
+  "classification": "deterministic",
+  "hard_block": true,
+  "comparator": "pixelmatch-class",
+  "comparator_version": "pixelmatch ^5.x (exact version owned by DL-11/I-17 implementation; semantic interface locked by DL-13)",
+  "policy": "zero unexpected unapproved visual diff after normalization",
+  "thresholds": {
+    "pixel_diff_threshold": 0.0,
+    "antialiasing_tolerance": "explicit-only; recorded per-row in evidence; default 0",
+    "platform_font_tolerance": "explicit-only; recorded per-row"
+  },
+  "normalization": {
+    "rules": [
+      { "target": "volatile.timestamps", "action": "mask", "rationale": "stabilize rendered timestamps" },
+      { "target": "volatile.random_ids", "action": "mask", "rationale": "stabilize random/cursor ids" },
+      { "target": "volatile.animation_frames", "action": "mask", "rationale": "stabilize animation frame noise" }
+    ],
+    "forbidden_masks": [
+      { "target": "semantic.missing_elements", "reason": "normalization must not hide missing elements (DL-13)" },
+      { "target": "semantic.clipping", "reason": "normalization must not hide content clipping" },
+      { "target": "semantic.overlap", "reason": "normalization must not hide element overlap" },
+      { "target": "semantic.accessibility", "reason": "normalization must not hide accessibility failures" },
+      { "target": "semantic.layout", "reason": "normalization must not hide layout breakage" }
+    ],
+    "must_not_mask_semantic_change": true
+  },
+  "outputs": ["diff_image", "numeric_metrics: {pixels_total, pixels_diff, diff_ratio}"],
+  "advisory_boundary": "screenshot-only or LLM visual-taste opinion is advisory-only and may NOT be the sole hard block (DL-13 §Deterministic vs advisory)."
+}
