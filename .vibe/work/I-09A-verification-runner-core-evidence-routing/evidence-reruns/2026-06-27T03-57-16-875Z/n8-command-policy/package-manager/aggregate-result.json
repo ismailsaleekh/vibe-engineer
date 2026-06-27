@@ -1,0 +1,74 @@
+{
+  "status": "blocked",
+  "runId": "i09a-n8-package-manager",
+  "evidencePackets": [
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/evidence-reruns/2026-06-27T03-57-16-875Z/n8-command-policy/package-manager/evidence_i09a-n8-package-manager_safety-hooks_00.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/evidence-reruns/2026-06-27T03-57-16-875Z/n8-command-policy/package-manager/evidence_i09a-n8-package-manager_typecheck_01.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/evidence-reruns/2026-06-27T03-57-16-875Z/n8-command-policy/package-manager/evidence_i09a-n8-package-manager_lint-format_02.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/evidence-reruns/2026-06-27T03-57-16-875Z/n8-command-policy/package-manager/evidence_i09a-n8-package-manager_mechanical-gate_03.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/evidence-reruns/2026-06-27T03-57-16-875Z/n8-command-policy/package-manager/evidence_i09a-n8-package-manager_unit_04.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/evidence-reruns/2026-06-27T03-57-16-875Z/n8-command-policy/package-manager/evidence_i09a-n8-package-manager_integration_05.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/evidence-reruns/2026-06-27T03-57-16-875Z/n8-command-policy/package-manager/evidence_i09a-n8-package-manager_contract-adapter_06.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/evidence-reruns/2026-06-27T03-57-16-875Z/n8-command-policy/package-manager/evidence_i09a-n8-package-manager_e2e_07.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/evidence-reruns/2026-06-27T03-57-16-875Z/n8-command-policy/package-manager/evidence_i09a-n8-package-manager_ui-verification_08.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/evidence-reruns/2026-06-27T03-57-16-875Z/n8-command-policy/package-manager/evidence_i09a-n8-package-manager_ai-eval_09.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/evidence-reruns/2026-06-27T03-57-16-875Z/n8-command-policy/package-manager/evidence_i09a-n8-package-manager_build-package_10.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/evidence-reruns/2026-06-27T03-57-16-875Z/n8-command-policy/package-manager/evidence_i09a-n8-package-manager_context-drift_11.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/evidence-reruns/2026-06-27T03-57-16-875Z/n8-command-policy/package-manager/evidence_i09a-n8-package-manager_observability_12.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/evidence-reruns/2026-06-27T03-57-16-875Z/n8-command-policy/package-manager/evidence_i09a-n8-package-manager_advisory-review_13.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/evidence-reruns/2026-06-27T03-57-16-875Z/n8-command-policy/package-manager/evidence_i09a-n8-package-manager_final-dod_14.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/evidence-reruns/2026-06-27T03-57-16-875Z/n8-command-policy/package-manager/evidence_i09a-n8-package-manager_schema-validation_15.json"
+  ],
+  "executedItems": [
+    "schema-validation"
+  ],
+  "recordedItems": [
+    "safety-hooks",
+    "typecheck",
+    "lint-format",
+    "mechanical-gate",
+    "unit",
+    "integration",
+    "contract-adapter",
+    "e2e",
+    "ui-verification",
+    "ai-eval",
+    "build-package",
+    "context-drift",
+    "observability",
+    "final-dod"
+  ],
+  "blockedItems": [
+    "advisory-review",
+    "schema-validation"
+  ],
+  "failures": [
+    {
+      "code": "MISSING_RUNNER_OR_PREREQUISITE",
+      "message": "No runner spec resolved for required add/update Verification Delta item.",
+      "classification": "missing_runner_or_prerequisite"
+    },
+    {
+      "code": "COMMAND_POLICY_DENIED",
+      "message": "Package-manager commands are denied in I-09A runners.",
+      "classification": "safety_or_security_policy_failure"
+    }
+  ],
+  "warnings": [
+    "safety_hooks is represented for the domain-neutral I-09A fixture.",
+    "typecheck is represented for the domain-neutral I-09A fixture.",
+    "lint_format is represented for the domain-neutral I-09A fixture.",
+    "mechanical_gate is represented for the domain-neutral I-09A fixture.",
+    "unit is represented for the domain-neutral I-09A fixture.",
+    "integration is represented for the domain-neutral I-09A fixture.",
+    "contract_adapter is represented for the domain-neutral I-09A fixture.",
+    "e2e is represented for the domain-neutral I-09A fixture.",
+    "ui_verification is represented for the domain-neutral I-09A fixture.",
+    "ai_eval is represented for the domain-neutral I-09A fixture.",
+    "build_package is represented for the domain-neutral I-09A fixture.",
+    "context_drift is represented for the domain-neutral I-09A fixture.",
+    "observability is represented for the domain-neutral I-09A fixture.",
+    "advisory_review is represented for the domain-neutral I-09A fixture.",
+    "final_dod is represented for the domain-neutral I-09A fixture."
+  ]
+}
