@@ -1,6 +1,6 @@
 # Plan, build, ship
 
-> **Status:** The skill runtime (`plan`, `build`, `ship`) is **not wired** as runnable user commands. The artifact schemas, verification runner, and context APIs that this workflow depends on **are** present and usable programmatically. This guide describes the intended user workflow and points to the actual APIs you can call today.
+> **Status:** `plan`, `build`, and `ship` are harness-native skills, not `vibe-engineer` CLI commands. The artifact schemas, verification runner, context APIs, and build/ship skill runtime packages are present; live user invocation depends on generated harness-native assets and adapter support.
 
 ## The loop
 
@@ -33,10 +33,10 @@ import { runVerificationPlan } from "@vibe-engineer/verification";
 
 const summary = await runVerificationPlan({
   implementationPlanPath, // approved plan, contained under projectRoot
-  evidenceRoot,           // Evidence Packets are written here
+  evidenceRoot, // Evidence Packets are written here
   projectRoot,
-  runId,                  // stable lowercase id
-  runnerCatalog           // typed runner specs
+  runId, // stable lowercase id
+  runnerCatalog, // typed runner specs
 });
 
 // summary.status ∈ passed | failed | blocked | advisory_warning
@@ -68,7 +68,7 @@ const result = validateArtifactKind("build_result", buildResultObject);
 ```js
 import { writeContextProject, checkContextDrift, classifyFindings } from "@vibe-engineer/context";
 
-await writeContextProject({ projectRoot, /* graph, headers, ... */ });
+await writeContextProject({ projectRoot /* graph, headers, ... */ });
 const drift = await checkContextDrift(projectRoot);
 const severity = classifyFindings(drift.findings); // clean | major-local | minor-local
 ```
@@ -86,26 +86,27 @@ validateArtifactKind("ship_packet", shipPacketObject);
 
 Failures carry a `classification` that routes them to the right owner instead of "red":
 
-| Classification | Means |
-| --- | --- |
-| `deterministic_product_or_code_failure` | Real product/code bug. |
-| `test_assertion_failure` / `test_bug` | Test is correct / test is wrong. |
-| `environment_issue` | Environment, not code. |
-| `timing_or_flaky_suspicion` | Likely flake. |
-| `schema_or_contract_failure` | Artifact/contract violation. |
-| `safety_or_security_policy_failure` | Safety policy denied the run. |
-| `mechanical_gate_failure` | A mechanical gate failed. |
+| Classification                                        | Means                             |
+| ----------------------------------------------------- | --------------------------------- |
+| `deterministic_product_or_code_failure`               | Real product/code bug.            |
+| `test_assertion_failure` / `test_bug`                 | Test is correct / test is wrong.  |
+| `environment_issue`                                   | Environment, not code.            |
+| `timing_or_flaky_suspicion`                           | Likely flake.                     |
+| `schema_or_contract_failure`                          | Artifact/contract violation.      |
+| `safety_or_security_policy_failure`                   | Safety policy denied the run.     |
+| `mechanical_gate_failure`                             | A mechanical gate failed.         |
 | `missing_evidence` / `missing_runner_or_prerequisite` | No evidence produced / no runner. |
-| `blocked_prerequisite` | A required item is blocked. |
+| `blocked_prerequisite`                                | A required item is blocked.       |
 
 Full list in [Verification model](../../architecture/verification-model.md#failure-classifications).
 
-## What to do until the skills are live
+## What to do in v0.1
 
+- Use generated harness-native skill assets for the selected harness where available.
 - Author and validate artifacts with `@vibe-engineer/artifacts`.
-- Drive verification with `runVerificationPlan` and a typed `runnerCatalog`.
-- Drive context with `@vibe-engineer/context`.
-- Track the skill-runtime lane for the user-facing `plan`/`build`/`ship` commands.
+- Drive verification with `runVerificationPlan` and a typed `runnerCatalog` when using deterministic primitives directly.
+- Drive context with `@vibe-engineer/context` when writing custom automation.
+- Do not call `vibe-engineer plan`, `vibe-engineer build`, or `vibe-engineer ship`; those names are not public CLI commands.
 
 ## Related
 

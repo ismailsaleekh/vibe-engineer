@@ -1,63 +1,82 @@
 # CLI reference
 
-> **Source of truth:** `packages/cli/src/entry/vibe-engineer.js`, `packages/cli/src/command-loader/loader.js`, `packages/cli/src/envelope/result-envelope.js`, `packages/cli/src/errors/codes.js`. Curated from actual source; checked by the stale-doc witness.
+> **Source of truth:** `packages/cli/src/entry/vibe-engineer.js`, `packages/cli/src/command-loader/loader.js`, `packages/cli/src/envelope/result-envelope.js`, `packages/cli/src/errors/codes.js`, and `packages/cli/package.json`.
 
 ## Package exports
 
-The public package `vibe-engineer` (`packages/cli/package.json`) exposes:
+The public package `vibe-engineer` exposes compiled `dist` files:
 
-| Subpath | File |
-| --- | --- |
-| `.` | `./src/entry/vibe-engineer.js` (bin: `vibe-engineer`) |
-| `./envelope` | `./src/envelope/result-envelope.js` |
-| `./command-loader` | `./src/command-loader/loader.js` |
+| Subpath            | Types                                  | Import                               |
+| ------------------ | -------------------------------------- | ------------------------------------ |
+| `.`                | `./dist/entry/vibe-engineer.d.ts`      | `./dist/entry/vibe-engineer.js`      |
+| `./envelope`       | `./dist/envelope/result-envelope.d.ts` | `./dist/envelope/result-envelope.js` |
+| `./command-loader` | `./dist/command-loader/loader.d.ts`    | `./dist/command-loader/loader.js`    |
 
-## Commands actually wired
+The package binary is:
 
-The CLI runtime is **foundation-only**. The command loader (`packages/cli/src/command-loader/loader.js`) registers exactly three commands via `FOUNDATION_COMMANDS`, and the entry builds the loader with `createCommandLoader()` (no extra commands). This is the actual, current surface:
-
-| Command | Visibility | Description | Source |
-| --- | --- | --- | --- |
-| `help` | foundation | List I-02A foundation commands. | `helpCommand` |
-| `version` | foundation | Report package version. | `versionCommand` |
-| `foundation` | internal | I-02A internal envelope/loader witness command. | `foundationCommand` |
-
-`help` returns a `help_result` payload listing each registered command's `id`, `visibility`, and `description`. `version` returns a `version_result` payload with `name` and `version` read from the CLI `package.json`. `foundation` is the internal witness command (accepts `--status success|failure|partial`, `--simulate-failure`, `--simulate-partial`).
-
-## Commands present as source but NOT wired (pending-live)
-
-Command source files exist under `packages/cli/src/commands/` for these families, but they are **not registered** in the runtime loader. The loader classifies them in `LATER_COMMANDS`; invoking one returns an `UnsupportedOperation` envelope ("Command family is not implemented in I-02A"):
-
-```txt
-create, import, doctor, config, schematic, verify, security, build, ship,
-context, registry, update, init
+```json
+{ "vibe-engineer": "./dist/entry/vibe-engineer.js" }
 ```
 
-> Do **not** document these as runnable user commands. They are `pending-live` until their lane wires them into the loader and a witness proves the join. See [Repository status](../guides/getting-started/repository-status.md).
+## v0.1 commands
+
+The default command loader registers these public deterministic primitives:
+
+| Command     | Visibility            | Purpose                                                              |
+| ----------- | --------------------- | -------------------------------------------------------------------- |
+| `help`      | foundation            | List public v0.1 CLI primitives.                                     |
+| `version`   | foundation            | Report installed package name/version.                               |
+| `create`    | starter               | Generate a full starter project with selected harness assets.        |
+| `import`    | starter               | Adopt an existing project without silent overwrite.                  |
+| `doctor`    | debug/diagnostic      | Inspect read-only project health through config-backed checks.       |
+| `config`    | debug/diagnostic      | Inspect or validate project configuration.                           |
+| `verify`    | implementation        | Run an approved Implementation Plan through the verification runner. |
+| `security`  | implementation        | Run fail-closed security/safety policy gates.                        |
+| `schematic` | skill/agent primitive | Plan, dry-run, or apply a manifest-driven schematic.                 |
+
+`foundation` remains an internal witness command and is filtered out of public help.
+
+## Not CLI commands
+
+The six user-facing skills are harness-native assets, not public CLI commands:
+
+```txt
+brainstorm grill-me task plan build ship
+```
+
+Invoking these names through the CLI returns a typed invalid-invocation envelope.
+
+## Deferred command families
+
+These command families are intentionally deferred in v0.1 and fail closed with `VE_UNSUPPORTED_OPERATION`:
+
+```txt
+context registry update init
+```
 
 ## Global flags
 
-Global flags parsed by the entry (`vibe-engineer.js`, `parseGlobalArgs`):
+Global flags parsed by the entrypoint:
 
-| Flag | Kind | Effect |
-| --- | --- | --- |
-| `--json` | boolean | Machine-readable output. |
-| `--quiet` | boolean | Suppress non-essential output. |
-| `--non-interactive` | boolean | Never prompt; fail closed on missing input. |
-| `--result-file <path>` | value | Write the result envelope to this path (atomic). |
-| `--project-root <path>` | value | Set the project root. |
-| `--config <path>` | value | Path to a config file. |
+| Flag                    | Kind    | Effect                                                    |
+| ----------------------- | ------- | --------------------------------------------------------- |
+| `--json`                | boolean | Machine-readable output.                                  |
+| `--quiet`               | boolean | Suppress non-essential stdout when a result file is used. |
+| `--non-interactive`     | boolean | Never prompt; fail closed on missing input.               |
+| `--result-file <path>`  | value   | Write the result envelope atomically.                     |
+| `--project-root <path>` | value   | Set the project root.                                     |
+| `--config <path>`       | value   | Path to a config file.                                    |
 
-Unknown global flags return an `InvalidFlag` envelope; unknown commands return `InvalidInvocation` (or `UnsupportedOperation` for `LATER_COMMANDS`).
+Unknown global flags return `VE_INVALID_FLAG`. Unknown command names return `VE_INVALID_INVOCATION` unless they are one of the deferred families above.
 
 ## Result envelope
 
-Every command returns a machine result envelope (`packages/cli/src/envelope/result-envelope.js`). Schema id: `CLI_RESULT_SCHEMA_VERSION = "vibe-engineer.cli.result.v1"`.
+Every command returns a machine result envelope (`CLI_RESULT_SCHEMA_VERSION = "vibe-engineer.cli.result.v1"`).
 
 ```js
 import {
   CLI_RESULT_SCHEMA_VERSION,
-  CLI_STATUSES,                 // ["success","failure","blocked","partial"]
+  CLI_STATUSES,
   exitCodeFor,
   artifactDescriptor,
   createEnvelope,
@@ -70,55 +89,50 @@ import {
   validateCliResultEnvelope,
   writeResultFileAtomic,
   envelopeBytes,
-  sha256Text
+  sha256Text,
 } from "vibe-engineer/envelope";
 ```
 
 ### Statuses
 
-`CLI_STATUSES = ["success", "failure", "blocked", "partial"]`.
+```txt
+success failure blocked partial
+```
 
 ### Exit codes
 
-From `packages/cli/src/errors/codes.js` (`EXIT_CODES`):
+| Status / classification                        | Exit |
+| ---------------------------------------------- | ---- |
+| success                                        | `0`  |
+| deterministic failure                          | `1`  |
+| invalid invocation or invalid input            | `2`  |
+| invalid project/config or missing prerequisite | `3`  |
+| safety policy block                            | `4`  |
+| ownership/write conflict                       | `5`  |
+| external unavailable                           | `6`  |
+| internal error                                 | `7`  |
+| partial                                        | `8`  |
 
-| Status / classification | Exit |
-| --- | --- |
-| success | `0` |
-| deterministic failure | `1` |
-| invalid invocation | `2` |
-| invalid project or config | `3` |
-| safety policy block | `4` |
-| ownership conflict | `5` |
-| external unavailable | `6` |
-| internal error | `7` |
-| partial | `8` |
-
-Use `exitCodeFor(status, classification?)` to compute the exit code from a status (and optional failure/blocked classification).
-
-### Error classifications and codes
-
-`CliClassification` (`invalid_invocation`, `invalid_input`, `invalid_project`, `invalid_config`, `missing_prerequisite`, `unsupported_operation`, `deterministic_failure`, `safety_policy_block`, `ownership_conflict`, `write_conflict`, `external_unavailable`, `internal_error`, `partial_incomplete`).
-
-`CliErrorCode` (`VE_INVALID_INVOCATION`, `VE_INVALID_FLAG`, `VE_MISSING_FLAG_VALUE`, `VE_UNSUPPORTED_OPERATION`, `VE_DUPLICATE_COMMAND_ID`, `VE_MALFORMED_COMMAND_METADATA`, `VE_INVALID_CONFIG`, `VE_MISSING_CONFIG`, `VE_RESULT_FILE_WRITE_FAILED`, `VE_FOUNDATION_FAILURE`, `VE_PARTIAL_INCOMPLETE`, `VE_INVALID_ENVELOPE`, `VE_INTERNAL_ERROR`).
-
-Helpers: `diagnostic({ severity, code, classification, message, path, span, hint })` and `cliError({ code, classification, retryable, blocking, message, details })`.
+Use `exitCodeFor(status, classification?)` to compute the process exit code from an envelope status/classification.
 
 ## Command-loader API
 
 ```js
-import { CommandLoader, createCommandLoader, CommandLoaderDefinitionError } from "vibe-engineer/command-loader";
+import {
+  CommandLoader,
+  createCommandLoader,
+  CommandLoaderDefinitionError,
+} from "vibe-engineer/command-loader";
 ```
 
-- `new CommandLoader(commands = FOUNDATION_COMMANDS)` — registers commands; throws `CommandLoaderDefinitionError` (`VE_MALFORMED_COMMAND_METADATA` / `VE_DUPLICATE_COMMAND_ID`) on bad metadata.
-- `loader.listCommands()` → `[{ id, visibility, description }]`.
-- `loader.hasCommand(id)` → boolean.
-- `await loader.dispatch(commandId, args, context)` → `{ envelope }`. Unknown command → `InvalidInvocation`/`UnsupportedOperation` envelope.
-
-Each command is `{ id, visibility, description, run }` where `run({ invocation, args, context })` returns `{ envelope }`.
+- `createCommandLoader()` registers the default v0.1 command set plus the internal `foundation` witness.
+- `loader.listCommands()` returns command metadata; public help filters internal commands.
+- `loader.dispatch(commandId, args, context)` returns `{ envelope }`.
+- Duplicate or malformed command metadata throws `CommandLoaderDefinitionError`.
 
 ## Related
 
+- [Create a project](../guides/getting-started/create-project.md)
 - [System overview](../architecture/system-overview.md)
 - [Verification model](../architecture/verification-model.md)
 - [DL-07 — CLI Primitives](../decisions/DL-07-cli-primitives.md)

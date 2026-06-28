@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "license": "MIT",
   "type": "module",
-  "description": "Skeleton manifest for @vibe-engineer/schematics; implementation is owned by a later validated lane.",
+  "description": "Manifest-driven schematic engine for deterministic vibe-engineer project generation.",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -20,9 +20,9 @@
   },
   "vibeEngineer": {
     "implementationUnit": "I-00A-workspace-package-skeleton",
-    "implementationStatus": "skeleton-only",
-    "packageRole": "internal-workspace-package",
-    "sourceStatus": "not-created-in-I-00A"
+    "implementationStatus": "v0.1-public-schematics-engine",
+    "packageRole": "public-schematics-package",
+    "sourceStatus": "v0.1-schematics-engine"
   },
   "private": false,
   "engines": {
@@ -32,5 +32,19 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ismailsaleekh/vibe-engineer.git"
-  }
+  },
+  "author": "Ismail <ismailsalikhodjaev@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/ismailsaleekh/vibe-engineer/issues"
+  },
+  "homepage": "https://github.com/ismailsaleekh/vibe-engineer#readme",
+  "keywords": [
+    "ai",
+    "agents",
+    "typescript",
+    "verification",
+    "schematics",
+    "developer-tools",
+    "vibe-engineer"
+  ]
 }

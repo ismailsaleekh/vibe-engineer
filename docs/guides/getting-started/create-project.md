@@ -1,31 +1,60 @@
 # Create a project
 
-> **Status:** `pending-live`. Project creation runs through the `vibe-engineer create` command family, which exists as source under `packages/cli/src/commands/create/` but is **not wired** into the runtime command loader. The runtime returns `UnsupportedOperation` for it today. This guide describes the intended flow and the actual artifacts/config it will produce; do not treat the commands as runnable until the create lane witnesses them.
+> **Status:** v0.1 local proof green. `vibe-engineer create` is wired in the installed binary and has been proven from a clean external tarball install. npm publication remains manual/protected.
 
-## Intended flow
+## Command
 
-```txt
-vibe-engineer create --project-name <name> [--agentic-harness <id>] [--brief <path>]
+```bash
+npx vibe-engineer create --target-root ./my-project --project-name my-project --agentic-harness pi --non-interactive
 ```
 
-From `packages/cli/src/commands/create/index.ts`, the create command accepts project-naming flags, an `--agentic-harness` selector, an optional `--brief`, and the [global envelope flags](../../reference/cli.md#global-flags). It is intended to produce a **generated/reference starter** that consumes `vibe-engineer` through packages/config/generated assets rather than copying harness logic (see [System overview](../../architecture/system-overview.md#two-repo-direction)).
+Important flags:
 
-## What a generated project contains
+| Flag                    | Meaning                                                                                                   |
+| ----------------------- | --------------------------------------------------------------------------------------------------------- |
+| `--target-root <path>`  | Required output directory. The command fails closed if the target already conflicts.                      |
+| `--project-name <name>` | Optional display/name seed; defaults from the target directory.                                           |
+| `--agentic-harness pi`  | v0.1 supported harness selection. Non-pi harnesses fail closed until implemented.                         |
+| `--brief <text>`        | Optional short project brief for initial context bootstrap. Secret-like or oversized briefs are rejected. |
+| `--non-interactive`     | Required for automation; no hidden prompts.                                                               |
+| `--result-file <path>`  | Optional atomic machine-readable result envelope.                                                         |
 
-A generated `vibe-engineer-starter` project is intended to contain:
+## Generated starter shape
 
-- A project config file `vibe-engineer.config.json` (schema `vibe-engineer.config.v1`) — see [Package exports](../../reference/packages.md#vibe-engineerconfig).
-- A bootstrap context graph (DL-17) with Context File Headers — see [Context and memory model](../../architecture/context-memory.md).
-- A pinned dependency on the `vibe-engineer` package.
-- The selected agentic harness adapter wiring.
+A generated starter contains:
 
-## Config defaults you will inherit
+```txt
+apps/
+  api/       # NestJS + Prisma skeleton
+  web/       # React skeleton
+  mobile/    # React Native skeleton
+packages/
+  domain/
+  contracts/
+  api-client/
+  config/
+  testing/
+  ui/
+.tooling/
+.vibe/
+  context/
+  work/
+  evidence/
+  registry/
+.pi/
+  skills/<brainstorm|grill-me|task|plan|build|ship>/SKILL.md
+  prompts/vibe-*.md
+```
 
-From `packages/config/src/index.js` (`DEFAULTS`):
+The generated project is a starter consumer. It does not copy harness implementation internals and it does not expose the six skills as CLI commands.
+
+## Config defaults
+
+The generated `vibe-engineer.config.json` includes the locked defaults:
 
 ```json
 {
-  "agenticHarness": "<selected>",
+  "agenticHarness": "pi",
   "maxParallelAgents": 8,
   "maxValidationFixIterations": 3,
   "agenticWorkPackageTargetHours": 6,
@@ -40,32 +69,28 @@ From `packages/config/src/index.js` (`DEFAULTS`):
 }
 ```
 
-`agenticHarness` is the only required top-level key.
+## Local proof commands for a generated starter
 
-## How to validate a config today
+The v0.1 local proof runs the generated starter through:
 
-Although `create` is not wired, the config loader is. You can validate a hand-written config against the real schema now:
-
-```js
-import { loadVibeConfigFromProjectRoot, parseVibeConfig } from "@vibe-engineer/config";
-
-const result = await loadVibeConfigFromProjectRoot(process.cwd());
+```bash
+pnpm install
+pnpm run typecheck
+pnpm run lint
+pnpm run format:check
+pnpm run test:unit
+pnpm run build
+pnpm run quality:quick
 ```
 
-`parseVibeConfig(input)` validates an in-memory object; `loadVibeConfigFile(path)` loads and validates a file. Both return a typed result.
+Full web E2E, mobile Maestro/Detox device proof, visual baselines, Pulumi deploys, and live pi runtime discovery are not default CI claims. They remain explicit/manual/orchestrator-run proof items.
 
 ## Importing an existing project
 
-`vibe-engineer import` is the sibling flow for adopting the harness in an existing repo. It shares the create command's option parsing (`runCreate(..., "import")` in source) and is likewise `pending-live`.
-
-## What to do until create is live
-
-1. Author a `vibe-engineer.config.json` by hand using the defaults above.
-2. Validate it with `loadVibeConfigFromProjectRoot`.
-3. Track the create/import lane for the runtime wiring witness.
+`vibe-engineer import` is wired as the adoption sibling for existing projects. It installs config/context/harness assets idempotently, detects conflicts, and fails closed rather than silently overwriting user files.
 
 ## Related
 
-- [Plan / build / ship](./plan-build-ship.md)
 - [Repository status](./repository-status.md)
 - [CLI reference](../../reference/cli.md)
+- [Plan / build / ship](./plan-build-ship.md)

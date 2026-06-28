@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "license": "MIT",
   "type": "module",
-  "description": "Security and safety policy package for typed fail-closed harness gates.",
+  "description": "Fail-closed security, safety-policy, redaction, and command-safety gates for vibe-engineer.",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -18,9 +18,9 @@
   },
   "vibeEngineer": {
     "implementationUnit": "I-00A-workspace-package-skeleton",
-    "implementationStatus": "skeleton-only",
-    "packageRole": "internal-workspace-package",
-    "sourceStatus": "not-created-in-I-00A"
+    "implementationStatus": "v0.1-public-security-api",
+    "packageRole": "public-security-package",
+    "sourceStatus": "v0.1-security-api"
   },
   "private": false,
   "engines": {
@@ -30,5 +30,19 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ismailsaleekh/vibe-engineer.git"
-  }
+  },
+  "author": "Ismail <ismailsalikhodjaev@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/ismailsaleekh/vibe-engineer/issues"
+  },
+  "homepage": "https://github.com/ismailsaleekh/vibe-engineer#readme",
+  "keywords": [
+    "ai",
+    "agents",
+    "typescript",
+    "verification",
+    "schematics",
+    "developer-tools",
+    "vibe-engineer"
+  ]
 }

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "license": "MIT",
   "type": "module",
-  "description": "Strict typed context graph, index, drift, and retrieval contracts for vibe-engineer.",
+  "description": "Context graph, index, drift, and retrieval primitives for vibe-engineer projects.",
   "private": false,
   "engines": {
     "node": ">=20.19.0",
@@ -29,12 +29,26 @@
   },
   "vibeEngineer": {
     "implementationUnit": "I-08-context-graph-index-drift",
-    "implementationStatus": "implemented",
-    "packageRole": "internal-workspace-package",
-    "sourceStatus": "package-owned-source-created"
+    "implementationStatus": "v0.1-public-context-api",
+    "packageRole": "public-context-package",
+    "sourceStatus": "v0.1-context-api"
   },
   "dependencies": {
     "@vibe-engineer/artifacts": "^0.1.0",
     "@vibe-engineer/config": "^0.1.0"
-  }
+  },
+  "author": "Ismail <ismailsalikhodjaev@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/ismailsaleekh/vibe-engineer/issues"
+  },
+  "homepage": "https://github.com/ismailsaleekh/vibe-engineer#readme",
+  "keywords": [
+    "ai",
+    "agents",
+    "typescript",
+    "verification",
+    "schematics",
+    "developer-tools",
+    "vibe-engineer"
+  ]
 }

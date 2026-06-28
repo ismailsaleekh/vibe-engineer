@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "license": "MIT",
   "type": "module",
-  "description": "Strict durable DAG orchestration runtime primitives for vibe-engineer.",
+  "description": "Durable DAG, scheduling, ownership, and run-state primitives for vibe-engineer orchestration.",
   "private": false,
   "engines": {
     "node": ">=20.19.0",
@@ -31,11 +31,25 @@
   },
   "vibeEngineer": {
     "implementationUnit": "I-03-orchestration-runtime",
-    "implementationStatus": "implemented",
-    "packageRole": "internal-workspace-package",
-    "sourceStatus": "package-owned-source-created"
+    "implementationStatus": "v0.1-public-orchestration-api",
+    "packageRole": "public-orchestration-package",
+    "sourceStatus": "v0.1-orchestration-api"
   },
   "dependencies": {
     "@vibe-engineer/artifacts": "^0.1.0"
-  }
+  },
+  "author": "Ismail <ismailsalikhodjaev@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/ismailsaleekh/vibe-engineer/issues"
+  },
+  "homepage": "https://github.com/ismailsaleekh/vibe-engineer#readme",
+  "keywords": [
+    "ai",
+    "agents",
+    "typescript",
+    "verification",
+    "schematics",
+    "developer-tools",
+    "vibe-engineer"
+  ]
 }

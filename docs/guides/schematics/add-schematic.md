@@ -1,6 +1,6 @@
 # Add a schematic
 
-> **Status:** `pending-live`. Schematics are governed by the `deterministic-schematics` standard and the `schematic_manifest` artifact schema, both of which **are** present. The schematic runtime/engine is a `pending-live` package (`packages/schematics`). This guide describes the manifest contract and the standard a schematic must satisfy.
+> **Status:** The schematic manifest schema and `@vibe-engineer/schematics` engine are present in v0.1. This guide describes the manifest contract and the standard a schematic must satisfy.
 
 ## What a schematic is
 
@@ -35,11 +35,9 @@ Per the standard and the schema, a manifest must declare its inputs, the paths i
 
 Apply must be fail-closed on conflict: it refuses rather than overwrites. This mirrors the harness-wide discipline that agents never perform destructive operations and never request a clean tree ([`dirty-tree-ownership`](../../standards/index.md#dirty-tree-ownership)).
 
-## Until the engine is live
+## Engine usage
 
-- Validate manifests with `@vibe-engineer/artifacts`.
-- Author positive/negative fixtures under your lane's owned paths.
-- Track the `packages/schematics` lane for the engine witness.
+Use `@vibe-engineer/schematics` or the `vibe-engineer schematic` CLI primitive to plan, dry-run, or apply a manifest-driven schematic. Keep positive/negative fixtures under the owning lane's paths and prove dry-run/apply/conflict behavior at the engine boundary.
 
 ## Related
 

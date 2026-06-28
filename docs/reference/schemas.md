@@ -10,18 +10,18 @@
 
 `ARTIFACT_KINDS` (from `packages/artifacts/src/schema-registry.js`):
 
-| Kind | Schema file | Role |
-| --- | --- | --- |
-| `work_brief` | `schemas/work-brief.schema.json` | Captured intent from an input skill. |
-| `implementation_plan` | `schemas/implementation-plan.schema.json` | Plan that embeds a Verification Delta. |
-| `verification_delta` | `schemas/verification-delta.schema.json` | Required proof items for a plan. |
-| `build_result` | `schemas/build-result.schema.json` | Output of `build`. |
-| `ship_packet` | `schemas/ship-packet.schema.json` | Output of `ship`. |
-| `evidence_packet` | `schemas/evidence-packet.schema.json` | One piece of verification evidence. |
-| `agent_registry_entry` | `schemas/agent-registry-entry.schema.json` | Registry entry for an agent. |
-| `context_file_header` | `schemas/context-file-header.schema.json` | Header on a context-bearing file. |
-| `schematic_manifest` | `schemas/schematic-manifest.schema.json` | Manifest for a schematic. |
-| `skill_manifest` | `schemas/skill-manifest.schema.json` | Manifest for a skill. |
+| Kind                   | Schema file                                | Role                                   |
+| ---------------------- | ------------------------------------------ | -------------------------------------- |
+| `work_brief`           | `schemas/work-brief.schema.json`           | Captured intent from an input skill.   |
+| `implementation_plan`  | `schemas/implementation-plan.schema.json`  | Plan that embeds a Verification Delta. |
+| `verification_delta`   | `schemas/verification-delta.schema.json`   | Required proof items for a plan.       |
+| `build_result`         | `schemas/build-result.schema.json`         | Output of `build`.                     |
+| `ship_packet`          | `schemas/ship-packet.schema.json`          | Output of `ship`.                      |
+| `evidence_packet`      | `schemas/evidence-packet.schema.json`      | One piece of verification evidence.    |
+| `agent_registry_entry` | `schemas/agent-registry-entry.schema.json` | Registry entry for an agent.           |
+| `context_file_header`  | `schemas/context-file-header.schema.json`  | Header on a context-bearing file.      |
+| `schematic_manifest`   | `schemas/schematic-manifest.schema.json`   | Manifest for a schematic.              |
+| `skill_manifest`       | `schemas/skill-manifest.schema.json`       | Manifest for a skill.                  |
 
 The `SCHEMA_FILES` map and `schemaPathForKind(kind)` resolve each kind to its canonical schema path inside the package.
 
@@ -33,13 +33,13 @@ import {
   SCHEMA_FILES,
   SUPPORTED_SCHEMA_VERSION,
   schemaPathForKind,
-  loadSchema,          // (kind) => schema object | undefined
-  loadAllSchemas,      // () => { [kind]: schema }
-  validateArtifact,    // (value) => { ok, errors }  (any kind)
-  validateArtifactKind,// (kind, value) => { ok, errors }
-  validateArtifactFile,// (path, { kind }) => { ok, artifact | errors }
+  loadSchema, // (kind) => schema object | undefined
+  loadAllSchemas, // () => { [kind]: schema }
+  validateArtifact, // (value) => { ok, errors }  (any kind)
+  validateArtifactKind, // (kind, value) => { ok, errors }
+  validateArtifactFile, // (path, { kind }) => { ok, artifact | errors }
   compileAllArtifactSchemas,
-  ValidationErrorCode
+  ValidationErrorCode,
 } from "@vibe-engineer/artifacts";
 ```
 
@@ -49,7 +49,7 @@ Return shape: `{ ok: true }` or `{ ok: false, errors }`. Errors carry stable cod
 
 - The **verification runner** validates the Implementation Plan file and its embedded Verification Delta before executing any item, and validates every Evidence Packet candidate before persistence (`packages/verification/src/index.js`).
 - The **context package** uses artifact file validation as a declared provider seam (`__providerSeams.artifactsValidateArtifactFileType`).
-- CLI commands that accept artifact paths are expected to use `validateArtifactFile` at their boundary (locked direction; user commands are `pending-live`).
+- CLI primitives that accept artifact paths use `validateArtifactFile` or package-specific schema validators at their boundary where applicable.
 
 ## Adding a new artifact kind
 

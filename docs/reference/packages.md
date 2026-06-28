@@ -1,12 +1,45 @@
 # Package exports reference
 
-> **Source of truth:** `packages/*/src/index.js` / `index.ts` / `index.d.ts`, extracted directly from the actual export statements. This page is regenerated/checked by the stale-doc witness. Last curated against the working tree on 2026-06-27.
+> **Source of truth:** public package `package.json` export maps and their `src/**` entry files. Runtime packages are built to `dist` with `tsup` before packing.
 
-Each `@vibe-engineer/*` package is a workspace package under `packages/`. This page lists the actual public exports per package. Packages with no public `index` export map are listed as `pending-live`.
+## Public v0.1 package graph
+
+The publishable graph contains exactly ten packages:
+
+```txt
+vibe-engineer
+@vibe-engineer/adapter-pi
+@vibe-engineer/artifacts
+@vibe-engineer/config
+@vibe-engineer/context
+@vibe-engineer/orchestration
+@vibe-engineer/schematics
+@vibe-engineer/security
+@vibe-engineer/skills
+@vibe-engineer/verification
+```
+
+No public package depends on an unpublished private workspace package at runtime.
+
+## `vibe-engineer`
+
+CLI package and binary.
+
+| Subpath            | Types                                  | Import                               |
+| ------------------ | -------------------------------------- | ------------------------------------ |
+| `.`                | `./dist/entry/vibe-engineer.d.ts`      | `./dist/entry/vibe-engineer.js`      |
+| `./envelope`       | `./dist/envelope/result-envelope.d.ts` | `./dist/envelope/result-envelope.js` |
+| `./command-loader` | `./dist/command-loader/loader.d.ts`    | `./dist/command-loader/loader.js`    |
+
+```js
+import { runCli } from "vibe-engineer";
+import { validateCliResultEnvelope } from "vibe-engineer/envelope";
+import { createCommandLoader } from "vibe-engineer/command-loader";
+```
 
 ## `@vibe-engineer/artifacts`
 
-Canonical JSON Schemas and typed validation for every artifact kind.
+Canonical artifact schemas and validators.
 
 ```js
 import {
@@ -20,39 +53,37 @@ import {
   compileAllArtifactSchemas,
   validateArtifact,
   validateArtifactFile,
-  validateArtifactKind
+  validateArtifactKind,
 } from "@vibe-engineer/artifacts";
 ```
 
-See [Schemas reference](./schemas.md) for kind/schema details.
+Also exports `./schemas` and `./schemas/*` for public schema assets.
 
 ## `@vibe-engineer/config`
 
-Project configuration schema, defaults, loading.
+Project configuration defaults, schema, parser, and loaders.
 
 ```js
 import {
-  VIBE_CONFIG_FILE_NAME,        // "vibe-engineer.config.json"
-  VIBE_CONFIG_SCHEMA_ID,        // "vibe-engineer.config.v1"
-  VIBE_CONFIG_SCHEMA_VERSION,   // "1.0.0"
+  VIBE_CONFIG_FILE_NAME,
+  VIBE_CONFIG_SCHEMA_ID,
+  VIBE_CONFIG_SCHEMA_VERSION,
   VIBE_CONFIG_SCHEMA,
   createDefaultVibeConfig,
   parseVibeConfig,
   loadVibeConfigFile,
-  loadVibeConfigFromProjectRoot
+  loadVibeConfigFromProjectRoot,
 } from "@vibe-engineer/config";
 ```
 
-Defaults (from `DEFAULTS`): `maxParallelAgents: 8`, `maxValidationFixIterations: 3`, `agenticWorkPackageTargetHours: 6`, `verification.deterministicBlocks: true`, `verification.advisoryReviewBlocks: false`, `verification.webE2E: "playwright"`, `verification.mobileE2E: { default: "maestro", advanced: "detox" }`, `uiVerification.enabled: true`, `agentRegistry.validationRequired: true`. Required top-level key: `agenticHarness`.
-
 ## `@vibe-engineer/context`
 
-Context headers, index, drift, closure.
+Context headers, graph/index, drift, validation, and retrieval.
 
 ```js
 import {
-  CONTEXT_SCHEMA_VERSION,   // "1.0.0"
-  CONTEXT_INDEX_VERSION,    // "1.0.0"
+  CONTEXT_SCHEMA_VERSION,
+  CONTEXT_INDEX_VERSION,
   CONTEXT_SCHEMA_IDS,
   defaultProducer,
   createContextHeader,
@@ -62,39 +93,59 @@ import {
   checkContextDrift,
   retrieveContextClosure,
   classifyFindings,
-  __providerSeams
+  __providerSeams,
 } from "@vibe-engineer/context";
 ```
 
-See [Context and memory model](../architecture/context-memory.md).
+## `@vibe-engineer/orchestration`
 
-## `@vibe-engineer/verification`
-
-Verification runner + Evidence Packets.
+Work-plan DAG and durable run-state primitives.
 
 ```js
 import {
-  VERIFICATION_RUNNER_VERSION,   // "0.1.0"
-  VERIFICATION_STATUSES,
-  VERIFICATION_STATUS_VALUES,
-  EVIDENCE_RESULTS,
-  EVIDENCE_FAILURE_CLASSIFICATIONS,
-  EVIDENCE_FAILURE_CLASSIFICATION_VALUES,
-  VerificationRunnerError,
-  runVerificationPlan
-} from "@vibe-engineer/verification";
+  DEFAULT_ORCHESTRATION_LIMITS,
+  OrchestrationContractError,
+  parseWorkPlan,
+  validateDag,
+  validateWorkPackageSizing,
+  validateOwnershipClaims,
+  readWorkPlanFile,
+  createInitialRunState,
+  parseRunState,
+  loadRunState,
+  selectReadyNodes,
+  persistScheduleDecision,
+  transitionNode,
+  joinValidatedOutputs,
+  inspectResumeState,
+  assertNoLiveProviderSpawningCapability,
+} from "@vibe-engineer/orchestration";
 ```
 
-See [Verification model](../architecture/verification-model.md).
+## `@vibe-engineer/schematics`
+
+Manifest-driven schematic engine.
+
+```js
+import {
+  loadSchematicDefinition,
+  planSchematic,
+  executeSchematic,
+  assertDryRunWriteForbidden,
+  DOMAIN_FORBIDDEN_TERMS,
+  sha256Text,
+  stableJson,
+} from "@vibe-engineer/schematics";
+```
 
 ## `@vibe-engineer/security`
 
-Security/safety policy + evaluation + redaction.
+Security/safety policy, command/env/external integration checks, and redaction.
 
 ```js
 import {
-  SECURITY_POLICY_VERSION,      // "security-policy.v1"
-  SECURITY_PACKAGE_VERSION,     // "0.1.0-i18a"
+  SECURITY_POLICY_VERSION,
+  SECURITY_PACKAGE_VERSION,
   SecurityCategory,
   SecurityClassification,
   SecuritySeverity,
@@ -117,107 +168,52 @@ import {
   evaluateExternalIntegrationSafety,
   evaluateSandboxCapability,
   evaluateEvidenceSafety,
-  __i18aCliBoundarySmoke
 } from "@vibe-engineer/security";
 ```
 
-See [Security architecture](../architecture/security-architecture.md).
+## `@vibe-engineer/skills`
 
-## `@vibe-engineer/orchestration`
+Build and ship skill runtime primitives. These APIs support harness-native skills; the six skill names are not CLI commands.
 
-Work-plan DAG + durable run state.
+| Subpath                             | Purpose                                                 |
+| ----------------------------------- | ------------------------------------------------------- |
+| `@vibe-engineer/skills/build`       | Build Result production and verification/context hooks. |
+| `@vibe-engineer/skills/ship`        | Ship Packet production and final proof orchestration.   |
+| `@vibe-engineer/skills/ship/intake` | Ship intake helpers.                                    |
+
+```js
+import { runBuildFromImplementationPlan } from "@vibe-engineer/skills/build";
+import { runShipFromBuildResult } from "@vibe-engineer/skills/ship";
+```
+
+## `@vibe-engineer/verification`
+
+Verification runner and Evidence Packet output.
 
 ```js
 import {
-  DEFAULT_ORCHESTRATION_LIMITS,
-  OrchestrationContractError,
-  parseWorkPlan,
-  validateDag,
-  validateWorkPackageSizing,
-  validateOwnershipClaims,
-  readWorkPlanFile,
-  createInitialRunState,
-  parseRunState,
-  loadRunState,
-  selectReadyNodes,
-  persistScheduleDecision,
-  transitionNode,
-  joinValidatedOutputs,
-  inspectResumeState,
-  assertNoLiveProviderSpawningCapability
-} from "@vibe-engineer/orchestration";
+  VERIFICATION_RUNNER_VERSION,
+  VERIFICATION_STATUSES,
+  VERIFICATION_STATUS_VALUES,
+  EVIDENCE_RESULTS,
+  EVIDENCE_FAILURE_CLASSIFICATIONS,
+  EVIDENCE_FAILURE_CLASSIFICATION_VALUES,
+  VerificationRunnerError,
+  runVerificationPlan,
+} from "@vibe-engineer/verification";
 ```
 
-`assertNoLiveProviderSpawningCapability()` is the package's explicit assertion that it performs no live provider spawning.
+## `@vibe-engineer/adapter-pi`
 
-## `@vibe-engineer/registry`
+Pi adapter public subpaths.
 
-Agent/skill registry + locked constants.
+| Subpath                                             | Purpose                                                     |
+| --------------------------------------------------- | ----------------------------------------------------------- |
+| `@vibe-engineer/adapter-pi/capabilities`            | Pi capability matrix and selection checks.                  |
+| `@vibe-engineer/adapter-pi/generated-file-manifest` | Generated file manifest and summary helpers.                |
+| `@vibe-engineer/adapter-pi/create-consumption`      | Create/import pi asset selection and write-plan validation. |
+| `@vibe-engineer/adapter-pi/schema`                  | Shared pi adapter schemas and validators.                   |
 
-```js
-import {
-  RegistrySeverity,
-  RegistryRuleId,
-  LOCKED_SKILLS,        // ["brainstorm","grill-me","task","plan","build","ship"]
-  PRODUCT_NAME,         // "vibe-engineer"
-  ARTIFACT_FLOW,        // ["raw_intent","work_brief","implementation_plan","build_result","ship_packet"]
-  discoverRegistryEntryFiles,
-  validateRegistryFiles,
-  loadRegistry,
-  assertRegistryOk,
-  packageRootFromImportMeta,
-  canonicalSchemaIdsByKind
-} from "@vibe-engineer/registry";
-```
+## Private workspace packages
 
-## `@vibe-engineer/standards`
-
-Domain-neutral standards catalog + validation.
-
-```js
-import {
-  STANDARD_ERROR_CODES,
-  StandardsError,
-  SUPPORTED_SCHEMA_VERSION,
-  STANDARD_IDS,
-  STANDARDS_CATALOG,
-  STANDARD_SCHEMA_KINDS,
-  STANDARD_SCHEMA_FILES,
-  STANDARD_SCHEMA_IDS,
-  listStandards,
-  loadStandard,
-  getStandardsCatalog,
-  validateStandardDefinition,
-  validateStandardsCatalog,
-  schemaPathForKind,
-  loadStandardsSchema,
-  loadAllStandardsSchemas
-} from "@vibe-engineer/standards";
-```
-
-See [Standards catalog](../standards/index.md).
-
-## `@vibe-engineer/testing`
-
-Witness helpers.
-
-```js
-import {
-  createEphemeralWorkspace,
-  assertOkResult,
-  assertBlockingFinding,
-  normalizeForSnapshot
-} from "@vibe-engineer/testing";
-```
-
-## `@vibe-engineer/observability`
-
-Observability capture/export primitives. Re-exports several grouped modules from `packages/observability/src/index.js` (including `createLocalCapture` from `./test-exporters.js`). Detailed per-symbol reference is `pending-live` until the observability lane stabilizes its public surface.
-
-## `vibe-engineer` (CLI package)
-
-Exports: `.` (entry), `./envelope`, `./command-loader`. See [CLI reference](./cli.md).
-
-## Pending-live packages
-
-The following packages have no public `index` export map in the current tree and are `pending-live`: `adapters`, `contracts`, `mechanical-gates`, `presets`, `schematics`, `skills`. Their behavior must not be claimed as live until their lanes expose a public surface and a witness proves it.
+The repository also contains private source/test/tooling packages such as observability, registry, standards, testing, mechanical gates, presets, contracts, and Pulumi scaffolding. They are not public runtime dependencies of the v0.1 package graph and are not published in v0.1.

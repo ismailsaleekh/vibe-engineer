@@ -21,7 +21,7 @@
 //    silent process.cwd() fall-through).
 //  - source-dispatch result-file atomic good.
 import assert from "node:assert/strict";
-import { cpSync, existsSync, mkdirSync, mkdtempSync, realpathSync, rmSync, writeFileSync, readFileSync } from "node:fs";
+import { cpSync, existsSync, mkdirSync, mkdtempSync, realpathSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, isAbsolute, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -52,13 +52,10 @@ mkdirSync(join(projRoot, "plans"), { recursive: true });
 mkdirSync(join(projRoot, "ev"), { recursive: true });
 writeFileSync(join(projRoot, "vibe-engineer.config.json"), JSON.stringify({ agenticHarness: "pi" }, null, 2));
 cpSync(resolve(repoRoot, "packages/verification/fixtures/plans/approved-plan.json"), join(projRoot, "plans/approved-plan.json"));
-// Build a non-approved plan by cloning the approved plan and flipping its status to "draft".
-{
-  const draft = JSON.parse(readFileSync(join(projRoot, "plans/approved-plan.json"), "utf8"));
-  draft.status = "draft";
-  draft.artifactId = "verifyfix-plan-draft";
-  writeFileSync(join(projRoot, "plans/draft-plan.json"), JSON.stringify(draft, null, 2));
-}
+// Use the verification package's checked draft fixture for the non-approved path. This keeps
+// the witness on the same fixture producer boundary as the approved-plan copy without adding a
+// local raw JSON parse escape just to mutate fixture metadata.
+cpSync(resolve(repoRoot, "packages/verification/fixtures/plans/draft-plan.json"), join(projRoot, "plans/draft-plan.json"));
 writeFileSync(join(projRoot, "catalog.json"), JSON.stringify([
   { kind: "validator", validator: "validateArtifactFile", targetPath: "plans/approved-plan.json", artifactKind: "implementation_plan", id: "schema-validation", requiredItemIds: ["schema-validation"], layer: "schema_validation", evidenceClass: "deterministic", blocking: true },
   { kind: "validator", validator: "validateArtifactFile", targetPath: "plans/approved-plan.json", artifactKind: "implementation_plan", id: "advisory-review", requiredItemIds: ["advisory-review"], layer: "advisory_review", evidenceClass: "advisory", blocking: false },

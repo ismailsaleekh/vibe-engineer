@@ -10,6 +10,7 @@ dist/
 coverage/
 .turbo/
 *.tsbuildinfo
+*.map
 
 # Logs and diagnostics
 *.log
@@ -38,3 +39,17 @@ Thumbs.db
 
 # VitePress dependency pre-bundle cache (regenerable)
 .vitepress/cache/
+# Regenerable Turbo validation caches
+.turbo-*
+
+# One-off bundled/transpiled config scratch files
+**/tsup.config.bundled_*.mjs
+
+# Local release evidence and package tarballs (regenerable)
+.vibe/release/
+
+# Regenerable mechanical-gate/test evidence emitted by local quality runs
+.vibe/work/I-02A-cli-loader-envelope/evidence/fix/package-test-*/
+.vibe/work/I-12-mechanical-P1-ratchet-test-scanner/aggregate/i11-bridge-artifacts/run-*/
+.vibe/work/I-13C-p2-aggregate-runner-bridge/aggregate/code-smell-bridge-artifacts/run-*/
+

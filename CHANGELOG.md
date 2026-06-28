@@ -8,12 +8,7 @@ The format follows Keep a Changelog, and this project uses Semantic Versioning (
 
 ### Added
 
-- Initial open-source governance documentation baseline.
-- MIT license placeholder with explicit public-release blocker for unresolved copyright metadata.
-- Contributor policy requiring maintainer review and DCO 1.1 sign-off for external pull-request commits.
-- Contributor Covenant v2.1-based code of conduct with release blocker for missing real private reporting contact.
-- Security policy requiring private vulnerability reporting and blocking public release until a real private channel exists.
-- Documentation index and high-level architecture overview.
+- Nothing yet.
 
 ### Changed
 
@@ -33,7 +28,28 @@ The format follows Keep a Changelog, and this project uses Semantic Versioning (
 
 ### Security
 
-- Documented the initial private vulnerability reporting stance and release blocker for unresolved private reporting metadata.
+- Nothing yet.
+
+## [0.1.0] - 2026-06-28
+
+### Added
+
+- Initial public `vibe-engineer` CLI package with v0.1 deterministic primitives: `help`, `version`, `create`, `import`, `doctor`, `config`, `verify`, `security`, and `schematic`.
+- Public `@vibe-engineer/*` runtime package graph for artifacts, config, context, orchestration, schematics, security, skills, verification, and the pi adapter.
+- `tsup`-built ESM `dist` outputs and public declaration files for package APIs that expose types.
+- Full starter materialization through `vibe-engineer create`, including API, web, mobile, shared packages, tooling, context/work/evidence/registry folders, and pi-native skill/prompt assets.
+- Pack/install smoke, generated-starter local proof, and release automation scripts for manual protected release.
+- Governance metadata, MIT license, security policy, code of conduct contact, contribution guide, and release documentation.
+
+### Changed
+
+- Release packaging uses npm `files` allowlists and excludes source maps, local evidence, fixtures, witnesses, planning docs, and cache artifacts from public npm artifacts.
+- Release defaults now write local proof evidence under ignored `.vibe/release/**` paths.
+
+### Security
+
+- Added private vulnerability reporting through GitHub Security Advisories and a maintainer fallback contact.
+- Added release publish identity checks for GitHub and npm accounts before npm publication.
 
 ## Release heading format
 

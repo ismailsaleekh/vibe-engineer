@@ -19,7 +19,9 @@
     "workspace:graph": "pnpm -r list --depth -1 --json",
     "workspace:surface": "node .vibe/work/I-00A-workspace-package-skeleton/witnesses/workspace-surface-witness.mjs --root .",
     "release:pack": "node scripts/release/pack.mjs",
-    "release:install-smoke": "node scripts/release/install-smoke.mjs"
+    "release:install-smoke": "node scripts/release/install-smoke.mjs",
+    "release:check": "node scripts/release/check.mjs",
+    "release:publish": "node scripts/release/publish.mjs"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.10.2",
@@ -44,8 +46,26 @@
   },
   "vibeEngineer": {
     "implementationUnit": "I-00A-workspace-package-skeleton",
-    "implementationStatus": "skeleton-only",
+    "implementationStatus": "v0.1-release-runtime-and-starter-proof",
     "publicPackage": "packages/cli",
     "workspaceGraphWitness": ".vibe/work/I-00A-workspace-package-skeleton/witnesses/workspace-surface-witness.mjs"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ismailsaleekh/vibe-engineer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ismailsaleekh/vibe-engineer/issues"
+  },
+  "homepage": "https://github.com/ismailsaleekh/vibe-engineer#readme",
+  "author": "Ismail <ismailsalikhodjaev@gmail.com>",
+  "keywords": [
+    "ai",
+    "agents",
+    "typescript",
+    "verification",
+    "schematics",
+    "developer-tools",
+    "vibe-engineer"
+  ]
 }

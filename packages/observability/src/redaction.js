@@ -11,45 +11,32 @@
 // §5: "Observability must fail closed when sensitive data redaction policy from
 // DL-22 is unavailable for a sensitive assertion."
 //
-// This module NEVER fakes redaction: if the security contract is unresolvable
-// (DL-22/I-18 not green in this environment) AND the record carries a sensitive
-// surface, the record is marked `redaction.status = blocked-pending-live` (the
-// honest W6 marker) rather than emitted with raw values.
+// This module NEVER fakes redaction: sensitive records traverse the real
+// `@vibe-engineer/security` ESM export before emission, and redaction-negative
+// sentinels must not survive into the structured carrier.
 
+import { redactSecurityValue } from "@vibe-engineer/security";
 import { redactionStatusSchema } from "./contracts.js";
-import { createRequire } from "node:module";
 
 // Read-only consumption of the DL-22/I-18 contract (workspace dep). The actual
-// redaction functions are the I-18 implementation; we call them verbatim. The
-// binding is resolved lazily + memoized so the gate runs synchronously inline
-// with the logger emit. `createRequire` is imported at module top (ESM-safe).
-/** @type {any} */
-let securityBinding = null;
-let securityBindingTried = false;
-const nodeRequire = createRequire(import.meta.url);
-/** @returns {any | null} */
-function getSecurity() {
-  if (securityBindingTried) return securityBinding;
-  securityBindingTried = true;
-  try {
-    securityBinding = nodeRequire("@vibe-engineer/security");
-  } catch {
-    securityBinding = null; // DL-22/I-18 not resolvable here → pending-live path.
-  }
-  return securityBinding;
-}
+// redaction function is the I-18 implementation; we call it verbatim through the
+// package's ESM export. This keeps the logger emit path synchronous while using
+// the real public package boundary. A previous createRequire() bridge could not
+// resolve the ESM-only security package and incorrectly fell back to the
+// pending-live marker while preserving the raw sentinel; the static import is
+// the correct Node ESM seam for this workspace.
 
-const SENSITIVE_KEY_RE = /(token|password|passphrase|secret|apikey|api[-_]?key|credential|client[-_]?secret|private[-_]?key|signing[-_]?key|authorization)/i;
+const SENSITIVE_KEY_RE =
+  /(token|password|passphrase|secret|apikey|api[-_]?key|credential|client[-_]?secret|private[-_]?key|signing[-_]?key|authorization)/i;
 
 /**
  * Redact a structured log/evidence record using the real DL-22/I-18 contract.
  * Sets `redaction.status`:
  *   - `applied` when the security gate redacted at least one surface;
  *   - `not-required` when no sensitive surface was detected;
- *   - `blocked-pending-live` when a sensitive surface is present BUT the
- *     security contract is unresolvable (DL-23 failure policy §5) — the record
- *     is STILL not emitted with raw values by the caller (the logger gate treats
- *     `blocked-pending-live` as a non-green marker for sensitive closure).
+ *   - `blocked-pending-live` is reserved for future adapter/provider closures;
+ *     this package's synchronous logger path depends on the real security package
+ *     and must redact sensitive values before the carrier is emitted.
  *
  * @param {Record<string, unknown>} record
  * @param {{ sensitiveHints?: string[], allowPendingLive?: boolean }} [opts]
@@ -58,20 +45,7 @@ const SENSITIVE_KEY_RE = /(token|password|passphrase|secret|apikey|api[-_]?key|c
 export function redactRecord(record, opts) {
   const hints = opts?.sensitiveHints ?? [];
   const hasSensitiveSurface =
-    hints.some((h) => typeof h === "string" && h.length > 0) ||
-    containsSensitiveSurface(record);
-
-  const security = getSecurity();
-  if (!security || typeof security.redactSecurityValue !== "function") {
-    // DL-22/I-18 unavailable. Fail honestly per DL-23 §5.
-    if (hasSensitiveSurface) {
-      return {
-        ...record,
-        "redaction.status": redactionStatusSchema.parse("blocked-pending-live"),
-      };
-    }
-    return { ...record, "redaction.status": redactionStatusSchema.parse("not-required") };
-  }
+    hints.some((h) => typeof h === "string" && h.length > 0) || containsSensitiveSurface(record);
 
   if (!hasSensitiveSurface) {
     return { ...record, "redaction.status": redactionStatusSchema.parse("not-required") };
@@ -80,9 +54,7 @@ export function redactRecord(record, opts) {
   // Real DL-22/I-18 redaction. redactSecurityValue walks the whole object graph
   // (strings, nested objects, arrays) and substitutes `<redacted*>` placeholders
   // for token/password/secret/bearer/key patterns (no raw value preserved).
-  const redacted = /** @type {Record<string, unknown>} */ (
-    security.redactSecurityValue(record)
-  );
+  const redacted = /** @type {Record<string, unknown>} */ (redactSecurityValue(record));
   redacted["redaction.status"] = redactionStatusSchema.parse("applied");
   return redacted;
 }
@@ -129,7 +101,7 @@ export function assertNoSentinelLeak(serialized, sentinels = REDACTION_NEGATIVE_
   const leaks = sentinels.filter((s) => serialized.includes(s));
   if (leaks.length > 0) {
     const e = new Error(
-      `redaction leak: sentinel raw value(s) survived into serialized output (DL-22). This is a hard failure.`
+      `redaction leak: sentinel raw value(s) survived into serialized output (DL-22). This is a hard failure.`,
     );
     e.name = "RedactionLeakError";
     e.code = "OBS_REDACTION_LEAK";

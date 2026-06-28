@@ -30,13 +30,11 @@ Examples of unacceptable behavior include:
 
 This code applies within project spaces and when an individual is officially representing the project in public spaces. Examples of representing the project include using an official project account, posting through an official communication channel, or acting as an appointed maintainer.
 
-## Reporting and release blocker
+## Reporting
 
 Conduct reports must go to a private maintainer contact so reporter privacy can be protected where possible.
 
-Current placeholder: `[CONDUCT CONTACT TBD]`.
-
-External contributor solicitation and public release are blocked until a real private conduct-reporting contact and escalation owner are provided. Do not treat this placeholder as an operational reporting channel.
+Report conduct concerns to the maintainer at <ismailsalikhodjaev@gmail.com>. Please include a concise description of the incident, relevant links or screenshots if safe to share, and whether there are immediate safety or privacy constraints. Do not post sensitive conduct reports in public issues, pull requests, discussions, or chat.
 
 ## Enforcement responsibilities
 

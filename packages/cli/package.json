@@ -3,14 +3,23 @@
   "version": "0.1.0",
   "license": "MIT",
   "type": "module",
-  "description": "Foundation CLI loader and machine-envelope entrypoint for vibe-engineer.",
+  "description": "v0.1 deterministic CLI primitives, starter generator, and public runtime assets for vibe-engineer.",
   "bin": {
     "vibe-engineer": "./dist/entry/vibe-engineer.js"
   },
   "exports": {
-    ".": "./dist/entry/vibe-engineer.js",
-    "./envelope": "./dist/envelope/result-envelope.js",
-    "./command-loader": "./dist/command-loader/loader.js"
+    ".": {
+      "types": "./dist/entry/vibe-engineer.d.ts",
+      "import": "./dist/entry/vibe-engineer.js"
+    },
+    "./envelope": {
+      "types": "./dist/envelope/result-envelope.d.ts",
+      "import": "./dist/envelope/result-envelope.js"
+    },
+    "./command-loader": {
+      "types": "./dist/command-loader/loader.d.ts",
+      "import": "./dist/command-loader/loader.js"
+    }
   },
   "files": [
     "dist",
@@ -19,15 +28,15 @@
     "templates/starter.layout.json"
   ],
   "scripts": {
-    "build": "node scripts/copy-templates.mjs && tsup",
+    "build": "node scripts/copy-templates.mjs && tsup && node scripts/copy-types.mjs",
     "test": "node src/testing/run-witnesses.mjs"
   },
   "vibeEngineer": {
     "implementationUnit": "I-02A-cli-loader-envelope",
-    "implementationStatus": "foundation-implemented",
+    "implementationStatus": "v0.1-release-runtime",
     "packageRole": "public-cli-package",
-    "sourceStatus": "i-02a-foundation-created",
-    "binStatus": "vibe-engineer-bin-entry-owned-by-I-02A"
+    "sourceStatus": "v0.1-public-commands-and-starter-assets-wired",
+    "binStatus": "dist-bin-proven-by-pack-install-smoke"
   },
   "private": false,
   "engines": {
@@ -47,5 +56,19 @@
     "@vibe-engineer/security": "^0.1.0",
     "@vibe-engineer/schematics": "^0.1.0",
     "@vibe-engineer/verification": "^0.1.0"
-  }
+  },
+  "author": "Ismail <ismailsalikhodjaev@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/ismailsaleekh/vibe-engineer/issues"
+  },
+  "homepage": "https://github.com/ismailsaleekh/vibe-engineer#readme",
+  "keywords": [
+    "ai",
+    "agents",
+    "typescript",
+    "verification",
+    "schematics",
+    "developer-tools",
+    "vibe-engineer"
+  ]
 }

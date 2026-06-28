@@ -1,15 +1,24 @@
 # Documentation
 
-This directory is the current Markdown documentation entry point for `vibe-engineer`.
+This directory is the Markdown documentation entry point for `vibe-engineer`.
 
-The docs are source-controlled Markdown today. The public VitePress site, generated references, runnable examples, docs tests, and CI/site wiring are future lane-owned and are not claimed as live by this index.
+The v0.1 package/runtime path is locally proven. The public docs site is configured with VitePress but remains pending publication until a hosted docs deployment is explicitly run.
 
 ## Start here
 
-- [Project README](../README.md) — short product overview and workflow front door.
-- [Workflow guide](./guides/getting-started/workflow.md) — detailed skill, artifact, verification, context, schematic, CLI, and two-repo model.
-- [Repository status](./guides/getting-started/repository-status.md) — current implementation truth, unavailable live claims, and release blockers.
-- [Architecture overview](./architecture/index.md) — high-level harness/starter boundaries and implementation ownership.
+- [Project README](../README.md) — short product overview, current release status, and release commands.
+- [Repository status](./guides/getting-started/repository-status.md) — implementation truth, pending-live items, and release proof summary.
+- [Create a project](./guides/getting-started/create-project.md) — installed CLI starter generation.
+- [Workflow guide](./guides/getting-started/workflow.md) — skill, artifact, verification, context, schematic, CLI, and two-repo model.
+- [Plan, build, ship](./guides/getting-started/plan-build-ship.md) — artifact workflow and available APIs.
+- [Architecture overview](./architecture/index.md) — high-level harness/starter boundaries.
+
+## Reference
+
+- [CLI reference](./reference/cli.md)
+- [Package exports](./reference/packages.md)
+- [Schemas reference](./reference/schemas.md)
+- [Standards catalog](./standards/index.md)
 
 ## Key decisions
 
@@ -30,6 +39,4 @@ The docs are source-controlled Markdown today. The public VitePress site, genera
 
 ## Current docs boundary
 
-These pages explain the locked direction and current repository state. They intentionally avoid live install/create/use snippets until actual package, CLI, generated starter, and workflow witnesses exist.
-
-Generated API/CLI/schema/package references must later be produced or freshness-checked from actual source artifacts; hand-maintained reference tables are not authoritative.
+Runnable CLI snippets in these docs are backed by local installed-package proof. Hosted CI, live pi runtime loading, real Pulumi deploys, mobile device/simulator E2E, and full visual baselines remain pending-live and are documented as such where relevant.

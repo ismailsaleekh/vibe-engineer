@@ -38,24 +38,24 @@ brainstorm, grill-me, task, plan, build, ship
 - `build` — consumes an approved Implementation Plan, runs verification, emits **Evidence Packets** + **Build Result** + context updates.
 - `ship` — consumes a Build Result, runs final proof, produces a **Ship Packet**. Does **not** push/PR without explicit approval.
 
-> **pending-live.** Skill names are the locked protocol, not proven runnable shell commands. The skill runtime is not wired yet.
+> **Harness-native, not CLI.** Skill names are the locked protocol and are generated as selected-harness assets (pi in v0.1). They are intentionally not public `vibe-engineer` shell commands.
 
 ## Artifact kinds (actual)
 
 The canonical artifact kinds are defined in `packages/artifacts/src/schema-registry.js` (`ARTIFACT_KINDS`) and validated by JSON Schema files under `packages/artifacts/schemas/`:
 
-| Artifact kind | Schema file | Produced by |
-| --- | --- | --- |
-| `work_brief` | `schemas/work-brief.schema.json` | input skills |
-| `implementation_plan` | `schemas/implementation-plan.schema.json` | `plan` |
-| `verification_delta` | `schemas/verification-delta.schema.json` | `plan` (embedded in plan) |
-| `build_result` | `schemas/build-result.schema.json` | `build` |
-| `ship_packet` | `schemas/ship-packet.schema.json` | `ship` |
-| `evidence_packet` | `schemas/evidence-packet.schema.json` | verification runner |
-| `agent_registry_entry` | `schemas/agent-registry-entry.schema.json` | registry authoring |
-| `context_file_header` | `schemas/context-file-header.schema.json` | context writer |
-| `schematic_manifest` | `schemas/schematic-manifest.schema.json` | schematic authoring |
-| `skill_manifest` | `schemas/skill-manifest.schema.json` | skill authoring |
+| Artifact kind          | Schema file                                | Produced by               |
+| ---------------------- | ------------------------------------------ | ------------------------- |
+| `work_brief`           | `schemas/work-brief.schema.json`           | input skills              |
+| `implementation_plan`  | `schemas/implementation-plan.schema.json`  | `plan`                    |
+| `verification_delta`   | `schemas/verification-delta.schema.json`   | `plan` (embedded in plan) |
+| `build_result`         | `schemas/build-result.schema.json`         | `build`                   |
+| `ship_packet`          | `schemas/ship-packet.schema.json`          | `ship`                    |
+| `evidence_packet`      | `schemas/evidence-packet.schema.json`      | verification runner       |
+| `agent_registry_entry` | `schemas/agent-registry-entry.schema.json` | registry authoring        |
+| `context_file_header`  | `schemas/context-file-header.schema.json`  | context writer            |
+| `schematic_manifest`   | `schemas/schematic-manifest.schema.json`   | schematic authoring       |
+| `skill_manifest`       | `schemas/skill-manifest.schema.json`       | skill authoring           |
 
 All schemas share `SUPPORTED_SCHEMA_VERSION = '1.0.0'`. See [Schemas reference](../reference/schemas.md) for validation API.
 
@@ -70,7 +70,7 @@ import {
   validateArtifactFile,
   validateArtifactKind,
   loadSchema,
-  loadAllSchemas
+  loadAllSchemas,
 } from "@vibe-engineer/artifacts";
 ```
 

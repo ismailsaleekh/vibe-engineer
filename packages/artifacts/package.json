@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "license": "MIT",
   "type": "module",
-  "description": "Canonical JSON schemas, generated types, and fail-closed validators for vibe-engineer artifacts.",
+  "description": "Canonical artifact schemas, generated types, and fail-closed validators for vibe-engineer workflows.",
   "private": false,
   "engines": {
     "node": ">=20.19.0",
@@ -37,11 +37,25 @@
   },
   "vibeEngineer": {
     "implementationUnit": "I-01A-artifact-schemas",
-    "implementationStatus": "implemented",
-    "packageRole": "internal-workspace-package",
-    "sourceStatus": "package-owned-source-created"
+    "implementationStatus": "v0.1-public-artifact-api",
+    "packageRole": "public-artifact-schema-package",
+    "sourceStatus": "v0.1-schema-validation-api"
   },
   "dependencies": {
     "ajv": "8.17.1"
-  }
+  },
+  "author": "Ismail <ismailsalikhodjaev@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/ismailsaleekh/vibe-engineer/issues"
+  },
+  "homepage": "https://github.com/ismailsaleekh/vibe-engineer#readme",
+  "keywords": [
+    "ai",
+    "agents",
+    "typescript",
+    "verification",
+    "schematics",
+    "developer-tools",
+    "vibe-engineer"
+  ]
 }

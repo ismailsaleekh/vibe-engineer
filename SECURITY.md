@@ -2,23 +2,21 @@
 
 ## Private vulnerability reporting
 
-Please report suspected vulnerabilities through a private channel. Do not include exploit details, secrets, bypass steps, or sensitive vulnerability information in public issues, public pull requests, public discussions, or public chat.
+Please report suspected vulnerabilities through GitHub private vulnerability reporting:
 
-Current placeholder: `[PRIVATE VULNERABILITY REPORTING CHANNEL TBD]`.
+<https://github.com/ismailsaleekh/vibe-engineer/security/advisories/new>
 
-Public release, package publication, and external contributor solicitation are blocked until a real private vulnerability reporting channel is available. The preferred future channel is GitHub private vulnerability reporting or security advisories for the repository. If that is unavailable, maintainers must provide an equivalent private contact path before release.
+Do not include exploit details, secrets, bypass steps, or sensitive vulnerability information in public issues, public pull requests, public discussions, or public chat. If GitHub private vulnerability reporting is unavailable for any reason, email the maintainer at <ismailsalikhodjaev@gmail.com> with a short non-sensitive subject and wait for a safe exchange path before sending sensitive details.
 
 ## Public hardening issues
 
 Public issues and pull requests are appropriate for non-sensitive hardening work, documentation corrections, security-tooling improvements, and general safety proposals that do not reveal exploitable details or private information.
 
-If you are unsure whether a report is sensitive, use the private channel once it exists. Until the placeholder above is replaced by a real channel, release readiness remains blocked.
+If you are unsure whether a report is sensitive, use the private vulnerability reporting path above.
 
 ## Supported versions
 
-This supported versions policy applies once public package or CLI versions exist. No public package or CLI version has been released yet.
-
-Before `1.0.0`, security fixes are expected to target the latest released minor line unless maintainers explicitly document additional support. From `1.0.0` onward, security support targets the latest major release line unless maintainers document older supported versions.
+No public version has been released yet. Once `0.1.0` is published, security fixes are expected to target the latest released minor line unless maintainers explicitly document additional support. From `1.0.0` onward, security support targets the latest major release line unless maintainers document older supported versions.
 
 Unsupported versions may receive best-effort guidance, but there is no silent backport promise.
 
@@ -30,4 +28,4 @@ Security fixes should be recorded in [CHANGELOG.md](./CHANGELOG.md) under `Secur
 
 ## Scope
 
-This policy covers the `vibe-engineer` harness repository. Technical security controls, secret scanning, unsafe-command policy, and build or release enforcement belong to later implementation lanes and must align with this private-reporting policy.
+This policy covers the `vibe-engineer` harness repository and published `vibe-engineer` / `@vibe-engineer/*` packages. Technical security controls, secret scanning, unsafe-command policy, and build or release enforcement must align with this private-reporting policy.

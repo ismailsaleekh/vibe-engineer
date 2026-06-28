@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "license": "MIT",
   "type": "module",
-  "description": "Strict typed loader and validator for vibe-engineer project configuration.",
+  "description": "Strict project configuration defaults, schema validation, and loaders for vibe-engineer.",
   "private": false,
   "engines": {
     "node": ">=20.19.0",
@@ -30,8 +30,22 @@
   },
   "vibeEngineer": {
     "implementationUnit": "I-01B-config-loader",
-    "implementationStatus": "implemented",
-    "packageRole": "internal-workspace-package",
-    "sourceStatus": "package-owned-source-created"
-  }
+    "implementationStatus": "v0.1-public-config-api",
+    "packageRole": "public-config-package",
+    "sourceStatus": "v0.1-config-loader-api"
+  },
+  "author": "Ismail <ismailsalikhodjaev@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/ismailsaleekh/vibe-engineer/issues"
+  },
+  "homepage": "https://github.com/ismailsaleekh/vibe-engineer#readme",
+  "keywords": [
+    "ai",
+    "agents",
+    "typescript",
+    "verification",
+    "schematics",
+    "developer-tools",
+    "vibe-engineer"
+  ]
 }

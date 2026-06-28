@@ -21,9 +21,7 @@ export default defineConfig({
   cleanUrls: true,
   srcDir: ".",
   srcExclude: ["**/README.md", "decisions/**"],
-  head: [
-    ["meta", { name: "theme-color", content: "#3c388e" }],
-  ],
+  head: [["meta", { name: "theme-color", content: "#3c388e" }]],
 
   themeConfig: {
     siteTitle: "vibe-engineer",
@@ -43,9 +41,7 @@ export default defineConfig({
       { text: "Standards", link: "/standards/" },
       {
         text: "Decisions",
-        items: [
-          { text: "DL index (decisions/)", link: "/decisions/" },
-        ],
+        items: [{ text: "DL index (decisions/)", link: "/decisions/" }],
       },
     ],
 
@@ -64,16 +60,12 @@ export default defineConfig({
         {
           text: "Schematics",
           collapsed: false,
-          items: [
-            { text: "Add a schematic", link: "/guides/schematics/add-schematic" },
-          ],
+          items: [{ text: "Add a schematic", link: "/guides/schematics/add-schematic" }],
         },
         {
           text: "Mechanical gates",
           collapsed: false,
-          items: [
-            { text: "Add a gate", link: "/guides/mechanical-gates/add-gates" },
-          ],
+          items: [{ text: "Add a gate", link: "/guides/mechanical-gates/add-gates" }],
         },
       ],
 
@@ -115,7 +107,7 @@ export default defineConfig({
       ],
     },
 
-    socialLinks: [{ icon: "github", link: "https://github.com/" }],
+    socialLinks: [{ icon: "github", link: "https://github.com/ismailsaleekh/vibe-engineer" }],
 
     outline: { level: [2, 3], label: "On this page" },
 
@@ -135,7 +127,7 @@ export default defineConfig({
 
     footer: {
       message: "Released under the MIT License.",
-      copyright: "Copyright © vibe-engineer contributors",
+      copyright: "Copyright © 2026 Ismail",
     },
   },
 

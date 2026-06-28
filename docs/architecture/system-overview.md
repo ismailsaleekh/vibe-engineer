@@ -1,76 +1,63 @@
 # System overview
 
-This page is a source-linked overview of the `vibe-engineer` harness repository as it exists today. It describes what is actually present in the source tree and marks anything that is not yet wired as `pending-live`. It is the detailed companion to the [architecture index](./index.md), which is owned by a different lane and must not be edited here.
+This page is a source-linked overview of the `vibe-engineer` harness repository as it exists for the v0.1 release candidate.
 
-> **Current implementation truth.** The repository is a pnpm + Turborepo monorepo in foundation and partial-implementation state. Governance, decisions, docs, the workspace/package skeleton, and a set of early package lanes are present. A released CLI, generated starter, skill runtime, and public docs site are **not** claimed as live. Treat every "live" claim below as gated by an actual lane report.
+## Repository layout
 
-## Repository layout (actual)
+The workspace is a pnpm + Turborepo monorepo. Root scripts include:
 
-The workspace is declared in `pnpm-workspace.yaml` and orchestrated by `turbo.json`. The root `package.json` defines workspace scripts:
+| Script                  | Command                                  |
+| ----------------------- | ---------------------------------------- |
+| `build`                 | `pnpm exec turbo run build`              |
+| `typecheck`             | `pnpm exec turbo run typecheck`          |
+| `test`                  | `pnpm exec turbo run test`               |
+| `quality`               | `node scripts/quality/run-quality.mjs`   |
+| `release:pack`          | `node scripts/release/pack.mjs`          |
+| `release:install-smoke` | `node scripts/release/install-smoke.mjs` |
+| `release:check`         | `node scripts/release/check.mjs`         |
+| `release:publish`       | `node scripts/release/publish.mjs`       |
 
-| Script | Command | Source |
-| --- | --- | --- |
-| `build` | `pnpm exec turbo run build` | `package.json` |
-| `typecheck` | `pnpm exec turbo run typecheck` | `package.json` |
-| `test` | `pnpm exec turbo run test` | `package.json` |
-| `quality` | `node scripts/quality/run-quality.mjs` | `package.json` |
-| `workspace:graph` | `pnpm -r list --depth -1 --json` | `package.json` |
-| `workspace:surface` | `node .vibe/work/I-00A-.../workspace-surface-witness.mjs --root .` | `package.json` |
+## Public package roles
 
-The harness packages live under `packages/`. Each package owns its `src/`, schemas, fixtures, and tests. The package set (from `packages/`) is:
+The publishable v0.1 package graph is:
 
-```txt
-adapters   artifacts     cli         config      context     contracts
-mechanical-gates   observability   orchestration   presets   registry
-schematics   security   skills   standards   testing   verification
-```
+- **`vibe-engineer` (`packages/cli`)** — public binary, command loader, result envelope, starter templates, and pi asset templates.
+- **`@vibe-engineer/artifacts`** — canonical JSON Schemas and fail-closed artifact validators.
+- **`@vibe-engineer/config`** — project config schema, defaults, and loaders.
+- **`@vibe-engineer/context`** — context graph headers, index, drift detection, and closure retrieval.
+- **`@vibe-engineer/verification`** — verification runner and Evidence Packet production.
+- **`@vibe-engineer/security`** — security policy, command/env/external-integration safety evaluation, and redaction.
+- **`@vibe-engineer/orchestration`** — work-plan DAG parsing, durable run state, scheduling, and validated-output joins.
+- **`@vibe-engineer/schematics`** — manifest-driven schematic engine.
+- **`@vibe-engineer/skills`** — build/ship skill runtime primitives used by harness-native workflows.
+- **`@vibe-engineer/adapter-pi`** — pi adapter capability metadata, generated-file manifest, and create/import asset selection validation.
 
-## Package roles
-
-The package source defines the actual public surface. Roles below are derived from each package's `package.json` description and its `src/index` exports:
-
-- **`vibe-engineer` (`packages/cli`)** — the public package. Exposes the CLI entrypoint, the machine result envelope, and the command loader. See [CLI reference](../reference/cli.md).
-- **`@vibe-engineer/artifacts`** — canonical JSON Schemas and typed validation for every artifact kind. See [Schemas reference](../reference/schemas.md).
-- **`@vibe-engineer/config`** — project config schema (`vibe-engineer.config.v1`), defaults, loading.
-- **`@vibe-engineer/context`** — context graph headers, index, drift detection, closure retrieval.
-- **`@vibe-engineer/verification`** — verification runner that executes a Verification Delta and emits Evidence Packets.
-- **`@vibe-engineer/security`** — security policy, command/env/external-integration safety evaluation, redaction.
-- **`@vibe-engineer/orchestration`** — work plan DAG parsing, durable run state, ready-node scheduling, validated-output joins.
-- **`@vibe-engineer/registry`** — agent/skill registry discovery, validation, locked skill/product/flow constants.
-- **`@vibe-engineer/standards`** — domain-neutral standards catalog and validation.
-- **`@vibe-engineer/observability`** — observability capture/export primitives.
-- **`@vibe-engineer/testing`** — ephemeral workspace + typed-result assertion helpers for witnesses.
-
-Packages marked `foundation` or with no listed exports are skeleton/pending-live and are not claimed as behaviorally complete.
+Private workspace packages such as registry, standards, testing, observability, mechanical gates, presets, and Pulumi scaffolding remain source/test/tooling surfaces and are not public runtime dependencies.
 
 ## Two-repo direction
 
-`vibe-engineer` targets a two-repo direction (locked, not yet generated):
-
-- **Harness repo** — this repository (`vibe-engineer`). Owns schemas, CLI primitives, schematics, skills, orchestration, verification, context, registries, standards, adapters, governance, and docs.
-- **Generated/reference starter repo** — `vibe-engineer-starter` (`pending-live`). It is intended to consume the harness through package/config/generated assets rather than copying harness logic.
-
-## Domain-neutral boundary
-
-Per [DL-20A](../decisions/DL-20A-domain-neutrality-foundation.md), core harness surfaces must stay generic: `harness`, `package`, `app`, `module`, `contract`, `schema`, `adapter`, `verification`, `evidence`, `context`, `drift`, `skill`, `agent`, `schematic`, `standard`, `docs`, `API`, `CLI`, `starter`, `example`, `sample`, `reference`, `migration`, `contribution`, `security`, `observability`. Business-domain vocabulary belongs only in explicitly labeled `sample`/`demo`/`reference` fixtures or negative examples, never in core defaults. The `@vibe-engineer/standards` catalog encodes this as the `domain-neutral-core` standard (see [Standards](../standards/index.md)).
+- **Harness repo** — this repository. Owns schemas, CLI primitives, schematics, skills runtime primitives, orchestration, verification, context, security, adapters, governance, and docs.
+- **Generated/reference starter repo** — produced by `vibe-engineer create`. It consumes the harness through dependencies and generated assets rather than copying harness internals.
 
 ## What is wired vs pending-live
 
-| Surface | Status | Evidence |
-| --- | --- | --- |
-| Artifact JSON Schemas + validation | Present | `packages/artifacts/src/schema-registry.js`, 10 schema files |
-| Config schema + loader | Present | `packages/config/src/index.js` |
-| Context header/index/drift/closure | Present | `packages/context/src/index.js` |
-| Verification runner + Evidence Packets | Present | `packages/verification/src/index.js` |
-| Security policy + safety evaluation | Present | `packages/security/src/index.js` |
-| Orchestration DAG + run state | Present | `packages/orchestration/src/index.ts` |
-| Registry discovery + locked constants | Present | `packages/registry/src/index.js` |
-| Standards catalog + validation | Present | `packages/standards/src/index.js` |
-| CLI foundation (help/version/foundation) | Wired | `packages/cli/src/command-loader/loader.js` |
-| CLI user commands (create/build/ship/...) | Source present, **not wired** (`pending-live`) | see [CLI reference](../reference/cli.md) |
-| Skill runtime (`brainstorm`...`ship`) | `pending-live` | no skill orchestrator wired |
-| Generated starter | `pending-live` | no generator wired |
-| Public VitePress site | Config present, build `pending-live` | `docs/.vitepress/config.ts` |
+| Surface                                     | Status                                                                                               |
+| ------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| Public package graph                        | Locally proven through `npm pack` + clean external install.                                          |
+| Installed CLI binary                        | Locally proven through real `.bin/vibe-engineer` invocation.                                         |
+| v0.1 CLI primitives                         | Wired: `help`, `version`, `create`, `import`, `doctor`, `config`, `verify`, `security`, `schematic`. |
+| Deferred CLI families                       | `context`, `registry`, `update`, `init` fail closed as unsupported.                                  |
+| Skill names as CLI commands                 | Not registered; fail as unknown commands.                                                            |
+| Full starter create                         | Locally proven from installed package.                                                               |
+| Pi skill/prompt assets                      | Static generated-file proof green; live pi runtime discovery remains pending-live.                   |
+| Generated starter local proof               | Green for install, typecheck, lint, format, unit tests, build, and quick quality.                    |
+| Hosted harness CI                           | Pending hosted run evidence.                                                                         |
+| Hosted generated-starter CI                 | Pending hosted run evidence.                                                                         |
+| Pulumi deploy, mobile E2E, visual baselines | Pending-live and not claimed by v0.1 local proof.                                                    |
+
+## Domain-neutral boundary
+
+Per [DL-20A](../decisions/DL-20A-domain-neutrality-foundation.md), core harness surfaces must stay generic. Business-domain vocabulary belongs only in explicitly labeled sample/demo/reference fixtures or negative examples, never in core defaults.
 
 ## Related
 
@@ -78,3 +65,5 @@ Per [DL-20A](../decisions/DL-20A-domain-neutrality-foundation.md), core harness 
 - [Verification model](./verification-model.md)
 - [Context and memory model](./context-memory.md)
 - [Mechanical gates model](./mechanical-gates.md)
+- [CLI reference](../reference/cli.md)
+- [Package exports](../reference/packages.md)

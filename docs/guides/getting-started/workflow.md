@@ -1,14 +1,14 @@
 # Workflow guide
 
-This guide is the detailed companion to the short product README. It describes the intended `vibe-engineer` workflow without claiming that the full runtime is live yet.
+This guide is the detailed companion to the short product README. It describes the `vibe-engineer` workflow and separates v0.1 live primitives from harness-native skill runtime that remains adapter-driven.
 
 `vibe-engineer` is a domain-neutral harness for serious TypeScript projects. Its job is to move software work through durable artifacts, deterministic primitives, automatic verification, and preserved context so future agents can understand what changed, why it changed, and how to change it safely again.
 
 ## Current implementation truth
 
-The workflow below is the locked product direction and protocol model. The repository currently contains governance, decisions, package/workspace skeleton work, and early package lanes. The public package, CLI runtime, generated starter, skill orchestrators, docs site, and end-to-end live workflow remain implementation-owned by later lanes unless a lane report proves otherwise.
+The v0.1 deterministic CLI primitives and generated starter path are locally proven from packed packages and a clean external install. The six user-facing skills are installed as harness-native assets for the selected harness (pi in v0.1); they are not `vibe-engineer` shell commands.
 
-Do not treat the skill names in this guide as proven runnable shell commands yet. User-facing invocation syntax will be documented only after the actual package/CLI/adapter seams are implemented and witnessed.
+The complete live skill orchestration loop (`brainstorm` / `grill-me` / `task` → `plan` → `build` → `ship`) remains adapter/runtime work unless invoked through generated harness-native assets and supported by evidence. Do not document the six skill names as CLI commands.
 
 ## Two-repo model
 
@@ -114,9 +114,13 @@ user intent → skill/orchestrator → agent chooses schematic → structure is 
 
 The CLI namespace and binary are `vibe-engineer`, but the CLI is not the primary human workflow.
 
-The CLI primitive layer is for deterministic process boundaries: creation/import, schematics, verification, context indexing/validation/update, registry validation, config/doctor diagnostics, and skill launchers where implemented.
+The v0.1 CLI primitive layer is for deterministic process boundaries: creation/import, schematics, verification, security checks, config inspection, doctor diagnostics, help, and version output.
 
-Automation must consume typed machine output and persisted artifacts, not prose logs or chat history. Live command examples are intentionally omitted from this guide until actual binary/package witnesses prove them.
+```txt
+help version create import doctor config verify security schematic
+```
+
+Automation must consume typed machine output and persisted artifacts, not prose logs or chat history. Deferred command families (`context`, `registry`, `update`, `init`) fail closed until separately implemented and proven.
 
 ## Verification model
 
@@ -161,7 +165,7 @@ Future agents should be able to answer:
 - how to verify a safe change;
 - which plans, decisions, standards, and evidence matter.
 
-The planned context system includes root and per-area context, work artifacts, graph/indexing, drift detection, and automatic updates during `build` and `ship`. Concrete storage, graph formats, and validators are implementation-owned by later lanes.
+The context system includes root and per-area context, work artifacts, graph/indexing, drift detection, and APIs for safe context closure. Generated starters receive `.vibe/context`, `.vibe/work`, `.vibe/evidence`, and `.vibe/registry` scaffolding. Automatic context updates during full `build`/`ship` orchestration remain part of the harness-native skill workflow.
 
 ## Domain-neutrality
 
@@ -169,11 +173,11 @@ Core harness surfaces must stay reusable. Core docs, prompts, schematics, valida
 
 Project-specific vocabulary belongs in consuming-project extensions or explicitly labeled sample/demo/reference fixtures, not hidden harness defaults.
 
-## Current status and release blockers
+## Current status and pending-live proof
 
-This guide describes the intended workflow and locked decisions. It does not claim the complete workflow is executable today.
+The v0.1 package/create/starter path is locally proven. Hosted CI, live pi runtime loading, real Pulumi deploys, mobile device/simulator E2E, and full visual baselines remain pending-live.
 
-For current repository state, unavailable commands/tooling, governance placeholders, and release blockers, see [repository status](./repository-status.md).
+For current repository state and release proof, see [repository status](./repository-status.md).
 
 ## Decision links
 
