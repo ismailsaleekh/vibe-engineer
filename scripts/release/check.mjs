@@ -187,7 +187,7 @@ async function validateMetadata() {
   const publicPkgs = manifests.filter(
     ({ manifest }) =>
       manifest.private === false &&
-      manifest.version === "0.1.0" &&
+      /^0\.1\.\d+$/.test(String(manifest.version)) &&
       PUBLIC_PACKAGE_NAMES.includes(manifest.name),
   );
   const publicNames = publicPkgs.map((p) => p.manifest.name).sort();

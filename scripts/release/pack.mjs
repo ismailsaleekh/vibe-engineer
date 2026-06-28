@@ -67,7 +67,7 @@ function parseArgs(argv) {
 }
 
 // ---------- discover the 10 publish packages ----------
-// Publish set = private !== true AND version === "0.1.0" AND name in the
+// Publish set = private !== true AND SemVer 0.1.x AND name in the
 // vibe-engineer scope (or exactly "vibe-engineer"). The fixtures under
 // mechanical-gates/presets are excluded (they are 0.0.0 / null / @mini / @generated).
 async function fileExists(p) {
@@ -111,7 +111,7 @@ async function discoverPublishPackages() {
       continue;
     }
     if (manifest.private === true) continue;
-    if (manifest.version !== "0.1.0") continue;
+    if (!/^0\.1\.\d+$/.test(String(manifest.version))) continue;
     const name = manifest.name;
     if (name !== "vibe-engineer" && !name.startsWith("@vibe-engineer/")) continue;
     publish.push({ name, dir: path.dirname(f), manifestPath: f, manifest });

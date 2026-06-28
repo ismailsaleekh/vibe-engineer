@@ -72,7 +72,7 @@ pnpm release:check
 Publishing is intentionally protected:
 
 ```bash
-VIBE_ENGINEER_RELEASE_APPROVED=true pnpm release:publish -- --confirm-publish
+VIBE_ENGINEER_RELEASE_APPROVED=true pnpm release:publish --confirm-publish
 ```
 
 `release:publish` verifies GitHub/npm identity before publishing and refuses to publish without the explicit confirmation flag plus approval environment variable.

@@ -30,6 +30,12 @@ The format follows Keep a Changelog, and this project uses Semantic Versioning (
 
 - Nothing yet.
 
+## [0.1.1] - 2026-06-28
+
+### Fixed
+
+- Added the packaged npm README for the main `vibe-engineer` package so the npm package page displays install, create, command, package, documentation, and release-boundary guidance.
+
 ## [0.1.0] - 2026-06-28
 
 ### Added
