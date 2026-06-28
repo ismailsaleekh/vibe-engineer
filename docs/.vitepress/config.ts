@@ -10,6 +10,8 @@ import { defineConfig } from "vitepress";
 // the docs build is a separate, explicitly-owned closure (DL-21).
 
 const base = "/";
+const logoPath = "/brand/vibe-engineer-logo.png";
+const iconPath = "/brand/vibe-engineer-icon-512.png";
 
 export default defineConfig({
   title: "vibe-engineer",
@@ -20,10 +22,18 @@ export default defineConfig({
   lastUpdated: true,
   cleanUrls: true,
   srcDir: ".",
-  srcExclude: ["**/README.md", "decisions/**"],
-  head: [["meta", { name: "theme-color", content: "#3c388e" }]],
+  srcExclude: ["**/README.md"],
+  head: [
+    ["meta", { name: "theme-color", content: "#0b0614" }],
+    ["link", { rel: "icon", type: "image/png", href: "/favicon.png" }],
+    ["link", { rel: "apple-touch-icon", href: "/apple-touch-icon.png" }],
+    ["meta", { property: "og:image", content: logoPath }],
+    ["meta", { name: "twitter:card", content: "summary_large_image" }],
+    ["meta", { name: "twitter:image", content: logoPath }],
+  ],
 
   themeConfig: {
+    logo: iconPath,
     siteTitle: "vibe-engineer",
 
     nav: [
@@ -41,7 +51,7 @@ export default defineConfig({
       { text: "Standards", link: "/standards/" },
       {
         text: "Decisions",
-        items: [{ text: "DL index (decisions/)", link: "/decisions/" }],
+        items: [{ text: "DL index", link: "/decisions/" }],
       },
     ],
 
@@ -103,6 +113,14 @@ export default defineConfig({
           text: "Standards",
           collapsed: false,
           items: [{ text: "Core standards catalog", link: "/standards/" }],
+        },
+      ],
+
+      "/decisions/": [
+        {
+          text: "Decisions",
+          collapsed: false,
+          items: [{ text: "Decision records", link: "/decisions/" }],
         },
       ],
     },

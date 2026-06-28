@@ -181,7 +181,7 @@ For current repository state and release proof, see [repository status](./reposi
 
 ## Decision links
 
-- [Documentation index](../../README.md)
+- [Documentation index](../../index.md)
 - [Architecture overview](../../architecture/index.md)
 - [DL-01 — Repository and Package Structure](../../decisions/DL-01-repo-package-structure.md)
 - [DL-03 — Skill Protocols](../../decisions/DL-03-skill-protocols.md)

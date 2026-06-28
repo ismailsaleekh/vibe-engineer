@@ -41,7 +41,7 @@ A project adopts a concrete provider by:
 
 - `deploy.yml` is **`workflow_dispatch`-only** with a `stack` input
   (`dev`/`prod`).
-- The deploy job binds `environment: ${{ inputs.stack }}`, enforcing **protected
+- The deploy job binds `environment: $&#123;&#123; inputs.stack &#125;&#125;`, enforcing **protected
   GitHub Environment approval** before `pulumi up`.
 - **No auto-deploy** from PR / push / merge / tag / schedule.
 

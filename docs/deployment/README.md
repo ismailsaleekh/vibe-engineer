@@ -44,7 +44,7 @@ scripts/ci/pulumi/
   (no `pulumi up` / `refresh` / `destroy`). It uploads the preview output as an
   artifact and writes a step summary.
 - **`deploy.yml`** is **`workflow_dispatch`-only** with a `stack` input
-  (`dev`/`prod`). Its job binds `environment: ${{ inputs.stack }}`, so GitHub
+  (`dev`/`prod`). Its job binds `environment: $&#123;&#123; inputs.stack &#125;&#125;`, so GitHub
   blocks the run until a reviewer approves the protected `dev`/`prod`
   environment. It runs `pulumi preview` then `pulumi up`. There is **no**
   `pulumi destroy` step.

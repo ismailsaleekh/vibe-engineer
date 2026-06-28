@@ -35,11 +35,11 @@ These are not claimed live until separate evidence exists:
 
 Governance files now contain operational metadata:
 
-- [License](../../../LICENSE) — MIT, copyright `2026 Ismail`.
-- [Security](../../../SECURITY.md) — private vulnerability reporting through GitHub Security Advisories with maintainer email fallback.
-- [Code of Conduct](../../../CODE_OF_CONDUCT.md) — private conduct reporting contact.
-- [Contributing](../../../CONTRIBUTING.md) — contribution expectations, review, DCO sign-off, and evidence requirements.
-- [Changelog](../../../CHANGELOG.md) — includes the initial `0.1.0` release section.
+- [License](https://github.com/ismailsaleekh/vibe-engineer/blob/main/LICENSE) — MIT, copyright `2026 Ismail`.
+- [Security](https://github.com/ismailsaleekh/vibe-engineer/blob/main/SECURITY.md) — private vulnerability reporting through GitHub Security Advisories with maintainer email fallback.
+- [Code of Conduct](https://github.com/ismailsaleekh/vibe-engineer/blob/main/CODE_OF_CONDUCT.md) — private conduct reporting contact.
+- [Contributing](https://github.com/ismailsaleekh/vibe-engineer/blob/main/CONTRIBUTING.md) — contribution expectations, review, DCO sign-off, and evidence requirements.
+- [Changelog](https://github.com/ismailsaleekh/vibe-engineer/blob/main/CHANGELOG.md) — includes the initial `0.1.0` release section.
 
 ## Release commands
 

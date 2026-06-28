@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/brand/vibe-engineer-logo.png" alt="vibe-engineer neon VE logo" width="180" />
+</p>
+
 # vibe-engineer
 
 `vibe-engineer` is intent-driven engineering with structure: a domain-neutral harness for agent-native TypeScript work where ideas become artifacts, verification runs as part of the workflow, and context survives beyond chat.
