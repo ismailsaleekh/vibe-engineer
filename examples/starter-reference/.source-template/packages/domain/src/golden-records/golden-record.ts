@@ -15,5 +15,10 @@ export interface GoldenRecord {
 }
 
 export function classifyGoldenRecordStatus(status: GoldenRecordStatus): "sample-demo-reference" {
-  return "sample-demo-reference";
+  switch (status) {
+    case "draft":
+    case "active":
+    case "archived":
+      return "sample-demo-reference";
+  }
 }

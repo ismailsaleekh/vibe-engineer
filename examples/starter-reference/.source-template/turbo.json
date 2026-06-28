@@ -2,58 +2,31 @@
   "$schema": "https://turbo.build/schema.json",
   "tasks": {
     "typecheck": {
-      "dependsOn": [
-        "^typecheck"
-      ],
+      "dependsOn": ["^typecheck"],
       "outputs": []
     },
     "lint": {
-      "dependsOn": [
-        "^lint"
-      ],
+      "dependsOn": ["^lint"],
       "outputs": []
     },
     "format:check": {
       "outputs": []
     },
     "test:unit": {
-      "dependsOn": [
-        "^test:unit"
-      ],
-      "outputs": [
-        "coverage/**"
-      ]
+      "dependsOn": ["^test:unit"],
+      "outputs": ["coverage/**"]
     },
     "build": {
-      "dependsOn": [
-        "^build",
-        "typecheck"
-      ],
-      "outputs": [
-        "dist/**"
-      ]
+      "dependsOn": ["^build", "typecheck"],
+      "outputs": ["dist/**"]
     },
     "quality:quick": {
-      "dependsOn": [
-        "typecheck",
-        "lint",
-        "format:check",
-        "test:unit",
-        "build"
-      ],
+      "dependsOn": ["typecheck", "lint", "format:check", "test:unit", "build"],
       "outputs": []
-    }
-  },
-  "vibeEngineer": {
-    "quickGateLabel": "quality:quick",
-    "defaults": {
-      "typecheckCommand": "tsc --noEmit -p packages/example/tsconfig.json",
-      "unitTestCommand": "node --test packages/example/test/**/*.test.js",
-      "quickGateCommand": "pnpm run quality:quick",
-      "defaultFullE2E": false,
-      "defaultFullMobileE2E": false,
-      "defaultFullVisualVerification": false,
-      "defaultAutoDeploy": false
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
     }
   }
 }

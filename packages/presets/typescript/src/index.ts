@@ -129,14 +129,14 @@ export interface PackageScriptDefaults {
   readonly typecheck: "tsc --noEmit -p tsconfig.json";
   readonly lint: "eslint .";
   readonly "format:check": "prettier --check .";
-  readonly "test:unit": "node --test";
+  readonly "test:unit": "tsx --test \"test/**/*.test.ts\"";
   readonly build: "tsc -p tsconfig.json";
   readonly "quality:quick": "pnpm run typecheck && pnpm run lint && pnpm run format:check && pnpm run test:unit && pnpm run build";
 }
 
 export interface TestAndTypecheckDefaults {
-  readonly typecheckCommand: "tsc --noEmit -p packages/example/tsconfig.json";
-  readonly unitTestCommand: "node --test packages/example/test/**/*.test.js";
+  readonly typecheckCommand: "pnpm run typecheck";
+  readonly unitTestCommand: "pnpm run test:unit";
   readonly quickGateCommand: "pnpm run quality:quick";
   readonly defaultFullE2E: false;
   readonly defaultFullMobileE2E: false;
@@ -361,7 +361,7 @@ export const PACKAGE_TSCONFIG_DEFAULTS: PackageTsConfigModel = Object.freeze({
     sourceMap: true,
     noEmit: false,
   }),
-  include: Object.freeze(["src/**/*.ts"]),
+  include: Object.freeze(["src/**/*.ts", "src/**/*.tsx"]),
 });
 
 export const ESLINT_POLICY_DEFAULTS: EslintPolicyDefaults = Object.freeze({
@@ -408,14 +408,14 @@ export const PACKAGE_SCRIPT_DEFAULTS: PackageScriptDefaults = Object.freeze({
   typecheck: "tsc --noEmit -p tsconfig.json",
   lint: "eslint .",
   "format:check": "prettier --check .",
-  "test:unit": "node --test",
+  "test:unit": "tsx --test \"test/**/*.test.ts\"",
   build: "tsc -p tsconfig.json",
   "quality:quick": "pnpm run typecheck && pnpm run lint && pnpm run format:check && pnpm run test:unit && pnpm run build",
 });
 
 export const TEST_AND_TYPECHECK_DEFAULTS: TestAndTypecheckDefaults = Object.freeze({
-  typecheckCommand: "tsc --noEmit -p packages/example/tsconfig.json",
-  unitTestCommand: "node --test packages/example/test/**/*.test.js",
+  typecheckCommand: "pnpm run typecheck",
+  unitTestCommand: "pnpm run test:unit",
   quickGateCommand: "pnpm run quality:quick",
   defaultFullE2E: false,
   defaultFullMobileE2E: false,
@@ -522,10 +522,6 @@ function turboContent(): string {
   return stableStringify({
     $schema: "https://turbo.build/schema.json",
     tasks: TURBO_TASK_DEFAULTS.tasks,
-    vibeEngineer: {
-      quickGateLabel: TURBO_TASK_DEFAULTS.quickGateLabel,
-      defaults: TEST_AND_TYPECHECK_DEFAULTS,
-    },
   });
 }
 

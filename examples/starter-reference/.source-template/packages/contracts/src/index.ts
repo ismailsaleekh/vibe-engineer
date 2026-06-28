@@ -1,1 +1,5 @@
-export { goldenRecordsContract, goldenRecordSchema, goldenRecordStatusSchema } from "./golden-records/golden-records.contract.js";
+export {
+  goldenRecordsContract,
+  goldenRecordSchema,
+  goldenRecordStatusSchema,
+} from "./golden-records/golden-records.contract.js";

@@ -47,8 +47,8 @@
   "vibeEngineer": {
     "quickGateLabel": "quality:quick",
     "defaults": {
-      "typecheckCommand": "tsc --noEmit -p packages/example/tsconfig.json",
-      "unitTestCommand": "node --test packages/example/test/**/*.test.js",
+      "typecheckCommand": "pnpm run typecheck",
+      "unitTestCommand": "pnpm run test:unit",
       "quickGateCommand": "pnpm run quality:quick",
       "defaultFullE2E": false,
       "defaultFullMobileE2E": false,

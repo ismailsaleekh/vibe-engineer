@@ -16,5 +16,9 @@ export const goldenRecordSchema = z.object({
 });
 
 export const goldenRecordsContract = c.router({
-  list: { method: "GET", path: "/api/golden-records", responses: { 200: z.array(goldenRecordSchema) } },
+  list: {
+    method: "GET",
+    path: "/api/golden-records",
+    responses: { 200: z.array(goldenRecordSchema) },
+  },
 });

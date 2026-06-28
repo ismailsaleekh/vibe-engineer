@@ -1,5 +1,6 @@
+import type { ReactElement } from "react";
 import { HomeRoute } from "../routes/home/home.js";
 
-export function App(): JSX.Element {
+export function App(): ReactElement {
   return <HomeRoute />;
 }

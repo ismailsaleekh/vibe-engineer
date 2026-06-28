@@ -1,8 +1,9 @@
 // @sample @demo @reference — golden-records module (DL-16 / DL-20A).
+import type { ReactElement } from "react";
 import { useGoldenRecords } from "@vibe-engineer-starter/api-client";
 import { Text, View } from "react-native";
 
-export function GoldenRecordsScreen(): JSX.Element {
+export function GoldenRecordsScreen(): ReactElement {
   const records = useGoldenRecords();
   return (
     <View>

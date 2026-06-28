@@ -115,13 +115,13 @@ export interface PackageScriptDefaults {
     readonly typecheck: "tsc --noEmit -p tsconfig.json";
     readonly lint: "eslint .";
     readonly "format:check": "prettier --check .";
-    readonly "test:unit": "node --test";
+    readonly "test:unit": "tsx --test \"test/**/*.test.ts\"";
     readonly build: "tsc -p tsconfig.json";
     readonly "quality:quick": "pnpm run typecheck && pnpm run lint && pnpm run format:check && pnpm run test:unit && pnpm run build";
 }
 export interface TestAndTypecheckDefaults {
-    readonly typecheckCommand: "tsc --noEmit -p packages/example/tsconfig.json";
-    readonly unitTestCommand: "node --test packages/example/test/**/*.test.js";
+    readonly typecheckCommand: "pnpm run typecheck";
+    readonly unitTestCommand: "pnpm run test:unit";
     readonly quickGateCommand: "pnpm run quality:quick";
     readonly defaultFullE2E: false;
     readonly defaultFullMobileE2E: false;

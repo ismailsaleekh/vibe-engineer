@@ -71,24 +71,14 @@
         "directory": "packages/api-client",
         "packageName": "@vibe-engineer-starter/api-client",
         "boundaryRule": "Generated/shared client derived from packages/contracts; may depend on contracts and config; must not duplicate schemas or define hand-authored fetch DTOs.",
-        "forbiddenImports": [
-          "@nestjs",
-          "react",
-          "react-native",
-          "@prisma/client"
-        ]
+        "forbiddenImports": ["@nestjs", "react", "react-native", "@prisma/client"]
       },
       {
         "name": "config",
         "directory": "packages/config",
         "packageName": "@vibe-engineer-starter/config",
         "boundaryRule": "Env/config wrappers; no secrets in defaults; no app/api/Prisma/UI logic.",
-        "forbiddenImports": [
-          "@nestjs",
-          "react",
-          "react-native",
-          "@prisma/client"
-        ]
+        "forbiddenImports": ["@nestjs", "react", "react-native", "@prisma/client"]
       },
       {
         "name": "testing",
@@ -111,18 +101,8 @@
         ]
       }
     ],
-    "vibeAreas": [
-      "context",
-      "work",
-      "evidence",
-      "registry"
-    ],
-    "toolingAreas": [
-      "scripts",
-      "dev-services",
-      "ci",
-      "generated"
-    ],
+    "vibeAreas": ["context", "work", "evidence", "registry"],
+    "toolingAreas": ["scripts", "dev-services", "ci", "generated"],
     "goldenModule": "golden-records",
     "authStance": "no-auth",
     "persistence": "PostgreSQL + Prisma",
@@ -143,275 +123,210 @@
       "outputPath": "tsconfig.base.json",
       "kind": "typescript-config",
       "ownership": "generated-owned",
-      "requiredStandardIds": [
-        "typed-boundary-contracts",
-        "dependency-hygiene"
-      ],
+      "requiredStandardIds": ["typed-boundary-contracts", "dependency-hygiene"],
       "consumerNotes": "Root strict NodeNext TypeScript baseline inherited verbatim from @vibe-engineer/preset-typescript compiler options."
     },
     {
       "outputPath": "pnpm-workspace.yaml",
       "kind": "workspace-config",
       "ownership": "generated-owned",
-      "requiredStandardIds": [
-        "dependency-hygiene"
-      ],
+      "requiredStandardIds": ["dependency-hygiene"],
       "consumerNotes": "Workspace globs for DL-16 apps/* and packages/*."
     },
     {
       "outputPath": "turbo.json",
       "kind": "turbo-config",
       "ownership": "generated-owned",
-      "requiredStandardIds": [
-        "real-boundary-witnesses",
-        "dependency-hygiene"
-      ],
+      "requiredStandardIds": ["real-boundary-witnesses", "dependency-hygiene"],
       "consumerNotes": "Starter Turborepo tasks derived from @vibe-engineer/preset-typescript turbo defaults."
     },
     {
       "outputPath": "eslint.config.mjs",
       "kind": "eslint-config",
       "ownership": "generated-owned",
-      "requiredStandardIds": [
-        "typed-boundary-contracts",
-        "domain-neutral-core"
-      ],
+      "requiredStandardIds": ["typed-boundary-contracts", "domain-neutral-core"],
       "consumerNotes": "Starter ESLint flat-config inheriting the consumed preset strict policy."
     },
     {
       "outputPath": "prettier.config.mjs",
       "kind": "prettier-config",
       "ownership": "generated-owned",
-      "requiredStandardIds": [
-        "deterministic-schematics"
-      ],
+      "requiredStandardIds": ["deterministic-schematics"],
       "consumerNotes": "Starter Prettier config derived verbatim from the consumed preset prettier defaults."
     },
     {
       "outputPath": "package.json",
       "kind": "package-manifest",
       "ownership": "generated-owned",
-      "requiredStandardIds": [
-        "dependency-hygiene"
-      ],
+      "requiredStandardIds": ["dependency-hygiene"],
       "consumerNotes": "Private root starter manifest for @vibe-engineer-starter/workspace with strict scripts."
     },
     {
       "outputPath": "apps/api/package.json",
       "kind": "app-manifest",
       "ownership": "generated-owned",
-      "requiredStandardIds": [
-        "dependency-hygiene"
-      ],
+      "requiredStandardIds": ["dependency-hygiene"],
       "consumerNotes": "NestJS API app manifest (golden-records sample/demo module slot)."
     },
     {
       "outputPath": "apps/api/tsconfig.json",
       "kind": "app-tsconfig",
       "ownership": "generated-owned",
-      "requiredStandardIds": [
-        "typed-boundary-contracts"
-      ],
+      "requiredStandardIds": ["typed-boundary-contracts"],
       "consumerNotes": "API app tsconfig extending the strict root base."
     },
     {
       "outputPath": "apps/web/package.json",
       "kind": "app-manifest",
       "ownership": "generated-owned",
-      "requiredStandardIds": [
-        "dependency-hygiene"
-      ],
+      "requiredStandardIds": ["dependency-hygiene"],
       "consumerNotes": "React web app manifest."
     },
     {
       "outputPath": "apps/web/tsconfig.json",
       "kind": "app-tsconfig",
       "ownership": "generated-owned",
-      "requiredStandardIds": [
-        "typed-boundary-contracts"
-      ],
+      "requiredStandardIds": ["typed-boundary-contracts"],
       "consumerNotes": "Web app tsconfig extending the strict root base."
     },
     {
       "outputPath": "apps/mobile/package.json",
       "kind": "app-manifest",
       "ownership": "generated-owned",
-      "requiredStandardIds": [
-        "dependency-hygiene"
-      ],
+      "requiredStandardIds": ["dependency-hygiene"],
       "consumerNotes": "React Native mobile app manifest."
     },
     {
       "outputPath": "apps/mobile/tsconfig.json",
       "kind": "app-tsconfig",
       "ownership": "generated-owned",
-      "requiredStandardIds": [
-        "typed-boundary-contracts"
-      ],
+      "requiredStandardIds": ["typed-boundary-contracts"],
       "consumerNotes": "Mobile app tsconfig extending the strict root base."
     },
     {
       "outputPath": "packages/domain/package.json",
       "kind": "package-manifest",
       "ownership": "generated-owned",
-      "requiredStandardIds": [
-        "typed-boundary-contracts",
-        "domain-neutral-core"
-      ],
+      "requiredStandardIds": ["typed-boundary-contracts", "domain-neutral-core"],
       "consumerNotes": "Prisma-free pure-TS domain package manifest."
     },
     {
       "outputPath": "packages/domain/tsconfig.json",
       "kind": "package-tsconfig",
       "ownership": "generated-owned",
-      "requiredStandardIds": [
-        "typed-boundary-contracts"
-      ],
+      "requiredStandardIds": ["typed-boundary-contracts"],
       "consumerNotes": "Domain package tsconfig inheriting the strict base."
     },
     {
       "outputPath": "packages/contracts/package.json",
       "kind": "package-manifest",
       "ownership": "generated-owned",
-      "requiredStandardIds": [
-        "typed-boundary-contracts"
-      ],
+      "requiredStandardIds": ["typed-boundary-contracts"],
       "consumerNotes": "ts-rest + named Zod contracts package manifest."
     },
     {
       "outputPath": "packages/contracts/tsconfig.json",
       "kind": "package-tsconfig",
       "ownership": "generated-owned",
-      "requiredStandardIds": [
-        "typed-boundary-contracts"
-      ],
+      "requiredStandardIds": ["typed-boundary-contracts"],
       "consumerNotes": "Contracts package tsconfig inheriting the strict base."
     },
     {
       "outputPath": "packages/api-client/package.json",
       "kind": "package-manifest",
       "ownership": "generated-owned",
-      "requiredStandardIds": [
-        "typed-boundary-contracts"
-      ],
+      "requiredStandardIds": ["typed-boundary-contracts"],
       "consumerNotes": "Derived/shared api-client package manifest."
     },
     {
       "outputPath": "packages/api-client/tsconfig.json",
       "kind": "package-tsconfig",
       "ownership": "generated-owned",
-      "requiredStandardIds": [
-        "typed-boundary-contracts"
-      ],
+      "requiredStandardIds": ["typed-boundary-contracts"],
       "consumerNotes": "Api-client package tsconfig inheriting the strict base."
     },
     {
       "outputPath": "packages/config/package.json",
       "kind": "package-manifest",
       "ownership": "generated-owned",
-      "requiredStandardIds": [
-        "dependency-hygiene"
-      ],
+      "requiredStandardIds": ["dependency-hygiene"],
       "consumerNotes": "Env/config wrapper package manifest; no secrets in defaults."
     },
     {
       "outputPath": "packages/config/tsconfig.json",
       "kind": "package-tsconfig",
       "ownership": "generated-owned",
-      "requiredStandardIds": [
-        "typed-boundary-contracts"
-      ],
+      "requiredStandardIds": ["typed-boundary-contracts"],
       "consumerNotes": "Config package tsconfig inheriting the strict base."
     },
     {
       "outputPath": "packages/testing/package.json",
       "kind": "package-manifest",
       "ownership": "generated-owned",
-      "requiredStandardIds": [
-        "dependency-hygiene"
-      ],
+      "requiredStandardIds": ["dependency-hygiene"],
       "consumerNotes": "Test-only testing package manifest; no production consumer."
     },
     {
       "outputPath": "packages/testing/tsconfig.json",
       "kind": "package-tsconfig",
       "ownership": "generated-owned",
-      "requiredStandardIds": [
-        "typed-boundary-contracts"
-      ],
+      "requiredStandardIds": ["typed-boundary-contracts"],
       "consumerNotes": "Testing package tsconfig inheriting the strict base."
     },
     {
       "outputPath": "packages/ui/package.json",
       "kind": "package-manifest",
       "ownership": "generated-owned",
-      "requiredStandardIds": [
-        "typed-boundary-contracts"
-      ],
+      "requiredStandardIds": ["typed-boundary-contracts"],
       "consumerNotes": "Narrow UI tokens/primitives package manifest."
     },
     {
       "outputPath": "packages/ui/tsconfig.json",
       "kind": "package-tsconfig",
       "ownership": "generated-owned",
-      "requiredStandardIds": [
-        "typed-boundary-contracts"
-      ],
+      "requiredStandardIds": ["typed-boundary-contracts"],
       "consumerNotes": "UI package tsconfig inheriting the strict base."
     },
     {
       "outputPath": "vibe-engineer.config.json",
       "kind": "harness-config-placeholder",
       "ownership": "generated-owned",
-      "requiredStandardIds": [
-        "real-boundary-witnesses"
-      ],
+      "requiredStandardIds": ["real-boundary-witnesses"],
       "consumerNotes": "Starter harness-config placeholder: agenticHarness=pi + locked DL-16 layout (DL-06)."
     },
     {
       "outputPath": ".vibe/context/manifest.json",
       "kind": "context-placeholder",
       "ownership": "generated-owned",
-      "requiredStandardIds": [
-        "report-first-evidence"
-      ],
+      "requiredStandardIds": ["report-first-evidence"],
       "consumerNotes": "DL-17 neutral bootstrap context placeholder; classifies golden-records as sample/demo/reference."
     },
     {
       "outputPath": ".tooling/dev-services/docker-compose.json",
       "kind": "dev-service-config",
       "ownership": "generated-owned",
-      "requiredStandardIds": [
-        "dependency-hygiene"
-      ],
+      "requiredStandardIds": ["dependency-hygiene"],
       "consumerNotes": "Local PostgreSQL-only dev service (DL-16 database stance)."
     },
     {
       "outputPath": "apps/api/src/golden-records/sample.ts",
       "kind": "sample-demo-source",
       "ownership": "generated-owned",
-      "requiredStandardIds": [
-        "domain-neutral-core"
-      ],
+      "requiredStandardIds": ["domain-neutral-core"],
       "consumerNotes": "Explicitly sample/demo/reference GoldenRecord source demonstrating the architecture seam."
     },
     {
       "outputPath": ".vibe/generated/nest-react-rn-preset/manifest.json",
       "kind": "preset-metadata",
       "ownership": "generated-owned",
-      "requiredStandardIds": [
-        "report-first-evidence",
-        "dirty-tree-ownership"
-      ],
+      "requiredStandardIds": ["report-first-evidence", "dirty-tree-ownership"],
       "consumerNotes": "Generated preset manifest tying starter files to standards and consumed preset identity."
     }
   ],
   "derivedDefaults": {
     "compilerOptions": {
       "target": "ES2022",
-      "lib": [
-        "ES2022"
-      ],
+      "lib": ["ES2022"],
       "module": "NodeNext",
       "moduleResolution": "NodeNext",
       "strict": true,
@@ -549,55 +464,33 @@
       "endOfLine": "lf"
     },
     "pnpmDefaults": {
-      "workspaceGlobs": [
-        "packages/*",
-        "apps/*"
-      ],
+      "workspaceGlobs": ["packages/*", "apps/*"],
       "packageManager": "pnpm@10.33.0"
     },
     "turboDefaults": {
       "quickGateLabel": "quality:quick",
       "tasks": {
         "typecheck": {
-          "dependsOn": [
-            "^typecheck"
-          ],
+          "dependsOn": ["^typecheck"],
           "outputs": []
         },
         "lint": {
-          "dependsOn": [
-            "^lint"
-          ],
+          "dependsOn": ["^lint"],
           "outputs": []
         },
         "format:check": {
           "outputs": []
         },
         "test:unit": {
-          "dependsOn": [
-            "^test:unit"
-          ],
-          "outputs": [
-            "coverage/**"
-          ]
+          "dependsOn": ["^test:unit"],
+          "outputs": ["coverage/**"]
         },
         "build": {
-          "dependsOn": [
-            "^build",
-            "typecheck"
-          ],
-          "outputs": [
-            "dist/**"
-          ]
+          "dependsOn": ["^build", "typecheck"],
+          "outputs": ["dist/**"]
         },
         "quality:quick": {
-          "dependsOn": [
-            "typecheck",
-            "lint",
-            "format:check",
-            "test:unit",
-            "build"
-          ],
+          "dependsOn": ["typecheck", "lint", "format:check", "test:unit", "build"],
           "outputs": []
         }
       }

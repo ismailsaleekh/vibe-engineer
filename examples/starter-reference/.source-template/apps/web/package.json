@@ -1,14 +1,25 @@
 {
   "name": "@vibe-engineer-starter/web",
+  "version": "0.1.0",
   "private": true,
   "type": "module",
   "scripts": {
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "lint": "eslint .",
-    "format:check": "prettier --check .",
-    "test:unit": "node --test",
-    "build": "tsc -p tsconfig.json",
+    "format:check": "prettier --check . --ignore-path ../../.prettierignore",
+    "test:unit": "tsx --test \"test/**/*.test.ts\"",
+    "build": "vite build",
     "quality:quick": "pnpm run typecheck && pnpm run lint && pnpm run format:check && pnpm run test:unit && pnpm run build",
     "dev": "vite"
+  },
+  "dependencies": {
+    "@vibe-engineer-starter/api-client": "workspace:^0.1.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "vite": "^6.0.11"
   }
 }

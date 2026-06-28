@@ -6,9 +6,15 @@
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
-    "noEmit": false
+    "noEmit": false,
+    "jsx": "react-jsx",
+    "types": ["react"],
+    "baseUrl": ".",
+    "paths": {
+      "react-native": ["src/types/react-native-shims.d.ts"],
+      "@react-navigation/native": ["src/types/react-native-shims.d.ts"],
+      "@react-navigation/native-stack": ["src/types/react-native-shims.d.ts"]
+    }
   },
-  "include": [
-    "src/**/*.ts"
-  ]
+  "include": ["src/**/*.ts", "src/**/*.tsx"]
 }

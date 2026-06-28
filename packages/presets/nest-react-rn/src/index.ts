@@ -280,6 +280,9 @@ export const STARTER_PACKAGE_SCRIPT_DEFAULTS: typeof PACKAGE_SCRIPT_DEFAULTS = O
 
 export const STARTER_TEST_AND_TYPECHECK_DEFAULTS: typeof TEST_AND_TYPECHECK_DEFAULTS = Object.freeze({
   ...TEST_AND_TYPECHECK_DEFAULTS,
+  typecheckCommand: "pnpm run typecheck",
+  unitTestCommand: "pnpm run test:unit",
+  quickGateCommand: "pnpm run quality:quick",
 });
 
 // ---------------------------------------------------------------------------
@@ -565,10 +568,6 @@ function turboContent(): string {
   return stableStringify({
     $schema: "https://turbo.build/schema.json",
     tasks: STARTER_TURBO_TASK_DEFAULTS.tasks,
-    vibeEngineer: {
-      quickGateLabel: STARTER_TURBO_TASK_DEFAULTS.quickGateLabel,
-      defaults: STARTER_TEST_AND_TYPECHECK_DEFAULTS,
-    },
   });
 }
 
@@ -588,12 +587,12 @@ function rootPackageJsonContent(): string {
     packageManager: STARTER_PNPM_DEFAULTS.packageManager,
     scripts: {
       ...STARTER_PACKAGE_SCRIPT_DEFAULTS,
-      dev: "pnpm --filter @vibe-engineer-starter/api run dev && pnpm --filter @vibe-engineer-starter/web run dev",
+      dev: "pnpm -r --parallel --filter @vibe-engineer-starter/api --filter @vibe-engineer-starter/web run dev",
       "dev:api": "pnpm --filter @vibe-engineer-starter/api run dev",
       "dev:web": "pnpm --filter @vibe-engineer-starter/web run dev",
       "dev:mobile": "pnpm --filter @vibe-engineer-starter/mobile run dev",
-      "db:start": "docker compose -f .tooling/dev-services/docker-compose.yml up -d postgres",
-      "db:stop": "docker compose -f .tooling/dev-services/docker-compose.yml stop postgres",
+      "db:start": "docker compose -f .tooling/dev-services/docker-compose.json up -d postgres",
+      "db:stop": "docker compose -f .tooling/dev-services/docker-compose.json stop postgres",
       "db:migrate": "pnpm --filter @vibe-engineer-starter/api run db:migrate",
       "db:seed": "pnpm --filter @vibe-engineer-starter/api run db:seed",
       "db:reset:local": "pnpm --filter @vibe-engineer-starter/api run db:reset:local",
@@ -615,13 +614,13 @@ function appManifestContent(app: StarterAppDescriptor): string {
     typecheck: "tsc --noEmit -p tsconfig.json",
     lint: "eslint .",
     "format:check": "prettier --check .",
-    "test:unit": "node --test",
+    "test:unit": "tsx --test \"test/**/*.test.ts\"",
     build: "tsc -p tsconfig.json",
     "quality:quick": "pnpm run typecheck && pnpm run lint && pnpm run format:check && pnpm run test:unit && pnpm run build",
   };
   const appSpecificScripts: Readonly<Record<StarterAppId, Readonly<Record<string, string>>>> = {
     api: {
-      dev: "nest start --watch",
+      dev: "tsx watch src/main.ts",
       "db:migrate": "prisma migrate dev",
       "db:seed": "prisma db seed",
       "db:reset:local": "prisma migrate reset --force",
@@ -658,7 +657,7 @@ function packageTsconfigContent(): string {
       sourceMap: true,
       noEmit: false,
     },
-    include: ["src/**/*.ts"],
+    include: ["src/**/*.ts", "src/**/*.tsx"],
   });
 }
 
@@ -1101,8 +1100,9 @@ function validateNoCopiedHarnessLogic(
   files: readonly ValidatorFile[],
   findings: NestReactRnPresetFinding[],
 ): void {
-  // DL-16 §2: the starter consumes the harness package; it must not copy
-  // validators/schematics/skills/adapters/runner/context/orchestration. The
+  // DL-16 §2 / release definition-(iii): the starter is produced by the
+  // installed harness from shipped templates, but imports no @vibe-engineer/*
+  // runtime package and must not copy validators/schematics/skills/adapters/runner/context/orchestration. The
   // preset's rendered starter skeletons must not embed harness validator/
   // schematic/runner/context source markers as if they were starter code.
   const COPIED_LOGIC_MARKERS = Object.freeze([
@@ -1119,7 +1119,7 @@ function validateNoCopiedHarnessLogic(
     for (const marker of COPIED_LOGIC_MARKERS) {
       if (file.content.includes(marker)) {
         findings.push(
-          makeFinding("PRESET_COPIED_HARNESS_LOGIC", file.path, "Starter output must consume the harness package, not copy harness logic (DL-16 §2).", [marker]),
+          makeFinding("PRESET_COPIED_HARNESS_LOGIC", file.path, "Starter output must be generated from shipped templates without copying harness logic (DL-16 §2 / release definition-(iii)).", [marker]),
         );
       }
     }

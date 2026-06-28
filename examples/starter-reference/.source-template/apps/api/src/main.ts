@@ -1,3 +1,5 @@
+import { pathToFileURL } from "node:url";
+import "reflect-metadata";
 import { NestFactory } from "@nestjs/core";
 import { AppModule } from "./app.module.js";
 
@@ -5,5 +7,11 @@ import { AppModule } from "./app.module.js";
 // No-auth default (DL-16 §7); local development only.
 export async function bootstrap(): Promise<void> {
   const app = await NestFactory.create(AppModule);
-  await app.listen(process.env.API_PORT ? Number(process.env.API_PORT) : 3000);
+  const apiPortRaw = process.env["API_PORT"];
+  await app.listen(apiPortRaw === undefined ? 3000 : Number(apiPortRaw));
+}
+
+const invokedPath = process.argv[1];
+if (invokedPath !== undefined && import.meta.url === pathToFileURL(invokedPath).href) {
+  void bootstrap();
 }

@@ -152,7 +152,7 @@ export const PACKAGE_TSCONFIG_DEFAULTS = Object.freeze({
         sourceMap: true,
         noEmit: false,
     }),
-    include: Object.freeze(["src/**/*.ts"]),
+    include: Object.freeze(["src/**/*.ts", "src/**/*.tsx", "test/**/*.ts", "test/**/*.tsx"]),
 });
 export const ESLINT_POLICY_DEFAULTS = Object.freeze({
     configFile: "eslint.config.mjs",
@@ -190,13 +190,13 @@ export const PACKAGE_SCRIPT_DEFAULTS = Object.freeze({
     typecheck: "tsc --noEmit -p tsconfig.json",
     lint: "eslint .",
     "format:check": "prettier --check .",
-    "test:unit": "node --test",
+    "test:unit": "tsx --test \"test/**/*.test.ts\"",
     build: "tsc -p tsconfig.json",
     "quality:quick": "pnpm run typecheck && pnpm run lint && pnpm run format:check && pnpm run test:unit && pnpm run build",
 });
 export const TEST_AND_TYPECHECK_DEFAULTS = Object.freeze({
-    typecheckCommand: "tsc --noEmit -p packages/example/tsconfig.json",
-    unitTestCommand: "node --test packages/example/test/**/*.test.js",
+    typecheckCommand: "pnpm run typecheck",
+    unitTestCommand: "pnpm run test:unit",
     quickGateCommand: "pnpm run quality:quick",
     defaultFullE2E: false,
     defaultFullMobileE2E: false,

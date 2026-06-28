@@ -1,7 +1,10 @@
 # Reference starter (sample/demo/reference)
 
-This is the @vibe-engineer-starter reference monorepo materialized from the
-@vibe-engineer/preset-nest-react-rn contract (DL-16). It consumes the
-vibe-engineer harness package; it does not copy harness logic.
+This is the `@vibe-engineer-starter` reference monorepo produced by the
+installed `vibe-engineer create` command from shipped starter template files.
+The starter recreates the harness's domain-neutral structure in its own private
+`@vibe-engineer-starter/*` workspace packages; it does **not** import public
+`@vibe-engineer/*` runtime packages and does **not** copy harness implementation
+logic.
 
 The single sample/demo/reference module is `golden-records`.

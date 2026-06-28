@@ -1,14 +1,27 @@
 {
   "name": "@vibe-engineer-starter/mobile",
+  "version": "0.1.0",
   "private": true,
   "type": "module",
   "scripts": {
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "lint": "eslint .",
-    "format:check": "prettier --check .",
-    "test:unit": "node --test",
+    "format:check": "prettier --check . --ignore-path ../../.prettierignore",
+    "test:unit": "tsx --test \"test/**/*.test.ts\"",
     "build": "tsc -p tsconfig.json",
     "quality:quick": "pnpm run typecheck && pnpm run lint && pnpm run format:check && pnpm run test:unit && pnpm run build",
     "dev": "react-native start"
+  },
+  "dependencies": {
+    "@react-navigation/native": "^7.0.14",
+    "@react-navigation/native-stack": "^7.2.0",
+    "@vibe-engineer-starter/api-client": "workspace:^0.1.0",
+    "react": "^18.3.1",
+    "react-native": "^0.76.6",
+    "react-native-safe-area-context": "5.0.0",
+    "react-native-screens": "4.4.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.18"
   }
 }
