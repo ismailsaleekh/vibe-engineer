@@ -1,10 +1,21 @@
 {
   "buildFacingApiFixture": {
-    "exit": 0,
-    "futureJoin": "I-21"
+    "actual": {
+      "errorCode": "ERR_PACKAGE_PATH_NOT_EXPORTED",
+      "exit": 1,
+      "stderrSnippet": "  return new ERR_PACKAGE_PATH_NOT_EXPORTED("
+    },
+    "expectedGreenContract": {
+      "exit": 0,
+      "futureJoin": "I-21"
+    },
+    "greenNow": false,
+    "pending": "WP-05-exports-seam",
+    "reason": "@vibe-engineer/security has no `.` main export; consumer cannot resolve it. Owned by WP-05."
   },
-  "defaultEntryUnsupported": {
-    "classification": "unsupported_operation",
+  "defaultEntryRouted": {
+    "classification": "invalid_input",
+    "code": "VE_INVALID_INVOCATION",
     "exit": 2
   },
   "foundationEnvelopeRegression": {

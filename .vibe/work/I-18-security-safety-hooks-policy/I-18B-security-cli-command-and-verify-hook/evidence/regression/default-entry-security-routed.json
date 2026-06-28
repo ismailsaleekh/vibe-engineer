@@ -1,0 +1,12 @@
+{
+  "argv": [
+    "<unknown-command>",
+    "<value>",
+    "--api-key",
+    "<redacted>"
+  ],
+  "code": 2,
+  "cwd": "/Users/lizavasilyeva/work/vibe-engineer",
+  "stderr": "",
+  "stdout": "{\"schemaVersion\":\"vibe-engineer.cli.result.v1\",\"invocation\":{\"id\":\"800e5f9e-abc4-4249-aee5-07709b4c8117\",\"command\":\"security\",\"argv\":[\"security\",\"--api-key\",\"<redacted>\"],\"projectRoot\":null,\"configPath\":null,\"startedAt\":\"2026-06-27T18:39:13.101Z\",\"endedAt\":\"2026-06-27T18:39:13.102Z\"},\"status\":\"blocked\",\"exitCode\":2,\"payload\":{\"kind\":\"cli_invocation_error\",\"schemaVersion\":\"vibe-engineer.cli.payload.v1\",\"data\":{\"accepted\":false}},\"diagnostics\":[{\"severity\":\"error\",\"code\":\"VE_INVALID_INVOCATION\",\"classification\":\"invalid_input\",\"message\":\"Secret-like security command input is not accepted.\",\"path\":null,\"span\":null,\"hint\":null}],\"artifacts\":[],\"errors\":[{\"code\":\"VE_INVALID_INVOCATION\",\"classification\":\"invalid_input\",\"retryable\":false,\"blocking\":true,\"message\":\"Secret-like security command input is not accepted.\",\"details\":{\"flag\":\"--api-key\",\"value\":\"<redacted>\"}}]}\n"
+}
