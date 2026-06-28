@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "vibe-engineer.cli.result.v1",
+  "invocation": {
+    "id": "1748b40e-fdd9-4dfa-a70c-6424d61c533d",
+    "command": "create",
+    "argv": [
+      "create",
+      "--target-root",
+      "<value>",
+      "--project-name",
+      "<value>",
+      "--agentic-harness",
+      "<value>",
+      "--brief",
+      "<value>",
+      "--json",
+      "--non-interactive"
+    ],
+    "projectRoot": null,
+    "configPath": null,
+    "startedAt": "2026-06-28T00:20:39.055Z",
+    "endedAt": "2026-06-28T00:20:39.056Z"
+  },
+  "status": "blocked",
+  "exitCode": 2,
+  "payload": {
+    "kind": "create_result",
+    "schemaVersion": "vibe-engineer.cli.payload.v1",
+    "data": {
+      "ok": false,
+      "stage": "harness_selection",
+      "requestedHarness": "codex",
+      "supported": [
+        "pi"
+      ]
+    }
+  },
+  "diagnostics": [
+    {
+      "severity": "error",
+      "code": "VE_UNSUPPORTED_OPERATION",
+      "classification": "unsupported_operation",
+      "message": "Harness 'codex' is deferred in v1 and is not selectable; only the pi agentic harness is selectable.",
+      "path": null,
+      "span": null,
+      "hint": null
+    }
+  ],
+  "artifacts": [],
+  "errors": [
+    {
+      "code": "VE_UNSUPPORTED_OPERATION",
+      "classification": "unsupported_operation",
+      "retryable": false,
+      "blocking": true,
+      "message": "Harness 'codex' is deferred in v1 and is not selectable; only the pi agentic harness is selectable.",
+      "details": {
+        "requestedHarness": "codex",
+        "supported": [
+          "pi"
+        ],
+        "deferred": [
+          "claude-code",
+          "codex",
+          "opencode"
+        ]
+      }
+    }
+  ]
+}

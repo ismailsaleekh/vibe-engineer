@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "vibe-engineer.cli.result.v1",
+  "invocation": {
+    "id": "61860069-514b-4ea0-8dd2-5db079f7fffa",
+    "command": "doctor",
+    "argv": [
+      "doctor",
+      "--config",
+      "<value>",
+      "--result-file",
+      "<value>",
+      "--json",
+      "--non-interactive"
+    ],
+    "projectRoot": null,
+    "configPath": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-doctor-q5563g/valid/vibe-engineer.config.json",
+    "startedAt": "2026-06-27T18:39:01.334Z",
+    "endedAt": "2026-06-27T18:39:01.335Z"
+  },
+  "status": "blocked",
+  "exitCode": 5,
+  "payload": {
+    "kind": "result_file_error",
+    "schemaVersion": "vibe-engineer.cli.payload.v1",
+    "data": {
+      "resultFile": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-doctor-q5563g/doctor-rf-bad/out.json"
+    }
+  },
+  "diagnostics": [
+    {
+      "severity": "error",
+      "code": "VE_RESULT_FILE_WRITE_FAILED",
+      "classification": "write_conflict",
+      "message": "Result file could not be written atomically.",
+      "path": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-doctor-q5563g/doctor-rf-bad/out.json",
+      "span": null,
+      "hint": null
+    }
+  ],
+  "artifacts": [],
+  "errors": [
+    {
+      "code": "VE_RESULT_FILE_WRITE_FAILED",
+      "classification": "write_conflict",
+      "retryable": false,
+      "blocking": true,
+      "message": "Result file could not be written atomically.",
+      "details": {
+        "resultFile": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-doctor-q5563g/doctor-rf-bad/out.json",
+        "errorCode": "ENOENT"
+      }
+    }
+  ]
+}

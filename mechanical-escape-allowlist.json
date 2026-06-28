@@ -157,17 +157,6 @@
       "path": "packages/cli/src/commands/security/run-cli-witnesses.mjs",
       "kind": "raw-json-parse",
       "locator": {
-        "textIncludes": "JSON.parse(buildConsumer.stdout)"
-      },
-      "justification": "Witness parses the real-boundary build-facing API consumer spawn stdout to assert .futureJoin.",
-      "whyUnavoidable": "Single-field assert over a spawn stdout in a witness harness; a magic-named narrow over one field read is a tautology.",
-      "reviewer": "triad-b-fix-glm-5.2",
-      "reviewedOn": "2026-06-27"
-    },
-    {
-      "path": "packages/cli/src/commands/security/run-cli-witnesses.mjs",
-      "kind": "raw-json-parse",
-      "locator": {
         "textIncludes": "JSON.parse(defaultEntry.stdout)"
       },
       "justification": "Witness parses CLI-spawned stdout to assert a specific classification field on the regression envelope.",

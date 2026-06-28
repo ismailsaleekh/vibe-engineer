@@ -102,7 +102,7 @@ assert.equal(providerConfig.ok, true);
 assert.equal(typeof validateArtifactFile, "function");
 
 const loader = createCommandLoader();
-assert.deepEqual(loader.listCommands().map((item) => item.id).sort(), ["foundation", "help", "version"]);
+assert.deepEqual(loader.listCommands().map((item) => item.id).sort(), ["config", "create", "doctor", "foundation", "help", "import", "schematic", "security", "verify", "version"]);
 assert.throws(() => createCommandLoader([{ id: "dup", visibility: "internal", description: "a", run() {} }, { id: "dup", visibility: "internal", description: "b", run() {} }]), { code: CliErrorCode.DuplicateCommandId, classification: CliClassification.InvalidInvocation });
 assert.throws(() => createCommandLoader([{ id: "bad", visibility: "internal", description: "missing run" }]), { code: CliErrorCode.MalformedCommandMetadata, classification: CliClassification.InvalidInvocation });
 
@@ -129,10 +129,14 @@ assertEnvelope(unknownCommand.envelope);
 assert.equal(unknownCommand.envelope.status, "blocked");
 assert.equal(unknownCommand.envelope.errors[0].classification, CliClassification.InvalidInvocation);
 
-const laterCommand = runCase("later-command-create", ["create", "--json", "--non-interactive"]);
-assert.equal(laterCommand.result.status, 2);
-assertEnvelope(laterCommand.envelope);
-assert.equal(laterCommand.envelope.errors[0].classification, CliClassification.UnsupportedOperation);
+// WP-03: `create` is now a registered v0.1 command, so it routes to the live createCommand
+// (own typed invalid/missing-arg envelope), NOT the loader's UnsupportedOperation branch
+// and NOT the Unknown-command branch. The exact create error depends on args/harness state;
+// the routing predicate is: classification != unsupported_operation AND code != VE_UNSUPPORTED_OPERATION.
+const createRoute = runCase("live-command-create", ["create", "--json", "--non-interactive"]);
+assertEnvelope(createRoute.envelope);
+assert.notEqual(createRoute.envelope.errors[0].classification, CliClassification.UnsupportedOperation);
+assert.notEqual(createRoute.envelope.errors[0].code, CliErrorCode.UnsupportedOperation);
 
 const unknownFlag = runCase("unknown-flag", ["version", "--bad-flag", "--json", "--non-interactive"]);
 assert.equal(unknownFlag.result.status, 2);

@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 import { randomUUID } from "node:crypto";
+import { realpathSync } from "node:fs";
 import { dirname, resolve } from "node:path";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 import { loadVibeConfigFile, loadVibeConfigFromProjectRoot } from "@vibe-engineer/config";
 import { CliClassification, CliErrorCode } from "../errors/codes.js";
 import { parseFlagToken, sanitizeArgvForMetadata, sanitizeCommandForDisplay, sanitizeFlagForDisplay } from "../errors/sanitization.js";
@@ -219,7 +220,7 @@ export async function runCli(argv = process.argv.slice(2)) {
   }
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (import.meta.url === pathToFileURL(realpathSync(process.argv[1])).href) {
   const exitCode = await runCli();
   process.exitCode = exitCode;
 }

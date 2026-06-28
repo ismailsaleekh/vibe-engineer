@@ -1,0 +1,169 @@
+{
+  "inspect": {
+    "schemaVersion": "vibe-engineer.cli.result.v1",
+    "invocation": {
+      "id": "wp04-config-witness",
+      "command": "config",
+      "argv": [
+        "inspect"
+      ],
+      "projectRoot": null,
+      "configPath": null,
+      "startedAt": "2026-06-27T00:00:00.000Z",
+      "endedAt": "2026-06-27T00:00:00.000Z"
+    },
+    "status": "success",
+    "exitCode": 0,
+    "payload": {
+      "kind": "config_inspect_result",
+      "schemaVersion": "vibe-engineer.cli.payload.v1",
+      "data": {
+        "ok": true,
+        "schema": {
+          "id": "vibe-engineer.config.v1",
+          "version": "1.0.0",
+          "configFileName": "vibe-engineer.config.json"
+        },
+        "source": {
+          "configPath": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-config-89wPCR/valid/vibe-engineer.config.json",
+          "projectRoot": null
+        },
+        "config": {
+          "agenticHarness": "pi",
+          "maxParallelAgents": 8,
+          "maxValidationFixIterations": 3,
+          "agenticWorkPackageTargetHours": 6,
+          "verification": {
+            "deterministicBlocks": true,
+            "advisoryReviewBlocks": false,
+            "webE2E": "playwright",
+            "mobileE2E": {
+              "default": "maestro",
+              "advanced": "detox"
+            }
+          },
+          "uiVerification": {
+            "enabled": true
+          },
+          "agentRegistry": {
+            "validationRequired": true
+          }
+        },
+        "provenance": {
+          "/agenticHarness": {
+            "source": "file"
+          },
+          "/maxParallelAgents": {
+            "source": "default"
+          },
+          "/maxValidationFixIterations": {
+            "source": "default"
+          },
+          "/agenticWorkPackageTargetHours": {
+            "source": "default"
+          },
+          "/verification/deterministicBlocks": {
+            "source": "default"
+          },
+          "/verification/advisoryReviewBlocks": {
+            "source": "default"
+          },
+          "/verification/webE2E": {
+            "source": "default"
+          },
+          "/verification/mobileE2E/default": {
+            "source": "default"
+          },
+          "/verification/mobileE2E/advanced": {
+            "source": "default"
+          },
+          "/uiVerification/enabled": {
+            "source": "default"
+          },
+          "/agentRegistry/validationRequired": {
+            "source": "default"
+          }
+        }
+      }
+    },
+    "diagnostics": [],
+    "artifacts": [],
+    "errors": []
+  },
+  "validate": {
+    "schemaVersion": "vibe-engineer.cli.result.v1",
+    "invocation": {
+      "id": "wp04-config-witness",
+      "command": "config",
+      "argv": [
+        "inspect"
+      ],
+      "projectRoot": null,
+      "configPath": null,
+      "startedAt": "2026-06-27T00:00:00.000Z",
+      "endedAt": "2026-06-27T00:00:00.000Z"
+    },
+    "status": "success",
+    "exitCode": 0,
+    "payload": {
+      "kind": "config_validation_result",
+      "schemaVersion": "vibe-engineer.cli.payload.v1",
+      "data": {
+        "ok": true,
+        "valid": true,
+        "schema": {
+          "id": "vibe-engineer.config.v1",
+          "version": "1.0.0",
+          "requiredTopLevelKeys": [
+            "agenticHarness"
+          ],
+          "supportedAgenticHarnesses": [
+            "pi"
+          ]
+        },
+        "source": {
+          "configPath": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-config-89wPCR/valid/vibe-engineer.config.json",
+          "projectRoot": null
+        },
+        "provenance": {
+          "/agenticHarness": {
+            "source": "file"
+          },
+          "/maxParallelAgents": {
+            "source": "default"
+          },
+          "/maxValidationFixIterations": {
+            "source": "default"
+          },
+          "/agenticWorkPackageTargetHours": {
+            "source": "default"
+          },
+          "/verification/deterministicBlocks": {
+            "source": "default"
+          },
+          "/verification/advisoryReviewBlocks": {
+            "source": "default"
+          },
+          "/verification/webE2E": {
+            "source": "default"
+          },
+          "/verification/mobileE2E/default": {
+            "source": "default"
+          },
+          "/verification/mobileE2E/advanced": {
+            "source": "default"
+          },
+          "/uiVerification/enabled": {
+            "source": "default"
+          },
+          "/agentRegistry/validationRequired": {
+            "source": "default"
+          }
+        }
+      }
+    },
+    "diagnostics": [],
+    "artifacts": [],
+    "errors": []
+  }
+}

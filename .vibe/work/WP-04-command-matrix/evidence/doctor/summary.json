@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "wp04-doctor-witness/v1",
+  "ok": true,
+  "cases": [
+    {
+      "case": "source-dispatch-success",
+      "status": "success",
+      "exitCode": 0,
+      "mutationsFailing": 1
+    },
+    {
+      "case": "dist-success",
+      "status": "success",
+      "exitCode": 0,
+      "mutationsFailing": 1
+    },
+    {
+      "case": "dist-invalid-flag",
+      "status": "blocked",
+      "exitCode": 2
+    },
+    {
+      "case": "dist-blocked-invalid-config",
+      "status": "blocked",
+      "exitCode": 3
+    },
+    {
+      "case": "dist-partial-adapter-scope",
+      "status": "partial",
+      "exitCode": 8
+    },
+    {
+      "case": "dist-result-file-good",
+      "exitCode": 0
+    },
+    {
+      "case": "dist-result-file-bad",
+      "exitCode": 5,
+      "existsAfter": false
+    }
+  ],
+  "commandRegistered": true
+}

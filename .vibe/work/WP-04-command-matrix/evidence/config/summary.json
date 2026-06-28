@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "wp04-config-witness/v1",
+  "ok": true,
+  "cases": [
+    {
+      "case": "source-dispatch-success",
+      "inspectKind": "config_inspect_result",
+      "validateKind": "config_validation_result",
+      "mutationsFailing": 1
+    },
+    {
+      "case": "dist-inspect-success",
+      "status": "success",
+      "exitCode": 0,
+      "mutationsFailing": 1
+    },
+    {
+      "case": "dist-validate-success",
+      "status": "success",
+      "exitCode": 0
+    },
+    {
+      "case": "dist-invalid-subcommand",
+      "status": "blocked",
+      "exitCode": 2
+    },
+    {
+      "case": "dist-invalid-flag",
+      "status": "blocked",
+      "exitCode": 2
+    },
+    {
+      "case": "dist-blocked-invalid-config",
+      "status": "blocked",
+      "exitCode": 3
+    },
+    {
+      "case": "dist-result-file-good",
+      "exitCode": 0
+    },
+    {
+      "case": "dist-result-file-bad",
+      "exitCode": 5,
+      "existsAfter": false
+    }
+  ],
+  "commandRegistered": true
+}

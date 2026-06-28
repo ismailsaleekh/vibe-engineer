@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "vibe-engineer.cli.result.v1",
+  "invocation": {
+    "id": "f90f21cb-34d8-42d3-9bf6-718404252774",
+    "command": "security",
+    "argv": [
+      "security",
+      "--request-file",
+      "<value>",
+      "--policy-file",
+      "<value>",
+      "--json",
+      "--non-interactive"
+    ],
+    "projectRoot": null,
+    "configPath": null,
+    "startedAt": "2026-06-28T00:20:41.546Z",
+    "endedAt": "2026-06-28T00:20:41.547Z"
+  },
+  "status": "success",
+  "exitCode": 0,
+  "payload": {
+    "kind": "security_gate_result",
+    "schemaVersion": "vibe-engineer.cli.payload.v1",
+    "data": {
+      "auditEvents": [
+        {
+          "details": {
+            "findingCount": 0
+          },
+          "eventId": "security:security_gate:b056965f",
+          "recordedAt": "deterministic-clock-not-used",
+          "schemaVersion": "vibe-engineer.security.audit-event.v1",
+          "subject": "security_gate"
+        }
+      ],
+      "blocking": false,
+      "decision": "allow",
+      "findings": [],
+      "ok": true,
+      "redactions": [],
+      "securityStatus": "passed",
+      "source": {
+        "policyFile": "/Users/lizavasilyeva/work/vibe-engineer/examples/starter-reference/generated-fixtures/security/policies/default-security-policy.json",
+        "projectRoot": "/Users/lizavasilyeva/work/vibe-engineer",
+        "requestFile": "/Users/lizavasilyeva/work/vibe-engineer/examples/starter-reference/generated-fixtures/security/requests/safe-local-read-only-command.json"
+      }
+    }
+  },
+  "diagnostics": [],
+  "artifacts": [],
+  "errors": []
+}

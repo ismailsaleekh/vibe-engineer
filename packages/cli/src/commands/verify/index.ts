@@ -280,11 +280,17 @@ function parseVerifyOptions(invocation: CommandInvocation, args: string[]): Pars
   for (const flag of REQUIRED_FLAGS) {
     const property = flagProperty(flag);
     if (property !== null && !values.has(property)) {
-      return { ok: false, envelope: invalid(invocation, {
-        code: CliErrorCode.MissingFlagValue,
-        message: "Missing required verify flag.",
-        details: { flag }
-      }).envelope };
+      // `--project-root` is a GLOBAL flag consumed by the entry parser and delivered as
+      // invocation.projectRoot. Treat it as satisfied when present via either source (mirrors
+      // the security/doctor/config context-fallback pattern). The other required flags are
+      // command-specific and never stripped by the entry.
+      if (flag !== "--project-root" || invocation.projectRoot === null) {
+        return { ok: false, envelope: invalid(invocation, {
+          code: CliErrorCode.MissingFlagValue,
+          message: "Missing required verify flag.",
+          details: { flag }
+        }).envelope };
+      }
     }
   }
 
@@ -293,7 +299,10 @@ function parseVerifyOptions(invocation: CommandInvocation, args: string[]): Pars
   if (!SAFE_ID.test(runId)) return { ok: false, envelope: invalidInput(invocation, "run-id must be a stable lowercase artifact id segment.", { flag: "--run-id" }).envelope };
   if (rerunOf !== undefined && !SAFE_ID.test(rerunOf)) return { ok: false, envelope: invalidInput(invocation, "rerun-of must be a stable lowercase artifact id segment.", { flag: "--rerun-of" }).envelope };
 
-  const projectRootRaw = values.get("projectRoot") ?? "";
+  // Fall back to the globally-parsed invocation.projectRoot (set by the entry parser when the
+  // caller passes --project-root). Fail closed to "" (→ missing-dir error) rather than silently
+  // using process.cwd(): verify requires a real project root containing the plan + catalog.
+  const projectRootRaw = values.get("projectRoot") ?? invocation.projectRoot ?? "";
   const projectRoot = resolve(projectRootRaw);
   if (!existsSync(projectRoot) || !statSync(projectRoot).isDirectory()) {
     return { ok: false, envelope: invalidInput(invocation, "project-root must be an existing directory.", { flag: "--project-root" }).envelope };

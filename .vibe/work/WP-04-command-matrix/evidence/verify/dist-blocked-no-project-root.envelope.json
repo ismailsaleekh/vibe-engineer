@@ -1,0 +1,59 @@
+{
+  "schemaVersion": "vibe-engineer.cli.result.v1",
+  "invocation": {
+    "id": "b3a45a51-657a-480a-8c8a-ea3acf64ab64",
+    "command": "verify",
+    "argv": [
+      "verify",
+      "--config",
+      "<value>",
+      "--implementation-plan",
+      "<value>",
+      "--evidence-root",
+      "<value>",
+      "--run-id",
+      "<value>",
+      "--runner-catalog",
+      "<value>",
+      "--json",
+      "--non-interactive"
+    ],
+    "projectRoot": null,
+    "configPath": "/private/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/verifyfix-verify-qHgvsA/proj/vibe-engineer.config.json",
+    "startedAt": "2026-06-27T18:56:52.836Z",
+    "endedAt": "2026-06-27T18:56:52.838Z"
+  },
+  "status": "blocked",
+  "exitCode": 2,
+  "payload": {
+    "kind": "cli_invocation_error",
+    "schemaVersion": "vibe-engineer.cli.payload.v1",
+    "data": {
+      "accepted": false
+    }
+  },
+  "diagnostics": [
+    {
+      "severity": "error",
+      "code": "VE_MISSING_FLAG_VALUE",
+      "classification": "invalid_invocation",
+      "message": "Missing required verify flag.",
+      "path": null,
+      "span": null,
+      "hint": null
+    }
+  ],
+  "artifacts": [],
+  "errors": [
+    {
+      "code": "VE_MISSING_FLAG_VALUE",
+      "classification": "invalid_invocation",
+      "retryable": false,
+      "blocking": true,
+      "message": "Missing required verify flag.",
+      "details": {
+        "flag": "--project-root"
+      }
+    }
+  ]
+}

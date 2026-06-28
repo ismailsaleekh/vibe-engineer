@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "vibe-engineer.cli.result.v1",
+  "invocation": {
+    "id": "wp04-doctor-witness",
+    "command": "doctor",
+    "argv": [],
+    "projectRoot": null,
+    "configPath": null,
+    "startedAt": "2026-06-27T00:00:00.000Z",
+    "endedAt": "2026-06-27T00:00:00.000Z"
+  },
+  "status": "success",
+  "exitCode": 0,
+  "payload": {
+    "kind": "doctor_result",
+    "schemaVersion": "vibe-engineer.cli.payload.v1",
+    "data": {
+      "ok": true,
+      "overallStatus": "passed",
+      "completedScopes": [
+        {
+          "id": "doctor.scope.config",
+          "kind": "config_health",
+          "required": true,
+          "status": "passed",
+          "schema": {
+            "id": "vibe-engineer.config.v1",
+            "version": "1.0.0"
+          },
+          "source": {
+            "configPath": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-doctor-q5563g/valid/vibe-engineer.config.json",
+            "projectRoot": null
+          },
+          "selectedHarness": "pi",
+          "deterministicBlocks": true
+        }
+      ],
+      "incompleteScopes": [],
+      "source": {
+        "configPath": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-doctor-q5563g/valid/vibe-engineer.config.json",
+        "projectRoot": null
+      }
+    }
+  },
+  "diagnostics": [],
+  "artifacts": [],
+  "errors": []
+}

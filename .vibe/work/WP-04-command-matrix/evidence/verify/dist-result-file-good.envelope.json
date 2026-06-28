@@ -1,0 +1,299 @@
+{
+  "schemaVersion": "vibe-engineer.cli.result.v1",
+  "invocation": {
+    "id": "e384039c-ac1f-41f4-8518-f862f417e3b6",
+    "command": "verify",
+    "argv": [
+      "verify",
+      "--implementation-plan",
+      "<value>",
+      "--project-root",
+      "<value>",
+      "--evidence-root",
+      "<value>",
+      "--run-id",
+      "<value>",
+      "--runner-catalog",
+      "<value>",
+      "--result-file",
+      "<value>",
+      "--json",
+      "--non-interactive"
+    ],
+    "projectRoot": "/private/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/verifyfix-verify-qHgvsA/proj",
+    "configPath": null,
+    "startedAt": "2026-06-27T18:56:52.210Z",
+    "endedAt": "2026-06-27T18:56:52.211Z"
+  },
+  "status": "success",
+  "exitCode": 0,
+  "payload": {
+    "kind": "verification_result",
+    "schemaVersion": "vibe-engineer.cli.payload.v1",
+    "data": {
+      "ok": true,
+      "runnerStatus": "passed",
+      "runId": "verifyfix-dist-rf",
+      "rerunOf": null,
+      "evidencePackets": [
+        {
+          "path": "/private/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/verifyfix-verify-qHgvsA/proj/ev-rf-dist/evidence_verifyfix-dist-rf_safety-hooks_00.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "b845806e974919f6308a75b5acbc5bacefcaed2270ce3c1f912f225ae1bd6f59",
+          "valid": true
+        },
+        {
+          "path": "/private/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/verifyfix-verify-qHgvsA/proj/ev-rf-dist/evidence_verifyfix-dist-rf_typecheck_01.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "e8fd30d066420508c8cfb853a9fe14e87a63925d85f7d3441985c83e08c30de7",
+          "valid": true
+        },
+        {
+          "path": "/private/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/verifyfix-verify-qHgvsA/proj/ev-rf-dist/evidence_verifyfix-dist-rf_lint-format_02.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "f34466fcf91719326962bcdb2930851131e5ba77a7c6c5f55e8d8d8dfa6afba2",
+          "valid": true
+        },
+        {
+          "path": "/private/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/verifyfix-verify-qHgvsA/proj/ev-rf-dist/evidence_verifyfix-dist-rf_mechanical-gate_03.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "229d9046776a346e3e260e941ac2fbb170f5ac1d9dcecfd7ed2f41ed7a3db422",
+          "valid": true
+        },
+        {
+          "path": "/private/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/verifyfix-verify-qHgvsA/proj/ev-rf-dist/evidence_verifyfix-dist-rf_unit_04.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "d18ea546ba9f68bdd1d9bb7a821152027dce498a30bdc47692a7a534a8b3d01d",
+          "valid": true
+        },
+        {
+          "path": "/private/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/verifyfix-verify-qHgvsA/proj/ev-rf-dist/evidence_verifyfix-dist-rf_integration_05.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "336337d3be0bcbef8b8942f2344e4e8e5c91cb3240a205a54f9cc03c6bbaa01b",
+          "valid": true
+        },
+        {
+          "path": "/private/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/verifyfix-verify-qHgvsA/proj/ev-rf-dist/evidence_verifyfix-dist-rf_contract-adapter_06.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "4e11e198cb862c519f06f7558ab940fadbb6ff7aae1ac2a1c152f81f7758853c",
+          "valid": true
+        },
+        {
+          "path": "/private/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/verifyfix-verify-qHgvsA/proj/ev-rf-dist/evidence_verifyfix-dist-rf_e2e_07.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "9a9ada9151c28b5c16e2868f64605210d98a08d0031c7a6301e8f1a95bc6727a",
+          "valid": true
+        },
+        {
+          "path": "/private/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/verifyfix-verify-qHgvsA/proj/ev-rf-dist/evidence_verifyfix-dist-rf_ui-verification_08.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "fa2e9098ec33bc342a86d75c7a929e2b4aba6568065567cd93ff08023770874e",
+          "valid": true
+        },
+        {
+          "path": "/private/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/verifyfix-verify-qHgvsA/proj/ev-rf-dist/evidence_verifyfix-dist-rf_ai-eval_09.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "cb5346590863c70617af0ed34e1d2b66d0500823b4868f1f10fd323780ab16a9",
+          "valid": true
+        },
+        {
+          "path": "/private/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/verifyfix-verify-qHgvsA/proj/ev-rf-dist/evidence_verifyfix-dist-rf_build-package_10.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "ddf2c5124ed880293f5d11f0b3624498d9d134d6a92f05c3ee13dd5f2950e75b",
+          "valid": true
+        },
+        {
+          "path": "/private/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/verifyfix-verify-qHgvsA/proj/ev-rf-dist/evidence_verifyfix-dist-rf_context-drift_11.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "ab3706f9ab83523dea3561f6c33847026883bfa5511cd777f6ead8ac45092527",
+          "valid": true
+        },
+        {
+          "path": "/private/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/verifyfix-verify-qHgvsA/proj/ev-rf-dist/evidence_verifyfix-dist-rf_observability_12.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "fcfce9dd87488a883d6e09535815fdffde5f7a88fd547fa5937846aaa40f4e3c",
+          "valid": true
+        },
+        {
+          "path": "/private/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/verifyfix-verify-qHgvsA/proj/ev-rf-dist/evidence_verifyfix-dist-rf_advisory-review_13.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "155c0886a27faa7a3d4d09529c76cdd1de38fe7dc5f7b205b3200149d44394b4",
+          "valid": true
+        },
+        {
+          "path": "/private/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/verifyfix-verify-qHgvsA/proj/ev-rf-dist/evidence_verifyfix-dist-rf_final-dod_14.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "f694554d3dbb4c8c8316f78c3fc989740d99aba5f69ae0303a41bc21f2f6fdc0",
+          "valid": true
+        },
+        {
+          "path": "/private/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/verifyfix-verify-qHgvsA/proj/ev-rf-dist/evidence_verifyfix-dist-rf_schema-validation_15.json",
+          "schemaVersion": "1.0.0",
+          "sha256": "320ba46a040bfb43c722082a9d4bc2b42479826ba3c899e5c8b46edfeb38239a",
+          "valid": true
+        }
+      ],
+      "executedItems": [
+        "advisory-review",
+        "schema-validation"
+      ],
+      "recordedItems": [
+        "safety-hooks",
+        "typecheck",
+        "lint-format",
+        "mechanical-gate",
+        "unit",
+        "integration",
+        "contract-adapter",
+        "e2e",
+        "ui-verification",
+        "ai-eval",
+        "build-package",
+        "context-drift",
+        "observability",
+        "final-dod"
+      ],
+      "blockedItems": [],
+      "failures": [],
+      "warnings": [
+        "safety_hooks is represented for the domain-neutral I-09A fixture.",
+        "typecheck is represented for the domain-neutral I-09A fixture.",
+        "lint_format is represented for the domain-neutral I-09A fixture.",
+        "mechanical_gate is represented for the domain-neutral I-09A fixture.",
+        "unit is represented for the domain-neutral I-09A fixture.",
+        "integration is represented for the domain-neutral I-09A fixture.",
+        "contract_adapter is represented for the domain-neutral I-09A fixture.",
+        "e2e is represented for the domain-neutral I-09A fixture.",
+        "ui_verification is represented for the domain-neutral I-09A fixture.",
+        "ai_eval is represented for the domain-neutral I-09A fixture.",
+        "build_package is represented for the domain-neutral I-09A fixture.",
+        "context_drift is represented for the domain-neutral I-09A fixture.",
+        "observability is represented for the domain-neutral I-09A fixture.",
+        "final_dod is represented for the domain-neutral I-09A fixture."
+      ]
+    }
+  },
+  "diagnostics": [],
+  "artifacts": [
+    {
+      "kind": "evidence_packet",
+      "path": "/private/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/verifyfix-verify-qHgvsA/proj/ev-rf-dist/evidence_verifyfix-dist-rf_safety-hooks_00.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "b845806e974919f6308a75b5acbc5bacefcaed2270ce3c1f912f225ae1bd6f59"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/private/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/verifyfix-verify-qHgvsA/proj/ev-rf-dist/evidence_verifyfix-dist-rf_typecheck_01.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "e8fd30d066420508c8cfb853a9fe14e87a63925d85f7d3441985c83e08c30de7"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/private/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/verifyfix-verify-qHgvsA/proj/ev-rf-dist/evidence_verifyfix-dist-rf_lint-format_02.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "f34466fcf91719326962bcdb2930851131e5ba77a7c6c5f55e8d8d8dfa6afba2"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/private/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/verifyfix-verify-qHgvsA/proj/ev-rf-dist/evidence_verifyfix-dist-rf_mechanical-gate_03.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "229d9046776a346e3e260e941ac2fbb170f5ac1d9dcecfd7ed2f41ed7a3db422"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/private/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/verifyfix-verify-qHgvsA/proj/ev-rf-dist/evidence_verifyfix-dist-rf_unit_04.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "d18ea546ba9f68bdd1d9bb7a821152027dce498a30bdc47692a7a534a8b3d01d"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/private/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/verifyfix-verify-qHgvsA/proj/ev-rf-dist/evidence_verifyfix-dist-rf_integration_05.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "336337d3be0bcbef8b8942f2344e4e8e5c91cb3240a205a54f9cc03c6bbaa01b"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/private/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/verifyfix-verify-qHgvsA/proj/ev-rf-dist/evidence_verifyfix-dist-rf_contract-adapter_06.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "4e11e198cb862c519f06f7558ab940fadbb6ff7aae1ac2a1c152f81f7758853c"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/private/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/verifyfix-verify-qHgvsA/proj/ev-rf-dist/evidence_verifyfix-dist-rf_e2e_07.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "9a9ada9151c28b5c16e2868f64605210d98a08d0031c7a6301e8f1a95bc6727a"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/private/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/verifyfix-verify-qHgvsA/proj/ev-rf-dist/evidence_verifyfix-dist-rf_ui-verification_08.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "fa2e9098ec33bc342a86d75c7a929e2b4aba6568065567cd93ff08023770874e"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/private/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/verifyfix-verify-qHgvsA/proj/ev-rf-dist/evidence_verifyfix-dist-rf_ai-eval_09.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "cb5346590863c70617af0ed34e1d2b66d0500823b4868f1f10fd323780ab16a9"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/private/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/verifyfix-verify-qHgvsA/proj/ev-rf-dist/evidence_verifyfix-dist-rf_build-package_10.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "ddf2c5124ed880293f5d11f0b3624498d9d134d6a92f05c3ee13dd5f2950e75b"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/private/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/verifyfix-verify-qHgvsA/proj/ev-rf-dist/evidence_verifyfix-dist-rf_context-drift_11.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "ab3706f9ab83523dea3561f6c33847026883bfa5511cd777f6ead8ac45092527"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/private/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/verifyfix-verify-qHgvsA/proj/ev-rf-dist/evidence_verifyfix-dist-rf_observability_12.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "fcfce9dd87488a883d6e09535815fdffde5f7a88fd547fa5937846aaa40f4e3c"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/private/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/verifyfix-verify-qHgvsA/proj/ev-rf-dist/evidence_verifyfix-dist-rf_advisory-review_13.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "155c0886a27faa7a3d4d09529c76cdd1de38fe7dc5f7b205b3200149d44394b4"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/private/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/verifyfix-verify-qHgvsA/proj/ev-rf-dist/evidence_verifyfix-dist-rf_final-dod_14.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "f694554d3dbb4c8c8316f78c3fc989740d99aba5f69ae0303a41bc21f2f6fdc0"
+    },
+    {
+      "kind": "evidence_packet",
+      "path": "/private/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/verifyfix-verify-qHgvsA/proj/ev-rf-dist/evidence_verifyfix-dist-rf_schema-validation_15.json",
+      "schemaVersion": "1.0.0",
+      "role": "evidence_packet",
+      "sha256": "320ba46a040bfb43c722082a9d4bc2b42479826ba3c899e5c8b46edfeb38239a"
+    },
+    {
+      "kind": "cli_result",
+      "path": "/private/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/verifyfix-verify-qHgvsA/proj/verify-dist-rf/out.json",
+      "schemaVersion": "vibe-engineer.cli.result.v1",
+      "role": "report",
+      "sha256": null
+    }
+  ],
+  "errors": []
+}

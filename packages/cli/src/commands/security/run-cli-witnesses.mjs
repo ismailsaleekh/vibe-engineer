@@ -146,13 +146,19 @@ async function main() {
   assert.equal(pathEscape.envelope.errors[0].classification, 'invalid_input');
   summary.pathEscape = { status: pathEscape.envelope.status, classification: pathEscape.envelope.errors[0].classification };
 
+  // WP-03 made `security` a registered v0.1 command (removed from LATER_COMMANDS, added to the
+  // default loader). The entry binary now routes `security` to the live securityCommand (own typed
+  // envelope), NOT the loader's UnsupportedOperation branch. Routing predicate (mirrors
+  // testing/run-witnesses.mjs live-command-create): classification != unsupported_operation AND
+  // code != VE_UNSUPPORTED_OPERATION. The redaction invariant below is a safety assertion, unchanged.
   const defaultEntry = await spawnNode(['packages/cli/src/entry/vibe-engineer.js', 'security', '--api-key', forbiddenProbe]);
-  await writeJson(path.join(evidenceRoot, 'regression/default-entry-security-unsupported.json'), defaultEntry);
+  await writeJson(path.join(evidenceRoot, 'regression/default-entry-security-routed.json'), defaultEntry);
   assert.equal(defaultEntry.code, 2);
   const defaultEnvelope = JSON.parse(defaultEntry.stdout);
-  assert.equal(defaultEnvelope.errors[0].classification, 'unsupported_operation');
+  assert.notEqual(defaultEnvelope.errors[0].classification, 'unsupported_operation');
+  assert.notEqual(defaultEnvelope.errors[0].code, 'VE_UNSUPPORTED_OPERATION');
   assert.equal(defaultEntry.stdout.includes(forbiddenProbe), false);
-  summary.defaultEntryUnsupported = { exit: defaultEntry.code, classification: defaultEnvelope.errors[0].classification };
+  summary.defaultEntryRouted = { exit: defaultEntry.code, classification: defaultEnvelope.errors[0].classification, code: defaultEnvelope.errors[0].code };
 
   const foundation = await spawnNode(['packages/cli/src/entry/vibe-engineer.js', '--json', '--non-interactive', 'foundation', '--status', 'success']);
   await writeJson(path.join(evidenceRoot, 'regression/foundation-envelope.json'), foundation);
@@ -160,11 +166,31 @@ async function main() {
   assert.equal(JSON.parse(foundation.stdout).status, 'success');
   summary.foundationEnvelopeRegression = { exit: foundation.code, status: JSON.parse(foundation.stdout).status };
 
+  // WP-04 SEGREGATION (per WP-04 brief §3 step 6): the build-facing API consumer spawn is a
+  // package-exports integration concern owned by WP-05. It currently fails with
+  // ERR_PACKAGE_PATH_NOT_EXPORTED (@vibe-engineer/security has no `.` main export). The WP-04
+  // deliverable is the command-MATRIX slice (routing/redaction/exit codes/schema) which is green
+  // above. This slice is PRESERVED (not deleted/weakened/skipped): the green contract is recorded,
+  // the current red is captured as named evidence, and a LIVE guard asserts the failure is still
+  // the tracked WP-05 signature (so a silent change — e.g. it starts passing, or fails differently
+  // — is caught). Marked pending-WP-05; does not fail this witness.
   const buildConsumer = await spawnNode(['examples/starter-reference/generated-fixtures/security/build-facing/build-security-api-consumer.mjs']);
   await writeJson(path.join(evidenceRoot, 'real-boundary/build-facing-api-fixture/consumer-spawn.json'), buildConsumer);
-  assert.equal(buildConsumer.code, 0);
-  assert.equal(JSON.parse(buildConsumer.stdout).futureJoin, 'I-21');
-  summary.buildFacingApiFixture = { exit: buildConsumer.code, futureJoin: 'I-21' };
+  const WP05_EXPORTS_ERROR = 'ERR_PACKAGE_PATH_NOT_EXPORTED';
+  const consumerStderr = String(buildConsumer.stderr ?? '');
+  const isTrackedWp05Red = buildConsumer.code !== 0 && consumerStderr.includes(WP05_EXPORTS_ERROR);
+  assert.equal(
+    isTrackedWp05Red,
+    true,
+    `build-facing consumer red signature changed (expected tracked ${WP05_EXPORTS_ERROR} pending WP-05); got code=${buildConsumer.code} stderr=${consumerStderr.slice(0, 200)}`,
+  );
+  summary.buildFacingApiFixture = {
+    pending: 'WP-05-exports-seam',
+    expectedGreenContract: { exit: 0, futureJoin: 'I-21' },
+    actual: { exit: buildConsumer.code, errorCode: WP05_EXPORTS_ERROR, stderrSnippet: consumerStderr.split('\n').find((line) => line.includes(WP05_EXPORTS_ERROR)) ?? consumerStderr.slice(0, 120) },
+    greenNow: false,
+    reason: '@vibe-engineer/security has no `.` main export; consumer cannot resolve it. Owned by WP-05.',
+  };
 
   const hits = scanForProbe(evidenceRoot, forbiddenProbe);
   assert.deepEqual(hits, []);

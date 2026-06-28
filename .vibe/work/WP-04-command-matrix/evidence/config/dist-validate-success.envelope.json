@@ -1,0 +1,81 @@
+{
+  "schemaVersion": "vibe-engineer.cli.result.v1",
+  "invocation": {
+    "id": "e9164320-1f81-4c47-95bd-e12f68577483",
+    "command": "config",
+    "argv": [
+      "config",
+      "<value>",
+      "--config",
+      "<value>",
+      "--json",
+      "--non-interactive"
+    ],
+    "projectRoot": null,
+    "configPath": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-config-89wPCR/valid/vibe-engineer.config.json",
+    "startedAt": "2026-06-27T18:39:01.830Z",
+    "endedAt": "2026-06-27T18:39:01.831Z"
+  },
+  "status": "success",
+  "exitCode": 0,
+  "payload": {
+    "kind": "config_validation_result",
+    "schemaVersion": "vibe-engineer.cli.payload.v1",
+    "data": {
+      "ok": true,
+      "valid": true,
+      "schema": {
+        "id": "vibe-engineer.config.v1",
+        "version": "1.0.0",
+        "requiredTopLevelKeys": [
+          "agenticHarness"
+        ],
+        "supportedAgenticHarnesses": [
+          "pi"
+        ]
+      },
+      "source": {
+        "configPath": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-config-89wPCR/valid/vibe-engineer.config.json",
+        "projectRoot": null
+      },
+      "provenance": {
+        "/agenticHarness": {
+          "source": "file"
+        },
+        "/maxParallelAgents": {
+          "source": "default"
+        },
+        "/maxValidationFixIterations": {
+          "source": "default"
+        },
+        "/agenticWorkPackageTargetHours": {
+          "source": "default"
+        },
+        "/verification/deterministicBlocks": {
+          "source": "default"
+        },
+        "/verification/advisoryReviewBlocks": {
+          "source": "default"
+        },
+        "/verification/webE2E": {
+          "source": "default"
+        },
+        "/verification/mobileE2E/default": {
+          "source": "default"
+        },
+        "/verification/mobileE2E/advanced": {
+          "source": "default"
+        },
+        "/uiVerification/enabled": {
+          "source": "default"
+        },
+        "/agentRegistry/validationRequired": {
+          "source": "default"
+        }
+      }
+    }
+  },
+  "diagnostics": [],
+  "artifacts": [],
+  "errors": []
+}

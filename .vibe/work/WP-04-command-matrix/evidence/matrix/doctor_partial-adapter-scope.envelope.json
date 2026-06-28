@@ -1,0 +1,123 @@
+{
+  "schemaVersion": "vibe-engineer.cli.result.v1",
+  "invocation": {
+    "id": "bd4a09d0-7b68-4417-9ee2-905da21ab13b",
+    "command": "doctor",
+    "argv": [
+      "doctor",
+      "--config",
+      "<value>",
+      "--include-adapter-scope",
+      "--json",
+      "--non-interactive"
+    ],
+    "projectRoot": null,
+    "configPath": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-matrix-NahFln/valid-proj/vibe-engineer.config.json",
+    "startedAt": "2026-06-28T00:20:40.271Z",
+    "endedAt": "2026-06-28T00:20:40.272Z"
+  },
+  "status": "partial",
+  "exitCode": 8,
+  "payload": {
+    "kind": "doctor_result",
+    "schemaVersion": "vibe-engineer.cli.payload.v1",
+    "data": {
+      "ok": false,
+      "overallStatus": "not_passed_blocking",
+      "completedScopes": [
+        {
+          "id": "doctor.scope.config",
+          "kind": "config_health",
+          "required": true,
+          "status": "passed",
+          "schema": {
+            "id": "vibe-engineer.config.v1",
+            "version": "1.0.0"
+          },
+          "source": {
+            "configPath": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-matrix-NahFln/valid-proj/vibe-engineer.config.json",
+            "projectRoot": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-matrix-NahFln/valid-proj"
+          },
+          "selectedHarness": "pi",
+          "deterministicBlocks": true
+        }
+      ],
+      "incompleteScopes": [
+        {
+          "id": "doctor.scope.adapter-runtime",
+          "kind": "adapter_runtime_health",
+          "required": true,
+          "blocking": true,
+          "reasonCode": "VE_PARTIAL_INCOMPLETE",
+          "classification": "partial_incomplete",
+          "nextAction": "run adapter-runtime health after the adapter runtime lane is available"
+        }
+      ],
+      "source": {
+        "configPath": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-matrix-NahFln/valid-proj/vibe-engineer.config.json",
+        "projectRoot": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-matrix-NahFln/valid-proj"
+      },
+      "partial": {
+        "overallDisposition": "not_passed_blocking",
+        "completedScopes": [
+          {
+            "id": "doctor.scope.config",
+            "kind": "config_health",
+            "required": true,
+            "artifacts": [
+              "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-matrix-NahFln/valid-proj/vibe-engineer.config.json"
+            ]
+          }
+        ],
+        "incompleteScopes": [
+          {
+            "id": "doctor.scope.adapter-runtime",
+            "kind": "adapter_runtime_health",
+            "required": true,
+            "blocking": true,
+            "reasonCode": "VE_PARTIAL_INCOMPLETE",
+            "classification": "partial_incomplete",
+            "nextAction": "run adapter-runtime health after the adapter runtime lane is available"
+          }
+        ],
+        "resume": {
+          "allowed": true,
+          "command": [
+            "vibe-engineer",
+            "doctor",
+            "--project-root",
+            "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-matrix-NahFln/valid-proj",
+            "--json",
+            "--non-interactive"
+          ]
+        }
+      }
+    }
+  },
+  "diagnostics": [
+    {
+      "severity": "error",
+      "code": "VE_PARTIAL_INCOMPLETE",
+      "classification": "partial_incomplete",
+      "message": "Doctor completed config health and left requested adapter-runtime health incomplete.",
+      "path": null,
+      "span": null,
+      "hint": null
+    }
+  ],
+  "artifacts": [],
+  "errors": [
+    {
+      "code": "VE_PARTIAL_INCOMPLETE",
+      "classification": "partial_incomplete",
+      "retryable": true,
+      "blocking": true,
+      "message": "Doctor completed config health and left requested adapter-runtime health incomplete.",
+      "details": {
+        "incompleteScopeIds": [
+          "doctor.scope.adapter-runtime"
+        ]
+      }
+    }
+  ]
+}

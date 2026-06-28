@@ -1,0 +1,64 @@
+{
+  "schemaVersion": "vibe-engineer.cli.result.v1",
+  "invocation": {
+    "id": "3cf994a0-3e8b-4045-9bcb-b49c73f0f6f8",
+    "command": "doctor",
+    "argv": [
+      "doctor",
+      "--config",
+      "<value>",
+      "--result-file",
+      "<value>",
+      "--json",
+      "--non-interactive"
+    ],
+    "projectRoot": null,
+    "configPath": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-doctor-q5563g/valid/vibe-engineer.config.json",
+    "startedAt": "2026-06-27T18:39:01.183Z",
+    "endedAt": "2026-06-27T18:39:01.185Z"
+  },
+  "status": "success",
+  "exitCode": 0,
+  "payload": {
+    "kind": "doctor_result",
+    "schemaVersion": "vibe-engineer.cli.payload.v1",
+    "data": {
+      "ok": true,
+      "overallStatus": "passed",
+      "completedScopes": [
+        {
+          "id": "doctor.scope.config",
+          "kind": "config_health",
+          "required": true,
+          "status": "passed",
+          "schema": {
+            "id": "vibe-engineer.config.v1",
+            "version": "1.0.0"
+          },
+          "source": {
+            "configPath": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-doctor-q5563g/valid/vibe-engineer.config.json",
+            "projectRoot": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-doctor-q5563g/valid"
+          },
+          "selectedHarness": "pi",
+          "deterministicBlocks": true
+        }
+      ],
+      "incompleteScopes": [],
+      "source": {
+        "configPath": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-doctor-q5563g/valid/vibe-engineer.config.json",
+        "projectRoot": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-doctor-q5563g/valid"
+      }
+    }
+  },
+  "diagnostics": [],
+  "artifacts": [
+    {
+      "kind": "cli_result",
+      "path": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-doctor-q5563g/doctor-rf-good/out.json",
+      "schemaVersion": "vibe-engineer.cli.result.v1",
+      "role": "report",
+      "sha256": null
+    }
+  ],
+  "errors": []
+}

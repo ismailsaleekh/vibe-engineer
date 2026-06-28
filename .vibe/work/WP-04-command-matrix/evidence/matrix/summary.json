@@ -1,0 +1,414 @@
+{
+  "schemaVersion": "wp04-command-matrix/v1",
+  "ok": true,
+  "realBoundary": "/Users/lizavasilyeva/work/vibe-engineer/packages/cli/dist/entry/vibe-engineer.js",
+  "externalInstallProof": {
+    "deferredTo": "WP-05"
+  },
+  "publicCommands": [
+    "help",
+    "version",
+    "create",
+    "import",
+    "doctor",
+    "config",
+    "verify",
+    "security",
+    "schematic"
+  ],
+  "matrix": {
+    "help": {
+      "success": {
+        "status": "success",
+        "exitCode": 0,
+        "expectedExit": 0,
+        "code": null,
+        "classification": null,
+        "kind": "help_result",
+        "ok": "pass"
+      },
+      "schemaValid": "pass",
+      "schemaNegative": {
+        "ok": "pass",
+        "failing": [
+          "exitCode"
+        ]
+      },
+      "invalid": {
+        "status": "blocked",
+        "exitCode": 2,
+        "expectedExit": 2,
+        "code": "VE_INVALID_FLAG",
+        "classification": "invalid_invocation",
+        "kind": "cli_invocation_error",
+        "ok": "pass"
+      }
+    },
+    "version": {
+      "success": {
+        "status": "success",
+        "exitCode": 0,
+        "expectedExit": 0,
+        "code": null,
+        "classification": null,
+        "kind": "version_result",
+        "ok": "pass"
+      },
+      "schemaValid": "pass",
+      "schemaNegative": {
+        "ok": "pass",
+        "failing": [
+          "exitCode"
+        ]
+      },
+      "invalid": {
+        "status": "blocked",
+        "exitCode": 2,
+        "expectedExit": 2,
+        "code": "VE_INVALID_FLAG",
+        "classification": "invalid_invocation",
+        "kind": "cli_invocation_error",
+        "ok": "pass"
+      }
+    },
+    "create": {
+      "success": {
+        "status": "success",
+        "exitCode": 0,
+        "expectedExit": 0,
+        "code": null,
+        "classification": null,
+        "kind": "create_result",
+        "ok": "pass"
+      },
+      "invalid": {
+        "status": "blocked",
+        "exitCode": 2,
+        "expectedExit": 2,
+        "code": "VE_INVALID_FLAG",
+        "classification": "invalid_invocation",
+        "kind": "cli_invocation_error",
+        "ok": "pass"
+      },
+      "blocked": {
+        "status": "blocked",
+        "exitCode": 2,
+        "expectedExit": 2,
+        "code": "VE_UNSUPPORTED_OPERATION",
+        "classification": "unsupported_operation",
+        "kind": "create_result",
+        "ok": "pass"
+      },
+      "schemaValid": "pass",
+      "schemaNegative": {
+        "ok": "pass",
+        "failing": [
+          "exitCode"
+        ]
+      }
+    },
+    "import": {
+      "success": {
+        "status": "success",
+        "exitCode": 0,
+        "expectedExit": 0,
+        "code": null,
+        "classification": null,
+        "kind": "create_result",
+        "ok": "pass"
+      },
+      "invalid": {
+        "status": "blocked",
+        "exitCode": 2,
+        "expectedExit": 2,
+        "code": "VE_INVALID_FLAG",
+        "classification": "invalid_invocation",
+        "kind": "cli_invocation_error",
+        "ok": "pass"
+      },
+      "blocked": {
+        "status": "blocked",
+        "exitCode": 2,
+        "expectedExit": 2,
+        "code": "VE_INVALID_INVOCATION",
+        "classification": "invalid_input",
+        "kind": "create_result",
+        "ok": "pass"
+      },
+      "schemaValid": "pass",
+      "schemaNegative": {
+        "ok": "pass",
+        "failing": [
+          "exitCode"
+        ]
+      }
+    },
+    "doctor": {
+      "success": {
+        "status": "success",
+        "exitCode": 0,
+        "expectedExit": 0,
+        "code": null,
+        "classification": null,
+        "kind": "doctor_result",
+        "ok": "pass"
+      },
+      "invalid": {
+        "status": "blocked",
+        "exitCode": 2,
+        "expectedExit": 2,
+        "code": "VE_INVALID_FLAG",
+        "classification": "invalid_invocation",
+        "kind": "cli_invocation_error",
+        "ok": "pass"
+      },
+      "blocked": {
+        "status": "blocked",
+        "exitCode": 3,
+        "expectedExit": 3,
+        "code": "VE_INVALID_CONFIG",
+        "classification": "invalid_config",
+        "kind": "config_load_result",
+        "ok": "pass"
+      },
+      "partial": {
+        "status": "partial",
+        "exitCode": 8,
+        "expectedExit": 8,
+        "code": "VE_PARTIAL_INCOMPLETE",
+        "classification": "partial_incomplete",
+        "kind": "doctor_result",
+        "ok": "pass"
+      },
+      "schemaValid": "pass",
+      "schemaNegative": {
+        "ok": "pass",
+        "failing": [
+          "exitCode"
+        ]
+      }
+    },
+    "config": {
+      "inspectSuccess": {
+        "status": "success",
+        "exitCode": 0,
+        "expectedExit": 0,
+        "code": null,
+        "classification": null,
+        "kind": "config_inspect_result",
+        "ok": "pass"
+      },
+      "validateSuccess": {
+        "status": "success",
+        "exitCode": 0,
+        "expectedExit": 0,
+        "code": null,
+        "classification": null,
+        "kind": "config_validation_result",
+        "ok": "pass"
+      },
+      "invalid": {
+        "status": "blocked",
+        "exitCode": 2,
+        "expectedExit": 2,
+        "code": "VE_INVALID_INVOCATION",
+        "classification": "invalid_invocation",
+        "kind": "cli_invocation_error",
+        "ok": "pass"
+      },
+      "blocked": {
+        "status": "blocked",
+        "exitCode": 3,
+        "expectedExit": 3,
+        "code": "VE_INVALID_CONFIG",
+        "classification": "invalid_config",
+        "kind": "config_load_result",
+        "ok": "pass"
+      },
+      "schemaValid": "pass",
+      "schemaNegative": {
+        "ok": "pass",
+        "failing": [
+          "exitCode"
+        ]
+      }
+    },
+    "verify": {
+      "success": {
+        "status": "success",
+        "exitCode": 0,
+        "expectedExit": 0,
+        "code": null,
+        "classification": null,
+        "kind": "verification_result",
+        "ok": "pass"
+      },
+      "blocked": {
+        "status": "blocked",
+        "exitCode": 2,
+        "expectedExit": 2,
+        "code": "VE_MISSING_FLAG_VALUE",
+        "classification": "invalid_invocation",
+        "kind": "cli_invocation_error",
+        "ok": "pass"
+      },
+      "invalid": {
+        "status": "blocked",
+        "exitCode": 2,
+        "expectedExit": 2,
+        "code": "VE_INVALID_FLAG",
+        "classification": "invalid_invocation",
+        "kind": "cli_invocation_error",
+        "ok": "pass"
+      },
+      "schemaValid": "pass",
+      "schemaNegative": {
+        "ok": "pass",
+        "failing": [
+          "exitCode"
+        ]
+      }
+    },
+    "security": {
+      "success": {
+        "status": "success",
+        "exitCode": 0,
+        "expectedExit": 0,
+        "code": null,
+        "classification": null,
+        "kind": "security_gate_result",
+        "ok": "pass"
+      },
+      "invalid": {
+        "status": "blocked",
+        "exitCode": 2,
+        "expectedExit": 2,
+        "code": "VE_INVALID_FLAG",
+        "classification": "invalid_invocation",
+        "kind": "cli_invocation_error",
+        "ok": "pass"
+      },
+      "blocked": {
+        "status": "blocked",
+        "exitCode": 4,
+        "expectedExit": 4,
+        "code": "VE_INVALID_INVOCATION",
+        "classification": "safety_policy_block",
+        "kind": "security_gate_result",
+        "ok": "pass"
+      },
+      "schemaValid": "pass",
+      "schemaNegative": {
+        "ok": "pass",
+        "failing": [
+          "exitCode"
+        ]
+      }
+    },
+    "schematic": {
+      "success": {
+        "status": "success",
+        "exitCode": 0,
+        "expectedExit": 0,
+        "code": null,
+        "classification": null,
+        "kind": "schematic_result",
+        "ok": "pass"
+      },
+      "invalid": {
+        "status": "blocked",
+        "exitCode": 2,
+        "expectedExit": 2,
+        "code": "VE_INVALID_INVOCATION",
+        "classification": "invalid_invocation",
+        "kind": "schematic_result",
+        "ok": "pass"
+      },
+      "schemaValid": "pass",
+      "schemaNegative": {
+        "ok": "pass",
+        "failing": [
+          "exitCode"
+        ]
+      }
+    },
+    "resultFile": {
+      "good": {
+        "ok": "pass",
+        "exitCode": 0,
+        "path": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-matrix-NahFln/rf-good/out.json"
+      },
+      "bad": {
+        "ok": "pass",
+        "exitCode": 5,
+        "code": "VE_RESULT_FILE_WRITE_FAILED",
+        "existsAfter": false
+      }
+    }
+  },
+  "regressions": {
+    "deferredCommands": {
+      "context": {
+        "exitCode": 2,
+        "code": "VE_UNSUPPORTED_OPERATION",
+        "classification": "unsupported_operation",
+        "expectedExit": 2
+      },
+      "registry": {
+        "exitCode": 2,
+        "code": "VE_UNSUPPORTED_OPERATION",
+        "classification": "unsupported_operation",
+        "expectedExit": 2
+      },
+      "update": {
+        "exitCode": 2,
+        "code": "VE_UNSUPPORTED_OPERATION",
+        "classification": "unsupported_operation",
+        "expectedExit": 2
+      },
+      "init": {
+        "exitCode": 2,
+        "code": "VE_UNSUPPORTED_OPERATION",
+        "classification": "unsupported_operation",
+        "expectedExit": 2
+      }
+    },
+    "skillCommandsUnknown": {
+      "build": {
+        "exitCode": 2,
+        "code": "VE_INVALID_INVOCATION",
+        "classification": "invalid_invocation",
+        "expectedExit": 2
+      },
+      "ship": {
+        "exitCode": 2,
+        "code": "VE_INVALID_INVOCATION",
+        "classification": "invalid_invocation",
+        "expectedExit": 2
+      }
+    },
+    "foundation": {
+      "failureExit": 1,
+      "partialExit": 8
+    }
+  },
+  "trackedResiduals": [
+    {
+      "id": "security-build-facing-consumer",
+      "severity": "tracked",
+      "pending": "WP-05-exports-seam",
+      "reason": "ERR_PACKAGE_PATH_NOT_EXPORTED; segregated in commands/security/run-cli-witnesses.mjs."
+    }
+  ],
+  "referencedWitnesses": [
+    "testing/run-witnesses.mjs (23 global I-02A cases incl. help/version/result-file/schema-negative)",
+    "commands/create/run-cli-witnesses.mjs",
+    "commands/schematic/run-cli-witnesses.mjs",
+    "commands/security/run-cli-witnesses.mjs (matrix slice green; build-facing fixture pending-WP-05)",
+    "commands/doctor/run-cli-witnesses.mjs",
+    "commands/config/run-cli-witnesses.mjs",
+    "commands/verify/run-cli-witnesses.mjs",
+    "commands/import/run-cli-witnesses.mjs"
+  ],
+  "evidenceRoot": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/WP-04-command-matrix/evidence/matrix"
+}

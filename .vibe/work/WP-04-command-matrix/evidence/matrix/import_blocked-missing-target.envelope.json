@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "vibe-engineer.cli.result.v1",
+  "invocation": {
+    "id": "58c2c2e4-d47f-4c7a-ba0c-6834b0d2cb84",
+    "command": "import",
+    "argv": [
+      "import",
+      "--target-root",
+      "<value>",
+      "--json",
+      "--non-interactive"
+    ],
+    "projectRoot": null,
+    "configPath": null,
+    "startedAt": "2026-06-28T00:20:39.538Z",
+    "endedAt": "2026-06-28T00:20:39.539Z"
+  },
+  "status": "blocked",
+  "exitCode": 2,
+  "payload": {
+    "kind": "create_result",
+    "schemaVersion": "vibe-engineer.cli.payload.v1",
+    "data": {
+      "ok": false,
+      "stage": "target_root",
+      "mode": "import",
+      "targetRoot": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-matrix-NahFln/import-missing"
+    }
+  },
+  "diagnostics": [
+    {
+      "severity": "error",
+      "code": "VE_INVALID_INVOCATION",
+      "classification": "invalid_input",
+      "message": "Import target root must be an existing directory.",
+      "path": null,
+      "span": null,
+      "hint": null
+    }
+  ],
+  "artifacts": [],
+  "errors": [
+    {
+      "code": "VE_INVALID_INVOCATION",
+      "classification": "invalid_input",
+      "retryable": false,
+      "blocking": true,
+      "message": "Import target root must be an existing directory.",
+      "details": {
+        "targetRoot": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-matrix-NahFln/import-missing"
+      }
+    }
+  ]
+}

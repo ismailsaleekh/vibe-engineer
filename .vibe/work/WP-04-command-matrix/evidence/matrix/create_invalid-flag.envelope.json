@@ -1,0 +1,64 @@
+{
+  "schemaVersion": "vibe-engineer.cli.result.v1",
+  "invocation": {
+    "id": "651e9d21-adca-40e2-9346-55e0e3556c75",
+    "command": "create",
+    "argv": [
+      "create",
+      "--project-name",
+      "<value>",
+      "--bogus",
+      "--json",
+      "--non-interactive"
+    ],
+    "projectRoot": null,
+    "configPath": null,
+    "startedAt": "2026-06-28T00:20:38.895Z",
+    "endedAt": "2026-06-28T00:20:38.897Z"
+  },
+  "status": "blocked",
+  "exitCode": 2,
+  "payload": {
+    "kind": "cli_invocation_error",
+    "schemaVersion": "vibe-engineer.cli.payload.v1",
+    "data": {
+      "accepted": false
+    }
+  },
+  "diagnostics": [
+    {
+      "severity": "error",
+      "code": "VE_INVALID_FLAG",
+      "classification": "invalid_invocation",
+      "message": "Unsupported create flag: --bogus. Create accepts only project naming, --agentic-harness, --brief, and global envelope flags.",
+      "path": null,
+      "span": null,
+      "hint": null
+    }
+  ],
+  "artifacts": [],
+  "errors": [
+    {
+      "code": "VE_INVALID_FLAG",
+      "classification": "invalid_invocation",
+      "retryable": false,
+      "blocking": true,
+      "message": "Unsupported create flag: --bogus. Create accepts only project naming, --agentic-harness, --brief, and global envelope flags.",
+      "details": {
+        "flag": "--bogus",
+        "acceptedValueFlags": [
+          "--project-name",
+          "--agentic-harness",
+          "--brief",
+          "--target-root",
+          "--result-file",
+          "--project-root"
+        ],
+        "acceptedBooleanFlags": [
+          "--json",
+          "--non-interactive"
+        ]
+      }
+    }
+  ]
+}

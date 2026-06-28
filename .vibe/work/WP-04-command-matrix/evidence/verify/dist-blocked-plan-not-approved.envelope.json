@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "vibe-engineer.cli.result.v1",
+  "invocation": {
+    "id": "dde82a49-999c-4de3-89ba-3beba784339f",
+    "command": "verify",
+    "argv": [
+      "verify",
+      "--implementation-plan",
+      "<value>",
+      "--project-root",
+      "<value>",
+      "--evidence-root",
+      "<value>",
+      "--run-id",
+      "<value>",
+      "--runner-catalog",
+      "<value>",
+      "--json",
+      "--non-interactive"
+    ],
+    "projectRoot": "/private/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/verifyfix-verify-qHgvsA/proj",
+    "configPath": null,
+    "startedAt": "2026-06-27T18:56:52.683Z",
+    "endedAt": "2026-06-27T18:56:52.685Z"
+  },
+  "status": "blocked",
+  "exitCode": 2,
+  "payload": {
+    "kind": "verification_result",
+    "schemaVersion": "vibe-engineer.cli.payload.v1",
+    "data": {
+      "ok": false,
+      "runnerStatus": "not_run",
+      "runnerCode": "PLAN_NOT_APPROVED"
+    }
+  },
+  "diagnostics": [
+    {
+      "severity": "error",
+      "code": "VE_INVALID_INVOCATION",
+      "classification": "invalid_input",
+      "message": "Implementation Plan status must be approved before verification can run.",
+      "path": null,
+      "span": null,
+      "hint": null
+    }
+  ],
+  "artifacts": [],
+  "errors": [
+    {
+      "code": "VE_INVALID_INVOCATION",
+      "classification": "invalid_input",
+      "retryable": false,
+      "blocking": true,
+      "message": "Implementation Plan status must be approved before verification can run.",
+      "details": {
+        "runnerCode": "PLAN_NOT_APPROVED",
+        "errorName": "VerificationRunnerError"
+      }
+    }
+  ]
+}

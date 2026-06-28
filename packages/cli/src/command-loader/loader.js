@@ -2,22 +2,25 @@ import { readFile } from "node:fs/promises";
 import { CliClassification, CliErrorCode } from "../errors/codes.js";
 import { sanitizeCommandForDisplay, sanitizeFlagForDisplay, sanitizeUserValueForDisplay } from "../errors/sanitization.js";
 import { createEnvelope, foundationFailureEnvelope, invalidInvocationEnvelope, partialEnvelope, payload } from "../envelope/result-envelope.js";
+import { createCommand } from "../commands/create/index.ts";
+import { importCommand } from "../commands/import/index.ts";
+import { doctorCommand } from "../commands/doctor/index.js";
+import { configCommand } from "../commands/config/index.js";
+import { verifyCommand } from "../commands/verify/index.ts";
+import { securityCommand } from "../commands/security/index.ts";
+import { schematicCommand } from "../commands/schematic/index.js";
 
+// Deferred commands: declared in the v0.1 surface but not yet implemented.
+// These route to a typed UnsupportedOperation envelope (fail-closed), never a no-op.
 const LATER_COMMANDS = new Set([
-  "create",
-  "import",
-  "doctor",
-  "config",
-  "schematic",
-  "verify",
-  "security",
-  "build",
-  "ship",
   "context",
   "registry",
   "update",
   "init"
 ]);
+
+// The default public command surface for the shipped `vibe-engineer` binary
+// is defined below FOUNDATION_COMMANDS (it composes them) — see DEFAULT_COMMANDS.
 
 function commandResult(envelope) {
   return { envelope };
@@ -101,7 +104,7 @@ async function helpCommand({ invocation, args, context }) {
     invocation,
     status: "success",
     payload: payload("help_result", {
-      commands: context.loader.listCommands().map((command) => ({ id: command.id, visibility: command.visibility, description: command.description })),
+      commands: context.loader.listCommands().filter((command) => command.visibility !== "internal").map((command) => ({ id: command.id, visibility: command.visibility, description: command.description })),
       machineOnly: true
     })
   }));
@@ -142,6 +145,21 @@ const FOUNDATION_COMMANDS = Object.freeze([
   Object.freeze({ id: "foundation", visibility: "internal", description: "I-02A internal envelope/loader witness command.", run: foundationCommand })
 ]);
 
+// The default public command surface for the shipped `vibe-engineer` binary:
+// the I-02A foundation commands plus the 7 real v0.1 commands.
+// `build`/`ship` are SKILL commands (harness-native, never CLI) and are deliberately
+// NOT registered — they route as Unknown command (InvalidInvocation), not Unsupported.
+const DEFAULT_COMMANDS = Object.freeze([
+  ...FOUNDATION_COMMANDS,
+  createCommand,
+  importCommand,
+  doctorCommand,
+  configCommand,
+  verifyCommand,
+  securityCommand,
+  schematicCommand
+]);
+
 function validateCommandMetadata(command) {
   return command && typeof command.id === "string" && command.id.length > 0 && typeof command.visibility === "string" && typeof command.description === "string" && typeof command.run === "function";
 }
@@ -156,7 +174,7 @@ export class CommandLoaderDefinitionError extends Error {
 }
 
 export class CommandLoader {
-  constructor(commands = FOUNDATION_COMMANDS) {
+  constructor(commands = DEFAULT_COMMANDS) {
     this.commands = new Map();
     for (const command of commands) {
       if (!validateCommandMetadata(command)) {
@@ -191,6 +209,6 @@ export class CommandLoader {
   }
 }
 
-export function createCommandLoader(commands) {
+export function createCommandLoader(commands = DEFAULT_COMMANDS) {
   return new CommandLoader(commands);
 }
