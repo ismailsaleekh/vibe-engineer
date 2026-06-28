@@ -4,7 +4,7 @@
 // Mirrors the accepted verify/index.ts + security/index.ts precedent (no strict cli tsconfig dependency).
 
 import { existsSync, realpathSync } from "node:fs";
-import { mkdir, rm, writeFile } from "node:fs/promises";
+import { mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import { dirname, isAbsolute, relative, resolve } from "node:path";
 
 import { createDefaultVibeConfig } from "@vibe-engineer/config";
@@ -24,7 +24,10 @@ import {
   validateGeneratedFileManifest,
 } from "@vibe-engineer/adapter-pi/schema";
 
-type UnknownRecord = Record<string, unknown>;
+export type UnknownRecord = Record<string, unknown>;
+type JsonPrimitive = string | number | boolean | null;
+type JsonValue = JsonPrimitive | JsonObject | JsonValue[];
+type JsonObject = { [key: string]: JsonValue };
 
 type CapabilityMatrixApi = {
   schemaVersion: string;
@@ -356,6 +359,33 @@ export function resolveTargetRoot(projectRoot: string, targetRootValue: string, 
   return { ok: true, targetRoot: resolved };
 }
 
+function isJsonObject(value: unknown): value is JsonObject {
+  return typeof value === "object" && value !== null && !Array.isArray(value);
+}
+
+function mergeJsonObjects(base: JsonObject, overlay: JsonObject): JsonObject {
+  const merged: JsonObject = { ...base };
+  for (const [key, value] of Object.entries(overlay)) {
+    const previous = merged[key];
+    if (isJsonObject(previous) && isJsonObject(value)) {
+      merged[key] = mergeJsonObjects(previous, value);
+    } else {
+      merged[key] = value;
+    }
+  }
+  return merged;
+}
+
+function narrowJsonObjectOrNull(value: unknown): JsonObject | null {
+  return isJsonObject(value) ? value : null;
+}
+
+async function readJsonObjectIfPresent(pathValue: string): Promise<JsonObject | null> {
+  if (!existsSync(pathValue)) return null;
+  const text = await readFile(pathValue, "utf8");
+  return narrowJsonObjectOrNull(JSON.parse(text));
+}
+
 export type GeneratedArtifacts = {
   configPath: string;
   agentsPath: string;
@@ -441,15 +471,26 @@ export async function writeGeneratedArtifacts(
   meta: ManifestMeta,
   options: { reset: boolean },
 ): Promise<GeneratedArtifacts> {
+  const starterContextManifestPath = resolve(targetRoot, ".vibe", "context", "manifest.json");
+  const starterContextManifest = options.reset && existsSync(starterContextManifestPath)
+    ? await readFile(starterContextManifestPath, "utf8")
+    : null;
   if (options.reset) {
     await rm(resolve(targetRoot, ".vibe", "context"), { recursive: true, force: true });
   }
+  if (starterContextManifest !== null) {
+    await mkdir(dirname(starterContextManifestPath), { recursive: true });
+    await writeFile(starterContextManifestPath, starterContextManifest, "utf8");
+  }
 
   // --- harness-config: vibe-engineer.config.json via @vibe-engineer/config (authority for agenticHarness) ---
-  const configObject = getConfig({ agenticHarness: SELECTED_PI_HARNESS });
+  // WP-06 overlay contract: preserve the shipped starter structural block, then apply DL-17 harness defaults.
   const configPath = resolve(targetRoot, "vibe-engineer.config.json");
+  const templateConfig = await readJsonObjectIfPresent(configPath);
+  const configObject = getConfig({ agenticHarness: SELECTED_PI_HARNESS });
+  const mergedConfig = templateConfig === null ? configObject : mergeJsonObjects(templateConfig, configObject);
   await mkdir(dirname(configPath), { recursive: true });
-  await writeFile(configPath, `${JSON.stringify(configObject, null, 2)}\n`, "utf8");
+  await writeFile(configPath, `${JSON.stringify(mergedConfig, null, 2)}\n`, "utf8");
 
   // --- context-files: AGENTS.md + CLAUDE.md (DL-17 bootstrap context, provenance-labeled) ---
   const agentsPath = resolve(targetRoot, "AGENTS.md");

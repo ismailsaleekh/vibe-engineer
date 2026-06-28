@@ -1,0 +1,139 @@
+{
+  "schemaVersion": "vibe-engineer.cli.result.v1",
+  "invocation": {
+    "id": "ef0f173c-d278-48d6-9d73-eb328320164d",
+    "command": "create",
+    "argv": [
+      "create",
+      "--target-root",
+      "<value>",
+      "--non-interactive",
+      "--result-file",
+      "<value>"
+    ],
+    "projectRoot": null,
+    "configPath": null,
+    "startedAt": "2026-06-28T00:46:52.052Z",
+    "endedAt": "2026-06-28T00:46:52.053Z"
+  },
+  "status": "success",
+  "exitCode": 0,
+  "payload": {
+    "kind": "create_result",
+    "schemaVersion": "vibe-engineer.cli.payload.v1",
+    "data": {
+      "ok": true,
+      "stage": "complete",
+      "mode": "create",
+      "project": {
+        "name": "create-output",
+        "slug": "create-output"
+      },
+      "selectedHarness": "pi",
+      "briefStatus": "skipped",
+      "targetRoot": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp05-install-smoke-qV9CKC/create-output",
+      "harnessConfig": {
+        "agenticHarness": "pi",
+        "adapterCapabilityVersion": "pi-adapter-capability-matrix/v1",
+        "generatedFileManifestVersion": "pi-generated-file-manifest/v1"
+      },
+      "manifest": {
+        "adapterCapabilityVersion": "pi-adapter-capability-matrix/v1",
+        "generatedFileManifestVersion": "pi-generated-file-manifest/v1",
+        "ownedFamilies": [
+          {
+            "familyId": "context-files",
+            "readiness": "ready"
+          },
+          {
+            "familyId": "harness-config",
+            "readiness": "ready"
+          }
+        ]
+      },
+      "generatedFiles": {
+        "configPath": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp05-install-smoke-qV9CKC/create-output/vibe-engineer.config.json",
+        "contextFiles": {
+          "agents": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp05-install-smoke-qV9CKC/create-output/AGENTS.md",
+          "claude": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp05-install-smoke-qV9CKC/create-output/CLAUDE.md"
+        },
+        "sourceRecord": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp05-install-smoke-qV9CKC/create-output/.vibe/context/sources/bootstrap-brief.json",
+        "starterTemplate": {
+          "layoutPath": "/private/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp05-install-smoke-qV9CKC/node_modules/vibe-engineer/templates/starter.layout.json",
+          "templateRoot": "/private/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp05-install-smoke-qV9CKC/node_modules/vibe-engineer/templates/starter",
+          "fileCount": 80,
+          "overlayPaths": [
+            "vibe-engineer.config.json",
+            ".vibe/context/manifest.json"
+          ],
+          "substitutionPaths": [
+            "package.json"
+          ],
+          "projectSlug": "create-output"
+        }
+      },
+      "contextProject": {
+        "graphPath": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp05-install-smoke-qV9CKC/create-output/.vibe/context/index/context-graph.json",
+        "indexPath": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp05-install-smoke-qV9CKC/create-output/.vibe/context/index/context-index.json"
+      },
+      "provenanceLabels": {
+        "projectName": {
+          "label": "normalized_from_user",
+          "source": "create/import naming value"
+        },
+        "projectSlug": {
+          "label": "normalized_from_user",
+          "source": "create/import naming value"
+        },
+        "selectedHarness": {
+          "label": "harness_default",
+          "source": "DL-06 agentic harness integration; pi is the only v1 selectable harness"
+        },
+        "briefSummary": {
+          "label": "placeholder",
+          "source": "no user-provided brief"
+        },
+        "goals": {
+          "label": "unknown",
+          "source": "no brief provided"
+        },
+        "brainstormInstruction": {
+          "label": "harness_default",
+          "source": "DL-17 skipped-brief later-skill recommendation"
+        }
+      }
+    }
+  },
+  "diagnostics": [],
+  "artifacts": [
+    {
+      "kind": "vibe_config",
+      "path": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp05-install-smoke-qV9CKC/create-output/vibe-engineer.config.json",
+      "schemaVersion": "vibe-engineer.config.v1",
+      "role": "harness-config",
+      "sha256": null
+    },
+    {
+      "kind": "context_file",
+      "path": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp05-install-smoke-qV9CKC/create-output/AGENTS.md",
+      "schemaVersion": "pi-context-file/v1",
+      "role": "context-files",
+      "sha256": null
+    },
+    {
+      "kind": "context_file",
+      "path": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp05-install-smoke-qV9CKC/create-output/CLAUDE.md",
+      "schemaVersion": "pi-context-file/v1",
+      "role": "context-files",
+      "sha256": null
+    },
+    {
+      "kind": "cli_result",
+      "path": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp05-install-smoke-qV9CKC/create-output/result.json",
+      "schemaVersion": "vibe-engineer.cli.result.v1",
+      "role": "report",
+      "sha256": null
+    }
+  ],
+  "errors": []
+}

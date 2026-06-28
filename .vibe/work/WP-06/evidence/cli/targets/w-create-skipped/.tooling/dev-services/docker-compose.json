@@ -1,0 +1,16 @@
+{
+  "services": {
+    "postgres": {
+      "image": "postgres:17-alpine",
+      "service": "postgres",
+      "environment": {
+        "POSTGRES_USER": "starter_local",
+        "POSTGRES_PASSWORD": "starter_local",
+        "POSTGRES_DB": "starter_dev"
+      },
+      "ports": [
+        "5432:5432"
+      ]
+    }
+  }
+}

@@ -189,3 +189,20 @@ export const validatePiGeneratedFileManifest = (value: unknown): ValidationResul
 
 export const createPiDownstreamManifestSummary = (): DownstreamManifestSummary =>
   createDownstreamManifestSummary(getPiAdapterCapabilityMatrix(), getPiGeneratedFileManifest());
+
+export {
+  CREATE_PI_ASSET_FAMILIES,
+  CreatePiAssetValidationError,
+  selectCreatePiAssets,
+  validateCreatePiAssetWritePlan,
+  type CreatePiAssetConflictPolicy,
+  type CreatePiAssetDescriptor,
+  type CreatePiAssetExistingPathKind,
+  type CreatePiAssetExistingPathState,
+  type CreatePiAssetFamilyId,
+  type CreatePiAssetKind,
+  type CreatePiAssetPlannedWrite,
+  type CreatePiAssetValidationIssue,
+  type CreatePiAssetValidationResult,
+  type CreatePiAssetWritePlan,
+} from "../create-consumption/index.ts";

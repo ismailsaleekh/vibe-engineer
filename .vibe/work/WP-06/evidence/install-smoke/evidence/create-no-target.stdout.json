@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "vibe-engineer.cli.result.v1",
+  "invocation": {
+    "id": "6eeb31e7-04c5-4057-9d49-0ac8432c4f65",
+    "command": "create",
+    "argv": [
+      "create"
+    ],
+    "projectRoot": null,
+    "configPath": null,
+    "startedAt": "2026-06-28T00:46:52.240Z",
+    "endedAt": "2026-06-28T00:46:52.241Z"
+  },
+  "status": "blocked",
+  "exitCode": 2,
+  "payload": {
+    "kind": "cli_invocation_error",
+    "schemaVersion": "vibe-engineer.cli.payload.v1",
+    "data": {
+      "accepted": false
+    }
+  },
+  "diagnostics": [
+    {
+      "severity": "error",
+      "code": "VE_MISSING_FLAG_VALUE",
+      "classification": "invalid_invocation",
+      "message": "Missing required create flag.",
+      "path": null,
+      "span": null,
+      "hint": null
+    }
+  ],
+  "artifacts": [],
+  "errors": [
+    {
+      "code": "VE_MISSING_FLAG_VALUE",
+      "classification": "invalid_invocation",
+      "retryable": false,
+      "blocking": true,
+      "message": "Missing required create flag.",
+      "details": {
+        "flag": "--target-root"
+      }
+    }
+  ]
+}

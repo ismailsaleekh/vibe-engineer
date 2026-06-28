@@ -1,0 +1,474 @@
+{
+  "schemaVersion": "vibe-engineer.templates.starter-layout.v1",
+  "generatedBy": "packages/cli/scripts/copy-templates.mjs",
+  "sourceRoot": "examples/starter-reference/.source-template",
+  "shippedRoot": "templates/starter",
+  "fileCount": 93,
+  "files": [
+    {
+      "path": ".env.example",
+      "bytes": 185,
+      "sha256": "sha256:6cf0bbcf7884e95c5b04bb2dc9be2861d52c5bcf84682fcf48d37c51ff3a2d91"
+    },
+    {
+      "path": ".prettierignore",
+      "bytes": 252,
+      "sha256": "sha256:555a418d835a41c6d05b5aeb2255c20bc39b847d22cd43c5662e02932f5801c1"
+    },
+    {
+      "path": ".tooling/ci/README.md",
+      "bytes": 129,
+      "sha256": "sha256:28a246f820fa917babe251611aadb2cc335f640ff7a133204080728e0b0fc7bb"
+    },
+    {
+      "path": ".tooling/dev-services/docker-compose.json",
+      "bytes": 300,
+      "sha256": "sha256:b4e45dc15785a695ffc442f221c5f136cf5e571c3ecde757dd24df3d6a826626"
+    },
+    {
+      "path": ".tooling/generated/README.md",
+      "bytes": 105,
+      "sha256": "sha256:4c76883b9bbee8c66ce491b2966493c7f41c5fb23d3c3d8eecc438c553d3c144"
+    },
+    {
+      "path": ".tooling/scripts/README.md",
+      "bytes": 160,
+      "sha256": "sha256:eab904945286745541c4690425783cee279f5f6c34c2de95c921ddf716de6092"
+    },
+    {
+      "path": ".vibe/context/manifest.json",
+      "bytes": 445,
+      "sha256": "sha256:5a81dafdaa8efbd8eb91e0312e895afebece2b149bd3c804efcae9e43c61eae7"
+    },
+    {
+      "path": ".vibe/evidence/README.md",
+      "bytes": 92,
+      "sha256": "sha256:996feb0578de8ec262b5c17c3a8e49a27de8b0ee8b34f3032c96ee09c79a7efe"
+    },
+    {
+      "path": ".vibe/generated/nest-react-rn-preset/manifest.json",
+      "bytes": 19544,
+      "sha256": "sha256:75b2e8589386fbab6497667d88b34da0bce3dd8f3df8522bc9c37f766e7b7668"
+    },
+    {
+      "path": ".vibe/registry/README.md",
+      "bytes": 91,
+      "sha256": "sha256:def2ba36f87d119a022c0f292a68da7076b2a9a09978d01f4037a39c31d2f51a"
+    },
+    {
+      "path": ".vibe/work/README.md",
+      "bytes": 162,
+      "sha256": "sha256:3de1be1acefdae12a9a7d40839fa0b188badbbd7d9cae55a950e118805cdab38"
+    },
+    {
+      "path": "apps/api/package.json",
+      "bytes": 1067,
+      "sha256": "sha256:81c6453e546897f84025d5664965a89b9b81c0482bd4199fc36d329749e80541"
+    },
+    {
+      "path": "apps/api/prisma/migrations/0000_init/migration.sql",
+      "bytes": 463,
+      "sha256": "sha256:a7821a6b62bcde13beeb9a738427d4d5c71951559563cd3198d3c5b26d6184df"
+    },
+    {
+      "path": "apps/api/prisma/schema.prisma",
+      "bytes": 482,
+      "sha256": "sha256:4e323dd2b8ab5ff3e27e19c8d0989d8d7a5e1065b9efce7279254ec763512278"
+    },
+    {
+      "path": "apps/api/prisma/seed.ts",
+      "bytes": 397,
+      "sha256": "sha256:c50ab3fcb401cd1dc3cfc9c6afe2da4340385b0fe6e58bb3466ff1c0350f32ce"
+    },
+    {
+      "path": "apps/api/src/app.module.ts",
+      "bytes": 426,
+      "sha256": "sha256:b6e29979090ef6531086ebefa2db44ad1baef0b2824ab281dc6d284242e7e90b"
+    },
+    {
+      "path": "apps/api/src/golden-records/golden-records.controller.ts",
+      "bytes": 415,
+      "sha256": "sha256:b5066ebea27e3519a62d18743240cb04a76376c89420526651a6f5fbda6ac9f2"
+    },
+    {
+      "path": "apps/api/src/golden-records/golden-records.module.ts",
+      "bytes": 379,
+      "sha256": "sha256:cda212180fbeba601a1edd005fc5944d9cdcfbad1cbbc8f1c3b0ea8bc6de9d52"
+    },
+    {
+      "path": "apps/api/src/golden-records/golden-records.service.ts",
+      "bytes": 448,
+      "sha256": "sha256:2f5b8835fe172878434b3ca5651b52f70e87463e192fd99dc35abe53534f55ad"
+    },
+    {
+      "path": "apps/api/src/golden-records/sample.ts",
+      "bytes": 716,
+      "sha256": "sha256:75f1c714b33b23bf8ac40c9fbb540b37c00634c79c09dcbf3a8b3cdd5a52f22c"
+    },
+    {
+      "path": "apps/api/src/health/health.controller.ts",
+      "bytes": 187,
+      "sha256": "sha256:93c8a7e8812385061eb3be286a9aedfc8ca6d6e99dc9d447146e7d22210bb7e4"
+    },
+    {
+      "path": "apps/api/src/health/health.module.ts",
+      "bytes": 175,
+      "sha256": "sha256:a5b08849d3130eec9c601b9dd5bf0ee16be814031f2ea0d31bedaa75f299eafc"
+    },
+    {
+      "path": "apps/api/src/main.ts",
+      "bytes": 665,
+      "sha256": "sha256:86268822f315ef4e776ee757ca3709bd063cbefaa108c932c34a64595ec141e0"
+    },
+    {
+      "path": "apps/api/test/README.md",
+      "bytes": 143,
+      "sha256": "sha256:d1cc8d959f5c69b36927204ca0b10c6288b6df3ebcd8bacc4b09b2fa137f21e7"
+    },
+    {
+      "path": "apps/api/test/bootstrap.test.ts",
+      "bytes": 314,
+      "sha256": "sha256:8e96814de993f4222d838eb26a71b1bc67be4be0bbc2981ed4a2864c28f7e7a8"
+    },
+    {
+      "path": "apps/api/tsconfig.json",
+      "bytes": 352,
+      "sha256": "sha256:2c153ecf10501b1d8c59518dd016f0559aecad4d7542c62b9840f8b3e669ae0a"
+    },
+    {
+      "path": "apps/mobile/e2e/detox/README.md",
+      "bytes": 75,
+      "sha256": "sha256:dacea62d530d649f017e05f56d1b2ba82ea790f02a769b82bca397935aeba483"
+    },
+    {
+      "path": "apps/mobile/e2e/maestro/README.md",
+      "bytes": 79,
+      "sha256": "sha256:50bce0e1769d6fc7746426c5023cf5f79d73f0a1c6cf217c96d80dc322ff1e54"
+    },
+    {
+      "path": "apps/mobile/package.json",
+      "bytes": 900,
+      "sha256": "sha256:7ec300ae81982205a2772e8a3f3f452de6351115481ffd110b6e539ed05ca5ee"
+    },
+    {
+      "path": "apps/mobile/src/app/app.tsx",
+      "bytes": 302,
+      "sha256": "sha256:a5f79d36752b6d2807f20d0f040ed9122957a386e0af90d5bac77e0b6de48740"
+    },
+    {
+      "path": "apps/mobile/src/navigation/navigation.tsx",
+      "bytes": 389,
+      "sha256": "sha256:8c2cd6d0c7ed07cd402a1d6daf3a749c1b358b513594e5d7c839137609e45b37"
+    },
+    {
+      "path": "apps/mobile/src/screens/golden-records/golden-records.tsx",
+      "bytes": 457,
+      "sha256": "sha256:7512fdd3c81e981c1f368137c1ce9097a2096612a6d8008ad35645f8bf5b79be"
+    },
+    {
+      "path": "apps/mobile/src/screens/home/home.tsx",
+      "bytes": 225,
+      "sha256": "sha256:e8326f7cff07b322684571924aa4a1c56bb7531a4dcec0fc145a38fe20d88eb1"
+    },
+    {
+      "path": "apps/mobile/src/screens/system-status/system-status.tsx",
+      "bytes": 219,
+      "sha256": "sha256:3640a264c7603aab1e81847362894ffe6e8ec4a7af0780df3cbd3fbf2e880074"
+    },
+    {
+      "path": "apps/mobile/src/types/react-native-shims.d.ts",
+      "bytes": 1262,
+      "sha256": "sha256:c3446b0ae224ee7cb378c25aed19d4e3582502d4caecd3460228176daa2e0b3f"
+    },
+    {
+      "path": "apps/mobile/src/types/web-api-shims.d.ts",
+      "bytes": 1510,
+      "sha256": "sha256:07e4ea623d2922460cd5cacc43d15355d0ce7bfed238bae0066f453e4a6570be"
+    },
+    {
+      "path": "apps/mobile/test/app.test.ts",
+      "bytes": 203,
+      "sha256": "sha256:dffe10df34369cf86e91ffaa12f925e53a1b00345bf8dbebe4f5599839efe55c"
+    },
+    {
+      "path": "apps/mobile/tsconfig.json",
+      "bytes": 560,
+      "sha256": "sha256:11f020a9ad92420f8820f8d7d2b7d5aeb2577e0d2cf3df00784a00f69745302d"
+    },
+    {
+      "path": "apps/mobile/ui-verification/README.md",
+      "bytes": 104,
+      "sha256": "sha256:145e1d15347822d375acb179357c54208b7f0513e8e165756ef6fb9ea000d4da"
+    },
+    {
+      "path": "apps/web/e2e/README.md",
+      "bytes": 137,
+      "sha256": "sha256:d60d0a3660cc0c4a006545e9bfa2e3ae2f65706b123bfe3556e1dd794cff9008"
+    },
+    {
+      "path": "apps/web/index.html",
+      "bytes": 239,
+      "sha256": "sha256:a0256bf621439fef2bc728fa9147ef5220ab391f1983673c922e9d0eefd5a1f5"
+    },
+    {
+      "path": "apps/web/package.json",
+      "bytes": 753,
+      "sha256": "sha256:ba4b9ce80d24176803cf9b6bc0d068e494260e25470b5154658ad59c165b20ec"
+    },
+    {
+      "path": "apps/web/src/app/app.tsx",
+      "bytes": 160,
+      "sha256": "sha256:598d4d07d212e67fe76a38ef2a9f1c47367a2ed110a634b9c167af4989dd5540"
+    },
+    {
+      "path": "apps/web/src/main.tsx",
+      "bytes": 259,
+      "sha256": "sha256:8c399581f5618a2418466fd198f3ef1b1d18e9cb0ed8e07ac9923fdceac45e8b"
+    },
+    {
+      "path": "apps/web/src/routes/golden-records/golden-records.tsx",
+      "bytes": 477,
+      "sha256": "sha256:81d6a0bf79ce0cdc8012df0d70d79ff79caccd80bb4fe648b0d2aef1948ab59a"
+    },
+    {
+      "path": "apps/web/src/routes/home/home.tsx",
+      "bytes": 273,
+      "sha256": "sha256:78e725239737ab6aa6ddb7d30227108924108a2b6fccb8245279b80f29b6ae49"
+    },
+    {
+      "path": "apps/web/src/routes/system-status/system-status.tsx",
+      "bytes": 172,
+      "sha256": "sha256:17a8a42c0beec774edff6db27d4eb99f3f5a7895e5469af4346826f04b8df9bb"
+    },
+    {
+      "path": "apps/web/test/app.test.ts",
+      "bytes": 216,
+      "sha256": "sha256:451e170bdf96adb523443b9d243110f04fa9cc9e57e8f9f90fbb17a3671ad988"
+    },
+    {
+      "path": "apps/web/tsconfig.json",
+      "bytes": 365,
+      "sha256": "sha256:7207357bde0763b5d8ef46895e4ef0548db3575b32f21018a98390e73f5c604f"
+    },
+    {
+      "path": "apps/web/ui-verification/README.md",
+      "bytes": 101,
+      "sha256": "sha256:f300704b0024dd431694929e1aac62beac3526b2192aa901b54396ba3ed2f120"
+    },
+    {
+      "path": "docs/reference/starter.md",
+      "bytes": 502,
+      "sha256": "sha256:94f9f544a14d50f08524986d781aa943c182a26b7ef4021a697eaeed8de8d08f"
+    },
+    {
+      "path": "eslint.config.mjs",
+      "bytes": 3321,
+      "sha256": "sha256:9b153bfabacea4b058fc87b8485c9514c2a136cf0cdd23f4e34d508e7eeb9fe9"
+    },
+    {
+      "path": "package.json",
+      "bytes": 1802,
+      "sha256": "sha256:d60c6e037be58fe82239bb7c78f67ee9fa5c61283834f79c868d1b8e14159736"
+    },
+    {
+      "path": "packages/api-client/package.json",
+      "bytes": 716,
+      "sha256": "sha256:eebb41d3516b4146306588deba2a81eb9492b3267882911296c5d0dcf05a9f66"
+    },
+    {
+      "path": "packages/api-client/src/golden-records/golden-records.client.ts",
+      "bytes": 418,
+      "sha256": "sha256:b3767bdf1cdfc0248a064514093c957cb14f1ef86efaa2c491bbc8f5f0b86332"
+    },
+    {
+      "path": "packages/api-client/src/golden-records/use-golden-records.ts",
+      "bytes": 541,
+      "sha256": "sha256:b9732a5ecf2ceca21f838d0a4e60b54b158c432f0572ca09321e677c4e44a2bf"
+    },
+    {
+      "path": "packages/api-client/src/index.ts",
+      "bytes": 156,
+      "sha256": "sha256:454d51d4d6e271499d5cf9cd5d1b14dbdec75f3316461c230049cf181abf4b4b"
+    },
+    {
+      "path": "packages/api-client/test/use-golden-records.test.ts",
+      "bytes": 260,
+      "sha256": "sha256:10a2a5f02486a683087887cafe7b7ebdaf4a7e86f905cd0b270abb882ac89ef7"
+    },
+    {
+      "path": "packages/api-client/tsconfig.json",
+      "bytes": 258,
+      "sha256": "sha256:d7a0c92153a8bd73d698a42b2fc1f10e2212413bd94c62dee23ae29ff5298c90"
+    },
+    {
+      "path": "packages/config/package.json",
+      "bytes": 539,
+      "sha256": "sha256:bd7ceb047d9c3664952749d4aeb603bfb23490d31f066a913143d5460d8bc700"
+    },
+    {
+      "path": "packages/config/src/env.ts",
+      "bytes": 694,
+      "sha256": "sha256:6065a88b0933a2967029a0a851590baa8d825ae8a7cc8c8208a6e9ea60a8b05f"
+    },
+    {
+      "path": "packages/config/src/index.ts",
+      "bytes": 87,
+      "sha256": "sha256:4b1c689091fcc15d30193359c684009856e2c64341d785296b646a05eab2a60f"
+    },
+    {
+      "path": "packages/config/test/env.test.ts",
+      "bytes": 339,
+      "sha256": "sha256:78f08c6ffaab48070a55ec9dbe8aab1e2920cfc388175e571da8fe407defa536"
+    },
+    {
+      "path": "packages/config/tsconfig.json",
+      "bytes": 258,
+      "sha256": "sha256:d7a0c92153a8bd73d698a42b2fc1f10e2212413bd94c62dee23ae29ff5298c90"
+    },
+    {
+      "path": "packages/contracts/package.json",
+      "bytes": 620,
+      "sha256": "sha256:4975ff8378ee0821b0d6a3d7aafa0bc4b3f4964516d9ff079a73b98ccd999139"
+    },
+    {
+      "path": "packages/contracts/src/golden-records/golden-records.contract.ts",
+      "bytes": 623,
+      "sha256": "sha256:af36445a8eec384557512f400be3c28e2fd09718c2b1e63a5d90ccb3be8d47f9"
+    },
+    {
+      "path": "packages/contracts/src/index.ts",
+      "bytes": 138,
+      "sha256": "sha256:ac1a97fefde67d845465b07cce3e73813a458ef76b930dbea466ca7d26c16e51"
+    },
+    {
+      "path": "packages/contracts/test/golden-record-contract.test.ts",
+      "bytes": 497,
+      "sha256": "sha256:530728af4ac46c072782dad8e25fcda6fcd8cd45f21ebb6289b1e720fb62ac78"
+    },
+    {
+      "path": "packages/contracts/tsconfig.json",
+      "bytes": 258,
+      "sha256": "sha256:d7a0c92153a8bd73d698a42b2fc1f10e2212413bd94c62dee23ae29ff5298c90"
+    },
+    {
+      "path": "packages/domain/package.json",
+      "bytes": 539,
+      "sha256": "sha256:7d9180e74c14a910794f88e81703de580729e9404675d2b938439f4d788a6a47"
+    },
+    {
+      "path": "packages/domain/src/golden-records/golden-record.ts",
+      "bytes": 761,
+      "sha256": "sha256:81ce05fcc3f56f429cc81591aed4a82a36bf389004b1d5230269fa8557e931a8"
+    },
+    {
+      "path": "packages/domain/src/index.ts",
+      "bytes": 171,
+      "sha256": "sha256:74ac15e34da8dc1d9ce8826756774385470f3e129b01307b1f7ba3295700e045"
+    },
+    {
+      "path": "packages/domain/test/golden-record.test.ts",
+      "bytes": 282,
+      "sha256": "sha256:2463cc615923bb052f26568b28f2fd8588ff4bfd62dfb0cbe0db5afc44df314e"
+    },
+    {
+      "path": "packages/domain/tsconfig.json",
+      "bytes": 258,
+      "sha256": "sha256:d7a0c92153a8bd73d698a42b2fc1f10e2212413bd94c62dee23ae29ff5298c90"
+    },
+    {
+      "path": "packages/testing/package.json",
+      "bytes": 621,
+      "sha256": "sha256:e192b481c53b73984409d20ec2610ed78d0f6bf116939073100f25f39cf7c8f7"
+    },
+    {
+      "path": "packages/testing/src/fixtures/golden-records.fixture.ts",
+      "bytes": 597,
+      "sha256": "sha256:7fd3f9578dcac92626ae85c586b23a1d567e83b2318a92d47745159b66a94fed"
+    },
+    {
+      "path": "packages/testing/src/index.ts",
+      "bytes": 77,
+      "sha256": "sha256:13945e1125e7a55ee2c3c326d8c640394be1dae5115c94115374fad78fe3672d"
+    },
+    {
+      "path": "packages/testing/test/fixtures.test.ts",
+      "bytes": 308,
+      "sha256": "sha256:0bc5eefc0132670882ec4f55421d3172a0df2a53f8fc69b8e3913e00701ae852"
+    },
+    {
+      "path": "packages/testing/tsconfig.json",
+      "bytes": 258,
+      "sha256": "sha256:d7a0c92153a8bd73d698a42b2fc1f10e2212413bd94c62dee23ae29ff5298c90"
+    },
+    {
+      "path": "packages/ui/package.json",
+      "bytes": 611,
+      "sha256": "sha256:05f9ce6508587f88bf13b78fbb75b33e0718f32267fe392c257e2a1678d4f233"
+    },
+    {
+      "path": "packages/ui/src/index.ts",
+      "bytes": 125,
+      "sha256": "sha256:7e7eeaa5bfb17821000d7512365a8cdffe7ccb7771034fbd591fc23b031872c7"
+    },
+    {
+      "path": "packages/ui/src/native/index.ts",
+      "bytes": 118,
+      "sha256": "sha256:b23c42d2a6e4ec552e08479c96ed6a33fe99aa3ddd05dee0e5186300eb51f37a"
+    },
+    {
+      "path": "packages/ui/src/primitives/primitives.ts",
+      "bytes": 201,
+      "sha256": "sha256:a3d96dfcbe5a31b5b173d7e2e949670b222501f046a0ce5c5db69cec56d36185"
+    },
+    {
+      "path": "packages/ui/src/tokens/tokens.ts",
+      "bytes": 392,
+      "sha256": "sha256:123f2478e381e2a2a382ee3b2e01cbd770395750d660ff30ad97963c8ad5e8ad"
+    },
+    {
+      "path": "packages/ui/src/web/index.ts",
+      "bytes": 118,
+      "sha256": "sha256:91f4bd7b4153eb16bcd85574e37c92b84b923da942b6043f4f52209ff9438dc8"
+    },
+    {
+      "path": "packages/ui/test/tokens.test.ts",
+      "bytes": 294,
+      "sha256": "sha256:76c68c74a7ba0c9b80de0fe1b08bbb1ac13ca8c344759e55dfbe44c7f1a7a69d"
+    },
+    {
+      "path": "packages/ui/tsconfig.json",
+      "bytes": 258,
+      "sha256": "sha256:d7a0c92153a8bd73d698a42b2fc1f10e2212413bd94c62dee23ae29ff5298c90"
+    },
+    {
+      "path": "pnpm-workspace.yaml",
+      "bytes": 40,
+      "sha256": "sha256:08d75840c97ab0e72d1d9b5b84a17e47a2e06cb159a5fbec5ee0a6a56682dad7"
+    },
+    {
+      "path": "prettier.config.mjs",
+      "bytes": 167,
+      "sha256": "sha256:3bfdbd9ee7a8d7ff4cc2c244e2cd859671ef74f5f04be8bc8890558e4ac60ad6"
+    },
+    {
+      "path": "tsconfig.base.json",
+      "bytes": 1022,
+      "sha256": "sha256:6b1a163145052fd20d284439d31a841bd6e87e5b6e3db0cfbc0908658b01e91a"
+    },
+    {
+      "path": "tsconfig.json",
+      "bytes": 503,
+      "sha256": "sha256:8ac49b25bd46c1e1d5e40027f81a7ed7624ef95c476b62b7f3c451cbc9a75d37"
+    },
+    {
+      "path": "turbo.json",
+      "bytes": 655,
+      "sha256": "sha256:020da273f055540dc2fbf584265e466173cbda816620b7e7904b7fd692956dd6"
+    },
+    {
+      "path": "vibe-engineer.config.json",
+      "bytes": 410,
+      "sha256": "sha256:1b96db01814842bc595c3803e4514fa868634871e25f15be547a20f824abf1fa"
+    }
+  ]
+}

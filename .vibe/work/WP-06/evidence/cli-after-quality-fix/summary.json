@@ -1,0 +1,120 @@
+{
+  "ok": true,
+  "cases": [
+    {
+      "witness": "W-RESOLVE",
+      "slug": "cli-adapter-context-resolve",
+      "result": "passed"
+    },
+    {
+      "witness": "W-CREATE-PROVIDED",
+      "slug": "create-provided-brief",
+      "result": "passed"
+    },
+    {
+      "witness": "W-CREATE-SKIPPED",
+      "slug": "create-skipped-brief",
+      "result": "passed"
+    },
+    {
+      "witness": "W-IMPORT",
+      "slug": "import-existing-root",
+      "result": "passed"
+    },
+    {
+      "witness": "W-CONSUMER-MANIFEST",
+      "slug": "consumer-manifest-summary",
+      "result": "passed"
+    },
+    {
+      "witness": "W-CONSUMER-CONTEXT",
+      "slug": "consumer-context-validate-retrieve",
+      "result": "passed"
+    },
+    {
+      "witness": "W-MACHINE-ENVELOPE",
+      "slug": "machine-envelope-valid",
+      "result": "passed"
+    },
+    {
+      "witness": "W-NEG-NON-PI",
+      "slug": "non-pi-harness-blocked",
+      "result": "passed"
+    },
+    {
+      "witness": "W-NEG-INVALID-MANIFEST",
+      "slug": "invalid-manifest-blocks",
+      "result": "passed"
+    },
+    {
+      "witness": "W-NEG-INVALID-BRIEF",
+      "slug": "invalid-brief-blocked",
+      "result": "passed"
+    },
+    {
+      "witness": "W-NEG-OVER-INFERENCE",
+      "slug": "vague-brief-no-overinference",
+      "result": "passed"
+    },
+    {
+      "witness": "W-NEG-SKIPPED-CONFIDENT",
+      "slug": "skipped-not-confident",
+      "result": "passed"
+    },
+    {
+      "witness": "W-NEG-MISSING-PROVENANCE",
+      "slug": "provenance-labels-present",
+      "result": "passed"
+    },
+    {
+      "witness": "W-NEG-FORBIDDEN-PROMPTS",
+      "slug": "forbidden-prompts-rejected",
+      "result": "passed"
+    },
+    {
+      "witness": "W-REG-INVARIANTS",
+      "slug": "regression-invariants",
+      "result": "passed"
+    },
+    {
+      "witness": "W-RB4",
+      "slug": "default-binary-live-create",
+      "result": "passed"
+    },
+    {
+      "witness": "W-WP06-LAYOUT",
+      "slug": "starter-layout-overlay-semantics",
+      "result": "passed"
+    },
+    {
+      "witness": "W-WP06-AREAS",
+      "slug": "starter-areas-present",
+      "result": "passed"
+    },
+    {
+      "witness": "W-WP06-DEFINITION-III-DEPS",
+      "slug": "starter-no-harness-runtime-deps",
+      "result": "passed"
+    },
+    {
+      "witness": "W-WP06-IMPORT-NO-STARTER",
+      "slug": "import-does-not-materialize-starter",
+      "result": "passed"
+    },
+    {
+      "witness": "W-WP06-CONFLICT",
+      "slug": "starter-conflict-blocked",
+      "result": "passed"
+    },
+    {
+      "witness": "W-WP06-NO-HARNESS-SOURCE-COPY",
+      "slug": "starter-no-harness-source-copy",
+      "result": "passed"
+    },
+    {
+      "witness": "W-WP06-NO-PRESET-RUNTIME-IMPORT",
+      "slug": "create-no-preset-runtime-import",
+      "result": "passed"
+    }
+  ]
+}

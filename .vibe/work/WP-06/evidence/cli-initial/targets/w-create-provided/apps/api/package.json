@@ -1,0 +1,17 @@
+{
+  "name": "@vibe-engineer-starter/api",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "lint": "eslint .",
+    "format:check": "prettier --check .",
+    "test:unit": "node --test",
+    "build": "tsc -p tsconfig.json",
+    "quality:quick": "pnpm run typecheck && pnpm run lint && pnpm run format:check && pnpm run test:unit && pnpm run build",
+    "dev": "nest start --watch",
+    "db:migrate": "prisma migrate dev",
+    "db:seed": "prisma db seed",
+    "db:reset:local": "prisma migrate reset --force"
+  }
+}

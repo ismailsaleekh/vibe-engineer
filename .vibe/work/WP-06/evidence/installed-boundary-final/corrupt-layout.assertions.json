@@ -1,0 +1,28 @@
+{
+  "status": "blocked",
+  "exitCode": 3,
+  "diag": {
+    "severity": "error",
+    "code": "VE_MISSING_CONFIG",
+    "classification": "missing_prerequisite",
+    "message": "Starter layout schema version is not supported.",
+    "path": null,
+    "span": null,
+    "hint": null
+  },
+  "err": {
+    "code": "VE_MISSING_CONFIG",
+    "classification": "missing_prerequisite",
+    "retryable": false,
+    "blocking": true,
+    "message": "Starter layout schema version is not supported.",
+    "details": {
+      "starterTemplateCode": "VE_STARTER_TEMPLATE_SCHEMA_MISMATCH",
+      "layoutPath": "/private/tmp/wp06-installed-final-bgMB7l/node_modules/vibe-engineer/templates/starter.layout.json",
+      "expected": "vibe-engineer.templates.starter-layout.v1",
+      "actual": "corrupt-schema-for-wp06-negative"
+    }
+  },
+  "targetExists": false,
+  "targetFiles": []
+}

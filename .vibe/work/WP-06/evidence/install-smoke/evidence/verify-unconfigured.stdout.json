@@ -1,0 +1,56 @@
+{
+  "schemaVersion": "vibe-engineer.cli.result.v1",
+  "invocation": {
+    "id": "e794e8b5-acc5-4a36-9db6-38899603cfff",
+    "command": "verify",
+    "argv": [
+      "verify",
+      "--project-root",
+      "<value>"
+    ],
+    "projectRoot": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp05-install-smoke-qV9CKC",
+    "configPath": null,
+    "startedAt": "2026-06-28T00:46:53.220Z",
+    "endedAt": "2026-06-28T00:46:53.221Z"
+  },
+  "status": "blocked",
+  "exitCode": 3,
+  "payload": {
+    "kind": "config_load_result",
+    "schemaVersion": "vibe-engineer.cli.payload.v1",
+    "data": {
+      "ok": false,
+      "schemaId": "vibe-engineer.config.v1",
+      "schemaVersion": "1.0.0",
+      "classification": "missing_prerequisite"
+    }
+  },
+  "diagnostics": [
+    {
+      "severity": "error",
+      "code": "VE_MISSING_CONFIG",
+      "classification": "missing_prerequisite",
+      "message": "Required config file is missing.",
+      "path": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp05-install-smoke-qV9CKC/vibe-engineer.config.json",
+      "span": null,
+      "hint": null
+    }
+  ],
+  "artifacts": [],
+  "errors": [
+    {
+      "code": "VE_MISSING_CONFIG",
+      "classification": "missing_prerequisite",
+      "retryable": false,
+      "blocking": true,
+      "message": "Required config file is missing.",
+      "details": {
+        "issueCodes": [
+          "MISSING_CONFIG"
+        ],
+        "configPath": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp05-install-smoke-qV9CKC/vibe-engineer.config.json",
+        "projectRoot": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp05-install-smoke-qV9CKC"
+      }
+    }
+  ]
+}

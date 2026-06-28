@@ -1,0 +1,98 @@
+{
+  "positive": {
+    "ok": true,
+    "envelope": {
+      "schemaVersion": "vibe-engineer.cli.result.v1",
+      "invocation": {
+        "id": "7c16699f-94e8-49e5-bb20-fdb96bdd6313",
+        "command": "help",
+        "argv": [
+          "help"
+        ],
+        "projectRoot": null,
+        "configPath": null,
+        "startedAt": "2026-06-28T00:46:51.731Z",
+        "endedAt": "2026-06-28T00:46:51.732Z"
+      },
+      "status": "success",
+      "exitCode": 0,
+      "payload": {
+        "kind": "help_result",
+        "schemaVersion": "vibe-engineer.cli.payload.v1",
+        "data": {
+          "commands": [
+            {
+              "id": "help",
+              "visibility": "foundation",
+              "description": "List I-02A foundation commands."
+            },
+            {
+              "id": "version",
+              "visibility": "foundation",
+              "description": "Report package version."
+            },
+            {
+              "id": "create",
+              "visibility": "starter",
+              "description": "Create a new vibe-engineer starter project with the selected pi agentic harness and DL-17 bootstrap context."
+            },
+            {
+              "id": "import",
+              "visibility": "starter",
+              "description": "Import an existing project into vibe-engineer management with the selected pi agentic harness and DL-17 bootstrap context."
+            },
+            {
+              "id": "doctor",
+              "visibility": "debug/diagnostic",
+              "description": "Inspect read-only vibe-engineer project health through config-backed checks."
+            },
+            {
+              "id": "config",
+              "visibility": "debug/diagnostic",
+              "description": "Inspect or validate vibe-engineer configuration through the public config provider."
+            },
+            {
+              "id": "verify",
+              "visibility": "implementation",
+              "description": "Run an approved Implementation Plan through the verification runner and emit CLI result evidence."
+            },
+            {
+              "id": "security",
+              "visibility": "implementation",
+              "description": "Run fail-closed security and safety policy gates through @vibe-engineer/security."
+            },
+            {
+              "id": "schematic",
+              "visibility": "skill/agent primitive",
+              "description": "Plan, dry-run, or apply a manifest-driven schematic."
+            }
+          ],
+          "machineOnly": true
+        }
+      },
+      "diagnostics": [],
+      "artifacts": [],
+      "errors": []
+    }
+  },
+  "mutations": {
+    "dropStatus": {
+      "ok": false,
+      "errors": [
+        "status is invalid"
+      ]
+    },
+    "corruptExit": {
+      "ok": false,
+      "errors": [
+        "success exitCode must be 0"
+      ]
+    },
+    "dropSchema": {
+      "ok": false,
+      "errors": [
+        "schemaVersion is invalid"
+      ]
+    }
+  }
+}

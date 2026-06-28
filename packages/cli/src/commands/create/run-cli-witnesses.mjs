@@ -4,8 +4,9 @@
 // I-14A manifest/matrix, the REAL context package, and REAL on-disk generated artifacts.
 // Located under packages/cli/src/commands/create/ so bare workspace imports resolve from the cli context.
 import assert from "node:assert/strict";
-import { existsSync, mkdirSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
-import { dirname, resolve } from "node:path";
+import { createHash } from "node:crypto";
+import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
+import { dirname, resolve, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { createCommandLoader } from "../../command-loader/loader.js";
@@ -15,7 +16,7 @@ import { importCommand } from "../import/index.ts";
 
 // Real-boundary resolvability (W-RESOLVE-CLI-ADAPTER + W-RESOLVE-CLI-CONTEXT).
 import { getPiAdapterCapabilityMatrix, isAdapterManifestSelectable, PI_ADAPTER_ID, PI_ADAPTER_CAPABILITY_SCHEMA_VERSION } from "@vibe-engineer/adapter-pi/capabilities";
-import { getPiGeneratedFileManifest, PI_GENERATED_FILE_MANIFEST_SCHEMA_VERSION, createPiDownstreamManifestSummary } from "@vibe-engineer/adapter-pi/generated-file-manifest";
+import { CREATE_PI_ASSET_FAMILIES, getPiGeneratedFileManifest, PI_GENERATED_FILE_MANIFEST_SCHEMA_VERSION, createPiDownstreamManifestSummary, selectCreatePiAssets, validateCreatePiAssetWritePlan } from "@vibe-engineer/adapter-pi/generated-file-manifest";
 import { validateCapabilityMatrix, validateGeneratedFileManifest } from "@vibe-engineer/adapter-pi/schema";
 import { validateContextProject, retrieveContextClosure, CONTEXT_SCHEMA_VERSION } from "@vibe-engineer/context";
 import { createDefaultVibeConfig } from "@vibe-engineer/config";
@@ -81,6 +82,185 @@ async function writeCase(nn, id, slug, fn) {
 
 function readText(p) { return readFileSync(p, "utf8"); }
 function loadResultData(env) { return env && env.payload && env.payload.kind === "create_result" ? env.payload.data : null; }
+function parseWitnessJson(value) { return value; }
+function readJsonFile(p) { return parseWitnessJson(JSON.parse(readText(p))); }
+function sha256Buffer(buffer) { return `sha256:${createHash("sha256").update(buffer).digest("hex")}`; }
+function sha256File(p) { return sha256Buffer(readFileSync(p)); }
+function walkFiles(root) {
+  const out = [];
+  if (!existsSync(root)) return out;
+  for (const ent of readdirSync(root, { withFileTypes: true })) {
+    const p = resolve(root, ent.name);
+    if (ent.isDirectory()) out.push(...walkFiles(p));
+    else if (ent.isFile()) out.push(p);
+  }
+  return out;
+}
+const starterLayoutPath = resolve(repoRoot, "packages/cli/templates/starter.layout.json");
+const starterTemplateRoot = resolve(repoRoot, "packages/cli/templates/starter");
+const starterLayout = readJsonFile(starterLayoutPath);
+const starterOverlayPaths = new Set(["vibe-engineer.config.json", ".vibe/context/manifest.json"]);
+const starterSubstitutionPaths = new Set(["package.json"]);
+function relFrom(root, p) { return p.slice(root.length + 1).split(sep).join("/"); }
+function assertJsonEqualExceptRootPackageName(generatedPath) {
+  const template = readJsonFile(resolve(starterTemplateRoot, "package.json"));
+  const generated = readJsonFile(generatedPath);
+  assert.equal(generated.name, "atlas-tracker");
+  const normalizedGenerated = { ...generated, name: template.name };
+  assert.deepEqual(normalizedGenerated, template);
+}
+function assertStarterLayout(targetRoot, projectSlug) {
+  assert.equal(starterLayout.schemaVersion, "vibe-engineer.templates.starter-layout.v1");
+  assert.equal(starterLayout.fileCount, starterLayout.files.length);
+  const missing = [];
+  const hashMismatches = [];
+  for (const entry of starterLayout.files) {
+    const targetPath = resolve(targetRoot, ...entry.path.split("/"));
+    if (!existsSync(targetPath)) { missing.push(entry.path); continue; }
+    if (starterOverlayPaths.has(entry.path)) continue;
+    if (starterSubstitutionPaths.has(entry.path)) continue;
+    const st = statSync(targetPath);
+    const hash = sha256File(targetPath);
+    if (st.size !== entry.bytes || hash !== entry.sha256) hashMismatches.push({ path: entry.path, expectedBytes: entry.bytes, actualBytes: st.size, expectedSha256: entry.sha256, actualSha256: hash });
+  }
+  assert.deepEqual(missing, []);
+  assert.deepEqual(hashMismatches, []);
+  const config = readJsonFile(resolve(targetRoot, "vibe-engineer.config.json"));
+  const templateConfig = readJsonFile(resolve(starterTemplateRoot, "vibe-engineer.config.json"));
+  assert.deepEqual(config.starter, templateConfig.starter);
+  assert.equal(config.agenticHarness, "pi");
+  assert.equal(config.maxParallelAgents, 8);
+  assert.equal(config.maxValidationFixIterations, 3);
+  assert.equal(config.agenticWorkPackageTargetHours, 6);
+  assert.equal(typeof config.verification, "object");
+  assert.equal(typeof config.uiVerification, "object");
+  assert.equal(typeof config.agentRegistry, "object");
+  assert.deepEqual(readJsonFile(resolve(targetRoot, ".vibe/context/manifest.json")), readJsonFile(resolve(starterTemplateRoot, ".vibe/context/manifest.json")));
+  assertJsonEqualExceptRootPackageName(resolve(targetRoot, "package.json"));
+  assert.equal(readJsonFile(resolve(targetRoot, "package.json")).name, projectSlug);
+  return { checkedFiles: starterLayout.files.length, overlays: [...starterOverlayPaths], substitutions: [...starterSubstitutionPaths] };
+}
+function packageJsonFiles(root) { return walkFiles(root).filter((file) => file.endsWith(`${sep}package.json`) || file === resolve(root, "package.json")); }
+function assertDefinitionThreeDependencies(targetRoot) {
+  const harnessScopedHits = [];
+  const badVibeEngineerPlacements = [];
+  for (const file of packageJsonFiles(targetRoot)) {
+    const pkg = readJsonFile(file);
+    for (const section of ["dependencies", "peerDependencies", "optionalDependencies", "devDependencies"]) {
+      const deps = pkg[section] && typeof pkg[section] === "object" ? pkg[section] : {};
+      for (const dep of Object.keys(deps)) {
+        if (dep.startsWith("@vibe-engineer/")) harnessScopedHits.push(`${relFrom(targetRoot, file)}:${section}:${dep}`);
+        if (dep === "vibe-engineer" && section !== "devDependencies") badVibeEngineerPlacements.push(`${relFrom(targetRoot, file)}:${section}:${dep}`);
+      }
+    }
+  }
+  assert.deepEqual(harnessScopedHits, []);
+  assert.deepEqual(badVibeEngineerPlacements, []);
+  return { packageJsonCount: packageJsonFiles(targetRoot).length, harnessScopedHits, badVibeEngineerPlacements };
+}
+function assertNoHarnessSourceCopied(targetRoot) {
+  const generatedHashes = new Map();
+  for (const file of walkFiles(targetRoot)) {
+    generatedHashes.set(sha256File(file), relFrom(targetRoot, file));
+  }
+  const sourceRoots = [
+    "packages/cli/src",
+    "packages/adapters/pi/src",
+    "packages/artifacts/src",
+    "packages/config/src",
+    "packages/context/src",
+    "packages/security/src",
+    "packages/schematics/src",
+    "packages/verification/src",
+    "packages/orchestration/src",
+    "packages/skills/src",
+  ].map((p) => resolve(repoRoot, p)).filter((p) => existsSync(p));
+  const matches = [];
+  for (const sourceRoot of sourceRoots) {
+    for (const sourceFile of walkFiles(sourceRoot)) {
+      const match = generatedHashes.get(sha256File(sourceFile));
+      if (match) matches.push({ generated: match, source: relFrom(repoRoot, sourceFile) });
+    }
+  }
+  assert.deepEqual(matches, []);
+  return { sourceRoots: sourceRoots.map((p) => relFrom(repoRoot, p)), generatedFilesChecked: generatedHashes.size };
+}
+function assertNoPresetRuntimeImports() {
+  const forbidden = [
+    "@vibe-engineer/" + "preset",
+    "@vibe-engineer/" + "infra-pulumi",
+    "preset-" + "nest-react-rn",
+    "preset-" + "typescript",
+  ];
+  const hits = [];
+  for (const file of walkFiles(resolve(repoRoot, "packages/cli/src/commands/create"))) {
+    if (!file.endsWith(".ts") && !file.endsWith(".mjs")) continue;
+    const text = readText(file);
+    for (const needle of forbidden) {
+      if (text.includes(needle)) hits.push({ file: relFrom(repoRoot, file), needle });
+    }
+  }
+  assert.deepEqual(hits, []);
+  return { filesScanned: walkFiles(resolve(repoRoot, "packages/cli/src/commands/create")).length, hits };
+}
+const piTemplateRoot = resolve(repoRoot, "packages/cli/templates/pi/runtime-fixtures");
+const piForbiddenDomainMarkers = ["e" + "commerce", "fash" + "ion", "inven" + "tory", "ten" + "ant", "check" + "out", "tele" + "gram", "insta" + "gram", "bi" + "llz", "phar" + "macy", "ai-" + "pipeline", "/us" + "ers/"];
+function assertPiHarnessAssets(targetRoot, envelope = null) {
+  const descriptors = selectCreatePiAssets();
+  const expectedFamilies = [...new Set(descriptors.map((asset) => asset.familyId))].sort();
+  assert.deepEqual(expectedFamilies, [...CREATE_PI_ASSET_FAMILIES].sort());
+  assert.equal(descriptors.length, 12);
+  const fileRecords = [];
+  for (const descriptor of descriptors) {
+    const targetPath = resolve(targetRoot, ...descriptor.path.split("/"));
+    const templatePath = resolve(piTemplateRoot, ...descriptor.path.split("/"));
+    assert.equal(existsSync(targetPath), true, `missing pi asset ${descriptor.path}`);
+    assert.equal(existsSync(templatePath), true, `missing shipped pi template ${descriptor.path}`);
+    const targetContent = readText(targetPath);
+    const templateContent = readText(templatePath);
+    assert.equal(targetContent.length > 0, true, `empty pi asset ${descriptor.path}`);
+    assert.equal(targetContent, templateContent, `pi asset ${descriptor.path} differs from shipped template`);
+    const lower = targetContent.toLowerCase();
+    for (const marker of piForbiddenDomainMarkers) {
+      assert.equal(lower.includes(marker), false, `pi asset ${descriptor.path} contains forbidden marker ${marker}`);
+    }
+    fileRecords.push({ path: descriptor.path, familyId: descriptor.familyId, kind: descriptor.kind, sha256: sha256File(targetPath) });
+  }
+  assert.equal(existsSync(resolve(targetRoot, ".pi/extensions")), false, "pi extensions must remain blocked");
+  assert.equal(existsSync(resolve(targetRoot, ".vibe/harness/pi-runtime.json")), false, "pi runtime harness fixture config must not be copied by WP-07");
+  const packageJsonPath = resolve(targetRoot, "package.json");
+  if (existsSync(packageJsonPath)) {
+    const pkg = readJsonFile(packageJsonPath);
+    assert.equal(Object.prototype.hasOwnProperty.call(pkg, "pi"), false, "pi package manifest key must not be copied");
+  }
+  if (envelope !== null) {
+    const data = loadResultData(envelope);
+    assert.deepEqual(data.harnessAssets.piAssetFamilies, [...CREATE_PI_ASSET_FAMILIES]);
+    assert.equal(data.harnessAssets.skillCount, 6);
+    assert.equal(data.harnessAssets.promptCount, 6);
+    assert.equal(data.harnessAssets.extensionsPolicy, "blocked");
+    assert.equal(data.harnessAssets.manifestValidation, "valid");
+    assert.equal(data.generatedFiles.piAssets.length, 12);
+  }
+  return {
+    expectedCount: descriptors.length,
+    skillCount: descriptors.filter((asset) => asset.kind === "skill").length,
+    promptCount: descriptors.filter((asset) => asset.kind === "prompt-template").length,
+    families: expectedFamilies,
+    sha256: fileRecords,
+  };
+}
+function assertCreatePiAssetManifestSelection() {
+  const descriptors = selectCreatePiAssets();
+  const families = [...new Set(descriptors.map((asset) => asset.familyId))].sort();
+  assert.deepEqual(families, ["pi-prompt-templates", "pi-skill-files"]);
+  const excluded = ["pi-extensions", "pi-package-manifest", "context-files", "harness-config"].filter((familyId) => families.includes(familyId));
+  assert.deepEqual(excluded, []);
+  assert.equal(descriptors.filter((asset) => asset.kind === "skill").length, 6);
+  assert.equal(descriptors.filter((asset) => asset.kind === "prompt-template").length, 6);
+  assert.equal(descriptors.every((asset) => asset.path.startsWith(".pi/")), true);
+  return { families, excluded, count: descriptors.length };
+}
 
 // --- W-RESOLVE-CLI-ADAPTER + W-RESOLVE-CLI-CONTEXT (real-boundary resolvability) ---
 await writeCase(1, "W-RESOLVE", "cli-adapter-context-resolve", async () => {
@@ -128,8 +308,9 @@ await writeCase(2, "W-CREATE-PROVIDED", "create-provided-brief", async () => {
   // result-file atomic write + reread equivalence
   assert.equal(existsSync(r.resultFile), true);
   assert.deepEqual(JSON.parse(readText(r.resultFile)), r.envelope);
+  const piAssets = assertPiHarnessAssets(r.targetRoot, r.envelope);
   providedEnv = r.envelope;
-  return { witness: "W-CREATE-PROVIDED", status: r.envelope.status, briefStatus: data.briefStatus, harnessConfig: data.harnessConfig };
+  return { witness: "W-CREATE-PROVIDED", status: r.envelope.status, briefStatus: data.briefStatus, harnessConfig: data.harnessConfig, piAssets: { skillCount: piAssets.skillCount, promptCount: piAssets.promptCount, families: piAssets.families } };
 });
 
 // --- W-CREATE-SKIPPED ---
@@ -161,7 +342,8 @@ await writeCase(4, "W-IMPORT", "import-existing-root", async () => {
   assert.equal(data.selectedHarness, "pi");
   assert.equal(existsSync(resolve(r.targetRoot, "vibe-engineer.config.json")), true);
   assert.equal(existsSync(resolve(r.targetRoot, "AGENTS.md")), true);
-  return { witness: "W-IMPORT", status: r.envelope.status, mode: data.mode };
+  const piAssets = assertPiHarnessAssets(r.targetRoot, r.envelope);
+  return { witness: "W-IMPORT", status: r.envelope.status, mode: data.mode, piAssets: { skillCount: piAssets.skillCount, promptCount: piAssets.promptCount, families: piAssets.families } };
 });
 
 // --- W-CONSUMER-MANIFEST (real adapter-manifest consumer of generated harness-config) ---
@@ -221,6 +403,7 @@ await writeCase(8, "W-NEG-NON-PI", "non-pi-harness-blocked", async () => {
     const r = await dispatchCreate(`w-neg-npi-${harness}`, ["--project-name", "X", "--agentic-harness", harness, "--brief", "y"]);
     assert.equal(validateCliResultEnvelope(r.envelope).ok, true);
     assert.equal(r.envelope.status, "blocked", `${harness} did not block`);
+    assert.equal(existsSync(resolve(r.targetRoot, ".pi")), false, `${harness} wrote .pi assets despite being blocked`);
     results[harness] = r.envelope.status;
   }
   return { witness: "W-NEG-NON-PI", allBlocked: results };
@@ -314,16 +497,146 @@ await writeCase(15, "W-REG-INVARIANTS", "regression-invariants", async () => {
   return { witness: "W-REG-INVARIANTS", name: "vibe-engineer", sixSkills: true, artifactFlow: true, configDefaultsUntouched: true };
 });
 
-// --- W-RB4 (shipped-binary dispatch pending-live/BLOCKED) + live pi runtime ---
-await writeCase(16, "W-RB4", "default-binary-pending-live", async () => {
-  // The shipped default binary uses I-02A createCommandLoader() with NO commands registered.
-  const defaultLoader = createCommandLoader([]);
+// --- W-RB4 (default-binary dispatch only; WP-07 live-pi runtime proof pending) ---
+// WP-03 made `create` a registered v0.1 command: the default createCommandLoader() (no args) now
+// includes createCommand, and `create` was removed from LATER_COMMANDS. So the default loader
+// routes `create` to the live createCommand (own typed invalid/missing-arg envelope), NOT the
+// loader's UnsupportedOperation branch and NOT the Unknown-command branch. The exact create error
+// depends on args/harness state; the routing predicate (mirrors testing/run-witnesses.mjs
+// live-command-create) is: classification != unsupported_operation AND code != VE_UNSUPPORTED_OPERATION.
+// This WP-06 witness does not launch pi; the live-pi runtime proof is intentionally gated to WP-07.
+await writeCase(16, "W-RB4", "default-binary-live-create", async () => {
+  const defaultLoader = createCommandLoader();
   const createDispatch = await defaultLoader.dispatch("create", ["--non-interactive"], { invocation: invocation("create"), packageJsonPath: resolve(repoRoot, "packages/cli/package.json"), config: null });
   assert.equal(createDispatch.envelope.status, "blocked");
   assert.equal(createDispatch.envelope.payload.kind, "cli_invocation_error");
-  const rb4Code = createDispatch.envelope.errors && createDispatch.envelope.errors[0] && createDispatch.envelope.errors[0].code;
-  assert.equal(rb4Code, "VE_UNSUPPORTED_OPERATION");
-  return { witness: "W-RB4", status: "pending-live/BLOCKED", reason: "Shipped default binary uses I-02A default createCommandLoader() and does not register create/import without a serialized I-02A handoff; no loader/package edit is licensed.", livePiRuntime: "pending-live/BLOCKED" };
+  const rb4Err = createDispatch.envelope.errors && createDispatch.envelope.errors[0];
+  const rb4Code = rb4Err && rb4Err.code;
+  const rb4Classification = rb4Err && rb4Err.classification;
+  assert.notEqual(rb4Classification, "unsupported_operation");
+  assert.notEqual(rb4Code, "VE_UNSUPPORTED_OPERATION");
+  return { witness: "W-RB4", defaultLoaderCreateDispatch: "live", reason: "WP-03 registers create in the default createCommandLoader(); create routes to the live createCommand (not UnsupportedOperation/Unknown). WP-06 does not launch pi; live-pi runtime proof is gated to WP-07.", classification: rb4Classification, code: rb4Code, livePiRuntime: "pending-live", livePiRuntimeProof: "not-run-in-WP-06" };
+});
+
+// --- W-P1/W-P2 (WP-06 full starter layout + overlay/substitution semantics) ---
+await writeCase(17, "W-WP06-LAYOUT", "starter-layout-overlay-semantics", async () => {
+  const targetRoot = resolve(args.evidenceRoot, "targets", "w-create-provided");
+  const layout = assertStarterLayout(targetRoot, "atlas-tracker");
+  return { witness: "W-WP06-LAYOUT", ...layout };
+});
+
+// --- W-P2 (areas present) ---
+await writeCase(18, "W-WP06-AREAS", "starter-areas-present", async () => {
+  const targetRoot = resolve(args.evidenceRoot, "targets", "w-create-provided");
+  const required = [
+    "apps/api", "apps/web", "apps/mobile",
+    "packages/domain", "packages/contracts", "packages/api-client", "packages/config", "packages/testing", "packages/ui",
+    ".tooling", ".vibe", "docs",
+    "package.json", "pnpm-workspace.yaml", "tsconfig.base.json", "turbo.json", "eslint.config.mjs", "prettier.config.mjs", "vibe-engineer.config.json", ".env.example",
+  ];
+  const missing = required.filter((entry) => !existsSync(resolve(targetRoot, ...entry.split("/"))));
+  assert.deepEqual(missing, []);
+  return { witness: "W-WP06-AREAS", requiredCount: required.length, missing };
+});
+
+// --- W-P3/W-P4 (definition iii dependency proof) ---
+await writeCase(19, "W-WP06-DEFINITION-III-DEPS", "starter-no-harness-runtime-deps", async () => {
+  const targetRoot = resolve(args.evidenceRoot, "targets", "w-create-provided");
+  return { witness: "W-WP06-DEFINITION-III-DEPS", ...assertDefinitionThreeDependencies(targetRoot) };
+});
+
+// --- W-R2 (import mode unchanged: no starter tree materialization) ---
+await writeCase(20, "W-WP06-IMPORT-NO-STARTER", "import-does-not-materialize-starter", async () => {
+  const targetRoot = resolve(args.evidenceRoot, "targets", "w-import");
+  const forbidden = ["apps/api", "apps/web", "apps/mobile", "packages/domain", ".tooling", "docs/reference/starter.md"];
+  const present = forbidden.filter((entry) => existsSync(resolve(targetRoot, ...entry.split("/"))));
+  assert.deepEqual(present, []);
+  assert.equal(existsSync(resolve(targetRoot, "vibe-engineer.config.json")), true);
+  return { witness: "W-WP06-IMPORT-NO-STARTER", checkedAbsent: forbidden.length, present };
+});
+
+// --- W-N2 (conflicting target-root fails closed; no clobber) ---
+await writeCase(21, "W-WP06-CONFLICT", "starter-conflict-blocked", async () => {
+  const targetRoot = resolve(args.evidenceRoot, "targets", "w-conflict");
+  rmSync(targetRoot, { recursive: true, force: true });
+  mkdirSync(targetRoot, { recursive: true });
+  const marker = resolve(targetRoot, "README.md");
+  writeFileSync(marker, "pre-existing user file\n", "utf8");
+  const loader = createCommandLoader([createCommand]);
+  const result = await loader.dispatch("create", ["--target-root", targetRoot, "--project-name", "Conflict Case", "--agentic-harness", "pi", "--json", "--non-interactive"], { invocation: invocation("create"), packageJsonPath: resolve(repoRoot, "packages/cli/package.json"), config: null });
+  assert.equal(validateCliResultEnvelope(result.envelope).ok, true);
+  assert.equal(result.envelope.status, "blocked");
+  assert.equal(result.envelope.errors[0].code, "VE_INVALID_INVOCATION");
+  assert.equal(result.envelope.errors[0].classification, "write_conflict");
+  assert.equal(result.envelope.errors[0].details.starterTemplateCode, "VE_STARTER_TEMPLATE_TARGET_CONFLICT");
+  assert.equal(readText(marker), "pre-existing user file\n");
+  assert.equal(existsSync(resolve(targetRoot, "apps")), false);
+  return { witness: "W-WP06-CONFLICT", status: result.envelope.status, code: result.envelope.errors[0].code, classification: result.envelope.errors[0].classification, starterTemplateCode: result.envelope.errors[0].details.starterTemplateCode, markerPreserved: true };
+});
+
+// --- W-N3 (definition iii: no harness implementation source copied verbatim) ---
+await writeCase(22, "W-WP06-NO-HARNESS-SOURCE-COPY", "starter-no-harness-source-copy", async () => {
+  const targetRoot = resolve(args.evidenceRoot, "targets", "w-create-provided");
+  return { witness: "W-WP06-NO-HARNESS-SOURCE-COPY", ...assertNoHarnessSourceCopied(targetRoot) };
+});
+
+// --- W-N4 (no preset/private runtime import in create sources) ---
+await writeCase(23, "W-WP06-NO-PRESET-RUNTIME-IMPORT", "create-no-preset-runtime-import", async () => {
+  return { witness: "W-WP06-NO-PRESET-RUNTIME-IMPORT", ...assertNoPresetRuntimeImports() };
+});
+
+// --- W-P1/W-P2/W-N2/W-N3/W-R4 (WP-07 pi native assets from shipped templates) ---
+await writeCase(24, "W-WP07-PI-ASSETS", "pi-assets-create-list", async () => {
+  const targetRoot = resolve(args.evidenceRoot, "targets", "w-create-provided");
+  const assets = assertPiHarnessAssets(targetRoot, providedEnv);
+  return { witness: "W-WP07-PI-ASSETS", ...assets };
+});
+
+// --- W-P2 (manifest selection is exactly skill+prompt families; I-15A and blocked/deferred families excluded) ---
+await writeCase(25, "W-WP07-MANIFEST-SELECTION", "pi-assets-manifest-selection", async () => {
+  return { witness: "W-WP07-MANIFEST-SELECTION", ...assertCreatePiAssetManifestSelection() };
+});
+
+// --- W-N4 (import conflict: different existing .pi asset blocks; no silent clobber and no partial pi write) ---
+await writeCase(26, "W-WP07-IMPORT-CONFLICT", "pi-assets-import-conflict", async () => {
+  const targetRoot = resolve(args.evidenceRoot, "targets", "w-wp07-import-conflict");
+  rmSync(targetRoot, { recursive: true, force: true });
+  const conflictingPath = resolve(targetRoot, ".pi/skills/brainstorm/SKILL.md");
+  mkdirSync(dirname(conflictingPath), { recursive: true });
+  writeFileSync(conflictingPath, "different existing skill content\n", "utf8");
+  const loader = createCommandLoader([importCommand]);
+  const result = await loader.dispatch("import", ["--target-root", targetRoot, "--project-name", "Pi Conflict", "--agentic-harness", "pi", "--json", "--non-interactive"], { invocation: invocation("import"), packageJsonPath: resolve(repoRoot, "packages/cli/package.json"), config: null });
+  assert.equal(validateCliResultEnvelope(result.envelope).ok, true);
+  assert.equal(result.envelope.status, "blocked");
+  assert.equal(result.envelope.payload.data.stage, "pi_asset_validation");
+  assert.equal(result.envelope.errors[0].classification, "write_conflict");
+  assert.equal(readText(conflictingPath), "different existing skill content\n");
+  assert.equal(existsSync(resolve(targetRoot, ".pi/prompts/vibe-brainstorm.md")), false, "pi prompt should not be partially written after validation conflict");
+  return { witness: "W-WP07-IMPORT-CONFLICT", status: result.envelope.status, stage: result.envelope.payload.data.stage, classification: result.envelope.errors[0].classification, conflictingFilePreserved: true };
+});
+
+// --- W-N4/P3 (import idempotency: identical existing .pi assets are allowed in import mode) ---
+await writeCase(27, "W-WP07-IMPORT-IDEMPOTENT", "pi-assets-import-identical-overwrite", async () => {
+  const first = await dispatchImport("w-wp07-import-idempotent", ["--project-name", "Pi Idempotent", "--agentic-harness", "pi"]);
+  assert.equal(first.envelope.status, "success");
+  const secondLoader = createCommandLoader([importCommand]);
+  const second = await secondLoader.dispatch("import", ["--target-root", first.targetRoot, "--project-name", "Pi Idempotent", "--agentic-harness", "pi", "--json", "--non-interactive"], { invocation: invocation("import"), packageJsonPath: resolve(repoRoot, "packages/cli/package.json"), config: null });
+  assert.equal(validateCliResultEnvelope(second.envelope).ok, true);
+  assert.equal(second.envelope.status, "success");
+  const assets = assertPiHarnessAssets(first.targetRoot, second.envelope);
+  return { witness: "W-WP07-IMPORT-IDEMPOTENT", status: second.envelope.status, conflictPolicy: loadResultData(second.envelope).harnessAssets.conflictPolicy, skillCount: assets.skillCount, promptCount: assets.promptCount };
+});
+
+// --- W-N5 (validator-level path-pattern violation fails closed before writes) ---
+await writeCase(28, "W-WP07-VALIDATOR-NEGATIVE", "pi-assets-validator-path-negative", async () => {
+  const manifest = getPiGeneratedFileManifest();
+  const capabilityMatrix = getPiAdapterCapabilityMatrix();
+  const descriptors = selectCreatePiAssets({ manifest, capabilityMatrix });
+  const badWrite = { ...descriptors[0], path: ".pi/extensions/not-allowed.ts", content: "not allowed\n" };
+  const validation = validateCreatePiAssetWritePlan({ manifest, capabilityMatrix, writes: [badWrite], existingPaths: [{ path: badWrite.path, kind: "missing" }], conflictPolicy: "fail-on-conflict" });
+  assert.equal(validation.valid, false);
+  assert.equal(validation.issues.some((item) => item.code === "write_path_not_in_create_pi_asset_manifest" || item.code === "create_pi_asset_write_count_mismatch"), true);
+  return { witness: "W-WP07-VALIDATOR-NEGATIVE", valid: validation.valid, issueCodes: validation.issues.map((item) => item.code) };
 });
 
 // --- Refresh committed examples fixtures from REAL command output (if requested) ---

@@ -1,0 +1,383 @@
+{
+  "schemaVersion": "wp05.release.install-smoke.summary/v1",
+  "generatedAt": "2026-06-28T00:46:49.238Z",
+  "repoRoot": "/Users/lizavasilyeva/work/vibe-engineer",
+  "packDir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/WP-06/evidence/pack-final",
+  "evidenceDir": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/WP-06/evidence/install-smoke/evidence",
+  "nodeVersion": "v24.16.0",
+  "cases": [
+    {
+      "id": "help",
+      "argv": [
+        "help"
+      ],
+      "exitCode": 0,
+      "status": "success",
+      "payloadKind": "help_result",
+      "diagCodes": [],
+      "diagClassifications": [],
+      "expect": {
+        "exit": 0,
+        "status": "success",
+        "payloadKind": "help_result",
+        "nineCommands": true
+      }
+    },
+    {
+      "id": "version",
+      "argv": [
+        "version"
+      ],
+      "exitCode": 0,
+      "status": "success",
+      "payloadKind": "version_result",
+      "diagCodes": [],
+      "diagClassifications": [],
+      "expect": {
+        "exit": 0,
+        "status": "success",
+        "payloadKind": "version_result",
+        "version": "0.1.0"
+      }
+    },
+    {
+      "id": "create-success",
+      "argv": [
+        "create",
+        "--target-root",
+        "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp05-install-smoke-qV9CKC/create-output",
+        "--non-interactive",
+        "--result-file",
+        "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp05-install-smoke-qV9CKC/create-output/result.json"
+      ],
+      "exitCode": 0,
+      "status": "success",
+      "payloadKind": "create_result",
+      "diagCodes": [],
+      "diagClassifications": [],
+      "expect": {
+        "exit": 0,
+        "status": "success",
+        "payloadKind": "create_result",
+        "stage": "complete"
+      }
+    },
+    {
+      "id": "create-no-target",
+      "argv": [
+        "create"
+      ],
+      "exitCode": 2,
+      "status": "blocked",
+      "payloadKind": "cli_invocation_error",
+      "diagCodes": [
+        "VE_MISSING_FLAG_VALUE"
+      ],
+      "diagClassifications": [
+        "invalid_invocation"
+      ],
+      "expect": {
+        "exit": 2,
+        "status": "blocked",
+        "code": "VE_MISSING_FLAG_VALUE",
+        "classification": "invalid_invocation"
+      }
+    },
+    {
+      "id": "context-deferred",
+      "argv": [
+        "context"
+      ],
+      "exitCode": 2,
+      "status": "blocked",
+      "payloadKind": "cli_invocation_error",
+      "diagCodes": [
+        "VE_UNSUPPORTED_OPERATION"
+      ],
+      "diagClassifications": [
+        "unsupported_operation"
+      ],
+      "expect": {
+        "exit": 2,
+        "status": "blocked",
+        "code": "VE_UNSUPPORTED_OPERATION",
+        "classification": "unsupported_operation"
+      }
+    },
+    {
+      "id": "registry-deferred",
+      "argv": [
+        "registry"
+      ],
+      "exitCode": 2,
+      "status": "blocked",
+      "payloadKind": "cli_invocation_error",
+      "diagCodes": [
+        "VE_UNSUPPORTED_OPERATION"
+      ],
+      "diagClassifications": [
+        "unsupported_operation"
+      ],
+      "expect": {
+        "exit": 2,
+        "status": "blocked",
+        "code": "VE_UNSUPPORTED_OPERATION",
+        "classification": "unsupported_operation"
+      }
+    },
+    {
+      "id": "build-unknown",
+      "argv": [
+        "build"
+      ],
+      "exitCode": 2,
+      "status": "blocked",
+      "payloadKind": "cli_invocation_error",
+      "diagCodes": [
+        "VE_INVALID_INVOCATION"
+      ],
+      "diagClassifications": [
+        "invalid_invocation"
+      ],
+      "expect": {
+        "exit": 2,
+        "status": "blocked",
+        "code": "VE_INVALID_INVOCATION",
+        "classification": "invalid_invocation"
+      }
+    },
+    {
+      "id": "ship-unknown",
+      "argv": [
+        "ship"
+      ],
+      "exitCode": 2,
+      "status": "blocked",
+      "payloadKind": "cli_invocation_error",
+      "diagCodes": [
+        "VE_INVALID_INVOCATION"
+      ],
+      "diagClassifications": [
+        "invalid_invocation"
+      ],
+      "expect": {
+        "exit": 2,
+        "status": "blocked",
+        "code": "VE_INVALID_INVOCATION",
+        "classification": "invalid_invocation"
+      }
+    },
+    {
+      "id": "version-invalid-flag",
+      "argv": [
+        "version",
+        "--bogus"
+      ],
+      "exitCode": 2,
+      "status": "blocked",
+      "payloadKind": "cli_invocation_error",
+      "diagCodes": [
+        "VE_INVALID_FLAG"
+      ],
+      "diagClassifications": [
+        "invalid_invocation"
+      ],
+      "expect": {
+        "exit": 2,
+        "status": "blocked",
+        "code": "VE_INVALID_FLAG",
+        "classification": "invalid_invocation"
+      }
+    },
+    {
+      "id": "verify-unconfigured",
+      "argv": [
+        "verify",
+        "--project-root",
+        "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp05-install-smoke-qV9CKC"
+      ],
+      "exitCode": 3,
+      "status": "blocked",
+      "payloadKind": "config_load_result",
+      "diagCodes": [
+        "VE_MISSING_CONFIG"
+      ],
+      "diagClassifications": [
+        "missing_prerequisite"
+      ],
+      "expect": {
+        "exit": 3,
+        "status": "blocked",
+        "code": "VE_MISSING_CONFIG",
+        "classification": "missing_prerequisite"
+      }
+    },
+    {
+      "id": "security-unconfigured",
+      "argv": [
+        "security",
+        "--project-root",
+        "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp05-install-smoke-qV9CKC"
+      ],
+      "exitCode": 3,
+      "status": "blocked",
+      "payloadKind": "config_load_result",
+      "diagCodes": [
+        "VE_MISSING_CONFIG"
+      ],
+      "diagClassifications": [
+        "missing_prerequisite"
+      ],
+      "expect": {
+        "exit": 3,
+        "status": "blocked",
+        "code": "VE_MISSING_CONFIG",
+        "classification": "missing_prerequisite"
+      }
+    }
+  ],
+  "noLeakWitness": {
+    "installedPkgs": [
+      {
+        "pkg": "vibe-engineer",
+        "real": "/private/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp05-install-smoke-qV9CKC/node_modules/vibe-engineer",
+        "underMonorepo": false
+      },
+      {
+        "pkg": "@vibe-engineer/artifacts",
+        "real": "/private/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp05-install-smoke-qV9CKC/node_modules/@vibe-engineer/artifacts",
+        "underMonorepo": false
+      },
+      {
+        "pkg": "@vibe-engineer/config",
+        "real": "/private/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp05-install-smoke-qV9CKC/node_modules/@vibe-engineer/config",
+        "underMonorepo": false
+      },
+      {
+        "pkg": "@vibe-engineer/context",
+        "real": "/private/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp05-install-smoke-qV9CKC/node_modules/@vibe-engineer/context",
+        "underMonorepo": false
+      },
+      {
+        "pkg": "@vibe-engineer/orchestration",
+        "real": "/private/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp05-install-smoke-qV9CKC/node_modules/@vibe-engineer/orchestration",
+        "underMonorepo": false
+      },
+      {
+        "pkg": "@vibe-engineer/schematics",
+        "real": "/private/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp05-install-smoke-qV9CKC/node_modules/@vibe-engineer/schematics",
+        "underMonorepo": false
+      },
+      {
+        "pkg": "@vibe-engineer/security",
+        "real": "/private/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp05-install-smoke-qV9CKC/node_modules/@vibe-engineer/security",
+        "underMonorepo": false
+      },
+      {
+        "pkg": "@vibe-engineer/skills",
+        "real": "/private/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp05-install-smoke-qV9CKC/node_modules/@vibe-engineer/skills",
+        "underMonorepo": false
+      },
+      {
+        "pkg": "@vibe-engineer/verification",
+        "real": "/private/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp05-install-smoke-qV9CKC/node_modules/@vibe-engineer/verification",
+        "underMonorepo": false
+      },
+      {
+        "pkg": "@vibe-engineer/adapter-pi",
+        "real": "/private/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp05-install-smoke-qV9CKC/node_modules/@vibe-engineer/adapter-pi",
+        "underMonorepo": false
+      }
+    ],
+    "binUnderMonorepo": false
+  },
+  "esmExportsSeam": {
+    "securityImport": {
+      "ok": true,
+      "exportNames": [
+        "CommandSafetyClassification",
+        "DEFAULT_SECURITY_POLICY",
+        "ExternalIntegrationMode",
+        "SECURITY_PACKAGE_VERSION",
+        "SECURITY_POLICY_VERSION",
+        "SandboxCapabilityStatus",
+        "SecurityCategory",
+        "SecurityClassification",
+        "SecurityDecision",
+        "SecurityGateStatus",
+        "SecuritySeverity",
+        "__i18aCliBoundarySmoke",
+        "createSecurityAuditEvent",
+        "createSecurityFinding",
+        "createSecurityGateResult",
+        "evaluateCommandSafety",
+        "evaluateEnvConfigSafety",
+        "evaluateEvidenceSafety",
+        "evaluateExternalIntegrationSafety",
+        "evaluateSandboxCapability"
+      ]
+    },
+    "skillsBuildImport": {
+      "ok": true,
+      "exportNames": [
+        "BUILD_OWNERSHIP",
+        "BUILD_PRODUCER",
+        "deriveBuildWorkPlan",
+        "initializeBuildRunState",
+        "persistBuildResult",
+        "resolveBuildResultPath",
+        "routeVerificationOutcome",
+        "runBuildFromImplementationPlan",
+        "runImplementationHooks",
+        "runSelectedHarnessPath"
+      ]
+    }
+  },
+  "assertions": {
+    "W-P3-clean-external-install": true,
+    "W-P4-installed-binary-matrix": true,
+    "W-P5-no-module-resolution-leak": true,
+    "W-N1-unknown-and-invalid-flag": true,
+    "W-N2-deferred-commands": true,
+    "W-N3-build-ship": true,
+    "residual-security-exports-seam": "GREEN-VIA-ESM at the installed package (security `.` export has an `import` condition). The in-monorepo CJS-fixture red (ERR_PACKAGE_PATH_NOT_EXPORTED) is a separate CJS-resolution concern root-caused at packages/security/package.json (no `require` condition) — a WP-01/WP-02-owned manifest surface, NOT WP-05 owned; HALT-and-flag the CJS fix, NOT patched here (no band-aid).",
+    "residual-verify-installed-behavior": "WITNESSED: verify against unconfigured root → blocked exit 3 VE_MISSING_CONFIG/missing_prerequisite (truthful; verify residual CLOSED by VERIFY-FIX lane — success path requires a configured project with an approved plan, not faked here)",
+    "installed-envelope-validator-live": true
+  },
+  "pendingLive": {
+    "public-registry-single-tarball-install": "PENDING — HLO-gated on npm publish (token 401); not attempted, not faked"
+  },
+  "errors": [],
+  "ok": true,
+  "tempDir": "/private/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp05-install-smoke-qV9CKC",
+  "tempOutsideMonorepo": true,
+  "binExecutionWitness": {
+    "binSymlink": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp05-install-smoke-qV9CKC/node_modules/.bin/vibe-engineer",
+    "binRealTarget": "/private/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp05-install-smoke-qV9CKC/node_modules/vibe-engineer/dist/entry/vibe-engineer.js",
+    "binUnderMonorepo": false,
+    "note": "bin symlink target resolves into the temp install (no workspace leak)",
+    "detail": {
+      "symlinkInvocation": {
+        "argv": [
+          "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp05-install-smoke-qV9CKC/node_modules/.bin/vibe-engineer",
+          "version"
+        ],
+        "exitCode": 0,
+        "stdoutBytes": 468,
+        "stderrBytes": 0,
+        "stdoutHead": "{\"schemaVersion\":\"vibe-engineer.cli.result.v1\",\"invocation\":{\"id\":\"d927ba8c-ec12"
+      },
+      "nodeRealpathInvocation": {
+        "argv": [
+          "node",
+          "/private/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp05-install-smoke-qV9CKC/node_modules/vibe-engineer/dist/entry/vibe-engineer.js",
+          "version"
+        ],
+        "exitCode": 0,
+        "stdoutBytes": 468,
+        "stdoutHead": "{\"schemaVersion\":\"vibe-engineer.cli.result.v1\",\"invocation\":{\"id\":\"84af0ab7-f6dd"
+      }
+    },
+    "brokenViaSymlink": false
+  }
+}

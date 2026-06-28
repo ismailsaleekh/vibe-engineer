@@ -1,0 +1,43 @@
+{
+  "name": "blank-slate",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.33.0",
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "lint": "eslint .",
+    "format:check": "prettier --check .",
+    "test:unit": "node --test",
+    "build": "tsc -p tsconfig.json",
+    "quality:quick": "pnpm run typecheck && pnpm run lint && pnpm run format:check && pnpm run test:unit && pnpm run build",
+    "dev": "pnpm --filter @vibe-engineer-starter/api run dev && pnpm --filter @vibe-engineer-starter/web run dev",
+    "dev:api": "pnpm --filter @vibe-engineer-starter/api run dev",
+    "dev:web": "pnpm --filter @vibe-engineer-starter/web run dev",
+    "dev:mobile": "pnpm --filter @vibe-engineer-starter/mobile run dev",
+    "db:start": "docker compose -f .tooling/dev-services/docker-compose.yml up -d postgres",
+    "db:stop": "docker compose -f .tooling/dev-services/docker-compose.yml stop postgres",
+    "db:migrate": "pnpm --filter @vibe-engineer-starter/api run db:migrate",
+    "db:seed": "pnpm --filter @vibe-engineer-starter/api run db:seed",
+    "db:reset:local": "pnpm --filter @vibe-engineer-starter/api run db:reset:local"
+  },
+  "vibeEngineer": {
+    "architectureDecision": "DL-16-starter-architecture",
+    "appNames": [
+      "api",
+      "web",
+      "mobile"
+    ],
+    "packageNames": [
+      "domain",
+      "contracts",
+      "api-client",
+      "config",
+      "testing",
+      "ui"
+    ],
+    "goldenModule": "golden-records",
+    "authStance": "no-auth",
+    "persistence": "PostgreSQL + Prisma",
+    "contractMechanism": "ts-rest + named Zod schemas"
+  }
+}

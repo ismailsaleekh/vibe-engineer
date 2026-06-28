@@ -1,0 +1,9 @@
+{
+  "witness": "W-RB4",
+  "defaultLoaderCreateDispatch": "live",
+  "reason": "WP-03 registers create in the default createCommandLoader(); create routes to the live createCommand (not UnsupportedOperation/Unknown). WP-06 does not launch pi; live-pi runtime proof is gated to WP-07.",
+  "classification": "invalid_invocation",
+  "code": "VE_MISSING_FLAG_VALUE",
+  "livePiRuntime": "pending-live",
+  "livePiRuntimeProof": "not-run-in-WP-06"
+}

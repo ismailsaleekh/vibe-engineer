@@ -1,0 +1,13 @@
+{
+  "agenticHarness": "pi",
+  "maxParallelAgents": 8,
+  "maxValidationFixIterations": 3,
+  "agenticWorkPackageTargetHours": 6,
+  "starter": {
+    "architectureDecision": "DL-16-starter-architecture",
+    "appNames": ["api", "web", "mobile"],
+    "packageNames": ["domain", "contracts", "api-client", "config", "testing", "ui"],
+    "goldenModule": "golden-records",
+    "scope": "@vibe-engineer-starter"
+  }
+}

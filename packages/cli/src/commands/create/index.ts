@@ -23,6 +23,14 @@ import {
   SELECTED_PI_HARNESS,
   writeGeneratedArtifacts,
 } from "./selected-harness.ts";
+import {
+  isPiHarnessAssetError,
+  writePiHarnessAssets,
+} from "./pi-harness-assets.ts";
+import {
+  isStarterTemplateError,
+  materializeStarterTree,
+} from "./starter-template.ts";
 
 type UnknownRecord = Record<string, unknown>;
 
@@ -304,6 +312,27 @@ export async function runCreate({ invocation, args }: CommandContext, mode: "cre
     producer: producer(invocation),
   });
 
+  let starterMaterialization: Awaited<ReturnType<typeof materializeStarterTree>> | null = null;
+  if (mode === "create") {
+    try {
+      starterMaterialization = await materializeStarterTree(options.targetRoot, { projectName: options.projectName, mode: "create" });
+    } catch (error) {
+      const record = isRecord(error) ? error : {};
+      const code = isStarterTemplateError(error) ? error.code : CliErrorCode.InternalError;
+      const classification = isStarterTemplateError(error) ? error.classification : CliClassification.InternalError;
+      const details = isStarterTemplateError(error) ? error.details : { errorName: typeof record.name === "string" ? record.name : null, errorMessage: typeof record.message === "string" ? record.message : null };
+      const message = error instanceof Error ? error.message : "Starter template materialization failed.";
+      const envelope = makeCreateEnvelope({
+        invocation,
+        status: "blocked",
+        payload: makePayload("create_result", { ok: false, stage: "starter_materialization", mode, targetRoot: options.targetRoot }),
+        diagnostics: [makeDiagnostic({ code, classification, message })],
+        errors: [makeCliError({ code, classification, blocking: true, message, details })],
+      });
+      return commandResult(await finalizeEnvelope(envelope, options.resultFile));
+    }
+  }
+
   let generated;
   try {
     generated = await writeGeneratedArtifacts(options.targetRoot, bootstrap, selected.meta, { reset: mode === "create" });
@@ -315,6 +344,25 @@ export async function runCreate({ invocation, args }: CommandContext, mode: "cre
       payload: makePayload("create_result", { ok: false, stage: "artifact_write", mode, targetRoot: options.targetRoot }),
       diagnostics: [makeDiagnostic({ code: CliErrorCode.InternalError, classification: CliClassification.InternalError, message: "Generated artifact write failed." })],
       errors: [makeCliError({ code: CliErrorCode.InternalError, classification: CliClassification.InternalError, blocking: true, message: "Generated artifact write failed.", details: { errorName: typeof record.name === "string" ? record.name : null, errorMessage: typeof record.message === "string" ? record.message : null } })],
+    });
+    return commandResult(await finalizeEnvelope(envelope, options.resultFile));
+  }
+
+  let piHarnessAssets;
+  try {
+    piHarnessAssets = await writePiHarnessAssets({ targetRoot: options.targetRoot, mode, manifest: selected.manifest, capabilityMatrix: selected.matrix });
+  } catch (error) {
+    const record = isRecord(error) ? error : {};
+    const code = isPiHarnessAssetError(error) ? error.code : CliErrorCode.InternalError;
+    const classification = isPiHarnessAssetError(error) ? error.classification : CliClassification.InternalError;
+    const details = isPiHarnessAssetError(error) ? error.details : { stage: "pi_asset_validation", errorName: typeof record.name === "string" ? record.name : null, errorMessage: typeof record.message === "string" ? record.message : null };
+    const message = error instanceof Error ? error.message : "Pi harness asset validation failed.";
+    const envelope = makeCreateEnvelope({
+      invocation,
+      status: "blocked",
+      payload: makePayload("create_result", { ok: false, stage: "pi_asset_validation", mode, targetRoot: options.targetRoot }),
+      diagnostics: [makeDiagnostic({ code, classification, message })],
+      errors: [makeCliError({ code, classification, blocking: true, message, details })],
     });
     return commandResult(await finalizeEnvelope(envelope, options.resultFile));
   }
@@ -337,6 +385,23 @@ export async function runCreate({ invocation, args }: CommandContext, mode: "cre
       configPath: generated.configPath,
       contextFiles: { agents: generated.agentsPath, claude: generated.claudePath },
       sourceRecord: generated.sourceRecordPath,
+      starterTemplate: starterMaterialization === null ? null : {
+        layoutPath: starterMaterialization.layoutPath,
+        templateRoot: starterMaterialization.templateRoot,
+        fileCount: starterMaterialization.fileCount,
+        overlayPaths: starterMaterialization.overlayPaths,
+        substitutionPaths: starterMaterialization.substitutionPaths,
+        projectSlug: starterMaterialization.projectSlug,
+      },
+      piAssets: piHarnessAssets.writtenAssets.map((asset) => ({ kind: asset.kind, familyId: asset.familyId, skillId: asset.skillId, path: asset.path, targetPath: asset.targetPath, sha256: asset.sha256 })),
+    },
+    harnessAssets: {
+      piAssetFamilies: piHarnessAssets.piAssetFamilies,
+      skillCount: piHarnessAssets.skillCount,
+      promptCount: piHarnessAssets.promptCount,
+      extensionsPolicy: piHarnessAssets.extensionsPolicy,
+      manifestValidation: piHarnessAssets.manifestValidation,
+      conflictPolicy: piHarnessAssets.conflictPolicy,
     },
     contextProject: { graphPath: typeof (generated.contextProject as UnknownRecord).graphPath === "string" ? (generated.contextProject as UnknownRecord).graphPath : null, indexPath: typeof (generated.contextProject as UnknownRecord).indexPath === "string" ? (generated.contextProject as UnknownRecord).indexPath : null },
     provenanceLabels: bootstrap.provenanceMap,
@@ -346,6 +411,7 @@ export async function runCreate({ invocation, args }: CommandContext, mode: "cre
     makeArtifactDescriptor({ kind: "vibe_config", path: generated.configPath, schemaVersion: "vibe-engineer.config.v1", role: "harness-config" }),
     makeArtifactDescriptor({ kind: "context_file", path: generated.agentsPath, schemaVersion: "pi-context-file/v1", role: "context-files" }),
     makeArtifactDescriptor({ kind: "context_file", path: generated.claudePath, schemaVersion: "pi-context-file/v1", role: "context-files" }),
+    ...piHarnessAssets.writtenAssets.map((asset) => makeArtifactDescriptor({ kind: asset.kind, path: asset.targetPath, schemaVersion: selected.meta.generatedFileManifestVersion, role: asset.familyId, sha256: asset.sha256 })),
   ];
 
   const envelope = makeCreateEnvelope({

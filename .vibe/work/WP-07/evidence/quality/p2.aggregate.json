@@ -1,0 +1,131 @@
+{
+  "family": "p2.aggregate",
+  "ok": true,
+  "projectRoot": "/Users/lizavasilyeva/work/vibe-engineer",
+  "findings": [],
+  "evidence": {
+    "schemaVersion": "p2.aggregate.result/1",
+    "family": "p2.aggregate",
+    "implementedFamilies": [
+      "p2.code-smell"
+    ],
+    "requestedFamilies": [
+      "p2.code-smell"
+    ],
+    "subresults": [
+      {
+        "family": "p2.code-smell",
+        "ok": true,
+        "projectRoot": "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/fixtures/p2/code-smell/projects/clean",
+        "findings": [],
+        "evidence": {
+          "schemaVersion": "p2.code-smell.result/1",
+          "tool": "p2.code-smell",
+          "allowlist": "not-implemented",
+          "detectors": [
+            "deep-control-flow-nesting",
+            "combinatorial-path-explosion",
+            "catch-log-continue",
+            "silent-no-op-dispatcher",
+            "serialized-json-assembled-as-strings"
+          ],
+          "includePaths": [
+            "src"
+          ],
+          "excludeDirectoryNames": [
+            "node_modules",
+            ".git",
+            "dist",
+            "build",
+            ".turbo",
+            ".vibe"
+          ],
+          "fileSuffixes": [
+            ".ts",
+            ".tsx",
+            ".mts",
+            ".cts"
+          ],
+          "maxFileBytes": 262144,
+          "inspectedFiles": [
+            "src/clean.ts"
+          ],
+          "parsedFiles": 1,
+          "failClosed": false,
+          "defaultPolicyUsed": false
+        }
+      }
+    ],
+    "stableFindings": [],
+    "codeSmellBridge": {
+      "carrierVersion": "p2.aggregate.code-smell-runner-bridge/1",
+      "bridgeFamily": "p2.aggregate",
+      "validatorFamilyExpected": "p2.code-smell",
+      "ratchetCarrierVersion": "quality-ratchet.findings/1",
+      "sourceTsFilesUsed": [
+        "packages/mechanical-gates/src/p2/code-smell/node-shims.d.ts",
+        "packages/mechanical-gates/src/p2/code-smell/index.ts"
+      ],
+      "sourceRoot": "packages/mechanical-gates/src/p2/code-smell",
+      "outputArtifactDirectory": ".vibe/work/I-13C-p2-aggregate-runner-bridge/aggregate/code-smell-bridge-artifacts/run-23958-1782609985218-34aba439cc326",
+      "outputArtifactFile": ".vibe/work/I-13C-p2-aggregate-runner-bridge/aggregate/code-smell-bridge-artifacts/run-23958-1782609985218-34aba439cc326/index.js",
+      "moduleRelativePath": "index.js",
+      "moduleUrl": "file:///Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-13C-p2-aggregate-runner-bridge/aggregate/code-smell-bridge-artifacts/run-23958-1782609985218-34aba439cc326/index.js",
+      "exportedValidatorName": "validateCodeSmells",
+      "command": "pnpm",
+      "args": [
+        "exec",
+        "tsc",
+        "--outDir",
+        "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-13C-p2-aggregate-runner-bridge/aggregate/code-smell-bridge-artifacts/run-23958-1782609985218-34aba439cc326",
+        "--rootDir",
+        "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/src/p2/code-smell",
+        "--target",
+        "ES2022",
+        "--module",
+        "NodeNext",
+        "--moduleResolution",
+        "NodeNext",
+        "--strict",
+        "--skipLibCheck",
+        "false",
+        "--lib",
+        "ES2022",
+        "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/src/p2/code-smell/node-shims.d.ts",
+        "/Users/lizavasilyeva/work/vibe-engineer/packages/mechanical-gates/src/p2/code-smell/index.ts"
+      ],
+      "cwd": "/Users/lizavasilyeva/work/vibe-engineer",
+      "status": 0,
+      "stdout": "",
+      "stderr": "",
+      "signal": null,
+      "exportFound": true,
+      "validatorFamilyObserved": "p2.code-smell",
+      "typedSubresultValidation": {
+        "ok": true,
+        "diagnostics": []
+      }
+    },
+    "sourceApiIdentities": {
+      "codeSmell": [
+        "packages/mechanical-gates/src/p2/code-smell/node-shims.d.ts",
+        "packages/mechanical-gates/src/p2/code-smell/index.ts"
+      ]
+    },
+    "sourceFiles": {
+      "codeSmell": [
+        "packages/mechanical-gates/src/p2/code-smell/node-shims.d.ts",
+        "packages/mechanical-gates/src/p2/code-smell/index.ts"
+      ]
+    },
+    "inputPaths": {
+      "codeSmell": "packages/mechanical-gates/fixtures/p2/code-smell/projects/clean"
+    },
+    "summary": {
+      "p2.code-smell": {
+        "ok": true,
+        "findingCount": 0
+      }
+    }
+  }
+}
