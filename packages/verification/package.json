@@ -1,15 +1,24 @@
 {
   "name": "@vibe-engineer/verification",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "license": "MIT",
   "type": "module",
   "description": "Skeleton manifest for @vibe-engineer/verification; implementation is owned by a later validated lane.",
   "exports": {
-    ".": "./src/index.js"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup"
   },
   "dependencies": {
-    "@vibe-engineer/artifacts": "workspace:*",
-    "@vibe-engineer/orchestration": "workspace:*"
+    "@vibe-engineer/artifacts": "^0.1.0",
+    "@vibe-engineer/orchestration": "^0.1.0"
   },
   "vibeEngineer": {
     "implementationUnit": "I-00A-workspace-package-skeleton",
@@ -17,5 +26,13 @@
     "packageRole": "internal-workspace-package",
     "sourceStatus": "not-created-in-I-00A"
   },
-  "private": true
+  "private": false,
+  "engines": {
+    "node": ">=20.19.0",
+    "pnpm": ">=10.33.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ismailsaleekh/vibe-engineer.git"
+  }
 }

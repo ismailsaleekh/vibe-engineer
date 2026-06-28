@@ -1,18 +1,36 @@
 {
   "name": "@vibe-engineer/schematics",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "license": "MIT",
   "type": "module",
   "description": "Skeleton manifest for @vibe-engineer/schematics; implementation is owned by a later validated lane.",
   "exports": {
-    ".": "./src/engine/index.js"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
   },
-  "main": "./src/engine/index.js",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup"
+  },
   "vibeEngineer": {
     "implementationUnit": "I-00A-workspace-package-skeleton",
     "implementationStatus": "skeleton-only",
     "packageRole": "internal-workspace-package",
     "sourceStatus": "not-created-in-I-00A"
   },
-  "private": true
+  "private": false,
+  "engines": {
+    "node": ">=20.19.0",
+    "pnpm": ">=10.33.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ismailsaleekh/vibe-engineer.git"
+  }
 }

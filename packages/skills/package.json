@@ -1,6 +1,6 @@
 {
   "name": "@vibe-engineer/skills",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "license": "MIT",
   "type": "module",
   "description": "Skeleton manifest for @vibe-engineer/skills; implementation is owned by a later validated lane.",
@@ -10,17 +10,40 @@
     "packageRole": "internal-workspace-package",
     "sourceStatus": "not-created-in-I-00A"
   },
-  "private": true,
+  "private": false,
+  "engines": {
+    "node": ">=20.19.0",
+    "pnpm": ">=10.33.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ismailsaleekh/vibe-engineer.git"
+  },
   "exports": {
-    "./build": "./src/build/index.js",
-    "./ship": "./src/ship/orchestrator/index.js",
-    "./ship/intake": "./src/ship/intake/index.js"
+    "./build": {
+      "types": "./dist/build/index.d.ts",
+      "import": "./dist/build/index.js"
+    },
+    "./ship": {
+      "types": "./dist/ship/orchestrator/index.d.ts",
+      "import": "./dist/ship/orchestrator/index.js"
+    },
+    "./ship/intake": {
+      "types": "./dist/ship/intake/index.d.ts",
+      "import": "./dist/ship/intake/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup"
   },
   "dependencies": {
-    "@vibe-engineer/adapter-pi": "workspace:*",
-    "@vibe-engineer/artifacts": "workspace:*",
-    "@vibe-engineer/context": "workspace:*",
-    "@vibe-engineer/orchestration": "workspace:*",
-    "@vibe-engineer/verification": "workspace:*"
+    "@vibe-engineer/adapter-pi": "^0.1.0",
+    "@vibe-engineer/artifacts": "^0.1.0",
+    "@vibe-engineer/context": "^0.1.0",
+    "@vibe-engineer/orchestration": "^0.1.0",
+    "@vibe-engineer/verification": "^0.1.0"
   }
 }

@@ -1,24 +1,39 @@
 {
   "name": "@vibe-engineer/artifacts",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "license": "MIT",
   "type": "module",
   "description": "Canonical JSON schemas, generated types, and fail-closed validators for vibe-engineer artifacts.",
-  "private": true,
+  "private": false,
+  "engines": {
+    "node": ">=20.19.0",
+    "pnpm": ">=10.33.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ismailsaleekh/vibe-engineer.git"
+  },
   "exports": {
     ".": {
-      "types": "./src/generated/types.d.ts",
-      "import": "./src/index.js"
+      "types": "./dist/types.d.ts",
+      "import": "./dist/index.js"
     },
-    "./schemas": "./src/schema-registry.js",
+    "./schemas": {
+      "types": "./dist/types.d.ts",
+      "import": "./dist/schema-registry.js"
+    },
     "./schemas/*": "./schemas/*"
   },
+  "files": [
+    "dist",
+    "schemas"
+  ],
   "scripts": {
     "generate:types": "node scripts/generate-types.mjs",
     "check:types": "node scripts/check-generated-types.mjs",
     "typecheck": "node scripts/check-generated-types.mjs && node scripts/typecheck-public-entrypoint.mjs",
     "test": "node tests/run-tests.mjs",
-    "build": "node scripts/check-generated-types.mjs && node tests/run-tests.mjs"
+    "build": "node scripts/generate-types.mjs && tsup"
   },
   "vibeEngineer": {
     "implementationUnit": "I-01A-artifact-schemas",

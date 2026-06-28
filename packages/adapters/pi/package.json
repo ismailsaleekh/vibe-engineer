@@ -1,26 +1,42 @@
 {
   "name": "@vibe-engineer/adapter-pi",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "license": "MIT",
   "type": "module",
   "description": "Typed pi adapter capability matrix and generated-file manifest contract for vibe-engineer.",
-  "private": true,
+  "private": false,
+  "engines": {
+    "node": ">=20.19.0",
+    "pnpm": ">=10.33.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ismailsaleekh/vibe-engineer.git"
+  },
   "exports": {
     "./capabilities": {
-      "types": "./src/capabilities/index.ts",
-      "import": "./src/capabilities/index.ts"
+      "types": "./dist/capabilities/index.d.ts",
+      "import": "./dist/capabilities/index.js"
     },
     "./generated-file-manifest": {
-      "types": "./src/generated-file-manifest/index.ts",
-      "import": "./src/generated-file-manifest/index.ts"
+      "types": "./dist/generated-file-manifest/index.d.ts",
+      "import": "./dist/generated-file-manifest/index.js"
+    },
+    "./create-consumption": {
+      "types": "./dist/create-consumption/index.d.ts",
+      "import": "./dist/create-consumption/index.js"
     },
     "./schema": {
-      "types": "./src/schema/index.ts",
-      "import": "./src/schema/index.ts"
+      "types": "./dist/schema/index.d.ts",
+      "import": "./dist/schema/index.js"
     }
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "typecheck": "tsc --noEmit --allowImportingTsExtensions --module NodeNext --moduleResolution NodeNext --target ES2022 --lib ES2022 --strict --noImplicitAny --strictNullChecks --strictFunctionTypes --strictBindCallApply --strictPropertyInitialization --noImplicitThis --alwaysStrict --exactOptionalPropertyTypes --noUncheckedIndexedAccess --noImplicitOverride --noImplicitReturns --noPropertyAccessFromIndexSignature --useUnknownInCatchVariables --noFallthroughCasesInSwitch --noUnusedLocals --noUnusedParameters --allowUnreachableCode false --allowUnusedLabels false --isolatedModules --verbatimModuleSyntax --forceConsistentCasingInFileNames --skipLibCheck src/capabilities/index.ts src/generated-file-manifest/index.ts src/schema/index.ts"
+    "build": "tsup",
+    "typecheck": "tsc --noEmit --allowImportingTsExtensions --module NodeNext --moduleResolution NodeNext --target ES2022 --lib ES2022 --strict --noImplicitAny --strictNullChecks --strictFunctionTypes --strictBindCallApply --strictPropertyInitialization --noImplicitThis --alwaysStrict --exactOptionalPropertyTypes --noUncheckedIndexedAccess --noImplicitOverride --noImplicitReturns --noPropertyAccessFromIndexSignature --useUnknownInCatchVariables --noFallthroughCasesInSwitch --noUnusedLocals --noUnusedParameters --allowUnreachableCode false --allowUnusedLabels false --isolatedModules --verbatimModuleSyntax --forceConsistentCasingInFileNames --skipLibCheck src/capabilities/index.ts src/generated-file-manifest/index.ts src/create-consumption/index.ts src/schema/index.ts"
   },
   "vibeEngineer": {
     "implementationUnit": "I-14A-pi-adapter-capability-generated-file-manifest",

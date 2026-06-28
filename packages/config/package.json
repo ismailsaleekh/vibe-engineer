@@ -1,21 +1,32 @@
 {
   "name": "@vibe-engineer/config",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "license": "MIT",
   "type": "module",
   "description": "Strict typed loader and validator for vibe-engineer project configuration.",
-  "private": true,
+  "private": false,
+  "engines": {
+    "node": ">=20.19.0",
+    "pnpm": ">=10.33.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ismailsaleekh/vibe-engineer.git"
+  },
   "exports": {
     ".": {
-      "types": "./src/generated/types.d.ts",
-      "import": "./src/index.js"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
     }
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "test": "node tests/run-tests.mjs",
     "lint": "eslint .",
-    "build": "tsc --noEmit -p tsconfig.json && node tests/run-tests.mjs"
+    "build": "tsup"
   },
   "vibeEngineer": {
     "implementationUnit": "I-01B-config-loader",

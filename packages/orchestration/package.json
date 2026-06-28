@@ -1,19 +1,30 @@
 {
   "name": "@vibe-engineer/orchestration",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "license": "MIT",
   "type": "module",
   "description": "Strict durable DAG orchestration runtime primitives for vibe-engineer.",
-  "private": true,
+  "private": false,
+  "engines": {
+    "node": ">=20.19.0",
+    "pnpm": ">=10.33.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ismailsaleekh/vibe-engineer.git"
+  },
   "exports": {
     ".": {
-      "types": "./dist/src/index.d.ts",
-      "import": "./dist/src/index.js"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
     }
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "typecheck": "tsc --noEmit -p tsconfig.json",
-    "build": "tsc -p tsconfig.json",
+    "build": "tsup",
     "test": "tsc -p tsconfig.json && node tests/run-tests.mjs",
     "witness:real-boundary": "tsc -p tsconfig.json && node tests/real-boundary-witness.mjs",
     "lint": "eslint src tests/typecheck.ts"
@@ -25,6 +36,6 @@
     "sourceStatus": "package-owned-source-created"
   },
   "dependencies": {
-    "@vibe-engineer/artifacts": "workspace:*"
+    "@vibe-engineer/artifacts": "^0.1.0"
   }
 }

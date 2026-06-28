@@ -1,19 +1,30 @@
 {
   "name": "@vibe-engineer/context",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "license": "MIT",
   "type": "module",
   "description": "Strict typed context graph, index, drift, and retrieval contracts for vibe-engineer.",
-  "private": true,
+  "private": false,
+  "engines": {
+    "node": ">=20.19.0",
+    "pnpm": ">=10.33.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ismailsaleekh/vibe-engineer.git"
+  },
   "exports": {
     ".": {
-      "types": "./src/index.d.ts",
-      "import": "./src/index.js"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
     }
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "test": "node tests/real-boundary-witness.mjs && node tests/negative-witness.mjs && node tests/schema-strictness-witness.mjs",
-    "build": "node --check src/index.js && node --check tests/real-boundary-witness.mjs && node --check tests/negative-witness.mjs && node --check tests/schema-strictness-witness.mjs && node tests/real-boundary-witness.mjs && node tests/negative-witness.mjs && node tests/schema-strictness-witness.mjs",
+    "build": "tsup",
     "typecheck": "node --check src/index.js && node --check tests/real-boundary-witness.mjs && node --check tests/negative-witness.mjs && node --check tests/schema-strictness-witness.mjs"
   },
   "vibeEngineer": {
@@ -23,7 +34,7 @@
     "sourceStatus": "package-owned-source-created"
   },
   "dependencies": {
-    "@vibe-engineer/artifacts": "workspace:*",
-    "@vibe-engineer/config": "workspace:*"
+    "@vibe-engineer/artifacts": "^0.1.0",
+    "@vibe-engineer/config": "^0.1.0"
   }
 }

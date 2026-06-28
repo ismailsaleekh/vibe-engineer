@@ -1,18 +1,25 @@
 {
   "name": "vibe-engineer",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "license": "MIT",
   "type": "module",
   "description": "Foundation CLI loader and machine-envelope entrypoint for vibe-engineer.",
   "bin": {
-    "vibe-engineer": "./src/entry/vibe-engineer.js"
+    "vibe-engineer": "./dist/entry/vibe-engineer.js"
   },
   "exports": {
-    ".": "./src/entry/vibe-engineer.js",
-    "./envelope": "./src/envelope/result-envelope.js",
-    "./command-loader": "./src/command-loader/loader.js"
+    ".": "./dist/entry/vibe-engineer.js",
+    "./envelope": "./dist/envelope/result-envelope.js",
+    "./command-loader": "./dist/command-loader/loader.js"
   },
+  "files": [
+    "dist",
+    "templates/starter/**",
+    "templates/pi/**",
+    "templates/starter.layout.json"
+  ],
   "scripts": {
+    "build": "node scripts/copy-templates.mjs && tsup",
     "test": "node src/testing/run-witnesses.mjs"
   },
   "vibeEngineer": {
@@ -23,14 +30,22 @@
     "binStatus": "vibe-engineer-bin-entry-owned-by-I-02A"
   },
   "private": false,
+  "engines": {
+    "node": ">=20.19.0",
+    "pnpm": ">=10.33.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ismailsaleekh/vibe-engineer.git"
+  },
   "dependencies": {
-    "@vibe-engineer/adapter-pi": "workspace:*",
-    "@vibe-engineer/artifacts": "workspace:*",
-    "@vibe-engineer/config": "workspace:*",
-    "@vibe-engineer/skills": "workspace:*",
-    "@vibe-engineer/context": "workspace:*",
-    "@vibe-engineer/security": "workspace:*",
-    "@vibe-engineer/schematics": "workspace:*",
-    "@vibe-engineer/verification": "workspace:*"
+    "@vibe-engineer/adapter-pi": "^0.1.0",
+    "@vibe-engineer/artifacts": "^0.1.0",
+    "@vibe-engineer/config": "^0.1.0",
+    "@vibe-engineer/skills": "^0.1.0",
+    "@vibe-engineer/context": "^0.1.0",
+    "@vibe-engineer/security": "^0.1.0",
+    "@vibe-engineer/schematics": "^0.1.0",
+    "@vibe-engineer/verification": "^0.1.0"
   }
 }

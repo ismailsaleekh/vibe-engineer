@@ -139,7 +139,7 @@ async function run() {
   const configManifest = JSON.parse(await readFile(join(packageDir, "package.json"), "utf8"));
   assert.equal(rootManifest.name, "@vibe-engineer/workspace");
   assert.equal(configManifest.name, "@vibe-engineer/config");
-  assert.equal(configManifest.private, true);
+  assert.equal(configManifest.private, false); // public publish package invariant — @vibe-engineer/config is published (WP-02)
   await assertPathAbsent(join(repoRoot, "packages", "core"), "packages/core regression guard");
 
   const harnessDecision = await readFile(join(repoRoot, "docs", "decisions", "DL-06-agentic-harness-integrations.md"), "utf8");
