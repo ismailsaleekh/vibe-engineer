@@ -175,7 +175,7 @@ Project-specific vocabulary belongs in consuming-project extensions or explicitl
 
 ## Current status and pending-live proof
 
-The v0.1 package/create/starter path is locally proven. Hosted CI, live pi runtime loading, real Pulumi deploys, mobile device/simulator E2E, and full visual baselines remain pending-live.
+The v0.1 package/create/starter path is locally proven. Live pi runtime loading, provider-agnostic Pulumi Cloud preview/up, web visual baselines, and iOS Maestro+Detox mobile smoke have local evidence. Hosted CI proof is tracked separately until GitHub Actions run evidence exists.
 
 For current repository state and release proof, see [repository status](./repository-status.md).
 

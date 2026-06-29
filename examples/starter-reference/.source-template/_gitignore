@@ -1,0 +1,32 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build outputs
+dist/
+coverage/
+.turbo/
+*.tsbuildinfo
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Local env / machine files
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db
+
+# Local proof/evidence outputs
+.vibe/evidence/ci/
+.vibe/release/
+
+# Native/mobile generated build products
+ios/build/
+android/.gradle/
+android/app/build/

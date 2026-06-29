@@ -387,13 +387,17 @@ async function main() {
     metadata: null,
     identities: null,
     assertions: {},
-    pendingLive: {
+    externalProof: {
       hostedHarnessCi: "pending until pushed workflow run evidence exists",
       generatedStarterHostedCi: "pending until generated starter hosted CI proof exists",
-      livePiRuntime: "pending-live; generated pi assets are static-proven only",
-      pulumiLiveDeploy: "pending-live; real deploy is not a v0.1 blocker unless claimed",
-      mobileDeviceE2E: "pending-live; no device/simulator proof claimed",
-      visualBaselines: "pending-live; no full visual baseline proof claimed",
+      livePiRuntime:
+        "outside release:check; run scripts/release/live-pi-proof.mjs against a generated starter",
+      pulumiLiveDeploy:
+        "outside release:check; run scripts/release/pulumi-live-proof.mjs for provider-agnostic Pulumi Cloud preview/up",
+      mobileDeviceE2E:
+        "outside release:check; local iOS Maestro+Detox smoke proof is evidence-heavy and intentionally manual/orchestrator-run",
+      visualBaselines:
+        "outside release:check; run scripts/release/generated-starter-visual-baseline-proof.mjs against a generated starter",
     },
     errors: [],
     ok: false,

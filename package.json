@@ -21,7 +21,10 @@
     "release:pack": "node scripts/release/pack.mjs",
     "release:install-smoke": "node scripts/release/install-smoke.mjs",
     "release:check": "node scripts/release/check.mjs",
-    "release:publish": "node scripts/release/publish.mjs"
+    "release:publish": "node scripts/release/publish.mjs",
+    "proof:pi-runtime": "node scripts/release/live-pi-proof.mjs",
+    "proof:pulumi-live": "node scripts/release/pulumi-live-proof.mjs",
+    "proof:visual-baseline": "node scripts/release/generated-starter-visual-baseline-proof.mjs"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.10.2",

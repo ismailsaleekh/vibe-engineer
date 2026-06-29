@@ -41,19 +41,21 @@ Private workspace packages such as registry, standards, testing, observability, 
 
 ## What is wired vs pending-live
 
-| Surface                                     | Status                                                                                               |
-| ------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| Public package graph                        | Locally proven through `npm pack` + clean external install.                                          |
-| Installed CLI binary                        | Locally proven through real `.bin/vibe-engineer` invocation.                                         |
-| v0.1 CLI primitives                         | Wired: `help`, `version`, `create`, `import`, `doctor`, `config`, `verify`, `security`, `schematic`. |
-| Deferred CLI families                       | `context`, `registry`, `update`, `init` fail closed as unsupported.                                  |
-| Skill names as CLI commands                 | Not registered; fail as unknown commands.                                                            |
-| Full starter create                         | Locally proven from installed package.                                                               |
-| Pi skill/prompt assets                      | Static generated-file proof green; live pi runtime discovery remains pending-live.                   |
-| Generated starter local proof               | Green for install, typecheck, lint, format, unit tests, build, and quick quality.                    |
-| Hosted harness CI                           | Pending hosted run evidence.                                                                         |
-| Hosted generated-starter CI                 | Pending hosted run evidence.                                                                         |
-| Pulumi deploy, mobile E2E, visual baselines | Pending-live and not claimed by v0.1 local proof.                                                    |
+| Surface                       | Status                                                                                               |
+| ----------------------------- | ---------------------------------------------------------------------------------------------------- |
+| Public package graph          | Locally proven through `npm pack` + clean external install.                                          |
+| Installed CLI binary          | Locally proven through real `.bin/vibe-engineer` invocation.                                         |
+| v0.1 CLI primitives           | Wired: `help`, `version`, `create`, `import`, `doctor`, `config`, `verify`, `security`, `schematic`. |
+| Deferred CLI families         | `context`, `registry`, `update`, `init` fail closed as unsupported.                                  |
+| Skill names as CLI commands   | Not registered; fail as unknown commands.                                                            |
+| Full starter create           | Locally proven from installed package.                                                               |
+| Pi skill/prompt assets        | Static generated-file proof green; live pi runtime loading locally proven.                           |
+| Generated starter local proof | Green for install, typecheck, lint, format, unit tests, build, and quick quality.                    |
+| Hosted harness CI             | Pending hosted run evidence for latest pushed commit.                                                |
+| Hosted generated-starter CI   | Pending hosted run evidence.                                                                         |
+| Pulumi Cloud proof            | Provider-agnostic `dev` stack preview and `pulumi up` locally proven; no cloud resources by default. |
+| Visual baseline proof         | Locally proven for desktop/tablet/mobile web viewports with immediate pixel compare.                 |
+| Mobile E2E smoke              | Locally proven on iOS simulator with Maestro and Detox against generated mobile `HomeScreen` source. |
 
 ## Domain-neutral boundary
 

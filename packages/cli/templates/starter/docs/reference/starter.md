@@ -8,3 +8,7 @@ The starter recreates the harness's domain-neutral structure in its own private
 logic.
 
 The single sample/demo/reference module is `golden-records`.
+
+The generated `.github/workflows/quality.yml` quick gate mirrors the local
+starter proof path and intentionally excludes full E2E, mobile/device, visual,
+and deployment proofs from default PR/push CI.

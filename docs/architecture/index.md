@@ -63,7 +63,7 @@ The harness is designed around evidence over assertion:
 - advisory review does not replace deterministic proof;
 - real producer/carrier/consumer seams must be proven with actual on-disk or runtime artifacts;
 - package/create/starter paths are proven locally from packed packages;
-- hosted CI, live pi runtime loading, Pulumi deploys, mobile device E2E, and full visual baselines remain pending-live until separately evidenced.
+- live pi runtime loading, provider-agnostic Pulumi Cloud preview/up, web visual baselines, and iOS Maestro+Detox mobile smoke have local evidence; hosted CI remains pending until GitHub Actions run evidence exists.
 
 Context preservation answers what exists, why it exists, who owns it, what depends on it, and how to verify changes safely. Generated starters receive `.vibe/context`, `.vibe/work`, `.vibe/evidence`, and `.vibe/registry` scaffolding.
 

@@ -27,4 +27,4 @@ const scaffoldConfig = new pulumi.Config("vibe-engineer");
 export const project = projectName;
 export const stack = stackName;
 // Provider-agnostic marker so stack outputs are non-empty without any resource.
-export const providerAgnostic = scaffoldConfig.get("provider-agnostic") ?? true;
+export const providerAgnostic = scaffoldConfig.getBoolean("provider-agnostic") ?? true;

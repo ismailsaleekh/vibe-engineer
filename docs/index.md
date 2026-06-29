@@ -23,4 +23,4 @@
 
 ## Current boundary
 
-Runnable CLI snippets in these docs are backed by local installed-package proof. Hosted CI, live pi runtime loading, real Pulumi deploys, mobile device/simulator E2E, and full visual baselines remain pending-live until separate evidence exists.
+Runnable CLI snippets in these docs are backed by local installed-package proof. Live pi runtime loading, provider-agnostic Pulumi Cloud preview/up, web visual baselines, and iOS Maestro+Detox mobile smoke have local evidence; hosted CI remains tracked separately until GitHub Actions run evidence exists.

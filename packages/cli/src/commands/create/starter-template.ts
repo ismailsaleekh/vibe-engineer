@@ -44,7 +44,12 @@ export class StarterTemplateError extends Error {
   readonly classification: string;
   readonly details: JsonObject;
 
-  constructor(input: { code: string; classification: string; message: string; details?: JsonObject }) {
+  constructor(input: {
+    code: string;
+    classification: string;
+    message: string;
+    details?: JsonObject;
+  }) {
     super(input.message);
     this.name = "StarterTemplateError";
     this.code = input.code;
@@ -63,8 +68,16 @@ const STARTER_SHIPPED_ROOT = "templates/starter";
 const STARTER_LAYOUT_FILE = "templates/starter.layout.json";
 const OVERLAY_PATHS = Object.freeze(["vibe-engineer.config.json", ".vibe/context/manifest.json"]);
 const SUBSTITUTION_PATHS = Object.freeze(["package.json"]);
+const MATERIALIZED_PATH_RENAMES = Object.freeze(
+  new Map<string, string>([["_gitignore", ".gitignore"]]),
+);
 
-function templateError(input: { code: string; classification?: string; message: string; details?: JsonObject }): StarterTemplateError {
+function templateError(input: {
+  code: string;
+  classification?: string;
+  message: string;
+  details?: JsonObject;
+}): StarterTemplateError {
   return new StarterTemplateError({
     code: input.code,
     classification: input.classification ?? CliClassification.InvalidConfig,
@@ -79,7 +92,11 @@ function isJsonObject(value: unknown): value is JsonObject {
 
 function validateParsedJsonObject(value: unknown, path: string): JsonObject {
   if (!isJsonObject(value)) {
-    throw templateError({ code: CliErrorCode.InvalidConfig, message: "Starter template JSON root must be an object.", details: { starterTemplateCode: "VE_STARTER_TEMPLATE_INVALID_JSON", path } });
+    throw templateError({
+      code: CliErrorCode.InvalidConfig,
+      message: "Starter template JSON root must be an object.",
+      details: { starterTemplateCode: "VE_STARTER_TEMPLATE_INVALID_JSON", path },
+    });
   }
   return value;
 }
@@ -92,16 +109,29 @@ function parseJsonObject(text: string, path: string): JsonObject {
     throw templateError({
       code: CliErrorCode.InvalidConfig,
       message: "Starter template JSON could not be parsed.",
-      details: { starterTemplateCode: "VE_STARTER_TEMPLATE_INVALID_JSON", path, errorMessage: error instanceof Error ? error.message : null },
+      details: {
+        starterTemplateCode: "VE_STARTER_TEMPLATE_INVALID_JSON",
+        path,
+        errorMessage: error instanceof Error ? error.message : null,
+      },
     });
   }
 }
 
 function validateRelativeTemplatePath(pathValue: unknown): string {
   if (typeof pathValue !== "string" || pathValue.length === 0) {
-    throw templateError({ code: CliErrorCode.InvalidConfig, message: "Starter layout entry path must be a non-empty string.", details: { starterTemplateCode: "VE_STARTER_TEMPLATE_INVALID_LAYOUT" } });
+    throw templateError({
+      code: CliErrorCode.InvalidConfig,
+      message: "Starter layout entry path must be a non-empty string.",
+      details: { starterTemplateCode: "VE_STARTER_TEMPLATE_INVALID_LAYOUT" },
+    });
   }
-  if (pathValue.startsWith("/") || pathValue.includes("\\") || pathValue.split("/").includes("..") || pathValue.split("/").includes("")) {
+  if (
+    pathValue.startsWith("/") ||
+    pathValue.includes("\\") ||
+    pathValue.split("/").includes("..") ||
+    pathValue.split("/").includes("")
+  ) {
     throw templateError({
       code: CliErrorCode.InvalidConfig,
       message: "Starter layout entry path must be a safe relative POSIX path.",
@@ -113,7 +143,11 @@ function validateRelativeTemplatePath(pathValue: unknown): string {
 
 function validateSha(value: unknown, pathValue: string): string {
   if (typeof value !== "string" || !/^sha256:[a-f0-9]{64}$/u.test(value)) {
-    throw templateError({ code: CliErrorCode.InvalidConfig, message: "Starter layout entry has an invalid sha256 field.", details: { starterTemplateCode: "VE_STARTER_TEMPLATE_INVALID_LAYOUT", path: pathValue } });
+    throw templateError({
+      code: CliErrorCode.InvalidConfig,
+      message: "Starter layout entry has an invalid sha256 field.",
+      details: { starterTemplateCode: "VE_STARTER_TEMPLATE_INVALID_LAYOUT", path: pathValue },
+    });
   }
   return value;
 }
@@ -124,43 +158,97 @@ function validateLayout(value: JsonObject, layoutPath: string): StarterLayout {
       code: CliErrorCode.MissingConfig,
       classification: CliClassification.MissingPrerequisite,
       message: "Starter layout schema version is not supported.",
-      details: { starterTemplateCode: "VE_STARTER_TEMPLATE_SCHEMA_MISMATCH", layoutPath, expected: STARTER_LAYOUT_SCHEMA_VERSION, actual: typeof value.schemaVersion === "string" ? value.schemaVersion : null },
+      details: {
+        starterTemplateCode: "VE_STARTER_TEMPLATE_SCHEMA_MISMATCH",
+        layoutPath,
+        expected: STARTER_LAYOUT_SCHEMA_VERSION,
+        actual: typeof value.schemaVersion === "string" ? value.schemaVersion : null,
+      },
     });
   }
-  if (typeof value.generatedBy !== "string" || typeof value.sourceRoot !== "string" || value.shippedRoot !== STARTER_SHIPPED_ROOT) {
-    throw templateError({ code: CliErrorCode.InvalidConfig, message: "Starter layout metadata is invalid.", details: { starterTemplateCode: "VE_STARTER_TEMPLATE_INVALID_LAYOUT", layoutPath } });
+  if (
+    typeof value.generatedBy !== "string" ||
+    typeof value.sourceRoot !== "string" ||
+    value.shippedRoot !== STARTER_SHIPPED_ROOT
+  ) {
+    throw templateError({
+      code: CliErrorCode.InvalidConfig,
+      message: "Starter layout metadata is invalid.",
+      details: { starterTemplateCode: "VE_STARTER_TEMPLATE_INVALID_LAYOUT", layoutPath },
+    });
   }
-  if (typeof value.fileCount !== "number" || !Number.isInteger(value.fileCount) || value.fileCount < 1 || !Array.isArray(value.files)) {
-    throw templateError({ code: CliErrorCode.InvalidConfig, message: "Starter layout file list is invalid.", details: { starterTemplateCode: "VE_STARTER_TEMPLATE_INVALID_LAYOUT", layoutPath } });
+  if (
+    typeof value.fileCount !== "number" ||
+    !Number.isInteger(value.fileCount) ||
+    value.fileCount < 1 ||
+    !Array.isArray(value.files)
+  ) {
+    throw templateError({
+      code: CliErrorCode.InvalidConfig,
+      message: "Starter layout file list is invalid.",
+      details: { starterTemplateCode: "VE_STARTER_TEMPLATE_INVALID_LAYOUT", layoutPath },
+    });
   }
   const files: LayoutFile[] = value.files.map((entry) => {
     if (!isJsonObject(entry)) {
-      throw templateError({ code: CliErrorCode.InvalidConfig, message: "Starter layout file entry must be an object.", details: { starterTemplateCode: "VE_STARTER_TEMPLATE_INVALID_LAYOUT", layoutPath } });
+      throw templateError({
+        code: CliErrorCode.InvalidConfig,
+        message: "Starter layout file entry must be an object.",
+        details: { starterTemplateCode: "VE_STARTER_TEMPLATE_INVALID_LAYOUT", layoutPath },
+      });
     }
     const pathValue = validateRelativeTemplatePath(entry.path);
     if (typeof entry.bytes !== "number" || !Number.isInteger(entry.bytes) || entry.bytes < 0) {
-      throw templateError({ code: CliErrorCode.InvalidConfig, message: "Starter layout entry has an invalid byte count.", details: { starterTemplateCode: "VE_STARTER_TEMPLATE_INVALID_LAYOUT", path: pathValue } });
+      throw templateError({
+        code: CliErrorCode.InvalidConfig,
+        message: "Starter layout entry has an invalid byte count.",
+        details: { starterTemplateCode: "VE_STARTER_TEMPLATE_INVALID_LAYOUT", path: pathValue },
+      });
     }
     return { path: pathValue, bytes: entry.bytes, sha256: validateSha(entry.sha256, pathValue) };
   });
   if (files.length !== value.fileCount) {
-    throw templateError({ code: CliErrorCode.InvalidConfig, message: "Starter layout fileCount does not match files length.", details: { starterTemplateCode: "VE_STARTER_TEMPLATE_INVALID_LAYOUT", layoutPath, fileCount: value.fileCount, filesLength: files.length } });
+    throw templateError({
+      code: CliErrorCode.InvalidConfig,
+      message: "Starter layout fileCount does not match files length.",
+      details: {
+        starterTemplateCode: "VE_STARTER_TEMPLATE_INVALID_LAYOUT",
+        layoutPath,
+        fileCount: value.fileCount,
+        filesLength: files.length,
+      },
+    });
   }
   const seen = new Set<string>();
   for (const file of files) {
     if (seen.has(file.path)) {
-      throw templateError({ code: CliErrorCode.InvalidConfig, message: "Starter layout contains a duplicate path.", details: { starterTemplateCode: "VE_STARTER_TEMPLATE_INVALID_LAYOUT", path: file.path } });
+      throw templateError({
+        code: CliErrorCode.InvalidConfig,
+        message: "Starter layout contains a duplicate path.",
+        details: { starterTemplateCode: "VE_STARTER_TEMPLATE_INVALID_LAYOUT", path: file.path },
+      });
     }
     seen.add(file.path);
   }
   for (const overlayPath of OVERLAY_PATHS) {
     if (!seen.has(overlayPath)) {
-      throw templateError({ code: CliErrorCode.InvalidConfig, message: "Starter layout is missing a required overlay path.", details: { starterTemplateCode: "VE_STARTER_TEMPLATE_INVALID_LAYOUT", path: overlayPath } });
+      throw templateError({
+        code: CliErrorCode.InvalidConfig,
+        message: "Starter layout is missing a required overlay path.",
+        details: { starterTemplateCode: "VE_STARTER_TEMPLATE_INVALID_LAYOUT", path: overlayPath },
+      });
     }
   }
   for (const substitutionPath of SUBSTITUTION_PATHS) {
     if (!seen.has(substitutionPath)) {
-      throw templateError({ code: CliErrorCode.InvalidConfig, message: "Starter layout is missing a required substitution path.", details: { starterTemplateCode: "VE_STARTER_TEMPLATE_INVALID_LAYOUT", path: substitutionPath } });
+      throw templateError({
+        code: CliErrorCode.InvalidConfig,
+        message: "Starter layout is missing a required substitution path.",
+        details: {
+          starterTemplateCode: "VE_STARTER_TEMPLATE_INVALID_LAYOUT",
+          path: substitutionPath,
+        },
+      });
     }
   }
   return {
@@ -186,7 +274,11 @@ async function loadLayout(layoutPath: string): Promise<StarterLayout> {
       code: CliErrorCode.MissingConfig,
       classification: CliClassification.MissingPrerequisite,
       message: "Starter layout manifest could not be read from the installed package.",
-      details: { starterTemplateCode: "VE_STARTER_TEMPLATE_LAYOUT_MISSING", layoutPath, errorMessage: error instanceof Error ? error.message : null },
+      details: {
+        starterTemplateCode: "VE_STARTER_TEMPLATE_LAYOUT_MISSING",
+        layoutPath,
+        errorMessage: error instanceof Error ? error.message : null,
+      },
     });
   }
   return validateLayout(parseJsonObject(text, layoutPath), layoutPath);
@@ -195,14 +287,23 @@ async function loadLayout(layoutPath: string): Promise<StarterLayout> {
 function assertUnder(parent: string, child: string, label: string): void {
   const rel = relative(parent, child);
   if (rel === "" || rel.startsWith("..")) {
-    throw templateError({ code: CliErrorCode.InvalidConfig, message: `${label} resolved outside its expected root.`, details: { starterTemplateCode: "VE_STARTER_TEMPLATE_INVALID_LAYOUT", parent, child } });
+    throw templateError({
+      code: CliErrorCode.InvalidConfig,
+      message: `${label} resolved outside its expected root.`,
+      details: { starterTemplateCode: "VE_STARTER_TEMPLATE_INVALID_LAYOUT", parent, child },
+    });
   }
 }
 
 export function resolveVibeEngineerPackageRoot(): string {
   const resolvedEntry = import.meta.resolve("vibe-engineer");
   if (!resolvedEntry.startsWith("file:")) {
-    throw templateError({ code: CliErrorCode.MissingConfig, classification: CliClassification.MissingPrerequisite, message: "The installed vibe-engineer package did not resolve to a file URL.", details: { starterTemplateCode: "VE_STARTER_TEMPLATE_UNRESOLVED", resolvedEntry } });
+    throw templateError({
+      code: CliErrorCode.MissingConfig,
+      classification: CliClassification.MissingPrerequisite,
+      message: "The installed vibe-engineer package did not resolve to a file URL.",
+      details: { starterTemplateCode: "VE_STARTER_TEMPLATE_UNRESOLVED", resolvedEntry },
+    });
   }
   const entryPath = fileURLToPath(resolvedEntry);
   let cursor = dirname(entryPath);
@@ -217,8 +318,13 @@ export function resolveVibeEngineerPackageRoot(): string {
   throw templateError({
     code: CliErrorCode.MissingConfig,
     classification: CliClassification.MissingPrerequisite,
-    message: "The installed vibe-engineer package root could not be derived from the exported entrypoint.",
-    details: { starterTemplateCode: "VE_STARTER_TEMPLATE_ROOT_NOT_FOUND", resolvedEntry, entryPath },
+    message:
+      "The installed vibe-engineer package root could not be derived from the exported entrypoint.",
+    details: {
+      starterTemplateCode: "VE_STARTER_TEMPLATE_ROOT_NOT_FOUND",
+      resolvedEntry,
+      entryPath,
+    },
   });
 }
 
@@ -226,32 +332,63 @@ async function assertTargetRootEmpty(targetRoot: string): Promise<void> {
   if (!existsSync(targetRoot)) return;
   const targetStat = await stat(targetRoot);
   if (!targetStat.isDirectory()) {
-    throw templateError({ code: CliErrorCode.InvalidInvocation, classification: CliClassification.WriteConflict, message: "Create target root exists and is not a directory.", details: { starterTemplateCode: "VE_STARTER_TEMPLATE_TARGET_CONFLICT", targetRoot } });
+    throw templateError({
+      code: CliErrorCode.InvalidInvocation,
+      classification: CliClassification.WriteConflict,
+      message: "Create target root exists and is not a directory.",
+      details: { starterTemplateCode: "VE_STARTER_TEMPLATE_TARGET_CONFLICT", targetRoot },
+    });
   }
   const entries = await readdir(targetRoot);
   if (entries.length > 0) {
     throw templateError({
       code: CliErrorCode.InvalidInvocation,
       classification: CliClassification.WriteConflict,
-      message: "Create target root is not empty; starter materialization is non-destructive and will not clobber existing files.",
-      details: { starterTemplateCode: "VE_STARTER_TEMPLATE_TARGET_CONFLICT", targetRoot, entryCount: entries.length, sampleEntries: entries.slice(0, 10) },
+      message:
+        "Create target root is not empty; starter materialization is non-destructive and will not clobber existing files.",
+      details: {
+        starterTemplateCode: "VE_STARTER_TEMPLATE_TARGET_CONFLICT",
+        targetRoot,
+        entryCount: entries.length,
+        sampleEntries: entries.slice(0, 10),
+      },
     });
   }
 }
 
-function applyTypedSubstitution(relativePath: string, content: Buffer, projectName: string): Buffer {
+function applyTypedSubstitution(
+  relativePath: string,
+  content: Buffer,
+  projectName: string,
+): Buffer {
   if (relativePath !== "package.json") return content;
   const object = parseJsonObject(content.toString("utf8"), relativePath);
   if (typeof object.name !== "string") {
-    throw templateError({ code: CliErrorCode.InvalidConfig, message: "Root package.json must contain a string name field for typed project-name substitution.", details: { starterTemplateCode: "VE_STARTER_TEMPLATE_INVALID_SUBSTITUTION", path: relativePath } });
+    throw templateError({
+      code: CliErrorCode.InvalidConfig,
+      message:
+        "Root package.json must contain a string name field for typed project-name substitution.",
+      details: {
+        starterTemplateCode: "VE_STARTER_TEMPLATE_INVALID_SUBSTITUTION",
+        path: relativePath,
+      },
+    });
   }
   const projectSlug = normalizeSlug(projectName);
   const rewritten: JsonObject = { ...object, name: projectSlug };
   return Buffer.from(`${JSON.stringify(rewritten, null, 2)}\n`, "utf8");
 }
 
-async function loadVerifiedSourceFiles(templateRoot: string, layout: StarterLayout, projectName: string): Promise<Array<{ relativePath: string; content: Buffer }>> {
-  const files: Array<{ relativePath: string; content: Buffer }> = [];
+function materializedRelativePath(sourceRelativePath: string): string {
+  return MATERIALIZED_PATH_RENAMES.get(sourceRelativePath) ?? sourceRelativePath;
+}
+
+async function loadVerifiedSourceFiles(
+  templateRoot: string,
+  layout: StarterLayout,
+  projectName: string,
+): Promise<Array<{ relativePath: string; targetRelativePath: string; content: Buffer }>> {
+  const files: Array<{ relativePath: string; targetRelativePath: string; content: Buffer }> = [];
   for (const entry of layout.files) {
     const sourcePath = resolve(templateRoot, ...entry.path.split("/"));
     assertUnder(templateRoot, sourcePath, "Starter template source file");
@@ -263,7 +400,12 @@ async function loadVerifiedSourceFiles(templateRoot: string, layout: StarterLayo
         code: CliErrorCode.MissingConfig,
         classification: CliClassification.MissingPrerequisite,
         message: "A starter template source file listed in the layout manifest is missing.",
-        details: { starterTemplateCode: "VE_STARTER_TEMPLATE_SOURCE_MISSING", path: entry.path, sourcePath, errorMessage: error instanceof Error ? error.message : null },
+        details: {
+          starterTemplateCode: "VE_STARTER_TEMPLATE_SOURCE_MISSING",
+          path: entry.path,
+          sourcePath,
+          errorMessage: error instanceof Error ? error.message : null,
+        },
       });
     }
     if (sourceContent.byteLength !== entry.bytes || fileSha256(sourceContent) !== entry.sha256) {
@@ -271,17 +413,36 @@ async function loadVerifiedSourceFiles(templateRoot: string, layout: StarterLayo
         code: CliErrorCode.MissingConfig,
         classification: CliClassification.MissingPrerequisite,
         message: "A shipped starter template file does not match the layout manifest.",
-        details: { starterTemplateCode: "VE_STARTER_TEMPLATE_SOURCE_HASH_MISMATCH", path: entry.path, expectedBytes: entry.bytes, actualBytes: sourceContent.byteLength, expectedSha256: entry.sha256, actualSha256: fileSha256(sourceContent) },
+        details: {
+          starterTemplateCode: "VE_STARTER_TEMPLATE_SOURCE_HASH_MISMATCH",
+          path: entry.path,
+          expectedBytes: entry.bytes,
+          actualBytes: sourceContent.byteLength,
+          expectedSha256: entry.sha256,
+          actualSha256: fileSha256(sourceContent),
+        },
       });
     }
-    files.push({ relativePath: entry.path, content: applyTypedSubstitution(entry.path, sourceContent, projectName) });
+    files.push({
+      relativePath: entry.path,
+      targetRelativePath: materializedRelativePath(entry.path),
+      content: applyTypedSubstitution(entry.path, sourceContent, projectName),
+    });
   }
   return files;
 }
 
-export async function materializeStarterTree(targetRoot: string, options: { projectName: string; mode: MaterializeMode }): Promise<StarterMaterializationResult> {
+export async function materializeStarterTree(
+  targetRoot: string,
+  options: { projectName: string; mode: MaterializeMode },
+): Promise<StarterMaterializationResult> {
   if (options.mode !== "create") {
-    throw templateError({ code: CliErrorCode.InternalError, classification: CliClassification.InternalError, message: "Starter materialization is only valid for create mode.", details: { starterTemplateCode: "VE_STARTER_TEMPLATE_INVALID_MODE", mode: options.mode } });
+    throw templateError({
+      code: CliErrorCode.InternalError,
+      classification: CliClassification.InternalError,
+      message: "Starter materialization is only valid for create mode.",
+      details: { starterTemplateCode: "VE_STARTER_TEMPLATE_INVALID_MODE", mode: options.mode },
+    });
   }
 
   const packageRoot = resolveVibeEngineerPackageRoot();
@@ -292,7 +453,7 @@ export async function materializeStarterTree(targetRoot: string, options: { proj
   await assertTargetRootEmpty(targetRoot);
 
   for (const file of sourceFiles) {
-    const targetPath = resolve(targetRoot, ...file.relativePath.split("/"));
+    const targetPath = resolve(targetRoot, ...file.targetRelativePath.split("/"));
     assertUnder(resolve(targetRoot), targetPath, "Starter materialization target file");
     await mkdir(dirname(targetPath), { recursive: true });
     await writeFile(targetPath, file.content);
@@ -303,7 +464,7 @@ export async function materializeStarterTree(targetRoot: string, options: { proj
     templateRoot,
     layoutPath,
     fileCount: layout.fileCount,
-    writtenFiles: sourceFiles.map((file) => file.relativePath),
+    writtenFiles: sourceFiles.map((file) => file.targetRelativePath),
     overlayPaths: [...OVERLAY_PATHS],
     substitutionPaths: [...SUBSTITUTION_PATHS],
     projectSlug: normalizeSlug(options.projectName),

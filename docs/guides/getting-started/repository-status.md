@@ -4,7 +4,7 @@ This page preserves the implementation truth that should not crowd the short pro
 
 ## Status summary
 
-`vibe-engineer` v0.1 is published on npm. Local source, package, installed-binary, create/import, pi asset, generated-starter local proof, and generated project-local `pnpm exec vibe-engineer` usage are green. Future publication remains manual/protected and requires valid npm authentication plus explicit approval.
+`vibe-engineer` v0.1 is published on npm. Local source, package, installed-binary, create/import, pi asset, generated-starter local proof, generated project-local `pnpm exec vibe-engineer` usage, live pi runtime loading, provider-agnostic Pulumi Cloud preview/up, web visual baseline capture, and iOS Maestro+Detox mobile smoke proof are green. Future publication remains manual/protected and requires valid npm authentication plus explicit approval.
 
 ## Safe live claims
 
@@ -18,17 +18,17 @@ The following are safe to claim from local release evidence:
 - `vibe-engineer create --agentic-harness pi` generates the locked starter shape and pi-native skill/prompt assets.
 - The generated starter includes project-local `vibe-engineer` CLI access and installs, typechecks, lints, format-checks, runs unit tests, builds, and passes quick quality locally.
 - Release packaging excludes source maps, source-tree evidence, witnesses, local fixtures, planning artifacts, and cache outputs from npm artifacts.
+- Live pi runtime loading has been proven locally against generated `.pi/**` assets.
+- Provider-agnostic Pulumi Cloud `dev` stack preview and `pulumi up` have been proven locally; the scaffold creates no cloud resources by default.
+- Web visual baseline capture/compare has been proven locally across desktop, tablet, and mobile viewports.
+- iOS mobile smoke has been proven locally with Maestro and Detox against a simulator app rendering the generated starter mobile `HomeScreen` source.
 
-## Pending external/live proof
+## Pending hosted proof
 
-These are not claimed live until separate evidence exists:
+These are not claimed hosted until separate GitHub Actions evidence exists:
 
-- hosted GitHub Actions CI for the harness repository;
-- hosted GitHub Actions CI for a generated starter repository;
-- live pi runtime discovery/loading of generated `.pi/**` assets;
-- real Pulumi deploy;
-- mobile Maestro/Detox device or simulator run;
-- full visual/UI baseline capture.
+- hosted GitHub Actions CI for the harness repository at the latest pushed commit;
+- hosted GitHub Actions CI for a generated starter repository.
 
 ## Governance and release metadata
 

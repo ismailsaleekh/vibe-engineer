@@ -15,4 +15,4 @@ This section is the reference index for `vibe-engineer`. Reference pages are **c
 
 ## Implementation status
 
-The v0.1 CLI/package/create/starter path is locally proven from packed packages. Reference pages distinguish live local proof from pending-live external proof such as hosted CI, live pi runtime loading, Pulumi deploy, mobile device E2E, and full visual baselines. See [Repository status](../guides/getting-started/repository-status.md).
+The v0.1 CLI/package/create/starter path is locally proven from packed packages. Live pi runtime loading, provider-agnostic Pulumi Cloud preview/up, web visual baselines, and iOS Maestro+Detox mobile smoke have local evidence. Hosted CI proof is tracked separately. See [Repository status](../guides/getting-started/repository-status.md).

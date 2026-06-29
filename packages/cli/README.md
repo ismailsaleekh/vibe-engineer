@@ -80,9 +80,9 @@ The main package depends on public runtime packages under the `@vibe-engineer/*`
 
 ## Release boundary
 
-v0.1 local proof covers package build, install smoke, CLI primitives, `create`, generated starter project-local `pnpm exec vibe-engineer` usage, local install/typecheck/lint/test/build/quality, and pi asset generation.
+v0.1 local proof covers package build, install smoke, CLI primitives, `create`, generated starter project-local `pnpm exec vibe-engineer` usage, local install/typecheck/lint/test/build/quality, pi asset generation, live pi runtime loading, provider-agnostic Pulumi Cloud preview/up, web visual baselines, and iOS Maestro+Detox mobile smoke.
 
-Hosted CI, live pi runtime loading, Pulumi live deploy, mobile device E2E, and full visual baselines are pending-live unless separately evidenced.
+Hosted harness CI and hosted generated-starter CI are tracked separately from npm package contents.
 
 ## License
 

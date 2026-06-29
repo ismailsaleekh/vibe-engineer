@@ -1,10 +1,5 @@
 name: vibe-engineer-infra
-description: |
-  Provider-agnostic Pulumi TypeScript scaffold for vibe-engineer. v1 deliberately
-  imports no cloud provider package, instantiates no provider/resource, and declares
-  no default cloud/region/deployment target. A project adopts a provider (AWS/GCP/
-  Azure/Kubernetes/...) by adding the provider dependency (owned by I-20S) and the
-  resources here. See docs/deployment/pulumi.md.
+description: Provider-agnostic Pulumi TypeScript scaffold for vibe-engineer. v1 imports no cloud provider package, instantiates no provider/resource, and declares no default cloud/region/deployment target.
 runtime:
   name: nodejs
   options:

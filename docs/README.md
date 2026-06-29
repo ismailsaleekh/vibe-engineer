@@ -39,4 +39,4 @@ The v0.1 package/runtime path is locally proven. The public docs site is configu
 
 ## Current docs boundary
 
-Runnable CLI snippets in these docs are backed by local installed-package proof. Hosted CI, live pi runtime loading, real Pulumi deploys, mobile device/simulator E2E, and full visual baselines remain pending-live and are documented as such where relevant.
+Runnable CLI snippets in these docs are backed by local installed-package proof. Live pi runtime loading, provider-agnostic Pulumi Cloud preview/up, web visual baselines, and iOS Maestro+Detox mobile smoke have local evidence; hosted CI remains tracked separately until GitHub Actions run evidence exists.

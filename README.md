@@ -17,7 +17,8 @@ It is not "vibe coding." It is the system around the work: skills, schematics, d
 - installed-package CLI smoke through a clean external tarball install;
 - the v0.1 CLI primitive set: `help`, `version`, `create`, `import`, `doctor`, `config`, `verify`, `security`, `schematic`;
 - `vibe-engineer create` generating the full starter plus pi-native skill/prompt assets;
-- generated starter install, typecheck, lint, format check, unit tests, build, quick quality, and project-local `pnpm exec vibe-engineer` usage.
+- generated starter install, typecheck, lint, format check, unit tests, build, quick quality, and project-local `pnpm exec vibe-engineer` usage;
+- explicit local live proofs for pi runtime loading, provider-agnostic Pulumi Cloud preview/up, web visual baselines, and iOS Maestro+Detox mobile smoke.
 
 Future releases remain manual/protected through `pnpm release:publish` with explicit approval and verified GitHub/npm identities.
 
@@ -83,6 +84,9 @@ pnpm quality -- --profile=ci --evidence-dir /tmp/vibe-quality/evidence --summary
 pnpm release:pack
 pnpm release:install-smoke
 pnpm release:check
+pnpm proof:pi-runtime -- --project-root <generated-starter>
+pnpm proof:pulumi-live
+pnpm proof:visual-baseline -- --project-root <generated-starter>
 ```
 
 Publishing is intentionally protected:
