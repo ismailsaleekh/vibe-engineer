@@ -37,7 +37,14 @@ const vibeEngineerPlugin = {
 
 export default tseslint.config(
   {
-    ignores: ["**/dist/**", "**/.turbo/**", "**/node_modules/**"],
+    ignores: [
+      "**/dist/**",
+      "**/.turbo/**",
+      "**/node_modules/**",
+      "apps/mobile/babel.config.cjs",
+      "apps/mobile/index.js",
+      "apps/mobile/metro.config.cjs",
+    ],
   },
   js.configs.recommended,
   ...tseslint.configs.strictTypeChecked,

@@ -105,6 +105,8 @@ const PUBLIC_COMMANDS = Object.freeze([
   "version",
 ]);
 const SKILL_NAMES = Object.freeze(["brainstorm", "grill-me", "task", "plan", "build", "ship"]);
+const GENERATED_PROJECT_SLUG = "wp08-generated-starter";
+const GENERATED_PROJECT_SCOPE = `@${GENERATED_PROJECT_SLUG}`;
 
 class ProofFailure extends Error {
   constructor(code, message, detail = {}) {
@@ -484,10 +486,10 @@ async function assertStarterShape(starterRoot) {
   }
   const rootManifest = await readJson(path.join(starterRoot, "package.json"));
   assertCondition(
-    rootManifest.name === "wp08-generated-starter",
+    rootManifest.name === `${GENERATED_PROJECT_SCOPE}/workspace`,
     "WP08_PROJECT_NAME_INJECTION_INVALID",
-    "root package name is not the safe project slug",
-    { actual: rootManifest.name, expected: "wp08-generated-starter" },
+    "root package name is not the generated project workspace scope",
+    { actual: rootManifest.name, expected: `${GENERATED_PROJECT_SCOPE}/workspace` },
   );
   const gitignore = await readFile(path.join(starterRoot, ".gitignore"), "utf8");
   for (const requiredIgnore of ["node_modules/", "dist/", ".turbo/", ".vibe/evidence/ci/"]) {
@@ -537,10 +539,10 @@ async function assertStarterShape(starterRoot) {
     const manifest = await readJson(file);
     if (rel !== "package.json") {
       assertCondition(
-        typeof manifest.name === "string" && manifest.name.startsWith("@vibe-engineer-starter/"),
+        typeof manifest.name === "string" && manifest.name.startsWith(`${GENERATED_PROJECT_SCOPE}/`),
         "WP08_INTERNAL_PACKAGE_IDENTITY_CHANGED",
-        "internal package name is not @vibe-engineer-starter/*",
-        { rel, name: manifest.name },
+        "internal package name is not under the generated project scope",
+        { rel, name: manifest.name, expectedScope: GENERATED_PROJECT_SCOPE },
       );
     }
     packageNames.push({ rel, name: manifest.name });
@@ -595,7 +597,7 @@ async function assertDependencyAudit(starterRoot) {
             "private harness package appears in generated manifest",
             { manifestRel, bucket, name, spec },
           );
-        const internalStarter = name.startsWith("@vibe-engineer-starter/");
+        const internalStarter = name.startsWith(`${GENERATED_PROJECT_SCOPE}/`);
         if (internalStarter) {
           assertCondition(
             internalPackages.has(name),

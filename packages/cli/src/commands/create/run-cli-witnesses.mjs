@@ -100,22 +100,47 @@ const starterLayoutPath = resolve(repoRoot, "packages/cli/templates/starter.layo
 const starterTemplateRoot = resolve(repoRoot, "packages/cli/templates/starter");
 const starterLayout = readJsonFile(starterLayoutPath);
 const starterOverlayPaths = new Set(["vibe-engineer.config.json", ".vibe/context/manifest.json"]);
-const starterSubstitutionPaths = new Set(["package.json"]);
-function relFrom(root, p) { return p.slice(root.length + 1).split(sep).join("/"); }
-function assertJsonEqualExceptRootPackageName(generatedPath) {
-  const template = readJsonFile(resolve(starterTemplateRoot, "package.json"));
-  const generated = readJsonFile(generatedPath);
-  assert.equal(generated.name, "atlas-tracker");
-  const normalizedGenerated = { ...generated, name: template.name };
-  assert.deepEqual(normalizedGenerated, template);
+function starterSubstitutionPathSet(envelope) {
+  const data = loadResultData(envelope);
+  const paths = data?.generatedFiles?.starterTemplate?.substitutionPaths;
+  return new Set(Array.isArray(paths) ? paths : ["package.json"]);
 }
-function assertStarterLayout(targetRoot, projectSlug) {
+function relFrom(root, p) { return p.slice(root.length + 1).split(sep).join("/"); }
+function assertNoTemplateScopeLeaked(targetRoot, projectSlug) {
+  const staleHits = [];
+  const expectedScope = `@${projectSlug}`;
+  for (const file of walkFiles(targetRoot)) {
+    if (!/\.(?:json|md|mjs|cjs|js|ts|tsx|yml|yaml|prisma|txt|example)$/u.test(file) && !file.endsWith("package.json") && !file.endsWith("_gitignore")) continue;
+    const text = readText(file);
+    if (text.includes("@vibe-engineer-starter") || text.includes("vibe-engineer-starter")) staleHits.push(relFrom(targetRoot, file));
+  }
+  assert.deepEqual(staleHits, []);
+  const rootPkg = readJsonFile(resolve(targetRoot, "package.json"));
+  assert.equal(rootPkg.name, `${expectedScope}/workspace`);
+  assert.equal(rootPkg.scripts.dev.includes(`${expectedScope}/api`), true);
+  assert.equal(rootPkg.scripts["dev:mobile"].includes(`${expectedScope}/mobile`), true);
+  const mobilePkg = readJsonFile(resolve(targetRoot, "apps/mobile/package.json"));
+  assert.equal(mobilePkg.name, `${expectedScope}/mobile`);
+  assert.equal(mobilePkg.scripts.dev.includes("expo start"), true);
+  assert.equal(typeof mobilePkg.dependencies.expo, "string");
+  assert.equal(typeof mobilePkg.devDependencies["babel-preset-expo"], "string");
+  assert.equal(existsSync(resolve(targetRoot, "apps/mobile/app.json")), true);
+  assert.equal(existsSync(resolve(targetRoot, "apps/mobile/index.js")), true);
+  assert.equal(existsSync(resolve(targetRoot, "apps/mobile/metro.config.cjs")), true);
+  assert.equal(existsSync(resolve(targetRoot, "apps/mobile/babel.config.cjs")), true);
+  const mobileApp = readJsonFile(resolve(targetRoot, "apps/mobile/app.json"));
+  assert.equal(mobileApp.expo.slug, projectSlug);
+  assert.equal(mobileApp.expo.scheme, projectSlug);
+}
+function assertStarterLayout(targetRoot, projectSlug, envelope) {
+  const starterSubstitutionPaths = starterSubstitutionPathSet(envelope);
   assert.equal(starterLayout.schemaVersion, "vibe-engineer.templates.starter-layout.v1");
   assert.equal(starterLayout.fileCount, starterLayout.files.length);
   const missing = [];
   const hashMismatches = [];
   for (const entry of starterLayout.files) {
-    const targetPath = resolve(targetRoot, ...entry.path.split("/"));
+    const targetEntryPath = entry.path === "_gitignore" ? ".gitignore" : entry.path;
+    const targetPath = resolve(targetRoot, ...targetEntryPath.split("/"));
     if (!existsSync(targetPath)) { missing.push(entry.path); continue; }
     if (starterOverlayPaths.has(entry.path)) continue;
     if (starterSubstitutionPaths.has(entry.path)) continue;
@@ -126,8 +151,9 @@ function assertStarterLayout(targetRoot, projectSlug) {
   assert.deepEqual(missing, []);
   assert.deepEqual(hashMismatches, []);
   const config = readJsonFile(resolve(targetRoot, "vibe-engineer.config.json"));
-  const templateConfig = readJsonFile(resolve(starterTemplateRoot, "vibe-engineer.config.json"));
-  assert.deepEqual(config.starter, templateConfig.starter);
+  assert.equal(config.starter.scope, `@${projectSlug}`);
+  assert.deepEqual(config.starter.appNames, ["api", "web", "mobile"]);
+  assert.deepEqual(config.starter.packageNames, ["domain", "contracts", "api-client", "config", "testing", "ui"]);
   assert.equal(config.agenticHarness, "pi");
   assert.equal(config.maxParallelAgents, 8);
   assert.equal(config.maxValidationFixIterations, 3);
@@ -136,8 +162,7 @@ function assertStarterLayout(targetRoot, projectSlug) {
   assert.equal(typeof config.uiVerification, "object");
   assert.equal(typeof config.agentRegistry, "object");
   assert.deepEqual(readJsonFile(resolve(targetRoot, ".vibe/context/manifest.json")), readJsonFile(resolve(starterTemplateRoot, ".vibe/context/manifest.json")));
-  assertJsonEqualExceptRootPackageName(resolve(targetRoot, "package.json"));
-  assert.equal(readJsonFile(resolve(targetRoot, "package.json")).name, projectSlug);
+  assertNoTemplateScopeLeaked(targetRoot, projectSlug);
   return { checkedFiles: starterLayout.files.length, overlays: [...starterOverlayPaths], substitutions: [...starterSubstitutionPaths] };
 }
 function packageJsonFiles(root) { return walkFiles(root).filter((file) => file.endsWith(`${sep}package.json`) || file === resolve(root, "package.json")); }
@@ -529,7 +554,7 @@ await writeCase(16, "W-RB4", "default-binary-live-create", async () => {
 // --- W-P1/W-P2 (WP-06 full starter layout + overlay/substitution semantics) ---
 await writeCase(17, "W-WP06-LAYOUT", "starter-layout-overlay-semantics", async () => {
   const targetRoot = resolve(args.evidenceRoot, "targets", "w-create-provided");
-  const layout = assertStarterLayout(targetRoot, "atlas-tracker");
+  const layout = assertStarterLayout(targetRoot, "atlas-tracker", providedEnv);
   return { witness: "W-WP06-LAYOUT", ...layout };
 });
 

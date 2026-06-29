@@ -1,8 +1,10 @@
 // vibe-engineer create — selected-pi starter creation with DL-17 bootstrap context.
 // Mirrors the accepted verify/index.ts + security/index.ts Node-24-native-.ts-load precedent.
-import { existsSync, realpathSync, statSync } from "node:fs";
+import { existsSync, statSync } from "node:fs";
 import { mkdir } from "node:fs/promises";
-import { dirname, resolve } from "node:path";
+import { stdin as promptInput, stdout as promptOutput } from "node:process";
+import { createInterface } from "node:readline/promises";
+import { basename, dirname, resolve } from "node:path";
 import {
   artifactDescriptor,
   createEnvelope,
@@ -60,7 +62,18 @@ type CreateOptions = {
   nonInteractive: boolean;
 };
 
-type ParseResult = { ok: true; options: CreateOptions } | { ok: false; envelope: UnknownRecord };
+type ParsedCreateOptions = {
+  targetRoot: string | null;
+  projectName: string | null;
+  agenticHarness: string | null;
+  brief: string | null;
+  resultFile?: string;
+  json: boolean;
+  nonInteractive: boolean;
+};
+
+type CompleteOptionsResult = { ok: true; options: CreateOptions } | { ok: false; envelope: UnknownRecord };
+type ParseResult = { ok: true; options: ParsedCreateOptions } | { ok: false; envelope: UnknownRecord };
 
 type EnvelopeFactoryInput = {
   invocation: CommandInvocation;
@@ -83,9 +96,9 @@ function makeWriteResultFileAtomic(resultFile: string, envelope: UnknownRecord):
 function makeCliError(input: { code: string; classification: string; retryable?: boolean; blocking?: boolean; message: string; details?: UnknownRecord }): UnknownRecord { return cliError(input); }
 function makeDiagnostic(input: { severity?: string; code: string; classification: string; message: string; path?: string | null; span?: unknown; hint?: string | null }): UnknownRecord { return diagnostic(input); }
 
-const VALUE_FLAGS = new Set(["--project-name", "--agentic-harness", "--brief", "--target-root", "--result-file", "--project-root"]);
+const VALUE_FLAGS = new Set(["--project-name", "--agentic-harness", "--brief", "--project-brief", "--target-root", "--result-file", "--project-root"]);
 const BOOLEAN_FLAGS = new Set(["--json", "--non-interactive"]);
-const REQUIRED_FLAGS = new Set(["--target-root"]);
+const BRIEF_FLAGS = new Set(["--brief", "--project-brief"]);
 
 function isRecord(value: unknown): value is UnknownRecord {
   return typeof value === "object" && value !== null && !Array.isArray(value);
@@ -121,6 +134,10 @@ function missingFlagValue(invocation: CommandInvocation, flag: string): { envelo
   });
 }
 
+function canonicalValueFlag(flag: string): string {
+  return BRIEF_FLAGS.has(flag) ? "--brief" : flag;
+}
+
 function parseCreateOptions(invocation: CommandInvocation, args: string[]): ParseResult {
   const values = new Map<string, string>();
   const booleans = new Set<string>();
@@ -142,33 +159,35 @@ function parseCreateOptions(invocation: CommandInvocation, args: string[]): Pars
       continue;
     }
     if (!VALUE_FLAGS.has(flag)) return { ok: false, envelope: unknownFlag(invocation, token).envelope };
-    if (seenFlags.has(flag)) return { ok: false, envelope: invalid(invocation, { message: "Duplicate create flag is not allowed.", details: { flag: sanitizeFlagForDisplay(flag) } }).envelope };
-    seenFlags.add(flag);
+    const canonicalFlag = canonicalValueFlag(flag);
+    if (seenFlags.has(canonicalFlag)) return { ok: false, envelope: invalid(invocation, { message: "Duplicate create flag is not allowed.", details: { flag: sanitizeFlagForDisplay(flag) } }).envelope };
+    seenFlags.add(canonicalFlag);
     const value = parsed.hasInlineValue ? parsed.value : args[index + 1];
     if (typeof value !== "string" || value.length === 0 || (!parsed.hasInlineValue && value.startsWith("--"))) {
       return { ok: false, envelope: missingFlagValue(invocation, flag).envelope };
     }
-    values.set(flag, value);
+    values.set(canonicalFlag, value);
     if (!parsed.hasInlineValue) index += 1;
   }
 
-  if (positionals.length > 0) {
+  if (positionals.length > 1) {
     return { ok: false, envelope: invalid(invocation, { message: "Unexpected positional arguments for create.", details: { positionalCount: positionals.length } }).envelope };
   }
-
-  for (const flag of REQUIRED_FLAGS) {
-    if (!values.has(flag)) {
-      return { ok: false, envelope: invalid(invocation, { code: CliErrorCode.MissingFlagValue, message: "Missing required create flag.", details: { flag } }).envelope };
+  if (positionals.length === 1) {
+    if (values.has("--target-root")) {
+      return { ok: false, envelope: invalid(invocation, { message: "Duplicate create target is not allowed.", details: { flag: "--target-root", positionalCount: 1 } }).envelope };
     }
+    values.set("--target-root", positionals[0] ?? "");
   }
 
-  const targetRootRaw = values.get("--target-root") ?? "";
-  const targetRoot = resolve(targetRootRaw);
+  const targetRootRaw = values.get("--target-root") ?? null;
+  const targetRoot = targetRootRaw === null ? null : resolve(targetRootRaw);
 
   const projectNameRaw = values.get("--project-name");
-  const projectName = (typeof projectNameRaw === "string" && projectNameRaw.trim().length > 0) ? projectNameRaw.trim() : targetRoot.split(/[\\/]/).filter(Boolean).pop() ?? "project";
+  const projectName = (typeof projectNameRaw === "string" && projectNameRaw.trim().length > 0) ? projectNameRaw.trim() : null;
 
-  const agenticHarness = values.get("--agentic-harness") ?? SELECTED_PI_HARNESS;
+  const agenticHarnessRaw = values.get("--agentic-harness");
+  const agenticHarness = (typeof agenticHarnessRaw === "string" && agenticHarnessRaw.trim().length > 0) ? agenticHarnessRaw.trim() : null;
   const brief = values.get("--brief") ?? null;
 
   const resultFileRaw = values.get("--result-file");
@@ -194,6 +213,70 @@ function producer(invocation: CommandInvocation): UnknownRecord {
 
 function generatedAt(invocation: CommandInvocation): string {
   return typeof invocation.startedAt === "string" && invocation.startedAt.length > 0 ? invocation.startedAt : new Date().toISOString();
+}
+
+async function completeCreateOptions(invocation: CommandInvocation, parsed: ParsedCreateOptions, mode: "create" | "import"): Promise<CompleteOptionsResult> {
+  let targetRoot = parsed.targetRoot;
+  let projectName = parsed.projectName;
+  let agenticHarness = parsed.agenticHarness;
+  let brief = parsed.brief;
+  const canPrompt = !parsed.nonInteractive && Boolean(promptInput.isTTY) && Boolean(promptOutput.isTTY);
+
+  if (targetRoot === null && canPrompt) {
+    const fallbackTarget = mode === "import" ? "." : "./my-vibe-project";
+    const rl = createInterface({ input: promptInput, output: promptOutput });
+    try {
+      const targetAnswer = (await rl.question(`${mode === "import" ? "Existing project root" : "Target directory"} [${fallbackTarget}]: `)).trim();
+      targetRoot = resolve(targetAnswer.length > 0 ? targetAnswer : fallbackTarget);
+      const defaultName = basename(targetRoot) || "project";
+      const nameAnswer = (await rl.question(`Project name [${defaultName}]: `)).trim();
+      projectName = nameAnswer.length > 0 ? nameAnswer : defaultName;
+      const harnessAnswer = (await rl.question(`Agentic harness [${SELECTED_PI_HARNESS}]: `)).trim();
+      agenticHarness = harnessAnswer.length > 0 ? harnessAnswer : SELECTED_PI_HARNESS;
+      const briefAnswer = (await rl.question("Project brief (optional): ")).trim();
+      brief = briefAnswer.length > 0 ? briefAnswer : null;
+    } finally {
+      rl.close();
+    }
+  }
+
+  if (targetRoot === null) {
+    return { ok: false, envelope: invalid(invocation, { code: CliErrorCode.MissingFlagValue, message: "Missing required create flag.", details: { flag: "--target-root" } }).envelope };
+  }
+
+  if (canPrompt && parsed.targetRoot !== null) {
+    const rl = createInterface({ input: promptInput, output: promptOutput });
+    try {
+      const defaultName = basename(targetRoot) || "project";
+      if (projectName === null) {
+        const nameAnswer = (await rl.question(`Project name [${defaultName}]: `)).trim();
+        projectName = nameAnswer.length > 0 ? nameAnswer : defaultName;
+      }
+      if (agenticHarness === null) {
+        const harnessAnswer = (await rl.question(`Agentic harness [${SELECTED_PI_HARNESS}]: `)).trim();
+        agenticHarness = harnessAnswer.length > 0 ? harnessAnswer : SELECTED_PI_HARNESS;
+      }
+      if (brief === null) {
+        const briefAnswer = (await rl.question("Project brief (optional): ")).trim();
+        brief = briefAnswer.length > 0 ? briefAnswer : null;
+      }
+    } finally {
+      rl.close();
+    }
+  }
+
+  return {
+    ok: true,
+    options: {
+      targetRoot,
+      projectName: projectName ?? (basename(targetRoot) || "project"),
+      agenticHarness: agenticHarness ?? SELECTED_PI_HARNESS,
+      brief,
+      ...(parsed.resultFile === undefined ? {} : { resultFile: parsed.resultFile }),
+      json: parsed.json,
+      nonInteractive: parsed.nonInteractive,
+    },
+  };
 }
 
 async function finalizeEnvelope(envelope: UnknownRecord, resultFile?: string): Promise<UnknownRecord> {
@@ -238,7 +321,9 @@ async function finalizeEnvelope(envelope: UnknownRecord, resultFile?: string): P
 export async function runCreate({ invocation, args }: CommandContext, mode: "create" | "import"): Promise<{ envelope: UnknownRecord }> {
   const parsed = parseCreateOptions(invocation, args);
   if (!parsed.ok) return commandResult(parsed.envelope);
-  const options = parsed.options;
+  const completed = await completeCreateOptions(invocation, parsed.options, mode);
+  if (!completed.ok) return commandResult(completed.envelope);
+  const options = completed.options;
 
   // Selected-pi manifest gate (real I-14A consumers).
   const selected = resolveSelectedPiManifest();

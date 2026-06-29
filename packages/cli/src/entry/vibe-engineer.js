@@ -34,9 +34,9 @@ function packageJsonPath() {
 
 function parseGlobalArgs(argv) {
   const options = {
-    json: false,
-    quiet: false,
-    nonInteractive: false,
+    json: argv.includes("--json"),
+    quiet: argv.includes("--quiet"),
+    nonInteractive: argv.includes("--non-interactive"),
     resultFile: null,
     projectRoot: null,
     configPath: null,
@@ -142,6 +142,59 @@ function invalidEnvelopeFailure(invocation, validation) {
   });
 }
 
+function firstMessage(envelope) {
+  const errorMessage = Array.isArray(envelope.errors) && envelope.errors[0] && typeof envelope.errors[0].message === "string" ? envelope.errors[0].message : null;
+  if (errorMessage) return errorMessage;
+  const diagnosticMessage = Array.isArray(envelope.diagnostics) && envelope.diagnostics[0] && typeof envelope.diagnostics[0].message === "string" ? envelope.diagnostics[0].message : null;
+  return diagnosticMessage;
+}
+
+function formatHumanEnvelope(envelope) {
+  const command = typeof envelope.invocation?.command === "string" ? envelope.invocation.command : "command";
+  const payloadKind = typeof envelope.payload?.kind === "string" ? envelope.payload.kind : "result";
+  const data = envelope.payload && typeof envelope.payload === "object" && envelope.payload.data && typeof envelope.payload.data === "object" ? envelope.payload.data : {};
+  const lines = [];
+
+  if (envelope.status === "success") {
+    if (payloadKind === "help_result" && Array.isArray(data.commands)) {
+      lines.push("vibe-engineer commands:");
+      for (const item of data.commands) {
+        lines.push(`  ${item.id} — ${item.description}`);
+      }
+      return `${lines.join("\n")}\n`;
+    }
+    if (payloadKind === "version_result") {
+      lines.push(`${data.name ?? "vibe-engineer"} ${data.version ?? "unknown"}`);
+      return `${lines.join("\n")}\n`;
+    }
+    if (payloadKind === "create_result") {
+      const mode = data.mode === "import" ? "import" : "create";
+      lines.push(`vibe-engineer ${mode} completed`);
+      if (data.project && typeof data.project === "object") lines.push(`Project: ${data.project.name ?? data.project.slug ?? "unknown"}`);
+      if (typeof data.targetRoot === "string") lines.push(`Target: ${data.targetRoot}`);
+      if (typeof data.selectedHarness === "string") lines.push(`Harness: ${data.selectedHarness}`);
+      if (typeof data.briefStatus === "string") lines.push(`Brief: ${data.briefStatus}`);
+      if (mode === "create" && typeof data.targetRoot === "string") {
+        lines.push("Next:");
+        lines.push(`  cd ${data.targetRoot}`);
+        lines.push("  pnpm install");
+        lines.push("  pnpm exec vibe-engineer help --json");
+        lines.push("  pnpm run quality:quick");
+      }
+      return `${lines.join("\n")}\n`;
+    }
+    lines.push(`vibe-engineer ${command} succeeded`);
+    lines.push(`Result: ${payloadKind}`);
+    return `${lines.join("\n")}\n`;
+  }
+
+  lines.push(`vibe-engineer ${command} ${envelope.status}`);
+  const message = firstMessage(envelope);
+  if (message) lines.push(message);
+  if (typeof envelope.exitCode === "number") lines.push(`Exit code: ${envelope.exitCode}`);
+  return `${lines.join("\n")}\n`;
+}
+
 async function emitEnvelope(envelope, options) {
   let finalEnvelope = envelope;
   if (options.resultFile) {
@@ -167,9 +220,10 @@ async function emitEnvelope(envelope, options) {
     }
   }
 
-  const bytes = envelopeBytes(finalEnvelope);
+  const machineMode = options.json || options.resultFile;
+  const output = machineMode ? envelopeBytes(finalEnvelope) : formatHumanEnvelope(finalEnvelope);
   if (!(options.quiet && options.resultFile && finalEnvelope.status !== "blocked")) {
-    process.stdout.write(bytes);
+    process.stdout.write(output);
   }
   return finalEnvelope.exitCode;
 }

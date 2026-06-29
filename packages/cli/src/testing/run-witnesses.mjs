@@ -115,6 +115,16 @@ assert.equal(success.envelope.payload.kind, "version_result");
 assert.equal(success.result.stdout.trim().startsWith("{"), true);
 assert.equal(success.result.stderr, "");
 
+const humanVersion = runCase("version-human-default", ["version"], { expectStdoutJson: false });
+assert.equal(humanVersion.result.status, 0);
+assert.match(humanVersion.result.stdout, /^vibe-engineer \d+\.\d+\.\d+\n$/u);
+assert.equal(humanVersion.result.stderr, "");
+
+const humanHelp = runCase("help-human-default", ["help"], { expectStdoutJson: false });
+assert.equal(humanHelp.result.status, 0);
+assert.equal(humanHelp.result.stdout.includes("vibe-engineer commands:"), true);
+assert.equal(humanHelp.result.stdout.includes("create"), true);
+
 const resultPath = fixturePath("result-file-envelope.json");
 const resultFile = runCase("result-file", ["version", "--json", "--result-file", resultPath, "--non-interactive"]);
 assert.equal(resultFile.result.status, 0);
@@ -255,5 +265,5 @@ assert.equal(validateCliResultEnvelope({ ...partial.envelope, errors: [{ ...part
 const evidenceLeaks = scanEvidenceForCanary(evidenceRoot, secretCanary);
 assert.deepEqual(evidenceLeaks, []);
 
-writeFileSync(resolve(evidenceRoot, "summary.json"), JSON.stringify({ ok: true, cases: 23, evidenceRoot, canaryAbsentFromEvidence: true }, null, 2), "utf8");
+writeFileSync(resolve(evidenceRoot, "summary.json"), JSON.stringify({ ok: true, cases: 25, evidenceRoot, canaryAbsentFromEvidence: true }, null, 2), "utf8");
 console.log(`I-02A CLI package witnesses passed: ${evidenceRoot}`);

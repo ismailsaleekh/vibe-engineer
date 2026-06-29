@@ -3,7 +3,7 @@
   "generatedBy": "packages/cli/scripts/copy-templates.mjs",
   "sourceRoot": "examples/starter-reference/.source-template",
   "shippedRoot": "templates/starter",
-  "fileCount": 95,
+  "fileCount": 99,
   "files": [
     {
       "path": ".env.example",
@@ -97,8 +97,8 @@
     },
     {
       "path": "apps/api/src/golden-records/golden-records.controller.ts",
-      "bytes": 415,
-      "sha256": "sha256:b5066ebea27e3519a62d18743240cb04a76376c89420526651a6f5fbda6ac9f2"
+      "bytes": 636,
+      "sha256": "sha256:3f560b9c74287d5db1f8cb535d3a7b6e2c30cc61e7cb74b3f5bc2aab5ef06df2"
     },
     {
       "path": "apps/api/src/golden-records/golden-records.module.ts",
@@ -107,8 +107,8 @@
     },
     {
       "path": "apps/api/src/golden-records/golden-records.service.ts",
-      "bytes": 448,
-      "sha256": "sha256:2f5b8835fe172878434b3ca5651b52f70e87463e192fd99dc35abe53534f55ad"
+      "bytes": 507,
+      "sha256": "sha256:e2d348ef1509fa3731710f0161b1b117a9f74dd6da5502fcf02c787a8f77c1a1"
     },
     {
       "path": "apps/api/src/golden-records/sample.ts",
@@ -137,13 +137,23 @@
     },
     {
       "path": "apps/api/test/bootstrap.test.ts",
-      "bytes": 314,
-      "sha256": "sha256:8e96814de993f4222d838eb26a71b1bc67be4be0bbc2981ed4a2864c28f7e7a8"
+      "bytes": 883,
+      "sha256": "sha256:6b779cf52e07d036dc154838f62fd3d65a3b2728c5c5a1eb20857671cbbf5d7c"
     },
     {
       "path": "apps/api/tsconfig.json",
       "bytes": 352,
       "sha256": "sha256:2c153ecf10501b1d8c59518dd016f0559aecad4d7542c62b9840f8b3e669ae0a"
+    },
+    {
+      "path": "apps/mobile/app.json",
+      "bytes": 263,
+      "sha256": "sha256:153aebf9a504529ca87bd362a27b25b581449351de1eb930bbe7254e97538503"
+    },
+    {
+      "path": "apps/mobile/babel.config.cjs",
+      "bytes": 56,
+      "sha256": "sha256:7aba5791423dbb3e9b36297057ca2248b097c2b68467a39927362c8441a4c2c3"
     },
     {
       "path": "apps/mobile/e2e/detox/README.md",
@@ -156,19 +166,29 @@
       "sha256": "sha256:50bce0e1769d6fc7746426c5023cf5f79d73f0a1c6cf217c96d80dc322ff1e54"
     },
     {
-      "path": "apps/mobile/package.json",
-      "bytes": 893,
-      "sha256": "sha256:5fe9860893748edbbaed4fdb94bf5f39b5a54a9181c63e92ad73b635c4dcb809"
+      "path": "apps/mobile/index.js",
+      "bytes": 114,
+      "sha256": "sha256:236dfe6c0aab064cd05f9d4ac39ebcd952150fbb9c31a4fb0d849d248ec52094"
     },
     {
-      "path": "apps/mobile/src/app/app.tsx",
-      "bytes": 302,
-      "sha256": "sha256:a5f79d36752b6d2807f20d0f040ed9122957a386e0af90d5bac77e0b6de48740"
+      "path": "apps/mobile/metro.config.cjs",
+      "bytes": 476,
+      "sha256": "sha256:19dd1723dcc7e068755b2c5a3765307f8b69d198c4cef4a0a7ec2b80dedf04d8"
+    },
+    {
+      "path": "apps/mobile/package.json",
+      "bytes": 1061,
+      "sha256": "sha256:ee7b75f8246ecd4df0330c25130fee5abfe84c6b5992ecb6d876a859c1d84479"
     },
     {
       "path": "apps/mobile/src/navigation/navigation.tsx",
-      "bytes": 389,
-      "sha256": "sha256:8c2cd6d0c7ed07cd402a1d6daf3a749c1b358b513594e5d7c839137609e45b37"
+      "bytes": 386,
+      "sha256": "sha256:4bf69092a982173d17f37e6852957bbecdb01dab58bd43e0393f36d1d492df19"
+    },
+    {
+      "path": "apps/mobile/src/root/root.tsx",
+      "bytes": 299,
+      "sha256": "sha256:da1a03b022e4012b78a11de47fb852e0b7441da50f002a2b203feb4d69a64d5d"
     },
     {
       "path": "apps/mobile/src/screens/golden-records/golden-records.tsx",
@@ -197,13 +217,13 @@
     },
     {
       "path": "apps/mobile/test/app.test.ts",
-      "bytes": 203,
-      "sha256": "sha256:dffe10df34369cf86e91ffaa12f925e53a1b00345bf8dbebe4f5599839efe55c"
+      "bytes": 195,
+      "sha256": "sha256:0d27e4ce0807c403806c4b42b8358e7797761bd29424dfab314c9292578c3e4a"
     },
     {
       "path": "apps/mobile/tsconfig.json",
-      "bytes": 560,
-      "sha256": "sha256:11f020a9ad92420f8820f8d7d2b7d5aeb2577e0d2cf3df00784a00f69745302d"
+      "bytes": 619,
+      "sha256": "sha256:2683de156fcd671c69d00b8552c9c08c888c6d3b23648b1e6a029554dac28fa9"
     },
     {
       "path": "apps/mobile/ui-verification/README.md",
@@ -267,18 +287,18 @@
     },
     {
       "path": "docs/reference/starter.md",
-      "bytes": 704,
-      "sha256": "sha256:ee4d41a2ea598b9ed9aa6962c225d76c124aed2b83135253b6252ba0f0ed1fd4"
+      "bytes": 1236,
+      "sha256": "sha256:70900b701b1f5c097d88b1d60a877e18dcb248cec9a8df1027421a052f725b58"
     },
     {
       "path": "eslint.config.mjs",
-      "bytes": 3321,
-      "sha256": "sha256:9b153bfabacea4b058fc87b8485c9514c2a136cf0cdd23f4e34d508e7eeb9fe9"
+      "bytes": 3452,
+      "sha256": "sha256:75e58a9bcc6b9308266927506daa5cdba3dfeeee6b603892a8feb54ab9d0fb16"
     },
     {
       "path": "package.json",
-      "bytes": 1833,
-      "sha256": "sha256:3c4ee6c9450c1e08e53f1bd1f05ac69ec5911816c7719bea5a6e92e6e141fd53"
+      "bytes": 2003,
+      "sha256": "sha256:bb4b4f2d26d554c718266ba42b967f980e42cb49c353bbc15b440d633da776c6"
     },
     {
       "path": "packages/api-client/package.json",

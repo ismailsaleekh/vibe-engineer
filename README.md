@@ -24,10 +24,16 @@ Future releases remain manual/protected through `pnpm release:publish` with expl
 
 ## Usage
 
-Recommended one-off creation:
+Interactive creation:
 
 ```bash
-npx vibe-engineer@latest create --target-root ./my-project --project-name my-project --agentic-harness pi --non-interactive
+vibe-engineer create
+```
+
+Recommended one-off automation:
+
+```bash
+npx vibe-engineer@latest create my-project --project-name my-project --agentic-harness pi --brief "Short project brief" --non-interactive
 ```
 
 After creation, use the generated project's project-local CLI:
@@ -52,7 +58,7 @@ Generated projects include the project-local `vibe-engineer` CLI automatically, 
 Create a project with the pi harness assets:
 
 ```bash
-npx vibe-engineer@latest create --target-root ./my-project --project-name my-project --agentic-harness pi --non-interactive
+npx vibe-engineer@latest create my-project --project-name my-project --agentic-harness pi --brief "Short project brief" --non-interactive
 ```
 
 The generated starter contains NestJS API, React web, React Native mobile, shared packages, `.vibe/**` context/work/evidence/registry scaffolding, `.tooling/**`, project-local `vibe-engineer` CLI access, and pi-native assets for all six skills.

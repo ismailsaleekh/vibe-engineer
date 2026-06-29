@@ -14,6 +14,8 @@
     "dev:api": "pnpm --filter @vibe-engineer-starter/api run dev",
     "dev:web": "pnpm --filter @vibe-engineer-starter/web run dev",
     "dev:mobile": "pnpm --filter @vibe-engineer-starter/mobile run dev",
+    "dev:mobile:ios": "pnpm --filter @vibe-engineer-starter/mobile run dev:ios",
+    "dev:mobile:android": "pnpm --filter @vibe-engineer-starter/mobile run dev:android",
     "db:start": "docker compose -f .tooling/dev-services/docker-compose.json up -d postgres",
     "db:stop": "docker compose -f .tooling/dev-services/docker-compose.json stop postgres",
     "db:migrate": "pnpm --filter @vibe-engineer-starter/api run db:migrate",

@@ -21,10 +21,12 @@ The package binary is:
 Recommended invocation paths:
 
 ```bash
-npx vibe-engineer@latest create --target-root ./my-project --project-name my-project --agentic-harness pi --non-interactive
+vibe-engineer create # interactive
+
+npx vibe-engineer@latest create my-project --project-name my-project --agentic-harness pi --brief "Short project brief" --non-interactive
 cd my-project
 pnpm install
-pnpm exec vibe-engineer help
+pnpm exec vibe-engineer help --json
 ```
 
 Global install is optional for power users:
@@ -78,7 +80,7 @@ Global flags parsed by the entrypoint:
 
 | Flag                    | Kind    | Effect                                                    |
 | ----------------------- | ------- | --------------------------------------------------------- |
-| `--json`                | boolean | Machine-readable output.                                  |
+| `--json`                | boolean | Machine-readable output. Human-readable summaries are the default when no machine carrier is requested. |
 | `--quiet`               | boolean | Suppress non-essential stdout when a result file is used. |
 | `--non-interactive`     | boolean | Never prompt; fail closed on missing input.               |
 | `--result-file <path>`  | value   | Write the result envelope atomically.                     |
@@ -86,6 +88,8 @@ Global flags parsed by the entrypoint:
 | `--config <path>`       | value   | Path to a config file.                                    |
 
 Unknown global flags return `VE_INVALID_FLAG`. Unknown command names return `VE_INVALID_INVOCATION` unless they are one of the deferred families above.
+
+`create` and `import` may prompt humans when required values are omitted and the process is attached to a TTY. Automation must pass `--non-interactive` plus required paths.
 
 ## Result envelope
 

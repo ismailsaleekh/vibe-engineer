@@ -4,10 +4,16 @@
 
 ## Command
 
-Recommended one-off creation:
+Interactive creation:
 
 ```bash
-npx vibe-engineer@latest create --target-root ./my-project --project-name my-project --agentic-harness pi --non-interactive
+vibe-engineer create
+```
+
+Recommended one-off automation:
+
+```bash
+npx vibe-engineer@latest create my-project --project-name my-project --agentic-harness pi --brief "Short project brief" --non-interactive
 ```
 
 Inside the generated project, use the project-local CLI that `create` adds automatically:
@@ -29,16 +35,16 @@ Important flags:
 
 | Flag                    | Meaning                                                                                                   |
 | ----------------------- | --------------------------------------------------------------------------------------------------------- |
-| `--target-root <path>`  | Required output directory. The command fails closed if the target already conflicts.                      |
-| `--project-name <name>` | Optional display/name seed; defaults from the target directory.                                           |
-| `--agentic-harness pi`  | v0.1 supported harness selection. Non-pi harnesses fail closed until implemented.                         |
-| `--brief <text>`        | Optional short project brief for initial context bootstrap. Secret-like or oversized briefs are rejected. |
-| `--non-interactive`     | Required for automation; no hidden prompts.                                                               |
+| `--target-root <path>` / positional path | Output directory. Required for non-interactive automation; prompted interactively for humans.              |
+| `--project-name <name>`                  | Optional display/name seed; defaults from the target directory.                                           |
+| `--agentic-harness pi`                   | v0.1 supported harness selection. Non-pi harnesses fail closed until implemented.                         |
+| `--brief <text>` / `--project-brief`     | Optional short project brief for initial context bootstrap. Secret-like or oversized briefs are rejected. |
+| `--non-interactive`                      | Required for automation; no hidden prompts.                                                               |
 | `--result-file <path>`  | Optional atomic machine-readable result envelope.                                                         |
 
 ## Generated starter shape
 
-A generated starter contains:
+A generated starter contains project-scoped private workspace packages (for example `@my-project/api`, `@my-project/domain`) and:
 
 ```txt
 apps/
@@ -100,6 +106,8 @@ pnpm run test:unit
 pnpm run build
 pnpm run quality:quick
 ```
+
+`pnpm run dev` starts API + web. `pnpm run dev:mobile` starts the Expo-powered React Native local runtime on Metro port `8081`; `pnpm run dev:mobile:ios` and `pnpm run dev:mobile:android` open simulator/emulator targets. Xcode / Android Studio / simulator setup remains the user's platform prerequisite.
 
 Full web E2E, mobile Maestro/Detox device proof, visual baselines, Pulumi deploys, and live pi runtime discovery are not default CI claims. They remain explicit/manual/orchestrator-run proof items.
 

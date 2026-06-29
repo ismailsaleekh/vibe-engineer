@@ -67,7 +67,10 @@ const STARTER_LAYOUT_SCHEMA_VERSION = "vibe-engineer.templates.starter-layout.v1
 const STARTER_SHIPPED_ROOT = "templates/starter";
 const STARTER_LAYOUT_FILE = "templates/starter.layout.json";
 const OVERLAY_PATHS = Object.freeze(["vibe-engineer.config.json", ".vibe/context/manifest.json"]);
-const SUBSTITUTION_PATHS = Object.freeze(["package.json"]);
+const STATIC_SUBSTITUTION_PATHS = Object.freeze(["package.json"]);
+const TEMPLATE_PACKAGE_SCOPE = "@vibe-engineer-starter";
+const TEMPLATE_SLUG = "vibe-engineer-starter";
+const TEMPLATE_TITLE = "Vibe Engineer Starter";
 const MATERIALIZED_PATH_RENAMES = Object.freeze(
   new Map<string, string>([["_gitignore", ".gitignore"]]),
 );
@@ -239,7 +242,7 @@ function validateLayout(value: JsonObject, layoutPath: string): StarterLayout {
       });
     }
   }
-  for (const substitutionPath of SUBSTITUTION_PATHS) {
+  for (const substitutionPath of STATIC_SUBSTITUTION_PATHS) {
     if (!seen.has(substitutionPath)) {
       throw templateError({
         code: CliErrorCode.InvalidConfig,
@@ -360,23 +363,34 @@ function applyTypedSubstitution(
   relativePath: string,
   content: Buffer,
   projectName: string,
-): Buffer {
-  if (relativePath !== "package.json") return content;
-  const object = parseJsonObject(content.toString("utf8"), relativePath);
-  if (typeof object.name !== "string") {
-    throw templateError({
-      code: CliErrorCode.InvalidConfig,
-      message:
-        "Root package.json must contain a string name field for typed project-name substitution.",
-      details: {
-        starterTemplateCode: "VE_STARTER_TEMPLATE_INVALID_SUBSTITUTION",
-        path: relativePath,
-      },
-    });
-  }
+): { content: Buffer; changed: boolean } {
+  const originalText = content.toString("utf8");
   const projectSlug = normalizeSlug(projectName);
-  const rewritten: JsonObject = { ...object, name: projectSlug };
-  return Buffer.from(`${JSON.stringify(rewritten, null, 2)}\n`, "utf8");
+  let rewrittenText = originalText
+    .replaceAll("__VIBE_PROJECT_NAME__", projectName)
+    .replaceAll("__VIBE_PROJECT_SLUG__", projectSlug)
+    .replaceAll("__VIBE_PACKAGE_SCOPE__", `@${projectSlug}`)
+    .replaceAll(TEMPLATE_PACKAGE_SCOPE, `@${projectSlug}`)
+    .replaceAll(TEMPLATE_TITLE, projectName)
+    .replaceAll(TEMPLATE_SLUG, projectSlug);
+
+  if (relativePath === "package.json") {
+    const object = parseJsonObject(rewrittenText, relativePath);
+    if (typeof object.name !== "string") {
+      throw templateError({
+        code: CliErrorCode.InvalidConfig,
+        message:
+          "Root package.json must contain a string name field for typed project-name substitution.",
+        details: {
+          starterTemplateCode: "VE_STARTER_TEMPLATE_INVALID_SUBSTITUTION",
+          path: relativePath,
+        },
+      });
+    }
+    rewrittenText = `${JSON.stringify(object, null, 2)}\n`;
+  }
+
+  return { content: Buffer.from(rewrittenText, "utf8"), changed: rewrittenText !== originalText };
 }
 
 function materializedRelativePath(sourceRelativePath: string): string {
@@ -387,8 +401,9 @@ async function loadVerifiedSourceFiles(
   templateRoot: string,
   layout: StarterLayout,
   projectName: string,
-): Promise<Array<{ relativePath: string; targetRelativePath: string; content: Buffer }>> {
+): Promise<{ files: Array<{ relativePath: string; targetRelativePath: string; content: Buffer }>; substitutionPaths: string[] }> {
   const files: Array<{ relativePath: string; targetRelativePath: string; content: Buffer }> = [];
+  const substitutionPaths: string[] = [];
   for (const entry of layout.files) {
     const sourcePath = resolve(templateRoot, ...entry.path.split("/"));
     assertUnder(templateRoot, sourcePath, "Starter template source file");
@@ -423,13 +438,15 @@ async function loadVerifiedSourceFiles(
         },
       });
     }
+    const substituted = applyTypedSubstitution(entry.path, sourceContent, projectName);
+    if (substituted.changed) substitutionPaths.push(entry.path);
     files.push({
       relativePath: entry.path,
       targetRelativePath: materializedRelativePath(entry.path),
-      content: applyTypedSubstitution(entry.path, sourceContent, projectName),
+      content: substituted.content,
     });
   }
-  return files;
+  return { files, substitutionPaths };
 }
 
 export async function materializeStarterTree(
@@ -449,7 +466,8 @@ export async function materializeStarterTree(
   const layoutPath = join(packageRoot, STARTER_LAYOUT_FILE);
   const templateRoot = join(packageRoot, STARTER_SHIPPED_ROOT);
   const layout = await loadLayout(layoutPath);
-  const sourceFiles = await loadVerifiedSourceFiles(templateRoot, layout, options.projectName);
+  const loaded = await loadVerifiedSourceFiles(templateRoot, layout, options.projectName);
+  const sourceFiles = loaded.files;
   await assertTargetRootEmpty(targetRoot);
 
   for (const file of sourceFiles) {
@@ -466,7 +484,7 @@ export async function materializeStarterTree(
     fileCount: layout.fileCount,
     writtenFiles: sourceFiles.map((file) => file.targetRelativePath),
     overlayPaths: [...OVERLAY_PATHS],
-    substitutionPaths: [...SUBSTITUTION_PATHS],
+    substitutionPaths: loaded.substitutionPaths,
     projectSlug: normalizeSlug(options.projectName),
   };
 }
