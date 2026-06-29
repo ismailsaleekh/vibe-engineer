@@ -304,7 +304,12 @@ async function assertDependencyAudit(starterRoot) {
       }
     }
   }
-  return { packageJsonCount: packageFiles.length, dependencyEntries: findings };
+  const rootManifest = await readJson(path.join(starterRoot, "package.json"));
+  const rootDevDependencies = rootManifest.devDependencies && typeof rootManifest.devDependencies === "object" && !Array.isArray(rootManifest.devDependencies) ? rootManifest.devDependencies : {};
+  const projectLocalRange = rootDevDependencies["vibe-engineer"];
+  assertCondition(typeof projectLocalRange === "string" && projectLocalRange.length > 0, "WP08_PROJECT_LOCAL_CLI_MISSING", "generated starter root package.json must include vibe-engineer as a project-local devDependency", { actual: projectLocalRange ?? null });
+  assertCondition(!projectLocalRange.startsWith("workspace:") && !projectLocalRange.startsWith("file:") && !projectLocalRange.startsWith("link:") && !path.isAbsolute(projectLocalRange), "WP08_WORKSPACE_OR_PATH_DEPENDENCY_LEAK", "generated starter vibe-engineer devDependency must resolve through npm-style version metadata, not workspace/path linkage", { spec: projectLocalRange });
+  return { packageJsonCount: packageFiles.length, projectLocalVibeEngineer: projectLocalRange, dependencyEntries: findings };
 }
 
 function globLikeMatches(rel, patterns) {
@@ -420,6 +425,15 @@ async function injectDependency(starterRoot, depName, depSpec, bucket = "depende
   await writeJson(manifestPath, manifest);
 }
 
+async function removeDependency(starterRoot, depName, bucket = "devDependencies") {
+  const manifestPath = path.join(starterRoot, "package.json");
+  const manifest = await readJson(manifestPath);
+  if (manifest[bucket] && typeof manifest[bucket] === "object" && !Array.isArray(manifest[bucket])) {
+    delete manifest[bucket][depName];
+  }
+  await writeJson(manifestPath, manifest);
+}
+
 async function runNegative(summary, name, controlledPath, checker, expectedCode) {
   let actualCode = null;
   let detail = null;
@@ -442,7 +456,7 @@ async function copyStarter(starterRoot, destination) {
 }
 
 async function assertInstalledToolsResolveFromStarter(starterRoot, runStep, env) {
-  const tools = ["tsc", "eslint", "prettier", "turbo", "tsx"];
+  const tools = ["tsc", "eslint", "prettier", "turbo", "tsx", "vibe-engineer"];
   const starterReal = await fsRealpath(starterRoot);
   const results = [];
   for (const tool of tools) {
@@ -611,6 +625,11 @@ async function main() {
     await writeJson(mutatedCreatePath, mutatedCreate);
     await runNegative(summary, "installed-template-source-provenance-leak", negSourceLeak, async function createProvenanceChecker() { await assertCreateProvenance({ createEnvelope: await readJson(mutatedCreatePath), externalInstallRoot: externalReal, installedPackageRoot: installedPackageReal }); }, "WP08_SOURCE_PATH_LEAK");
 
+    const negMissingProjectLocalCli = path.join(outRoot, "negative-missing-project-local-cli");
+    await copyStarter(summary.generatedStarterRoot, negMissingProjectLocalCli);
+    await removeDependency(negMissingProjectLocalCli, "vibe-engineer", "devDependencies");
+    await runNegative(summary, "missing-project-local-cli-devdependency", negMissingProjectLocalCli, async function dependencyAuditChecker() { await assertDependencyAudit(negMissingProjectLocalCli); }, "WP08_PROJECT_LOCAL_CLI_MISSING");
+
     const negPrivateDep = path.join(outRoot, "negative-private-dep");
     await copyStarter(summary.generatedStarterRoot, negPrivateDep);
     await injectDependency(negPrivateDep, "@vibe-engineer/preset-nest-react-rn", "^0.1.0", "dependencies");
@@ -652,6 +671,13 @@ async function main() {
 
     if (starterInstall.exitCode === 0) {
       await recordAssertion("installedToolResolution", async () => assertInstalledToolsResolveFromStarter(summary.generatedStarterRoot, runStep, starterEnv));
+      const projectLocalHelp = await runStep("starter-project-local-vibe-engineer-help", "pnpm", ["exec", "vibe-engineer", "help", "--json", "--non-interactive"], { cwd: summary.generatedStarterRoot, env: starterEnv });
+      const projectLocalHelpEnvelope = parseEnvelopeFromStdout(projectLocalHelp.stdout);
+      summary.starterCommands.push({ id: "pnpm exec vibe-engineer help", args: ["exec", "vibe-engineer", "help", "--json", "--non-interactive"], exitCode: projectLocalHelp.exitCode, evidenceDir: projectLocalHelp.evidenceDir });
+      await recordAssertion("starterCommand:pnpm exec vibe-engineer help", async () => {
+        assertCondition(projectLocalHelp.exitCode === 0 && projectLocalHelpEnvelope?.payload?.kind === "help_result", "WP08_PROJECT_LOCAL_CLI_FAILED", "generated starter project-local vibe-engineer CLI did not run through pnpm exec", { exitCode: projectLocalHelp.exitCode, stdout: projectLocalHelp.stdout, stderr: projectLocalHelp.stderr });
+        return { exitCode: projectLocalHelp.exitCode, commands: payloadData(projectLocalHelpEnvelope).commands.map((c) => c.id).sort() };
+      });
       for (const script of ["typecheck", "lint", "format:check", "test:unit", "build", "quality:quick"]) {
         const r = await runStep(`starter-${script.replace(/[:]/g, "-")}`, "pnpm", ["run", script], { cwd: summary.generatedStarterRoot, env: starterEnv });
         summary.starterCommands.push({ id: `pnpm run ${script}`, args: ["run", script], exitCode: r.exitCode, evidenceDir: r.evidenceDir });

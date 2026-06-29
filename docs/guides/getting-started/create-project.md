@@ -1,11 +1,28 @@
 # Create a project
 
-> **Status:** v0.1 local proof green. `vibe-engineer create` is wired in the installed binary and has been proven from a clean external tarball install. npm publication remains manual/protected.
+> **Status:** v0.1 package/create path is published and locally proofed. `vibe-engineer create` is wired in the installed binary and has been proven from a clean external install.
 
 ## Command
 
+Recommended one-off creation:
+
 ```bash
-npx vibe-engineer create --target-root ./my-project --project-name my-project --agentic-harness pi --non-interactive
+npx vibe-engineer@latest create --target-root ./my-project --project-name my-project --agentic-harness pi --non-interactive
+```
+
+Inside the generated project, use the project-local CLI that `create` adds automatically:
+
+```bash
+cd my-project
+pnpm install
+pnpm exec vibe-engineer help
+```
+
+Global install is optional for power users:
+
+```bash
+npm install -g vibe-engineer
+vibe-engineer create --target-root ./my-project --project-name my-project --agentic-harness pi --non-interactive
 ```
 
 Important flags:
@@ -46,7 +63,7 @@ packages/
   prompts/vibe-*.md
 ```
 
-The generated project is a starter consumer. It does not copy harness implementation internals and it does not expose the six skills as CLI commands.
+The generated project is a starter consumer. It includes project-local `vibe-engineer` CLI access for `pnpm exec vibe-engineer ...`, does not copy harness implementation internals, and does not expose the six skills as CLI commands.
 
 ## Config defaults
 
@@ -75,6 +92,7 @@ The v0.1 local proof runs the generated starter through:
 
 ```bash
 pnpm install
+pnpm exec vibe-engineer help
 pnpm run typecheck
 pnpm run lint
 pnpm run format:check

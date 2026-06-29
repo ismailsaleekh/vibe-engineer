@@ -1,6 +1,6 @@
 # System overview
 
-This page is a source-linked overview of the `vibe-engineer` harness repository as it exists for the v0.1 release candidate.
+This page is a source-linked overview of the `vibe-engineer` harness repository as it exists for the published v0.1 release line.
 
 ## Repository layout
 

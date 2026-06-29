@@ -6,7 +6,7 @@ This guide is the detailed companion to the short product README. It describes t
 
 ## Current implementation truth
 
-The v0.1 deterministic CLI primitives and generated starter path are locally proven from packed packages and a clean external install. The six user-facing skills are installed as harness-native assets for the selected harness (pi in v0.1); they are not `vibe-engineer` shell commands.
+The v0.1 deterministic CLI primitives and generated starter path are published and locally proven from packed packages plus a clean external install. Create new projects with `npx vibe-engineer@latest create ...`, then use `pnpm exec vibe-engineer ...` inside the generated repo; global install is optional for power users. The six user-facing skills are installed as harness-native assets for the selected harness (pi in v0.1); they are not `vibe-engineer` shell commands.
 
 The complete live skill orchestration loop (`brainstorm` / `grill-me` / `task` → `plan` → `build` → `ship`) remains adapter/runtime work unless invoked through generated harness-native assets and supported by evidence. Do not document the six skill names as CLI commands.
 

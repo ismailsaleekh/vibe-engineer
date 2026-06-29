@@ -30,6 +30,17 @@ The format follows Keep a Changelog, and this project uses Semantic Versioning (
 
 - Nothing yet.
 
+## [0.1.2] - 2026-06-28
+
+### Added
+
+- Generated starters now include project-local `vibe-engineer` CLI access automatically, so `pnpm exec vibe-engineer ...` works after `pnpm install`.
+- Generated-starter release proof now checks project-local `pnpm exec vibe-engineer help` and fails if the root starter manifest omits the project-local CLI dependency.
+
+### Changed
+
+- Public docs now recommend `npx vibe-engineer@latest create ...` for one-off creation, `pnpm exec vibe-engineer ...` inside generated repos, and optional global install for power users instead of instructing users to manually add the package to a project.
+
 ## [0.1.1] - 2026-06-28
 
 ### Fixed

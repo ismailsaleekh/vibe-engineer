@@ -606,6 +606,17 @@ function rootPackageJsonContent(): string {
       persistence: STARTER_LAYOUT.persistence,
       contractMechanism: STARTER_LAYOUT.contractMechanism,
     },
+    devDependencies: {
+      "@eslint/js": "^9.19.0",
+      "@types/node": "^22.10.7",
+      eslint: "^9.19.0",
+      prettier: "^3.4.2",
+      tsx: "^4.19.2",
+      turbo: "^2.3.3",
+      typescript: "^5.7.3",
+      "typescript-eslint": "^8.21.0",
+      "vibe-engineer": "^0.1.1",
+    },
   });
 }
 

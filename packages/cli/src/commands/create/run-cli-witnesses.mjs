@@ -144,19 +144,27 @@ function packageJsonFiles(root) { return walkFiles(root).filter((file) => file.e
 function assertDefinitionThreeDependencies(targetRoot) {
   const harnessScopedHits = [];
   const badVibeEngineerPlacements = [];
+  const badVibeEngineerRanges = [];
   for (const file of packageJsonFiles(targetRoot)) {
     const pkg = readJsonFile(file);
     for (const section of ["dependencies", "peerDependencies", "optionalDependencies", "devDependencies"]) {
       const deps = pkg[section] && typeof pkg[section] === "object" ? pkg[section] : {};
-      for (const dep of Object.keys(deps)) {
+      for (const [dep, range] of Object.entries(deps)) {
         if (dep.startsWith("@vibe-engineer/")) harnessScopedHits.push(`${relFrom(targetRoot, file)}:${section}:${dep}`);
         if (dep === "vibe-engineer" && section !== "devDependencies") badVibeEngineerPlacements.push(`${relFrom(targetRoot, file)}:${section}:${dep}`);
+        if (dep === "vibe-engineer" && (typeof range !== "string" || range.startsWith("workspace:") || range.startsWith("file:") || range.startsWith("link:") || range.startsWith("/"))) {
+          badVibeEngineerRanges.push(`${relFrom(targetRoot, file)}:${section}:${dep}:${String(range)}`);
+        }
       }
     }
   }
+  const rootPkg = readJsonFile(resolve(targetRoot, "package.json"));
+  const rootDevDeps = rootPkg.devDependencies && typeof rootPkg.devDependencies === "object" ? rootPkg.devDependencies : {};
+  assert.equal(typeof rootDevDeps["vibe-engineer"], "string", "generated starter root must include project-local vibe-engineer as a devDependency");
   assert.deepEqual(harnessScopedHits, []);
   assert.deepEqual(badVibeEngineerPlacements, []);
-  return { packageJsonCount: packageJsonFiles(targetRoot).length, harnessScopedHits, badVibeEngineerPlacements };
+  assert.deepEqual(badVibeEngineerRanges, []);
+  return { packageJsonCount: packageJsonFiles(targetRoot).length, projectLocalVibeEngineer: rootDevDeps["vibe-engineer"], harnessScopedHits, badVibeEngineerPlacements, badVibeEngineerRanges };
 }
 function assertNoHarnessSourceCopied(targetRoot) {
   const generatedHashes = new Map();

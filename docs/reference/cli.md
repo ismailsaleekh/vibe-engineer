@@ -18,6 +18,24 @@ The package binary is:
 { "vibe-engineer": "./dist/entry/vibe-engineer.js" }
 ```
 
+Recommended invocation paths:
+
+```bash
+npx vibe-engineer@latest create --target-root ./my-project --project-name my-project --agentic-harness pi --non-interactive
+cd my-project
+pnpm install
+pnpm exec vibe-engineer help
+```
+
+Global install is optional for power users:
+
+```bash
+npm install -g vibe-engineer
+vibe-engineer help
+```
+
+Generated starters include project-local `pnpm exec vibe-engineer ...` access automatically.
+
 ## v0.1 commands
 
 The default command loader registers these public deterministic primitives:

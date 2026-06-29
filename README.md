@@ -10,35 +10,51 @@ It is not "vibe coding." It is the system around the work: skills, schematics, d
 
 ## Release status
 
-`vibe-engineer` is a v0.1 release candidate. The local release proof now covers:
+`vibe-engineer` v0.1 is published on npm. The release proof covers:
 
 - `tsup`-built Node LTS-compatible `dist` output;
 - the publishable public package graph: `vibe-engineer` plus public `@vibe-engineer/*` packages;
 - installed-package CLI smoke through a clean external tarball install;
 - the v0.1 CLI primitive set: `help`, `version`, `create`, `import`, `doctor`, `config`, `verify`, `security`, `schematic`;
 - `vibe-engineer create` generating the full starter plus pi-native skill/prompt assets;
-- generated starter install, typecheck, lint, format check, unit tests, build, and quick quality.
+- generated starter install, typecheck, lint, format check, unit tests, build, quick quality, and project-local `pnpm exec vibe-engineer` usage.
 
-Publication is still manual/protected. Do not treat npm publication as complete until `pnpm release:publish` has run in the protected release context with valid npm authentication.
+Future releases remain manual/protected through `pnpm release:publish` with explicit approval and verified GitHub/npm identities.
 
-## Install after publication
+## Usage
+
+Recommended one-off creation:
 
 ```bash
-npm install --save-dev vibe-engineer
-npx vibe-engineer help
+npx vibe-engineer@latest create --target-root ./my-project --project-name my-project --agentic-harness pi --non-interactive
 ```
 
-For local release proof before npm publication, use the release scripts below.
+After creation, use the generated project's project-local CLI:
+
+```bash
+cd my-project
+pnpm install
+pnpm exec vibe-engineer help
+```
+
+Global install is optional for power users who want the CLI always available:
+
+```bash
+npm install -g vibe-engineer
+vibe-engineer help
+```
+
+Generated projects include the project-local `vibe-engineer` CLI automatically, so users do not need to add it manually.
 
 ## Create a starter
 
-After installing the package, create a project with the pi harness assets:
+Create a project with the pi harness assets:
 
 ```bash
-npx vibe-engineer create --target-root ./my-project --project-name my-project --agentic-harness pi --non-interactive
+npx vibe-engineer@latest create --target-root ./my-project --project-name my-project --agentic-harness pi --non-interactive
 ```
 
-The generated starter contains NestJS API, React web, React Native mobile, shared packages, `.vibe/**` context/work/evidence/registry scaffolding, `.tooling/**`, and pi-native assets for all six skills.
+The generated starter contains NestJS API, React web, React Native mobile, shared packages, `.vibe/**` context/work/evidence/registry scaffolding, `.tooling/**`, project-local `vibe-engineer` CLI access, and pi-native assets for all six skills.
 
 ## The workflow
 
