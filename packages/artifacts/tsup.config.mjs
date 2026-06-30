@@ -22,7 +22,9 @@ async function onSuccess() {
   const dest = path.join(destDir, "types.d.ts");
   await fs.promises.mkdir(destDir, { recursive: true });
   await fs.promises.copyFile(src, dest);
-  process.stdout.write(`[artifacts] copied canonical types → ${path.relative(process.cwd(), dest)}\n`);
+  process.stdout.write(
+    `[artifacts] copied canonical types → ${path.relative(process.cwd(), dest)}\n`,
+  );
 }
 
 export default defineConfig({
@@ -36,5 +38,5 @@ export default defineConfig({
   dts: false,
   external: ["ajv"],
   tsconfig: "./tsconfig.json",
-  onSuccess
+  onSuccess,
 });

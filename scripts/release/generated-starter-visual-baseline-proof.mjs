@@ -131,16 +131,12 @@ async function waitForHttp(url, timeoutMs = 30000) {
 }
 
 function spawnWebServer(projectRoot, port, logDir) {
-  const child = spawn(
-    "pnpm",
-    ["exec", "vite", "--host", "127.0.0.1", "--port", String(port)],
-    {
-      cwd: path.join(projectRoot, "apps", "web"),
-      env: { ...process.env, NODE_PATH: undefined, NODE_OPTIONS: undefined },
-      stdio: ["ignore", "pipe", "pipe"],
-      detached: true,
-    },
-  );
+  const child = spawn("pnpm", ["exec", "vite", "--host", "127.0.0.1", "--port", String(port)], {
+    cwd: path.join(projectRoot, "apps", "web"),
+    env: { ...process.env, NODE_PATH: undefined, NODE_OPTIONS: undefined },
+    stdio: ["ignore", "pipe", "pipe"],
+    detached: true,
+  });
   let stdout = "";
   let stderr = "";
   child.stdout.on("data", (chunk) => {

@@ -201,18 +201,18 @@ Exact syntax for package manager config, test config, CI workflow, and harness c
 
 Default private workspace names in the reference starter:
 
-| Path | Package name |
-| --- | --- |
-| root | `@vibe-engineer-starter/workspace` |
-| `apps/api` | `@vibe-engineer-starter/api` |
-| `apps/web` | `@vibe-engineer-starter/web` |
-| `apps/mobile` | `@vibe-engineer-starter/mobile` |
-| `packages/domain` | `@vibe-engineer-starter/domain` |
-| `packages/contracts` | `@vibe-engineer-starter/contracts` |
+| Path                  | Package name                        |
+| --------------------- | ----------------------------------- |
+| root                  | `@vibe-engineer-starter/workspace`  |
+| `apps/api`            | `@vibe-engineer-starter/api`        |
+| `apps/web`            | `@vibe-engineer-starter/web`        |
+| `apps/mobile`         | `@vibe-engineer-starter/mobile`     |
+| `packages/domain`     | `@vibe-engineer-starter/domain`     |
+| `packages/contracts`  | `@vibe-engineer-starter/contracts`  |
 | `packages/api-client` | `@vibe-engineer-starter/api-client` |
-| `packages/config` | `@vibe-engineer-starter/config` |
-| `packages/testing` | `@vibe-engineer-starter/testing` |
-| `packages/ui` | `@vibe-engineer-starter/ui` |
+| `packages/config`     | `@vibe-engineer-starter/config`     |
+| `packages/testing`    | `@vibe-engineer-starter/testing`    |
+| `packages/ui`         | `@vibe-engineer-starter/ui`         |
 
 Generated consuming projects substitute `vibe-engineer-starter` with the normalized project slug supplied to `vibe-engineer create/import`, preserving the suffixes and import graph.
 

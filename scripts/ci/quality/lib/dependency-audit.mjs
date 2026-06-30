@@ -17,7 +17,10 @@ function looksLocked(spec) {
   if (typeof spec !== "string" || spec.length === 0) return false;
   if (spec === "*" || spec === "latest") return false;
   // workspace:*, npm:, file:, link:, exact, ^x.y.z, ~x.y.z, >=/<=/> x.y.z are pinned forms.
-  return /^(workspace:|npm:|file:|link:|[\^~>=<]?\d+\.\d+\.\d+|\d+\.\d+\.\d+)/.test(spec) || /^[a-z0-9][\w.-]*:/.test(spec);
+  return (
+    /^(workspace:|npm:|file:|link:|[\^~>=<]?\d+\.\d+\.\d+|\d+\.\d+\.\d+)/.test(spec) ||
+    /^[a-z0-9][\w.-]*:/.test(spec)
+  );
 }
 
 function stripComments(sourceText) {
@@ -25,9 +28,7 @@ function stripComments(sourceText) {
   // specifiers, so docstring examples and prose do not produce false specifiers.
   // Our owned source has no regex/string literals containing /* or // that would
   // corrupt module-specifier extraction.
-  return sourceText
-    .replace(/\/\*[\s\S]*?\*\//g, "")
-    .replace(/\/\/.*/g, "");
+  return sourceText.replace(/\/\*[\s\S]*?\*\//g, "").replace(/\/\/.*/g, "");
 }
 
 /**
@@ -69,7 +70,9 @@ export function auditImportSpecifiers(specifiers, allowedPackageSpecifiers) {
  */
 export function auditDeclaredDependencies(declared) {
   if (!Array.isArray(declared) || declared.length === 0) {
-    throw new Error("dependency-audit: no declared dependencies — cannot prove locked consumption.");
+    throw new Error(
+      "dependency-audit: no declared dependencies — cannot prove locked consumption.",
+    );
   }
   const audited = [];
   for (const dep of declared) {
@@ -80,7 +83,9 @@ export function auditDeclaredDependencies(declared) {
       throw new Error("dependency-audit: declared dependency missing name.");
     }
     if (!looksLocked(dep.spec)) {
-      throw new Error(`dependency-audit: declared dependency '${dep.name}' has unlocked spec '${dep.spec}' (latest/* forbidden).`);
+      throw new Error(
+        `dependency-audit: declared dependency '${dep.name}' has unlocked spec '${dep.spec}' (latest/* forbidden).`,
+      );
     }
     audited.push({ name: dep.name, spec: dep.spec, locked: true });
   }
@@ -88,7 +93,7 @@ export function auditDeclaredDependencies(declared) {
     declared: audited,
     noDynamicLatest: true,
     noNpxRun: true,
-    noUndeclaredDependency: true
+    noUndeclaredDependency: true,
   };
 }
 
@@ -106,11 +111,12 @@ export function buildDependencyProof({ declared, ownSourceTexts, allowedImportSp
     const specs = extractImportSpecifiers(text);
     for (const s of specs) observedSpecifiers.add(s);
     const violations = auditImportSpecifiers(specs, allowedImportSpecifiers);
-    for (const v of violations) allViolations.push(`${label}: undeclared/non-public import specifier '${v}'`);
+    for (const v of violations)
+      allViolations.push(`${label}: undeclared/non-public import specifier '${v}'`);
   }
   if (allViolations.length > 0) {
     throw new Error(
-      `dependency-audit: undeclared or non-public import specifiers found (only Node built-ins + ${JSON.stringify(allowedImportSpecifiers)} allowed):\n  - ${allViolations.join("\n  - ")}`
+      `dependency-audit: undeclared or non-public import specifiers found (only Node built-ins + ${JSON.stringify(allowedImportSpecifiers)} allowed):\n  - ${allViolations.join("\n  - ")}`,
     );
   }
   return { ...audit, observedImportSpecifiers: [...observedSpecifiers].sort() };

@@ -28,17 +28,17 @@ import {
   runSecurityGate,
   createSecurityGateResult,
   createSecurityFinding,
-  createSecurityAuditEvent
+  createSecurityAuditEvent,
 } from "@vibe-engineer/security";
 ```
 
-| Function | Evaluates |
-| --- | --- |
-| `evaluateCommandSafety(commandInput, policy?)` | Is a command safe to spawn? (executable, args, classification) |
-| `evaluateEnvConfigSafety(input, policy?)` | Is env config free of secrets/production-like values? |
-| `evaluateExternalIntegrationSafety(integrationsInput, policy?)` | Are external integrations in an allowed mode? |
-| `evaluateSandboxCapability(sandboxInput, policy?)` | Are sandbox capabilities allowed? |
-| `evaluateEvidenceSafety(evidenceInput)` | Is evidence free of secrets before persistence? |
+| Function                                                        | Evaluates                                                      |
+| --------------------------------------------------------------- | -------------------------------------------------------------- |
+| `evaluateCommandSafety(commandInput, policy?)`                  | Is a command safe to spawn? (executable, args, classification) |
+| `evaluateEnvConfigSafety(input, policy?)`                       | Is env config free of secrets/production-like values?          |
+| `evaluateExternalIntegrationSafety(integrationsInput, policy?)` | Are external integrations in an allowed mode?                  |
+| `evaluateSandboxCapability(sandboxInput, policy?)`              | Are sandbox capabilities allowed?                              |
+| `evaluateEvidenceSafety(evidenceInput)`                         | Is evidence free of secrets before persistence?                |
 
 Each returns a typed result consumable by `runSecurityGate` / `createSecurityGateResult`.
 
@@ -47,7 +47,11 @@ Each returns a typed result consumable by `runSecurityGate` / `createSecurityGat
 Two redaction helpers are the canonical way to scrub secrets before persistence or display:
 
 ```js
-import { redactSecurityText, redactSecurityValue, isSecretLikeValue } from "@vibe-engineer/security";
+import {
+  redactSecurityText,
+  redactSecurityValue,
+  isSecretLikeValue,
+} from "@vibe-engineer/security";
 ```
 
 - `redactSecurityText(text)` — redacts secret-like substrings in a string.

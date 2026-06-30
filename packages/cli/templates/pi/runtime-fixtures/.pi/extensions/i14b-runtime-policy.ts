@@ -5,7 +5,8 @@ export const I14B_PI_RUNTIME_EXTENSION_POLICY = {
   permitsExternalMutationByDefault: false,
   claimsSandboxing: "not_provided",
   runtimeExecutionClaim: "pending-live",
-  trustBoundary: "Project-local TypeScript extension executes only after pi project trust; no sandbox isolation is claimed.",
+  trustBoundary:
+    "Project-local TypeScript extension executes only after pi project trust; no sandbox isolation is claimed.",
 } as const;
 
 export default function i14bPiRuntimePolicyExtension(): void {

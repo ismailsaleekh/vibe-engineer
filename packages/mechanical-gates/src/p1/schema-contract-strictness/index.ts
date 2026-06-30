@@ -3,5 +3,5 @@ export type {
   SchemaContractStrictnessFinding,
   SchemaContractStrictnessManifest,
   SchemaContractStrictnessOptions,
-  SchemaContractStrictnessResult
+  SchemaContractStrictnessResult,
 } from "./validate-schema-contract-strictness.js";

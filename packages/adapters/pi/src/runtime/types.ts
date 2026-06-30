@@ -6,17 +6,41 @@ import type {
 } from "../schema/index.ts";
 
 export type PiRuntimeFixtureSchemaVersion = "pi-runtime-fixture/v1";
-export type PiRuntimeAssetKind = "skill" | "prompt-template" | "extension" | "package-manifest" | "context" | "harness-config";
+export type PiRuntimeAssetKind =
+  | "skill"
+  | "prompt-template"
+  | "extension"
+  | "package-manifest"
+  | "context"
+  | "harness-config";
 export type PiRuntimeGenerationMode = "runtime-fixture";
 export type PiRuntimeValidationSeverity = "error";
 export type PiRuntimeExtensionSandboxClaim = "not_provided" | "pending-live" | "blocked";
 
 export interface PiRuntimeSkillProtocol {
   readonly skillId: SkillId;
-  readonly protocolKind: "work-brief-producer" | "implementation-plan-producer" | "build-result-producer" | "ship-packet-producer";
-  readonly inputArtifact: "raw-intent" | "work-brief" | "approved-implementation-plan" | "build-result";
-  readonly outputArtifact: "work-brief" | "implementation-plan-with-verification-delta" | "build-result" | "ship-packet";
-  readonly forbiddenArtifacts: readonly ("implementation-plan" | "build-result" | "ship-packet" | "push" | "pull-request")[];
+  readonly protocolKind:
+    | "work-brief-producer"
+    | "implementation-plan-producer"
+    | "build-result-producer"
+    | "ship-packet-producer";
+  readonly inputArtifact:
+    | "raw-intent"
+    | "work-brief"
+    | "approved-implementation-plan"
+    | "build-result";
+  readonly outputArtifact:
+    | "work-brief"
+    | "implementation-plan-with-verification-delta"
+    | "build-result"
+    | "ship-packet";
+  readonly forbiddenArtifacts: readonly (
+    | "implementation-plan"
+    | "build-result"
+    | "ship-packet"
+    | "push"
+    | "pull-request"
+  )[];
   readonly summary: string;
 }
 

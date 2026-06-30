@@ -20,14 +20,33 @@
 import { mkdir, writeFile, readFile } from "node:fs/promises";
 import path from "node:path";
 
-import { loadQualityContext, runWiringGateFromContext, assertValid } from "../ci/quality/lib/context.mjs";
+import {
+  loadQualityContext,
+  runWiringGateFromContext,
+  assertValid,
+} from "../ci/quality/lib/context.mjs";
 
 // Known value flags (name -> out-field setter). No boolean flags exist today;
 // adding one means a new branch below + a witness (do not silently coerce).
 const KNOWN_VALUE_FLAGS = new Map([
-  ["--profile", (out, v) => { out.profile = v; }],
-  ["--evidence-dir", (out, v) => { out.evidenceDir = v; }],
-  ["--summary-out", (out, v) => { out.summaryOut = v; }]
+  [
+    "--profile",
+    (out, v) => {
+      out.profile = v;
+    },
+  ],
+  [
+    "--evidence-dir",
+    (out, v) => {
+      out.evidenceDir = v;
+    },
+  ],
+  [
+    "--summary-out",
+    (out, v) => {
+      out.summaryOut = v;
+    },
+  ],
 ]);
 
 // Accepts BOTH the `=`-form (`--profile=ci`) and the space-form (`--profile ci`)
@@ -40,14 +59,21 @@ function parseArgs(argv) {
   let i = 0;
   while (i < tokens.length) {
     const arg = tokens[i];
-    if (arg === "--") { i += 1; continue; } // pnpm/npm args separator
+    if (arg === "--") {
+      i += 1;
+      continue;
+    } // pnpm/npm args separator
     // `=`-form: --flag=value (indexOf so empty values like `--profile=` are preserved)
     const eq = arg.startsWith("--") ? arg.indexOf("=") : -1;
     if (eq > 2) {
       const name = arg.slice(0, eq);
       const value = arg.slice(eq + 1);
       const setter = KNOWN_VALUE_FLAGS.get(name);
-      if (setter) { setter(out, value); i += 1; continue; }
+      if (setter) {
+        setter(out, value);
+        i += 1;
+        continue;
+      }
       out.unknown.push(arg);
       i += 1;
       continue;
@@ -83,14 +109,19 @@ async function writeJson(file, value) {
 async function main() {
   const args = parseArgs(process.argv);
   if (args.unknown.length > 0) failClosed(`unknown argument(s) ${JSON.stringify(args.unknown)}.`);
-  if (args.profile !== "ci") failClosed(`--profile=ci is required (got ${JSON.stringify(args.profile)}).`);
+  if (args.profile !== "ci")
+    failClosed(`--profile=ci is required (got ${JSON.stringify(args.profile)}).`);
   if (!args.evidenceDir) failClosed("--evidence-dir=<dir> is required.");
   if (!args.summaryOut) failClosed("--summary-out=<json> is required.");
 
   const projectRoot = process.cwd();
   const context = await loadQualityContext();
-  const summarySchema = JSON.parse(await readFile(path.join(context.schemasDir, "quality-summary.schema.json"), "utf8"));
-  const wiringSchema = JSON.parse(await readFile(path.join(context.schemasDir, "wiring-integrity.schema.json"), "utf8"));
+  const summarySchema = JSON.parse(
+    await readFile(path.join(context.schemasDir, "quality-summary.schema.json"), "utf8"),
+  );
+  const wiringSchema = JSON.parse(
+    await readFile(path.join(context.schemasDir, "wiring-integrity.schema.json"), "utf8"),
+  );
 
   await mkdir(args.evidenceDir, { recursive: true });
 
@@ -123,11 +154,11 @@ async function main() {
         expectedFamilies: wiring.expectedFamilies,
         registeredAndRunningFamilies: wiring.registeredAndRunningFamilies,
         missingFamilies: wiring.missingFamilies,
-        evidenceFile: wiringFile
+        evidenceFile: wiringFile,
       },
       tiers: [],
       overallOk: false,
-      exitCode: wiring.exitCode
+      exitCode: wiring.exitCode,
     };
     try {
       assertValid(summary, summarySchema, "quality summary");
@@ -144,7 +175,9 @@ async function main() {
   // 2) Spawn the REAL aggregate runner for every registered-and-running tier.
   const runPattern = /^runP(\d+)Aggregate$/;
   const perTierResults = [];
-  for (const exportName of wiring.runtimeEnumeration.perTier.filter((t) => t.running).map((t) => t.exportName)) {
+  for (const exportName of wiring.runtimeEnumeration.perTier
+    .filter((t) => t.running)
+    .map((t) => t.exportName)) {
     const family = `p${runPattern.exec(exportName)[1]}`;
     const runner = context.aggregateModule[exportName];
     let result = null;
@@ -168,9 +201,12 @@ async function main() {
       ok: result ? Boolean(result.ok) : false,
       findingCount: result ? result.findings.length : 0,
       blockingFindingCount: blocking,
-      implementedFamilies: result && result.evidence && Array.isArray(result.evidence.implementedFamilies) ? [...result.evidence.implementedFamilies] : [],
+      implementedFamilies:
+        result && result.evidence && Array.isArray(result.evidence.implementedFamilies)
+          ? [...result.evidence.implementedFamilies]
+          : [],
       evidenceFile: result ? evidenceFile : null,
-      runError
+      runError,
     });
   }
 
@@ -196,12 +232,12 @@ async function main() {
       expectedFamilies: wiring.expectedFamilies,
       registeredAndRunningFamilies: wiring.registeredAndRunningFamilies,
       missingFamilies: wiring.missingFamilies,
-      evidenceFile: wiringFile
+      evidenceFile: wiringFile,
     },
     tiers: perTierResults,
     overallOk,
     exitCode,
-    skippedCategoryDiagnostic: n3Diagnostic
+    skippedCategoryDiagnostic: n3Diagnostic,
   };
   try {
     assertValid(summary, summarySchema, "quality summary");
@@ -211,13 +247,17 @@ async function main() {
   await writeJson(args.summaryOut, summary);
 
   console.log(`quality ${overallOk ? "PASS" : "FAIL"} (profile=${args.profile})`);
-  console.log(`  wiring: ${wiring.verdict} | aggregates ok: ${perTierResults.map((t) => `${t.family}=${t.ok ? "ok" : "fail"}(${t.blockingFindingCount} blocking)`).join(", ")}`);
+  console.log(
+    `  wiring: ${wiring.verdict} | aggregates ok: ${perTierResults.map((t) => `${t.family}=${t.ok ? "ok" : "fail"}(${t.blockingFindingCount} blocking)`).join(", ")}`,
+  );
   console.log(`  evidence dir: ${path.resolve(args.evidenceDir)}`);
   console.log(`  summary: ${args.summaryOut}`);
   process.exit(exitCode);
 }
 
 main().catch((error) => {
-  console.error(`FAIL-CLOSED quality: internal error:\n${error && error.stack ? error.stack : error}`);
+  console.error(
+    `FAIL-CLOSED quality: internal error:\n${error && error.stack ? error.stack : error}`,
+  );
   process.exit(1);
 });

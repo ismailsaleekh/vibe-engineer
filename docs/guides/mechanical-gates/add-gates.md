@@ -28,13 +28,13 @@ await runVerificationPlan({
   runnerCatalog: [
     {
       id: "mechanical_gate:domain-purity",
-      kind: "command",                 // or "validator"
+      kind: "command", // or "validator"
       layer: "mechanical_gate",
       evidenceClass: "deterministic",
       blocking: true,
       // command-runner fields (typed argv, safety, expectedArtifacts, ...)
-    }
-  ]
+    },
+  ],
 });
 ```
 

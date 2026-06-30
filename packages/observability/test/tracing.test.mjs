@@ -39,7 +39,11 @@ describe("W1: startSpan emits a real OTel span with required attributes", () => 
       requestId: createUuidV4(),
       route: "/api/golden-records/:goldenRecordId/classify",
     });
-    handle.end({ outcome: "failed", errorType: "InvalidRequest", errorClassification: "redacted:invalid-request" });
+    handle.end({
+      outcome: "failed",
+      errorType: "InvalidRequest",
+      errorClassification: "redacted:invalid-request",
+    });
     const collected = await cap.collect();
     const span = collected.spans[0];
     expect(span.attributes["error.type"]).toBe("InvalidRequest");
@@ -56,7 +60,7 @@ describe("W3 NEGATIVE: missing required span attribute fails closed", () => {
       cap.spanApi.startSpan("reference.operation", {
         surface: "harness",
         "operation.name": "reference.operation",
-      })
+      }),
     ).toThrow();
   });
 
@@ -67,7 +71,7 @@ describe("W3 NEGATIVE: missing required span attribute fails closed", () => {
         surface: "harness",
         "operation.name": "reference.operation",
         correlationId: "not-a-uuid",
-      })
+      }),
     ).toThrow();
   });
 });

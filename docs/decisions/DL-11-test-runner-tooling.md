@@ -201,21 +201,21 @@ Coverage is mandatory as evidence of required behavior/risk/acceptance/regressio
 
 ## Locked tool choices and policies
 
-| Area | Locked choice / policy |
-| --- | --- |
-| Unit runner | Vitest for harness/shared/backend/web units; Jest only for RN component units. |
-| Integration runner | Vitest for package/backend/contract integration. |
-| Backend E2E | Vitest-driven Nest-compatible app + actual HTTP/provider/client seam; generated/shared client where contracts require it. |
-| Web E2E | Playwright, preserved. |
-| Mobile E2E | Maestro + Detox, preserved; split owned by DL-12. |
-| React component testing | Vitest + Testing Library React + user-event + jest-dom + jsdom. |
-| React Native component testing | Jest + React Native Testing Library. |
-| Coverage | V8/Vitest coverage, Jest coverage for RN, scenario/matrix evidence for E2E/UI; behavior/risk coverage hard, line percentage signal/ratchet. |
-| Property testing | fast-check targeted; blocking for named invariant surfaces only. |
-| Mutation testing | StrykerJS targeted; advisory/ratcheted unless explicitly made blocking by an approved Verification Delta/future owner. |
-| Matchers/assertions | Domain-neutral shared matcher semantics with Vitest/Jest adapters; meaningful semantic assertions required. |
-| Factories/fixtures | Typed deterministic schema-derived builders; real-boundary fixtures where closure claims require them; generic/sample naming only. |
-| Generated-test naming/evidence | Layer/surface/runner/source-id naming; machine-readable evidence; volatile normalization; setup/resource failures hard-fail. |
+| Area                           | Locked choice / policy                                                                                                                      |
+| ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| Unit runner                    | Vitest for harness/shared/backend/web units; Jest only for RN component units.                                                              |
+| Integration runner             | Vitest for package/backend/contract integration.                                                                                            |
+| Backend E2E                    | Vitest-driven Nest-compatible app + actual HTTP/provider/client seam; generated/shared client where contracts require it.                   |
+| Web E2E                        | Playwright, preserved.                                                                                                                      |
+| Mobile E2E                     | Maestro + Detox, preserved; split owned by DL-12.                                                                                           |
+| React component testing        | Vitest + Testing Library React + user-event + jest-dom + jsdom.                                                                             |
+| React Native component testing | Jest + React Native Testing Library.                                                                                                        |
+| Coverage                       | V8/Vitest coverage, Jest coverage for RN, scenario/matrix evidence for E2E/UI; behavior/risk coverage hard, line percentage signal/ratchet. |
+| Property testing               | fast-check targeted; blocking for named invariant surfaces only.                                                                            |
+| Mutation testing               | StrykerJS targeted; advisory/ratcheted unless explicitly made blocking by an approved Verification Delta/future owner.                      |
+| Matchers/assertions            | Domain-neutral shared matcher semantics with Vitest/Jest adapters; meaningful semantic assertions required.                                 |
+| Factories/fixtures             | Typed deterministic schema-derived builders; real-boundary fixtures where closure claims require them; generic/sample naming only.          |
+| Generated-test naming/evidence | Layer/surface/runner/source-id naming; machine-readable evidence; volatile normalization; setup/resource failures hard-fail.                |
 
 ## Dependencies and prerequisites
 
@@ -369,14 +369,14 @@ dependencies:
 
 Earliest required real-boundary proofs:
 
-| Lane | Producer | Carrier | Consumer | Closure rule |
-| --- | --- | --- | --- | --- |
-| `I-11` | actual minimal provider/API using the contract mechanism | generated/shared client plus on-disk test/evidence artifacts | actual consumer fixture under Vitest contract/integration path | hand-authored parser-matching fixtures do not close; invalid payload rejection required. |
-| `I-12` | actual aggregate quality path | real fixture files and ratchet/scanner baselines | test anti-pattern scanner and ratchet consumers | positive/negative/regression cases required; bad generated tests must fail. |
-| `I-16` | actual starter API/contracts/client golden fixture | selected backend/unit/integration/contract tests and generated client artifacts | starter app/API/client consumers | invalid payload rejection and generated-client consumption required. |
-| `I-17` | actual served web app and actual RN mobile app | Playwright traces/screenshots; Maestro/Detox artifacts; UI evidence from DL-13 | verification runner/build evidence consumers | unavailable mobile live proof is `pending-live/BLOCKED`, not green. |
-| `I-19` | actual golden critical path observability instrumentation | logs/metrics/traces/correlation artifacts plus selected runner results | observability test assertions/evidence collector | missing correlation/log/metric/trace evidence fails where required. |
-| `I-20` | local aggregate quality/test command | runner invocations and evidence artifacts | CI workflow/static validator | local and CI must invoke equivalent runner semantics. |
+| Lane   | Producer                                                  | Carrier                                                                         | Consumer                                                       | Closure rule                                                                             |
+| ------ | --------------------------------------------------------- | ------------------------------------------------------------------------------- | -------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `I-11` | actual minimal provider/API using the contract mechanism  | generated/shared client plus on-disk test/evidence artifacts                    | actual consumer fixture under Vitest contract/integration path | hand-authored parser-matching fixtures do not close; invalid payload rejection required. |
+| `I-12` | actual aggregate quality path                             | real fixture files and ratchet/scanner baselines                                | test anti-pattern scanner and ratchet consumers                | positive/negative/regression cases required; bad generated tests must fail.              |
+| `I-16` | actual starter API/contracts/client golden fixture        | selected backend/unit/integration/contract tests and generated client artifacts | starter app/API/client consumers                               | invalid payload rejection and generated-client consumption required.                     |
+| `I-17` | actual served web app and actual RN mobile app            | Playwright traces/screenshots; Maestro/Detox artifacts; UI evidence from DL-13  | verification runner/build evidence consumers                   | unavailable mobile live proof is `pending-live/BLOCKED`, not green.                      |
+| `I-19` | actual golden critical path observability instrumentation | logs/metrics/traces/correlation artifacts plus selected runner results          | observability test assertions/evidence collector               | missing correlation/log/metric/trace evidence fails where required.                      |
+| `I-20` | local aggregate quality/test command                      | runner invocations and evidence artifacts                                       | CI workflow/static validator                                   | local and CI must invoke equivalent runner semantics.                                    |
 
 ## Ownership/path consequences
 

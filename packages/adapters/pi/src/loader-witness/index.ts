@@ -17,9 +17,13 @@ export interface PiRpcCommandObservation {
   readonly description?: string;
 }
 
-const maybeString = (value: unknown): string | undefined => (typeof value === "string" ? value : undefined);
+const maybeString = (value: unknown): string | undefined =>
+  typeof value === "string" ? value : undefined;
 
-const responseWithOptionalId = <T extends Omit<PiRpcGetCommandsResponse, "id">>(id: unknown, response: T): PiRpcGetCommandsResponse => {
+const responseWithOptionalId = <T extends Omit<PiRpcGetCommandsResponse, "id">>(
+  id: unknown,
+  response: T,
+): PiRpcGetCommandsResponse => {
   const parsedId = maybeString(id);
   return parsedId === undefined ? response : { ...response, id: parsedId };
 };
@@ -69,7 +73,10 @@ export const createPiRpcGetCommandsRequest = (): PiRpcGetCommandsRequest => ({
   type: "get_commands",
 });
 
-export const createPiLoaderWitnessPlan = (fixtureRoot: string, fixture: PiRuntimeFixture): PiLoaderWitnessPlan => {
+export const createPiLoaderWitnessPlan = (
+  fixtureRoot: string,
+  fixture: PiRuntimeFixture,
+): PiLoaderWitnessPlan => {
   const validation = validatePiRuntimeFixture(fixture);
   const requiredCommands = [
     ...SKILL_IDS.map((skillId) => commandNameForSkill(skillId)),
@@ -91,10 +98,20 @@ export const createPiLoaderWitnessPlan = (fixtureRoot: string, fixture: PiRuntim
 
 export const parsePiRpcGetCommandsResponse = (value: unknown): PiRpcGetCommandsResponse => {
   if (!isRecord(value)) {
-    return { type: "response", command: "get_commands", success: false, error: "response_not_object" };
+    return {
+      type: "response",
+      command: "get_commands",
+      success: false,
+      error: "response_not_object",
+    };
   }
   if (value["type"] !== "response" || value["command"] !== "get_commands") {
-    return { type: "response", command: "get_commands", success: false, error: "unexpected_response_type" };
+    return {
+      type: "response",
+      command: "get_commands",
+      success: false,
+      error: "unexpected_response_type",
+    };
   }
   if (value["success"] !== true) {
     return responseWithOptionalId(value["id"], {
@@ -156,7 +173,8 @@ export const evaluatePiLoaderWitnessResponse = (
       observedCommands: [],
       missingCommands: [],
       validationIssues,
-      pendingLiveReason: response.error ?? "pi RPC get_commands did not return a successful command list.",
+      pendingLiveReason:
+        response.error ?? "pi RPC get_commands did not return a successful command list.",
     };
   }
   const requiredCommands = [
@@ -181,7 +199,10 @@ export const evaluatePiLoaderWitnessResponse = (
   };
 };
 
-export const pendingLivePiLoaderWitness = (fixture: PiRuntimeFixture, reason: string): PiLoaderWitnessEvaluation => {
+export const pendingLivePiLoaderWitness = (
+  fixture: PiRuntimeFixture,
+  reason: string,
+): PiLoaderWitnessEvaluation => {
   const validation = validatePiRuntimeFixture(fixture);
   return {
     status: "pending-live/BLOCKED",

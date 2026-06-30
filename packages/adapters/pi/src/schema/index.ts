@@ -9,9 +9,21 @@ export const GENERATED_FILE_FAMILY_IDS = [
   "context-files",
   "harness-config",
 ] as const;
-export const SANDBOX_CAPABILITY_STATES = ["proven", "not_provided", "unknown", "blocked", "pending-live"] as const;
+export const SANDBOX_CAPABILITY_STATES = [
+  "proven",
+  "not_provided",
+  "unknown",
+  "blocked",
+  "pending-live",
+] as const;
 export const I14A_RUNTIME_EXECUTION_CLAIMS = ["not-claimed", "pending-live", "blocked"] as const;
-export const I14A_OUT_OF_SCOPE_RUNTIME_EXECUTION_CLAIMS = ["proven", "live-proven", "runtime-proven", "loaded", "executed"] as const;
+export const I14A_OUT_OF_SCOPE_RUNTIME_EXECUTION_CLAIMS = [
+  "proven",
+  "live-proven",
+  "runtime-proven",
+  "loaded",
+  "executed",
+] as const;
 export const GENERATED_FILE_PRODUCER_LANE_IDS = [
   "I-14B-pi-adapter-runtime-skill-consumption",
   "I-15A-create-import-cli-ux-selected-harness",
@@ -107,7 +119,12 @@ export interface GeneratedFilesCapability {
 }
 
 export interface PackageDistributionCapability extends CapabilitySurface {
-  readonly distributionKinds: readonly ("project-local-files" | "pi-package" | "npm-package" | "global-install")[];
+  readonly distributionKinds: readonly (
+    | "project-local-files"
+    | "pi-package"
+    | "npm-package"
+    | "global-install"
+  )[];
   readonly trustUpdatePolicy: string;
 }
 
@@ -117,7 +134,10 @@ export interface SecurityTrustCapability {
   readonly extensionExecution: "none" | "typescript-extension" | "package-extension";
   readonly commandPolicy: "default-deny" | "not-applicable";
   readonly sandboxCapability: SandboxCapabilityState;
-  readonly credentialPolicy: "no-credentials-required" | "operator-supplied-only" | "unknown-blocked";
+  readonly credentialPolicy:
+    | "no-credentials-required"
+    | "operator-supplied-only"
+    | "unknown-blocked";
   readonly destructiveOperations: "forbidden" | "approval-required" | "not-applicable";
   readonly externalIntegration: "disabled-by-default" | "read-only" | "unknown-blocked";
   readonly trustBoundary: string;
@@ -191,13 +211,20 @@ export interface GeneratedFileOwner {
 }
 
 export interface GeneratedFileTrustSecurity {
-  readonly classification: "project-instruction" | "executable-extension" | "package-manifest" | "configuration";
+  readonly classification:
+    | "project-instruction"
+    | "executable-extension"
+    | "package-manifest"
+    | "configuration";
   readonly trustBoundary: string;
   readonly projectTrustRequired: boolean;
   readonly executesCode: boolean;
   readonly commandPolicy: "default-deny" | "not-applicable";
   readonly sandboxCapability: SandboxCapabilityState;
-  readonly credentialPolicy: "no-credentials-required" | "operator-supplied-only" | "unknown-blocked";
+  readonly credentialPolicy:
+    | "no-credentials-required"
+    | "operator-supplied-only"
+    | "unknown-blocked";
   readonly externalIntegration: "disabled-by-default" | "read-only" | "unknown-blocked";
   readonly destructiveOperationPolicy: "forbidden" | "approval-required" | "not-applicable";
   readonly evidence: EvidenceRecord;
@@ -340,7 +367,8 @@ interface JsonObject {
   readonly adapters?: unknown;
 }
 
-const hasOwn = (value: object, key: string): boolean => Object.prototype.hasOwnProperty.call(value, key);
+const hasOwn = (value: object, key: string): boolean =>
+  Object.prototype.hasOwnProperty.call(value, key);
 
 const isRecord = (value: unknown): value is JsonObject =>
   typeof value === "object" && value !== null && !Array.isArray(value);
@@ -380,7 +408,11 @@ const checkString = (value: unknown, path: string, issues: ValidationIssue[]): v
   return true;
 };
 
-const checkBoolean = (value: unknown, path: string, issues: ValidationIssue[]): value is boolean => {
+const checkBoolean = (
+  value: unknown,
+  path: string,
+  issues: ValidationIssue[],
+): value is boolean => {
   if (typeof value !== "boolean") {
     addIssue(issues, path, "expected_boolean", "Expected a boolean.");
     return false;
@@ -388,7 +420,11 @@ const checkBoolean = (value: unknown, path: string, issues: ValidationIssue[]): 
   return true;
 };
 
-const checkArray = (value: unknown, path: string, issues: ValidationIssue[]): value is readonly unknown[] => {
+const checkArray = (
+  value: unknown,
+  path: string,
+  issues: ValidationIssue[],
+): value is readonly unknown[] => {
   if (!Array.isArray(value)) {
     addIssue(issues, path, "expected_array", "Expected an array.");
     return false;
@@ -396,7 +432,12 @@ const checkArray = (value: unknown, path: string, issues: ValidationIssue[]): va
   return true;
 };
 
-const checkStringArray = (value: unknown, path: string, issues: ValidationIssue[], nonEmpty: boolean): value is readonly string[] => {
+const checkStringArray = (
+  value: unknown,
+  path: string,
+  issues: ValidationIssue[],
+  nonEmpty: boolean,
+): value is readonly string[] => {
   if (!checkArray(value, path, issues)) {
     return false;
   }
@@ -451,9 +492,23 @@ const checkExactStringSet = (
   return true;
 };
 
-const validateI14ARuntimeExecutionClaim = (value: unknown, path: string, issues: ValidationIssue[]): value is I14ARuntimeExecutionClaim => {
-  if (typeof value === "string" && I14A_OUT_OF_SCOPE_RUNTIME_EXECUTION_CLAIMS.includes(value as (typeof I14A_OUT_OF_SCOPE_RUNTIME_EXECUTION_CLAIMS)[number])) {
-    addIssue(issues, path, "i14a_runtime_claim_out_of_scope", "I-14A cannot claim live pi runtime execution; live-runtime proof belongs to I-14B.");
+const validateI14ARuntimeExecutionClaim = (
+  value: unknown,
+  path: string,
+  issues: ValidationIssue[],
+): value is I14ARuntimeExecutionClaim => {
+  if (
+    typeof value === "string" &&
+    I14A_OUT_OF_SCOPE_RUNTIME_EXECUTION_CLAIMS.includes(
+      value as (typeof I14A_OUT_OF_SCOPE_RUNTIME_EXECUTION_CLAIMS)[number],
+    )
+  ) {
+    addIssue(
+      issues,
+      path,
+      "i14a_runtime_claim_out_of_scope",
+      "I-14A cannot claim live pi runtime execution; live-runtime proof belongs to I-14B.",
+    );
     return false;
   }
   return checkLiteral(value, I14A_RUNTIME_EXECUTION_CLAIMS, path, issues);
@@ -478,116 +533,143 @@ interface GeneratedFileFamilyContract {
   readonly readinessState: ReadinessState;
 }
 
-const GENERATED_FILE_FAMILY_CONTRACTS: Record<GeneratedFileFamilyId, GeneratedFileFamilyContract> = {
-  "pi-skill-files": {
-    pathPatterns: [".pi/skills/<skill>/SKILL.md", ".agents/skills/<skill>/SKILL.md"],
-    producerLane: "I-14B-pi-adapter-runtime-skill-consumption",
-    consumedByLanes: ["I-14B-pi-adapter-runtime-skill-consumption", "I-15A-create-import-cli-ux-selected-harness", "I-21-build-skill-orchestration"],
-    ownerKind: "lane",
-    allowedOperations: ["generate-in-later-lane", "validate"],
-    trustClassification: "project-instruction",
-    projectTrustRequired: true,
-    executesCode: false,
-    commandPolicy: "not-applicable",
-    sandboxCapability: "not_provided",
-    credentialPolicy: "no-credentials-required",
-    externalIntegration: "disabled-by-default",
-    destructiveOperationPolicy: "forbidden",
-    formatName: "Agent Skills SKILL.md",
-    formatVersion: "v1",
-    readinessState: "ready",
-  },
-  "pi-prompt-templates": {
-    pathPatterns: [".pi/prompts/<name>.md"],
-    producerLane: "I-14B-pi-adapter-runtime-skill-consumption",
-    consumedByLanes: ["I-14B-pi-adapter-runtime-skill-consumption", "I-15A-create-import-cli-ux-selected-harness"],
-    ownerKind: "lane",
-    allowedOperations: ["generate-in-later-lane", "validate"],
-    trustClassification: "project-instruction",
-    projectTrustRequired: true,
-    executesCode: false,
-    commandPolicy: "not-applicable",
-    sandboxCapability: "not_provided",
-    credentialPolicy: "no-credentials-required",
-    externalIntegration: "disabled-by-default",
-    destructiveOperationPolicy: "forbidden",
-    formatName: "Pi prompt template markdown",
-    formatVersion: "v1",
-    readinessState: "ready",
-  },
-  "pi-extensions": {
-    pathPatterns: [".pi/extensions/<name>.ts", ".pi/extensions/<name>/index.ts"],
-    producerLane: "I-14B-pi-adapter-runtime-skill-consumption",
-    consumedByLanes: ["I-14B-pi-adapter-runtime-skill-consumption", "I-18-security-safety-hooks-policy", "I-21-build-skill-orchestration"],
-    ownerKind: "lane",
-    allowedOperations: ["generate-in-later-lane", "validate"],
-    trustClassification: "executable-extension",
-    projectTrustRequired: true,
-    executesCode: true,
-    commandPolicy: "default-deny",
-    sandboxCapability: "not_provided",
-    credentialPolicy: "operator-supplied-only",
-    externalIntegration: "disabled-by-default",
-    destructiveOperationPolicy: "approval-required",
-    formatName: "Pi TypeScript extension",
-    formatVersion: "v1",
-    readinessState: "blocked",
-  },
-  "pi-package-manifest": {
-    pathPatterns: ["package.json#pi"],
-    producerLane: "I-14B-pi-adapter-runtime-skill-consumption",
-    consumedByLanes: ["I-14B-pi-adapter-runtime-skill-consumption", "I-15B-starter-template-harness-consumption"],
-    ownerKind: "lane",
-    allowedOperations: ["generate-in-later-lane", "validate"],
-    trustClassification: "package-manifest",
-    projectTrustRequired: true,
-    executesCode: true,
-    commandPolicy: "default-deny",
-    sandboxCapability: "not_provided",
-    credentialPolicy: "operator-supplied-only",
-    externalIntegration: "disabled-by-default",
-    destructiveOperationPolicy: "approval-required",
-    formatName: "Pi package manifest key",
-    formatVersion: "v1",
-    readinessState: "deferred",
-  },
-  "context-files": {
-    pathPatterns: ["AGENTS.md", "CLAUDE.md"],
-    producerLane: "I-15A-create-import-cli-ux-selected-harness",
-    consumedByLanes: ["I-15A-create-import-cli-ux-selected-harness", "I-08-context-graph-index-drift", "I-21-build-skill-orchestration"],
-    ownerKind: "lane",
-    allowedOperations: ["generate-in-later-lane", "validate"],
-    trustClassification: "project-instruction",
-    projectTrustRequired: true,
-    executesCode: false,
-    commandPolicy: "not-applicable",
-    sandboxCapability: "not_provided",
-    credentialPolicy: "no-credentials-required",
-    externalIntegration: "disabled-by-default",
-    destructiveOperationPolicy: "forbidden",
-    formatName: "Pi context file",
-    formatVersion: "v1",
-    readinessState: "ready",
-  },
-  "harness-config": {
-    pathPatterns: ["generated harness config field: agenticHarness=pi", "generated harness config field: adapterCapabilityVersion", "generated harness config field: generatedFileManifestVersion"],
-    producerLane: "I-15A-create-import-cli-ux-selected-harness",
-    consumedByLanes: ["I-15A-create-import-cli-ux-selected-harness", "I-15B-starter-template-harness-consumption", "I-21-build-skill-orchestration"],
-    ownerKind: "lane",
-    allowedOperations: ["generate-in-later-lane", "validate"],
-    trustClassification: "configuration",
-    projectTrustRequired: false,
-    executesCode: false,
-    commandPolicy: "not-applicable",
-    sandboxCapability: "not_provided",
-    credentialPolicy: "no-credentials-required",
-    externalIntegration: "disabled-by-default",
-    destructiveOperationPolicy: "forbidden",
-    formatName: "vibe-engineer harness adapter config",
-    formatVersion: "v1",
-    readinessState: "ready",
-  },
-};
+const GENERATED_FILE_FAMILY_CONTRACTS: Record<GeneratedFileFamilyId, GeneratedFileFamilyContract> =
+  {
+    "pi-skill-files": {
+      pathPatterns: [".pi/skills/<skill>/SKILL.md", ".agents/skills/<skill>/SKILL.md"],
+      producerLane: "I-14B-pi-adapter-runtime-skill-consumption",
+      consumedByLanes: [
+        "I-14B-pi-adapter-runtime-skill-consumption",
+        "I-15A-create-import-cli-ux-selected-harness",
+        "I-21-build-skill-orchestration",
+      ],
+      ownerKind: "lane",
+      allowedOperations: ["generate-in-later-lane", "validate"],
+      trustClassification: "project-instruction",
+      projectTrustRequired: true,
+      executesCode: false,
+      commandPolicy: "not-applicable",
+      sandboxCapability: "not_provided",
+      credentialPolicy: "no-credentials-required",
+      externalIntegration: "disabled-by-default",
+      destructiveOperationPolicy: "forbidden",
+      formatName: "Agent Skills SKILL.md",
+      formatVersion: "v1",
+      readinessState: "ready",
+    },
+    "pi-prompt-templates": {
+      pathPatterns: [".pi/prompts/<name>.md"],
+      producerLane: "I-14B-pi-adapter-runtime-skill-consumption",
+      consumedByLanes: [
+        "I-14B-pi-adapter-runtime-skill-consumption",
+        "I-15A-create-import-cli-ux-selected-harness",
+      ],
+      ownerKind: "lane",
+      allowedOperations: ["generate-in-later-lane", "validate"],
+      trustClassification: "project-instruction",
+      projectTrustRequired: true,
+      executesCode: false,
+      commandPolicy: "not-applicable",
+      sandboxCapability: "not_provided",
+      credentialPolicy: "no-credentials-required",
+      externalIntegration: "disabled-by-default",
+      destructiveOperationPolicy: "forbidden",
+      formatName: "Pi prompt template markdown",
+      formatVersion: "v1",
+      readinessState: "ready",
+    },
+    "pi-extensions": {
+      pathPatterns: [".pi/extensions/<name>.ts", ".pi/extensions/<name>/index.ts"],
+      producerLane: "I-14B-pi-adapter-runtime-skill-consumption",
+      consumedByLanes: [
+        "I-14B-pi-adapter-runtime-skill-consumption",
+        "I-18-security-safety-hooks-policy",
+        "I-21-build-skill-orchestration",
+      ],
+      ownerKind: "lane",
+      allowedOperations: ["generate-in-later-lane", "validate"],
+      trustClassification: "executable-extension",
+      projectTrustRequired: true,
+      executesCode: true,
+      commandPolicy: "default-deny",
+      sandboxCapability: "not_provided",
+      credentialPolicy: "operator-supplied-only",
+      externalIntegration: "disabled-by-default",
+      destructiveOperationPolicy: "approval-required",
+      formatName: "Pi TypeScript extension",
+      formatVersion: "v1",
+      readinessState: "blocked",
+    },
+    "pi-package-manifest": {
+      pathPatterns: ["package.json#pi"],
+      producerLane: "I-14B-pi-adapter-runtime-skill-consumption",
+      consumedByLanes: [
+        "I-14B-pi-adapter-runtime-skill-consumption",
+        "I-15B-starter-template-harness-consumption",
+      ],
+      ownerKind: "lane",
+      allowedOperations: ["generate-in-later-lane", "validate"],
+      trustClassification: "package-manifest",
+      projectTrustRequired: true,
+      executesCode: true,
+      commandPolicy: "default-deny",
+      sandboxCapability: "not_provided",
+      credentialPolicy: "operator-supplied-only",
+      externalIntegration: "disabled-by-default",
+      destructiveOperationPolicy: "approval-required",
+      formatName: "Pi package manifest key",
+      formatVersion: "v1",
+      readinessState: "deferred",
+    },
+    "context-files": {
+      pathPatterns: ["AGENTS.md", "CLAUDE.md"],
+      producerLane: "I-15A-create-import-cli-ux-selected-harness",
+      consumedByLanes: [
+        "I-15A-create-import-cli-ux-selected-harness",
+        "I-08-context-graph-index-drift",
+        "I-21-build-skill-orchestration",
+      ],
+      ownerKind: "lane",
+      allowedOperations: ["generate-in-later-lane", "validate"],
+      trustClassification: "project-instruction",
+      projectTrustRequired: true,
+      executesCode: false,
+      commandPolicy: "not-applicable",
+      sandboxCapability: "not_provided",
+      credentialPolicy: "no-credentials-required",
+      externalIntegration: "disabled-by-default",
+      destructiveOperationPolicy: "forbidden",
+      formatName: "Pi context file",
+      formatVersion: "v1",
+      readinessState: "ready",
+    },
+    "harness-config": {
+      pathPatterns: [
+        "generated harness config field: agenticHarness=pi",
+        "generated harness config field: adapterCapabilityVersion",
+        "generated harness config field: generatedFileManifestVersion",
+      ],
+      producerLane: "I-15A-create-import-cli-ux-selected-harness",
+      consumedByLanes: [
+        "I-15A-create-import-cli-ux-selected-harness",
+        "I-15B-starter-template-harness-consumption",
+        "I-21-build-skill-orchestration",
+      ],
+      ownerKind: "lane",
+      allowedOperations: ["generate-in-later-lane", "validate"],
+      trustClassification: "configuration",
+      projectTrustRequired: false,
+      executesCode: false,
+      commandPolicy: "not-applicable",
+      sandboxCapability: "not_provided",
+      credentialPolicy: "no-credentials-required",
+      externalIntegration: "disabled-by-default",
+      destructiveOperationPolicy: "forbidden",
+      formatName: "vibe-engineer harness adapter config",
+      formatVersion: "v1",
+      readinessState: "ready",
+    },
+  };
 
 const validateEvidenceRecord = (value: unknown, path: string, issues: ValidationIssue[]): void => {
   if (!checkExactObject(value, path, ["state", "source", "notes"], issues)) {
@@ -598,8 +680,19 @@ const validateEvidenceRecord = (value: unknown, path: string, issues: Validation
   checkString(value.notes, `${path}.notes`, issues);
 };
 
-const validateCapabilitySurface = (value: unknown, path: string, issues: ValidationIssue[]): void => {
-  if (!checkExactObject(value, path, ["evidence", "support", "details", "downstreamConsequence"], issues)) {
+const validateCapabilitySurface = (
+  value: unknown,
+  path: string,
+  issues: ValidationIssue[],
+): void => {
+  if (
+    !checkExactObject(
+      value,
+      path,
+      ["evidence", "support", "details", "downstreamConsequence"],
+      issues,
+    )
+  ) {
     return;
   }
   validateEvidenceRecord(value.evidence, `${path}.evidence`, issues);
@@ -608,8 +701,25 @@ const validateCapabilitySurface = (value: unknown, path: string, issues: Validat
   checkString(value.downstreamConsequence, `${path}.downstreamConsequence`, issues);
 };
 
-const validateVersionCompatibility = (value: unknown, path: string, issues: ValidationIssue[]): void => {
-  if (!checkExactObject(value, path, ["harnessName", "harnessVersionRange", "resourceFormatVersion", "runtimeRequirements", "compatibilityEvidence"], issues)) {
+const validateVersionCompatibility = (
+  value: unknown,
+  path: string,
+  issues: ValidationIssue[],
+): void => {
+  if (
+    !checkExactObject(
+      value,
+      path,
+      [
+        "harnessName",
+        "harnessVersionRange",
+        "resourceFormatVersion",
+        "runtimeRequirements",
+        "compatibilityEvidence",
+      ],
+      issues,
+    )
+  ) {
     return;
   }
   checkString(value.harnessName, `${path}.harnessName`, issues);
@@ -620,7 +730,14 @@ const validateVersionCompatibility = (value: unknown, path: string, issues: Vali
 };
 
 const validateSkillCapability = (value: unknown, path: string, issues: ValidationIssue[]): void => {
-  if (!checkExactObject(value, path, ["skillId", "nativeCommand", "resourceFamily", "evidence", "readiness", "protocolSource"], issues)) {
+  if (
+    !checkExactObject(
+      value,
+      path,
+      ["skillId", "nativeCommand", "resourceFamily", "evidence", "readiness", "protocolSource"],
+      issues,
+    )
+  ) {
     return;
   }
   checkLiteral(value.skillId, SKILL_IDS, `${path}.skillId`, issues);
@@ -631,8 +748,27 @@ const validateSkillCapability = (value: unknown, path: string, issues: Validatio
   checkString(value.protocolSource, `${path}.protocolSource`, issues);
 };
 
-const validateSkillsCommandsSurface = (value: unknown, path: string, issues: ValidationIssue[]): void => {
-  if (!checkExactObject(value, path, ["evidence", "support", "details", "downstreamConsequence", "nativeFormat", "autoloadDiscovery", "skills"], issues)) {
+const validateSkillsCommandsSurface = (
+  value: unknown,
+  path: string,
+  issues: ValidationIssue[],
+): void => {
+  if (
+    !checkExactObject(
+      value,
+      path,
+      [
+        "evidence",
+        "support",
+        "details",
+        "downstreamConsequence",
+        "nativeFormat",
+        "autoloadDiscovery",
+        "skills",
+      ],
+      issues,
+    )
+  ) {
     return;
   }
   validateEvidenceRecord(value.evidence, `${path}.evidence`, issues);
@@ -648,20 +784,54 @@ const validateSkillsCommandsSurface = (value: unknown, path: string, issues: Val
   }
 };
 
-const validateSubagentOrPlanCapability = (value: unknown, path: string, issues: ValidationIssue[]): void => {
-  if (!checkExactObject(value, path, ["evidence", "support", "details", "downstreamConsequence", "implementationKind", "requiresGeneratedExtension"], issues)) {
+const validateSubagentOrPlanCapability = (
+  value: unknown,
+  path: string,
+  issues: ValidationIssue[],
+): void => {
+  if (
+    !checkExactObject(
+      value,
+      path,
+      [
+        "evidence",
+        "support",
+        "details",
+        "downstreamConsequence",
+        "implementationKind",
+        "requiresGeneratedExtension",
+      ],
+      issues,
+    )
+  ) {
     return;
   }
   validateEvidenceRecord(value.evidence, `${path}.evidence`, issues);
   checkLiteral(value.support, READINESS_STATES, `${path}.support`, issues);
   checkString(value.details, `${path}.details`, issues);
   checkString(value.downstreamConsequence, `${path}.downstreamConsequence`, issues);
-  checkLiteral(value.implementationKind, ["built-in", "extension-built", "external", "unsupported"], `${path}.implementationKind`, issues);
+  checkLiteral(
+    value.implementationKind,
+    ["built-in", "extension-built", "external", "unsupported"],
+    `${path}.implementationKind`,
+    issues,
+  );
   checkBoolean(value.requiresGeneratedExtension, `${path}.requiresGeneratedExtension`, issues);
 };
 
-const validateCommandInvocationModel = (value: unknown, path: string, issues: ValidationIssue[]): void => {
-  if (!checkExactObject(value, path, ["interactive", "printMode", "jsonMode", "rpcMode", "sdk", "shellCommandPolicy"], issues)) {
+const validateCommandInvocationModel = (
+  value: unknown,
+  path: string,
+  issues: ValidationIssue[],
+): void => {
+  if (
+    !checkExactObject(
+      value,
+      path,
+      ["interactive", "printMode", "jsonMode", "rpcMode", "sdk", "shellCommandPolicy"],
+      issues,
+    )
+  ) {
     return;
   }
   validateCapabilitySurface(value.interactive, `${path}.interactive`, issues);
@@ -669,25 +839,64 @@ const validateCommandInvocationModel = (value: unknown, path: string, issues: Va
   validateCapabilitySurface(value.jsonMode, `${path}.jsonMode`, issues);
   validateCapabilitySurface(value.rpcMode, `${path}.rpcMode`, issues);
   validateCapabilitySurface(value.sdk, `${path}.sdk`, issues);
-  checkLiteral(value.shellCommandPolicy, ["not-required", "default-deny", "blocked"], `${path}.shellCommandPolicy`, issues);
+  checkLiteral(
+    value.shellCommandPolicy,
+    ["not-required", "default-deny", "blocked"],
+    `${path}.shellCommandPolicy`,
+    issues,
+  );
 };
 
-const validateGeneratedFilesCapability = (value: unknown, path: string, issues: ValidationIssue[]): void => {
-  if (!checkExactObject(value, path, ["evidence", "manifestSchemaVersion", "families", "downstreamConsequence"], issues)) {
+const validateGeneratedFilesCapability = (
+  value: unknown,
+  path: string,
+  issues: ValidationIssue[],
+): void => {
+  if (
+    !checkExactObject(
+      value,
+      path,
+      ["evidence", "manifestSchemaVersion", "families", "downstreamConsequence"],
+      issues,
+    )
+  ) {
     return;
   }
   validateEvidenceRecord(value.evidence, `${path}.evidence`, issues);
   checkString(value.manifestSchemaVersion, `${path}.manifestSchemaVersion`, issues);
   if (checkArray(value.families, `${path}.families`, issues)) {
     for (let index = 0; index < value.families.length; index += 1) {
-      checkLiteral(value.families[index], GENERATED_FILE_FAMILY_IDS, `${path}.families[${index}]`, issues);
+      checkLiteral(
+        value.families[index],
+        GENERATED_FILE_FAMILY_IDS,
+        `${path}.families[${index}]`,
+        issues,
+      );
     }
   }
   checkString(value.downstreamConsequence, `${path}.downstreamConsequence`, issues);
 };
 
-const validatePackageDistributionCapability = (value: unknown, path: string, issues: ValidationIssue[]): void => {
-  if (!checkExactObject(value, path, ["evidence", "support", "details", "downstreamConsequence", "distributionKinds", "trustUpdatePolicy"], issues)) {
+const validatePackageDistributionCapability = (
+  value: unknown,
+  path: string,
+  issues: ValidationIssue[],
+): void => {
+  if (
+    !checkExactObject(
+      value,
+      path,
+      [
+        "evidence",
+        "support",
+        "details",
+        "downstreamConsequence",
+        "distributionKinds",
+        "trustUpdatePolicy",
+      ],
+      issues,
+    )
+  ) {
     return;
   }
   validateEvidenceRecord(value.evidence, `${path}.evidence`, issues);
@@ -696,52 +905,182 @@ const validatePackageDistributionCapability = (value: unknown, path: string, iss
   checkString(value.downstreamConsequence, `${path}.downstreamConsequence`, issues);
   if (checkArray(value.distributionKinds, `${path}.distributionKinds`, issues)) {
     for (let index = 0; index < value.distributionKinds.length; index += 1) {
-      checkLiteral(value.distributionKinds[index], ["project-local-files", "pi-package", "npm-package", "global-install"], `${path}.distributionKinds[${index}]`, issues);
+      checkLiteral(
+        value.distributionKinds[index],
+        ["project-local-files", "pi-package", "npm-package", "global-install"],
+        `${path}.distributionKinds[${index}]`,
+        issues,
+      );
     }
   }
   checkString(value.trustUpdatePolicy, `${path}.trustUpdatePolicy`, issues);
 };
 
-const validateSecurityTrustCapability = (value: unknown, path: string, issues: ValidationIssue[]): void => {
-  if (!checkExactObject(value, path, ["evidence", "projectTrustRequired", "extensionExecution", "commandPolicy", "sandboxCapability", "credentialPolicy", "destructiveOperations", "externalIntegration", "trustBoundary"], issues)) {
+const validateSecurityTrustCapability = (
+  value: unknown,
+  path: string,
+  issues: ValidationIssue[],
+): void => {
+  if (
+    !checkExactObject(
+      value,
+      path,
+      [
+        "evidence",
+        "projectTrustRequired",
+        "extensionExecution",
+        "commandPolicy",
+        "sandboxCapability",
+        "credentialPolicy",
+        "destructiveOperations",
+        "externalIntegration",
+        "trustBoundary",
+      ],
+      issues,
+    )
+  ) {
     return;
   }
   validateEvidenceRecord(value.evidence, `${path}.evidence`, issues);
   checkBoolean(value.projectTrustRequired, `${path}.projectTrustRequired`, issues);
-  checkLiteral(value.extensionExecution, ["none", "typescript-extension", "package-extension"], `${path}.extensionExecution`, issues);
-  checkLiteral(value.commandPolicy, ["default-deny", "not-applicable"], `${path}.commandPolicy`, issues);
-  checkLiteral(value.sandboxCapability, SANDBOX_CAPABILITY_STATES, `${path}.sandboxCapability`, issues);
-  checkLiteral(value.credentialPolicy, ["no-credentials-required", "operator-supplied-only", "unknown-blocked"], `${path}.credentialPolicy`, issues);
-  checkLiteral(value.destructiveOperations, ["forbidden", "approval-required", "not-applicable"], `${path}.destructiveOperations`, issues);
-  checkLiteral(value.externalIntegration, ["disabled-by-default", "read-only", "unknown-blocked"], `${path}.externalIntegration`, issues);
+  checkLiteral(
+    value.extensionExecution,
+    ["none", "typescript-extension", "package-extension"],
+    `${path}.extensionExecution`,
+    issues,
+  );
+  checkLiteral(
+    value.commandPolicy,
+    ["default-deny", "not-applicable"],
+    `${path}.commandPolicy`,
+    issues,
+  );
+  checkLiteral(
+    value.sandboxCapability,
+    SANDBOX_CAPABILITY_STATES,
+    `${path}.sandboxCapability`,
+    issues,
+  );
+  checkLiteral(
+    value.credentialPolicy,
+    ["no-credentials-required", "operator-supplied-only", "unknown-blocked"],
+    `${path}.credentialPolicy`,
+    issues,
+  );
+  checkLiteral(
+    value.destructiveOperations,
+    ["forbidden", "approval-required", "not-applicable"],
+    `${path}.destructiveOperations`,
+    issues,
+  );
+  checkLiteral(
+    value.externalIntegration,
+    ["disabled-by-default", "read-only", "unknown-blocked"],
+    `${path}.externalIntegration`,
+    issues,
+  );
   checkString(value.trustBoundary, `${path}.trustBoundary`, issues);
 };
 
 const validateCapabilityFlags = (value: unknown, path: string, issues: ValidationIssue[]): void => {
-  if (!checkExactObject(value, path, ["skills", "prompts", "hooks", "extensions", "subagents", "planMode", "contextFiles", "rpc", "sdk", "jsonMode", "packages", "ui", "unsupportedFeaturePolicy"], issues)) {
+  if (
+    !checkExactObject(
+      value,
+      path,
+      [
+        "skills",
+        "prompts",
+        "hooks",
+        "extensions",
+        "subagents",
+        "planMode",
+        "contextFiles",
+        "rpc",
+        "sdk",
+        "jsonMode",
+        "packages",
+        "ui",
+        "unsupportedFeaturePolicy",
+      ],
+      issues,
+    )
+  ) {
     return;
   }
-  for (const key of ["skills", "prompts", "hooks", "extensions", "subagents", "planMode", "contextFiles", "rpc", "sdk", "jsonMode", "packages", "ui"] as const) {
+  for (const key of [
+    "skills",
+    "prompts",
+    "hooks",
+    "extensions",
+    "subagents",
+    "planMode",
+    "contextFiles",
+    "rpc",
+    "sdk",
+    "jsonMode",
+    "packages",
+    "ui",
+  ] as const) {
     checkBoolean(value[key], `${path}.${key}`, issues);
   }
-  checkLiteral(value.unsupportedFeaturePolicy, ["block", "defer", "unknown-block"], `${path}.unsupportedFeaturePolicy`, issues);
+  checkLiteral(
+    value.unsupportedFeaturePolicy,
+    ["block", "defer", "unknown-block"],
+    `${path}.unsupportedFeaturePolicy`,
+    issues,
+  );
 };
 
-const validateRealBoundaryWitness = (value: unknown, path: string, issues: ValidationIssue[]): void => {
-  if (!checkExactObject(value, path, ["evidence", "boundaryStatus", "producer", "carrier", "consumer", "evidencePath", "runtimeExecutionClaim"], issues)) {
+const validateRealBoundaryWitness = (
+  value: unknown,
+  path: string,
+  issues: ValidationIssue[],
+): void => {
+  if (
+    !checkExactObject(
+      value,
+      path,
+      [
+        "evidence",
+        "boundaryStatus",
+        "producer",
+        "carrier",
+        "consumer",
+        "evidencePath",
+        "runtimeExecutionClaim",
+      ],
+      issues,
+    )
+  ) {
     return;
   }
   validateEvidenceRecord(value.evidence, `${path}.evidence`, issues);
-  checkLiteral(value.boundaryStatus, ["implemented", "pending-live", "blocked", "deferred", "unknown"], `${path}.boundaryStatus`, issues);
+  checkLiteral(
+    value.boundaryStatus,
+    ["implemented", "pending-live", "blocked", "deferred", "unknown"],
+    `${path}.boundaryStatus`,
+    issues,
+  );
   checkString(value.producer, `${path}.producer`, issues);
   checkString(value.carrier, `${path}.carrier`, issues);
   checkString(value.consumer, `${path}.consumer`, issues);
   checkString(value.evidencePath, `${path}.evidencePath`, issues);
-  validateI14ARuntimeExecutionClaim(value.runtimeExecutionClaim, `${path}.runtimeExecutionClaim`, issues);
+  validateI14ARuntimeExecutionClaim(
+    value.runtimeExecutionClaim,
+    `${path}.runtimeExecutionClaim`,
+    issues,
+  );
 };
 
 const validateSelection = (value: unknown, path: string, issues: ValidationIssue[]): void => {
-  if (!checkExactObject(value, path, ["manifestSelectable", "createImportSelectable", "readiness", "reason"], issues)) {
+  if (
+    !checkExactObject(
+      value,
+      path,
+      ["manifestSelectable", "createImportSelectable", "readiness", "reason"],
+      issues,
+    )
+  ) {
     return;
   }
   checkBoolean(value.manifestSelectable, `${path}.manifestSelectable`, issues);
@@ -750,49 +1089,83 @@ const validateSelection = (value: unknown, path: string, issues: ValidationIssue
   checkString(value.reason, `${path}.reason`, issues);
 };
 
-const validateAdapterCapability = (value: unknown, path: string, issues: ValidationIssue[]): void => {
-  if (!checkExactObject(value, path, [
-    "adapterId",
-    "displayName",
-    "evidenceStatus",
-    "versionCompatibility",
-    "skillsCommandsSurface",
-    "promptTemplateSurface",
-    "hookEventSupport",
-    "subagentCapability",
-    "planModeCapability",
-    "contextFileConventions",
-    "commandInvocationModel",
-    "generatedFiles",
-    "packageDistribution",
-    "securityTrust",
-    "capabilityFlags",
-    "realBoundaryWitness",
-    "selection",
-  ], issues)) {
+const validateAdapterCapability = (
+  value: unknown,
+  path: string,
+  issues: ValidationIssue[],
+): void => {
+  if (
+    !checkExactObject(
+      value,
+      path,
+      [
+        "adapterId",
+        "displayName",
+        "evidenceStatus",
+        "versionCompatibility",
+        "skillsCommandsSurface",
+        "promptTemplateSurface",
+        "hookEventSupport",
+        "subagentCapability",
+        "planModeCapability",
+        "contextFileConventions",
+        "commandInvocationModel",
+        "generatedFiles",
+        "packageDistribution",
+        "securityTrust",
+        "capabilityFlags",
+        "realBoundaryWitness",
+        "selection",
+      ],
+      issues,
+    )
+  ) {
     return;
   }
   checkString(value.adapterId, `${path}.adapterId`, issues);
   checkString(value.displayName, `${path}.displayName`, issues);
   validateEvidenceRecord(value.evidenceStatus, `${path}.evidenceStatus`, issues);
   validateVersionCompatibility(value.versionCompatibility, `${path}.versionCompatibility`, issues);
-  validateSkillsCommandsSurface(value.skillsCommandsSurface, `${path}.skillsCommandsSurface`, issues);
+  validateSkillsCommandsSurface(
+    value.skillsCommandsSurface,
+    `${path}.skillsCommandsSurface`,
+    issues,
+  );
   validateCapabilitySurface(value.promptTemplateSurface, `${path}.promptTemplateSurface`, issues);
   validateCapabilitySurface(value.hookEventSupport, `${path}.hookEventSupport`, issues);
   validateSubagentOrPlanCapability(value.subagentCapability, `${path}.subagentCapability`, issues);
   validateSubagentOrPlanCapability(value.planModeCapability, `${path}.planModeCapability`, issues);
   validateCapabilitySurface(value.contextFileConventions, `${path}.contextFileConventions`, issues);
-  validateCommandInvocationModel(value.commandInvocationModel, `${path}.commandInvocationModel`, issues);
+  validateCommandInvocationModel(
+    value.commandInvocationModel,
+    `${path}.commandInvocationModel`,
+    issues,
+  );
   validateGeneratedFilesCapability(value.generatedFiles, `${path}.generatedFiles`, issues);
-  validatePackageDistributionCapability(value.packageDistribution, `${path}.packageDistribution`, issues);
+  validatePackageDistributionCapability(
+    value.packageDistribution,
+    `${path}.packageDistribution`,
+    issues,
+  );
   validateSecurityTrustCapability(value.securityTrust, `${path}.securityTrust`, issues);
   validateCapabilityFlags(value.capabilityFlags, `${path}.capabilityFlags`, issues);
   validateRealBoundaryWitness(value.realBoundaryWitness, `${path}.realBoundaryWitness`, issues);
   validateSelection(value.selection, `${path}.selection`, issues);
 };
 
-const validateGeneratedFileOwner = (value: unknown, path: string, issues: ValidationIssue[]): void => {
-  if (!checkExactObject(value, path, ["ownerKind", "ownerId", "writePathScope", "allowedOperations"], issues)) {
+const validateGeneratedFileOwner = (
+  value: unknown,
+  path: string,
+  issues: ValidationIssue[],
+): void => {
+  if (
+    !checkExactObject(
+      value,
+      path,
+      ["ownerKind", "ownerId", "writePathScope", "allowedOperations"],
+      issues,
+    )
+  ) {
     return;
   }
   checkLiteral(value.ownerKind, ["lane", "package"], `${path}.ownerKind`, issues);
@@ -800,38 +1173,120 @@ const validateGeneratedFileOwner = (value: unknown, path: string, issues: Valida
   checkStringArray(value.writePathScope, `${path}.writePathScope`, issues, true);
   if (checkArray(value.allowedOperations, `${path}.allowedOperations`, issues)) {
     for (let index = 0; index < value.allowedOperations.length; index += 1) {
-      checkLiteral(value.allowedOperations[index], ["declare", "validate", "generate-in-later-lane"], `${path}.allowedOperations[${index}]`, issues);
+      checkLiteral(
+        value.allowedOperations[index],
+        ["declare", "validate", "generate-in-later-lane"],
+        `${path}.allowedOperations[${index}]`,
+        issues,
+      );
     }
   }
 };
 
-const validateGeneratedFileTrustSecurity = (value: unknown, path: string, issues: ValidationIssue[]): void => {
-  if (!checkExactObject(value, path, ["classification", "trustBoundary", "projectTrustRequired", "executesCode", "commandPolicy", "sandboxCapability", "credentialPolicy", "externalIntegration", "destructiveOperationPolicy", "evidence"], issues)) {
+const validateGeneratedFileTrustSecurity = (
+  value: unknown,
+  path: string,
+  issues: ValidationIssue[],
+): void => {
+  if (
+    !checkExactObject(
+      value,
+      path,
+      [
+        "classification",
+        "trustBoundary",
+        "projectTrustRequired",
+        "executesCode",
+        "commandPolicy",
+        "sandboxCapability",
+        "credentialPolicy",
+        "externalIntegration",
+        "destructiveOperationPolicy",
+        "evidence",
+      ],
+      issues,
+    )
+  ) {
     return;
   }
-  checkLiteral(value.classification, ["project-instruction", "executable-extension", "package-manifest", "configuration"], `${path}.classification`, issues);
+  checkLiteral(
+    value.classification,
+    ["project-instruction", "executable-extension", "package-manifest", "configuration"],
+    `${path}.classification`,
+    issues,
+  );
   checkString(value.trustBoundary, `${path}.trustBoundary`, issues);
   checkBoolean(value.projectTrustRequired, `${path}.projectTrustRequired`, issues);
   checkBoolean(value.executesCode, `${path}.executesCode`, issues);
-  checkLiteral(value.commandPolicy, ["default-deny", "not-applicable"], `${path}.commandPolicy`, issues);
-  checkLiteral(value.sandboxCapability, SANDBOX_CAPABILITY_STATES, `${path}.sandboxCapability`, issues);
-  checkLiteral(value.credentialPolicy, ["no-credentials-required", "operator-supplied-only", "unknown-blocked"], `${path}.credentialPolicy`, issues);
-  checkLiteral(value.externalIntegration, ["disabled-by-default", "read-only", "unknown-blocked"], `${path}.externalIntegration`, issues);
-  checkLiteral(value.destructiveOperationPolicy, ["forbidden", "approval-required", "not-applicable"], `${path}.destructiveOperationPolicy`, issues);
+  checkLiteral(
+    value.commandPolicy,
+    ["default-deny", "not-applicable"],
+    `${path}.commandPolicy`,
+    issues,
+  );
+  checkLiteral(
+    value.sandboxCapability,
+    SANDBOX_CAPABILITY_STATES,
+    `${path}.sandboxCapability`,
+    issues,
+  );
+  checkLiteral(
+    value.credentialPolicy,
+    ["no-credentials-required", "operator-supplied-only", "unknown-blocked"],
+    `${path}.credentialPolicy`,
+    issues,
+  );
+  checkLiteral(
+    value.externalIntegration,
+    ["disabled-by-default", "read-only", "unknown-blocked"],
+    `${path}.externalIntegration`,
+    issues,
+  );
+  checkLiteral(
+    value.destructiveOperationPolicy,
+    ["forbidden", "approval-required", "not-applicable"],
+    `${path}.destructiveOperationPolicy`,
+    issues,
+  );
   validateEvidenceRecord(value.evidence, `${path}.evidence`, issues);
 };
 
-const validateGeneratedFileVersion = (value: unknown, path: string, issues: ValidationIssue[]): void => {
-  if (!checkExactObject(value, path, ["formatName", "formatVersion", "schemaVersion", "adapterCapabilityVersion"], issues)) {
+const validateGeneratedFileVersion = (
+  value: unknown,
+  path: string,
+  issues: ValidationIssue[],
+): void => {
+  if (
+    !checkExactObject(
+      value,
+      path,
+      ["formatName", "formatVersion", "schemaVersion", "adapterCapabilityVersion"],
+      issues,
+    )
+  ) {
     return;
   }
   checkString(value.formatName, `${path}.formatName`, issues);
   checkString(value.formatVersion, `${path}.formatVersion`, issues);
-  checkLiteral(value.schemaVersion, ["pi-generated-file-manifest/v1"], `${path}.schemaVersion`, issues);
-  checkLiteral(value.adapterCapabilityVersion, ["pi-adapter-capability-matrix/v1"], `${path}.adapterCapabilityVersion`, issues);
+  checkLiteral(
+    value.schemaVersion,
+    ["pi-generated-file-manifest/v1"],
+    `${path}.schemaVersion`,
+    issues,
+  );
+  checkLiteral(
+    value.adapterCapabilityVersion,
+    ["pi-adapter-capability-matrix/v1"],
+    `${path}.adapterCapabilityVersion`,
+    issues,
+  );
 };
 
-const validateGeneratedFileReadiness = (value: unknown, path: string, issues: ValidationIssue[]): void => {
+const validateGeneratedFileReadiness = (
+  value: unknown,
+  path: string,
+  issues: ValidationIssue[],
+): void => {
   if (!checkExactObject(value, path, ["state", "reason"], issues)) {
     return;
   }
@@ -839,21 +1294,52 @@ const validateGeneratedFileReadiness = (value: unknown, path: string, issues: Va
   checkString(value.reason, `${path}.reason`, issues);
 };
 
-const validateGeneratedFileFamily = (value: unknown, path: string, issues: ValidationIssue[]): void => {
-  if (!checkExactObject(value, path, ["familyId", "description", "pathPatterns", "owner", "producedByLane", "consumedByLanes", "trustSecurity", "version", "readiness"], issues)) {
+const validateGeneratedFileFamily = (
+  value: unknown,
+  path: string,
+  issues: ValidationIssue[],
+): void => {
+  if (
+    !checkExactObject(
+      value,
+      path,
+      [
+        "familyId",
+        "description",
+        "pathPatterns",
+        "owner",
+        "producedByLane",
+        "consumedByLanes",
+        "trustSecurity",
+        "version",
+        "readiness",
+      ],
+      issues,
+    )
+  ) {
     return;
   }
   checkLiteral(value.familyId, GENERATED_FILE_FAMILY_IDS, `${path}.familyId`, issues);
   checkString(value.description, `${path}.description`, issues);
   checkStringArray(value.pathPatterns, `${path}.pathPatterns`, issues, true);
   validateGeneratedFileOwner(value.owner, `${path}.owner`, issues);
-  checkLiteral(value.producedByLane, GENERATED_FILE_PRODUCER_LANE_IDS, `${path}.producedByLane`, issues);
+  checkLiteral(
+    value.producedByLane,
+    GENERATED_FILE_PRODUCER_LANE_IDS,
+    `${path}.producedByLane`,
+    issues,
+  );
   if (checkArray(value.consumedByLanes, `${path}.consumedByLanes`, issues)) {
     if (value.consumedByLanes.length === 0) {
       addIssue(issues, `${path}.consumedByLanes`, "empty_array", "Array must not be empty.");
     }
     for (let index = 0; index < value.consumedByLanes.length; index += 1) {
-      checkLiteral(value.consumedByLanes[index], GENERATED_FILE_CONSUMER_LANE_IDS, `${path}.consumedByLanes[${index}]`, issues);
+      checkLiteral(
+        value.consumedByLanes[index],
+        GENERATED_FILE_CONSUMER_LANE_IDS,
+        `${path}.consumedByLanes[${index}]`,
+        issues,
+      );
     }
   }
   validateGeneratedFileTrustSecurity(value.trustSecurity, `${path}.trustSecurity`, issues);
@@ -880,17 +1366,36 @@ const getRecordArray = (value: unknown): readonly JsonObject[] => {
   return value.filter(isRecord);
 };
 
-export const validateCapabilityMatrix = (value: unknown): ValidationResult<AdapterCapabilityMatrix> => {
+export const validateCapabilityMatrix = (
+  value: unknown,
+): ValidationResult<AdapterCapabilityMatrix> => {
   const issues: ValidationIssue[] = [];
-  if (!checkExactObject(value, "$", ["schemaVersion", "producedByLane", "adapterPackage", "adapters"], issues)) {
+  if (
+    !checkExactObject(
+      value,
+      "$",
+      ["schemaVersion", "producedByLane", "adapterPackage", "adapters"],
+      issues,
+    )
+  ) {
     return { valid: false, issues };
   }
   checkLiteral(value.schemaVersion, ["pi-adapter-capability-matrix/v1"], "$.schemaVersion", issues);
-  checkLiteral(value.producedByLane, ["I-14A-pi-adapter-capability-generated-file-manifest"], "$.producedByLane", issues);
+  checkLiteral(
+    value.producedByLane,
+    ["I-14A-pi-adapter-capability-generated-file-manifest"],
+    "$.producedByLane",
+    issues,
+  );
   checkLiteral(value.adapterPackage, ["@vibe-engineer/adapter-pi"], "$.adapterPackage", issues);
   if (checkArray(value.adapters, "$.adapters", issues)) {
     if (value.adapters.length === 0) {
-      addIssue(issues, "$.adapters", "empty_adapters", "Capability matrix must contain adapter rows.");
+      addIssue(
+        issues,
+        "$.adapters",
+        "empty_adapters",
+        "Capability matrix must contain adapter rows.",
+      );
     }
     for (let index = 0; index < value.adapters.length; index += 1) {
       validateAdapterCapability(value.adapters[index], `$.adapters[${index}]`, issues);
@@ -898,13 +1403,20 @@ export const validateCapabilityMatrix = (value: unknown): ValidationResult<Adapt
   }
 
   const adapters = getRecordArray(value.adapters);
-  const ids = adapters.map((adapter) => (typeof adapter.adapterId === "string" ? adapter.adapterId : ""));
+  const ids = adapters.map((adapter) =>
+    typeof adapter.adapterId === "string" ? adapter.adapterId : "",
+  );
   for (const duplicate of collectDuplicateStrings(ids.filter((id) => id.length > 0))) {
     addIssue(issues, "$.adapters", "duplicate_adapter_id", `Duplicate adapter id '${duplicate}'.`);
   }
   const piAdapter = adapters.find((adapter) => adapter.adapterId === "pi");
   if (piAdapter === undefined) {
-    addIssue(issues, "$.adapters", "missing_pi_adapter", "Capability matrix must include stable adapter id 'pi'.");
+    addIssue(
+      issues,
+      "$.adapters",
+      "missing_pi_adapter",
+      "Capability matrix must include stable adapter id 'pi'.",
+    );
   }
 
   for (const [index, adapter] of adapters.entries()) {
@@ -912,57 +1424,153 @@ export const validateCapabilityMatrix = (value: unknown): ValidationResult<Adapt
     const selection = isRecord(adapter.selection) ? adapter.selection : undefined;
     const flags = isRecord(adapter.capabilityFlags) ? adapter.capabilityFlags : undefined;
     const evidenceStatus = isRecord(adapter.evidenceStatus) ? adapter.evidenceStatus : undefined;
-    const skillsSurface = isRecord(adapter.skillsCommandsSurface) ? adapter.skillsCommandsSurface : undefined;
+    const skillsSurface = isRecord(adapter.skillsCommandsSurface)
+      ? adapter.skillsCommandsSurface
+      : undefined;
     const adapterId = typeof adapter.adapterId === "string" ? adapter.adapterId : "";
 
     if (flags?.unsupportedFeaturePolicy !== "block") {
-      addIssue(issues, `${adapterPath}.capabilityFlags.unsupportedFeaturePolicy`, "unsupported_feature_policy_not_blocking", "Unsupported features must block instead of silently no-oping.");
+      addIssue(
+        issues,
+        `${adapterPath}.capabilityFlags.unsupportedFeaturePolicy`,
+        "unsupported_feature_policy_not_blocking",
+        "Unsupported features must block instead of silently no-oping.",
+      );
     }
 
     if (adapterId !== "pi") {
-      if (selection?.manifestSelectable === true || selection?.createImportSelectable === true || selection?.readiness === "ready") {
-        addIssue(issues, `${adapterPath}.selection`, "non_pi_selectable", "Non-pi adapter rows must never be selectable or ready.");
+      if (
+        selection?.manifestSelectable === true ||
+        selection?.createImportSelectable === true ||
+        selection?.readiness === "ready"
+      ) {
+        addIssue(
+          issues,
+          `${adapterPath}.selection`,
+          "non_pi_selectable",
+          "Non-pi adapter rows must never be selectable or ready.",
+        );
       }
       if (evidenceStatus?.state === "known") {
-        addIssue(issues, `${adapterPath}.evidenceStatus.state`, "non_pi_known_claim", "Non-pi adapter rows must remain explicit unknown/deferred/blocked until future evidence-backed decisions.");
+        addIssue(
+          issues,
+          `${adapterPath}.evidenceStatus.state`,
+          "non_pi_known_claim",
+          "Non-pi adapter rows must remain explicit unknown/deferred/blocked until future evidence-backed decisions.",
+        );
       }
-      for (const flagKey of ["skills", "prompts", "hooks", "extensions", "subagents", "planMode", "contextFiles", "rpc", "sdk", "jsonMode", "packages", "ui"] as const) {
+      for (const flagKey of [
+        "skills",
+        "prompts",
+        "hooks",
+        "extensions",
+        "subagents",
+        "planMode",
+        "contextFiles",
+        "rpc",
+        "sdk",
+        "jsonMode",
+        "packages",
+        "ui",
+      ] as const) {
         if (flags?.[flagKey] === true) {
-          addIssue(issues, `${adapterPath}.capabilityFlags.${flagKey}`, "non_pi_enabled_flag", "Non-pi capability flags cannot be enabled in v1.");
+          addIssue(
+            issues,
+            `${adapterPath}.capabilityFlags.${flagKey}`,
+            "non_pi_enabled_flag",
+            "Non-pi capability flags cannot be enabled in v1.",
+          );
         }
       }
     }
 
     if (adapterId === "pi") {
       if (selection?.manifestSelectable !== true) {
-        addIssue(issues, `${adapterPath}.selection.manifestSelectable`, "pi_manifest_not_selectable", "The pi manifest contract must be selectable for downstream manifest consumers.");
+        addIssue(
+          issues,
+          `${adapterPath}.selection.manifestSelectable`,
+          "pi_manifest_not_selectable",
+          "The pi manifest contract must be selectable for downstream manifest consumers.",
+        );
       }
       if (selection?.createImportSelectable !== false) {
-        addIssue(issues, `${adapterPath}.selection.createImportSelectable`, "create_import_claim_out_of_scope", "I-14A must not claim create/import selectable behavior.");
+        addIssue(
+          issues,
+          `${adapterPath}.selection.createImportSelectable`,
+          "create_import_claim_out_of_scope",
+          "I-14A must not claim create/import selectable behavior.",
+        );
       }
       if (evidenceStatus?.state !== "known") {
-        addIssue(issues, `${adapterPath}.evidenceStatus.state`, "pi_evidence_not_known", "The pi adapter row must carry known design evidence for this contract.");
+        addIssue(
+          issues,
+          `${adapterPath}.evidenceStatus.state`,
+          "pi_evidence_not_known",
+          "The pi adapter row must carry known design evidence for this contract.",
+        );
       }
       const skills = Array.isArray(skillsSurface?.skills) ? skillsSurface.skills : [];
-      const skillIds = skills.map((skill) => (isRecord(skill) && typeof skill.skillId === "string" ? skill.skillId : ""));
+      const skillIds = skills.map((skill) =>
+        isRecord(skill) && typeof skill.skillId === "string" ? skill.skillId : "",
+      );
       for (const expectedSkill of SKILL_IDS) {
         if (!skillIds.includes(expectedSkill)) {
-          addIssue(issues, `${adapterPath}.skillsCommandsSurface.skills`, "missing_skill_mapping", `Missing required six-skill mapping '${expectedSkill}'.`);
+          addIssue(
+            issues,
+            `${adapterPath}.skillsCommandsSurface.skills`,
+            "missing_skill_mapping",
+            `Missing required six-skill mapping '${expectedSkill}'.`,
+          );
         }
       }
       for (const duplicate of collectDuplicateStrings(skillIds.filter((id) => id.length > 0))) {
-        addIssue(issues, `${adapterPath}.skillsCommandsSurface.skills`, "duplicate_skill_mapping", `Duplicate skill mapping '${duplicate}'.`);
+        addIssue(
+          issues,
+          `${adapterPath}.skillsCommandsSurface.skills`,
+          "duplicate_skill_mapping",
+          `Duplicate skill mapping '${duplicate}'.`,
+        );
       }
     }
 
-    if (flags?.skills === true && skillsSurface?.evidence !== undefined && isRecord(skillsSurface.evidence) && skillsSurface.evidence.state !== "known") {
-      addIssue(issues, `${adapterPath}.capabilityFlags.skills`, "flag_without_known_evidence", "Enabled skill capability requires known evidence.");
+    if (
+      flags?.skills === true &&
+      skillsSurface?.evidence !== undefined &&
+      isRecord(skillsSurface.evidence) &&
+      skillsSurface.evidence.state !== "known"
+    ) {
+      addIssue(
+        issues,
+        `${adapterPath}.capabilityFlags.skills`,
+        "flag_without_known_evidence",
+        "Enabled skill capability requires known evidence.",
+      );
     }
-    if (flags?.prompts === true && isRecord(adapter.promptTemplateSurface) && isRecord(adapter.promptTemplateSurface.evidence) && adapter.promptTemplateSurface.evidence.state !== "known") {
-      addIssue(issues, `${adapterPath}.capabilityFlags.prompts`, "flag_without_known_evidence", "Enabled prompt capability requires known evidence.");
+    if (
+      flags?.prompts === true &&
+      isRecord(adapter.promptTemplateSurface) &&
+      isRecord(adapter.promptTemplateSurface.evidence) &&
+      adapter.promptTemplateSurface.evidence.state !== "known"
+    ) {
+      addIssue(
+        issues,
+        `${adapterPath}.capabilityFlags.prompts`,
+        "flag_without_known_evidence",
+        "Enabled prompt capability requires known evidence.",
+      );
     }
-    if (flags?.hooks === true && isRecord(adapter.hookEventSupport) && isRecord(adapter.hookEventSupport.evidence) && adapter.hookEventSupport.evidence.state !== "known") {
-      addIssue(issues, `${adapterPath}.capabilityFlags.hooks`, "flag_without_known_evidence", "Enabled hook capability requires known evidence.");
+    if (
+      flags?.hooks === true &&
+      isRecord(adapter.hookEventSupport) &&
+      isRecord(adapter.hookEventSupport.evidence) &&
+      adapter.hookEventSupport.evidence.state !== "known"
+    ) {
+      addIssue(
+        issues,
+        `${adapterPath}.capabilityFlags.hooks`,
+        "flag_without_known_evidence",
+        "Enabled hook capability requires known evidence.",
+      );
     }
   }
 
@@ -972,18 +1580,42 @@ export const validateCapabilityMatrix = (value: unknown): ValidationResult<Adapt
   return { valid: true, value: value as AdapterCapabilityMatrix, issues: [] };
 };
 
-export const validateGeneratedFileManifest = (value: unknown): ValidationResult<GeneratedFileManifest> => {
+export const validateGeneratedFileManifest = (
+  value: unknown,
+): ValidationResult<GeneratedFileManifest> => {
   const issues: ValidationIssue[] = [];
-  if (!checkExactObject(value, "$", ["schemaVersion", "adapterId", "adapterCapabilityVersion", "producedByLane", "families"], issues)) {
+  if (
+    !checkExactObject(
+      value,
+      "$",
+      ["schemaVersion", "adapterId", "adapterCapabilityVersion", "producedByLane", "families"],
+      issues,
+    )
+  ) {
     return { valid: false, issues };
   }
   checkLiteral(value.schemaVersion, ["pi-generated-file-manifest/v1"], "$.schemaVersion", issues);
   checkLiteral(value.adapterId, ["pi"], "$.adapterId", issues);
-  checkLiteral(value.adapterCapabilityVersion, ["pi-adapter-capability-matrix/v1"], "$.adapterCapabilityVersion", issues);
-  checkLiteral(value.producedByLane, ["I-14A-pi-adapter-capability-generated-file-manifest"], "$.producedByLane", issues);
+  checkLiteral(
+    value.adapterCapabilityVersion,
+    ["pi-adapter-capability-matrix/v1"],
+    "$.adapterCapabilityVersion",
+    issues,
+  );
+  checkLiteral(
+    value.producedByLane,
+    ["I-14A-pi-adapter-capability-generated-file-manifest"],
+    "$.producedByLane",
+    issues,
+  );
   if (checkArray(value.families, "$.families", issues)) {
     if (value.families.length === 0) {
-      addIssue(issues, "$.families", "empty_families", "Generated-file manifest must enumerate file families.");
+      addIssue(
+        issues,
+        "$.families",
+        "empty_families",
+        "Generated-file manifest must enumerate file families.",
+      );
     }
     for (let index = 0; index < value.families.length; index += 1) {
       validateGeneratedFileFamily(value.families[index], `$.families[${index}]`, issues);
@@ -991,14 +1623,26 @@ export const validateGeneratedFileManifest = (value: unknown): ValidationResult<
   }
 
   const families = getRecordArray(value.families);
-  const familyIds = families.map((family) => (typeof family.familyId === "string" ? family.familyId : ""));
+  const familyIds = families.map((family) =>
+    typeof family.familyId === "string" ? family.familyId : "",
+  );
   for (const expectedFamily of GENERATED_FILE_FAMILY_IDS) {
     if (!familyIds.includes(expectedFamily)) {
-      addIssue(issues, "$.families", "missing_generated_file_family", `Missing generated-file family '${expectedFamily}'.`);
+      addIssue(
+        issues,
+        "$.families",
+        "missing_generated_file_family",
+        `Missing generated-file family '${expectedFamily}'.`,
+      );
     }
   }
   for (const duplicate of collectDuplicateStrings(familyIds.filter((id) => id.length > 0))) {
-    addIssue(issues, "$.families", "duplicate_generated_file_family", `Duplicate generated-file family '${duplicate}'.`);
+    addIssue(
+      issues,
+      "$.families",
+      "duplicate_generated_file_family",
+      `Duplicate generated-file family '${duplicate}'.`,
+    );
   }
 
   for (const [index, family] of families.entries()) {
@@ -1009,9 +1653,17 @@ export const validateGeneratedFileManifest = (value: unknown): ValidationResult<
     const readiness = isRecord(family.readiness) ? family.readiness : undefined;
     const consumedByLanes = Array.isArray(family.consumedByLanes) ? family.consumedByLanes : [];
     if (!owner || !trustSecurity || !version || !readiness || consumedByLanes.length === 0) {
-      addIssue(issues, familyPath, "missing_fail_closed_metadata", "Owner, security/trust, version, readiness, and consumer data are mandatory.");
+      addIssue(
+        issues,
+        familyPath,
+        "missing_fail_closed_metadata",
+        "Owner, security/trust, version, readiness, and consumer data are mandatory.",
+      );
     }
-    if (typeof family.familyId === "string" && GENERATED_FILE_FAMILY_IDS.includes(family.familyId as GeneratedFileFamilyId)) {
+    if (
+      typeof family.familyId === "string" &&
+      GENERATED_FILE_FAMILY_IDS.includes(family.familyId as GeneratedFileFamilyId)
+    ) {
       const contract = GENERATED_FILE_FAMILY_CONTRACTS[family.familyId as GeneratedFileFamilyId];
       checkExactStringSet(
         family.pathPatterns,
@@ -1022,7 +1674,12 @@ export const validateGeneratedFileManifest = (value: unknown): ValidationResult<
         `Generated-file family '${family.familyId}' must declare exactly the required path patterns: ${contract.pathPatterns.join(", ")}.`,
       );
       if (family.producedByLane !== contract.producerLane) {
-        addIssue(issues, `${familyPath}.producedByLane`, "unsupported_value", `Generated-file family '${family.familyId}' must be produced by '${contract.producerLane}'.`);
+        addIssue(
+          issues,
+          `${familyPath}.producedByLane`,
+          "unsupported_value",
+          `Generated-file family '${family.familyId}' must be produced by '${contract.producerLane}'.`,
+        );
       }
       checkExactStringSet(
         family.consumedByLanes,
@@ -1034,10 +1691,20 @@ export const validateGeneratedFileManifest = (value: unknown): ValidationResult<
       );
       if (owner !== undefined) {
         if (owner.ownerKind !== contract.ownerKind) {
-          addIssue(issues, `${familyPath}.owner.ownerKind`, "unsupported_value", `Generated-file family '${family.familyId}' must be owned by a lane.`);
+          addIssue(
+            issues,
+            `${familyPath}.owner.ownerKind`,
+            "unsupported_value",
+            `Generated-file family '${family.familyId}' must be owned by a lane.`,
+          );
         }
         if (owner.ownerId !== contract.producerLane) {
-          addIssue(issues, `${familyPath}.owner.ownerId`, "unsupported_value", `Generated-file family '${family.familyId}' owner lane must be '${contract.producerLane}'.`);
+          addIssue(
+            issues,
+            `${familyPath}.owner.ownerId`,
+            "unsupported_value",
+            `Generated-file family '${family.familyId}' owner lane must be '${contract.producerLane}'.`,
+          );
         }
         checkExactStringSet(
           owner.writePathScope,
@@ -1058,47 +1725,116 @@ export const validateGeneratedFileManifest = (value: unknown): ValidationResult<
       }
       if (trustSecurity !== undefined) {
         if (trustSecurity.classification !== contract.trustClassification) {
-          addIssue(issues, `${familyPath}.trustSecurity.classification`, "unsupported_value", `Generated-file family '${family.familyId}' must use trust classification '${contract.trustClassification}'.`);
+          addIssue(
+            issues,
+            `${familyPath}.trustSecurity.classification`,
+            "unsupported_value",
+            `Generated-file family '${family.familyId}' must use trust classification '${contract.trustClassification}'.`,
+          );
         }
         if (trustSecurity.projectTrustRequired !== contract.projectTrustRequired) {
-          addIssue(issues, `${familyPath}.trustSecurity.projectTrustRequired`, "unsupported_value", `Generated-file family '${family.familyId}' project-trust metadata must be exact.`);
+          addIssue(
+            issues,
+            `${familyPath}.trustSecurity.projectTrustRequired`,
+            "unsupported_value",
+            `Generated-file family '${family.familyId}' project-trust metadata must be exact.`,
+          );
         }
         if (trustSecurity.executesCode !== contract.executesCode) {
-          addIssue(issues, `${familyPath}.trustSecurity.executesCode`, "unsupported_value", `Generated-file family '${family.familyId}' executable-code metadata must be exact.`);
+          addIssue(
+            issues,
+            `${familyPath}.trustSecurity.executesCode`,
+            "unsupported_value",
+            `Generated-file family '${family.familyId}' executable-code metadata must be exact.`,
+          );
         }
         if (trustSecurity.commandPolicy !== contract.commandPolicy) {
-          addIssue(issues, `${familyPath}.trustSecurity.commandPolicy`, "unsupported_value", `Generated-file family '${family.familyId}' command policy must be '${contract.commandPolicy}'.`);
+          addIssue(
+            issues,
+            `${familyPath}.trustSecurity.commandPolicy`,
+            "unsupported_value",
+            `Generated-file family '${family.familyId}' command policy must be '${contract.commandPolicy}'.`,
+          );
         }
         if (trustSecurity.sandboxCapability !== contract.sandboxCapability) {
-          addIssue(issues, `${familyPath}.trustSecurity.sandboxCapability`, "unsupported_value", `Generated-file family '${family.familyId}' sandbox metadata must be '${contract.sandboxCapability}'.`);
+          addIssue(
+            issues,
+            `${familyPath}.trustSecurity.sandboxCapability`,
+            "unsupported_value",
+            `Generated-file family '${family.familyId}' sandbox metadata must be '${contract.sandboxCapability}'.`,
+          );
         }
         if (trustSecurity.credentialPolicy !== contract.credentialPolicy) {
-          addIssue(issues, `${familyPath}.trustSecurity.credentialPolicy`, "unsupported_value", `Generated-file family '${family.familyId}' credential policy must be '${contract.credentialPolicy}'.`);
+          addIssue(
+            issues,
+            `${familyPath}.trustSecurity.credentialPolicy`,
+            "unsupported_value",
+            `Generated-file family '${family.familyId}' credential policy must be '${contract.credentialPolicy}'.`,
+          );
         }
         if (trustSecurity.externalIntegration !== contract.externalIntegration) {
-          addIssue(issues, `${familyPath}.trustSecurity.externalIntegration`, "unsupported_value", `Generated-file family '${family.familyId}' external-integration policy must be '${contract.externalIntegration}'.`);
+          addIssue(
+            issues,
+            `${familyPath}.trustSecurity.externalIntegration`,
+            "unsupported_value",
+            `Generated-file family '${family.familyId}' external-integration policy must be '${contract.externalIntegration}'.`,
+          );
         }
         if (trustSecurity.destructiveOperationPolicy !== contract.destructiveOperationPolicy) {
-          addIssue(issues, `${familyPath}.trustSecurity.destructiveOperationPolicy`, "unsupported_value", `Generated-file family '${family.familyId}' destructive-operation policy must be '${contract.destructiveOperationPolicy}'.`);
+          addIssue(
+            issues,
+            `${familyPath}.trustSecurity.destructiveOperationPolicy`,
+            "unsupported_value",
+            `Generated-file family '${family.familyId}' destructive-operation policy must be '${contract.destructiveOperationPolicy}'.`,
+          );
         }
       }
       if (version !== undefined) {
         if (version.formatName !== contract.formatName) {
-          addIssue(issues, `${familyPath}.version.formatName`, "unsupported_value", `Generated-file family '${family.familyId}' format name must be '${contract.formatName}'.`);
+          addIssue(
+            issues,
+            `${familyPath}.version.formatName`,
+            "unsupported_value",
+            `Generated-file family '${family.familyId}' format name must be '${contract.formatName}'.`,
+          );
         }
         if (version.formatVersion !== contract.formatVersion) {
-          addIssue(issues, `${familyPath}.version.formatVersion`, "unsupported_value", `Generated-file family '${family.familyId}' format version must be '${contract.formatVersion}'.`);
+          addIssue(
+            issues,
+            `${familyPath}.version.formatVersion`,
+            "unsupported_value",
+            `Generated-file family '${family.familyId}' format version must be '${contract.formatVersion}'.`,
+          );
         }
       }
       if (readiness !== undefined && readiness.state !== contract.readinessState) {
-        addIssue(issues, `${familyPath}.readiness.state`, "unsupported_value", `Generated-file family '${family.familyId}' readiness state must be '${contract.readinessState}'.`);
+        addIssue(
+          issues,
+          `${familyPath}.readiness.state`,
+          "unsupported_value",
+          `Generated-file family '${family.familyId}' readiness state must be '${contract.readinessState}'.`,
+        );
       }
     }
     if (family.familyId === "pi-extensions" && trustSecurity?.executesCode !== true) {
-      addIssue(issues, `${familyPath}.trustSecurity.executesCode`, "extension_execution_not_declared", "Pi extensions execute TypeScript and must declare executable trust/security implications.");
+      addIssue(
+        issues,
+        `${familyPath}.trustSecurity.executesCode`,
+        "extension_execution_not_declared",
+        "Pi extensions execute TypeScript and must declare executable trust/security implications.",
+      );
     }
-    if (family.familyId !== "pi-extensions" && trustSecurity?.executesCode === true && trustSecurity.classification !== "package-manifest") {
-      addIssue(issues, `${familyPath}.trustSecurity.executesCode`, "unexpected_executable_family", "Only extension/package manifest families may declare executable behavior in this manifest.");
+    if (
+      family.familyId !== "pi-extensions" &&
+      trustSecurity?.executesCode === true &&
+      trustSecurity.classification !== "package-manifest"
+    ) {
+      addIssue(
+        issues,
+        `${familyPath}.trustSecurity.executesCode`,
+        "unexpected_executable_family",
+        "Only extension/package manifest families may declare executable behavior in this manifest.",
+      );
     }
   }
 
@@ -1114,11 +1850,15 @@ export const createDownstreamManifestSummary = (
 ): DownstreamManifestSummary => {
   const capabilityValidation = validateCapabilityMatrix(capabilityMatrix);
   if (!capabilityValidation.valid) {
-    throw new Error(`Capability matrix failed validation: ${capabilityValidation.issues.map((issue) => issue.code).join(",")}`);
+    throw new Error(
+      `Capability matrix failed validation: ${capabilityValidation.issues.map((issue) => issue.code).join(",")}`,
+    );
   }
   const manifestValidation = validateGeneratedFileManifest(generatedFileManifest);
   if (!manifestValidation.valid) {
-    throw new Error(`Generated-file manifest failed validation: ${manifestValidation.issues.map((issue) => issue.code).join(",")}`);
+    throw new Error(
+      `Generated-file manifest failed validation: ${manifestValidation.issues.map((issue) => issue.code).join(",")}`,
+    );
   }
   const piAdapter = capabilityMatrix.adapters.find((adapter) => adapter.adapterId === "pi");
   if (piAdapter === undefined) {
@@ -1132,6 +1872,8 @@ export const createDownstreamManifestSummary = (
     manifestReady: piAdapter.selection.manifestSelectable,
     createImportReady: false,
     runtimeExecutionClaim: piAdapter.realBoundaryWitness.runtimeExecutionClaim,
-    blockedNonPiAdapters: capabilityMatrix.adapters.filter((adapter) => adapter.adapterId !== "pi").map((adapter) => adapter.adapterId),
+    blockedNonPiAdapters: capabilityMatrix.adapters
+      .filter((adapter) => adapter.adapterId !== "pi")
+      .map((adapter) => adapter.adapterId),
   };
 };

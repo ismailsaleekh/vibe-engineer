@@ -255,24 +255,24 @@ If current DL-02 structures cannot encode any required DL-10 semantic field, `I-
 
 V1 verification classifications are domain-neutral and machine-readable. Exact enum names may be schema-owned, but these categories and routing expectations are required:
 
-| Category | Blocking default | Typical route |
-| --- | --- | --- |
-| deterministic_product_or_code_failure | hard block | owning implementation specialist or product/code fixer |
-| schema_or_contract_failure | hard block | schema/contract fixer; `DL-02`/contract owner where relevant |
-| safety_or_security_policy_failure | hard block | security/safety fixer and `DL-22` policy owner |
-| mechanical_gate_failure | hard block unless explicitly advisory/ratcheted by `DL-15` | mechanical gate owner/fixer |
-| test_assertion_failure | hard block | relevant test/product fixer |
-| test_bug | hard block for green closure until repaired or covered elsewhere | test-runner/test-quality fixer |
-| environment_issue | blocked, not pass | environment/CI/local parity owner |
-| timing_or_flaky_suspicion | blocked/investigate, not pass | flaky-test investigator and relevant runner owner |
-| external_dependency_drift | blocked or failure depending on policy | adapter/integration/environment owner |
-| advisory_finding | advisory by default | reviewer/fixer or meta-agent recommendation path |
-| missing_evidence | hard block | evidence/runner/build/ship owner |
-| missing_runner_or_prerequisite | blocked | runner catalog/prerequisite owner |
-| skipped_required_delta_category | hard block | planner/Verification Delta or runner selection owner |
-| blocked_prerequisite | blocked | prerequisite owner/runtime router |
-| runner_internal_error | failure/blocker | verification runner owner |
-| classification_unknown | blocked until classified | failure classifier owner |
+| Category                              | Blocking default                                                 | Typical route                                                |
+| ------------------------------------- | ---------------------------------------------------------------- | ------------------------------------------------------------ |
+| deterministic_product_or_code_failure | hard block                                                       | owning implementation specialist or product/code fixer       |
+| schema_or_contract_failure            | hard block                                                       | schema/contract fixer; `DL-02`/contract owner where relevant |
+| safety_or_security_policy_failure     | hard block                                                       | security/safety fixer and `DL-22` policy owner               |
+| mechanical_gate_failure               | hard block unless explicitly advisory/ratcheted by `DL-15`       | mechanical gate owner/fixer                                  |
+| test_assertion_failure                | hard block                                                       | relevant test/product fixer                                  |
+| test_bug                              | hard block for green closure until repaired or covered elsewhere | test-runner/test-quality fixer                               |
+| environment_issue                     | blocked, not pass                                                | environment/CI/local parity owner                            |
+| timing_or_flaky_suspicion             | blocked/investigate, not pass                                    | flaky-test investigator and relevant runner owner            |
+| external_dependency_drift             | blocked or failure depending on policy                           | adapter/integration/environment owner                        |
+| advisory_finding                      | advisory by default                                              | reviewer/fixer or meta-agent recommendation path             |
+| missing_evidence                      | hard block                                                       | evidence/runner/build/ship owner                             |
+| missing_runner_or_prerequisite        | blocked                                                          | runner catalog/prerequisite owner                            |
+| skipped_required_delta_category       | hard block                                                       | planner/Verification Delta or runner selection owner         |
+| blocked_prerequisite                  | blocked                                                          | prerequisite owner/runtime router                            |
+| runner_internal_error                 | failure/blocker                                                  | verification runner owner                                    |
+| classification_unknown                | blocked until classified                                         | failure classifier owner                                     |
 
 Failure evidence must preserve both original failed layer and current routed owner. Reclassification requires new evidence and lineage; it must not overwrite or erase the original finding.
 

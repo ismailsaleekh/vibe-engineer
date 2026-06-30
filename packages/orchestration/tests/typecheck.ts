@@ -5,14 +5,14 @@ import {
   type DurableRunState,
   type OrchestrationWorkPlan,
   type ScheduleDecision,
-} from '../src/index.js';
+} from "../src/index.js";
 
 const plan: OrchestrationWorkPlan = parseWorkPlan({
-  schemaVersion: 'orchestration-work-plan/1.0.0',
-  runId: 'typecheck-run',
+  schemaVersion: "orchestration-work-plan/1.0.0",
+  runId: "typecheck-run",
   limits: DEFAULT_ORCHESTRATION_LIMITS,
-  untouchablePaths: ['.git/**'],
-  readOnlyPaths: ['packages/artifacts/**'],
+  untouchablePaths: [".git/**"],
+  readOnlyPaths: ["packages/artifacts/**"],
   nodes: [],
 });
 
@@ -25,9 +25,9 @@ const decision: ScheduleDecision = {
 };
 
 const state: DurableRunState = {
-  schemaVersion: 'orchestration-runtime-state/1.0.0',
+  schemaVersion: "orchestration-runtime-state/1.0.0",
   runId: plan.runId,
-  workPlanPath: 'fixtures/work-plans/valid-acyclic.json',
+  workPlanPath: "fixtures/work-plans/valid-acyclic.json",
   limits: plan.limits,
   nodes: [],
   activeClaims: [],
@@ -38,12 +38,12 @@ const state: DurableRunState = {
     completedNodeIds: [],
     retryNodeIds: [],
     blockedNodeIds: [],
-    inspectedAt: '2026-06-24T00:00:00.000Z',
+    inspectedAt: "2026-06-24T00:00:00.000Z",
     reasons: [],
   },
   checkpoints: [],
-  updatedAt: '2026-06-24T00:00:00.000Z',
+  updatedAt: "2026-06-24T00:00:00.000Z",
 };
 
-if (state.runId !== 'typecheck-run') throw new Error('typecheck consumer failed');
+if (state.runId !== "typecheck-run") throw new Error("typecheck consumer failed");
 assertNoLiveProviderSpawningCapability();

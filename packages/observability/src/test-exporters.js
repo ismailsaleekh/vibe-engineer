@@ -12,11 +12,7 @@
 // produced by real instrumentation traversing the real OTel/pino emit path.
 
 import { createMemorySink } from "./logging.js";
-import {
-  createTracerProvider,
-  createSpanApi,
-  InMemorySpanExporter,
-} from "./tracing.js";
+import { createTracerProvider, createSpanApi, InMemorySpanExporter } from "./tracing.js";
 import {
   createMeterProvider,
   createMetrics,
@@ -41,12 +37,21 @@ export function createLocalCapture(opts) {
 
   const spanExporter = new InMemorySpanExporter();
   const metricExporter = new InMemoryMetricExporter(AggregationTemporality.CUMULATIVE);
-  const { provider: tracerProvider, tracer, exporter: spanExpResolved } = createTracerProvider({
+  const {
+    provider: tracerProvider,
+    tracer,
+    exporter: spanExpResolved,
+  } = createTracerProvider({
     serviceName: opts.serviceName,
     surface: opts.surface,
     exporter: spanExporter,
   });
-  const { provider: meterProvider, meter, exporter: metricExpResolved, reader: metricReader } = createMeterProvider({
+  const {
+    provider: meterProvider,
+    meter,
+    exporter: metricExpResolved,
+    reader: metricReader,
+  } = createMeterProvider({
     serviceName: opts.serviceName,
     exporter: metricExporter,
   });
@@ -76,13 +81,20 @@ export function createLocalCapture(opts) {
     /** Flush + collect every emitted artifact (the verification consumer's read). */
     async collect() {
       // Flush metrics (periodic reader) + spans (simple processor is sync).
-      await metricReader?.collect()?.then?.(() => {}, () => {});
-      const finishedSpans = typeof spanExpResolved.getFinishedSpans === "function" ? spanExpResolved.getFinishedSpans() : [];
+      await metricReader?.collect()?.then?.(
+        () => {},
+        () => {},
+      );
+      const finishedSpans =
+        typeof spanExpResolved.getFinishedSpans === "function"
+          ? spanExpResolved.getFinishedSpans()
+          : [];
       /** @type {any[]} */
       let metricRecords = [];
       try {
         // InMemoryMetricExporter (OTel 1.30) — read collected resources.
-        const collected = metricExpResolved.getCollectedMetrics?.() ?? metricExpResolved.collect?.();
+        const collected =
+          metricExpResolved.getCollectedMetrics?.() ?? metricExpResolved.collect?.();
         metricRecords = Array.isArray(collected) ? collected : [];
       } catch {
         metricRecords = [];
@@ -94,16 +106,47 @@ export function createLocalCapture(opts) {
       };
     },
     async shutdown() {
-      try { await tracerProvider.shutdown(); } catch {}
-      try { await meterProvider.shutdown(); } catch {}
+      try {
+        await tracerProvider.shutdown();
+      } catch {}
+      try {
+        await meterProvider.shutdown();
+      } catch {}
     },
   };
 }
 
-export { createTracerProvider, createSpanApi, createMeterProvider, createMetrics, InMemorySpanExporter, InMemoryMetricExporter, AggregationTemporality };
-export { createCorrelationId, createRequestId, createRunId, createOperationId, createUuidV4, isValidUuidV4, parseUuidV4 } from "./ids.js";
-export { resolveInboundIds, injectPropagationHeaders, parseTraceparent, formatTraceparent, propagateRoundTrip } from "./propagation.js";
-export { createLogger, createPinoSink, createBrowserRnCaptureAdapter, createMemorySink } from "./logging.js";
+export {
+  createTracerProvider,
+  createSpanApi,
+  createMeterProvider,
+  createMetrics,
+  InMemorySpanExporter,
+  InMemoryMetricExporter,
+  AggregationTemporality,
+};
+export {
+  createCorrelationId,
+  createRequestId,
+  createRunId,
+  createOperationId,
+  createUuidV4,
+  isValidUuidV4,
+  parseUuidV4,
+} from "./ids.js";
+export {
+  resolveInboundIds,
+  injectPropagationHeaders,
+  parseTraceparent,
+  formatTraceparent,
+  propagateRoundTrip,
+} from "./propagation.js";
+export {
+  createLogger,
+  createPinoSink,
+  createBrowserRnCaptureAdapter,
+  createMemorySink,
+} from "./logging.js";
 export { redactRecord, assertNoSentinelLeak, REDACTION_NEGATIVE_SENTINELS } from "./redaction.js";
 export {
   parseLogRecord,

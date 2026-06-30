@@ -8,7 +8,7 @@ function canonicalMarker(metadata) {
     schematicVersion: metadata.schematicVersion,
     blockId: metadata.blockId,
     inputFingerprint: metadata.inputFingerprint,
-    templateFingerprint: metadata.templateFingerprint
+    templateFingerprint: metadata.templateFingerprint,
   };
 }
 
@@ -26,13 +26,30 @@ export function parseGeneratedBlock(text) {
   const lines = text.split("\n");
   if (lines.length < 3) return { ok: false, reason: "missing_markers" };
   const first = lines[0];
-  const lastMeaningful = lines[lines.length - 1] === "" ? lines[lines.length - 2] : lines[lines.length - 1];
-  if (!first.startsWith(START_PREFIX) || !first.endsWith(START_SUFFIX) || lastMeaningful !== END_MARKER) return { ok: false, reason: "missing_markers" };
+  const lastMeaningful =
+    lines[lines.length - 1] === "" ? lines[lines.length - 2] : lines[lines.length - 1];
+  if (
+    !first.startsWith(START_PREFIX) ||
+    !first.endsWith(START_SUFFIX) ||
+    lastMeaningful !== END_MARKER
+  )
+    return { ok: false, reason: "missing_markers" };
   const jsonText = first.slice(START_PREFIX.length, first.length - START_SUFFIX.length);
   let marker;
-  try { marker = JSON.parse(jsonText); } catch { return { ok: false, reason: "invalid_marker_json" }; }
-  for (const key of ["schematicId", "schematicVersion", "blockId", "inputFingerprint", "templateFingerprint"]) {
-    if (typeof marker[key] !== "string" || marker[key].length === 0) return { ok: false, reason: "invalid_marker_field", key };
+  try {
+    marker = JSON.parse(jsonText);
+  } catch {
+    return { ok: false, reason: "invalid_marker_json" };
+  }
+  for (const key of [
+    "schematicId",
+    "schematicVersion",
+    "blockId",
+    "inputFingerprint",
+    "templateFingerprint",
+  ]) {
+    if (typeof marker[key] !== "string" || marker[key].length === 0)
+      return { ok: false, reason: "invalid_marker_field", key };
   }
   const bodyLines = lines.slice(1, lines.length - (lines[lines.length - 1] === "" ? 2 : 1));
   return { ok: true, marker, body: `${bodyLines.join("\n")}\n` };
@@ -48,7 +65,10 @@ export function parseGeneratedSections(text) {
     const markerLineEnd = text.indexOf("\n", start);
     if (markerLineEnd === -1) break;
     const markerLine = text.slice(start, markerLineEnd);
-    if (!markerLine.endsWith(START_SUFFIX)) { offset = markerLineEnd + 1; continue; }
+    if (!markerLine.endsWith(START_SUFFIX)) {
+      offset = markerLineEnd + 1;
+      continue;
+    }
     const endMarkerStart = text.indexOf(END_MARKER, markerLineEnd + 1);
     if (endMarkerStart === -1) break;
     const endLineEnd = text.indexOf("\n", endMarkerStart);

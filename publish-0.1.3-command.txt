@@ -1,0 +1,9 @@
+# Copy/paste this ONE LINE from /Users/lizavasilyeva/work/vibe-engineer:
+set -euo pipefail; git status; git rev-parse --short HEAD; GITHUB_REPOSITORY_OWNER=ismailsaleekh pnpm release:check; VIBE_ENGINEER_RELEASE_APPROVED=true GITHUB_REPOSITORY_OWNER=ismailsaleekh pnpm release:publish --confirm-publish --pack-dir .vibe/release/check/pack --expected-npm-user ismailsaleekh
+
+# Same command formatted for reading:
+# set -euo pipefail
+# git status
+# git rev-parse --short HEAD
+# GITHUB_REPOSITORY_OWNER=ismailsaleekh pnpm release:check
+# VIBE_ENGINEER_RELEASE_APPROVED=true GITHUB_REPOSITORY_OWNER=ismailsaleekh pnpm release:publish --confirm-publish --pack-dir .vibe/release/check/pack --expected-npm-user ismailsaleekh

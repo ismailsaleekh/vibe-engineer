@@ -15,7 +15,7 @@
 
 Primary content authority (locked provider/deploy defaults — read in full):
 
-- `/Users/lizavasilyeva/work/harness-starter/docs/locked-decisions.md` — **§10 `CI/CD and deployment defaults`** (subsections: *Deployment and infrastructure-as-code*, *Deployment environments*, *Release/deploy trigger*).
+- `/Users/lizavasilyeva/work/harness-starter/docs/locked-decisions.md` — **§10 `CI/CD and deployment defaults`** (subsections: _Deployment and infrastructure-as-code_, _Deployment environments_, _Release/deploy trigger_).
 - `/Users/lizavasilyeva/work/harness-starter/docs/verification-layer.md` — **§5.15 `CI/CD and deployment verification`** (locked defaults + the complete 8-rule hard-failure set).
 - `/Users/lizavasilyeva/work/harness-starter/docs/mechanical-verification-gates.md` — **§7 `Quality wiring-integrity gate`** (deployment/deploy/destroy mechanical clauses).
 
@@ -46,81 +46,81 @@ Each item below restates a locked default with its verbatim source string and se
 
 - **Decision:** `Pulumi TypeScript` is the v1 default IaC engine for generated deployment scaffolding.
 - **Verbatim source:**
-  - `locked-decisions §10`: *"Default IaC engine for generated deployment scaffolding: `Pulumi TypeScript`."*
-  - `verification-layer §5.15`: *"Deployment IaC: Pulumi TypeScript."*
+  - `locked-decisions §10`: _"Default IaC engine for generated deployment scaffolding: `Pulumi TypeScript`."_
+  - `verification-layer §5.15`: _"Deployment IaC: Pulumi TypeScript."_
 
 ### 2. Default Pulumi backend: Pulumi Cloud
 
 - **Decision:** `Pulumi Cloud` is the default Pulumi backend. Self-managed state backends are a future/explicit-override surface, **not** the default.
 - **Verbatim source:**
-  - `locked-decisions §10`: *"Default Pulumi backend: `Pulumi Cloud`."* / *"Self-managed Pulumi state backends can be supported later or by explicit project override, but they are not the default."*
-  - `verification-layer §5.15`: *"Pulumi backend: Pulumi Cloud by default."*
+  - `locked-decisions §10`: _"Default Pulumi backend: `Pulumi Cloud`."_ / _"Self-managed Pulumi state backends can be supported later or by explicit project override, but they are not the default."_
+  - `verification-layer §5.15`: _"Pulumi backend: Pulumi Cloud by default."_
 
 ### 3. No default cloud / provider / region / deployment target (provider-agnostic)
 
 - **Decision:** v1 scaffold stays **provider-agnostic**. It must not hard-code a default deployment target, cloud provider, or region until a project chooses AWS, GCP, Azure, Kubernetes, or another provider.
 - **Verbatim source:**
-  - `locked-decisions §10`: *"Pulumi is provider-based. v1 must **not** hard-code a default deployment target or cloud provider. Generated Pulumi scaffolding should remain provider-agnostic until a project chooses AWS, GCP, Azure, Kubernetes, or another provider."*
-  - `verification-layer §5.15`: *"No default cloud/deployment target; provider selection is project-specific."*
+  - `locked-decisions §10`: _"Pulumi is provider-based. v1 must **not** hard-code a default deployment target or cloud provider. Generated Pulumi scaffolding should remain provider-agnostic until a project chooses AWS, GCP, Azure, Kubernetes, or another provider."_
+  - `verification-layer §5.15`: _"No default cloud/deployment target; provider selection is project-specific."_
 
 ### 4. Default environments: `dev` and `prod`
 
 - **Decision:** the default generated deployment environments are `dev` and `prod`.
 - **Verbatim source:**
-  - `locked-decisions §10` (*Deployment environments*): default environments `dev` / `prod`.
-  - `verification-layer §5.15`: *"Default environments: `dev` and `prod`."*
+  - `locked-decisions §10` (_Deployment environments_): default environments `dev` / `prod`.
+  - `verification-layer §5.15`: _"Default environments: `dev` and `prod`."_
 
 ### 5. No per-PR preview environments by default
 
 - **Decision:** per-PR preview environments are **not** part of v1 defaults.
 - **Verbatim source:**
-  - `locked-decisions §10`: *"Per-PR preview environments are not part of v1 defaults."*
-  - `verification-layer §5.15`: *"No per-PR preview environments by default."*
+  - `locked-decisions §10`: _"Per-PR preview environments are not part of v1 defaults."_
+  - `verification-layer §5.15`: _"No per-PR preview environments by default."_
 
 ### 6. PR infrastructure workflow is preview/diff-only and non-mutating
 
 - **Decision:** PR CI may run a **non-mutating** Pulumi preview/diff. A PR workflow that deploys or mutates infrastructure is a hard failure.
 - **Verbatim source:**
-  - `locked-decisions §10`: *"PR CI may run a non-mutating Pulumi preview/diff."*
-  - `verification-layer §5.15` (Hard failures): *"PR workflow deploys or mutates infrastructure."* (this is a failure condition)
-  - `mechanical-verification-gates §7`: *"deployment workflows are manual/protected and cannot auto-deploy from PRs, pushes, or merges by default;"* and *"PR infrastructure workflows are preview/diff-only and cannot mutate infrastructure;"*
+  - `locked-decisions §10`: _"PR CI may run a non-mutating Pulumi preview/diff."_
+  - `verification-layer §5.15` (Hard failures): _"PR workflow deploys or mutates infrastructure."_ (this is a failure condition)
+  - `mechanical-verification-gates §7`: _"deployment workflows are manual/protected and cannot auto-deploy from PRs, pushes, or merges by default;"_ and _"PR infrastructure workflows are preview/diff-only and cannot mutate infrastructure;"_
 
 ### 7. Deploy workflow is `workflow_dispatch`-only, manual, and protected by environment approval
 
 - **Decision:** release/deploy is **manual**. Deploy workflows require explicit user trigger (`workflow_dispatch`) and protected GitHub Environment approval for `dev`/`prod`. A deploy workflow lacking manual trigger or protected environment approval is a hard failure.
 - **Verbatim source:**
-  - `locked-decisions §10`: *"Release/deploy is manual. A user must explicitly trigger the release/deploy readiness command or skill…"* and *"Deploy workflows require explicit user trigger and protected environment approval."*
-  - `verification-layer §5.15`: *"Release/deploy is manual through an explicit user-triggered readiness/deploy command or skill."*; Hard failure: *"deploy workflow lacks manual trigger or protected environment approval."*
-  - `mechanical-verification-gates §7` (Mechanical failures): *"deployment workflow lacks manual trigger or protected environment approval;"*
+  - `locked-decisions §10`: _"Release/deploy is manual. A user must explicitly trigger the release/deploy readiness command or skill…"_ and _"Deploy workflows require explicit user trigger and protected environment approval."_
+  - `verification-layer §5.15`: _"Release/deploy is manual through an explicit user-triggered readiness/deploy command or skill."_; Hard failure: _"deploy workflow lacks manual trigger or protected environment approval."_
+  - `mechanical-verification-gates §7` (Mechanical failures): _"deployment workflow lacks manual trigger or protected environment approval;"_
 
 ### 8. No auto deploy/publish on PR, push, merge, or tag by default
 
 - **Decision:** PRs, pushes, merges, **and tags** must not auto-deploy/publish by default. Auto-deploy from any of these is a hard/mechanical failure.
 - **Verbatim source:**
-  - `locked-decisions §10`: *"…PRs, pushes, and merges must not auto-deploy by default."*
-  - `mechanical-verification-gates §7`: *"deployment workflows are manual/protected and cannot auto-deploy from PRs, pushes, or merges by default;"* and Mechanical failure *"PR/push/merge workflow can deploy or mutate infrastructure by default;"*
-  - `i-20-strategy-amendment §3` extends the set to include *tag* (strict superset of locked-decisions §10; not contradicted by it).
+  - `locked-decisions §10`: _"…PRs, pushes, and merges must not auto-deploy by default."_
+  - `mechanical-verification-gates §7`: _"deployment workflows are manual/protected and cannot auto-deploy from PRs, pushes, or merges by default;"_ and Mechanical failure _"PR/push/merge workflow can deploy or mutate infrastructure by default;"_
+  - `i-20-strategy-amendment §3` extends the set to include _tag_ (strict superset of locked-decisions §10; not contradicted by it).
 
 ### 9. No default `pulumi destroy`; break-glass requires protected manual approval
 
 - **Decision:** there is no default `pulumi destroy`. Any destructive break-glass flow requires protected manual approval and explicit future ownership. A `pulumi destroy` available outside an explicit protected/manual break-glass flow is a hard failure and a mechanical wiring failure.
 - **Verbatim source:**
-  - `verification-layer §5.15` (Hard failures): *"`pulumi destroy` is available outside an explicit protected/manual break-glass flow."* (failure condition)
-  - `mechanical-verification-gates §7` (Mechanical failures): *"Pulumi destroy/break-glass flow is available without explicit protected manual approval;"*
+  - `verification-layer §5.15` (Hard failures): _"`pulumi destroy` is available outside an explicit protected/manual break-glass flow."_ (failure condition)
+  - `mechanical-verification-gates §7` (Mechanical failures): _"Pulumi destroy/break-glass flow is available without explicit protected manual approval;"_
   - (`locked-decisions §10` is silent on destroy; DL-18B does not cite it for this item.)
 
 ## Scope boundary vs DL-18 (CI/CD Provider Defaults)
 
 To keep exactly one source of truth with no contradictory restatement:
 
-| Topic | DL-18 (CI/CD provider + parity) | DL-18B (Pulumi + deployment) |
-| --- | --- | --- |
-| CI provider / local↔CI parity | **Owner:** GitHub Actions, aggregate `pnpm quality` parity contract. | Consumer (does not redefine CI provider). |
-| Deployment IaC engine | Restates as part of CI/CD context. | **Owner:** `Pulumi TypeScript` default locked here. |
-| Pulumi backend | n/a | **Owner:** `Pulumi Cloud` default locked here. |
-| Default environments | n/a | **Owner:** `dev`/`prod`. |
-| Deploy trigger / no-auto-deploy | Touches "no push/PR/publication without approval" for release. | **Owner:** deploy = `workflow_dispatch` + protected env; no auto-deploy on PR/push/merge/tag; PR preview/diff-only. |
-| `pulumi destroy` | n/a | **Owner:** no default; protected break-glass only. |
+| Topic                           | DL-18 (CI/CD provider + parity)                                      | DL-18B (Pulumi + deployment)                                                                                        |
+| ------------------------------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| CI provider / local↔CI parity   | **Owner:** GitHub Actions, aggregate `pnpm quality` parity contract. | Consumer (does not redefine CI provider).                                                                           |
+| Deployment IaC engine           | Restates as part of CI/CD context.                                   | **Owner:** `Pulumi TypeScript` default locked here.                                                                 |
+| Pulumi backend                  | n/a                                                                  | **Owner:** `Pulumi Cloud` default locked here.                                                                      |
+| Default environments            | n/a                                                                  | **Owner:** `dev`/`prod`.                                                                                            |
+| Deploy trigger / no-auto-deploy | Touches "no push/PR/publication without approval" for release.       | **Owner:** deploy = `workflow_dispatch` + protected env; no auto-deploy on PR/push/merge/tag; PR preview/diff-only. |
+| `pulumi destroy`                | n/a                                                                  | **Owner:** no default; protected break-glass only.                                                                  |
 
 Where both records touch the same deployment fact (Pulumi TS, Pulumi Cloud, `dev`/`prod`, manual deploy, no per-PR preview, no auto-deploy), **DL-18B agrees with and cross-links DL-18** rather than restating a divergent value. DL-18 remains the authoritative owner of the CI provider and the local/CI parity contract; DL-18B is the authoritative owner of the Pulumi + deployment defaults. See: `/Users/lizavasilyeva/work/vibe-engineer/docs/decisions/DL-18-ci-cd-defaults.md`.
 
@@ -292,7 +292,7 @@ Independent Triad revalidation must inspect the actual changed/owned files and r
 - Any write outside the two owned paths → **critical**.
 - Any git mutation / package-manager op → **critical**.
 - Any edit to `DL-18-ci-cd-defaults.md` or any other untouchable file → **critical**.
-- A false claim that DL-18P is itself a deployment *implementation* → **critical**.
+- A false claim that DL-18P is itself a deployment _implementation_ → **critical**.
 - A content item present but weakly/ambiguously grounded (no verbatim source string) → **major-local**.
 - A cross-record inconsistency with DL-18 that does not rise to a contradiction → **major-local**.
 

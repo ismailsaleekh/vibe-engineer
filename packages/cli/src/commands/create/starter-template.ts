@@ -80,7 +80,10 @@ const STARTER_LAYOUT_SCHEMA_VERSION = "vibe-engineer.templates.starter-layout.v1
 const STARTER_SHIPPED_ROOT = "templates/starter";
 const STARTER_LAYOUT_FILE = "templates/starter.layout.json";
 const OVERLAY_PATHS = Object.freeze(["vibe-engineer.config.json", ".vibe/context/manifest.json"]);
-const STATIC_SUBSTITUTION_PATHS = Object.freeze(["package.json", ".vibe/registry/runner-catalog.json"]);
+const STATIC_SUBSTITUTION_PATHS = Object.freeze([
+  "package.json",
+  ".vibe/registry/runner-catalog.json",
+]);
 const TEMPLATE_PACKAGE_SCOPE = "@vibe-engineer-starter";
 const TEMPLATE_SLUG = "vibe-engineer-starter";
 const TEMPLATE_TITLE = "Vibe Engineer Starter";
@@ -92,6 +95,7 @@ const LOCAL_WORKSPACE_DEPENDENCIES = Object.freeze<readonly LocalWorkspaceDepend
   { packageName: "@vibe-engineer/artifacts", relativePackageDir: "packages/artifacts" },
   { packageName: "@vibe-engineer/config", relativePackageDir: "packages/config" },
   { packageName: "@vibe-engineer/context", relativePackageDir: "packages/context" },
+  { packageName: "@vibe-engineer/orchestration", relativePackageDir: "packages/orchestration" },
   { packageName: "@vibe-engineer/security", relativePackageDir: "packages/security" },
   { packageName: "@vibe-engineer/schematics", relativePackageDir: "packages/schematics" },
   { packageName: "@vibe-engineer/skills", relativePackageDir: "packages/skills" },
@@ -432,8 +436,16 @@ function applyTypedSubstitution(
   }
 
   if (relativePath === ".vibe/registry/runner-catalog.json") {
-    const withNode = replaceJsonString(parseJsonValue(rewrittenText, relativePath), "__VIBE_NODE_EXEC_PATH__", dependencyPlan.nodeExecPath);
-    const withPath = replaceJsonString(withNode, "__VIBE_RUNNER_PATH__", dependencyPlan.runnerPathEnv);
+    const withNode = replaceJsonString(
+      parseJsonValue(rewrittenText, relativePath),
+      "__VIBE_NODE_EXEC_PATH__",
+      dependencyPlan.nodeExecPath,
+    );
+    const withPath = replaceJsonString(
+      withNode,
+      "__VIBE_RUNNER_PATH__",
+      dependencyPlan.runnerPathEnv,
+    );
     rewrittenText = `${JSON.stringify(withPath, null, 2)}\n`;
   }
 
@@ -461,8 +473,14 @@ function detectSourceWorkspaceRoot(packageRoot: string): string | null {
 }
 
 async function createStarterDependencyPlan(packageRoot: string): Promise<StarterDependencyPlan> {
-  const packageJson = parseJsonObject(await readFile(join(packageRoot, "package.json"), "utf8"), join(packageRoot, "package.json"));
-  const version = typeof packageJson.version === "string" && packageJson.version.length > 0 ? packageJson.version : "0.0.0";
+  const packageJson = parseJsonObject(
+    await readFile(join(packageRoot, "package.json"), "utf8"),
+    join(packageRoot, "package.json"),
+  );
+  const version =
+    typeof packageJson.version === "string" && packageJson.version.length > 0
+      ? packageJson.version
+      : "0.0.0";
   const sourceWorkspaceRoot = detectSourceWorkspaceRoot(packageRoot);
   if (sourceWorkspaceRoot === null) {
     return {
@@ -490,7 +508,10 @@ async function createStarterDependencyPlan(packageRoot: string): Promise<Starter
   };
 }
 
-function applyRootPackageDependencyPlan(object: JsonObject, dependencyPlan: StarterDependencyPlan): void {
+function applyRootPackageDependencyPlan(
+  object: JsonObject,
+  dependencyPlan: StarterDependencyPlan,
+): void {
   const devDependencies = isJsonObject(object.devDependencies) ? object.devDependencies : {};
   devDependencies["vibe-engineer"] = dependencyPlan.cliDependency;
   object.devDependencies = devDependencies;
@@ -503,10 +524,12 @@ function applyRootPackageDependencyPlan(object: JsonObject, dependencyPlan: Star
 
 function replaceJsonString(value: JsonValue, needle: string, replacement: string): JsonValue {
   if (typeof value === "string") return value === needle ? replacement : value;
-  if (Array.isArray(value)) return value.map((entry) => replaceJsonString(entry, needle, replacement));
+  if (Array.isArray(value))
+    return value.map((entry) => replaceJsonString(entry, needle, replacement));
   if (isJsonObject(value)) {
     const output: JsonObject = {};
-    for (const [key, entry] of Object.entries(value)) output[key] = replaceJsonString(entry, needle, replacement);
+    for (const [key, entry] of Object.entries(value))
+      output[key] = replaceJsonString(entry, needle, replacement);
     return output;
   }
   return value;
@@ -517,7 +540,10 @@ async function loadVerifiedSourceFiles(
   layout: StarterLayout,
   projectName: string,
   dependencyPlan: StarterDependencyPlan,
-): Promise<{ files: Array<{ relativePath: string; targetRelativePath: string; content: Buffer }>; substitutionPaths: string[] }> {
+): Promise<{
+  files: Array<{ relativePath: string; targetRelativePath: string; content: Buffer }>;
+  substitutionPaths: string[];
+}> {
   const files: Array<{ relativePath: string; targetRelativePath: string; content: Buffer }> = [];
   const substitutionPaths: string[] = [];
   for (const entry of layout.files) {
@@ -554,7 +580,12 @@ async function loadVerifiedSourceFiles(
         },
       });
     }
-    const substituted = applyTypedSubstitution(entry.path, sourceContent, projectName, dependencyPlan);
+    const substituted = applyTypedSubstitution(
+      entry.path,
+      sourceContent,
+      projectName,
+      dependencyPlan,
+    );
     if (substituted.changed) substitutionPaths.push(entry.path);
     files.push({
       relativePath: entry.path,
@@ -583,7 +614,12 @@ export async function materializeStarterTree(
   const templateRoot = join(packageRoot, STARTER_SHIPPED_ROOT);
   const layout = await loadLayout(layoutPath);
   const dependencyPlan = await createStarterDependencyPlan(packageRoot);
-  const loaded = await loadVerifiedSourceFiles(templateRoot, layout, options.projectName, dependencyPlan);
+  const loaded = await loadVerifiedSourceFiles(
+    templateRoot,
+    layout,
+    options.projectName,
+    dependencyPlan,
+  );
   const sourceFiles = loaded.files;
   await assertTargetRootEmpty(targetRoot);
 

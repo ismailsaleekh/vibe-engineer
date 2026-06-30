@@ -11,7 +11,7 @@ export const CliClassification = Object.freeze({
   WriteConflict: "write_conflict",
   ExternalUnavailable: "external_unavailable",
   InternalError: "internal_error",
-  PartialIncomplete: "partial_incomplete"
+  PartialIncomplete: "partial_incomplete",
 });
 
 export const CliErrorCode = Object.freeze({
@@ -27,7 +27,7 @@ export const CliErrorCode = Object.freeze({
   FoundationFailure: "VE_FOUNDATION_FAILURE",
   PartialIncomplete: "VE_PARTIAL_INCOMPLETE",
   InvalidEnvelope: "VE_INVALID_ENVELOPE",
-  InternalError: "VE_INTERNAL_ERROR"
+  InternalError: "VE_INTERNAL_ERROR",
 });
 
 export const EXIT_CODES = Object.freeze({
@@ -39,13 +39,28 @@ export const EXIT_CODES = Object.freeze({
   ownershipConflict: 5,
   externalUnavailable: 6,
   internalError: 7,
-  partial: 8
+  partial: 8,
 });
 
-export function diagnostic({ severity = "error", code, classification, message, path = null, span = null, hint = null }) {
+export function diagnostic({
+  severity = "error",
+  code,
+  classification,
+  message,
+  path = null,
+  span = null,
+  hint = null,
+}) {
   return { severity, code, classification, message, path, span, hint };
 }
 
-export function cliError({ code, classification, retryable = false, blocking = true, message, details = {} }) {
+export function cliError({
+  code,
+  classification,
+  retryable = false,
+  blocking = true,
+  message,
+  details = {},
+}) {
   return { code, classification, retryable, blocking, message, details };
 }

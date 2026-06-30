@@ -16,7 +16,7 @@ export default defineConfig({
     "@vibe-engineer/context",
     "@vibe-engineer/orchestration",
     "@vibe-engineer/verification",
-    "@vibe-engineer/skills"
+    "@vibe-engineer/skills",
   ],
-  tsconfig: "./tsconfig.json"
+  tsconfig: "./tsconfig.json",
 });

@@ -16,9 +16,7 @@
       "type": "string",
       "minLength": 1,
       "const": "work_brief",
-      "enum": [
-        "work_brief"
-      ]
+      "enum": ["work_brief"]
     },
     "artifactId": {
       "type": "string",
@@ -76,21 +74,12 @@
           "pattern": "^[a-z0-9][a-z0-9._:-]*$"
         }
       },
-      "required": [
-        "kind",
-        "id",
-        "name"
-      ]
+      "required": ["kind", "id", "name"]
     },
     "status": {
       "type": "string",
       "minLength": 1,
-      "enum": [
-        "draft",
-        "ready",
-        "blocked",
-        "superseded"
-      ]
+      "enum": ["draft", "ready", "blocked", "superseded"]
     },
     "ownership": {
       "type": "object",
@@ -203,14 +192,7 @@
             "minLength": 1
           }
         },
-        "required": [
-          "rel",
-          "artifactKind",
-          "artifactId",
-          "path",
-          "required",
-          "statusAtLinkTime"
-        ]
+        "required": ["rel", "artifactKind", "artifactId", "path", "required", "statusAtLinkTime"]
       },
       "minItems": 1
     },
@@ -221,9 +203,7 @@
       },
       "additionalProperties": {
         "type": "object",
-        "required": [
-          "schemaVersion"
-        ],
+        "required": ["schemaVersion"],
         "properties": {
           "schemaVersion": {
             "type": "string",
@@ -253,24 +233,14 @@
           "kind": {
             "type": "string",
             "minLength": 1,
-            "enum": [
-              "source_doc",
-              "prompt",
-              "issue",
-              "url",
-              "artifact",
-              "raw_intent"
-            ]
+            "enum": ["source_doc", "prompt", "issue", "url", "artifact", "raw_intent"]
           },
           "ref": {
             "type": "string",
             "minLength": 1
           }
         },
-        "required": [
-          "kind",
-          "ref"
-        ]
+        "required": ["kind", "ref"]
       }
     },
     "approvedBy": {
@@ -314,11 +284,7 @@
               "pattern": "^[a-z0-9][a-z0-9._:-]*$"
             }
           },
-          "required": [
-            "kind",
-            "id",
-            "name"
-          ]
+          "required": ["kind", "id", "name"]
         },
         "approvedAt": {
           "type": "string",
@@ -326,10 +292,7 @@
           "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$|^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
         }
       },
-      "required": [
-        "producer",
-        "approvedAt"
-      ]
+      "required": ["producer", "approvedAt"]
     },
     "supersessionReason": {
       "type": "string"
@@ -347,31 +310,17 @@
           "minLength": 1
         }
       },
-      "required": [
-        "policy",
-        "reason"
-      ]
+      "required": ["policy", "reason"]
     },
     "sourceSkill": {
       "type": "string",
       "minLength": 1,
-      "enum": [
-        "brainstorm",
-        "grill-me",
-        "task"
-      ]
+      "enum": ["brainstorm", "grill-me", "task"]
     },
     "workType": {
       "type": "string",
       "minLength": 1,
-      "enum": [
-        "feature",
-        "bug",
-        "chore",
-        "refactor",
-        "research",
-        "decision"
-      ]
+      "enum": ["feature", "bug", "chore", "refactor", "research", "decision"]
     },
     "background": {
       "type": "string",
@@ -436,10 +385,7 @@
             }
           }
         },
-        "required": [
-          "id",
-          "description"
-        ]
+        "required": ["id", "description"]
       },
       "minItems": 1
     },
@@ -475,11 +421,7 @@
           "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$|^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
         }
       },
-      "required": [
-        "rawIntentRefs",
-        "conversationRefs",
-        "operatorRefs"
-      ]
+      "required": ["rawIntentRefs", "conversationRefs", "operatorRefs"]
     },
     "observedBehavior": {
       "type": "string"
@@ -510,12 +452,7 @@
     "urgency": {
       "type": "string",
       "minLength": 1,
-      "enum": [
-        "low",
-        "medium",
-        "high",
-        "urgent"
-      ]
+      "enum": ["low", "medium", "high", "urgent"]
     },
     "candidateE2ECases": {
       "type": "array",
@@ -606,14 +543,7 @@
             "minLength": 1
           }
         },
-        "required": [
-          "rel",
-          "artifactKind",
-          "artifactId",
-          "path",
-          "required",
-          "statusAtLinkTime"
-        ]
+        "required": ["rel", "artifactKind", "artifactId", "path", "required", "statusAtLinkTime"]
       }
     }
   },

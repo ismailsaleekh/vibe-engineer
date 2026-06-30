@@ -4,7 +4,12 @@
 // here), redaction applies before write, and the pino/memory adapters traverse
 // the REAL emit path (no mock).
 import { describe, it, expect } from "vitest";
-import { createLogger, createPinoSink, createMemorySink, createBrowserRnCaptureAdapter } from "../src/logging.js";
+import {
+  createLogger,
+  createPinoSink,
+  createMemorySink,
+  createBrowserRnCaptureAdapter,
+} from "../src/logging.js";
 import { createUuidV4 } from "../src/ids.js";
 import { REDACTION_NEGATIVE_SENTINELS, assertNoSentinelLeak } from "../src/redaction.js";
 
@@ -75,7 +80,7 @@ describe("W2/W4 redaction gate: sensitive sentinels never reach the carrier", ()
           message: `token=${REDACTION_NEGATIVE_SENTINELS[0]} leaked`,
           stackRef: "rule:invalid-request",
         },
-      })
+      }),
     );
     expect(capture).toHaveLength(1);
     const serialized = JSON.stringify(capture[0]);

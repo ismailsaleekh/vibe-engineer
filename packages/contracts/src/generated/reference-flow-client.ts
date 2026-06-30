@@ -8,7 +8,7 @@ export const GENERATED_CLIENT_PROVENANCE = {
   canonicalContractPath: "packages/contracts/src/contracts/reference-flow.contract.ts",
   sourceSha256: "effd2821d303d2e0650cabf82018df89d35040484c07c38db2629d44173cf352",
   contractExport: "ReferenceFlowContract",
-  generatedClientPath: "packages/contracts/src/generated/reference-flow-client.ts"
+  generatedClientPath: "packages/contracts/src/generated/reference-flow-client.ts",
 } as const;
 
 const referenceFlowApiFetcher: ApiFetcher = async (args) => {
@@ -16,12 +16,12 @@ const referenceFlowApiFetcher: ApiFetcher = async (args) => {
     method: "POST",
     path: new URL(args.path).pathname,
     headers: args.headers,
-    body: args.rawBody
+    body: args.rawBody,
   });
   return {
     status: response.status,
     body: response.body,
-    headers: new Headers({ "content-type": "application/json" })
+    headers: new Headers({ "content-type": "application/json" }),
   };
 };
 
@@ -39,7 +39,7 @@ export function createReferenceFlowClient(api: ApiFetcher = referenceFlowApiFetc
     baseUrl: "http://i11.reference.local",
     validateResponse: true,
     throwOnUnknownStatus: true,
-    api: validatingApiFetcher(api)
+    api: validatingApiFetcher(api),
   });
 }
 

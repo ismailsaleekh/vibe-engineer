@@ -7,21 +7,12 @@
     {
       "familyId": "pi-skill-files",
       "description": "Agent Skills-compatible files for the six locked vibe-engineer skills.",
-      "pathPatterns": [
-        ".pi/skills/<skill>/SKILL.md",
-        ".agents/skills/<skill>/SKILL.md"
-      ],
+      "pathPatterns": [".pi/skills/<skill>/SKILL.md", ".agents/skills/<skill>/SKILL.md"],
       "owner": {
         "ownerKind": "lane",
         "ownerId": "I-14B-pi-adapter-runtime-skill-consumption",
-        "writePathScope": [
-          ".pi/skills/<skill>/SKILL.md",
-          ".agents/skills/<skill>/SKILL.md"
-        ],
-        "allowedOperations": [
-          "generate-in-later-lane",
-          "validate"
-        ]
+        "writePathScope": [".pi/skills/<skill>/SKILL.md", ".agents/skills/<skill>/SKILL.md"],
+        "allowedOperations": ["generate-in-later-lane", "validate"]
       },
       "producedByLane": "I-14B-pi-adapter-runtime-skill-consumption",
       "consumedByLanes": [
@@ -59,19 +50,12 @@
     {
       "familyId": "pi-prompt-templates",
       "description": "Reusable pi slash-command prompt templates for generated skill workflows.",
-      "pathPatterns": [
-        ".pi/prompts/<name>.md"
-      ],
+      "pathPatterns": [".pi/prompts/<name>.md"],
       "owner": {
         "ownerKind": "lane",
         "ownerId": "I-14B-pi-adapter-runtime-skill-consumption",
-        "writePathScope": [
-          ".pi/prompts/<name>.md"
-        ],
-        "allowedOperations": [
-          "generate-in-later-lane",
-          "validate"
-        ]
+        "writePathScope": [".pi/prompts/<name>.md"],
+        "allowedOperations": ["generate-in-later-lane", "validate"]
       },
       "producedByLane": "I-14B-pi-adapter-runtime-skill-consumption",
       "consumedByLanes": [
@@ -108,21 +92,12 @@
     {
       "familyId": "pi-extensions",
       "description": "Optional TypeScript extensions for commands, tools, hooks, permission/path gates, subagent or plan-mode-like behavior, and dynamic resources.",
-      "pathPatterns": [
-        ".pi/extensions/<name>.ts",
-        ".pi/extensions/<name>/index.ts"
-      ],
+      "pathPatterns": [".pi/extensions/<name>.ts", ".pi/extensions/<name>/index.ts"],
       "owner": {
         "ownerKind": "lane",
         "ownerId": "I-14B-pi-adapter-runtime-skill-consumption",
-        "writePathScope": [
-          ".pi/extensions/<name>.ts",
-          ".pi/extensions/<name>/index.ts"
-        ],
-        "allowedOperations": [
-          "generate-in-later-lane",
-          "validate"
-        ]
+        "writePathScope": [".pi/extensions/<name>.ts", ".pi/extensions/<name>/index.ts"],
+        "allowedOperations": ["generate-in-later-lane", "validate"]
       },
       "producedByLane": "I-14B-pi-adapter-runtime-skill-consumption",
       "consumedByLanes": [
@@ -160,19 +135,12 @@
     {
       "familyId": "pi-package-manifest",
       "description": "Optional package.json `pi` key for shareable resources.",
-      "pathPatterns": [
-        "package.json#pi"
-      ],
+      "pathPatterns": ["package.json#pi"],
       "owner": {
         "ownerKind": "lane",
         "ownerId": "I-14B-pi-adapter-runtime-skill-consumption",
-        "writePathScope": [
-          "package.json#pi"
-        ],
-        "allowedOperations": [
-          "generate-in-later-lane",
-          "validate"
-        ]
+        "writePathScope": ["package.json#pi"],
+        "allowedOperations": ["generate-in-later-lane", "validate"]
       },
       "producedByLane": "I-14B-pi-adapter-runtime-skill-consumption",
       "consumedByLanes": [
@@ -209,21 +177,12 @@
     {
       "familyId": "context-files",
       "description": "Project context/instruction files loaded by pi and optional cross-harness compatibility context.",
-      "pathPatterns": [
-        "AGENTS.md",
-        "CLAUDE.md"
-      ],
+      "pathPatterns": ["AGENTS.md", "CLAUDE.md"],
       "owner": {
         "ownerKind": "lane",
         "ownerId": "I-15A-create-import-cli-ux-selected-harness",
-        "writePathScope": [
-          "AGENTS.md",
-          "CLAUDE.md"
-        ],
-        "allowedOperations": [
-          "generate-in-later-lane",
-          "validate"
-        ]
+        "writePathScope": ["AGENTS.md", "CLAUDE.md"],
+        "allowedOperations": ["generate-in-later-lane", "validate"]
       },
       "producedByLane": "I-15A-create-import-cli-ux-selected-harness",
       "consumedByLanes": [
@@ -274,10 +233,7 @@
           "generated harness config field: adapterCapabilityVersion",
           "generated harness config field: generatedFileManifestVersion"
         ],
-        "allowedOperations": [
-          "generate-in-later-lane",
-          "validate"
-        ]
+        "allowedOperations": ["generate-in-later-lane", "validate"]
       },
       "producedByLane": "I-15A-create-import-cli-ux-selected-harness",
       "consumedByLanes": [

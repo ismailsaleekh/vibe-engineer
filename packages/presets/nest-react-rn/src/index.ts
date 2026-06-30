@@ -33,7 +33,8 @@ import {
 // ---------------------------------------------------------------------------
 
 export const NEST_REACT_RN_PRESET_ID = "vibe-engineer.nest-react-rn.starter";
-export const NEST_REACT_RN_PRESET_NAME = "Vibe Engineer NestJS / React / React Native Starter Preset";
+export const NEST_REACT_RN_PRESET_NAME =
+  "Vibe Engineer NestJS / React / React Native Starter Preset";
 export const NEST_REACT_RN_PRESET_VERSION = "1.0.0";
 export const CONSUMED_TYPESCRIPT_PRESET_ID = TYPE_SCRIPT_PRESET_ID;
 
@@ -168,16 +169,14 @@ export const STARTER_PACKAGES: readonly StarterPackageDescriptor[] = Object.free
     name: "config",
     directory: "packages/config",
     packageName: "@vibe-engineer-starter/config",
-    boundaryRule:
-      "Env/config wrappers; no secrets in defaults; no app/api/Prisma/UI logic.",
+    boundaryRule: "Env/config wrappers; no secrets in defaults; no app/api/Prisma/UI logic.",
     forbiddenImports: ["@nestjs", "react", "react-native", "@prisma/client"],
   },
   {
     name: "testing",
     directory: "packages/testing",
     packageName: "@vibe-engineer-starter/testing",
-    boundaryRule:
-      "Test-only; no production package may depend on it.",
+    boundaryRule: "Test-only; no production package may depend on it.",
     forbiddenImports: [],
   },
   {
@@ -252,9 +251,10 @@ export function getStarterLayoutDeclaration(): StarterLayoutDeclaration {
  * A rendered starter tsconfig.base.json whose compilerOptions does not deep-equal
  * this object is a PRESET_TS_DEFAULTS_DRIFT finding.
  */
-export const STARTER_COMPILER_STRICT_OPTIONS: typeof TYPESCRIPT_COMPILER_STRICT_OPTIONS = Object.freeze({
-  ...TYPESCRIPT_COMPILER_STRICT_OPTIONS,
-});
+export const STARTER_COMPILER_STRICT_OPTIONS: typeof TYPESCRIPT_COMPILER_STRICT_OPTIONS =
+  Object.freeze({
+    ...TYPESCRIPT_COMPILER_STRICT_OPTIONS,
+  });
 
 export const STARTER_ESLINT_POLICY: typeof ESLINT_POLICY_DEFAULTS = Object.freeze({
   ...ESLINT_POLICY_DEFAULTS,
@@ -262,7 +262,9 @@ export const STARTER_ESLINT_POLICY: typeof ESLINT_POLICY_DEFAULTS = Object.freez
   boundaryRules: Object.freeze({ ...ESLINT_POLICY_DEFAULTS.boundaryRules }),
 });
 
-export const STARTER_PRETTIER_DEFAULTS: typeof PRETTIER_DEFAULTS = Object.freeze({ ...PRETTIER_DEFAULTS });
+export const STARTER_PRETTIER_DEFAULTS: typeof PRETTIER_DEFAULTS = Object.freeze({
+  ...PRETTIER_DEFAULTS,
+});
 
 export const STARTER_PNPM_DEFAULTS: typeof PNPM_DEFAULTS = Object.freeze({
   ...PNPM_DEFAULTS,
@@ -278,12 +280,13 @@ export const STARTER_PACKAGE_SCRIPT_DEFAULTS: typeof PACKAGE_SCRIPT_DEFAULTS = O
   ...PACKAGE_SCRIPT_DEFAULTS,
 });
 
-export const STARTER_TEST_AND_TYPECHECK_DEFAULTS: typeof TEST_AND_TYPECHECK_DEFAULTS = Object.freeze({
-  ...TEST_AND_TYPECHECK_DEFAULTS,
-  typecheckCommand: "pnpm run typecheck",
-  unitTestCommand: "pnpm run test:unit",
-  quickGateCommand: "pnpm run quality:quick",
-});
+export const STARTER_TEST_AND_TYPECHECK_DEFAULTS: typeof TEST_AND_TYPECHECK_DEFAULTS =
+  Object.freeze({
+    ...TEST_AND_TYPECHECK_DEFAULTS,
+    typecheckCommand: "pnpm run typecheck",
+    unitTestCommand: "pnpm run test:unit",
+    quickGateCommand: "pnpm run quality:quick",
+  });
 
 // ---------------------------------------------------------------------------
 // File kinds / manifest (extends I-07D PresetFileKind with starter-specific kinds)
@@ -405,18 +408,25 @@ function escapeRegExpLiteral(term: string): string {
  * matches. The case-insensitive flag preserves the prior casing posture.
  * Compiled once at module load (not per call) — deterministic, not a heuristic.
  */
-const FORBIDDEN_DOMAIN_TERM_PATTERNS: readonly { readonly term: string; readonly pattern: RegExp }[] =
-  FORBIDDEN_DOMAIN_TERMS.map((term) => ({
-    term,
-    pattern: new RegExp(`\\b${escapeRegExpLiteral(term)}\\b`, "i"),
-  }));
+const FORBIDDEN_DOMAIN_TERM_PATTERNS: readonly {
+  readonly term: string;
+  readonly pattern: RegExp;
+}[] = FORBIDDEN_DOMAIN_TERMS.map((term) => ({
+  term,
+  pattern: new RegExp(`\\b${escapeRegExpLiteral(term)}\\b`, "i"),
+}));
 
 /**
  * Paths whose content is permitted to be sample/demo/reference golden module
  * material (still domain-neutral generic fields, but explicitly labeled). All
  * other core-default paths must be strictly domain-neutral.
  */
-const SAMPLE_DEMO_PATH_MARKERS = Object.freeze(["golden-records", "sample", "demo", "reference"] as const);
+const SAMPLE_DEMO_PATH_MARKERS = Object.freeze([
+  "golden-records",
+  "sample",
+  "demo",
+  "reference",
+] as const);
 
 // ---------------------------------------------------------------------------
 // Rendering helpers
@@ -452,7 +462,10 @@ function makeFinding(
   });
 }
 
-function makeRenderOptionsFinding(message: string, evidence: readonly string[]): NestReactRnPresetFinding {
+function makeRenderOptionsFinding(
+  message: string,
+  evidence: readonly string[],
+): NestReactRnPresetFinding {
   return makeFinding("PRESET_MALFORMED_RENDER_OPTIONS", "<renderer-options>", message, evidence);
 }
 
@@ -480,37 +493,183 @@ function manifestEntry(
  * source-template. Every entry is a DL-16-faithful skeleton derived from the
  * consumed TypeScript preset defaults.
  */
-export const NEST_REACT_RN_PRESET_FILE_MANIFEST: readonly NestReactRnGeneratedFileManifestEntry[] = Object.freeze([
-  manifestEntry("tsconfig.base.json", "typescript-config", ["typed-boundary-contracts", "dependency-hygiene"], "Root strict NodeNext TypeScript baseline inherited verbatim from @vibe-engineer/preset-typescript compiler options."),
-  manifestEntry("pnpm-workspace.yaml", "workspace-config", ["dependency-hygiene"], "Workspace globs for DL-16 apps/* and packages/*."),
-  manifestEntry("turbo.json", "turbo-config", ["real-boundary-witnesses", "dependency-hygiene"], "Starter Turborepo tasks derived from @vibe-engineer/preset-typescript turbo defaults."),
-  manifestEntry("eslint.config.mjs", "eslint-config", ["typed-boundary-contracts", "domain-neutral-core"], "Starter ESLint flat-config inheriting the consumed preset strict policy."),
-  manifestEntry("prettier.config.mjs", "prettier-config", ["deterministic-schematics"], "Starter Prettier config derived verbatim from the consumed preset prettier defaults."),
-  manifestEntry("package.json", "package-manifest", ["dependency-hygiene"], "Private root starter manifest for @vibe-engineer-starter/workspace with strict scripts."),
-  manifestEntry("apps/api/package.json", "app-manifest", ["dependency-hygiene"], "NestJS API app manifest (golden-records sample/demo module slot)."),
-  manifestEntry("apps/api/tsconfig.json", "app-tsconfig", ["typed-boundary-contracts"], "API app tsconfig extending the strict root base."),
-  manifestEntry("apps/web/package.json", "app-manifest", ["dependency-hygiene"], "React web app manifest."),
-  manifestEntry("apps/web/tsconfig.json", "app-tsconfig", ["typed-boundary-contracts"], "Web app tsconfig extending the strict root base."),
-  manifestEntry("apps/mobile/package.json", "app-manifest", ["dependency-hygiene"], "React Native mobile app manifest."),
-  manifestEntry("apps/mobile/tsconfig.json", "app-tsconfig", ["typed-boundary-contracts"], "Mobile app tsconfig extending the strict root base."),
-  manifestEntry("packages/domain/package.json", "package-manifest", ["typed-boundary-contracts", "domain-neutral-core"], "Prisma-free pure-TS domain package manifest."),
-  manifestEntry("packages/domain/tsconfig.json", "package-tsconfig", ["typed-boundary-contracts"], "Domain package tsconfig inheriting the strict base."),
-  manifestEntry("packages/contracts/package.json", "package-manifest", ["typed-boundary-contracts"], "ts-rest + named Zod contracts package manifest."),
-  manifestEntry("packages/contracts/tsconfig.json", "package-tsconfig", ["typed-boundary-contracts"], "Contracts package tsconfig inheriting the strict base."),
-  manifestEntry("packages/api-client/package.json", "package-manifest", ["typed-boundary-contracts"], "Derived/shared api-client package manifest."),
-  manifestEntry("packages/api-client/tsconfig.json", "package-tsconfig", ["typed-boundary-contracts"], "Api-client package tsconfig inheriting the strict base."),
-  manifestEntry("packages/config/package.json", "package-manifest", ["dependency-hygiene"], "Env/config wrapper package manifest; no secrets in defaults."),
-  manifestEntry("packages/config/tsconfig.json", "package-tsconfig", ["typed-boundary-contracts"], "Config package tsconfig inheriting the strict base."),
-  manifestEntry("packages/testing/package.json", "package-manifest", ["dependency-hygiene"], "Test-only testing package manifest; no production consumer."),
-  manifestEntry("packages/testing/tsconfig.json", "package-tsconfig", ["typed-boundary-contracts"], "Testing package tsconfig inheriting the strict base."),
-  manifestEntry("packages/ui/package.json", "package-manifest", ["typed-boundary-contracts"], "Narrow UI tokens/primitives package manifest."),
-  manifestEntry("packages/ui/tsconfig.json", "package-tsconfig", ["typed-boundary-contracts"], "UI package tsconfig inheriting the strict base."),
-  manifestEntry("vibe-engineer.config.json", "harness-config-placeholder", ["real-boundary-witnesses"], "Starter harness-config placeholder: agenticHarness=pi + locked DL-16 layout (DL-06)."),
-  manifestEntry(".vibe/context/manifest.json", "context-placeholder", ["report-first-evidence"], "DL-17 neutral bootstrap context placeholder; classifies golden-records as sample/demo/reference."),
-  manifestEntry(".tooling/dev-services/docker-compose.json", "dev-service-config", ["dependency-hygiene"], "Local PostgreSQL-only dev service (DL-16 database stance)."),
-  manifestEntry("apps/api/src/golden-records/sample.ts", "sample-demo-source", ["domain-neutral-core"], "Explicitly sample/demo/reference GoldenRecord source demonstrating the architecture seam."),
-  manifestEntry(".vibe/generated/nest-react-rn-preset/manifest.json", "preset-metadata", ["report-first-evidence", "dirty-tree-ownership"], "Generated preset manifest tying starter files to standards and consumed preset identity."),
-]);
+export const NEST_REACT_RN_PRESET_FILE_MANIFEST: readonly NestReactRnGeneratedFileManifestEntry[] =
+  Object.freeze([
+    manifestEntry(
+      "tsconfig.base.json",
+      "typescript-config",
+      ["typed-boundary-contracts", "dependency-hygiene"],
+      "Root strict NodeNext TypeScript baseline inherited verbatim from @vibe-engineer/preset-typescript compiler options.",
+    ),
+    manifestEntry(
+      "pnpm-workspace.yaml",
+      "workspace-config",
+      ["dependency-hygiene"],
+      "Workspace globs for DL-16 apps/* and packages/*.",
+    ),
+    manifestEntry(
+      "turbo.json",
+      "turbo-config",
+      ["real-boundary-witnesses", "dependency-hygiene"],
+      "Starter Turborepo tasks derived from @vibe-engineer/preset-typescript turbo defaults.",
+    ),
+    manifestEntry(
+      "eslint.config.mjs",
+      "eslint-config",
+      ["typed-boundary-contracts", "domain-neutral-core"],
+      "Starter ESLint flat-config inheriting the consumed preset strict policy.",
+    ),
+    manifestEntry(
+      "prettier.config.mjs",
+      "prettier-config",
+      ["deterministic-schematics"],
+      "Starter Prettier config derived verbatim from the consumed preset prettier defaults.",
+    ),
+    manifestEntry(
+      "package.json",
+      "package-manifest",
+      ["dependency-hygiene"],
+      "Private root starter manifest for @vibe-engineer-starter/workspace with strict scripts.",
+    ),
+    manifestEntry(
+      "apps/api/package.json",
+      "app-manifest",
+      ["dependency-hygiene"],
+      "NestJS API app manifest (golden-records sample/demo module slot).",
+    ),
+    manifestEntry(
+      "apps/api/tsconfig.json",
+      "app-tsconfig",
+      ["typed-boundary-contracts"],
+      "API app tsconfig extending the strict root base.",
+    ),
+    manifestEntry(
+      "apps/web/package.json",
+      "app-manifest",
+      ["dependency-hygiene"],
+      "React web app manifest.",
+    ),
+    manifestEntry(
+      "apps/web/tsconfig.json",
+      "app-tsconfig",
+      ["typed-boundary-contracts"],
+      "Web app tsconfig extending the strict root base.",
+    ),
+    manifestEntry(
+      "apps/mobile/package.json",
+      "app-manifest",
+      ["dependency-hygiene"],
+      "React Native mobile app manifest.",
+    ),
+    manifestEntry(
+      "apps/mobile/tsconfig.json",
+      "app-tsconfig",
+      ["typed-boundary-contracts"],
+      "Mobile app tsconfig extending the strict root base.",
+    ),
+    manifestEntry(
+      "packages/domain/package.json",
+      "package-manifest",
+      ["typed-boundary-contracts", "domain-neutral-core"],
+      "Prisma-free pure-TS domain package manifest.",
+    ),
+    manifestEntry(
+      "packages/domain/tsconfig.json",
+      "package-tsconfig",
+      ["typed-boundary-contracts"],
+      "Domain package tsconfig inheriting the strict base.",
+    ),
+    manifestEntry(
+      "packages/contracts/package.json",
+      "package-manifest",
+      ["typed-boundary-contracts"],
+      "ts-rest + named Zod contracts package manifest.",
+    ),
+    manifestEntry(
+      "packages/contracts/tsconfig.json",
+      "package-tsconfig",
+      ["typed-boundary-contracts"],
+      "Contracts package tsconfig inheriting the strict base.",
+    ),
+    manifestEntry(
+      "packages/api-client/package.json",
+      "package-manifest",
+      ["typed-boundary-contracts"],
+      "Derived/shared api-client package manifest.",
+    ),
+    manifestEntry(
+      "packages/api-client/tsconfig.json",
+      "package-tsconfig",
+      ["typed-boundary-contracts"],
+      "Api-client package tsconfig inheriting the strict base.",
+    ),
+    manifestEntry(
+      "packages/config/package.json",
+      "package-manifest",
+      ["dependency-hygiene"],
+      "Env/config wrapper package manifest; no secrets in defaults.",
+    ),
+    manifestEntry(
+      "packages/config/tsconfig.json",
+      "package-tsconfig",
+      ["typed-boundary-contracts"],
+      "Config package tsconfig inheriting the strict base.",
+    ),
+    manifestEntry(
+      "packages/testing/package.json",
+      "package-manifest",
+      ["dependency-hygiene"],
+      "Test-only testing package manifest; no production consumer.",
+    ),
+    manifestEntry(
+      "packages/testing/tsconfig.json",
+      "package-tsconfig",
+      ["typed-boundary-contracts"],
+      "Testing package tsconfig inheriting the strict base.",
+    ),
+    manifestEntry(
+      "packages/ui/package.json",
+      "package-manifest",
+      ["typed-boundary-contracts"],
+      "Narrow UI tokens/primitives package manifest.",
+    ),
+    manifestEntry(
+      "packages/ui/tsconfig.json",
+      "package-tsconfig",
+      ["typed-boundary-contracts"],
+      "UI package tsconfig inheriting the strict base.",
+    ),
+    manifestEntry(
+      "vibe-engineer.config.json",
+      "harness-config-placeholder",
+      ["real-boundary-witnesses"],
+      "Starter harness-config placeholder: agenticHarness=pi + locked DL-16 layout (DL-06).",
+    ),
+    manifestEntry(
+      ".vibe/context/manifest.json",
+      "context-placeholder",
+      ["report-first-evidence"],
+      "DL-17 neutral bootstrap context placeholder; classifies golden-records as sample/demo/reference.",
+    ),
+    manifestEntry(
+      ".tooling/dev-services/docker-compose.json",
+      "dev-service-config",
+      ["dependency-hygiene"],
+      "Local PostgreSQL-only dev service (DL-16 database stance).",
+    ),
+    manifestEntry(
+      "apps/api/src/golden-records/sample.ts",
+      "sample-demo-source",
+      ["domain-neutral-core"],
+      "Explicitly sample/demo/reference GoldenRecord source demonstrating the architecture seam.",
+    ),
+    manifestEntry(
+      ".vibe/generated/nest-react-rn-preset/manifest.json",
+      "preset-metadata",
+      ["report-first-evidence", "dirty-tree-ownership"],
+      "Generated preset manifest tying starter files to standards and consumed preset identity.",
+    ),
+  ]);
 
 const NEST_REACT_RN_PRESET_FILE_MANIFEST_BY_PATH: ReadonlyMap<
   string,
@@ -625,9 +784,10 @@ function appManifestContent(app: StarterAppDescriptor): string {
     typecheck: "tsc --noEmit -p tsconfig.json",
     lint: "eslint .",
     "format:check": "prettier --check .",
-    "test:unit": "tsx --test \"test/**/*.test.ts\"",
+    "test:unit": 'tsx --test "test/**/*.test.ts"',
     build: "tsc -p tsconfig.json",
-    "quality:quick": "pnpm run typecheck && pnpm run lint && pnpm run format:check && pnpm run test:unit && pnpm run build",
+    "quality:quick":
+      "pnpm run typecheck && pnpm run lint && pnpm run format:check && pnpm run test:unit && pnpm run build",
   };
   const appSpecificScripts: Readonly<Record<StarterAppId, Readonly<Record<string, string>>>> = {
     api: {
@@ -778,24 +938,36 @@ function validateRenderOptions(input: unknown): RenderNestReactRnPresetOptionsVa
     return { ok: true, options: { includeSampleSource: true } };
   }
   if (!isObject(input)) {
-    return { ok: false, finding: makeRenderOptionsFinding("Renderer options must be an object when provided.", [String(input)]) };
+    return {
+      ok: false,
+      finding: makeRenderOptionsFinding("Renderer options must be an object when provided.", [
+        String(input),
+      ]),
+    };
   }
   const allowedKeys = new Set(["includeSampleSource"]);
   for (const key of Object.keys(input)) {
     if (!allowedKeys.has(key)) {
-      return { ok: false, finding: makeRenderOptionsFinding(`Unknown renderer option: ${key}.`, [key]) };
+      return {
+        ok: false,
+        finding: makeRenderOptionsFinding(`Unknown renderer option: ${key}.`, [key]),
+      };
     }
   }
   const includeSampleSourceInput = getObjectProperty(input, "includeSampleSource");
   if (includeSampleSourceInput !== undefined && typeof includeSampleSourceInput !== "boolean") {
     return {
       ok: false,
-      finding: makeRenderOptionsFinding("includeSampleSource must be a boolean when provided.", [typeof includeSampleSourceInput]),
+      finding: makeRenderOptionsFinding("includeSampleSource must be a boolean when provided.", [
+        typeof includeSampleSourceInput,
+      ]),
     };
   }
   return {
     ok: true,
-    options: { includeSampleSource: includeSampleSourceInput === undefined ? true : includeSampleSourceInput },
+    options: {
+      includeSampleSource: includeSampleSourceInput === undefined ? true : includeSampleSourceInput,
+    },
   };
 }
 
@@ -855,17 +1027,37 @@ export function renderNestReactRnPresetFiles(
   ];
 
   for (const app of STARTER_APPS) {
-    files.push(renderedFile(`${app.directory}/package.json`, "app-manifest", appManifestContent(app)));
-    files.push(renderedFile(`${app.directory}/tsconfig.json`, "app-tsconfig", packageTsconfigContent()));
+    files.push(
+      renderedFile(`${app.directory}/package.json`, "app-manifest", appManifestContent(app)),
+    );
+    files.push(
+      renderedFile(`${app.directory}/tsconfig.json`, "app-tsconfig", packageTsconfigContent()),
+    );
   }
   for (const pkg of STARTER_PACKAGES) {
-    files.push(renderedFile(`${pkg.directory}/package.json`, "package-manifest", packageManifestContent(pkg)));
-    files.push(renderedFile(`${pkg.directory}/tsconfig.json`, "package-tsconfig", packageTsconfigContent()));
+    files.push(
+      renderedFile(
+        `${pkg.directory}/package.json`,
+        "package-manifest",
+        packageManifestContent(pkg),
+      ),
+    );
+    files.push(
+      renderedFile(`${pkg.directory}/tsconfig.json`, "package-tsconfig", packageTsconfigContent()),
+    );
   }
 
   files.push(
-    renderedFile("vibe-engineer.config.json", "harness-config-placeholder", harnessConfigPlaceholderContent()),
-    renderedFile(".vibe/context/manifest.json", "context-placeholder", contextManifestPlaceholderContent()),
+    renderedFile(
+      "vibe-engineer.config.json",
+      "harness-config-placeholder",
+      harnessConfigPlaceholderContent(),
+    ),
+    renderedFile(
+      ".vibe/context/manifest.json",
+      "context-placeholder",
+      contextManifestPlaceholderContent(),
+    ),
     renderedFile(
       ".tooling/dev-services/docker-compose.json",
       "dev-service-config",
@@ -939,7 +1131,9 @@ function parseJsonObject(
     return undefined;
   }
   if (!isObject(parsed)) {
-    findings.push(makeFinding("PRESET_MALFORMED_JSON", path, "Generated JSON content must be an object.", []));
+    findings.push(
+      makeFinding("PRESET_MALFORMED_JSON", path, "Generated JSON content must be an object.", []),
+    );
     return undefined;
   }
   return parsed;
@@ -948,11 +1142,23 @@ function parseJsonObject(
 function validatePath(path: string, seen: Set<string>, findings: NestReactRnPresetFinding[]): void {
   if (!isSafeRelativePath(path)) {
     findings.push(
-      makeFinding("PRESET_UNSAFE_GENERATED_PATH", path, "Generated file path must be normalized, relative, and contained inside the target root.", [path]),
+      makeFinding(
+        "PRESET_UNSAFE_GENERATED_PATH",
+        path,
+        "Generated file path must be normalized, relative, and contained inside the target root.",
+        [path],
+      ),
     );
   }
   if (seen.has(path)) {
-    findings.push(makeFinding("PRESET_DUPLICATE_GENERATED_PATH", path, "Generated file path appears more than once.", [path]));
+    findings.push(
+      makeFinding(
+        "PRESET_DUPLICATE_GENERATED_PATH",
+        path,
+        "Generated file path appears more than once.",
+        [path],
+      ),
+    );
   }
   seen.add(path);
 }
@@ -963,35 +1169,63 @@ function validateDerivedTsconfigBase(
   findings: NestReactRnPresetFinding[],
 ): void {
   if (content === undefined) {
-    findings.push(makeFinding("PRESET_MISSING_REQUIRED_FILE", path, "Required derived root tsconfig is missing.", []));
+    findings.push(
+      makeFinding(
+        "PRESET_MISSING_REQUIRED_FILE",
+        path,
+        "Required derived root tsconfig is missing.",
+        [],
+      ),
+    );
     return;
   }
   const root = parseJsonObject(content, path, findings);
   if (root === undefined) return;
   const compilerOptions = getObjectProperty(root, "compilerOptions");
   if (!isObject(compilerOptions)) {
-    findings.push(makeFinding("PRESET_TS_DEFAULTS_DRIFT", path, "Root tsconfig compilerOptions object is missing.", []));
+    findings.push(
+      makeFinding(
+        "PRESET_TS_DEFAULTS_DRIFT",
+        path,
+        "Root tsconfig compilerOptions object is missing.",
+        [],
+      ),
+    );
     return;
   }
   for (const flag of REQUIRED_STRICT_TRUE_FLAGS) {
     if (getObjectProperty(compilerOptions, flag) !== true) {
       findings.push(
-        makeFinding("PRESET_TS_DEFAULTS_DRIFT", path, `Derived strict flag must be true: ${flag}.`, [flag]),
+        makeFinding(
+          "PRESET_TS_DEFAULTS_DRIFT",
+          path,
+          `Derived strict flag must be true: ${flag}.`,
+          [flag],
+        ),
       );
     }
   }
   if (getObjectProperty(compilerOptions, "allowUnreachableCode") !== false) {
-    findings.push(makeFinding("PRESET_TS_DEFAULTS_DRIFT", path, "allowUnreachableCode must be false.", []));
+    findings.push(
+      makeFinding("PRESET_TS_DEFAULTS_DRIFT", path, "allowUnreachableCode must be false.", []),
+    );
   }
   if (getObjectProperty(compilerOptions, "allowUnusedLabels") !== false) {
-    findings.push(makeFinding("PRESET_TS_DEFAULTS_DRIFT", path, "allowUnusedLabels must be false.", []));
+    findings.push(
+      makeFinding("PRESET_TS_DEFAULTS_DRIFT", path, "allowUnusedLabels must be false.", []),
+    );
   }
   if (
     getObjectProperty(compilerOptions, "module") !== "NodeNext" ||
     getObjectProperty(compilerOptions, "moduleResolution") !== "NodeNext"
   ) {
     findings.push(
-      makeFinding("PRESET_TS_DEFAULTS_DRIFT", path, "Derived module/moduleResolution must both be NodeNext.", []),
+      makeFinding(
+        "PRESET_TS_DEFAULTS_DRIFT",
+        path,
+        "Derived module/moduleResolution must both be NodeNext.",
+        [],
+      ),
     );
   }
 }
@@ -1002,14 +1236,26 @@ function validatePackageTsconfigInheritor(
   findings: NestReactRnPresetFinding[],
 ): void {
   if (content === undefined) {
-    findings.push(makeFinding("PRESET_MISSING_REQUIRED_FILE", path, "Required package/app tsconfig is missing.", []));
+    findings.push(
+      makeFinding(
+        "PRESET_MISSING_REQUIRED_FILE",
+        path,
+        "Required package/app tsconfig is missing.",
+        [],
+      ),
+    );
     return;
   }
   const root = parseJsonObject(content, path, findings);
   if (root === undefined) return;
   if (getObjectProperty(root, "extends") !== "../../tsconfig.base.json") {
     findings.push(
-      makeFinding("PRESET_PACKAGE_TSCONFIG_WEAKENED", path, "Package/app tsconfig must extend ../../tsconfig.base.json.", []),
+      makeFinding(
+        "PRESET_PACKAGE_TSCONFIG_WEAKENED",
+        path,
+        "Package/app tsconfig must extend ../../tsconfig.base.json.",
+        [],
+      ),
     );
   }
   const compilerOptions = getObjectProperty(root, "compilerOptions");
@@ -1017,7 +1263,12 @@ function validatePackageTsconfigInheritor(
     for (const flag of REQUIRED_STRICT_TRUE_FLAGS) {
       if (Object.hasOwn(compilerOptions, flag)) {
         findings.push(
-          makeFinding("PRESET_PACKAGE_TSCONFIG_WEAKENED", path, `Package/app tsconfig must not override strict base flag: ${flag}.`, [flag]),
+          makeFinding(
+            "PRESET_PACKAGE_TSCONFIG_WEAKENED",
+            path,
+            `Package/app tsconfig must not override strict base flag: ${flag}.`,
+            [flag],
+          ),
         );
       }
     }
@@ -1034,12 +1285,22 @@ function validateLayoutFidelity(
     const tsconfigPath = `${app.directory}/tsconfig.json`;
     if (!filesByPath.has(manifestPath)) {
       findings.push(
-        makeFinding("PRESET_LAYOUT_INFIDELITY", manifestPath, `DL-16 app manifest missing for ${app.id}.`, [app.id]),
+        makeFinding(
+          "PRESET_LAYOUT_INFIDELITY",
+          manifestPath,
+          `DL-16 app manifest missing for ${app.id}.`,
+          [app.id],
+        ),
       );
     }
     if (!filesByPath.has(tsconfigPath)) {
       findings.push(
-        makeFinding("PRESET_LAYOUT_INFIDELITY", tsconfigPath, `DL-16 app tsconfig missing for ${app.id}.`, [app.id]),
+        makeFinding(
+          "PRESET_LAYOUT_INFIDELITY",
+          tsconfigPath,
+          `DL-16 app tsconfig missing for ${app.id}.`,
+          [app.id],
+        ),
       );
     }
     const manifestContent = filesByPath.get(manifestPath);
@@ -1047,7 +1308,12 @@ function validateLayoutFidelity(
       const manifest = parseJsonObject(manifestContent, manifestPath, findings);
       if (manifest !== undefined && getObjectProperty(manifest, "name") !== app.packageName) {
         findings.push(
-          makeFinding("PRESET_LAYOUT_INFIDELITY", manifestPath, `App package name must be ${app.packageName}.`, [app.packageName]),
+          makeFinding(
+            "PRESET_LAYOUT_INFIDELITY",
+            manifestPath,
+            `App package name must be ${app.packageName}.`,
+            [app.packageName],
+          ),
         );
       }
     }
@@ -1057,12 +1323,22 @@ function validateLayoutFidelity(
     const tsconfigPath = `${pkg.directory}/tsconfig.json`;
     if (!filesByPath.has(manifestPath)) {
       findings.push(
-        makeFinding("PRESET_LAYOUT_INFIDELITY", manifestPath, `DL-16 package manifest missing for ${pkg.name}.`, [pkg.name]),
+        makeFinding(
+          "PRESET_LAYOUT_INFIDELITY",
+          manifestPath,
+          `DL-16 package manifest missing for ${pkg.name}.`,
+          [pkg.name],
+        ),
       );
     }
     if (!filesByPath.has(tsconfigPath)) {
       findings.push(
-        makeFinding("PRESET_LAYOUT_INFIDELITY", tsconfigPath, `DL-16 package tsconfig missing for ${pkg.name}.`, [pkg.name]),
+        makeFinding(
+          "PRESET_LAYOUT_INFIDELITY",
+          tsconfigPath,
+          `DL-16 package tsconfig missing for ${pkg.name}.`,
+          [pkg.name],
+        ),
       );
     }
     const manifestContent = filesByPath.get(manifestPath);
@@ -1070,7 +1346,12 @@ function validateLayoutFidelity(
       const manifest = parseJsonObject(manifestContent, manifestPath, findings);
       if (manifest !== undefined && getObjectProperty(manifest, "name") !== pkg.packageName) {
         findings.push(
-          makeFinding("PRESET_LAYOUT_INFIDELITY", manifestPath, `Package name must be ${pkg.packageName}.`, [pkg.packageName]),
+          makeFinding(
+            "PRESET_LAYOUT_INFIDELITY",
+            manifestPath,
+            `Package name must be ${pkg.packageName}.`,
+            [pkg.packageName],
+          ),
         );
       }
     }
@@ -1079,9 +1360,17 @@ function validateLayoutFidelity(
   const rootManifestContent = filesByPath.get("package.json");
   if (rootManifestContent !== undefined) {
     const rootManifest = parseJsonObject(rootManifestContent, "package.json", findings);
-    if (rootManifest !== undefined && getObjectProperty(rootManifest, "name") !== STARTER_LAYOUT.workspaceName) {
+    if (
+      rootManifest !== undefined &&
+      getObjectProperty(rootManifest, "name") !== STARTER_LAYOUT.workspaceName
+    ) {
       findings.push(
-        makeFinding("PRESET_LAYOUT_INFIDELITY", "package.json", `Root workspace name must be ${STARTER_LAYOUT.workspaceName}.`, [STARTER_LAYOUT.workspaceName]),
+        makeFinding(
+          "PRESET_LAYOUT_INFIDELITY",
+          "package.json",
+          `Root workspace name must be ${STARTER_LAYOUT.workspaceName}.`,
+          [STARTER_LAYOUT.workspaceName],
+        ),
       );
     }
   }
@@ -1100,7 +1389,12 @@ function validateDomainNeutralText(
     for (const { term, pattern } of FORBIDDEN_DOMAIN_TERM_PATTERNS) {
       if (pattern.test(file.content)) {
         findings.push(
-          makeFinding("PRESET_DOMAIN_SPECIFIC_CORE_TEXT", file.path, "Core starter preset output must remain domain-neutral (DL-20A).", [term]),
+          makeFinding(
+            "PRESET_DOMAIN_SPECIFIC_CORE_TEXT",
+            file.path,
+            "Core starter preset output must remain domain-neutral (DL-20A).",
+            [term],
+          ),
         );
       }
     }
@@ -1130,7 +1424,12 @@ function validateNoCopiedHarnessLogic(
     for (const marker of COPIED_LOGIC_MARKERS) {
       if (file.content.includes(marker)) {
         findings.push(
-          makeFinding("PRESET_COPIED_HARNESS_LOGIC", file.path, "Starter output must be generated from shipped templates without copying harness logic (DL-16 §2 / release definition-(iii)).", [marker]),
+          makeFinding(
+            "PRESET_COPIED_HARNESS_LOGIC",
+            file.path,
+            "Starter output must be generated from shipped templates without copying harness logic (DL-16 §2 / release definition-(iii)).",
+            [marker],
+          ),
         );
       }
     }
@@ -1143,18 +1442,31 @@ function validateNoPrivateScopedImport(
 ): void {
   // No relative/`:../` import into a harness package, and no private
   // @vibe-engineer/* harness package import in starter app code (DL-16 §2/§5).
-  const PRIVATE_HARNESS_IMPORT = /(?:from\s+["']|\brequire\(\s*["'])(\.\.\/)+(?:packages|adapters|presets\/typescript)\//;
-  const PRIVATE_SCOPED = /@vibe-engineer\/(?:preset-typescript|adapter-pi|context|config|verification|security|artifacts|schematics|standards|mechanical-gates)/;
+  const PRIVATE_HARNESS_IMPORT =
+    /(?:from\s+["']|\brequire\(\s*["'])(\.\.\/)+(?:packages|adapters|presets\/typescript)\//;
+  const PRIVATE_SCOPED =
+    /@vibe-engineer\/(?:preset-typescript|adapter-pi|context|config|verification|security|artifacts|schematics|standards|mechanical-gates)/;
   for (const file of files) {
-    if (!file.path.endsWith(".ts") && !file.path.endsWith(".mjs") && !file.path.endsWith(".js")) continue;
+    if (!file.path.endsWith(".ts") && !file.path.endsWith(".mjs") && !file.path.endsWith(".js"))
+      continue;
     if (PRIVATE_HARNESS_IMPORT.test(file.content)) {
       findings.push(
-        makeFinding("PRESET_PRIVATE_SCOPED_IMPORT", file.path, "Starter code must not use relative/`:../` imports into harness packages.", [file.path]),
+        makeFinding(
+          "PRESET_PRIVATE_SCOPED_IMPORT",
+          file.path,
+          "Starter code must not use relative/`:../` imports into harness packages.",
+          [file.path],
+        ),
       );
     }
     if (PRIVATE_SCOPED.test(file.content)) {
       findings.push(
-        makeFinding("PRESET_PRIVATE_SCOPED_IMPORT", file.path, "Starter code must not import private @vibe-engineer/* harness packages (consume vibe-engineer public exports only).", [file.path]),
+        makeFinding(
+          "PRESET_PRIVATE_SCOPED_IMPORT",
+          file.path,
+          "Starter code must not import private @vibe-engineer/* harness packages (consume vibe-engineer public exports only).",
+          [file.path],
+        ),
       );
     }
   }
@@ -1166,14 +1478,26 @@ function validateNonPiHarness(
   findings: NestReactRnPresetFinding[],
 ): void {
   if (content === undefined) {
-    findings.push(makeFinding("PRESET_MISSING_REQUIRED_FILE", path, "Required harness-config placeholder is missing.", []));
+    findings.push(
+      makeFinding(
+        "PRESET_MISSING_REQUIRED_FILE",
+        path,
+        "Required harness-config placeholder is missing.",
+        [],
+      ),
+    );
     return;
   }
   const config = parseJsonObject(content, path, findings);
   if (config === undefined) return;
   if (getObjectProperty(config, "agenticHarness") !== "pi") {
     findings.push(
-      makeFinding("PRESET_NON_PI_HARNESS", path, "Starter harness-config must reflect agenticHarness=pi only (DL-06).", [String(getObjectProperty(config, "agenticHarness"))]),
+      makeFinding(
+        "PRESET_NON_PI_HARNESS",
+        path,
+        "Starter harness-config must reflect agenticHarness=pi only (DL-06).",
+        [String(getObjectProperty(config, "agenticHarness"))],
+      ),
     );
   }
 }
@@ -1184,14 +1508,26 @@ function validateGoldenModuleLabeled(
   findings: NestReactRnPresetFinding[],
 ): void {
   if (content === undefined) {
-    findings.push(makeFinding("PRESET_GOLDEN_MODULE_NOT_LABELED", path, "Required sample/demo source is missing.", []));
+    findings.push(
+      makeFinding(
+        "PRESET_GOLDEN_MODULE_NOT_LABELED",
+        path,
+        "Required sample/demo source is missing.",
+        [],
+      ),
+    );
     return;
   }
   const requiredLabels = ["sample", "demo", "reference"];
   const hasLabel = requiredLabels.some((label) => content.toLowerCase().includes(label));
   if (!hasLabel) {
     findings.push(
-      makeFinding("PRESET_GOLDEN_MODULE_NOT_LABELED", path, "golden-records source must be labeled sample/demo/reference (DL-16/DL-17/DL-20A).", []),
+      makeFinding(
+        "PRESET_GOLDEN_MODULE_NOT_LABELED",
+        path,
+        "golden-records source must be labeled sample/demo/reference (DL-16/DL-17/DL-20A).",
+        [],
+      ),
     );
   }
 }
@@ -1202,7 +1538,14 @@ function validateManifestContent(
   findings: NestReactRnPresetFinding[],
 ): void {
   if (content === undefined) {
-    findings.push(makeFinding("PRESET_MISSING_REQUIRED_FILE", path, "Required generated preset manifest is missing.", []));
+    findings.push(
+      makeFinding(
+        "PRESET_MISSING_REQUIRED_FILE",
+        path,
+        "Required generated preset manifest is missing.",
+        [],
+      ),
+    );
     return;
   }
   const manifest = parseJsonObject(content, path, findings);
@@ -1210,13 +1553,23 @@ function validateManifestContent(
   const metadata = getObjectProperty(manifest, "metadata");
   if (!isObject(metadata) || getObjectProperty(metadata, "presetId") !== NEST_REACT_RN_PRESET_ID) {
     findings.push(
-      makeFinding("PRESET_MANIFEST_CONTENT_MISMATCH", path, "Generated manifest metadata presetId does not match the nest-react-rn preset API.", []),
+      makeFinding(
+        "PRESET_MANIFEST_CONTENT_MISMATCH",
+        path,
+        "Generated manifest metadata presetId does not match the nest-react-rn preset API.",
+        [],
+      ),
     );
   }
   const files = getObjectProperty(manifest, "files");
   if (!Array.isArray(files)) {
     findings.push(
-      makeFinding("PRESET_MANIFEST_CONTENT_MISMATCH", path, "Generated manifest files array is missing.", []),
+      makeFinding(
+        "PRESET_MANIFEST_CONTENT_MISMATCH",
+        path,
+        "Generated manifest files array is missing.",
+        [],
+      ),
     );
   }
 }
@@ -1238,38 +1591,85 @@ function validateManifestEntryContract(
     !Array.isArray(requiredStandardIds)
   ) {
     findings.push(
-      makeFinding("PRESET_MANIFEST_CONTENT_MISMATCH", path, `Generated file manifest metadata must match the authoritative contract for ${expected.outputPath}.`, [expected.outputPath]),
+      makeFinding(
+        "PRESET_MANIFEST_CONTENT_MISMATCH",
+        path,
+        `Generated file manifest metadata must match the authoritative contract for ${expected.outputPath}.`,
+        [expected.outputPath],
+      ),
     );
   }
 }
 
-export function validateNestReactRnPresetFiles(filesInput: unknown): NestReactRnPresetValidationResult {
+export function validateNestReactRnPresetFiles(
+  filesInput: unknown,
+): NestReactRnPresetValidationResult {
   const findings: NestReactRnPresetFinding[] = [];
   if (!Array.isArray(filesInput)) {
-    findings.push(makeFinding("PRESET_MALFORMED_RENDER_OPTIONS", "", "Validator input must be an array of generated preset files.", []));
+    findings.push(
+      makeFinding(
+        "PRESET_MALFORMED_RENDER_OPTIONS",
+        "",
+        "Validator input must be an array of generated preset files.",
+        [],
+      ),
+    );
     return { ok: false, findings: Object.freeze(findings), fileCount: 0 };
   }
 
   const files: ValidatorFile[] = [];
   for (const item of filesInput) {
     if (!isObject(item)) {
-      findings.push(makeFinding("PRESET_MALFORMED_RENDER_OPTIONS", "", "Generated preset file entry must be an object.", []));
+      findings.push(
+        makeFinding(
+          "PRESET_MALFORMED_RENDER_OPTIONS",
+          "",
+          "Generated preset file entry must be an object.",
+          [],
+        ),
+      );
       continue;
     }
     const path = getObjectProperty(item, "path");
     const kind = getObjectProperty(item, "kind");
     const content = getObjectProperty(item, "content");
     const manifest = getObjectProperty(item, "manifest");
-    if (typeof path !== "string" || typeof kind !== "string" || typeof content !== "string" || !isObject(manifest)) {
-      findings.push(makeFinding("PRESET_MALFORMED_RENDER_OPTIONS", "", "Generated preset file entry has malformed path, kind, content, or manifest.", []));
+    if (
+      typeof path !== "string" ||
+      typeof kind !== "string" ||
+      typeof content !== "string" ||
+      !isObject(manifest)
+    ) {
+      findings.push(
+        makeFinding(
+          "PRESET_MALFORMED_RENDER_OPTIONS",
+          "",
+          "Generated preset file entry has malformed path, kind, content, or manifest.",
+          [],
+        ),
+      );
       continue;
     }
     const expectedManifest = NEST_REACT_RN_PRESET_FILE_MANIFEST_BY_PATH.get(path);
     if (expectedManifest === undefined) {
-      findings.push(makeFinding("PRESET_MANIFEST_CONTENT_MISMATCH", path, "Generated file path is not declared in the authoritative preset manifest.", [path]));
+      findings.push(
+        makeFinding(
+          "PRESET_MANIFEST_CONTENT_MISMATCH",
+          path,
+          "Generated file path is not declared in the authoritative preset manifest.",
+          [path],
+        ),
+      );
     } else {
       if (kind !== expectedManifest.kind) {
-        findings.push(makeFinding("PRESET_MANIFEST_CONTENT_MISMATCH", path, "Generated file kind must match the authoritative manifest for its exact path.", [kind, expectedManifest.kind]));
+        findings.push(
+          makeFinding(
+            "PRESET_MANIFEST_CONTENT_MISMATCH",
+            path,
+            "Generated file kind must match the authoritative manifest for its exact path.",
+            [kind, expectedManifest.kind],
+          ),
+        );
       }
       validateManifestEntryContract(manifest, expectedManifest, path, findings);
     }
@@ -1285,19 +1685,38 @@ export function validateNestReactRnPresetFiles(filesInput: unknown): NestReactRn
 
   for (const requiredPath of REQUIRED_STARTER_PATHS) {
     if (!byPath.has(requiredPath)) {
-      findings.push(makeFinding("PRESET_MISSING_REQUIRED_FILE", requiredPath, "Required generated starter file is missing.", [requiredPath]));
+      findings.push(
+        makeFinding(
+          "PRESET_MISSING_REQUIRED_FILE",
+          requiredPath,
+          "Required generated starter file is missing.",
+          [requiredPath],
+        ),
+      );
     }
   }
 
   validateDerivedTsconfigBase(byPath.get("tsconfig.base.json"), "tsconfig.base.json", findings);
   for (const app of STARTER_APPS) {
-    validatePackageTsconfigInheritor(byPath.get(`${app.directory}/tsconfig.json`), `${app.directory}/tsconfig.json`, findings);
+    validatePackageTsconfigInheritor(
+      byPath.get(`${app.directory}/tsconfig.json`),
+      `${app.directory}/tsconfig.json`,
+      findings,
+    );
   }
   for (const pkg of STARTER_PACKAGES) {
-    validatePackageTsconfigInheritor(byPath.get(`${pkg.directory}/tsconfig.json`), `${pkg.directory}/tsconfig.json`, findings);
+    validatePackageTsconfigInheritor(
+      byPath.get(`${pkg.directory}/tsconfig.json`),
+      `${pkg.directory}/tsconfig.json`,
+      findings,
+    );
   }
   validateLayoutFidelity(byPath, findings);
-  validateNonPiHarness(byPath.get("vibe-engineer.config.json"), "vibe-engineer.config.json", findings);
+  validateNonPiHarness(
+    byPath.get("vibe-engineer.config.json"),
+    "vibe-engineer.config.json",
+    findings,
+  );
   validateGoldenModuleLabeled(
     byPath.get("apps/api/src/golden-records/sample.ts"),
     "apps/api/src/golden-records/sample.ts",

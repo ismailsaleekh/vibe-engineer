@@ -78,7 +78,9 @@ describe("W3 NEGATIVE: missing required field fails CLOSED (DL-23 §1 hard failu
 
   it("rejects a malformed correlationId (non-v4)", () => {
     expect(() => parseLogRecord(validRecord({ correlationId: "not-a-uuid" }))).toThrow();
-    expect(() => parseLogRecord(validRecord({ correlationId: "00000000-0000-1000-8000-000000000000" }))).toThrow();
+    expect(() =>
+      parseLogRecord(validRecord({ correlationId: "00000000-0000-1000-8000-000000000000" })),
+    ).toThrow();
   });
 
   it("rejects unknown keys (.strict()) — no silent free-form extension", () => {

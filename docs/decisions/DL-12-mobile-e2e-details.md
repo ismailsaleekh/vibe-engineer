@@ -400,8 +400,8 @@ Exact command names, flags, and help text are owned by DL-07/DL-11/I-09/I-17. DL
 
 Later seam:
 
-| Producer | Carrier | Consumer | Closure rule |
-| --- | --- | --- | --- |
+| Producer                                                                                               | Carrier                                                                                                                                              | Consumer                                                                                                          | Closure rule                                                                                                                            |
+| ------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
 | actual generated React Native starter/reference mobile app plus generated Maestro/Detox test artifacts | installed app binary/build artifact, simulator/emulator/device state, generated test files/config, runner invocation, and evidence artifacts on disk | actual Maestro runner, actual Detox runner, verification runner/evidence collector, build/ship/CI failure routing | positive/negative/regression proof required; if live device/CI support is unavailable, affected closure remains `pending-live/BLOCKED`. |
 
 ## Ownership/path consequences

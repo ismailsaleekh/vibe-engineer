@@ -1,0 +1,23 @@
+# Local env files are intentionally not formatted by Prettier.
+**/.env
+**/.env.*
+!.env.example
+
+# Agent workflow/evidence scratch is not source formatting input.
+.vibe/**
+.pi/**
+packages/.vibe/**
+
+# Generated/negative fixtures intentionally include malformed or style-variant carriers.
+packages/artifacts/src/generated/types.d.ts
+**/fixtures/**
+**/.generated-fixtures/**
+examples/starter-reference/generated-fixtures/**
+
+# Regenerable outputs and dependencies.
+node_modules
+**/node_modules
+**/dist
+**/.turbo
+.vitepress/cache/**
+coverage

@@ -1,6 +1,6 @@
-import type { AgentRegistryEntryV1, ArtifactKind } from '@vibe-engineer/artifacts';
+import type { AgentRegistryEntryV1, ArtifactKind } from "@vibe-engineer/artifacts";
 
-export type RegistrySeverity = 'critical' | 'major-local' | 'minor-local';
+export type RegistrySeverity = "critical" | "major-local" | "minor-local";
 
 export interface RegistryValidationError {
   path: string | null;
@@ -28,7 +28,7 @@ export interface RegistryGraph {
 }
 
 export interface RegistryLoadOptions {
-  allowedScopes?: Array<'core' | 'project_extension' | 'sample_demo'>;
+  allowedScopes?: Array<"core" | "project_extension" | "sample_demo">;
   allowSamples?: boolean;
   repoRoot?: string;
 }
@@ -47,16 +47,35 @@ export interface RegistryLoadResult extends RegistryValidationResult {
   files: readonly string[];
 }
 
-export const RegistrySeverity: Readonly<Record<'CRITICAL' | 'MAJOR_LOCAL' | 'MINOR_LOCAL', RegistrySeverity>>;
+export const RegistrySeverity: Readonly<
+  Record<"CRITICAL" | "MAJOR_LOCAL" | "MINOR_LOCAL", RegistrySeverity>
+>;
 export const RegistryRuleId: Readonly<Record<string, string>>;
-export const LOCKED_SKILLS: readonly ['brainstorm', 'grill-me', 'task', 'plan', 'build', 'ship'];
-export const PRODUCT_NAME: 'vibe-engineer';
-export const ARTIFACT_FLOW: readonly ['raw_intent', 'work_brief', 'implementation_plan', 'build_result', 'ship_packet'];
+export const LOCKED_SKILLS: readonly ["brainstorm", "grill-me", "task", "plan", "build", "ship"];
+export const PRODUCT_NAME: "vibe-engineer";
+export const ARTIFACT_FLOW: readonly [
+  "raw_intent",
+  "work_brief",
+  "implementation_plan",
+  "build_result",
+  "ship_packet",
+];
 
-export function discoverRegistryEntryFiles(roots: string | string[]): { files: string[]; errors: RegistryValidationError[] };
-export function validateRegistryFiles(files: string[], options?: RegistryLoadOptions): RegistryValidationResult;
-export function loadRegistry(roots: string | string[], options?: RegistryLoadOptions): RegistryLoadResult;
-export function assertRegistryOk<T extends { ok: boolean; errors: readonly RegistryValidationError[] }>(result: T): T;
+export function discoverRegistryEntryFiles(roots: string | string[]): {
+  files: string[];
+  errors: RegistryValidationError[];
+};
+export function validateRegistryFiles(
+  files: string[],
+  options?: RegistryLoadOptions,
+): RegistryValidationResult;
+export function loadRegistry(
+  roots: string | string[],
+  options?: RegistryLoadOptions,
+): RegistryLoadResult;
+export function assertRegistryOk<
+  T extends { ok: boolean; errors: readonly RegistryValidationError[] },
+>(result: T): T;
 export function packageRootFromImportMeta(importMetaUrl?: string): string;
 export function canonicalSchemaIdsByKind(): Record<ArtifactKind, string>;
 export type { AgentRegistryEntryV1 };

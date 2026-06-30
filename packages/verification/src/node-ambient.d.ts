@@ -1,4 +1,4 @@
-declare module 'node:fs' {
+declare module "node:fs" {
   const fs: any;
   export default fs;
   export const existsSync: any;
@@ -9,11 +9,11 @@ declare module 'node:fs' {
   export const mkdirSync: any;
   export const writeFileSync: any;
 }
-declare module 'node:fs/promises' {
+declare module "node:fs/promises" {
   const fsp: any;
   export default fsp;
 }
-declare module 'node:path' {
+declare module "node:path" {
   const path: any;
   export default path;
   export const dirname: any;
@@ -23,11 +23,16 @@ declare module 'node:path' {
   export const relative: any;
   export const isAbsolute: any;
 }
-declare module 'node:child_process' {
+declare module "node:child_process" {
   export const spawn: any;
 }
-declare module 'node:assert/strict' { const assert: any; export default assert; }
-declare module 'node:url' { export const fileURLToPath: any; }
+declare module "node:assert/strict" {
+  const assert: any;
+  export default assert;
+}
+declare module "node:url" {
+  export const fileURLToPath: any;
+}
 declare const process: any;
 declare const Buffer: any;
 declare const TextDecoder: any;

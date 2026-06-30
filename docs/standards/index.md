@@ -13,15 +13,15 @@ The core standards catalog is `vibe-engineer-core-standards` (`SUPPORTED_SCHEMA_
 
 ## Standards at a glance
 
-| Standard id | Category | Level | Neutrality | Requirements |
-| --- | --- | --- | --- | --- |
-| [`typed-boundary-contracts`](#typed-boundary-contracts) | contracts | required | core | `named-runtime-contract`, `fail-closed-boundary` |
-| [`real-boundary-witnesses`](#real-boundary-witnesses) | verification | required | core | `actual-consumer`, `negative-boundary` |
-| [`domain-neutral-core`](#domain-neutral-core) | domain-neutrality | required | core | `core-vocabulary`, `sample-boundary` |
-| [`dirty-tree-ownership`](#dirty-tree-ownership) | orchestration | required | core | `owned-paths-only`, `no-destructive-git` |
-| [`report-first-evidence`](#report-first-evidence) | evidence | required | core | `first-artifact`, `command-evidence` |
-| [`dependency-hygiene`](#dependency-hygiene) | package-boundaries | required | core | `declared-imports`, `no-package-manager-mutation` |
-| [`deterministic-schematics`](#deterministic-schematics) | schematics | recommended | core | `typed-manifest`, `dry-run-first` |
+| Standard id                                             | Category           | Level       | Neutrality | Requirements                                      |
+| ------------------------------------------------------- | ------------------ | ----------- | ---------- | ------------------------------------------------- |
+| [`typed-boundary-contracts`](#typed-boundary-contracts) | contracts          | required    | core       | `named-runtime-contract`, `fail-closed-boundary`  |
+| [`real-boundary-witnesses`](#real-boundary-witnesses)   | verification       | required    | core       | `actual-consumer`, `negative-boundary`            |
+| [`domain-neutral-core`](#domain-neutral-core)           | domain-neutrality  | required    | core       | `core-vocabulary`, `sample-boundary`              |
+| [`dirty-tree-ownership`](#dirty-tree-ownership)         | orchestration      | required    | core       | `owned-paths-only`, `no-destructive-git`          |
+| [`report-first-evidence`](#report-first-evidence)       | evidence           | required    | core       | `first-artifact`, `command-evidence`              |
+| [`dependency-hygiene`](#dependency-hygiene)             | package-boundaries | required    | core       | `declared-imports`, `no-package-manager-mutation` |
+| [`deterministic-schematics`](#deterministic-schematics) | schematics         | recommended | core       | `typed-manifest`, `dry-run-first`                 |
 
 ---
 
@@ -33,10 +33,10 @@ The core standards catalog is `vibe-engineer-core-standards` (`SUPPORTED_SCHEMA_
 - **Applies to:** `artifacts`, `commands`, `config`, `schemas`, `verification`.
 - **References:** DL-15 mechanical engine; Verification layer specification.
 
-| Requirement | Statement | Verification |
-| --- | --- | --- |
-| `named-runtime-contract` | Every load-bearing carrier must have a named structural contract and a typed result surface. | Run a positive fixture through the real producer and consumer, then run negative fixtures for missing fields, unknown fields, and unsupported versions. |
-| `fail-closed-boundary` | Malformed input must return typed blocking errors and must not silently fall back to default acceptance. | Assert invalid carriers produce stable error codes with JSON-pointer paths where available. |
+| Requirement              | Statement                                                                                                | Verification                                                                                                                                            |
+| ------------------------ | -------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `named-runtime-contract` | Every load-bearing carrier must have a named structural contract and a typed result surface.             | Run a positive fixture through the real producer and consumer, then run negative fixtures for missing fields, unknown fields, and unsupported versions. |
+| `fail-closed-boundary`   | Malformed input must return typed blocking errors and must not silently fall back to default acceptance. | Assert invalid carriers produce stable error codes with JSON-pointer paths where available.                                                             |
 
 ## real-boundary-witnesses
 
@@ -46,10 +46,10 @@ The core standards catalog is `vibe-engineer-core-standards` (`SUPPORTED_SCHEMA_
 - **Applies to:** `evidence`, `fixtures`, `packages`, `verification`.
 - **References:** Vibe Engineer HLO Quality Bar; Verification layer specification.
 
-| Requirement | Statement | Verification |
-| --- | --- | --- |
-| `actual-consumer` | Each standard-bearing package must provide a lane-owned fixture that imports the real public API and consumes real output. | Run the witness with Node and record command, exit code, stdout, stderr, and evidence artifact path. |
-| `negative-boundary` | The same seam must reject invalid, missing, duplicate, and unsupported carriers with typed errors. | Exercise negative fixtures against the same public API used by the positive witness. |
+| Requirement         | Statement                                                                                                                  | Verification                                                                                         |
+| ------------------- | -------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `actual-consumer`   | Each standard-bearing package must provide a lane-owned fixture that imports the real public API and consumes real output. | Run the witness with Node and record command, exit code, stdout, stderr, and evidence artifact path. |
+| `negative-boundary` | The same seam must reject invalid, missing, duplicate, and unsupported carriers with typed errors.                         | Exercise negative fixtures against the same public API used by the positive witness.                 |
 
 ## domain-neutral-core
 
@@ -59,10 +59,10 @@ The core standards catalog is `vibe-engineer-core-standards` (`SUPPORTED_SCHEMA_
 - **Applies to:** `agents`, `docs`, `fixtures`, `packages`, `prompts`, `schematics`, `standards`.
 - **References:** DL-20A domain-neutrality foundation; DL-15 mechanical engine.
 
-| Requirement | Statement | Verification |
-| --- | --- | --- |
-| `core-vocabulary` | Core text, identifiers, schema fields, and defaults must use generic package, module, contract, adapter, test, context, evidence, standard, and verification vocabulary. | Run the actual domain-purity validator over governed core surfaces classified as core. |
-| `sample-boundary` | Sample, demo, fixture, and negative surfaces must be explicitly classified and must not become core defaults. | Run paired domain-purity fixtures proving core leakage fails while labeled sample or negative content remains isolated. |
+| Requirement       | Statement                                                                                                                                                                | Verification                                                                                                            |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------- |
+| `core-vocabulary` | Core text, identifiers, schema fields, and defaults must use generic package, module, contract, adapter, test, context, evidence, standard, and verification vocabulary. | Run the actual domain-purity validator over governed core surfaces classified as core.                                  |
+| `sample-boundary` | Sample, demo, fixture, and negative surfaces must be explicitly classified and must not become core defaults.                                                            | Run paired domain-purity fixtures proving core leakage fails while labeled sample or negative content remains isolated. |
 
 ## dirty-tree-ownership
 
@@ -72,10 +72,10 @@ The core standards catalog is `vibe-engineer-core-standards` (`SUPPORTED_SCHEMA_
 - **Applies to:** `agents`, `evidence`, `packages`, `prompts`, `verification`.
 - **References:** Vibe Engineer HLO Quality Bar.
 
-| Requirement | Statement | Verification |
-| --- | --- | --- |
-| `owned-paths-only` | Write access is limited to explicit owned paths; read-only and untouchable paths remain unchanged. | Record the changed-path list and compare it to the lane ownership list. |
-| `no-destructive-git` | Agents must not request a clean tree and must not use destructive git state operations. | Report command history and confirm no stash, reset, clean, checkout, or restore command was used. |
+| Requirement          | Statement                                                                                          | Verification                                                                                      |
+| -------------------- | -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `owned-paths-only`   | Write access is limited to explicit owned paths; read-only and untouchable paths remain unchanged. | Record the changed-path list and compare it to the lane ownership list.                           |
+| `no-destructive-git` | Agents must not request a clean tree and must not use destructive git state operations.            | Report command history and confirm no stash, reset, clean, checkout, or restore command was used. |
 
 ## report-first-evidence
 
@@ -85,10 +85,10 @@ The core standards catalog is `vibe-engineer-core-standards` (`SUPPORTED_SCHEMA_
 - **Applies to:** `agents`, `evidence`, `packages`, `verification`.
 - **References:** Vibe Engineer HLO Quality Bar; Verification layer specification.
 
-| Requirement | Statement | Verification |
-| --- | --- | --- |
-| `first-artifact` | Create the lane report before reading target files or modifying package files. | The report stage log records creation before subsequent inspection and product changes. |
-| `command-evidence` | Every meaningful command records working directory, exit code, stdout or stderr summary, and evidence path when produced. | Compare witness commands with evidence files under the lane work directory. |
+| Requirement        | Statement                                                                                                                 | Verification                                                                            |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `first-artifact`   | Create the lane report before reading target files or modifying package files.                                            | The report stage log records creation before subsequent inspection and product changes. |
+| `command-evidence` | Every meaningful command records working directory, exit code, stdout or stderr summary, and evidence path when produced. | Compare witness commands with evidence files under the lane work directory.             |
 
 ## dependency-hygiene
 
@@ -98,9 +98,9 @@ The core standards catalog is `vibe-engineer-core-standards` (`SUPPORTED_SCHEMA_
 - **Applies to:** `packages`, `schemas`, `standards`, `verification`.
 - **References:** DL-01 repository and package structure; DL-15 mechanical engine.
 
-| Requirement | Statement | Verification |
-| --- | --- | --- |
-| `declared-imports` | Runtime source must not rely on hoisted or phantom dependencies absent from the package manifest. | Scan package source imports and confirm every external module is declared or is a Node built-in. |
+| Requirement                   | Statement                                                                                         | Verification                                                                                      |
+| ----------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `declared-imports`            | Runtime source must not rely on hoisted or phantom dependencies absent from the package manifest. | Scan package source imports and confirm every external module is declared or is a Node built-in.  |
 | `no-package-manager-mutation` | A lane must stop rather than run install or add commands when a new dependency would be required. | Confirm root manifests, lockfile, workspace files, and node_modules were not mutated by the lane. |
 
 ## deterministic-schematics
@@ -112,10 +112,10 @@ The core standards catalog is `vibe-engineer-core-standards` (`SUPPORTED_SCHEMA_
 - **Applies to:** `fixtures`, `schemas`, `schematics`, `verification`.
 - **References:** Verification layer specification.
 
-| Requirement | Statement | Verification |
-| --- | --- | --- |
+| Requirement      | Statement                                                                                                              | Verification                                                                                         |
+| ---------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
 | `typed-manifest` | A schematic declares its inputs, generated paths, conflict policy, and verification expectations in a strict manifest. | Validate manifest fixtures and reject unknown fields, missing path policy, and unsupported versions. |
-| `dry-run-first` | Dry-run mode reports planned changes without writing and apply mode refuses conflicting files. | Run dry-run, apply, repeat-apply, and conflict fixtures at the real engine boundary. |
+| `dry-run-first`  | Dry-run mode reports planned changes without writing and apply mode refuses conflicting files.                         | Run dry-run, apply, repeat-apply, and conflict fixtures at the real engine boundary.                 |
 
 ---
 
@@ -123,20 +123,20 @@ The core standards catalog is `vibe-engineer-core-standards` (`SUPPORTED_SCHEMA_
 
 ```js
 import {
-  listStandards,              // () => standardId[]
-  loadStandard,               // (id) => StandardDefinition
-  getStandardsCatalog,        // () => StandardsCatalog
+  listStandards, // () => standardId[]
+  loadStandard, // (id) => StandardDefinition
+  getStandardsCatalog, // () => StandardsCatalog
   validateStandardDefinition, // (definition) => { ok, errors }
-  validateStandardsCatalog,   // (catalog) => { ok, errors }
+  validateStandardsCatalog, // (catalog) => { ok, errors }
   STANDARD_IDS,
   STANDARDS_CATALOG,
-  STANDARD_SCHEMA_KINDS,      // ["standard-definition","standards-catalog"]
+  STANDARD_SCHEMA_KINDS, // ["standard-definition","standards-catalog"]
   STANDARD_SCHEMA_FILES,
   STANDARD_SCHEMA_IDS,
   loadStandardsSchema,
   loadAllStandardsSchemas,
   STANDARD_ERROR_CODES,
-  StandardsError
+  StandardsError,
 } from "@vibe-engineer/standards";
 ```
 

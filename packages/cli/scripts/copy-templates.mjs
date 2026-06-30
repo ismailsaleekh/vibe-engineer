@@ -84,7 +84,9 @@ function copyFileAtomic(src, dest) {
       if (!opened) reject(new Error(`copy-templates: cannot read ${src}: ${error.message}`));
     });
     const target = createWriteStream(tmp);
-    target.on("error", (error) => reject(new Error(`copy-templates: cannot write ${tmp}: ${error.message}`)));
+    target.on("error", (error) =>
+      reject(new Error(`copy-templates: cannot write ${tmp}: ${error.message}`)),
+    );
     target.on("finish", () => {
       opened = true;
       fs.rename(tmp, dest).then(resolve, (error) => {
@@ -123,7 +125,7 @@ async function buildLayoutManifest(starterDestRoot, starterFiles) {
     sourceRoot: "examples/starter-reference/.source-template",
     shippedRoot: "templates/starter",
     fileCount: entries.length,
-    files: entries
+    files: entries,
   };
 }
 
@@ -150,10 +152,14 @@ async function main() {
     });
   }
 
-  log(`copying starter: ${path.relative(REPO_ROOT, STARTER_SRC)} → ${path.relative(REPO_ROOT, STARTER_OUT)}`);
+  log(
+    `copying starter: ${path.relative(REPO_ROOT, STARTER_SRC)} → ${path.relative(REPO_ROOT, STARTER_OUT)}`,
+  );
   const starterFiles = await copyTree(STARTER_SRC, STARTER_OUT);
 
-  log(`copying pi assets: ${PI_SRC_DIRS.map((d) => path.relative(REPO_ROOT, path.join(PI_SRC_ROOT, d))).join(", ")} → ${path.relative(REPO_ROOT, PI_OUT)}`);
+  log(
+    `copying pi assets: ${PI_SRC_DIRS.map((d) => path.relative(REPO_ROOT, path.join(PI_SRC_ROOT, d))).join(", ")} → ${path.relative(REPO_ROOT, PI_OUT)}`,
+  );
   const piFiles = [];
   for (const dir of PI_SRC_DIRS) {
     const files = await copyTree(path.join(PI_SRC_ROOT, dir), path.join(PI_OUT, dir));
@@ -165,7 +171,9 @@ async function main() {
   await rmrf(LAYOUT_OUT);
   await writeJsonAtomic(LAYOUT_OUT, layout);
 
-  log(`done: starter=${starterFiles.length} files, pi=${piFiles.length} files, layout entries=${layout.files.length}`);
+  log(
+    `done: starter=${starterFiles.length} files, pi=${piFiles.length} files, layout entries=${layout.files.length}`,
+  );
 }
 
 main().catch((error) => {

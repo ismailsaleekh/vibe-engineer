@@ -55,13 +55,27 @@ type ValidationResultApi = { valid: boolean; errors?: unknown };
 
 // Typed wrappers: workspace deps are JS siblings; wrapping preserves exact call semantics while
 // giving the call sites explicit typed contracts (no `as unknown`, no FunctionType annotation).
-function getConfig(options: UnknownRecord): UnknownRecord { return createDefaultVibeConfig(options); }
-function writeContext(options: UnknownRecord): Promise<UnknownRecord> { return writeContextProject(options); }
-function getMatrix(): CapabilityMatrixApi { return getPiAdapterCapabilityMatrix(); }
-function getManifest(): GeneratedFileManifestApi { return getPiGeneratedFileManifest(); }
-function isManifestSelectable(matrix: CapabilityMatrixApi, adapterId: string): boolean { return isAdapterManifestSelectable(matrix, adapterId); }
-function validateMatrix(value: unknown): ValidationResultApi { return validateCapabilityMatrix(value); }
-function validateManifest(value: unknown): ValidationResultApi { return validateGeneratedFileManifest(value); }
+function getConfig(options: UnknownRecord): UnknownRecord {
+  return createDefaultVibeConfig(options);
+}
+function writeContext(options: UnknownRecord): Promise<UnknownRecord> {
+  return writeContextProject(options);
+}
+function getMatrix(): CapabilityMatrixApi {
+  return getPiAdapterCapabilityMatrix();
+}
+function getManifest(): GeneratedFileManifestApi {
+  return getPiGeneratedFileManifest();
+}
+function isManifestSelectable(matrix: CapabilityMatrixApi, adapterId: string): boolean {
+  return isAdapterManifestSelectable(matrix, adapterId);
+}
+function validateMatrix(value: unknown): ValidationResultApi {
+  return validateCapabilityMatrix(value);
+}
+function validateManifest(value: unknown): ValidationResultApi {
+  return validateGeneratedFileManifest(value);
+}
 
 export const SELECTED_PI_HARNESS = "pi";
 export const I15A_LANE_ID = "I-15A-create-import-cli-ux-selected-harness";
@@ -126,25 +140,50 @@ export function resolveSelectedPiManifest(): SelectedManifest | ResolveManifestE
   }
   const matrixValidation = validateMatrix(matrix);
   if (!matrixValidation.valid) {
-    return { code: "INVALID_CAPABILITY_MATRIX", message: "Pi adapter capability matrix failed its own validator.", details: { errors: matrixValidation.errors ?? null } };
+    return {
+      code: "INVALID_CAPABILITY_MATRIX",
+      message: "Pi adapter capability matrix failed its own validator.",
+      details: { errors: matrixValidation.errors ?? null },
+    };
   }
   const manifestValidation = validateManifest(manifest);
   if (!manifestValidation.valid) {
-    return { code: "INVALID_GENERATED_FILE_MANIFEST", message: "Pi generated-file manifest failed its own validator.", details: { errors: manifestValidation.errors ?? null } };
+    return {
+      code: "INVALID_GENERATED_FILE_MANIFEST",
+      message: "Pi generated-file manifest failed its own validator.",
+      details: { errors: manifestValidation.errors ?? null },
+    };
   }
-  if (manifest.adapterId !== PI_ADAPTER_ID || matrix.adapterPackage !== "@vibe-engineer/adapter-pi") {
-    return { code: "MANIFEST_ADAPTER_MISMATCH", message: "Loaded manifest does not identify the pi adapter.", details: { adapterId: manifest.adapterId, adapterPackage: matrix.adapterPackage } };
+  if (
+    manifest.adapterId !== PI_ADAPTER_ID ||
+    matrix.adapterPackage !== "@vibe-engineer/adapter-pi"
+  ) {
+    return {
+      code: "MANIFEST_ADAPTER_MISMATCH",
+      message: "Loaded manifest does not identify the pi adapter.",
+      details: { adapterId: manifest.adapterId, adapterPackage: matrix.adapterPackage },
+    };
   }
-  const ownedFamilies = manifest.families.filter((family) => family.producedByLane === I15A_LANE_ID);
+  const ownedFamilies = manifest.families.filter(
+    (family) => family.producedByLane === I15A_LANE_ID,
+  );
   const ownedIds = new Set(ownedFamilies.map((family) => family.familyId));
   for (const expected of I15A_OWNED_FAMILIES) {
     if (!ownedIds.has(expected)) {
-      return { code: "MANIFEST_FAMILY_DRIFT", message: `Expected I-15A-owned manifest family '${expected}' is absent.`, details: { expected, present: [...ownedIds] } };
+      return {
+        code: "MANIFEST_FAMILY_DRIFT",
+        message: `Expected I-15A-owned manifest family '${expected}' is absent.`,
+        details: { expected, present: [...ownedIds] },
+      };
     }
   }
   for (const family of ownedFamilies) {
     if (family.readiness.state !== "ready") {
-      return { code: "MANIFEST_FAMILY_NOT_READY", message: `I-15A-owned family '${family.familyId}' is not ready.`, details: { familyId: family.familyId, state: family.readiness.state } };
+      return {
+        code: "MANIFEST_FAMILY_NOT_READY",
+        message: `I-15A-owned family '${family.familyId}' is not ready.`,
+        details: { familyId: family.familyId, state: family.readiness.state },
+      };
     }
   }
   const meta: ManifestMeta = {
@@ -157,27 +196,44 @@ export function resolveSelectedPiManifest(): SelectedManifest | ResolveManifestE
   return { matrix, manifest, meta, ownedFamilies };
 }
 
-export type HarnessGateError = { code: string; classification: string; message: string; details: UnknownRecord };
+export type HarnessGateError = {
+  code: string;
+  classification: string;
+  message: string;
+  details: UnknownRecord;
+};
 
 // Gate on manifest-selectability (NOT createImportSelectable — enabling create/import is THIS lane's job).
-export function gateSelectedHarness(selected: SelectedManifest, requestedHarness: string | undefined): HarnessGateError | null {
-  const harness = typeof requestedHarness === "string" && requestedHarness.length > 0 ? requestedHarness : SELECTED_PI_HARNESS;
+export function gateSelectedHarness(
+  selected: SelectedManifest,
+  requestedHarness: string | undefined,
+): HarnessGateError | null {
+  const harness =
+    typeof requestedHarness === "string" && requestedHarness.length > 0
+      ? requestedHarness
+      : SELECTED_PI_HARNESS;
   if (harness !== SELECTED_PI_HARNESS) {
-    const deferred = DEFERRED_HARNESSES.includes(harness as never) || harness === LATER_INTEGRATIONS;
+    const deferred =
+      DEFERRED_HARNESSES.includes(harness as never) || harness === LATER_INTEGRATIONS;
     return {
       code: deferred ? "DEFERRED_HARNESS_BLOCKED" : "UNSUPPORTED_HARNESS_BLOCKED",
       classification: "unsupported_operation",
       message: deferred
         ? `Harness '${harness}' is deferred in v1 and is not selectable; only the pi agentic harness is selectable.`
         : `Harness '${harness}' is not a supported agentic harness; only the pi agentic harness is selectable.`,
-      details: { requestedHarness: harness, supported: [SELECTED_PI_HARNESS], deferred: [...DEFERRED_HARNESSES] },
+      details: {
+        requestedHarness: harness,
+        supported: [SELECTED_PI_HARNESS],
+        deferred: [...DEFERRED_HARNESSES],
+      },
     };
   }
   if (!isManifestSelectable(selected.matrix, SELECTED_PI_HARNESS)) {
     return {
       code: "PI_NOT_MANIFEST_SELECTABLE",
       classification: "missing_prerequisite",
-      message: "The pi adapter is not manifest-selectable on disk; selected-harness join cannot proceed.",
+      message:
+        "The pi adapter is not manifest-selectable on disk; selected-harness join cannot proceed.",
       details: { adapterId: SELECTED_PI_HARNESS },
     };
   }
@@ -236,7 +292,12 @@ export function isSecretLikeBrief(text: string): boolean {
   const trimmed = text.trim();
   if (trimmed.length === 0) return false;
   if (/^(?:sk|ghp|gho|github_pat|xox[baprs])-?[A-Za-z0-9_=-]{12,}$/iu.test(trimmed)) return true;
-  if (/\b(?:Bearer|token|password|passphrase|secret|api[_-]?key|credential|client[_-]?secret)\s*[:=]\s*\S+/iu.test(trimmed)) return true;
+  if (
+    /\b(?:Bearer|token|password|passphrase|secret|api[_-]?key|credential|client[_-]?secret)\s*[:=]\s*\S+/iu.test(
+      trimmed,
+    )
+  )
+    return true;
   return false;
 }
 
@@ -259,7 +320,10 @@ export function buildBootstrap(input: BuildBootstrapInput): BootstrapArtifacts {
   const briefStatus: BriefStatus = trimmedBrief.length === 0 ? "skipped" : "provided";
   const unknown = (reason: string): ProvenanceEntry => ({ label: "unknown", source: reason });
 
-  const harnessDefault = (source: string): ProvenanceEntry => ({ label: "harness_default", source });
+  const harnessDefault = (source: string): ProvenanceEntry => ({
+    label: "harness_default",
+    source,
+  });
 
   const sourceRecord: BootstrapArtifacts["sourceRecord"] = {
     briefStatus,
@@ -275,10 +339,16 @@ export function buildBootstrap(input: BuildBootstrapInput): BootstrapArtifacts {
     const provenanceMap: UnknownRecord = {
       projectName: { label: "normalized_from_user", source: "create/import naming value" },
       projectSlug: { label: "normalized_from_user", source: "create/import naming value" },
-      selectedHarness: { label: "harness_default", source: "DL-06 agentic harness integration; pi is the only v1 selectable harness" },
+      selectedHarness: {
+        label: "harness_default",
+        source: "DL-06 agentic harness integration; pi is the only v1 selectable harness",
+      },
       briefSummary: { label: "placeholder", source: "no user-provided brief" },
       goals: { label: "unknown", source: "no brief provided" },
-      brainstormInstruction: { label: "harness_default", source: "DL-17 skipped-brief later-skill recommendation" },
+      brainstormInstruction: {
+        label: "harness_default",
+        source: "DL-17 skipped-brief later-skill recommendation",
+      },
     };
     const highLevel: BootstrapHighLevel = {
       projectName: input.projectName,
@@ -308,17 +378,25 @@ export function buildBootstrap(input: BuildBootstrapInput): BootstrapArtifacts {
   const provenanceMap: UnknownRecord = {
     projectName: { label: "normalized_from_user", source: "create/import naming value" },
     projectSlug: { label: "normalized_from_user", source: "create/import naming value" },
-    selectedHarness: { label: "harness_default", source: "DL-06 agentic harness integration; pi is the only v1 selectable harness" },
+    selectedHarness: {
+      label: "harness_default",
+      source: "DL-06 agentic harness integration; pi is the only v1 selectable harness",
+    },
     briefSummary: { label: "user_provided", source: "user-provided project brief (verbatim)" },
     goals: { label: "unknown", source: "not explicitly extracted from the brief" },
-    brainstormInstruction: { label: "harness_default", source: "DL-17 advisory refinement instruction for sparse briefs" },
+    brainstormInstruction: {
+      label: "harness_default",
+      source: "DL-17 advisory refinement instruction for sparse briefs",
+    },
   };
   const highLevel: BootstrapHighLevel = {
     projectName: input.projectName,
     projectSlug,
     selectedHarness: input.selectedHarness,
     briefSummary: trimmedBrief,
-    goals: unknown("Goals are not explicitly and unambiguously extracted from the brief; refine via brainstorm."),
+    goals: unknown(
+      "Goals are not explicitly and unambiguously extracted from the brief; refine via brainstorm.",
+    ),
     constraints: unknown("Constraints are not explicitly extracted from the brief."),
     nonGoals: unknown("Non-goals are not explicitly extracted from the brief."),
     audience: unknown("Audience/users are not explicitly extracted from the brief."),
@@ -351,11 +429,19 @@ function contained(parent: string, child: string): boolean {
 
 export type ResolveTargetResult = { ok: true; targetRoot: string } | { ok: false; error: string };
 
-export function resolveTargetRoot(projectRoot: string, targetRootValue: string, label: string): ResolveTargetResult {
-  if (targetRootValue.trim().length === 0) return { ok: false, error: `${label} must be a non-empty path.` };
+export function resolveTargetRoot(
+  projectRoot: string,
+  targetRootValue: string,
+  label: string,
+): ResolveTargetResult {
+  if (targetRootValue.trim().length === 0)
+    return { ok: false, error: `${label} must be a non-empty path.` };
   const rootReal = realRoot(projectRoot);
-  const resolved = isAbsolute(targetRootValue) ? resolve(targetRootValue) : resolve(rootReal, targetRootValue);
-  if (!contained(rootReal, resolved)) return { ok: false, error: `${label} escapes the project root.` };
+  const resolved = isAbsolute(targetRootValue)
+    ? resolve(targetRootValue)
+    : resolve(rootReal, targetRootValue);
+  if (!contained(rootReal, resolved))
+    return { ok: false, error: `${label} escapes the project root.` };
   return { ok: true, targetRoot: resolved };
 }
 
@@ -405,19 +491,47 @@ function provenanceLine(entry: ProvenanceEntry | null | undefined, value: string
   return `- ${value} — provenance: ${entry.label}${entry.source ? ` (${entry.source})` : ""}`;
 }
 
-function renderContextMarkdown(kind: "AGENTS.md" | "CLAUDE.md", bootstrap: BootstrapArtifacts, meta: ManifestMeta): string {
+function renderContextMarkdown(
+  kind: "AGENTS.md" | "CLAUDE.md",
+  bootstrap: BootstrapArtifacts,
+  meta: ManifestMeta,
+): string {
   const { highLevel, sourceRecord } = bootstrap;
   const harnessVerb = sourceRecord.briefStatus === "provided" ? "create" : "create/import";
   const lines: string[] = [];
   lines.push("# " + highLevel.projectName + " — Project Context (" + kind + ")");
   lines.push("");
-  lines.push("> Bootstrap context generated by 'vibe-engineer " + harnessVerb + "'. This is sparse, provenance-labeled setup context — NOT a product plan. Every load-bearing statement carries a DL-17 provenance label.");
+  lines.push(
+    "> Bootstrap context generated by 'vibe-engineer " +
+      harnessVerb +
+      "'. This is sparse, provenance-labeled setup context — NOT a product plan. Every load-bearing statement carries a DL-17 provenance label.",
+  );
   lines.push("");
   lines.push("## Setup facts");
-  lines.push(provenanceLine({ label: "normalized_from_user", source: "create/import naming value" }, "Project name: '" + highLevel.projectName + "' (slug '" + highLevel.projectSlug + "')"));
-  lines.push(provenanceLine({ label: "harness_default", source: "DL-06 agentic harness integration" }, "Selected agentic harness: '" + highLevel.selectedHarness + "'"));
-  lines.push(provenanceLine({ label: "harness_default", source: "DL-06 pi generated-file manifest" }, "Adapter capability version: '" + meta.adapterCapabilityVersion + "'"));
-  lines.push(provenanceLine({ label: "harness_default", source: "DL-06 pi generated-file manifest" }, "Generated-file manifest version: '" + meta.generatedFileManifestVersion + "'"));
+  lines.push(
+    provenanceLine(
+      { label: "normalized_from_user", source: "create/import naming value" },
+      "Project name: '" + highLevel.projectName + "' (slug '" + highLevel.projectSlug + "')",
+    ),
+  );
+  lines.push(
+    provenanceLine(
+      { label: "harness_default", source: "DL-06 agentic harness integration" },
+      "Selected agentic harness: '" + highLevel.selectedHarness + "'",
+    ),
+  );
+  lines.push(
+    provenanceLine(
+      { label: "harness_default", source: "DL-06 pi generated-file manifest" },
+      "Adapter capability version: '" + meta.adapterCapabilityVersion + "'",
+    ),
+  );
+  lines.push(
+    provenanceLine(
+      { label: "harness_default", source: "DL-06 pi generated-file manifest" },
+      "Generated-file manifest version: '" + meta.generatedFileManifestVersion + "'",
+    ),
+  );
   lines.push("");
   if (sourceRecord.briefStatus === "provided") {
     lines.push("## Provided project brief (verbatim, user_provided)");
@@ -430,15 +544,52 @@ function renderContextMarkdown(kind: "AGENTS.md" | "CLAUDE.md", bootstrap: Boots
   } else {
     lines.push("## Brief status");
     lines.push("");
-    lines.push("Brief status: 'skipped' (placeholder — no user-provided brief). High-level product context is intentionally incomplete ('needs_user_context').");
+    lines.push(
+      "Brief status: 'skipped' (placeholder — no user-provided brief). High-level product context is intentionally incomplete ('needs_user_context').",
+    );
     lines.push("");
     lines.push("## High-level context (intentional placeholder)");
   }
-  lines.push(provenanceLine(highLevel.goals.label === "unknown" ? { label: "unknown", source: highLevel.goals.source } : highLevel.goals, `Goals: ${highLevel.goals.label === "unknown" ? "unknown" : "(see above)"}`));
-  lines.push(provenanceLine(highLevel.constraints.label === "unknown" ? { label: "unknown", source: highLevel.constraints.source } : highLevel.constraints, `Constraints: ${highLevel.constraints.label === "unknown" ? "unknown" : "(see above)"}`));
-  lines.push(provenanceLine(highLevel.nonGoals.label === "unknown" ? { label: "unknown", source: highLevel.nonGoals.source } : highLevel.nonGoals, `Non-goals: ${highLevel.nonGoals.label === "unknown" ? "unknown" : "(see above)"}`));
-  lines.push(provenanceLine(highLevel.audience.label === "unknown" ? { label: "unknown", source: highLevel.audience.source } : highLevel.audience, `Audience/users: ${highLevel.audience.label === "unknown" ? "unknown" : "(see above)"}`));
-  lines.push(provenanceLine(highLevel.integrations.label === "unknown" ? { label: "unknown", source: highLevel.integrations.source } : highLevel.integrations, `Integrations: ${highLevel.integrations.label === "unknown" ? "unknown" : "(see above)"}`));
+  lines.push(
+    provenanceLine(
+      highLevel.goals.label === "unknown"
+        ? { label: "unknown", source: highLevel.goals.source }
+        : highLevel.goals,
+      `Goals: ${highLevel.goals.label === "unknown" ? "unknown" : "(see above)"}`,
+    ),
+  );
+  lines.push(
+    provenanceLine(
+      highLevel.constraints.label === "unknown"
+        ? { label: "unknown", source: highLevel.constraints.source }
+        : highLevel.constraints,
+      `Constraints: ${highLevel.constraints.label === "unknown" ? "unknown" : "(see above)"}`,
+    ),
+  );
+  lines.push(
+    provenanceLine(
+      highLevel.nonGoals.label === "unknown"
+        ? { label: "unknown", source: highLevel.nonGoals.source }
+        : highLevel.nonGoals,
+      `Non-goals: ${highLevel.nonGoals.label === "unknown" ? "unknown" : "(see above)"}`,
+    ),
+  );
+  lines.push(
+    provenanceLine(
+      highLevel.audience.label === "unknown"
+        ? { label: "unknown", source: highLevel.audience.source }
+        : highLevel.audience,
+      `Audience/users: ${highLevel.audience.label === "unknown" ? "unknown" : "(see above)"}`,
+    ),
+  );
+  lines.push(
+    provenanceLine(
+      highLevel.integrations.label === "unknown"
+        ? { label: "unknown", source: highLevel.integrations.source }
+        : highLevel.integrations,
+      `Integrations: ${highLevel.integrations.label === "unknown" ? "unknown" : "(see above)"}`,
+    ),
+  );
   lines.push("");
   lines.push("## Unknowns");
   for (const item of highLevel.unknowns) lines.push(`- ${item} — provenance: unknown`);
@@ -459,8 +610,12 @@ function renderContextMarkdown(kind: "AGENTS.md" | "CLAUDE.md", bootstrap: Boots
   lines.push("");
   lines.push("- Product/package/CLI name: `vibe-engineer`.");
   lines.push(`- Six skills: ${VIBE_ENGINEER_SKILLS.join(", ")}.`);
-  lines.push("- Artifact flow: raw intent → Work Brief → Implementation Plan → Build Result → Ship Packet.");
-  lines.push("- Anti-overdesign (DL-17): no roadmap, schema, domain model, architecture, users, integrations, or workflow is inferred from a sparse/skipped brief.");
+  lines.push(
+    "- Artifact flow: raw intent → Work Brief → Implementation Plan → Build Result → Ship Packet.",
+  );
+  lines.push(
+    "- Anti-overdesign (DL-17): no roadmap, schema, domain model, architecture, users, integrations, or workflow is inferred from a sparse/skipped brief.",
+  );
   lines.push("");
   return lines.join("\n");
 }
@@ -472,9 +627,10 @@ export async function writeGeneratedArtifacts(
   options: { reset: boolean },
 ): Promise<GeneratedArtifacts> {
   const starterContextManifestPath = resolve(targetRoot, ".vibe", "context", "manifest.json");
-  const starterContextManifest = options.reset && existsSync(starterContextManifestPath)
-    ? await readFile(starterContextManifestPath, "utf8")
-    : null;
+  const starterContextManifest =
+    options.reset && existsSync(starterContextManifestPath)
+      ? await readFile(starterContextManifestPath, "utf8")
+      : null;
   if (options.reset) {
     await rm(resolve(targetRoot, ".vibe", "context"), { recursive: true, force: true });
   }
@@ -488,7 +644,8 @@ export async function writeGeneratedArtifacts(
   const configPath = resolve(targetRoot, "vibe-engineer.config.json");
   const templateConfig = await readJsonObjectIfPresent(configPath);
   const configObject = getConfig({ agenticHarness: SELECTED_PI_HARNESS });
-  const mergedConfig = templateConfig === null ? configObject : mergeJsonObjects(templateConfig, configObject);
+  const mergedConfig =
+    templateConfig === null ? configObject : mergeJsonObjects(templateConfig, configObject);
   await mkdir(dirname(configPath), { recursive: true });
   await writeFile(configPath, `${JSON.stringify(mergedConfig, null, 2)}\n`, "utf8");
 
@@ -499,21 +656,32 @@ export async function writeGeneratedArtifacts(
   await writeFile(claudePath, renderContextMarkdown("CLAUDE.md", bootstrap, meta), "utf8");
 
   // --- bootstrap source record (DL-17) ---
-  const sourceRecordPath = resolve(targetRoot, ".vibe", "context", "sources", "bootstrap-brief.json");
+  const sourceRecordPath = resolve(
+    targetRoot,
+    ".vibe",
+    "context",
+    "sources",
+    "bootstrap-brief.json",
+  );
   await mkdir(dirname(sourceRecordPath), { recursive: true });
   await writeFile(sourceRecordPath, `${JSON.stringify(bootstrap.sourceRecord, null, 2)}\n`, "utf8");
 
   // --- DL-09 context graph/index via the real context package (W-CONSUMER-CONTEXT producer side) ---
-  const briefSourceContent = bootstrap.briefStatus === "provided"
-    ? `# Bootstrap Project Brief (user_provided)\n\n${bootstrap.sourceRecord.briefText ?? ""}\n`
-    : `# Bootstrap Brief Absence Record\n\nbrief_status: skipped\nNo user-provided project brief is available; high-level context is intentionally incomplete.\n`;
+  const briefSourceContent =
+    bootstrap.briefStatus === "provided"
+      ? `# Bootstrap Project Brief (user_provided)\n\n${bootstrap.sourceRecord.briefText ?? ""}\n`
+      : `# Bootstrap Brief Absence Record\n\nbrief_status: skipped\nNo user-provided project brief is available; high-level context is intentionally incomplete.\n`;
   const contextSources = [
     {
       sourceId: "src:bootstrap-brief",
       relativePath: ".vibe/context/sources/bootstrap-brief.md",
       content: briefSourceContent,
       kind: "source_doc",
-      artifactRef: { artifactKind: "context_file_header", artifactId: "bootstrap-brief", path: ".vibe/context/sources/bootstrap-brief.md" },
+      artifactRef: {
+        artifactKind: "context_file_header",
+        artifactId: "bootstrap-brief",
+        path: ".vibe/context/sources/bootstrap-brief.md",
+      },
       level: 1,
     },
   ];
@@ -532,7 +700,11 @@ export async function writeGeneratedArtifacts(
           citationRefs: ["src:bootstrap-brief:sha256"],
         },
       ],
-      scope: { kind: "repo", paths: ["."], description: "Domain-neutral bootstrap project context (DL-17)." },
+      scope: {
+        kind: "repo",
+        paths: ["."],
+        description: "Domain-neutral bootstrap project context (DL-17).",
+      },
     },
   ];
   const contextSummaries = [
@@ -544,9 +716,10 @@ export async function writeGeneratedArtifacts(
       derivedFromNodeIds: ["ctx:bootstrap"],
       level: 2,
       mandatory: false,
-      summary: bootstrap.briefStatus === "provided"
-        ? "Sparse provided-brief high-level context; goals/constraints/integrations remain unknown (DL-17 anti-overdesign)."
-        : "Intentional skipped-brief placeholder; run the brainstorm skill to create initial high-level context.",
+      summary:
+        bootstrap.briefStatus === "provided"
+          ? "Sparse provided-brief high-level context; goals/constraints/integrations remain unknown (DL-17 anti-overdesign)."
+          : "Intentional skipped-brief placeholder; run the brainstorm skill to create initial high-level context.",
     },
   ];
   const contextProject = await writeContext({
@@ -557,8 +730,26 @@ export async function writeGeneratedArtifacts(
     areas: contextAreas,
     summaries: contextSummaries,
     links: [
-      { linkId: "work:bootstrap-create", kind: "work", ref: { artifactKind: "implementation_plan", artifactId: "ip:bootstrap-create", path: ".vibe/work/bootstrap/create-result.json" }, content: '{"status":"bootstrap"}\n' },
-      { linkId: "decision:dl17", kind: "decision", ref: { artifactKind: "context_file_header", artifactId: "dl:17", path: "docs/decisions/DL-17-bootstrap-context-generation.md" }, content: "# DL-17\nBootstrap context generation contract.\n" },
+      {
+        linkId: "work:bootstrap-create",
+        kind: "work",
+        ref: {
+          artifactKind: "implementation_plan",
+          artifactId: "ip:bootstrap-create",
+          path: ".vibe/work/bootstrap/create-result.json",
+        },
+        content: '{"status":"bootstrap"}\n',
+      },
+      {
+        linkId: "decision:dl17",
+        kind: "decision",
+        ref: {
+          artifactKind: "context_file_header",
+          artifactId: "dl:17",
+          path: "docs/decisions/DL-17-bootstrap-context-generation.md",
+        },
+        content: "# DL-17\nBootstrap context generation contract.\n",
+      },
     ],
   });
 

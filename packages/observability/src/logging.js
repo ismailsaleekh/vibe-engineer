@@ -16,10 +16,7 @@
 // NEVER call ad-hoc `console.log` as the carrier — the structured record is the
 // contract; console is a non-authoritative projection only (DL-23 §4).
 
-import {
-  parseLogRecord,
-  SCHEMA_VERSIONS,
-} from "./contracts.js";
+import { parseLogRecord, SCHEMA_VERSIONS } from "./contracts.js";
 import { redactRecord } from "./redaction.js";
 
 /**
@@ -62,7 +59,9 @@ import { redactRecord } from "./redaction.js";
  */
 export function createLogger(options) {
   if (!options || typeof options.sink?.write !== "function") {
-    throw new Error("createLogger: a typed LogSink { write } is required (DL-23 logging abstraction)");
+    throw new Error(
+      "createLogger: a typed LogSink { write } is required (DL-23 logging abstraction)",
+    );
   }
   const serviceName = options.serviceName;
   const surface = options.surface;
@@ -163,12 +162,17 @@ export function createPinoSink(pinoInstanceOrStream, extra) {
       const severity = String(record.severity ?? "info");
       /** @param {string} lvl @param {(...a: any[]) => void} fallback */
       const pinoLevel =
-        severity === "debug" ? inst.debug
-        : severity === "info" ? inst.info
-        : severity === "warn" ? inst.warn
-        : severity === "error" ? inst.error
-        : severity === "fatal" ? inst.fatal
-        : inst.info;
+        severity === "debug"
+          ? inst.debug
+          : severity === "info"
+            ? inst.info
+            : severity === "warn"
+              ? inst.warn
+              : severity === "error"
+                ? inst.error
+                : severity === "fatal"
+                  ? inst.fatal
+                  : inst.info;
       if (typeof inst.write === "function" && typeof pinoLevel !== "function") {
         inst.write(`${line}\n`);
       } else if (typeof pinoLevel === "function") {
@@ -192,7 +196,9 @@ export function createPinoSink(pinoInstanceOrStream, extra) {
  */
 export function createBrowserRnCaptureAdapter(opts) {
   if (!opts?.capture || !Array.isArray(opts.capture)) {
-    throw new Error("createBrowserRnCaptureAdapter: a capture list is required (DL-23 §3 local capture sink)");
+    throw new Error(
+      "createBrowserRnCaptureAdapter: a capture list is required (DL-23 §3 local capture sink)",
+    );
   }
   return {
     sink: {
@@ -205,7 +211,9 @@ export function createBrowserRnCaptureAdapter(opts) {
       // console.table never crashes the authoritative path.
       const c = /** @type {any} */ (globalThis).console;
       if (c && typeof c.log === "function") {
-        c.log(`[observability] ${projection.severity ?? "info"} ${projection["operation.name"] ?? ""}`);
+        c.log(
+          `[observability] ${projection.severity ?? "info"} ${projection["operation.name"] ?? ""}`,
+        );
       }
     },
   };

@@ -6,8 +6,15 @@
   "type": "object",
   "additionalProperties": false,
   "required": [
-    "schemaVersion", "profile", "generatedAt", "projectRoot", "evidenceDir",
-    "wiring", "tiers", "overallOk", "exitCode"
+    "schemaVersion",
+    "profile",
+    "generatedAt",
+    "projectRoot",
+    "evidenceDir",
+    "wiring",
+    "tiers",
+    "overallOk",
+    "exitCode"
   ],
   "properties": {
     "schemaVersion": { "type": "string", "const": "quality.summary/1" },
@@ -18,11 +25,23 @@
     "wiring": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["verdict", "expectedFamilies", "registeredAndRunningFamilies", "missingFamilies", "evidenceFile"],
+      "required": [
+        "verdict",
+        "expectedFamilies",
+        "registeredAndRunningFamilies",
+        "missingFamilies",
+        "evidenceFile"
+      ],
       "properties": {
         "verdict": { "type": "string", "enum": ["pass", "fail"] },
-        "expectedFamilies": { "type": "array", "items": { "type": "string", "pattern": "^p\\d+$" } },
-        "registeredAndRunningFamilies": { "type": "array", "items": { "type": "string", "pattern": "^p\\d+$" } },
+        "expectedFamilies": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^p\\d+$" }
+        },
+        "registeredAndRunningFamilies": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^p\\d+$" }
+        },
         "missingFamilies": { "type": "array", "items": { "type": "string", "pattern": "^p\\d+$" } },
         "evidenceFile": { "type": "string", "minLength": 1 }
       }
@@ -32,17 +51,24 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["family", "exportName", "registered", "running", "carrierFamily", "ok", "findingCount", "blockingFindingCount", "evidenceFile"],
+        "required": [
+          "family",
+          "exportName",
+          "registered",
+          "running",
+          "carrierFamily",
+          "ok",
+          "findingCount",
+          "blockingFindingCount",
+          "evidenceFile"
+        ],
         "properties": {
           "family": { "type": "string", "pattern": "^p\\d+$" },
           "exportName": { "type": "string", "pattern": "^runP\\d+Aggregate$" },
           "registered": { "type": "boolean" },
           "running": { "type": "boolean" },
           "carrierFamily": {
-            "oneOf": [
-              { "type": "string", "minLength": 1 },
-              { "type": "null" }
-            ]
+            "oneOf": [{ "type": "string", "minLength": 1 }, { "type": "null" }]
           },
           "ok": { "type": "boolean" },
           "findingCount": { "type": "integer" },
@@ -52,16 +78,10 @@
             "items": { "type": "string", "minLength": 1 }
           },
           "evidenceFile": {
-            "oneOf": [
-              { "type": "string", "minLength": 1 },
-              { "type": "null" }
-            ]
+            "oneOf": [{ "type": "string", "minLength": 1 }, { "type": "null" }]
           },
           "runError": {
-            "oneOf": [
-              { "type": "string", "minLength": 1 },
-              { "type": "null" }
-            ]
+            "oneOf": [{ "type": "string", "minLength": 1 }, { "type": "null" }]
           }
         }
       }
@@ -69,10 +89,7 @@
     "overallOk": { "type": "boolean" },
     "exitCode": { "type": "integer" },
     "skippedCategoryDiagnostic": {
-      "oneOf": [
-        { "type": "string", "minLength": 1 },
-        { "type": "null" }
-      ]
+      "oneOf": [{ "type": "string", "minLength": 1 }, { "type": "null" }]
     }
   }
 }

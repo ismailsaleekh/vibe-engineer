@@ -6,11 +6,20 @@ import {
   P0_FAMILIES,
   pathExists,
   readJsonFileBounded,
-  walkProjectFiles
+  walkProjectFiles,
 } from "../boundaries/contracts.js";
 
 const GOVERNANCE_CONFIG = "mechanical-surface.json";
-const GOVERNED_FILE_EXTENSIONS = new Set([".js", ".mjs", ".ts", ".tsx", ".json", ".md", ".yaml", ".yml"]);
+const GOVERNED_FILE_EXTENSIONS = new Set([
+  ".js",
+  ".mjs",
+  ".ts",
+  ".tsx",
+  ".json",
+  ".md",
+  ".yaml",
+  ".yml",
+]);
 
 function isGovernableFile(relativePath) {
   if (relativePath === GOVERNANCE_CONFIG) return false;
@@ -22,7 +31,8 @@ function isGovernableFile(relativePath) {
 
 function covers(surface, filePath) {
   if (surface.kind === "exact") return surface.path === filePath;
-  if (surface.kind === "prefix") return filePath === surface.path || filePath.startsWith(`${surface.path}/`);
+  if (surface.kind === "prefix")
+    return filePath === surface.path || filePath.startsWith(`${surface.path}/`);
   return false;
 }
 
@@ -36,7 +46,7 @@ function finding(ruleId, findingPath, message, evidence = {}) {
     ruleId,
     path: findingPath,
     message,
-    evidence
+    evidence,
   });
 }
 
@@ -46,8 +56,19 @@ export async function validateGovernedSurface(projectRoot, options = {}) {
   const findings = [];
 
   if (!Array.isArray(config.surfaces)) {
-    findings.push(finding("governed-surface.schema", configPath, "Governed surface config must contain a surfaces array."));
-    return createValidatorResult({ family: P0_FAMILIES.governedSurface, projectRoot, findings, evidence: { configPath } });
+    findings.push(
+      finding(
+        "governed-surface.schema",
+        configPath,
+        "Governed surface config must contain a surfaces array.",
+      ),
+    );
+    return createValidatorResult({
+      family: P0_FAMILIES.governedSurface,
+      projectRoot,
+      findings,
+      evidence: { configPath },
+    });
   }
 
   const surfaces = [];
@@ -60,21 +81,43 @@ export async function validateGovernedSurface(projectRoot, options = {}) {
     }
     const kind = row.kind === "prefix" ? "prefix" : row.kind === "exact" ? "exact" : undefined;
     if (!kind || typeof row.path !== "string" || row.path.length === 0) {
-      findings.push(finding("governed-surface.schema", rowPath, "Surface row must define non-empty path and exact/prefix kind."));
+      findings.push(
+        finding(
+          "governed-surface.schema",
+          rowPath,
+          "Surface row must define non-empty path and exact/prefix kind.",
+        ),
+      );
       continue;
     }
     const relative = normalizeProjectPath(projectRoot, row.path);
-    const tools = Array.isArray(row.tools) ? row.tools.filter((tool) => typeof tool === "string" && tool.length > 0) : [];
+    const tools = Array.isArray(row.tools)
+      ? row.tools.filter((tool) => typeof tool === "string" && tool.length > 0)
+      : [];
     if (tools.length === 0) {
-      findings.push(finding("governed-surface.empty-tool-surface", rowPath, "Governed surface row must name at least one owning tool.", { path: relative }));
+      findings.push(
+        finding(
+          "governed-surface.empty-tool-surface",
+          rowPath,
+          "Governed surface row must name at least one owning tool.",
+          { path: relative },
+        ),
+      );
     }
     const key = `${kind}:${relative}`;
     if (seenRows.has(key)) {
-      findings.push(finding("governed-surface.duplicate-row", rowPath, "Duplicate governed surface row is forbidden.", {
-        duplicateOf: seenRows.get(key),
-        path: relative,
-        kind
-      }));
+      findings.push(
+        finding(
+          "governed-surface.duplicate-row",
+          rowPath,
+          "Duplicate governed surface row is forbidden.",
+          {
+            duplicateOf: seenRows.get(key),
+            path: relative,
+            kind,
+          },
+        ),
+      );
     } else {
       seenRows.set(key, rowPath);
     }
@@ -82,38 +125,77 @@ export async function validateGovernedSurface(projectRoot, options = {}) {
   }
 
   const excludedPaths = Array.isArray(config.excludedPaths)
-    ? config.excludedPaths.filter((value) => typeof value === "string").map((value) => normalizeProjectPath(projectRoot, value))
+    ? config.excludedPaths
+        .filter((value) => typeof value === "string")
+        .map((value) => normalizeProjectPath(projectRoot, value))
     : [];
 
   for (const surface of surfaces) {
-    const leakedExclusion = excludedPaths.find((excludedPath) => underPrefix(excludedPath, surface.path) || underPrefix(surface.path, excludedPath));
+    const leakedExclusion = excludedPaths.find(
+      (excludedPath) =>
+        underPrefix(excludedPath, surface.path) || underPrefix(surface.path, excludedPath),
+    );
     if (leakedExclusion) {
-      findings.push(finding("governed-surface.excluded-path-leak", surface.rowPath, "Governed surface overlaps an excluded/generated/vendor path.", {
-        surfacePath: surface.path,
-        excludedPath: leakedExclusion
-      }));
+      findings.push(
+        finding(
+          "governed-surface.excluded-path-leak",
+          surface.rowPath,
+          "Governed surface overlaps an excluded/generated/vendor path.",
+          {
+            surfacePath: surface.path,
+            excludedPath: leakedExclusion,
+          },
+        ),
+      );
     }
   }
 
   const requiredPaths = Array.isArray(config.requiredPaths)
-    ? config.requiredPaths.filter((value) => typeof value === "string").map((value) => normalizeProjectPath(projectRoot, value))
+    ? config.requiredPaths
+        .filter((value) => typeof value === "string")
+        .map((value) => normalizeProjectPath(projectRoot, value))
     : [];
 
   for (const requiredPath of requiredPaths) {
     if (!(await pathExists(projectRoot, requiredPath))) {
-      findings.push(finding("governed-surface.missing-required-path", requiredPath, "Required governed path is absent on disk.", { requiredPath }));
+      findings.push(
+        finding(
+          "governed-surface.missing-required-path",
+          requiredPath,
+          "Required governed path is absent on disk.",
+          { requiredPath },
+        ),
+      );
       continue;
     }
     if (!surfaces.some((surface) => covers(surface, requiredPath))) {
-      findings.push(finding("governed-surface.missing-required-path", requiredPath, "Required governed path is not covered by any surface row.", { requiredPath }));
+      findings.push(
+        finding(
+          "governed-surface.missing-required-path",
+          requiredPath,
+          "Required governed path is not covered by any surface row.",
+          { requiredPath },
+        ),
+      );
     }
   }
 
   const allFiles = await walkProjectFiles(projectRoot);
-  const governableFiles = allFiles.filter(isGovernableFile).filter((filePath) => !excludedPaths.some((excludedPath) => underPrefix(excludedPath, filePath)));
+  const governableFiles = allFiles
+    .filter(isGovernableFile)
+    .filter(
+      (filePath) => !excludedPaths.some((excludedPath) => underPrefix(excludedPath, filePath)),
+    );
   for (const filePath of governableFiles) {
     if (!surfaces.some((surface) => covers(surface, filePath))) {
-      findings.push(finding("governed-surface.omitted-file", filePath, "Governable file is omitted from the governed surface registry.", { filePath }));
+      findings.push(
+        finding(
+          "governed-surface.omitted-file",
+          filePath,
+          "Governable file is omitted from the governed surface registry.",
+          { filePath },
+        ),
+      );
     }
   }
 
@@ -126,7 +208,7 @@ export async function validateGovernedSurface(projectRoot, options = {}) {
       governedSurfaceCount: surfaces.length,
       governableFileCount: governableFiles.length,
       requiredPathCount: requiredPaths.length,
-      excludedPathCount: excludedPaths.length
-    }
+      excludedPathCount: excludedPaths.length,
+    },
   });
 }

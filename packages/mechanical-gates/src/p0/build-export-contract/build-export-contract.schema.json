@@ -52,11 +52,21 @@
     "workspaceSurfaceException": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["id", "category", "subject", "allowedUse", "forbiddenUses", "productionRuntimeOrExportSource", "finalStateAllowed"],
+      "required": [
+        "id",
+        "category",
+        "subject",
+        "allowedUse",
+        "forbiddenUses",
+        "productionRuntimeOrExportSource",
+        "finalStateAllowed"
+      ],
       "properties": {
         "id": { "const": "workspace-surface-witness-evidence-only" },
         "category": { "const": "evidence-only-root-script" },
-        "subject": { "const": ".vibe/work/I-00A-workspace-package-skeleton/witnesses/workspace-surface-witness.mjs" },
+        "subject": {
+          "const": ".vibe/work/I-00A-workspace-package-skeleton/witnesses/workspace-surface-witness.mjs"
+        },
         "allowedUse": { "const": "root workspace:surface evidence witness" },
         "forbiddenUses": {
           "type": "array",
@@ -76,12 +86,21 @@
     "auditedProductionJsException": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["id", "category", "auditedProductionJsMjsCount", "classification", "finalAllowlist", "migrationOwner"],
+      "required": [
+        "id",
+        "category",
+        "auditedProductionJsMjsCount",
+        "classification",
+        "finalAllowlist",
+        "migrationOwner"
+      ],
       "properties": {
         "id": { "const": "audited-production-js-mjs-migration-debt" },
         "category": { "const": "migration-debt" },
         "auditedProductionJsMjsCount": { "const": 43 },
-        "classification": { "const": "audited production JS/MJS remains debt until package TS migration lanes replace it with TypeScript source and generated dist/declarations" },
+        "classification": {
+          "const": "audited production JS/MJS remains debt until package TS migration lanes replace it with TypeScript source and generated dist/declarations"
+        },
         "finalAllowlist": { "const": false },
         "migrationOwner": { "const": "later package TypeScript migration lanes" }
       }
@@ -89,7 +108,15 @@
     "ts09vException": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["id", "category", "deferralId", "subject", "requiredIndependentPasses", "forbiddenUntilReady", "finalStateAllowed"],
+      "required": [
+        "id",
+        "category",
+        "deferralId",
+        "subject",
+        "requiredIndependentPasses",
+        "forbiddenUntilReady",
+        "finalStateAllowed"
+      ],
       "properties": {
         "id": { "const": "ts09v-verification-source-js-export-deferred" },
         "category": { "const": "deferred-verification-source-js-export-debt" },
@@ -103,7 +130,14 @@
     "transientBuildOutputException": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["id", "category", "allowedRoot", "forbiddenProductRoots", "productDistMutationAllowed", "finalStateAllowed"],
+      "required": [
+        "id",
+        "category",
+        "allowedRoot",
+        "forbiddenProductRoots",
+        "productDistMutationAllowed",
+        "finalStateAllowed"
+      ],
       "properties": {
         "id": { "const": "transient-build-outputs-ts-root-evidence-only" },
         "category": { "const": "owned-transient-evidence-output" },
@@ -187,8 +221,20 @@
       "required": ["required", "dependsOn", "outputs"],
       "properties": {
         "required": { "const": true },
-        "dependsOn": { "type": "array", "minItems": 1, "maxItems": 1, "prefixItems": [{ "const": "^build" }], "items": false },
-        "outputs": { "type": "array", "minItems": 1, "maxItems": 1, "prefixItems": [{ "const": "dist/**" }], "items": false }
+        "dependsOn": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1,
+          "prefixItems": [{ "const": "^build" }],
+          "items": false
+        },
+        "outputs": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1,
+          "prefixItems": [{ "const": "dist/**" }],
+          "items": false
+        }
       }
     },
     "turboTypecheckTask": {
@@ -197,7 +243,13 @@
       "required": ["required", "dependsOn", "outputs"],
       "properties": {
         "required": { "const": true },
-        "dependsOn": { "type": "array", "minItems": 1, "maxItems": 1, "prefixItems": [{ "const": "^build" }], "items": false },
+        "dependsOn": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1,
+          "prefixItems": [{ "const": "^build" }],
+          "items": false
+        },
         "outputs": { "type": "array", "maxItems": 0 }
       }
     },
@@ -207,7 +259,13 @@
       "required": ["required", "dependsOn", "outputs"],
       "properties": {
         "required": { "const": true },
-        "dependsOn": { "type": "array", "minItems": 2, "maxItems": 2, "prefixItems": [{ "const": "build" }, { "const": "^build" }], "items": false },
+        "dependsOn": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "prefixItems": [{ "const": "build" }, { "const": "^build" }],
+          "items": false
+        },
         "outputs": { "type": "array", "maxItems": 0 }
       }
     },
@@ -218,7 +276,13 @@
       "properties": {
         "requiredTrue": { "$ref": "#/$defs/requiredTrueStrictOptions" },
         "requiredFalse": { "$ref": "#/$defs/requiredFalseStrictOptions" },
-        "forbidden": { "type": "array", "minItems": 1, "maxItems": 1, "prefixItems": [{ "const": "allowJs" }], "items": false }
+        "forbidden": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1,
+          "prefixItems": [{ "const": "allowJs" }],
+          "items": false
+        }
       }
     },
     "requiredTrueStrictOptions": {
@@ -268,15 +332,38 @@
     "packageTsconfigConvention": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["policyId", "appliesTo", "allowedExtends", "requiredBuildShape", "forbiddenCompilerOptions", "inheritedCompilerOptions", "runtimeImportWitnessRequired"],
+      "required": [
+        "policyId",
+        "appliesTo",
+        "allowedExtends",
+        "requiredBuildShape",
+        "forbiddenCompilerOptions",
+        "inheritedCompilerOptions",
+        "runtimeImportWitnessRequired"
+      ],
       "properties": {
         "policyId": { "const": "package-tsconfig-convention" },
         "appliesTo": { "const": "migrated TypeScript workspace packages" },
-        "allowedExtends": { "type": "array", "minItems": 2, "maxItems": 2, "prefixItems": [{ "const": "../../tsconfig.base.json" }, { "const": "../../../tsconfig.base.json" }], "items": false },
+        "allowedExtends": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "prefixItems": [
+            { "const": "../../tsconfig.base.json" },
+            { "const": "../../../tsconfig.base.json" }
+          ],
+          "items": false
+        },
         "requiredBuildShape": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["rootDirOwnedByPackage", "outDir", "declaration", "declarationMap", "noEmitOnError"],
+          "required": [
+            "rootDirOwnedByPackage",
+            "outDir",
+            "declaration",
+            "declarationMap",
+            "noEmitOnError"
+          ],
           "properties": {
             "rootDirOwnedByPackage": { "const": true },
             "outDir": { "const": "dist" },
@@ -285,25 +372,54 @@
             "noEmitOnError": { "const": true }
           }
         },
-        "forbiddenCompilerOptions": { "type": "array", "minItems": 1, "maxItems": 1, "prefixItems": [{ "const": "allowJs" }], "items": false },
-        "inheritedCompilerOptions": { "type": "array", "minItems": 2, "maxItems": 2, "prefixItems": [{ "const": "module:NodeNext" }, { "const": "moduleResolution:NodeNext" }], "items": false },
+        "forbiddenCompilerOptions": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1,
+          "prefixItems": [{ "const": "allowJs" }],
+          "items": false
+        },
+        "inheritedCompilerOptions": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "prefixItems": [{ "const": "module:NodeNext" }, { "const": "moduleResolution:NodeNext" }],
+          "items": false
+        },
         "runtimeImportWitnessRequired": { "const": true }
       }
     },
     "packageExportConvention": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["policyId", "runtimeExports", "typesExports", "binEntries", "currentSourceJsDebt"],
+      "required": [
+        "policyId",
+        "runtimeExports",
+        "typesExports",
+        "binEntries",
+        "currentSourceJsDebt"
+      ],
       "properties": {
         "policyId": { "const": "package-export-types-bin-convention" },
         "runtimeExports": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["requiredTargetKind", "requiredTargetPattern", "forbiddenFinalTargetKinds", "sourceJsAllowedFinalState"],
+          "required": [
+            "requiredTargetKind",
+            "requiredTargetPattern",
+            "forbiddenFinalTargetKinds",
+            "sourceJsAllowedFinalState"
+          ],
           "properties": {
             "requiredTargetKind": { "const": "generated-dist-js" },
             "requiredTargetPattern": { "const": "dist/**/*.js" },
-            "forbiddenFinalTargetKinds": { "type": "array", "minItems": 2, "maxItems": 2, "prefixItems": [{ "const": "src-js" }, { "const": "src-mjs" }], "items": false },
+            "forbiddenFinalTargetKinds": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "prefixItems": [{ "const": "src-js" }, { "const": "src-mjs" }],
+              "items": false
+            },
             "sourceJsAllowedFinalState": { "const": false }
           }
         },
@@ -319,7 +435,12 @@
         "binEntries": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["requiredWhenPresent", "requiredTargetKind", "sourceJsAllowedFinalState", "spawnWitnessRequired"],
+          "required": [
+            "requiredWhenPresent",
+            "requiredTargetKind",
+            "sourceJsAllowedFinalState",
+            "spawnWitnessRequired"
+          ],
           "properties": {
             "requiredWhenPresent": { "const": true },
             "requiredTargetKind": { "const": "generated-dist-executable-js" },
@@ -371,7 +492,13 @@
           "properties": {
             "allowedRoot": { "const": ".vibe/work/TS-ROOT-build-export-contract/**" },
             "productDistWriteAllowed": { "const": false },
-            "forbiddenProductRoots": { "type": "array", "minItems": 1, "maxItems": 1, "prefixItems": [{ "const": "packages/**/dist/**" }], "items": false }
+            "forbiddenProductRoots": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 1,
+              "prefixItems": [{ "const": "packages/**/dist/**" }],
+              "items": false
+            }
           }
         }
       }
@@ -379,12 +506,22 @@
     "sourceJsDebtPolicy": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["productionJsIsDebt", "auditedProductionJsCount", "workspaceSurfaceWitness", "currentSourceJsExportsAndBins"],
+      "required": [
+        "productionJsIsDebt",
+        "auditedProductionJsCount",
+        "workspaceSurfaceWitness",
+        "currentSourceJsExportsAndBins"
+      ],
       "properties": {
         "productionJsIsDebt": { "const": true },
         "auditedProductionJsCount": { "const": 43 },
         "workspaceSurfaceWitness": { "$ref": "#/$defs/debtEntry" },
-        "currentSourceJsExportsAndBins": { "type": "array", "minItems": 2, "maxItems": 2, "items": { "$ref": "#/$defs/debtEntry" } }
+        "currentSourceJsExportsAndBins": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": { "$ref": "#/$defs/debtEntry" }
+        }
       }
     },
     "debtEntry": {
@@ -413,10 +550,7 @@
       "maxItems": 2,
       "uniqueItems": true,
       "items": { "enum": ["I-09S", "I-09A"] },
-      "allOf": [
-        { "contains": { "const": "I-09S" } },
-        { "contains": { "const": "I-09A" } }
-      ]
+      "allOf": [{ "contains": { "const": "I-09S" } }, { "contains": { "const": "I-09A" } }]
     },
     "verificationForbiddenUntilReady": {
       "type": "array",
@@ -433,7 +567,12 @@
     "witnessPolicy": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["structuredContractWitness", "realBoundaryWitness", "negativeWitnesses", "regressionWitnesses"],
+      "required": [
+        "structuredContractWitness",
+        "realBoundaryWitness",
+        "negativeWitnesses",
+        "regressionWitnesses"
+      ],
       "properties": {
         "structuredContractWitness": {
           "type": "object",
@@ -442,13 +581,21 @@
           "properties": {
             "parsesActualJsonFiles": { "const": true },
             "regexOrProseSufficient": { "const": false },
-            "files": { "type": "array", "minItems": 6, "items": { "type": "string", "minLength": 1 } }
+            "files": {
+              "type": "array",
+              "minItems": 6,
+              "items": { "type": "string", "minLength": 1 }
+            }
           }
         },
         "realBoundaryWitness": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["actualRootScriptToTurboToPackageBuild", "transientWorkspaceOnly", "packageExportImportRequired"],
+          "required": [
+            "actualRootScriptToTurboToPackageBuild",
+            "transientWorkspaceOnly",
+            "packageExportImportRequired"
+          ],
           "properties": {
             "actualRootScriptToTurboToPackageBuild": { "const": true },
             "transientWorkspaceOnly": { "const": true },

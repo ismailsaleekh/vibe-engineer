@@ -115,9 +115,7 @@
           }
         }
       },
-      "touchedPathPatterns": [
-        "src/adapters/**"
-      ],
+      "touchedPathPatterns": ["src/adapters/**"],
       "forbiddenPathPatterns": [
         ".git/**",
         "node_modules/**",
@@ -147,9 +145,7 @@
           "blockId": "adapter"
         }
       ],
-      "generatedArtifactTypes": [
-        "code"
-      ],
+      "generatedArtifactTypes": ["code"],
       "generatedMarkerRequiredForUpdates": true,
       "overwriteAllowedByDefault": false,
       "semanticMergeAllowedInV1": false,
@@ -161,10 +157,7 @@
         "noShell": true,
         "deterministicOnly": true
       },
-      "standardIds": [
-        "real-boundary-witnesses",
-        "deterministic-schematics"
-      ],
+      "standardIds": ["real-boundary-witnesses", "deterministic-schematics"],
       "typescriptPreset": {
         "required": true,
         "presetId": "vibe-engineer.typescript.strict",
@@ -180,12 +173,7 @@
     }
   },
   "description": "Generate a generic adapter boundary descriptor and real-boundary checklist.",
-  "tags": [
-    "domain-neutral",
-    "built-in",
-    "dl-08",
-    "adapter"
-  ],
+  "tags": ["domain-neutral", "built-in", "dl-08", "adapter"],
   "sourceRefs": [
     {
       "kind": "artifact",
@@ -352,11 +340,7 @@
       "schema",
       "generator"
     ],
-    "extensionBoundaries": [
-      "project_extension",
-      "sample_demo",
-      "negative_fixture"
-    ]
+    "extensionBoundaries": ["project_extension", "sample_demo", "negative_fixture"]
   },
   "owner": "I-07B-built-in-schematics-fixtures"
 }

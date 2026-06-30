@@ -128,20 +128,20 @@ Allowed only as projections from the canonical contract source:
 
 ## Evaluation matrix
 
-| Criterion | OpenAPI + generated client | tRPC | ts-rest + named Zod schemas | Bare Zod/schema-first | GraphQL schema-first |
-| --- | --- | --- | --- | --- | --- |
-| end-to-end TypeScript safety | medium; codegen-dependent | high | high | medium unless extra framework added | medium/high; codegen-heavy |
-| runtime validation | high if wired; duplication risk | medium/high with schemas | high via named Zod schemas | high for shapes only | high if resolvers validate |
-| generated client quality | high for REST clients | high but tRPC-specific | high/shared contract client | underspecified | high but GraphQL-specific |
-| NestJS compatibility | high but often DTO/OpenAPI-driven | weaker/non-native for Nest REST | high with Nest adapter/contract implementation | partial | possible but changes API model |
-| React/RN consumption | high | high for TS clients but RPC-coupled | high via shared client/fetch/query adapters | underspecified | high with GraphQL client |
-| agent readability | medium; YAML/spec verbose | medium; router semantics | high; TS contracts + named schemas | high shapes, weak routes | medium; SDL/resolvers |
-| testability | high but may test spec not provider | high but less HTTP contract focus | high real provider/client fixture feasible | partial | high but heavier |
-| maintainability | medium; spec/code drift risk | medium; framework coupling | high; single TS contract source | medium; custom glue grows | medium; added stack complexity |
-| schema duplication risk | medium/high | low | low if enforced | medium | medium |
-| real-boundary witness feasibility | high | medium | high | medium | medium |
-| mechanical-gate fit | medium; generation drift checks needed | medium | high; named schemas + contract source | medium | medium |
-| domain-neutrality fit | high if generic | high if generic | high if generic | high if generic | high if generic |
+| Criterion                         | OpenAPI + generated client             | tRPC                                | ts-rest + named Zod schemas                    | Bare Zod/schema-first               | GraphQL schema-first           |
+| --------------------------------- | -------------------------------------- | ----------------------------------- | ---------------------------------------------- | ----------------------------------- | ------------------------------ |
+| end-to-end TypeScript safety      | medium; codegen-dependent              | high                                | high                                           | medium unless extra framework added | medium/high; codegen-heavy     |
+| runtime validation                | high if wired; duplication risk        | medium/high with schemas            | high via named Zod schemas                     | high for shapes only                | high if resolvers validate     |
+| generated client quality          | high for REST clients                  | high but tRPC-specific              | high/shared contract client                    | underspecified                      | high but GraphQL-specific      |
+| NestJS compatibility              | high but often DTO/OpenAPI-driven      | weaker/non-native for Nest REST     | high with Nest adapter/contract implementation | partial                             | possible but changes API model |
+| React/RN consumption              | high                                   | high for TS clients but RPC-coupled | high via shared client/fetch/query adapters    | underspecified                      | high with GraphQL client       |
+| agent readability                 | medium; YAML/spec verbose              | medium; router semantics            | high; TS contracts + named schemas             | high shapes, weak routes            | medium; SDL/resolvers          |
+| testability                       | high but may test spec not provider    | high but less HTTP contract focus   | high real provider/client fixture feasible     | partial                             | high but heavier               |
+| maintainability                   | medium; spec/code drift risk           | medium; framework coupling          | high; single TS contract source                | medium; custom glue grows           | medium; added stack complexity |
+| schema duplication risk           | medium/high                            | low                                 | low if enforced                                | medium                              | medium                         |
+| real-boundary witness feasibility | high                                   | medium                              | high                                           | medium                              | medium                         |
+| mechanical-gate fit               | medium; generation drift checks needed | medium                              | high; named schemas + contract source          | medium                              | medium                         |
+| domain-neutrality fit             | high if generic                        | high if generic                     | high if generic                                | high if generic                     | high if generic                |
 
 ## Dependencies and prerequisites
 

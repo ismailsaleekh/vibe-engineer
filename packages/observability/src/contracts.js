@@ -77,9 +77,15 @@ export const severitySchema = z.enum(SEVERITIES);
 export const surfaceSchema = z.enum(SURFACES);
 export const outcomeSchema = z.enum(OUTCOMES);
 export const redactionStatusSchema = z.enum(REDACTION_STATUSES);
-export const uuidV4Schema = z.string().regex(UUID_V4_PATTERN, "canonical RFC 4122 UUID v4 required");
-export const traceIdSchema = z.string().regex(TRACE_ID_PATTERN, "W3C trace-id (32 lowercase hex) required");
-export const spanIdSchema = z.string().regex(SPAN_ID_PATTERN, "W3C span-id (16 lowercase hex) required");
+export const uuidV4Schema = z
+  .string()
+  .regex(UUID_V4_PATTERN, "canonical RFC 4122 UUID v4 required");
+export const traceIdSchema = z
+  .string()
+  .regex(TRACE_ID_PATTERN, "W3C trace-id (32 lowercase hex) required");
+export const spanIdSchema = z
+  .string()
+  .regex(SPAN_ID_PATTERN, "W3C span-id (16 lowercase hex) required");
 
 /**
  * Redacted error classification block (DL-23 "error.type, error.message, and
@@ -149,7 +155,7 @@ export function parseLogRecord(record) {
 export function assertSpanShapedLog(record) {
   if (record.traceId === undefined || record.spanId === undefined) {
     const e = new Error(
-      "span-shaped log record missing traceId/spanId (DL-23 correlation §7 / failure policy §1)"
+      "span-shaped log record missing traceId/spanId (DL-23 correlation §7 / failure policy §1)",
     );
     e.name = "SpanShapeError";
     e.code = "OBS_SPAN_SHAPE";
@@ -167,9 +173,13 @@ export function assertSpanShapedLog(record) {
  * includes an applicable runId or operationId plus correlationId."
  */
 export function assertRequestShapedLog(record) {
-  if (record.requestId === undefined && record.runId === undefined && record.operationId === undefined) {
+  if (
+    record.requestId === undefined &&
+    record.runId === undefined &&
+    record.operationId === undefined
+  ) {
     const e = new Error(
-      "request-shaped log record missing requestId (DL-23 correlation §2): requestId is required for request-shaped API/client boundaries unless runId/operationId is present"
+      "request-shaped log record missing requestId (DL-23 correlation §2): requestId is required for request-shaped API/client boundaries unless runId/operationId is present",
     );
     e.name = "RequestShapeError";
     e.code = "OBS_REQUEST_SHAPE";

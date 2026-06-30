@@ -19,11 +19,14 @@ const RUN_PATTERN = /^runP(\d+)Aggregate$/;
  */
 export function classifyImportSpecifier(specifier, allowed) {
   const allowedSet = new Set(allowed);
-  const isRelative = typeof specifier === "string" && (specifier.startsWith("./") || specifier.startsWith("../") || specifier.startsWith("/"));
-  const reachesSrc = typeof specifier === "string" && specifier.includes("packages/mechanical-gates/src");
+  const isRelative =
+    typeof specifier === "string" &&
+    (specifier.startsWith("./") || specifier.startsWith("../") || specifier.startsWith("/"));
+  const reachesSrc =
+    typeof specifier === "string" && specifier.includes("packages/mechanical-gates/src");
   return {
     publicSpecifierUsed: allowedSet.has(specifier),
-    noInternalRelativeImport: !isRelative && !reachesSrc
+    noInternalRelativeImport: !isRelative && !reachesSrc,
   };
 }
 
@@ -39,14 +42,22 @@ function isFunction(value) {
  */
 export function assertPublicAggregateModule(module) {
   if (!module || typeof module !== "object") {
-    throw new Error("public-contract: aggregate module is not an object (public export surface missing).");
+    throw new Error(
+      "public-contract: aggregate module is not an object (public export surface missing).",
+    );
   }
   if (!isFunction(module.runP0Aggregate)) {
-    throw new Error("public-contract: runP0Aggregate is not a function on the aggregate module (public export surface not consumed).");
+    throw new Error(
+      "public-contract: runP0Aggregate is not a function on the aggregate module (public export surface not consumed).",
+    );
   }
-  const runnerExports = Object.keys(module).filter((k) => RUN_PATTERN.test(k)).sort();
+  const runnerExports = Object.keys(module)
+    .filter((k) => RUN_PATTERN.test(k))
+    .sort();
   if (runnerExports.length === 0) {
-    throw new Error("public-contract: aggregate module exposes no runP{N}Aggregate runners (not the public surface).");
+    throw new Error(
+      "public-contract: aggregate module exposes no runP{N}Aggregate runners (not the public surface).",
+    );
   }
   return runnerExports;
 }
@@ -60,16 +71,22 @@ export function assertPublicAggregateModule(module) {
  * `p0ImplementedFamilies` is the runtime-reported implementedFamilies from the REAL
  * runP0Aggregate result — proving the testing-boundary family is genuinely registered.
  */
-export function buildPublicContractProof({ specifier, module, resolvedUrl, p0ImplementedFamilies, allowed }) {
+export function buildPublicContractProof({
+  specifier,
+  module,
+  resolvedUrl,
+  p0ImplementedFamilies,
+  allowed,
+}) {
   const classification = classifyImportSpecifier(specifier, allowed);
   if (!classification.publicSpecifierUsed) {
     throw new Error(
-      `public-contract: aggregate import specifier '${specifier}' is not in the allowed public set ${JSON.stringify(allowed)} — internal relative import forbidden (N4).`
+      `public-contract: aggregate import specifier '${specifier}' is not in the allowed public set ${JSON.stringify(allowed)} — internal relative import forbidden (N4).`,
     );
   }
   if (!classification.noInternalRelativeImport) {
     throw new Error(
-      `public-contract: aggregate import specifier '${specifier}' reaches into package internals — internal relative import forbidden (N4).`
+      `public-contract: aggregate import specifier '${specifier}' reaches into package internals — internal relative import forbidden (N4).`,
     );
   }
   const runnerExports = assertPublicAggregateModule(module);
@@ -77,15 +94,18 @@ export function buildPublicContractProof({ specifier, module, resolvedUrl, p0Imp
   const testingBoundaryRegistered = implemented.includes("p0.testing-boundary");
   if (!testingBoundaryRegistered) {
     throw new Error(
-      `public-contract: testing-boundary public contract not registered at runtime (p0.testing-boundary absent from implementedFamilies=${JSON.stringify(implemented)}) — missing testing-boundary public contract (N5).`
+      `public-contract: testing-boundary public contract not registered at runtime (p0.testing-boundary absent from implementedFamilies=${JSON.stringify(implemented)}) — missing testing-boundary public contract (N5).`,
     );
   }
   return {
     aggregateImportSpecifier: specifier,
-    aggregateResolvedModuleUrl: typeof resolvedUrl === "string" && resolvedUrl.length > 0 ? resolvedUrl : PUBLIC_AGGREGATE_SPECIFIER,
+    aggregateResolvedModuleUrl:
+      typeof resolvedUrl === "string" && resolvedUrl.length > 0
+        ? resolvedUrl
+        : PUBLIC_AGGREGATE_SPECIFIER,
     aggregatePublicExports: runnerExports,
     publicSpecifierUsed: true,
     noInternalRelativeImport: true,
-    testingBoundaryRegistered
+    testingBoundaryRegistered,
   };
 }

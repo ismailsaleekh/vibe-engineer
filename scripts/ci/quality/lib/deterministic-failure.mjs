@@ -23,12 +23,14 @@ const RUN_PATTERN = /^runP(\d+)Aggregate$/;
  * captured as evidence rather than crashing the gate).
  */
 export async function enumerateRegisteredAndRunning(module, projectRoot) {
-  const probedExports = Object.keys(module).filter((k) => RUN_PATTERN.test(k)).sort();
+  const probedExports = Object.keys(module)
+    .filter((k) => RUN_PATTERN.test(k))
+    .sort();
   const perTier = [];
   for (const exportName of probedExports) {
     const family = `p${RUN_PATTERN.exec(exportName)[1]}`;
     const runner = module[exportName];
-    let exportPresent = typeof runner === "function";
+    const exportPresent = typeof runner === "function";
     let running = false;
     let carrierFamily = null;
     let implementedFamilies = [];
@@ -36,7 +38,14 @@ export async function enumerateRegisteredAndRunning(module, projectRoot) {
     if (exportPresent) {
       try {
         const result = await runner(projectRoot);
-        if (result && typeof result === "object" && typeof result.family === "string" && typeof result.ok === "boolean" && "findings" in result && "evidence" in result) {
+        if (
+          result &&
+          typeof result === "object" &&
+          typeof result.family === "string" &&
+          typeof result.ok === "boolean" &&
+          "findings" in result &&
+          "evidence" in result
+        ) {
           carrierFamily = result.family;
           running = result.family === `${family}.aggregate`;
           if (result.evidence && Array.isArray(result.evidence.implementedFamilies)) {
@@ -46,12 +55,24 @@ export async function enumerateRegisteredAndRunning(module, projectRoot) {
           invocationError = `runner returned a non-carrier result (family/ok/findings/evidence shape mismatch)`;
         }
       } catch (error) {
-        invocationError = error instanceof Error ? `${error.name}: ${error.message}` : String(error);
+        invocationError =
+          error instanceof Error ? `${error.name}: ${error.message}` : String(error);
       }
     }
-    perTier.push({ family, exportName, exportPresent, running, carrierFamily, implementedFamilies, invocationError });
+    perTier.push({
+      family,
+      exportName,
+      exportPresent,
+      running,
+      carrierFamily,
+      implementedFamilies,
+      invocationError,
+    });
   }
-  const registeredAndRunning = perTier.filter((t) => t.running).map((t) => t.family).sort();
+  const registeredAndRunning = perTier
+    .filter((t) => t.running)
+    .map((t) => t.family)
+    .sort();
   return { probedExports, perTier, registeredAndRunning };
 }
 
@@ -65,15 +86,29 @@ export function applyFailClosedRule({ expectedFamilies, registeredAndRunning, ad
   const registered = new Set(registeredAndRunning);
   const missing = expected.filter((f) => !registered.has(f)).sort();
   if (missing.length === 0) {
-    return { verdict: "pass", missingFamilies: [], exitCode: 0, diagnostic: null, advisoryIgnored: false };
+    return {
+      verdict: "pass",
+      missingFamilies: [],
+      exitCode: 0,
+      diagnostic: null,
+      advisoryIgnored: false,
+    };
   }
   const names = missing.join(", ");
   const diagnostic =
     `FAIL-CLOSED wiring-integrity: expected families not registered-and-running: ${names}. ` +
     `expected=${JSON.stringify(expected)} registered-and-running=${JSON.stringify([...registered].sort())}. ` +
     `A declared-but-unregistered family is an incomplete/partial aggregate (mechanical §7 "CI invokes partial gate instead of aggregate gate"). ` +
-    (advisory ? `advisory flag IGNORED — hard failure cannot be weakened (N7).` : `hard failure (non-zero exit) per post-i18b §3.2.`);
-  return { verdict: "fail", missingFamilies: missing, exitCode: 2, diagnostic, advisoryIgnored: Boolean(advisory) };
+    (advisory
+      ? `advisory flag IGNORED — hard failure cannot be weakened (N7).`
+      : `hard failure (non-zero exit) per post-i18b §3.2.`);
+  return {
+    verdict: "fail",
+    missingFamilies: missing,
+    exitCode: 2,
+    diagnostic,
+    advisoryIgnored: Boolean(advisory),
+  };
 }
 
 /**
@@ -93,7 +128,7 @@ export async function buildWiringEvidence({
   config,
   profile,
   parityBlockingCommand,
-  advisory = false
+  advisory = false,
 }) {
   const startedAt = new Date().toISOString();
   const enumeration = await enumerateRegisteredAndRunning(aggregateModule, projectRoot);
@@ -105,15 +140,19 @@ export async function buildWiringEvidence({
     module: aggregateModule,
     resolvedUrl: aggregateResolvedUrl,
     p0ImplementedFamilies,
-    allowed: allowedImportSpecifiers
+    allowed: allowedImportSpecifiers,
   });
-  const declaredDependencyProof = buildDependencyProof({ declared: declaredDependencies, ownSourceTexts, allowedImportSpecifiers });
+  const declaredDependencyProof = buildDependencyProof({
+    declared: declaredDependencies,
+    ownSourceTexts,
+    allowedImportSpecifiers,
+  });
   const parityInputs = buildParityInputs({ config, profile, parityBlockingCommand });
 
   const rule = applyFailClosedRule({
     expectedFamilies,
     registeredAndRunning: enumeration.registeredAndRunning,
-    advisory
+    advisory,
   });
 
   const endedAt = new Date().toISOString();
@@ -131,7 +170,8 @@ export async function buildWiringEvidence({
     declaredDependencyProof,
     parityInputs,
     runtimeEnumeration: {
-      method: "public-export-surface /^runP(\\d+)Aggregate$/ + real invocation typed-carrier check (family === p{N}.aggregate)",
+      method:
+        "public-export-surface /^runP(\\d+)Aggregate$/ + real invocation typed-carrier check (family === p{N}.aggregate)",
       probedExports: enumeration.probedExports,
       perTier: enumeration.perTier.map((t) => ({
         family: t.family,
@@ -139,12 +179,12 @@ export async function buildWiringEvidence({
         exportPresent: t.exportPresent,
         running: t.running,
         carrierFamily: t.carrierFamily,
-        implementedFamilies: t.implementedFamilies
-      }))
+        implementedFamilies: t.implementedFamilies,
+      })),
     },
     startedAt,
     endedAt,
     exitCode: rule.exitCode,
-    advisoryIgnored: rule.advisoryIgnored
+    advisoryIgnored: rule.advisoryIgnored,
   };
 }

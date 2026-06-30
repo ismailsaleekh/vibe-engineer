@@ -39,25 +39,25 @@ The harness targets a fixed set of mechanical-gate families (locked direction, e
 
 The `@vibe-engineer/standards` catalog defines the standards mechanical gates enforce. The load-bearing ones for gating:
 
-| Standard | Requirement ids | What it gates |
-| --- | --- | --- |
-| `typed-boundary-contracts` | `named-runtime-contract`, `fail-closed-boundary` | Carriers enter through named typed contracts; malformed input fails closed. |
-| `real-boundary-witnesses` | `actual-consumer`, `negative-boundary` | A seam is green only after real producer+consumer run; negative fixtures must reject. |
-| `domain-neutral-core` | `core-vocabulary`, `sample-boundary` | Core surfaces use generic vocabulary; sample/demo is isolated. |
-| `dependency-hygiene` | `declared-imports`, `no-package-manager-mutation` | Only declared imports; no install/add mutations. |
-| `deterministic-schematics` | `typed-manifest`, `dry-run-first` | Schematic manifests are typed; dry-run before apply. |
+| Standard                   | Requirement ids                                   | What it gates                                                                         |
+| -------------------------- | ------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `typed-boundary-contracts` | `named-runtime-contract`, `fail-closed-boundary`  | Carriers enter through named typed contracts; malformed input fails closed.           |
+| `real-boundary-witnesses`  | `actual-consumer`, `negative-boundary`            | A seam is green only after real producer+consumer run; negative fixtures must reject. |
+| `domain-neutral-core`      | `core-vocabulary`, `sample-boundary`              | Core surfaces use generic vocabulary; sample/demo is isolated.                        |
+| `dependency-hygiene`       | `declared-imports`, `no-package-manager-mutation` | Only declared imports; no install/add mutations.                                      |
+| `deterministic-schematics` | `typed-manifest`, `dry-run-first`                 | Schematic manifests are typed; dry-run before apply.                                  |
 
 See [Standards](../standards/index.md) for the full requirement text (sourced from `packages/standards/src/catalog-data.js`).
 
 ## Deterministic vs advisory
 
-| Property | Deterministic gate | Advisory review |
-| --- | --- | --- |
-| Runs mechanically | yes | no |
-| Blocks on failure | yes | no (warning) |
-| Result class | `deterministic` | `advisory` |
+| Property               | Deterministic gate                                           | Advisory review     |
+| ---------------------- | ------------------------------------------------------------ | ------------------- |
+| Runs mechanically      | yes                                                          | no                  |
+| Blocks on failure      | yes                                                          | no (warning)        |
+| Result class           | `deterministic`                                              | `advisory`          |
 | Failure classification | `mechanical_gate_failure`, `schema_or_contract_failure`, ... | `advisory_findings` |
-| Replaces the other | never | never |
+| Replaces the other     | never                                                        | never               |
 
 Advisory findings can accompany deterministic proof, but a green deterministic gate is required before any "done" claim.
 

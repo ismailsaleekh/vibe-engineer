@@ -11,5 +11,5 @@ export default defineConfig({
   clean: true,
   dts: true,
   external: ["@vibe-engineer/artifacts", "@vibe-engineer/config"],
-  tsconfig: "./tsconfig.json"
+  tsconfig: "./tsconfig.json",
 });

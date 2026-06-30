@@ -78,14 +78,14 @@ context registry update init
 
 Global flags parsed by the entrypoint:
 
-| Flag                    | Kind    | Effect                                                    |
-| ----------------------- | ------- | --------------------------------------------------------- |
+| Flag                    | Kind    | Effect                                                                                                  |
+| ----------------------- | ------- | ------------------------------------------------------------------------------------------------------- |
 | `--json`                | boolean | Machine-readable output. Human-readable summaries are the default when no machine carrier is requested. |
-| `--quiet`               | boolean | Suppress non-essential stdout when a result file is used. |
-| `--non-interactive`     | boolean | Never prompt; fail closed on missing input.               |
-| `--result-file <path>`  | value   | Write the result envelope atomically.                     |
-| `--project-root <path>` | value   | Set the project root.                                     |
-| `--config <path>`       | value   | Path to a config file.                                    |
+| `--quiet`               | boolean | Suppress non-essential stdout when a result file is used.                                               |
+| `--non-interactive`     | boolean | Never prompt; fail closed on missing input.                                                             |
+| `--result-file <path>`  | value   | Write the result envelope atomically.                                                                   |
+| `--project-root <path>` | value   | Set the project root.                                                                                   |
+| `--config <path>`       | value   | Path to a config file.                                                                                  |
 
 Unknown global flags return `VE_INVALID_FLAG`. Unknown command names return `VE_INVALID_INVOCATION` unless they are one of the deferred families above.
 

@@ -56,7 +56,7 @@ function parseArgs(args) {
 const opts = parseArgs(argv.slice(2));
 if (opts.help || !opts.infra || opts.workflows.length === 0) {
   process.stderr.write(
-    "usage: validate-pulumi-scaffold.mjs --infra <dir> --workflows <wf.yml> [<wf.yml>...]\n"
+    "usage: validate-pulumi-scaffold.mjs --infra <dir> --workflows <wf.yml> [<wf.yml>...]\n",
   );
   exit(opts.help ? 0 : 2);
 }
@@ -180,10 +180,7 @@ function scalar(s) {
       .filter((x) => x.length > 0);
   }
   // quoted
-  if (
-    (s.startsWith('"') && s.endsWith('"')) ||
-    (s.startsWith("'") && s.endsWith("'"))
-  )
+  if ((s.startsWith('"') && s.endsWith('"')) || (s.startsWith("'") && s.endsWith("'")))
     return s.slice(1, -1);
   if (s === "true") return true;
   if (s === "false") return false;
@@ -244,9 +241,7 @@ function checkProviderAgnostic(infraDir) {
   const pkgPath = join(infraDir, "package.json");
   if (existsSync(pkgPath)) {
     const pkg = JSON.parse(readText(pkgPath));
-    const deps = Object.keys(pkg.dependencies || {}).concat(
-      Object.keys(pkg.devDependencies || {})
-    );
+    const deps = Object.keys(pkg.dependencies || {}).concat(Object.keys(pkg.devDependencies || {}));
     for (const d of deps) {
       if (PROVIDER_PACKAGES.includes(d)) {
         fail("N1", pkgPath, `provider dependency declared: ${d}`);
@@ -479,7 +474,7 @@ function checkPulumiCloudAuth(path) {
     fail(
       "N7",
       path,
-      "workflow runs pulumi preview/up without `pulumi login` (Pulumi Cloud backend not configured)"
+      "workflow runs pulumi preview/up without `pulumi login` (Pulumi Cloud backend not configured)",
     );
   }
 }
@@ -516,7 +511,7 @@ function checkDeployWorkflow(path) {
   const doc = parseYaml(txt);
   const flat = flatten(doc);
   const hasEnvBinding = flat.some(
-    (kv) => kv.path.startsWith("jobs.") && /^jobs\.[^.]+\.environment$/.test(kv.path)
+    (kv) => kv.path.startsWith("jobs.") && /^jobs\.[^.]+\.environment$/.test(kv.path),
   );
   if (!hasEnvBinding) {
     fail("N5", path, "deploy workflow lacks a job-level protected `environment:` binding");
@@ -565,7 +560,7 @@ for (const wf of opts.workflows) {
   // deploy.yml that wrongly gained an auto trigger AND a pulumi up).
   const triggers = collectTriggers(wf);
   const isAutoTriggered = [...triggers].some((t) =>
-    ["push", "pull_request", "pull_request_target", "schedule"].includes(t)
+    ["push", "pull_request", "pull_request_target", "schedule"].includes(t),
   );
   if (isAutoTriggered && MUTATING_PULUMI.test(stripYamlComments(readText(wf)))) {
     fail("N3", wf, "auto-triggered workflow runs a mutating pulumi command");
@@ -576,24 +571,18 @@ for (const wf of opts.workflows) {
 // report
 // ---------------------------------------------------------------------------
 const ruleOrder = ["N1", "N2", "N3", "N4", "N5", "N6", "N7", "N8", "N9", "IO"];
-findings.sort(
-  (a, b) => ruleOrder.indexOf(a.rule) - ruleOrder.indexOf(b.rule)
-);
+findings.sort((a, b) => ruleOrder.indexOf(a.rule) - ruleOrder.indexOf(b.rule));
 
 const pad = (s, n) => s + " ".repeat(Math.max(0, n - s.length));
 if (findings.length === 0) {
   process.stdout.write(
-    "pulumi-scaffold-validator: PASS — provider-agnostic + conformant workflows, no N1-N9 violation.\n"
+    "pulumi-scaffold-validator: PASS — provider-agnostic + conformant workflows, no N1-N9 violation.\n",
   );
   exit(0);
 } else {
-  process.stderr.write(
-    `pulumi-scaffold-validator: FAIL — ${findings.length} violation(s):\n`
-  );
+  process.stderr.write(`pulumi-scaffold-validator: FAIL — ${findings.length} violation(s):\n`);
   for (const f of findings) {
-    process.stderr.write(
-      `  [${f.rule}] ${f.where}: ${f.detail}\n`
-    );
+    process.stderr.write(`  [${f.rule}] ${f.where}: ${f.detail}\n`);
   }
   exit(1);
 }

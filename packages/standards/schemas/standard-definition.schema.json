@@ -49,21 +49,12 @@
     "level": {
       "type": "string",
       "minLength": 1,
-      "enum": [
-        "required",
-        "recommended",
-        "advisory"
-      ]
+      "enum": ["required", "recommended", "advisory"]
     },
     "neutrality": {
       "type": "string",
       "minLength": 1,
-      "enum": [
-        "core",
-        "extension",
-        "sample-demo",
-        "negative-fixture"
-      ]
+      "enum": ["core", "extension", "sample-demo", "negative-fixture"]
     },
     "appliesTo": {
       "type": "array",
@@ -111,11 +102,7 @@
             "minLength": 1
           }
         },
-        "required": [
-          "id",
-          "statement",
-          "verification"
-        ]
+        "required": ["id", "statement", "verification"]
       },
       "minItems": 1
     },
@@ -138,10 +125,7 @@
             "minLength": 1
           }
         },
-        "required": [
-          "label",
-          "path"
-        ]
+        "required": ["label", "path"]
       },
       "minItems": 1
     },

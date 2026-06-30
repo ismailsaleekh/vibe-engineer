@@ -24,8 +24,8 @@ const header = createContextHeader({
   producer: defaultProducer(),
   ownership: {
     ownerLane: "my-lane",
-    ownedWritePaths: ["packages/example/src/**"]
-  }
+    ownedWritePaths: ["packages/example/src/**"],
+  },
 });
 ```
 
@@ -53,9 +53,9 @@ Context drift is the difference between what an artifact/header claims and what 
 
 Findings classify into the same severity ladder used across the harness:
 
-| Severity | Meaning |
-| --- | --- |
-| `clean` | No findings. |
+| Severity      | Meaning                                                               |
+| ------------- | --------------------------------------------------------------------- |
+| `clean`       | No findings.                                                          |
 | `minor-local` | Citation/wording/path issue; does not unblock dependents incorrectly. |
 | `major-local` | Repairable within a lane's owned paths but blocks downstream closure. |
 
@@ -67,7 +67,7 @@ The context package consumes `@vibe-engineer/artifacts` for artifact file valida
 
 ```js
 export const __providerSeams = Object.freeze({
-  artifactsValidateArtifactFileType: "..."
+  artifactsValidateArtifactFileType: "...",
 });
 ```
 

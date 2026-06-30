@@ -2,7 +2,7 @@ import js from "@eslint/js";
 
 export default [
   {
-    ignores: [".tmp/**", "node_modules/**"]
+    ignores: [".tmp/**", "node_modules/**"],
   },
   js.configs.recommended,
   {
@@ -14,8 +14,8 @@ export default [
         Buffer: "readonly",
         console: "readonly",
         process: "readonly",
-        URL: "readonly"
-      }
-    }
-  }
+        URL: "readonly",
+      },
+    },
+  },
 ];

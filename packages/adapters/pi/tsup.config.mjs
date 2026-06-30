@@ -7,7 +7,7 @@ export default defineConfig({
     "src/capabilities/index.ts",
     "src/generated-file-manifest/index.ts",
     "src/create-consumption/index.ts",
-    "src/schema/index.ts"
+    "src/schema/index.ts",
   ],
   format: ["esm"],
   target: "node20",
@@ -16,5 +16,5 @@ export default defineConfig({
   sourcemap: false,
   clean: true,
   dts: true,
-  tsconfig: "./tsconfig.json"
+  tsconfig: "./tsconfig.json",
 });

@@ -16,9 +16,7 @@
       "type": "string",
       "minLength": 1,
       "const": "build_result",
-      "enum": [
-        "build_result"
-      ]
+      "enum": ["build_result"]
     },
     "artifactId": {
       "type": "string",
@@ -76,21 +74,12 @@
           "pattern": "^[a-z0-9][a-z0-9._:-]*$"
         }
       },
-      "required": [
-        "kind",
-        "id",
-        "name"
-      ]
+      "required": ["kind", "id", "name"]
     },
     "status": {
       "type": "string",
       "minLength": 1,
-      "enum": [
-        "passed",
-        "failed",
-        "blocked",
-        "superseded"
-      ]
+      "enum": ["passed", "failed", "blocked", "superseded"]
     },
     "ownership": {
       "type": "object",
@@ -203,14 +192,7 @@
             "minLength": 1
           }
         },
-        "required": [
-          "rel",
-          "artifactKind",
-          "artifactId",
-          "path",
-          "required",
-          "statusAtLinkTime"
-        ]
+        "required": ["rel", "artifactKind", "artifactId", "path", "required", "statusAtLinkTime"]
       },
       "minItems": 1
     },
@@ -221,9 +203,7 @@
       },
       "additionalProperties": {
         "type": "object",
-        "required": [
-          "schemaVersion"
-        ],
+        "required": ["schemaVersion"],
         "properties": {
           "schemaVersion": {
             "type": "string",
@@ -253,24 +233,14 @@
           "kind": {
             "type": "string",
             "minLength": 1,
-            "enum": [
-              "source_doc",
-              "prompt",
-              "issue",
-              "url",
-              "artifact",
-              "raw_intent"
-            ]
+            "enum": ["source_doc", "prompt", "issue", "url", "artifact", "raw_intent"]
           },
           "ref": {
             "type": "string",
             "minLength": 1
           }
         },
-        "required": [
-          "kind",
-          "ref"
-        ]
+        "required": ["kind", "ref"]
       }
     },
     "approvedBy": {
@@ -314,11 +284,7 @@
               "pattern": "^[a-z0-9][a-z0-9._:-]*$"
             }
           },
-          "required": [
-            "kind",
-            "id",
-            "name"
-          ]
+          "required": ["kind", "id", "name"]
         },
         "approvedAt": {
           "type": "string",
@@ -326,10 +292,7 @@
           "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$|^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
         }
       },
-      "required": [
-        "producer",
-        "approvedAt"
-      ]
+      "required": ["producer", "approvedAt"]
     },
     "supersessionReason": {
       "type": "string"
@@ -347,10 +310,7 @@
           "minLength": 1
         }
       },
-      "required": [
-        "policy",
-        "reason"
-      ]
+      "required": ["policy", "reason"]
     },
     "implementationPlanRef": {
       "type": "object",
@@ -411,14 +371,7 @@
           "minLength": 1
         }
       },
-      "required": [
-        "rel",
-        "artifactKind",
-        "artifactId",
-        "path",
-        "required",
-        "statusAtLinkTime"
-      ]
+      "required": ["rel", "artifactKind", "artifactId", "path", "required", "statusAtLinkTime"]
     },
     "implementationSummary": {
       "type": "string",
@@ -438,13 +391,7 @@
           "changeKind": {
             "type": "string",
             "minLength": 1,
-            "enum": [
-              "created",
-              "modified",
-              "deleted",
-              "moved",
-              "unchanged_validated"
-            ]
+            "enum": ["created", "modified", "deleted", "moved", "unchanged_validated"]
           },
           "ownerLane": {
             "type": "string",
@@ -455,12 +402,7 @@
             "minLength": 1
           }
         },
-        "required": [
-          "path",
-          "changeKind",
-          "ownerLane",
-          "summary"
-        ]
+        "required": ["path", "changeKind", "ownerLane", "summary"]
       },
       "minItems": 1
     },
@@ -609,20 +551,12 @@
           "dryRunStatus": {
             "type": "string",
             "minLength": 1,
-            "enum": [
-              "passed",
-              "failed",
-              "not_run"
-            ]
+            "enum": ["passed", "failed", "not_run"]
           },
           "conflictStatus": {
             "type": "string",
             "minLength": 1,
-            "enum": [
-              "none",
-              "resolved",
-              "blocked"
-            ]
+            "enum": ["none", "resolved", "blocked"]
           },
           "outputPaths": {
             "type": "array",
@@ -656,11 +590,7 @@
           "changeKind": {
             "type": "string",
             "minLength": 1,
-            "enum": [
-              "added",
-              "updated",
-              "reused"
-            ]
+            "enum": ["added", "updated", "reused"]
           },
           "evidenceRef": {
             "type": "object",
@@ -731,11 +661,7 @@
             ]
           }
         },
-        "required": [
-          "path",
-          "changeKind",
-          "evidenceRef"
-        ]
+        "required": ["path", "changeKind", "evidenceRef"]
       }
     },
     "verificationRuns": {
@@ -819,24 +745,13 @@
           "result": {
             "type": "string",
             "minLength": 1,
-            "enum": [
-              "pass",
-              "fail",
-              "blocked",
-              "advisory",
-              "skipped"
-            ]
+            "enum": ["pass", "fail", "blocked", "advisory", "skipped"]
           },
           "blocking": {
             "type": "boolean"
           }
         },
-        "required": [
-          "evidencePacketRef",
-          "summary",
-          "result",
-          "blocking"
-        ]
+        "required": ["evidencePacketRef", "summary", "result", "blocking"]
       },
       "minItems": 1
     },
@@ -849,17 +764,20 @@
           "severity": {
             "type": "string",
             "minLength": 1,
-            "enum": [
-              "critical",
-              "major-local",
-              "minor-local",
-              "advisory"
-            ]
+            "enum": ["critical", "major-local", "minor-local", "advisory"]
           },
           "blocking": {
             "type": "boolean"
           },
           "owner": {
+            "type": "string",
+            "minLength": 1
+          },
+          "summary": {
+            "type": "string",
+            "minLength": 1
+          },
+          "details": {
             "type": "string",
             "minLength": 1
           },
@@ -932,12 +850,7 @@
             ]
           }
         },
-        "required": [
-          "severity",
-          "blocking",
-          "owner",
-          "evidenceRef"
-        ]
+        "required": ["severity", "blocking", "owner", "evidenceRef"]
       }
     },
     "contextDocsUpdates": {
@@ -1017,22 +930,14 @@
           "updateStatus": {
             "type": "string",
             "minLength": 1,
-            "enum": [
-              "updated",
-              "not_needed",
-              "blocked"
-            ]
+            "enum": ["updated", "not_needed", "blocked"]
           },
           "summary": {
             "type": "string",
             "minLength": 1
           }
         },
-        "required": [
-          "ref",
-          "updateStatus",
-          "summary"
-        ]
+        "required": ["ref", "updateStatus", "summary"]
       }
     },
     "finalStatusReason": {

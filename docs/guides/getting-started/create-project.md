@@ -33,14 +33,14 @@ vibe-engineer create --target-root ./my-project --project-name my-project --agen
 
 Important flags:
 
-| Flag                    | Meaning                                                                                                   |
-| ----------------------- | --------------------------------------------------------------------------------------------------------- |
-| `--target-root <path>` / positional path | Output directory. Required for non-interactive automation; prompted interactively for humans.              |
+| Flag                                     | Meaning                                                                                                   |
+| ---------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| `--target-root <path>` / positional path | Output directory. Required for non-interactive automation; prompted interactively for humans.             |
 | `--project-name <name>`                  | Optional display/name seed; defaults from the target directory.                                           |
 | `--agentic-harness pi`                   | v0.1 supported harness selection. Non-pi harnesses fail closed until implemented.                         |
 | `--brief <text>` / `--project-brief`     | Optional short project brief for initial context bootstrap. Secret-like or oversized briefs are rejected. |
 | `--non-interactive`                      | Required for automation; no hidden prompts.                                                               |
-| `--result-file <path>`  | Optional atomic machine-readable result envelope.                                                         |
+| `--result-file <path>`                   | Optional atomic machine-readable result envelope.                                                         |
 
 ## Generated starter shape
 

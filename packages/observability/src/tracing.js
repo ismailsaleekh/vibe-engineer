@@ -42,7 +42,7 @@ export function createTracerProvider(opts) {
   const provider = new BasicTracerProvider({
     resource: new Resource({
       [SemanticResourceAttributes.SERVICE_NAME]: opts.serviceName,
-      "surface": opts.surface,
+      surface: opts.surface,
     }),
   });
   provider.addSpanProcessor(new SimpleSpanProcessor(exporter));
@@ -90,7 +90,9 @@ export function createSpanApi(tracer, defaults) {
       const validated = spanAttributesSchema.parse(merged);
       const correlationId = validated.correlationId;
       if (!isValidUuidV4(correlationId)) {
-        throw new Error("startSpan: correlationId must be a canonical UUID v4 (DL-23 correlation §1)");
+        throw new Error(
+          "startSpan: correlationId must be a canonical UUID v4 (DL-23 correlation §1)",
+        );
       }
       const span = tracer.startSpan(name, {
         attributes: toOtelAttributes(validated),
@@ -114,10 +116,14 @@ export function createSpanApi(tracer, defaults) {
           const outcome = result?.outcome ?? "succeeded";
           span.setAttribute("outcome", outcome);
           if (result?.errorType) span.setAttribute("error.type", result.errorType);
-          if (result?.errorClassification) span.setAttribute("error.classification", result.errorClassification);
+          if (result?.errorClassification)
+            span.setAttribute("error.classification", result.errorClassification);
           if (outcome === "failed") {
             try {
-              span.setStatus({ code: api.SpanStatusCode.ERROR, message: result?.errorClassification ?? "failed" });
+              span.setStatus({
+                code: api.SpanStatusCode.ERROR,
+                message: result?.errorClassification ?? "failed",
+              });
             } catch {
               /* setStatus optional on some span impls */
             }

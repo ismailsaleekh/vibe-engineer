@@ -3,10 +3,24 @@ const FORBIDDEN_FEATURES = Object.freeze([
   { token: "{{&", reason: "raw_ampersand" },
   { token: "{{=", reason: "delimiter_mutation" },
   { token: "{{!<", reason: "template_inheritance" },
-  { token: "{{>", reason: null }
+  { token: "{{>", reason: null },
 ]);
 
-const FORBIDDEN_TEXT = Object.freeze(["child_process", "exec(", "spawn(", "fetch(", "http://", "https://", "Date.now", "new Date", "Math.random", "process.env", "require(", "eval(", "Function("]);
+const FORBIDDEN_TEXT = Object.freeze([
+  "child_process",
+  "exec(",
+  "spawn(",
+  "fetch(",
+  "http://",
+  "https://",
+  "Date.now",
+  "new Date",
+  "Math.random",
+  "process.env",
+  "require(",
+  "eval(",
+  "Function(",
+]);
 
 function isObject(value) {
   return value !== null && typeof value === "object" && !Array.isArray(value);
@@ -22,10 +36,14 @@ function fail(code, message, details = {}) {
 export function validateTemplateSource(source, allowedPartials = new Set()) {
   if (typeof source !== "string") fail("unsafe_template", "Template source must be a string.");
   for (const item of FORBIDDEN_FEATURES) {
-    if (item.reason && source.includes(item.token)) fail("unsafe_template", `Forbidden template feature: ${item.reason}.`, { feature: item.reason });
+    if (item.reason && source.includes(item.token))
+      fail("unsafe_template", `Forbidden template feature: ${item.reason}.`, {
+        feature: item.reason,
+      });
   }
   for (const token of FORBIDDEN_TEXT) {
-    if (source.includes(token)) fail("unsafe_template", `Forbidden template text capability: ${token}.`, { token });
+    if (source.includes(token))
+      fail("unsafe_template", `Forbidden template text capability: ${token}.`, { token });
   }
   let offset = 0;
   while (true) {
@@ -40,11 +58,14 @@ export function validateTemplateSource(source, allowedPartials = new Set()) {
     if (["#", "^", "/", "!"].includes(sigil)) continue;
     if (sigil === ">") {
       const name = tag.slice(1).trim();
-      if (!/^[A-Za-z0-9_.-]+$/.test(name)) fail("unsafe_template", "Partial names must be static identifiers.", { partial: name });
-      if (!allowedPartials.has(name)) fail("unsafe_template", "Partial must be declared by manifest.", { partial: name });
+      if (!/^[A-Za-z0-9_.-]+$/.test(name))
+        fail("unsafe_template", "Partial names must be static identifiers.", { partial: name });
+      if (!allowedPartials.has(name))
+        fail("unsafe_template", "Partial must be declared by manifest.", { partial: name });
       continue;
     }
-    if (!/^[A-Za-z_][A-Za-z0-9_.-]*$/.test(tag)) fail("unsafe_template", "Template variables must be normalized bag paths only.", { tag });
+    if (!/^[A-Za-z_][A-Za-z0-9_.-]*$/.test(tag))
+      fail("unsafe_template", "Template variables must be normalized bag paths only.", { tag });
   }
 }
 
@@ -55,8 +76,12 @@ function lookup(context, key) {
     let current = context[index];
     let found = true;
     for (const part of parts) {
-      if (isObject(current) && Object.prototype.hasOwnProperty.call(current, part)) current = current[part];
-      else { found = false; break; }
+      if (isObject(current) && Object.prototype.hasOwnProperty.call(current, part))
+        current = current[part];
+      else {
+        found = false;
+        break;
+      }
     }
     if (found) return current;
   }
@@ -78,7 +103,8 @@ function renderTokens(source, context, partials, allowedPartials) {
     if (sigil === "!") continue;
     if (sigil === ">") {
       const name = tag.slice(1).trim();
-      if (!allowedPartials.has(name) || typeof partials[name] !== "string") fail("unsafe_template", "Partial was not declared.", { partial: name });
+      if (!allowedPartials.has(name) || typeof partials[name] !== "string")
+        fail("unsafe_template", "Partial was not declared.", { partial: name });
       output += renderTokens(partials[name], context, partials, allowedPartials);
       continue;
     }
@@ -93,8 +119,10 @@ function renderTokens(source, context, partials, allowedPartials) {
       const truthy = Array.isArray(value) ? value.length > 0 : Boolean(value);
       if (sigil === "^" ? !truthy : truthy) {
         if (Array.isArray(value)) {
-          for (const item of value) output += renderTokens(body, [...context, item], partials, allowedPartials);
-        } else if (isObject(value)) output += renderTokens(body, [...context, value], partials, allowedPartials);
+          for (const item of value)
+            output += renderTokens(body, [...context, item], partials, allowedPartials);
+        } else if (isObject(value))
+          output += renderTokens(body, [...context, value], partials, allowedPartials);
         else output += renderTokens(body, context, partials, allowedPartials);
       }
       continue;

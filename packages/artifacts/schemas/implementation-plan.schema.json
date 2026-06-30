@@ -16,9 +16,7 @@
       "type": "string",
       "minLength": 1,
       "const": "implementation_plan",
-      "enum": [
-        "implementation_plan"
-      ]
+      "enum": ["implementation_plan"]
     },
     "artifactId": {
       "type": "string",
@@ -76,21 +74,12 @@
           "pattern": "^[a-z0-9][a-z0-9._:-]*$"
         }
       },
-      "required": [
-        "kind",
-        "id",
-        "name"
-      ]
+      "required": ["kind", "id", "name"]
     },
     "status": {
       "type": "string",
       "minLength": 1,
-      "enum": [
-        "draft",
-        "approved",
-        "blocked",
-        "superseded"
-      ]
+      "enum": ["draft", "approved", "blocked", "superseded"]
     },
     "ownership": {
       "type": "object",
@@ -203,14 +192,7 @@
             "minLength": 1
           }
         },
-        "required": [
-          "rel",
-          "artifactKind",
-          "artifactId",
-          "path",
-          "required",
-          "statusAtLinkTime"
-        ]
+        "required": ["rel", "artifactKind", "artifactId", "path", "required", "statusAtLinkTime"]
       },
       "minItems": 1
     },
@@ -221,9 +203,7 @@
       },
       "additionalProperties": {
         "type": "object",
-        "required": [
-          "schemaVersion"
-        ],
+        "required": ["schemaVersion"],
         "properties": {
           "schemaVersion": {
             "type": "string",
@@ -253,24 +233,14 @@
           "kind": {
             "type": "string",
             "minLength": 1,
-            "enum": [
-              "source_doc",
-              "prompt",
-              "issue",
-              "url",
-              "artifact",
-              "raw_intent"
-            ]
+            "enum": ["source_doc", "prompt", "issue", "url", "artifact", "raw_intent"]
           },
           "ref": {
             "type": "string",
             "minLength": 1
           }
         },
-        "required": [
-          "kind",
-          "ref"
-        ]
+        "required": ["kind", "ref"]
       }
     },
     "approvedBy": {
@@ -314,11 +284,7 @@
               "pattern": "^[a-z0-9][a-z0-9._:-]*$"
             }
           },
-          "required": [
-            "kind",
-            "id",
-            "name"
-          ]
+          "required": ["kind", "id", "name"]
         },
         "approvedAt": {
           "type": "string",
@@ -326,10 +292,7 @@
           "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$|^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
         }
       },
-      "required": [
-        "producer",
-        "approvedAt"
-      ]
+      "required": ["producer", "approvedAt"]
     },
     "supersessionReason": {
       "type": "string"
@@ -347,10 +310,7 @@
           "minLength": 1
         }
       },
-      "required": [
-        "policy",
-        "reason"
-      ]
+      "required": ["policy", "reason"]
     },
     "workBriefRef": {
       "type": "object",
@@ -411,14 +371,7 @@
           "minLength": 1
         }
       },
-      "required": [
-        "rel",
-        "artifactKind",
-        "artifactId",
-        "path",
-        "required",
-        "statusAtLinkTime"
-      ]
+      "required": ["rel", "artifactKind", "artifactId", "path", "required", "statusAtLinkTime"]
     },
     "objective": {
       "type": "string",
@@ -500,14 +453,7 @@
             "minLength": 1
           }
         },
-        "required": [
-          "rel",
-          "artifactKind",
-          "artifactId",
-          "path",
-          "required",
-          "statusAtLinkTime"
-        ]
+        "required": ["rel", "artifactKind", "artifactId", "path", "required", "statusAtLinkTime"]
       },
       "minItems": 1
     },
@@ -544,11 +490,7 @@
             "minLength": 1
           }
         },
-        "required": [
-          "kind",
-          "path",
-          "reason"
-        ]
+        "required": ["kind", "path", "reason"]
       },
       "minItems": 1
     },
@@ -699,11 +641,7 @@
             "minLength": 1
           }
         },
-        "required": [
-          "schematicRef",
-          "plannedInputsRef",
-          "purpose"
-        ]
+        "required": ["schematicRef", "plannedInputsRef", "purpose"]
       }
     },
     "implementationSteps": {
@@ -762,11 +700,7 @@
                   "minLength": 1
                 }
               },
-              "required": [
-                "kind",
-                "path",
-                "reason"
-              ]
+              "required": ["kind", "path", "reason"]
             }
           },
           "acceptanceLinks": {
@@ -778,12 +712,7 @@
             }
           }
         },
-        "required": [
-          "id",
-          "description",
-          "expectedTouchedAreas",
-          "acceptanceLinks"
-        ]
+        "required": ["id", "description", "expectedTouchedAreas", "acceptanceLinks"]
       },
       "minItems": 1
     },
@@ -803,10 +732,7 @@
             "minLength": 1
           }
         },
-        "required": [
-          "id",
-          "description"
-        ]
+        "required": ["id", "description"]
       },
       "minItems": 1
     },
@@ -829,11 +755,7 @@
             "type": "boolean"
           }
         },
-        "required": [
-          "id",
-          "description",
-          "blocking"
-        ]
+        "required": ["id", "description", "blocking"]
       },
       "minItems": 1
     },
@@ -861,12 +783,7 @@
             "minLength": 1
           }
         },
-        "required": [
-          "id",
-          "description",
-          "sensitiveArea",
-          "mitigation"
-        ]
+        "required": ["id", "description", "sensitiveArea", "mitigation"]
       }
     },
     "openBlockers": {
@@ -892,12 +809,7 @@
             "minLength": 1
           }
         },
-        "required": [
-          "id",
-          "description",
-          "blocking",
-          "owner"
-        ]
+        "required": ["id", "description", "blocking", "owner"]
       }
     },
     "verificationDelta": {
@@ -914,9 +826,7 @@
           "type": "string",
           "minLength": 1,
           "const": "verification_delta",
-          "enum": [
-            "verification_delta"
-          ]
+          "enum": ["verification_delta"]
         },
         "artifactId": {
           "type": "string",
@@ -974,20 +884,12 @@
               "pattern": "^[a-z0-9][a-z0-9._:-]*$"
             }
           },
-          "required": [
-            "kind",
-            "id",
-            "name"
-          ]
+          "required": ["kind", "id", "name"]
         },
         "status": {
           "type": "string",
           "minLength": 1,
-          "enum": [
-            "complete",
-            "blocked",
-            "superseded"
-          ]
+          "enum": ["complete", "blocked", "superseded"]
         },
         "ownership": {
           "type": "object",
@@ -1118,9 +1020,7 @@
           },
           "additionalProperties": {
             "type": "object",
-            "required": [
-              "schemaVersion"
-            ],
+            "required": ["schemaVersion"],
             "properties": {
               "schemaVersion": {
                 "type": "string",
@@ -1150,24 +1050,14 @@
               "kind": {
                 "type": "string",
                 "minLength": 1,
-                "enum": [
-                  "source_doc",
-                  "prompt",
-                  "issue",
-                  "url",
-                  "artifact",
-                  "raw_intent"
-                ]
+                "enum": ["source_doc", "prompt", "issue", "url", "artifact", "raw_intent"]
               },
               "ref": {
                 "type": "string",
                 "minLength": 1
               }
             },
-            "required": [
-              "kind",
-              "ref"
-            ]
+            "required": ["kind", "ref"]
           }
         },
         "approvedBy": {
@@ -1211,11 +1101,7 @@
                   "pattern": "^[a-z0-9][a-z0-9._:-]*$"
                 }
               },
-              "required": [
-                "kind",
-                "id",
-                "name"
-              ]
+              "required": ["kind", "id", "name"]
             },
             "approvedAt": {
               "type": "string",
@@ -1223,10 +1109,7 @@
               "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$|^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
             }
           },
-          "required": [
-            "producer",
-            "approvedAt"
-          ]
+          "required": ["producer", "approvedAt"]
         },
         "supersessionReason": {
           "type": "string"
@@ -1244,10 +1127,7 @@
               "minLength": 1
             }
           },
-          "required": [
-            "policy",
-            "reason"
-          ]
+          "required": ["policy", "reason"]
         },
         "summary": {
           "type": "string",
@@ -1312,14 +1192,7 @@
               "minLength": 1
             }
           },
-          "required": [
-            "rel",
-            "artifactKind",
-            "artifactId",
-            "path",
-            "required",
-            "statusAtLinkTime"
-          ]
+          "required": ["rel", "artifactKind", "artifactId", "path", "required", "statusAtLinkTime"]
         },
         "sensitiveAreas": {
           "type": "array",
@@ -1370,13 +1243,7 @@
               "action": {
                 "type": "string",
                 "minLength": 1,
-                "enum": [
-                  "add",
-                  "update",
-                  "reuse",
-                  "not_applicable",
-                  "blocked"
-                ]
+                "enum": ["add", "update", "reuse", "not_applicable", "blocked"]
               },
               "rationale": {
                 "type": "string",
@@ -1429,11 +1296,7 @@
                       "type": "boolean"
                     }
                   },
-                  "required": [
-                    "kind",
-                    "description",
-                    "blocking"
-                  ]
+                  "required": ["kind", "description", "blocking"]
                 },
                 "minItems": 1
               },
@@ -1634,11 +1497,7 @@
               "pattern": "^[a-z0-9][a-z0-9._:-]*$"
             }
           },
-          "required": [
-            "kind",
-            "id",
-            "name"
-          ]
+          "required": ["kind", "id", "name"]
         },
         "approvedAt": {
           "type": "string",
@@ -1650,11 +1509,7 @@
           "minLength": 1
         }
       },
-      "required": [
-        "approvedBy",
-        "approvedAt",
-        "notes"
-      ]
+      "required": ["approvedBy", "approvedAt", "notes"]
     },
     "reviewNotes": {
       "type": "array",

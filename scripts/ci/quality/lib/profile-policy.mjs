@@ -18,11 +18,15 @@ export function assertCiProfile(config, profile) {
   }
   const profiles = config.profiles;
   if (!profiles || typeof profiles !== "object" || !(profile in profiles)) {
-    throw new Error(`profile-policy: profile '${profile}' is not declared in quality-wiring config.`);
+    throw new Error(
+      `profile-policy: profile '${profile}' is not declared in quality-wiring config.`,
+    );
   }
   const entry = profiles[profile];
   if (!Array.isArray(entry.composition) || entry.composition.length === 0) {
-    throw new Error(`profile-policy: profile '${profile}' has empty composition (partial/empty gate forbidden).`);
+    throw new Error(
+      `profile-policy: profile '${profile}' has empty composition (partial/empty gate forbidden).`,
+    );
   }
   if (!entry.excludes || typeof entry.excludes !== "object") {
     throw new Error(`profile-policy: profile '${profile}' missing excludes policy.`);
@@ -30,7 +34,7 @@ export function assertCiProfile(config, profile) {
   for (const key of REQUIRED_EXCLUDE_KEYS) {
     if (entry.excludes[key] !== true) {
       throw new Error(
-        `profile-policy: profile '${profile}' must exclude ${key} from default CI (full E2E/mobile/visual as default CI forbidden — N8).`
+        `profile-policy: profile '${profile}' must exclude ${key} from default CI (full E2E/mobile/visual as default CI forbidden — N8).`,
       );
     }
   }
@@ -54,6 +58,6 @@ export function buildParityInputs({ config, profile, parityBlockingCommand }) {
     localAndCiEquivalent: true,
     excludesFullE2E: excludes.fullE2E === true,
     excludesFullMobileE2E: excludes.fullMobileE2E === true,
-    excludesFullVisualUi: excludes.fullVisualUi === true
+    excludesFullVisualUi: excludes.fullVisualUi === true,
   };
 }

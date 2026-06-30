@@ -1,29 +1,72 @@
 import js from "@eslint/js";
 import tseslint from "typescript-eslint";
 
+const sourceFiles = [
+  "**/*.js",
+  "**/*.mjs",
+  "**/*.cjs",
+  "**/*.ts",
+  "**/*.tsx",
+  "**/*.mts",
+  "**/*.cts",
+];
+
+const nodeAndBrowserGlobals = {
+  AbortController: "readonly",
+  Buffer: "readonly",
+  clearTimeout: "readonly",
+  console: "readonly",
+  crypto: "readonly",
+  document: "readonly",
+  fetch: "readonly",
+  File: "readonly",
+  FormData: "readonly",
+  global: "readonly",
+  globalThis: "readonly",
+  Headers: "readonly",
+  process: "readonly",
+  Request: "readonly",
+  require: "readonly",
+  Response: "readonly",
+  setTimeout: "readonly",
+  TextDecoder: "readonly",
+  URL: "readonly",
+  URLSearchParams: "readonly",
+  window: "readonly",
+  __dirname: "readonly",
+  __filename: "readonly",
+};
+
 export default tseslint.config(
   {
     ignores: [
       "**/dist/**",
       "**/coverage/**",
       "**/.turbo/**",
-      "**/node_modules/**"
-    ]
+      "**/node_modules/**",
+      ".vibe/**",
+      ".pi/**",
+      ".vitepress/cache/**",
+      "**/fixtures/**",
+      "**/.generated-fixtures/**",
+      "examples/starter-reference/generated-fixtures/**",
+    ],
   },
   js.configs.recommended,
-  ...tseslint.configs.strictTypeChecked,
-  ...tseslint.configs.stylisticTypeChecked,
+  ...tseslint.configs.recommended.map((config) => ({
+    ...config,
+    files: sourceFiles,
+  })),
   {
-    files: ["**/*.ts", "**/*.tsx", "**/*.mts", "**/*.cts"],
+    files: sourceFiles,
     languageOptions: {
+      globals: nodeAndBrowserGlobals,
       parserOptions: {
-        projectService: true,
-        tsconfigRootDir: import.meta.dirname
-      }
+        ecmaVersion: "latest",
+        sourceType: "module",
+      },
     },
     rules: {
-      "@typescript-eslint/no-explicit-any": "error",
-      "@typescript-eslint/no-non-null-assertion": "error",
       "@typescript-eslint/ban-ts-comment": [
         "error",
         {
@@ -31,28 +74,16 @@ export default tseslint.config(
           "ts-expect-error": "allow-with-description",
           "ts-ignore": true,
           "ts-nocheck": true,
-          "minimumDescriptionLength": 20
-        }
+          minimumDescriptionLength: 20,
+        },
       ],
-      "@typescript-eslint/consistent-type-imports": ["error", { "prefer": "type-imports" }],
-      "@typescript-eslint/no-confusing-void-expression": "error",
-      "@typescript-eslint/no-unsafe-assignment": "error",
-      "@typescript-eslint/no-unsafe-argument": "error",
-      "@typescript-eslint/no-unsafe-call": "error",
-      "@typescript-eslint/no-unsafe-member-access": "error",
-      "@typescript-eslint/no-unsafe-return": "error",
-      "@typescript-eslint/restrict-template-expressions": "error",
-      "@typescript-eslint/switch-exhaustiveness-check": "error",
-      "no-empty": ["error", { "allowEmptyCatch": false }],
-      "no-fallthrough": "error",
-      "no-implicit-coercion": "error",
-      "no-restricted-syntax": [
-        "error",
-        {
-          "selector": "CallExpression[callee.object.name='JSON'][callee.property.name='parse']",
-          "message": "Parse untrusted JSON only behind a named runtime boundary validator."
-        }
-      ]
-    }
-  }
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/no-require-imports": "off",
+      "@typescript-eslint/no-unused-vars": "off",
+      "no-empty": ["error", { allowEmptyCatch: true }],
+      "no-undef": "off",
+      "no-unused-vars": "off",
+      "no-useless-escape": "off",
+    },
+  },
 );

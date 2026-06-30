@@ -5,61 +5,36 @@
       "name": "@vibe-engineer/adapter-pi",
       "root": "packages/adapters/pi/src",
       "allowedDependencies": [],
-      "publicEntrypoints": [
-        "capabilities",
-        "generated-file-manifest",
-        "schema"
-      ],
-      "privatePaths": [
-        "internal",
-        "private"
-      ]
+      "publicEntrypoints": ["capabilities", "generated-file-manifest", "schema"],
+      "privatePaths": ["internal", "private"]
     },
     {
       "name": "@vibe-engineer/artifacts",
       "root": "packages/artifacts/src",
       "allowedDependencies": [],
-      "publicEntrypoints": [
-        "schemas",
-        "schemas/*"
-      ],
-      "privatePaths": [
-        "internal",
-        "private"
-      ]
+      "publicEntrypoints": ["schemas", "schemas/*"],
+      "privatePaths": ["internal", "private"]
     },
     {
       "name": "@vibe-engineer/config",
       "root": "packages/config/src",
       "allowedDependencies": [],
       "publicEntrypoints": [],
-      "privatePaths": [
-        "internal",
-        "private"
-      ]
+      "privatePaths": ["internal", "private"]
     },
     {
       "name": "@vibe-engineer/context",
       "root": "packages/context/src",
-      "allowedDependencies": [
-        "@vibe-engineer/artifacts",
-        "@vibe-engineer/config"
-      ],
+      "allowedDependencies": ["@vibe-engineer/artifacts", "@vibe-engineer/config"],
       "publicEntrypoints": [],
-      "privatePaths": [
-        "internal",
-        "private"
-      ]
+      "privatePaths": ["internal", "private"]
     },
     {
       "name": "@vibe-engineer/contracts",
       "root": "packages/contracts/src",
       "allowedDependencies": [],
       "publicEntrypoints": [],
-      "privatePaths": [
-        "internal",
-        "private"
-      ]
+      "privatePaths": ["internal", "private"]
     },
     {
       "name": "@vibe-engineer/mechanical-gates",
@@ -73,90 +48,56 @@
         "p0/config-guards",
         "p0/boundaries"
       ],
-      "privatePaths": [
-        "internal",
-        "private"
-      ]
+      "privatePaths": ["internal", "private"]
     },
     {
       "name": "@vibe-engineer/observability",
       "root": "packages/observability/src",
-      "allowedDependencies": [
-        "@vibe-engineer/security"
-      ],
-      "publicEntrypoints": [
-        "package.json"
-      ],
-      "privatePaths": [
-        "internal",
-        "private"
-      ]
+      "allowedDependencies": ["@vibe-engineer/security"],
+      "publicEntrypoints": ["package.json"],
+      "privatePaths": ["internal", "private"]
     },
     {
       "name": "@vibe-engineer/orchestration",
       "root": "packages/orchestration/src",
-      "allowedDependencies": [
-        "@vibe-engineer/artifacts"
-      ],
+      "allowedDependencies": ["@vibe-engineer/artifacts"],
       "publicEntrypoints": [],
-      "privatePaths": [
-        "internal",
-        "private"
-      ]
+      "privatePaths": ["internal", "private"]
     },
     {
       "name": "@vibe-engineer/preset-nest-react-rn",
       "root": "packages/presets/nest-react-rn/src",
-      "allowedDependencies": [
-        "@vibe-engineer/preset-typescript"
-      ],
+      "allowedDependencies": ["@vibe-engineer/preset-typescript"],
       "publicEntrypoints": [],
-      "privatePaths": [
-        "internal",
-        "private"
-      ]
+      "privatePaths": ["internal", "private"]
     },
     {
       "name": "@vibe-engineer/preset-typescript",
       "root": "packages/presets/typescript/src",
       "allowedDependencies": [],
       "publicEntrypoints": [],
-      "privatePaths": [
-        "internal",
-        "private"
-      ]
+      "privatePaths": ["internal", "private"]
     },
     {
       "name": "@vibe-engineer/registry",
       "root": "packages/registry/src",
-      "allowedDependencies": [
-        "@vibe-engineer/artifacts"
-      ],
+      "allowedDependencies": ["@vibe-engineer/artifacts"],
       "publicEntrypoints": [],
-      "privatePaths": [
-        "internal",
-        "private"
-      ]
+      "privatePaths": ["internal", "private"]
     },
     {
       "name": "@vibe-engineer/schematics",
       "root": "packages/schematics/src",
       "allowedDependencies": [],
       "publicEntrypoints": [],
-      "privatePaths": [
-        "internal",
-        "private"
-      ]
+      "privatePaths": ["internal", "private"]
     },
     {
       "name": "@vibe-engineer/security",
       "root": "packages/security/src",
       "allowedDependencies": [],
       "publicEntrypoints": [],
-      "privatePaths": [
-        "internal",
-        "private"
-      ]
+      "privatePaths": ["internal", "private"]
     },
     {
       "name": "@vibe-engineer/skills",
@@ -168,51 +109,29 @@
         "@vibe-engineer/orchestration",
         "@vibe-engineer/verification"
       ],
-      "publicEntrypoints": [
-        "build",
-        "ship",
-        "ship/intake"
-      ],
-      "privatePaths": [
-        "internal",
-        "private"
-      ]
+      "publicEntrypoints": ["build", "ship", "ship/intake"],
+      "privatePaths": ["internal", "private"]
     },
     {
       "name": "@vibe-engineer/standards",
       "root": "packages/standards/src",
       "allowedDependencies": [],
-      "publicEntrypoints": [
-        "schemas",
-        "schemas/*"
-      ],
-      "privatePaths": [
-        "internal",
-        "private"
-      ]
+      "publicEntrypoints": ["schemas", "schemas/*"],
+      "privatePaths": ["internal", "private"]
     },
     {
       "name": "@vibe-engineer/testing",
       "root": "packages/testing/src",
       "allowedDependencies": [],
       "publicEntrypoints": [],
-      "privatePaths": [
-        "internal",
-        "private"
-      ]
+      "privatePaths": ["internal", "private"]
     },
     {
       "name": "@vibe-engineer/verification",
       "root": "packages/verification/src",
-      "allowedDependencies": [
-        "@vibe-engineer/artifacts",
-        "@vibe-engineer/orchestration"
-      ],
+      "allowedDependencies": ["@vibe-engineer/artifacts", "@vibe-engineer/orchestration"],
       "publicEntrypoints": [],
-      "privatePaths": [
-        "internal",
-        "private"
-      ]
+      "privatePaths": ["internal", "private"]
     },
     {
       "name": "vibe-engineer",
@@ -227,14 +146,8 @@
         "@vibe-engineer/schematics",
         "@vibe-engineer/verification"
       ],
-      "publicEntrypoints": [
-        "envelope",
-        "command-loader"
-      ],
-      "privatePaths": [
-        "internal",
-        "private"
-      ]
+      "publicEntrypoints": ["envelope", "command-loader"],
+      "privatePaths": ["internal", "private"]
     }
   ]
 }

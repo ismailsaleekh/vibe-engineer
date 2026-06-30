@@ -1,24 +1,43 @@
 import { type ApiFetcher } from "@ts-rest/core";
 import { createReferenceFlowClient } from "../generated/reference-flow-client.js";
-import { createReferenceApplicationProbe, handleReferenceFlowApiRequest } from "../provider/reference-flow.provider.js";
+import {
+  createReferenceApplicationProbe,
+  handleReferenceFlowApiRequest,
+} from "../provider/reference-flow.provider.js";
 import { callReferenceFlowConsumer } from "../consumer/reference-flow.consumer.js";
 
-export async function runReferenceFlowRealBoundaryWitness(): Promise<{ providerAccepted: boolean; consumerAccepted: boolean; invalidRequestRejectedBeforeLogic: boolean; invalidResponseRejected: boolean; clientInvalidResponseRejected: boolean }> {
+export async function runReferenceFlowRealBoundaryWitness(): Promise<{
+  providerAccepted: boolean;
+  consumerAccepted: boolean;
+  invalidRequestRejectedBeforeLogic: boolean;
+  invalidResponseRejected: boolean;
+  clientInvalidResponseRejected: boolean;
+}> {
   const providerProbe = createReferenceApplicationProbe();
-  const providerResponse = handleReferenceFlowApiRequest({
-    method: "POST",
-    path: "/reference/ref_abc123/submit",
-    headers: { "x-reference-client": "provider-fixture" },
-    body: { label: "Alpha", sequence: 7, absence: { kind: "not-provided", reason: "real provider boundary" } }
-  }, providerProbe);
+  const providerResponse = handleReferenceFlowApiRequest(
+    {
+      method: "POST",
+      path: "/reference/ref_abc123/submit",
+      headers: { "x-reference-client": "provider-fixture" },
+      body: {
+        label: "Alpha",
+        sequence: 7,
+        absence: { kind: "not-provided", reason: "real provider boundary" },
+      },
+    },
+    providerProbe,
+  );
 
   const invalidProbe = createReferenceApplicationProbe();
-  const invalidRequestResponse = handleReferenceFlowApiRequest({
-    method: "POST",
-    path: "/reference/ref_abc123/submit",
-    headers: { "x-reference-client": "provider-fixture" },
-    body: { label: "", sequence: 7, absence: { kind: "not-provided", reason: "bad" } }
-  }, invalidProbe);
+  const invalidRequestResponse = handleReferenceFlowApiRequest(
+    {
+      method: "POST",
+      path: "/reference/ref_abc123/submit",
+      headers: { "x-reference-client": "provider-fixture" },
+      body: { label: "", sequence: 7, absence: { kind: "not-provided", reason: "bad" } },
+    },
+    invalidProbe,
+  );
 
   let invalidResponseRejected = false;
   try {
@@ -26,8 +45,12 @@ export async function runReferenceFlowRealBoundaryWitness(): Promise<{ providerA
       method: "POST",
       path: "/reference/ref_abc123/submit",
       headers: { "x-reference-client": "provider-fixture" },
-      body: { label: "Alpha", sequence: 7, absence: { kind: "not-provided", reason: "forced provider failure" } },
-      forceInvalidProviderResponse: true
+      body: {
+        label: "Alpha",
+        sequence: 7,
+        absence: { kind: "not-provided", reason: "forced provider failure" },
+      },
+      forceInvalidProviderResponse: true,
     });
   } catch {
     invalidResponseRejected = true;
@@ -35,8 +58,14 @@ export async function runReferenceFlowRealBoundaryWitness(): Promise<{ providerA
 
   const invalidApi: ApiFetcher = async () => ({
     status: 200,
-    body: { referenceId: "bad", accepted: true, normalizedLabel: "bad", sequenceEcho: 1, absence: { kind: "not-provided", reason: "bad" } },
-    headers: new Headers({ "content-type": "application/json" })
+    body: {
+      referenceId: "bad",
+      accepted: true,
+      normalizedLabel: "bad",
+      sequenceEcho: 1,
+      absence: { kind: "not-provided", reason: "bad" },
+    },
+    headers: new Headers({ "content-type": "application/json" }),
   });
   const invalidClient = createReferenceFlowClient(invalidApi);
   let clientInvalidResponseRejected = false;
@@ -44,7 +73,11 @@ export async function runReferenceFlowRealBoundaryWitness(): Promise<{ providerA
     await invalidClient.submitReference({
       params: { referenceId: "ref_abc123" },
       headers: { "x-reference-client": "consumer-fixture" },
-      body: { label: "Alpha", sequence: 7, absence: { kind: "not-provided", reason: "client response validation" } }
+      body: {
+        label: "Alpha",
+        sequence: 7,
+        absence: { kind: "not-provided", reason: "client response validation" },
+      },
     });
   } catch {
     clientInvalidResponseRejected = true;
@@ -55,8 +88,9 @@ export async function runReferenceFlowRealBoundaryWitness(): Promise<{ providerA
   return {
     providerAccepted: providerProbe.applicationLogicRan && providerResponse.status === 200,
     consumerAccepted: consumerResponse.accepted === true,
-    invalidRequestRejectedBeforeLogic: invalidRequestResponse.status === 400 && invalidProbe.applicationLogicRan === false,
+    invalidRequestRejectedBeforeLogic:
+      invalidRequestResponse.status === 400 && invalidProbe.applicationLogicRan === false,
     invalidResponseRejected,
-    clientInvalidResponseRejected
+    clientInvalidResponseRejected,
   };
 }

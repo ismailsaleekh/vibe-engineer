@@ -28,7 +28,9 @@ export function assertJsonStdout(stdout) {
 export function narrowCliEnvelope(parsed) {
   const validation = validateCliResultEnvelope(parsed);
   if (!validation.ok) {
-    throw new Error(`narrowCliEnvelope: invalid CLI result envelope: ${validation.errors.join("; ")}`);
+    throw new Error(
+      `narrowCliEnvelope: invalid CLI result envelope: ${validation.errors.join("; ")}`,
+    );
   }
   return parsed;
 }
@@ -53,14 +55,20 @@ export function assertExitCodeMatchesEnvelope(envelope, exitCode) {
 export function runDistBinary(args, { env = process.env, cwd = repoRoot } = {}) {
   const result = spawnSync(process.execPath, [distBinary, ...args], { cwd, encoding: "utf8", env });
   let envelope = null;
-  if (result.stdout && result.stdout.trim().startsWith("{")) envelope = narrowCliEnvelope(JSON.parse(result.stdout));
+  if (result.stdout && result.stdout.trim().startsWith("{"))
+    envelope = narrowCliEnvelope(JSON.parse(result.stdout));
   return { code: result.status, stdout: result.stdout, stderr: result.stderr, envelope };
 }
 
 export function runSourceEntry(args, { env = process.env, cwd = repoRoot } = {}) {
-  const result = spawnSync(process.execPath, [sourceEntry, ...args], { cwd, encoding: "utf8", env });
+  const result = spawnSync(process.execPath, [sourceEntry, ...args], {
+    cwd,
+    encoding: "utf8",
+    env,
+  });
   let envelope = null;
-  if (result.stdout && result.stdout.trim().startsWith("{")) envelope = narrowCliEnvelope(JSON.parse(result.stdout));
+  if (result.stdout && result.stdout.trim().startsWith("{"))
+    envelope = narrowCliEnvelope(JSON.parse(result.stdout));
   return { code: result.status, stdout: result.stdout, stderr: result.stderr, envelope };
 }
 
@@ -101,7 +109,9 @@ export function assertResultFileGood(resultFile, stdoutEnvelope) {
   const { artifacts: fileArtifacts, ...fileCore } = fileEnvelope;
   assert.deepEqual(fileCore, stdoutCore, "result-file payload must be byte-equivalent to stdout");
   assert.equal(
-    fileArtifacts.some((a) => a.kind === "cli_result" && a.path === resultFile && a.role === "report"),
+    fileArtifacts.some(
+      (a) => a.kind === "cli_result" && a.path === resultFile && a.role === "report",
+    ),
     true,
     "result file must carry a cli_result artifact {role:'report'}",
   );
@@ -111,13 +121,38 @@ export function assertResultFileGood(resultFile, stdoutEnvelope) {
 // Returns an array of { mutation, ok } where ok MUST be false.
 export function negativeMutationWitnesses(envelope) {
   const mutations = [];
-  const push = (label, mutator) => mutations.push({ mutation: label, ok: validateCliResultEnvelope(mutator(structuredClone(envelope))).ok });
-  push("exitCode", (e) => { if (e.status === "success") e.exitCode = 2; else e.exitCode = 0; return e; });
-  push("payload.kind", (e) => { e.payload.kind = "mutated_kind"; return e; });
-  push("diagnostics.empty", (e) => { if (e.status !== "success") e.diagnostics = []; return e; });
-  push("errors.empty", (e) => { if (e.status !== "success") e.errors = []; return e; });
-  push("error.code", (e) => { const err = e.errors?.[0]; if (err) err.code = "VE_UNKNOWN_BOGUS"; return e; });
-  push("error.classification", (e) => { const err = e.errors?.[0]; if (err) err.classification = "bogus_classification"; return e; });
+  const push = (label, mutator) =>
+    mutations.push({
+      mutation: label,
+      ok: validateCliResultEnvelope(mutator(structuredClone(envelope))).ok,
+    });
+  push("exitCode", (e) => {
+    if (e.status === "success") e.exitCode = 2;
+    else e.exitCode = 0;
+    return e;
+  });
+  push("payload.kind", (e) => {
+    e.payload.kind = "mutated_kind";
+    return e;
+  });
+  push("diagnostics.empty", (e) => {
+    if (e.status !== "success") e.diagnostics = [];
+    return e;
+  });
+  push("errors.empty", (e) => {
+    if (e.status !== "success") e.errors = [];
+    return e;
+  });
+  push("error.code", (e) => {
+    const err = e.errors?.[0];
+    if (err) err.code = "VE_UNKNOWN_BOGUS";
+    return e;
+  });
+  push("error.classification", (e) => {
+    const err = e.errors?.[0];
+    if (err) err.classification = "bogus_classification";
+    return e;
+  });
   return mutations;
 }
 

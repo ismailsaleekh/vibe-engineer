@@ -18,7 +18,8 @@ async function run(context: CommandContext): Promise<{ envelope: UnknownRecord }
 export const importCommand = Object.freeze({
   id: "import",
   visibility: "starter",
-  description: "Import an existing project into vibe-engineer management with the selected pi agentic harness and DL-17 bootstrap context.",
+  description:
+    "Import an existing project into vibe-engineer management with the selected pi agentic harness and DL-17 bootstrap context.",
   run,
 });
 

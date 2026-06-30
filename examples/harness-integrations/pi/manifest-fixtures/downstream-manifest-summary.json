@@ -1,14 +1,7 @@
 {
   "schemaVersion": "pi-adapter-downstream-summary/v1",
   "adapterId": "pi",
-  "sixSkills": [
-    "brainstorm",
-    "grill-me",
-    "task",
-    "plan",
-    "build",
-    "ship"
-  ],
+  "sixSkills": ["brainstorm", "grill-me", "task", "plan", "build", "ship"],
   "generatedFamilies": [
     "pi-skill-files",
     "pi-prompt-templates",
@@ -20,10 +13,5 @@
   "manifestReady": true,
   "createImportReady": false,
   "runtimeExecutionClaim": "not-claimed",
-  "blockedNonPiAdapters": [
-    "claude-code",
-    "codex",
-    "opencode",
-    "later-integrations"
-  ]
+  "blockedNonPiAdapters": ["claude-code", "codex", "opencode", "later-integrations"]
 }

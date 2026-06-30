@@ -26,12 +26,15 @@ const version = (formatName: string, formatVersion: string): GeneratedFileVersio
   adapterCapabilityVersion: "pi-adapter-capability-matrix/v1",
 });
 
-const trustSecurity = (overrides: Omit<GeneratedFileTrustSecurity, "evidence">): GeneratedFileTrustSecurity => ({
+const trustSecurity = (
+  overrides: Omit<GeneratedFileTrustSecurity, "evidence">,
+): GeneratedFileTrustSecurity => ({
   ...overrides,
   evidence: {
     state: "known",
     source: "DL-06-agentic-harness-integrations.md + DL-22-security-safety-model.md",
-    notes: "Generated-file family carries explicit trust, sandbox, credential, command, external-integration, and destructive-operation semantics.",
+    notes:
+      "Generated-file family carries explicit trust, sandbox, credential, command, external-integration, and destructive-operation semantics.",
   },
 });
 
@@ -67,7 +70,8 @@ const family = (
 
 const projectInstructionSecurity = trustSecurity({
   classification: "project-instruction",
-  trustBoundary: "Project-local instructions are loaded by pi after project trust; content must remain domain-neutral and cannot embed secrets.",
+  trustBoundary:
+    "Project-local instructions are loaded by pi after project trust; content must remain domain-neutral and cannot embed secrets.",
   projectTrustRequired: true,
   executesCode: false,
   commandPolicy: "not-applicable",
@@ -88,7 +92,11 @@ export const PI_GENERATED_FILE_MANIFEST: GeneratedFileManifest = {
       "Agent Skills-compatible files for the six locked vibe-engineer skills.",
       [".pi/skills/<skill>/SKILL.md", ".agents/skills/<skill>/SKILL.md"],
       "I-14B-pi-adapter-runtime-skill-consumption",
-      ["I-14B-pi-adapter-runtime-skill-consumption", "I-15A-create-import-cli-ux-selected-harness", "I-21-build-skill-orchestration"],
+      [
+        "I-14B-pi-adapter-runtime-skill-consumption",
+        "I-15A-create-import-cli-ux-selected-harness",
+        "I-21-build-skill-orchestration",
+      ],
       projectInstructionSecurity,
       version("Agent Skills SKILL.md", "v1"),
       "ready",
@@ -110,10 +118,15 @@ export const PI_GENERATED_FILE_MANIFEST: GeneratedFileManifest = {
       "Optional TypeScript extensions for commands, tools, hooks, permission/path gates, subagent or plan-mode-like behavior, and dynamic resources.",
       [".pi/extensions/<name>.ts", ".pi/extensions/<name>/index.ts"],
       "I-14B-pi-adapter-runtime-skill-consumption",
-      ["I-14B-pi-adapter-runtime-skill-consumption", "I-18-security-safety-hooks-policy", "I-21-build-skill-orchestration"],
+      [
+        "I-14B-pi-adapter-runtime-skill-consumption",
+        "I-18-security-safety-hooks-policy",
+        "I-21-build-skill-orchestration",
+      ],
       trustSecurity({
         classification: "executable-extension",
-        trustBoundary: "TypeScript extension code executes with pi/package permissions after project trust; no sandbox isolation is claimed by I-14A.",
+        trustBoundary:
+          "TypeScript extension code executes with pi/package permissions after project trust; no sandbox isolation is claimed by I-14A.",
         projectTrustRequired: true,
         executesCode: true,
         commandPolicy: "default-deny",
@@ -134,7 +147,8 @@ export const PI_GENERATED_FILE_MANIFEST: GeneratedFileManifest = {
       ["I-14B-pi-adapter-runtime-skill-consumption", "I-15B-starter-template-harness-consumption"],
       trustSecurity({
         classification: "package-manifest",
-        trustBoundary: "Pi package install/update/trust behavior must be explicit before a package manifest is generated or consumed.",
+        trustBoundary:
+          "Pi package install/update/trust behavior must be explicit before a package manifest is generated or consumed.",
         projectTrustRequired: true,
         executesCode: true,
         commandPolicy: "default-deny",
@@ -152,7 +166,11 @@ export const PI_GENERATED_FILE_MANIFEST: GeneratedFileManifest = {
       "Project context/instruction files loaded by pi and optional cross-harness compatibility context.",
       ["AGENTS.md", "CLAUDE.md"],
       "I-15A-create-import-cli-ux-selected-harness",
-      ["I-15A-create-import-cli-ux-selected-harness", "I-08-context-graph-index-drift", "I-21-build-skill-orchestration"],
+      [
+        "I-15A-create-import-cli-ux-selected-harness",
+        "I-08-context-graph-index-drift",
+        "I-21-build-skill-orchestration",
+      ],
       projectInstructionSecurity,
       version("Pi context file", "v1"),
       "ready",
@@ -161,12 +179,21 @@ export const PI_GENERATED_FILE_MANIFEST: GeneratedFileManifest = {
     family(
       "harness-config",
       "Generated harness config fields recording `agenticHarness: pi` and adapter capability/version metadata.",
-      ["generated harness config field: agenticHarness=pi", "generated harness config field: adapterCapabilityVersion", "generated harness config field: generatedFileManifestVersion"],
+      [
+        "generated harness config field: agenticHarness=pi",
+        "generated harness config field: adapterCapabilityVersion",
+        "generated harness config field: generatedFileManifestVersion",
+      ],
       "I-15A-create-import-cli-ux-selected-harness",
-      ["I-15A-create-import-cli-ux-selected-harness", "I-15B-starter-template-harness-consumption", "I-21-build-skill-orchestration"],
+      [
+        "I-15A-create-import-cli-ux-selected-harness",
+        "I-15B-starter-template-harness-consumption",
+        "I-21-build-skill-orchestration",
+      ],
       trustSecurity({
         classification: "configuration",
-        trustBoundary: "Configuration selects the typed pi adapter manifest only; it must not silently enable unsupported non-pi harnesses or runtime claims.",
+        trustBoundary:
+          "Configuration selects the typed pi adapter manifest only; it must not silently enable unsupported non-pi harnesses or runtime claims.",
         projectTrustRequired: false,
         executesCode: false,
         commandPolicy: "not-applicable",
@@ -185,7 +212,9 @@ export const PI_GENERATED_FILE_MANIFEST: GeneratedFileManifest = {
 export const getPiGeneratedFileManifest = (): GeneratedFileManifest =>
   structuredClone(PI_GENERATED_FILE_MANIFEST);
 
-export const validatePiGeneratedFileManifest = (value: unknown): ValidationResult<GeneratedFileManifest> => validateGeneratedFileManifest(value);
+export const validatePiGeneratedFileManifest = (
+  value: unknown,
+): ValidationResult<GeneratedFileManifest> => validateGeneratedFileManifest(value);
 
 export const createPiDownstreamManifestSummary = (): DownstreamManifestSummary =>
   createDownstreamManifestSummary(getPiAdapterCapabilityMatrix(), getPiGeneratedFileManifest());

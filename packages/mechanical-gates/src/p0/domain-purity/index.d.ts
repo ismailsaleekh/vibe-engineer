@@ -22,4 +22,7 @@ export interface DomainPurityOptions {
   maxFileBytes?: number;
 }
 
-export function validateDomainPurity(projectRoot: string, options?: DomainPurityOptions): Promise<P0ValidatorResult>;
+export function validateDomainPurity(
+  projectRoot: string,
+  options?: DomainPurityOptions,
+): Promise<P0ValidatorResult>;

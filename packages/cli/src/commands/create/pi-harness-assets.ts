@@ -13,7 +13,10 @@ import {
   type CreatePiAssetPlannedWrite,
   type CreatePiAssetValidationIssue,
 } from "@vibe-engineer/adapter-pi/generated-file-manifest";
-import type { AdapterCapabilityMatrix, GeneratedFileManifest } from "@vibe-engineer/adapter-pi/schema";
+import type {
+  AdapterCapabilityMatrix,
+  GeneratedFileManifest,
+} from "@vibe-engineer/adapter-pi/schema";
 
 import { CliClassification, CliErrorCode } from "../../errors/codes.js";
 import { resolveVibeEngineerPackageRoot } from "./starter-template.ts";
@@ -46,9 +49,17 @@ export interface PiHarnessAssetResult {
 export class PiHarnessAssetError extends Error {
   readonly code: string;
   readonly classification: string;
-  readonly details: { readonly stage: "pi_asset_validation"; readonly issues: readonly CreatePiAssetValidationIssue[] };
+  readonly details: {
+    readonly stage: "pi_asset_validation";
+    readonly issues: readonly CreatePiAssetValidationIssue[];
+  };
 
-  constructor(input: { readonly message: string; readonly code: string; readonly classification: string; readonly issues: readonly CreatePiAssetValidationIssue[] }) {
+  constructor(input: {
+    readonly message: string;
+    readonly code: string;
+    readonly classification: string;
+    readonly issues: readonly CreatePiAssetValidationIssue[];
+  }) {
     super(input.message);
     this.name = "PiHarnessAssetError";
     this.code = input.code;
@@ -62,9 +73,15 @@ export function isPiHarnessAssetError(error: unknown): error is PiHarnessAssetEr
   return error instanceof PiHarnessAssetError;
 }
 
-const issue = (path: string, code: string, message: string): CreatePiAssetValidationIssue => ({ path, code, message, severity: "error" });
+const issue = (path: string, code: string, message: string): CreatePiAssetValidationIssue => ({
+  path,
+  code,
+  message,
+  severity: "error",
+});
 
-const fileSha256 = (content: string): string => `sha256:${createHash("sha256").update(content).digest("hex")}`;
+const fileSha256 = (content: string): string =>
+  `sha256:${createHash("sha256").update(content).digest("hex")}`;
 
 const assertContained = (parent: string, child: string, path: string): void => {
   const rel = relative(parent, child);
@@ -73,18 +90,29 @@ const assertContained = (parent: string, child: string, path: string): void => {
       message: "Pi harness asset path resolved outside the project root.",
       code: CliErrorCode.InvalidConfig,
       classification: CliClassification.InvalidConfig,
-      issues: [issue(path, "pi_asset_path_escape", "Pi harness asset path resolved outside the project root.")],
+      issues: [
+        issue(
+          path,
+          "pi_asset_path_escape",
+          "Pi harness asset path resolved outside the project root.",
+        ),
+      ],
     });
   }
 };
 
-const classifyExisting = async (path: string, relativePath: string, includeContent: boolean): Promise<CreatePiAssetExistingPathState> => {
+const classifyExisting = async (
+  path: string,
+  relativePath: string,
+  includeContent: boolean,
+): Promise<CreatePiAssetExistingPathState> => {
   if (!existsSync(path)) return { path: relativePath, kind: "missing" };
   const st = await lstat(path);
   if (st.isSymbolicLink()) return { path: relativePath, kind: "symlink" };
   if (st.isDirectory()) return { path: relativePath, kind: "directory" };
   if (st.isFile()) {
-    if (includeContent) return { path: relativePath, kind: "file", currentContent: await readFile(path, "utf8") };
+    if (includeContent)
+      return { path: relativePath, kind: "file", currentContent: await readFile(path, "utf8") };
     return { path: relativePath, kind: "file" };
   }
   return { path: relativePath, kind: "symlink" };
@@ -99,7 +127,10 @@ const parentPaths = (assetPath: string): readonly string[] => {
   return out;
 };
 
-const existingPathStates = async (targetRoot: string, writes: readonly CreatePiAssetPlannedWrite[]): Promise<readonly CreatePiAssetExistingPathState[]> => {
+const existingPathStates = async (
+  targetRoot: string,
+  writes: readonly CreatePiAssetPlannedWrite[],
+): Promise<readonly CreatePiAssetExistingPathState[]> => {
   const paths = new Set<string>();
   for (const write of writes) {
     paths.add(write.path);
@@ -107,17 +138,32 @@ const existingPathStates = async (targetRoot: string, writes: readonly CreatePiA
   }
   const states: CreatePiAssetExistingPathState[] = [];
   for (const relativePath of [...paths].sort()) {
-    states.push(await classifyExisting(resolve(targetRoot, ...relativePath.split("/")), relativePath, writes.some((write) => write.path === relativePath)));
+    states.push(
+      await classifyExisting(
+        resolve(targetRoot, ...relativePath.split("/")),
+        relativePath,
+        writes.some((write) => write.path === relativePath),
+      ),
+    );
   }
   return states;
 };
 
 const errorFromIssues = (issues: readonly CreatePiAssetValidationIssue[]): PiHarnessAssetError => {
-  const hasConflict = issues.some((item) => item.code.includes("conflict") || item.code.includes("symlink") || item.code.includes("parent"));
+  const hasConflict = issues.some(
+    (item) =>
+      item.code.includes("conflict") ||
+      item.code.includes("symlink") ||
+      item.code.includes("parent"),
+  );
   return new PiHarnessAssetError({
-    message: hasConflict ? "Pi harness asset write plan has an existing-path conflict." : "Pi harness asset validation failed.",
+    message: hasConflict
+      ? "Pi harness asset write plan has an existing-path conflict."
+      : "Pi harness asset validation failed.",
     code: hasConflict ? CliErrorCode.InvalidInvocation : CliErrorCode.MissingConfig,
-    classification: hasConflict ? CliClassification.WriteConflict : CliClassification.MissingPrerequisite,
+    classification: hasConflict
+      ? CliClassification.WriteConflict
+      : CliClassification.MissingPrerequisite,
     issues,
   });
 };
@@ -131,7 +177,10 @@ export async function writePiHarnessAssets(input: {
   const packageRoot = resolveVibeEngineerPackageRoot();
   const templateRoot = join(packageRoot, "templates", "pi", "runtime-fixtures");
   const targetRoot = resolve(input.targetRoot);
-  const descriptors = selectCreatePiAssets({ manifest: input.manifest, capabilityMatrix: input.capabilityMatrix });
+  const descriptors = selectCreatePiAssets({
+    manifest: input.manifest,
+    capabilityMatrix: input.capabilityMatrix,
+  });
   const writes: CreatePiAssetPlannedWrite[] = [];
 
   for (const descriptor of descriptors) {
@@ -145,13 +194,20 @@ export async function writePiHarnessAssets(input: {
         message: "A shipped pi asset template could not be read from the installed package.",
         code: CliErrorCode.MissingConfig,
         classification: CliClassification.MissingPrerequisite,
-        issues: [issue(descriptor.shippedTemplatePath, "missing_shipped_pi_asset_template", "A shipped pi asset template could not be read from the installed package.")],
+        issues: [
+          issue(
+            descriptor.shippedTemplatePath,
+            "missing_shipped_pi_asset_template",
+            "A shipped pi asset template could not be read from the installed package.",
+          ),
+        ],
       });
     }
     writes.push({ ...descriptor, content });
   }
 
-  const conflictPolicy: CreatePiAssetConflictPolicy = input.mode === "create" ? "fail-on-conflict" : "allow-identical-overwrite";
+  const conflictPolicy: CreatePiAssetConflictPolicy =
+    input.mode === "create" ? "fail-on-conflict" : "allow-identical-overwrite";
   const existingPaths = await existingPathStates(targetRoot, writes);
   const validation = validateCreatePiAssetWritePlan({
     manifest: input.manifest,

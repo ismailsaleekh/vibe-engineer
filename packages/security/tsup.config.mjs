@@ -20,24 +20,35 @@ async function onSuccess() {
   const args = [
     "src/index.js",
     "--allowJs",
-    "--checkJs", "false",
+    "--checkJs",
+    "false",
     "--declaration",
     "--emitDeclarationOnly",
-    "--outDir", "dist",
-    "--rootDir", "src",
-    "--target", "ES2022",
-    "--module", "NodeNext",
-    "--moduleResolution", "NodeNext",
-    "--lib", "ES2022",
+    "--outDir",
+    "dist",
+    "--rootDir",
+    "src",
+    "--target",
+    "ES2022",
+    "--module",
+    "NodeNext",
+    "--moduleResolution",
+    "NodeNext",
+    "--lib",
+    "ES2022",
     "--skipLibCheck",
-    "--strict", "false",
-    "--noEmitOnError", "false"
+    "--strict",
+    "false",
+    "--noEmitOnError",
+    "false",
   ];
   try {
     execFileSync(process.execPath, [tscBin, ...args], { stdio: "inherit" });
   } catch {
     // tsc reports source errors but (noEmitOnError=false) still wrote dist/index.d.ts.
-    process.stdout.write("[security] tsc reported pre-existing source type debt; dist/index.d.ts emitted\n");
+    process.stdout.write(
+      "[security] tsc reported pre-existing source type debt; dist/index.d.ts emitted\n",
+    );
   }
 }
 
@@ -51,5 +62,5 @@ export default defineConfig({
   clean: true,
   dts: false,
   tsconfig: "./tsconfig.json",
-  onSuccess
+  onSuccess,
 });

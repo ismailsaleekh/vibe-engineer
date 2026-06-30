@@ -36,7 +36,9 @@ describe("W3C Trace Context traceparent format/parse", () => {
 
   it("formatTraceparent rejects invalid ids (typed gate)", () => {
     expect(() => formatTraceparent({ traceId: "nope", spanId: "b7ad6b7169203331" })).toThrow();
-    expect(() => formatTraceparent({ traceId: "0af7651916cd43dd8448eb211c80319c", spanId: "nope" })).toThrow();
+    expect(() =>
+      formatTraceparent({ traceId: "0af7651916cd43dd8448eb211c80319c", spanId: "nope" }),
+    ).toThrow();
   });
 });
 

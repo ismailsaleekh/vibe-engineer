@@ -8,10 +8,13 @@ function fail(code, message, details = {}) {
 }
 
 function normalizeRelative(candidate) {
-  if (typeof candidate !== "string" || candidate.length === 0) fail("unsafe_path", "Generated path must be a non-empty string.");
-  if (path.isAbsolute(candidate)) fail("unsafe_path", "Generated path must be relative.", { path: candidate });
+  if (typeof candidate !== "string" || candidate.length === 0)
+    fail("unsafe_path", "Generated path must be a non-empty string.");
+  if (path.isAbsolute(candidate))
+    fail("unsafe_path", "Generated path must be relative.", { path: candidate });
   const normalized = path.posix.normalize(candidate.replaceAll(path.sep, "/"));
-  if (normalized === "." || normalized.startsWith("../") || normalized === "..") fail("unsafe_path", "Generated path must stay inside target root.", { path: candidate });
+  if (normalized === "." || normalized.startsWith("../") || normalized === "..")
+    fail("unsafe_path", "Generated path must stay inside target root.", { path: candidate });
   return normalized;
 }
 
@@ -38,16 +41,30 @@ function patternMatches(pattern, relativePath) {
   return false;
 }
 
-export function assertSafeTargetPath({ relativePath, targetRoot, touchedPathPatterns, forbiddenPathPatterns }) {
+export function assertSafeTargetPath({
+  relativePath,
+  targetRoot,
+  touchedPathPatterns,
+  forbiddenPathPatterns,
+}) {
   const normalized = normalizeRelative(relativePath);
   const absolute = path.resolve(targetRoot, normalized);
   const root = path.resolve(targetRoot);
   const relFromRoot = path.relative(root, absolute);
-  if (relFromRoot === "" || relFromRoot.startsWith("..") || path.isAbsolute(relFromRoot)) fail("unsafe_path", "Generated path escapes target root.", { path: relativePath });
-  if (!Array.isArray(touchedPathPatterns) || !touchedPathPatterns.some((pattern) => patternMatches(pattern, normalized))) {
-    fail("unsafe_path", "Generated path is not declared by manifest touchedPathPatterns.", { path: normalized });
+  if (relFromRoot === "" || relFromRoot.startsWith("..") || path.isAbsolute(relFromRoot))
+    fail("unsafe_path", "Generated path escapes target root.", { path: relativePath });
+  if (
+    !Array.isArray(touchedPathPatterns) ||
+    !touchedPathPatterns.some((pattern) => patternMatches(pattern, normalized))
+  ) {
+    fail("unsafe_path", "Generated path is not declared by manifest touchedPathPatterns.", {
+      path: normalized,
+    });
   }
-  if (Array.isArray(forbiddenPathPatterns) && forbiddenPathPatterns.some((pattern) => patternMatches(pattern, normalized))) {
+  if (
+    Array.isArray(forbiddenPathPatterns) &&
+    forbiddenPathPatterns.some((pattern) => patternMatches(pattern, normalized))
+  ) {
     fail("unsafe_path", "Generated path matches forbiddenPathPatterns.", { path: normalized });
   }
   return { relativePath: normalized, absolutePath: absolute };

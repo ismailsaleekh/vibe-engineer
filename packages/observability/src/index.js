@@ -58,11 +58,7 @@ export {
   createMemorySink,
 } from "./logging.js";
 
-export {
-  createTracerProvider,
-  createSpanApi,
-  InMemorySpanExporter,
-} from "./tracing.js";
+export { createTracerProvider, createSpanApi, InMemorySpanExporter } from "./tracing.js";
 
 export {
   createMeterProvider,
@@ -71,10 +67,6 @@ export {
   AggregationTemporality,
 } from "./metrics.js";
 
-export {
-  redactRecord,
-  assertNoSentinelLeak,
-  REDACTION_NEGATIVE_SENTINELS,
-} from "./redaction.js";
+export { redactRecord, assertNoSentinelLeak, REDACTION_NEGATIVE_SENTINELS } from "./redaction.js";
 
 export { createLocalCapture } from "./test-exporters.js";

@@ -10,7 +10,7 @@ const SECRET_FLAG_IDENTIFIERS = Object.freeze([
   "credential",
   "credentials",
   "client-secret",
-  "clientsecret"
+  "clientsecret",
 ]);
 
 const SECRET_FLAG_SEGMENTS = Object.freeze(["token", "password", "secret", "credential"]);
@@ -35,7 +35,7 @@ const SAFE_COMMAND_IDS = new Set([
   "context",
   "registry",
   "update",
-  "init"
+  "init",
 ]);
 
 export function parseFlagToken(token) {
@@ -48,7 +48,7 @@ export function parseFlagToken(token) {
     isFlag: true,
     flag: token.slice(0, equalsAt),
     hasInlineValue: true,
-    value: token.slice(equalsAt + 1)
+    value: token.slice(equalsAt + 1),
   };
 }
 

@@ -24,13 +24,7 @@
     { "kind": "exact", "path": "CONTRIBUTING.md", "tools": ["markdownlint"] },
     { "kind": "exact", "path": "SECURITY.md", "tools": ["markdownlint"] }
   ],
-  "excludedPaths": [
-    ".vibe",
-    ".pi",
-    ".turbo",
-    ".vitepress",
-    "pnpm-lock.yaml"
-  ],
+  "excludedPaths": [".vibe", ".pi", ".turbo", ".vitepress", "pnpm-lock.yaml"],
   "requiredPaths": [
     "tsconfig.json",
     "package.json",

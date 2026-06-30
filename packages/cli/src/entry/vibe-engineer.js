@@ -5,7 +5,12 @@ import { dirname, resolve } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { loadVibeConfigFile, loadVibeConfigFromProjectRoot } from "@vibe-engineer/config";
 import { CliClassification, CliErrorCode } from "../errors/codes.js";
-import { parseFlagToken, sanitizeArgvForMetadata, sanitizeCommandForDisplay, sanitizeFlagForDisplay } from "../errors/sanitization.js";
+import {
+  parseFlagToken,
+  sanitizeArgvForMetadata,
+  sanitizeCommandForDisplay,
+  sanitizeFlagForDisplay,
+} from "../errors/sanitization.js";
 import { createCommandLoader } from "../command-loader/loader.js";
 import {
   artifactDescriptor,
@@ -15,7 +20,7 @@ import {
   internalErrorEnvelope,
   payload,
   validateCliResultEnvelope,
-  writeResultFileAtomic
+  writeResultFileAtomic,
 } from "../envelope/result-envelope.js";
 import { cliError, diagnostic } from "../errors/codes.js";
 import { configBlockedEnvelope } from "../envelope/result-envelope.js";
@@ -41,7 +46,7 @@ function parseGlobalArgs(argv) {
     projectRoot: null,
     configPath: null,
     command: null,
-    commandArgs: []
+    commandArgs: [],
   };
 
   for (let index = 0; index < argv.length; index += 1) {
@@ -55,8 +60,18 @@ function parseGlobalArgs(argv) {
     }
     if (parsedFlag.isFlag && GLOBAL_VALUE_FLAGS.has(parsedFlag.flag)) {
       const value = parsedFlag.hasInlineValue ? parsedFlag.value : argv[index + 1];
-      if (typeof value !== "string" || value.length === 0 || (!parsedFlag.hasInlineValue && value.startsWith("--"))) {
-        return { ok: false, code: CliErrorCode.MissingFlagValue, flag: parsedFlag.flag, message: `Missing value for ${parsedFlag.flag}.`, options };
+      if (
+        typeof value !== "string" ||
+        value.length === 0 ||
+        (!parsedFlag.hasInlineValue && value.startsWith("--"))
+      ) {
+        return {
+          ok: false,
+          code: CliErrorCode.MissingFlagValue,
+          flag: parsedFlag.flag,
+          message: `Missing value for ${parsedFlag.flag}.`,
+          options,
+        };
       }
       if (parsedFlag.flag === "--result-file") options.resultFile = resolve(value);
       if (parsedFlag.flag === "--project-root") options.projectRoot = resolve(value);
@@ -67,7 +82,13 @@ function parseGlobalArgs(argv) {
     if (options.command === null) {
       if (parsedFlag.isFlag) {
         const displayFlag = sanitizeFlagForDisplay(token);
-        return { ok: false, code: CliErrorCode.InvalidFlag, flag: displayFlag, message: `Unknown global flag: ${displayFlag}.`, options };
+        return {
+          ok: false,
+          code: CliErrorCode.InvalidFlag,
+          flag: displayFlag,
+          message: `Unknown global flag: ${displayFlag}.`,
+          options,
+        };
       }
       options.command = token;
       continue;
@@ -87,7 +108,7 @@ function createInvocation({ argv, options, command, startedAt }) {
     projectRoot: options.projectRoot,
     configPath: options.configPath,
     startedAt,
-    endedAt: startedAt
+    endedAt: startedAt,
   };
 }
 
@@ -98,11 +119,15 @@ function finalizeInvocation(invocation) {
 async function loadConfigIfRequested(invocation, options) {
   if (options.configPath) {
     const result = await loadVibeConfigFile(options.configPath);
-    return result.ok ? { ok: true, result } : { ok: false, envelope: configBlockedEnvelope(invocation, result) };
+    return result.ok
+      ? { ok: true, result }
+      : { ok: false, envelope: configBlockedEnvelope(invocation, result) };
   }
   if (options.projectRoot) {
     const result = await loadVibeConfigFromProjectRoot(options.projectRoot);
-    return result.ok ? { ok: true, result } : { ok: false, envelope: configBlockedEnvelope(invocation, result) };
+    return result.ok
+      ? { ok: true, result }
+      : { ok: false, envelope: configBlockedEnvelope(invocation, result) };
   }
   return { ok: true, result: null };
 }
@@ -113,13 +138,25 @@ function carrierFailureEnvelope(invocation, resultFile, error) {
     invocation,
     status: "blocked",
     payload: payload("result_file_error", { resultFile }),
-    diagnostics: [diagnostic({ code: CliErrorCode.ResultFileWriteFailed, classification: CliClassification.WriteConflict, message, path: resultFile })],
-    errors: [cliError({
-      code: CliErrorCode.ResultFileWriteFailed,
-      classification: CliClassification.WriteConflict,
-      message,
-      details: { resultFile, errorCode: error && typeof error === "object" && "code" in error ? error.code : null }
-    })]
+    diagnostics: [
+      diagnostic({
+        code: CliErrorCode.ResultFileWriteFailed,
+        classification: CliClassification.WriteConflict,
+        message,
+        path: resultFile,
+      }),
+    ],
+    errors: [
+      cliError({
+        code: CliErrorCode.ResultFileWriteFailed,
+        classification: CliClassification.WriteConflict,
+        message,
+        details: {
+          resultFile,
+          errorCode: error && typeof error === "object" && "code" in error ? error.code : null,
+        },
+      }),
+    ],
   });
 }
 
@@ -128,31 +165,52 @@ function invalidEnvelopeFailure(invocation, validation) {
     invocation,
     status: "failure",
     payload: payload("internal_error", { accepted: false }),
-    diagnostics: [diagnostic({
-      code: CliErrorCode.InvalidEnvelope,
-      classification: CliClassification.InternalError,
-      message: "CLI producer generated an invalid result envelope."
-    })],
-    errors: [cliError({
-      code: CliErrorCode.InvalidEnvelope,
-      classification: CliClassification.InternalError,
-      message: "CLI producer generated an invalid result envelope.",
-      details: { validationErrors: validation.errors }
-    })]
+    diagnostics: [
+      diagnostic({
+        code: CliErrorCode.InvalidEnvelope,
+        classification: CliClassification.InternalError,
+        message: "CLI producer generated an invalid result envelope.",
+      }),
+    ],
+    errors: [
+      cliError({
+        code: CliErrorCode.InvalidEnvelope,
+        classification: CliClassification.InternalError,
+        message: "CLI producer generated an invalid result envelope.",
+        details: { validationErrors: validation.errors },
+      }),
+    ],
   });
 }
 
 function firstMessage(envelope) {
-  const errorMessage = Array.isArray(envelope.errors) && envelope.errors[0] && typeof envelope.errors[0].message === "string" ? envelope.errors[0].message : null;
+  const errorMessage =
+    Array.isArray(envelope.errors) &&
+    envelope.errors[0] &&
+    typeof envelope.errors[0].message === "string"
+      ? envelope.errors[0].message
+      : null;
   if (errorMessage) return errorMessage;
-  const diagnosticMessage = Array.isArray(envelope.diagnostics) && envelope.diagnostics[0] && typeof envelope.diagnostics[0].message === "string" ? envelope.diagnostics[0].message : null;
+  const diagnosticMessage =
+    Array.isArray(envelope.diagnostics) &&
+    envelope.diagnostics[0] &&
+    typeof envelope.diagnostics[0].message === "string"
+      ? envelope.diagnostics[0].message
+      : null;
   return diagnosticMessage;
 }
 
 function formatHumanEnvelope(envelope) {
-  const command = typeof envelope.invocation?.command === "string" ? envelope.invocation.command : "command";
+  const command =
+    typeof envelope.invocation?.command === "string" ? envelope.invocation.command : "command";
   const payloadKind = typeof envelope.payload?.kind === "string" ? envelope.payload.kind : "result";
-  const data = envelope.payload && typeof envelope.payload === "object" && envelope.payload.data && typeof envelope.payload.data === "object" ? envelope.payload.data : {};
+  const data =
+    envelope.payload &&
+    typeof envelope.payload === "object" &&
+    envelope.payload.data &&
+    typeof envelope.payload.data === "object"
+      ? envelope.payload.data
+      : {};
   const lines = [];
 
   if (envelope.status === "success") {
@@ -190,7 +248,8 @@ function formatHumanEnvelope(envelope) {
     if (payloadKind === "create_result") {
       const mode = data.mode === "import" ? "import" : "create";
       lines.push(`vibe-engineer ${mode} completed`);
-      if (data.project && typeof data.project === "object") lines.push(`Project: ${data.project.name ?? data.project.slug ?? "unknown"}`);
+      if (data.project && typeof data.project === "object")
+        lines.push(`Project: ${data.project.name ?? data.project.slug ?? "unknown"}`);
       if (typeof data.targetRoot === "string") lines.push(`Target: ${data.targetRoot}`);
       if (typeof data.selectedHarness === "string") lines.push(`Harness: ${data.selectedHarness}`);
       if (typeof data.briefStatus === "string") lines.push(`Brief: ${data.briefStatus}`);
@@ -222,8 +281,13 @@ async function emitEnvelope(envelope, options) {
       ...finalEnvelope,
       artifacts: [
         ...finalEnvelope.artifacts,
-        artifactDescriptor({ kind: "cli_result", path: options.resultFile, schemaVersion: finalEnvelope.schemaVersion, role: "report" })
-      ]
+        artifactDescriptor({
+          kind: "cli_result",
+          path: options.resultFile,
+          schemaVersion: finalEnvelope.schemaVersion,
+          role: "report",
+        }),
+      ],
     };
   }
 
@@ -257,18 +321,24 @@ export async function runCli(argv = process.argv.slice(2)) {
 
   if (!parsed.ok) {
     invocation = finalizeInvocation(invocation);
-    return emitEnvelope(invalidInvocationEnvelope(invocation, {
-      code: parsed.code,
-      classification: CliClassification.InvalidInvocation,
-      message: parsed.message,
-      details: { flag: parsed.flag }
-    }), options);
+    return emitEnvelope(
+      invalidInvocationEnvelope(invocation, {
+        code: parsed.code,
+        classification: CliClassification.InvalidInvocation,
+        message: parsed.message,
+        details: { flag: parsed.flag },
+      }),
+      options,
+    );
   }
 
   try {
     const config = await loadConfigIfRequested(invocation, options);
     if (!config.ok) {
-      const envelope = { ...config.envelope, invocation: finalizeInvocation(config.envelope.invocation) };
+      const envelope = {
+        ...config.envelope,
+        invocation: finalizeInvocation(config.envelope.invocation),
+      };
       return emitEnvelope(envelope, options);
     }
 
@@ -277,18 +347,26 @@ export async function runCli(argv = process.argv.slice(2)) {
     const result = await loader.dispatch(command, options.commandArgs, {
       invocation,
       packageJsonPath: packageJsonPath(),
-      config: config.result
+      config: config.result,
     });
     return emitEnvelope(result.envelope, options);
   } catch (error) {
     invocation = finalizeInvocation(invocation);
-    if (error && typeof error === "object" && typeof error.code === "string" && typeof error.classification === "string") {
-      return emitEnvelope(invalidInvocationEnvelope(invocation, {
-        code: error.code,
-        classification: error.classification,
-        message: error.message,
-        details: { errorName: error.name ?? null }
-      }), options);
+    if (
+      error &&
+      typeof error === "object" &&
+      typeof error.code === "string" &&
+      typeof error.classification === "string"
+    ) {
+      return emitEnvelope(
+        invalidInvocationEnvelope(invocation, {
+          code: error.code,
+          classification: error.classification,
+          message: error.message,
+          details: { errorName: error.name ?? null },
+        }),
+        options,
+      );
     }
     return emitEnvelope(internalErrorEnvelope(invocation), options);
   }

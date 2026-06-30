@@ -3,8 +3,13 @@
   "generatedBy": "packages/cli/scripts/copy-templates.mjs",
   "sourceRoot": "examples/starter-reference/.source-template",
   "shippedRoot": "templates/starter",
-  "fileCount": 101,
+  "fileCount": 106,
   "files": [
+    {
+      "path": ".env",
+      "bytes": 161,
+      "sha256": "sha256:0ac06d6fa912198fb0c7824180b31035917e0a88ba445e75bd91a43a776e0380"
+    },
     {
       "path": ".env.example",
       "bytes": 185,
@@ -17,8 +22,8 @@
     },
     {
       "path": ".prettierignore",
-      "bytes": 267,
-      "sha256": "sha256:ab7a2f1615c7669b5983dbc1352f5576c029f3b369fd51b8c6ab3e9e05c85df6"
+      "bytes": 280,
+      "sha256": "sha256:5fc0253318b3d6d0051b2a118ff39ff9333d4fce09e173441f9fd35f8a787010"
     },
     {
       "path": ".tooling/ci/README.md",
@@ -27,8 +32,8 @@
     },
     {
       "path": ".tooling/dev-services/docker-compose.json",
-      "bytes": 558,
-      "sha256": "sha256:33d0ad97f254936fbdb67a8368627f1c0427127122d44523d33d4dd4d50d884a"
+      "bytes": 593,
+      "sha256": "sha256:02993ff0695dccf85687c0919eb995d5691d35caa94fb4c617d9b5e45933ca00"
     },
     {
       "path": ".tooling/generated/README.md",
@@ -79,6 +84,11 @@
       "path": "_gitignore",
       "bytes": 430,
       "sha256": "sha256:7843af9e84fe956ea2440d5a2597c1280df9eee2461f8e94e689bdacd6a811b5"
+    },
+    {
+      "path": "apps/api/.env",
+      "bytes": 208,
+      "sha256": "sha256:f73cfeb687a239cfd9c2a660b4dab9c586a988f5057f6288482f49a606172e3e"
     },
     {
       "path": "apps/api/package.json",
@@ -182,13 +192,13 @@
     },
     {
       "path": "apps/mobile/metro.config.cjs",
-      "bytes": 476,
-      "sha256": "sha256:19dd1723dcc7e068755b2c5a3765307f8b69d198c4cef4a0a7ec2b80dedf04d8"
+      "bytes": 1443,
+      "sha256": "sha256:fa843e942ffa2869ff37bf0925e5a6f6ef2386351caa666ee0844f47660dd04d"
     },
     {
       "path": "apps/mobile/package.json",
-      "bytes": 1061,
-      "sha256": "sha256:ee7b75f8246ecd4df0330c25130fee5abfe84c6b5992ecb6d876a859c1d84479"
+      "bytes": 1110,
+      "sha256": "sha256:506a8afdb51591aeb7dbbed1df90887c88e3d8f7ed18c2a8952d38cd47298fa7"
     },
     {
       "path": "apps/mobile/src/navigation/navigation.tsx",
@@ -207,8 +217,8 @@
     },
     {
       "path": "apps/mobile/src/screens/home/home.tsx",
-      "bytes": 225,
-      "sha256": "sha256:e8326f7cff07b322684571924aa4a1c56bb7531a4dcec0fc145a38fe20d88eb1"
+      "bytes": 392,
+      "sha256": "sha256:7555b64095312434d82cce4d3494a06ef6679ccf438d4fa958011dd0d281fd22"
     },
     {
       "path": "apps/mobile/src/screens/system-status/system-status.tsx",
@@ -222,13 +232,28 @@
     },
     {
       "path": "apps/mobile/src/types/web-api-shims.d.ts",
-      "bytes": 1510,
-      "sha256": "sha256:07e4ea623d2922460cd5cacc43d15355d0ce7bfed238bae0066f453e4a6570be"
+      "bytes": 1532,
+      "sha256": "sha256:9e53820f5d54c5d63f7e25ba267bfcd7054c0111d4c77f59357b3269f6953604"
     },
     {
       "path": "apps/mobile/test/app.test.ts",
-      "bytes": 195,
-      "sha256": "sha256:0d27e4ce0807c403806c4b42b8358e7797761bd29424dfab314c9292578c3e4a"
+      "bytes": 302,
+      "sha256": "sha256:18e4f33b4a4960c700ec18b930764a09dbe3ddb073f0f7b8060a1e68ce67720f"
+    },
+    {
+      "path": "apps/mobile/test/mobile-test-loader.mjs",
+      "bytes": 2259,
+      "sha256": "sha256:32035afb72859a0a87dfd035ab01bd5ec4ab8bc685c4ea67041130d050f94f5f"
+    },
+    {
+      "path": "apps/mobile/test/react-native-test-mock.mjs",
+      "bytes": 438,
+      "sha256": "sha256:de3099a6e4cee0939c72634dba5a4963963d2892c116f3fb96d10e3ffec32456"
+    },
+    {
+      "path": "apps/mobile/test/register-mobile-test-loader.mjs",
+      "bytes": 137,
+      "sha256": "sha256:b54e992f4beda2a10e82f5124a49f27a6dd8c6ec252ea3515cfbd30da904299a"
     },
     {
       "path": "apps/mobile/tsconfig.json",
@@ -307,13 +332,13 @@
     },
     {
       "path": "package.json",
-      "bytes": 2077,
-      "sha256": "sha256:27406df51da7100f0ed214df3bf45d65e0fe73ec43e0a6e599c8d3d670ed6c14"
+      "bytes": 2076,
+      "sha256": "sha256:af36b639090d35f4fa9fdc898b005a475216962229327824e3ce6d4e2cbbdb6e"
     },
     {
       "path": "packages/api-client/package.json",
-      "bytes": 709,
-      "sha256": "sha256:bbb5b169afc0dc5a0d7d421e973ce98c5ea1b792b67ed96cbd87878894903f8f"
+      "bytes": 802,
+      "sha256": "sha256:66dd813a94975386308760f0d8c5fe3c5e4b4b389ca3e5f3c78691fad467c80c"
     },
     {
       "path": "packages/api-client/src/golden-records/golden-records.client.ts",
@@ -342,8 +367,8 @@
     },
     {
       "path": "packages/config/package.json",
-      "bytes": 532,
-      "sha256": "sha256:9bd848b60bc06871c5d930db1445532b0978bd965f74cd58fd5cffa6050f705a"
+      "bytes": 625,
+      "sha256": "sha256:4dc5368ffc341afa356c2b68cee1e4b26b89bc63da85ed623df138507ec143fa"
     },
     {
       "path": "packages/config/src/env.ts",
@@ -367,8 +392,8 @@
     },
     {
       "path": "packages/contracts/package.json",
-      "bytes": 613,
-      "sha256": "sha256:bc07e389d8598ca4bcd02b969282d7f6b91a783776a6880b9961b07f943cf97a"
+      "bytes": 706,
+      "sha256": "sha256:89ffa2b7ec0af9471c33101d98919d25b3692299ff5da9bed1fb215dd03c4540"
     },
     {
       "path": "packages/contracts/src/golden-records/golden-records.contract.ts",
@@ -392,8 +417,8 @@
     },
     {
       "path": "packages/domain/package.json",
-      "bytes": 532,
-      "sha256": "sha256:2243b049d688ce093e955fa50b51fc84d3c298935506efc6ccb573c90356b6c6"
+      "bytes": 625,
+      "sha256": "sha256:47be1246f037ca0f7fdd5ead574a49c70b316f739a9d85be8b0f3c23e9404f08"
     },
     {
       "path": "packages/domain/src/golden-records/golden-record.ts",
@@ -417,8 +442,8 @@
     },
     {
       "path": "packages/testing/package.json",
-      "bytes": 614,
-      "sha256": "sha256:cde32c32ea8ab910887ec83953bd58619914c720eb2bcd0b5845f28523ecc1ca"
+      "bytes": 707,
+      "sha256": "sha256:e81932298451b8473a728cd600bb20453f43dc5937ede72d5d450bd9cd3b90f3"
     },
     {
       "path": "packages/testing/src/fixtures/golden-records.fixture.ts",
@@ -442,8 +467,8 @@
     },
     {
       "path": "packages/ui/package.json",
-      "bytes": 604,
-      "sha256": "sha256:083f8c5ce8e9948962a44ed614c3b1df93def7864aa541b1b5df217027a726d4"
+      "bytes": 704,
+      "sha256": "sha256:6b941daf5466275382101dc52932a3cc594c9b9eaf2f45dfc7b884e64e92b40a"
     },
     {
       "path": "packages/ui/src/index.ts",

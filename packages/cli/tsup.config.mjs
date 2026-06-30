@@ -8,7 +8,7 @@ export default defineConfig({
   entry: [
     "src/entry/vibe-engineer.js",
     "src/envelope/result-envelope.js",
-    "src/command-loader/loader.js"
+    "src/command-loader/loader.js",
   ],
   format: ["esm"],
   target: "node20",
@@ -25,6 +25,6 @@ export default defineConfig({
     "@vibe-engineer/context",
     "@vibe-engineer/security",
     "@vibe-engineer/schematics",
-    "@vibe-engineer/verification"
-  ]
+    "@vibe-engineer/verification",
+  ],
 });

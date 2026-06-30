@@ -33,4 +33,7 @@ export interface EscapeAllowlistPolicy {
   entries: EscapeAllowlistEntry[];
 }
 
-export function validateEscapeAllowlist(projectRoot: string, options?: EscapeAllowlistOptions): Promise<P0ValidatorResult>;
+export function validateEscapeAllowlist(
+  projectRoot: string,
+  options?: EscapeAllowlistOptions,
+): Promise<P0ValidatorResult>;

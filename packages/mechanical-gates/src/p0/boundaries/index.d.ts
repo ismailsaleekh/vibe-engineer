@@ -1,4 +1,8 @@
-export type P0Family = "p0.governed-surface" | "p0.config-guards" | "p0.boundaries" | "p0.contracts";
+export type P0Family =
+  | "p0.governed-surface"
+  | "p0.config-guards"
+  | "p0.boundaries"
+  | "p0.contracts";
 export type P0Severity = "error" | "warning";
 
 export interface P0Finding {
@@ -35,4 +39,7 @@ export function createValidatorResult(input: {
 }): P0ValidatorResult;
 export function assertTypedFinding(value: unknown): true;
 export function assertTypedFindings(findings: unknown): true;
-export function validatePackageBoundaries(projectRoot: string, options?: { configPath?: string }): Promise<P0ValidatorResult>;
+export function validatePackageBoundaries(
+  projectRoot: string,
+  options?: { configPath?: string },
+): Promise<P0ValidatorResult>;

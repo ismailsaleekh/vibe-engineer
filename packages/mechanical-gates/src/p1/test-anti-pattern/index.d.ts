@@ -26,4 +26,7 @@ export interface TestAntiPatternResult {
 
 export function assertTestAntiPatternFinding(value: unknown): true;
 export function assertTestAntiPatternFindings(findings: unknown): true;
-export function validateTestAntiPatterns(projectRoot: string, options?: TestAntiPatternOptions): Promise<TestAntiPatternResult>;
+export function validateTestAntiPatterns(
+  projectRoot: string,
+  options?: TestAntiPatternOptions,
+): Promise<TestAntiPatternResult>;

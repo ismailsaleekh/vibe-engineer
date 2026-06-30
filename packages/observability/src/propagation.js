@@ -25,7 +25,8 @@ import { TRACE_ID_PATTERN, SPAN_ID_PATTERN } from "./contracts.js";
  * @returns {string}
  */
 export function formatTraceparent(ctx) {
-  if (!TRACE_ID_PATTERN.test(ctx.traceId)) throw new TypeError("formatTraceparent: invalid traceId");
+  if (!TRACE_ID_PATTERN.test(ctx.traceId))
+    throw new TypeError("formatTraceparent: invalid traceId");
   if (!SPAN_ID_PATTERN.test(ctx.spanId)) throw new TypeError("formatTraceparent: invalid spanId");
   const flags = ctx.sampled === false ? "00" : "01";
   return `00-${ctx.traceId}-${ctx.spanId}-${flags}`;
@@ -64,7 +65,11 @@ export function parseTraceparent(header) {
 export function injectPropagationHeaders(carrier, ctx) {
   const out = { ...carrier };
   if (ctx.traceId && ctx.spanId) {
-    out.traceparent = formatTraceparent({ traceId: ctx.traceId, spanId: ctx.spanId, sampled: ctx.sampled });
+    out.traceparent = formatTraceparent({
+      traceId: ctx.traceId,
+      spanId: ctx.spanId,
+      sampled: ctx.sampled,
+    });
   }
   out["x-correlation-id"] = ctx.correlationId;
   if (ctx.requestId) {
@@ -161,12 +166,15 @@ export function resolveInboundIds(headers) {
  * @returns {{ headers: Record<string,string>, extracted: ReturnType<resolveInboundIds> }}
  */
 export function propagateRoundTrip(outbound) {
-  const headers = injectPropagationHeaders({}, {
-    correlationId: outbound.correlationId,
-    requestId: outbound.requestId,
-    traceId: outbound.traceId,
-    spanId: outbound.spanId,
-  });
+  const headers = injectPropagationHeaders(
+    {},
+    {
+      correlationId: outbound.correlationId,
+      requestId: outbound.requestId,
+      traceId: outbound.traceId,
+      spanId: outbound.spanId,
+    },
+  );
   const extracted = resolveInboundIds(headers);
   return { headers, extracted };
 }

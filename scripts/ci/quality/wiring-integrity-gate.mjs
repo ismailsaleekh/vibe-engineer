@@ -23,11 +23,24 @@ function parseArgs(argv) {
   const out = { profile: null, evidenceDir: null, expected: null, advisory: false, unknown: [] };
   for (const arg of argv.slice(2)) {
     if (arg === "--") continue; // args separator
-    if (arg === "--advisory") { out.advisory = true; continue; }
-    if (arg.startsWith("--profile=")) { out.profile = arg.slice("--profile=".length); continue; }
-    if (arg.startsWith("--evidence-dir=")) { out.evidenceDir = arg.slice("--evidence-dir=".length); continue; }
+    if (arg === "--advisory") {
+      out.advisory = true;
+      continue;
+    }
+    if (arg.startsWith("--profile=")) {
+      out.profile = arg.slice("--profile=".length);
+      continue;
+    }
+    if (arg.startsWith("--evidence-dir=")) {
+      out.evidenceDir = arg.slice("--evidence-dir=".length);
+      continue;
+    }
     if (arg.startsWith("--expected=")) {
-      out.expected = arg.slice("--expected=".length).split(",").map((s) => s.trim()).filter(Boolean);
+      out.expected = arg
+        .slice("--expected=".length)
+        .split(",")
+        .map((s) => s.trim())
+        .filter(Boolean);
       continue;
     }
     out.unknown.push(arg);
@@ -38,11 +51,15 @@ function parseArgs(argv) {
 async function main() {
   const args = parseArgs(process.argv);
   if (args.unknown.length > 0) {
-    console.error(`FAIL-CLOSED wiring-integrity: unknown argument(s) ${JSON.stringify(args.unknown)}.`);
+    console.error(
+      `FAIL-CLOSED wiring-integrity: unknown argument(s) ${JSON.stringify(args.unknown)}.`,
+    );
     process.exit(1);
   }
   if (args.profile !== "ci") {
-    console.error(`FAIL-CLOSED wiring-integrity: --profile=ci is required (got ${JSON.stringify(args.profile)}).`);
+    console.error(
+      `FAIL-CLOSED wiring-integrity: --profile=ci is required (got ${JSON.stringify(args.profile)}).`,
+    );
     process.exit(1);
   }
   if (!args.evidenceDir || args.evidenceDir.length === 0) {
@@ -51,17 +68,23 @@ async function main() {
   }
 
   const context = await loadQualityContext();
-  const wiringSchema = JSON.parse(await import("node:fs/promises").then((m) => m.readFile(path.join(context.schemasDir, "wiring-integrity.schema.json"), "utf8")));
+  const wiringSchema = JSON.parse(
+    await import("node:fs/promises").then((m) =>
+      m.readFile(path.join(context.schemasDir, "wiring-integrity.schema.json"), "utf8"),
+    ),
+  );
 
   let evidence;
   try {
     evidence = await runWiringGateFromContext(context, {
       expectedFamilies: args.expected,
       profile: args.profile,
-      advisory: args.advisory
+      advisory: args.advisory,
     });
   } catch (error) {
-    console.error(`FAIL-CLOSED wiring-integrity: gate build raised a safety violation:\n${error.message}`);
+    console.error(
+      `FAIL-CLOSED wiring-integrity: gate build raised a safety violation:\n${error.message}`,
+    );
     process.exit(1);
   }
 
@@ -70,7 +93,9 @@ async function main() {
   try {
     assertValid(evidence, wiringSchema, "wiring-integrity evidence");
   } catch (error) {
-    console.error(`FAIL-CLOSED wiring-integrity: evidence failed schema validation:\n${error.message}`);
+    console.error(
+      `FAIL-CLOSED wiring-integrity: evidence failed schema validation:\n${error.message}`,
+    );
     process.exit(1);
   }
 
@@ -79,7 +104,9 @@ async function main() {
   await writeFile(evidenceFile, `${JSON.stringify(evidence, null, 2)}\n`, "utf8");
 
   if (evidence.verdict === "pass") {
-    console.log(`wiring-integrity PASS: expected ⊆ registered-and-running (${JSON.stringify(evidence.registeredAndRunningFamilies)}).`);
+    console.log(
+      `wiring-integrity PASS: expected ⊆ registered-and-running (${JSON.stringify(evidence.registeredAndRunningFamilies)}).`,
+    );
     console.log(`  evidence: ${evidenceFile}`);
     process.exit(0);
   }
@@ -90,6 +117,8 @@ async function main() {
 }
 
 main().catch((error) => {
-  console.error(`FAIL-CLOSED wiring-integrity: internal error:\n${error && error.stack ? error.stack : error}`);
+  console.error(
+    `FAIL-CLOSED wiring-integrity: internal error:\n${error && error.stack ? error.stack : error}`,
+  );
   process.exit(1);
 });

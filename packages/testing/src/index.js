@@ -20,7 +20,7 @@ export async function createEphemeralWorkspace(options = {}) {
         disposed = true;
         await rm(root, { recursive: true, force: true });
       }
-    }
+    },
   };
 }
 
@@ -34,7 +34,9 @@ export function assertOkResult(result, label = "validator result") {
 
 export function assertBlockingFinding(result, ruleId, label = "validator result") {
   assertResultCarrier(result, label);
-  const finding = result.findings.find((candidate) => candidate.ruleId === ruleId && candidate.blocking === true);
+  const finding = result.findings.find(
+    (candidate) => candidate.ruleId === ruleId && candidate.blocking === true,
+  );
   if (!finding) {
     throw new Error(`${label} missing blocking finding ${ruleId}.`);
   }
@@ -42,12 +44,16 @@ export function assertBlockingFinding(result, ruleId, label = "validator result"
 }
 
 export function normalizeForSnapshot(value) {
-  return JSON.parse(JSON.stringify(value, (_key, nested) => {
-    if (typeof nested === "string") {
-      return nested.replaceAll("\\", "/").replace(/\/private\/var\/folders\/[^/]+\/[^/]+\/T\//gu, "/tmp/");
-    }
-    return nested;
-  }));
+  return JSON.parse(
+    JSON.stringify(value, (_key, nested) => {
+      if (typeof nested === "string") {
+        return nested
+          .replaceAll("\\", "/")
+          .replace(/\/private\/var\/folders\/[^/]+\/[^/]+\/T\//gu, "/tmp/");
+      }
+      return nested;
+    }),
+  );
 }
 
 function assertSafeRelativePath(relativePath) {
@@ -55,13 +61,23 @@ function assertSafeRelativePath(relativePath) {
     throw new Error("relativePath must be a non-empty string.");
   }
   const normalized = path.posix.normalize(relativePath.split(path.sep).join("/"));
-  if (normalized === "." || normalized.startsWith("../") || normalized === ".." || path.isAbsolute(relativePath)) {
+  if (
+    normalized === "." ||
+    normalized.startsWith("../") ||
+    normalized === ".." ||
+    path.isAbsolute(relativePath)
+  ) {
     throw new Error(`Unsafe workspace relative path: ${relativePath}`);
   }
 }
 
 function assertResultCarrier(result, label) {
-  if (!result || typeof result !== "object" || typeof result.ok !== "boolean" || !Array.isArray(result.findings)) {
+  if (
+    !result ||
+    typeof result !== "object" ||
+    typeof result.ok !== "boolean" ||
+    !Array.isArray(result.findings)
+  ) {
     throw new Error(`${label} is not a typed result carrier.`);
   }
 }

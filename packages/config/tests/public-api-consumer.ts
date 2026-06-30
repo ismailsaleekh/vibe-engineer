@@ -2,7 +2,7 @@ import {
   VIBE_CONFIG_SCHEMA,
   createDefaultVibeConfig,
   loadVibeConfigFromProjectRoot,
-  parseVibeConfig
+  parseVibeConfig,
 } from "@vibe-engineer/config";
 import type { AgenticHarness, VibeConfig, VibeConfigResult } from "@vibe-engineer/config";
 
@@ -15,7 +15,11 @@ export async function consumeResolvedConfig(projectRoot: string): Promise<number
     return loaded.diagnostics.length;
   }
   const resolved: VibeConfig = loaded.config;
-  return resolved.maxParallelAgents + resolved.maxValidationFixIterations + resolved.agenticWorkPackageTargetHours;
+  return (
+    resolved.maxParallelAgents +
+    resolved.maxValidationFixIterations +
+    resolved.agenticWorkPackageTargetHours
+  );
 }
 
 export function consumeParserBoundary(input: unknown): VibeConfigResult {
@@ -26,5 +30,5 @@ export const publicApiConsumerWitness = {
   schemaId: VIBE_CONFIG_SCHEMA.id,
   createdHarness: createdConfig.agenticHarness,
   deterministicBlocksByDefault: createdConfig.verification.deterministicBlocks,
-  advisoryReviewBlocksByDefault: createdConfig.verification.advisoryReviewBlocks
+  advisoryReviewBlocksByDefault: createdConfig.verification.advisoryReviewBlocks,
 } as const;

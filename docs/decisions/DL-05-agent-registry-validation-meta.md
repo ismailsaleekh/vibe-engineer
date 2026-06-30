@@ -322,21 +322,21 @@ Additional normative rules:
 
 Meta-agents exist outside the normal plan/build flow and are triggered by repeated failures, patterns, or harness-health signals. By default, they produce recommendations or patch material routed through normal planning/build/verification. They must not silently edit harness/starter files, bypass validators, mutate registry entries, commit, push, open PRs, or change tool permissions.
 
-| Meta-agent family | Trigger | Allowed output | Safety requirement |
-| --- | --- | --- | --- |
-| Verification-gap detector | repeated verification failures or recurring escaped defect class | recommendation to add/update verifier, hook, test pattern, agent, schematic, or standard | recommendation/patch material only |
-| Agent-gap detector | repeated work handled by generic agents | recommendation for a new specialist/validator/fixer/reviewer | no auto-registration |
-| Schematic-gap detector | repeated manual structure | recommendation for schematic proposal | no generator mutation |
-| Standard-gap detector | repeated review comments or inconsistent implementation | recommendation for standard/doc/rule proposal | normal decision/build path |
-| Flaky-test investigator | repeated or suspicious unstable test results | classification: deterministic product failure, test bug, environment issue, timing/flakiness, or external drift | no quarantine/mutation without normal verification path |
-| Context-decay detector | stale, missing, or misleading context | recommendation to update context owner/artifacts | no silent context edits |
-| Parallelism optimizer | inefficient build splitting or dependency ordering | recommendation for allocation/DAG improvements | no runtime config mutation |
-| Architecture-erosion detector | repeated boundary drift or architectural inconsistency | recommendation for rule/standard/refactor decision | normal planning/build route |
-| Test-debt detector | behavior exists without adequate verification | recommendation to add verification coverage | no test-file mutation by default |
-| UI-verifier-gap detector | recurring UI issues missed by current verifiers | recommendation for new UI verifier/check | no silent verifier registration |
-| Observability-gap detector | important path lacks logs/metrics/traces/visibility | recommendation for observability verification | no production instrumentation edit |
-| Agent-quality regression detector | specialist quality declines over time | recommendation to revise prompt/evals/version/maturity | no maturity demotion/promotion without registry validation |
-| Postmortem learner | failed builds or escaped defects | recommendation to improve standards, schematics, agents, validators, hooks, tests, or context rules | normal planning/build/verification route |
+| Meta-agent family                 | Trigger                                                          | Allowed output                                                                                                  | Safety requirement                                         |
+| --------------------------------- | ---------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| Verification-gap detector         | repeated verification failures or recurring escaped defect class | recommendation to add/update verifier, hook, test pattern, agent, schematic, or standard                        | recommendation/patch material only                         |
+| Agent-gap detector                | repeated work handled by generic agents                          | recommendation for a new specialist/validator/fixer/reviewer                                                    | no auto-registration                                       |
+| Schematic-gap detector            | repeated manual structure                                        | recommendation for schematic proposal                                                                           | no generator mutation                                      |
+| Standard-gap detector             | repeated review comments or inconsistent implementation          | recommendation for standard/doc/rule proposal                                                                   | normal decision/build path                                 |
+| Flaky-test investigator           | repeated or suspicious unstable test results                     | classification: deterministic product failure, test bug, environment issue, timing/flakiness, or external drift | no quarantine/mutation without normal verification path    |
+| Context-decay detector            | stale, missing, or misleading context                            | recommendation to update context owner/artifacts                                                                | no silent context edits                                    |
+| Parallelism optimizer             | inefficient build splitting or dependency ordering               | recommendation for allocation/DAG improvements                                                                  | no runtime config mutation                                 |
+| Architecture-erosion detector     | repeated boundary drift or architectural inconsistency           | recommendation for rule/standard/refactor decision                                                              | normal planning/build route                                |
+| Test-debt detector                | behavior exists without adequate verification                    | recommendation to add verification coverage                                                                     | no test-file mutation by default                           |
+| UI-verifier-gap detector          | recurring UI issues missed by current verifiers                  | recommendation for new UI verifier/check                                                                        | no silent verifier registration                            |
+| Observability-gap detector        | important path lacks logs/metrics/traces/visibility              | recommendation for observability verification                                                                   | no production instrumentation edit                         |
+| Agent-quality regression detector | specialist quality declines over time                            | recommendation to revise prompt/evals/version/maturity                                                          | no maturity demotion/promotion without registry validation |
+| Postmortem learner                | failed builds or escaped defects                                 | recommendation to improve standards, schematics, agents, validators, hooks, tests, or context rules             | normal planning/build/verification route                   |
 
 A later explicit decision may expand meta-agent authority, but until then any silent mutation by a meta-agent is a critical failure.
 

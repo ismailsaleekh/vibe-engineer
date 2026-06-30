@@ -41,18 +41,24 @@ async function collectOwnedSourceTexts() {
   const entries = [];
   const files = [
     path.join(QUALITY_DIR, "run-quality.mjs"),
-    path.resolve(MODULE_DIR, "../wiring-integrity-gate.mjs")
+    path.resolve(MODULE_DIR, "../wiring-integrity-gate.mjs"),
   ];
   for (const f of files) {
     try {
       const text = await readFile(f, "utf8");
       entries.push({ label: path.relative(repoRoot, f), text });
-    } catch { /* optional file */ }
+    } catch {
+      /* optional file */
+    }
   }
   const dirs = [path.join(QUALITY_DIR, "lib"), MODULE_DIR];
   for (const dir of dirs) {
     let names = [];
-    try { names = await readdir(dir); } catch { continue; }
+    try {
+      names = await readdir(dir);
+    } catch {
+      continue;
+    }
     for (const name of names.filter((n) => n.endsWith(".mjs")).sort()) {
       const f = path.join(dir, name);
       const text = await readFile(f, "utf8");
@@ -65,7 +71,9 @@ async function collectOwnedSourceTexts() {
 export async function loadQualityContext() {
   const manifest = await readJson(path.join(QUALITY_DIR, "expected-families.manifest.json"));
   const config = await readJson(path.join(QUALITY_DIR, "quality-wiring.config.json"));
-  const manifestSchema = await readJson(path.join(SCHEMAS_DIR, "expected-families.manifest.schema.json"));
+  const manifestSchema = await readJson(
+    path.join(SCHEMAS_DIR, "expected-families.manifest.schema.json"),
+  );
   const configSchema = await readJson(path.join(SCHEMAS_DIR, "quality-wiring.config.schema.json"));
   assertValid(manifest, manifestSchema, "expected-families manifest");
   assertValid(config, configSchema, "quality-wiring config");
@@ -80,7 +88,7 @@ export async function loadQualityContext() {
     aggregateModule,
     aggregateImportSpecifier: PUBLIC_AGGREGATE_SPECIFIER,
     aggregateResolvedUrl,
-    ownSourceTexts
+    ownSourceTexts,
   };
 }
 
@@ -89,7 +97,10 @@ export async function loadQualityContext() {
  * `expectedFamiliesOverride` lets witnesses (e.g. W-FC-NEG phantom family) supply a
  * different expected set without mutating the canonical manifest on disk.
  */
-export async function runWiringGateFromContext(context, { expectedFamilies, profile, advisory = false } = {}) {
+export async function runWiringGateFromContext(
+  context,
+  { expectedFamilies, profile, advisory = false } = {},
+) {
   const cfg = context.config;
   return buildWiringEvidence({
     projectRoot: process.cwd(),
@@ -103,7 +114,7 @@ export async function runWiringGateFromContext(context, { expectedFamilies, prof
     config: cfg,
     profile: profile ?? "ci",
     parityBlockingCommand: cfg.parityBlockingCommand,
-    advisory
+    advisory,
   });
 }
 

@@ -24,8 +24,12 @@ export function run(cmd, args, opts = {}) {
     });
     let stdout = "";
     let stderr = "";
-    child.stdout.on("data", (b) => { stdout += b.toString("utf8"); });
-    child.stderr.on("data", (b) => { stderr += b.toString("utf8"); });
+    child.stdout.on("data", (b) => {
+      stdout += b.toString("utf8");
+    });
+    child.stderr.on("data", (b) => {
+      stderr += b.toString("utf8");
+    });
     child.on("error", (err) => {
       resolve({ ok: false, exitCode: -1, stdout, stderr, error: String(err) });
     });

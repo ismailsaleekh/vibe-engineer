@@ -115,9 +115,7 @@
           }
         }
       },
-      "touchedPathPatterns": [
-        ".vibe/context/**"
-      ],
+      "touchedPathPatterns": [".vibe/context/**"],
       "forbiddenPathPatterns": [
         ".git/**",
         "node_modules/**",
@@ -147,9 +145,7 @@
           "blockId": "context-file"
         }
       ],
-      "generatedArtifactTypes": [
-        "context"
-      ],
+      "generatedArtifactTypes": ["context"],
       "generatedMarkerRequiredForUpdates": true,
       "overwriteAllowedByDefault": false,
       "semanticMergeAllowedInV1": false,
@@ -161,10 +157,7 @@
         "noShell": true,
         "deterministicOnly": true
       },
-      "standardIds": [
-        "dirty-tree-ownership",
-        "deterministic-schematics"
-      ],
+      "standardIds": ["dirty-tree-ownership", "deterministic-schematics"],
       "typescriptPreset": {
         "required": true,
         "presetId": "vibe-engineer.typescript.strict",
@@ -180,12 +173,7 @@
     }
   },
   "description": "Generate a sparse context file stub with ownership and evidence notes.",
-  "tags": [
-    "domain-neutral",
-    "built-in",
-    "dl-08",
-    "context-file"
-  ],
+  "tags": ["domain-neutral", "built-in", "dl-08", "context-file"],
   "sourceRefs": [
     {
       "kind": "artifact",
@@ -352,11 +340,7 @@
       "schema",
       "generator"
     ],
-    "extensionBoundaries": [
-      "project_extension",
-      "sample_demo",
-      "negative_fixture"
-    ]
+    "extensionBoundaries": ["project_extension", "sample_demo", "negative_fixture"]
   },
   "owner": "I-07B-built-in-schematics-fixtures"
 }

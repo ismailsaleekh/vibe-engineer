@@ -38,10 +38,10 @@ import { runVerificationPlan } from "@vibe-engineer/verification";
 
 const summary = await runVerificationPlan({
   implementationPlanPath, // absolute path to an approved Implementation Plan
-  evidenceRoot,           // directory where Evidence Packets are written
-  projectRoot,            // containment root for all paths
-  runId,                  // stable lowercase artifact id segment
-  runnerCatalog           // array of typed runner specs
+  evidenceRoot, // directory where Evidence Packets are written
+  projectRoot, // containment root for all paths
+  runId, // stable lowercase artifact id segment
+  runnerCatalog, // array of typed runner specs
 });
 ```
 
@@ -64,12 +64,12 @@ Runners in the catalog are one of two kinds (`RUNNER_KINDS`):
 
 ### Item actions
 
-| Action | Behavior |
-| --- | --- |
+| Action           | Behavior                                                 |
+| ---------------- | -------------------------------------------------------- |
 | `add` / `update` | Resolve and execute runners; emit real Evidence Packets. |
-| `reuse` | Recorded as skipped (`not_run`), no execution. |
-| `not_applicable` | Recorded as skipped (`not_run`), no execution. |
-| `blocked` | Recorded as `blocked`; blocks the aggregate status. |
+| `reuse`          | Recorded as skipped (`not_run`), no execution.           |
+| `not_applicable` | Recorded as skipped (`not_run`), no execution.           |
+| `blocked`        | Recorded as `blocked`; blocks the aggregate status.      |
 
 If no runner resolves for an `add`/`update` item, the runner emits a `MISSING_RUNNER_OR_PREREQUISITE` blocked packet.
 

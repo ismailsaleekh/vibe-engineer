@@ -539,7 +539,8 @@ async function assertStarterShape(starterRoot) {
     const manifest = await readJson(file);
     if (rel !== "package.json") {
       assertCondition(
-        typeof manifest.name === "string" && manifest.name.startsWith(`${GENERATED_PROJECT_SCOPE}/`),
+        typeof manifest.name === "string" &&
+          manifest.name.startsWith(`${GENERATED_PROJECT_SCOPE}/`),
         "WP08_INTERNAL_PACKAGE_IDENTITY_CHANGED",
         "internal package name is not under the generated project scope",
         { rel, name: manifest.name, expectedScope: GENERATED_PROJECT_SCOPE },

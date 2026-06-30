@@ -97,23 +97,23 @@ DL-08 locks the schematic API semantics, manifest fields, template engine, typed
 
 ## Schematic scope and initial set
 
-| Candidate schematic | Classification | Rationale / blocked dependents |
-| --- | --- | --- |
-| `module` | v1 required for `I-07` | Generic core structural proof. Must create code stub, test stub, and context/docs stub in a lane-owned fixture. |
-| `contract` | v1 required for `I-07` | Proves typed/schema boundary generation and schema/contract strictness hooks. Exact contract library remains with `DL-14`; `I-07` uses generic placeholder contract semantics until reconciled. |
-| `adapter` | v1 required for `I-07` unless split built-ins are formally separated | Proves extension/integration shell generation without business vocabulary. Adapter-specific live integrations remain with `DL-06`/`I-14`. |
-| `test-fixture` | v1 required for `I-07` | Proves generated tests are meaningful, normalized, and not smoke-only. Exact runner choices remain with `DL-11`. |
-| `context-file` | v1 required for `I-07` | Proves context/docs stub generation and later context consumer expectations. Exact context graph/storage remains with `DL-09`/`I-08`. |
-| `standard-doc` | v1 required for `I-07` | Proves docs/standards stubs with domain-neutral labels. Public docs system remains with `DL-21`. |
-| `package` | v1 deferred until repo/package decisions are available; required before package scaffolding consumers close | Exact package layout/public names belong to `DL-01`; implementation must block if it needs package schematic content before DL-01/I-00 resolve paths. |
-| `app` | v1 deferred until starter architecture is available; required before create/starter closure | Exact generated app layout belongs to `DL-16` and create/import UX to `I-15`. |
-| `API endpoint` | deferred built-in content | Requires `DL-14` contract mechanism, `DL-16` starter architecture, and `DL-11` test tooling before final template content. |
-| `UI feature shell` | deferred built-in content | Requires `DL-13` UI verification and `DL-16` starter architecture. |
-| `E2E spec shell` | deferred built-in content | Requires `DL-11`, `DL-12`, `DL-13`, and starter layout decisions. |
-| `UI verification shell` | deferred built-in content | Requires `DL-13` and verification implementation details. |
-| `skill scaffold` | deferred built-in content | Requires `DL-03` skill protocols and registry decisions. |
-| `agent scaffold` | deferred built-in content | Requires `DL-05` registry/agent validation and adapter decisions. |
-| Domain-specific business schematics | out-of-scope for core | Allowed only as project-owned extensions or labeled sample/demo fixtures; never core defaults. |
+| Candidate schematic                 | Classification                                                                                              | Rationale / blocked dependents                                                                                                                                                                  |
+| ----------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `module`                            | v1 required for `I-07`                                                                                      | Generic core structural proof. Must create code stub, test stub, and context/docs stub in a lane-owned fixture.                                                                                 |
+| `contract`                          | v1 required for `I-07`                                                                                      | Proves typed/schema boundary generation and schema/contract strictness hooks. Exact contract library remains with `DL-14`; `I-07` uses generic placeholder contract semantics until reconciled. |
+| `adapter`                           | v1 required for `I-07` unless split built-ins are formally separated                                        | Proves extension/integration shell generation without business vocabulary. Adapter-specific live integrations remain with `DL-06`/`I-14`.                                                       |
+| `test-fixture`                      | v1 required for `I-07`                                                                                      | Proves generated tests are meaningful, normalized, and not smoke-only. Exact runner choices remain with `DL-11`.                                                                                |
+| `context-file`                      | v1 required for `I-07`                                                                                      | Proves context/docs stub generation and later context consumer expectations. Exact context graph/storage remains with `DL-09`/`I-08`.                                                           |
+| `standard-doc`                      | v1 required for `I-07`                                                                                      | Proves docs/standards stubs with domain-neutral labels. Public docs system remains with `DL-21`.                                                                                                |
+| `package`                           | v1 deferred until repo/package decisions are available; required before package scaffolding consumers close | Exact package layout/public names belong to `DL-01`; implementation must block if it needs package schematic content before DL-01/I-00 resolve paths.                                           |
+| `app`                               | v1 deferred until starter architecture is available; required before create/starter closure                 | Exact generated app layout belongs to `DL-16` and create/import UX to `I-15`.                                                                                                                   |
+| `API endpoint`                      | deferred built-in content                                                                                   | Requires `DL-14` contract mechanism, `DL-16` starter architecture, and `DL-11` test tooling before final template content.                                                                      |
+| `UI feature shell`                  | deferred built-in content                                                                                   | Requires `DL-13` UI verification and `DL-16` starter architecture.                                                                                                                              |
+| `E2E spec shell`                    | deferred built-in content                                                                                   | Requires `DL-11`, `DL-12`, `DL-13`, and starter layout decisions.                                                                                                                               |
+| `UI verification shell`             | deferred built-in content                                                                                   | Requires `DL-13` and verification implementation details.                                                                                                                                       |
+| `skill scaffold`                    | deferred built-in content                                                                                   | Requires `DL-03` skill protocols and registry decisions.                                                                                                                                        |
+| `agent scaffold`                    | deferred built-in content                                                                                   | Requires `DL-05` registry/agent validation and adapter decisions.                                                                                                                               |
+| Domain-specific business schematics | out-of-scope for core                                                                                       | Allowed only as project-owned extensions or labeled sample/demo fixtures; never core defaults.                                                                                                  |
 
 The v1 required set is intentionally representative: it forces the engine to prove code, tests, context/docs, schema-like contracts, adapters, manifests, dry-run, idempotency, conflicts, and domain-neutrality without pretending starter-specific choices are already locked.
 
@@ -193,7 +193,13 @@ Required DL-08 semantics must be represented in DL-02-compatible fields as follo
   ],
   "idempotency": {
     "strategy": "noop_when_same_input_templates_and_existing_generated_content",
-    "stableIdentifiers": ["schematicId", "schematicVersion", "blockId", "inputFingerprint", "templateFingerprint"],
+    "stableIdentifiers": [
+      "schematicId",
+      "schematicVersion",
+      "blockId",
+      "inputFingerprint",
+      "templateFingerprint"
+    ],
     "rerunBehavior": "create_missing_noop_same_replace_owned_generated_report_stale"
   },
   "conflictBehavior": "fail",
@@ -202,7 +208,14 @@ Required DL-08 semantics must be represented in DL-02-compatible fields as follo
     "writesFilesystem": false,
     "machineReadableOperationPlanRequired": true
   },
-  "requiredTests": ["positive", "negative", "regression", "idempotency", "conflict", "domain-neutrality"],
+  "requiredTests": [
+    "positive",
+    "negative",
+    "regression",
+    "idempotency",
+    "conflict",
+    "domain-neutrality"
+  ],
   "contextUpdates": ["context-header-or-stub-obligations"],
   "domainNeutrality": {
     "coreSurface": true,
@@ -215,10 +228,25 @@ Required DL-08 semantics must be represented in DL-02-compatible fields as follo
       "schemaVersion": "1.0.0",
       "templateRoots": ["<manifest-relative template directory>"],
       "partials": [],
-      "operationKinds": ["create_file", "replace_generated_file", "create_directory", "replace_marked_section", "report_stale_generated"],
+      "operationKinds": [
+        "create_file",
+        "replace_generated_file",
+        "create_directory",
+        "replace_marked_section",
+        "report_stale_generated"
+      ],
       "touchedPathPatterns": [],
       "forbiddenPathPatterns": [],
-      "generatedArtifactTypes": ["code", "test", "fixture", "context", "docs", "standard", "config", "registry_entry"],
+      "generatedArtifactTypes": [
+        "code",
+        "test",
+        "fixture",
+        "context",
+        "docs",
+        "standard",
+        "config",
+        "registry_entry"
+      ],
       "generatedMarkerRequiredForUpdates": true,
       "overwriteAllowedByDefault": false,
       "semanticMergeAllowedInV1": false,

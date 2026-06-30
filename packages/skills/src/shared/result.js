@@ -7,5 +7,5 @@ export function blocked(reason, details = {}) {
 }
 
 export function validationBlocked(stage, errors) {
-  return blocked('validation_failed', { stage, errors: Object.freeze([...(errors ?? [])]) });
+  return blocked("validation_failed", { stage, errors: Object.freeze([...(errors ?? [])]) });
 }

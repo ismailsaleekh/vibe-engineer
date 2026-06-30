@@ -4,7 +4,12 @@
 declare global {
   type RequestCredentials = "omit" | "same-origin" | "include";
   type RequestCache =
-    "default" | "force-cache" | "no-cache" | "no-store" | "only-if-cached" | "reload";
+    | "default"
+    | "force-cache"
+    | "no-cache"
+    | "no-store"
+    | "only-if-cached"
+    | "reload";
   type RequestInfo = string | Request;
 
   interface AbortSignal {

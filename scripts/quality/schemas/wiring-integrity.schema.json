@@ -6,10 +6,23 @@
   "type": "object",
   "additionalProperties": false,
   "required": [
-    "schemaVersion", "gate", "profile", "expectedFamilies", "registeredAndRunningFamilies",
-    "missingFamilies", "verdict", "failClosedRule", "publicContractConsumption",
-    "declaredDependencyProof", "parityInputs", "runtimeEnumeration", "startedAt", "endedAt",
-    "exitCode", "diagnostic", "advisoryIgnored"
+    "schemaVersion",
+    "gate",
+    "profile",
+    "expectedFamilies",
+    "registeredAndRunningFamilies",
+    "missingFamilies",
+    "verdict",
+    "failClosedRule",
+    "publicContractConsumption",
+    "declaredDependencyProof",
+    "parityInputs",
+    "runtimeEnumeration",
+    "startedAt",
+    "endedAt",
+    "exitCode",
+    "diagnostic",
+    "advisoryIgnored"
   ],
   "properties": {
     "schemaVersion": { "type": "string", "const": "quality.wiring-integrity/1" },
@@ -30,17 +43,18 @@
     "verdict": { "type": "string", "enum": ["pass", "fail"] },
     "failClosedRule": { "type": "string", "const": "expected ⊆ registered-and-running" },
     "diagnostic": {
-      "oneOf": [
-        { "type": "string", "minLength": 1 },
-        { "type": "null" }
-      ]
+      "oneOf": [{ "type": "string", "minLength": 1 }, { "type": "null" }]
     },
     "publicContractConsumption": {
       "type": "object",
       "additionalProperties": false,
       "required": [
-        "aggregateImportSpecifier", "aggregateResolvedModuleUrl", "aggregatePublicExports",
-        "publicSpecifierUsed", "noInternalRelativeImport", "testingBoundaryRegistered"
+        "aggregateImportSpecifier",
+        "aggregateResolvedModuleUrl",
+        "aggregatePublicExports",
+        "publicSpecifierUsed",
+        "noInternalRelativeImport",
+        "testingBoundaryRegistered"
       ],
       "properties": {
         "aggregateImportSpecifier": { "type": "string", "minLength": 1 },
@@ -84,7 +98,14 @@
     "parityInputs": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["blockingCommand", "profile", "localAndCiEquivalent", "excludesFullE2E", "excludesFullMobileE2E", "excludesFullVisualUi"],
+      "required": [
+        "blockingCommand",
+        "profile",
+        "localAndCiEquivalent",
+        "excludesFullE2E",
+        "excludesFullMobileE2E",
+        "excludesFullVisualUi"
+      ],
       "properties": {
         "blockingCommand": { "type": "string", "minLength": 1 },
         "profile": { "type": "string", "minLength": 1 },
@@ -116,10 +137,7 @@
               "exportPresent": { "type": "boolean" },
               "running": { "type": "boolean" },
               "carrierFamily": {
-                "oneOf": [
-                  { "type": "string", "minLength": 1 },
-                  { "type": "null" }
-                ]
+                "oneOf": [{ "type": "string", "minLength": 1 }, { "type": "null" }]
               },
               "implementedFamilies": {
                 "type": "array",

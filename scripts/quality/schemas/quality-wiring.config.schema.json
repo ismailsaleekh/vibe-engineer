@@ -5,7 +5,13 @@
   "description": "I-20A quality-wiring config: CI profile composition policy + declared/locked dependency allowlist + parity inputs. The fail-closed gate consumes this to prove local/CI parity, public-contract consumption, and no dynamic/latest dependencies.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schemaVersion", "profiles", "declaredDependencies", "allowedImportSpecifiers", "parityBlockingCommand"],
+  "required": [
+    "schemaVersion",
+    "profiles",
+    "declaredDependencies",
+    "allowedImportSpecifiers",
+    "parityBlockingCommand"
+  ],
   "properties": {
     "schemaVersion": { "type": "string", "const": "quality.wiring-config/1" },
     "parityBlockingCommand": { "type": "string", "minLength": 1 },

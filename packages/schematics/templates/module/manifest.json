@@ -115,9 +115,7 @@
           }
         }
       },
-      "touchedPathPatterns": [
-        "src/modules/**"
-      ],
+      "touchedPathPatterns": ["src/modules/**"],
       "forbiddenPathPatterns": [
         ".git/**",
         "node_modules/**",
@@ -147,9 +145,7 @@
           "blockId": "module-index"
         }
       ],
-      "generatedArtifactTypes": [
-        "code"
-      ],
+      "generatedArtifactTypes": ["code"],
       "generatedMarkerRequiredForUpdates": true,
       "overwriteAllowedByDefault": false,
       "semanticMergeAllowedInV1": false,
@@ -161,9 +157,7 @@
         "noShell": true,
         "deterministicOnly": true
       },
-      "standardIds": [
-        "deterministic-schematics"
-      ],
+      "standardIds": ["deterministic-schematics"],
       "typescriptPreset": {
         "required": true,
         "presetId": "vibe-engineer.typescript.strict",
@@ -179,12 +173,7 @@
     }
   },
   "description": "Generate a domain-neutral module descriptor using strict TypeScript and schematic standards.",
-  "tags": [
-    "domain-neutral",
-    "built-in",
-    "dl-08",
-    "module"
-  ],
+  "tags": ["domain-neutral", "built-in", "dl-08", "module"],
   "sourceRefs": [
     {
       "kind": "artifact",
@@ -351,11 +340,7 @@
       "schema",
       "generator"
     ],
-    "extensionBoundaries": [
-      "project_extension",
-      "sample_demo",
-      "negative_fixture"
-    ]
+    "extensionBoundaries": ["project_extension", "sample_demo", "negative_fixture"]
   },
   "owner": "I-07B-built-in-schematics-fixtures"
 }

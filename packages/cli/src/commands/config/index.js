@@ -1,7 +1,22 @@
-import { loadVibeConfigFile, loadVibeConfigFromProjectRoot, parseVibeConfig, VIBE_CONFIG_SCHEMA } from "@vibe-engineer/config";
-import { createEnvelope, configBlockedEnvelope, invalidInvocationEnvelope, payload } from "../../envelope/result-envelope.js";
+import {
+  loadVibeConfigFile,
+  loadVibeConfigFromProjectRoot,
+  parseVibeConfig,
+  VIBE_CONFIG_SCHEMA,
+} from "@vibe-engineer/config";
+import {
+  createEnvelope,
+  configBlockedEnvelope,
+  invalidInvocationEnvelope,
+  payload,
+} from "../../envelope/result-envelope.js";
 import { CliClassification, CliErrorCode } from "../../errors/codes.js";
-import { isSecretFlag, parseFlagToken, sanitizeFlagForDisplay, sanitizeUserValueForDisplay } from "../../errors/sanitization.js";
+import {
+  isSecretFlag,
+  parseFlagToken,
+  sanitizeFlagForDisplay,
+  sanitizeUserValueForDisplay,
+} from "../../errors/sanitization.js";
 
 const SOURCE_VALUE_FLAGS = new Set(["--project-root", "--config"]);
 const ALLOWED_SUBCOMMANDS = new Set(["inspect", "validate"]);
@@ -12,12 +27,14 @@ function commandResult(envelope) {
 }
 
 function invalid(invocation, { code = CliErrorCode.InvalidInvocation, message, details = {} }) {
-  return commandResult(invalidInvocationEnvelope(invocation, {
-    code,
-    classification: CliClassification.InvalidInvocation,
-    message,
-    details
-  }));
+  return commandResult(
+    invalidInvocationEnvelope(invocation, {
+      code,
+      classification: CliClassification.InvalidInvocation,
+      message,
+      details,
+    }),
+  );
 }
 
 function missingFlagValue(invocation, flag) {
@@ -25,7 +42,7 @@ function missingFlagValue(invocation, flag) {
   return invalid(invocation, {
     code: CliErrorCode.MissingFlagValue,
     message: `Missing value for ${displayFlag}.`,
-    details: { flag: displayFlag }
+    details: { flag: displayFlag },
   });
 }
 
@@ -34,7 +51,7 @@ function unknownFlag(invocation, token) {
   return invalid(invocation, {
     code: CliErrorCode.InvalidFlag,
     message: `Unsupported config flag: ${displayFlag}.`,
-    details: { flag: displayFlag }
+    details: { flag: displayFlag },
   });
 }
 
@@ -45,9 +62,14 @@ function parseSourceOptions(invocation, args) {
     const token = args[index];
     const parsed = parseFlagToken(token);
     if (parsed.isFlag) {
-      if (!SOURCE_VALUE_FLAGS.has(parsed.flag)) return { ok: false, result: unknownFlag(invocation, token).envelope };
+      if (!SOURCE_VALUE_FLAGS.has(parsed.flag))
+        return { ok: false, result: unknownFlag(invocation, token).envelope };
       const value = parsed.hasInlineValue ? parsed.value : args[index + 1];
-      if (typeof value !== "string" || value.length === 0 || (!parsed.hasInlineValue && value.startsWith("--"))) {
+      if (
+        typeof value !== "string" ||
+        value.length === 0 ||
+        (!parsed.hasInlineValue && value.startsWith("--"))
+      ) {
         return { ok: false, result: missingFlagValue(invocation, parsed.flag).envelope };
       }
       if (parsed.flag === "--project-root") options.projectRoot = value;
@@ -58,10 +80,13 @@ function parseSourceOptions(invocation, args) {
     positionals.push(token);
   }
   if (positionals.length > 0) {
-    return { ok: false, result: invalid(invocation, {
-      message: "Unexpected positional arguments for config subcommand.",
-      details: { positionalCount: positionals.length }
-    }).envelope };
+    return {
+      ok: false,
+      result: invalid(invocation, {
+        message: "Unexpected positional arguments for config subcommand.",
+        details: { positionalCount: positionals.length },
+      }).envelope,
+    };
   }
   return { ok: true, options };
 }
@@ -69,22 +94,43 @@ function parseSourceOptions(invocation, args) {
 function sourceFromInvocation(invocation, options) {
   return {
     configPath: options.configPath ?? invocation.configPath ?? null,
-    projectRoot: options.projectRoot ?? invocation.projectRoot ?? null
+    projectRoot: options.projectRoot ?? invocation.projectRoot ?? null,
   };
 }
 
 async function loadConfig(invocation, options, context) {
   const source = sourceFromInvocation(invocation, options);
   if (!source.configPath && !source.projectRoot && context.config?.ok === true) {
-    return { ok: true, result: context.config, source: { configPath: context.config.configPath ?? null, projectRoot: context.config.projectRoot ?? null } };
+    return {
+      ok: true,
+      result: context.config,
+      source: {
+        configPath: context.config.configPath ?? null,
+        projectRoot: context.config.projectRoot ?? null,
+      },
+    };
   }
   if (source.configPath) {
     const result = await loadVibeConfigFile(source.configPath);
-    return { ok: result.ok, result, source: { configPath: result.configPath ?? source.configPath, projectRoot: result.projectRoot ?? source.projectRoot } };
+    return {
+      ok: result.ok,
+      result,
+      source: {
+        configPath: result.configPath ?? source.configPath,
+        projectRoot: result.projectRoot ?? source.projectRoot,
+      },
+    };
   }
   const projectRoot = source.projectRoot ?? process.cwd();
   const result = await loadVibeConfigFromProjectRoot(projectRoot);
-  return { ok: result.ok, result, source: { configPath: result.configPath ?? null, projectRoot: result.projectRoot ?? projectRoot } };
+  return {
+    ok: result.ok,
+    result,
+    source: {
+      configPath: result.configPath ?? null,
+      projectRoot: result.projectRoot ?? projectRoot,
+    },
+  };
 }
 
 function isSecretKey(key) {
@@ -121,12 +167,12 @@ function inspectEnvelope(invocation, loaded) {
       schema: {
         id: loaded.result.schemaId ?? VIBE_CONFIG_SCHEMA.id,
         version: loaded.result.schemaVersion ?? VIBE_CONFIG_SCHEMA.version,
-        configFileName: VIBE_CONFIG_SCHEMA.configFileName
+        configFileName: VIBE_CONFIG_SCHEMA.configFileName,
       },
       source: loaded.source,
       config: redactConfigValue(loaded.result.config),
-      provenance: provenanceSummary(loaded.result.provenance)
-    })
+      provenance: provenanceSummary(loaded.result.provenance),
+    }),
   });
 }
 
@@ -141,11 +187,11 @@ function validateEnvelope(invocation, loaded) {
         id: loaded.result.schemaId ?? VIBE_CONFIG_SCHEMA.id,
         version: loaded.result.schemaVersion ?? VIBE_CONFIG_SCHEMA.version,
         requiredTopLevelKeys: [...VIBE_CONFIG_SCHEMA.requiredTopLevelKeys],
-        supportedAgenticHarnesses: [...VIBE_CONFIG_SCHEMA.supportedAgenticHarnesses]
+        supportedAgenticHarnesses: [...VIBE_CONFIG_SCHEMA.supportedAgenticHarnesses],
       },
       source: loaded.source,
-      provenance: provenanceSummary(loaded.result.provenance)
-    })
+      provenance: provenanceSummary(loaded.result.provenance),
+    }),
   });
 }
 
@@ -163,7 +209,7 @@ async function run({ invocation, args, context }) {
   if (typeof subcommand !== "string" || !ALLOWED_SUBCOMMANDS.has(subcommand)) {
     return invalid(invocation, {
       message: "Unknown or missing config subcommand.",
-      details: { subcommand: sanitizeUserValueForDisplay({ secret: false }) }
+      details: { subcommand: sanitizeUserValueForDisplay({ secret: false }) },
     });
   }
   return runSubcommand(subcommand, invocation, rest, context);
@@ -172,8 +218,9 @@ async function run({ invocation, args, context }) {
 export const configCommand = Object.freeze({
   id: "config",
   visibility: "debug/diagnostic",
-  description: "Inspect or validate vibe-engineer configuration through the public config provider.",
-  run
+  description:
+    "Inspect or validate vibe-engineer configuration through the public config provider.",
+  run,
 });
 
 export { parseVibeConfig, VIBE_CONFIG_SCHEMA };

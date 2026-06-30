@@ -1,9 +1,7 @@
 {
   "schemaVersion": "quality.wiring-config/1",
   "parityBlockingCommand": "pnpm quality -- --profile=ci --evidence-dir <dir> --summary-out <summary-json>",
-  "allowedImportSpecifiers": [
-    "@vibe-engineer/mechanical-gates/aggregate"
-  ],
+  "allowedImportSpecifiers": ["@vibe-engineer/mechanical-gates/aggregate"],
   "declaredDependencies": [
     {
       "name": "@vibe-engineer/mechanical-gates",

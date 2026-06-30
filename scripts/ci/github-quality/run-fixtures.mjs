@@ -42,7 +42,7 @@ function runValidator(workflowPath) {
   try {
     stdout = execFileSync(process.execPath, [VALIDATOR, `--workflow=${workflowPath}`], {
       encoding: "utf8",
-      stdio: ["ignore", "pipe", "pipe"]
+      stdio: ["ignore", "pipe", "pipe"],
     });
   } catch (error) {
     // Non-zero exit: capture stdout (validator writes diagnostics to stdout).
@@ -74,7 +74,15 @@ async function main() {
     const codeRe = new RegExp(`\\[${expect}\\]`);
     if (expect === "OK") {
       const ok = exitCode === 0;
-      results.push({ fixture, expect, status: ok ? "PASS" : "FAIL", exitCode, detail: ok ? "exit 0 (positive clean)" : `expected exit 0, got ${exitCode}; stdout: ${stdout.trim()}` });
+      results.push({
+        fixture,
+        expect,
+        status: ok ? "PASS" : "FAIL",
+        exitCode,
+        detail: ok
+          ? "exit 0 (positive clean)"
+          : `expected exit 0, got ${exitCode}; stdout: ${stdout.trim()}`,
+      });
     } else {
       const codeFired = codeRe.test(stdout);
       const nonZero = exitCode !== 0;
@@ -86,7 +94,7 @@ async function main() {
         exitCode,
         detail: ok
           ? `non-zero exit (${exitCode}) + expected code [${expect}] fired`
-          : `expected non-zero + [${expect}]; exit=${exitCode}; codeFired=${codeFired}; stdout: ${stdout.trim().slice(0, 400)}`
+          : `expected non-zero + [${expect}]; exit=${exitCode}; codeFired=${codeFired}; stdout: ${stdout.trim().slice(0, 400)}`,
       });
     }
   }
@@ -101,12 +109,16 @@ async function main() {
   const failed = results.filter((r) => r.status === "FAIL" || r.status === "MISSING-EXPECT");
   const negCount = results.filter((r) => r.expect && r.expect !== "OK").length;
   const posCount = results.filter((r) => r.expect === "OK").length;
-  process.stdout.write(`\n${results.length - failed.length}/${results.length} fixtures matched expectation (${negCount} negative, ${posCount} positive).\n`);
+  process.stdout.write(
+    `\n${results.length - failed.length}/${results.length} fixtures matched expectation (${negCount} negative, ${posCount} positive).\n`,
+  );
 
   process.exit(failed.length === 0 ? 0 : 1);
 }
 
 main().catch((error) => {
-  process.stderr.write(`run-fixtures: internal error: ${error && error.stack ? error.stack : error}\n`);
+  process.stderr.write(
+    `run-fixtures: internal error: ${error && error.stack ? error.stack : error}\n`,
+  );
   process.exit(2);
 });

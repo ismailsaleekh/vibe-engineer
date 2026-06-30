@@ -84,7 +84,10 @@ export interface QualityRatchetApprovalEvidenceBase {
 }
 
 export type QualityRatchetApprovalEvidenceCarrier =
-  | (QualityRatchetApprovalEvidenceBase & { identity: QualityRatchetStableIdentity; identityId?: string })
+  | (QualityRatchetApprovalEvidenceBase & {
+      identity: QualityRatchetStableIdentity;
+      identityId?: string;
+    })
   | (QualityRatchetApprovalEvidenceBase & { identity?: undefined; identityId: string });
 
 export interface QualityRatchetSurfaceFingerprintEntry {
@@ -193,4 +196,7 @@ export interface QualityRatchetResult {
   evidence: QualityRatchetEvidence;
 }
 
-export function validateQualityRatchet(projectRoot: string, options?: QualityRatchetOptions): Promise<QualityRatchetResult>;
+export function validateQualityRatchet(
+  projectRoot: string,
+  options?: QualityRatchetOptions,
+): Promise<QualityRatchetResult>;

@@ -26,7 +26,10 @@ function parseArgs(argv) {
   for (let i = 0; i < rest.length; i++) {
     const arg = rest[i];
     if (arg === "--") continue;
-    if (arg.startsWith("--workflow=")) { out.workflow = arg.slice("--workflow=".length); continue; }
+    if (arg.startsWith("--workflow=")) {
+      out.workflow = arg.slice("--workflow=".length);
+      continue;
+    }
     if (arg === "--workflow") {
       const next = rest[i + 1];
       if (typeof next !== "string" || next.startsWith("--")) {
@@ -37,7 +40,10 @@ function parseArgs(argv) {
       i++;
       continue;
     }
-    if (arg === "--help" || arg === "-h") { out.help = true; continue; }
+    if (arg === "--help" || arg === "-h") {
+      out.help = true;
+      continue;
+    }
     out.unknown.push(arg);
   }
   return out;
@@ -49,9 +55,14 @@ const HELP = `Usage: validate-workflow.mjs --workflow <path>
 
 async function main() {
   const args = parseArgs(process.argv);
-  if (args.help) { process.stdout.write(`${HELP}\n`); process.exit(0); }
+  if (args.help) {
+    process.stdout.write(`${HELP}\n`);
+    process.exit(0);
+  }
   if (args.unknown.length > 0) {
-    process.stderr.write(`validate-workflow: unknown argument(s) ${JSON.stringify(args.unknown)}.\n`);
+    process.stderr.write(
+      `validate-workflow: unknown argument(s) ${JSON.stringify(args.unknown)}.\n`,
+    );
     process.exit(2);
   }
   if (!args.workflow) {
@@ -74,7 +85,9 @@ async function main() {
 
   if (findings.length === 0) {
     const ruleNames = RULES.map((r) => r.name).join(", ");
-    process.stdout.write(`OK workflow ${args.workflow} satisfies the I-20B quick-gate contract (0 findings; rules: ${ruleNames}).\n`);
+    process.stdout.write(
+      `OK workflow ${args.workflow} satisfies the I-20B quick-gate contract (0 findings; rules: ${ruleNames}).\n`,
+    );
     process.exit(0);
   }
 
@@ -86,6 +99,8 @@ async function main() {
 }
 
 main().catch((error) => {
-  process.stderr.write(`validate-workflow: internal error: ${error && error.stack ? error.stack : error}\n`);
+  process.stderr.write(
+    `validate-workflow: internal error: ${error && error.stack ? error.stack : error}\n`,
+  );
   process.exit(2);
 });

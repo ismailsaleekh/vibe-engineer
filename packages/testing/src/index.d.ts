@@ -20,7 +20,13 @@ export interface TypedResultLike {
   [key: string]: unknown;
 }
 
-export function createEphemeralWorkspace(options?: CreateEphemeralWorkspaceOptions): Promise<EphemeralWorkspace>;
+export function createEphemeralWorkspace(
+  options?: CreateEphemeralWorkspaceOptions,
+): Promise<EphemeralWorkspace>;
 export function assertOkResult<T extends TypedResultLike>(result: T, label?: string): T;
-export function assertBlockingFinding<T extends TypedResultLike>(result: T, ruleId: string, label?: string): TypedFindingLike;
+export function assertBlockingFinding<T extends TypedResultLike>(
+  result: T,
+  ruleId: string,
+  label?: string,
+): TypedFindingLike;
 export function normalizeForSnapshot<T>(value: T): T;

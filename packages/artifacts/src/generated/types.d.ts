@@ -262,6 +262,8 @@ export type BuildResultV1 = {
   "severity": "critical" | "major-local" | "minor-local" | "advisory";
   "blocking": boolean;
   "owner": string;
+  "summary"?: string;
+  "details"?: string;
   "evidenceRef": {
   "rel": "raw_intent" | "derived_from" | "supersedes" | "superseded_by" | "implements" | "verifies" | "evidence_for" | "consumed_by" | "produced_by" | "context_for" | "registry_entry_for" | "manifest_for" | "verification_delta_of" | "build_result_of" | "ship_packet_of";
   "artifactKind": "work_brief" | "implementation_plan" | "verification_delta" | "build_result" | "ship_packet" | "evidence_packet" | "agent_registry_entry" | "context_file_header" | "schematic_manifest" | "skill_manifest";

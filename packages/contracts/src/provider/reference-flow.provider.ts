@@ -9,7 +9,7 @@ import {
   type ReferenceHeaders,
   type ReferencePathParams,
   type ReferenceRequestBody,
-  type ReferenceSuccessResponse
+  type ReferenceSuccessResponse,
 } from "../contracts/reference-flow.contract.js";
 
 export type ReferenceProviderResult =
@@ -40,7 +40,12 @@ function parseReferencePath(pathValue: string): ReferencePathParams {
   return ReferencePathParamsSchema.parse({ referenceId });
 }
 
-function validateRequest(rawRequest: unknown): { pathParams: ReferencePathParams; headers: ReferenceHeaders; body: ReferenceRequestBody; forceInvalidProviderResponse: boolean } {
+function validateRequest(rawRequest: unknown): {
+  pathParams: ReferencePathParams;
+  headers: ReferenceHeaders;
+  body: ReferenceRequestBody;
+  forceInvalidProviderResponse: boolean;
+} {
   const boundaryRequest = ReferenceBoundaryRequestSchema.parse(rawRequest);
   const pathParams = parseReferencePath(boundaryRequest.path);
   const headers = ReferenceHeadersSchema.parse(boundaryRequest.headers);
@@ -49,11 +54,16 @@ function validateRequest(rawRequest: unknown): { pathParams: ReferencePathParams
     pathParams,
     headers,
     body,
-    forceInvalidProviderResponse: boundaryRequest.forceInvalidProviderResponse === true
+    forceInvalidProviderResponse: boundaryRequest.forceInvalidProviderResponse === true,
   };
 }
 
-function executeReferenceLogic(pathParams: ReferencePathParams, headers: ReferenceHeaders, body: ReferenceRequestBody, probe: ReferenceApplicationProbe): ReferenceSuccessResponse {
+function executeReferenceLogic(
+  pathParams: ReferencePathParams,
+  headers: ReferenceHeaders,
+  body: ReferenceRequestBody,
+  probe: ReferenceApplicationProbe,
+): ReferenceSuccessResponse {
   probe.applicationLogicRan = true;
   const normalizedLabel = `${headers["x-reference-client"]}:${body.label.trim().toLowerCase()}`;
   return {
@@ -61,7 +71,7 @@ function executeReferenceLogic(pathParams: ReferencePathParams, headers: Referen
     accepted: true,
     normalizedLabel,
     sequenceEcho: body.sequence,
-    absence: body.absence
+    absence: body.absence,
   };
 }
 
@@ -71,16 +81,27 @@ function invalidResponseCandidate(): unknown {
     accepted: true,
     normalizedLabel: "invalid",
     sequenceEcho: 1,
-    absence: { kind: "not-provided", reason: "forced invalid response" }
+    absence: { kind: "not-provided", reason: "forced invalid response" },
   };
 }
 
-export function handleReferenceFlowApiRequest(rawRequest: unknown, probe: ReferenceApplicationProbe = createReferenceApplicationProbe()): ReferenceProviderResult {
-  let validatedRequest: { pathParams: ReferencePathParams; headers: ReferenceHeaders; body: ReferenceRequestBody; forceInvalidProviderResponse: boolean };
+export function handleReferenceFlowApiRequest(
+  rawRequest: unknown,
+  probe: ReferenceApplicationProbe = createReferenceApplicationProbe(),
+): ReferenceProviderResult {
+  let validatedRequest: {
+    pathParams: ReferencePathParams;
+    headers: ReferenceHeaders;
+    body: ReferenceRequestBody;
+    forceInvalidProviderResponse: boolean;
+  };
   try {
     validatedRequest = validateRequest(rawRequest);
   } catch (error) {
-    const rejectedBody = ReferenceErrorResponseSchema.parse({ code: "invalid_request", message: "Request failed named runtime schema validation." });
+    const rejectedBody = ReferenceErrorResponseSchema.parse({
+      code: "invalid_request",
+      message: "Request failed named runtime schema validation.",
+    });
     if (error instanceof Error) {
       return { status: 400, body: rejectedBody };
     }
@@ -89,10 +110,18 @@ export function handleReferenceFlowApiRequest(rawRequest: unknown, probe: Refere
 
   const responseCandidate = validatedRequest.forceInvalidProviderResponse
     ? invalidResponseCandidate()
-    : executeReferenceLogic(validatedRequest.pathParams, validatedRequest.headers, validatedRequest.body, probe);
+    : executeReferenceLogic(
+        validatedRequest.pathParams,
+        validatedRequest.headers,
+        validatedRequest.body,
+        probe,
+      );
   const responseParse = ReferenceSuccessResponseSchema.safeParse(responseCandidate);
   if (!responseParse.success) {
-    throw new ReferenceContractBoundaryError("response", "Provider attempted to expose a payload that violates ReferenceSuccessResponseSchema.");
+    throw new ReferenceContractBoundaryError(
+      "response",
+      "Provider attempted to expose a payload that violates ReferenceSuccessResponseSchema.",
+    );
   }
   return { status: 200, body: responseParse.data };
 }

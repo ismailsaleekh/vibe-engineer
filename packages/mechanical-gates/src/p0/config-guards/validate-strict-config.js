@@ -6,7 +6,7 @@ import {
   normalizeProjectPath,
   P0_FAMILIES,
   pathExists,
-  readJsonFileBounded
+  readJsonFileBounded,
 } from "../boundaries/contracts.js";
 
 const REQUIRED_TS_FLAGS = Object.freeze([
@@ -30,13 +30,10 @@ const REQUIRED_TS_FLAGS = Object.freeze([
   "isolatedModules",
   "verbatimModuleSyntax",
   "forceConsistentCasingInFileNames",
-  "noEmitOnError"
+  "noEmitOnError",
 ]);
 
-const REQUIRED_FALSE_FLAGS = Object.freeze([
-  "allowUnreachableCode",
-  "allowUnusedLabels"
-]);
+const REQUIRED_FALSE_FLAGS = Object.freeze(["allowUnreachableCode", "allowUnusedLabels"]);
 
 const REQUIRED_PRETTIER_DEFAULTS = Object.freeze({
   printWidth: 100,
@@ -45,7 +42,7 @@ const REQUIRED_PRETTIER_DEFAULTS = Object.freeze({
   trailingComma: "all",
   arrowParens: "always",
   bracketSpacing: true,
-  endOfLine: "lf"
+  endOfLine: "lf",
 });
 
 const REQUIRED_ESLINT_RULES = Object.freeze([
@@ -63,11 +60,16 @@ const REQUIRED_ESLINT_RULES = Object.freeze([
   "@typescript-eslint/switch-exhaustiveness-check",
   "no-empty",
   "no-fallthrough",
-  "no-implicit-coercion"
+  "no-implicit-coercion",
 ]);
 
 const ESLINT_CONFIG_CANDIDATES = Object.freeze(["eslint.config.mjs", "eslint.config.js"]);
-const PRETTIER_CONFIG_CANDIDATES = Object.freeze(["prettier.config.mjs", "prettier.config.js", ".prettierrc", ".prettierrc.json"]);
+const PRETTIER_CONFIG_CANDIDATES = Object.freeze([
+  "prettier.config.mjs",
+  "prettier.config.js",
+  ".prettierrc",
+  ".prettierrc.json",
+]);
 const SCRIPT_SEPARATOR_TOKENS = new Set(["&&", "||", ";", "|"]);
 const PLACEHOLDER_COMMANDS = new Set(["echo", "true", ":"]);
 const TEST_COMMANDS = new Set(["node", "vitest", "jest", "mocha", "uvu", "tsx", "ts-node"]);
@@ -82,7 +84,7 @@ const OPTION_VALUE_FLAGS = new Set([
   "--project",
   "--projectService",
   "-c",
-  "-o"
+  "-o",
 ]);
 
 let importCounter = 0;
@@ -93,7 +95,7 @@ function finding(ruleId, findingPath, message, evidence = {}) {
     ruleId,
     path: findingPath,
     message,
-    evidence
+    evidence,
   });
 }
 
@@ -101,10 +103,12 @@ async function safeReadJson(projectRoot, relativePath, findings, ruleId, message
   try {
     return await readJsonFileBounded(projectRoot, relativePath);
   } catch (error) {
-    findings.push(finding(ruleId, relativePath, message, {
-      code: error && typeof error === "object" && "code" in error ? error.code : "READ_FAILED",
-      error: error instanceof Error ? error.message : String(error)
-    }));
+    findings.push(
+      finding(ruleId, relativePath, message, {
+        code: error && typeof error === "object" && "code" in error ? error.code : "READ_FAILED",
+        error: error instanceof Error ? error.message : String(error),
+      }),
+    );
     return undefined;
   }
 }
@@ -122,7 +126,7 @@ async function loadModuleDefault(projectRoot, relativePath) {
   const safeRelative = normalizeProjectPath(projectRoot, relativePath);
   const absolutePath = path.join(path.resolve(projectRoot), safeRelative);
   const url = pathToFileURL(absolutePath);
-  url.search = `p0ConfigGuard=${Date.now()}-${importCounter += 1}`;
+  url.search = `p0ConfigGuard=${Date.now()}-${(importCounter += 1)}`;
   const moduleNamespace = await import(url.href);
   return moduleNamespace.default;
 }
@@ -134,9 +138,16 @@ async function loadConfig(projectRoot, relativePath, kind, findings) {
     }
     return await loadModuleDefault(projectRoot, relativePath);
   } catch (error) {
-    findings.push(finding(`config-guards.invalid-${kind}-config`, relativePath, `Required ${kind} config must structurally load without errors.`, {
-      error: error instanceof Error ? error.message : String(error)
-    }));
+    findings.push(
+      finding(
+        `config-guards.invalid-${kind}-config`,
+        relativePath,
+        `Required ${kind} config must structurally load without errors.`,
+        {
+          error: error instanceof Error ? error.message : String(error),
+        },
+      ),
+    );
     return undefined;
   }
 }
@@ -176,21 +187,29 @@ function flattenEslintRules(config) {
 
 function hasJsonParseBoundaryRule(ruleValue) {
   if (severityOf(ruleValue) !== "error" || !Array.isArray(ruleValue)) return false;
-  return ruleValue.slice(1).some((entry) => isPlainObject(entry)
-    && entry.selector === "CallExpression[callee.object.name='JSON'][callee.property.name='parse']"
-    && typeof entry.message === "string"
-    && entry.message.length > 0);
+  return ruleValue
+    .slice(1)
+    .some(
+      (entry) =>
+        isPlainObject(entry) &&
+        entry.selector ===
+          "CallExpression[callee.object.name='JSON'][callee.property.name='parse']" &&
+        typeof entry.message === "string" &&
+        entry.message.length > 0,
+    );
 }
 
 function validateBanTsComment(ruleValue) {
   if (severityOf(ruleValue) !== "error") return false;
   const options = optionOf(ruleValue);
-  return Boolean(options)
-    && options["ts-ignore"] === true
-    && options["ts-nocheck"] === true
-    && options["ts-expect-error"] === "allow-with-description"
-    && typeof options.minimumDescriptionLength === "number"
-    && options.minimumDescriptionLength >= 20;
+  return (
+    Boolean(options) &&
+    options["ts-ignore"] === true &&
+    options["ts-nocheck"] === true &&
+    options["ts-expect-error"] === "allow-with-description" &&
+    typeof options.minimumDescriptionLength === "number" &&
+    options.minimumDescriptionLength >= 20
+  );
 }
 
 function validateNoEmptyOptions(ruleValue) {
@@ -202,57 +221,118 @@ function validateNoEmptyOptions(ruleValue) {
 function validateEslintConfig(config, configPath, findings) {
   const rules = flattenEslintRules(config);
   if (!rules) {
-    findings.push(finding("config-guards.invalid-eslint-config", configPath, "ESLint config must be a non-empty flat config object/array of objects."));
+    findings.push(
+      finding(
+        "config-guards.invalid-eslint-config",
+        configPath,
+        "ESLint config must be a non-empty flat config object/array of objects.",
+      ),
+    );
     return;
   }
 
   for (const requiredRule of REQUIRED_ESLINT_RULES) {
     const found = rules.get(requiredRule);
     if (!found) {
-      findings.push(finding("config-guards.missing-eslint-rule", `${configPath}#/rules/${requiredRule}`, `Required ESLint blocking rule is missing: ${requiredRule}.`, { ruleName: requiredRule }));
+      findings.push(
+        finding(
+          "config-guards.missing-eslint-rule",
+          `${configPath}#/rules/${requiredRule}`,
+          `Required ESLint blocking rule is missing: ${requiredRule}.`,
+          { ruleName: requiredRule },
+        ),
+      );
       continue;
     }
     if (severityOf(found.ruleValue) !== "error") {
-      findings.push(finding("config-guards.eslint-rule-weakened", `${configPath}#/rules/${requiredRule}`, `Required ESLint rule must have blocking severity: ${requiredRule}.`, {
-        ruleName: requiredRule,
-        actual: Array.isArray(found.ruleValue) ? found.ruleValue[0] : found.ruleValue
-      }));
+      findings.push(
+        finding(
+          "config-guards.eslint-rule-weakened",
+          `${configPath}#/rules/${requiredRule}`,
+          `Required ESLint rule must have blocking severity: ${requiredRule}.`,
+          {
+            ruleName: requiredRule,
+            actual: Array.isArray(found.ruleValue) ? found.ruleValue[0] : found.ruleValue,
+          },
+        ),
+      );
       continue;
     }
     if (requiredRule === "no-empty" && !validateNoEmptyOptions(found.ruleValue)) {
-      findings.push(finding("config-guards.invalid-eslint-rule-options", `${configPath}#/rules/no-empty`, "no-empty must reject empty catch blocks.", { ruleName: requiredRule }));
+      findings.push(
+        finding(
+          "config-guards.invalid-eslint-rule-options",
+          `${configPath}#/rules/no-empty`,
+          "no-empty must reject empty catch blocks.",
+          { ruleName: requiredRule },
+        ),
+      );
     }
   }
 
   const banTsComment = rules.get("@typescript-eslint/ban-ts-comment");
   if (!banTsComment) {
-    findings.push(finding("config-guards.missing-eslint-rule", `${configPath}#/rules/@typescript-eslint/ban-ts-comment`, "Required ESLint blocking rule is missing: @typescript-eslint/ban-ts-comment.", { ruleName: "@typescript-eslint/ban-ts-comment" }));
+    findings.push(
+      finding(
+        "config-guards.missing-eslint-rule",
+        `${configPath}#/rules/@typescript-eslint/ban-ts-comment`,
+        "Required ESLint blocking rule is missing: @typescript-eslint/ban-ts-comment.",
+        { ruleName: "@typescript-eslint/ban-ts-comment" },
+      ),
+    );
   } else if (!validateBanTsComment(banTsComment.ruleValue)) {
-    findings.push(finding("config-guards.invalid-eslint-rule-options", `${configPath}#/rules/@typescript-eslint/ban-ts-comment`, "ban-ts-comment must block ts-ignore/ts-nocheck and require descriptions for ts-expect-error.", {
-      ruleName: "@typescript-eslint/ban-ts-comment"
-    }));
+    findings.push(
+      finding(
+        "config-guards.invalid-eslint-rule-options",
+        `${configPath}#/rules/@typescript-eslint/ban-ts-comment`,
+        "ban-ts-comment must block ts-ignore/ts-nocheck and require descriptions for ts-expect-error.",
+        {
+          ruleName: "@typescript-eslint/ban-ts-comment",
+        },
+      ),
+    );
   }
 
   const noRestrictedSyntax = rules.get("no-restricted-syntax");
   if (!noRestrictedSyntax || !hasJsonParseBoundaryRule(noRestrictedSyntax.ruleValue)) {
-    findings.push(finding("config-guards.missing-eslint-json-parse-boundary", `${configPath}#/rules/no-restricted-syntax`, "ESLint must block raw JSON.parse outside named runtime boundary validators.", {
-      ruleName: "no-restricted-syntax"
-    }));
+    findings.push(
+      finding(
+        "config-guards.missing-eslint-json-parse-boundary",
+        `${configPath}#/rules/no-restricted-syntax`,
+        "ESLint must block raw JSON.parse outside named runtime boundary validators.",
+        {
+          ruleName: "no-restricted-syntax",
+        },
+      ),
+    );
   }
 }
 
 function validatePrettierConfig(config, configPath, findings) {
   if (!isPlainObject(config)) {
-    findings.push(finding("config-guards.invalid-prettier-config", configPath, "Prettier config must structurally load to an object."));
+    findings.push(
+      finding(
+        "config-guards.invalid-prettier-config",
+        configPath,
+        "Prettier config must structurally load to an object.",
+      ),
+    );
     return;
   }
   for (const [key, expected] of Object.entries(REQUIRED_PRETTIER_DEFAULTS)) {
     if (config[key] !== expected) {
-      findings.push(finding("config-guards.prettier-default-weakened", `${configPath}#/${key}`, `Required Prettier default is missing or weakened: ${key}.`, {
-        option: key,
-        expected,
-        actual: config[key] ?? null
-      }));
+      findings.push(
+        finding(
+          "config-guards.prettier-default-weakened",
+          `${configPath}#/${key}`,
+          `Required Prettier default is missing or weakened: ${key}.`,
+          {
+            option: key,
+            expected,
+            actual: config[key] ?? null,
+          },
+        ),
+      );
     }
   }
 }
@@ -360,7 +440,9 @@ function isPlaceholderScript(commands) {
 }
 
 function targetArgumentsFor(commandTokens, toolName) {
-  const toolIndex = commandTokens.findIndex((token) => path.posix.basename(token).replace(/\.cmd$/u, "") === toolName);
+  const toolIndex = commandTokens.findIndex(
+    (token) => path.posix.basename(token).replace(/\.cmd$/u, "") === toolName,
+  );
   if (toolIndex < 0) return [];
   const targets = [];
   let skipNext = false;
@@ -387,10 +469,13 @@ function normalizeScriptTarget(target) {
 function targetCoversPath(target, requiredPath) {
   const normalizedTarget = normalizeScriptTarget(target);
   const normalizedRequired = normalizeScriptTarget(requiredPath);
-  if (normalizedTarget === "." || normalizedTarget === "**/*" || normalizedTarget === "**") return true;
-  return normalizedTarget === normalizedRequired
-    || normalizedRequired.startsWith(`${normalizedTarget}/`)
-    || normalizedTarget.startsWith(`${normalizedRequired}/`);
+  if (normalizedTarget === "." || normalizedTarget === "**/*" || normalizedTarget === "**")
+    return true;
+  return (
+    normalizedTarget === normalizedRequired ||
+    normalizedRequired.startsWith(`${normalizedTarget}/`) ||
+    normalizedTarget.startsWith(`${normalizedRequired}/`)
+  );
 }
 
 function commandTargets(commands, toolName) {
@@ -421,25 +506,42 @@ function requiredScriptCoverage(mechanicalSurface) {
     for (const surface of mechanicalSurface.surfaces) {
       if (!isPlainObject(surface) || typeof surface.path !== "string") continue;
       if (surface.kind === "prefix") sourcePrefixes.push(surface.path);
-      if (surface.kind === "exact" && ["eslint.config.mjs", "eslint.config.js", "prettier.config.mjs", "prettier.config.js", "tsconfig.json", "package.json"].includes(surface.path)) {
+      if (
+        surface.kind === "exact" &&
+        [
+          "eslint.config.mjs",
+          "eslint.config.js",
+          "prettier.config.mjs",
+          "prettier.config.js",
+          "tsconfig.json",
+          "package.json",
+        ].includes(surface.path)
+      ) {
         exactConfigFiles.push(surface.path);
       }
     }
   }
   return {
     lint: [...new Set([...sourcePrefixes, "eslint.config.mjs"])],
-    prettier: [...new Set([...sourcePrefixes, ...exactConfigFiles])]
+    prettier: [...new Set([...sourcePrefixes, ...exactConfigFiles])],
   };
 }
 
 function assertCoverage(scriptName, scriptPath, targets, requiredPaths, findings) {
   for (const requiredPath of requiredPaths) {
     if (!targets.some((target) => targetCoversPath(target, requiredPath))) {
-      findings.push(finding("config-guards.partial-script-surface", scriptPath, `Required script omits governed surface: ${scriptName}.`, {
-        scriptName,
-        requiredPath,
-        targets
-      }));
+      findings.push(
+        finding(
+          "config-guards.partial-script-surface",
+          scriptPath,
+          `Required script omits governed surface: ${scriptName}.`,
+          {
+            scriptName,
+            requiredPath,
+            targets,
+          },
+        ),
+      );
     }
   }
 }
@@ -459,44 +561,103 @@ function validateScriptSurface(packageJsonPath, scripts, mechanicalSurface, find
     const scriptPath = `${packageJsonPath}#/scripts/${scriptName}`;
     const command = scripts[scriptName];
     if (typeof command !== "string" || command.trim().length === 0) {
-      findings.push(finding("config-guards.missing-required-script", scriptPath, `Required package script is missing: ${scriptName}.`, { scriptName }));
+      findings.push(
+        finding(
+          "config-guards.missing-required-script",
+          scriptPath,
+          `Required package script is missing: ${scriptName}.`,
+          { scriptName },
+        ),
+      );
       continue;
     }
     const tokenized = tokenizeShellCommand(command);
     if (!tokenized.ok) {
-      findings.push(finding("config-guards.invalid-required-script", scriptPath, `Required package script cannot be parsed: ${scriptName}.`, { scriptName, error: tokenized.error }));
+      findings.push(
+        finding(
+          "config-guards.invalid-required-script",
+          scriptPath,
+          `Required package script cannot be parsed: ${scriptName}.`,
+          { scriptName, error: tokenized.error },
+        ),
+      );
       continue;
     }
     const commands = splitCommands(tokenized.tokens);
     parsedScripts.set(scriptName, { command, commands, tokens: tokenized.tokens, scriptPath });
     if (isPlaceholderScript(commands)) {
-      findings.push(finding("config-guards.invalid-required-script", scriptPath, `Required package script is a placeholder/no-op: ${scriptName}.`, { scriptName, command }));
+      findings.push(
+        finding(
+          "config-guards.invalid-required-script",
+          scriptPath,
+          `Required package script is a placeholder/no-op: ${scriptName}.`,
+          { scriptName, command },
+        ),
+      );
     }
   }
 
   const typecheck = parsedScripts.get("typecheck");
   if (typecheck) {
-    const directTypecheck = commandInvokes(typecheck.commands, new Set(["tsc", "vue-tsc"])) && commandHasToken(typecheck.commands, "--noEmit");
+    const directTypecheck =
+      commandInvokes(typecheck.commands, new Set(["tsc", "vue-tsc"])) &&
+      commandHasToken(typecheck.commands, "--noEmit");
     const orchestratedTypecheck = commandOrchestratesLeg(typecheck.commands, "typecheck");
     if (!directTypecheck && !orchestratedTypecheck) {
-      findings.push(finding("config-guards.invalid-required-script", typecheck.scriptPath, "typecheck must invoke a real TypeScript no-emit check.", { scriptName: "typecheck", command: typecheck.command }));
+      findings.push(
+        finding(
+          "config-guards.invalid-required-script",
+          typecheck.scriptPath,
+          "typecheck must invoke a real TypeScript no-emit check.",
+          { scriptName: "typecheck", command: typecheck.command },
+        ),
+      );
     }
   }
 
   const lint = parsedScripts.get("lint");
   if (lint) {
     if (!commandInvokes(lint.commands, new Set(["eslint"]))) {
-      findings.push(finding("config-guards.invalid-required-script", lint.scriptPath, "lint must invoke ESLint.", { scriptName: "lint", command: lint.command }));
+      findings.push(
+        finding(
+          "config-guards.invalid-required-script",
+          lint.scriptPath,
+          "lint must invoke ESLint.",
+          { scriptName: "lint", command: lint.command },
+        ),
+      );
     }
-    assertCoverage("lint", lint.scriptPath, commandTargets(lint.commands, "eslint"), coverage.lint, findings);
+    assertCoverage(
+      "lint",
+      lint.scriptPath,
+      commandTargets(lint.commands, "eslint"),
+      coverage.lint,
+      findings,
+    );
   }
 
   const format = parsedScripts.get(formatScriptName);
   if (format) {
-    if (!commandInvokes(format.commands, new Set(["prettier"])) || (!commandHasToken(format.commands, "--check") && !commandHasToken(format.commands, "-c"))) {
-      findings.push(finding("config-guards.invalid-required-script", format.scriptPath, "format/format:check must invoke Prettier in check mode.", { scriptName: formatScriptName, command: format.command }));
+    if (
+      !commandInvokes(format.commands, new Set(["prettier"])) ||
+      (!commandHasToken(format.commands, "--check") && !commandHasToken(format.commands, "-c"))
+    ) {
+      findings.push(
+        finding(
+          "config-guards.invalid-required-script",
+          format.scriptPath,
+          "format/format:check must invoke Prettier in check mode.",
+          { scriptName: formatScriptName, command: format.command },
+        ),
+      );
     }
-    assertCoverage(formatScriptName, format.scriptPath, commandTargets(format.commands, "prettier"), coverage.prettier, findings);
+    assertCoverage(
+      formatScriptName,
+      format.scriptPath,
+      commandTargets(format.commands, "prettier"),
+      coverage.prettier,
+      findings,
+    );
   }
 
   const test = parsedScripts.get("test");
@@ -504,7 +665,14 @@ function validateScriptSurface(packageJsonPath, scripts, mechanicalSurface, find
     const directTest = commandInvokes(test.commands, TEST_COMMANDS);
     const orchestratedTest = commandOrchestratesLeg(test.commands, "test");
     if (!directTest && !orchestratedTest) {
-      findings.push(finding("config-guards.invalid-required-script", test.scriptPath, "test must invoke a real test or witness runner.", { scriptName: "test", command: test.command }));
+      findings.push(
+        finding(
+          "config-guards.invalid-required-script",
+          test.scriptPath,
+          "test must invoke a real test or witness runner.",
+          { scriptName: "test", command: test.command },
+        ),
+      );
     }
   }
 }
@@ -514,62 +682,128 @@ export async function validateStrictConfig(projectRoot, options = {}) {
   const packageJsonPath = options.packageJsonPath ?? "package.json";
   const findings = [];
 
-  const tsconfig = await safeReadJson(projectRoot, tsconfigPath, findings, "config-guards.invalid-tsconfig", "tsconfig.json must be readable JSON.");
-  const compilerOptions = tsconfig && isPlainObject(tsconfig) && isPlainObject(tsconfig.compilerOptions)
-    ? tsconfig.compilerOptions
-    : undefined;
+  const tsconfig = await safeReadJson(
+    projectRoot,
+    tsconfigPath,
+    findings,
+    "config-guards.invalid-tsconfig",
+    "tsconfig.json must be readable JSON.",
+  );
+  const compilerOptions =
+    tsconfig && isPlainObject(tsconfig) && isPlainObject(tsconfig.compilerOptions)
+      ? tsconfig.compilerOptions
+      : undefined;
 
   if (!compilerOptions) {
-    findings.push(finding("config-guards.missing-ts-compiler-options", tsconfigPath, "tsconfig.json must contain compilerOptions."));
+    findings.push(
+      finding(
+        "config-guards.missing-ts-compiler-options",
+        tsconfigPath,
+        "tsconfig.json must contain compilerOptions.",
+      ),
+    );
   } else {
     for (const flag of REQUIRED_TS_FLAGS) {
       if (compilerOptions[flag] !== true) {
-        findings.push(finding("config-guards.strict-ts-flag-weakened", `${tsconfigPath}#/compilerOptions/${flag}`, `Required TypeScript strict flag must be true: ${flag}.`, {
-          flag,
-          expected: true,
-          actual: compilerOptions[flag] ?? null
-        }));
+        findings.push(
+          finding(
+            "config-guards.strict-ts-flag-weakened",
+            `${tsconfigPath}#/compilerOptions/${flag}`,
+            `Required TypeScript strict flag must be true: ${flag}.`,
+            {
+              flag,
+              expected: true,
+              actual: compilerOptions[flag] ?? null,
+            },
+          ),
+        );
       }
     }
     for (const flag of REQUIRED_FALSE_FLAGS) {
       if (compilerOptions[flag] !== false) {
-        findings.push(finding("config-guards.strict-ts-flag-weakened", `${tsconfigPath}#/compilerOptions/${flag}`, `Required TypeScript safety flag must be false: ${flag}.`, {
-          flag,
-          expected: false,
-          actual: compilerOptions[flag] ?? null
-        }));
+        findings.push(
+          finding(
+            "config-guards.strict-ts-flag-weakened",
+            `${tsconfigPath}#/compilerOptions/${flag}`,
+            `Required TypeScript safety flag must be false: ${flag}.`,
+            {
+              flag,
+              expected: false,
+              actual: compilerOptions[flag] ?? null,
+            },
+          ),
+        );
       }
     }
   }
 
-  const packageJson = await safeReadJson(projectRoot, packageJsonPath, findings, "config-guards.invalid-package-json", "package.json must be readable JSON.");
-  const scripts = packageJson && isPlainObject(packageJson) && isPlainObject(packageJson.scripts) ? packageJson.scripts : {};
+  const packageJson = await safeReadJson(
+    projectRoot,
+    packageJsonPath,
+    findings,
+    "config-guards.invalid-package-json",
+    "package.json must be readable JSON.",
+  );
+  const scripts =
+    packageJson && isPlainObject(packageJson) && isPlainObject(packageJson.scripts)
+      ? packageJson.scripts
+      : {};
 
   const mechanicalSurfacePath = options.mechanicalSurfacePath ?? "mechanical-surface.json";
-  const mechanicalSurface = await pathExists(projectRoot, mechanicalSurfacePath)
-    ? await safeReadJson(projectRoot, mechanicalSurfacePath, findings, "config-guards.invalid-mechanical-surface", "mechanical-surface.json must be readable JSON when present.")
+  const mechanicalSurface = (await pathExists(projectRoot, mechanicalSurfacePath))
+    ? await safeReadJson(
+        projectRoot,
+        mechanicalSurfacePath,
+        findings,
+        "config-guards.invalid-mechanical-surface",
+        "mechanical-surface.json must be readable JSON when present.",
+      )
     : undefined;
   validateScriptSurface(packageJsonPath, scripts, mechanicalSurface, findings);
 
-  const eslintPresence = await requireOne(projectRoot, ESLINT_CONFIG_CANDIDATES, "config-guards.missing-eslint-config", "Required ESLint config surface is missing.");
+  const eslintPresence = await requireOne(
+    projectRoot,
+    ESLINT_CONFIG_CANDIDATES,
+    "config-guards.missing-eslint-config",
+    "Required ESLint config surface is missing.",
+  );
   if (!eslintPresence.ok) {
     findings.push(eslintPresence.finding);
   } else {
     const eslintConfig = await loadConfig(projectRoot, eslintPresence.found, "eslint", findings);
-    if (eslintConfig !== undefined) validateEslintConfig(eslintConfig, eslintPresence.found, findings);
+    if (eslintConfig !== undefined)
+      validateEslintConfig(eslintConfig, eslintPresence.found, findings);
   }
 
-  const prettierPresence = await requireOne(projectRoot, PRETTIER_CONFIG_CANDIDATES, "config-guards.missing-prettier-config", "Required Prettier config surface is missing.");
+  const prettierPresence = await requireOne(
+    projectRoot,
+    PRETTIER_CONFIG_CANDIDATES,
+    "config-guards.missing-prettier-config",
+    "Required Prettier config surface is missing.",
+  );
   if (!prettierPresence.ok) {
     findings.push(prettierPresence.finding);
   } else {
-    const prettierConfig = await loadConfig(projectRoot, prettierPresence.found, "prettier", findings);
-    if (prettierConfig !== undefined) validatePrettierConfig(prettierConfig, prettierPresence.found, findings);
+    const prettierConfig = await loadConfig(
+      projectRoot,
+      prettierPresence.found,
+      "prettier",
+      findings,
+    );
+    if (prettierConfig !== undefined)
+      validatePrettierConfig(prettierConfig, prettierPresence.found, findings);
   }
 
   const packageType = packageJson && isPlainObject(packageJson) ? packageJson.type : undefined;
   if (packageType !== "module") {
-    findings.push(finding("config-guards.package-module-type", `${packageJsonPath}#/type`, "Package must declare ESM module type.", { expected: "module", actual: packageType ?? null }));
+    findings.push(
+      finding(
+        "config-guards.package-module-type",
+        `${packageJsonPath}#/type`,
+        "Package must declare ESM module type.",
+        { expected: "module", actual: packageType ?? null },
+      ),
+    );
   }
 
   return createValidatorResult({
@@ -585,7 +819,7 @@ export async function validateStrictConfig(projectRoot, options = {}) {
       requiredPrettierDefaults: REQUIRED_PRETTIER_DEFAULTS,
       requiredEslintRules: REQUIRED_ESLINT_RULES,
       eslintConfig: eslintPresence.ok ? eslintPresence.found : null,
-      prettierConfig: prettierPresence.ok ? prettierPresence.found : null
-    }
+      prettierConfig: prettierPresence.ok ? prettierPresence.found : null,
+    },
   });
 }

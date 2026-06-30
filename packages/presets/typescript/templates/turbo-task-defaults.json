@@ -6,7 +6,15 @@
     "format:check": { "outputs": [] },
     "test:unit": { "dependsOn": ["^test:unit"], "outputs": ["coverage/**"] },
     "build": { "dependsOn": ["^build", "typecheck"], "outputs": ["dist/**"] },
-    "quality:quick": { "dependsOn": ["typecheck", "lint", "format:check", "test:unit", "build"], "outputs": [] }
+    "quality:quick": {
+      "dependsOn": ["typecheck", "lint", "format:check", "test:unit", "build"],
+      "outputs": []
+    }
   },
-  "excludedFromDefaultQuickGate": ["full-e2e", "full-mobile-e2e", "full-visual-ui-verification", "deploy"]
+  "excludedFromDefaultQuickGate": [
+    "full-e2e",
+    "full-mobile-e2e",
+    "full-visual-ui-verification",
+    "deploy"
+  ]
 }

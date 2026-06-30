@@ -1,6 +1,10 @@
 import type { P0Finding, P0ValidatorResult } from "../boundaries/index.js";
 
-export type DependencySection = "dependencies" | "peerDependencies" | "optionalDependencies" | "devDependencies";
+export type DependencySection =
+  | "dependencies"
+  | "peerDependencies"
+  | "optionalDependencies"
+  | "devDependencies";
 
 export interface TestingBoundaryOptions {
   policyPath?: string;
@@ -34,10 +38,24 @@ export interface TestingBoundaryResult extends P0ValidatorResult {
     sourceFileCount: number;
     importCount: number;
     productionImportCount: number;
-    dependencyEdges: Array<{ packageName: string; section: DependencySection; dependencyName: string; productionReachable: boolean; manifestPath: string }>;
-    testOnlyManifests: Array<{ manifestPath: string; private: boolean; testOnly: boolean; productionDependencyAllowed: boolean }>;
+    dependencyEdges: Array<{
+      packageName: string;
+      section: DependencySection;
+      dependencyName: string;
+      productionReachable: boolean;
+      manifestPath: string;
+    }>;
+    testOnlyManifests: Array<{
+      manifestPath: string;
+      private: boolean;
+      testOnly: boolean;
+      productionDependencyAllowed: boolean;
+    }>;
     [key: string]: unknown;
   };
 }
 
-export function validateTestingBoundary(projectRoot: string, options?: TestingBoundaryOptions): Promise<TestingBoundaryResult>;
+export function validateTestingBoundary(
+  projectRoot: string,
+  options?: TestingBoundaryOptions,
+): Promise<TestingBoundaryResult>;

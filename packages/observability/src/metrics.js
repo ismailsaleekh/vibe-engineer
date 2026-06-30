@@ -67,20 +67,26 @@ function validateLabels(labels, allowedKeys) {
   for (const [k, v] of Object.entries(labels)) {
     if (!allowedKeys.includes(k)) {
       throw new Error(
-        `metrics: label key '${k}' is not in the bounded core vocabulary (DL-23 metrics §4). Allowed: ${allowedKeys.join(", ")}`
+        `metrics: label key '${k}' is not in the bounded core vocabulary (DL-23 metrics §4). Allowed: ${allowedKeys.join(", ")}`,
       );
     }
     if (typeof v !== "string" || v.length === 0 || v.length > 64) {
-      throw new Error(`metrics: label value for '${k}' must be a bounded non-empty string (≤64 chars)`);
+      throw new Error(
+        `metrics: label value for '${k}' must be a bounded non-empty string (≤64 chars)`,
+      );
     }
     // Enum-bound values must be from the locked set.
     if (k === METRIC_LABEL_KEYS.surface) surfaceSchema.parse(v);
     if (k === METRIC_LABEL_KEYS.outcome) outcomeSchema.parse(v);
     if (k === METRIC_LABEL_KEYS.statusClass && !METRIC_LABEL_VALUES.statusClass.includes(v)) {
-      throw new Error(`metrics: statusClass '${v}' not in bounded enum ${JSON.stringify(METRIC_LABEL_VALUES.statusClass)}`);
+      throw new Error(
+        `metrics: statusClass '${v}' not in bounded enum ${JSON.stringify(METRIC_LABEL_VALUES.statusClass)}`,
+      );
     }
     if (k === METRIC_LABEL_KEYS.result && !METRIC_LABEL_VALUES.result.includes(v)) {
-      throw new Error(`metrics: result '${v}' not in bounded enum ${JSON.stringify(METRIC_LABEL_VALUES.result)}`);
+      throw new Error(
+        `metrics: result '${v}' not in bounded enum ${JSON.stringify(METRIC_LABEL_VALUES.result)}`,
+      );
     }
   }
 }
@@ -97,16 +103,40 @@ const ALL_KEYS = Object.values(METRIC_LABEL_KEYS);
 export function createMetrics(meter) {
   if (!meter) throw new Error("createMetrics: an OTel Meter is required");
 
-  const requestCounter = meter.createCounter(METRIC_NAMES.requestCount, { description: "inbound request count" });
-  const requestDuration = meter.createHistogram(METRIC_NAMES.requestDuration, { description: "inbound request duration ms", unit: "ms" });
-  const clientCallCounter = meter.createCounter(METRIC_NAMES.clientCallCount, { description: "outbound client/external call count" });
-  const clientCallDuration = meter.createHistogram(METRIC_NAMES.clientCallDuration, { description: "outbound client/external call duration ms", unit: "ms" });
-  const operationCounter = meter.createCounter(METRIC_NAMES.operationCount, { description: "golden critical-path operation count" });
-  const operationDuration = meter.createHistogram(METRIC_NAMES.operationDuration, { description: "golden critical-path operation duration ms", unit: "ms" });
-  const errorCounter = meter.createCounter(METRIC_NAMES.errorCount, { description: "error count by bounded class" });
-  const verificationRunCounter = meter.createCounter(METRIC_NAMES.verificationRunCount, { description: "verification run count" });
-  const verificationRunDuration = meter.createHistogram(METRIC_NAMES.verificationRunDuration, { description: "verification run duration ms", unit: "ms" });
-  const assertionCounter = meter.createCounter(METRIC_NAMES.observabilityAssertionCount, { description: "observability assertion pass/fail accounting" });
+  const requestCounter = meter.createCounter(METRIC_NAMES.requestCount, {
+    description: "inbound request count",
+  });
+  const requestDuration = meter.createHistogram(METRIC_NAMES.requestDuration, {
+    description: "inbound request duration ms",
+    unit: "ms",
+  });
+  const clientCallCounter = meter.createCounter(METRIC_NAMES.clientCallCount, {
+    description: "outbound client/external call count",
+  });
+  const clientCallDuration = meter.createHistogram(METRIC_NAMES.clientCallDuration, {
+    description: "outbound client/external call duration ms",
+    unit: "ms",
+  });
+  const operationCounter = meter.createCounter(METRIC_NAMES.operationCount, {
+    description: "golden critical-path operation count",
+  });
+  const operationDuration = meter.createHistogram(METRIC_NAMES.operationDuration, {
+    description: "golden critical-path operation duration ms",
+    unit: "ms",
+  });
+  const errorCounter = meter.createCounter(METRIC_NAMES.errorCount, {
+    description: "error count by bounded class",
+  });
+  const verificationRunCounter = meter.createCounter(METRIC_NAMES.verificationRunCount, {
+    description: "verification run count",
+  });
+  const verificationRunDuration = meter.createHistogram(METRIC_NAMES.verificationRunDuration, {
+    description: "verification run duration ms",
+    unit: "ms",
+  });
+  const assertionCounter = meter.createCounter(METRIC_NAMES.observabilityAssertionCount, {
+    description: "observability assertion pass/fail accounting",
+  });
 
   return {
     /** @param {Record<string, string>} labels */
@@ -159,7 +189,10 @@ export function createMetrics(meter) {
      */
     observabilityAssertionIncrement(labels, passed) {
       validateLabels(labels, ALL_KEYS);
-      assertionCounter.add(1, { ...labels, [METRIC_LABEL_KEYS.result]: passed === 1 ? "passed" : "failed" });
+      assertionCounter.add(1, {
+        ...labels,
+        [METRIC_LABEL_KEYS.result]: passed === 1 ? "passed" : "failed",
+      });
     },
 
     // Raw instruments exposed for the test-exporter flush path (verification reads these).

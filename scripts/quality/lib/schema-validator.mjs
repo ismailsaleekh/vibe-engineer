@@ -12,9 +12,24 @@
 // This validator governs only the quality runner's OWN output artifact shape.
 
 const KNOWN_KEYWORDS = new Set([
-  "type", "enum", "const", "required", "properties", "additionalProperties",
-  "items", "minItems", "maxItems", "minLength", "maxLength", "pattern",
-  "anyOf", "oneOf", "$schema", "$id", "title", "description"
+  "type",
+  "enum",
+  "const",
+  "required",
+  "properties",
+  "additionalProperties",
+  "items",
+  "minItems",
+  "maxItems",
+  "minLength",
+  "maxLength",
+  "pattern",
+  "anyOf",
+  "oneOf",
+  "$schema",
+  "$id",
+  "title",
+  "description",
 ]);
 
 function getType(value) {
@@ -30,7 +45,7 @@ const TYPE_MATCHES = {
   number: (v) => typeof v === "number",
   string: (v) => typeof v === "string",
   array: (v) => Array.isArray(v),
-  object: (v) => typeof v === "object" && v !== null && !Array.isArray(v)
+  object: (v) => typeof v === "object" && v !== null && !Array.isArray(v),
 };
 
 function validateInstance(instance, schema, path, errors) {
@@ -44,7 +59,9 @@ function validateInstance(instance, schema, path, errors) {
   }
   for (const keyword of Object.keys(schema)) {
     if (!KNOWN_KEYWORDS.has(keyword)) {
-      throw new Error(`Unsupported JSON Schema keyword '${keyword}' at ${path} — extend the validator or narrow the schema.`);
+      throw new Error(
+        `Unsupported JSON Schema keyword '${keyword}' at ${path} — extend the validator or narrow the schema.`,
+      );
     }
   }
 
@@ -52,7 +69,10 @@ function validateInstance(instance, schema, path, errors) {
     const types = Array.isArray(schema.type) ? schema.type : [schema.type];
     const ok = types.some((t) => TYPE_MATCHES[t]?.(instance));
     if (!ok) {
-      errors.push({ path, message: `expected type ${JSON.stringify(schema.type)}, got ${getType(instance)}` });
+      errors.push({
+        path,
+        message: `expected type ${JSON.stringify(schema.type)}, got ${getType(instance)}`,
+      });
       return; // type mismatch: deeper checks are meaningless
     }
   }
@@ -115,7 +135,12 @@ function validateInstance(instance, schema, path, errors) {
           if (schema.additionalProperties === false) {
             errors.push({ path, message: `additional property '${key}' not allowed` });
           } else if (typeof schema.additionalProperties === "object") {
-            validateInstance(instance[key], schema.additionalProperties, joinPath(path, key), errors);
+            validateInstance(
+              instance[key],
+              schema.additionalProperties,
+              joinPath(path, key),
+              errors,
+            );
           }
         }
       }
@@ -137,7 +162,10 @@ function validateInstance(instance, schema, path, errors) {
       return tmp.length === 0;
     });
     if (matches.length !== 1) {
-      errors.push({ path, message: `value matches ${matches.length} oneOf branches (expected exactly 1)` });
+      errors.push({
+        path,
+        message: `value matches ${matches.length} oneOf branches (expected exactly 1)`,
+      });
     }
   }
 }
@@ -182,7 +210,10 @@ export function assertValid(instance, schema, label) {
   const result = validateJson(instance, schema);
   if (!result.ok) {
     const detail = result.errors.map((e) => `${e.path || "<root>"}: ${e.message}`).join("; ");
-    throw new SchemaValidationError(`Schema validation failed for ${label}: ${detail}`, result.errors);
+    throw new SchemaValidationError(
+      `Schema validation failed for ${label}: ${detail}`,
+      result.errors,
+    );
   }
   return result;
 }

@@ -79,7 +79,23 @@
       "blocking": true
     }
   ],
-  "warningsAndBlockers": [],
+  "warningsAndBlockers": [
+    {
+      "severity": "advisory",
+      "blocking": false,
+      "owner": "I-01A-artifact-schemas",
+      "summary": "Advisory entry carries a human-readable summary.",
+      "details": "Build Result warning and blocker entries can record exact operator-facing reasons without relying on non-canonical extension fields.",
+      "evidenceRef": {
+        "rel": "evidence_for",
+        "artifactKind": "evidence_packet",
+        "artifactId": "artifact-evidence_packet-001",
+        "path": "fixtures/valid/evidence_packet.json",
+        "required": true,
+        "statusAtLinkTime": "passed"
+      }
+    }
+  ],
   "contextDocsUpdates": [],
   "finalStatusReason": "All deterministic checks represented by Evidence Packet references."
 }

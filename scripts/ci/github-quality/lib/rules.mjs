@@ -42,7 +42,7 @@ export const PARTIAL_COMMAND_RES = [
   /(^|\s|;|&&|\|\|)(pnpm|npm|yarn)\s+(type-?check|run\s+type-?check|run\s+typecheck)(\s|$)/,
   /(^|\s|;|&&|\|\|)(pnpm|npm|yarn)\s+(lint|run\s+lint)(\s|$)/,
   /(^|\s|;|&&|\|\|)(pnpm|npm|yarn)\s+(build|run\s+build)(\s|$)/,
-  /(^|\s|;|&&|\|\|)turbo\s+(run\s+)?(test|lint|build|type-?check)(\s|$)/
+  /(^|\s|;|&&|\|\|)turbo\s+(run\s+)?(test|lint|build|type-?check)(\s|$)/,
 ];
 
 // Permission scopes that grant WRITE. Any of these (or the literal `write-all`)
@@ -61,7 +61,7 @@ export const WRITE_PERM_KEYS = new Set([
   "pull-requests",
   "repository-projects",
   "security-events",
-  "statuses"
+  "statuses",
 ]);
 
 // Canonical source/config path globs whose changes MUST trigger the quality gate
@@ -78,33 +78,45 @@ export const GOVERNED_PATH_GLOBS = [
   "pnpm-workspace.yaml",
   "turbo.json",
   "tsconfig.json",
-  "eslint.config.js"
+  "eslint.config.js",
 ];
 
 // Full-suite (non-smoke) E2E / mobile / visual command patterns. A `--grep
 // @smoke` (or `--grep smoke`) scope makes the command smoke-scoped instead
 // (then SMOKE labeling rules apply, not FULL-SUITE).
 export const FULL_SUITE_PATTERNS = [
-  { re: /(^|\s|;|&&|\|\|)(pnpm\s+exec\s+|npx\s+)?playwright\s+test(?!\s+--grep)/, family: "full-E2E (playwright)" },
+  {
+    re: /(^|\s|;|&&|\|\|)(pnpm\s+exec\s+|npx\s+)?playwright\s+test(?!\s+--grep)/,
+    family: "full-E2E (playwright)",
+  },
   { re: /(^|\s|;|&&|\|\|)cypress\s+run(\s|$)/, family: "full-E2E (cypress)" },
   { re: /(^|\s|;|&&|\|\|)nx\s+(run\s+)?\S*?e2e(\s|$)/, family: "full-E2E (nx e2e)" },
   { re: /(^|\s|;|&&|\|\|)nx\s+run-many\b.*--target=e2e/, family: "full-E2E (nx run-many e2e)" },
   { re: /(^|\s|;|&&|\|\|)detox\s+test(\s|$)/, family: "full-mobile-E2E (detox)" },
   { re: /(^|\s|;|&&|\|\|)maestro\s+(test|flow)(\s|$)/, family: "full-mobile-E2E (maestro)" },
-  { re: /(^|\s|;|&&|\|\|)(chromatic|percy|loki|reg-suit|backstop\s+test)(\s|$|;)/, family: "full-visual-UI" }
+  {
+    re: /(^|\s|;|&&|\|\|)(chromatic|percy|loki|reg-suit|backstop\s+test)(\s|$|;)/,
+    family: "full-visual-UI",
+  },
 ];
 
 // Infra-mutation / deploy commands barred from a PR/push quality workflow
 // (§5.6; mechanical §7 "PR/push/merge workflow can deploy or mutate
 // infrastructure by default").
 export const DEPLOY_MUTATION_PATTERNS = [
-  { re: /(^|\s|;|&&|\|\|)pulumi\s+(up|destroy|preview|refresh|import|config\s+set)(\s|$)/, family: "pulumi" },
+  {
+    re: /(^|\s|;|&&|\|\|)pulumi\s+(up|destroy|preview|refresh|import|config\s+set)(\s|$)/,
+    family: "pulumi",
+  },
   { re: /(^|\s|;|&&|\|\|)terraform\s+(apply|destroy|plan)(\s|$)/, family: "terraform" },
-  { re: /(^|\s|;|&&|\|\|)kubectl\s+(apply|create|delete|replace|patch|rollout)(\s|$)/, family: "kubectl" },
+  {
+    re: /(^|\s|;|&&|\|\|)kubectl\s+(apply|create|delete|replace|patch|rollout)(\s|$)/,
+    family: "kubectl",
+  },
   { re: /(^|\s|;|&&|\|\|)helm\s+(install|upgrade|uninstall)(\s|$)/, family: "helm" },
   { re: /(^|\s|;|&&|\|\|)gcloud\s+\S+\s+deploy(\s|$)/, family: "gcloud-deploy" },
   { re: /(^|\s|;|&&|\|\|)aws\s+deploy\s+create-deployment(\s|$)/, family: "codedeploy" },
-  { re: /(^|\s|;|&&|\|\|)sls\s+deploy(\s|$)/, family: "serverless-deploy" }
+  { re: /(^|\s|;|&&|\|\|)sls\s+deploy(\s|$)/, family: "serverless-deploy" },
 ];
 
 // A floating (non-immutable) action ref. SHA = 40 hex chars. Anything else
@@ -117,7 +129,7 @@ export const DYNAMIC_INSTALL_RES = [
   /(^|\s|;|&&|\|\|)npm\s+(i|install)\s+-g\b/,
   /(^|\s|;|&&|\|\|)yarn\s+global\s+add\b/,
   /(^|\s|;|&&|\|\|)pnpm\s+add\s+-g\b/,
-  /(^|\s|;|&&|\|\|)npx\s+(?!--package=)/ // bare npx (dynamic fetch); pinned `npx --package=x` is still dynamic but explicit — we reject bare npx outright
+  /(^|\s|;|&&|\|\|)npx\s+(?!--package=)/, // bare npx (dynamic fetch); pinned `npx --package=x` is still dynamic but explicit — we reject bare npx outright
 ];
 
 // ---- Helpers ----------------------------------------------------------------
@@ -149,7 +161,8 @@ function jobIsLabeledSmoke(jobKey, job) {
   if (typeof job.name === "string" && /smoke/i.test(job.name)) return true;
   if (job.smoke === true) return true; // custom marker recognized by this validator
   const env = job.env;
-  if (isObj(env) && (env.SMOKE === true || env.SMOKE === "true" || env.SMOKE_PROOF_BARRED)) return true;
+  if (isObj(env) && (env.SMOKE === true || env.SMOKE === "true" || env.SMOKE_PROOF_BARRED))
+    return true;
   return false;
 }
 
@@ -182,13 +195,14 @@ function ruleAggregate(doc) {
     findings.push({
       code: "AGG-PARTIAL",
       severity: "critical",
-      message: `blocking truth is a PARTIAL command (job '${partial.jobKey}'): "${partial.script.trim()}". CI must invoke the aggregate \`pnpm quality -- --profile=ci ...\` (mechanical §7 "CI invokes partial gate instead of aggregate gate").`
+      message: `blocking truth is a PARTIAL command (job '${partial.jobKey}'): "${partial.script.trim()}". CI must invoke the aggregate \`pnpm quality -- --profile=ci ...\` (mechanical §7 "CI invokes partial gate instead of aggregate gate").`,
     });
   } else {
     findings.push({
       code: "AGG-MISSING",
       severity: "critical",
-      message: "no aggregate `pnpm quality -- --profile=ci --evidence-dir <dir> --summary-out <json>` invocation found in any `run:` step. The quick-gate must invoke the SAME aggregate as local/CI parity (mechanical §7)."
+      message:
+        "no aggregate `pnpm quality -- --profile=ci --evidence-dir <dir> --summary-out <json>` invocation found in any `run:` step. The quick-gate must invoke the SAME aggregate as local/CI parity (mechanical §7).",
     });
   }
   return findings;
@@ -201,7 +215,7 @@ function rulePermissions(doc) {
       findings.push({
         code: "PERMS-BROAD",
         severity: "critical",
-        message: `${scope} has no explicit \`permissions:\` block — the GITHUB_TOKEN defaults to repo-default (potentially broad). Declare least-privilege \`permissions: { contents: read }\` (§5.10 #6; mechanical §7).`
+        message: `${scope} has no explicit \`permissions:\` block — the GITHUB_TOKEN defaults to repo-default (potentially broad). Declare least-privilege \`permissions: { contents: read }\` (§5.10 #6; mechanical §7).`,
       });
       return;
     }
@@ -209,7 +223,7 @@ function rulePermissions(doc) {
       findings.push({
         code: "PERMS-BROAD",
         severity: "critical",
-        message: `${scope} permissions = \`${perms}\` is not least-privilege. Use \`permissions: { contents: read }\` (§5.10 #6).`
+        message: `${scope} permissions = \`${perms}\` is not least-privilege. Use \`permissions: { contents: read }\` (§5.10 #6).`,
       });
       return;
     }
@@ -219,7 +233,7 @@ function rulePermissions(doc) {
         findings.push({
           code: "PERMS-BROAD",
           severity: "critical",
-          message: `${scope} grants \`${k}: write\` — not least-privilege for a read-only quality gate. Use \`permissions: { contents: read }\` (§5.10 #6; mechanical §7).`
+          message: `${scope} grants \`${k}: write\` — not least-privilege for a read-only quality gate. Use \`permissions: { contents: read }\` (§5.10 #6; mechanical §7).`,
         });
       }
     }
@@ -240,16 +254,20 @@ function rulePaths(doc) {
   const checkFilter = (filter, label) => {
     if (!isObj(filter)) return;
     const includes = Array.isArray(filter.paths) ? filter.paths.map(String) : null;
-    const ignores = Array.isArray(filter["paths-ignore"]) ? filter["paths-ignore"].map(String) : null;
+    const ignores = Array.isArray(filter["paths-ignore"])
+      ? filter["paths-ignore"].map(String)
+      : null;
     if (Array.isArray(ignores)) {
       for (const g of GOVERNED_PATH_GLOBS) {
         const govPrefix = g.replace(/\/\*.*$/, "");
-        const ignored = ignores.some((p) => p === g || p === `${govPrefix}/**` || p === govPrefix || p === "**");
+        const ignored = ignores.some(
+          (p) => p === g || p === `${govPrefix}/**` || p === govPrefix || p === "**",
+        );
         if (ignored) {
           findings.push({
             code: "PATHS-UNSAFE",
             severity: "critical",
-            message: `${label} \`paths-ignore\` can skip governed path '${g}' — changes to it would NOT trigger the quality gate (mechanical §7 "workflow path filter skips governed paths").`
+            message: `${label} \`paths-ignore\` can skip governed path '${g}' — changes to it would NOT trigger the quality gate (mechanical §7 "workflow path filter skips governed paths").`,
           });
         }
       }
@@ -266,7 +284,7 @@ function rulePaths(doc) {
         findings.push({
           code: "PATHS-UNSAFE",
           severity: "critical",
-          message: `${label} \`paths\` include filter does not cover all governed paths (required: ${GOVERNED_PATH_GLOBS.join(", ")}). Omit \`paths\` to run on every PR/push, or cover the full governed set (mechanical §7).`
+          message: `${label} \`paths\` include filter does not cover all governed paths (required: ${GOVERNED_PATH_GLOBS.join(", ")}). Omit \`paths\` to run on every PR/push, or cover the full governed set (mechanical §7).`,
         });
       }
     }
@@ -290,7 +308,8 @@ function ruleUpload(doc) {
     findings.push({
       code: "UPLOAD-MISSING",
       severity: "major-local",
-      message: "no `actions/upload-artifact@<sha>` step found — evidence dir + summary JSON must be uploaded (amendment §5 I-20B; mechanical §7 \"missing artifact/summary upload\")."
+      message:
+        'no `actions/upload-artifact@<sha>` step found — evidence dir + summary JSON must be uploaded (amendment §5 I-20B; mechanical §7 "missing artifact/summary upload").',
     });
   }
   return findings;
@@ -304,7 +323,7 @@ function ruleFullSuite(doc) {
         findings.push({
           code: "FULL-SUITE",
           severity: "critical",
-          message: `job '${s.jobKey}' runs a ${family} step as default CI — full E2E/mobile/visual is barred from the <10min quick-gate (§5.1; mechanical §7). Step: "${s.script.trim()}"`
+          message: `job '${s.jobKey}' runs a ${family} step as default CI — full E2E/mobile/visual is barred from the <10min quick-gate (§5.1; mechanical §7). Step: "${s.script.trim()}"`,
         });
       }
     }
@@ -321,7 +340,7 @@ function ruleSmoke(doc) {
       findings.push({
         code: "SMOKE-UNBARRED",
         severity: "major-local",
-        message: `job '${s.jobKey}' runs a smoke-scoped command ("${s.script.trim()}") but is not labeled smoke (job name/key must contain 'smoke' or carry a recognized smoke marker). Unlabeled/mislabeled smoke is barred (§5.1; mechanical §7 "CI smoke test is mislabeled").`
+        message: `job '${s.jobKey}' runs a smoke-scoped command ("${s.script.trim()}") but is not labeled smoke (job name/key must contain 'smoke' or carry a recognized smoke marker). Unlabeled/mislabeled smoke is barred (§5.1; mechanical §7 "CI smoke test is mislabeled").`,
       });
     }
   }
@@ -338,7 +357,7 @@ function ruleSmoke(doc) {
       findings.push({
         code: "SMOKE-UNBARRED",
         severity: "major-local",
-        message: `smoke job '${key}' must set \`continue-on-error: true\` so it can never be the blocking E2E proof (§5.1; mechanical §7 "smoke used as full E2E proof").`
+        message: `smoke job '${key}' must set \`continue-on-error: true\` so it can never be the blocking E2E proof (§5.1; mechanical §7 "smoke used as full E2E proof").`,
       });
     }
     for (const step of stepsOf(job)) {
@@ -346,7 +365,7 @@ function ruleSmoke(doc) {
         findings.push({
           code: "SMOKE-UNBARRED",
           severity: "major-local",
-          message: `smoke job '${key}' must NOT carry the aggregate quality command — smoke is additive only (§5.1).`
+          message: `smoke job '${key}' must NOT carry the aggregate quality command — smoke is additive only (§5.1).`,
         });
       }
     }
@@ -357,7 +376,8 @@ function ruleSmoke(doc) {
     findings.push({
       code: "SMOKE-UNBARRED",
       severity: "critical",
-      message: "a smoke job is present but no non-smoke aggregate quality job exists — smoke cannot be the sole quality/E2E proof (§5.1; mechanical §7)."
+      message:
+        "a smoke job is present but no non-smoke aggregate quality job exists — smoke cannot be the sole quality/E2E proof (§5.1; mechanical §7).",
     });
   }
   return findings;
@@ -373,7 +393,7 @@ function ruleActionPinning(doc) {
           findings.push({
             code: "ACTION-UNPINNED",
             severity: "critical",
-            message: `job '${key}' uses floating/mutable action ref \`${uses}\`. Pin every action by immutable 40-char commit SHA (greenfield policy; §5.1; mechanical §7 "unpinned/dynamic action or tool").`
+            message: `job '${key}' uses floating/mutable action ref \`${uses}\`. Pin every action by immutable 40-char commit SHA (greenfield policy; §5.1; mechanical §7 "unpinned/dynamic action or tool").`,
           });
         }
       }
@@ -384,7 +404,7 @@ function ruleActionPinning(doc) {
           findings.push({
             code: "ACTION-UNPINNED",
             severity: "critical",
-            message: `job '${key}' installs a tool dynamically ("${m[0].trim()}"). Use pinned/packaged tooling only (mechanical §7 "unpinned/dynamic action or tool").`
+            message: `job '${key}' installs a tool dynamically ("${m[0].trim()}"). Use pinned/packaged tooling only (mechanical §7 "unpinned/dynamic action or tool").`,
           });
         }
       }
@@ -404,7 +424,7 @@ function ruleDeployMutation(doc) {
         findings.push({
           code: "DEPLOY-MUTATION",
           severity: "critical",
-          message: `job '${s.jobKey}' runs an infra-mutation/deploy command (${family}) in a PR/push quality workflow${hasPrTrigger ? " (PR trigger active)" : ""}. No deploy/infra-mutation in the quality gate (§5.6; mechanical §7 "PR/push/merge workflow can deploy or mutate infrastructure by default"). Step: "${s.script.trim()}"`
+          message: `job '${s.jobKey}' runs an infra-mutation/deploy command (${family}) in a PR/push quality workflow${hasPrTrigger ? " (PR trigger active)" : ""}. No deploy/infra-mutation in the quality gate (§5.6; mechanical §7 "PR/push/merge workflow can deploy or mutate infrastructure by default"). Step: "${s.script.trim()}"`,
         });
       }
     }
@@ -425,7 +445,7 @@ function ruleSecretExposure(doc) {
       findings.push({
         code: "SECRET-EXPOSURE",
         severity: "critical",
-        message: `job '${s.jobKey}' interpolates a \${{ secrets.* }} into a \`run:\` shell script — this prints the secret to logs/shell. Bind secrets via \`env:\`/\`with:\` to a trusted action only (§5.10; mechanical §7).`
+        message: `job '${s.jobKey}' interpolates a \${{ secrets.* }} into a \`run:\` shell script — this prints the secret to logs/shell. Bind secrets via \`env:\`/\`with:\` to a trusted action only (§5.10; mechanical §7).`,
       });
     }
   }
@@ -439,7 +459,7 @@ function ruleSecretExposure(doc) {
         findings.push({
           code: "SECRET-EXPOSURE",
           severity: "critical",
-          message: `secret referenced under a \`pull_request_target\` trigger in job '${s.jobKey}' — untrusted PR context gains secret access. Use \`pull_request\` (no target) for quality gates (§5.10; mechanical §7).`
+          message: `secret referenced under a \`pull_request_target\` trigger in job '${s.jobKey}' — untrusted PR context gains secret access. Use \`pull_request\` (no target) for quality gates (§5.10; mechanical §7).`,
         });
       }
     }
@@ -458,7 +478,7 @@ function ruleBudget(doc) {
       findings.push({
         code: "BUDGET-VIOLATION",
         severity: "critical",
-        message: `${scope} \`timeout-minutes: ${n}\` structurally cannot meet the <10min quick-gate budget. If <10min is infeasible with deterministic fast checks, request reclassification — never silently split slow work into an unlabeled workflow (§5.1/§5.10 #1; mechanical §7).`
+        message: `${scope} \`timeout-minutes: ${n}\` structurally cannot meet the <10min quick-gate budget. If <10min is infeasible with deterministic fast checks, request reclassification — never silently split slow work into an unlabeled workflow (§5.1/§5.10 #1; mechanical §7).`,
       });
     }
   };
@@ -483,7 +503,8 @@ function rulePullRequestTarget(doc) {
     findings.push({
       code: "PULL_REQUEST_TARGET",
       severity: "critical",
-      message: "`pull_request_target` trigger is forbidden for the quality gate — it runs with write secrets in untrusted PR context. Use `pull_request` (amendment §5 I-20B)."
+      message:
+        "`pull_request_target` trigger is forbidden for the quality gate — it runs with write secrets in untrusted PR context. Use `pull_request` (amendment §5 I-20B).",
     });
   }
   return findings;
@@ -504,7 +525,7 @@ export const RULES = [
   ruleDeployMutation,
   ruleSecretExposure,
   ruleBudget,
-  rulePullRequestTarget
+  rulePullRequestTarget,
 ];
 
 export function runAllRules(doc) {
@@ -516,7 +537,7 @@ export function runAllRules(doc) {
       findings.push({
         code: "VALIDATOR-INTERNAL",
         severity: "critical",
-        message: `rule ${rule.name} raised: ${error && error.message ? error.message : String(error)}`
+        message: `rule ${rule.name} raised: ${error && error.message ? error.message : String(error)}`,
       });
     }
   }

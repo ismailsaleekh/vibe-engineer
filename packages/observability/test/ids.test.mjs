@@ -68,6 +68,8 @@ describe("id factory: canonical RFC 4122 UUID v4 (DL-23 correlation §3)", () =>
         }
       }
     }
-    expect(parseUuidV4("6ec0bd72-2a94-4f59-bd72-2a94c4f59000")).toBe("6ec0bd72-2a94-4f59-bd72-2a94c4f59000");
+    expect(parseUuidV4("6ec0bd72-2a94-4f59-bd72-2a94c4f59000")).toBe(
+      "6ec0bd72-2a94-4f59-bd72-2a94c4f59000",
+    );
   });
 });

@@ -1,24 +1,84 @@
 {
   "configFile": "eslint.config.mjs",
   "rules": [
-    { "name": "@typescript-eslint/no-explicit-any", "severity": "error", "purpose": "Forbid explicit any escapes." },
-    { "name": "@typescript-eslint/no-non-null-assertion", "severity": "error", "purpose": "Forbid non-null assertion escapes." },
-    { "name": "@typescript-eslint/ban-ts-comment", "severity": "error", "purpose": "Forbid unsafe TypeScript suppression comments." },
-    { "name": "@typescript-eslint/no-unnecessary-type-assertion", "severity": "error", "purpose": "Forbid unnecessary assertions." },
-    { "name": "@typescript-eslint/consistent-type-imports", "severity": "error", "purpose": "Preserve type-only imports." },
-    { "name": "@typescript-eslint/no-confusing-void-expression", "severity": "error", "purpose": "Keep void effects explicit." },
-    { "name": "@typescript-eslint/no-unsafe-assignment", "severity": "error", "purpose": "Forbid unsafe assignments." },
-    { "name": "@typescript-eslint/no-unsafe-argument", "severity": "error", "purpose": "Forbid unsafe arguments." },
-    { "name": "@typescript-eslint/no-unsafe-call", "severity": "error", "purpose": "Forbid unsafe calls." },
-    { "name": "@typescript-eslint/no-unsafe-member-access", "severity": "error", "purpose": "Forbid unsafe member access." },
-    { "name": "@typescript-eslint/no-unsafe-return", "severity": "error", "purpose": "Forbid unsafe returns." },
-    { "name": "@typescript-eslint/restrict-template-expressions", "severity": "error", "purpose": "Forbid unsafe string interpolation." },
-    { "name": "@typescript-eslint/switch-exhaustiveness-check", "severity": "error", "purpose": "Require exhaustive switches." },
+    {
+      "name": "@typescript-eslint/no-explicit-any",
+      "severity": "error",
+      "purpose": "Forbid explicit any escapes."
+    },
+    {
+      "name": "@typescript-eslint/no-non-null-assertion",
+      "severity": "error",
+      "purpose": "Forbid non-null assertion escapes."
+    },
+    {
+      "name": "@typescript-eslint/ban-ts-comment",
+      "severity": "error",
+      "purpose": "Forbid unsafe TypeScript suppression comments."
+    },
+    {
+      "name": "@typescript-eslint/no-unnecessary-type-assertion",
+      "severity": "error",
+      "purpose": "Forbid unnecessary assertions."
+    },
+    {
+      "name": "@typescript-eslint/consistent-type-imports",
+      "severity": "error",
+      "purpose": "Preserve type-only imports."
+    },
+    {
+      "name": "@typescript-eslint/no-confusing-void-expression",
+      "severity": "error",
+      "purpose": "Keep void effects explicit."
+    },
+    {
+      "name": "@typescript-eslint/no-unsafe-assignment",
+      "severity": "error",
+      "purpose": "Forbid unsafe assignments."
+    },
+    {
+      "name": "@typescript-eslint/no-unsafe-argument",
+      "severity": "error",
+      "purpose": "Forbid unsafe arguments."
+    },
+    {
+      "name": "@typescript-eslint/no-unsafe-call",
+      "severity": "error",
+      "purpose": "Forbid unsafe calls."
+    },
+    {
+      "name": "@typescript-eslint/no-unsafe-member-access",
+      "severity": "error",
+      "purpose": "Forbid unsafe member access."
+    },
+    {
+      "name": "@typescript-eslint/no-unsafe-return",
+      "severity": "error",
+      "purpose": "Forbid unsafe returns."
+    },
+    {
+      "name": "@typescript-eslint/restrict-template-expressions",
+      "severity": "error",
+      "purpose": "Forbid unsafe string interpolation."
+    },
+    {
+      "name": "@typescript-eslint/switch-exhaustiveness-check",
+      "severity": "error",
+      "purpose": "Require exhaustive switches."
+    },
     { "name": "no-empty", "severity": "error", "purpose": "Forbid empty catch blocks." },
     { "name": "no-fallthrough", "severity": "error", "purpose": "Forbid switch fallthrough." },
     { "name": "no-implicit-coercion", "severity": "error", "purpose": "Forbid implicit coercion." },
-    { "name": "no-restricted-syntax", "severity": "error", "purpose": "Forbid raw unvalidated JSON.parse at boundaries." },
-    { "name": "vibe-engineer/no-broad-domain-map-model", "severity": "error", "purpose": "Forbid broad domain map models." }
+    {
+      "name": "no-restricted-syntax",
+      "severity": "error",
+      "purpose": "Forbid raw unvalidated JSON.parse at boundaries."
+    },
+    {
+      "name": "vibe-engineer/no-broad-domain-map-model",
+      "severity": "error",
+      "purpose": "Forbid broad domain map models."
+    }
   ],
   "boundaryRules": {
     "rawJsonParseRequiresNamedBoundary": true,

@@ -1,6 +1,9 @@
 import type { P0Finding, P0ValidatorResult } from "../p0/boundaries/index.js";
 import type { QualityRatchetOptions, QualityRatchetResult } from "../p1/quality-ratchet/index.js";
-import type { TestAntiPatternOptions, TestAntiPatternResult } from "../p1/test-anti-pattern/index.js";
+import type {
+  TestAntiPatternOptions,
+  TestAntiPatternResult,
+} from "../p1/test-anti-pattern/index.js";
 import type { TestingBoundaryOptions } from "../p0/testing-boundary/index.js";
 
 export type P0AggregateFamily =
@@ -33,7 +36,10 @@ export interface P0AggregateResult extends P0ValidatorResult {
   findings: P0Finding[];
 }
 
-export function runP0Aggregate(projectRoot: string, options?: P0AggregateOptions): Promise<P0AggregateResult>;
+export function runP0Aggregate(
+  projectRoot: string,
+  options?: P0AggregateOptions,
+): Promise<P0AggregateResult>;
 
 export type P1AggregateFamily =
   | "p1.schema-contract-strictness"
@@ -97,7 +103,10 @@ export interface P1AggregateFinding {
   evidence: Record<string, unknown>;
 }
 
-export type P1AggregateSubresult = SchemaContractStrictnessResult | QualityRatchetResult | TestAntiPatternResult;
+export type P1AggregateSubresult =
+  | SchemaContractStrictnessResult
+  | QualityRatchetResult
+  | TestAntiPatternResult;
 
 export interface P1SchemaContractBridgeEvidence {
   carrierVersion: "p1.aggregate.i11-runner-bridge/1";
@@ -158,10 +167,12 @@ export interface P1AggregateResult {
 }
 
 export const P1AggregateFamily: readonly P1AggregateFamily[];
-export function runP1Aggregate(projectRoot: string, options?: P1AggregateOptions): Promise<P1AggregateResult>;
+export function runP1Aggregate(
+  projectRoot: string,
+  options?: P1AggregateOptions,
+): Promise<P1AggregateResult>;
 
-export type P2AggregateFamily =
-  | "p2.code-smell";
+export type P2AggregateFamily = "p2.code-smell";
 
 export interface P2CodeSmellBridgeOptions {
   sourceRoot?: string;
@@ -258,4 +269,7 @@ export interface P2AggregateResult {
 }
 
 export const P2AggregateFamily: readonly P2AggregateFamily[];
-export function runP2Aggregate(projectRoot: string, options?: P2AggregateOptions): Promise<P2AggregateResult>;
+export function runP2Aggregate(
+  projectRoot: string,
+  options?: P2AggregateOptions,
+): Promise<P2AggregateResult>;

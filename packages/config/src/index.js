@@ -15,15 +15,15 @@ const DEFAULTS = Object.freeze({
     webE2E: "playwright",
     mobileE2E: Object.freeze({
       default: "maestro",
-      advanced: "detox"
-    })
+      advanced: "detox",
+    }),
   }),
   uiVerification: Object.freeze({
-    enabled: true
+    enabled: true,
   }),
   agentRegistry: Object.freeze({
-    validationRequired: true
-  })
+    validationRequired: true,
+  }),
 });
 
 export const VIBE_CONFIG_SCHEMA = Object.freeze({
@@ -38,7 +38,7 @@ export const VIBE_CONFIG_SCHEMA = Object.freeze({
     "agenticWorkPackageTargetHours",
     "verification",
     "uiVerification",
-    "agentRegistry"
+    "agentRegistry",
   ]),
   supportedAgenticHarnesses: Object.freeze(["pi"]),
   deferredAgenticHarnesses: Object.freeze(["claude-code", "codex", "opencode"]),
@@ -46,12 +46,17 @@ export const VIBE_CONFIG_SCHEMA = Object.freeze({
   ranges: Object.freeze({
     maxParallelAgents: Object.freeze({ integer: true, min: 1, max: 8 }),
     maxValidationFixIterations: Object.freeze({ integer: true, min: 1, max: 3 }),
-    agenticWorkPackageTargetHours: Object.freeze({ integer: false, exclusiveMin: 0, max: 6 })
-  })
+    agenticWorkPackageTargetHours: Object.freeze({ integer: false, exclusiveMin: 0, max: 6 }),
+  }),
 });
 
 const TOP_LEVEL_KEYS = new Set(VIBE_CONFIG_SCHEMA.topLevelKeys);
-const VERIFICATION_KEYS = new Set(["deterministicBlocks", "advisoryReviewBlocks", "webE2E", "mobileE2E"]);
+const VERIFICATION_KEYS = new Set([
+  "deterministicBlocks",
+  "advisoryReviewBlocks",
+  "webE2E",
+  "mobileE2E",
+]);
 const MOBILE_E2E_KEYS = new Set(["default", "advanced"]);
 const UI_VERIFICATION_KEYS = new Set(["enabled"]);
 const AGENT_REGISTRY_KEYS = new Set(["validationRequired"]);
@@ -68,7 +73,7 @@ const SECRET_LIKE_KEYS = new Set([
   "privateKey",
   "private_key",
   "clientSecret",
-  "client_secret"
+  "client_secret",
 ]);
 const UNSUPPORTED_CONFIG_FILES = Object.freeze([
   "vibe-engineer.config.js",
@@ -77,7 +82,7 @@ const UNSUPPORTED_CONFIG_FILES = Object.freeze([
   "vibe-engineer.config.ts",
   "vibe-engineer.config.yaml",
   "vibe-engineer.config.yml",
-  "vibe-engineer.config.toml"
+  "vibe-engineer.config.toml",
 ]);
 
 function clone(value) {
@@ -100,7 +105,7 @@ function issue(code, classification, path, message, extra = {}) {
     message,
     blocking: true,
     redacted: true,
-    ...extra
+    ...extra,
   };
 }
 
@@ -111,7 +116,7 @@ function diagnosticFromIssue(item) {
     classification: item.classification,
     path: item.path,
     message: item.message,
-    redacted: true
+    redacted: true,
   };
 }
 
@@ -124,7 +129,7 @@ function failure(classification, issues, context = {}) {
     classification,
     issues,
     diagnostics: issues.map(diagnosticFromIssue),
-    ...context
+    ...context,
   };
 }
 
@@ -137,7 +142,7 @@ function success(config, provenance, context = {}) {
     config,
     provenance,
     diagnostics: [],
-    ...context
+    ...context,
   };
 }
 
@@ -153,14 +158,16 @@ function validateAllowedKeys(input, allowed, basePath, issues) {
   for (const key of Object.keys(input)) {
     if (!allowed.has(key)) {
       const exactSecretLikeKey = SECRET_LIKE_KEYS.has(key);
-      issues.push(issue(
-        exactSecretLikeKey ? "SECRET_LIKE_FIELD_REJECTED" : "UNKNOWN_FIELD",
-        "invalid_config",
-        `${basePath}/${key}`,
-        exactSecretLikeKey
-          ? "Secret-like config fields are not part of the v1 schema and are rejected."
-          : "Unknown config field is not allowed."
-      ));
+      issues.push(
+        issue(
+          exactSecretLikeKey ? "SECRET_LIKE_FIELD_REJECTED" : "UNKNOWN_FIELD",
+          "invalid_config",
+          `${basePath}/${key}`,
+          exactSecretLikeKey
+            ? "Secret-like config fields are not part of the v1 schema and are rejected."
+            : "Unknown config field is not allowed.",
+        ),
+      );
     }
   }
 }
@@ -188,7 +195,14 @@ function expectEnum(input, key, path, allowedValue, output, provenance, issues) 
       return;
     }
     if (input[key] !== allowedValue) {
-      issues.push(issue("INVALID_ENUM", "invalid_config", path, "Unsupported enum value for this config field."));
+      issues.push(
+        issue(
+          "INVALID_ENUM",
+          "invalid_config",
+          path,
+          "Unsupported enum value for this config field.",
+        ),
+      );
       output[key] = allowedValue;
       return;
     }
@@ -220,9 +234,18 @@ function expectRangedNumber(input, key, path, range, defaultValue, output, prove
     return;
   }
 
-  const belowMin = Object.hasOwn(range, "exclusiveMin") ? value <= range.exclusiveMin : value < range.min;
+  const belowMin = Object.hasOwn(range, "exclusiveMin")
+    ? value <= range.exclusiveMin
+    : value < range.min;
   if (belowMin || value > range.max) {
-    issues.push(issue("INVALID_RANGE", "invalid_config", path, "Numeric config value is outside the accepted range."));
+    issues.push(
+      issue(
+        "INVALID_RANGE",
+        "invalid_config",
+        path,
+        "Numeric config value is outside the accepted range.",
+      ),
+    );
     output[key] = defaultValue;
     return;
   }
@@ -253,20 +276,54 @@ function parseVerification(input, provenance, issues) {
   }
 
   validateAllowedKeys(raw, VERIFICATION_KEYS, "/verification", issues);
-  expectBoolean(raw, "deterministicBlocks", "/verification/deterministicBlocks", true, output, provenance, issues);
-  expectBoolean(raw, "advisoryReviewBlocks", "/verification/advisoryReviewBlocks", false, output, provenance, issues);
+  expectBoolean(
+    raw,
+    "deterministicBlocks",
+    "/verification/deterministicBlocks",
+    true,
+    output,
+    provenance,
+    issues,
+  );
+  expectBoolean(
+    raw,
+    "advisoryReviewBlocks",
+    "/verification/advisoryReviewBlocks",
+    false,
+    output,
+    provenance,
+    issues,
+  );
   expectEnum(raw, "webE2E", "/verification/webE2E", "playwright", output, provenance, issues);
 
   const mobile = {};
   if (Object.hasOwn(raw, "mobileE2E")) {
     if (!isPlainObject(raw.mobileE2E)) {
-      issues.push(issue("INVALID_TYPE", "invalid_config", "/verification/mobileE2E", "Expected an object."));
+      issues.push(
+        issue("INVALID_TYPE", "invalid_config", "/verification/mobileE2E", "Expected an object."),
+      );
       mobile.default = "maestro";
       mobile.advanced = "detox";
     } else {
       validateAllowedKeys(raw.mobileE2E, MOBILE_E2E_KEYS, "/verification/mobileE2E", issues);
-      expectEnum(raw.mobileE2E, "default", "/verification/mobileE2E/default", "maestro", mobile, provenance, issues);
-      expectEnum(raw.mobileE2E, "advanced", "/verification/mobileE2E/advanced", "detox", mobile, provenance, issues);
+      expectEnum(
+        raw.mobileE2E,
+        "default",
+        "/verification/mobileE2E/default",
+        "maestro",
+        mobile,
+        provenance,
+        issues,
+      );
+      expectEnum(
+        raw.mobileE2E,
+        "advanced",
+        "/verification/mobileE2E/advanced",
+        "detox",
+        mobile,
+        provenance,
+        issues,
+      );
     }
   } else {
     mobile.default = "maestro";
@@ -308,7 +365,15 @@ function parseAgentRegistry(input, provenance, issues) {
     return { validationRequired: true };
   }
   validateAllowedKeys(raw, AGENT_REGISTRY_KEYS, "/agentRegistry", issues);
-  expectBoolean(raw, "validationRequired", "/agentRegistry/validationRequired", true, output, provenance, issues);
+  expectBoolean(
+    raw,
+    "validationRequired",
+    "/agentRegistry/validationRequired",
+    true,
+    output,
+    provenance,
+    issues,
+  );
   return output;
 }
 
@@ -330,33 +395,64 @@ export function parseVibeConfig(input) {
 
   if (!isPlainObject(input)) {
     return failure("invalid_config", [
-      issue("INVALID_TYPE", "invalid_config", "", "Config root must be a JSON object.")
+      issue("INVALID_TYPE", "invalid_config", "", "Config root must be a JSON object."),
     ]);
   }
 
   validateAllowedKeys(input, TOP_LEVEL_KEYS, "", issues);
 
   if (!Object.hasOwn(input, "agenticHarness")) {
-    issues.push(issue("REQUIRED_FIELD", "invalid_config", "/agenticHarness", "agenticHarness is required."));
+    issues.push(
+      issue("REQUIRED_FIELD", "invalid_config", "/agenticHarness", "agenticHarness is required."),
+    );
   } else if (input.agenticHarness !== "pi") {
-    issues.push(issue(
-      "UNSUPPORTED_HARNESS",
-      "invalid_config",
-      "/agenticHarness",
-      "Only the pi agentic harness is selectable in v1.",
-      { supportedValues: ["pi"], deferredValues: ["claude-code", "codex", "opencode"] }
-    ));
+    issues.push(
+      issue(
+        "UNSUPPORTED_HARNESS",
+        "invalid_config",
+        "/agenticHarness",
+        "Only the pi agentic harness is selectable in v1.",
+        { supportedValues: ["pi"], deferredValues: ["claude-code", "codex", "opencode"] },
+      ),
+    );
   } else {
     recordFile(provenance, "/agenticHarness");
   }
 
   const config = {
-    agenticHarness: input.agenticHarness === "pi" ? "pi" : "pi"
+    agenticHarness: input.agenticHarness === "pi" ? "pi" : "pi",
   };
 
-  expectRangedNumber(input, "maxParallelAgents", "/maxParallelAgents", VIBE_CONFIG_SCHEMA.ranges.maxParallelAgents, 8, config, provenance, issues);
-  expectRangedNumber(input, "maxValidationFixIterations", "/maxValidationFixIterations", VIBE_CONFIG_SCHEMA.ranges.maxValidationFixIterations, 3, config, provenance, issues);
-  expectRangedNumber(input, "agenticWorkPackageTargetHours", "/agenticWorkPackageTargetHours", VIBE_CONFIG_SCHEMA.ranges.agenticWorkPackageTargetHours, 6, config, provenance, issues);
+  expectRangedNumber(
+    input,
+    "maxParallelAgents",
+    "/maxParallelAgents",
+    VIBE_CONFIG_SCHEMA.ranges.maxParallelAgents,
+    8,
+    config,
+    provenance,
+    issues,
+  );
+  expectRangedNumber(
+    input,
+    "maxValidationFixIterations",
+    "/maxValidationFixIterations",
+    VIBE_CONFIG_SCHEMA.ranges.maxValidationFixIterations,
+    3,
+    config,
+    provenance,
+    issues,
+  );
+  expectRangedNumber(
+    input,
+    "agenticWorkPackageTargetHours",
+    "/agenticWorkPackageTargetHours",
+    VIBE_CONFIG_SCHEMA.ranges.agenticWorkPackageTargetHours,
+    6,
+    config,
+    provenance,
+    issues,
+  );
   config.verification = parseVerification(input, provenance, issues);
   config.uiVerification = parseUiVerification(input, provenance, issues);
   config.agentRegistry = parseAgentRegistry(input, provenance, issues);
@@ -375,7 +471,7 @@ async function readJsonFile(configPath) {
   } catch {
     return {
       ok: false,
-      issue: issue("MALFORMED_JSON", "invalid_config", "", "Config file is not valid JSON.")
+      issue: issue("MALFORMED_JSON", "invalid_config", "", "Config file is not valid JSON."),
     };
   }
 }
@@ -383,18 +479,36 @@ async function readJsonFile(configPath) {
 export async function loadVibeConfigFile(configPath) {
   const resolvedConfigPath = resolve(configPath);
   if (extname(resolvedConfigPath) !== ".json") {
-    return failure("invalid_config", [
-      issue("UNSUPPORTED_CONFIG_FORMAT", "invalid_config", resolvedConfigPath, "Explicit --config paths must point to a JSON config file.")
-    ], { configPath: resolvedConfigPath });
+    return failure(
+      "invalid_config",
+      [
+        issue(
+          "UNSUPPORTED_CONFIG_FORMAT",
+          "invalid_config",
+          resolvedConfigPath,
+          "Explicit --config paths must point to a JSON config file.",
+        ),
+      ],
+      { configPath: resolvedConfigPath },
+    );
   }
   let parsed;
   try {
     parsed = await readJsonFile(resolvedConfigPath);
   } catch (error) {
     if (error && typeof error === "object" && "code" in error && error.code === "ENOENT") {
-      return failure("missing_config", [
-        issue("MISSING_CONFIG", "missing_config", resolvedConfigPath, "Required vibe-engineer.config.json file was not found.")
-      ], { configPath: resolvedConfigPath });
+      return failure(
+        "missing_config",
+        [
+          issue(
+            "MISSING_CONFIG",
+            "missing_config",
+            resolvedConfigPath,
+            "Required vibe-engineer.config.json file was not found.",
+          ),
+        ],
+        { configPath: resolvedConfigPath },
+      );
     }
     throw error;
   }
@@ -414,12 +528,14 @@ async function detectUnsupportedConfigFormats(projectRoot) {
   for (const fileName of UNSUPPORTED_CONFIG_FILES) {
     try {
       await readFile(join(projectRoot, fileName), "utf8");
-      issues.push(issue(
-        "UNSUPPORTED_CONFIG_FORMAT",
-        "invalid_config",
-        join(projectRoot, fileName),
-        "Only vibe-engineer.config.json is supported in this lane."
-      ));
+      issues.push(
+        issue(
+          "UNSUPPORTED_CONFIG_FORMAT",
+          "invalid_config",
+          join(projectRoot, fileName),
+          "Only vibe-engineer.config.json is supported in this lane.",
+        ),
+      );
     } catch (error) {
       if (!(error && typeof error === "object" && "code" in error && error.code === "ENOENT")) {
         throw error;
@@ -436,7 +552,7 @@ export async function loadVibeConfigFromProjectRoot(projectRoot) {
   if (unsupportedIssues.length > 0) {
     return failure("invalid_config", unsupportedIssues, {
       projectRoot: resolvedProjectRoot,
-      configPath
+      configPath,
     });
   }
   const result = await loadVibeConfigFile(configPath);

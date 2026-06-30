@@ -16,9 +16,7 @@
       "type": "string",
       "minLength": 1,
       "const": "schematic_manifest",
-      "enum": [
-        "schematic_manifest"
-      ]
+      "enum": ["schematic_manifest"]
     },
     "artifactId": {
       "type": "string",
@@ -76,21 +74,12 @@
           "pattern": "^[a-z0-9][a-z0-9._:-]*$"
         }
       },
-      "required": [
-        "kind",
-        "id",
-        "name"
-      ]
+      "required": ["kind", "id", "name"]
     },
     "status": {
       "type": "string",
       "minLength": 1,
-      "enum": [
-        "active",
-        "deprecated",
-        "experimental",
-        "disabled"
-      ]
+      "enum": ["active", "deprecated", "experimental", "disabled"]
     },
     "ownership": {
       "type": "object",
@@ -203,14 +192,7 @@
             "minLength": 1
           }
         },
-        "required": [
-          "rel",
-          "artifactKind",
-          "artifactId",
-          "path",
-          "required",
-          "statusAtLinkTime"
-        ]
+        "required": ["rel", "artifactKind", "artifactId", "path", "required", "statusAtLinkTime"]
       },
       "minItems": 1
     },
@@ -221,9 +203,7 @@
       },
       "additionalProperties": {
         "type": "object",
-        "required": [
-          "schemaVersion"
-        ],
+        "required": ["schemaVersion"],
         "properties": {
           "schemaVersion": {
             "type": "string",
@@ -253,24 +233,14 @@
           "kind": {
             "type": "string",
             "minLength": 1,
-            "enum": [
-              "source_doc",
-              "prompt",
-              "issue",
-              "url",
-              "artifact",
-              "raw_intent"
-            ]
+            "enum": ["source_doc", "prompt", "issue", "url", "artifact", "raw_intent"]
           },
           "ref": {
             "type": "string",
             "minLength": 1
           }
         },
-        "required": [
-          "kind",
-          "ref"
-        ]
+        "required": ["kind", "ref"]
       }
     },
     "approvedBy": {
@@ -314,11 +284,7 @@
               "pattern": "^[a-z0-9][a-z0-9._:-]*$"
             }
           },
-          "required": [
-            "kind",
-            "id",
-            "name"
-          ]
+          "required": ["kind", "id", "name"]
         },
         "approvedAt": {
           "type": "string",
@@ -326,10 +292,7 @@
           "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$|^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
         }
       },
-      "required": [
-        "producer",
-        "approvedAt"
-      ]
+      "required": ["producer", "approvedAt"]
     },
     "supersessionReason": {
       "type": "string"
@@ -347,10 +310,7 @@
           "minLength": 1
         }
       },
-      "required": [
-        "policy",
-        "reason"
-      ]
+      "required": ["policy", "reason"]
     },
     "schematicId": {
       "type": "string",
@@ -409,11 +369,7 @@
                 ]
               }
             },
-            "required": [
-              "schemaId",
-              "schemaVersion",
-              "artifactKind"
-            ]
+            "required": ["schemaId", "schemaVersion", "artifactKind"]
           },
           "required": {
             "type": "boolean"
@@ -421,20 +377,12 @@
           "defaultsPolicy": {
             "type": "string",
             "minLength": 1,
-            "enum": [
-              "no_default",
-              "domain_neutral_default",
-              "user_supplied_only"
-            ]
+            "enum": ["no_default", "domain_neutral_default", "user_supplied_only"]
           },
           "domainNeutralityClassification": {
             "type": "string",
             "minLength": 1,
-            "enum": [
-              "core_generic",
-              "sample_demo",
-              "project_extension"
-            ]
+            "enum": ["core_generic", "sample_demo", "project_extension"]
           }
         },
         "required": [
@@ -464,28 +412,15 @@
           "conflictPolicy": {
             "type": "string",
             "minLength": 1,
-            "enum": [
-              "fail",
-              "merge_with_typed_strategy",
-              "skip_if_identical"
-            ]
+            "enum": ["fail", "merge_with_typed_strategy", "skip_if_identical"]
           },
           "classification": {
             "type": "string",
             "minLength": 1,
-            "enum": [
-              "generated",
-              "vendor",
-              "operator_owned"
-            ]
+            "enum": ["generated", "vendor", "operator_owned"]
           }
         },
-        "required": [
-          "pathTemplate",
-          "ownership",
-          "conflictPolicy",
-          "classification"
-        ]
+        "required": ["pathTemplate", "ownership", "conflictPolicy", "classification"]
       },
       "minItems": 1
     },
@@ -509,20 +444,12 @@
           "minLength": 1
         }
       },
-      "required": [
-        "strategy",
-        "stableIdentifiers",
-        "rerunBehavior"
-      ]
+      "required": ["strategy", "stableIdentifiers", "rerunBehavior"]
     },
     "conflictBehavior": {
       "type": "string",
       "minLength": 1,
-      "enum": [
-        "fail",
-        "merge_with_typed_strategy",
-        "skip_if_identical"
-      ]
+      "enum": ["fail", "merge_with_typed_strategy", "skip_if_identical"]
     },
     "dryRunBehavior": {
       "type": "object",
@@ -536,10 +463,7 @@
           "const": false
         }
       },
-      "required": [
-        "reportsPlannedChanges",
-        "writesFiles"
-      ]
+      "required": ["reportsPlannedChanges", "writesFiles"]
     },
     "requiredTests": {
       "type": "array",
@@ -622,24 +546,13 @@
           "result": {
             "type": "string",
             "minLength": 1,
-            "enum": [
-              "pass",
-              "fail",
-              "blocked",
-              "advisory",
-              "skipped"
-            ]
+            "enum": ["pass", "fail", "blocked", "advisory", "skipped"]
           },
           "blocking": {
             "type": "boolean"
           }
         },
-        "required": [
-          "evidencePacketRef",
-          "summary",
-          "result",
-          "blocking"
-        ]
+        "required": ["evidencePacketRef", "summary", "result", "blocking"]
       }
     },
     "contextUpdates": {
@@ -703,14 +616,7 @@
             "minLength": 1
           }
         },
-        "required": [
-          "rel",
-          "artifactKind",
-          "artifactId",
-          "path",
-          "required",
-          "statusAtLinkTime"
-        ]
+        "required": ["rel", "artifactKind", "artifactId", "path", "required", "statusAtLinkTime"]
       }
     },
     "domainNeutrality": {
@@ -735,11 +641,7 @@
           }
         }
       },
-      "required": [
-        "coreSurface",
-        "allowedGenericTerms",
-        "extensionBoundaries"
-      ]
+      "required": ["coreSurface", "allowedGenericTerms", "extensionBoundaries"]
     },
     "owner": {
       "type": "string",
@@ -761,10 +663,7 @@
       }
     },
     "deprecation": {
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": ["object", "null"],
       "additionalProperties": true
     },
     "changelog": {

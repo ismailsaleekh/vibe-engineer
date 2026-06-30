@@ -9,11 +9,7 @@
       "category": "evidence-only-root-script",
       "subject": ".vibe/work/I-00A-workspace-package-skeleton/witnesses/workspace-surface-witness.mjs",
       "allowedUse": "root workspace:surface evidence witness",
-      "forbiddenUses": [
-        "production-runtime-source",
-        "package-export-source",
-        "package-bin-source"
-      ],
+      "forbiddenUses": ["production-runtime-source", "package-export-source", "package-bin-source"],
       "productionRuntimeOrExportSource": false,
       "finalStateAllowed": false
     },
@@ -30,10 +26,7 @@
       "category": "deferred-verification-source-js-export-debt",
       "deferralId": "TS-09V",
       "subject": "packages/verification/package.json#/exports/.",
-      "requiredIndependentPasses": [
-        "I-09S",
-        "I-09A"
-      ],
+      "requiredIndependentPasses": ["I-09S", "I-09A"],
       "forbiddenUntilReady": [
         "packages/verification/**",
         "packages/verification/package.json#/exports",
@@ -46,9 +39,7 @@
       "id": "transient-build-outputs-ts-root-evidence-only",
       "category": "owned-transient-evidence-output",
       "allowedRoot": ".vibe/work/TS-ROOT-build-export-contract/**",
-      "forbiddenProductRoots": [
-        "packages/**/dist/**"
-      ],
+      "forbiddenProductRoots": ["packages/**/dist/**"],
       "productDistMutationAllowed": false,
       "finalStateAllowed": false
     }
@@ -69,34 +60,22 @@
       "delegatesToTurbo": true,
       "usesWorkspaceExecution": true
     },
-    "preserved": [
-      "workspace:graph",
-      "workspace:surface"
-    ]
+    "preserved": ["workspace:graph", "workspace:surface"]
   },
   "turboTasks": {
     "build": {
       "required": true,
-      "dependsOn": [
-        "^build"
-      ],
-      "outputs": [
-        "dist/**"
-      ]
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"]
     },
     "typecheck": {
       "required": true,
-      "dependsOn": [
-        "^build"
-      ],
+      "dependsOn": ["^build"],
       "outputs": []
     },
     "test": {
       "required": true,
-      "dependsOn": [
-        "build",
-        "^build"
-      ],
+      "dependsOn": ["build", "^build"],
       "outputs": []
     }
   },
@@ -128,22 +107,13 @@
       "sourceMap",
       "noEmitOnError"
     ],
-    "requiredFalse": [
-      "allowUnreachableCode",
-      "allowUnusedLabels",
-      "skipLibCheck"
-    ],
-    "forbidden": [
-      "allowJs"
-    ]
+    "requiredFalse": ["allowUnreachableCode", "allowUnusedLabels", "skipLibCheck"],
+    "forbidden": ["allowJs"]
   },
   "packageTsconfigConvention": {
     "policyId": "package-tsconfig-convention",
     "appliesTo": "migrated TypeScript workspace packages",
-    "allowedExtends": [
-      "../../tsconfig.base.json",
-      "../../../tsconfig.base.json"
-    ],
+    "allowedExtends": ["../../tsconfig.base.json", "../../../tsconfig.base.json"],
     "requiredBuildShape": {
       "rootDirOwnedByPackage": true,
       "outDir": "dist",
@@ -151,13 +121,8 @@
       "declarationMap": true,
       "noEmitOnError": true
     },
-    "forbiddenCompilerOptions": [
-      "allowJs"
-    ],
-    "inheritedCompilerOptions": [
-      "module:NodeNext",
-      "moduleResolution:NodeNext"
-    ],
+    "forbiddenCompilerOptions": ["allowJs"],
+    "inheritedCompilerOptions": ["module:NodeNext", "moduleResolution:NodeNext"],
     "runtimeImportWitnessRequired": true
   },
   "packageExportConvention": {
@@ -165,10 +130,7 @@
     "runtimeExports": {
       "requiredTargetKind": "generated-dist-js",
       "requiredTargetPattern": "dist/**/*.js",
-      "forbiddenFinalTargetKinds": [
-        "src-js",
-        "src-mjs"
-      ],
+      "forbiddenFinalTargetKinds": ["src-js", "src-mjs"],
       "sourceJsAllowedFinalState": false
     },
     "typesExports": {
@@ -201,9 +163,7 @@
     "tsRootWitnessOutputs": {
       "allowedRoot": ".vibe/work/TS-ROOT-build-export-contract/**",
       "productDistWriteAllowed": false,
-      "forbiddenProductRoots": [
-        "packages/**/dist/**"
-      ]
+      "forbiddenProductRoots": ["packages/**/dist/**"]
     }
   },
   "sourceJsDebtPolicy": {
@@ -229,10 +189,7 @@
   },
   "ts09vDeferral": {
     "deferred": true,
-    "requiredIndependentPasses": [
-      "I-09S",
-      "I-09A"
-    ],
+    "requiredIndependentPasses": ["I-09S", "I-09A"],
     "forbiddenUntilReady": [
       "packages/verification/**",
       "packages/verification/package.json#/exports",

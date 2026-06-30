@@ -36,10 +36,7 @@
         "details": "Generate `.pi/skills/<skill>/SKILL.md` and/or `.agents/skills/<skill>/SKILL.md` assets exposing `/skill:<skill>`.",
         "downstreamConsequence": "Downstream lanes may consume the typed mapping, but I-14B owns actual file generation/runtime loading.",
         "nativeFormat": "Agent Skills SKILL.md",
-        "autoloadDiscovery": [
-          ".pi/skills/<skill>/SKILL.md",
-          ".agents/skills/<skill>/SKILL.md"
-        ],
+        "autoloadDiscovery": [".pi/skills/<skill>/SKILL.md", ".agents/skills/<skill>/SKILL.md"],
         "skills": [
           {
             "skillId": "brainstorm",
@@ -248,10 +245,7 @@
         "support": "ready",
         "details": "Primary v1 generation uses project-local files; optional package distribution is declared but not generated in I-14A.",
         "downstreamConsequence": "Package distribution requires explicit generated-file manifest metadata and later lane implementation.",
-        "distributionKinds": [
-          "project-local-files",
-          "pi-package"
-        ],
+        "distributionKinds": ["project-local-files", "pi-package"],
         "trustUpdatePolicy": "Project-local files require project trust; package install/update/trust behavior must be explicit before use."
       },
       "securityTrust": {
@@ -316,9 +310,7 @@
         "harnessName": "Claude Code",
         "harnessVersionRange": "unknown",
         "resourceFormatVersion": "unknown",
-        "runtimeRequirements": [
-          "future evidence-backed decision required"
-        ],
+        "runtimeRequirements": ["future evidence-backed decision required"],
         "compatibilityEvidence": {
           "state": "deferred",
           "source": "DL-06 other harness disposition",
@@ -335,9 +327,7 @@
         "details": "No v1 native generated-resource contract is authorized for this harness.",
         "downstreamConsequence": "Any dependent selection or generation for this harness must block until a future adapter decision supplies evidence.",
         "nativeFormat": "unknown",
-        "autoloadDiscovery": [
-          "unknown"
-        ],
+        "autoloadDiscovery": ["unknown"],
         "skills": []
       },
       "promptTemplateSurface": {
@@ -531,9 +521,7 @@
         "harnessName": "Codex",
         "harnessVersionRange": "unknown",
         "resourceFormatVersion": "unknown",
-        "runtimeRequirements": [
-          "future evidence-backed decision required"
-        ],
+        "runtimeRequirements": ["future evidence-backed decision required"],
         "compatibilityEvidence": {
           "state": "deferred",
           "source": "DL-06 other harness disposition",
@@ -550,9 +538,7 @@
         "details": "No v1 native generated-resource contract is authorized for this harness.",
         "downstreamConsequence": "Any dependent selection or generation for this harness must block until a future adapter decision supplies evidence.",
         "nativeFormat": "unknown",
-        "autoloadDiscovery": [
-          "unknown"
-        ],
+        "autoloadDiscovery": ["unknown"],
         "skills": []
       },
       "promptTemplateSurface": {
@@ -746,9 +732,7 @@
         "harnessName": "OpenCode",
         "harnessVersionRange": "unknown",
         "resourceFormatVersion": "unknown",
-        "runtimeRequirements": [
-          "future evidence-backed decision required"
-        ],
+        "runtimeRequirements": ["future evidence-backed decision required"],
         "compatibilityEvidence": {
           "state": "deferred",
           "source": "DL-06 other harness disposition",
@@ -765,9 +749,7 @@
         "details": "No v1 native generated-resource contract is authorized for this harness.",
         "downstreamConsequence": "Any dependent selection or generation for this harness must block until a future adapter decision supplies evidence.",
         "nativeFormat": "unknown",
-        "autoloadDiscovery": [
-          "unknown"
-        ],
+        "autoloadDiscovery": ["unknown"],
         "skills": []
       },
       "promptTemplateSurface": {
@@ -961,9 +943,7 @@
         "harnessName": "Later integrations",
         "harnessVersionRange": "unknown",
         "resourceFormatVersion": "unknown",
-        "runtimeRequirements": [
-          "future evidence-backed decision required"
-        ],
+        "runtimeRequirements": ["future evidence-backed decision required"],
         "compatibilityEvidence": {
           "state": "unknown",
           "source": "DL-06 future integrations",
@@ -980,9 +960,7 @@
         "details": "No v1 native generated-resource contract is authorized for this harness.",
         "downstreamConsequence": "Any dependent selection or generation for this harness must block until a future adapter decision supplies evidence.",
         "nativeFormat": "unknown",
-        "autoloadDiscovery": [
-          "unknown"
-        ],
+        "autoloadDiscovery": ["unknown"],
         "skills": []
       },
       "promptTemplateSurface": {

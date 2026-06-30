@@ -115,9 +115,7 @@
           }
         }
       },
-      "touchedPathPatterns": [
-        "contracts/**"
-      ],
+      "touchedPathPatterns": ["contracts/**"],
       "forbiddenPathPatterns": [
         ".git/**",
         "node_modules/**",
@@ -147,9 +145,7 @@
           "blockId": "contract"
         }
       ],
-      "generatedArtifactTypes": [
-        "code"
-      ],
+      "generatedArtifactTypes": ["code"],
       "generatedMarkerRequiredForUpdates": true,
       "overwriteAllowedByDefault": false,
       "semanticMergeAllowedInV1": false,
@@ -161,10 +157,7 @@
         "noShell": true,
         "deterministicOnly": true
       },
-      "standardIds": [
-        "typed-boundary-contracts",
-        "deterministic-schematics"
-      ],
+      "standardIds": ["typed-boundary-contracts", "deterministic-schematics"],
       "typescriptPreset": {
         "required": true,
         "presetId": "vibe-engineer.typescript.strict",
@@ -180,12 +173,7 @@
     }
   },
   "description": "Generate a typed boundary contract descriptor with standards references.",
-  "tags": [
-    "domain-neutral",
-    "built-in",
-    "dl-08",
-    "contract"
-  ],
+  "tags": ["domain-neutral", "built-in", "dl-08", "contract"],
   "sourceRefs": [
     {
       "kind": "artifact",
@@ -352,11 +340,7 @@
       "schema",
       "generator"
     ],
-    "extensionBoundaries": [
-      "project_extension",
-      "sample_demo",
-      "negative_fixture"
-    ]
+    "extensionBoundaries": ["project_extension", "sample_demo", "negative_fixture"]
   },
   "owner": "I-07B-built-in-schematics-fixtures"
 }

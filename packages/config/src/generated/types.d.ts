@@ -124,8 +124,16 @@ export interface VibeConfigSchemaContract {
   readonly defaults: Omit<VibeConfig, "agenticHarness">;
   readonly ranges: {
     readonly maxParallelAgents: { readonly integer: true; readonly min: 1; readonly max: 8 };
-    readonly maxValidationFixIterations: { readonly integer: true; readonly min: 1; readonly max: 3 };
-    readonly agenticWorkPackageTargetHours: { readonly integer: false; readonly exclusiveMin: 0; readonly max: 6 };
+    readonly maxValidationFixIterations: {
+      readonly integer: true;
+      readonly min: 1;
+      readonly max: 3;
+    };
+    readonly agenticWorkPackageTargetHours: {
+      readonly integer: false;
+      readonly exclusiveMin: 0;
+      readonly max: 6;
+    };
   };
 }
 
@@ -134,7 +142,9 @@ export const VIBE_CONFIG_SCHEMA_ID: VibeConfigSchemaId;
 export const VIBE_CONFIG_SCHEMA_VERSION: VibeConfigSchemaVersion;
 export const VIBE_CONFIG_SCHEMA: VibeConfigSchemaContract;
 
-export function createDefaultVibeConfig(options: { readonly agenticHarness: AgenticHarness }): VibeConfig;
+export function createDefaultVibeConfig(options: {
+  readonly agenticHarness: AgenticHarness;
+}): VibeConfig;
 export function parseVibeConfig(input: unknown): VibeConfigResult;
 export function loadVibeConfigFile(configPath: string): Promise<VibeConfigResult>;
 export function loadVibeConfigFromProjectRoot(projectRoot: string): Promise<VibeConfigResult>;

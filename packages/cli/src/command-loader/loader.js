@@ -51,38 +51,95 @@ const COMMAND_HELP = Object.freeze({
     examples: ["vibe-engineer version"],
   }),
   create: Object.freeze({
-    usage: "vibe-engineer create <target-root> --project-name <name> [--brief <text>] [--agentic-harness pi]",
-    options: ["--target-root <path>: directory to create", "--project-name <name>: generated project name", "--agentic-harness pi: selected harness", "--brief / --project-brief <text>: optional project brief", "--non-interactive: fail instead of prompting", "--result-file <path>: write result envelope"],
+    usage:
+      "vibe-engineer create <target-root> --project-name <name> [--brief <text>] [--agentic-harness pi]",
+    options: [
+      "--target-root <path>: directory to create",
+      "--project-name <name>: generated project name",
+      "--agentic-harness pi: selected harness",
+      "--brief / --project-brief <text>: optional project brief",
+      "--non-interactive: fail instead of prompting",
+      "--result-file <path>: write result envelope",
+    ],
     examples: ["vibe-engineer create ./my-app --project-name my-app --agentic-harness pi"],
   }),
   import: Object.freeze({
-    usage: "vibe-engineer import --target-root <existing-root> --project-name <name> [--brief <text>]",
-    options: ["--target-root <path>: existing project directory", "--project-name <name>: project name", "--agentic-harness pi: selected harness", "--brief / --project-brief <text>: optional project brief", "--non-interactive: fail instead of prompting", "--result-file <path>: write result envelope"],
-    examples: ["vibe-engineer import --target-root . --project-name existing-app --agentic-harness pi"],
+    usage:
+      "vibe-engineer import --target-root <existing-root> --project-name <name> [--brief <text>]",
+    options: [
+      "--target-root <path>: existing project directory",
+      "--project-name <name>: project name",
+      "--agentic-harness pi: selected harness",
+      "--brief / --project-brief <text>: optional project brief",
+      "--non-interactive: fail instead of prompting",
+      "--result-file <path>: write result envelope",
+    ],
+    examples: [
+      "vibe-engineer import --target-root . --project-name existing-app --agentic-harness pi",
+    ],
   }),
   doctor: Object.freeze({
-    usage: "vibe-engineer doctor [--project-root <path> | --config <json>] [--include-adapter-scope]",
-    options: ["--project-root <path>: load vibe-engineer.config.json from a project", "--config <json>: load an explicit JSON config path", "--include-adapter-scope: include currently partial adapter-runtime health", "--json: emit machine envelope"],
-    examples: ["vibe-engineer doctor --project-root .", "vibe-engineer doctor --config ./vibe-engineer.config.json --json"],
+    usage:
+      "vibe-engineer doctor [--project-root <path> | --config <json>] [--include-adapter-scope]",
+    options: [
+      "--project-root <path>: load vibe-engineer.config.json from a project",
+      "--config <json>: load an explicit JSON config path",
+      "--include-adapter-scope: include currently partial adapter-runtime health",
+      "--json: emit machine envelope",
+    ],
+    examples: [
+      "vibe-engineer doctor --project-root .",
+      "vibe-engineer doctor --config ./vibe-engineer.config.json --json",
+    ],
   }),
   config: Object.freeze({
     usage: "vibe-engineer config <inspect|validate> [--project-root <path> | --config <json>]",
-    options: ["inspect: print redacted resolved config", "validate: validate config and defaults", "--project-root <path>: load canonical project config", "--config <json>: load an explicit JSON config path"],
-    examples: ["vibe-engineer config validate --project-root .", "vibe-engineer config inspect --config /tmp/my-config.json --json"],
+    options: [
+      "inspect: print redacted resolved config",
+      "validate: validate config and defaults",
+      "--project-root <path>: load canonical project config",
+      "--config <json>: load an explicit JSON config path",
+    ],
+    examples: [
+      "vibe-engineer config validate --project-root .",
+      "vibe-engineer config inspect --config /tmp/my-config.json --json",
+    ],
   }),
   verify: Object.freeze({
-    usage: "vibe-engineer verify --project-root <path> --implementation-plan <path> --evidence-root <path> --run-id <id> --runner-catalog <path>",
-    options: ["--implementation-plan <path>: approved Implementation Plan JSON", "--evidence-root <path>: directory for Evidence Packets", "--project-root <path>: project root containment boundary", "--run-id <id>: stable lowercase run id", "--runner-catalog <path>: runner catalog JSON", "--rerun-of <id>: optional prior run id", "--result-file <path>: write result envelope"],
-    examples: ["vibe-engineer verify --project-root . --implementation-plan .vibe/work/demo/implementation-plan.json --evidence-root .vibe/evidence/demo/verify --run-id demo --runner-catalog .vibe/registry/runner-catalog.json"],
+    usage:
+      "vibe-engineer verify --project-root <path> --implementation-plan <path> --evidence-root <path> --run-id <id> --runner-catalog <path>",
+    options: [
+      "--implementation-plan <path>: approved Implementation Plan JSON",
+      "--evidence-root <path>: directory for Evidence Packets",
+      "--project-root <path>: project root containment boundary",
+      "--run-id <id>: stable lowercase run id",
+      "--runner-catalog <path>: runner catalog JSON",
+      "--rerun-of <id>: optional prior run id",
+      "--result-file <path>: write result envelope",
+    ],
+    examples: [
+      "vibe-engineer verify --project-root . --implementation-plan .vibe/work/demo/implementation-plan.json --evidence-root .vibe/evidence/demo/verify --run-id demo --runner-catalog .vibe/registry/runner-catalog.json",
+    ],
   }),
   security: Object.freeze({
-    usage: "vibe-engineer security --project-root <path> --request-file <path> [--policy-file <path>]",
-    options: ["--request-file <path>: security request JSON", "--policy-file <path>: optional policy JSON", "--project-root <path>: project root containment boundary", "--result-file <path>: write result envelope"],
-    examples: ["vibe-engineer security --project-root . --request-file .vibe/work/demo/security-request.json --json"],
+    usage:
+      "vibe-engineer security --project-root <path> --request-file <path> [--policy-file <path>]",
+    options: [
+      "--request-file <path>: security request JSON",
+      "--policy-file <path>: optional policy JSON",
+      "--project-root <path>: project root containment boundary",
+      "--result-file <path>: write result envelope",
+    ],
+    examples: [
+      "vibe-engineer security --project-root . --request-file .vibe/work/demo/security-request.json --json",
+    ],
   }),
   schematic: Object.freeze({
     usage: "vibe-engineer schematic <subcommand> [options]",
-    options: ["Use schematic-specific subcommands with --json for machine carriers.", "Run without --help to receive typed invocation errors for invalid shapes."],
+    options: [
+      "Use schematic-specific subcommands with --json for machine carriers.",
+      "Run without --help to receive typed invocation errors for invalid shapes.",
+    ],
     examples: ["vibe-engineer schematic --json"],
   }),
 });
@@ -188,7 +245,9 @@ async function helpCommand({ invocation, args, context }) {
 
 function commandHelpResult(invocation, command) {
   if (!command) return rejectUnknownCommandFlag(invocation, "--help");
-  const details = COMMAND_HELP[command.id] ?? Object.freeze({ usage: `vibe-engineer ${command.id} [options]`, options: [], examples: [] });
+  const details =
+    COMMAND_HELP[command.id] ??
+    Object.freeze({ usage: `vibe-engineer ${command.id} [options]`, options: [], examples: [] });
   return commandResult(
     createEnvelope({
       invocation,
@@ -356,7 +415,11 @@ export class CommandLoader {
     if (args.length === 1 && (args[0] === "--help" || args[0] === "-h")) {
       return commandHelpResult(context.invocation, command);
     }
-    return command.run({ invocation: context.invocation, args, context: { ...context, loader: this } });
+    return command.run({
+      invocation: context.invocation,
+      args,
+      context: { ...context, loader: this },
+    });
   }
 }
 

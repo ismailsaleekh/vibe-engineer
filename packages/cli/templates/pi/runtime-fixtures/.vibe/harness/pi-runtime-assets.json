@@ -88,12 +88,7 @@
           "protocolKind": "implementation-plan-producer",
           "inputArtifact": "work-brief",
           "outputArtifact": "implementation-plan-with-verification-delta",
-          "forbiddenArtifacts": [
-            "build-result",
-            "ship-packet",
-            "push",
-            "pull-request"
-          ],
+          "forbiddenArtifacts": ["build-result", "ship-packet", "push", "pull-request"],
           "summary": "Consume exactly one Work Brief and produce an Implementation Plan with Verification Delta."
         }
       }
@@ -110,11 +105,7 @@
           "protocolKind": "build-result-producer",
           "inputArtifact": "approved-implementation-plan",
           "outputArtifact": "build-result",
-          "forbiddenArtifacts": [
-            "ship-packet",
-            "push",
-            "pull-request"
-          ],
+          "forbiddenArtifacts": ["ship-packet", "push", "pull-request"],
           "summary": "Consume an approved Implementation Plan and produce a Build Result after implementation and verification evidence."
         }
       }
@@ -131,10 +122,7 @@
           "protocolKind": "ship-packet-producer",
           "inputArtifact": "build-result",
           "outputArtifact": "ship-packet",
-          "forbiddenArtifacts": [
-            "push",
-            "pull-request"
-          ],
+          "forbiddenArtifacts": ["push", "pull-request"],
           "summary": "Consume a Build Result and produce a Ship Packet; push or PR creation requires explicit approval."
         }
       }

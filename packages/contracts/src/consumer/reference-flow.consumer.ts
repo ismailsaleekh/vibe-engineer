@@ -1,5 +1,8 @@
 import { referenceFlowClient } from "../generated/reference-flow-client.js";
-import { ReferenceSuccessResponseSchema, type ReferenceSuccessResponse } from "../contracts/reference-flow.contract.js";
+import {
+  ReferenceSuccessResponseSchema,
+  type ReferenceSuccessResponse,
+} from "../contracts/reference-flow.contract.js";
 
 export async function callReferenceFlowConsumer(): Promise<ReferenceSuccessResponse> {
   const response = await referenceFlowClient.submitReference({
@@ -8,8 +11,8 @@ export async function callReferenceFlowConsumer(): Promise<ReferenceSuccessRespo
     body: {
       label: "Alpha",
       sequence: 7,
-      absence: { kind: "not-provided", reason: "domain-neutral absence model" }
-    }
+      absence: { kind: "not-provided", reason: "domain-neutral absence model" },
+    },
   });
 
   if (response.status !== 200) {

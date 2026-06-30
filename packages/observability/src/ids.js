@@ -26,7 +26,7 @@ function resolveCrypto() {
   let cryptoApi;
   try {
     // Node path (CJS interop under type:module).
-    // eslint-disable-next-line @typescript-eslint/no-require-imports
+
     const nodeCrypto = require("node:crypto");
     if (nodeCrypto && typeof nodeCrypto.randomUUID === "function") {
       cryptoApi = nodeCrypto;
@@ -45,7 +45,7 @@ function resolveCrypto() {
   }
   if (!cryptoApi) {
     const e = new Error(
-      "observability id-factory: no cryptographic random source available on this runtime (DL-23 §3 requires crypto-backed UUID v4). STOP-pending-live/BLOCKED rather than fall back to Math.random."
+      "observability id-factory: no cryptographic random source available on this runtime (DL-23 §3 requires crypto-backed UUID v4). STOP-pending-live/BLOCKED rather than fall back to Math.random.",
     );
     e.name = "NoCryptoSourceError";
     e.code = "OBS_NO_CRYPTO_SOURCE";
@@ -69,7 +69,9 @@ export function createUuidV4() {
     const id = crypto.randomUUID();
     // Fail-closed belt-and-suspenders: assert canonical v4 form before trusting.
     if (!UUID_V4_PATTERN.test(id)) {
-      const e = new Error(`id-factory: runtime randomUUID() returned non-canonical value (len ${id.length})`);
+      const e = new Error(
+        `id-factory: runtime randomUUID() returned non-canonical value (len ${id.length})`,
+      );
       e.name = "IdFactoryError";
       e.code = "OBS_ID_NON_CANONICAL";
       throw e;

@@ -16,9 +16,7 @@
       "type": "string",
       "minLength": 1,
       "const": "agent_registry_entry",
-      "enum": [
-        "agent_registry_entry"
-      ]
+      "enum": ["agent_registry_entry"]
     },
     "artifactId": {
       "type": "string",
@@ -76,21 +74,12 @@
           "pattern": "^[a-z0-9][a-z0-9._:-]*$"
         }
       },
-      "required": [
-        "kind",
-        "id",
-        "name"
-      ]
+      "required": ["kind", "id", "name"]
     },
     "status": {
       "type": "string",
       "minLength": 1,
-      "enum": [
-        "active",
-        "disabled",
-        "deprecated",
-        "experimental"
-      ]
+      "enum": ["active", "disabled", "deprecated", "experimental"]
     },
     "ownership": {
       "type": "object",
@@ -203,14 +192,7 @@
             "minLength": 1
           }
         },
-        "required": [
-          "rel",
-          "artifactKind",
-          "artifactId",
-          "path",
-          "required",
-          "statusAtLinkTime"
-        ]
+        "required": ["rel", "artifactKind", "artifactId", "path", "required", "statusAtLinkTime"]
       },
       "minItems": 1
     },
@@ -221,9 +203,7 @@
       },
       "additionalProperties": {
         "type": "object",
-        "required": [
-          "schemaVersion"
-        ],
+        "required": ["schemaVersion"],
         "properties": {
           "schemaVersion": {
             "type": "string",
@@ -253,24 +233,14 @@
           "kind": {
             "type": "string",
             "minLength": 1,
-            "enum": [
-              "source_doc",
-              "prompt",
-              "issue",
-              "url",
-              "artifact",
-              "raw_intent"
-            ]
+            "enum": ["source_doc", "prompt", "issue", "url", "artifact", "raw_intent"]
           },
           "ref": {
             "type": "string",
             "minLength": 1
           }
         },
-        "required": [
-          "kind",
-          "ref"
-        ]
+        "required": ["kind", "ref"]
       }
     },
     "approvedBy": {
@@ -314,11 +284,7 @@
               "pattern": "^[a-z0-9][a-z0-9._:-]*$"
             }
           },
-          "required": [
-            "kind",
-            "id",
-            "name"
-          ]
+          "required": ["kind", "id", "name"]
         },
         "approvedAt": {
           "type": "string",
@@ -326,10 +292,7 @@
           "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$|^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$"
         }
       },
-      "required": [
-        "producer",
-        "approvedAt"
-      ]
+      "required": ["producer", "approvedAt"]
     },
     "supersessionReason": {
       "type": "string"
@@ -347,10 +310,7 @@
           "minLength": 1
         }
       },
-      "required": [
-        "policy",
-        "reason"
-      ]
+      "required": ["policy", "reason"]
     },
     "agentId": {
       "type": "string",
@@ -393,10 +353,7 @@
             "minLength": 1
           }
         },
-        "required": [
-          "event",
-          "description"
-        ]
+        "required": ["event", "description"]
       },
       "minItems": 1
     },
@@ -434,11 +391,7 @@
             ]
           }
         },
-        "required": [
-          "schemaId",
-          "schemaVersion",
-          "artifactKind"
-        ]
+        "required": ["schemaId", "schemaVersion", "artifactKind"]
       },
       "minItems": 1
     },
@@ -476,11 +429,7 @@
             ]
           }
         },
-        "required": [
-          "schemaId",
-          "schemaVersion",
-          "artifactKind"
-        ]
+        "required": ["schemaId", "schemaVersion", "artifactKind"]
       },
       "minItems": 1
     },
@@ -536,11 +485,7 @@
           "type": "integer"
         }
       },
-      "required": [
-        "parallelSafe",
-        "writesAllowed",
-        "requiresApprovalFor"
-      ]
+      "required": ["parallelSafe", "writesAllowed", "requiresApprovalFor"]
     },
     "validatorRefs": {
       "type": "array",
@@ -603,14 +548,7 @@
             "minLength": 1
           }
         },
-        "required": [
-          "rel",
-          "artifactKind",
-          "artifactId",
-          "path",
-          "required",
-          "statusAtLinkTime"
-        ]
+        "required": ["rel", "artifactKind", "artifactId", "path", "required", "statusAtLinkTime"]
       }
     },
     "fixerRefs": {
@@ -674,24 +612,13 @@
             "minLength": 1
           }
         },
-        "required": [
-          "rel",
-          "artifactKind",
-          "artifactId",
-          "path",
-          "required",
-          "statusAtLinkTime"
-        ]
+        "required": ["rel", "artifactKind", "artifactId", "path", "required", "statusAtLinkTime"]
       }
     },
     "maturity": {
       "type": "string",
       "minLength": 1,
-      "enum": [
-        "experimental",
-        "stable",
-        "core"
-      ]
+      "enum": ["experimental", "stable", "core"]
     },
     "owner": {
       "type": "string",
@@ -763,21 +690,11 @@
             "minLength": 1
           }
         },
-        "required": [
-          "rel",
-          "artifactKind",
-          "artifactId",
-          "path",
-          "required",
-          "statusAtLinkTime"
-        ]
+        "required": ["rel", "artifactKind", "artifactId", "path", "required", "statusAtLinkTime"]
       }
     },
     "deprecation": {
-      "type": [
-        "object",
-        "null"
-      ],
+      "type": ["object", "null"],
       "additionalProperties": true
     },
     "runtimeCostClass": {

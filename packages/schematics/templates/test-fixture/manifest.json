@@ -115,9 +115,7 @@
           }
         }
       },
-      "touchedPathPatterns": [
-        "tests/fixtures/**"
-      ],
+      "touchedPathPatterns": ["tests/fixtures/**"],
       "forbiddenPathPatterns": [
         ".git/**",
         "node_modules/**",
@@ -147,9 +145,7 @@
           "blockId": "test-fixture"
         }
       ],
-      "generatedArtifactTypes": [
-        "test"
-      ],
+      "generatedArtifactTypes": ["test"],
       "generatedMarkerRequiredForUpdates": true,
       "overwriteAllowedByDefault": false,
       "semanticMergeAllowedInV1": false,
@@ -161,10 +157,7 @@
         "noShell": true,
         "deterministicOnly": true
       },
-      "standardIds": [
-        "report-first-evidence",
-        "deterministic-schematics"
-      ],
+      "standardIds": ["report-first-evidence", "deterministic-schematics"],
       "typescriptPreset": {
         "required": true,
         "presetId": "vibe-engineer.typescript.strict",
@@ -180,12 +173,7 @@
     }
   },
   "description": "Generate a deterministic test fixture descriptor for a target boundary.",
-  "tags": [
-    "domain-neutral",
-    "built-in",
-    "dl-08",
-    "test-fixture"
-  ],
+  "tags": ["domain-neutral", "built-in", "dl-08", "test-fixture"],
   "sourceRefs": [
     {
       "kind": "artifact",
@@ -352,11 +340,7 @@
       "schema",
       "generator"
     ],
-    "extensionBoundaries": [
-      "project_extension",
-      "sample_demo",
-      "negative_fixture"
-    ]
+    "extensionBoundaries": ["project_extension", "sample_demo", "negative_fixture"]
   },
   "owner": "I-07B-built-in-schematics-fixtures"
 }

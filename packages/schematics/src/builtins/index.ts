@@ -27,7 +27,8 @@ export const REQUIRED_TYPESCRIPT_PRESET_FILE_KINDS = Object.freeze([
 
 export type BuiltInSchematicId = (typeof BUILTIN_SCHEMATIC_IDS)[number];
 export type BuiltInSchematicSlug = (typeof BUILTIN_SCHEMATIC_SLUGS)[number];
-export type RequiredTypeScriptPresetFileKind = (typeof REQUIRED_TYPESCRIPT_PRESET_FILE_KINDS)[number];
+export type RequiredTypeScriptPresetFileKind =
+  (typeof REQUIRED_TYPESCRIPT_PRESET_FILE_KINDS)[number];
 
 export interface BuiltInSchematicCatalogOptions {
   readonly templatesRoot: string;
@@ -75,9 +76,9 @@ export interface TypeScriptPresetApiContract {
   getTypeScriptPresetMetadata(): TypeScriptPresetMetadataContract;
   getTypeScriptPresetFileManifest(): readonly TypeScriptPresetFileManifestEntryContract[];
   renderTypeScriptPresetFiles(): readonly GeneratedTypeScriptPresetFileContract[];
-  validateTypeScriptPresetFiles(
-    files: readonly GeneratedTypeScriptPresetFileContract[],
-  ): { readonly ok: boolean };
+  validateTypeScriptPresetFiles(files: readonly GeneratedTypeScriptPresetFileContract[]): {
+    readonly ok: boolean;
+  };
 }
 
 export interface BuiltInContractApis {
@@ -148,10 +149,17 @@ function readStringField(record: UnknownRecord, field: string, label: string): s
   return assertNonEmptyString(record[field], `${label}.${field}`);
 }
 
-function readOptionalStringArray(record: UnknownRecord, field: string, label: string): readonly string[] {
+function readOptionalStringArray(
+  record: UnknownRecord,
+  field: string,
+  label: string,
+): readonly string[] {
   const value = record[field];
   if (value === undefined) return Object.freeze([]);
-  if (!Array.isArray(value) || value.some((item) => typeof item !== "string" || item.length === 0)) {
+  if (
+    !Array.isArray(value) ||
+    value.some((item) => typeof item !== "string" || item.length === 0)
+  ) {
     fail("builtins_contract", `${label}.${field} must be a string array.`, { field });
   }
   return Object.freeze([...value]);
@@ -190,11 +198,15 @@ function assertExactPattern(properties: UnknownRecord, field: string, expectedVa
   const actualPattern = schemaPattern(properties, field);
   const expectedPattern = regexpPatternForLiteral(expectedValue);
   if (actualPattern !== expectedPattern) {
-    fail("builtins_contract", `Input ${field} must be constrained to the actual upstream contract value.`, {
-      field,
-      expectedPattern,
-      actualPattern,
-    });
+    fail(
+      "builtins_contract",
+      `Input ${field} must be constrained to the actual upstream contract value.`,
+      {
+        field,
+        expectedPattern,
+        actualPattern,
+      },
+    );
   }
 }
 
@@ -205,10 +217,17 @@ function presetManifestDefaults(api: TypeScriptPresetApiContract): Readonly<{
   const rendered = api.renderTypeScriptPresetFiles();
   const validation = api.validateTypeScriptPresetFiles(rendered);
   if (validation.ok !== true) {
-    fail("builtins_contract", "Actual TypeScript preset rendered files failed their validator.", {});
+    fail(
+      "builtins_contract",
+      "Actual TypeScript preset rendered files failed their validator.",
+      {},
+    );
   }
-  const manifestFile = rendered.find((file) => file.path === ".vibe/generated/typescript-preset/manifest.json");
-  if (!manifestFile) fail("builtins_contract", "Actual TypeScript preset manifest output is required.", {});
+  const manifestFile = rendered.find(
+    (file) => file.path === ".vibe/generated/typescript-preset/manifest.json",
+  );
+  if (!manifestFile)
+    fail("builtins_contract", "Actual TypeScript preset manifest output is required.", {});
   const parsed = JSON.parse(manifestFile.content);
   const manifest = assertRecord(parsed, "typescriptPresetManifest");
   const pnpmDefaults = readRecordField(manifest, "pnpmDefaults", "typescriptPresetManifest");
@@ -218,7 +237,11 @@ function presetManifestDefaults(api: TypeScriptPresetApiContract): Readonly<{
     "typescriptPresetManifest",
   );
   return Object.freeze({
-    packageManager: readStringField(pnpmDefaults, "packageManager", "typescriptPresetManifest.pnpmDefaults"),
+    packageManager: readStringField(
+      pnpmDefaults,
+      "packageManager",
+      "typescriptPresetManifest.pnpmDefaults",
+    ),
     typecheckCommand: readStringField(
       testAndTypecheckDefaults,
       "typecheckCommand",
@@ -279,37 +302,49 @@ export async function readBuiltInSchematicManifests(
   return Object.freeze(entries);
 }
 
-export function normalizeBuiltInContractInput(input: unknown, apis: BuiltInContractApis): BuiltInContractInput {
+export function normalizeBuiltInContractInput(
+  input: unknown,
+  apis: BuiltInContractApis,
+): BuiltInContractInput {
   const record = assertRecord(input, "input");
   const standardId = readStringField(record, "standardId", "input");
   const standard = apis.standardsApi.loadStandard(standardId);
   const presetMetadata = apis.typescriptPresetApi.getTypeScriptPresetMetadata();
   const presetDefaults = presetManifestDefaults(apis.typescriptPresetApi);
-  const expected: Readonly<Record<(typeof REQUIRED_INPUT_CONTRACT_FIELDS)[number], string>> = Object.freeze({
-    standardId: standard.standardId,
-    standardTitle: standard.title,
-    standardSummary: standard.summary,
-    presetId: presetMetadata.presetId,
-    quickGateLabel: presetMetadata.quickGateLabel,
-    packageManager: presetDefaults.packageManager,
-    typecheckCommand: presetDefaults.typecheckCommand,
-  });
+  const expected: Readonly<Record<(typeof REQUIRED_INPUT_CONTRACT_FIELDS)[number], string>> =
+    Object.freeze({
+      standardId: standard.standardId,
+      standardTitle: standard.title,
+      standardSummary: standard.summary,
+      presetId: presetMetadata.presetId,
+      quickGateLabel: presetMetadata.quickGateLabel,
+      packageManager: presetDefaults.packageManager,
+      typecheckCommand: presetDefaults.typecheckCommand,
+    });
   for (const [field, value] of Object.entries(expected)) {
     const supplied = record[field];
     if (supplied !== undefined && supplied !== value) {
-      fail("builtins_contract", `Input ${field} does not match the actual upstream contract value.`, {
-        field,
-        expected: value,
-        actual: supplied,
-      });
+      fail(
+        "builtins_contract",
+        `Input ${field} does not match the actual upstream contract value.`,
+        {
+          field,
+          expected: value,
+          actual: supplied,
+        },
+      );
     }
   }
   const normalized: Record<string, BuiltInContractInputValue> = {};
   for (const [field, value] of Object.entries(record)) {
     if (typeof value !== "string" && typeof value !== "boolean") {
-      fail("builtins_contract", `Input ${field} must be a string or boolean before schematic execution.`, {
-        field,
-      });
+      fail(
+        "builtins_contract",
+        `Input ${field} must be a string or boolean before schematic execution.`,
+        {
+          field,
+        },
+      );
     }
     normalized[field] = value;
   }
@@ -322,32 +357,47 @@ export function assertBuiltInContractSurfaces(
   apis: BuiltInContractApis,
 ): BuiltInContractAssertionResult {
   if (!Array.isArray(entries) || entries.length !== BUILTIN_SCHEMATIC_IDS.length) {
-    fail("builtins_contract", "Built-in entries must contain exactly the registered schematic set.", {
-      count: entries.length,
-    });
+    fail(
+      "builtins_contract",
+      "Built-in entries must contain exactly the registered schematic set.",
+      {
+        count: entries.length,
+      },
+    );
   }
   const presetMetadata = apis.typescriptPresetApi.getTypeScriptPresetMetadata();
   const presetDefaults = presetManifestDefaults(apis.typescriptPresetApi);
-  const presetKinds = new Set(apis.typescriptPresetApi.getTypeScriptPresetFileManifest().map((entry) => entry.kind));
+  const presetKinds = new Set(
+    apis.typescriptPresetApi.getTypeScriptPresetFileManifest().map((entry) => entry.kind),
+  );
   const seen = new Set<string>();
   for (const entry of entries) {
     const manifest = assertRecord(entry.manifest, "manifest");
     const manifestSchematicId = readStringField(manifest, "schematicId", "manifest");
     if (manifestSchematicId !== entry.schematicId) {
-      fail("builtins_contract", "Catalog schematic id must match manifest schematicId.", { slug: entry.slug });
+      fail("builtins_contract", "Catalog schematic id must match manifest schematicId.", {
+        slug: entry.slug,
+      });
     }
     if (seen.has(manifestSchematicId)) {
-      fail("builtins_contract", "Built-in schematic ids must be unique.", { schematicId: manifestSchematicId });
+      fail("builtins_contract", "Built-in schematic ids must be unique.", {
+        schematicId: manifestSchematicId,
+      });
     }
     seen.add(manifestSchematicId);
     const dl08 = manifestDl08(manifest);
     if (readStringField(dl08, "builtInId", "dl08") !== manifestSchematicId) {
       fail("builtins_contract", "DL-08 builtInId must match schematicId.", { slug: entry.slug });
     }
-    const standardIds = uniqueStrings(readOptionalStringArray(dl08, "standardIds", "dl08"), `standardIds for ${entry.slug}`);
+    const standardIds = uniqueStrings(
+      readOptionalStringArray(dl08, "standardIds", "dl08"),
+      `standardIds for ${entry.slug}`,
+    );
     const primaryStandardId = standardIds[0];
     if (primaryStandardId === undefined) {
-      fail("builtins_contract", "Built-ins must declare at least one standard id.", { slug: entry.slug });
+      fail("builtins_contract", "Built-ins must declare at least one standard id.", {
+        slug: entry.slug,
+      });
     }
     for (const standardId of standardIds) {
       const loaded = apis.standardsApi.loadStandard(standardId);
@@ -358,26 +408,49 @@ export function assertBuiltInContractSurfaces(
     const primaryStandard = apis.standardsApi.loadStandard(primaryStandardId);
     assertInputSchemaConsumesActualContracts(dl08, primaryStandard, presetMetadata, presetDefaults);
     const typescriptPreset = readRecordField(dl08, "typescriptPreset", "dl08");
-    if (readStringField(typescriptPreset, "presetId", "dl08.typescriptPreset") !== presetMetadata.presetId) {
-      fail("builtins_contract", "Built-in TypeScript preset id must match actual preset metadata.", { slug: entry.slug });
+    if (
+      readStringField(typescriptPreset, "presetId", "dl08.typescriptPreset") !==
+      presetMetadata.presetId
+    ) {
+      fail(
+        "builtins_contract",
+        "Built-in TypeScript preset id must match actual preset metadata.",
+        { slug: entry.slug },
+      );
     }
-    const requiredFileKinds = readOptionalStringArray(typescriptPreset, "requiredFileKinds", "dl08.typescriptPreset");
+    const requiredFileKinds = readOptionalStringArray(
+      typescriptPreset,
+      "requiredFileKinds",
+      "dl08.typescriptPreset",
+    );
     for (const kind of REQUIRED_TYPESCRIPT_PRESET_FILE_KINDS) {
       if (!requiredFileKinds.includes(kind)) {
-        fail("builtins_contract", "Built-in must require the load-bearing TypeScript preset file kinds.", {
-          slug: entry.slug,
-          kind,
-        });
+        fail(
+          "builtins_contract",
+          "Built-in must require the load-bearing TypeScript preset file kinds.",
+          {
+            slug: entry.slug,
+            kind,
+          },
+        );
       }
     }
     for (const kind of requiredFileKinds) {
       if (!presetKinds.has(kind)) {
-        fail("builtins_contract", "Built-in references a TypeScript preset file kind not present in actual preset manifest.", {
-          slug: entry.slug,
-          kind,
-        });
+        fail(
+          "builtins_contract",
+          "Built-in references a TypeScript preset file kind not present in actual preset manifest.",
+          {
+            slug: entry.slug,
+            kind,
+          },
+        );
       }
     }
   }
-  return Object.freeze({ ok: true, count: entries.length, schematicIds: Object.freeze([...seen].sort()) });
+  return Object.freeze({
+    ok: true,
+    count: entries.length,
+    schematicIds: Object.freeze([...seen].sort()),
+  });
 }

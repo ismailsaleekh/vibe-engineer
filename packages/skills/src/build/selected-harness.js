@@ -7,10 +7,18 @@
 // for real and discloses the live execution seam honestly. It does NOT fake/mock the
 // live-pi seam. See reports/post-i15a-scheduler-validation-artifact.md §F1.
 
-import { getPiGeneratedFileManifest, validatePiGeneratedFileManifest } from '@vibe-engineer/adapter-pi/generated-file-manifest';
-import { getPiAdapterCapabilityMatrix, isAdapterManifestSelectable, PI_ADAPTER_ID } from '@vibe-engineer/adapter-pi/capabilities';
+import {
+  getPiGeneratedFileManifest,
+  validatePiGeneratedFileManifest,
+} from "@vibe-engineer/adapter-pi/generated-file-manifest";
+import {
+  getPiAdapterCapabilityMatrix,
+  isAdapterManifestSelectable,
+  PI_ADAPTER_ID,
+} from "@vibe-engineer/adapter-pi/capabilities";
 
-const LIVE_PI_PREREQUISITE = 'operator live-pi environment (a real pi runtime/adapter capable of executing selected skills live); none is present in this deterministic build environment.';
+const LIVE_PI_PREREQUISITE =
+  "operator live-pi environment (a real pi runtime/adapter capable of executing selected skills live); none is present in this deterministic build environment.";
 
 /**
  * Run the deterministic selected-harness path against the real I-14A manifest + capability
@@ -23,9 +31,9 @@ export function runSelectedHarnessPath() {
   if (!manifestValidation.valid) {
     return Object.freeze({
       ok: false,
-      reason: 'selected_harness_manifest_invalid',
+      reason: "selected_harness_manifest_invalid",
       manifestValidation,
-      pendingLive: null
+      pendingLive: null,
     });
   }
   const matrix = getPiAdapterCapabilityMatrix();
@@ -37,21 +45,24 @@ export function runSelectedHarnessPath() {
     manifestProducedByLane: manifest.producedByLane,
     familyCount: families.length,
     manifestSelectable: selectable,
-    deterministicPath: 'manifest-read-and-validated'
+    deterministicPath: "manifest-read-and-validated",
   });
   const pendingLive = Object.freeze({
-    seam: 'I-14B selected-harness live-skill-execution',
-    status: 'pending-live/BLOCKED',
-    classification: 'pending-live',
+    seam: "I-14B selected-harness live-skill-execution",
+    status: "pending-live/BLOCKED",
+    classification: "pending-live",
     prerequisite: LIVE_PI_PREREQUISITE,
-    blocks: ['I-23/FINAL-BUGHUNT live build/ship proof', 'any claim that selected-pi build-time skill execution is truth-green'],
-    doesNotBlock: ['I-21 deterministic build-skill PASS', 'I-22 deterministic ship work']
+    blocks: [
+      "I-23/FINAL-BUGHUNT live build/ship proof",
+      "any claim that selected-pi build-time skill execution is truth-green",
+    ],
+    doesNotBlock: ["I-21 deterministic build-skill PASS", "I-22 deterministic ship work"],
   });
   return Object.freeze({
     ok: true,
     summary,
     pendingLive,
-    manifest
+    manifest,
   });
 }
 

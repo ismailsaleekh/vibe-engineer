@@ -1,25 +1,25 @@
 # Deployment
 
 This document describes how `vibe-engineer` is deployed. It is intentionally
-**provider-agnostic** and **domain-neutral**: it describes the deployment *model*
-and *controls*, not any specific cloud's resources.
+**provider-agnostic** and **domain-neutral**: it describes the deployment _model_
+and _controls_, not any specific cloud's resources.
 
 Authoritative decision source: [`docs/decisions/DL-18B-pulumi-deployment-defaults.md`](../decisions/DL-18B-pulumi-deployment-defaults.md) (LOCKED).
 
 ## At a glance
 
-| Aspect | Default (v1) |
-| --- | --- |
-| IaC engine | **Pulumi TypeScript** |
-| State backend | **Pulumi Cloud** |
-| Cloud / provider / region | **None** (provider-agnostic until a project chooses one) |
-| Environments | **`dev`** and **`prod`** |
-| Per-PR preview environments | **None** by default |
-| PR infrastructure check | **preview / diff only, non-mutating** |
-| Deploy trigger | **manual only** (`workflow_dispatch`) |
-| Deploy protection | **protected GitHub Environment approval** (`dev`/`prod`) |
-| Auto-deploy | **none** on PR / push / merge / tag / schedule |
-| `pulumi destroy` | **absent by default** (break-glass is a separate, future, protected flow) |
+| Aspect                      | Default (v1)                                                              |
+| --------------------------- | ------------------------------------------------------------------------- |
+| IaC engine                  | **Pulumi TypeScript**                                                     |
+| State backend               | **Pulumi Cloud**                                                          |
+| Cloud / provider / region   | **None** (provider-agnostic until a project chooses one)                  |
+| Environments                | **`dev`** and **`prod`**                                                  |
+| Per-PR preview environments | **None** by default                                                       |
+| PR infrastructure check     | **preview / diff only, non-mutating**                                     |
+| Deploy trigger              | **manual only** (`workflow_dispatch`)                                     |
+| Deploy protection           | **protected GitHub Environment approval** (`dev`/`prod`)                  |
+| Auto-deploy                 | **none** on PR / push / merge / tag / schedule                            |
+| `pulumi destroy`            | **absent by default** (break-glass is a separate, future, protected flow) |
 
 ## Layout
 
