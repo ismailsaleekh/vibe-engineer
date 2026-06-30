@@ -131,6 +131,9 @@ function assertNoTemplateScopeLeaked(targetRoot, projectSlug) {
   const mobileApp = readJsonFile(resolve(targetRoot, "apps/mobile/app.json"));
   assert.equal(mobileApp.expo.slug, projectSlug);
   assert.equal(mobileApp.expo.scheme, projectSlug);
+  const runnerCatalog = readJsonFile(resolve(targetRoot, ".vibe/registry/runner-catalog.json"));
+  assert.equal(Array.isArray(runnerCatalog), true);
+  assert.equal(runnerCatalog.some((entry) => entry.command === process.execPath), true, "runner catalog must pin the current Node executable for safe command runners");
 }
 function assertStarterLayout(targetRoot, projectSlug, envelope) {
   const starterSubstitutionPaths = starterSubstitutionPathSet(envelope);
@@ -151,9 +154,7 @@ function assertStarterLayout(targetRoot, projectSlug, envelope) {
   assert.deepEqual(missing, []);
   assert.deepEqual(hashMismatches, []);
   const config = readJsonFile(resolve(targetRoot, "vibe-engineer.config.json"));
-  assert.equal(config.starter.scope, `@${projectSlug}`);
-  assert.deepEqual(config.starter.appNames, ["api", "web", "mobile"]);
-  assert.deepEqual(config.starter.packageNames, ["domain", "contracts", "api-client", "config", "testing", "ui"]);
+  assert.equal(Object.prototype.hasOwnProperty.call(config, "starter"), false, "vibe-engineer.config.json must remain schema-valid and not carry starter-only metadata");
   assert.equal(config.agenticHarness, "pi");
   assert.equal(config.maxParallelAgents, 8);
   assert.equal(config.maxValidationFixIterations, 3);
@@ -177,7 +178,7 @@ function assertDefinitionThreeDependencies(targetRoot) {
       for (const [dep, range] of Object.entries(deps)) {
         if (dep.startsWith("@vibe-engineer/")) harnessScopedHits.push(`${relFrom(targetRoot, file)}:${section}:${dep}`);
         if (dep === "vibe-engineer" && section !== "devDependencies") badVibeEngineerPlacements.push(`${relFrom(targetRoot, file)}:${section}:${dep}`);
-        if (dep === "vibe-engineer" && (typeof range !== "string" || range.startsWith("workspace:") || range.startsWith("file:") || range.startsWith("link:") || range.startsWith("/"))) {
+        if (dep === "vibe-engineer" && (typeof range !== "string" || range.startsWith("workspace:") || range.startsWith("link:") || range.startsWith("/"))) {
           badVibeEngineerRanges.push(`${relFrom(targetRoot, file)}:${section}:${dep}:${String(range)}`);
         }
       }
@@ -186,6 +187,14 @@ function assertDefinitionThreeDependencies(targetRoot) {
   const rootPkg = readJsonFile(resolve(targetRoot, "package.json"));
   const rootDevDeps = rootPkg.devDependencies && typeof rootPkg.devDependencies === "object" ? rootPkg.devDependencies : {};
   assert.equal(typeof rootDevDeps["vibe-engineer"], "string", "generated starter root must include project-local vibe-engineer as a devDependency");
+  if (rootDevDeps["vibe-engineer"].startsWith("file:")) {
+    const overrides = rootPkg.pnpm && typeof rootPkg.pnpm === "object" ? rootPkg.pnpm.overrides : null;
+    assert.equal(overrides && typeof overrides === "object", true, "local-source generated projects must pin local @vibe-engineer/* workspace dependencies through pnpm.overrides");
+    for (const packageName of ["@vibe-engineer/config", "@vibe-engineer/security", "@vibe-engineer/verification"]) {
+      assert.equal(typeof overrides[packageName], "string", `missing local override for ${packageName}`);
+      assert.equal(overrides[packageName].startsWith("file:"), true, `override for ${packageName} must be local file:`);
+    }
+  }
   assert.deepEqual(harnessScopedHits, []);
   assert.deepEqual(badVibeEngineerPlacements, []);
   assert.deepEqual(badVibeEngineerRanges, []);

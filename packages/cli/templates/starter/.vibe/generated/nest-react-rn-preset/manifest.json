@@ -289,10 +289,10 @@
     },
     {
       "outputPath": "vibe-engineer.config.json",
-      "kind": "harness-config-placeholder",
+      "kind": "harness-config",
       "ownership": "generated-owned",
       "requiredStandardIds": ["real-boundary-witnesses"],
-      "consumerNotes": "Starter harness-config placeholder: agenticHarness=pi + locked DL-16 layout (DL-06)."
+      "consumerNotes": "Starter harness config: schema-valid v1 config with pi harness selection and explicit verification defaults; starter layout metadata lives in package.json/.vibe generated manifest, not config."
     },
     {
       "outputPath": ".vibe/context/manifest.json",
@@ -321,6 +321,20 @@
       "ownership": "generated-owned",
       "requiredStandardIds": ["report-first-evidence", "dirty-tree-ownership"],
       "consumerNotes": "Generated preset manifest tying starter files to standards and consumed preset identity."
+    },
+    {
+      "outputPath": ".vibe/registry/runner-catalog.json",
+      "kind": "verification-runner-catalog",
+      "ownership": "generated-owned",
+      "requiredStandardIds": ["real-boundary-witnesses", "report-first-evidence"],
+      "consumerNotes": "Default project-local verification runner catalog for common starter layers: typecheck, lint_format, unit, and build_package."
+    },
+    {
+      "outputPath": ".tooling/scripts/starter-verify-runner.mjs",
+      "kind": "verification-runner-script",
+      "ownership": "generated-owned",
+      "requiredStandardIds": ["real-boundary-witnesses", "dependency-hygiene"],
+      "consumerNotes": "Node runner used by the default runner catalog to produce bounded local evidence for starter quality tasks."
     }
   ],
   "derivedDefaults": {
@@ -483,7 +497,7 @@
         },
         "test:unit": {
           "dependsOn": ["^test:unit"],
-          "outputs": ["coverage/**"]
+          "outputs": []
         },
         "build": {
           "dependsOn": ["^build", "typecheck"],
@@ -501,7 +515,9 @@
       "format:check": "prettier --check .",
       "test:unit": "node --test",
       "build": "tsc -p tsconfig.json",
-      "quality:quick": "pnpm run typecheck && pnpm run lint && pnpm run format:check && pnpm run test:unit && pnpm run build"
+      "quality:quick": "pnpm run typecheck && pnpm run lint && pnpm run format:check && pnpm run test:unit && pnpm run build",
+      "rootQualityQuickCommand": "pnpm run lint && pnpm run format:check && turbo run typecheck test:unit build",
+      "rootLintCommand": "eslint ."
     },
     "testAndTypecheckDefaults": {
       "typecheckCommand": "tsc --noEmit -p packages/example/tsconfig.json",

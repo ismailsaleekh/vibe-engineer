@@ -673,6 +673,37 @@ async function assertDependencyAudit(starterRoot) {
   };
 }
 
+async function injectReleaseLocalTarballOverrides(starterRoot, packSummary) {
+  const rootPackagePath = path.join(starterRoot, "package.json");
+  const manifest = await readJson(rootPackagePath);
+  const pnpm =
+    manifest.pnpm && typeof manifest.pnpm === "object" && !Array.isArray(manifest.pnpm)
+      ? manifest.pnpm
+      : {};
+  const overrides =
+    pnpm.overrides && typeof pnpm.overrides === "object" && !Array.isArray(pnpm.overrides)
+      ? pnpm.overrides
+      : {};
+  const added = [];
+  for (const pkg of packSummary.packages ?? []) {
+    if (typeof pkg.name !== "string" || typeof pkg.tarball !== "string") continue;
+    const tarballPath = path.join(packSummary.tarballDir, pkg.tarball);
+    const relativeTarballPath = slash(path.relative(starterRoot, tarballPath));
+    overrides[pkg.name] = `file:${relativeTarballPath}`;
+    added.push({ name: pkg.name, tarballPath, spec: overrides[pkg.name] });
+  }
+  pnpm.overrides = overrides;
+  manifest.pnpm = pnpm;
+  await writeFile(rootPackagePath, `${JSON.stringify(manifest, null, 2)}\n`, "utf8");
+  return {
+    packageJson: slash(path.relative(starterRoot, rootPackagePath)),
+    reason:
+      "release-local prepublish install proof: resolve the just-packed 0.1.x tarballs before they exist on the public npm registry",
+    overrideCount: added.length,
+    overrides: added,
+  };
+}
+
 function globLikeMatches(rel, patterns) {
   return patterns.some((pattern) => {
     if (pattern.endsWith("/**")) return rel.startsWith(pattern.slice(0, -3));
@@ -1541,6 +1572,15 @@ async function main() {
     await mkdir(starterEnv.COREPACK_HOME, { recursive: true });
     await mkdir(starterEnv.PNPM_HOME, { recursive: true });
     await mkdir(starterEnv.HOME, { recursive: true });
+    summary.releaseLocalTarballOverrides = await injectReleaseLocalTarballOverrides(
+      summary.generatedStarterRoot,
+      packSummary,
+    );
+    await writeJson(
+      path.join(evidenceDir, "release-local-tarball-overrides.json"),
+      summary.releaseLocalTarballOverrides,
+    );
+
     const hasLock = await exists(path.join(summary.generatedStarterRoot, "pnpm-lock.yaml"));
     const installArgs = [
       "install",

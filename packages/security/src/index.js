@@ -654,10 +654,13 @@ export function evaluateCommandSafety(commandInput, policy = DEFAULT_SECURITY_PO
   }
   const targetPaths = Array.isArray(commandInput.targetPaths) && commandInput.targetPaths.every((entry) => typeof entry === 'string') ? commandInput.targetPaths : [];
   const declaredWritePaths = Array.isArray(commandInput.declaredWritePaths) && commandInput.declaredWritePaths.every((entry) => typeof entry === 'string') ? commandInput.declaredWritePaths : [];
-  for (const targetPath of [...targetPaths, ...declaredWritePaths, ...(typeof commandInput.workingDirectory === 'string' ? [commandInput.workingDirectory] : [])]) {
+  for (const targetPath of [...targetPaths, ...declaredWritePaths]) {
     if (isUnsafePathTarget(targetPath, policy)) {
       findings.push(createSecurityFinding({ category: SecurityCategory.PathSafety, classification: SecurityClassification.UnsafeCommandTarget, severity: SecuritySeverity.Critical, blocking: true, message: 'Command target path escapes or targets a protected path.', location: targetPath, details: { targetPath } }));
     }
+  }
+  if (typeof commandInput.workingDirectory === 'string' && isUnsafeWorkingDirectory(commandInput.workingDirectory, policy)) {
+    findings.push(createSecurityFinding({ category: SecurityCategory.PathSafety, classification: SecurityClassification.UnsafeCommandTarget, severity: SecuritySeverity.Critical, blocking: true, message: 'Command working directory escapes or targets a protected path.', location: commandInput.workingDirectory, details: { targetPath: commandInput.workingDirectory } }));
   }
   return createSecurityGateResult({ subject: 'command', findings });
 }
@@ -690,15 +693,37 @@ function isUnsafePathTarget(targetPath, policy) {
   const canonical = canonicalSegments.join('/');
   const policyPrefixes = Array.isArray(policy.protectedPathPrefixes) ? policy.protectedPathPrefixes.map(String) : [];
   const protectedPrefixes = [...new Set([...MANDATORY_PROTECTED_PATH_PREFIXES, ...policyPrefixes])];
-  return protectedPrefixes.some((prefix) => {
-    const normalizedPrefix = prefix.replaceAll('\\', '/').replace(/\/$/, '');
-    const prefixSegments = normalizedPrefix.split('/').filter((segment) => segment !== '.');
-    const canonicalPrefix = prefixSegments.join('/');
-    if (canonicalPrefix === '/') return canonical === '/';
-    if (canonicalPrefix === '..') return canonical === '..' || canonical.startsWith('../') || canonicalSegments.includes('..');
-    if (canonicalPrefix === '~') return canonical === '~' || canonical.startsWith('~');
-    return canonical === canonicalPrefix || canonical.startsWith(`${canonicalPrefix}/`);
-  });
+  return protectedPrefixes.some((prefix) => protectedPrefixMatchesPath(prefix, canonical, canonicalSegments));
+}
+
+/** @param {string} workingDirectory @param {Record<string, unknown>} policy */
+function isUnsafeWorkingDirectory(workingDirectory, policy) {
+  const trimmed = workingDirectory.trim();
+  let normalized = trimmed.replaceAll('\\', '/').replace(/\/+$/u, '');
+  while (normalized.startsWith('./')) normalized = normalized.slice(2);
+  if (normalized === '.') return false;
+  if (normalized === '' || normalized === '/' || normalized === '~' || normalized === '..') return true;
+  if (/^[A-Za-z]:/.test(normalized) || normalized.startsWith('//')) return true;
+  if (normalized.startsWith('/') || normalized.startsWith('~')) return true;
+  const rawSegments = normalized.split('/');
+  if (rawSegments.some((segment) => segment === '' || segment === '..')) return true;
+  const canonicalSegments = rawSegments.filter((segment) => segment !== '.');
+  if (canonicalSegments.length === 0) return false;
+  const canonical = canonicalSegments.join('/');
+  const policyPrefixes = Array.isArray(policy.protectedPathPrefixes) ? policy.protectedPathPrefixes.map(String) : [];
+  const protectedPrefixes = [...new Set([...MANDATORY_PROTECTED_PATH_PREFIXES, ...policyPrefixes])];
+  return protectedPrefixes.some((prefix) => protectedPrefixMatchesPath(prefix, canonical, canonicalSegments));
+}
+
+/** @param {string} prefix @param {string} canonical @param {string[]} canonicalSegments */
+function protectedPrefixMatchesPath(prefix, canonical, canonicalSegments) {
+  const normalizedPrefix = prefix.replaceAll('\\', '/').replace(/\/$/, '');
+  const prefixSegments = normalizedPrefix.split('/').filter((segment) => segment !== '.');
+  const canonicalPrefix = prefixSegments.join('/');
+  if (canonicalPrefix === '/') return canonical === '/';
+  if (canonicalPrefix === '..') return canonical === '..' || canonical.startsWith('../') || canonicalSegments.includes('..');
+  if (canonicalPrefix === '~') return canonical === '~' || canonical.startsWith('~');
+  return canonical === canonicalPrefix || canonical.startsWith(`${canonicalPrefix}/`);
 }
 
 /** @param {{env?: unknown, config?: unknown}} input @param {Record<string, unknown>} policy */

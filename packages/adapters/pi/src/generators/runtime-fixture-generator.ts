@@ -102,6 +102,57 @@ const skillProtocol = (skillId: SkillId): PiRuntimeSkillProtocol => {
   }
 };
 
+const requiredSkillBehavior = (skillId: SkillId): readonly string[] => {
+  switch (skillId) {
+    case "brainstorm":
+      return [
+        "Capture the raw request at `.vibe/work/<work-id>/raw-intent.md` before normalizing it.",
+        "Write exactly one Work Brief JSON artifact at `.vibe/work/<work-id>/work-brief.json` using `artifactKind: \"work_brief\"` and `schemaVersion: \"1.0.0\"`.",
+        "Use `status: \"ready\"` only when the brief has enough user-visible outcome, constraints, non-goals, risks, and acceptance notes for planning; otherwise use `status: \"blocked\"` and list the missing questions.",
+        "Preserve uncertainty explicitly in `risksAndUnknowns`; do not invent product facts.",
+      ];
+    case "grill-me":
+      return [
+        "Ask only clarifying questions needed to remove plan-blocking ambiguity, then capture the final input at `.vibe/work/<work-id>/raw-intent.md`.",
+        "Write exactly one Work Brief JSON artifact at `.vibe/work/<work-id>/work-brief.json` using `artifactKind: \"work_brief\"` and `schemaVersion: \"1.0.0\"`.",
+        "Include challenged assumptions in `risksAndUnknowns` and concrete acceptance notes in `acceptanceNotes`.",
+        "Do not proceed to planning when the operator has not resolved a blocking assumption.",
+      ];
+    case "task":
+      return [
+        "Capture the operator request at `.vibe/work/<work-id>/raw-intent.md` unless an existing durable raw-intent path is provided.",
+        "Write exactly one Work Brief JSON artifact at `.vibe/work/<work-id>/work-brief.json` using `artifactKind: \"work_brief\"` and `schemaVersion: \"1.0.0\"`.",
+        "Fill the canonical fields: `artifactId`, `title`, timestamps, `producer`, `ownership`, `links`, `sourceSkill`, `workType`, `background`, `problemOrOpportunity`, `desiredOutcome`, `constraints`, `userVisibleBehavior`, `nonGoals`, `risksAndUnknowns`, `acceptanceNotes`, and `sourceMetadata`.",
+        "Keep scope narrow enough for one plan/build cycle; split or block if the request is too broad.",
+      ];
+    case "plan":
+      return [
+        "Read exactly one Work Brief from `.vibe/work/<work-id>/work-brief.json`; reject raw chat or multiple competing briefs.",
+        "Write `.vibe/work/<work-id>/implementation-plan.json` using `artifactKind: \"implementation_plan\"` and `schemaVersion: \"1.0.0\"`.",
+        "Default `status` to `draft`; set `approved` only after explicit operator approval for this exact persisted plan.",
+        "Include canonical plan fields: `workBriefRef`, `objective`, `scope`, `nonScope`, `contextClosure`, `affectedAreas`, `implementationSteps`, `acceptanceCriteria`, `definitionOfDone`, `risks`, `openBlockers`, and embedded `verificationDelta`.",
+        "The embedded Verification Delta must include `requiredItems` for changed surfaces. Use layers from the canonical catalog: `safety_hooks`, `typecheck`, `lint_format`, `mechanical_gate`, `unit`, `integration`, `contract_adapter`, `e2e`, `ui_verification`, `ai_eval`, `build_package`, `context_drift`, `observability`, `advisory_review`, `final_dod`, `schema_validation`.",
+        "For the generated starter default runner catalog, `typecheck`, `lint_format`, `unit`, and `build_package` can resolve through `.vibe/registry/runner-catalog.json`; mark other layers `not_applicable` with rationale or add runner catalog entries before requiring them.",
+      ];
+    case "build":
+      return [
+        "Read exactly one approved Implementation Plan from `.vibe/work/<work-id>/implementation-plan.json`; block if `status` is not `approved`.",
+        "Implement only paths allowed by the plan ownership/scope and preserve unrelated files.",
+        "Run verification for the plan, normally: `vibe-engineer verify --project-root . --implementation-plan .vibe/work/<work-id>/implementation-plan.json --evidence-root .vibe/evidence/<work-id>/verify --run-id <work-id> --runner-catalog .vibe/registry/runner-catalog.json`.",
+        "Capture command output/evidence paths before summarizing results.",
+        "Write `.vibe/work/<work-id>/build-result.json` using `artifactKind: \"build_result\"`, `schemaVersion: \"1.0.0\"`, `implementationPlanRef`, `changedFilesSummary`, `verificationRuns` linked to Evidence Packets, `warningsAndBlockers`, `contextDocsUpdates`, and `finalStatusReason`.",
+        "Use `status: \"passed\"` only when every blocking verification item has evidence; otherwise write `failed` or `blocked` with exact reasons.",
+      ];
+    case "ship":
+      return [
+        "Read exactly one Build Result from `.vibe/work/<work-id>/build-result.json`; block unless `status` is `passed`.",
+        "Rerun or inspect final verification evidence before declaring readiness.",
+        "Write `.vibe/work/<work-id>/ship-packet.json` using `artifactKind: \"ship_packet\"`, `schemaVersion: \"1.0.0\"`, `buildResultRef`, `finalVerification`, `contextPreservation`, `commitPreparation`, `prPreparation`, `releaseOrMigrationNotes`, `followUps`, and `noPushWithoutApproval: true`.",
+        "Prepare suggested commit/PR text only; do not perform git push, release, deploy, or PR creation without explicit operator approval in the current turn.",
+      ];
+  }
+};
+
 const markdownSkill = (protocol: PiRuntimeSkillProtocol): string => `---
 name: ${protocol.skillId}
 description: ${protocol.summary} Use through /skill:${protocol.skillId} when the locked DL-03 ${protocol.skillId} protocol is needed.
@@ -113,33 +164,79 @@ runtimeExecutionClaim: ${RUNTIME_EXECUTION_CLAIM}
 
 # ${protocol.skillId}
 
-This generated pi skill is a domain-neutral adapter asset for the vibe-engineer locked skill protocol.
+This generated pi skill is a domain-neutral adapter asset for the vibe-engineer locked skill protocol. It gives concrete artifact carrier rules; it still does not claim live pi loading/execution.
+
+## Artifact paths
+
+Use one stable work id, for example \`special-change-001\`, and keep all skill outputs under:
+
+\`\`\`txt
+.vibe/work/<work-id>/
+\`\`\`
+
+The generated starter also provides verification evidence space under \`.vibe/evidence/<work-id>/\` and the default runner catalog at \`.vibe/registry/runner-catalog.json\`.
 
 ## Protocol chain
 
 - Input artifact: ${protocol.inputArtifact}.
 - Output artifact: ${protocol.outputArtifact}.
-- The skill must persist its output through the harness artifact carrier; chat history alone is not a carrier.
-- Runtime execution claim: ${RUNTIME_EXECUTION_CLAIM}; live pi loading/execution is not claimed by this fixture.
+- The skill must persist its output as a UTF-8 JSON or Markdown artifact under the paths above; chat history alone is not a carrier.
+- Runtime execution claim: ${RUNTIME_EXECUTION_CLAIM}; live pi loading/execution remains pending until a recorded real loader/executor witness exists.
 
 ## Required behavior
 
-${protocol.summary}
+${requiredSkillBehavior(protocol.skillId).map((line) => `- ${line}`).join("\n")}
+
+## Validation handoff
+
+- JSON artifacts must use the canonical artifact schemas in \`packages/artifacts/schemas/*\` from vibe-engineer.
+- If schema validation tooling is available, validate the persisted file before handing off.
+- If validation cannot run, state that explicitly in the handoff and do not claim truth-green.
 
 ## Forbidden behavior
 
 ${protocol.forbiddenArtifacts.map((artifact) => `- Do not produce or execute ${artifact} from this skill.`).join("\n")}
-- Do not embed secrets, credentials, project-specific business assumptions, destructive commands, or external mutations.
+- Do not embed secrets, credentials, project-specific assumptions not present in the input, destructive commands, or external mutations.
 - Do not claim selected pi runtime truth-green without a recorded real loader/executor witness.
 `;
+
+const promptArgumentHint = (skillId: SkillId): string => {
+  switch (skillId) {
+    case "brainstorm":
+    case "grill-me":
+    case "task":
+      return "<raw-request-or-raw-intent-path>";
+    case "plan":
+      return "<work-brief-path>";
+    case "build":
+      return "<approved-implementation-plan-path>";
+    case "ship":
+      return "<build-result-path>";
+  }
+};
 
 const promptContract = (skillId: SkillId): PiRuntimePromptContract => ({
   templateName: `vibe-${skillId}`,
   description: `Invoke the generated ${skillId} skill protocol with a persisted artifact handoff requirement.`,
-  argumentHint: "<artifact-or-request-ref>",
-  argumentContract: ["$1 must be a durable artifact path, work reference, or raw user request appropriate for the skill protocol.", "$@ may contain additional constraints; it must not contain secrets or production credentials."],
+  argumentHint: promptArgumentHint(skillId),
+  argumentContract: [],
   skillId,
 });
+
+const promptArgumentLine = (skillId: SkillId): string => {
+  switch (skillId) {
+    case "brainstorm":
+    case "grill-me":
+    case "task":
+      return "$1 may be a raw operator request or a durable raw-intent artifact path.";
+    case "plan":
+      return "$1 must be the durable work-brief artifact path; raw chat is not accepted for this skill.";
+    case "build":
+      return "$1 must be the durable approved-implementation-plan artifact path; raw chat is not accepted for this skill.";
+    case "ship":
+      return "$1 must be the durable build-result artifact path; raw chat is not accepted for this skill.";
+  }
+};
 
 const markdownPrompt = (contract: PiRuntimePromptContract): string => `---
 description: ${contract.description}
@@ -151,12 +248,14 @@ runtimeExecutionClaim: ${RUNTIME_EXECUTION_CLAIM}
 Load and follow /skill:${contract.skillId}.
 
 Argument contract:
-- ${contract.argumentContract.join("\n- ")}
+- ${promptArgumentLine(contract.skillId)}
+- ${"$@"} may contain additional constraints; it must not contain secrets or production credentials.
+- Persist outputs under \`.vibe/work/<work-id>/\` and report the exact path written.
 
 Input reference: $1
 Additional constraints: ${"$@"}
 
-Do not proceed if the required artifact carrier is missing, malformed, or outside the current owned path scope.
+Do not proceed if a required artifact carrier is missing, malformed, outside the current project, or inconsistent with the ${contract.skillId} protocol.
 `;
 
 const extensionPolicy = (): PiRuntimeExtensionPolicy => ({

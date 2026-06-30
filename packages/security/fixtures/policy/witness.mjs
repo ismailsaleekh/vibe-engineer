@@ -38,7 +38,7 @@ function assertBlocked(name, result, expected) {
 }
 
 const allowedLocal = runSecurityGate({
-  command: { command: 'node', argv: ['packages/security/fixtures/policy/witness.mjs'], classification: CommandSafetyClassification.ReadOnly, targetPaths: ['packages/security/fixtures/policy/witness.mjs'] },
+  command: { command: 'node', argv: ['packages/security/fixtures/policy/witness.mjs'], classification: CommandSafetyClassification.ReadOnly, workingDirectory: '.', targetPaths: ['packages/security/fixtures/policy/witness.mjs'] },
   env: { NODE_ENV: 'test', VIBE_ENGINEER_MODE: 'local' },
   config: { runtime: { environment: 'local', endpoint: 'http://127.0.0.1:4318' } },
   externalIntegrations: [{ id: 'model-provider-placeholder', mode: ExternalIntegrationMode.Disabled, enabled: false, requiresCredential: false }],

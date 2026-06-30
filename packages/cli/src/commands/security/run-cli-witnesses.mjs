@@ -151,7 +151,7 @@ async function main() {
   // envelope), NOT the loader's UnsupportedOperation branch. Routing predicate (mirrors
   // testing/run-witnesses.mjs live-command-create): classification != unsupported_operation AND
   // code != VE_UNSUPPORTED_OPERATION. The redaction invariant below is a safety assertion, unchanged.
-  const defaultEntry = await spawnNode(['packages/cli/src/entry/vibe-engineer.js', 'security', '--api-key', forbiddenProbe]);
+  const defaultEntry = await spawnNode(['packages/cli/src/entry/vibe-engineer.js', '--json', 'security', '--api-key', forbiddenProbe]);
   await writeJson(path.join(evidenceRoot, 'regression/default-entry-security-routed.json'), defaultEntry);
   assert.equal(defaultEntry.code, 2);
   const defaultEnvelope = JSON.parse(defaultEntry.stdout);

@@ -5,11 +5,11 @@
   "packageManager": "pnpm@10.33.0",
   "scripts": {
     "typecheck": "turbo run typecheck",
-    "lint": "turbo run lint",
+    "lint": "eslint .",
     "format:check": "prettier --check .",
     "test:unit": "turbo run test:unit",
     "build": "turbo run build",
-    "quality:quick": "turbo run quality:quick",
+    "quality:quick": "pnpm run lint && pnpm run format:check && turbo run typecheck test:unit build",
     "dev": "pnpm -r --parallel --filter @vibe-engineer-starter/api --filter @vibe-engineer-starter/web run dev",
     "dev:api": "pnpm --filter @vibe-engineer-starter/api run dev",
     "dev:web": "pnpm --filter @vibe-engineer-starter/web run dev",
@@ -51,6 +51,6 @@
     "turbo": "^2.3.3",
     "typescript": "^5.7.3",
     "typescript-eslint": "^8.21.0",
-    "vibe-engineer": "^0.1.1"
+    "vibe-engineer": "__VIBE_ENGINEER_CLI_DEPENDENCY__"
   }
 }

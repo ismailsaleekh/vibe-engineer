@@ -12,10 +12,11 @@ The single sample/demo/reference module is `golden-records`.
 Local app startup:
 
 ```bash
-pnpm run dev                # API + web
-pnpm run dev:mobile         # Expo-powered React Native app on Metro port 8081
-pnpm run dev:mobile:ios     # open on iOS simulator
-pnpm run dev:mobile:android # open on Android emulator
+pnpm run dev                 # API + web
+WEB_PORT=5199 pnpm run dev:web # web only on a custom Vite port
+pnpm run dev:mobile          # Expo-powered React Native app on Metro port 8081
+pnpm run dev:mobile:ios      # open on iOS simulator
+pnpm run dev:mobile:android  # open on Android emulator
 ```
 
 The mobile app uses the Expo-managed React Native local runtime so users do not
@@ -26,3 +27,18 @@ normal platform prerequisites.
 The generated `.github/workflows/quality.yml` quick gate mirrors the local
 starter proof path and intentionally excludes full E2E, mobile/device, visual,
 and deployment proofs from default PR/push CI.
+
+Verification runner starter path:
+
+```bash
+vibe-engineer verify \
+  --project-root . \
+  --implementation-plan .vibe/work/<work-id>/implementation-plan.json \
+  --evidence-root .vibe/evidence/<work-id>/verify \
+  --run-id <work-id> \
+  --runner-catalog .vibe/registry/runner-catalog.json
+```
+
+The generated runner catalog includes safe default entries for `typecheck`,
+`lint_format`, `unit`, and `build_package`. Add project-specific runner entries
+before requiring additional Verification Delta layers.

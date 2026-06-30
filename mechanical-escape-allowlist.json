@@ -50,7 +50,7 @@
         "textIncludes": "JSON.parse(fs.readFileSync(schemaPath, 'utf8'))"
       },
       "justification": "Loads an external JSON-Schema document from disk; the loaded schema IS the validation contract consumed by a downstream validator, not data to be re-narrowed at load time. The try/catch translates read/parse failure into SCHEMA_UNREADABLE / schema-not-found.",
-      "whyUnavoidable": "A magic-named wrapper around the load would validate a schema against itself (a tautology) \u2014 there is no consumer-side record shape to narrow to, because the document's shape is defined by it being a JSON Schema, validated later by the artifact/standards validators.",
+      "whyUnavoidable": "A magic-named wrapper around the load would validate a schema against itself (a tautology) — there is no consumer-side record shape to narrow to, because the document's shape is defined by it being a JSON Schema, validated later by the artifact/standards validators.",
       "reviewer": "triad-b-fix-glm-5.2",
       "reviewedOn": "2026-06-27"
     },
@@ -108,6 +108,17 @@
       "whyUnavoidable": "The parsed config is consumed by scalar field asserts in a witness harness; a magic-named narrow would be a tautology over the two asserted fields.",
       "reviewer": "triad-b-fix-glm-5.2",
       "reviewedOn": "2026-06-27"
+    },
+    {
+      "path": "packages/cli/src/commands/create/starter-template.ts",
+      "kind": "raw-json-parse",
+      "locator": {
+        "textIncludes": "JSON.parse(text)"
+      },
+      "justification": "parseJsonValue reads static generated-starter template JSON from the packaged starter corpus so the generator can replace sentinel strings in runner-catalog JSON before writing the project. The helper is wrapped in try/catch and translates JSON syntax failures into the typed VE_STARTER_TEMPLATE_INVALID_JSON template error.",
+      "whyUnavoidable": "The runner-catalog template is intentionally generic JSON, not a single record shape; downstream replacement walks JsonValue recursively and the template path/layout validation constrains which packaged files reach this helper. A magic-named object validator would impose the wrong shape and duplicate the template-corpus validation already performed by layout/path checks.",
+      "reviewer": "pi-verification-pass",
+      "reviewedOn": "2026-06-30"
     },
     {
       "path": "packages/cli/src/commands/schematic/index.js",
@@ -435,7 +446,7 @@
         "textIncludes": "JSON.parse(fs.readFileSync(schemaPath, 'utf8'))"
       },
       "justification": "Loads an external JSON-Schema document from disk; the loaded schema IS the validation contract consumed by a downstream validator, not data to be re-narrowed at load time. The try/catch translates read/parse failure into SCHEMA_UNREADABLE / schema-not-found.",
-      "whyUnavoidable": "A magic-named wrapper around the load would validate a schema against itself (a tautology) \u2014 there is no consumer-side record shape to narrow to, because the document's shape is defined by it being a JSON Schema, validated later by the artifact/standards validators.",
+      "whyUnavoidable": "A magic-named wrapper around the load would validate a schema against itself (a tautology) — there is no consumer-side record shape to narrow to, because the document's shape is defined by it being a JSON Schema, validated later by the artifact/standards validators.",
       "reviewer": "triad-b-fix-glm-5.2",
       "reviewedOn": "2026-06-27"
     },

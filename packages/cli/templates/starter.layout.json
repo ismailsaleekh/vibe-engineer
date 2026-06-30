@@ -3,7 +3,7 @@
   "generatedBy": "packages/cli/scripts/copy-templates.mjs",
   "sourceRoot": "examples/starter-reference/.source-template",
   "shippedRoot": "templates/starter",
-  "fileCount": 99,
+  "fileCount": 101,
   "files": [
     {
       "path": ".env.example",
@@ -17,8 +17,8 @@
     },
     {
       "path": ".prettierignore",
-      "bytes": 252,
-      "sha256": "sha256:555a418d835a41c6d05b5aeb2255c20bc39b847d22cd43c5662e02932f5801c1"
+      "bytes": 267,
+      "sha256": "sha256:ab7a2f1615c7669b5983dbc1352f5576c029f3b369fd51b8c6ab3e9e05c85df6"
     },
     {
       "path": ".tooling/ci/README.md",
@@ -27,8 +27,8 @@
     },
     {
       "path": ".tooling/dev-services/docker-compose.json",
-      "bytes": 300,
-      "sha256": "sha256:b4e45dc15785a695ffc442f221c5f136cf5e571c3ecde757dd24df3d6a826626"
+      "bytes": 558,
+      "sha256": "sha256:33d0ad97f254936fbdb67a8368627f1c0427127122d44523d33d4dd4d50d884a"
     },
     {
       "path": ".tooling/generated/README.md",
@@ -39,6 +39,11 @@
       "path": ".tooling/scripts/README.md",
       "bytes": 160,
       "sha256": "sha256:eab904945286745541c4690425783cee279f5f6c34c2de95c921ddf716de6092"
+    },
+    {
+      "path": ".tooling/scripts/starter-verify-runner.mjs",
+      "bytes": 3357,
+      "sha256": "sha256:eeeba1fd18fdbf95a318ee75afe15b04c5479dee3988fc60801a243740343bad"
     },
     {
       "path": ".vibe/context/manifest.json",
@@ -52,13 +57,18 @@
     },
     {
       "path": ".vibe/generated/nest-react-rn-preset/manifest.json",
-      "bytes": 19544,
-      "sha256": "sha256:75b2e8589386fbab6497667d88b34da0bce3dd8f3df8522bc9c37f766e7b7668"
+      "bytes": 20540,
+      "sha256": "sha256:20c1621bd8a7d382c9e4232fca9a9f0e87a5e9bf822b97f27c56b7ab482440f6"
     },
     {
       "path": ".vibe/registry/README.md",
-      "bytes": 91,
-      "sha256": "sha256:def2ba36f87d119a022c0f292a68da7076b2a9a09978d01f4037a39c31d2f51a"
+      "bytes": 543,
+      "sha256": "sha256:89b5bab4f13ef7687e6d951583f1da755d768cdb66b4431108306b4522a8e326"
+    },
+    {
+      "path": ".vibe/registry/runner-catalog.json",
+      "bytes": 3874,
+      "sha256": "sha256:9a0524ac068da1bf66578f147c8a6220a3e44be78a6fb5f22b28554c2f179777"
     },
     {
       "path": ".vibe/work/README.md",
@@ -67,8 +77,8 @@
     },
     {
       "path": "_gitignore",
-      "bytes": 404,
-      "sha256": "sha256:f38fdc845da7d9de362b9809b8427f992dee6e4aae2ba33288e14599d67db582"
+      "bytes": 430,
+      "sha256": "sha256:7843af9e84fe956ea2440d5a2597c1280df9eee2461f8e94e689bdacd6a811b5"
     },
     {
       "path": "apps/api/package.json",
@@ -87,8 +97,8 @@
     },
     {
       "path": "apps/api/prisma/seed.ts",
-      "bytes": 397,
-      "sha256": "sha256:c50ab3fcb401cd1dc3cfc9c6afe2da4340385b0fe6e58bb3466ff1c0350f32ce"
+      "bytes": 787,
+      "sha256": "sha256:0d829e83aa6da13ded093324d963a194d710793a1c5b5061ea2fc09bb39f32fb"
     },
     {
       "path": "apps/api/src/app.module.ts",
@@ -242,8 +252,8 @@
     },
     {
       "path": "apps/web/package.json",
-      "bytes": 746,
-      "sha256": "sha256:089dad5b5607c16fcb6c54e3f3e9ce4801bbfc220efe6d6e170863602b466bfe"
+      "bytes": 786,
+      "sha256": "sha256:9a7adf058a2273e33d58556c018ece402edff8f4f602d3f3ef4e2ae4cf7831da"
     },
     {
       "path": "apps/web/src/app/app.tsx",
@@ -287,18 +297,18 @@
     },
     {
       "path": "docs/reference/starter.md",
-      "bytes": 1236,
-      "sha256": "sha256:70900b701b1f5c097d88b1d60a877e18dcb248cec9a8df1027421a052f725b58"
+      "bytes": 1809,
+      "sha256": "sha256:8e0e5f6676bd4f4a9397b16ecc4318363e369996cfcf1c342cfd08510293c61d"
     },
     {
       "path": "eslint.config.mjs",
-      "bytes": 3452,
-      "sha256": "sha256:75e58a9bcc6b9308266927506daa5cdba3dfeeee6b603892a8feb54ab9d0fb16"
+      "bytes": 3803,
+      "sha256": "sha256:7d138edff7f1fb10dc22d8ba5146d6e9879b2ce810cef1db72e61a2f1e4022ee"
     },
     {
       "path": "package.json",
-      "bytes": 2003,
-      "sha256": "sha256:bb4b4f2d26d554c718266ba42b967f980e42cb49c353bbc15b440d633da776c6"
+      "bytes": 2077,
+      "sha256": "sha256:27406df51da7100f0ed214df3bf45d65e0fe73ec43e0a6e599c8d3d670ed6c14"
     },
     {
       "path": "packages/api-client/package.json",
@@ -492,13 +502,13 @@
     },
     {
       "path": "turbo.json",
-      "bytes": 655,
-      "sha256": "sha256:020da273f055540dc2fbf584265e466173cbda816620b7e7904b7fd692956dd6"
+      "bytes": 642,
+      "sha256": "sha256:bfc4ab90cf53dddf9422051dda0ad1566f0a823ba20833e4c2abd37f652a2d49"
     },
     {
       "path": "vibe-engineer.config.json",
-      "bytes": 410,
-      "sha256": "sha256:1b96db01814842bc595c3803e4514fa868634871e25f15be547a20f824abf1fa"
+      "bytes": 432,
+      "sha256": "sha256:5d361672a7640a80d3f18f6f87b8ced3b2ab2201f10dd062f3f8734a237031d9"
     }
   ]
 }

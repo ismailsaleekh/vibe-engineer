@@ -14,7 +14,7 @@
     },
     "test:unit": {
       "dependsOn": ["^test:unit"],
-      "outputs": ["coverage/**"]
+      "outputs": []
     },
     "build": {
       "dependsOn": ["^build", "typecheck"],

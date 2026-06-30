@@ -407,12 +407,12 @@ async function main() {
     const caseSpecs = [
       {
         id: "help",
-        argv: ["help"],
+        argv: ["--json", "help"],
         expect: { exit: 0, status: "success", payloadKind: "help_result", nineCommands: true },
       },
       {
         id: "version",
-        argv: ["version"],
+        argv: ["--json", "version"],
         expect: {
           exit: 0,
           status: "success",
@@ -423,6 +423,7 @@ async function main() {
       {
         id: "create-success",
         argv: [
+          "--json",
           "create",
           "--target-root",
           createTarget,
@@ -435,7 +436,7 @@ async function main() {
       },
       {
         id: "create-no-target",
-        argv: ["create"],
+        argv: ["--json", "create"],
         expect: {
           exit: 2,
           status: "blocked",
@@ -445,7 +446,7 @@ async function main() {
       },
       {
         id: "context-deferred",
-        argv: ["context"],
+        argv: ["--json", "context"],
         expect: {
           exit: 2,
           status: "blocked",
@@ -455,7 +456,7 @@ async function main() {
       },
       {
         id: "registry-deferred",
-        argv: ["registry"],
+        argv: ["--json", "registry"],
         expect: {
           exit: 2,
           status: "blocked",
@@ -465,7 +466,7 @@ async function main() {
       },
       {
         id: "build-unknown",
-        argv: ["build"],
+        argv: ["--json", "build"],
         expect: {
           exit: 2,
           status: "blocked",
@@ -475,7 +476,7 @@ async function main() {
       },
       {
         id: "ship-unknown",
-        argv: ["ship"],
+        argv: ["--json", "ship"],
         expect: {
           exit: 2,
           status: "blocked",
@@ -485,7 +486,7 @@ async function main() {
       },
       {
         id: "version-invalid-flag",
-        argv: ["version", "--bogus"],
+        argv: ["--json", "version", "--bogus"],
         expect: {
           exit: 2,
           status: "blocked",
@@ -495,7 +496,7 @@ async function main() {
       },
       {
         id: "verify-unconfigured",
-        argv: ["verify", "--project-root", tempDir],
+        argv: ["--json", "verify", "--project-root", tempDir],
         expect: {
           exit: 3,
           status: "blocked",
@@ -505,7 +506,7 @@ async function main() {
       },
       {
         id: "security-unconfigured",
-        argv: ["security", "--project-root", tempDir],
+        argv: ["--json", "security", "--project-root", tempDir],
         expect: {
           exit: 3,
           status: "blocked",

@@ -1,0 +1,150 @@
+[
+  {
+    "kind": "command",
+    "id": "starter:typecheck",
+    "requiredItemIds": ["typecheck", "starter-typecheck"],
+    "layer": "typecheck",
+    "evidenceClass": "deterministic",
+    "blocking": true,
+    "command": "__VIBE_NODE_EXEC_PATH__",
+    "args": [".tooling/scripts/starter-verify-runner.mjs", "typecheck"],
+    "cwd": ".",
+    "argPaths": [
+      {
+        "index": 0,
+        "root": "projectRoot"
+      }
+    ],
+    "publicArgs": [
+      {
+        "index": 1,
+        "value": "typecheck"
+      }
+    ],
+    "expectedArtifacts": [".vibe/evidence/vibe-runner/typecheck.json"],
+    "env": {
+      "PATH": "__VIBE_RUNNER_PATH__"
+    },
+    "safety": {
+      "classification": "local_deterministic_write",
+      "timeoutMs": 30000,
+      "maxStdoutBytes": 500000,
+      "maxStderrBytes": 500000,
+      "maxOutputBytes": 1200000,
+      "passThroughEnv": false,
+      "envAllowlist": ["PATH"],
+      "allowedWriteRoots": [".vibe/evidence"]
+    }
+  },
+  {
+    "kind": "command",
+    "id": "starter:lint-format",
+    "requiredItemIds": ["lint-format", "lint_format", "starter-lint-format"],
+    "layer": "lint_format",
+    "evidenceClass": "deterministic",
+    "blocking": true,
+    "command": "__VIBE_NODE_EXEC_PATH__",
+    "args": [".tooling/scripts/starter-verify-runner.mjs", "lint_format"],
+    "cwd": ".",
+    "argPaths": [
+      {
+        "index": 0,
+        "root": "projectRoot"
+      }
+    ],
+    "publicArgs": [
+      {
+        "index": 1,
+        "value": "lint_format"
+      }
+    ],
+    "expectedArtifacts": [".vibe/evidence/vibe-runner/lint_format.json"],
+    "env": {
+      "PATH": "__VIBE_RUNNER_PATH__"
+    },
+    "safety": {
+      "classification": "local_deterministic_write",
+      "timeoutMs": 30000,
+      "maxStdoutBytes": 500000,
+      "maxStderrBytes": 500000,
+      "maxOutputBytes": 1200000,
+      "passThroughEnv": false,
+      "envAllowlist": ["PATH"],
+      "allowedWriteRoots": [".vibe/evidence"]
+    }
+  },
+  {
+    "kind": "command",
+    "id": "starter:unit",
+    "requiredItemIds": ["unit", "starter-unit"],
+    "layer": "unit",
+    "evidenceClass": "deterministic",
+    "blocking": true,
+    "command": "__VIBE_NODE_EXEC_PATH__",
+    "args": [".tooling/scripts/starter-verify-runner.mjs", "unit"],
+    "cwd": ".",
+    "argPaths": [
+      {
+        "index": 0,
+        "root": "projectRoot"
+      }
+    ],
+    "publicArgs": [
+      {
+        "index": 1,
+        "value": "unit"
+      }
+    ],
+    "expectedArtifacts": [".vibe/evidence/vibe-runner/unit.json"],
+    "env": {
+      "PATH": "__VIBE_RUNNER_PATH__"
+    },
+    "safety": {
+      "classification": "local_deterministic_write",
+      "timeoutMs": 30000,
+      "maxStdoutBytes": 500000,
+      "maxStderrBytes": 500000,
+      "maxOutputBytes": 1200000,
+      "passThroughEnv": false,
+      "envAllowlist": ["PATH"],
+      "allowedWriteRoots": [".vibe/evidence"]
+    }
+  },
+  {
+    "kind": "command",
+    "id": "starter:build-package",
+    "requiredItemIds": ["build-package", "build_package", "starter-build-package"],
+    "layer": "build_package",
+    "evidenceClass": "deterministic",
+    "blocking": true,
+    "command": "__VIBE_NODE_EXEC_PATH__",
+    "args": [".tooling/scripts/starter-verify-runner.mjs", "build_package"],
+    "cwd": ".",
+    "argPaths": [
+      {
+        "index": 0,
+        "root": "projectRoot"
+      }
+    ],
+    "publicArgs": [
+      {
+        "index": 1,
+        "value": "build_package"
+      }
+    ],
+    "expectedArtifacts": [".vibe/evidence/vibe-runner/build_package.json"],
+    "env": {
+      "PATH": "__VIBE_RUNNER_PATH__"
+    },
+    "safety": {
+      "classification": "local_deterministic_write",
+      "timeoutMs": 30000,
+      "maxStdoutBytes": 500000,
+      "maxStderrBytes": 500000,
+      "maxOutputBytes": 1200000,
+      "passThroughEnv": false,
+      "envAllowlist": ["PATH"],
+      "allowedWriteRoots": [".vibe/evidence"]
+    }
+  }
+]

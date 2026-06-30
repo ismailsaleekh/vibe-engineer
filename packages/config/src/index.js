@@ -1,5 +1,5 @@
 import { readFile } from "node:fs/promises";
-import { basename, join, resolve } from "node:path";
+import { extname, join, resolve } from "node:path";
 
 export const VIBE_CONFIG_FILE_NAME = "vibe-engineer.config.json";
 export const VIBE_CONFIG_SCHEMA_ID = "vibe-engineer.config.v1";
@@ -382,9 +382,9 @@ async function readJsonFile(configPath) {
 
 export async function loadVibeConfigFile(configPath) {
   const resolvedConfigPath = resolve(configPath);
-  if (basename(resolvedConfigPath) !== VIBE_CONFIG_FILE_NAME) {
+  if (extname(resolvedConfigPath) !== ".json") {
     return failure("invalid_config", [
-      issue("UNSUPPORTED_CONFIG_FORMAT", "invalid_config", resolvedConfigPath, "Only vibe-engineer.config.json is supported in this lane.")
+      issue("UNSUPPORTED_CONFIG_FORMAT", "invalid_config", resolvedConfigPath, "Explicit --config paths must point to a JSON config file.")
     ], { configPath: resolvedConfigPath });
   }
   let parsed;

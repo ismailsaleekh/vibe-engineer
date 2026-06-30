@@ -167,6 +167,26 @@ function formatHumanEnvelope(envelope) {
       lines.push(`${data.name ?? "vibe-engineer"} ${data.version ?? "unknown"}`);
       return `${lines.join("\n")}\n`;
     }
+    if (payloadKind === "command_help_result") {
+      lines.push(`vibe-engineer ${data.command ?? command}`);
+      if (typeof data.description === "string") lines.push(data.description);
+      if (typeof data.usage === "string") {
+        lines.push("");
+        lines.push("Usage:");
+        lines.push(`  ${data.usage}`);
+      }
+      if (Array.isArray(data.options) && data.options.length > 0) {
+        lines.push("");
+        lines.push("Options:");
+        for (const option of data.options) lines.push(`  ${option}`);
+      }
+      if (Array.isArray(data.examples) && data.examples.length > 0) {
+        lines.push("");
+        lines.push("Examples:");
+        for (const example of data.examples) lines.push(`  ${example}`);
+      }
+      return `${lines.join("\n")}\n`;
+    }
     if (payloadKind === "create_result") {
       const mode = data.mode === "import" ? "import" : "create";
       lines.push(`vibe-engineer ${mode} completed`);

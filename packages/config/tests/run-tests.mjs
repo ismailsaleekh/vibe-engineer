@@ -101,9 +101,14 @@ async function run() {
   const writerProject = join(tempRoot, "writer-project");
   await mkdir(writerProject, { recursive: true });
   await writeFile(join(writerProject, VIBE_CONFIG_FILE_NAME), `${JSON.stringify({ agenticHarness: "pi", maxParallelAgents: 1 }, null, 2)}\n`, "utf8");
+  const alternateJsonConfigPath = join(writerProject, "special-me-valid-vibe-config.json");
+  await writeFile(alternateJsonConfigPath, `${JSON.stringify({ agenticHarness: "pi", maxParallelAgents: 2 }, null, 2)}\n`, "utf8");
   const writerLoaded = assertOk(await loadVibeConfigFromProjectRoot(writerProject), "writer to filesystem to public loader");
   assert.equal(writerLoaded.config.maxParallelAgents, 1);
   assert.equal(writerLoaded.configPath, join(writerProject, VIBE_CONFIG_FILE_NAME));
+  const alternateLoaded = assertOk(await loadVibeConfigFile(alternateJsonConfigPath), "explicit arbitrary JSON config path");
+  assert.equal(alternateLoaded.config.maxParallelAgents, 2);
+  assert.equal(alternateLoaded.configPath, alternateJsonConfigPath);
 
   assertFailure(await loadVibeConfigFromProjectRoot(fixture("invalid-unsupported-harness-claude-code")), "UNSUPPORTED_HARNESS", "claude-code harness");
   assertFailure(await loadVibeConfigFromProjectRoot(fixture("invalid-unsupported-harness-codex")), "UNSUPPORTED_HARNESS", "codex harness");

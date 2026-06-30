@@ -30,6 +30,30 @@ The format follows Keep a Changelog, and this project uses Semantic Versioning (
 
 - Nothing yet.
 
+## [0.1.3] - 2026-06-30
+
+### Added
+
+- Generated starters now include a default `.vibe/registry/runner-catalog.json` and `.tooling/scripts/starter-verify-runner.mjs` so `vibe-engineer verify` can run starter typecheck, lint/format, unit, and build/package layers out of the box.
+- Generated pi skills and prompts now include concrete artifact paths, schema/kind expectations, verification handoff commands, and runner-catalog guidance.
+
+### Changed
+
+- Fresh projects generated from a local source checkout pin `vibe-engineer` and local `@vibe-engineer/*` package overrides to that checkout, keeping project-local CLI behavior aligned with the generator under test.
+- Generated starter `quality:quick` now avoids duplicated root work and missing-coverage Turbo output declarations.
+- Generated web dev honors `WEB_PORT` from the environment.
+
+### Fixed
+
+- Generated API sample route dependency injection now works in the `tsx` dev runtime without relying on emitted decorator metadata.
+- Generated `vibe-engineer.config.json` validates under the public v1 config schema.
+- Generated Docker Compose no longer emits the invalid `services.postgres.service` field.
+- Generated Prettier/git ignores cover Expo `.expo/**` output created by normal mobile dev.
+- Generated Prisma seed now performs idempotent database writes instead of exporting rows only.
+- Public subcommands now support per-command `--help` / `-h` output.
+- Explicit `--config <path>` accepts valid JSON config files regardless of basename.
+- Security gate root working directory handling permits read-only `.` while preserving protected-path write/target blocks.
+
 ## [0.1.2] - 2026-06-28
 
 ### Added
