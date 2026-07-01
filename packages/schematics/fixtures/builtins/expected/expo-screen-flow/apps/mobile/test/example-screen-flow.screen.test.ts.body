@@ -1,0 +1,9 @@
+import assert from "node:assert/strict";
+import test from "node:test";
+import { exampleScreenFlowFlow } from "../src/navigation/example-screen-flow.flow.js";
+import { ExampleScreenFlowScreen } from "../src/screens/example-screen-flow/example-screen-flow.js";
+
+test("example-screen-flow Expo screen flow exports a screen and descriptor", () => {
+  assert.equal(typeof ExampleScreenFlowScreen, "function");
+  assert.equal(exampleScreenFlowFlow.appRoot, "apps/mobile");
+});

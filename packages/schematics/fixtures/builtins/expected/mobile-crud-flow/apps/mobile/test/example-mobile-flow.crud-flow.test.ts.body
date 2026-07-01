@@ -1,0 +1,9 @@
+import assert from "node:assert/strict";
+import test from "node:test";
+import { createExampleMobileFlowEntry } from "../src/screens/example-mobile-flow/example-mobile-flow.flow.js";
+import { ExampleMobileFlowScreen } from "../src/screens/example-mobile-flow/example-mobile-flow.js";
+
+test("example-mobile-flow mobile CRUD flow exports a screen and entry factory", () => {
+  assert.equal(typeof ExampleMobileFlowScreen, "function");
+  assert.deepEqual(createExampleMobileFlowEntry("generated"), { id: "generated", label: "generated" });
+});

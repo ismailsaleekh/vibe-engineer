@@ -1,0 +1,14 @@
+import type { ReactElement } from "react";
+import { Text, View } from "react-native";
+import { exampleMobileFlowEntries } from "./example-mobile-flow.flow.js";
+
+export function ExampleMobileFlowScreen(): ReactElement {
+  return (
+    <View accessibilityLabel="Example Mobile Flow CRUD flow">
+      <Text>Example Mobile Flow</Text>
+      { exampleMobileFlowEntries.map((entry) => (
+        <Text key={entry.id}>{entry.label}</Text>
+      )) }
+    </View>
+  );
+}

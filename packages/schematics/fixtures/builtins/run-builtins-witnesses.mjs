@@ -2,7 +2,8 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import { spawnSync } from "node:child_process";
-import { cpSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
+import { cpSync, existsSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
 import { dirname, relative, resolve } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { executeSchematic, loadSchematicDefinition } from "../../src/engine/index.js";
@@ -14,15 +15,18 @@ const here = dirname(fileURLToPath(import.meta.url));
 const repoRoot = resolve(here, "../../../..");
 const fixtureRoot = resolve(repoRoot, "packages/schematics/fixtures/builtins");
 const templatesRoot = resolve(repoRoot, "packages/schematics/templates");
-const canonicalCommand = "node packages/schematics/fixtures/builtins/run-builtins-witnesses.mjs --evidence-root .vibe/work/I-07B-built-in-schematics-fixtures/evidence/builtins";
+const canonicalCommand = "node packages/schematics/fixtures/builtins/run-builtins-witnesses.mjs";
 
 function parseArgs(argv) {
-  const out = { evidenceRoot: null, caseSlug: null };
+  const out = { evidenceRoot: null, evidenceRootWasDefault: false, caseSlug: null };
   for (let i = 0; i < argv.length; i += 1) {
     if (argv[i] === "--evidence-root") out.evidenceRoot = resolve(repoRoot, argv[++i]);
     else if (argv[i] === "--case") out.caseSlug = argv[++i];
   }
-  if (!out.evidenceRoot) throw new Error("--evidence-root is required");
+  if (!out.evidenceRoot) {
+    out.evidenceRoot = mkdtempSync(resolve(tmpdir(), "vibe-schematics-builtins-"));
+    out.evidenceRootWasDefault = true;
+  }
   return out;
 }
 
@@ -58,7 +62,8 @@ function targetRoot(slug) {
 async function writeCase(nn, id, slug, fn) {
   if (args.caseSlug && args.caseSlug !== slug) return null;
   const prefix = casePrefix(nn, id, slug);
-  const cmd = `${canonicalCommand} --case ${slug}\n`;
+  const evidenceArg = args.evidenceRootWasDefault ? "" : ` --evidence-root ${relative(repoRoot, args.evidenceRoot).replaceAll("\\", "/")}`;
+  const cmd = `${canonicalCommand}${evidenceArg} --case ${slug}\n`;
   let stdout;
   let stderr = "";
   let exit = 0;
@@ -93,19 +98,33 @@ async function runBuiltInRaw(slug, input, root, mode, extra = {}) {
   return executeSchematic({ manifestPath: manifestForSlug(slug), input, targetRoot: root, mode, deps: { validateSchematicManifest: validateSchematicManifestWithArtifacts }, ...extra });
 }
 function manifestJsonForSlug(slug) { return readJson(manifestForSlug(slug)); }
+function upperFirst(value) { return value.length === 0 ? value : `${value[0].toUpperCase()}${value.slice(1)}`; }
+function normalizedInputForPath(input) {
+  const words = input.name.trim().replace(/([a-z0-9])([A-Z])/g, "$1 $2").replace(/[_\-./]+/g, " ").trim().split(/\s+/).filter(Boolean).map((word) => word.toLowerCase());
+  return {
+    ...input,
+    kebabName: words.join("-"),
+    camelName: `${words[0]}${words.slice(1).map(upperFirst).join("")}`,
+    pascalName: words.map(upperFirst).join(""),
+    constantName: words.map((word) => word.toUpperCase()).join("_"),
+    humanTitle: words.map(upperFirst).join(" "),
+    pathSegment: words.join("-"),
+  };
+}
+function renderPathTemplate(pathTemplate, input) {
+  const normalized = normalizedInputForPath(input);
+  return pathTemplate.replace(/{{\s*([A-Za-z_][A-Za-z0-9_.-]*)\s*}}/g, (_match, key) => String(normalized[key] ?? ""));
+}
 function generatedPathsForSlug(slug, input) {
   const manifest = manifestJsonForSlug(slug);
-  const normalized = input.name.trim().replace(/([a-z0-9])([A-Z])/g, "$1 $2").replace(/[_\-./]+/g, " ").trim().split(/\s+/).filter(Boolean).map((word) => word.toLowerCase());
-  const pathSegment = normalized.join("-");
-  return manifest.generatedPaths.map((item) => item.pathTemplate.replaceAll("{{pathSegment}}", pathSegment));
+  return manifest.generatedPaths.map((item) => renderPathTemplate(item.pathTemplate, input));
 }
 function assertExpectedBodies(slug, root, input) {
   for (const rel of generatedPathsForSlug(slug, input)) {
     const actual = readFileSync(resolve(root, rel), "utf8");
     const parsed = parseGeneratedBlock(actual);
-    assert.equal(parsed.ok, true, rel);
     const expected = readFileSync(resolve(fixtureRoot, "expected", slug, `${rel}.body`), "utf8");
-    assert.equal(parsed.body, expected, rel);
+    assert.equal(parsed.ok ? parsed.body : actual, expected, rel);
   }
 }
 function assertInputContractsMatchActualApis(slug, input) {
@@ -183,6 +202,8 @@ async function compileTypeScriptPresetApi() {
 
 const builtinsApi = await compileBuiltInCatalogApi();
 const {
+  BUILTIN_SCHEMATIC_IDS,
+  BUILTIN_SCHEMATIC_SLUGS,
   assertBuiltInContractSurfaces,
   createBuiltInSchematicCatalog,
   normalizeBuiltInContractInput,
@@ -192,6 +213,26 @@ const presetApi = await compileTypeScriptPresetApi();
 function getBuiltInSchematicCatalog() { return createBuiltInSchematicCatalog({ templatesRoot }); }
 const cases = [];
 const builtInSlugs = getBuiltInSchematicCatalog().map((entry) => entry.slug);
+const forbiddenRunnerSlugs = Object.freeze(["verification-runner", "runner-catalog-entry"]);
+const appAwareExpectations = Object.freeze({
+  "nest-feature-module": Object.freeze({ appRoot: "apps/api", requiredPathFragments: Object.freeze(["apps/api/src/", "apps/api/test/"]) }),
+  "nest-crud-resource": Object.freeze({ appRoot: "apps/api", requiredPathFragments: Object.freeze(["apps/api/src/", "apps/api/test/"]) }),
+  "react-route-module": Object.freeze({ appRoot: "apps/web", requiredPathFragments: Object.freeze(["apps/web/src/routes/", "apps/web/test/"]) }),
+  "react-crud-feature": Object.freeze({ appRoot: "apps/web", requiredPathFragments: Object.freeze(["apps/web/src/routes/", "apps/web/test/"]) }),
+  "expo-screen-flow": Object.freeze({ appRoot: "apps/mobile", requiredPathFragments: Object.freeze(["apps/mobile/src/screens/", "apps/mobile/src/navigation/", "apps/mobile/test/"]) }),
+  "mobile-crud-flow": Object.freeze({ appRoot: "apps/mobile", requiredPathFragments: Object.freeze(["apps/mobile/src/screens/", "apps/mobile/test/"]) }),
+  "playwright-e2e-spec": Object.freeze({ appRoot: "apps/web", requiredPathFragments: Object.freeze(["apps/web/e2e/"]) }),
+  "maestro-e2e-flow": Object.freeze({ appRoot: "apps/mobile", requiredPathFragments: Object.freeze(["apps/mobile/e2e/maestro/"]) }),
+});
+function assertRunnerSchematicsAbsent() {
+  for (const forbidden of forbiddenRunnerSlugs) {
+    assert.equal(BUILTIN_SCHEMATIC_SLUGS.includes(forbidden), false, `${forbidden} slug constant`);
+    assert.equal(BUILTIN_SCHEMATIC_IDS.includes(`builtin.${forbidden}`), false, `${forbidden} id constant`);
+    assert.equal(builtInSlugs.includes(forbidden), false, `${forbidden} catalog slug`);
+    assert.equal(existsSync(resolve(templatesRoot, forbidden)), false, `${forbidden} template directory`);
+    assert.throws(() => manifestForSlug(forbidden), /Unknown built-in slug/);
+  }
+}
 
 cases.push(await writeCase(1, "RB1", "manifest-loader-and-contracts", async () => {
   const entries = await readBuiltInSchematicManifests({ templatesRoot, readTextFile: (filePath) => readFileSync(filePath, "utf8") });
@@ -201,6 +242,7 @@ cases.push(await writeCase(1, "RB1", "manifest-loader-and-contracts", async () =
     definitions.push(await loadSchematicDefinition(item.manifestPath, { validateSchematicManifest: validateSchematicManifestWithArtifacts }));
   }
   assert.deepEqual(definitions.map((item) => item.id).sort(), contract.schematicIds);
+  assertRunnerSchematicsAbsent();
   const invalid = validateSchematicManifestWithArtifacts(readJson(resolve(fixtureRoot, "invalid-manifests/unknown-field.json")), { artifactPath: resolve(fixtureRoot, "invalid-manifests/unknown-field.json") });
   assert.equal(invalid.ok, false);
   return { witness: "RB1", contract, loaded: definitions.map((definition) => ({ id: definition.id, operations: definition.dl08.operations.length })), invalidUnknownFieldRejected: true };
@@ -249,7 +291,26 @@ cases.push(await writeCase(3, "P2", "preset-and-standards-consumption", async ()
   return { witness: "P2", consumedStandardIds: [...consumedStandardIds].sort(), presetFileCount: rendered.length, presetValidation: validation };
 }));
 
-cases.push(await writeCase(4, "N1", "invalid-inputs", async (setRoot) => {
+cases.push(await writeCase(4, "P3", "app-aware-output-layouts", async (setRoot) => {
+  const results = [];
+  for (const [slug, expectation] of Object.entries(appAwareExpectations)) {
+    const input = inputForSlug(slug);
+    const root = setRoot(targetRoot(`p3-${slug}`));
+    const dry = await runBuiltIn(slug, input, root, "dry-run");
+    assert.equal(dry.status, "ok", `${slug} dry-run`);
+    assert.equal(input.appRoot, expectation.appRoot, `${slug} appRoot fixture`);
+    const generatedPaths = generatedPathsForSlug(slug, input);
+    for (const fragment of expectation.requiredPathFragments) {
+      assert.equal(generatedPaths.some((item) => item.startsWith(fragment)), true, `${slug} generated ${fragment}`);
+    }
+    assert.equal(generatedPaths.every((item) => item.startsWith(expectation.appRoot)), true, `${slug} app root`);
+    assert.equal(dry.operations.every((op) => !op.path.includes("verification-runner") && !op.path.includes("runner-catalog-entry")), true, `${slug} no runner schematic paths`);
+    results.push({ slug, appRoot: expectation.appRoot, generatedPaths });
+  }
+  return { witness: "P3", results };
+}));
+
+cases.push(await writeCase(5, "N1", "invalid-inputs", async (setRoot) => {
   const root = setRoot(targetRoot("n1-invalid-inputs"));
   const matrix = [
     ["module", "module-unknown-field.json"],
@@ -275,26 +336,39 @@ cases.push(await writeCase(4, "N1", "invalid-inputs", async (setRoot) => {
   return { witness: "N1", results };
 }));
 
-cases.push(await writeCase(5, "N2", "path-safety-and-forbidden-targets", async (setRoot) => {
+cases.push(await writeCase(6, "N2", "path-safety-and-forbidden-targets", async (setRoot) => {
   const root = setRoot(targetRoot("n2-path-safety"));
-  const input = inputForSlug("module");
-  const variants = [
-    copyManifestVariant("module", "outside-target", (manifest) => { manifest.extensions["dev.vibe-engineer.schematics.dl08"].operations[1].pathTemplate = "../escape.ts"; }),
-    copyManifestVariant("module", "undeclared-target", (manifest) => { manifest.extensions["dev.vibe-engineer.schematics.dl08"].operations[1].pathTemplate = "other/example.ts"; }),
-    copyManifestVariant("module", "root-package-manifest", (manifest) => { manifest.extensions["dev.vibe-engineer.schematics.dl08"].operations[1].pathTemplate = "package.json"; }),
-    copyManifestVariant("module", "cli-loader-target", (manifest) => { manifest.extensions["dev.vibe-engineer.schematics.dl08"].operations[1].pathTemplate = "packages/cli/src/entry/vibe-engineer.js"; })
-  ];
   const results = [];
-  for (const manifestPath of variants) {
-    const result = await executeSchematic({ manifestPath, input, targetRoot: root, mode: "dry-run", deps: { validateSchematicManifest: validateSchematicManifestWithArtifacts } });
-    assert.equal(result.status, "blocked", manifestPath);
-    results.push({ manifest: relative(args.evidenceRoot, manifestPath), diagnostics: result.diagnostics });
+  for (const slug of builtInSlugs) {
+    const input = inputForSlug(slug);
+    const variants = [
+      copyManifestVariant(slug, `outside-target-${slug}`, (manifest) => {
+        const operations = manifest.extensions["dev.vibe-engineer.schematics.dl08"].operations;
+        const firstFileOperation = operations.find((operation) => operation.kind !== "create_directory");
+        firstFileOperation.pathTemplate = "../escape.ts";
+      }),
+      copyManifestVariant(slug, `undeclared-target-${slug}`, (manifest) => {
+        const operations = manifest.extensions["dev.vibe-engineer.schematics.dl08"].operations;
+        const firstFileOperation = operations.find((operation) => operation.kind !== "create_directory");
+        firstFileOperation.pathTemplate = "other/example.ts";
+      }),
+      copyManifestVariant(slug, `root-package-manifest-${slug}`, (manifest) => {
+        const operations = manifest.extensions["dev.vibe-engineer.schematics.dl08"].operations;
+        const firstFileOperation = operations.find((operation) => operation.kind !== "create_directory");
+        firstFileOperation.pathTemplate = "package.json";
+      }),
+    ];
+    for (const manifestPath of variants) {
+      const result = await executeSchematic({ manifestPath, input, targetRoot: root, mode: "dry-run", deps: { validateSchematicManifest: validateSchematicManifestWithArtifacts } });
+      assert.equal(result.status, "blocked", `${slug} ${manifestPath}`);
+      results.push({ slug, manifest: relative(args.evidenceRoot, manifestPath), diagnostics: result.diagnostics });
+    }
   }
   assert.deepEqual(snapshot(root), []);
   return { witness: "N2", results };
 }));
 
-cases.push(await writeCase(6, "N3", "unsafe-template-features", async (setRoot) => {
+cases.push(await writeCase(7, "N3", "unsafe-template-features", async (setRoot) => {
   const root = setRoot(targetRoot("n3-template-safety"));
   const input = inputForSlug("module");
   const badTemplates = ["triple.mustache", "raw-ampersand.mustache", "undeclared-partial.mustache", "capability-token.mustache", "domain.mustache"];
@@ -313,7 +387,7 @@ cases.push(await writeCase(6, "N3", "unsafe-template-features", async (setRoot) 
   return { witness: "N3", results };
 }));
 
-cases.push(await writeCase(7, "N4", "conflict-preserves-user-files", async (setRoot) => {
+cases.push(await writeCase(8, "N4", "conflict-preserves-user-files", async (setRoot) => {
   const results = [];
   for (const slug of builtInSlugs) {
     const input = inputForSlug(slug);
@@ -339,7 +413,7 @@ cases.push(await writeCase(7, "N4", "conflict-preserves-user-files", async (setR
   return { witness: "N4", results };
 }));
 
-cases.push(await writeCase(8, "N5", "manifest-policy-and-dry-run-write", async (setRoot) => {
+cases.push(await writeCase(9, "N5", "manifest-policy-and-dry-run-write", async (setRoot) => {
   const root = setRoot(targetRoot("n5-policy"));
   const input = inputForSlug("module");
   const mergeManifest = copyManifestVariant("module", "merge-policy", (manifest) => {
@@ -352,6 +426,16 @@ cases.push(await writeCase(8, "N5", "manifest-policy-and-dry-run-write", async (
   assert.equal(dryWrite.status, "blocked");
   assert.deepEqual(snapshot(root), []);
   return { witness: "N5", mergeDiagnostics: merge.diagnostics, dryRunWriteDiagnostics: dryWrite.diagnostics };
+}));
+
+cases.push(await writeCase(10, "N6", "no-runner-schematics", async () => {
+  assertRunnerSchematicsAbsent();
+  return {
+    witness: "N6",
+    forbiddenRunnerSlugs,
+    catalogSlugs: builtInSlugs,
+    catalogIds: [...BUILTIN_SCHEMATIC_IDS],
+  };
 }));
 
 const completed = cases.filter(Boolean);

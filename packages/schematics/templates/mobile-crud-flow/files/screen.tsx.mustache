@@ -1,0 +1,14 @@
+import type { ReactElement } from "react";
+import { Text, View } from "react-native";
+import { {{camelName}}Entries } from "./{{pathSegment}}.flow.js";
+
+export function {{pascalName}}Screen(): ReactElement {
+  return (
+    <View accessibilityLabel="{{humanTitle}} CRUD flow">
+      <Text>{{humanTitle}}</Text>
+      { {{camelName}}Entries.map((entry) => (
+        <Text key={entry.id}>{entry.label}</Text>
+      )) }
+    </View>
+  );
+}

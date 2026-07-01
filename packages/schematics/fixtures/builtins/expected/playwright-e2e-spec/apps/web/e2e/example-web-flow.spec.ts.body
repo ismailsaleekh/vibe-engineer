@@ -1,0 +1,8 @@
+import { expect, test } from "@playwright/test";
+
+test.describe("Example Web Flow", () => {
+  test("renders the generated web flow shell", async ({ page }) => {
+    await page.goto("/");
+    await expect(page.locator("body")).toBeVisible();
+  });
+});

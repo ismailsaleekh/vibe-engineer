@@ -1,0 +1,15 @@
+import type { ReactElement } from "react";
+import { exampleCrudFeatureItems } from "./example-crud-feature.feature.js";
+
+export function ExampleCrudFeatureRoute(): ReactElement {
+  return (
+    <section aria-label="Example Crud Feature CRUD feature">
+      <h1>Example Crud Feature</h1>
+      <ul>
+        { exampleCrudFeatureItems.map((item) => (
+          <li key={item.id}>{item.label}</li>
+        )) }
+      </ul>
+    </section>
+  );
+}

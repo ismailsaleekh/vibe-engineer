@@ -1,0 +1,15 @@
+import type { ReactElement } from "react";
+
+export interface ExampleRouteRouteProps {
+  readonly title?: string;
+}
+
+export function ExampleRouteRoute(props: ExampleRouteRouteProps = {}): ReactElement {
+  const title = props.title ?? "Example Route";
+  return (
+    <section aria-label="Example Route route">
+      <h1>{title}</h1>
+      <p>Generated route stub for apps/web.</p>
+    </section>
+  );
+}

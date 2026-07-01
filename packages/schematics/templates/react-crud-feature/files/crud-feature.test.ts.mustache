@@ -1,0 +1,9 @@
+import assert from "node:assert/strict";
+import test from "node:test";
+import { create{{pascalName}}Item } from "../src/routes/{{pathSegment}}/{{pathSegment}}.feature.js";
+import { {{pascalName}}Route } from "../src/routes/{{pathSegment}}/{{pathSegment}}.js";
+
+test("{{kebabName}} React CRUD feature exposes route and item factory", () => {
+  assert.equal(typeof {{pascalName}}Route, "function");
+  assert.deepEqual(create{{pascalName}}Item("generated"), { id: "generated", label: "generated" });
+});

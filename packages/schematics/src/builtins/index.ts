@@ -5,6 +5,14 @@ export const BUILTIN_SCHEMATIC_IDS = Object.freeze([
   "builtin.test-fixture",
   "builtin.context-file",
   "builtin.standard-doc",
+  "builtin.nest-feature-module",
+  "builtin.nest-crud-resource",
+  "builtin.react-route-module",
+  "builtin.react-crud-feature",
+  "builtin.expo-screen-flow",
+  "builtin.mobile-crud-flow",
+  "builtin.playwright-e2e-spec",
+  "builtin.maestro-e2e-flow",
 ] as const);
 
 export const BUILTIN_SCHEMATIC_SLUGS = Object.freeze([
@@ -14,6 +22,14 @@ export const BUILTIN_SCHEMATIC_SLUGS = Object.freeze([
   "test-fixture",
   "context-file",
   "standard-doc",
+  "nest-feature-module",
+  "nest-crud-resource",
+  "react-route-module",
+  "react-crud-feature",
+  "expo-screen-flow",
+  "mobile-crud-flow",
+  "playwright-e2e-spec",
+  "maestro-e2e-flow",
 ] as const);
 
 export const REQUIRED_TYPESCRIPT_PRESET_FILE_KINDS = Object.freeze([
@@ -104,6 +120,14 @@ const BUILTIN_SCHEMATIC_REGISTRY = Object.freeze([
   Object.freeze({ slug: "test-fixture", schematicId: "builtin.test-fixture" }),
   Object.freeze({ slug: "context-file", schematicId: "builtin.context-file" }),
   Object.freeze({ slug: "standard-doc", schematicId: "builtin.standard-doc" }),
+  Object.freeze({ slug: "nest-feature-module", schematicId: "builtin.nest-feature-module" }),
+  Object.freeze({ slug: "nest-crud-resource", schematicId: "builtin.nest-crud-resource" }),
+  Object.freeze({ slug: "react-route-module", schematicId: "builtin.react-route-module" }),
+  Object.freeze({ slug: "react-crud-feature", schematicId: "builtin.react-crud-feature" }),
+  Object.freeze({ slug: "expo-screen-flow", schematicId: "builtin.expo-screen-flow" }),
+  Object.freeze({ slug: "mobile-crud-flow", schematicId: "builtin.mobile-crud-flow" }),
+  Object.freeze({ slug: "playwright-e2e-spec", schematicId: "builtin.playwright-e2e-spec" }),
+  Object.freeze({ slug: "maestro-e2e-flow", schematicId: "builtin.maestro-e2e-flow" }),
 ] as const);
 
 const REQUIRED_INPUT_CONTRACT_FIELDS = Object.freeze([

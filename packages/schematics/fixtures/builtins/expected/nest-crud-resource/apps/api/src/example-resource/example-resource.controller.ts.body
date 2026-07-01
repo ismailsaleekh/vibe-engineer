@@ -1,0 +1,20 @@
+import { Body, Controller, Get, Inject, Post } from "@nestjs/common";
+import { ExampleResourcePayload, ExampleResourceService } from "./example-resource.service.js";
+
+@Controller("api/example-resource")
+export class ExampleResourceController {
+  // The generated dev runtime can execute Nest through tsx/esbuild, which does
+  // not emit constructor metadata. Keep DI explicit with @Inject and register
+  // the provider in ExampleResourceModule.
+  constructor(@Inject(ExampleResourceService) private readonly service: ExampleResourceService) {}
+
+  @Get()
+  public list(): readonly ExampleResourcePayload[] {
+    return this.service.list();
+  }
+
+  @Post()
+  public create(@Body() payload: ExampleResourcePayload): ExampleResourcePayload {
+    return this.service.create(payload);
+  }
+}

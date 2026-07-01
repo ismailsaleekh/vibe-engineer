@@ -1,0 +1,10 @@
+import { Module } from "@nestjs/common";
+import { ExampleResourceController } from "./example-resource.controller.js";
+import { ExampleResourceService } from "./example-resource.service.js";
+
+@Module({
+  controllers: [ExampleResourceController],
+  providers: [ExampleResourceService],
+  exports: [ExampleResourceService],
+})
+export class ExampleResourceModule {}

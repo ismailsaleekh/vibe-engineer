@@ -1,0 +1,9 @@
+import assert from "node:assert/strict";
+import test from "node:test";
+import { createExampleCrudFeatureItem } from "../src/routes/example-crud-feature/example-crud-feature.feature.js";
+import { ExampleCrudFeatureRoute } from "../src/routes/example-crud-feature/example-crud-feature.js";
+
+test("example-crud-feature React CRUD feature exposes route and item factory", () => {
+  assert.equal(typeof ExampleCrudFeatureRoute, "function");
+  assert.deepEqual(createExampleCrudFeatureItem("generated"), { id: "generated", label: "generated" });
+});

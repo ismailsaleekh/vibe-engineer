@@ -1,0 +1,10 @@
+export interface ExampleMobileFlowEntry {
+  readonly id: string;
+  readonly label: string;
+}
+
+export const exampleMobileFlowEntries: readonly ExampleMobileFlowEntry[] = Object.freeze([]);
+
+export function createExampleMobileFlowEntry(label: string): ExampleMobileFlowEntry {
+  return Object.freeze({ id: label, label });
+}

@@ -1,0 +1,18 @@
+import { Injectable } from "@nestjs/common";
+
+export interface ExampleResourcePayload {
+  readonly value?: unknown;
+}
+
+@Injectable()
+export class ExampleResourceService {
+  private readonly items: readonly ExampleResourcePayload[] = [];
+
+  public list(): readonly ExampleResourcePayload[] {
+    return this.items;
+  }
+
+  public create(payload: ExampleResourcePayload): ExampleResourcePayload {
+    return Object.freeze({ ...payload });
+  }
+}

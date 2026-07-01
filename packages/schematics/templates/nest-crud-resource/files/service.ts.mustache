@@ -1,0 +1,18 @@
+import { Injectable } from "@nestjs/common";
+
+export interface {{pascalName}}Payload {
+  readonly value?: unknown;
+}
+
+@Injectable()
+export class {{pascalName}}Service {
+  private readonly items: readonly {{pascalName}}Payload[] = [];
+
+  public list(): readonly {{pascalName}}Payload[] {
+    return this.items;
+  }
+
+  public create(payload: {{pascalName}}Payload): {{pascalName}}Payload {
+    return Object.freeze({ ...payload });
+  }
+}

@@ -1,0 +1,425 @@
+{
+  "schemaVersion": "1.0.0",
+  "artifactKind": "schematic_manifest",
+  "artifactId": "implement-app-aware-nest-feature-module-manifest",
+  "title": "Built-in Nest Feature Module Schematic",
+  "createdAt": "2026-07-01T00:00:00.000Z",
+  "updatedAt": "2026-07-01T00:00:00.000Z",
+  "producer": {
+    "kind": "schematic",
+    "id": "implement-app-aware-nest-feature-module",
+    "name": "Built-in Nest Feature Module Schematic",
+    "version": "1.0.0",
+    "runId": "implement-app-aware-schematics"
+  },
+  "status": "active",
+  "ownership": {
+    "ownerLane": "implement-app-aware-schematics",
+    "ownedWritePaths": [
+      "packages/schematics/src/builtins/**",
+      "packages/schematics/templates/**",
+      "packages/schematics/fixtures/builtins/**",
+      "packages/schematics/docs/**"
+    ],
+    "readOnlyPaths": [
+      "packages/schematics/src/engine/**",
+      "packages/schematics/src/manifest/**",
+      "packages/schematics/src/template/**",
+      "packages/standards/**",
+      "packages/presets/typescript/**",
+      "packages/cli/src/commands/schematic/**",
+      "packages/cli/templates/starter/**"
+    ],
+    "untouchablePaths": [
+      ".git/**",
+      "node_modules/**",
+      "packages/**/node_modules/**",
+      "packages/**/dist/**",
+      ".turbo/**",
+      "packages/**/.turbo/**"
+    ],
+    "concurrencyNotes": "Lane-owned app-aware built-in schematic manifest and fixtures for nest-feature-module.",
+    "handoffPolicy": "No root, package manifest, CLI loader, starter template, dist, or node_modules edits are allowed from this lane."
+  },
+  "links": [
+    {
+      "rel": "produced_by",
+      "artifactKind": "schematic_manifest",
+      "artifactId": "implement-app-aware-nest-feature-module-manifest",
+      "path": "packages/schematics/templates/nest-feature-module/manifest.json",
+      "required": true,
+      "statusAtLinkTime": "active"
+    }
+  ],
+  "extensions": {
+    "dev.vibe-engineer.schematics.dl08": {
+      "schemaVersion": "1.0.0",
+      "builtInId": "builtin.nest-feature-module",
+      "templateRoot": "files",
+      "partials": {},
+      "nameField": "name",
+      "inputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "appRoot",
+          "standardId",
+          "standardTitle",
+          "standardSummary",
+          "presetId",
+          "quickGateLabel",
+          "packageManager",
+          "typecheckCommand"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[A-Za-z][A-Za-z0-9 _.-]*$"
+          },
+          "appRoot": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^apps/api$"
+          },
+          "standardId": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^deterministic-schematics$"
+          },
+          "standardTitle": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^Deterministic schematic behavior$"
+          },
+          "standardSummary": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^Schematics use typed manifests, deterministic path planning, dry-run safety, and fail-closed conflict handling\\.$"
+          },
+          "presetId": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^vibe-engineer\\.typescript\\.strict$"
+          },
+          "quickGateLabel": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^quality:quick$"
+          },
+          "packageManager": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^pnpm@10\\.33\\.0$"
+          },
+          "typecheckCommand": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^pnpm run typecheck$"
+          }
+        }
+      },
+      "touchedPathPatterns": [
+        "apps/api/src/**",
+        "apps/api/test/**"
+      ],
+      "forbiddenPathPatterns": [
+        ".git/**",
+        "node_modules/**",
+        "packages/**/node_modules/**",
+        "packages/**/dist/**",
+        ".turbo/**",
+        "packages/**/.turbo/**",
+        "package.json",
+        "pnpm-lock.yaml",
+        "pnpm-workspace.yaml",
+        "turbo.json",
+        "tsconfig.base.json",
+        "packages/**/package.json",
+        ".github/**",
+        "scripts/**",
+        "infra/**",
+        "docs/decisions/**",
+        ".vibe/registry/**",
+        ".tooling/**"
+      ],
+      "operations": [
+        {
+          "id": "10-feature-dir",
+          "kind": "create_directory",
+          "pathTemplate": "{{appRoot}}/src/{{pathSegment}}"
+        },
+        {
+          "id": "20-feature-service",
+          "kind": "replace_generated_file",
+          "pathTemplate": "{{appRoot}}/src/{{pathSegment}}/{{pathSegment}}.service.ts",
+          "template": "service.ts.mustache",
+          "artifactType": "code",
+          "blockId": "nest-feature-service"
+        },
+        {
+          "id": "30-feature-module",
+          "kind": "replace_generated_file",
+          "pathTemplate": "{{appRoot}}/src/{{pathSegment}}/{{pathSegment}}.module.ts",
+          "template": "module.ts.mustache",
+          "artifactType": "code",
+          "blockId": "nest-feature-module"
+        },
+        {
+          "id": "40-feature-test",
+          "kind": "replace_generated_file",
+          "pathTemplate": "{{appRoot}}/test/{{pathSegment}}.module.test.ts",
+          "template": "module.test.ts.mustache",
+          "artifactType": "test",
+          "blockId": "nest-feature-module-test"
+        }
+      ],
+      "generatedArtifactTypes": [
+        "code",
+        "test"
+      ],
+      "generatedMarkerRequiredForUpdates": true,
+      "overwriteAllowedByDefault": false,
+      "semanticMergeAllowedInV1": false,
+      "projectOwned": false,
+      "coreDefault": true,
+      "requiresExplicitRegistration": true,
+      "securitySafety": {
+        "noNetwork": true,
+        "noShell": true,
+        "deterministicOnly": true
+      },
+      "standardIds": [
+        "deterministic-schematics"
+      ],
+      "typescriptPreset": {
+        "required": true,
+        "presetId": "vibe-engineer.typescript.strict",
+        "requiredFileKinds": [
+          "typescript-config",
+          "eslint-policy",
+          "prettier-policy",
+          "workspace-config",
+          "turbo-config",
+          "package-manifest"
+        ]
+      }
+    }
+  },
+  "description": "Generate a domain-neutral Nest feature module with explicit provider wiring and an app-local test stub.",
+  "tags": [
+    "domain-neutral",
+    "built-in",
+    "dl-08",
+    "nest",
+    "feature-module"
+  ],
+  "sourceRefs": [
+    {
+      "kind": "artifact",
+      "ref": "deterministic-schematics"
+    },
+    {
+      "kind": "artifact",
+      "ref": "implement-app-aware-schematics"
+    },
+    {
+      "kind": "artifact",
+      "ref": "vibe-engineer.typescript.strict"
+    }
+  ],
+  "schematicId": "builtin.nest-feature-module",
+  "schematicVersion": "1.0.0",
+  "purpose": "Generate a domain-neutral Nest feature module in the API app with fail-closed generated files.",
+  "inputs": [
+    {
+      "name": "name",
+      "schema": {
+        "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/schematic-manifest.schema.json",
+        "schemaVersion": "1.0.0",
+        "artifactKind": "schematic_manifest"
+      },
+      "required": true,
+      "defaultsPolicy": "user_supplied_only",
+      "domainNeutralityClassification": "core_generic"
+    },
+    {
+      "name": "appRoot",
+      "schema": {
+        "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/schematic-manifest.schema.json",
+        "schemaVersion": "1.0.0",
+        "artifactKind": "schematic_manifest"
+      },
+      "required": true,
+      "defaultsPolicy": "user_supplied_only",
+      "domainNeutralityClassification": "core_generic"
+    },
+    {
+      "name": "standardId",
+      "schema": {
+        "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/schematic-manifest.schema.json",
+        "schemaVersion": "1.0.0",
+        "artifactKind": "schematic_manifest"
+      },
+      "required": true,
+      "defaultsPolicy": "user_supplied_only",
+      "domainNeutralityClassification": "core_generic"
+    },
+    {
+      "name": "standardTitle",
+      "schema": {
+        "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/schematic-manifest.schema.json",
+        "schemaVersion": "1.0.0",
+        "artifactKind": "schematic_manifest"
+      },
+      "required": true,
+      "defaultsPolicy": "user_supplied_only",
+      "domainNeutralityClassification": "core_generic"
+    },
+    {
+      "name": "standardSummary",
+      "schema": {
+        "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/schematic-manifest.schema.json",
+        "schemaVersion": "1.0.0",
+        "artifactKind": "schematic_manifest"
+      },
+      "required": true,
+      "defaultsPolicy": "user_supplied_only",
+      "domainNeutralityClassification": "core_generic"
+    },
+    {
+      "name": "presetId",
+      "schema": {
+        "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/schematic-manifest.schema.json",
+        "schemaVersion": "1.0.0",
+        "artifactKind": "schematic_manifest"
+      },
+      "required": true,
+      "defaultsPolicy": "user_supplied_only",
+      "domainNeutralityClassification": "core_generic"
+    },
+    {
+      "name": "quickGateLabel",
+      "schema": {
+        "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/schematic-manifest.schema.json",
+        "schemaVersion": "1.0.0",
+        "artifactKind": "schematic_manifest"
+      },
+      "required": true,
+      "defaultsPolicy": "user_supplied_only",
+      "domainNeutralityClassification": "core_generic"
+    },
+    {
+      "name": "packageManager",
+      "schema": {
+        "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/schematic-manifest.schema.json",
+        "schemaVersion": "1.0.0",
+        "artifactKind": "schematic_manifest"
+      },
+      "required": true,
+      "defaultsPolicy": "user_supplied_only",
+      "domainNeutralityClassification": "core_generic"
+    },
+    {
+      "name": "typecheckCommand",
+      "schema": {
+        "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/schematic-manifest.schema.json",
+        "schemaVersion": "1.0.0",
+        "artifactKind": "schematic_manifest"
+      },
+      "required": true,
+      "defaultsPolicy": "user_supplied_only",
+      "domainNeutralityClassification": "core_generic"
+    }
+  ],
+  "generatedPaths": [
+    {
+      "pathTemplate": "{{appRoot}}/src/{{pathSegment}}/{{pathSegment}}.service.ts",
+      "ownership": "generated",
+      "conflictPolicy": "fail",
+      "classification": "generated"
+    },
+    {
+      "pathTemplate": "{{appRoot}}/src/{{pathSegment}}/{{pathSegment}}.module.ts",
+      "ownership": "generated",
+      "conflictPolicy": "fail",
+      "classification": "generated"
+    },
+    {
+      "pathTemplate": "{{appRoot}}/test/{{pathSegment}}.module.test.ts",
+      "ownership": "generated",
+      "conflictPolicy": "fail",
+      "classification": "generated"
+    }
+  ],
+  "idempotency": {
+    "strategy": "noop_when_same_input_templates_and_existing_generated_content",
+    "stableIdentifiers": [
+      "schematicId",
+      "schematicVersion",
+      "blockId",
+      "inputFingerprint",
+      "templateFingerprint"
+    ],
+    "rerunBehavior": "create_missing_noop_same_conflict_on_user_edits"
+  },
+  "conflictBehavior": "fail",
+  "dryRunBehavior": {
+    "reportsPlannedChanges": true,
+    "writesFiles": false
+  },
+  "requiredTests": [
+    {
+      "evidencePacketRef": {
+        "rel": "evidence_for",
+        "artifactKind": "evidence_packet",
+        "artifactId": "implement-app-aware-schematics-evidence",
+        "path": ".pi/autopilot/vibe-engineer-improvements/evidence/implement-app-aware-schematics/summary.json",
+        "required": true,
+        "statusAtLinkTime": "passed"
+      },
+      "summary": "App-aware built-in schematic witness evidence.",
+      "result": "pass",
+      "blocking": true
+    }
+  ],
+  "contextUpdates": [],
+  "domainNeutrality": {
+    "coreSurface": true,
+    "allowedGenericTerms": [
+      "app",
+      "api",
+      "web",
+      "mobile",
+      "nest",
+      "react",
+      "expo",
+      "playwright",
+      "maestro",
+      "module",
+      "resource",
+      "route",
+      "screen",
+      "flow",
+      "crud",
+      "e2e",
+      "test",
+      "stub",
+      "provider",
+      "inject",
+      "service",
+      "controller",
+      "component",
+      "descriptor",
+      "schema",
+      "typescript"
+    ],
+    "extensionBoundaries": [
+      "project_extension",
+      "sample_demo",
+      "negative_fixture"
+    ]
+  },
+  "owner": "implement-app-aware-schematics"
+}

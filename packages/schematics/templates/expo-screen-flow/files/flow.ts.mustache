@@ -1,0 +1,11 @@
+export interface {{pascalName}}FlowDescriptor {
+  readonly appRoot: "{{appRoot}}";
+  readonly screenName: "{{pascalName}}";
+  readonly pathSegment: "{{pathSegment}}";
+}
+
+export const {{camelName}}Flow: {{pascalName}}FlowDescriptor = Object.freeze({
+  appRoot: "{{appRoot}}",
+  screenName: "{{pascalName}}",
+  pathSegment: "{{pathSegment}}",
+});

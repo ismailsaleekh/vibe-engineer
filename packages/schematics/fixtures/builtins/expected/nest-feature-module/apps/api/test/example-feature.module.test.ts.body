@@ -1,0 +1,10 @@
+import assert from "node:assert/strict";
+import test from "node:test";
+import { ExampleFeatureModule } from "../src/example-feature/example-feature.module.js";
+import { EXAMPLE_FEATURE_SERVICE, ExampleFeatureService } from "../src/example-feature/example-feature.service.js";
+
+test("example-feature Nest feature module exposes explicit provider wiring", () => {
+  assert.equal(typeof ExampleFeatureModule, "function");
+  assert.equal(typeof ExampleFeatureService, "function");
+  assert.equal(typeof EXAMPLE_FEATURE_SERVICE, "symbol");
+});

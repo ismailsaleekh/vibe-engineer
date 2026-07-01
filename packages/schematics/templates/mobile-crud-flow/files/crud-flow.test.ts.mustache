@@ -1,0 +1,9 @@
+import assert from "node:assert/strict";
+import test from "node:test";
+import { create{{pascalName}}Entry } from "../src/screens/{{pathSegment}}/{{pathSegment}}.flow.js";
+import { {{pascalName}}Screen } from "../src/screens/{{pathSegment}}/{{pathSegment}}.js";
+
+test("{{kebabName}} mobile CRUD flow exports a screen and entry factory", () => {
+  assert.equal(typeof {{pascalName}}Screen, "function");
+  assert.deepEqual(create{{pascalName}}Entry("generated"), { id: "generated", label: "generated" });
+});

@@ -1,0 +1,15 @@
+import { Module } from "@nestjs/common";
+import { EXAMPLE_FEATURE_SERVICE, ExampleFeatureService } from "./example-feature.service.js";
+
+@Module({
+  providers: [
+    ExampleFeatureService,
+    { provide: EXAMPLE_FEATURE_SERVICE, useExisting: ExampleFeatureService },
+  ],
+  exports: [EXAMPLE_FEATURE_SERVICE],
+})
+export class ExampleFeatureModule {}
+
+// Nest apps in this workspace run through tsx during development. Consumers of
+// EXAMPLE_FEATURE_SERVICE must use @Inject(EXAMPLE_FEATURE_SERVICE) and this
+// explicit provider registration instead of relying on emitted metadata.

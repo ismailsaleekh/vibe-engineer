@@ -1,0 +1,15 @@
+import type { ReactElement } from "react";
+import { {{camelName}}Items } from "./{{pathSegment}}.feature.js";
+
+export function {{pascalName}}Route(): ReactElement {
+  return (
+    <section aria-label="{{humanTitle}} CRUD feature">
+      <h1>{{humanTitle}}</h1>
+      <ul>
+        { {{camelName}}Items.map((item) => (
+          <li key={item.id}>{item.label}</li>
+        )) }
+      </ul>
+    </section>
+  );
+}

@@ -1,0 +1,15 @@
+import type { ReactElement } from "react";
+
+export interface {{pascalName}}RouteProps {
+  readonly title?: string;
+}
+
+export function {{pascalName}}Route(props: {{pascalName}}RouteProps = {}): ReactElement {
+  const title = props.title ?? "{{humanTitle}}";
+  return (
+    <section aria-label="{{humanTitle}} route">
+      <h1>{title}</h1>
+      <p>Generated route stub for {{appRoot}}.</p>
+    </section>
+  );
+}

@@ -1,0 +1,10 @@
+export interface {{pascalName}}Item {
+  readonly id: string;
+  readonly label: string;
+}
+
+export const {{camelName}}Items: readonly {{pascalName}}Item[] = Object.freeze([]);
+
+export function create{{pascalName}}Item(label: string): {{pascalName}}Item {
+  return Object.freeze({ id: label, label });
+}

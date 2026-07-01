@@ -1,0 +1,10 @@
+import assert from "node:assert/strict";
+import test from "node:test";
+import { {{pascalName}}Module } from "../src/{{pathSegment}}/{{pathSegment}}.module.js";
+import { {{constantName}}_SERVICE, {{pascalName}}Service } from "../src/{{pathSegment}}/{{pathSegment}}.service.js";
+
+test("{{kebabName}} Nest feature module exposes explicit provider wiring", () => {
+  assert.equal(typeof {{pascalName}}Module, "function");
+  assert.equal(typeof {{pascalName}}Service, "function");
+  assert.equal(typeof {{constantName}}_SERVICE, "symbol");
+});

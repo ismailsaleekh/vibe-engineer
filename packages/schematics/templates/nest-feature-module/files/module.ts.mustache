@@ -1,0 +1,15 @@
+import { Module } from "@nestjs/common";
+import { {{constantName}}_SERVICE, {{pascalName}}Service } from "./{{pathSegment}}.service.js";
+
+@Module({
+  providers: [
+    {{pascalName}}Service,
+    { provide: {{constantName}}_SERVICE, useExisting: {{pascalName}}Service },
+  ],
+  exports: [{{constantName}}_SERVICE],
+})
+export class {{pascalName}}Module {}
+
+// Nest apps in this workspace run through tsx during development. Consumers of
+// {{constantName}}_SERVICE must use @Inject({{constantName}}_SERVICE) and this
+// explicit provider registration instead of relying on emitted metadata.

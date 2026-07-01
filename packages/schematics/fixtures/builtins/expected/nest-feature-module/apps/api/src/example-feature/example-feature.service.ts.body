@@ -1,0 +1,17 @@
+import { Injectable } from "@nestjs/common";
+
+export const EXAMPLE_FEATURE_SERVICE = Symbol.for("vibe-engineer.example-feature.service");
+
+export interface ExampleFeatureServicePort {
+  readonly featureId: "example-feature";
+  list(): readonly unknown[];
+}
+
+@Injectable()
+export class ExampleFeatureService implements ExampleFeatureServicePort {
+  public readonly featureId = "example-feature" as const;
+
+  public list(): readonly unknown[] {
+    return [];
+  }
+}

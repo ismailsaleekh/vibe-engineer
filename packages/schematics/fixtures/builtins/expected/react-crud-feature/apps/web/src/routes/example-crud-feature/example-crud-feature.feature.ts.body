@@ -1,0 +1,10 @@
+export interface ExampleCrudFeatureItem {
+  readonly id: string;
+  readonly label: string;
+}
+
+export const exampleCrudFeatureItems: readonly ExampleCrudFeatureItem[] = Object.freeze([]);
+
+export function createExampleCrudFeatureItem(label: string): ExampleCrudFeatureItem {
+  return Object.freeze({ id: label, label });
+}

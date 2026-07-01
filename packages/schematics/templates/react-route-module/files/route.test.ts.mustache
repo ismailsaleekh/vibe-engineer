@@ -1,0 +1,7 @@
+import assert from "node:assert/strict";
+import test from "node:test";
+import { {{pascalName}}Route } from "../src/routes/{{pathSegment}}/{{pathSegment}}.js";
+
+test("{{kebabName}} React route exports a component", () => {
+  assert.equal(typeof {{pascalName}}Route, "function");
+});

@@ -1,0 +1,10 @@
+import type { ReactElement } from "react";
+import { Text, View } from "react-native";
+
+export function ExampleScreenFlowScreen(): ReactElement {
+  return (
+    <View accessibilityLabel="Example Screen Flow screen">
+      <Text>Example Screen Flow</Text>
+    </View>
+  );
+}

@@ -1,0 +1,12 @@
+import assert from "node:assert/strict";
+import test from "node:test";
+import { {{pascalName}}Controller } from "../src/{{pathSegment}}/{{pathSegment}}.controller.js";
+import { {{pascalName}}Module } from "../src/{{pathSegment}}/{{pathSegment}}.module.js";
+import { {{pascalName}}Service } from "../src/{{pathSegment}}/{{pathSegment}}.service.js";
+
+test("{{kebabName}} Nest CRUD resource keeps explicit service wiring", () => {
+  const service = new {{pascalName}}Service();
+  const controller = new {{pascalName}}Controller(service);
+  assert.equal(typeof {{pascalName}}Module, "function");
+  assert.deepEqual(controller.list(), []);
+});

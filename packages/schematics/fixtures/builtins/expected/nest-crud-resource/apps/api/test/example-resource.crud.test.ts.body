@@ -1,0 +1,12 @@
+import assert from "node:assert/strict";
+import test from "node:test";
+import { ExampleResourceController } from "../src/example-resource/example-resource.controller.js";
+import { ExampleResourceModule } from "../src/example-resource/example-resource.module.js";
+import { ExampleResourceService } from "../src/example-resource/example-resource.service.js";
+
+test("example-resource Nest CRUD resource keeps explicit service wiring", () => {
+  const service = new ExampleResourceService();
+  const controller = new ExampleResourceController(service);
+  assert.equal(typeof ExampleResourceModule, "function");
+  assert.deepEqual(controller.list(), []);
+});

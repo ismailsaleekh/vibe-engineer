@@ -1,0 +1,7 @@
+import assert from "node:assert/strict";
+import test from "node:test";
+import { ExampleRouteRoute } from "../src/routes/example-route/example-route.js";
+
+test("example-route React route exports a component", () => {
+  assert.equal(typeof ExampleRouteRoute, "function");
+});

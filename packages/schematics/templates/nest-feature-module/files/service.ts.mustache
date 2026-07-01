@@ -1,0 +1,17 @@
+import { Injectable } from "@nestjs/common";
+
+export const {{constantName}}_SERVICE = Symbol.for("vibe-engineer.{{pathSegment}}.service");
+
+export interface {{pascalName}}ServicePort {
+  readonly featureId: "{{kebabName}}";
+  list(): readonly unknown[];
+}
+
+@Injectable()
+export class {{pascalName}}Service implements {{pascalName}}ServicePort {
+  public readonly featureId = "{{kebabName}}" as const;
+
+  public list(): readonly unknown[] {
+    return [];
+  }
+}

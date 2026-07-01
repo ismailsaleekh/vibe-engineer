@@ -111,7 +111,7 @@
           "typecheckCommand": {
             "type": "string",
             "minLength": 1,
-            "pattern": "^tsc --noEmit -p packages/example/tsconfig\\.json$"
+            "pattern": "^pnpm run typecheck$"
           }
         }
       },
