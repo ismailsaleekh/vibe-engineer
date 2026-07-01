@@ -4,8 +4,10 @@
 // I-14A manifest/matrix, the REAL context package, and REAL on-disk generated artifacts.
 // Located under packages/cli/src/commands/create/ so bare workspace imports resolve from the cli context.
 import assert from "node:assert/strict";
+import { spawnSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import {
+  chmodSync,
   existsSync,
   mkdirSync,
   readdirSync,
@@ -14,7 +16,7 @@ import {
   statSync,
   writeFileSync,
 } from "node:fs";
-import { dirname, resolve, sep } from "node:path";
+import { delimiter, dirname, resolve, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { createCommandLoader } from "../../command-loader/loader.js";
@@ -24,10 +26,13 @@ import { importCommand } from "../import/index.ts";
 
 // Real-boundary resolvability (W-RESOLVE-CLI-ADAPTER + W-RESOLVE-CLI-CONTEXT).
 import {
+  getHarnessAdapter,
+  getHarnessAdapterRegistry,
   getPiAdapterCapabilityMatrix,
   isAdapterManifestSelectable,
   PI_ADAPTER_ID,
   PI_ADAPTER_CAPABILITY_SCHEMA_VERSION,
+  SUPPORTED_HARNESS_ADAPTER_IDS,
 } from "@vibe-engineer/adapter-pi/capabilities";
 import {
   CREATE_PI_ASSET_FAMILIES,
@@ -50,12 +55,14 @@ import { createDefaultVibeConfig } from "@vibe-engineer/config";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const repoRoot = resolve(here, "../../../../..");
+const portableNodeRuntimeCommand = "vibe-engineer:node";
 const evidenceRootDefault = resolve(
   repoRoot,
   ".vibe/work/I-15A-create-import-cli-ux-selected-harness/evidence/cli",
 );
 const canonicalCommand =
   "node packages/cli/src/commands/create/run-cli-witnesses.mjs --evidence-root .vibe/work/I-15A-create-import-cli-ux-selected-harness/evidence/cli";
+const createGitBootstrapMessage = "chore: create vibe-engineer starter";
 
 function parseArgs(argv) {
   const out = { evidenceRoot: null, case: null, refreshFixtures: false };
@@ -188,6 +195,7 @@ function walkFiles(root) {
   const out = [];
   if (!existsSync(root)) return out;
   for (const ent of readdirSync(root, { withFileTypes: true })) {
+    if (ent.isDirectory() && (ent.name === "node_modules" || ent.name === ".git")) continue;
     const p = resolve(root, ent.name);
     if (ent.isDirectory()) out.push(...walkFiles(p));
     else if (ent.isFile()) out.push(p);
@@ -196,6 +204,14 @@ function walkFiles(root) {
 }
 const starterLayoutPath = resolve(repoRoot, "packages/cli/templates/starter.layout.json");
 const starterTemplateRoot = resolve(repoRoot, "packages/cli/templates/starter");
+const repoPrettierBinary = resolve(repoRoot, "node_modules/.bin/prettier");
+const architectureReviewPrettierFiles = [
+  ".tooling/scripts/architecture-agent-review.mjs",
+  ".vibe/verification/architecture-agent-review/prompt.md",
+  ".vibe/verification/architecture-agent-review/schema.json",
+  "docs/reference/starter.md",
+  ".vibe/harness/selected-harness.json",
+];
 const starterLayout = readJsonFile(starterLayoutPath);
 const starterOverlayPaths = new Set(["vibe-engineer.config.json", ".vibe/context/manifest.json"]);
 function starterSubstitutionPathSet(envelope) {
@@ -208,6 +224,110 @@ function relFrom(root, p) {
     .slice(root.length + 1)
     .split(sep)
     .join("/");
+}
+function runGeneratedPrettierCheck(targetRoot, prettierArgs, label) {
+  const result = spawnSync(repoPrettierBinary, ["--check", ...prettierArgs], {
+    cwd: targetRoot,
+    encoding: "utf8",
+    env: process.env,
+  });
+  assert.equal(result.error, undefined, `${label} prettier spawn failed`);
+  assert.equal(
+    result.status,
+    0,
+    `${label} prettier check failed\nstdout:\n${result.stdout}\nstderr:\n${result.stderr}`,
+  );
+  return {
+    label,
+    args: ["--check", ...prettierArgs],
+    stdoutSha256: sha256Buffer(Buffer.from(result.stdout, "utf8")),
+    stderrSha256: sha256Buffer(Buffer.from(result.stderr, "utf8")),
+  };
+}
+
+function gitOutput(targetRoot, gitArgs) {
+  const result = spawnSync("git", gitArgs, {
+    cwd: targetRoot,
+    encoding: "utf8",
+    env: { ...process.env, GIT_TERMINAL_PROMPT: "0" },
+  });
+  assert.equal(result.error, undefined, `git ${gitArgs.join(" ")} spawn failed`);
+  assert.equal(result.status, 0, `git ${gitArgs.join(" ")} failed with stderr: ${result.stderr}`);
+  return result.stdout.trimEnd();
+}
+function assertPnpmInstallKeepsLockfileClean(targetRoot) {
+  const lockfilePath = resolve(targetRoot, "pnpm-lock.yaml");
+  const beforeLockfileSha256 = sha256File(lockfilePath);
+  const install = spawnSync("pnpm", ["install"], {
+    cwd: targetRoot,
+    encoding: "utf8",
+    env: process.env,
+    timeout: 5 * 60 * 1000,
+  });
+  assert.equal(install.error, undefined, `pnpm install spawn failed: ${install.error?.message ?? ""}`);
+  assert.equal(
+    install.status,
+    0,
+    `pnpm install failed\nstdout:\n${install.stdout}\nstderr:\n${install.stderr}`,
+  );
+  const afterLockfileSha256 = sha256File(lockfilePath);
+  const statusShort = gitOutput(targetRoot, ["status", "--short"]);
+  assert.equal(afterLockfileSha256, beforeLockfileSha256, "pnpm install must not rewrite pnpm-lock.yaml");
+  assert.equal(statusShort, "", "pnpm install must leave the generated repository git-clean");
+  return {
+    command: ["pnpm", "install"],
+    lockfileSha256: afterLockfileSha256,
+    statusShort,
+    stdoutSha256: sha256Buffer(Buffer.from(install.stdout, "utf8")),
+    stderrSha256: sha256Buffer(Buffer.from(install.stderr, "utf8")),
+  };
+}
+function assertCreateGitBootstrap(targetRoot, envelope, options = {}) {
+  const data = loadResultData(envelope);
+  assert.equal(data.mode, "create");
+  assert.equal(typeof data.git, "object", "create result must include git metadata");
+  assert.equal(
+    typeof data.dependencyLockfile,
+    "object",
+    "create result must include generated dependency lockfile metadata",
+  );
+  assert.equal(data.dependencyLockfile.generated, true);
+  assert.equal(data.dependencyLockfile.path, resolve(targetRoot, "pnpm-lock.yaml"));
+  assert.deepEqual(data.dependencyLockfile.command, ["pnpm", "install", "--lockfile-only"]);
+  assert.equal(existsSync(resolve(targetRoot, "pnpm-lock.yaml")), true);
+  assert.equal(data.git.initialized, true);
+  assert.equal(data.git.branch, "main");
+  assert.equal(data.git.message, createGitBootstrapMessage);
+  assert.equal(data.git.statusShort, "");
+  assert.match(data.git.commit, /^[a-f0-9]{40}$/u);
+  const gitDir = resolve(targetRoot, ".git");
+  assert.equal(existsSync(gitDir), true, "fresh create target must have .git");
+  assert.equal(statSync(gitDir).isDirectory(), true, ".git must be a directory");
+  assert.equal(gitOutput(targetRoot, ["rev-parse", "--show-toplevel"]), targetRoot);
+  const branch = gitOutput(targetRoot, ["rev-parse", "--abbrev-ref", "HEAD"]);
+  const commit = gitOutput(targetRoot, ["rev-parse", "HEAD"]);
+  const lastSubject = gitOutput(targetRoot, ["log", "-1", "--pretty=%s"]);
+  const statusShort = gitOutput(targetRoot, ["status", "--short"]);
+  assert.equal(branch, "main");
+  assert.equal(commit, data.git.commit);
+  assert.equal(lastSubject, createGitBootstrapMessage);
+  assert.equal(statusShort, "");
+  assert.equal(gitOutput(targetRoot, ["ls-files", "pnpm-lock.yaml"]), "pnpm-lock.yaml");
+  assert.equal(gitOutput(targetRoot, ["check-ignore", ".env"]), ".env");
+  let ignoredEnvStatusShort = statusShort;
+  if (options.touchIgnoredEnv === true) {
+    writeFileSync(resolve(targetRoot, ".env"), "LOCAL_ONLY_SECRET=ignored\n", "utf8");
+    ignoredEnvStatusShort = gitOutput(targetRoot, ["status", "--short"]);
+    assert.equal(ignoredEnvStatusShort, "", "ignored .env must not dirty the generated repo");
+  }
+  return {
+    initialized: data.git.initialized,
+    branch,
+    commit,
+    message: lastSubject,
+    statusShort,
+    ignoredEnvStatusShort,
+  };
 }
 function assertNoTemplateScopeLeaked(targetRoot, projectSlug) {
   const staleHits = [];
@@ -243,9 +363,16 @@ function assertNoTemplateScopeLeaked(targetRoot, projectSlug) {
   const runnerCatalog = readJsonFile(resolve(targetRoot, ".vibe/registry/runner-catalog.json"));
   assert.equal(Array.isArray(runnerCatalog), true);
   assert.equal(
-    runnerCatalog.some((entry) => entry.command === process.execPath),
+    runnerCatalog.some((entry) => entry.command === portableNodeRuntimeCommand),
     true,
-    "runner catalog must pin the current Node executable for safe command runners",
+    "runner catalog must use the portable verified Node runtime alias for safe command runners",
+  );
+  assert.equal(
+    runnerCatalog.some(
+      (entry) => typeof entry.command === "string" && entry.command === process.execPath,
+    ),
+    false,
+    "runner catalog must not bake the create-time absolute Node executable",
   );
   const composeConfig = readJsonFile(
     resolve(targetRoot, ".tooling/dev-services/docker-compose.json"),
@@ -475,6 +602,7 @@ function assertNoPresetRuntimeImports() {
     hits,
   };
 }
+const piSourceRoot = resolve(repoRoot, "examples/harness-integrations/pi/runtime-fixtures");
 const piTemplateRoot = resolve(repoRoot, "packages/cli/templates/pi/runtime-fixtures");
 const piForbiddenDomainMarkers = [
   "e" + "commerce",
@@ -489,6 +617,70 @@ const piForbiddenDomainMarkers = [
   "ai-" + "pipeline",
   "/us" + "ers/",
 ];
+
+function assertTextIncludes(text, needle, label) {
+  assert.equal(text.includes(needle), true, `${label} missing ${needle}`);
+}
+
+function assertTextExcludes(text, needle, label) {
+  assert.equal(text.includes(needle), false, `${label} must not include ${needle}`);
+}
+
+function assertGeneratedPiSkillDiscipline(targetRoot) {
+  const planSkill = readText(resolve(targetRoot, ".pi/skills/plan/SKILL.md"));
+  const buildSkill = readText(resolve(targetRoot, ".pi/skills/build/SKILL.md"));
+  const planPrompt = readText(resolve(targetRoot, ".pi/prompts/vibe-plan.md"));
+  const buildPrompt = readText(resolve(targetRoot, ".pi/prompts/vibe-build.md"));
+  const combined = `${planSkill}\n${buildSkill}\n${planPrompt}\n${buildPrompt}`;
+
+  for (const needle of [
+    "extensions.dev.vibe.plan-build-discipline",
+    "schematicPlan.applicable",
+    "schematicPlan.noneJustification",
+    "schematicPlan.gaps",
+    "verificationPlan.classifications",
+    "registered",
+    "build-must-register",
+    "not-applicable",
+    "manual-only",
+    "selectedHarness.implications",
+    "architecture-agent-review",
+    "backend, web, or mobile",
+    "no silent Pi fallback",
+  ]) {
+    assertTextIncludes(planSkill, needle, "generated plan skill discipline");
+  }
+  for (const needle of [
+    "schematicsUsed",
+    "empty `schematicsUsed` array is a blocking defect",
+    "every planned schematic slug/id is represented",
+    "updating `.vibe/registry/runner-catalog.json` directly",
+    "Run every blocking Verification Delta item",
+    "architecture-agent-review",
+    "Evidence Packet",
+    "missing blocking evidence",
+    "prose-only summaries",
+    "verificationRuns[].evidencePacketRef",
+  ]) {
+    assertTextIncludes(buildSkill, needle, "generated build skill discipline");
+  }
+  for (const needle of [
+    "Do not invent verification-runner or runner-catalog-entry schematics",
+    "do not add extra deterministic architecture/code-standard runners",
+  ]) {
+    assertTextIncludes(planPrompt, needle, "generated plan prompt discipline");
+    assertTextIncludes(buildPrompt, needle, "generated build prompt discipline");
+  }
+  for (const needle of ["schematicSlug: verification-runner", "schematicSlug: runner-catalog-entry"]) {
+    assertTextExcludes(combined, needle, "generated pi discipline assets");
+  }
+  return {
+    planDiscipline: true,
+    buildDiscipline: true,
+    architectureAgentReviewRequired: true,
+    selectedHarnessImplications: true,
+  };
+}
 function assertPiHarnessAssets(targetRoot, envelope = null) {
   const descriptors = selectCreatePiAssets();
   const expectedFamilies = [...new Set(descriptors.map((asset) => asset.familyId))].sort();
@@ -497,12 +689,23 @@ function assertPiHarnessAssets(targetRoot, envelope = null) {
   const fileRecords = [];
   for (const descriptor of descriptors) {
     const targetPath = resolve(targetRoot, ...descriptor.path.split("/"));
+    const sourcePath = resolve(piSourceRoot, ...descriptor.path.split("/"));
     const templatePath = resolve(piTemplateRoot, ...descriptor.path.split("/"));
+    assert.equal(targetPath.startsWith(`${targetRoot}${sep}`), true);
+    assert.equal(sourcePath.startsWith(`${piSourceRoot}${sep}`), true);
+    assert.equal(templatePath.startsWith(`${piTemplateRoot}${sep}`), true);
     assert.equal(existsSync(targetPath), true, `missing pi asset ${descriptor.path}`);
+    assert.equal(existsSync(sourcePath), true, `missing source pi fixture ${descriptor.path}`);
     assert.equal(existsSync(templatePath), true, `missing shipped pi template ${descriptor.path}`);
     const targetContent = readText(targetPath);
+    const sourceContent = readText(sourcePath);
     const templateContent = readText(templatePath);
     assert.equal(targetContent.length > 0, true, `empty pi asset ${descriptor.path}`);
+    assert.equal(
+      templateContent,
+      sourceContent,
+      `shipped pi template ${descriptor.path} differs from source runtime fixture`,
+    );
     assert.equal(
       targetContent,
       templateContent,
@@ -521,6 +724,8 @@ function assertPiHarnessAssets(targetRoot, envelope = null) {
       familyId: descriptor.familyId,
       kind: descriptor.kind,
       sha256: sha256File(targetPath),
+      sourceSha256: sha256File(sourcePath),
+      templateSha256: sha256File(templatePath),
     });
   }
   assert.equal(
@@ -551,14 +756,426 @@ function assertPiHarnessAssets(targetRoot, envelope = null) {
     assert.equal(data.harnessAssets.manifestValidation, "valid");
     assert.equal(data.generatedFiles.piAssets.length, 12);
   }
+  const discipline = assertGeneratedPiSkillDiscipline(targetRoot);
   return {
     expectedCount: descriptors.length,
     skillCount: descriptors.filter((asset) => asset.kind === "skill").length,
     promptCount: descriptors.filter((asset) => asset.kind === "prompt-template").length,
     families: expectedFamilies,
+    discipline,
+    sourceCopyFreshCreateMatched: true,
     sha256: fileRecords,
   };
 }
+function assertNoPiHarnessAssets(targetRoot) {
+  assert.equal(
+    existsSync(resolve(targetRoot, ".pi")),
+    false,
+    "non-Pi harness must not receive .pi assets",
+  );
+  return { piDirectoryPresent: false };
+}
+
+const expectedContextFilesByHarness = {
+  pi: ["AGENTS.md", "CLAUDE.md"],
+  "claude-code": ["CLAUDE.md"],
+  codex: ["AGENTS.md"],
+};
+
+function assertSelectedHarnessSurfaces(targetRoot, envelope, harness) {
+  const data = loadResultData(envelope);
+  assert.equal(data.selectedHarness, harness);
+  const expectedContextFiles = expectedContextFilesByHarness[harness];
+  assert.deepEqual(
+    data.generatedFiles.contextFiles.written.map((item) => item.kind).sort(),
+    [...expectedContextFiles].sort(),
+  );
+  for (const contextFile of ["AGENTS.md", "CLAUDE.md"]) {
+    assert.equal(
+      existsSync(resolve(targetRoot, contextFile)),
+      expectedContextFiles.includes(contextFile),
+      `${harness} context file expectation failed for ${contextFile}`,
+    );
+  }
+  const metadataPath = resolve(targetRoot, ".vibe/harness/selected-harness.json");
+  const readmePath = resolve(targetRoot, ".vibe/harness/README.md");
+  const handoffPath = resolve(targetRoot, ".vibe/harness/handoff.md");
+  assert.equal(data.generatedFiles.selectedHarness.metadata, metadataPath);
+  assert.equal(data.generatedFiles.selectedHarness.readme, readmePath);
+  assert.equal(data.generatedFiles.selectedHarness.handoff, handoffPath);
+  assert.equal(existsSync(metadataPath), true, `${harness} selected-harness metadata missing`);
+  assert.equal(existsSync(readmePath), true, `${harness} selected-harness readme missing`);
+  assert.equal(existsSync(handoffPath), true, `${harness} selected-harness handoff missing`);
+  const metadata = readJsonFile(metadataPath);
+  assert.equal(metadata.schemaVersion, "vibe-engineer.selected-harness.v1");
+  assert.equal(metadata.adapter.id, harness);
+  assert.equal(metadata.adapter.noFallbackToPi, true);
+  assert.equal(metadata.config.noSilentFallback, true);
+  assert.deepEqual(metadata.assetWriter.contextFiles, expectedContextFiles);
+  assert.equal(metadata.assertions.noFallbackToPi, true);
+  assert.equal(metadata.runtimePrerequisiteDiagnostic.noFallbackToPi, true);
+  assert.equal(
+    metadata.runtimePrerequisiteDiagnostic.unavailableRuntimeBehavior,
+    "blocked-missing-prerequisite",
+  );
+  const expectedArchitectureRunner = data.mode === "create";
+  assert.equal(metadata.verificationRunnerInvocation.runnerImplemented, expectedArchitectureRunner);
+  assert.equal(
+    metadata.verificationRunnerInvocation.unavailableRuntimeBehavior,
+    "blocked-missing-prerequisite",
+  );
+  if (expectedArchitectureRunner) {
+    assert.equal(
+      metadata.verificationRunnerInvocation.architectureAgentRunnerId,
+      "architecture-agent-review",
+    );
+  }
+  const readme = readText(readmePath);
+  assert.equal(readme.includes("No silent Pi fallback"), true);
+  assert.equal(readme.includes("Missing binary"), true);
+  assert.equal(readme.includes("Security and trust"), true);
+  const handoff = readText(handoffPath);
+  for (const step of ["task", "plan", "build", "ship"]) {
+    assert.equal(handoff.includes(`- ${step}:`), true, `${harness} handoff missing ${step}`);
+  }
+  if (harness === "pi") {
+    assert.deepEqual(metadata.assetWriter.nativeAssetFamilies.sort(), [
+      "pi-prompt-templates",
+      "pi-skill-files",
+    ]);
+  } else {
+    assert.deepEqual(metadata.assetWriter.nativeAssetFamilies, []);
+    assert.equal(metadata.assertions.nonPiNativeProjectAssetPolicy.startsWith("blocked:"), true);
+    assert.equal(
+      existsSync(resolve(targetRoot, ".claude")),
+      false,
+      `${harness} should not get .claude assets`,
+    );
+    assert.equal(
+      existsSync(resolve(targetRoot, ".codex")),
+      false,
+      `${harness} should not get .codex assets`,
+    );
+    assert.equal(
+      metadata.assetWriter.blockedAssetFamilies.length > 0,
+      true,
+      `${harness} blocked asset families must be explicit`,
+    );
+  }
+  return {
+    adapterId: metadata.adapter.id,
+    contextFiles: metadata.assetWriter.contextFiles,
+    blockedAssetFamilies: metadata.assetWriter.blockedAssetFamilies,
+    runnerImplemented: metadata.verificationRunnerInvocation.runnerImplemented,
+  };
+}
+
+function hasOwn(object, key) {
+  return Object.prototype.hasOwnProperty.call(object, key);
+}
+
+function assertGeneratedStarterScope(targetRoot, envelope, expectedScope) {
+  const data = loadResultData(envelope);
+  assert.equal(data.mode, "create");
+  assert.equal(data.starterScope.id, expectedScope);
+  assert.equal(data.generatedFiles.starterTemplate.scope.id, expectedScope);
+  const rootPkg = readJsonFile(resolve(targetRoot, "package.json"));
+  assert.equal(rootPkg.vibeEngineer.starterScope.id, expectedScope);
+  const config = readJsonFile(resolve(targetRoot, "vibe-engineer.config.json"));
+  const docs = readText(resolve(targetRoot, "docs/reference/starter.md"));
+  const gitignore = readText(resolve(targetRoot, ".gitignore"));
+  const prettierignore = readText(resolve(targetRoot, ".prettierignore"));
+  const omittedFiles = new Set(data.generatedFiles.starterTemplate.omittedFiles);
+  assert.equal(docs.includes("Generated starter QA and scope"), true);
+  assert.equal(docs.includes("pnpm approve-builds"), true);
+  assert.equal(docs.includes("NestJS + tsx dependency injection"), true);
+  assert.equal(docs.includes("Prisma migration safety"), true);
+  for (const ignoreNeedle of [".data/", "*.sqlite", ".vibe/evidence/**", ".vibe/work/**"]) {
+    assert.equal(gitignore.includes(ignoreNeedle), true, `.gitignore missing ${ignoreNeedle}`);
+  }
+  for (const ignoreNeedle of [".data", "*.sqlite", ".vibe/evidence/**", ".vibe/work/**"]) {
+    assert.equal(
+      prettierignore.includes(ignoreNeedle),
+      true,
+      `.prettierignore missing ${ignoreNeedle}`,
+    );
+  }
+
+  if (expectedScope === "default") {
+    assert.deepEqual(rootPkg.vibeEngineer.appNames, ["api", "web", "mobile"]);
+    assert.deepEqual(rootPkg.vibeEngineer.packageNames, [
+      "domain",
+      "contracts",
+      "api-client",
+      "config",
+      "testing",
+      "ui",
+    ]);
+    assert.equal(existsSync(resolve(targetRoot, "apps/api")), true);
+    assert.equal(existsSync(resolve(targetRoot, "apps/web")), true);
+    assert.equal(existsSync(resolve(targetRoot, "apps/mobile")), true);
+    assert.equal(hasOwn(rootPkg.scripts, "dev:api"), true);
+    assert.equal(hasOwn(rootPkg.scripts, "dev:mobile"), true);
+    assert.equal(hasOwn(rootPkg.scripts, "db:migrate"), true);
+    assert.equal(hasOwn(config.verification, "mobileE2E"), true);
+    assert.equal(data.starterScope.includesApi, true);
+    assert.equal(data.starterScope.includesMobile, true);
+    assert.equal(data.starterScope.includesPrisma, true);
+    return { scope: expectedScope, omittedFiles: omittedFiles.size };
+  }
+
+  assert.equal(existsSync(resolve(targetRoot, "apps/mobile")), false);
+  assert.equal(hasOwn(rootPkg.scripts, "dev:mobile"), false);
+  assert.equal(hasOwn(rootPkg.scripts, "dev:mobile:ios"), false);
+  assert.equal(hasOwn(rootPkg.scripts, "dev:mobile:android"), false);
+  assert.equal(hasOwn(config.verification, "mobileE2E"), false);
+  assert.equal(existsSync(resolve(targetRoot, "packages/ui/src/native")), false);
+  assert.equal(omittedFiles.has("apps/mobile/package.json"), true);
+  assert.equal(omittedFiles.has("packages/ui/src/native/index.ts"), true);
+  for (const packageName of data.starterScope.packages) {
+    const packageJsonPath = resolve(targetRoot, "packages", packageName, "package.json");
+    if (!existsSync(packageJsonPath)) continue;
+    const packageJson = readJsonFile(packageJsonPath);
+    assert.equal(
+      hasOwn(packageJson, "react-native"),
+      false,
+      `${packageName} kept react-native entry`,
+    );
+  }
+
+  if (expectedScope === "no-mobile") {
+    assert.deepEqual(rootPkg.vibeEngineer.appNames, ["api", "web"]);
+    assert.equal(existsSync(resolve(targetRoot, "apps/api")), true);
+    assert.equal(existsSync(resolve(targetRoot, "apps/web")), true);
+    assert.equal(hasOwn(rootPkg.scripts, "dev:api"), true);
+    assert.equal(hasOwn(rootPkg.scripts, "db:migrate"), true);
+    assert.equal(data.starterScope.includesApi, true);
+    assert.equal(data.starterScope.includesMobile, false);
+    assert.equal(data.starterScope.includesPrisma, true);
+    assert.equal(data.setupGuidance.nestTsxDependencyInjection.applies, true);
+    assert.equal(data.setupGuidance.prismaMigrationDoctor.applies, true);
+    return { scope: expectedScope, omittedFiles: omittedFiles.size };
+  }
+
+  assert.equal(expectedScope, "web-only");
+  assert.deepEqual(rootPkg.vibeEngineer.appNames, ["web"]);
+  assert.deepEqual(rootPkg.vibeEngineer.packageNames, ["config", "ui"]);
+  assert.equal(existsSync(resolve(targetRoot, "apps/api")), false);
+  assert.equal(existsSync(resolve(targetRoot, "apps/web")), true);
+  assert.equal(existsSync(resolve(targetRoot, "apps/web/src/routes/golden-records")), false);
+  assert.equal(existsSync(resolve(targetRoot, "packages/api-client")), false);
+  assert.equal(existsSync(resolve(targetRoot, "packages/contracts")), false);
+  assert.equal(existsSync(resolve(targetRoot, "packages/domain")), false);
+  assert.equal(existsSync(resolve(targetRoot, "packages/testing")), false);
+  assert.equal(existsSync(resolve(targetRoot, ".tooling/dev-services/docker-compose.json")), false);
+  assert.equal(hasOwn(rootPkg.scripts, "dev:api"), false);
+  assert.equal(hasOwn(rootPkg.scripts, "db:migrate"), false);
+  assert.equal(data.starterScope.includesApi, false);
+  assert.equal(data.starterScope.includesMobile, false);
+  assert.equal(data.starterScope.includesPrisma, false);
+  assert.equal(data.setupGuidance.nestTsxDependencyInjection.applies, false);
+  assert.equal(data.setupGuidance.prismaMigrationDoctor.applies, false);
+  const webPkg = readJsonFile(resolve(targetRoot, "apps/web/package.json"));
+  assert.equal(hasOwn(webPkg.dependencies, `@${data.project.slug}/api-client`), false);
+  const envText = readText(resolve(targetRoot, ".env"));
+  assert.equal(envText.includes("WEB_PORT"), true);
+  assert.equal(envText.includes("DATABASE_URL"), false);
+  return { scope: expectedScope, omittedFiles: omittedFiles.size };
+}
+
+function assertStarterHarnessSurfaces(targetRoot, envelope, harness) {
+  const data = loadResultData(envelope);
+  if (data.mode !== "create") {
+    assert.equal(data.generatedFiles.runnerCatalog, null);
+    assert.equal(data.generatedFiles.starterPresetManifest, null);
+    assert.equal(data.generatedFiles.starterReference, null);
+    return { mode: data.mode, starterHarnessMetadata: "not-applicable" };
+  }
+  const catalogPath = resolve(targetRoot, ".vibe/registry/runner-catalog.json");
+  const presetManifestPath = resolve(
+    targetRoot,
+    ".vibe/generated/nest-react-rn-preset/manifest.json",
+  );
+  const starterReferencePath = resolve(targetRoot, "docs/reference/starter.md");
+  assert.equal(data.generatedFiles.runnerCatalog, catalogPath);
+  assert.equal(data.generatedFiles.starterPresetManifest, presetManifestPath);
+  assert.equal(data.generatedFiles.starterReference, starterReferencePath);
+  const catalog = readJsonFile(catalogPath);
+  assert.equal(Array.isArray(catalog), true);
+  assert.equal(catalog.length > 0, true);
+  for (const entry of catalog) {
+    assert.equal(entry.vibeEngineerHarness.adapterId, harness);
+    assert.equal(entry.vibeEngineerHarness.noFallbackToPi, true);
+    assert.equal(entry.vibeEngineerHarness.runnerImplemented, true);
+    assert.equal(
+      entry.vibeEngineerHarness.architectureAgentRunner.runnerId,
+      "architecture-agent-review",
+    );
+    assert.equal(
+      entry.vibeEngineerHarness.liveInvocation.unavailableRuntimeBehavior,
+      "blocked-missing-prerequisite",
+    );
+  }
+  const architectureRunners = catalog.filter((entry) => entry.id === "architecture-agent-review");
+  assert.equal(architectureRunners.length, 1, "exactly one architecture agent runner is generated");
+  const architectureRunner = architectureRunners[0];
+  assert.equal(architectureRunner.kind, "command");
+  assert.equal(architectureRunner.runnerType, "agent");
+  assert.equal(architectureRunner.agentRunner, true);
+  assert.equal(architectureRunner.layer, "advisory_review");
+  assert.equal(architectureRunner.layerEquivalent, "architecture_review");
+  assert.equal(architectureRunner.command, portableNodeRuntimeCommand);
+  assert.deepEqual(architectureRunner.requiredItemIds, ["architecture-agent-review"]);
+  assert.equal(architectureRunner.architectureReview.noFallbackToPi, true);
+  const recommendedCommand =
+    architectureRunner.vibeEngineerHarness.liveInvocation.recommendedCommand;
+  assert.equal(Array.isArray(recommendedCommand), true);
+  if (harness === "claude-code") {
+    const schemaFlagIndex = recommendedCommand.indexOf("--json-schema");
+    assert.notEqual(schemaFlagIndex, -1, "Claude architecture runner must pass --json-schema");
+    assert.equal(
+      recommendedCommand[schemaFlagIndex + 1],
+      "<schema-json>",
+      "Claude --json-schema must receive schema JSON, not a file path placeholder",
+    );
+  }
+  if (harness === "codex") {
+    assert.equal(
+      recommendedCommand.includes("--ask-for-approval"),
+      false,
+      "Codex exec runner must not use unsupported --ask-for-approval",
+    );
+    const approvalIndex = recommendedCommand.indexOf('approval_policy="never"');
+    assert.notEqual(approvalIndex, -1, "Codex runner must set approval_policy=never via -c");
+    assert.equal(recommendedCommand[approvalIndex - 1], "-c");
+    assert.equal(recommendedCommand.includes("--sandbox"), true);
+    assert.equal(recommendedCommand.includes("--output-schema"), true);
+    assert.equal(recommendedCommand.includes("--output-last-message"), true);
+  }
+  assert.equal(
+    architectureRunner.architectureReview.checkedBoundaries.backend,
+    data.starterScope.includesApi,
+  );
+  assert.equal(
+    architectureRunner.architectureReview.checkedBoundaries.web,
+    data.starterScope.includesWeb,
+  );
+  assert.equal(
+    architectureRunner.architectureReview.checkedBoundaries.mobile,
+    data.starterScope.includesMobile,
+  );
+  assert.equal(
+    catalog.some(
+      (entry) =>
+        entry.id !== "architecture-agent-review" &&
+        /architecture|code-standard|code_standard/u.test(String(entry.id)),
+    ),
+    false,
+    "no extra deterministic architecture/code-standard runners are generated",
+  );
+  assert.equal(
+    existsSync(resolve(targetRoot, ".tooling/scripts/architecture-agent-review.mjs")),
+    true,
+  );
+  assert.equal(
+    existsSync(resolve(targetRoot, ".vibe/verification/architecture-agent-review/schema.json")),
+    true,
+  );
+  assert.equal(
+    existsSync(resolve(targetRoot, ".vibe/verification/architecture-agent-review/prompt.md")),
+    true,
+  );
+  const architectureSchema = readJsonFile(
+    resolve(targetRoot, ".vibe/verification/architecture-agent-review/schema.json"),
+  );
+  assert.equal(
+    Object.prototype.hasOwnProperty.call(architectureSchema, "allOf"),
+    false,
+    "generated schema must stay compatible with Codex/OpenAI structured output subset",
+  );
+  assert.equal(architectureSchema.properties.schemaVersion.type, "string");
+  assert.equal(architectureSchema.properties.status.type, "string");
+  assert.equal(
+    Object.prototype.hasOwnProperty.call(
+      architectureSchema.properties.reviewedBoundaries,
+      "uniqueItems",
+    ),
+    false,
+  );
+  const presetManifest = readJsonFile(presetManifestPath);
+  assert.equal(presetManifest.layout.agenticHarness, harness);
+  assert.equal(presetManifest.vibeEngineerHarness.adapterId, harness);
+  assert.equal(presetManifest.vibeEngineerHarness.noFallbackToPi, true);
+  assert.equal(presetManifest.architectureAgentReview.runnerId, "architecture-agent-review");
+  assert.equal(presetManifest.architectureAgentReview.runnerImplemented, true);
+  const starterReference = readText(starterReferencePath);
+  assert.equal(starterReference.includes("<!-- vibe-engineer:selected-harness:start -->"), true);
+  assert.equal(
+    starterReference.includes("<!-- vibe-engineer:architecture-agent-review:start -->"),
+    true,
+  );
+  assert.equal(starterReference.includes(`\`${harness}\``), true);
+  assert.equal(starterReference.includes("Trust boundary:"), true);
+  assert.equal(starterReference.includes("no silent Pi fallback"), true);
+  assert.equal(starterReference.includes("architecture-agent-review"), true);
+  return {
+    catalogEntries: catalog.length,
+    architectureRunnerCount: architectureRunners.length,
+    presetHarness: presetManifest.layout.agenticHarness,
+    starterReferenceMarked: true,
+  };
+}
+
+function writeFakeHarnessBinary(binDir, binary, mode) {
+  mkdirSync(binDir, { recursive: true });
+  const target = resolve(binDir, binary);
+  const review = {
+    schemaVersion: "vibe-engineer.architecture-agent-review.v1",
+    status: mode === "failed" ? "failed" : "passed",
+    summary: mode === "failed" ? "Fake architecture finding." : "Fake architecture review passed.",
+    findings:
+      mode === "failed"
+        ? [{ path: "apps/web/src/app/app.tsx", reason: "Fake boundary issue.", boundary: "web" }]
+        : [],
+  };
+  writeFileSync(
+    target,
+    `#!/usr/bin/env node\nconst mode = ${JSON.stringify(mode)};\nif (process.argv.includes("--version")) { console.log("${binary} fake 0.0.0"); process.exit(0); }\nif (mode === "runtime-unavailable") { console.log(JSON.stringify({ type: "result", is_error: true, result: "Claude Fable 5 is currently unavailable." })); process.exit(1); }\nif (mode === "auth-missing") { console.error("Reading additional input from stdin..."); console.log(JSON.stringify({ type: "error", message: "Not authenticated: run codex login." })); process.exit(1); }\nif (mode === "unparseable") { console.log("not-json"); process.exit(0); }\nconsole.log(${JSON.stringify(JSON.stringify(review))});\n`,
+    "utf8",
+  );
+  chmodSync(target, 0o755);
+  return target;
+}
+
+function runArchitectureAgentReview(targetRoot, envPath) {
+  const scriptPath = resolve(targetRoot, ".tooling/scripts/architecture-agent-review.mjs");
+  const result = spawnSync(process.execPath, [scriptPath], {
+    cwd: targetRoot,
+    encoding: "utf8",
+    env: {
+      PATH: envPath,
+      ...(process.env.HOME ? { HOME: process.env.HOME } : {}),
+      ...(process.env.XDG_CONFIG_HOME ? { XDG_CONFIG_HOME: process.env.XDG_CONFIG_HOME } : {}),
+    },
+  });
+  const evidencePath = resolve(targetRoot, ".vibe/evidence/architecture-agent-review/review.json");
+  assert.equal(existsSync(evidencePath), true, "architecture review evidence must be written");
+  const evidence = readJsonFile(evidencePath);
+  return { result, evidence, evidencePath };
+}
+
+function assertArchitectureRunnerEvidence(evidence, expected) {
+  assert.equal(evidence.schemaVersion, "vibe-engineer.architecture-agent-review.v1");
+  assert.equal(evidence.runnerId, "architecture-agent-review");
+  assert.equal(evidence.status, expected.status);
+  assert.equal(evidence.selectedHarness.adapterId, expected.harness ?? "pi");
+  assert.equal(evidence.noFallbackToPi, true);
+  assert.deepEqual(evidence.reviewedBoundaries, expected.reviewedBoundaries);
+  for (const omitted of expected.omittedBoundaries ?? []) {
+    assert.equal(evidence.omittedBoundaries.includes(omitted), true);
+  }
+}
+
 function assertCreatePiAssetManifestSelection() {
   const descriptors = selectCreatePiAssets();
   const families = [...new Set(descriptors.map((asset) => asset.familyId))].sort();
@@ -591,7 +1208,16 @@ await writeCase(1, "W-RESOLVE", "cli-adapter-context-resolve", async () => {
   assert.equal(validateGeneratedFileManifest(manifest).valid, true);
   assert.equal(CONTEXT_SCHEMA_VERSION, "1.0.0");
   assert.equal(typeof createDefaultVibeConfig, "function");
-  // I-15A-owned families are exactly context-files + harness-config, both ready.
+  assert.deepEqual([...SUPPORTED_HARNESS_ADAPTER_IDS], ["pi", "claude-code", "codex"]);
+  const adapterRegistry = getHarnessAdapterRegistry();
+  assert.equal(adapterRegistry.schemaVersion, "vibe-harness-adapter-registry/v1");
+  for (const adapterId of SUPPORTED_HARNESS_ADAPTER_IDS) {
+    const adapter = getHarnessAdapter(adapterId);
+    assert.equal(typeof adapter, "object", `missing HarnessAdapter for ${adapterId}`);
+    assert.equal(adapter.createImportSelectable, true);
+    assert.equal(adapter.assetWriter.noFallbackToPi, true);
+  }
+  // I-15A-owned Pi manifest families are exactly context-files + harness-config, both ready.
   const owned = manifest.families.filter(
     (f) => f.producedByLane === "I-15A-create-import-cli-ux-selected-harness",
   );
@@ -604,6 +1230,7 @@ await writeCase(1, "W-RESOLVE", "cli-adapter-context-resolve", async () => {
     witness: "W-RESOLVE-CLI-ADAPTER+CONTEXT",
     adapterSubpaths: 3,
     contextExports: "ok",
+    supportedHarnesses: [...SUPPORTED_HARNESS_ADAPTER_IDS],
     ownedFamilies: owned.map((f) => f.familyId),
   };
 });
@@ -627,6 +1254,7 @@ await writeCase(2, "W-CREATE-PROVIDED", "create-provided-brief", async () => {
   assert.equal(data.selectedHarness, "pi");
   assert.equal(data.briefStatus, "provided");
   assert.equal(data.project.slug, "atlas-tracker");
+  const gitBootstrap = assertCreateGitBootstrap(r.targetRoot, r.envelope);
   assert.equal(data.harnessConfig.agenticHarness, "pi");
   assert.equal(data.harnessConfig.adapterCapabilityVersion, PI_ADAPTER_CAPABILITY_SCHEMA_VERSION);
   assert.equal(
@@ -642,6 +1270,8 @@ await writeCase(2, "W-CREATE-PROVIDED", "create-provided-brief", async () => {
   const agents = readText(resolve(r.targetRoot, "AGENTS.md"));
   assert.equal(agents.includes("user_provided"), true);
   assert.equal(agents.includes("provenance"), true);
+  const selectedHarnessSurfaces = assertSelectedHarnessSurfaces(r.targetRoot, r.envelope, "pi");
+  const starterHarnessSurfaces = assertStarterHarnessSurfaces(r.targetRoot, r.envelope, "pi");
   // result-file atomic write + reread equivalence
   assert.equal(existsSync(r.resultFile), true);
   assert.deepEqual(JSON.parse(readText(r.resultFile)), r.envelope);
@@ -656,6 +1286,14 @@ await writeCase(2, "W-CREATE-PROVIDED", "create-provided-brief", async () => {
       skillCount: piAssets.skillCount,
       promptCount: piAssets.promptCount,
       families: piAssets.families,
+    },
+    selectedHarnessSurfaces,
+    starterHarnessSurfaces,
+    git: {
+      initialized: gitBootstrap.initialized,
+      branch: gitBootstrap.branch,
+      message: gitBootstrap.message,
+      statusShort: gitBootstrap.statusShort,
     },
   };
 });
@@ -717,8 +1355,12 @@ await writeCase(4, "W-IMPORT", "import-existing-root", async () => {
   const data = loadResultData(r.envelope);
   assert.equal(data.mode, "import");
   assert.equal(data.selectedHarness, "pi");
+  assert.equal(Object.prototype.hasOwnProperty.call(data, "git"), false);
+  assert.equal(existsSync(resolve(r.targetRoot, ".git")), false);
   assert.equal(existsSync(resolve(r.targetRoot, "vibe-engineer.config.json")), true);
   assert.equal(existsSync(resolve(r.targetRoot, "AGENTS.md")), true);
+  const selectedHarnessSurfaces = assertSelectedHarnessSurfaces(r.targetRoot, r.envelope, "pi");
+  const starterHarnessSurfaces = assertStarterHarnessSurfaces(r.targetRoot, r.envelope, "pi");
   const piAssets = assertPiHarnessAssets(r.targetRoot, r.envelope);
   return {
     witness: "W-IMPORT",
@@ -729,6 +1371,8 @@ await writeCase(4, "W-IMPORT", "import-existing-root", async () => {
       promptCount: piAssets.promptCount,
       families: piAssets.families,
     },
+    selectedHarnessSurfaces,
+    starterHarnessSurfaces,
   };
 });
 
@@ -812,35 +1456,116 @@ await writeCase(7, "W-MACHINE-ENVELOPE", "machine-envelope-valid", async () => {
   };
 });
 
-// --- W-NEG-NON-PI (every deferred/unknown harness blocks; never silent no-op) ---
-await writeCase(8, "W-NEG-NON-PI", "non-pi-harness-blocked", async () => {
-  const results = {};
-  for (const harness of [
-    "claude-code",
-    "codex",
-    "opencode",
-    "later-integrations",
-    "totally-unknown",
-  ]) {
-    const r = await dispatchCreate(`w-neg-npi-${harness}`, [
-      "--project-name",
-      "X",
-      "--agentic-harness",
-      harness,
-      "--brief",
-      "y",
-    ]);
-    assert.equal(validateCliResultEnvelope(r.envelope).ok, true);
-    assert.equal(r.envelope.status, "blocked", `${harness} did not block`);
-    assert.equal(
-      existsSync(resolve(r.targetRoot, ".pi")),
-      false,
-      `${harness} wrote .pi assets despite being blocked`,
-    );
-    results[harness] = r.envelope.status;
-  }
-  return { witness: "W-NEG-NON-PI", allBlocked: results };
-});
+// --- W-HARNESS-BOUNDARY (supported harnesses accepted; unsupported harnesses reject with no Pi fallback) ---
+await writeCase(
+  8,
+  "W-HARNESS-BOUNDARY",
+  "supported-harnesses-accepted-unsupported-rejected",
+  async () => {
+    const accepted = {};
+    for (const harness of ["pi", "claude-code", "codex"]) {
+      const createResult = await dispatchCreate(`w-harness-create-${harness}`, [
+        "--project-name",
+        `Harness ${harness}`,
+        "--agentic-harness",
+        harness,
+        "--brief",
+        `Project using ${harness}`,
+      ]);
+      assert.equal(validateCliResultEnvelope(createResult.envelope).ok, true);
+      assert.equal(createResult.envelope.status, "success", `${harness} create did not succeed`);
+      const createData = loadResultData(createResult.envelope);
+      assert.equal(createData.selectedHarness, harness);
+      assert.equal(createData.harnessConfig.agenticHarness, harness);
+      assert.equal(
+        readJsonFile(resolve(createResult.targetRoot, "vibe-engineer.config.json")).agenticHarness,
+        harness,
+      );
+      const createSelectedSurfaces = assertSelectedHarnessSurfaces(
+        createResult.targetRoot,
+        createResult.envelope,
+        harness,
+      );
+      const createStarterSurfaces = assertStarterHarnessSurfaces(
+        createResult.targetRoot,
+        createResult.envelope,
+        harness,
+      );
+      const importResult = await dispatchImport(`w-harness-import-${harness}`, [
+        "--project-name",
+        `Harness Import ${harness}`,
+        "--agentic-harness",
+        harness,
+      ]);
+      assert.equal(validateCliResultEnvelope(importResult.envelope).ok, true);
+      assert.equal(importResult.envelope.status, "success", `${harness} import did not succeed`);
+      const importData = loadResultData(importResult.envelope);
+      assert.equal(importData.selectedHarness, harness);
+      assert.equal(importData.harnessConfig.agenticHarness, harness);
+      const importSelectedSurfaces = assertSelectedHarnessSurfaces(
+        importResult.targetRoot,
+        importResult.envelope,
+        harness,
+      );
+      const importStarterSurfaces = assertStarterHarnessSurfaces(
+        importResult.targetRoot,
+        importResult.envelope,
+        harness,
+      );
+      if (harness === "pi") {
+        assertPiHarnessAssets(createResult.targetRoot, createResult.envelope);
+        assertPiHarnessAssets(importResult.targetRoot, importResult.envelope);
+      } else {
+        assertNoPiHarnessAssets(createResult.targetRoot);
+        assertNoPiHarnessAssets(importResult.targetRoot);
+        assert.equal(createData.harnessAssets.noFallbackToPi, true);
+        assert.equal(createData.harnessAssets.skillCount, 0);
+        assert.equal(createData.harnessAssets.promptCount, 0);
+        assert.equal(createData.manifest.adapterContract.blockedFamilies.length > 0, true);
+      }
+      accepted[harness] = {
+        create: createResult.envelope.status,
+        import: importResult.envelope.status,
+        contextFiles: createData.generatedFiles.contextFiles.written.map((item) => item.kind),
+        createSelectedSurfaces,
+        createStarterSurfaces,
+        importSelectedSurfaces,
+        importStarterSurfaces,
+      };
+    }
+
+    const rejected = {};
+    for (const harness of ["opencode", "later-integrations", "totally-unknown"]) {
+      const createResult = await dispatchCreate(`w-harness-reject-create-${harness}`, [
+        "--project-name",
+        "Rejected",
+        "--agentic-harness",
+        harness,
+        "--brief",
+        "y",
+      ]);
+      assert.equal(validateCliResultEnvelope(createResult.envelope).ok, true);
+      assert.equal(createResult.envelope.status, "blocked", `${harness} create did not block`);
+      assert.equal(createResult.envelope.payload.data.supported.join(","), "pi,claude-code,codex");
+      assertNoPiHarnessAssets(createResult.targetRoot);
+      const importResult = await dispatchImport(`w-harness-reject-import-${harness}`, [
+        "--project-name",
+        "Rejected Import",
+        "--agentic-harness",
+        harness,
+      ]);
+      assert.equal(validateCliResultEnvelope(importResult.envelope).ok, true);
+      assert.equal(importResult.envelope.status, "blocked", `${harness} import did not block`);
+      assert.equal(importResult.envelope.payload.data.supported.join(","), "pi,claude-code,codex");
+      assertNoPiHarnessAssets(importResult.targetRoot);
+      rejected[harness] = {
+        create: createResult.envelope.status,
+        import: importResult.envelope.status,
+      };
+    }
+    return { witness: "W-HARNESS-BOUNDARY", accepted, rejected };
+  },
+);
 
 // --- W-NEG-MISSING/INVALID-MANIFEST (witness the validator directly; command hard-depends on it) ---
 await writeCase(9, "W-NEG-INVALID-MANIFEST", "invalid-manifest-blocks", async () => {
@@ -1307,6 +2032,222 @@ await writeCase(28, "W-WP07-VALIDATOR-NEGATIVE", "pi-assets-validator-path-negat
   };
 });
 
+// --- W-CREATE-GIT-BOOTSTRAP (fresh create initializes a clean local git repository) ---
+await writeCase(29, "W-CREATE-GIT-BOOTSTRAP", "create-git-bootstrap", async () => {
+  const r = await dispatchCreate("w-create-git-bootstrap", [
+    "--project-name",
+    "Git Bootstrap",
+    "--agentic-harness",
+    "pi",
+    "--brief",
+    "Generated project should start with a clean local git repository.",
+  ]);
+  assert.equal(validateCliResultEnvelope(r.envelope).ok, true);
+  assert.equal(r.envelope.status, "success");
+  const gitBootstrap = assertCreateGitBootstrap(r.targetRoot, r.envelope, {
+    touchIgnoredEnv: true,
+  });
+  const installClean = assertPnpmInstallKeepsLockfileClean(r.targetRoot);
+  return { witness: "W-CREATE-GIT-BOOTSTRAP", ...gitBootstrap, installClean };
+});
+
+// --- W-STARTER-SCOPE-MODES (default/no-mobile/web-only across supported harnesses) ---
+await writeCase(30, "W-STARTER-SCOPE-MODES", "starter-scope-modes", async () => {
+  const matrix = {};
+  for (const harness of ["pi", "claude-code", "codex"]) {
+    matrix[harness] = {};
+    for (const [scope, flags] of [
+      ["default", []],
+      ["no-mobile", ["--no-mobile"]],
+      ["web-only", ["--web-only"]],
+    ]) {
+      const slug = `w-scope-${harness}-${scope}`;
+      const r = await dispatchCreate(slug, [
+        "--project-name",
+        `Scope ${harness} ${scope}`,
+        "--agentic-harness",
+        harness,
+        ...flags,
+      ]);
+      assert.equal(validateCliResultEnvelope(r.envelope).ok, true);
+      assert.equal(r.envelope.status, "success", `${harness}/${scope} create failed`);
+      assertSelectedHarnessSurfaces(r.targetRoot, r.envelope, harness);
+      assertStarterHarnessSurfaces(r.targetRoot, r.envelope, harness);
+      if (harness === "pi") assertPiHarnessAssets(r.targetRoot, r.envelope);
+      else assertNoPiHarnessAssets(r.targetRoot);
+      const git = assertCreateGitBootstrap(r.targetRoot, r.envelope);
+      const targetedPrettier = runGeneratedPrettierCheck(
+        r.targetRoot,
+        architectureReviewPrettierFiles,
+        `${harness}/${scope} generated architecture assets`,
+      );
+      const qualityQuickFormatting =
+        harness === "pi"
+          ? runGeneratedPrettierCheck(r.targetRoot, ["."], `${harness}/${scope} quality:quick format leg`)
+          : null;
+      matrix[harness][scope] = {
+        ...assertGeneratedStarterScope(r.targetRoot, r.envelope, scope),
+        gitBranch: git.branch,
+        targetedPrettier,
+        qualityQuickFormatting,
+      };
+    }
+  }
+
+  const invalid = await dispatchCreate("w-scope-conflict", [
+    "--project-name",
+    "Scope Conflict",
+    "--agentic-harness",
+    "pi",
+    "--no-mobile",
+    "--web-only",
+  ]);
+  assert.notEqual(invalid.envelope.status, "success");
+  assert.equal(invalid.envelope.errors[0].classification, "invalid_invocation");
+  return { witness: "W-STARTER-SCOPE-MODES", matrix, conflictStatus: invalid.envelope.status };
+});
+
+// --- W-ARCHITECTURE-AGENT-RUNNER (single runner, scope filtering, fail-closed runtime diagnostics) ---
+await writeCase(31, "W-ARCHITECTURE-AGENT-RUNNER", "architecture-agent-runner", async () => {
+  const defaultCreate = await dispatchCreate("w-architecture-default", [
+    "--project-name",
+    "Architecture Default",
+    "--agentic-harness",
+    "pi",
+  ]);
+  assert.equal(defaultCreate.envelope.status, "success");
+  assertStarterHarnessSurfaces(defaultCreate.targetRoot, defaultCreate.envelope, "pi");
+
+  const emptyBin = resolve(args.evidenceRoot, "fake-bin-empty");
+  mkdirSync(emptyBin, { recursive: true });
+  const missing = runArchitectureAgentReview(defaultCreate.targetRoot, emptyBin);
+  assert.equal(missing.result.status, 2, missing.result.stderr);
+  assert.equal(missing.evidence.status, "blocked");
+  assert.equal(missing.evidence.diagnostics[0].code, "HARNESS_CLI_MISSING");
+  assert.equal(missing.evidence.findings[0].path, ".vibe/harness/selected-harness.json");
+  assert.equal(missing.evidence.noFallbackToPi, true);
+
+  const fakePassBin = resolve(args.evidenceRoot, "fake-bin-pass");
+  writeFakeHarnessBinary(fakePassBin, "pi", "passed");
+  const pass = runArchitectureAgentReview(
+    defaultCreate.targetRoot,
+    `${fakePassBin}${delimiter}${process.env.PATH ?? ""}`,
+  );
+  assert.equal(pass.result.status, 0, pass.result.stderr);
+  assertArchitectureRunnerEvidence(pass.evidence, {
+    status: "passed",
+    reviewedBoundaries: ["backend", "web", "mobile"],
+    omittedBoundaries: [],
+  });
+  assert.equal(pass.evidence.diff.mode, "git-initial-create-commit");
+
+  const noMobileCreate = await dispatchCreate("w-architecture-no-mobile", [
+    "--project-name",
+    "Architecture No Mobile",
+    "--agentic-harness",
+    "pi",
+    "--no-mobile",
+  ]);
+  const noMobile = runArchitectureAgentReview(
+    noMobileCreate.targetRoot,
+    `${fakePassBin}${delimiter}${process.env.PATH ?? ""}`,
+  );
+  assert.equal(noMobile.result.status, 0, noMobile.result.stderr);
+  assertArchitectureRunnerEvidence(noMobile.evidence, {
+    status: "passed",
+    reviewedBoundaries: ["backend", "web"],
+    omittedBoundaries: ["mobile"],
+  });
+
+  const webOnlyCreate = await dispatchCreate("w-architecture-web-only", [
+    "--project-name",
+    "Architecture Web Only",
+    "--agentic-harness",
+    "pi",
+    "--web-only",
+  ]);
+  const webOnly = runArchitectureAgentReview(
+    webOnlyCreate.targetRoot,
+    `${fakePassBin}${delimiter}${process.env.PATH ?? ""}`,
+  );
+  assert.equal(webOnly.result.status, 0, webOnly.result.stderr);
+  assertArchitectureRunnerEvidence(webOnly.evidence, {
+    status: "passed",
+    reviewedBoundaries: ["web"],
+    omittedBoundaries: ["backend", "mobile"],
+  });
+
+  const fakeBadBin = resolve(args.evidenceRoot, "fake-bin-unparseable");
+  writeFakeHarnessBinary(fakeBadBin, "pi", "unparseable");
+  const unparseable = runArchitectureAgentReview(
+    defaultCreate.targetRoot,
+    `${fakeBadBin}${delimiter}${process.env.PATH ?? ""}`,
+  );
+  assert.equal(unparseable.result.status, 2, unparseable.result.stderr);
+  assert.equal(unparseable.evidence.status, "blocked");
+  assert.equal(unparseable.evidence.diagnostics[0].code, "HARNESS_OUTPUT_UNPARSEABLE");
+
+  const claudeCreate = await dispatchCreate("w-architecture-claude", [
+    "--project-name",
+    "Architecture Claude",
+    "--agentic-harness",
+    "claude-code",
+  ]);
+  assertStarterHarnessSurfaces(claudeCreate.targetRoot, claudeCreate.envelope, "claude-code");
+  const fakeClaudeBin = resolve(args.evidenceRoot, "fake-bin-claude-runtime");
+  writeFakeHarnessBinary(fakeClaudeBin, "claude", "runtime-unavailable");
+  const claudeRuntime = runArchitectureAgentReview(
+    claudeCreate.targetRoot,
+    `${fakeClaudeBin}${delimiter}${process.env.PATH ?? ""}`,
+  );
+  assert.equal(claudeRuntime.result.status, 2, claudeRuntime.result.stderr);
+  assert.equal(claudeRuntime.evidence.status, "blocked");
+  assert.equal(claudeRuntime.evidence.diagnostics[0].code, "HARNESS_RUNTIME_UNAVAILABLE");
+  assert.match(claudeRuntime.evidence.diagnostics[0].reason, /currently unavailable/u);
+  assert.equal(
+    claudeRuntime.evidence.diagnostics[0].reason.includes(
+      "selected harness invocation exited non-zero",
+    ),
+    false,
+  );
+
+  const codexCreate = await dispatchCreate("w-architecture-codex", [
+    "--project-name",
+    "Architecture Codex",
+    "--agentic-harness",
+    "codex",
+  ]);
+  assertStarterHarnessSurfaces(codexCreate.targetRoot, codexCreate.envelope, "codex");
+  const fakeCodexBin = resolve(args.evidenceRoot, "fake-bin-codex-auth");
+  writeFakeHarnessBinary(fakeCodexBin, "codex", "auth-missing");
+  const codexAuth = runArchitectureAgentReview(
+    codexCreate.targetRoot,
+    `${fakeCodexBin}${delimiter}${process.env.PATH ?? ""}`,
+  );
+  assert.equal(codexAuth.result.status, 2, codexAuth.result.stderr);
+  assert.equal(codexAuth.evidence.status, "blocked");
+  assert.equal(codexAuth.evidence.diagnostics[0].code, "HARNESS_AUTH_MISSING");
+  assert.match(codexAuth.evidence.diagnostics[0].reason, /codex login/u);
+  assert.notEqual(
+    codexAuth.evidence.diagnostics[0].reason,
+    "Reading additional input from stdin...",
+  );
+
+  return {
+    witness: "W-ARCHITECTURE-AGENT-RUNNER",
+    runnerId: "architecture-agent-review",
+    missingRuntimeStatus: missing.evidence.status,
+    passStatus: pass.evidence.status,
+    defaultBoundaries: pass.evidence.reviewedBoundaries,
+    noMobileBoundaries: noMobile.evidence.reviewedBoundaries,
+    webOnlyBoundaries: webOnly.evidence.reviewedBoundaries,
+    unparseableStatus: unparseable.evidence.status,
+    claudeRuntimeDiagnostic: claudeRuntime.evidence.diagnostics[0].code,
+    codexAuthDiagnostic: codexAuth.evidence.diagnostics[0].code,
+    noFallbackToPi: true,
+  };
+});
+
 // --- Refresh committed examples fixtures from REAL command output (if requested) ---
 if (args.refreshFixtures) {
   const fixtureBase = resolve(repoRoot, "examples/starter-reference/generated-fixtures");
@@ -1374,7 +2315,7 @@ if (args.refreshFixtures) {
         "--project-name",
         "Blocked",
         "--agentic-harness",
-        "claude-code",
+        "opencode",
         "--brief",
         "y",
         "--json",

@@ -1,0 +1,440 @@
+{
+  "schemaVersion": "1.0.0",
+  "artifactKind": "implementation_plan",
+  "artifactId": "starter-readiness-plan",
+  "title": "Starter readiness verification plan",
+  "createdAt": "2026-07-01T00:00:00.000Z",
+  "updatedAt": "2026-07-01T00:00:00.000Z",
+  "producer": {
+    "kind": "cli",
+    "id": "vibe-engineer-create",
+    "name": "vibe-engineer create starter template",
+    "version": "1.0.0",
+    "runId": "starter-readiness"
+  },
+  "status": "approved",
+  "ownership": {
+    "ownerLane": "starter-readiness",
+    "ownedWritePaths": [".vibe/evidence/**"],
+    "readOnlyPaths": ["apps/**", "packages/**", "docs/**", ".vibe/registry/**"],
+    "untouchablePaths": [".git/**", "node_modules/**"],
+    "concurrencyNotes": "Generated starter self-check plan; it writes only ignored local evidence."
+  },
+  "links": [
+    {
+      "rel": "derived_from",
+      "artifactKind": "work_brief",
+      "artifactId": "starter-readiness-work-brief",
+      "path": "docs/reference/starter.md",
+      "required": true,
+      "statusAtLinkTime": "ready"
+    }
+  ],
+  "extensions": {
+    "dev.vibe.starter-readiness": {
+      "schemaVersion": "1.0.0",
+      "purpose": "fresh generated project readiness verification"
+    }
+  },
+  "approvedBy": {
+    "producer": {
+      "kind": "system",
+      "id": "starter-template",
+      "name": "Starter template readiness fixture"
+    },
+    "approvedAt": "2026-07-01T00:00:00.000Z"
+  },
+  "workBriefRef": {
+    "rel": "derived_from",
+    "artifactKind": "work_brief",
+    "artifactId": "starter-readiness-work-brief",
+    "path": "docs/reference/starter.md",
+    "required": true,
+    "statusAtLinkTime": "ready"
+  },
+  "objective": "Run the generated starter's deterministic local quality gates through vibe-engineer verify.",
+  "scope": [
+    "apps",
+    "packages",
+    ".tooling/scripts/starter-verify-runner.mjs",
+    ".vibe/registry/runner-catalog.json"
+  ],
+  "nonScope": ["external deployment", "device/browser E2E", "live agent architecture review"],
+  "contextClosure": [
+    {
+      "rel": "context_for",
+      "artifactKind": "context_file_header",
+      "artifactId": "starter-readiness-context",
+      "path": ".vibe/context/manifest.json",
+      "required": true,
+      "statusAtLinkTime": "current"
+    }
+  ],
+  "affectedAreas": [
+    {
+      "kind": "other",
+      "path": ".",
+      "reason": "fresh generated starter readiness check"
+    }
+  ],
+  "schematics": [],
+  "implementationSteps": [
+    {
+      "id": "run-readiness-gates",
+      "description": "Run deterministic starter typecheck, lint/format, unit, and build-package gates.",
+      "dependsOn": [],
+      "expectedTouchedAreas": [
+        {
+          "kind": "other",
+          "path": ".vibe/evidence",
+          "reason": "verify evidence packets and runner sidecars"
+        }
+      ],
+      "acceptanceLinks": ["accept-starter-readiness"]
+    }
+  ],
+  "acceptanceCriteria": [
+    {
+      "id": "accept-starter-readiness",
+      "description": "The generated starter deterministic readiness runners complete successfully."
+    }
+  ],
+  "definitionOfDone": [
+    {
+      "id": "dod-readiness-verify",
+      "description": "vibe-engineer verify exits 0 and emits evidence packets for the deterministic readiness gates.",
+      "blocking": true
+    }
+  ],
+  "risks": [],
+  "openBlockers": [],
+  "verificationDelta": {
+    "schemaVersion": "1.0.0",
+    "artifactKind": "verification_delta",
+    "artifactId": "starter-readiness-delta",
+    "title": "Starter readiness Verification Delta",
+    "createdAt": "2026-07-01T00:00:00.000Z",
+    "updatedAt": "2026-07-01T00:00:00.000Z",
+    "producer": {
+      "kind": "cli",
+      "id": "vibe-engineer-create",
+      "name": "vibe-engineer create starter template",
+      "version": "1.0.0",
+      "runId": "starter-readiness"
+    },
+    "status": "complete",
+    "ownership": {
+      "ownerLane": "starter-readiness",
+      "ownedWritePaths": [".vibe/evidence/**"],
+      "readOnlyPaths": ["apps/**", "packages/**", "docs/**", ".vibe/registry/**"],
+      "untouchablePaths": [".git/**", "node_modules/**"],
+      "concurrencyNotes": "Generated starter self-check delta; it writes only ignored local evidence."
+    },
+    "links": [
+      {
+        "rel": "verification_delta_of",
+        "artifactKind": "implementation_plan",
+        "artifactId": "starter-readiness-plan",
+        "path": "docs/reference/starter-readiness-plan.json",
+        "required": true,
+        "statusAtLinkTime": "approved"
+      }
+    ],
+    "extensions": {
+      "dev.vibe.starter-readiness": {
+        "schemaVersion": "1.0.0",
+        "purpose": "fresh generated project readiness verification"
+      }
+    },
+    "summary": "Fresh starter local readiness verification catalog.",
+    "implementationPlanRef": {
+      "rel": "verification_delta_of",
+      "artifactKind": "implementation_plan",
+      "artifactId": "starter-readiness-plan",
+      "path": "docs/reference/starter-readiness-plan.json",
+      "required": true,
+      "statusAtLinkTime": "approved"
+    },
+    "sensitiveAreas": ["local command execution", "generated workspace evidence writes"],
+    "catalogVersion": "1.0.0",
+    "requiredItems": [
+      {
+        "id": "safety-hooks",
+        "layer": "safety_hooks",
+        "action": "not_applicable",
+        "rationale": "The starter readiness self-check has no generated safety hook runner; project-specific work should add one when needed.",
+        "expectedArtifacts": [".vibe/evidence/starter-readiness/safety-hooks.json"],
+        "blocking": true,
+        "validationOwner": "starter-owner",
+        "fixerOwner": "starter-owner",
+        "evidenceRequired": [
+          {
+            "kind": "evidence_packet",
+            "description": "not-applicable safety hooks record",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "typecheck",
+        "layer": "typecheck",
+        "action": "add",
+        "rationale": "Run the generated TypeScript project references through the starter typecheck runner.",
+        "expectedArtifacts": [".vibe/evidence/vibe-runner/typecheck.json"],
+        "blocking": true,
+        "validationOwner": "starter-owner",
+        "fixerOwner": "starter-owner",
+        "evidenceRequired": [
+          {
+            "kind": "evidence_packet",
+            "description": "typecheck evidence packet",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "lint-format",
+        "layer": "lint_format",
+        "action": "add",
+        "rationale": "Run the generated lint and format checks through the starter lint_format runner.",
+        "expectedArtifacts": [".vibe/evidence/vibe-runner/lint_format.json"],
+        "blocking": true,
+        "validationOwner": "starter-owner",
+        "fixerOwner": "starter-owner",
+        "evidenceRequired": [
+          {
+            "kind": "evidence_packet",
+            "description": "lint/format evidence packet",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "mechanical-gate",
+        "layer": "mechanical_gate",
+        "action": "not_applicable",
+        "rationale": "No separate mechanical gate is generated for the starter self-check beyond the deterministic package gates.",
+        "expectedArtifacts": [".vibe/evidence/starter-readiness/mechanical-gate.json"],
+        "blocking": true,
+        "validationOwner": "starter-owner",
+        "fixerOwner": "starter-owner",
+        "evidenceRequired": [
+          {
+            "kind": "evidence_packet",
+            "description": "not-applicable mechanical gate record",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "unit",
+        "layer": "unit",
+        "action": "add",
+        "rationale": "Run generated unit tests through the starter unit runner.",
+        "expectedArtifacts": [".vibe/evidence/vibe-runner/unit.json"],
+        "blocking": true,
+        "validationOwner": "starter-owner",
+        "fixerOwner": "starter-owner",
+        "evidenceRequired": [
+          {
+            "kind": "evidence_packet",
+            "description": "unit test evidence packet",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "integration",
+        "layer": "integration",
+        "action": "not_applicable",
+        "rationale": "The generated starter readiness self-check does not start external services for integration tests.",
+        "expectedArtifacts": [".vibe/evidence/starter-readiness/integration.json"],
+        "blocking": true,
+        "validationOwner": "starter-owner",
+        "fixerOwner": "starter-owner",
+        "evidenceRequired": [
+          {
+            "kind": "evidence_packet",
+            "description": "not-applicable integration record",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "contract-adapter",
+        "layer": "contract_adapter",
+        "action": "not_applicable",
+        "rationale": "The starter self-check uses compile/unit coverage for generated contracts; no separate adapter runner is generated.",
+        "expectedArtifacts": [".vibe/evidence/starter-readiness/contract-adapter.json"],
+        "blocking": true,
+        "validationOwner": "starter-owner",
+        "fixerOwner": "starter-owner",
+        "evidenceRequired": [
+          {
+            "kind": "evidence_packet",
+            "description": "not-applicable contract adapter record",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "e2e",
+        "layer": "e2e",
+        "action": "not_applicable",
+        "rationale": "Fresh starter readiness intentionally excludes full E2E from the default local verify command.",
+        "expectedArtifacts": [".vibe/evidence/starter-readiness/e2e.json"],
+        "blocking": true,
+        "validationOwner": "starter-owner",
+        "fixerOwner": "starter-owner",
+        "evidenceRequired": [
+          {
+            "kind": "evidence_packet",
+            "description": "not-applicable E2E record",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "ui-verification",
+        "layer": "ui_verification",
+        "action": "not_applicable",
+        "rationale": "Fresh starter readiness intentionally excludes browser/device UI verification from the default local verify command.",
+        "expectedArtifacts": [".vibe/evidence/starter-readiness/ui-verification.json"],
+        "blocking": true,
+        "validationOwner": "starter-owner",
+        "fixerOwner": "starter-owner",
+        "evidenceRequired": [
+          {
+            "kind": "evidence_packet",
+            "description": "not-applicable UI verification record",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "ai-eval",
+        "layer": "ai_eval",
+        "action": "not_applicable",
+        "rationale": "No AI evaluation runner is generated for the starter self-check.",
+        "expectedArtifacts": [".vibe/evidence/starter-readiness/ai-eval.json"],
+        "blocking": true,
+        "validationOwner": "starter-owner",
+        "fixerOwner": "starter-owner",
+        "evidenceRequired": [
+          {
+            "kind": "evidence_packet",
+            "description": "not-applicable AI eval record",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "build-package",
+        "layer": "build_package",
+        "action": "add",
+        "rationale": "Run generated package builds through the starter build_package runner.",
+        "expectedArtifacts": [".vibe/evidence/vibe-runner/build_package.json"],
+        "blocking": true,
+        "validationOwner": "starter-owner",
+        "fixerOwner": "starter-owner",
+        "evidenceRequired": [
+          {
+            "kind": "evidence_packet",
+            "description": "build package evidence packet",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "context-drift",
+        "layer": "context_drift",
+        "action": "not_applicable",
+        "rationale": "No separate context drift runner is generated for the starter self-check.",
+        "expectedArtifacts": [".vibe/evidence/starter-readiness/context-drift.json"],
+        "blocking": true,
+        "validationOwner": "starter-owner",
+        "fixerOwner": "starter-owner",
+        "evidenceRequired": [
+          {
+            "kind": "evidence_packet",
+            "description": "not-applicable context drift record",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "observability",
+        "layer": "observability",
+        "action": "not_applicable",
+        "rationale": "No observability runner is generated for the starter self-check.",
+        "expectedArtifacts": [".vibe/evidence/starter-readiness/observability.json"],
+        "blocking": true,
+        "validationOwner": "starter-owner",
+        "fixerOwner": "starter-owner",
+        "evidenceRequired": [
+          {
+            "kind": "evidence_packet",
+            "description": "not-applicable observability record",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "architecture-agent-review",
+        "layer": "advisory_review",
+        "action": "not_applicable",
+        "rationale": "The live selected-harness architecture-agent-review runner is documented and available separately; it is not part of the deterministic offline readiness verify command.",
+        "expectedArtifacts": [".vibe/evidence/starter-readiness/architecture-agent-review.json"],
+        "blocking": false,
+        "validationOwner": "starter-owner",
+        "fixerOwner": "starter-owner",
+        "evidenceRequired": [
+          {
+            "kind": "evidence_packet",
+            "description": "not-applicable architecture review record",
+            "blocking": false
+          }
+        ]
+      },
+      {
+        "id": "final-dod",
+        "layer": "final_dod",
+        "action": "not_applicable",
+        "rationale": "The default readiness verify command records final DoD as represented by the deterministic gates above.",
+        "expectedArtifacts": [".vibe/evidence/starter-readiness/final-dod.json"],
+        "blocking": true,
+        "validationOwner": "starter-owner",
+        "fixerOwner": "starter-owner",
+        "evidenceRequired": [
+          {
+            "kind": "evidence_packet",
+            "description": "not-applicable final DoD record",
+            "blocking": true
+          }
+        ]
+      },
+      {
+        "id": "schema-validation",
+        "layer": "schema_validation",
+        "action": "not_applicable",
+        "rationale": "The starter readiness plan itself is validated by vibe-engineer verify before execution.",
+        "expectedArtifacts": [".vibe/evidence/starter-readiness/schema-validation.json"],
+        "blocking": true,
+        "validationOwner": "starter-owner",
+        "fixerOwner": "starter-owner",
+        "evidenceRequired": [
+          {
+            "kind": "evidence_packet",
+            "description": "not-applicable schema validation record",
+            "blocking": true
+          }
+        ]
+      }
+    ],
+    "mechanicalGateImpacts": ["represented by deterministic starter quality gates"],
+    "advisoryReviewItems": [
+      "architecture-agent-review available as a separate live selected-harness runner"
+    ],
+    "rerunHints": ["Use --rerun-of with a prior run-id when comparing readiness attempts."]
+  }
+}

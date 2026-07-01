@@ -1,6 +1,6 @@
 // vibe-engineer import — import an existing project into vibe-engineer management with the
-// selected pi agentic harness and DL-17 bootstrap context. Shares the selected-harness join +
-// bootstrap logic with `create` (internal to create/** + import/** only).
+// selected pi, Claude Code, or Codex agentic harness and DL-17 bootstrap context. Shares the
+// selected-harness join + bootstrap logic with `create` (internal to create/** + import/** only).
 // Mirrors the accepted verify/index.ts Node-24-native-.ts-load precedent.
 import { runCreate } from "../create/index.ts";
 import type { UnknownRecord } from "../create/selected-harness.ts";
@@ -19,7 +19,7 @@ export const importCommand = Object.freeze({
   id: "import",
   visibility: "starter",
   description:
-    "Import an existing project into vibe-engineer management with the selected pi agentic harness and DL-17 bootstrap context.",
+    "Import an existing project into vibe-engineer management with a selected pi, Claude Code, or Codex agentic harness and DL-17 bootstrap context.",
   run,
 });
 

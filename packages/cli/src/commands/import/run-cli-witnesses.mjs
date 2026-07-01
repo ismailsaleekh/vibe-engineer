@@ -6,7 +6,7 @@
 // (nonexistent target → invalid_input) / exit-code via exitCodeFor / result-file atomic (good+bad)
 // / schema valid + ≥1 negative mutation. import shares runCreate with create (mode="import").
 import assert from "node:assert/strict";
-import { existsSync, mkdtempSync, mkdirSync, rmSync } from "node:fs";
+import { existsSync, mkdtempSync, mkdirSync, readFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -44,6 +44,45 @@ function invocation(args) {
 function assertExit(env) {
   assertExitCodeMatchesEnvelope(env, env.exitCode);
 }
+function readJsonFile(path) {
+  return JSON.parse(readFileSync(path, "utf8"));
+}
+function assertImportSelectedHarnessSurfaces(targetRoot, envelope, harness) {
+  const expectedContextFiles = {
+    pi: ["AGENTS.md", "CLAUDE.md"],
+    "claude-code": ["CLAUDE.md"],
+    codex: ["AGENTS.md"],
+  }[harness];
+  for (const contextFile of ["AGENTS.md", "CLAUDE.md"]) {
+    assert.equal(
+      existsSync(resolve(targetRoot, contextFile)),
+      expectedContextFiles.includes(contextFile),
+      `${harness} import context file expectation failed for ${contextFile}`,
+    );
+  }
+  const metadataPath = resolve(targetRoot, ".vibe/harness/selected-harness.json");
+  const readmePath = resolve(targetRoot, ".vibe/harness/README.md");
+  const handoffPath = resolve(targetRoot, ".vibe/harness/handoff.md");
+  assert.equal(existsSync(metadataPath), true);
+  assert.equal(existsSync(readmePath), true);
+  assert.equal(existsSync(handoffPath), true);
+  const metadata = readJsonFile(metadataPath);
+  assert.equal(metadata.adapter.id, harness);
+  assert.equal(metadata.adapter.noFallbackToPi, true);
+  assert.equal(metadata.runtimePrerequisiteDiagnostic.unavailableRuntimeBehavior, "blocked-missing-prerequisite");
+  assert.equal(metadata.verificationRunnerInvocation.runnerImplemented, false);
+  assert.deepEqual(metadata.assetWriter.contextFiles, expectedContextFiles);
+  if (harness !== "pi") {
+    assert.equal(existsSync(resolve(targetRoot, ".pi")), false, `${harness} imported .pi fallback assets`);
+    assert.equal(metadata.assetWriter.nativeAssetFamilies.length, 0);
+    assert.equal(metadata.assetWriter.blockedAssetFamilies.length > 0, true);
+  }
+  return {
+    adapterId: metadata.adapter.id,
+    contextFiles: metadata.assetWriter.contextFiles,
+    blockedAssetFamilies: metadata.assetWriter.blockedAssetFamilies,
+  };
+}
 
 const summary = { schemaVersion: "wp04-import-witness/v1", ok: true, cases: [] };
 {
@@ -78,6 +117,7 @@ const summary = { schemaVersion: "wp04-import-witness/v1", ok: true, cases: [] }
   assert.equal(result.envelope.status, "success");
   assert.equal(result.envelope.payload.kind, "create_result");
   assert.equal(result.envelope.payload.data.mode, "import");
+  const selectedHarnessSurfaces = assertImportSelectedHarnessSurfaces(targetRoot, result.envelope, "pi");
   ev.writeJson("source-dispatch-success.json", result.envelope);
   const muts = assertAtLeastOneMutationFails(result.envelope);
   ev.writeJson("source-dispatch-success-schema-negative.json", muts);
@@ -86,7 +126,75 @@ const summary = { schemaVersion: "wp04-import-witness/v1", ok: true, cases: [] }
     status: result.envelope.status,
     exitCode: result.envelope.exitCode,
     mutationsFailing: muts.filter((m) => m.ok === false).length,
+    selectedHarnessSurfaces,
   });
+}
+
+// Source-dispatch selected harness boundary: every supported harness is accepted; unsupported rejects.
+{
+  const loader = createCommandLoader([importCommand]);
+  for (const harness of ["pi", "claude-code", "codex"]) {
+    const targetRoot = resolve(scratch, `src-harness-${harness}`);
+    mkdirSync(targetRoot, { recursive: true });
+    const args = [
+      "--target-root",
+      targetRoot,
+      "--project-name",
+      `Import ${harness}`,
+      "--agentic-harness",
+      harness,
+      "--json",
+      "--non-interactive",
+    ];
+    const result = await loader.dispatch("import", args, {
+      invocation: invocation(args),
+      packageJsonPath: resolve(repoRoot, "packages/cli/package.json"),
+      config: null,
+    });
+    assertEnvelopeValid(result.envelope);
+    assert.equal(result.envelope.status, "success");
+    assert.equal(result.envelope.payload.data.selectedHarness, harness);
+    assert.equal(result.envelope.payload.data.harnessConfig.agenticHarness, harness);
+    const selectedHarnessSurfaces = assertImportSelectedHarnessSurfaces(targetRoot, result.envelope, harness);
+    if (harness !== "pi") {
+      assert.equal(existsSync(resolve(targetRoot, ".pi")), false, `${harness} imported .pi fallback assets`);
+      assert.equal(result.envelope.payload.data.harnessAssets.noFallbackToPi, true);
+    }
+    summary.cases.push({
+      case: `source-dispatch-harness-${harness}`,
+      status: result.envelope.status,
+      selectedHarness: harness,
+      selectedHarnessSurfaces,
+    });
+  }
+  for (const harness of ["opencode", "totally-unknown"]) {
+    const targetRoot = resolve(scratch, `src-harness-reject-${harness}`);
+    mkdirSync(targetRoot, { recursive: true });
+    const args = [
+      "--target-root",
+      targetRoot,
+      "--project-name",
+      "Rejected Import",
+      "--agentic-harness",
+      harness,
+      "--json",
+      "--non-interactive",
+    ];
+    const result = await loader.dispatch("import", args, {
+      invocation: invocation(args),
+      packageJsonPath: resolve(repoRoot, "packages/cli/package.json"),
+      config: null,
+    });
+    assertEnvelopeValid(result.envelope);
+    assert.equal(result.envelope.status, "blocked");
+    assert.equal(result.envelope.payload.data.supported.join(","), "pi,claude-code,codex");
+    assert.equal(existsSync(resolve(targetRoot, ".pi")), false, `${harness} wrote .pi assets despite rejection`);
+    summary.cases.push({
+      case: `source-dispatch-harness-reject-${harness}`,
+      status: result.envelope.status,
+      selectedHarness: harness,
+    });
+  }
 }
 
 // dist-binary success (existing target root).

@@ -33,12 +33,15 @@ Verification runner starter path:
 ```bash
 vibe-engineer verify \
   --project-root . \
-  --implementation-plan .vibe/work/<work-id>/implementation-plan.json \
-  --evidence-root .vibe/evidence/<work-id>/verify \
-  --run-id <work-id> \
+  --implementation-plan docs/reference/starter-readiness-plan.json \
+  --evidence-root .vibe/evidence/starter-readiness/verify \
+  --run-id starter-readiness \
   --runner-catalog .vibe/registry/runner-catalog.json
 ```
 
-The generated runner catalog includes safe default entries for `typecheck`,
-`lint_format`, `unit`, and `build_package`. Add project-specific runner entries
-before requiring additional Verification Delta layers.
+The generated `docs/reference/starter-readiness-plan.json` is an approved sample
+Implementation Plan whose Verification Delta matches the safe default runner
+catalog entries for `typecheck`, `lint_format`, `unit`, and `build_package`.
+Generated evidence is written under `.vibe/evidence/**`, which is ignored so the
+fresh repository stays clean after readiness checks. Add project-specific runner
+entries and update the plan before requiring additional Verification Delta layers.
