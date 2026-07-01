@@ -89,6 +89,18 @@ function validatePackets(result) {
 function packetData(result) {
   return packetFiles(result).map(readJson);
 }
+/** @param {AnyRecord} packet @returns {AnyRecord[]} */
+function itemDiagnostics(packet) {
+  return packet.extensions?.["dev.vibe.verification"]?.diagnostics ?? [];
+}
+/** @param {AnyRecord} result @param {string} itemId @returns {AnyRecord|undefined} */
+function findItemDiagnostic(result, itemId) {
+  for (const packet of packetData(result)) {
+    const found = itemDiagnostics(packet).find((entry) => entry.itemId === itemId);
+    if (found) return found;
+  }
+  return undefined;
+}
 /** @param {AnyRecord} result @param {string} code @returns {AnyRecord|undefined} */
 function findFailure(result, code) {
   return packetData(result).find((packet) => packet.failureDetails?.code === code);
@@ -226,7 +238,16 @@ async function wRb1P1P2() {
   assert.ok(result.executedItems.includes("advisory-review"));
   assert.ok(result.recordedItems.includes("typecheck"));
   const packets = packetData(result);
-  assert.ok(packets.some((p) => p.result === "skipped" && p.status === "not_run"));
+  const skippedPacket = packets.find((p) => p.result === "skipped" && p.status === "not_run");
+  assert.ok(skippedPacket);
+  const skippedDiagnostic = itemDiagnostics(/** @type {AnyRecord} */ (skippedPacket))[0];
+  assert.equal(skippedDiagnostic.itemId, /** @type {AnyRecord} */ (skippedPacket).extensions["dev.vibe.verification"].requiredItemId);
+  assert.equal(typeof skippedDiagnostic.layer, "string");
+  assert.equal(typeof skippedDiagnostic.action, "string");
+  assert.equal(typeof skippedDiagnostic.blocking, "boolean");
+  assert.ok(Array.isArray(skippedDiagnostic.candidateRunnerIdsChecked));
+  assert.equal(typeof skippedDiagnostic.suggestedNextAction, "string");
+  assert.ok(skippedDiagnostic.suggestedRunnerCatalogEntry);
   await writeJson(path.join(evidenceRoot, "p1", "result.json"), result);
   await writeJson(path.join(evidenceRoot, "p2", "result.json"), {
     recordedItems: result.recordedItems,
@@ -467,6 +488,73 @@ async function negatives() {
   validatePackets(r.result);
   assert.equal(r.result.status, "advisory_warning");
   assert.equal(r.result.blockedItems.length, 0);
+}
+/** @returns {Promise<void>} */
+async function diagnosticWorkflow() {
+  const missingRegistryPlan = await planVariant("diagnostics-missing-registry", (plan) => {
+    const typecheck = plan.verificationDelta.requiredItems.find((item) => item.id === "typecheck");
+    typecheck.action = "add";
+    typecheck.blocking = true;
+    typecheck.rationale = "typecheck intentionally requires a runner for diagnostics coverage.";
+  });
+  let r = await runCase("diagnostics/missing-registry", { plan: missingRegistryPlan });
+  validatePackets(r.result);
+  assert.equal(r.result.status, "blocked");
+  assert.ok(r.result.executedItems.includes("schema-validation"));
+  assert.ok(r.result.executedItems.includes("advisory-review"));
+  assert.ok(r.result.blockedItems.includes("typecheck"));
+  let diagnostic = findItemDiagnostic(r.result, "typecheck");
+  assert.ok(diagnostic);
+  diagnostic = /** @type {AnyRecord} */ (diagnostic);
+  assert.equal(diagnostic.itemId, "typecheck");
+  assert.equal(diagnostic.layer, "typecheck");
+  assert.equal(diagnostic.action, "add");
+  assert.equal(diagnostic.blocking, true);
+  assert.ok(Array.isArray(diagnostic.candidateRunnerIdsChecked));
+  assert.ok(diagnostic.candidateRunnerIdsChecked.includes("schema-validation"));
+  assert.match(diagnostic.missingRegistryReason, /No runner catalog entry matched/);
+  assert.match(diagnostic.suggestedNextAction, /Add a runner catalog entry/);
+  assert.equal(diagnostic.suggestedRunnerCatalogEntry.requiredItemIds[0], "typecheck");
+  const missingRegistryPacket = packetData(r.result).find((packet) =>
+    itemDiagnostics(packet).some((entry) => entry.itemId === "typecheck"),
+  );
+  assert.ok(missingRegistryPacket);
+  assert.notEqual(missingRegistryPacket.commandOrTool.kind, "manual_operator");
+  assert.match(missingRegistryPacket.failureDetails.message, /candidate runner ids checked|candidates=/i);
+
+  r = await runCase("diagnostics/missing-prerequisite", {
+    catalog: [
+      commandSpec({
+        script: "missing-runner.mjs",
+        out: path.join(evidenceRoot, "diagnostics/missing-prerequisite/out.json"),
+      }),
+      advisorySpec(),
+    ],
+  });
+  validatePackets(r.result);
+  assert.equal(r.result.status, "blocked");
+  assert.ok(r.result.executedItems.includes("advisory-review"));
+  const missingPrereqPacket = findFailure(r.result, "MISSING_RUNNER_OR_PREREQUISITE");
+  assert.ok(missingPrereqPacket);
+  assert.equal(
+    missingPrereqPacket.failureDetails.classification,
+    EVIDENCE_FAILURE_CLASSIFICATIONS.MISSING_RUNNER_OR_PREREQUISITE,
+  );
+  diagnostic = findItemDiagnostic(r.result, "schema-validation");
+  assert.ok(diagnostic);
+  diagnostic = /** @type {AnyRecord} */ (diagnostic);
+  assert.equal(diagnostic.layer, "schema_validation");
+  assert.equal(diagnostic.action, "add");
+  assert.equal(diagnostic.blocking, true);
+  assert.deepEqual(diagnostic.candidateRunnerIdsChecked, ["schema-validation"]);
+  assert.match(diagnostic.missingPrerequisiteReason, /missing or not a file/);
+  assert.match(diagnostic.missingPath, /missing-runner\.mjs$/);
+  assert.match(diagnostic.suggestedNextAction, /Create the project-contained runner script/);
+  assert.equal(missingPrereqPacket.commandOrTool.kind, "command");
+  await writeJson(path.join(evidenceRoot, "diagnostics", "result.json"), {
+    missingRegistry: r.result.blockedItems,
+    missingPrerequisite: diagnostic,
+  });
 }
 /** @returns {Promise<void>} */
 async function safetyNegatives() {
@@ -775,6 +863,7 @@ async function main() {
   await wRb25();
   await p3(source);
   await negatives();
+  await diagnosticWorkflow();
   await safetyNegatives();
   await pathEnvCaps();
   await n13();

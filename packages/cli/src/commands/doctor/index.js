@@ -1,4 +1,5 @@
-import { dirname } from "node:path";
+import { existsSync, readdirSync, statSync } from "node:fs";
+import { dirname, join } from "node:path";
 import {
   loadVibeConfigFile,
   loadVibeConfigFromProjectRoot,
@@ -16,6 +17,7 @@ import { parseFlagToken, sanitizeFlagForDisplay } from "../../errors/sanitizatio
 
 const VALUE_FLAGS = new Set(["--project-root", "--config"]);
 const BOOLEAN_FLAGS = new Set(["--include-adapter-scope"]);
+const PRISMA_MIGRATION_DOCTOR_CODE = "VE_DOCTOR_PRISMA_MIGRATION_STALE_OR_EMPTY";
 
 function commandResult(envelope) {
   return { envelope };
@@ -150,18 +152,135 @@ function configScope(loaded) {
   };
 }
 
+function projectRootForDoctor(loaded) {
+  return loaded.source.projectRoot ?? (loaded.source.configPath ? dirname(loaded.source.configPath) : null);
+}
+
+function prismaMigrationScope(loaded) {
+  const projectRoot = projectRootForDoctor(loaded);
+  if (!projectRoot) return null;
+  const apiRoot = join(projectRoot, "apps", "api");
+  const migrationsRoot = join(apiRoot, "prisma", "migrations");
+  if (!existsSync(apiRoot)) {
+    return {
+      id: "doctor.scope.prisma-migrations",
+      kind: "prisma_migration_health",
+      required: false,
+      status: "omitted",
+      source: { projectRoot, migrationsRoot },
+      reason: "apps/api is not generated for this starter scope; Prisma checks are omitted.",
+    };
+  }
+  if (!existsSync(migrationsRoot)) {
+    return {
+      id: "doctor.scope.prisma-migrations",
+      kind: "prisma_migration_health",
+      required: true,
+      status: "passed",
+      source: { projectRoot, migrationsRoot },
+      checkedMigrationFolders: 0,
+      note: "No Prisma migration folders are present yet.",
+    };
+  }
+
+  const findings = [];
+  const entries = readdirSync(migrationsRoot, { withFileTypes: true })
+    .filter((entry) => entry.isDirectory())
+    .map((entry) => entry.name)
+    .sort();
+  for (const entry of entries) {
+    const migrationSql = join(migrationsRoot, entry, "migration.sql");
+    if (!existsSync(migrationSql)) {
+      findings.push({
+        migration: entry,
+        path: migrationSql,
+        reason: "missing migration.sql",
+      });
+      continue;
+    }
+    const sqlStat = statSync(migrationSql);
+    if (sqlStat.size === 0) {
+      findings.push({
+        migration: entry,
+        path: migrationSql,
+        reason: "empty migration.sql",
+      });
+    }
+  }
+
+  return {
+    id: "doctor.scope.prisma-migrations",
+    kind: "prisma_migration_health",
+    required: true,
+    status: findings.length === 0 ? "passed" : "failed",
+    source: { projectRoot, migrationsRoot },
+    checkedMigrationFolders: entries.length,
+    findings,
+    remediation:
+      "If the stale/empty migration folder was never applied or shared, delete only that local folder and rerun pnpm run db:migrate; otherwise restore the migration from version control or create a corrective migration.",
+  };
+}
+
 function successEnvelope(invocation, loaded) {
-  const scope = configScope(loaded);
+  const scopes = [configScope(loaded)];
+  const prismaScope = prismaMigrationScope(loaded);
+  if (prismaScope !== null) scopes.push(prismaScope);
   return createEnvelope({
     invocation,
     status: "success",
     payload: payload("doctor_result", {
       ok: true,
       overallStatus: "passed",
-      completedScopes: [scope],
+      completedScopes: scopes,
       incompleteScopes: [],
       source: loaded.source,
     }),
+  });
+}
+
+function prismaMigrationBlockedEnvelope(invocation, loaded, prismaScope) {
+  const message = "Doctor found missing or empty Prisma migration.sql files.";
+  return createEnvelope({
+    invocation,
+    status: "blocked",
+    payload: payload("doctor_result", {
+      ok: false,
+      overallStatus: "not_passed_blocking",
+      completedScopes: [configScope(loaded)],
+      incompleteScopes: [
+        {
+          ...prismaScope,
+          blocking: true,
+          reasonCode: PRISMA_MIGRATION_DOCTOR_CODE,
+          nextAction: prismaScope.remediation,
+        },
+      ],
+      source: loaded.source,
+    }),
+    diagnostics: [
+      diagnostic({
+        severity: "error",
+        code: CliErrorCode.InvalidConfig,
+        classification: CliClassification.InvalidConfig,
+        message,
+        path: prismaScope.source.migrationsRoot,
+        hint: prismaScope.remediation,
+      }),
+    ],
+    errors: [
+      cliError({
+        code: CliErrorCode.InvalidConfig,
+        classification: CliClassification.InvalidConfig,
+        retryable: false,
+        blocking: true,
+        message,
+        details: {
+          doctorCode: PRISMA_MIGRATION_DOCTOR_CODE,
+          findings: prismaScope.findings,
+          remediation: prismaScope.remediation,
+        },
+      }),
+    ],
   });
 }
 
@@ -235,6 +354,9 @@ async function run({ invocation, args, context }) {
   if (!parsed.ok) return commandResult(parsed.result);
   const loaded = await loadConfig(invocation, parsed.options, context);
   if (!loaded.ok) return commandResult(configBlockedEnvelope(invocation, loaded.result));
+  const prismaScope = prismaMigrationScope(loaded);
+  if (prismaScope?.status === "failed")
+    return commandResult(prismaMigrationBlockedEnvelope(invocation, loaded, prismaScope));
   if (parsed.options.includeAdapterScope)
     return commandResult(doctorPartialEnvelope(invocation, loaded));
   return commandResult(successEnvelope(invocation, loaded));

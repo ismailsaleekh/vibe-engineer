@@ -12,6 +12,7 @@ import { fileURLToPath } from "node:url";
 import { createCommandLoader } from "../../command-loader/loader.js";
 import { exitCodeFor, validateCliResultEnvelope } from "../../envelope/result-envelope.js";
 import { doctorCommand } from "./index.js";
+import { createCommand } from "../create/index.ts";
 import { loadVibeConfigFile } from "@vibe-engineer/config";
 import {
   assertAtLeastOneMutationFails,
@@ -55,6 +56,53 @@ function dispatchCtx(config = null) {
     packageJsonPath: resolve(repoRoot, "packages/cli/package.json"),
     config,
   };
+}
+async function dispatchFreshCreate(slug, scopeFlags = []) {
+  const targetRoot = resolve(scratch, slug);
+  mkdirSync(targetRoot, { recursive: true });
+  const result = await createCommandLoader([createCommand]).dispatch(
+    "create",
+    [
+      "--target-root",
+      targetRoot,
+      "--project-name",
+      `Doctor ${slug}`,
+      "--agentic-harness",
+      "pi",
+      ...scopeFlags,
+      "--json",
+      "--non-interactive",
+    ],
+    {
+      invocation: invocation(["create"]),
+      packageJsonPath: resolve(repoRoot, "packages/cli/package.json"),
+      config: null,
+    },
+  );
+  assertEnvelopeValid(result.envelope);
+  assert.equal(result.envelope.status, "success");
+  return { targetRoot, envelope: result.envelope };
+}
+async function dispatchDoctorProject(targetRoot) {
+  const result = await createCommandLoader([doctorCommand]).dispatch(
+    "doctor",
+    ["--project-root", targetRoot],
+    {
+      invocation: invocation(["doctor"]),
+      packageJsonPath: resolve(repoRoot, "packages/cli/package.json"),
+      config: null,
+    },
+  );
+  assertEnvelopeValid(result.envelope);
+  assertExit(result.envelope);
+  return result.envelope;
+}
+function prismaScope(envelope) {
+  const scopes = [
+    ...(envelope.payload.data.completedScopes ?? []),
+    ...(envelope.payload.data.incompleteScopes ?? []),
+  ];
+  return scopes.find((scope) => scope.id === "doctor.scope.prisma-migrations");
 }
 function assertExit(env) {
   assertExitCodeMatchesEnvelope(env, env.exitCode);
@@ -206,6 +254,71 @@ const summary = { schemaVersion: "wp04-doctor-witness/v1", ok: true, cases: [] }
   summary.cases.push(
     { case: "dist-result-file-good", exitCode: 0 },
     { case: "dist-result-file-bad", exitCode: 5, existsAfter: false },
+  );
+}
+
+// source-dispatch fresh generated starters: default/no-mobile pass Prisma diagnostics;
+// web-only omits API/Prisma checks without blocking.
+{
+  const fresh = [
+    { case: "fresh-default", flags: [], expectedScope: "default", expectedPrisma: "passed" },
+    {
+      case: "fresh-no-mobile",
+      flags: ["--no-mobile"],
+      expectedScope: "no-mobile",
+      expectedPrisma: "passed",
+    },
+    {
+      case: "fresh-web-only",
+      flags: ["--web-only"],
+      expectedScope: "web-only",
+      expectedPrisma: "omitted",
+    },
+  ];
+  for (const spec of fresh) {
+    const created = await dispatchFreshCreate(spec.case, spec.flags);
+    assert.equal(created.envelope.payload.data.starterScope.id, spec.expectedScope);
+    const env = await dispatchDoctorProject(created.targetRoot);
+    assert.equal(env.status, "success");
+    const scope = prismaScope(env);
+    assert.equal(scope.status, spec.expectedPrisma);
+    ev.writeJson(`${spec.case}-doctor.json`, env);
+    summary.cases.push({
+      case: spec.case,
+      status: env.status,
+      exitCode: env.exitCode,
+      prismaStatus: scope.status,
+      starterScope: spec.expectedScope,
+    });
+  }
+}
+
+// source-dispatch stale/empty Prisma migrations produce blocking doctor diagnostics with local cleanup guidance.
+{
+  const missing = await dispatchFreshCreate("stale-missing-migration");
+  rmSync(resolve(missing.targetRoot, "apps/api/prisma/migrations/0000_init/migration.sql"), {
+    force: true,
+  });
+  const missingEnv = await dispatchDoctorProject(missing.targetRoot);
+  assert.equal(missingEnv.status, "blocked");
+  assert.equal(missingEnv.errors[0].details.doctorCode, "VE_DOCTOR_PRISMA_MIGRATION_STALE_OR_EMPTY");
+  assert.equal(prismaScope(missingEnv).findings[0].reason, "missing migration.sql");
+  ev.writeJson("stale-missing-migration-doctor.json", missingEnv);
+
+  const empty = await dispatchFreshCreate("stale-empty-migration");
+  writeFileSync(
+    resolve(empty.targetRoot, "apps/api/prisma/migrations/0000_init/migration.sql"),
+    "",
+    "utf8",
+  );
+  const emptyEnv = await dispatchDoctorProject(empty.targetRoot);
+  assert.equal(emptyEnv.status, "blocked");
+  assert.equal(emptyEnv.errors[0].details.doctorCode, "VE_DOCTOR_PRISMA_MIGRATION_STALE_OR_EMPTY");
+  assert.equal(prismaScope(emptyEnv).findings[0].reason, "empty migration.sql");
+  ev.writeJson("stale-empty-migration-doctor.json", emptyEnv);
+  summary.cases.push(
+    { case: "stale-missing-migration", status: missingEnv.status, exitCode: missingEnv.exitCode },
+    { case: "stale-empty-migration", status: emptyEnv.status, exitCode: emptyEnv.exitCode },
   );
 }
 

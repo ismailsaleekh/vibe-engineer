@@ -48,7 +48,17 @@ import {
 } from "../../testing/matrix-harness.mjs";
 
 const here = dirname(fileURLToPath(import.meta.url));
-const evidenceRoot = resolve(repoRoot, ".vibe/work/WP-04-command-matrix/evidence/verify");
+const portableNodeRuntimeCommand = "vibe-engineer:node";
+const evidenceRootDefault = resolve(repoRoot, ".vibe/work/WP-04-command-matrix/evidence/verify");
+function parseArgs(argv) {
+  const out = { evidenceRoot: evidenceRootDefault };
+  for (let index = 0; index < argv.length; index += 1) {
+    if (argv[index] === "--evidence-root") out.evidenceRoot = resolve(repoRoot, argv[++index]);
+  }
+  return out;
+}
+const cliArgs = parseArgs(process.argv.slice(2));
+const evidenceRoot = cliArgs.evidenceRoot;
 const ev = makeEvidenceWriter(evidenceRoot);
 const scratch = mkdtempSync(join(tmpdir(), "verifyfix-verify-"));
 
@@ -107,6 +117,117 @@ writeFileSync(
 // Normalize through the macOS /tmp → /private/tmp symlink so verify's realpath-based containment
 // checks see consistent prefixes for paths that do not yet exist on disk.
 projRoot = realpathSync(projRoot);
+const missingCliEvidenceRoot = join(projRoot, "ev-missing-cli");
+mkdirSync(missingCliEvidenceRoot, { recursive: true });
+mkdirSync(join(projRoot, "runners"), { recursive: true });
+writeFileSync(
+  join(projRoot, "runners/pass-runner.mjs"),
+  `import { mkdirSync, writeFileSync } from "node:fs";\nimport { dirname } from "node:path";\nconst out = process.argv[2];\nmkdirSync(dirname(out), { recursive: true });\nwriteFileSync(out, JSON.stringify({ ok: true, argv0: process.argv[1] }) + "\\n");\n`,
+);
+const portableNodeEvidenceRoot = join(projRoot, "ev-portable-node");
+mkdirSync(portableNodeEvidenceRoot, { recursive: true });
+writeFileSync(
+  join(projRoot, "catalog-portable-node.json"),
+  JSON.stringify(
+    [
+      {
+        kind: "command",
+        command: portableNodeRuntimeCommand,
+        args: ["runners/pass-runner.mjs", join(portableNodeEvidenceRoot, "schema-output.json")],
+        cwd: ".",
+        expectedArtifacts: [join(portableNodeEvidenceRoot, "schema-output.json")],
+        argPaths: [
+          { index: 0, root: "projectRoot" },
+          { index: 1, root: "evidenceRoot" },
+        ],
+        publicArgs: [],
+        id: "schema-validation",
+        requiredItemIds: ["schema-validation"],
+        layer: "schema_validation",
+        evidenceClass: "deterministic",
+        blocking: true,
+        safety: {
+          classification: "local_deterministic_write",
+          timeoutMs: 2000,
+          maxStdoutBytes: 8192,
+          maxStderrBytes: 8192,
+          maxOutputBytes: 8192,
+          allowedReadRoots: [projRoot],
+          allowedWriteRoots: [portableNodeEvidenceRoot],
+          envAllowlist: [],
+          passThroughEnv: false,
+          cwdContainedInProjectRoot: true,
+          expectedArtifactsContained: true,
+        },
+      },
+      {
+        kind: "validator",
+        validator: "validateArtifactFile",
+        targetPath: "plans/approved-plan.json",
+        artifactKind: "implementation_plan",
+        id: "advisory-review",
+        requiredItemIds: ["advisory-review"],
+        layer: "advisory_review",
+        evidenceClass: "advisory",
+        blocking: false,
+      },
+    ],
+    null,
+    2,
+  ),
+);
+writeFileSync(
+  join(projRoot, "catalog-missing-prereq.json"),
+  JSON.stringify(
+    [
+      {
+        kind: "command",
+        command: process.execPath,
+        args: [
+          join(projRoot, "runners/missing-runner.mjs"),
+          join(missingCliEvidenceRoot, "schema-output.json"),
+        ],
+        cwd: ".",
+        expectedArtifacts: [join(missingCliEvidenceRoot, "schema-output.json")],
+        argPaths: [
+          { index: 0, root: "projectRoot" },
+          { index: 1, root: "evidenceRoot" },
+        ],
+        id: "schema-validation",
+        requiredItemIds: ["schema-validation"],
+        layer: "schema_validation",
+        evidenceClass: "deterministic",
+        blocking: true,
+        safety: {
+          classification: "local_deterministic_write",
+          timeoutMs: 2000,
+          maxStdoutBytes: 8192,
+          maxStderrBytes: 8192,
+          maxOutputBytes: 8192,
+          allowedReadRoots: [projRoot],
+          allowedWriteRoots: [missingCliEvidenceRoot],
+          envAllowlist: [],
+          passThroughEnv: false,
+          cwdContainedInProjectRoot: true,
+          expectedArtifactsContained: true,
+        },
+      },
+      {
+        kind: "validator",
+        validator: "validateArtifactFile",
+        targetPath: "plans/approved-plan.json",
+        artifactKind: "implementation_plan",
+        id: "advisory-review",
+        requiredItemIds: ["advisory-review"],
+        layer: "advisory_review",
+        evidenceClass: "advisory",
+        blocking: false,
+      },
+    ],
+    null,
+    2,
+  ),
+);
 
 function invocation(args) {
   return {
@@ -166,6 +287,99 @@ const summary = { schemaVersion: "verifyfix-verify-witness/v1", ok: true, cases:
     status: env.status,
     exitCode: env.exitCode,
     mutationsFailing: muts.filter((m) => m.ok === false).length,
+  });
+}
+
+// Source-dispatch SUCCESS for portable generated runner catalogs: verify resolves the exact
+// vibe-engineer:node alias to the active Node runtime before applying the strict runner policy.
+{
+  const args = [
+    "--implementation-plan",
+    "plans/approved-plan.json",
+    "--evidence-root",
+    portableNodeEvidenceRoot,
+    "--project-root",
+    projRoot,
+    "--run-id",
+    "verifyfix-portable-node",
+    "--runner-catalog",
+    "catalog-portable-node.json",
+  ];
+  const result = await createCommandLoader([verifyCommand]).dispatch("verify", args, {
+    invocation: invocation(args),
+    packageJsonPath: resolve(repoRoot, "packages/cli/package.json"),
+    config: null,
+  });
+  const env = result.envelope;
+  assertEnvelopeValid(env);
+  assertExit(env);
+  assert.equal(env.status, "success");
+  assert.equal(env.exitCode, 0);
+  assert.equal(env.payload.kind, "verification_result");
+  assert.equal(existsSync(join(portableNodeEvidenceRoot, "schema-output.json")), true);
+  ev.writeJson("source-dispatch-portable-node.json", env);
+  summary.cases.push({
+    case: "source-dispatch-portable-node",
+    status: env.status,
+    exitCode: env.exitCode,
+    portableNodeRuntimeCommand,
+  });
+}
+
+// Source-dispatch BLOCKED with partial execution preserved: schema-validation has a registered
+// command runner whose script prerequisite is missing, while advisory-review remains registered
+// and must still run. The CLI envelope must expose exact item diagnostics and cannot look green.
+{
+  const args = [
+    "--implementation-plan",
+    "plans/approved-plan.json",
+    "--evidence-root",
+    missingCliEvidenceRoot,
+    "--project-root",
+    projRoot,
+    "--run-id",
+    "verifyfix-missing-prereq",
+    "--runner-catalog",
+    "catalog-missing-prereq.json",
+  ];
+  const result = await createCommandLoader([verifyCommand]).dispatch("verify", args, {
+    invocation: invocation(args),
+    packageJsonPath: resolve(repoRoot, "packages/cli/package.json"),
+    config: null,
+  });
+  const env = result.envelope;
+  assertEnvelopeValid(env);
+  assertExit(env);
+  assert.equal(env.status, "blocked");
+  assert.notEqual(env.exitCode, 0);
+  assert.equal(env.payload.kind, "verification_result");
+  assert.equal(env.payload.data.runnerStatus, "blocked");
+  assert.ok(env.payload.data.executedItems.includes("advisory-review"));
+  assert.ok(env.payload.data.blockedItems.includes("schema-validation"));
+  assert.ok(env.payload.data.evidencePackets.length >= 2);
+  const diagnostic = env.payload.data.itemDiagnostics.find(
+    (entry) => entry.itemId === "schema-validation" && entry.code === "MISSING_RUNNER_OR_PREREQUISITE",
+  );
+  assert.ok(diagnostic);
+  assert.equal(diagnostic.layer, "schema_validation");
+  assert.equal(diagnostic.action, "add");
+  assert.equal(diagnostic.blocking, true);
+  assert.deepEqual(diagnostic.candidateRunnerIdsChecked, ["schema-validation"]);
+  assert.match(diagnostic.missingPrerequisiteReason, /missing or not a file/);
+  assert.match(diagnostic.suggestedNextAction, /Create the project-contained runner script/);
+  assert.match(env.diagnostics[0].message, /schema-validation/);
+  assert.match(env.diagnostics[0].message, /candidate runner ids checked/);
+  const errorDiagnostic = env.errors[0].details.itemDiagnostics.find(
+    (entry) => entry.itemId === "schema-validation" && entry.code === "MISSING_RUNNER_OR_PREREQUISITE",
+  );
+  assert.match(errorDiagnostic.suggestedNextAction, /runner/i);
+  ev.writeJson("source-dispatch-missing-prereq.json", env);
+  summary.cases.push({
+    case: "source-dispatch-missing-prereq",
+    status: env.status,
+    exitCode: env.exitCode,
+    runnerStatus: env.payload.data.runnerStatus,
+    evidencePackets: env.payload.data.evidencePackets.length,
   });
 }
 

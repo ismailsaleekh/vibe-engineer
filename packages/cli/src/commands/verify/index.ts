@@ -53,6 +53,26 @@ type RunnerFailure = {
   message: string;
 };
 
+type ItemDiagnostic = {
+  itemId: string;
+  layer: string;
+  action: string;
+  blocking: boolean;
+  packetBlocking: boolean;
+  status: string;
+  result: string;
+  code: string;
+  classification: string;
+  reason: string;
+  candidateRunnerIdsChecked: string[];
+  missingRegistryReason: string | null;
+  missingPrerequisiteReason: string | null;
+  suggestedNextAction: string;
+  suggestedRunnerCatalogEntry?: UnknownRecord;
+  selectedRunnerId?: string | null;
+  missingPath?: string | null;
+};
+
 type MissingRunnerPrerequisite = RunnerFailure & {
   runnerId: string | null;
   missingPath: string | null;
@@ -154,6 +174,7 @@ const REQUIRED_FLAGS = new Set([
   "--runner-catalog",
 ]);
 const SAFE_ID = /^[a-z0-9][a-z0-9._:-]*$/u;
+const PORTABLE_NODE_RUNTIME_COMMAND = "vibe-engineer:node";
 const SECRET_KEY_PARTS = [
   "token",
   "auth-token",
@@ -546,7 +567,11 @@ async function readRunnerCatalog(
   }
   if (!Array.isArray(parsed) || parsed.some((entry) => !isRecord(entry)))
     return { error: "Runner catalog JSON must be an array of typed runner objects." };
-  return parsed;
+  return parsed.map((entry) =>
+    entry.kind === "command" && entry.command === PORTABLE_NODE_RUNTIME_COMMAND
+      ? { ...entry, command: process.execPath }
+      : entry,
+  );
 }
 
 function sha256File(filePath: string): string {
@@ -653,6 +678,66 @@ function primaryFailure(result: UnknownRecord): RunnerFailure {
   );
 }
 
+function itemDiagnostics(result: UnknownRecord): ItemDiagnostic[] {
+  const raw = Array.isArray(result.itemDiagnostics) ? result.itemDiagnostics : [];
+  const diagnostics: ItemDiagnostic[] = [];
+  for (const entry of raw) {
+    if (!isRecord(entry)) continue;
+    diagnostics.push({
+      itemId: typeof entry.itemId === "string" ? entry.itemId : "unknown-item",
+      layer: typeof entry.layer === "string" ? entry.layer : "unknown_layer",
+      action: typeof entry.action === "string" ? entry.action : "unknown_action",
+      blocking: typeof entry.blocking === "boolean" ? entry.blocking : false,
+      packetBlocking: typeof entry.packetBlocking === "boolean" ? entry.packetBlocking : false,
+      status: typeof entry.status === "string" ? entry.status : "unknown",
+      result: typeof entry.result === "string" ? entry.result : "unknown",
+      code: typeof entry.code === "string" ? entry.code : "UNKNOWN_ITEM_DIAGNOSTIC",
+      classification:
+        typeof entry.classification === "string" ? entry.classification : "classification_unknown",
+      reason: typeof entry.reason === "string" ? redactText(entry.reason) : "No reason supplied.",
+      candidateRunnerIdsChecked: asStringArray(entry.candidateRunnerIdsChecked).map(redactText),
+      missingRegistryReason:
+        typeof entry.missingRegistryReason === "string"
+          ? redactText(entry.missingRegistryReason)
+          : null,
+      missingPrerequisiteReason:
+        typeof entry.missingPrerequisiteReason === "string"
+          ? redactText(entry.missingPrerequisiteReason)
+          : null,
+      suggestedNextAction:
+        typeof entry.suggestedNextAction === "string"
+          ? redactText(entry.suggestedNextAction)
+          : "Register or repair the required runner evidence and rerun verify.",
+      ...(isRecord(entry.suggestedRunnerCatalogEntry)
+        ? { suggestedRunnerCatalogEntry: redactValue(entry.suggestedRunnerCatalogEntry) as UnknownRecord }
+        : {}),
+      ...(typeof entry.selectedRunnerId === "string"
+        ? { selectedRunnerId: redactText(entry.selectedRunnerId) }
+        : { selectedRunnerId: null }),
+      ...(typeof entry.missingPath === "string"
+        ? { missingPath: redactText(entry.missingPath) }
+        : { missingPath: null }),
+    });
+  }
+  return diagnostics;
+}
+
+function blockingItemDiagnostics(result: UnknownRecord): ItemDiagnostic[] {
+  return itemDiagnostics(result).filter(
+    (entry) =>
+      entry.status === "blocked" ||
+      entry.result === "blocked" ||
+      entry.packetBlocking === true ||
+      entry.code === "MISSING_RUNNER_OR_PREREQUISITE" ||
+      entry.code === "MISSING_EVIDENCE",
+  );
+}
+
+function formatItemDiagnostic(entry: ItemDiagnostic): string {
+  const reason = entry.missingRegistryReason ?? entry.missingPrerequisiteReason ?? entry.reason;
+  return `Verification item ${entry.itemId} layer=${entry.layer} action=${entry.action} blocking=${String(entry.blocking)} status=${entry.status} result=${entry.result} code=${entry.code}; candidate runner ids checked=${JSON.stringify(entry.candidateRunnerIdsChecked)}; reason=${reason}; next=${entry.suggestedNextAction}`;
+}
+
 function mapFailureClassification(classification: string): string {
   if (
     classification === "missing_runner_or_prerequisite" ||
@@ -734,6 +819,8 @@ function runnerEnvelope(
     status === "success" ? null : mapFailureClassification(firstFailure.classification);
   const artifacts = packets.map(descriptorForPacket);
   const warnings = asStringArray(result.warnings).map(redactText);
+  const allItemDiagnostics = itemDiagnostics(result);
+  const blockingDiagnostics = blockingItemDiagnostics(result);
   const commonPayload = makePayload(
     "verification_result",
     redactValue({
@@ -747,6 +834,7 @@ function runnerEnvelope(
       blockedItems: asStringArray(result.blockedItems),
       failures: runnerFailures(result),
       warnings,
+      itemDiagnostics: allItemDiagnostics,
     }) as UnknownRecord,
   );
 
@@ -775,18 +863,32 @@ function runnerEnvelope(
     typeof classification === "string" ? classification : CliClassification.InternalError;
   const stableCode = stableCodeForClassification(stableClassification);
   const message = firstFailure.message || "Verification runner reported a non-green result.";
+  const detailedDiagnostics =
+    blockingDiagnostics.length > 0
+      ? blockingDiagnostics.map((entry) => {
+          const entryClassification = mapFailureClassification(entry.classification);
+          return makeDiagnostic({
+            severity: "error",
+            code: stableCodeForClassification(entryClassification),
+            classification: entryClassification,
+            message: formatItemDiagnostic(entry),
+            path: entry.missingPath ?? null,
+            hint: entry.suggestedNextAction,
+          });
+        })
+      : [
+          makeDiagnostic({
+            severity: "error",
+            code: stableCode,
+            classification: stableClassification,
+            message,
+          }),
+        ];
   return makeCreateEnvelope({
     invocation,
     status,
     payload: commonPayload,
-    diagnostics: [
-      makeDiagnostic({
-        severity: "error",
-        code: stableCode,
-        classification: stableClassification,
-        message,
-      }),
-    ],
+    diagnostics: detailedDiagnostics,
     artifacts,
     errors: [
       makeCliError({
@@ -796,11 +898,12 @@ function runnerEnvelope(
           stableClassification === CliClassification.MissingPrerequisite ||
           stableClassification === CliClassification.ExternalUnavailable,
         blocking: status === "blocked",
-        message,
+        message: blockingDiagnostics[0] ? formatItemDiagnostic(blockingDiagnostics[0]) : message,
         details: redactValue({
           runnerCode: firstFailure.code,
           runnerClassification: firstFailure.classification,
           evidencePacketPaths: packets.map((packet) => packet.path),
+          itemDiagnostics: allItemDiagnostics,
         }) as UnknownRecord,
       }),
     ],
@@ -960,18 +1063,6 @@ async function run({ invocation, args }: CommandContext): Promise<{ envelope: Un
   const catalog = await readRunnerCatalog(parsed.options.runnerCatalogPath);
   if (!Array.isArray(catalog))
     return invalidInput(invocation, catalog.error, { flag: "--runner-catalog" });
-
-  const missingRunner = missingRunnerPrerequisite(catalog, parsed.options.projectRoot);
-  if (missingRunner !== null) {
-    const packets = await packetDescriptors([]);
-    if (!Array.isArray(packets)) throw new Error("empty packet descriptor validation failed");
-    const envelope = runnerEnvelope(
-      invocation,
-      missingRunnerResult(parsed.options, missingRunner),
-      packets,
-    );
-    return commandResult(await finalizeEnvelope(envelope, parsed.options.resultFile));
-  }
 
   let runnerResult: UnknownRecord;
   try {

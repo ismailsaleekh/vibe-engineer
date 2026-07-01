@@ -64,6 +64,7 @@ const DELTA_ACTIONS = new Set(["add", "update", "reuse", "not_applicable", "bloc
 const RUNNER_KINDS = new Set(["command", "validator"]);
 const EVIDENCE_CLASSES = new Set(["deterministic", "advisory", "informational"]);
 const ALLOWED_COMMAND_CLASSIFICATIONS = new Set(["read_only", "local_deterministic_write"]);
+export const PORTABLE_NODE_RUNTIME_COMMAND = "vibe-engineer:node";
 const MAX_TIMEOUT_MS = 30000;
 const MAX_STREAM_BYTES = 1024 * 1024;
 const MAX_OUTPUT_BYTES = 2 * 1024 * 1024;
@@ -484,6 +485,149 @@ function normalizeRunnerSpec(spec) {
   return { ...spec, id, layer, evidenceClass, blocking, kind };
 }
 
+/** @param {unknown} value @returns {string[]} */
+function stringArrayValue(value) {
+  return Array.isArray(value) ? value.filter((entry) => typeof entry === "string") : [];
+}
+
+/** @param {Record<string, unknown>} spec @param {number} index @returns {string} */
+function runnerIdForDiagnostics(spec, index) {
+  return typeof spec.id === "string" && spec.id.length > 0 ? spec.id : `catalog[${index}]`;
+}
+
+/** @param {Record<string, unknown>} item @param {boolean} fallback @returns {boolean} */
+function requiredItemBlocking(item, fallback) {
+  return typeof item.blocking === "boolean" ? item.blocking : fallback;
+}
+
+/** @param {Record<string, unknown>[]} catalog @param {Record<string, unknown>} item @returns {Record<string, unknown>[]} */
+function describeCatalogCandidates(catalog, item) {
+  const itemId = stringValue(item.id);
+  const itemLayer = stringValue(item.layer);
+  return catalog.map((spec, index) => {
+    const id = runnerIdForDiagnostics(spec, index);
+    const layer = stringValue(spec.layer);
+    const requiredItemIds = stringArrayValue(spec.requiredItemIds);
+    const matchesLayer = layer === itemLayer;
+    const matchesRequiredItem =
+      id === itemId || id === `${itemLayer}:${itemId}` || requiredItemIds.includes(itemId);
+    return {
+      id,
+      layer: layer || null,
+      kind: stringValue(spec.kind) || null,
+      requiredItemIds,
+      matchesLayer,
+      matchesRequiredItem,
+      selectedByResolver: matchesLayer && matchesRequiredItem,
+    };
+  });
+}
+
+/** @param {Record<string, unknown>[]} catalog @param {Record<string, unknown>} item @returns {string[]} */
+function candidateRunnerIdsChecked(catalog, item) {
+  return describeCatalogCandidates(catalog, item).map((entry) => String(entry.id));
+}
+
+/** @param {Record<string, unknown>} item @returns {Record<string, unknown>} */
+function suggestedRunnerCatalogEntryShape(item) {
+  const itemId = requireString(item.id, "requiredItem.id");
+  const layer = requireString(item.layer, "requiredItem.layer");
+  const itemBlocking = requiredItemBlocking(item, true);
+  const evidenceClass = itemBlocking ? "deterministic" : "advisory";
+  return {
+    id: itemId,
+    requiredItemIds: [itemId],
+    layer,
+    evidenceClass,
+    blocking: itemBlocking,
+    kind: "command",
+    command: "<absolute path to the active Node.js executable>",
+    args: ["<projectRoot-contained runner .mjs>", "<evidenceRoot-contained output artifact>"],
+    cwd: ".",
+    expectedArtifacts: ["<evidenceRoot-contained output artifact>"],
+    argPaths: [
+      { index: 0, root: "projectRoot" },
+      { index: 1, root: "evidenceRoot" },
+    ],
+    safety: {
+      classification: "local_deterministic_write",
+      timeoutMs: "<positive integer <= 30000>",
+      maxStdoutBytes: "<positive integer <= 1048576>",
+      maxStderrBytes: "<positive integer <= 1048576>",
+      maxOutputBytes: "<positive integer <= 2097152>",
+      allowedWriteRoots: ["<evidenceRoot or explicitly allowed project subdir>"],
+      envAllowlist: [],
+      passThroughEnv: false,
+    },
+  };
+}
+
+/** @param {Record<string, unknown>} item @param {string} code @param {string} reason @returns {string} */
+function defaultNextAction(item, code, reason) {
+  const itemId = requireString(item.id, "requiredItem.id");
+  const layer = requireString(item.layer, "requiredItem.layer");
+  const action = requireString(item.action, "requiredItem.action");
+  if (code === "MISSING_RUNNER_OR_PREREQUISITE")
+    return `Register or repair an executable runner catalog entry for item ${itemId} on layer ${layer}; use requiredItemIds:["${itemId}"] and ensure the runner prerequisite exists. Reason: ${reason}`;
+  if (code === "MISSING_EVIDENCE")
+    return `Update the runner for item ${itemId} to create the declared expected artifact, or correct expectedArtifacts to the actual evidence path. Reason: ${reason}`;
+  if (action === "reuse")
+    return `Keep item ${itemId} action=reuse only when prior validated evidence is intentionally reused; otherwise change the item to add/update and register an executable runner.`;
+  if (action === "not_applicable")
+    return `Keep item ${itemId} action=not_applicable only when layer ${layer} truly does not apply; otherwise change the item to add/update and register an executable runner.`;
+  if (action === "blocked")
+    return `Resolve the prerequisite for item ${itemId} or keep action=blocked with an exact blockedBy reason before rerunning verification.`;
+  return `Review item ${itemId} (${action}) and provide executable runner evidence before treating verification as complete.`;
+}
+
+/** @param {{item:Record<string,unknown>,status:string,result:string,packetBlocking:boolean,classification:string,code:string,reason:string,candidateRunnerIdsChecked?:string[],candidateRunnersChecked?:Record<string,unknown>[],matchedRunnerIds?:string[],selectedRunnerId?:string|null,missingPath?:string|null,suggestedNextAction?:string,suggestedRunnerCatalogEntry?:Record<string,unknown>,manualEvidenceAllowed?:boolean}} input @returns {Record<string, unknown>} */
+function makeItemDiagnostic(input) {
+  const itemId = requireString(input.item.id, "requiredItem.id");
+  const layer = requireString(input.item.layer, "requiredItem.layer");
+  const action = requireString(input.item.action, "requiredItem.action");
+  const itemBlocking = requiredItemBlocking(input.item, input.packetBlocking);
+  const reason = redactText(input.reason);
+  const diagnostic = {
+    schemaVersion: "1.0.0",
+    itemId,
+    layer,
+    action,
+    blocking: itemBlocking,
+    packetBlocking: input.packetBlocking,
+    status: input.status,
+    result: input.result,
+    code: input.code,
+    classification: input.classification,
+    candidateRunnerIdsChecked: input.candidateRunnerIdsChecked || [],
+    candidateRunnersChecked: input.candidateRunnersChecked || [],
+    matchedRunnerIds: input.matchedRunnerIds || [],
+    selectedRunnerId: input.selectedRunnerId || null,
+    missingPath: input.missingPath || null,
+    reason,
+    missingRegistryReason:
+      input.code === "MISSING_RUNNER_OR_PREREQUISITE" && !(input.missingPath || "")
+        ? reason
+        : null,
+    missingPrerequisiteReason:
+      input.code === "MISSING_RUNNER_OR_PREREQUISITE" && (input.missingPath || "")
+        ? reason
+        : null,
+    suggestedNextAction:
+      input.suggestedNextAction || defaultNextAction(input.item, input.code, reason),
+    suggestedRunnerCatalogEntry:
+      input.suggestedRunnerCatalogEntry || suggestedRunnerCatalogEntryShape(input.item),
+    manualEvidenceAllowed: Boolean(input.manualEvidenceAllowed),
+  };
+  return /** @type {Record<string, unknown>} */ (redactValue(diagnostic));
+}
+
+/** @param {Record<string, unknown>} diagnostic @returns {string} */
+function itemDiagnosticSummary(diagnostic) {
+  return redactText(
+    `Verification item ${String(diagnostic.itemId)} layer=${String(diagnostic.layer)} action=${String(diagnostic.action)} blocking=${String(diagnostic.blocking)} status=${String(diagnostic.status)} result=${String(diagnostic.result)} code=${String(diagnostic.code)} reason=${String(diagnostic.reason)} candidates=${JSON.stringify(diagnostic.candidateRunnerIdsChecked)} next=${String(diagnostic.suggestedNextAction)}`,
+  );
+}
+
 /** @param {Record<string, unknown>[]} catalog @param {Record<string, unknown>} item @returns {Record<string, unknown>[]} */
 function resolveRunners(catalog, item) {
   const itemId = requireString(item.id, "requiredItem.id");
@@ -535,9 +679,12 @@ async function persistEvidencePacket(evidenceRoot, packet) {
   }
 }
 
-/** @param {{runId:string,index:number,item:Record<string,unknown>,plan:Record<string,unknown>,implementationPlanPath:string,projectRoot:string,evidenceRoot:string,startedAt:string,endedAt:string,evidenceClass:string,layer:string,commandOrTool:Record<string,unknown>,status:string,result:string,blocking:boolean,artifacts:string[],warnings:string[],failureDetails?:Record<string,unknown>,rerunOf?:string,stdoutRef?:string,stderrRef?:string,logsRef?:string,normalizationNotes?:string}} data @returns {Record<string,unknown>} */
+/** @param {{runId:string,index:number,item:Record<string,unknown>,plan:Record<string,unknown>,implementationPlanPath:string,projectRoot:string,evidenceRoot:string,startedAt:string,endedAt:string,evidenceClass:string,layer:string,commandOrTool:Record<string,unknown>,status:string,result:string,blocking:boolean,artifacts:string[],warnings:string[],failureDetails?:Record<string,unknown>,rerunOf?:string,stdoutRef?:string,stderrRef?:string,logsRef?:string,normalizationNotes?:string,runnerResolution?:Record<string,unknown>,itemDiagnostic?:Record<string,unknown>}} data @returns {Record<string,unknown>} */
 function makePacket(data) {
   const itemId = requireString(data.item.id, "requiredItem.id");
+  const itemLayer = requireString(data.item.layer, "requiredItem.layer");
+  const itemAction = requireString(data.item.action, "requiredItem.action");
+  const itemBlocking = requiredItemBlocking(data.item, data.blocking);
   const artifactId = `evidence:${safeId(data.runId)}:${safeId(itemId)}:${String(data.index).padStart(2, "0")}`;
   const planId = requireString(data.plan.artifactId, "plan.artifactId");
   const delta = isRecord(data.plan.verificationDelta) ? data.plan.verificationDelta : {};
@@ -582,9 +729,19 @@ function makePacket(data) {
       "dev.vibe.verification": {
         schemaVersion: "1.0.0",
         requiredItemId: itemId,
-        requiredItemAction: data.item.action,
+        requiredItemLayer: itemLayer,
+        requiredItemAction: itemAction,
+        requiredItemBlocking: itemBlocking,
+        requiredItem: {
+          id: itemId,
+          layer: itemLayer,
+          action: itemAction,
+          blocking: itemBlocking,
+        },
         runId: data.runId,
         runnerVersion: VERIFICATION_RUNNER_VERSION,
+        ...(data.runnerResolution === undefined ? {} : { runnerResolution: data.runnerResolution }),
+        ...(data.itemDiagnostic === undefined ? {} : { diagnostics: [data.itemDiagnostic] }),
       },
     },
     evidenceClass: data.evidenceClass,
@@ -636,6 +793,11 @@ function evidenceCommandOrTool(commandOrTool) {
   return rest;
 }
 
+/** @param {string} command @returns {string} */
+function resolveCommandExecutable(command) {
+  return command === PORTABLE_NODE_RUNTIME_COMMAND ? process.execPath : command;
+}
+
 /** @param {string} code @param {string} message @param {string} classification @returns {Record<string, unknown>} */
 function failureDetails(code, message, classification) {
   if (!EVIDENCE_FAILURE_CLASSIFICATION_VALUES.includes(/** @type {any} */ (classification)))
@@ -646,7 +808,7 @@ function failureDetails(code, message, classification) {
   return { code, message: redactText(message), classification };
 }
 
-/** @param {Record<string, unknown>} spec @param {string} projectRoot @param {string} evidenceRoot @param {string} cwd @returns {{ok:true}|{ok:false,code:string,message:string}} */
+/** @param {Record<string, unknown>} spec @param {string} projectRoot @param {string} evidenceRoot @param {string} cwd @returns {{ok:true}|{ok:false,code:string,message:string,missingPath?:string,nextAction?:string}} */
 function validateCommandSafety(spec, projectRoot, evidenceRoot, cwd) {
   const safety = spec.safety;
   if (!isRecord(safety))
@@ -679,7 +841,8 @@ function validateCommandSafety(spec, projectRoot, evidenceRoot, cwd) {
       code: "COMMAND_POLICY_DENIED",
       message: "Shell-string command syntax is denied.",
     };
-  const executableName = path.basename(command);
+  const effectiveCommand = resolveCommandExecutable(command);
+  const executableName = path.basename(effectiveCommand);
   const deniedExecutables = new Set([
     "git",
     "rm",
@@ -706,13 +869,16 @@ function validateCommandSafety(spec, projectRoot, evidenceRoot, cwd) {
       code: "COMMAND_POLICY_DENIED",
       message: "Package-manager commands are denied in I-09A runners.",
     };
-  if (!path.isAbsolute(command))
+  if (!path.isAbsolute(effectiveCommand))
     return {
       ok: false,
       code: "COMMAND_POLICY_DENIED",
-      message: "Command executable must be an explicit typed absolute Node runtime path.",
+      message:
+        "Command executable must be an explicit typed absolute Node runtime path or the portable vibe-engineer:node runtime alias.",
     };
-  const commandReal = fs.existsSync(command) ? fs.realpathSync(command) : path.resolve(command);
+  const commandReal = fs.existsSync(effectiveCommand)
+    ? fs.realpathSync(effectiveCommand)
+    : path.resolve(effectiveCommand);
   const processExecReal = fs.realpathSync(process.execPath);
   if (commandReal !== processExecReal) {
     if (!isContained(projectRoot, commandReal))
@@ -797,6 +963,15 @@ function validateCommandSafety(spec, projectRoot, evidenceRoot, cwd) {
       ok: false,
       code: "COMMAND_POLICY_DENIED",
       message: "Node command runner script path must be a JS/MJS file.",
+    };
+  if (!fs.existsSync(scriptPath) || !fs.statSync(scriptPath).isFile())
+    return {
+      ok: false,
+      code: "MISSING_RUNNER_OR_PREREQUISITE",
+      message: `Declared Node runner script is missing or not a file: ${scriptPath}.`,
+      missingPath: scriptPath,
+      nextAction:
+        "Create the project-contained runner script or update runner.args[0] to an existing executable .js/.mjs prerequisite.",
     };
   const expectedArtifacts = spec.expectedArtifacts;
   if (
@@ -1015,9 +1190,46 @@ async function executeCommandRunner(spec, item, ctx) {
   const cwdInput = typeof spec.cwd === "string" ? spec.cwd : ".";
   const cwdResolved = path.resolve(projectRoot, cwdInput);
   const cwd = fs.existsSync(cwdResolved) ? fs.realpathSync(cwdResolved) : cwdResolved;
+  const runnerId = requireString(spec.id, "runner.id");
+  const runnerResolution = {
+    candidateRunnerIdsChecked: [runnerId],
+    candidateRunnersChecked: [
+      {
+        id: runnerId,
+        layer: stringValue(spec.layer),
+        kind: stringValue(spec.kind),
+        requiredItemIds: stringArrayValue(spec.requiredItemIds),
+        selectedByResolver: true,
+      },
+    ],
+    matchedRunnerIds: [runnerId],
+    selectedRunnerId: runnerId,
+    resolutionStatus: "matched",
+  };
   const safety = validateCommandSafety(spec, projectRoot, evidenceRoot, cwd);
   if (!safety.ok) {
+    const safetyFailure = /** @type {{ok:false,code:string,message:string,missingPath?:string,nextAction?:string}} */ (safety);
     const endedAt = new Date().toISOString();
+    const classification =
+      safetyFailure.code === "MISSING_RUNNER_OR_PREREQUISITE"
+        ? EVIDENCE_FAILURE_CLASSIFICATIONS.MISSING_RUNNER_OR_PREREQUISITE
+        : EVIDENCE_FAILURE_CLASSIFICATIONS.SAFETY_OR_SECURITY_POLICY_FAILURE;
+    const itemDiagnostic = makeItemDiagnostic({
+      item,
+      status: "blocked",
+      result: "blocked",
+      packetBlocking: true,
+      classification,
+      code: safetyFailure.code,
+      reason: safetyFailure.message,
+      candidateRunnerIdsChecked: [runnerId],
+      candidateRunnersChecked: runnerResolution.candidateRunnersChecked,
+      matchedRunnerIds: [runnerId],
+      selectedRunnerId: runnerId,
+      missingPath: safetyFailure.missingPath || null,
+      suggestedNextAction: safetyFailure.nextAction,
+      manualEvidenceAllowed: false,
+    });
     const packet = makePacket({
       runId: ctx.runId,
       index: ctx.index,
@@ -1042,18 +1254,17 @@ async function executeCommandRunner(spec, item, ctx) {
       result: "blocked",
       blocking: true,
       artifacts: [],
-      warnings: [],
-      failureDetails: failureDetails(
-        safety.code,
-        safety.message,
-        EVIDENCE_FAILURE_CLASSIFICATIONS.SAFETY_OR_SECURITY_POLICY_FAILURE,
-      ),
+      warnings: [itemDiagnosticSummary(itemDiagnostic)],
+      failureDetails: failureDetails(safetyFailure.code, safetyFailure.message, classification),
+      runnerResolution,
+      itemDiagnostic,
       ...(ctx.rerunOf === undefined ? {} : { rerunOf: ctx.rerunOf }),
     });
     return { packet, path: await persistEvidencePacket(evidenceRoot, packet) };
   }
   const envResult = buildEnvironment(spec);
   if (!envResult.ok) {
+    const envFailure = /** @type {{ok:false,code:string,message:string}} */ (envResult);
     const endedAt = new Date().toISOString();
     const packet = makePacket({
       runId: ctx.runId,
@@ -1079,12 +1290,44 @@ async function executeCommandRunner(spec, item, ctx) {
       result: "blocked",
       blocking: true,
       artifacts: [],
-      warnings: [],
+      warnings: [
+        itemDiagnosticSummary(
+          makeItemDiagnostic({
+            item,
+            status: "blocked",
+            result: "blocked",
+            packetBlocking: true,
+            classification: EVIDENCE_FAILURE_CLASSIFICATIONS.SAFETY_OR_SECURITY_POLICY_FAILURE,
+            code: envFailure.code,
+            reason: envFailure.message,
+            candidateRunnerIdsChecked: [runnerId],
+            candidateRunnersChecked: runnerResolution.candidateRunnersChecked,
+            matchedRunnerIds: [runnerId],
+            selectedRunnerId: runnerId,
+            manualEvidenceAllowed: false,
+          }),
+        ),
+      ],
       failureDetails: failureDetails(
-        envResult.code,
-        envResult.message,
+        envFailure.code,
+        envFailure.message,
         EVIDENCE_FAILURE_CLASSIFICATIONS.SAFETY_OR_SECURITY_POLICY_FAILURE,
       ),
+      runnerResolution,
+      itemDiagnostic: makeItemDiagnostic({
+        item,
+        status: "blocked",
+        result: "blocked",
+        packetBlocking: true,
+        classification: EVIDENCE_FAILURE_CLASSIFICATIONS.SAFETY_OR_SECURITY_POLICY_FAILURE,
+        code: envFailure.code,
+        reason: envFailure.message,
+        candidateRunnerIdsChecked: [runnerId],
+        candidateRunnersChecked: runnerResolution.candidateRunnersChecked,
+        matchedRunnerIds: [runnerId],
+        selectedRunnerId: runnerId,
+        manualEvidenceAllowed: false,
+      }),
       ...(ctx.rerunOf === undefined ? {} : { rerunOf: ctx.rerunOf }),
     });
     return { packet, path: await persistEvidencePacket(evidenceRoot, packet) };
@@ -1103,7 +1346,8 @@ async function executeCommandRunner(spec, item, ctx) {
   let capturedStderrBytes = 0;
   let capCode = "";
   const args = Array.isArray(spec.args) ? spec.args.map(String) : [];
-  const command = requireString(spec.command, "runner.command");
+  const requestedCommand = requireString(spec.command, "runner.command");
+  const command = resolveCommandExecutable(requestedCommand);
   const maxStdoutBytes = Number(isRecord(spec.safety) ? spec.safety.maxStdoutBytes : 0);
   const maxStderrBytes = Number(isRecord(spec.safety) ? spec.safety.maxStderrBytes : 0);
   const maxOutputBytes = Number(isRecord(spec.safety) ? spec.safety.maxOutputBytes : 0);
@@ -1198,7 +1442,8 @@ async function executeCommandRunner(spec, item, ctx) {
   const runnerLogText = redactText(
     JSON.stringify(
       {
-        command,
+        command: requestedCommand,
+        resolvedCommand: requestedCommand === command ? undefined : command,
         args: args.map(redactCommandArg),
         cwd,
         exit: redactValue(exit),
@@ -1232,10 +1477,13 @@ async function executeCommandRunner(spec, item, ctx) {
     layer: stringValue(spec.layer),
     commandOrTool: {
       kind: "command",
-      name: command,
+      name: requestedCommand,
       argv: args.map(redactCommandArg),
       workingDirectory: cwd,
-      environmentSummary: envResult.summary,
+      environmentSummary:
+        requestedCommand === command
+          ? envResult.summary
+          : `${envResult.summary}; ${PORTABLE_NODE_RUNTIME_COMMAND} resolved to the active Node.js runtime`,
       exitStatus:
         isRecord(exit) && "code" in exit
           ? {
@@ -1250,6 +1498,7 @@ async function executeCommandRunner(spec, item, ctx) {
     stdoutRef,
     stderrRef,
     logsRef,
+    runnerResolution,
     ...(ctx.rerunOf === undefined ? {} : { rerunOf: ctx.rerunOf }),
   };
   if (isRecord(exit) && "error" in exit) {
@@ -1259,12 +1508,29 @@ async function executeCommandRunner(spec, item, ctx) {
         ? EVIDENCE_FAILURE_CLASSIFICATIONS.MISSING_RUNNER_OR_PREREQUISITE
         : EVIDENCE_FAILURE_CLASSIFICATIONS.RUNNER_INTERNAL_ERROR;
     const code = err.code === "ENOENT" ? "MISSING_RUNNER_OR_PREREQUISITE" : "RUNNER_SPAWN_ERROR";
+    const spawnMessage = err.message || "Runner spawn failed.";
+    const itemDiagnostic = makeItemDiagnostic({
+      item,
+      status: "blocked",
+      result: "blocked",
+      packetBlocking: true,
+      classification,
+      code,
+      reason: spawnMessage,
+      candidateRunnerIdsChecked: [runnerId],
+      candidateRunnersChecked: runnerResolution.candidateRunnersChecked,
+      matchedRunnerIds: [runnerId],
+      selectedRunnerId: runnerId,
+      manualEvidenceAllowed: false,
+    });
     const packet = makePacket({
       ...common,
       status: "blocked",
       result: "blocked",
       blocking: true,
-      failureDetails: failureDetails(code, err.message || "Runner spawn failed.", classification),
+      warnings: [itemDiagnosticSummary(itemDiagnostic)],
+      failureDetails: failureDetails(code, spawnMessage, classification),
+      itemDiagnostic,
     });
     return { packet, path: await persistEvidencePacket(evidenceRoot, packet) };
   }
@@ -1275,16 +1541,32 @@ async function executeCommandRunner(spec, item, ctx) {
         : capCode === "OUTPUT_LIMIT_EXCEEDED"
           ? "Command aggregate stdout and stderr exceeded configured maxOutputBytes."
           : "Command output exceeded configured byte caps.";
+    const itemDiagnostic = makeItemDiagnostic({
+      item,
+      status: "blocked",
+      result: "blocked",
+      packetBlocking: true,
+      classification: EVIDENCE_FAILURE_CLASSIFICATIONS.SAFETY_OR_SECURITY_POLICY_FAILURE,
+      code: capCode === "COMMAND_TIMEOUT" ? "COMMAND_TIMEOUT" : capCode,
+      reason: capMessage,
+      candidateRunnerIdsChecked: [runnerId],
+      candidateRunnersChecked: runnerResolution.candidateRunnersChecked,
+      matchedRunnerIds: [runnerId],
+      selectedRunnerId: runnerId,
+      manualEvidenceAllowed: false,
+    });
     const packet = makePacket({
       ...common,
       status: "blocked",
       result: "blocked",
       blocking: true,
+      warnings: [itemDiagnosticSummary(itemDiagnostic)],
       failureDetails: failureDetails(
         capCode === "COMMAND_TIMEOUT" ? "COMMAND_TIMEOUT" : capCode,
         capMessage,
         EVIDENCE_FAILURE_CLASSIFICATIONS.SAFETY_OR_SECURITY_POLICY_FAILURE,
       ),
+      itemDiagnostic,
       normalizationNotes: "Output was bounded and redacted before persistence.",
     });
     return { packet, path: await persistEvidencePacket(evidenceRoot, packet) };
@@ -1327,20 +1609,38 @@ async function executeCommandRunner(spec, item, ctx) {
       cwd,
     );
     if (!artifactValidation.ok) {
+      const artifactFailure = /** @type {{ok:false,code:string,message:string}} */ (artifactValidation);
       const classification =
-        artifactValidation.code === "MISSING_EVIDENCE"
+        artifactFailure.code === "MISSING_EVIDENCE"
           ? EVIDENCE_FAILURE_CLASSIFICATIONS.MISSING_EVIDENCE
           : EVIDENCE_FAILURE_CLASSIFICATIONS.SAFETY_OR_SECURITY_POLICY_FAILURE;
+      const itemDiagnostic = makeItemDiagnostic({
+        item,
+        status: "blocked",
+        result: "blocked",
+        packetBlocking: true,
+        classification,
+        code: artifactFailure.code,
+        reason: artifactFailure.message,
+        candidateRunnerIdsChecked: [runnerId],
+        candidateRunnersChecked: runnerResolution.candidateRunnersChecked,
+        matchedRunnerIds: [runnerId],
+        selectedRunnerId: runnerId,
+        missingPath: abs,
+        manualEvidenceAllowed: false,
+      });
       const packet = makePacket({
         ...common,
         status: "blocked",
         result: "blocked",
         blocking: true,
+        warnings: [itemDiagnosticSummary(itemDiagnostic)],
         failureDetails: failureDetails(
-          artifactValidation.code,
-          artifactValidation.message,
+          artifactFailure.code,
+          artifactFailure.message,
           classification,
         ),
+        itemDiagnostic,
       });
       return { packet, path: await persistEvidencePacket(evidenceRoot, packet) };
     }
@@ -1376,6 +1676,22 @@ async function executeValidatorRunner(spec, item, ctx) {
     environmentSummary: "in-process typed validator; no raw process.env",
     exitStatus: { kind: "tool_status", status: "completed" },
   };
+  const runnerId = requireString(spec.id, "runner.id");
+  const runnerResolution = {
+    candidateRunnerIdsChecked: [runnerId],
+    candidateRunnersChecked: [
+      {
+        id: runnerId,
+        layer: stringValue(spec.layer),
+        kind: stringValue(spec.kind),
+        requiredItemIds: stringArrayValue(spec.requiredItemIds),
+        selectedByResolver: true,
+      },
+    ],
+    matchedRunnerIds: [runnerId],
+    selectedRunnerId: runnerId,
+    resolutionStatus: "matched",
+  };
   try {
     if (name === "validateArtifactFile") {
       const targetPath = requireString(spec.targetPath, "targetPath");
@@ -1406,6 +1722,7 @@ async function executeValidatorRunner(spec, item, ctx) {
             "Validator rejected artifact file.",
             EVIDENCE_FAILURE_CLASSIFICATIONS.SCHEMA_OR_CONTRACT_FAILURE,
           ),
+          runnerResolution,
           ...(ctx.rerunOf === undefined ? {} : { rerunOf: ctx.rerunOf }),
         });
         return { packet, path: await persistEvidencePacket(evidenceRoot, packet) };
@@ -1428,6 +1745,7 @@ async function executeValidatorRunner(spec, item, ctx) {
         blocking: Boolean(spec.blocking),
         artifacts: [abs],
         warnings: [],
+        runnerResolution,
         ...(ctx.rerunOf === undefined ? {} : { rerunOf: ctx.rerunOf }),
       });
       return { packet, path: await persistEvidencePacket(evidenceRoot, packet) };
@@ -1456,6 +1774,7 @@ async function executeValidatorRunner(spec, item, ctx) {
           "Intentional malformed candidate witness.",
           EVIDENCE_FAILURE_CLASSIFICATIONS.SCHEMA_OR_CONTRACT_FAILURE,
         ),
+        runnerResolution,
       });
       malformed.failureDetails = {
         code: "BAD",
@@ -1491,6 +1810,7 @@ async function executeValidatorRunner(spec, item, ctx) {
           "Malformed Evidence Packet candidate was rejected by real artifact validation.",
           EVIDENCE_FAILURE_CLASSIFICATIONS.SCHEMA_OR_CONTRACT_FAILURE,
         ),
+        runnerResolution,
         ...(ctx.rerunOf === undefined ? {} : { rerunOf: ctx.rerunOf }),
       });
       return { packet, path: await persistEvidencePacket(evidenceRoot, packet) };
@@ -1502,6 +1822,22 @@ async function executeValidatorRunner(spec, item, ctx) {
     const message = error instanceof Error ? error.message : "Unknown validator error.";
     const isUnsupportedValidator =
       error instanceof VerificationRunnerError && error.code === "UNKNOWN_VALIDATOR";
+    const itemDiagnostic = isUnsupportedValidator
+      ? makeItemDiagnostic({
+          item,
+          status: "blocked",
+          result: "blocked",
+          packetBlocking: true,
+          classification: EVIDENCE_FAILURE_CLASSIFICATIONS.SAFETY_OR_SECURITY_POLICY_FAILURE,
+          code: "UNSUPPORTED_ACTION",
+          reason: "Unsupported validator action is denied before execution.",
+          candidateRunnerIdsChecked: [runnerId],
+          candidateRunnersChecked: runnerResolution.candidateRunnersChecked,
+          matchedRunnerIds: [runnerId],
+          selectedRunnerId: runnerId,
+          manualEvidenceAllowed: false,
+        })
+      : undefined;
     const packet = makePacket({
       runId: ctx.runId,
       index: ctx.index,
@@ -1519,7 +1855,7 @@ async function executeValidatorRunner(spec, item, ctx) {
       result: isUnsupportedValidator ? "blocked" : "fail",
       blocking: true,
       artifacts: [],
-      warnings: [],
+      warnings: itemDiagnostic === undefined ? [] : [itemDiagnosticSummary(itemDiagnostic)],
       failureDetails: failureDetails(
         isUnsupportedValidator ? "UNSUPPORTED_ACTION" : "RUNNER_INTERNAL_ERROR",
         isUnsupportedValidator
@@ -1529,13 +1865,15 @@ async function executeValidatorRunner(spec, item, ctx) {
           ? EVIDENCE_FAILURE_CLASSIFICATIONS.SAFETY_OR_SECURITY_POLICY_FAILURE
           : EVIDENCE_FAILURE_CLASSIFICATIONS.RUNNER_INTERNAL_ERROR,
       ),
+      runnerResolution,
+      ...(itemDiagnostic === undefined ? {} : { itemDiagnostic }),
       ...(ctx.rerunOf === undefined ? {} : { rerunOf: ctx.rerunOf }),
     });
     return { packet, path: await persistEvidencePacket(evidenceRoot, packet) };
   }
 }
 
-/** @param {Record<string, unknown>} item @param {{projectRoot:string,evidenceRoot:string,runId:string,rerunOf?:string,implementationPlanPath:string,plan:Record<string,unknown>,index:number}} ctx @param {string} status @param {string} result @param {boolean} blocking @param {string} classification @param {string} code @param {string} message @returns {Promise<{packet:Record<string,unknown>,path:string}>} */
+/** @param {Record<string, unknown>} item @param {{projectRoot:string,evidenceRoot:string,runId:string,rerunOf?:string,implementationPlanPath:string,plan:Record<string,unknown>,index:number}} ctx @param {string} status @param {string} result @param {boolean} blocking @param {string} classification @param {string} code @param {string} message @param {{candidateRunnerIdsChecked?:string[],candidateRunnersChecked?:Record<string,unknown>[],matchedRunnerIds?:string[],selectedRunnerId?:string|null,missingPath?:string|null,suggestedNextAction?:string,suggestedRunnerCatalogEntry?:Record<string,unknown>,manualEvidenceAllowed?:boolean,runnerResolutionStatus?:string}} [details] @returns {Promise<{packet:Record<string,unknown>,path:string}>} */
 async function recordNonExecuted(
   item,
   ctx,
@@ -1545,8 +1883,38 @@ async function recordNonExecuted(
   classification,
   code,
   message,
+  details = {},
 ) {
   const now = new Date().toISOString();
+  const action = requireString(item.action, "requiredItem.action");
+  const itemBlocking = requiredItemBlocking(item, blocking);
+  const manualEvidenceAllowed =
+    details.manualEvidenceAllowed === true || action === "not_applicable" || itemBlocking === false;
+  const commandKind = action === "not_applicable" ? "manual_operator" : "tool";
+  const runnerResolution = {
+    candidateRunnerIdsChecked: details.candidateRunnerIdsChecked || [],
+    candidateRunnersChecked: details.candidateRunnersChecked || [],
+    matchedRunnerIds: details.matchedRunnerIds || [],
+    selectedRunnerId: details.selectedRunnerId || null,
+    resolutionStatus: details.runnerResolutionStatus || (status === "blocked" ? "not_resolved" : "recorded"),
+  };
+  const itemDiagnostic = makeItemDiagnostic({
+    item,
+    status,
+    result,
+    packetBlocking: blocking,
+    classification,
+    code,
+    reason: message,
+    candidateRunnerIdsChecked: runnerResolution.candidateRunnerIdsChecked,
+    candidateRunnersChecked: runnerResolution.candidateRunnersChecked,
+    matchedRunnerIds: runnerResolution.matchedRunnerIds,
+    selectedRunnerId: runnerResolution.selectedRunnerId,
+    missingPath: details.missingPath || null,
+    suggestedNextAction: details.suggestedNextAction,
+    suggestedRunnerCatalogEntry: details.suggestedRunnerCatalogEntry,
+    manualEvidenceAllowed,
+  });
   const evidenceClass = result === "skipped" ? "informational" : "deterministic";
   const packet = makePacket({
     runId: ctx.runId,
@@ -1561,20 +1929,28 @@ async function recordNonExecuted(
     evidenceClass,
     layer: requireString(item.layer, "requiredItem.layer"),
     commandOrTool: {
-      kind: "manual_operator",
+      kind: commandKind,
       name: `delta-item-${String(item.action)}`,
       workingDirectory: realRoot(ctx.projectRoot),
-      environmentSummary: "no command executed",
+      environmentSummary:
+        commandKind === "manual_operator"
+          ? "explicit not-applicable/non-blocking manual record; no command executed"
+          : "automated verification delta registry resolution; no command executed",
       exitStatus: { kind: "not_applicable", status: result },
     },
     status,
     result,
     blocking,
     artifacts: [],
-    warnings: [redactText(requireString(item.rationale, "requiredItem.rationale"))],
+    warnings: [
+      redactText(requireString(item.rationale, "requiredItem.rationale")),
+      itemDiagnosticSummary(itemDiagnostic),
+    ],
     ...(result === "pass" || result === "skipped"
       ? {}
-      : { failureDetails: failureDetails(code, message, classification) }),
+      : { failureDetails: failureDetails(code, itemDiagnosticSummary(itemDiagnostic), classification) }),
+    runnerResolution,
+    itemDiagnostic,
     ...(ctx.rerunOf === undefined ? {} : { rerunOf: ctx.rerunOf }),
   });
   return { packet, path: await persistEvidencePacket(realRoot(ctx.evidenceRoot), packet) };
@@ -1598,6 +1974,16 @@ function aggregateStatus(packets) {
   if (packets.some((packet) => packet.status === "advisory_warning"))
     return VERIFICATION_STATUSES.ADVISORY_WARNING;
   return VERIFICATION_STATUSES.PASSED;
+}
+
+/** @param {Record<string, unknown>} packet @returns {Record<string, unknown>[]} */
+function packetItemDiagnostics(packet) {
+  const extensions = isRecord(packet.extensions) ? packet.extensions : {};
+  const verification = isRecord(extensions["dev.vibe.verification"])
+    ? /** @type {Record<string, unknown>} */ (extensions["dev.vibe.verification"])
+    : {};
+  const diagnostics = Array.isArray(verification.diagnostics) ? verification.diagnostics : [];
+  return diagnostics.filter((entry) => isRecord(entry));
 }
 
 /** @param {unknown} options @returns {Promise<Record<string, unknown>>} */
@@ -1659,6 +2045,8 @@ export async function runVerificationPlan(options) {
   const recordedItems = [];
   /** @type {string[]} */
   const blockedItems = [];
+  /** @type {Record<string, unknown>[]} */
+  const itemDiagnostics = [];
   for (const [index, item] of requiredItems.entries()) {
     const action = requireString(item.action, "requiredItem.action");
     if (!DELTA_ACTIONS.has(action))
@@ -1724,6 +2112,8 @@ export async function runVerificationPlan(options) {
     } else {
       /** @type {Record<string, unknown>[]} */
       let runners = [];
+      const candidates = describeCatalogCandidates(parsed.runnerCatalog, item);
+      const candidateIds = candidates.map((entry) => String(entry.id));
       try {
         runners = resolveRunners(parsed.runnerCatalog, item);
       } catch (error) {
@@ -1738,11 +2128,19 @@ export async function runVerificationPlan(options) {
             EVIDENCE_FAILURE_CLASSIFICATIONS.SAFETY_OR_SECURITY_POLICY_FAILURE,
             "UNSUPPORTED_COMMAND",
             message,
+            {
+              candidateRunnerIdsChecked: candidateIds,
+              candidateRunnersChecked: candidates,
+              runnerResolutionStatus: "catalog_error",
+              suggestedNextAction: `Fix the malformed runner catalog entry and rerun item ${itemId}; runner entries must normalize before matching by layer/id/requiredItemIds.`,
+            },
           ),
         ];
         blockedItems.push(itemId);
       }
       if (outcomes.length === 0 && runners.length === 0) {
+        const itemLayer = requireString(item.layer, "requiredItem.layer");
+        const missingReason = `No runner catalog entry matched required item id="${itemId}" layer="${itemLayer}" action="${action}" blocking=${String(requiredItemBlocking(item, true))}. Checked runner ids: ${JSON.stringify(candidateIds)}. A match requires the same layer plus id="${itemId}", id="${itemLayer}:${itemId}", or requiredItemIds containing "${itemId}".`;
         outcomes = [
           await recordNonExecuted(
             item,
@@ -1752,7 +2150,13 @@ export async function runVerificationPlan(options) {
             true,
             EVIDENCE_FAILURE_CLASSIFICATIONS.MISSING_RUNNER_OR_PREREQUISITE,
             "MISSING_RUNNER_OR_PREREQUISITE",
-            "No runner spec resolved for required add/update Verification Delta item.",
+            missingReason,
+            {
+              candidateRunnerIdsChecked: candidateIds,
+              candidateRunnersChecked: candidates,
+              runnerResolutionStatus: "not_resolved",
+              suggestedNextAction: `Add a runner catalog entry for item ${itemId} on layer ${itemLayer} using requiredItemIds:["${itemId}"] and executable command/validator evidence before treating this blocking add/update item as verified.`,
+            },
           ),
         ];
         blockedItems.push(itemId);
@@ -1765,6 +2169,7 @@ export async function runVerificationPlan(options) {
             executedItems.push(itemId);
           } catch (error) {
             const message = error instanceof Error ? error.message : "Runner contract failure.";
+            const runnerId = stringValue(runner.id) || itemId;
             outcomes.push(
               await recordNonExecuted(
                 item,
@@ -1775,6 +2180,22 @@ export async function runVerificationPlan(options) {
                 EVIDENCE_FAILURE_CLASSIFICATIONS.SAFETY_OR_SECURITY_POLICY_FAILURE,
                 "UNSUPPORTED_COMMAND",
                 message,
+                {
+                  candidateRunnerIdsChecked: [runnerId],
+                  candidateRunnersChecked: [
+                    {
+                      id: runnerId,
+                      layer: stringValue(runner.layer),
+                      kind: stringValue(runner.kind),
+                      requiredItemIds: stringArrayValue(runner.requiredItemIds),
+                      selectedByResolver: true,
+                    },
+                  ],
+                  matchedRunnerIds: [runnerId],
+                  selectedRunnerId: runnerId,
+                  runnerResolutionStatus: "runner_contract_error",
+                  suggestedNextAction: `Repair runner ${runnerId} for item ${itemId}; executable runner evidence is required for blocking add/update verification.`,
+                },
               ),
             );
             blockedItems.push(itemId);
@@ -1789,6 +2210,7 @@ export async function runVerificationPlan(options) {
       if (isRecord(outcome.packet.failureDetails)) failures.push(outcome.packet.failureDetails);
       if (Array.isArray(outcome.packet.warnings))
         warnings.push(...outcome.packet.warnings.map(String));
+      itemDiagnostics.push(...packetItemDiagnostics(outcome.packet));
     }
   }
   const status = aggregateStatus(packets);
@@ -1802,6 +2224,7 @@ export async function runVerificationPlan(options) {
       blockedItems: [...new Set(blockedItems)],
       failures,
       warnings,
+      itemDiagnostics,
       ...(parsed.rerunOf === undefined ? {} : { rerunOf: parsed.rerunOf }),
     })
   );
