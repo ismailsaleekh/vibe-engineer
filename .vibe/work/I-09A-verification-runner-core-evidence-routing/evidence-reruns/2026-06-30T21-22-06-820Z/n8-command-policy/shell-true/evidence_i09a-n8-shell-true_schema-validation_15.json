@@ -1,0 +1,211 @@
+{
+  "schemaVersion": "1.0.0",
+  "artifactKind": "evidence_packet",
+  "artifactId": "evidence:i09a-n8-shell-true:schema-validation:15",
+  "title": "Verification evidence for schema-validation",
+  "createdAt": "2026-06-30T21:22:07.454Z",
+  "updatedAt": "2026-06-30T21:22:07.454Z",
+  "producer": {
+    "kind": "verification_runner",
+    "id": "i-09a-runner-core",
+    "name": "@vibe-engineer/verification",
+    "version": "0.1.0",
+    "runId": "i09a-n8-shell-true"
+  },
+  "status": "blocked",
+  "ownership": {
+    "ownerLane": "I-09A-verification-runner-core-evidence-routing",
+    "ownedWritePaths": [
+      "packages/verification/src/**",
+      "packages/verification/fixtures/**",
+      "packages/verification/tests/**",
+      ".vibe/work/I-09A-verification-runner-core-evidence-routing/**"
+    ],
+    "readOnlyPaths": [
+      "packages/artifacts/**",
+      "packages/orchestration/**",
+      "packages/cli/**"
+    ],
+    "untouchablePaths": [
+      ".git/**",
+      "pnpm-lock.yaml",
+      "package.json",
+      "pnpm-workspace.yaml"
+    ],
+    "concurrencyNotes": "I-09A runner core evidence packet written atomically under evidenceRoot."
+  },
+  "links": [
+    {
+      "rel": "evidence_for",
+      "artifactKind": "implementation_plan",
+      "artifactId": "i09a-plan-approved",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/verification/fixtures/plans/approved-plan.json",
+      "required": true,
+      "statusAtLinkTime": "approved"
+    }
+  ],
+  "extensions": {
+    "dev.vibe.verification": {
+      "schemaVersion": "1.0.0",
+      "requiredItemId": "schema-validation",
+      "requiredItemLayer": "schema_validation",
+      "requiredItemAction": "add",
+      "requiredItemBlocking": true,
+      "requiredItem": {
+        "id": "schema-validation",
+        "layer": "schema_validation",
+        "action": "add",
+        "blocking": true
+      },
+      "runId": "i09a-n8-shell-true",
+      "runnerVersion": "0.1.0",
+      "runnerResolution": {
+        "candidateRunnerIdsChecked": [
+          "schema-validation"
+        ],
+        "candidateRunnersChecked": [
+          {
+            "id": "schema-validation",
+            "layer": "schema_validation",
+            "kind": "command",
+            "requiredItemIds": [
+              "schema-validation"
+            ],
+            "selectedByResolver": true
+          }
+        ],
+        "matchedRunnerIds": [
+          "schema-validation"
+        ],
+        "selectedRunnerId": "schema-validation",
+        "resolutionStatus": "matched"
+      },
+      "diagnostics": [
+        {
+          "schemaVersion": "1.0.0",
+          "itemId": "schema-validation",
+          "layer": "schema_validation",
+          "action": "add",
+          "blocking": true,
+          "packetBlocking": true,
+          "status": "blocked",
+          "result": "blocked",
+          "code": "COMMAND_POLICY_DENIED",
+          "classification": "safety_or_security_policy_failure",
+          "candidateRunnerIdsChecked": [
+            "schema-validation"
+          ],
+          "candidateRunnersChecked": [
+            {
+              "id": "schema-validation",
+              "layer": "schema_validation",
+              "kind": "command",
+              "requiredItemIds": [
+                "schema-validation"
+              ],
+              "selectedByResolver": true
+            }
+          ],
+          "matchedRunnerIds": [
+            "schema-validation"
+          ],
+          "selectedRunnerId": "schema-validation",
+          "missingPath": null,
+          "reason": "shell:true is denied.",
+          "missingRegistryReason": null,
+          "missingPrerequisiteReason": null,
+          "suggestedNextAction": "Review item schema-validation (add) and provide executable runner evidence before treating verification as complete.",
+          "suggestedRunnerCatalogEntry": {
+            "id": "schema-validation",
+            "requiredItemIds": [
+              "schema-validation"
+            ],
+            "layer": "schema_validation",
+            "evidenceClass": "deterministic",
+            "blocking": true,
+            "kind": "command",
+            "command": "<absolute path to the active Node.js executable>",
+            "args": [
+              "<projectRoot-contained runner .mjs>",
+              "<evidenceRoot-contained output artifact>"
+            ],
+            "cwd": ".",
+            "expectedArtifacts": [
+              "<evidenceRoot-contained output artifact>"
+            ],
+            "argPaths": [
+              {
+                "index": 0,
+                "root": "projectRoot"
+              },
+              {
+                "index": 1,
+                "root": "evidenceRoot"
+              }
+            ],
+            "safety": {
+              "classification": "local_deterministic_write",
+              "timeoutMs": "<positive integer <= 30000>",
+              "maxStdoutBytes": "<positive integer <= 1048576>",
+              "maxStderrBytes": "<positive integer <= 1048576>",
+              "maxOutputBytes": "<positive integer <= 2097152>",
+              "allowedWriteRoots": [
+                "<evidenceRoot or explicitly allowed project subdir>"
+              ],
+              "envAllowlist": [],
+              "passThroughEnv": false
+            }
+          },
+          "manualEvidenceAllowed": false
+        }
+      ]
+    }
+  },
+  "evidenceClass": "deterministic",
+  "layer": "schema_validation",
+  "subjectRefs": [
+    {
+      "rel": "evidence_for",
+      "artifactKind": "implementation_plan",
+      "artifactId": "i09a-plan-approved",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/verification/fixtures/plans/approved-plan.json",
+      "required": true,
+      "statusAtLinkTime": "approved"
+    },
+    {
+      "rel": "evidence_for",
+      "artifactKind": "verification_delta",
+      "artifactId": "i09a-delta-approved",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/verification/fixtures/plans/approved-plan.json",
+      "required": true,
+      "statusAtLinkTime": "complete"
+    }
+  ],
+  "commandOrTool": {
+    "kind": "command",
+    "name": "/Users/lizavasilyeva/.nvm/versions/node/v24.16.0/bin/node",
+    "argv": [
+      "/Users/lizavasilyeva/work/vibe-engineer/packages/verification/fixtures/runners/pass-runner.mjs",
+      "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/evidence-reruns/2026-06-30T21-22-06-820Z/n8-command-policy/shell-true/out.json"
+    ],
+    "workingDirectory": "/Users/lizavasilyeva/work/vibe-engineer",
+    "environmentSummary": "not constructed; denied before spawn"
+  },
+  "startedAt": "2026-06-30T21:22:07.454Z",
+  "endedAt": "2026-06-30T21:22:07.454Z",
+  "exitStatus": {
+    "kind": "tool_status",
+    "status": "not_spawned"
+  },
+  "result": "blocked",
+  "blocking": true,
+  "artifacts": [],
+  "warnings": [
+    "Verification item schema-validation layer=schema_validation action=add blocking=true status=blocked result=blocked code=COMMAND_POLICY_DENIED reason=shell:true is denied. candidates=[\"schema-validation\"] next=Review item schema-validation (add) and provide executable runner evidence before treating verification as complete."
+  ],
+  "failureDetails": {
+    "code": "COMMAND_POLICY_DENIED",
+    "message": "shell:true is denied.",
+    "classification": "safety_or_security_policy_failure"
+  }
+}

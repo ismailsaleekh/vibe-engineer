@@ -1,0 +1,175 @@
+{
+  "schemaVersion": "1.0.0",
+  "artifactKind": "evidence_packet",
+  "artifactId": "evidence:i09a-diagnostics-missing-registry:unit:04",
+  "title": "Verification evidence for unit",
+  "createdAt": "2026-07-01T01:13:02.466Z",
+  "updatedAt": "2026-07-01T01:13:02.466Z",
+  "producer": {
+    "kind": "verification_runner",
+    "id": "i-09a-runner-core",
+    "name": "@vibe-engineer/verification",
+    "version": "0.1.0",
+    "runId": "i09a-diagnostics-missing-registry"
+  },
+  "status": "not_run",
+  "ownership": {
+    "ownerLane": "I-09A-verification-runner-core-evidence-routing",
+    "ownedWritePaths": [
+      "packages/verification/src/**",
+      "packages/verification/fixtures/**",
+      "packages/verification/tests/**",
+      ".vibe/work/I-09A-verification-runner-core-evidence-routing/**"
+    ],
+    "readOnlyPaths": [
+      "packages/artifacts/**",
+      "packages/orchestration/**",
+      "packages/cli/**"
+    ],
+    "untouchablePaths": [
+      ".git/**",
+      "pnpm-lock.yaml",
+      "package.json",
+      "pnpm-workspace.yaml"
+    ],
+    "concurrencyNotes": "I-09A runner core evidence packet written atomically under evidenceRoot."
+  },
+  "links": [
+    {
+      "rel": "evidence_for",
+      "artifactKind": "implementation_plan",
+      "artifactId": "i09a-plan-approved",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/evidence-reruns/autopilot-default-architecture-agent-runner/diagnostics-missing-registry-plan/plan.json",
+      "required": true,
+      "statusAtLinkTime": "approved"
+    }
+  ],
+  "extensions": {
+    "dev.vibe.verification": {
+      "schemaVersion": "1.0.0",
+      "requiredItemId": "unit",
+      "requiredItemLayer": "unit",
+      "requiredItemAction": "reuse",
+      "requiredItemBlocking": true,
+      "requiredItem": {
+        "id": "unit",
+        "layer": "unit",
+        "action": "reuse",
+        "blocking": true
+      },
+      "runId": "i09a-diagnostics-missing-registry",
+      "runnerVersion": "0.1.0",
+      "runnerResolution": {
+        "candidateRunnerIdsChecked": [],
+        "candidateRunnersChecked": [],
+        "matchedRunnerIds": [],
+        "selectedRunnerId": null,
+        "resolutionStatus": "recorded"
+      },
+      "diagnostics": [
+        {
+          "schemaVersion": "1.0.0",
+          "itemId": "unit",
+          "layer": "unit",
+          "action": "reuse",
+          "blocking": true,
+          "packetBlocking": false,
+          "status": "not_run",
+          "result": "skipped",
+          "code": "REUSE_RECORDED",
+          "classification": "classification_unknown",
+          "candidateRunnerIdsChecked": [],
+          "candidateRunnersChecked": [],
+          "matchedRunnerIds": [],
+          "selectedRunnerId": null,
+          "missingPath": null,
+          "reason": "Reuse item recorded without execution.",
+          "missingRegistryReason": null,
+          "missingPrerequisiteReason": null,
+          "suggestedNextAction": "Keep item unit action=reuse only when prior validated evidence is intentionally reused; otherwise change the item to add/update and register an executable runner.",
+          "suggestedRunnerCatalogEntry": {
+            "id": "unit",
+            "requiredItemIds": [
+              "unit"
+            ],
+            "layer": "unit",
+            "evidenceClass": "deterministic",
+            "blocking": true,
+            "kind": "command",
+            "command": "<absolute path to the active Node.js executable>",
+            "args": [
+              "<projectRoot-contained runner .mjs>",
+              "<evidenceRoot-contained output artifact>"
+            ],
+            "cwd": ".",
+            "expectedArtifacts": [
+              "<evidenceRoot-contained output artifact>"
+            ],
+            "argPaths": [
+              {
+                "index": 0,
+                "root": "projectRoot"
+              },
+              {
+                "index": 1,
+                "root": "evidenceRoot"
+              }
+            ],
+            "safety": {
+              "classification": "local_deterministic_write",
+              "timeoutMs": "<positive integer <= 30000>",
+              "maxStdoutBytes": "<positive integer <= 1048576>",
+              "maxStderrBytes": "<positive integer <= 1048576>",
+              "maxOutputBytes": "<positive integer <= 2097152>",
+              "allowedWriteRoots": [
+                "<evidenceRoot or explicitly allowed project subdir>"
+              ],
+              "envAllowlist": [],
+              "passThroughEnv": false
+            }
+          },
+          "manualEvidenceAllowed": false
+        }
+      ]
+    }
+  },
+  "evidenceClass": "informational",
+  "layer": "unit",
+  "subjectRefs": [
+    {
+      "rel": "evidence_for",
+      "artifactKind": "implementation_plan",
+      "artifactId": "i09a-plan-approved",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/evidence-reruns/autopilot-default-architecture-agent-runner/diagnostics-missing-registry-plan/plan.json",
+      "required": true,
+      "statusAtLinkTime": "approved"
+    },
+    {
+      "rel": "evidence_for",
+      "artifactKind": "verification_delta",
+      "artifactId": "i09a-delta-approved",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/evidence-reruns/autopilot-default-architecture-agent-runner/diagnostics-missing-registry-plan/plan.json",
+      "required": true,
+      "statusAtLinkTime": "complete"
+    }
+  ],
+  "commandOrTool": {
+    "kind": "tool",
+    "name": "delta-item-reuse",
+    "workingDirectory": "/Users/lizavasilyeva/work/vibe-engineer",
+    "environmentSummary": "automated verification delta registry resolution; no command executed"
+  },
+  "startedAt": "2026-07-01T01:13:02.466Z",
+  "endedAt": "2026-07-01T01:13:02.466Z",
+  "exitStatus": {
+    "kind": "not_applicable",
+    "status": "skipped"
+  },
+  "result": "skipped",
+  "blocking": false,
+  "artifacts": [],
+  "warnings": [
+    "unit is represented for the domain-neutral I-09A fixture.",
+    "Verification item unit layer=unit action=reuse blocking=true status=not_run result=skipped code=REUSE_RECORDED reason=Reuse item recorded without execution. candidates=[] next=Keep item unit action=reuse only when prior validated evidence is intentionally reused; otherwise change the item to add/update and register an executable runner."
+  ]
+}

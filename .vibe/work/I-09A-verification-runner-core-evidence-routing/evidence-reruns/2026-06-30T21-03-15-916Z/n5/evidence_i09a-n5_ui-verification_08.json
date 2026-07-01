@@ -1,0 +1,175 @@
+{
+  "schemaVersion": "1.0.0",
+  "artifactKind": "evidence_packet",
+  "artifactId": "evidence:i09a-n5:ui-verification:08",
+  "title": "Verification evidence for ui-verification",
+  "createdAt": "2026-06-30T21:03:16.338Z",
+  "updatedAt": "2026-06-30T21:03:16.338Z",
+  "producer": {
+    "kind": "verification_runner",
+    "id": "i-09a-runner-core",
+    "name": "@vibe-engineer/verification",
+    "version": "0.1.0",
+    "runId": "i09a-n5"
+  },
+  "status": "not_run",
+  "ownership": {
+    "ownerLane": "I-09A-verification-runner-core-evidence-routing",
+    "ownedWritePaths": [
+      "packages/verification/src/**",
+      "packages/verification/fixtures/**",
+      "packages/verification/tests/**",
+      ".vibe/work/I-09A-verification-runner-core-evidence-routing/**"
+    ],
+    "readOnlyPaths": [
+      "packages/artifacts/**",
+      "packages/orchestration/**",
+      "packages/cli/**"
+    ],
+    "untouchablePaths": [
+      ".git/**",
+      "pnpm-lock.yaml",
+      "package.json",
+      "pnpm-workspace.yaml"
+    ],
+    "concurrencyNotes": "I-09A runner core evidence packet written atomically under evidenceRoot."
+  },
+  "links": [
+    {
+      "rel": "evidence_for",
+      "artifactKind": "implementation_plan",
+      "artifactId": "i09a-plan-approved",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/verification/fixtures/plans/approved-plan.json",
+      "required": true,
+      "statusAtLinkTime": "approved"
+    }
+  ],
+  "extensions": {
+    "dev.vibe.verification": {
+      "schemaVersion": "1.0.0",
+      "requiredItemId": "ui-verification",
+      "requiredItemLayer": "ui_verification",
+      "requiredItemAction": "not_applicable",
+      "requiredItemBlocking": true,
+      "requiredItem": {
+        "id": "ui-verification",
+        "layer": "ui_verification",
+        "action": "not_applicable",
+        "blocking": true
+      },
+      "runId": "i09a-n5",
+      "runnerVersion": "0.1.0",
+      "runnerResolution": {
+        "candidateRunnerIdsChecked": [],
+        "candidateRunnersChecked": [],
+        "matchedRunnerIds": [],
+        "selectedRunnerId": null,
+        "resolutionStatus": "recorded"
+      },
+      "diagnostics": [
+        {
+          "schemaVersion": "1.0.0",
+          "itemId": "ui-verification",
+          "layer": "ui_verification",
+          "action": "not_applicable",
+          "blocking": true,
+          "packetBlocking": false,
+          "status": "not_run",
+          "result": "skipped",
+          "code": "NOT_APPLICABLE_RECORDED",
+          "classification": "classification_unknown",
+          "candidateRunnerIdsChecked": [],
+          "candidateRunnersChecked": [],
+          "matchedRunnerIds": [],
+          "selectedRunnerId": null,
+          "missingPath": null,
+          "reason": "Not-applicable item recorded without execution.",
+          "missingRegistryReason": null,
+          "missingPrerequisiteReason": null,
+          "suggestedNextAction": "Keep item ui-verification action=not_applicable only when layer ui_verification truly does not apply; otherwise change the item to add/update and register an executable runner.",
+          "suggestedRunnerCatalogEntry": {
+            "id": "ui-verification",
+            "requiredItemIds": [
+              "ui-verification"
+            ],
+            "layer": "ui_verification",
+            "evidenceClass": "deterministic",
+            "blocking": true,
+            "kind": "command",
+            "command": "<absolute path to the active Node.js executable>",
+            "args": [
+              "<projectRoot-contained runner .mjs>",
+              "<evidenceRoot-contained output artifact>"
+            ],
+            "cwd": ".",
+            "expectedArtifacts": [
+              "<evidenceRoot-contained output artifact>"
+            ],
+            "argPaths": [
+              {
+                "index": 0,
+                "root": "projectRoot"
+              },
+              {
+                "index": 1,
+                "root": "evidenceRoot"
+              }
+            ],
+            "safety": {
+              "classification": "local_deterministic_write",
+              "timeoutMs": "<positive integer <= 30000>",
+              "maxStdoutBytes": "<positive integer <= 1048576>",
+              "maxStderrBytes": "<positive integer <= 1048576>",
+              "maxOutputBytes": "<positive integer <= 2097152>",
+              "allowedWriteRoots": [
+                "<evidenceRoot or explicitly allowed project subdir>"
+              ],
+              "envAllowlist": [],
+              "passThroughEnv": false
+            }
+          },
+          "manualEvidenceAllowed": true
+        }
+      ]
+    }
+  },
+  "evidenceClass": "informational",
+  "layer": "ui_verification",
+  "subjectRefs": [
+    {
+      "rel": "evidence_for",
+      "artifactKind": "implementation_plan",
+      "artifactId": "i09a-plan-approved",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/verification/fixtures/plans/approved-plan.json",
+      "required": true,
+      "statusAtLinkTime": "approved"
+    },
+    {
+      "rel": "evidence_for",
+      "artifactKind": "verification_delta",
+      "artifactId": "i09a-delta-approved",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/verification/fixtures/plans/approved-plan.json",
+      "required": true,
+      "statusAtLinkTime": "complete"
+    }
+  ],
+  "commandOrTool": {
+    "kind": "manual_operator",
+    "name": "delta-item-not_applicable",
+    "workingDirectory": "/Users/lizavasilyeva/work/vibe-engineer",
+    "environmentSummary": "explicit not-applicable/non-blocking manual record; no command executed"
+  },
+  "startedAt": "2026-06-30T21:03:16.338Z",
+  "endedAt": "2026-06-30T21:03:16.338Z",
+  "exitStatus": {
+    "kind": "not_applicable",
+    "status": "skipped"
+  },
+  "result": "skipped",
+  "blocking": false,
+  "artifacts": [],
+  "warnings": [
+    "ui_verification is represented for the domain-neutral I-09A fixture.",
+    "Verification item ui-verification layer=ui_verification action=not_applicable blocking=true status=not_run result=skipped code=NOT_APPLICABLE_RECORDED reason=Not-applicable item recorded without execution. candidates=[] next=Keep item ui-verification action=not_applicable only when layer ui_verification truly does not apply; otherwise change the item to add/update and register an executable runner."
+  ]
+}

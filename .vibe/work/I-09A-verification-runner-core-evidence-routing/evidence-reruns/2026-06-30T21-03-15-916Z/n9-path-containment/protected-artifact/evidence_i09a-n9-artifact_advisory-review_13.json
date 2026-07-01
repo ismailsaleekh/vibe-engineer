@@ -1,0 +1,208 @@
+{
+  "schemaVersion": "1.0.0",
+  "artifactKind": "evidence_packet",
+  "artifactId": "evidence:i09a-n9-artifact:advisory-review:13",
+  "title": "Verification evidence for advisory-review",
+  "createdAt": "2026-06-30T21:03:16.662Z",
+  "updatedAt": "2026-06-30T21:03:16.662Z",
+  "producer": {
+    "kind": "verification_runner",
+    "id": "i-09a-runner-core",
+    "name": "@vibe-engineer/verification",
+    "version": "0.1.0",
+    "runId": "i09a-n9-artifact"
+  },
+  "status": "blocked",
+  "ownership": {
+    "ownerLane": "I-09A-verification-runner-core-evidence-routing",
+    "ownedWritePaths": [
+      "packages/verification/src/**",
+      "packages/verification/fixtures/**",
+      "packages/verification/tests/**",
+      ".vibe/work/I-09A-verification-runner-core-evidence-routing/**"
+    ],
+    "readOnlyPaths": [
+      "packages/artifacts/**",
+      "packages/orchestration/**",
+      "packages/cli/**"
+    ],
+    "untouchablePaths": [
+      ".git/**",
+      "pnpm-lock.yaml",
+      "package.json",
+      "pnpm-workspace.yaml"
+    ],
+    "concurrencyNotes": "I-09A runner core evidence packet written atomically under evidenceRoot."
+  },
+  "links": [
+    {
+      "rel": "evidence_for",
+      "artifactKind": "implementation_plan",
+      "artifactId": "i09a-plan-approved",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/verification/fixtures/plans/approved-plan.json",
+      "required": true,
+      "statusAtLinkTime": "approved"
+    }
+  ],
+  "extensions": {
+    "dev.vibe.verification": {
+      "schemaVersion": "1.0.0",
+      "requiredItemId": "advisory-review",
+      "requiredItemLayer": "advisory_review",
+      "requiredItemAction": "add",
+      "requiredItemBlocking": false,
+      "requiredItem": {
+        "id": "advisory-review",
+        "layer": "advisory_review",
+        "action": "add",
+        "blocking": false
+      },
+      "runId": "i09a-n9-artifact",
+      "runnerVersion": "0.1.0",
+      "runnerResolution": {
+        "candidateRunnerIdsChecked": [
+          "schema-validation"
+        ],
+        "candidateRunnersChecked": [
+          {
+            "id": "schema-validation",
+            "layer": "schema_validation",
+            "kind": "command",
+            "requiredItemIds": [
+              "schema-validation"
+            ],
+            "matchesLayer": false,
+            "matchesRequiredItem": false,
+            "selectedByResolver": false
+          }
+        ],
+        "matchedRunnerIds": [],
+        "selectedRunnerId": null,
+        "resolutionStatus": "not_resolved"
+      },
+      "diagnostics": [
+        {
+          "schemaVersion": "1.0.0",
+          "itemId": "advisory-review",
+          "layer": "advisory_review",
+          "action": "add",
+          "blocking": false,
+          "packetBlocking": true,
+          "status": "blocked",
+          "result": "blocked",
+          "code": "MISSING_RUNNER_OR_PREREQUISITE",
+          "classification": "missing_runner_or_prerequisite",
+          "candidateRunnerIdsChecked": [
+            "schema-validation"
+          ],
+          "candidateRunnersChecked": [
+            {
+              "id": "schema-validation",
+              "layer": "schema_validation",
+              "kind": "command",
+              "requiredItemIds": [
+                "schema-validation"
+              ],
+              "matchesLayer": false,
+              "matchesRequiredItem": false,
+              "selectedByResolver": false
+            }
+          ],
+          "matchedRunnerIds": [],
+          "selectedRunnerId": null,
+          "missingPath": null,
+          "reason": "No runner catalog entry matched required item id=\"advisory-review\" layer=\"advisory_review\" action=\"add\" blocking=false. Checked runner ids: [\"schema-validation\"]. A match requires the same layer plus id=\"advisory-review\", id=\"advisory_review:advisory-review\", or requiredItemIds containing \"advisory-review\".",
+          "missingRegistryReason": "No runner catalog entry matched required item id=\"advisory-review\" layer=\"advisory_review\" action=\"add\" blocking=false. Checked runner ids: [\"schema-validation\"]. A match requires the same layer plus id=\"advisory-review\", id=\"advisory_review:advisory-review\", or requiredItemIds containing \"advisory-review\".",
+          "missingPrerequisiteReason": null,
+          "suggestedNextAction": "Add a runner catalog entry for item advisory-review on layer advisory_review using requiredItemIds:[\"advisory-review\"] and executable command/validator evidence before treating this blocking add/update item as verified.",
+          "suggestedRunnerCatalogEntry": {
+            "id": "advisory-review",
+            "requiredItemIds": [
+              "advisory-review"
+            ],
+            "layer": "advisory_review",
+            "evidenceClass": "advisory",
+            "blocking": false,
+            "kind": "command",
+            "command": "<absolute path to the active Node.js executable>",
+            "args": [
+              "<projectRoot-contained runner .mjs>",
+              "<evidenceRoot-contained output artifact>"
+            ],
+            "cwd": ".",
+            "expectedArtifacts": [
+              "<evidenceRoot-contained output artifact>"
+            ],
+            "argPaths": [
+              {
+                "index": 0,
+                "root": "projectRoot"
+              },
+              {
+                "index": 1,
+                "root": "evidenceRoot"
+              }
+            ],
+            "safety": {
+              "classification": "local_deterministic_write",
+              "timeoutMs": "<positive integer <= 30000>",
+              "maxStdoutBytes": "<positive integer <= 1048576>",
+              "maxStderrBytes": "<positive integer <= 1048576>",
+              "maxOutputBytes": "<positive integer <= 2097152>",
+              "allowedWriteRoots": [
+                "<evidenceRoot or explicitly allowed project subdir>"
+              ],
+              "envAllowlist": [],
+              "passThroughEnv": false
+            }
+          },
+          "manualEvidenceAllowed": true
+        }
+      ]
+    }
+  },
+  "evidenceClass": "deterministic",
+  "layer": "advisory_review",
+  "subjectRefs": [
+    {
+      "rel": "evidence_for",
+      "artifactKind": "implementation_plan",
+      "artifactId": "i09a-plan-approved",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/verification/fixtures/plans/approved-plan.json",
+      "required": true,
+      "statusAtLinkTime": "approved"
+    },
+    {
+      "rel": "evidence_for",
+      "artifactKind": "verification_delta",
+      "artifactId": "i09a-delta-approved",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/verification/fixtures/plans/approved-plan.json",
+      "required": true,
+      "statusAtLinkTime": "complete"
+    }
+  ],
+  "commandOrTool": {
+    "kind": "tool",
+    "name": "delta-item-add",
+    "workingDirectory": "/Users/lizavasilyeva/work/vibe-engineer",
+    "environmentSummary": "automated verification delta registry resolution; no command executed"
+  },
+  "startedAt": "2026-06-30T21:03:16.662Z",
+  "endedAt": "2026-06-30T21:03:16.662Z",
+  "exitStatus": {
+    "kind": "not_applicable",
+    "status": "blocked"
+  },
+  "result": "blocked",
+  "blocking": true,
+  "artifacts": [],
+  "warnings": [
+    "advisory_review is represented for the domain-neutral I-09A fixture.",
+    "Verification item advisory-review layer=advisory_review action=add blocking=false status=blocked result=blocked code=MISSING_RUNNER_OR_PREREQUISITE reason=No runner catalog entry matched required item id=\"advisory-review\" layer=\"advisory_review\" action=\"add\" blocking=false. Checked runner ids: [\"schema-validation\"]. A match requires the same layer plus id=\"advisory-review\", id=\"advisory_review:advisory-review\", or requiredItemIds containing \"advisory-review\". candidates=[\"schema-validation\"] next=Add a runner catalog entry for item advisory-review on layer advisory_review using requiredItemIds:[\"advisory-review\"] and executable command/validator evidence before treating this blocking add/update item as verified."
+  ],
+  "failureDetails": {
+    "code": "MISSING_RUNNER_OR_PREREQUISITE",
+    "message": "Verification item advisory-review layer=advisory_review action=add blocking=false status=blocked result=blocked code=MISSING_RUNNER_OR_PREREQUISITE reason=No runner catalog entry matched required item id=\"advisory-review\" layer=\"advisory_review\" action=\"add\" blocking=false. Checked runner ids: [\"schema-validation\"]. A match requires the same layer plus id=\"advisory-review\", id=\"advisory_review:advisory-review\", or requiredItemIds containing \"advisory-review\". candidates=[\"schema-validation\"] next=Add a runner catalog entry for item advisory-review on layer advisory_review using requiredItemIds:[\"advisory-review\"] and executable command/validator evidence before treating this blocking add/update item as verified.",
+    "classification": "missing_runner_or_prerequisite"
+  }
+}

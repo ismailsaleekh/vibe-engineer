@@ -1,0 +1,85 @@
+{
+  "schemaVersion": "orchestration-runtime-state/1.0.0",
+  "runId": "i09a-w-rb2",
+  "workPlanPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/evidence-reruns/autopilot-default-architecture-agent-runner/w-rb2/work-plan.json",
+  "limits": {
+    "maxParallelAgents": 8,
+    "maxValidationFixIterations": 3,
+    "agenticWorkPackageTargetHours": 6
+  },
+  "nodes": [
+    {
+      "id": "producer",
+      "status": "validated",
+      "attempts": 0,
+      "validationFixIterations": 0,
+      "failureRouting": {
+        "status": "none",
+        "hookRef": "none",
+        "owner": "i09a",
+        "evidenceRefs": []
+      },
+      "evidenceRefs": [],
+      "outputRefs": [
+        {
+          "artifactId": "missing-packet",
+          "artifactKind": "evidence_packet",
+          "path": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/evidence-reruns/autopilot-default-architecture-agent-runner/w-rb2/missing.json",
+          "ownerNodeId": "producer",
+          "status": "validated",
+          "dirtyState": "clean",
+          "evidenceRefs": []
+        }
+      ],
+      "endedAt": "2026-06-25T00:00:04.000Z"
+    },
+    {
+      "id": "consumer",
+      "status": "pending",
+      "attempts": 0,
+      "validationFixIterations": 0,
+      "failureRouting": {
+        "status": "none",
+        "hookRef": "none",
+        "owner": "i09a",
+        "evidenceRefs": []
+      },
+      "evidenceRefs": [],
+      "outputRefs": []
+    }
+  ],
+  "activeClaims": [],
+  "joinRecords": [
+    {
+      "consumerNodeId": "consumer",
+      "upstreamNodeId": "producer",
+      "artifactId": "evidence:i09a-w-rb1:safety-hooks:00",
+      "artifactKind": "evidence_packet",
+      "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/evidence-reruns/autopilot-default-architecture-agent-runner/w-rb1/evidence_i09a-w-rb1_safety-hooks_00.json",
+      "schemaVersion": "1.0.0",
+      "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/evidence-packet.schema.json",
+      "evidenceRefs": [
+        "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/evidence-reruns/autopilot-default-architecture-agent-runner/w-rb1/evidence_i09a-w-rb1_safety-hooks_00.json"
+      ],
+      "joinedAt": "2026-06-25T00:00:02.000Z"
+    }
+  ],
+  "failureRoutes": [],
+  "resume": {
+    "cursorNodeIds": [],
+    "completedNodeIds": [],
+    "retryNodeIds": [],
+    "blockedNodeIds": [],
+    "inspectedAt": "2026-06-25T00:00:00.000Z",
+    "reasons": [
+      "initial durable state written before scheduling"
+    ]
+  },
+  "checkpoints": [
+    "2026-06-25T00:00:00.000Z initial-state-written",
+    "2026-06-25T00:00:01.000Z transition producer validated",
+    "2026-06-25T00:00:02.000Z join consumer evidence:i09a-w-rb1:safety-hooks:00",
+    "2026-06-25T00:00:04.000Z transition producer validated"
+  ],
+  "updatedAt": "2026-06-25T00:00:04.000Z"
+}

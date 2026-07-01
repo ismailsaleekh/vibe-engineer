@@ -1,0 +1,82 @@
+{
+  "missingRegistry": [
+    "schema-validation"
+  ],
+  "missingPrerequisite": {
+    "schemaVersion": "1.0.0",
+    "itemId": "schema-validation",
+    "layer": "schema_validation",
+    "action": "add",
+    "blocking": true,
+    "packetBlocking": true,
+    "status": "blocked",
+    "result": "blocked",
+    "code": "MISSING_RUNNER_OR_PREREQUISITE",
+    "classification": "missing_runner_or_prerequisite",
+    "candidateRunnerIdsChecked": [
+      "schema-validation"
+    ],
+    "candidateRunnersChecked": [
+      {
+        "id": "schema-validation",
+        "layer": "schema_validation",
+        "kind": "command",
+        "requiredItemIds": [
+          "schema-validation"
+        ],
+        "selectedByResolver": true
+      }
+    ],
+    "matchedRunnerIds": [
+      "schema-validation"
+    ],
+    "selectedRunnerId": "schema-validation",
+    "missingPath": "/Users/lizavasilyeva/work/vibe-engineer/packages/verification/fixtures/runners/missing-runner.mjs",
+    "reason": "Declared Node runner script is missing or not a file: /Users/lizavasilyeva/work/vibe-engineer/packages/verification/fixtures/runners/missing-runner.mjs.",
+    "missingRegistryReason": null,
+    "missingPrerequisiteReason": "Declared Node runner script is missing or not a file: /Users/lizavasilyeva/work/vibe-engineer/packages/verification/fixtures/runners/missing-runner.mjs.",
+    "suggestedNextAction": "Create the project-contained runner script or update runner.args[0] to an existing executable .js/.mjs prerequisite.",
+    "suggestedRunnerCatalogEntry": {
+      "id": "schema-validation",
+      "requiredItemIds": [
+        "schema-validation"
+      ],
+      "layer": "schema_validation",
+      "evidenceClass": "deterministic",
+      "blocking": true,
+      "kind": "command",
+      "command": "<absolute path to the active Node.js executable>",
+      "args": [
+        "<projectRoot-contained runner .mjs>",
+        "<evidenceRoot-contained output artifact>"
+      ],
+      "cwd": ".",
+      "expectedArtifacts": [
+        "<evidenceRoot-contained output artifact>"
+      ],
+      "argPaths": [
+        {
+          "index": 0,
+          "root": "projectRoot"
+        },
+        {
+          "index": 1,
+          "root": "evidenceRoot"
+        }
+      ],
+      "safety": {
+        "classification": "local_deterministic_write",
+        "timeoutMs": "<positive integer <= 30000>",
+        "maxStdoutBytes": "<positive integer <= 1048576>",
+        "maxStderrBytes": "<positive integer <= 1048576>",
+        "maxOutputBytes": "<positive integer <= 2097152>",
+        "allowedWriteRoots": [
+          "<evidenceRoot or explicitly allowed project subdir>"
+        ],
+        "envAllowlist": [],
+        "passThroughEnv": false
+      }
+    },
+    "manualEvidenceAllowed": false
+  }
+}

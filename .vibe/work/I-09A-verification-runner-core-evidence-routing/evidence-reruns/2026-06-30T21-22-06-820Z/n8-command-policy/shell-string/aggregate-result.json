@@ -1,0 +1,1128 @@
+{
+  "status": "blocked",
+  "runId": "i09a-n8-shell-string",
+  "evidencePackets": [
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/evidence-reruns/2026-06-30T21-22-06-820Z/n8-command-policy/shell-string/evidence_i09a-n8-shell-string_safety-hooks_00.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/evidence-reruns/2026-06-30T21-22-06-820Z/n8-command-policy/shell-string/evidence_i09a-n8-shell-string_typecheck_01.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/evidence-reruns/2026-06-30T21-22-06-820Z/n8-command-policy/shell-string/evidence_i09a-n8-shell-string_lint-format_02.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/evidence-reruns/2026-06-30T21-22-06-820Z/n8-command-policy/shell-string/evidence_i09a-n8-shell-string_mechanical-gate_03.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/evidence-reruns/2026-06-30T21-22-06-820Z/n8-command-policy/shell-string/evidence_i09a-n8-shell-string_unit_04.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/evidence-reruns/2026-06-30T21-22-06-820Z/n8-command-policy/shell-string/evidence_i09a-n8-shell-string_integration_05.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/evidence-reruns/2026-06-30T21-22-06-820Z/n8-command-policy/shell-string/evidence_i09a-n8-shell-string_contract-adapter_06.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/evidence-reruns/2026-06-30T21-22-06-820Z/n8-command-policy/shell-string/evidence_i09a-n8-shell-string_e2e_07.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/evidence-reruns/2026-06-30T21-22-06-820Z/n8-command-policy/shell-string/evidence_i09a-n8-shell-string_ui-verification_08.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/evidence-reruns/2026-06-30T21-22-06-820Z/n8-command-policy/shell-string/evidence_i09a-n8-shell-string_ai-eval_09.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/evidence-reruns/2026-06-30T21-22-06-820Z/n8-command-policy/shell-string/evidence_i09a-n8-shell-string_build-package_10.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/evidence-reruns/2026-06-30T21-22-06-820Z/n8-command-policy/shell-string/evidence_i09a-n8-shell-string_context-drift_11.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/evidence-reruns/2026-06-30T21-22-06-820Z/n8-command-policy/shell-string/evidence_i09a-n8-shell-string_observability_12.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/evidence-reruns/2026-06-30T21-22-06-820Z/n8-command-policy/shell-string/evidence_i09a-n8-shell-string_advisory-review_13.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/evidence-reruns/2026-06-30T21-22-06-820Z/n8-command-policy/shell-string/evidence_i09a-n8-shell-string_final-dod_14.json",
+    "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/evidence-reruns/2026-06-30T21-22-06-820Z/n8-command-policy/shell-string/evidence_i09a-n8-shell-string_schema-validation_15.json"
+  ],
+  "executedItems": [
+    "schema-validation"
+  ],
+  "recordedItems": [
+    "safety-hooks",
+    "typecheck",
+    "lint-format",
+    "mechanical-gate",
+    "unit",
+    "integration",
+    "contract-adapter",
+    "e2e",
+    "ui-verification",
+    "ai-eval",
+    "build-package",
+    "context-drift",
+    "observability",
+    "final-dod"
+  ],
+  "blockedItems": [
+    "advisory-review",
+    "schema-validation"
+  ],
+  "failures": [
+    {
+      "code": "MISSING_RUNNER_OR_PREREQUISITE",
+      "message": "Verification item advisory-review layer=advisory_review action=add blocking=false status=blocked result=blocked code=MISSING_RUNNER_OR_PREREQUISITE reason=No runner catalog entry matched required item id=\"advisory-review\" layer=\"advisory_review\" action=\"add\" blocking=false. Checked runner ids: [\"schema-validation\"]. A match requires the same layer plus id=\"advisory-review\", id=\"advisory_review:advisory-review\", or requiredItemIds containing \"advisory-review\". candidates=[\"schema-validation\"] next=Add a runner catalog entry for item advisory-review on layer advisory_review using requiredItemIds:[\"advisory-review\"] and executable command/validator evidence before treating this blocking add/update item as verified.",
+      "classification": "missing_runner_or_prerequisite"
+    },
+    {
+      "code": "COMMAND_POLICY_DENIED",
+      "message": "Shell-string command syntax is denied.",
+      "classification": "safety_or_security_policy_failure"
+    }
+  ],
+  "warnings": [
+    "safety_hooks is represented for the domain-neutral I-09A fixture.",
+    "Verification item safety-hooks layer=safety_hooks action=not_applicable blocking=true status=not_run result=skipped code=NOT_APPLICABLE_RECORDED reason=Not-applicable item recorded without execution. candidates=[] next=Keep item safety-hooks action=not_applicable only when layer safety_hooks truly does not apply; otherwise change the item to add/update and register an executable runner.",
+    "typecheck is represented for the domain-neutral I-09A fixture.",
+    "Verification item typecheck layer=typecheck action=reuse blocking=true status=not_run result=skipped code=REUSE_RECORDED reason=Reuse item recorded without execution. candidates=[] next=Keep item typecheck action=reuse only when prior validated evidence is intentionally reused; otherwise change the item to add/update and register an executable runner.",
+    "lint_format is represented for the domain-neutral I-09A fixture.",
+    "Verification item lint-format layer=lint_format action=not_applicable blocking=true status=not_run result=skipped code=NOT_APPLICABLE_RECORDED reason=Not-applicable item recorded without execution. candidates=[] next=Keep item lint-format action=not_applicable only when layer lint_format truly does not apply; otherwise change the item to add/update and register an executable runner.",
+    "mechanical_gate is represented for the domain-neutral I-09A fixture.",
+    "Verification item mechanical-gate layer=mechanical_gate action=not_applicable blocking=true status=not_run result=skipped code=NOT_APPLICABLE_RECORDED reason=Not-applicable item recorded without execution. candidates=[] next=Keep item mechanical-gate action=not_applicable only when layer mechanical_gate truly does not apply; otherwise change the item to add/update and register an executable runner.",
+    "unit is represented for the domain-neutral I-09A fixture.",
+    "Verification item unit layer=unit action=reuse blocking=true status=not_run result=skipped code=REUSE_RECORDED reason=Reuse item recorded without execution. candidates=[] next=Keep item unit action=reuse only when prior validated evidence is intentionally reused; otherwise change the item to add/update and register an executable runner.",
+    "integration is represented for the domain-neutral I-09A fixture.",
+    "Verification item integration layer=integration action=not_applicable blocking=true status=not_run result=skipped code=NOT_APPLICABLE_RECORDED reason=Not-applicable item recorded without execution. candidates=[] next=Keep item integration action=not_applicable only when layer integration truly does not apply; otherwise change the item to add/update and register an executable runner.",
+    "contract_adapter is represented for the domain-neutral I-09A fixture.",
+    "Verification item contract-adapter layer=contract_adapter action=not_applicable blocking=true status=not_run result=skipped code=NOT_APPLICABLE_RECORDED reason=Not-applicable item recorded without execution. candidates=[] next=Keep item contract-adapter action=not_applicable only when layer contract_adapter truly does not apply; otherwise change the item to add/update and register an executable runner.",
+    "e2e is represented for the domain-neutral I-09A fixture.",
+    "Verification item e2e layer=e2e action=not_applicable blocking=true status=not_run result=skipped code=NOT_APPLICABLE_RECORDED reason=Not-applicable item recorded without execution. candidates=[] next=Keep item e2e action=not_applicable only when layer e2e truly does not apply; otherwise change the item to add/update and register an executable runner.",
+    "ui_verification is represented for the domain-neutral I-09A fixture.",
+    "Verification item ui-verification layer=ui_verification action=not_applicable blocking=true status=not_run result=skipped code=NOT_APPLICABLE_RECORDED reason=Not-applicable item recorded without execution. candidates=[] next=Keep item ui-verification action=not_applicable only when layer ui_verification truly does not apply; otherwise change the item to add/update and register an executable runner.",
+    "ai_eval is represented for the domain-neutral I-09A fixture.",
+    "Verification item ai-eval layer=ai_eval action=not_applicable blocking=true status=not_run result=skipped code=NOT_APPLICABLE_RECORDED reason=Not-applicable item recorded without execution. candidates=[] next=Keep item ai-eval action=not_applicable only when layer ai_eval truly does not apply; otherwise change the item to add/update and register an executable runner.",
+    "build_package is represented for the domain-neutral I-09A fixture.",
+    "Verification item build-package layer=build_package action=not_applicable blocking=true status=not_run result=skipped code=NOT_APPLICABLE_RECORDED reason=Not-applicable item recorded without execution. candidates=[] next=Keep item build-package action=not_applicable only when layer build_package truly does not apply; otherwise change the item to add/update and register an executable runner.",
+    "context_drift is represented for the domain-neutral I-09A fixture.",
+    "Verification item context-drift layer=context_drift action=not_applicable blocking=true status=not_run result=skipped code=NOT_APPLICABLE_RECORDED reason=Not-applicable item recorded without execution. candidates=[] next=Keep item context-drift action=not_applicable only when layer context_drift truly does not apply; otherwise change the item to add/update and register an executable runner.",
+    "observability is represented for the domain-neutral I-09A fixture.",
+    "Verification item observability layer=observability action=not_applicable blocking=true status=not_run result=skipped code=NOT_APPLICABLE_RECORDED reason=Not-applicable item recorded without execution. candidates=[] next=Keep item observability action=not_applicable only when layer observability truly does not apply; otherwise change the item to add/update and register an executable runner.",
+    "advisory_review is represented for the domain-neutral I-09A fixture.",
+    "Verification item advisory-review layer=advisory_review action=add blocking=false status=blocked result=blocked code=MISSING_RUNNER_OR_PREREQUISITE reason=No runner catalog entry matched required item id=\"advisory-review\" layer=\"advisory_review\" action=\"add\" blocking=false. Checked runner ids: [\"schema-validation\"]. A match requires the same layer plus id=\"advisory-review\", id=\"advisory_review:advisory-review\", or requiredItemIds containing \"advisory-review\". candidates=[\"schema-validation\"] next=Add a runner catalog entry for item advisory-review on layer advisory_review using requiredItemIds:[\"advisory-review\"] and executable command/validator evidence before treating this blocking add/update item as verified.",
+    "final_dod is represented for the domain-neutral I-09A fixture.",
+    "Verification item final-dod layer=final_dod action=not_applicable blocking=true status=not_run result=skipped code=NOT_APPLICABLE_RECORDED reason=Not-applicable item recorded without execution. candidates=[] next=Keep item final-dod action=not_applicable only when layer final_dod truly does not apply; otherwise change the item to add/update and register an executable runner.",
+    "Verification item schema-validation layer=schema_validation action=add blocking=true status=blocked result=blocked code=COMMAND_POLICY_DENIED reason=Shell-string command syntax is denied. candidates=[\"schema-validation\"] next=Review item schema-validation (add) and provide executable runner evidence before treating verification as complete."
+  ],
+  "itemDiagnostics": [
+    {
+      "schemaVersion": "1.0.0",
+      "itemId": "safety-hooks",
+      "layer": "safety_hooks",
+      "action": "not_applicable",
+      "blocking": true,
+      "packetBlocking": false,
+      "status": "not_run",
+      "result": "skipped",
+      "code": "NOT_APPLICABLE_RECORDED",
+      "classification": "classification_unknown",
+      "candidateRunnerIdsChecked": [],
+      "candidateRunnersChecked": [],
+      "matchedRunnerIds": [],
+      "selectedRunnerId": null,
+      "missingPath": null,
+      "reason": "Not-applicable item recorded without execution.",
+      "missingRegistryReason": null,
+      "missingPrerequisiteReason": null,
+      "suggestedNextAction": "Keep item safety-hooks action=not_applicable only when layer safety_hooks truly does not apply; otherwise change the item to add/update and register an executable runner.",
+      "suggestedRunnerCatalogEntry": {
+        "id": "safety-hooks",
+        "requiredItemIds": [
+          "safety-hooks"
+        ],
+        "layer": "safety_hooks",
+        "evidenceClass": "deterministic",
+        "blocking": true,
+        "kind": "command",
+        "command": "<absolute path to the active Node.js executable>",
+        "args": [
+          "<projectRoot-contained runner .mjs>",
+          "<evidenceRoot-contained output artifact>"
+        ],
+        "cwd": ".",
+        "expectedArtifacts": [
+          "<evidenceRoot-contained output artifact>"
+        ],
+        "argPaths": [
+          {
+            "index": 0,
+            "root": "projectRoot"
+          },
+          {
+            "index": 1,
+            "root": "evidenceRoot"
+          }
+        ],
+        "safety": {
+          "classification": "local_deterministic_write",
+          "timeoutMs": "<positive integer <= 30000>",
+          "maxStdoutBytes": "<positive integer <= 1048576>",
+          "maxStderrBytes": "<positive integer <= 1048576>",
+          "maxOutputBytes": "<positive integer <= 2097152>",
+          "allowedWriteRoots": [
+            "<evidenceRoot or explicitly allowed project subdir>"
+          ],
+          "envAllowlist": [],
+          "passThroughEnv": false
+        }
+      },
+      "manualEvidenceAllowed": true
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "itemId": "typecheck",
+      "layer": "typecheck",
+      "action": "reuse",
+      "blocking": true,
+      "packetBlocking": false,
+      "status": "not_run",
+      "result": "skipped",
+      "code": "REUSE_RECORDED",
+      "classification": "classification_unknown",
+      "candidateRunnerIdsChecked": [],
+      "candidateRunnersChecked": [],
+      "matchedRunnerIds": [],
+      "selectedRunnerId": null,
+      "missingPath": null,
+      "reason": "Reuse item recorded without execution.",
+      "missingRegistryReason": null,
+      "missingPrerequisiteReason": null,
+      "suggestedNextAction": "Keep item typecheck action=reuse only when prior validated evidence is intentionally reused; otherwise change the item to add/update and register an executable runner.",
+      "suggestedRunnerCatalogEntry": {
+        "id": "typecheck",
+        "requiredItemIds": [
+          "typecheck"
+        ],
+        "layer": "typecheck",
+        "evidenceClass": "deterministic",
+        "blocking": true,
+        "kind": "command",
+        "command": "<absolute path to the active Node.js executable>",
+        "args": [
+          "<projectRoot-contained runner .mjs>",
+          "<evidenceRoot-contained output artifact>"
+        ],
+        "cwd": ".",
+        "expectedArtifacts": [
+          "<evidenceRoot-contained output artifact>"
+        ],
+        "argPaths": [
+          {
+            "index": 0,
+            "root": "projectRoot"
+          },
+          {
+            "index": 1,
+            "root": "evidenceRoot"
+          }
+        ],
+        "safety": {
+          "classification": "local_deterministic_write",
+          "timeoutMs": "<positive integer <= 30000>",
+          "maxStdoutBytes": "<positive integer <= 1048576>",
+          "maxStderrBytes": "<positive integer <= 1048576>",
+          "maxOutputBytes": "<positive integer <= 2097152>",
+          "allowedWriteRoots": [
+            "<evidenceRoot or explicitly allowed project subdir>"
+          ],
+          "envAllowlist": [],
+          "passThroughEnv": false
+        }
+      },
+      "manualEvidenceAllowed": false
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "itemId": "lint-format",
+      "layer": "lint_format",
+      "action": "not_applicable",
+      "blocking": true,
+      "packetBlocking": false,
+      "status": "not_run",
+      "result": "skipped",
+      "code": "NOT_APPLICABLE_RECORDED",
+      "classification": "classification_unknown",
+      "candidateRunnerIdsChecked": [],
+      "candidateRunnersChecked": [],
+      "matchedRunnerIds": [],
+      "selectedRunnerId": null,
+      "missingPath": null,
+      "reason": "Not-applicable item recorded without execution.",
+      "missingRegistryReason": null,
+      "missingPrerequisiteReason": null,
+      "suggestedNextAction": "Keep item lint-format action=not_applicable only when layer lint_format truly does not apply; otherwise change the item to add/update and register an executable runner.",
+      "suggestedRunnerCatalogEntry": {
+        "id": "lint-format",
+        "requiredItemIds": [
+          "lint-format"
+        ],
+        "layer": "lint_format",
+        "evidenceClass": "deterministic",
+        "blocking": true,
+        "kind": "command",
+        "command": "<absolute path to the active Node.js executable>",
+        "args": [
+          "<projectRoot-contained runner .mjs>",
+          "<evidenceRoot-contained output artifact>"
+        ],
+        "cwd": ".",
+        "expectedArtifacts": [
+          "<evidenceRoot-contained output artifact>"
+        ],
+        "argPaths": [
+          {
+            "index": 0,
+            "root": "projectRoot"
+          },
+          {
+            "index": 1,
+            "root": "evidenceRoot"
+          }
+        ],
+        "safety": {
+          "classification": "local_deterministic_write",
+          "timeoutMs": "<positive integer <= 30000>",
+          "maxStdoutBytes": "<positive integer <= 1048576>",
+          "maxStderrBytes": "<positive integer <= 1048576>",
+          "maxOutputBytes": "<positive integer <= 2097152>",
+          "allowedWriteRoots": [
+            "<evidenceRoot or explicitly allowed project subdir>"
+          ],
+          "envAllowlist": [],
+          "passThroughEnv": false
+        }
+      },
+      "manualEvidenceAllowed": true
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "itemId": "mechanical-gate",
+      "layer": "mechanical_gate",
+      "action": "not_applicable",
+      "blocking": true,
+      "packetBlocking": false,
+      "status": "not_run",
+      "result": "skipped",
+      "code": "NOT_APPLICABLE_RECORDED",
+      "classification": "classification_unknown",
+      "candidateRunnerIdsChecked": [],
+      "candidateRunnersChecked": [],
+      "matchedRunnerIds": [],
+      "selectedRunnerId": null,
+      "missingPath": null,
+      "reason": "Not-applicable item recorded without execution.",
+      "missingRegistryReason": null,
+      "missingPrerequisiteReason": null,
+      "suggestedNextAction": "Keep item mechanical-gate action=not_applicable only when layer mechanical_gate truly does not apply; otherwise change the item to add/update and register an executable runner.",
+      "suggestedRunnerCatalogEntry": {
+        "id": "mechanical-gate",
+        "requiredItemIds": [
+          "mechanical-gate"
+        ],
+        "layer": "mechanical_gate",
+        "evidenceClass": "deterministic",
+        "blocking": true,
+        "kind": "command",
+        "command": "<absolute path to the active Node.js executable>",
+        "args": [
+          "<projectRoot-contained runner .mjs>",
+          "<evidenceRoot-contained output artifact>"
+        ],
+        "cwd": ".",
+        "expectedArtifacts": [
+          "<evidenceRoot-contained output artifact>"
+        ],
+        "argPaths": [
+          {
+            "index": 0,
+            "root": "projectRoot"
+          },
+          {
+            "index": 1,
+            "root": "evidenceRoot"
+          }
+        ],
+        "safety": {
+          "classification": "local_deterministic_write",
+          "timeoutMs": "<positive integer <= 30000>",
+          "maxStdoutBytes": "<positive integer <= 1048576>",
+          "maxStderrBytes": "<positive integer <= 1048576>",
+          "maxOutputBytes": "<positive integer <= 2097152>",
+          "allowedWriteRoots": [
+            "<evidenceRoot or explicitly allowed project subdir>"
+          ],
+          "envAllowlist": [],
+          "passThroughEnv": false
+        }
+      },
+      "manualEvidenceAllowed": true
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "itemId": "unit",
+      "layer": "unit",
+      "action": "reuse",
+      "blocking": true,
+      "packetBlocking": false,
+      "status": "not_run",
+      "result": "skipped",
+      "code": "REUSE_RECORDED",
+      "classification": "classification_unknown",
+      "candidateRunnerIdsChecked": [],
+      "candidateRunnersChecked": [],
+      "matchedRunnerIds": [],
+      "selectedRunnerId": null,
+      "missingPath": null,
+      "reason": "Reuse item recorded without execution.",
+      "missingRegistryReason": null,
+      "missingPrerequisiteReason": null,
+      "suggestedNextAction": "Keep item unit action=reuse only when prior validated evidence is intentionally reused; otherwise change the item to add/update and register an executable runner.",
+      "suggestedRunnerCatalogEntry": {
+        "id": "unit",
+        "requiredItemIds": [
+          "unit"
+        ],
+        "layer": "unit",
+        "evidenceClass": "deterministic",
+        "blocking": true,
+        "kind": "command",
+        "command": "<absolute path to the active Node.js executable>",
+        "args": [
+          "<projectRoot-contained runner .mjs>",
+          "<evidenceRoot-contained output artifact>"
+        ],
+        "cwd": ".",
+        "expectedArtifacts": [
+          "<evidenceRoot-contained output artifact>"
+        ],
+        "argPaths": [
+          {
+            "index": 0,
+            "root": "projectRoot"
+          },
+          {
+            "index": 1,
+            "root": "evidenceRoot"
+          }
+        ],
+        "safety": {
+          "classification": "local_deterministic_write",
+          "timeoutMs": "<positive integer <= 30000>",
+          "maxStdoutBytes": "<positive integer <= 1048576>",
+          "maxStderrBytes": "<positive integer <= 1048576>",
+          "maxOutputBytes": "<positive integer <= 2097152>",
+          "allowedWriteRoots": [
+            "<evidenceRoot or explicitly allowed project subdir>"
+          ],
+          "envAllowlist": [],
+          "passThroughEnv": false
+        }
+      },
+      "manualEvidenceAllowed": false
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "itemId": "integration",
+      "layer": "integration",
+      "action": "not_applicable",
+      "blocking": true,
+      "packetBlocking": false,
+      "status": "not_run",
+      "result": "skipped",
+      "code": "NOT_APPLICABLE_RECORDED",
+      "classification": "classification_unknown",
+      "candidateRunnerIdsChecked": [],
+      "candidateRunnersChecked": [],
+      "matchedRunnerIds": [],
+      "selectedRunnerId": null,
+      "missingPath": null,
+      "reason": "Not-applicable item recorded without execution.",
+      "missingRegistryReason": null,
+      "missingPrerequisiteReason": null,
+      "suggestedNextAction": "Keep item integration action=not_applicable only when layer integration truly does not apply; otherwise change the item to add/update and register an executable runner.",
+      "suggestedRunnerCatalogEntry": {
+        "id": "integration",
+        "requiredItemIds": [
+          "integration"
+        ],
+        "layer": "integration",
+        "evidenceClass": "deterministic",
+        "blocking": true,
+        "kind": "command",
+        "command": "<absolute path to the active Node.js executable>",
+        "args": [
+          "<projectRoot-contained runner .mjs>",
+          "<evidenceRoot-contained output artifact>"
+        ],
+        "cwd": ".",
+        "expectedArtifacts": [
+          "<evidenceRoot-contained output artifact>"
+        ],
+        "argPaths": [
+          {
+            "index": 0,
+            "root": "projectRoot"
+          },
+          {
+            "index": 1,
+            "root": "evidenceRoot"
+          }
+        ],
+        "safety": {
+          "classification": "local_deterministic_write",
+          "timeoutMs": "<positive integer <= 30000>",
+          "maxStdoutBytes": "<positive integer <= 1048576>",
+          "maxStderrBytes": "<positive integer <= 1048576>",
+          "maxOutputBytes": "<positive integer <= 2097152>",
+          "allowedWriteRoots": [
+            "<evidenceRoot or explicitly allowed project subdir>"
+          ],
+          "envAllowlist": [],
+          "passThroughEnv": false
+        }
+      },
+      "manualEvidenceAllowed": true
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "itemId": "contract-adapter",
+      "layer": "contract_adapter",
+      "action": "not_applicable",
+      "blocking": true,
+      "packetBlocking": false,
+      "status": "not_run",
+      "result": "skipped",
+      "code": "NOT_APPLICABLE_RECORDED",
+      "classification": "classification_unknown",
+      "candidateRunnerIdsChecked": [],
+      "candidateRunnersChecked": [],
+      "matchedRunnerIds": [],
+      "selectedRunnerId": null,
+      "missingPath": null,
+      "reason": "Not-applicable item recorded without execution.",
+      "missingRegistryReason": null,
+      "missingPrerequisiteReason": null,
+      "suggestedNextAction": "Keep item contract-adapter action=not_applicable only when layer contract_adapter truly does not apply; otherwise change the item to add/update and register an executable runner.",
+      "suggestedRunnerCatalogEntry": {
+        "id": "contract-adapter",
+        "requiredItemIds": [
+          "contract-adapter"
+        ],
+        "layer": "contract_adapter",
+        "evidenceClass": "deterministic",
+        "blocking": true,
+        "kind": "command",
+        "command": "<absolute path to the active Node.js executable>",
+        "args": [
+          "<projectRoot-contained runner .mjs>",
+          "<evidenceRoot-contained output artifact>"
+        ],
+        "cwd": ".",
+        "expectedArtifacts": [
+          "<evidenceRoot-contained output artifact>"
+        ],
+        "argPaths": [
+          {
+            "index": 0,
+            "root": "projectRoot"
+          },
+          {
+            "index": 1,
+            "root": "evidenceRoot"
+          }
+        ],
+        "safety": {
+          "classification": "local_deterministic_write",
+          "timeoutMs": "<positive integer <= 30000>",
+          "maxStdoutBytes": "<positive integer <= 1048576>",
+          "maxStderrBytes": "<positive integer <= 1048576>",
+          "maxOutputBytes": "<positive integer <= 2097152>",
+          "allowedWriteRoots": [
+            "<evidenceRoot or explicitly allowed project subdir>"
+          ],
+          "envAllowlist": [],
+          "passThroughEnv": false
+        }
+      },
+      "manualEvidenceAllowed": true
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "itemId": "e2e",
+      "layer": "e2e",
+      "action": "not_applicable",
+      "blocking": true,
+      "packetBlocking": false,
+      "status": "not_run",
+      "result": "skipped",
+      "code": "NOT_APPLICABLE_RECORDED",
+      "classification": "classification_unknown",
+      "candidateRunnerIdsChecked": [],
+      "candidateRunnersChecked": [],
+      "matchedRunnerIds": [],
+      "selectedRunnerId": null,
+      "missingPath": null,
+      "reason": "Not-applicable item recorded without execution.",
+      "missingRegistryReason": null,
+      "missingPrerequisiteReason": null,
+      "suggestedNextAction": "Keep item e2e action=not_applicable only when layer e2e truly does not apply; otherwise change the item to add/update and register an executable runner.",
+      "suggestedRunnerCatalogEntry": {
+        "id": "e2e",
+        "requiredItemIds": [
+          "e2e"
+        ],
+        "layer": "e2e",
+        "evidenceClass": "deterministic",
+        "blocking": true,
+        "kind": "command",
+        "command": "<absolute path to the active Node.js executable>",
+        "args": [
+          "<projectRoot-contained runner .mjs>",
+          "<evidenceRoot-contained output artifact>"
+        ],
+        "cwd": ".",
+        "expectedArtifacts": [
+          "<evidenceRoot-contained output artifact>"
+        ],
+        "argPaths": [
+          {
+            "index": 0,
+            "root": "projectRoot"
+          },
+          {
+            "index": 1,
+            "root": "evidenceRoot"
+          }
+        ],
+        "safety": {
+          "classification": "local_deterministic_write",
+          "timeoutMs": "<positive integer <= 30000>",
+          "maxStdoutBytes": "<positive integer <= 1048576>",
+          "maxStderrBytes": "<positive integer <= 1048576>",
+          "maxOutputBytes": "<positive integer <= 2097152>",
+          "allowedWriteRoots": [
+            "<evidenceRoot or explicitly allowed project subdir>"
+          ],
+          "envAllowlist": [],
+          "passThroughEnv": false
+        }
+      },
+      "manualEvidenceAllowed": true
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "itemId": "ui-verification",
+      "layer": "ui_verification",
+      "action": "not_applicable",
+      "blocking": true,
+      "packetBlocking": false,
+      "status": "not_run",
+      "result": "skipped",
+      "code": "NOT_APPLICABLE_RECORDED",
+      "classification": "classification_unknown",
+      "candidateRunnerIdsChecked": [],
+      "candidateRunnersChecked": [],
+      "matchedRunnerIds": [],
+      "selectedRunnerId": null,
+      "missingPath": null,
+      "reason": "Not-applicable item recorded without execution.",
+      "missingRegistryReason": null,
+      "missingPrerequisiteReason": null,
+      "suggestedNextAction": "Keep item ui-verification action=not_applicable only when layer ui_verification truly does not apply; otherwise change the item to add/update and register an executable runner.",
+      "suggestedRunnerCatalogEntry": {
+        "id": "ui-verification",
+        "requiredItemIds": [
+          "ui-verification"
+        ],
+        "layer": "ui_verification",
+        "evidenceClass": "deterministic",
+        "blocking": true,
+        "kind": "command",
+        "command": "<absolute path to the active Node.js executable>",
+        "args": [
+          "<projectRoot-contained runner .mjs>",
+          "<evidenceRoot-contained output artifact>"
+        ],
+        "cwd": ".",
+        "expectedArtifacts": [
+          "<evidenceRoot-contained output artifact>"
+        ],
+        "argPaths": [
+          {
+            "index": 0,
+            "root": "projectRoot"
+          },
+          {
+            "index": 1,
+            "root": "evidenceRoot"
+          }
+        ],
+        "safety": {
+          "classification": "local_deterministic_write",
+          "timeoutMs": "<positive integer <= 30000>",
+          "maxStdoutBytes": "<positive integer <= 1048576>",
+          "maxStderrBytes": "<positive integer <= 1048576>",
+          "maxOutputBytes": "<positive integer <= 2097152>",
+          "allowedWriteRoots": [
+            "<evidenceRoot or explicitly allowed project subdir>"
+          ],
+          "envAllowlist": [],
+          "passThroughEnv": false
+        }
+      },
+      "manualEvidenceAllowed": true
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "itemId": "ai-eval",
+      "layer": "ai_eval",
+      "action": "not_applicable",
+      "blocking": true,
+      "packetBlocking": false,
+      "status": "not_run",
+      "result": "skipped",
+      "code": "NOT_APPLICABLE_RECORDED",
+      "classification": "classification_unknown",
+      "candidateRunnerIdsChecked": [],
+      "candidateRunnersChecked": [],
+      "matchedRunnerIds": [],
+      "selectedRunnerId": null,
+      "missingPath": null,
+      "reason": "Not-applicable item recorded without execution.",
+      "missingRegistryReason": null,
+      "missingPrerequisiteReason": null,
+      "suggestedNextAction": "Keep item ai-eval action=not_applicable only when layer ai_eval truly does not apply; otherwise change the item to add/update and register an executable runner.",
+      "suggestedRunnerCatalogEntry": {
+        "id": "ai-eval",
+        "requiredItemIds": [
+          "ai-eval"
+        ],
+        "layer": "ai_eval",
+        "evidenceClass": "deterministic",
+        "blocking": true,
+        "kind": "command",
+        "command": "<absolute path to the active Node.js executable>",
+        "args": [
+          "<projectRoot-contained runner .mjs>",
+          "<evidenceRoot-contained output artifact>"
+        ],
+        "cwd": ".",
+        "expectedArtifacts": [
+          "<evidenceRoot-contained output artifact>"
+        ],
+        "argPaths": [
+          {
+            "index": 0,
+            "root": "projectRoot"
+          },
+          {
+            "index": 1,
+            "root": "evidenceRoot"
+          }
+        ],
+        "safety": {
+          "classification": "local_deterministic_write",
+          "timeoutMs": "<positive integer <= 30000>",
+          "maxStdoutBytes": "<positive integer <= 1048576>",
+          "maxStderrBytes": "<positive integer <= 1048576>",
+          "maxOutputBytes": "<positive integer <= 2097152>",
+          "allowedWriteRoots": [
+            "<evidenceRoot or explicitly allowed project subdir>"
+          ],
+          "envAllowlist": [],
+          "passThroughEnv": false
+        }
+      },
+      "manualEvidenceAllowed": true
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "itemId": "build-package",
+      "layer": "build_package",
+      "action": "not_applicable",
+      "blocking": true,
+      "packetBlocking": false,
+      "status": "not_run",
+      "result": "skipped",
+      "code": "NOT_APPLICABLE_RECORDED",
+      "classification": "classification_unknown",
+      "candidateRunnerIdsChecked": [],
+      "candidateRunnersChecked": [],
+      "matchedRunnerIds": [],
+      "selectedRunnerId": null,
+      "missingPath": null,
+      "reason": "Not-applicable item recorded without execution.",
+      "missingRegistryReason": null,
+      "missingPrerequisiteReason": null,
+      "suggestedNextAction": "Keep item build-package action=not_applicable only when layer build_package truly does not apply; otherwise change the item to add/update and register an executable runner.",
+      "suggestedRunnerCatalogEntry": {
+        "id": "build-package",
+        "requiredItemIds": [
+          "build-package"
+        ],
+        "layer": "build_package",
+        "evidenceClass": "deterministic",
+        "blocking": true,
+        "kind": "command",
+        "command": "<absolute path to the active Node.js executable>",
+        "args": [
+          "<projectRoot-contained runner .mjs>",
+          "<evidenceRoot-contained output artifact>"
+        ],
+        "cwd": ".",
+        "expectedArtifacts": [
+          "<evidenceRoot-contained output artifact>"
+        ],
+        "argPaths": [
+          {
+            "index": 0,
+            "root": "projectRoot"
+          },
+          {
+            "index": 1,
+            "root": "evidenceRoot"
+          }
+        ],
+        "safety": {
+          "classification": "local_deterministic_write",
+          "timeoutMs": "<positive integer <= 30000>",
+          "maxStdoutBytes": "<positive integer <= 1048576>",
+          "maxStderrBytes": "<positive integer <= 1048576>",
+          "maxOutputBytes": "<positive integer <= 2097152>",
+          "allowedWriteRoots": [
+            "<evidenceRoot or explicitly allowed project subdir>"
+          ],
+          "envAllowlist": [],
+          "passThroughEnv": false
+        }
+      },
+      "manualEvidenceAllowed": true
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "itemId": "context-drift",
+      "layer": "context_drift",
+      "action": "not_applicable",
+      "blocking": true,
+      "packetBlocking": false,
+      "status": "not_run",
+      "result": "skipped",
+      "code": "NOT_APPLICABLE_RECORDED",
+      "classification": "classification_unknown",
+      "candidateRunnerIdsChecked": [],
+      "candidateRunnersChecked": [],
+      "matchedRunnerIds": [],
+      "selectedRunnerId": null,
+      "missingPath": null,
+      "reason": "Not-applicable item recorded without execution.",
+      "missingRegistryReason": null,
+      "missingPrerequisiteReason": null,
+      "suggestedNextAction": "Keep item context-drift action=not_applicable only when layer context_drift truly does not apply; otherwise change the item to add/update and register an executable runner.",
+      "suggestedRunnerCatalogEntry": {
+        "id": "context-drift",
+        "requiredItemIds": [
+          "context-drift"
+        ],
+        "layer": "context_drift",
+        "evidenceClass": "deterministic",
+        "blocking": true,
+        "kind": "command",
+        "command": "<absolute path to the active Node.js executable>",
+        "args": [
+          "<projectRoot-contained runner .mjs>",
+          "<evidenceRoot-contained output artifact>"
+        ],
+        "cwd": ".",
+        "expectedArtifacts": [
+          "<evidenceRoot-contained output artifact>"
+        ],
+        "argPaths": [
+          {
+            "index": 0,
+            "root": "projectRoot"
+          },
+          {
+            "index": 1,
+            "root": "evidenceRoot"
+          }
+        ],
+        "safety": {
+          "classification": "local_deterministic_write",
+          "timeoutMs": "<positive integer <= 30000>",
+          "maxStdoutBytes": "<positive integer <= 1048576>",
+          "maxStderrBytes": "<positive integer <= 1048576>",
+          "maxOutputBytes": "<positive integer <= 2097152>",
+          "allowedWriteRoots": [
+            "<evidenceRoot or explicitly allowed project subdir>"
+          ],
+          "envAllowlist": [],
+          "passThroughEnv": false
+        }
+      },
+      "manualEvidenceAllowed": true
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "itemId": "observability",
+      "layer": "observability",
+      "action": "not_applicable",
+      "blocking": true,
+      "packetBlocking": false,
+      "status": "not_run",
+      "result": "skipped",
+      "code": "NOT_APPLICABLE_RECORDED",
+      "classification": "classification_unknown",
+      "candidateRunnerIdsChecked": [],
+      "candidateRunnersChecked": [],
+      "matchedRunnerIds": [],
+      "selectedRunnerId": null,
+      "missingPath": null,
+      "reason": "Not-applicable item recorded without execution.",
+      "missingRegistryReason": null,
+      "missingPrerequisiteReason": null,
+      "suggestedNextAction": "Keep item observability action=not_applicable only when layer observability truly does not apply; otherwise change the item to add/update and register an executable runner.",
+      "suggestedRunnerCatalogEntry": {
+        "id": "observability",
+        "requiredItemIds": [
+          "observability"
+        ],
+        "layer": "observability",
+        "evidenceClass": "deterministic",
+        "blocking": true,
+        "kind": "command",
+        "command": "<absolute path to the active Node.js executable>",
+        "args": [
+          "<projectRoot-contained runner .mjs>",
+          "<evidenceRoot-contained output artifact>"
+        ],
+        "cwd": ".",
+        "expectedArtifacts": [
+          "<evidenceRoot-contained output artifact>"
+        ],
+        "argPaths": [
+          {
+            "index": 0,
+            "root": "projectRoot"
+          },
+          {
+            "index": 1,
+            "root": "evidenceRoot"
+          }
+        ],
+        "safety": {
+          "classification": "local_deterministic_write",
+          "timeoutMs": "<positive integer <= 30000>",
+          "maxStdoutBytes": "<positive integer <= 1048576>",
+          "maxStderrBytes": "<positive integer <= 1048576>",
+          "maxOutputBytes": "<positive integer <= 2097152>",
+          "allowedWriteRoots": [
+            "<evidenceRoot or explicitly allowed project subdir>"
+          ],
+          "envAllowlist": [],
+          "passThroughEnv": false
+        }
+      },
+      "manualEvidenceAllowed": true
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "itemId": "advisory-review",
+      "layer": "advisory_review",
+      "action": "add",
+      "blocking": false,
+      "packetBlocking": true,
+      "status": "blocked",
+      "result": "blocked",
+      "code": "MISSING_RUNNER_OR_PREREQUISITE",
+      "classification": "missing_runner_or_prerequisite",
+      "candidateRunnerIdsChecked": [
+        "schema-validation"
+      ],
+      "candidateRunnersChecked": [
+        {
+          "id": "schema-validation",
+          "layer": "schema_validation",
+          "kind": "command",
+          "requiredItemIds": [
+            "schema-validation"
+          ],
+          "matchesLayer": false,
+          "matchesRequiredItem": false,
+          "selectedByResolver": false
+        }
+      ],
+      "matchedRunnerIds": [],
+      "selectedRunnerId": null,
+      "missingPath": null,
+      "reason": "No runner catalog entry matched required item id=\"advisory-review\" layer=\"advisory_review\" action=\"add\" blocking=false. Checked runner ids: [\"schema-validation\"]. A match requires the same layer plus id=\"advisory-review\", id=\"advisory_review:advisory-review\", or requiredItemIds containing \"advisory-review\".",
+      "missingRegistryReason": "No runner catalog entry matched required item id=\"advisory-review\" layer=\"advisory_review\" action=\"add\" blocking=false. Checked runner ids: [\"schema-validation\"]. A match requires the same layer plus id=\"advisory-review\", id=\"advisory_review:advisory-review\", or requiredItemIds containing \"advisory-review\".",
+      "missingPrerequisiteReason": null,
+      "suggestedNextAction": "Add a runner catalog entry for item advisory-review on layer advisory_review using requiredItemIds:[\"advisory-review\"] and executable command/validator evidence before treating this blocking add/update item as verified.",
+      "suggestedRunnerCatalogEntry": {
+        "id": "advisory-review",
+        "requiredItemIds": [
+          "advisory-review"
+        ],
+        "layer": "advisory_review",
+        "evidenceClass": "advisory",
+        "blocking": false,
+        "kind": "command",
+        "command": "<absolute path to the active Node.js executable>",
+        "args": [
+          "<projectRoot-contained runner .mjs>",
+          "<evidenceRoot-contained output artifact>"
+        ],
+        "cwd": ".",
+        "expectedArtifacts": [
+          "<evidenceRoot-contained output artifact>"
+        ],
+        "argPaths": [
+          {
+            "index": 0,
+            "root": "projectRoot"
+          },
+          {
+            "index": 1,
+            "root": "evidenceRoot"
+          }
+        ],
+        "safety": {
+          "classification": "local_deterministic_write",
+          "timeoutMs": "<positive integer <= 30000>",
+          "maxStdoutBytes": "<positive integer <= 1048576>",
+          "maxStderrBytes": "<positive integer <= 1048576>",
+          "maxOutputBytes": "<positive integer <= 2097152>",
+          "allowedWriteRoots": [
+            "<evidenceRoot or explicitly allowed project subdir>"
+          ],
+          "envAllowlist": [],
+          "passThroughEnv": false
+        }
+      },
+      "manualEvidenceAllowed": true
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "itemId": "final-dod",
+      "layer": "final_dod",
+      "action": "not_applicable",
+      "blocking": true,
+      "packetBlocking": false,
+      "status": "not_run",
+      "result": "skipped",
+      "code": "NOT_APPLICABLE_RECORDED",
+      "classification": "classification_unknown",
+      "candidateRunnerIdsChecked": [],
+      "candidateRunnersChecked": [],
+      "matchedRunnerIds": [],
+      "selectedRunnerId": null,
+      "missingPath": null,
+      "reason": "Not-applicable item recorded without execution.",
+      "missingRegistryReason": null,
+      "missingPrerequisiteReason": null,
+      "suggestedNextAction": "Keep item final-dod action=not_applicable only when layer final_dod truly does not apply; otherwise change the item to add/update and register an executable runner.",
+      "suggestedRunnerCatalogEntry": {
+        "id": "final-dod",
+        "requiredItemIds": [
+          "final-dod"
+        ],
+        "layer": "final_dod",
+        "evidenceClass": "deterministic",
+        "blocking": true,
+        "kind": "command",
+        "command": "<absolute path to the active Node.js executable>",
+        "args": [
+          "<projectRoot-contained runner .mjs>",
+          "<evidenceRoot-contained output artifact>"
+        ],
+        "cwd": ".",
+        "expectedArtifacts": [
+          "<evidenceRoot-contained output artifact>"
+        ],
+        "argPaths": [
+          {
+            "index": 0,
+            "root": "projectRoot"
+          },
+          {
+            "index": 1,
+            "root": "evidenceRoot"
+          }
+        ],
+        "safety": {
+          "classification": "local_deterministic_write",
+          "timeoutMs": "<positive integer <= 30000>",
+          "maxStdoutBytes": "<positive integer <= 1048576>",
+          "maxStderrBytes": "<positive integer <= 1048576>",
+          "maxOutputBytes": "<positive integer <= 2097152>",
+          "allowedWriteRoots": [
+            "<evidenceRoot or explicitly allowed project subdir>"
+          ],
+          "envAllowlist": [],
+          "passThroughEnv": false
+        }
+      },
+      "manualEvidenceAllowed": true
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "itemId": "schema-validation",
+      "layer": "schema_validation",
+      "action": "add",
+      "blocking": true,
+      "packetBlocking": true,
+      "status": "blocked",
+      "result": "blocked",
+      "code": "COMMAND_POLICY_DENIED",
+      "classification": "safety_or_security_policy_failure",
+      "candidateRunnerIdsChecked": [
+        "schema-validation"
+      ],
+      "candidateRunnersChecked": [
+        {
+          "id": "schema-validation",
+          "layer": "schema_validation",
+          "kind": "command",
+          "requiredItemIds": [
+            "schema-validation"
+          ],
+          "selectedByResolver": true
+        }
+      ],
+      "matchedRunnerIds": [
+        "schema-validation"
+      ],
+      "selectedRunnerId": "schema-validation",
+      "missingPath": null,
+      "reason": "Shell-string command syntax is denied.",
+      "missingRegistryReason": null,
+      "missingPrerequisiteReason": null,
+      "suggestedNextAction": "Review item schema-validation (add) and provide executable runner evidence before treating verification as complete.",
+      "suggestedRunnerCatalogEntry": {
+        "id": "schema-validation",
+        "requiredItemIds": [
+          "schema-validation"
+        ],
+        "layer": "schema_validation",
+        "evidenceClass": "deterministic",
+        "blocking": true,
+        "kind": "command",
+        "command": "<absolute path to the active Node.js executable>",
+        "args": [
+          "<projectRoot-contained runner .mjs>",
+          "<evidenceRoot-contained output artifact>"
+        ],
+        "cwd": ".",
+        "expectedArtifacts": [
+          "<evidenceRoot-contained output artifact>"
+        ],
+        "argPaths": [
+          {
+            "index": 0,
+            "root": "projectRoot"
+          },
+          {
+            "index": 1,
+            "root": "evidenceRoot"
+          }
+        ],
+        "safety": {
+          "classification": "local_deterministic_write",
+          "timeoutMs": "<positive integer <= 30000>",
+          "maxStdoutBytes": "<positive integer <= 1048576>",
+          "maxStderrBytes": "<positive integer <= 1048576>",
+          "maxOutputBytes": "<positive integer <= 2097152>",
+          "allowedWriteRoots": [
+            "<evidenceRoot or explicitly allowed project subdir>"
+          ],
+          "envAllowlist": [],
+          "passThroughEnv": false
+        }
+      },
+      "manualEvidenceAllowed": false
+    }
+  ]
+}

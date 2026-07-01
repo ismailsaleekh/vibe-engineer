@@ -1,0 +1,61 @@
+{
+  "join": {
+    "consumerNodeId": "consumer",
+    "joinedArtifactIds": [
+      "evidence:i09a-w-rb1:safety-hooks:00"
+    ],
+    "joinRecords": [
+      {
+        "consumerNodeId": "consumer",
+        "upstreamNodeId": "producer",
+        "artifactId": "evidence:i09a-w-rb1:safety-hooks:00",
+        "artifactKind": "evidence_packet",
+        "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/evidence-reruns/2026-06-30T21-03-15-916Z/w-rb1/evidence_i09a-w-rb1_safety-hooks_00.json",
+        "schemaVersion": "1.0.0",
+        "schemaId": "https://schemas.vibe-engineer.dev/artifacts/v1/evidence-packet.schema.json",
+        "evidenceRefs": [
+          "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/evidence-reruns/2026-06-30T21-03-15-916Z/w-rb1/evidence_i09a-w-rb1_safety-hooks_00.json"
+        ],
+        "joinedAt": "2026-06-25T00:00:02.000Z"
+      }
+    ]
+  },
+  "resume": {
+    "resume": {
+      "cursorNodeIds": [
+        "consumer"
+      ],
+      "completedNodeIds": [
+        "producer"
+      ],
+      "retryNodeIds": [],
+      "blockedNodeIds": [],
+      "inspectedAt": "2026-06-25T00:00:03.000Z",
+      "reasons": []
+    },
+    "invalidations": []
+  },
+  "invalid": {
+    "resume": {
+      "cursorNodeIds": [
+        "consumer"
+      ],
+      "completedNodeIds": [],
+      "retryNodeIds": [
+        "producer"
+      ],
+      "blockedNodeIds": [],
+      "inspectedAt": "2026-06-25T00:00:05.000Z",
+      "reasons": [
+        "producer: invalidated by /Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/evidence-reruns/2026-06-30T21-03-15-916Z/w-rb2/missing.json"
+      ]
+    },
+    "invalidations": [
+      {
+        "nodeId": "producer",
+        "artifactPath": "/Users/lizavasilyeva/work/vibe-engineer/.vibe/work/I-09A-verification-runner-core-evidence-routing/evidence-reruns/2026-06-30T21-03-15-916Z/w-rb2/missing.json",
+        "reason": "missing artifact"
+      }
+    ]
+  }
+}

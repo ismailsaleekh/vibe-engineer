@@ -1,0 +1,128 @@
+{
+  "schemaVersion": "1.0.0",
+  "artifactKind": "evidence_packet",
+  "artifactId": "evidence:i09a-n5:schema-validation:15",
+  "title": "Verification evidence for schema-validation",
+  "createdAt": "2026-07-01T01:13:02.411Z",
+  "updatedAt": "2026-07-01T01:13:02.411Z",
+  "producer": {
+    "kind": "verification_runner",
+    "id": "i-09a-runner-core",
+    "name": "@vibe-engineer/verification",
+    "version": "0.1.0",
+    "runId": "i09a-n5"
+  },
+  "status": "blocked",
+  "ownership": {
+    "ownerLane": "I-09A-verification-runner-core-evidence-routing",
+    "ownedWritePaths": [
+      "packages/verification/src/**",
+      "packages/verification/fixtures/**",
+      "packages/verification/tests/**",
+      ".vibe/work/I-09A-verification-runner-core-evidence-routing/**"
+    ],
+    "readOnlyPaths": [
+      "packages/artifacts/**",
+      "packages/orchestration/**",
+      "packages/cli/**"
+    ],
+    "untouchablePaths": [
+      ".git/**",
+      "pnpm-lock.yaml",
+      "package.json",
+      "pnpm-workspace.yaml"
+    ],
+    "concurrencyNotes": "I-09A runner core evidence packet written atomically under evidenceRoot."
+  },
+  "links": [
+    {
+      "rel": "evidence_for",
+      "artifactKind": "implementation_plan",
+      "artifactId": "i09a-plan-approved",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/verification/fixtures/plans/approved-plan.json",
+      "required": true,
+      "statusAtLinkTime": "approved"
+    }
+  ],
+  "extensions": {
+    "dev.vibe.verification": {
+      "schemaVersion": "1.0.0",
+      "requiredItemId": "schema-validation",
+      "requiredItemLayer": "schema_validation",
+      "requiredItemAction": "add",
+      "requiredItemBlocking": true,
+      "requiredItem": {
+        "id": "schema-validation",
+        "layer": "schema_validation",
+        "action": "add",
+        "blocking": true
+      },
+      "runId": "i09a-n5",
+      "runnerVersion": "0.1.0",
+      "runnerResolution": {
+        "candidateRunnerIdsChecked": [
+          "schema-validation"
+        ],
+        "candidateRunnersChecked": [
+          {
+            "id": "schema-validation",
+            "layer": "schema_validation",
+            "kind": "validator",
+            "requiredItemIds": [
+              "schema-validation"
+            ],
+            "selectedByResolver": true
+          }
+        ],
+        "matchedRunnerIds": [
+          "schema-validation"
+        ],
+        "selectedRunnerId": "schema-validation",
+        "resolutionStatus": "matched"
+      }
+    }
+  },
+  "evidenceClass": "deterministic",
+  "layer": "schema_validation",
+  "subjectRefs": [
+    {
+      "rel": "evidence_for",
+      "artifactKind": "implementation_plan",
+      "artifactId": "i09a-plan-approved",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/verification/fixtures/plans/approved-plan.json",
+      "required": true,
+      "statusAtLinkTime": "approved"
+    },
+    {
+      "rel": "evidence_for",
+      "artifactKind": "verification_delta",
+      "artifactId": "i09a-delta-approved",
+      "path": "/Users/lizavasilyeva/work/vibe-engineer/packages/verification/fixtures/plans/approved-plan.json",
+      "required": true,
+      "statusAtLinkTime": "complete"
+    }
+  ],
+  "commandOrTool": {
+    "kind": "validator",
+    "name": "malformedEvidencePacketCandidate",
+    "workingDirectory": "/Users/lizavasilyeva/work/vibe-engineer",
+    "environmentSummary": "in-process typed validator; no raw process.env"
+  },
+  "startedAt": "2026-07-01T01:13:02.411Z",
+  "endedAt": "2026-07-01T01:13:02.411Z",
+  "exitStatus": {
+    "kind": "tool_status",
+    "status": "completed"
+  },
+  "result": "blocked",
+  "blocking": true,
+  "artifacts": [],
+  "warnings": [
+    "Malformed Evidence Packet candidate rejected before final persistence."
+  ],
+  "failureDetails": {
+    "code": "MALFORMED_EVIDENCE_PACKET",
+    "message": "Malformed Evidence Packet candidate was rejected by real artifact validation.",
+    "classification": "schema_or_contract_failure"
+  }
+}
