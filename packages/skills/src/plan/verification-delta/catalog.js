@@ -181,7 +181,10 @@ export function buildVerificationDelta({
     if (!VERIFICATION_DELTA_ACTIONS.includes(action))
       throw new TypeError(`Invalid Verification Delta action for ${layer}: ${action}`);
     const item = {
-      id: `vd-${layer}`,
+      id:
+        typeof override.id === "string" && override.id.trim().length > 0
+          ? override.id.trim()
+          : `vd-${layer}`,
       layer,
       action,
       rationale: rationaleForLayer(layer, action, workBrief, override),

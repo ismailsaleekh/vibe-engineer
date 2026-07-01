@@ -32,9 +32,13 @@ The generated starter also provides verification evidence space under `.vibe/evi
 
 - Read exactly one approved Implementation Plan from `.vibe/work/<work-id>/implementation-plan.json`; block if `status` is not `approved`.
 - Implement only paths allowed by the plan ownership/scope and preserve unrelated files.
+- Before coding, read `extensions.dev.vibe.plan-build-discipline.schematicPlan.applicable`; every planned schematic slug/id must be implemented or explicitly blocked in the Build Result.
+- Populate `schematicsUsed` in `.vibe/work/<work-id>/build-result.json`; an empty `schematicsUsed` array is a blocking defect when `schematicPlan.applicable` is non-empty, and every planned schematic slug/id is represented without unplanned substitutions.
+- Register missing blocking runners by updating `.vibe/registry/runner-catalog.json` directly; do not invent verification-runner or runner-catalog-entry schematics, and do not add extra deterministic architecture/code-standard runners.
 - Run verification for the plan, normally: `vibe-engineer verify --project-root . --implementation-plan .vibe/work/<work-id>/implementation-plan.json --evidence-root .vibe/evidence/<work-id>/verify --run-id <work-id> --runner-catalog .vibe/registry/runner-catalog.json`.
-- Capture command output/evidence paths before summarizing results.
-- Write `.vibe/work/<work-id>/build-result.json` using `artifactKind: "build_result"`, `schemaVersion: "1.0.0"`, `implementationPlanRef`, `changedFilesSummary`, `verificationRuns` linked to Evidence Packets, `warningsAndBlockers`, `contextDocsUpdates`, and `finalStatusReason`.
+- Run every blocking Verification Delta item, including `architecture-agent-review` when present; skipped records, missing blocking evidence, skipped `architecture-agent-review`, or prose-only summaries must keep the build `failed` or `blocked`.
+- Capture command output/evidence paths before summarizing results and link each blocking result through `verificationRuns[].evidencePacketRef` to an Evidence Packet.
+- Write `.vibe/work/<work-id>/build-result.json` using `artifactKind: "build_result"`, `schemaVersion: "1.0.0"`, `implementationPlanRef`, `changedFilesSummary`, `schematicsUsed`, `verificationRuns` linked to Evidence Packets, `warningsAndBlockers`, `contextDocsUpdates`, and `finalStatusReason`.
 - Use `status: "passed"` only when every blocking verification item has evidence; otherwise write `failed` or `blocked` with exact reasons.
 
 ## Validation handoff

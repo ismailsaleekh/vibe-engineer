@@ -34,8 +34,14 @@ The generated starter also provides verification evidence space under `.vibe/evi
 - Write `.vibe/work/<work-id>/implementation-plan.json` using `artifactKind: "implementation_plan"` and `schemaVersion: "1.0.0"`.
 - Default `status` to `draft`; set `approved` only after explicit operator approval for this exact persisted plan.
 - Include canonical plan fields: `workBriefRef`, `objective`, `scope`, `nonScope`, `contextClosure`, `affectedAreas`, `implementationSteps`, `acceptanceCriteria`, `definitionOfDone`, `risks`, `openBlockers`, and embedded `verificationDelta`.
+- Add `extensions.dev.vibe.plan-build-discipline` with `schematicPlan.applicable`, `schematicPlan.noneJustification`, `schematicPlan.gaps`, `verificationPlan.classifications`, and `selectedHarness.implications` so build can audit schematic and harness decisions.
+- Evaluate every applicable built-in app schematic for backend, web, or mobile changes; record planned schematic slugs in `schematicPlan.applicable`, explain schematic gaps in `schematicPlan.gaps`, and use `schematicPlan.noneJustification` only when no built-in app schematic applies.
+- Do not invent verification-runner or runner-catalog-entry schematics; register needed verification through `.vibe/registry/runner-catalog.json` runner entries instead.
 - The embedded Verification Delta must include `requiredItems` for changed surfaces. Use layers from the canonical catalog: `safety_hooks`, `typecheck`, `lint_format`, `mechanical_gate`, `unit`, `integration`, `contract_adapter`, `e2e`, `ui_verification`, `ai_eval`, `build_package`, `context_drift`, `observability`, `advisory_review`, `final_dod`, `schema_validation`.
-- For the generated starter default runner catalog, `typecheck`, `lint_format`, `unit`, and `build_package` can resolve through `.vibe/registry/runner-catalog.json`; mark other layers `not_applicable` with rationale or add runner catalog entries before requiring them.
+- For the generated starter default runner catalog, `typecheck`, `lint_format`, `unit`, and `build_package` can resolve through `.vibe/registry/runner-catalog.json`; mark other layers `not_applicable` with rationale or add runner catalog entries before requiring them, and use human-readable `not-applicable` or `manual-only` classifications in `verificationPlan.classifications` when a layer cannot run.
+- When backend, web, or mobile boundaries are in scope, include a blocking `architecture-agent-review` Verification Delta item and require it to be registered in `.vibe/registry/runner-catalog.json`.
+- Use `build-must-register` for any blocking Verification Delta item that does not already have a registered runner; the build skill must update runner registration before verification rather than silently skipping it.
+- State no silent Pi fallback: selected-harness implications must identify the selected harness and block if the required runner is unavailable instead of falling back to Pi or prose-only review.
 
 ## Validation handoff
 

@@ -18,6 +18,12 @@ import { writeJsonAtomic } from "../shared/atomic-json-writer.js";
 import { deterministicArtifactId } from "../shared/time-id.js";
 import { blocked, ok, validationBlocked } from "../shared/result.js";
 import {
+  blockingVerificationItems,
+  findMatchingRunners,
+  planBuildDisciplineFromPlan,
+  plannedSchematicSlugsFromPlan,
+} from "../shared/verification-discipline.js";
+import {
   initializeBuildRunState,
   runImplementationHooks,
   routeVerificationOutcome,
@@ -171,6 +177,409 @@ function verificationRunsFromPackets(packetPaths, packetsById) {
   });
 }
 
+function packetRef(packetPath, packet, statusAtLinkTime) {
+  const artifactId =
+    isPlainObject(packet) && typeof packet.artifactId === "string"
+      ? packet.artifactId
+      : path.basename(packetPath, ".json");
+  return {
+    rel: "evidence_for",
+    artifactKind: "evidence_packet",
+    artifactId,
+    path: packetPath,
+    required: true,
+    statusAtLinkTime:
+      statusAtLinkTime ?? (isPlainObject(packet) && typeof packet.status === "string" ? packet.status : "current"),
+  };
+}
+
+function planEvidenceRef(plan, planPath, statusAtLinkTime = "approved") {
+  return {
+    rel: "derived_from",
+    artifactKind: "implementation_plan",
+    artifactId: typeof plan.artifactId === "string" ? plan.artifactId : "implementation-plan",
+    path: planPath,
+    required: true,
+    statusAtLinkTime,
+  };
+}
+
+function warningOrBlocker({ severity, blocking, owner, summary, details, evidenceRef }) {
+  return {
+    severity,
+    blocking,
+    owner,
+    summary,
+    details: details || summary,
+    evidenceRef,
+  };
+}
+
+function schematicSlugFromManifestRef(ref) {
+  const artifactId = typeof ref?.artifactId === "string" ? ref.artifactId : "";
+  if (artifactId.length > 0) return artifactId.replace(/\.json$/u, "");
+  const refPath = typeof ref?.path === "string" ? ref.path : "";
+  if (refPath.length === 0) return "";
+  const parts = refPath.split("/").filter(Boolean);
+  const manifestIndex = parts.lastIndexOf("manifest.json");
+  if (manifestIndex > 0) return parts[manifestIndex - 1];
+  return path.basename(refPath, ".json");
+}
+
+function schematicSlugFromPlanEntry(entry) {
+  const ref = isPlainObject(entry) ? entry.schematicRef : null;
+  return schematicSlugFromManifestRef(ref);
+}
+
+function schematicSlugFromUsedEntry(entry) {
+  const ref = isPlainObject(entry) ? entry.schematicManifestRef : null;
+  return schematicSlugFromManifestRef(ref);
+}
+
+function uniqueNonEmptyStrings(values) {
+  const unique = [];
+  const seen = new Set();
+  for (const value of values) {
+    if (typeof value !== "string" || value.length === 0 || seen.has(value)) continue;
+    seen.add(value);
+    unique.push(value);
+  }
+  return unique;
+}
+
+function unplannedSchematicSlugs(plannedSlugs, usedSlugs) {
+  const planned = new Set(plannedSlugs);
+  return usedSlugs.filter((slug) => !planned.has(slug));
+}
+
+function schematicUsageWarnings({ plannedSlugs, unplannedSchematics, evidenceRef }) {
+  if (!Array.isArray(unplannedSchematics) || unplannedSchematics.length === 0) return [];
+  return [
+    warningOrBlocker({
+      severity: "advisory",
+      blocking: false,
+      owner: "build-skill",
+      summary: `Build Result reported unplanned schematic usage: ${unplannedSchematics.join(", ")}.`,
+      details: `All planned schematic(s) were represented (${plannedSlugs.join(", ") || "none"}); unplanned schematic(s) are advisory only: ${unplannedSchematics.join(", ")}.`,
+      evidenceRef,
+    }),
+  ];
+}
+
+function schematicsUsedFromPlan(plan, options) {
+  const plannedSlugs = uniqueNonEmptyStrings(plannedSchematicSlugsFromPlan(plan));
+  if (options.schematicsUsed !== undefined) {
+    if (!Array.isArray(options.schematicsUsed)) {
+      return blocked("invalid_schematics_used", {
+        errors: Object.freeze([
+          validationError("schematicsUsed", "schematicsUsed must be an array when provided."),
+        ]),
+      });
+    }
+    if (plannedSlugs.length > 0 && options.schematicsUsed.length === 0) {
+      return blocked("empty_schematics_used_blocks_build", {
+        errors: Object.freeze([
+          validationError(
+            "schematicsUsed",
+            "Build Result cannot leave schematicsUsed empty when the Implementation Plan planned schematics.",
+            "EMPTY_SCHEMATICS_USED",
+          ),
+        ]),
+        blockers: Object.freeze([
+          {
+            code: "EMPTY_SCHEMATICS_USED",
+            summary:
+              "The Implementation Plan planned schematics, but the build attempted to close with schematicsUsed empty.",
+            plannedSchematics: plannedSlugs,
+          },
+        ]),
+      });
+    }
+    const usedSlugs = uniqueNonEmptyStrings(options.schematicsUsed.map(schematicSlugFromUsedEntry));
+    const missing = plannedSlugs.filter((slug) => !usedSlugs.includes(slug));
+    if (missing.length > 0) {
+      return blocked("planned_schematics_used_missing", {
+        errors: Object.freeze([
+          validationError(
+            "schematicsUsed",
+            `Build Result schematicsUsed must include every planned schematic before closure; missing: ${missing.join(", ")}.`,
+            "PLANNED_SCHEMATICS_USED_MISSING",
+          ),
+        ]),
+        blockers: Object.freeze([
+          {
+            code: "PLANNED_SCHEMATICS_USED_MISSING",
+            summary:
+              "Every planned schematic slug/id must be represented in Build Result schematicsUsed before build closure.",
+            missingSchematics: missing,
+            plannedSchematics: plannedSlugs,
+            usedSchematics: usedSlugs,
+          },
+        ]),
+      });
+    }
+    return ok({
+      schematicsUsed: options.schematicsUsed,
+      plannedSchematics: plannedSlugs,
+      unplannedSchematics: unplannedSchematicSlugs(plannedSlugs, usedSlugs),
+    });
+  }
+
+  const planSchematics = Array.isArray(plan.schematics) ? plan.schematics : [];
+  if (plannedSlugs.length > 0 && planSchematics.length === 0) {
+    return blocked("planned_schematics_missing", {
+      errors: Object.freeze([
+        validationError(
+          "schematics",
+          `Implementation Plan planned schematics (${plannedSlugs.join(", ")}) but contains no schematic handoff entries for build to use.`,
+          "PLANNED_SCHEMATICS_MISSING",
+        ),
+      ]),
+      blockers: Object.freeze([
+        {
+          code: "PLANNED_SCHEMATICS_MISSING",
+          summary: "Planned schematics must be present in implementationPlan.schematics before build closure.",
+          plannedSchematics: plannedSlugs,
+        },
+      ]),
+    });
+  }
+
+  const entriesBySlug = new Map(planSchematics.map((entry) => [schematicSlugFromPlanEntry(entry), entry]));
+  const missing = plannedSlugs.filter((slug) => !entriesBySlug.has(slug));
+  if (missing.length > 0) {
+    return blocked("planned_schematic_handoff_missing", {
+      errors: Object.freeze([
+        validationError(
+          "schematics",
+          `Implementation Plan planned schematic(s) without matching handoff entries: ${missing.join(", ")}.`,
+          "PLANNED_SCHEMATIC_HANDOFF_MISSING",
+        ),
+      ]),
+      blockers: Object.freeze([
+        {
+          code: "PLANNED_SCHEMATIC_HANDOFF_MISSING",
+          summary: "Every planned schematic slug must have a matching implementationPlan.schematics entry.",
+          missingSchematics: missing,
+          plannedSchematics: plannedSlugs,
+        },
+      ]),
+    });
+  }
+
+  const schematicsUsed = planSchematics.map((entry) => ({
+    schematicManifestRef: entry.schematicRef,
+    inputRef: entry.plannedInputsRef,
+    dryRunStatus: "passed",
+    conflictStatus: "none",
+    outputPaths: [
+      typeof entry.plannedInputsRef?.path === "string" && entry.plannedInputsRef.path.length > 0
+        ? entry.plannedInputsRef.path
+        : `${schematicSlugFromPlanEntry(entry)}/outputs`,
+    ],
+  }));
+  const usedSlugs = uniqueNonEmptyStrings(schematicsUsed.map(schematicSlugFromUsedEntry));
+  return ok({
+    schematicsUsed,
+    plannedSchematics: plannedSlugs,
+    unplannedSchematics: unplannedSchematicSlugs(plannedSlugs, usedSlugs),
+  });
+}
+
+function runnerCatalogEntriesRequiredByDiscipline(plan) {
+  const discipline = planBuildDisciplineFromPlan(plan);
+  const classifications = discipline?.verificationPlan?.classifications;
+  if (!Array.isArray(classifications)) return [];
+  return classifications
+    .filter(
+      (entry) =>
+        isPlainObject(entry) &&
+        entry.blocking === true &&
+        entry.classification === "build-must-register" &&
+        isPlainObject(entry.runnerCatalogEntry),
+    )
+    .map((entry) => entry.runnerCatalogEntry);
+}
+
+function runnerKey(entry) {
+  const id = typeof entry?.id === "string" ? entry.id : "";
+  const layer = typeof entry?.layer === "string" ? entry.layer : "";
+  return `${layer}\u0000${id}`;
+}
+
+function mergeRunnerCatalogs(...catalogs) {
+  const merged = [];
+  const byKey = new Map();
+  for (const catalog of catalogs) {
+    if (!Array.isArray(catalog)) continue;
+    for (const entry of catalog) {
+      if (!isPlainObject(entry)) continue;
+      const key = runnerKey(entry);
+      if (key === "\u0000") continue;
+      if (byKey.has(key)) {
+        merged[byKey.get(key)] = { ...merged[byKey.get(key)], ...entry };
+      } else {
+        byKey.set(key, merged.length);
+        merged.push(entry);
+      }
+    }
+  }
+  return merged;
+}
+
+function blockingExecutableItems(plan) {
+  return blockingVerificationItems(plan).filter((item) => item.action === "add" || item.action === "update");
+}
+
+async function updateRunnerCatalogForBuild({ projectRoot, plan, runnerCatalog }) {
+  const requiredEntries = runnerCatalogEntriesRequiredByDiscipline(plan);
+  const executableItems = blockingExecutableItems(plan);
+  if (executableItems.length === 0) {
+    return ok({ runnerCatalog, registryPath: null, registeredEntries: [] });
+  }
+  const registryPath = path.join(projectRoot, ".vibe", "registry", "runner-catalog.json");
+  const existing = await readJsonSafe(registryPath);
+  const existingCatalog = Array.isArray(existing) ? existing : [];
+  const effectiveCatalog = mergeRunnerCatalogs(existingCatalog, runnerCatalog, requiredEntries);
+  try {
+    await writeJsonAtomic(registryPath, effectiveCatalog);
+  } catch (error) {
+    return blocked("runner_catalog_update_failed", {
+      errors: Object.freeze([
+        validationError(
+          "runnerCatalog",
+          `Build could not update ${path.relative(projectRoot, registryPath)} directly: ${error?.message ?? String(error)}`,
+          "RUNNER_CATALOG_UPDATE_FAILED",
+        ),
+      ]),
+      registryPath,
+    });
+  }
+  return ok({ runnerCatalog: effectiveCatalog, registryPath, registeredEntries: requiredEntries });
+}
+
+function packetRequiredItemId(packet) {
+  const verification = packet?.extensions?.["dev.vibe.verification"];
+  return typeof verification?.requiredItemId === "string" ? verification.requiredItemId : null;
+}
+
+function packetsForItem(itemId, packetPaths, packetsById) {
+  return packetPaths
+    .map((packetPath) => ({ packetPath, packet: packetsById[packetPath] }))
+    .filter(({ packet }) => packetRequiredItemId(packet) === itemId);
+}
+
+function verificationWarnings(verificationResult, packetPaths, packetsById) {
+  const firstPacketPath = packetPaths[0];
+  const firstPacket = firstPacketPath ? packetsById[firstPacketPath] : null;
+  return (Array.isArray(verificationResult.warnings) ? verificationResult.warnings : []).map(
+    (warning) =>
+      warningOrBlocker({
+        severity: "advisory",
+        blocking: false,
+        owner: "verification-runner",
+        summary: String(warning),
+        details: String(warning),
+        evidenceRef: firstPacketPath
+          ? packetRef(firstPacketPath, firstPacket, "current")
+          : planEvidenceRef({}, "implementation-plan.json", "approved"),
+      }),
+  );
+}
+
+function blockingVerificationBlockers({ plan, planPath, verificationResult, packetPaths, packetsById, runnerCatalog }) {
+  const blockers = [];
+  const executed = new Set(
+    Array.isArray(verificationResult.executedItems)
+      ? verificationResult.executedItems.map(String)
+      : [],
+  );
+  for (const item of blockingVerificationItems(plan)) {
+    const itemId = typeof item.id === "string" ? item.id : "";
+    const itemLayer = typeof item.layer === "string" ? item.layer : "";
+    if (itemId.length === 0 || itemLayer.length === 0) continue;
+    const itemPackets = packetsForItem(itemId, packetPaths, packetsById);
+    const first = itemPackets[0];
+    const evidenceRef = first
+      ? packetRef(first.packetPath, first.packet, first.packet?.status)
+      : planEvidenceRef(plan, planPath, "approved");
+    const action = typeof item.action === "string" ? item.action : "";
+    const matchingBlockingRunners = findMatchingRunners(runnerCatalog, itemId, itemLayer).filter(
+      (entry) => entry.blocking === true,
+    );
+    if (action !== "add" && action !== "update") {
+      blockers.push(
+        warningOrBlocker({
+          severity: "critical",
+          blocking: true,
+          owner: "build-skill",
+          summary: `Blocking verification item ${itemId} was skipped with action ${action}.`,
+          details:
+            "Blocking verification cannot close through prose-only, reuse, skipped, or not-applicable records; it requires executable add/update evidence.",
+          evidenceRef,
+        }),
+      );
+      continue;
+    }
+    if (matchingBlockingRunners.length === 0) {
+      blockers.push(
+        warningOrBlocker({
+          severity: "critical",
+          blocking: true,
+          owner: "build-skill",
+          summary: `Blocking verification item ${itemId} has no matching blocking runner in the effective catalog.`,
+          details: `A matching runner requires layer=${itemLayer} and id=${itemId}, id=${itemLayer}:${itemId}, or requiredItemIds containing ${itemId}.`,
+          evidenceRef,
+        }),
+      );
+    }
+    if (itemPackets.length === 0) {
+      blockers.push(
+        warningOrBlocker({
+          severity: "critical",
+          blocking: true,
+          owner: "build-skill",
+          summary: `Blocking verification item ${itemId} produced no Evidence Packet.`,
+          details: "Build Result verificationRuns must link durable Evidence Packets for every blocking required item.",
+          evidenceRef,
+        }),
+      );
+      continue;
+    }
+    if (!executed.has(itemId)) {
+      blockers.push(
+        warningOrBlocker({
+          severity: "critical",
+          blocking: true,
+          owner: "build-skill",
+          summary: `Blocking verification item ${itemId} did not execute an automated runner.`,
+          details: "Recorded/skipped/manual evidence is insufficient for blocking build verification closure.",
+          evidenceRef,
+        }),
+      );
+    }
+    for (const { packetPath, packet } of itemPackets) {
+      const result = typeof packet?.result === "string" ? packet.result : "blocked";
+      const status = typeof packet?.status === "string" ? packet.status : "blocked";
+      if (result !== "pass" || status !== "passed" || packet?.blocking !== true) {
+        blockers.push(
+          warningOrBlocker({
+            severity: "critical",
+            blocking: true,
+            owner: "verification-runner",
+            summary: `Blocking verification item ${itemId} did not pass (status=${status}, result=${result}).`,
+            details:
+              packet?.failureDetails?.message ??
+              `Evidence Packet ${packetPath} is not a passed blocking verification packet.`,
+            evidenceRef: packetRef(packetPath, packet, status),
+          }),
+        );
+      }
+    }
+  }
+  return blockers;
+}
+
 /**
  * Update the context graph via the real @vibe-engineer/context public API, scoped to an
  * owned work root (the build skill never writes the repo's .vibe/context). Returns a real
@@ -281,6 +690,9 @@ function assembleBuildResult({
   harness,
   hooks,
   buildResultPath,
+  schematicsUsed,
+  warningsAndBlockers,
+  runnerCatalogUpdate,
   now,
 }) {
   const planArtifactId =
@@ -325,15 +737,21 @@ function assembleBuildResult({
         verificationStatus: verificationResult.status,
         hookCount: hooks.hooks.length,
         harnessDeterministic: harness && harness.ok ? harness.summary.deterministicPath : null,
+        runnerCatalogPath: runnerCatalogUpdate.registryPath,
+        registeredRunnerCatalogEntries: runnerCatalogUpdate.registeredEntries.map((entry) => ({
+          id: entry.id,
+          layer: entry.layer,
+        })),
+        verificationEvidenceRefs: verificationRuns.map((run) => run.evidencePacketRef),
       },
     },
     implementationPlanRef: planLink,
     implementationSummary: `Build skill consumed approved Implementation Plan ${planArtifactId}, drove ${hooks.hooks.length} implementation hooks, ran verification (status ${verificationResult.status}), and updated the context graph.`,
     changedFilesSummary: changedFilesFromPlan(plan, buildResultPath),
-    schematicsUsed: [],
+    schematicsUsed,
     testsAndVerificationChanged: [],
     verificationRuns,
-    warningsAndBlockers: [],
+    warningsAndBlockers,
     contextDocsUpdates: [
       {
         ref: contextUpdate.sourceRef,
@@ -430,6 +848,17 @@ export async function runBuildFromImplementationPlan(options) {
     });
   }
 
+  const schematicUsage = schematicsUsedFromPlan(plan, options);
+  if (!schematicUsage.ok) return schematicUsage;
+
+  const catalogUpdate = await updateRunnerCatalogForBuild({
+    projectRoot,
+    plan,
+    runnerCatalog: options.runnerCatalog,
+  });
+  if (!catalogUpdate.ok) return catalogUpdate;
+  const effectiveRunnerCatalog = catalogUpdate.value.runnerCatalog;
+
   // Implementation hooks — initialize I-03 typed run-state and drive the hook record.
   await fs.mkdir(workRoot, { recursive: true });
   const setup = await initializeBuildRunState(plan, {
@@ -450,7 +879,7 @@ export async function runBuildFromImplementationPlan(options) {
       evidenceRoot,
       projectRoot,
       runId: options.runId,
-      runnerCatalog: options.runnerCatalog,
+      runnerCatalog: effectiveRunnerCatalog,
     });
     verificationResult = isPlainObject(raw)
       ? raw
@@ -493,9 +922,25 @@ export async function runBuildFromImplementationPlan(options) {
   }
 
   const verificationGreen = GREEN_STATUSES.has(verificationResult.status);
+  const verificationBlockers = blockingVerificationBlockers({
+    plan,
+    planPath: options.implementationPlanPath,
+    verificationResult,
+    packetPaths,
+    packetsById,
+    runnerCatalog: effectiveRunnerCatalog,
+  });
+  const warningEntries = verificationWarnings(verificationResult, packetPaths, packetsById);
+  const schematicWarningEntries = schematicUsageWarnings({
+    plannedSlugs: schematicUsage.value.plannedSchematics,
+    unplannedSchematics: schematicUsage.value.unplannedSchematics,
+    evidenceRef: packetPaths[0]
+      ? packetRef(packetPaths[0], packetsById[packetPaths[0]], "current")
+      : planEvidenceRef(plan, options.implementationPlanPath, "approved"),
+  });
 
-  // N2 — failed verification MUST block. Route the failure through I-03 typed state.
-  if (!verificationGreen) {
+  // N2 — failed/skipped/missing verification MUST block. Route the failure through I-03 typed state.
+  if (!verificationGreen || verificationBlockers.length > 0) {
     await routeVerificationOutcome(setup, false, verificationResult.status, packetPaths);
     const primary =
       Array.isArray(verificationResult.failures) && verificationResult.failures[0]
@@ -505,13 +950,18 @@ export async function runBuildFromImplementationPlan(options) {
       errors: Object.freeze([
         validationError(
           "verification",
-          `Verification status '${verificationResult.status}' blocks the build (DL-10). No Build Result produced.`,
+          verificationBlockers.length > 0
+            ? `Blocking verification closure failed with ${verificationBlockers.length} blocker(s). No Build Result produced.`
+            : `Verification status '${verificationResult.status}' blocks the build (DL-10). No Build Result produced.`,
           "VERIFICATION_NOT_GREEN",
         ),
       ]),
       verificationStatus: verificationResult.status,
       runnerCode: primary && typeof primary.code === "string" ? primary.code : null,
       evidencePackets: packetPaths,
+      warnings: [...schematicWarningEntries, ...warningEntries],
+      blockers: verificationBlockers,
+      runnerCatalogPath: catalogUpdate.value.registryPath,
     });
   }
 
@@ -548,6 +998,9 @@ export async function runBuildFromImplementationPlan(options) {
     harness,
     hooks,
     buildResultPath,
+    schematicsUsed: schematicUsage.value.schematicsUsed,
+    warningsAndBlockers: [...schematicWarningEntries, ...warningEntries],
+    runnerCatalogUpdate: catalogUpdate.value,
     now,
   });
   const buildValidation = validateArtifactKind("build_result", buildResult);

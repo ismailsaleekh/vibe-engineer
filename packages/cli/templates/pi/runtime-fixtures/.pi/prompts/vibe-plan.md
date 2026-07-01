@@ -14,6 +14,12 @@ Argument contract:
 - $@ may contain additional constraints; it must not contain secrets or production credentials.
 - Persist outputs under `.vibe/work/<work-id>/` and report the exact path written.
 
+Discipline requirements:
+- Require applicable schematics: fill `extensions.dev.vibe.plan-build-discipline.schematicPlan.applicable`, `schematicPlan.noneJustification`, and `schematicPlan.gaps`; do not leave schematic gaps implicit.
+- Classify verification in `verificationPlan.classifications`, include selected-harness implications, and add a blocking `architecture-agent-review` item for backend, web, or mobile scope.
+- Use `build-must-register` for blocking Verification Delta items that need runner registration in `.vibe/registry/runner-catalog.json`.
+- Do not invent verification-runner or runner-catalog-entry schematics; register runners directly and do not add extra deterministic architecture/code-standard runners.
+
 Input reference: $1
 Additional constraints: $@
 

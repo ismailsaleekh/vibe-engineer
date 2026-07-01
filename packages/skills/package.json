@@ -3,12 +3,12 @@
   "version": "0.1.3",
   "license": "MIT",
   "type": "module",
-  "description": "Artifact-oriented build and ship skill runtime primitives for harness-native vibe-engineer workflows.",
+  "description": "Artifact-oriented plan, build, and ship skill runtime primitives for harness-native vibe-engineer workflows.",
   "vibeEngineer": {
     "implementationUnit": "I-00A-workspace-package-skeleton",
     "implementationStatus": "v0.1-public-skill-runtime-api",
     "packageRole": "public-skills-package",
-    "sourceStatus": "v0.1-build-ship-skill-api"
+    "sourceStatus": "v0.1-plan-build-ship-skill-api"
   },
   "private": false,
   "engines": {
@@ -20,6 +20,10 @@
     "url": "git+https://github.com/ismailsaleekh/vibe-engineer.git"
   },
   "exports": {
+    "./plan": {
+      "types": "./dist/plan/orchestrator/index.d.ts",
+      "import": "./dist/plan/orchestrator/index.js"
+    },
     "./build": {
       "types": "./dist/build/index.d.ts",
       "import": "./dist/build/index.js"

@@ -3,6 +3,12 @@ import { validateArtifactFile, validateArtifactKind } from "@vibe-engineer/artif
 import { writeJsonAtomic } from "../../shared/atomic-json-writer.js";
 import { deterministicArtifactId } from "../../shared/time-id.js";
 import { blocked, ok, validationBlocked } from "../../shared/result.js";
+import {
+  PLAN_BUILD_DISCIPLINE_EXTENSION,
+  createPlanBuildDiscipline,
+  disciplineOpenBlockers,
+  verificationDeltaOverridesFromDiscipline,
+} from "../../shared/verification-discipline.js";
 import { intakeWorkBriefForPlan } from "../intake/work-brief-intake.js";
 import { buildVerificationDelta } from "../verification-delta/catalog.js";
 import { validateImplementationPlanObjectForBuildIntake } from "../verification-delta/validator.js";
@@ -189,7 +195,7 @@ function createRisks(workBrief, options) {
   return risks;
 }
 
-function createOpenBlockers(options, delta) {
+function createOpenBlockers(options, delta, discipline) {
   const explicit = Array.isArray(options.openBlockers) ? options.openBlockers : [];
   const blockers = explicit.map((item, index) => {
     if (!isPlainObject(item)) throw new TypeError(`openBlockers[${index}] must be an object.`);
@@ -213,6 +219,7 @@ function createOpenBlockers(options, delta) {
       });
     }
   }
+  blockers.push(...disciplineOpenBlockers(discipline));
   return blockers;
 }
 
@@ -260,17 +267,32 @@ function createImplementationPlanArtifact(workBrief, intakeResult, options) {
     ]);
   const producer = { ...PLAN_PRODUCER, runId: options.runId ?? `run-${planArtifactId}` };
   const ownership = options.ownership ?? PLAN_OWNERSHIP;
+  const affectedAreas = mapAffectedAreas(workBrief, options);
+  const discipline = createPlanBuildDiscipline({
+    planArtifactId,
+    workBrief,
+    affectedAreas,
+    options,
+  });
+  const disciplineOverrides = verificationDeltaOverridesFromDiscipline(discipline);
   const verificationDelta = buildVerificationDelta({
     planArtifactId,
     workBrief,
     now,
     producer,
     ownership,
-    options,
+    options: {
+      ...options,
+      verificationDeltaOverrides: {
+        ...(isPlainObject(options.verificationDeltaOverrides)
+          ? options.verificationDeltaOverrides
+          : {}),
+        ...disciplineOverrides,
+      },
+    },
   });
-  const affectedAreas = mapAffectedAreas(workBrief, options);
   const acceptanceCriteria = createAcceptanceCriteria(workBrief, options);
-  const openBlockers = createOpenBlockers(options, verificationDelta);
+  const openBlockers = createOpenBlockers(options, verificationDelta, discipline);
   const isBlocked =
     openBlockers.some((item) => item.blocking === true) ||
     verificationDelta.requiredItems.some(
@@ -309,6 +331,7 @@ function createImplementationPlanArtifact(workBrief, intakeResult, options) {
         workType: workBrief.workType,
         intakeRelativePath: intakeResult.relativePath,
       },
+      [PLAN_BUILD_DISCIPLINE_EXTENSION]: discipline,
     },
     workBriefRef,
     objective: options.objective ?? workBrief.desiredOutcome,
@@ -324,7 +347,7 @@ function createImplementationPlanArtifact(workBrief, intakeResult, options) {
     ),
     contextClosure: [workBriefRef],
     affectedAreas,
-    schematics: [],
+    schematics: discipline.planSchematicEntries,
     implementationSteps: createImplementationSteps(workBrief, affectedAreas, acceptanceCriteria),
     acceptanceCriteria,
     definitionOfDone: createDefinitionOfDone(verificationDelta),
