@@ -115,20 +115,33 @@ function scanEvidenceForCanary(root, canary) {
   return leaks;
 }
 
-const validConfigPath = writeFixture(
-  "valid-project/vibe-engineer.config.json",
-  JSON.stringify({ agenticHarness: "pi" }, null, 2),
+const supportedConfigPaths = new Map(
+  ["pi", "claude-code", "codex"].map((harness) => [
+    harness,
+    writeFixture(
+      `valid-${harness}-project/vibe-engineer.config.json`,
+      JSON.stringify({ agenticHarness: harness }, null, 2),
+    ),
+  ]),
 );
+const validConfigPath = supportedConfigPaths.get("pi");
+assert.equal(typeof validConfigPath, "string");
 const malformedConfigPath = writeFixture(
   "malformed-project/vibe-engineer.config.json",
   "{ not json",
 );
 const unsupportedConfigPath = writeFixture(
   "unsupported-project/vibe-engineer.config.json",
-  JSON.stringify({ agenticHarness: "codex" }, null, 2),
+  JSON.stringify({ agenticHarness: "unsupported-harness" }, null, 2),
 );
 const secretCanary = "I02A_FIX_SECRET_CANARY_DO_NOT_LEAK";
 
+for (const [harness, configPath] of supportedConfigPaths) {
+  const loaded = await loadVibeConfigFile(configPath);
+  assert.equal(loaded.ok, true, `${harness} config should be accepted`);
+  assert.equal(loaded.config.agenticHarness, harness, `${harness} config silently fell back`);
+  assert.equal(loaded.provenance["/agenticHarness"].source, "file");
+}
 const providerConfig = await loadVibeConfigFile(validConfigPath);
 assert.equal(providerConfig.ok, true);
 assert.equal(typeof validateArtifactFile, "function");
@@ -369,6 +382,19 @@ assert.equal(configSuccess.result.status, 0);
 assertEnvelope(configSuccess.envelope);
 assert.equal(configSuccess.envelope.invocation.configPath, validConfigPath);
 
+for (const [harness, configPath] of supportedConfigPaths) {
+  const supportedConfig = runCase(`config-success-${harness}`, [
+    "version",
+    "--json",
+    "--config",
+    configPath,
+    "--non-interactive",
+  ]);
+  assert.equal(supportedConfig.result.status, 0, `${harness} config should be CLI-accepted`);
+  assertEnvelope(supportedConfig.envelope);
+  assert.equal(supportedConfig.envelope.invocation.configPath, configPath);
+}
+
 const malformedConfig = runCase("malformed-config", [
   "version",
   "--json",
@@ -391,6 +417,7 @@ const unsupportedConfig = runCase("unsupported-config", [
 assert.equal(unsupportedConfig.result.status, 3);
 assertEnvelope(unsupportedConfig.envelope);
 assert.equal(unsupportedConfig.envelope.errors[0].classification, CliClassification.InvalidConfig);
+assert.deepEqual(unsupportedConfig.envelope.errors[0].details.issueCodes, ["UNSUPPORTED_HARNESS"]);
 
 const secretConfigDir = fixturePath("secret-config-input");
 const secretConfigPath = writeFixture(

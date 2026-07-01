@@ -474,3 +474,5 @@ export const isAdapterManifestSelectable = (
   const adapter = getAdapterCapabilityById(matrix, adapterId);
   return adapter?.selection.manifestSelectable === true && adapter.selection.readiness === "ready";
 };
+
+export * from "./harness-adapter.ts";

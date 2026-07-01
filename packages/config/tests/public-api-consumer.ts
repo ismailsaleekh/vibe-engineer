@@ -6,7 +6,8 @@ import {
 } from "@vibe-engineer/config";
 import type { AgenticHarness, VibeConfig, VibeConfigResult } from "@vibe-engineer/config";
 
-const harness: AgenticHarness = "pi";
+const supportedHarnesses: readonly AgenticHarness[] = ["pi", "claude-code", "codex"];
+const harness: AgenticHarness = supportedHarnesses[1] ?? "claude-code";
 const createdConfig: VibeConfig = createDefaultVibeConfig({ agenticHarness: harness });
 
 export async function consumeResolvedConfig(projectRoot: string): Promise<number> {

@@ -4,6 +4,7 @@ import { extname, join, resolve } from "node:path";
 export const VIBE_CONFIG_FILE_NAME = "vibe-engineer.config.json";
 export const VIBE_CONFIG_SCHEMA_ID = "vibe-engineer.config.v1";
 export const VIBE_CONFIG_SCHEMA_VERSION = "1.0.0";
+export const SUPPORTED_AGENTIC_HARNESSES = Object.freeze(["pi", "claude-code", "codex"]);
 
 const DEFAULTS = Object.freeze({
   maxParallelAgents: 8,
@@ -40,8 +41,8 @@ export const VIBE_CONFIG_SCHEMA = Object.freeze({
     "uiVerification",
     "agentRegistry",
   ]),
-  supportedAgenticHarnesses: Object.freeze(["pi"]),
-  deferredAgenticHarnesses: Object.freeze(["claude-code", "codex", "opencode"]),
+  supportedAgenticHarnesses: SUPPORTED_AGENTIC_HARNESSES,
+  deferredAgenticHarnesses: Object.freeze([]),
   defaults: DEFAULTS,
   ranges: Object.freeze({
     maxParallelAgents: Object.freeze({ integer: true, min: 1, max: 8 }),
@@ -352,6 +353,10 @@ function parseUiVerification(input, provenance, issues) {
   return output;
 }
 
+function isSupportedAgenticHarness(value) {
+  return typeof value === "string" && SUPPORTED_AGENTIC_HARNESSES.includes(value);
+}
+
 function parseAgentRegistry(input, provenance, issues) {
   const output = {};
   if (!Object.hasOwn(input, "agentRegistry")) {
@@ -405,14 +410,18 @@ export function parseVibeConfig(input) {
     issues.push(
       issue("REQUIRED_FIELD", "invalid_config", "/agenticHarness", "agenticHarness is required."),
     );
-  } else if (input.agenticHarness !== "pi") {
+  } else if (typeof input.agenticHarness !== "string") {
+    issues.push(
+      issue("INVALID_TYPE", "invalid_config", "/agenticHarness", "Expected a string enum value."),
+    );
+  } else if (!isSupportedAgenticHarness(input.agenticHarness)) {
     issues.push(
       issue(
         "UNSUPPORTED_HARNESS",
         "invalid_config",
         "/agenticHarness",
-        "Only the pi agentic harness is selectable in v1.",
-        { supportedValues: ["pi"], deferredValues: ["claude-code", "codex", "opencode"] },
+        "Unsupported agentic harness. Supported values are exactly: pi, claude-code, codex.",
+        { supportedValues: [...SUPPORTED_AGENTIC_HARNESSES], deferredValues: [] },
       ),
     );
   } else {
@@ -420,7 +429,7 @@ export function parseVibeConfig(input) {
   }
 
   const config = {
-    agenticHarness: input.agenticHarness === "pi" ? "pi" : "pi",
+    agenticHarness: isSupportedAgenticHarness(input.agenticHarness) ? input.agenticHarness : null,
   };
 
   expectRangedNumber(

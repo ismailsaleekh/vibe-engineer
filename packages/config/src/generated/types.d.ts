@@ -1,4 +1,4 @@
-export type AgenticHarness = "pi";
+export type AgenticHarness = "pi" | "claude-code" | "codex";
 export type VerificationWebE2E = "playwright";
 export type VerificationMobileDefaultE2E = "maestro";
 export type VerificationMobileAdvancedE2E = "detox";
@@ -120,7 +120,7 @@ export interface VibeConfigSchemaContract {
   readonly requiredTopLevelKeys: readonly ["agenticHarness"];
   readonly topLevelKeys: readonly string[];
   readonly supportedAgenticHarnesses: readonly AgenticHarness[];
-  readonly deferredAgenticHarnesses: readonly string[];
+  readonly deferredAgenticHarnesses: readonly [];
   readonly defaults: Omit<VibeConfig, "agenticHarness">;
   readonly ranges: {
     readonly maxParallelAgents: { readonly integer: true; readonly min: 1; readonly max: 8 };
@@ -140,6 +140,7 @@ export interface VibeConfigSchemaContract {
 export const VIBE_CONFIG_FILE_NAME: "vibe-engineer.config.json";
 export const VIBE_CONFIG_SCHEMA_ID: VibeConfigSchemaId;
 export const VIBE_CONFIG_SCHEMA_VERSION: VibeConfigSchemaVersion;
+export const SUPPORTED_AGENTIC_HARNESSES: readonly ["pi", "claude-code", "codex"];
 export const VIBE_CONFIG_SCHEMA: VibeConfigSchemaContract;
 
 export function createDefaultVibeConfig(options: {

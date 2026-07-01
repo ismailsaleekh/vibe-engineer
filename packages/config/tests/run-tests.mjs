@@ -60,12 +60,8 @@ async function assertPathAbsent(path, label) {
 async function run() {
   assert.equal(VIBE_CONFIG_FILE_NAME, "vibe-engineer.config.json");
   assert.equal(VIBE_CONFIG_SCHEMA.id, "vibe-engineer.config.v1");
-  assert.deepEqual(VIBE_CONFIG_SCHEMA.supportedAgenticHarnesses, ["pi"]);
-  assert.deepEqual(VIBE_CONFIG_SCHEMA.deferredAgenticHarnesses, [
-    "claude-code",
-    "codex",
-    "opencode",
-  ]);
+  assert.deepEqual(VIBE_CONFIG_SCHEMA.supportedAgenticHarnesses, ["pi", "claude-code", "codex"]);
+  assert.deepEqual(VIBE_CONFIG_SCHEMA.deferredAgenticHarnesses, []);
 
   const defaults = createDefaultVibeConfig({ agenticHarness: "pi" });
   assert.equal(defaults.agenticHarness, "pi");
@@ -79,8 +75,12 @@ async function run() {
   assert.equal(defaults.verification.mobileE2E.advanced, "detox");
   assert.equal(defaults.uiVerification.enabled, true);
   assert.equal(defaults.agentRegistry.validationRequired, true);
+  const claudeDefaults = createDefaultVibeConfig({ agenticHarness: "claude-code" });
+  assert.equal(claudeDefaults.agenticHarness, "claude-code");
+  const codexDefaults = createDefaultVibeConfig({ agenticHarness: "codex" });
+  assert.equal(codexDefaults.agenticHarness, "codex");
   assert.throws(
-    () => createDefaultVibeConfig({ agenticHarness: "codex" }),
+    () => createDefaultVibeConfig({ agenticHarness: "opencode" }),
     /Default vibe-engineer config options failed schema validation/,
   );
 
@@ -102,6 +102,17 @@ async function run() {
   assert.equal(minimal.provenance["/maxParallelAgents"].source, "default");
   assert.equal(minimal.provenance["/verification/mobileE2E/default"].source, "default");
   assert.deepEqual(minimal.diagnostics, []);
+
+  const claude = assertOk(
+    await loadVibeConfigFromProjectRoot(fixture("valid-claude-code")),
+    "valid claude-code fixture",
+  );
+  assert.equal(claude.config.agenticHarness, "claude-code");
+  const codex = assertOk(
+    await loadVibeConfigFromProjectRoot(fixture("valid-codex")),
+    "valid codex fixture",
+  );
+  assert.equal(codex.config.agenticHarness, "codex");
 
   const full = assertOk(
     await loadVibeConfigFromProjectRoot(fixture("valid-full")),
@@ -150,16 +161,6 @@ async function run() {
   assert.equal(alternateLoaded.config.maxParallelAgents, 2);
   assert.equal(alternateLoaded.configPath, alternateJsonConfigPath);
 
-  assertFailure(
-    await loadVibeConfigFromProjectRoot(fixture("invalid-unsupported-harness-claude-code")),
-    "UNSUPPORTED_HARNESS",
-    "claude-code harness",
-  );
-  assertFailure(
-    await loadVibeConfigFromProjectRoot(fixture("invalid-unsupported-harness-codex")),
-    "UNSUPPORTED_HARNESS",
-    "codex harness",
-  );
   assertFailure(
     await loadVibeConfigFromProjectRoot(fixture("invalid-unsupported-harness-opencode")),
     "UNSUPPORTED_HARNESS",
@@ -292,8 +293,8 @@ async function run() {
     "six locked skills must remain in DL-06",
   );
   assert.ok(
-    harnessDecision.includes("The pi adapter is the only v1-supported adapter target"),
-    "pi-only v1 selectable harness regression guard",
+    harnessDecision.includes("The pi adapter"),
+    "harness decision remains present as historical Pi adapter context",
   );
 
   await rm(tempRoot, { recursive: true, force: true });
