@@ -3,7 +3,9 @@
   "invocation": {
     "id": "wp04-doctor-witness",
     "command": "doctor",
-    "argv": [],
+    "argv": [
+      "doctor"
+    ],
     "projectRoot": null,
     "configPath": null,
     "startedAt": "2026-06-27T00:00:00.000Z",
@@ -28,8 +30,8 @@
             "version": "1.0.0"
           },
           "source": {
-            "configPath": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-doctor-XblPrT/valid/vibe-engineer.config.json",
-            "projectRoot": null
+            "configPath": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-doctor-XblPrT/fresh-no-mobile/vibe-engineer.config.json",
+            "projectRoot": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-doctor-XblPrT/fresh-no-mobile"
           },
           "selectedHarness": "pi",
           "deterministicBlocks": true
@@ -37,19 +39,21 @@
         {
           "id": "doctor.scope.prisma-migrations",
           "kind": "prisma_migration_health",
-          "required": false,
-          "status": "omitted",
+          "required": true,
+          "status": "passed",
           "source": {
-            "projectRoot": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-doctor-XblPrT/valid",
-            "migrationsRoot": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-doctor-XblPrT/valid/apps/api/prisma/migrations"
+            "projectRoot": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-doctor-XblPrT/fresh-no-mobile",
+            "migrationsRoot": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-doctor-XblPrT/fresh-no-mobile/apps/api/prisma/migrations"
           },
-          "reason": "apps/api is not generated for this starter scope; Prisma checks are omitted."
+          "checkedMigrationFolders": 1,
+          "findings": [],
+          "remediation": "If the stale/empty migration folder was never applied or shared, delete only that local folder and rerun pnpm run db:migrate; otherwise restore the migration from version control or create a corrective migration."
         }
       ],
       "incompleteScopes": [],
       "source": {
-        "configPath": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-doctor-XblPrT/valid/vibe-engineer.config.json",
-        "projectRoot": null
+        "configPath": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-doctor-XblPrT/fresh-no-mobile/vibe-engineer.config.json",
+        "projectRoot": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-doctor-XblPrT/fresh-no-mobile"
       }
     }
   },

@@ -1,7 +1,7 @@
 {
   "schemaVersion": "vibe-engineer.cli.result.v1",
   "invocation": {
-    "id": "f447c326-5f09-42cc-94ed-e495ea4f5255",
+    "id": "d2f6489e-11a9-4b01-be01-dba8757f5ecb",
     "command": "import",
     "argv": [
       "import",
@@ -13,8 +13,8 @@
     ],
     "projectRoot": null,
     "configPath": null,
-    "startedAt": "2026-06-27T18:39:03.828Z",
-    "endedAt": "2026-06-27T18:39:03.828Z"
+    "startedAt": "2026-07-01T00:41:11.255Z",
+    "endedAt": "2026-07-01T00:41:11.256Z"
   },
   "status": "blocked",
   "exitCode": 2,
@@ -30,7 +30,7 @@
       "severity": "error",
       "code": "VE_INVALID_FLAG",
       "classification": "invalid_invocation",
-      "message": "Unsupported create flag: --bogus. Create accepts only project naming, --agentic-harness, --brief, and global envelope flags.",
+      "message": "Unsupported create flag: --bogus. Create accepts project naming, --agentic-harness (pi, claude-code, codex), --brief, --no-mobile, --web-only, and global envelope flags.",
       "path": null,
       "span": null,
       "hint": null
@@ -43,20 +43,28 @@
       "classification": "invalid_invocation",
       "retryable": false,
       "blocking": true,
-      "message": "Unsupported create flag: --bogus. Create accepts only project naming, --agentic-harness, --brief, and global envelope flags.",
+      "message": "Unsupported create flag: --bogus. Create accepts project naming, --agentic-harness (pi, claude-code, codex), --brief, --no-mobile, --web-only, and global envelope flags.",
       "details": {
         "flag": "--bogus",
         "acceptedValueFlags": [
           "--project-name",
           "--agentic-harness",
           "--brief",
+          "--project-brief",
           "--target-root",
           "--result-file",
           "--project-root"
         ],
         "acceptedBooleanFlags": [
           "--json",
-          "--non-interactive"
+          "--non-interactive",
+          "--no-mobile",
+          "--web-only"
+        ],
+        "supportedAgenticHarnesses": [
+          "pi",
+          "claude-code",
+          "codex"
         ]
       }
     }

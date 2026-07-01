@@ -1,0 +1,102 @@
+{
+  "schemaVersion": "vibe-engineer.cli.result.v1",
+  "invocation": {
+    "id": "wp04-doctor-witness",
+    "command": "doctor",
+    "argv": [
+      "doctor"
+    ],
+    "projectRoot": null,
+    "configPath": null,
+    "startedAt": "2026-06-27T00:00:00.000Z",
+    "endedAt": "2026-06-27T00:00:00.000Z"
+  },
+  "status": "blocked",
+  "exitCode": 3,
+  "payload": {
+    "kind": "doctor_result",
+    "schemaVersion": "vibe-engineer.cli.payload.v1",
+    "data": {
+      "ok": false,
+      "overallStatus": "not_passed_blocking",
+      "completedScopes": [
+        {
+          "id": "doctor.scope.config",
+          "kind": "config_health",
+          "required": true,
+          "status": "passed",
+          "schema": {
+            "id": "vibe-engineer.config.v1",
+            "version": "1.0.0"
+          },
+          "source": {
+            "configPath": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-doctor-XblPrT/stale-missing-migration/vibe-engineer.config.json",
+            "projectRoot": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-doctor-XblPrT/stale-missing-migration"
+          },
+          "selectedHarness": "pi",
+          "deterministicBlocks": true
+        }
+      ],
+      "incompleteScopes": [
+        {
+          "id": "doctor.scope.prisma-migrations",
+          "kind": "prisma_migration_health",
+          "required": true,
+          "status": "failed",
+          "source": {
+            "projectRoot": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-doctor-XblPrT/stale-missing-migration",
+            "migrationsRoot": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-doctor-XblPrT/stale-missing-migration/apps/api/prisma/migrations"
+          },
+          "checkedMigrationFolders": 1,
+          "findings": [
+            {
+              "migration": "0000_init",
+              "path": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-doctor-XblPrT/stale-missing-migration/apps/api/prisma/migrations/0000_init/migration.sql",
+              "reason": "missing migration.sql"
+            }
+          ],
+          "remediation": "If the stale/empty migration folder was never applied or shared, delete only that local folder and rerun pnpm run db:migrate; otherwise restore the migration from version control or create a corrective migration.",
+          "blocking": true,
+          "reasonCode": "VE_DOCTOR_PRISMA_MIGRATION_STALE_OR_EMPTY",
+          "nextAction": "If the stale/empty migration folder was never applied or shared, delete only that local folder and rerun pnpm run db:migrate; otherwise restore the migration from version control or create a corrective migration."
+        }
+      ],
+      "source": {
+        "configPath": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-doctor-XblPrT/stale-missing-migration/vibe-engineer.config.json",
+        "projectRoot": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-doctor-XblPrT/stale-missing-migration"
+      }
+    }
+  },
+  "diagnostics": [
+    {
+      "severity": "error",
+      "code": "VE_INVALID_CONFIG",
+      "classification": "invalid_config",
+      "message": "Doctor found missing or empty Prisma migration.sql files.",
+      "path": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-doctor-XblPrT/stale-missing-migration/apps/api/prisma/migrations",
+      "span": null,
+      "hint": "If the stale/empty migration folder was never applied or shared, delete only that local folder and rerun pnpm run db:migrate; otherwise restore the migration from version control or create a corrective migration."
+    }
+  ],
+  "artifacts": [],
+  "errors": [
+    {
+      "code": "VE_INVALID_CONFIG",
+      "classification": "invalid_config",
+      "retryable": false,
+      "blocking": true,
+      "message": "Doctor found missing or empty Prisma migration.sql files.",
+      "details": {
+        "doctorCode": "VE_DOCTOR_PRISMA_MIGRATION_STALE_OR_EMPTY",
+        "findings": [
+          {
+            "migration": "0000_init",
+            "path": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-doctor-XblPrT/stale-missing-migration/apps/api/prisma/migrations/0000_init/migration.sql",
+            "reason": "missing migration.sql"
+          }
+        ],
+        "remediation": "If the stale/empty migration folder was never applied or shared, delete only that local folder and rerun pnpm run db:migrate; otherwise restore the migration from version control or create a corrective migration."
+      }
+    }
+  ]
+}

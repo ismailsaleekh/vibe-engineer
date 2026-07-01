@@ -37,6 +37,37 @@
       "case": "dist-result-file-bad",
       "exitCode": 5,
       "existsAfter": false
+    },
+    {
+      "case": "fresh-default",
+      "status": "success",
+      "exitCode": 0,
+      "prismaStatus": "passed",
+      "starterScope": "default"
+    },
+    {
+      "case": "fresh-no-mobile",
+      "status": "success",
+      "exitCode": 0,
+      "prismaStatus": "passed",
+      "starterScope": "no-mobile"
+    },
+    {
+      "case": "fresh-web-only",
+      "status": "success",
+      "exitCode": 0,
+      "prismaStatus": "omitted",
+      "starterScope": "web-only"
+    },
+    {
+      "case": "stale-missing-migration",
+      "status": "blocked",
+      "exitCode": 3
+    },
+    {
+      "case": "stale-empty-migration",
+      "status": "blocked",
+      "exitCode": 3
     }
   ],
   "commandRegistered": true

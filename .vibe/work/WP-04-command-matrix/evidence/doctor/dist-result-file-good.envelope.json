@@ -1,7 +1,7 @@
 {
   "schemaVersion": "vibe-engineer.cli.result.v1",
   "invocation": {
-    "id": "3cf994a0-3e8b-4045-9bcb-b49c73f0f6f8",
+    "id": "2e594da0-fa86-4704-b676-791b412b4d78",
     "command": "doctor",
     "argv": [
       "doctor",
@@ -13,9 +13,9 @@
       "--non-interactive"
     ],
     "projectRoot": null,
-    "configPath": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-doctor-q5563g/valid/vibe-engineer.config.json",
-    "startedAt": "2026-06-27T18:39:01.183Z",
-    "endedAt": "2026-06-27T18:39:01.185Z"
+    "configPath": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-doctor-XblPrT/valid/vibe-engineer.config.json",
+    "startedAt": "2026-07-01T00:40:49.728Z",
+    "endedAt": "2026-07-01T00:40:49.729Z"
   },
   "status": "success",
   "exitCode": 0,
@@ -36,17 +36,28 @@
             "version": "1.0.0"
           },
           "source": {
-            "configPath": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-doctor-q5563g/valid/vibe-engineer.config.json",
-            "projectRoot": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-doctor-q5563g/valid"
+            "configPath": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-doctor-XblPrT/valid/vibe-engineer.config.json",
+            "projectRoot": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-doctor-XblPrT/valid"
           },
           "selectedHarness": "pi",
           "deterministicBlocks": true
+        },
+        {
+          "id": "doctor.scope.prisma-migrations",
+          "kind": "prisma_migration_health",
+          "required": false,
+          "status": "omitted",
+          "source": {
+            "projectRoot": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-doctor-XblPrT/valid",
+            "migrationsRoot": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-doctor-XblPrT/valid/apps/api/prisma/migrations"
+          },
+          "reason": "apps/api is not generated for this starter scope; Prisma checks are omitted."
         }
       ],
       "incompleteScopes": [],
       "source": {
-        "configPath": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-doctor-q5563g/valid/vibe-engineer.config.json",
-        "projectRoot": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-doctor-q5563g/valid"
+        "configPath": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-doctor-XblPrT/valid/vibe-engineer.config.json",
+        "projectRoot": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-doctor-XblPrT/valid"
       }
     }
   },
@@ -54,7 +65,7 @@
   "artifacts": [
     {
       "kind": "cli_result",
-      "path": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-doctor-q5563g/doctor-rf-good/out.json",
+      "path": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-doctor-XblPrT/doctor-rf-good/out.json",
       "schemaVersion": "vibe-engineer.cli.result.v1",
       "role": "report",
       "sha256": null

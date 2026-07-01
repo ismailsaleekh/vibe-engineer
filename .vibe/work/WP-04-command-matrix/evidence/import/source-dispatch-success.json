@@ -5,7 +5,7 @@
     "command": "import",
     "argv": [
       "--target-root",
-      "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-import-iXV7Bu/src-dispatch-target",
+      "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-import-r6vMQC/src-dispatch-target",
       "--project-name",
       "Import Witness",
       "--agentic-harness",
@@ -35,7 +35,12 @@
       },
       "selectedHarness": "pi",
       "briefStatus": "provided",
-      "targetRoot": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-import-iXV7Bu/src-dispatch-target",
+      "targetRoot": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-import-r6vMQC/src-dispatch-target",
+      "starterScope": {
+        "id": "not-applicable",
+        "mode": "import"
+      },
+      "setupGuidance": null,
       "harnessConfig": {
         "agenticHarness": "pi",
         "adapterCapabilityVersion": "pi-adapter-capability-matrix/v1",
@@ -53,19 +58,220 @@
             "familyId": "harness-config",
             "readiness": "ready"
           }
-        ]
+        ],
+        "adapterContract": {
+          "schemaVersion": "vibe-harness-adapter-contract/v1",
+          "displayName": "Pi Coding Agent",
+          "unsupportedFeaturePolicy": "block",
+          "blockedFamilies": [
+            "pi-extensions",
+            "pi-package-manifest",
+            "subagents",
+            "plan-mode"
+          ]
+        }
       },
       "generatedFiles": {
-        "configPath": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-import-iXV7Bu/src-dispatch-target/vibe-engineer.config.json",
+        "configPath": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-import-r6vMQC/src-dispatch-target/vibe-engineer.config.json",
         "contextFiles": {
-          "agents": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-import-iXV7Bu/src-dispatch-target/AGENTS.md",
-          "claude": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-import-iXV7Bu/src-dispatch-target/CLAUDE.md"
+          "agents": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-import-r6vMQC/src-dispatch-target/AGENTS.md",
+          "claude": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-import-r6vMQC/src-dispatch-target/CLAUDE.md",
+          "written": [
+            {
+              "kind": "AGENTS.md",
+              "path": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-import-r6vMQC/src-dispatch-target/AGENTS.md"
+            },
+            {
+              "kind": "CLAUDE.md",
+              "path": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-import-r6vMQC/src-dispatch-target/CLAUDE.md"
+            }
+          ]
         },
-        "sourceRecord": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-import-iXV7Bu/src-dispatch-target/.vibe/context/sources/bootstrap-brief.json"
+        "sourceRecord": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-import-r6vMQC/src-dispatch-target/.vibe/context/sources/bootstrap-brief.json",
+        "selectedHarness": {
+          "metadata": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-import-r6vMQC/src-dispatch-target/.vibe/harness/selected-harness.json",
+          "readme": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-import-r6vMQC/src-dispatch-target/.vibe/harness/README.md",
+          "handoff": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-import-r6vMQC/src-dispatch-target/.vibe/harness/handoff.md"
+        },
+        "runnerCatalog": null,
+        "starterPresetManifest": null,
+        "starterReference": null,
+        "starterTemplate": null,
+        "piAssets": [
+          {
+            "kind": "pi_skill_file",
+            "familyId": "pi-skill-files",
+            "skillId": "brainstorm",
+            "path": ".pi/skills/brainstorm/SKILL.md",
+            "targetPath": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-import-r6vMQC/src-dispatch-target/.pi/skills/brainstorm/SKILL.md",
+            "sha256": "sha256:beaaa31a5559bd18c367fd4dea1b5112f5eab035e812af473c8798f60177df7e"
+          },
+          {
+            "kind": "pi_skill_file",
+            "familyId": "pi-skill-files",
+            "skillId": "grill-me",
+            "path": ".pi/skills/grill-me/SKILL.md",
+            "targetPath": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-import-r6vMQC/src-dispatch-target/.pi/skills/grill-me/SKILL.md",
+            "sha256": "sha256:b44ddc448f37c149419b2fb76dfa169e881f76107f4fa07864b582bb1414787b"
+          },
+          {
+            "kind": "pi_skill_file",
+            "familyId": "pi-skill-files",
+            "skillId": "task",
+            "path": ".pi/skills/task/SKILL.md",
+            "targetPath": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-import-r6vMQC/src-dispatch-target/.pi/skills/task/SKILL.md",
+            "sha256": "sha256:744c262de20be7d89e5dda0d3715a848395a9f364fab67749ac3a1f58f800e55"
+          },
+          {
+            "kind": "pi_skill_file",
+            "familyId": "pi-skill-files",
+            "skillId": "plan",
+            "path": ".pi/skills/plan/SKILL.md",
+            "targetPath": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-import-r6vMQC/src-dispatch-target/.pi/skills/plan/SKILL.md",
+            "sha256": "sha256:e771c81620523dc4b7d9394ee08849a0fe8df4ab8d94f54f0f382c2defb6ab7c"
+          },
+          {
+            "kind": "pi_skill_file",
+            "familyId": "pi-skill-files",
+            "skillId": "build",
+            "path": ".pi/skills/build/SKILL.md",
+            "targetPath": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-import-r6vMQC/src-dispatch-target/.pi/skills/build/SKILL.md",
+            "sha256": "sha256:a69543f1e7e9e6ab76765fe3634f5bafc131d4e58c2de214c049629f38e332c4"
+          },
+          {
+            "kind": "pi_skill_file",
+            "familyId": "pi-skill-files",
+            "skillId": "ship",
+            "path": ".pi/skills/ship/SKILL.md",
+            "targetPath": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-import-r6vMQC/src-dispatch-target/.pi/skills/ship/SKILL.md",
+            "sha256": "sha256:8398763b01d43db727008dbced379f4425a2cbdf7733b0be19d85a493f3e461a"
+          },
+          {
+            "kind": "pi_prompt_template",
+            "familyId": "pi-prompt-templates",
+            "skillId": "brainstorm",
+            "path": ".pi/prompts/vibe-brainstorm.md",
+            "targetPath": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-import-r6vMQC/src-dispatch-target/.pi/prompts/vibe-brainstorm.md",
+            "sha256": "sha256:8cbd7004ebe00a117332ca605d9e1307fafb04417b290920bdf54491f2528e03"
+          },
+          {
+            "kind": "pi_prompt_template",
+            "familyId": "pi-prompt-templates",
+            "skillId": "grill-me",
+            "path": ".pi/prompts/vibe-grill-me.md",
+            "targetPath": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-import-r6vMQC/src-dispatch-target/.pi/prompts/vibe-grill-me.md",
+            "sha256": "sha256:3884baa91f6b6e369c52497b61525d2108c7e65733075cd5593b2b183f5b6244"
+          },
+          {
+            "kind": "pi_prompt_template",
+            "familyId": "pi-prompt-templates",
+            "skillId": "task",
+            "path": ".pi/prompts/vibe-task.md",
+            "targetPath": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-import-r6vMQC/src-dispatch-target/.pi/prompts/vibe-task.md",
+            "sha256": "sha256:1cf47e41e34c969eca476442376bbce0c253e4e03dccff5b89572268a5b5abfe"
+          },
+          {
+            "kind": "pi_prompt_template",
+            "familyId": "pi-prompt-templates",
+            "skillId": "plan",
+            "path": ".pi/prompts/vibe-plan.md",
+            "targetPath": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-import-r6vMQC/src-dispatch-target/.pi/prompts/vibe-plan.md",
+            "sha256": "sha256:c0bc3189f9ccdf1dae661196cd89a93e2b582523d2e2e06bcf0c9ef0415fbbde"
+          },
+          {
+            "kind": "pi_prompt_template",
+            "familyId": "pi-prompt-templates",
+            "skillId": "build",
+            "path": ".pi/prompts/vibe-build.md",
+            "targetPath": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-import-r6vMQC/src-dispatch-target/.pi/prompts/vibe-build.md",
+            "sha256": "sha256:78641b0992dd02b44cc012b5e4526a6a71e59907129e7d3bb0dac4ea878553cf"
+          },
+          {
+            "kind": "pi_prompt_template",
+            "familyId": "pi-prompt-templates",
+            "skillId": "ship",
+            "path": ".pi/prompts/vibe-ship.md",
+            "targetPath": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-import-r6vMQC/src-dispatch-target/.pi/prompts/vibe-ship.md",
+            "sha256": "sha256:8d3c100593415d121e03940c61ef30cb8280454666f0a5eaf23b15a4caa80c66"
+          }
+        ]
+      },
+      "harnessAssets": {
+        "adapterId": "pi",
+        "displayName": "Pi Coding Agent",
+        "writerStrategy": "pi-native-assets-and-context",
+        "nativeAssetFamilies": [
+          "pi-skill-files",
+          "pi-prompt-templates"
+        ],
+        "blockedAssetFamilies": [
+          "pi-extensions",
+          "pi-package-manifest",
+          "subagents",
+          "plan-mode"
+        ],
+        "noFallbackToPi": true,
+        "piAssetFamilies": [
+          "pi-skill-files",
+          "pi-prompt-templates"
+        ],
+        "skillCount": 6,
+        "promptCount": 6,
+        "extensionsPolicy": "blocked",
+        "manifestValidation": "valid",
+        "conflictPolicy": "allow-identical-overwrite",
+        "runtimePrerequisiteDiagnostic": {
+          "diagnosticCode": "HARNESS_RUNTIME_UNAVAILABLE",
+          "classification": "missing_prerequisite",
+          "binary": "pi",
+          "versionCommand": [
+            "pi",
+            "--version"
+          ],
+          "authPrerequisite": "Operator-managed local CLI authentication/subscription is required before any live model/runtime invocation; create/import do not perform auth probes.",
+          "liveProbePolicy": "not-run-by-create-import",
+          "unavailableRuntimeBehavior": "blocked-missing-prerequisite",
+          "message": "Pi CLI/auth/runtime unavailable for selected harness.",
+          "missingBinaryMessage": "Pi Coding Agent binary 'pi' is required for live harness runs; install it or select a supported installed harness explicitly. No Pi fallback is allowed.",
+          "missingAuthMessage": "Pi Coding Agent authentication/subscription is required for live harness runs; authenticate the 'pi' CLI before invoking a live runner. No Pi fallback is allowed.",
+          "noFallbackToPi": true
+        },
+        "verificationRunnerInvocation": {
+          "recommendedCommand": [
+            "pi",
+            "--approve",
+            "--no-session",
+            "--mode",
+            "json",
+            "-p",
+            "<prompt>"
+          ],
+          "defaultPermissionMode": "project trust required; default-deny tools unless explicitly allowed",
+          "expectedStructuredOutput": "json-event-parse-and-adapter-validation",
+          "unavailableRuntimeBehavior": "blocked-missing-prerequisite",
+          "evidence": {
+            "state": "known",
+            "source": "extract-harness-cli-evidence + existing @vibe-engineer/adapter-pi manifests",
+            "notes": "Pi 0.80.2 local help and the existing Pi adapter prove AGENTS.md/CLAUDE.md, .pi skills, .pi prompt templates, JSON event mode, RPC, and project-trust semantics; built-in subagents and plan mode remain blocked."
+          },
+          "runnerImplemented": false,
+          "implementationBoundary": "Default architecture agent runner is intentionally not implemented by create/import."
+        },
+        "unsupportedFeatureBehavior": {
+          "policy": "block",
+          "diagnosticCode": "UNSUPPORTED_HARNESS_FEATURE",
+          "message": "Unsupported Pi adapter features block instead of silently no-oping.",
+          "blockedFamilies": [
+            "pi-extensions",
+            "pi-package-manifest",
+            "subagents",
+            "plan-mode"
+          ]
+        }
       },
       "contextProject": {
-        "graphPath": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-import-iXV7Bu/src-dispatch-target/.vibe/context/index/context-graph.json",
-        "indexPath": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-import-iXV7Bu/src-dispatch-target/.vibe/context/index/context-index.json"
+        "graphPath": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-import-r6vMQC/src-dispatch-target/.vibe/context/index/context-graph.json",
+        "indexPath": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-import-r6vMQC/src-dispatch-target/.vibe/context/index/context-index.json"
       },
       "provenanceLabels": {
         "projectName": {
@@ -78,7 +284,7 @@
         },
         "selectedHarness": {
           "label": "harness_default",
-          "source": "DL-06 agentic harness integration; pi is the only v1 selectable harness"
+          "source": "selected harness adapter boundary; supported harnesses: pi, claude-code, codex"
         },
         "briefSummary": {
           "label": "user_provided",
@@ -99,24 +305,129 @@
   "artifacts": [
     {
       "kind": "vibe_config",
-      "path": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-import-iXV7Bu/src-dispatch-target/vibe-engineer.config.json",
+      "path": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-import-r6vMQC/src-dispatch-target/vibe-engineer.config.json",
       "schemaVersion": "vibe-engineer.config.v1",
       "role": "harness-config",
       "sha256": null
     },
     {
+      "kind": "selected_harness_metadata",
+      "path": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-import-r6vMQC/src-dispatch-target/.vibe/harness/selected-harness.json",
+      "schemaVersion": "vibe-engineer.selected-harness.v1",
+      "role": "selected-harness-metadata",
+      "sha256": null
+    },
+    {
+      "kind": "selected_harness_guidance",
+      "path": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-import-r6vMQC/src-dispatch-target/.vibe/harness/README.md",
+      "schemaVersion": null,
+      "role": "selected-harness-guidance",
+      "sha256": null
+    },
+    {
+      "kind": "selected_harness_handoff",
+      "path": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-import-r6vMQC/src-dispatch-target/.vibe/harness/handoff.md",
+      "schemaVersion": null,
+      "role": "selected-harness-handoff",
+      "sha256": null
+    },
+    {
       "kind": "context_file",
-      "path": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-import-iXV7Bu/src-dispatch-target/AGENTS.md",
+      "path": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-import-r6vMQC/src-dispatch-target/AGENTS.md",
       "schemaVersion": "pi-context-file/v1",
       "role": "context-files",
       "sha256": null
     },
     {
       "kind": "context_file",
-      "path": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-import-iXV7Bu/src-dispatch-target/CLAUDE.md",
+      "path": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-import-r6vMQC/src-dispatch-target/CLAUDE.md",
       "schemaVersion": "pi-context-file/v1",
       "role": "context-files",
       "sha256": null
+    },
+    {
+      "kind": "pi_skill_file",
+      "path": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-import-r6vMQC/src-dispatch-target/.pi/skills/brainstorm/SKILL.md",
+      "schemaVersion": "pi-generated-file-manifest/v1",
+      "role": "pi-skill-files",
+      "sha256": "sha256:beaaa31a5559bd18c367fd4dea1b5112f5eab035e812af473c8798f60177df7e"
+    },
+    {
+      "kind": "pi_skill_file",
+      "path": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-import-r6vMQC/src-dispatch-target/.pi/skills/grill-me/SKILL.md",
+      "schemaVersion": "pi-generated-file-manifest/v1",
+      "role": "pi-skill-files",
+      "sha256": "sha256:b44ddc448f37c149419b2fb76dfa169e881f76107f4fa07864b582bb1414787b"
+    },
+    {
+      "kind": "pi_skill_file",
+      "path": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-import-r6vMQC/src-dispatch-target/.pi/skills/task/SKILL.md",
+      "schemaVersion": "pi-generated-file-manifest/v1",
+      "role": "pi-skill-files",
+      "sha256": "sha256:744c262de20be7d89e5dda0d3715a848395a9f364fab67749ac3a1f58f800e55"
+    },
+    {
+      "kind": "pi_skill_file",
+      "path": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-import-r6vMQC/src-dispatch-target/.pi/skills/plan/SKILL.md",
+      "schemaVersion": "pi-generated-file-manifest/v1",
+      "role": "pi-skill-files",
+      "sha256": "sha256:e771c81620523dc4b7d9394ee08849a0fe8df4ab8d94f54f0f382c2defb6ab7c"
+    },
+    {
+      "kind": "pi_skill_file",
+      "path": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-import-r6vMQC/src-dispatch-target/.pi/skills/build/SKILL.md",
+      "schemaVersion": "pi-generated-file-manifest/v1",
+      "role": "pi-skill-files",
+      "sha256": "sha256:a69543f1e7e9e6ab76765fe3634f5bafc131d4e58c2de214c049629f38e332c4"
+    },
+    {
+      "kind": "pi_skill_file",
+      "path": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-import-r6vMQC/src-dispatch-target/.pi/skills/ship/SKILL.md",
+      "schemaVersion": "pi-generated-file-manifest/v1",
+      "role": "pi-skill-files",
+      "sha256": "sha256:8398763b01d43db727008dbced379f4425a2cbdf7733b0be19d85a493f3e461a"
+    },
+    {
+      "kind": "pi_prompt_template",
+      "path": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-import-r6vMQC/src-dispatch-target/.pi/prompts/vibe-brainstorm.md",
+      "schemaVersion": "pi-generated-file-manifest/v1",
+      "role": "pi-prompt-templates",
+      "sha256": "sha256:8cbd7004ebe00a117332ca605d9e1307fafb04417b290920bdf54491f2528e03"
+    },
+    {
+      "kind": "pi_prompt_template",
+      "path": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-import-r6vMQC/src-dispatch-target/.pi/prompts/vibe-grill-me.md",
+      "schemaVersion": "pi-generated-file-manifest/v1",
+      "role": "pi-prompt-templates",
+      "sha256": "sha256:3884baa91f6b6e369c52497b61525d2108c7e65733075cd5593b2b183f5b6244"
+    },
+    {
+      "kind": "pi_prompt_template",
+      "path": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-import-r6vMQC/src-dispatch-target/.pi/prompts/vibe-task.md",
+      "schemaVersion": "pi-generated-file-manifest/v1",
+      "role": "pi-prompt-templates",
+      "sha256": "sha256:1cf47e41e34c969eca476442376bbce0c253e4e03dccff5b89572268a5b5abfe"
+    },
+    {
+      "kind": "pi_prompt_template",
+      "path": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-import-r6vMQC/src-dispatch-target/.pi/prompts/vibe-plan.md",
+      "schemaVersion": "pi-generated-file-manifest/v1",
+      "role": "pi-prompt-templates",
+      "sha256": "sha256:c0bc3189f9ccdf1dae661196cd89a93e2b582523d2e2e06bcf0c9ef0415fbbde"
+    },
+    {
+      "kind": "pi_prompt_template",
+      "path": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-import-r6vMQC/src-dispatch-target/.pi/prompts/vibe-build.md",
+      "schemaVersion": "pi-generated-file-manifest/v1",
+      "role": "pi-prompt-templates",
+      "sha256": "sha256:78641b0992dd02b44cc012b5e4526a6a71e59907129e7d3bb0dac4ea878553cf"
+    },
+    {
+      "kind": "pi_prompt_template",
+      "path": "/var/folders/qh/g_4pxrqd2_1c0x08bnlc6y840000gn/T/wp04-import-r6vMQC/src-dispatch-target/.pi/prompts/vibe-ship.md",
+      "schemaVersion": "pi-generated-file-manifest/v1",
+      "role": "pi-prompt-templates",
+      "sha256": "sha256:8d3c100593415d121e03940c61ef30cb8280454666f0a5eaf23b15a4caa80c66"
     }
   ],
   "errors": []

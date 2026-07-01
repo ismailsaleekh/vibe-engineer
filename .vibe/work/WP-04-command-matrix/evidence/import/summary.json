@@ -6,7 +6,83 @@
       "case": "source-dispatch-success",
       "status": "success",
       "exitCode": 0,
-      "mutationsFailing": 1
+      "mutationsFailing": 1,
+      "selectedHarnessSurfaces": {
+        "adapterId": "pi",
+        "contextFiles": [
+          "AGENTS.md",
+          "CLAUDE.md"
+        ],
+        "blockedAssetFamilies": [
+          "pi-extensions",
+          "pi-package-manifest",
+          "subagents",
+          "plan-mode"
+        ]
+      }
+    },
+    {
+      "case": "source-dispatch-harness-pi",
+      "status": "success",
+      "selectedHarness": "pi",
+      "selectedHarnessSurfaces": {
+        "adapterId": "pi",
+        "contextFiles": [
+          "AGENTS.md",
+          "CLAUDE.md"
+        ],
+        "blockedAssetFamilies": [
+          "pi-extensions",
+          "pi-package-manifest",
+          "subagents",
+          "plan-mode"
+        ]
+      }
+    },
+    {
+      "case": "source-dispatch-harness-claude-code",
+      "status": "success",
+      "selectedHarness": "claude-code",
+      "selectedHarnessSurfaces": {
+        "adapterId": "claude-code",
+        "contextFiles": [
+          "CLAUDE.md"
+        ],
+        "blockedAssetFamilies": [
+          "claude-project-skills",
+          "claude-custom-commands",
+          "claude-hooks-and-mcp",
+          "claude-explicit-agents-json"
+        ]
+      }
+    },
+    {
+      "case": "source-dispatch-harness-codex",
+      "status": "success",
+      "selectedHarness": "codex",
+      "selectedHarnessSurfaces": {
+        "adapterId": "codex",
+        "contextFiles": [
+          "AGENTS.md"
+        ],
+        "blockedAssetFamilies": [
+          "codex-project-skills",
+          "codex-plugins-and-hooks",
+          "codex-output-schema",
+          "subagents",
+          "plan-mode"
+        ]
+      }
+    },
+    {
+      "case": "source-dispatch-harness-reject-opencode",
+      "status": "blocked",
+      "selectedHarness": "opencode"
+    },
+    {
+      "case": "source-dispatch-harness-reject-totally-unknown",
+      "status": "blocked",
+      "selectedHarness": "totally-unknown"
     },
     {
       "case": "dist-success",
